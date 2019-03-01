@@ -1,0 +1,12 @@
+{
+  "filename": "example.md",
+  "__html": "<h1>博客1</h1>\n<p>支持元数据的解析，<code>---</code>(至少三个<code>-</code>)开头之间的数据按照<code>key:value</code>的形式，最终会被解析到<code>md_json/blog.json</code>中，其中<code>filename</code>和<code>__html</code>为保留字段，请勿使用。</p>\n",
+  "link": "/zh-cn/blog/example.html",
+  "meta": {
+    "title": "文章标题",
+    "keywords": "关键词1，关键词2",
+    "description": "文章的简单描述",
+    "author": "作者名称",
+    "date": "2018-12-23"
+  }
+}

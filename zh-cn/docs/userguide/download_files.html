@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="download_files" />
+	<meta name="description" content="download_files" />
+	<!-- 网页标签标题 -->
+	<title>download_files</title>
+  <link rel="shortcut icon" href="https://img.alicdn.com/tfs/TB1O1p6JzTpK1RjSZKPXXa3UpXa-64-64.png"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="https://img.alicdn.com/tfs/TB1t3pWJCzqK1RjSZFjXXblCFXa-246-64.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what_is_dragonfly.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>RocketMQ</span><ul><li style="height:108px;overflow:hidden" class="menu-item menu-item-level-2"><span>概述<img style="transform:rotate(0deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/overview/what_is_dragonfly.html" target="_self">什么是 Dragonfly？</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/quickstart.html" target="_self">快速开始</a></li><li style="height:180px;overflow:hidden" class="menu-item menu-item-level-2"><span>使用指南<img style="transform:rotate(0deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/install_server.html" target="_self">安装服务端</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/install_client.html" target="_self">安装客户端</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/download_files.html" target="_self">下载文件</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/supernode_configuration.html" target="_self">超级节点配置</a></li></ul></li><li style="height:108px;overflow:hidden" class="menu-item menu-item-level-2"><span>CLI 参考<img style="transform:rotate(0deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/cli_ref/dfdaemon.html" target="_self">dfdaemon</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/cli_ref/dfget.html" target="_self">dfget</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/api.html" target="_self">API 参考</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/faq.html" target="_self">常见问题</a></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>Downloading Files with Dragonfly</h1>
+<p>Things are done differently when you download container images and download general files with Dragonfly.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>
+<p>You are using Linux operating system.</p>
+</li>
+<li>
+<p>You have installed Python 2.7+, and added the Python directory to the <code>PATH</code> environment variable.</p>
+</li>
+<li>
+<p>The SuperNode service is started.</p>
+<p><strong>Tip:</strong> For more information on the dfget command, see <a href="../cli_ref/dfget.md">dfget</a>. For more information on the installation of supernodes, see <a href="install_server.md">Installing Server</a>.</p>
+</li>
+</ul>
+<h2>Downloading container images</h2>
+<ol>
+<li>
+<p>Specify the supernodes.</p>
+<p>a. Open the Dragonfly configuration file.</p>
+<pre><code class="language-sh">vi /etc/dragonfly.conf
+</code></pre>
+<p>b. Add the IP of supernodes separated by comma to the configuration file.</p>
+<pre><code class="language-sh">[node]
+address=nodeIp1,nodeIp2
+</code></pre>
+</li>
+<li>
+<p>Start the dfget proxy (dfdaemon).</p>
+<pre><code class="language-sh"><span class="hljs-comment"># Start dfdaemon and specify the image repo URL. The default port is `65001`.</span>
+dfdaemon --registry https://xxx.xx.x
+<span class="hljs-comment"># Review dfdaemon logs</span>
+tailf ~/.small-dragonfly/logs/dfdaemon.log
+</code></pre>
+<p><strong>Tip:</strong> To list all available parameters for dfdaemon, run <code>dfdeaemon -h</code>.</p>
+</li>
+<li>
+<p>Configure the Daemon Mirror.</p>
+<p>a. Modify the configuration file <code>/etc/docker/daemon.json</code>.</p>
+<pre><code class="language-sh">vi /etc/docker/daemon.json
+</code></pre>
+<p><strong>Tip:</strong> For more information on <code>/etc/docker/daemon.json</code>, see <a href="https://docs.docker.com/registry/recipes/mirror/#configure-the-cache">Docker documentation</a>.</p>
+<p>b. Add or update the configuration item <code>registry-mirrors</code> in the configuration file.</p>
+<pre><code class="language-sh"><span class="hljs-string">"registry-mirrors"</span>: [<span class="hljs-string">"http://127.0.0.1:65001"</span>]
+</code></pre>
+<p>c. Restart Docker daemon.</p>
+<pre><code class="language-bash">systemctl restart docker
+</code></pre>
+</li>
+<li>
+<p>Download an image with Dragonfly.</p>
+<pre><code class="language-bash">docker pull {imageName}
+</code></pre>
+<p><strong>Note:</strong> Don't include the image repo URL in {imageName}, because the repo URL has been specified with the <code>registry</code> parameter when starting dfdaemon.</p>
+</li>
+</ol>
+<h2>Downloading General Files</h2>
+<ol>
+<li>
+<p>Specify the supernodes in one of the following ways.</p>
+<ul>
+<li>
+<p>Specifying with the configuration file.</p>
+<pre><code class="language-sh"><span class="hljs-comment"># Open the Dragonfly configuration file.</span>
+vi /etc/dragonfly.conf
+
+<span class="hljs-comment"># Add the IP of supernodes separated by comma to the configuration file</span>
+[node]
+address=nodeIp1,nodeIp2
+</code></pre>
+</li>
+<li>
+<p>Specifying with the parameter in the command line.</p>
+<pre><code class="language-sh">dfget -u <span class="hljs-string">"http://www.taobao.com"</span> -o /tmp/test.html --node nodeIp1,nodeIp2
+</code></pre>
+<p><strong>Note:</strong> When using this method, you must add the <code>node</code> parameter every time when you run the dfget command. And the parameter in the command line takes precedence over the configuration file.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Download general files with Dragonfly in one of the following ways.</p>
+<ul>
+<li>
+<p>Download files with the default <code>/etc/dragonfly.conf</code> configuration.</p>
+<pre><code class="language-sh">dfget --url <span class="hljs-string">"http://xxx.xx.x"</span>
+</code></pre>
+<p><strong>Tip:</strong> To list all available parameters for dfget, run <code>dfget -h</code>.</p>
+</li>
+<li>
+<p>Download files with your specified supernodes.</p>
+<pre><code class="language-sh">dfget --url <span class="hljs-string">"http://xxx.xx.x"</span> --node <span class="hljs-string">"127.0.0.1"</span>
+</code></pre>
+</li>
+<li>
+<p>Download files to your specified output file.</p>
+<pre><code class="language-sh">dfget --url <span class="hljs-string">"http://xxx.xx.x"</span> -o a.txt
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2>After this Task</h2>
+<p>To review the downloading log, run <code>less ~/.small-dragonfly/logs/dfclient.log</code>.</p>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="https://img.alicdn.com/tfs/TB1VohYJwHqK1RjSZFgXXa7JXXa-278-72.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>RocketMQ 致力于解决大规模文件分发的效率问题，打造容器镜像分发的第一解决方案和标准规范，并为用户提供高可用、高效率以及简单易用的文件及镜像分发服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what_is_dragonfly.html" target="_self">什么是 RocketMQ？</a></dd><dd><a href="/zh-cn/docs/quickstart.html" target="_self">快速开始</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Fescar</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+</body>
+</html>

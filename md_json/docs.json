@@ -1,0 +1,134 @@
+{
+  "en-us": [
+    {
+      "filename": "api.md",
+      "link": "/en-us/docs/api.html",
+      "meta": {}
+    },
+    {
+      "filename": "dfdaemon.md",
+      "link": "/en-us/docs/cli_ref/dfdaemon.html",
+      "meta": {}
+    },
+    {
+      "filename": "dfget.md",
+      "link": "/en-us/docs/cli_ref/dfget.html",
+      "meta": {}
+    },
+    {
+      "filename": "maintainers.md",
+      "link": "/en-us/docs/developers/maintainers.html",
+      "meta": {
+        "title": "Dragonfly Maintainers",
+        "keywords": "Dragonfly, Maintainers",
+        "description": "A list of Dragonfly maintainers"
+      }
+    },
+    {
+      "filename": "faq.md",
+      "link": "/en-us/docs/faq.html",
+      "meta": {}
+    },
+    {
+      "filename": "terminology.md",
+      "link": "/en-us/docs/overview/terminology.html",
+      "meta": {}
+    },
+    {
+      "filename": "what_is_dragonfly.md",
+      "link": "/en-us/docs/overview/what_is_dragonfly.html",
+      "meta": {}
+    },
+    {
+      "filename": "quickstart.md",
+      "link": "/en-us/docs/quickstart.html",
+      "meta": {}
+    },
+    {
+      "filename": "download_files.md",
+      "link": "/en-us/docs/userguide/download_files.html",
+      "meta": {}
+    },
+    {
+      "filename": "install_client.md",
+      "link": "/en-us/docs/userguide/install_client.html",
+      "meta": {}
+    },
+    {
+      "filename": "install_server.md",
+      "link": "/en-us/docs/userguide/install_server.html",
+      "meta": {}
+    },
+    {
+      "filename": "supernode_configuration.md",
+      "link": "/en-us/docs/userguide/supernode_configuration.html",
+      "meta": {}
+    }
+  ],
+  "zh-cn": [
+    {
+      "filename": "api.md",
+      "link": "/zh-cn/docs/api.html",
+      "meta": {}
+    },
+    {
+      "filename": "dfdaemon.md",
+      "link": "/zh-cn/docs/cli_ref/dfdaemon.html",
+      "meta": {}
+    },
+    {
+      "filename": "dfget.md",
+      "link": "/zh-cn/docs/cli_ref/dfget.html",
+      "meta": {}
+    },
+    {
+      "filename": "maintainers.md",
+      "link": "/zh-cn/docs/developers/maintainers.html",
+      "meta": {
+        "title": "Dragonfly 维护者",
+        "keywords": "Dragonfly, 维护者",
+        "description": "Dragonfly 维护者名单"
+      }
+    },
+    {
+      "filename": "faq.md",
+      "link": "/zh-cn/docs/faq.html",
+      "meta": {}
+    },
+    {
+      "filename": "terminology.md",
+      "link": "/zh-cn/docs/overview/terminology.html",
+      "meta": {}
+    },
+    {
+      "filename": "what_is_dragonfly.md",
+      "link": "/zh-cn/docs/overview/what_is_dragonfly.html",
+      "meta": {}
+    },
+    {
+      "filename": "quickstart.md",
+      "link": "/zh-cn/docs/quickstart.html",
+      "meta": {}
+    },
+    {
+      "filename": "download_files.md",
+      "link": "/zh-cn/docs/userguide/download_files.html",
+      "meta": {}
+    },
+    {
+      "filename": "install_client.md",
+      "link": "/zh-cn/docs/userguide/install_client.html",
+      "meta": {}
+    },
+    {
+      "filename": "install_server.md",
+      "link": "/zh-cn/docs/userguide/install_server.html",
+      "meta": {}
+    },
+    {
+      "filename": "supernode_configuration.md",
+      "link": "/zh-cn/docs/userguide/supernode_configuration.html",
+      "meta": {}
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "en-us": [
+    {
+      "filename": "example.md",
+      "link": "/en-us/blog/example.html",
+      "meta": {
+        "title": "title",
+        "keywords": "keywords1,keywords2",
+        "description": "some description",
+        "author": "author name",
+        "date": "2018-12-23"
+      }
+    }
+  ],
+  "zh-cn": [
+    {
+      "filename": "example.md",
+      "link": "/zh-cn/blog/example.html",
+      "meta": {
+        "title": "文章标题",
+        "keywords": "关键词1，关键词2",
+        "description": "文章的简单描述",
+        "author": "作者名称",
+        "date": "2018-12-23"
+      }
+    }
+  ]
+}

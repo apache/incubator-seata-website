@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="faq" />
+	<meta name="description" content="faq" />
+	<!-- 网页标签标题 -->
+	<title>faq</title>
+  <link rel="shortcut icon" href="https://img.alicdn.com/tfs/TB1O1p6JzTpK1RjSZKPXXa3UpXa-64-64.png"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="https://img.alicdn.com/tfs/TB1t3pWJCzqK1RjSZFjXXblCFXa-246-64.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what_is_dragonfly.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>RocketMQ</span><ul><li style="height:108px;overflow:hidden" class="menu-item menu-item-level-2"><span>概述<img style="transform:rotate(0deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/overview/what_is_dragonfly.html" target="_self">什么是 Dragonfly？</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/quickstart.html" target="_self">快速开始</a></li><li style="height:180px;overflow:hidden" class="menu-item menu-item-level-2"><span>使用指南<img style="transform:rotate(0deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/install_server.html" target="_self">安装服务端</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/install_client.html" target="_self">安装客户端</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/download_files.html" target="_self">下载文件</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/userguide/supernode_configuration.html" target="_self">超级节点配置</a></li></ul></li><li style="height:108px;overflow:hidden" class="menu-item menu-item-level-2"><span>CLI 参考<img style="transform:rotate(0deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/cli_ref/dfdaemon.html" target="_self">dfdaemon</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/cli_ref/dfget.html" target="_self">dfget</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/api.html" target="_self">API 参考</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/faq.html" target="_self">常见问题</a></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>FAQ</h1>
+<p>Find the answers to the frequently asked questions.</p>
+<h2>How can I pull images with Dragonfly?</h2>
+<p>See <a href="quickstart.md">Pulling an Image with Dragonfly</a>.</p>
+<h2>How can I download files with Dragonfly?</h2>
+<p>See <a href="quickstart.md">Downloading a File with Dragonfly</a>.</p>
+<h2>What is a SuperNode?</h2>
+<p>A SuperNode is a long-time process that plays the following roles:</p>
+<ul>
+<li>A tracker and scheduler in the P2P network that chooses appropriate downloading net-path for each peer.</li>
+<li>A CDN server that caches downloaded data from source to avoid downloading same files repeatedly.</li>
+</ul>
+<h2>What is dfget?</h2>
+<p>Dfget is the Dragonfly client used for downloading files. It's similar to wget.</p>
+<p>Meanwhile, it also plays the role of a peer, which can transfer data between each other in the P2P network.</p>
+<h2>What is dfdaemon?</h2>
+<p>Dfdaemon is only used for pulling images. It establishes a proxy between dockerd/pouchd and registry.</p>
+<p>Dfdaemon filters out layer fetching requests from all requests sent by dockerd/pouchd when pulling images, then uses dfget to download these layers.</p>
+<h2>Where is the installation directory of Dragonfly client dfget?</h2>
+<p>Normally, there are two installation directories:</p>
+<ul>
+<li>Dragonfly plugin for StarAgent: <code>/home/staragent/plugins/dragonfly/dfget</code></li>
+<li>StarAgent's built-in dfget: <code>/home/staragent/bin/dfget</code></li>
+</ul>
+<p>The Dragonfly plugin is used by default. If the Dragonfly plugin is not installed, then the StarAgent's build-in dfget is used.</p>
+<h2>Where is the log directory of Dragonfly client dfget?</h2>
+<p>The log directory is <code>$HOME/.small-dragonfly/logs/dfclient.log</code>.</p>
+<h2>Where is the data directory of Dragonfly client dfget?</h2>
+<p>The data directory is <code>$HOME/.small-dragonfly/data</code>.</p>
+<p>Each account has its own data directory. A P2P downloading job generates two data files under this directory:</p>
+<ul>
+<li>A temporary downloading file for the target file, with the name <code>targetFileName-sign</code>. This file is moved to the target directory after the download is complete.</li>
+<li>A copy of the temporary downloading file for uploading, with the name <code>targetFileName-sign.service</code>. If no downloading jobs are downloading this file from this node, then it gets cleaned after three minutes. Before the process is completed normally, any file lasting longer than 60 minutes will be purged.</li>
+</ul>
+<h2>Where is the meta directory of Dragonfly client dfget?</h2>
+<p>The meta directory is <code>$HOME/.small-dragonfly/meta</code>.</p>
+<p>This directory caches the address list of the local node (IP, hostname, IDC, security domain, and so on), managing nodes, and supernodes.</p>
+<p>When started for the first time, the Dragonfly client will access the managing node. The managing node will retrieve the security domains, IDC, geo-location, and more information of this node by querying armory, and assign the most suitable SuperNode. The managing node also distributes the address lists of all other supernodes. dfget stores the above information in the meta directory on the local drive. When the next job is started, dfget reads the meta information from this directory, avoiding accessing the managing node repeatedly.</p>
+<p>dfget always finds the most suitable assigned node to register. If fails, it requests other supernodes in order. If all fail, then it requests the managing node once again, updates the meta information, and repeats the above steps. If still fails, then the job fails.</p>
+<p><strong>Tip</strong>: If the dfclient.log suggests that the SuperNode registration fails all the time, try delete all files from the meta directory and try again.</p>
+<h2>How to check the version of Dragonfly client dfget?</h2>
+<p>If you have installed the Dragonfly client, run this command:</p>
+<pre><code class="language-bash">dfget -v
+</code></pre>
+<h2>Why is the dfget process still there after the download is complete?</h2>
+<p>Because Dragonfly adopts a P2P downloading approach, dfget provides uploading services in addition to downloading services. If there are no new jobs within five minutes, the dfget process will be terminated automatically.</p>
+<h2>How to clean up the data directory of Dragonfly?</h2>
+<p>Normally, Dragonfly automatically cleans up files which are not accessed in three minutes from the uploading file list, and the residual files that live longer than one hour from the data directory.</p>
+<p>Follow these steps to clean up the data directory manually:</p>
+<ol>
+<li>Identify the account to which the residual files belong.</li>
+<li>Check if there is any running dfget process started by other accounts.</li>
+<li>If there is such a process, then terminate the process, and start a dfget process with the account identified at Step 1. This process will automatically clean up the residual files from the data directory.</li>
+</ol>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="https://img.alicdn.com/tfs/TB1VohYJwHqK1RjSZFgXXa7JXXa-278-72.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>RocketMQ 致力于解决大规模文件分发的效率问题，打造容器镜像分发的第一解决方案和标准规范，并为用户提供高可用、高效率以及简单易用的文件及镜像分发服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what_is_dragonfly.html" target="_self">什么是 RocketMQ？</a></dd><dd><a href="/zh-cn/docs/quickstart.html" target="_self">快速开始</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Fescar</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+</body>
+</html>

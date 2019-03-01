@@ -1,0 +1,6 @@
+{
+  "filename": "terminology.md",
+  "__html": "<h1>Dragonfly Terminology</h1>\n<p>This topic lists the common terms used throughout Dragonfly.</p>\n<h2>SuperNode</h2>\n<p>SuperNode is a long-time process with two primary responsibilities:</p>\n<ul>\n<li>It's the tracker and scheduler in the P2P network that choose appropriate downloading net-path for each peer.</li>\n<li>It's also a CDN server that caches downloaded data from source to avoid downloading same files repeatedly.</li>\n</ul>\n<h2>dfget</h2>\n<p>Dfget is the client of Dragonfly used for downloading files. It's similar to wget.</p>\n<p>At the same time, it also plays the role of peer, which can transfer data between each other in P2P network.</p>\n<h2>dfdaemon</h2>\n<p>Dfdaemon is used for pulling images only. It establishes a proxy between dockerd/pouchd and registry.</p>\n<p>Dfdaemon filters out layer fetching requests from all requests sent by dockerd/pouchd when pulling images, then uses dfget to downloading these layers.</p>\n",
+  "link": "/en-us/docs/overview/terminology.html",
+  "meta": {}
+}
