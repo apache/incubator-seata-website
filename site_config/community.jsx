@@ -89,7 +89,7 @@ export default {
     },
     contributorGuide: {
       title: 'Contributor Guide',
-      desc: 'You can always contribute to RocketMQ.',
+      desc: 'You can always contribute to Fescar.',
       list: [
         {
           img: '/img/channels/email_gray.svg',
@@ -202,7 +202,7 @@ export default {
     },
     contributorGuide: {
       title: '贡献指南',
-      desc: '欢迎为 RocketMQ 做贡献！',
+      desc: '欢迎为 Fescar 做贡献！',
       list: [
         {
           img: '/img/channels/email_gray.svg',
