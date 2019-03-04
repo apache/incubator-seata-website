@@ -17,8 +17,8 @@ export default {
       ],
     },
     introduction: {
-      title: '什么是 RocketMQ？',
-      desc: 'Apache RocketMQ是由阿里巴巴开源的基于Java的高性能、高吞吐量的分布式消息和流计算平台，于2016年捐赠给Apache Software Foundation，2017年9月25日成为Apache 顶级项目。前身是阿里巴巴2011年诞生的数据消息引擎 — MetaQ，并且于2012年对外开源为RocketMQ 3.0。低延时、高可靠、弹性扩缩等特性，使得Apache RocketMQ在分布式计算领域受到企业和个人用户青睐。',
+      title: '什么是 Fescar？',
+      desc: 'Fescar是由阿里巴巴开源的基于Java的高性能、高吞吐量的分布式消息和流计算平台，于2016年捐赠给Apache Software Foundation，2017年9月25日成为Apache 顶级项目。前身是阿里巴巴2011年诞生的数据消息引擎 — MetaQ，并且于2012年对外开源为RocketMQ 3.0。低延时、高可靠、弹性扩缩等特性，使得Apache RocketMQ在分布式计算领域受到企业和个人用户青睐。',
       img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
     },
     features: {
@@ -75,8 +75,8 @@ export default {
       ],
     },
     introduction: {
-      title: 'What is RocketMQ?',
-      desc: 'Apache RocketMQ is a distributed messaging and streaming computing platform with high performance and high throughput. It is an open source project from Alibaba, which has been donated to the Apache Software Foundation in 2016. On September 25, 2017, it became an Apache top-level project. Its predecessor was MetaQ, a data messaging engine created by Alibaba in 2011. And it was created as an open source project known as RocketMQ 3.0 in 2012. Low latency, high reliability, and scalability make Apache RocketMQ popular among enterprises and individuals in the distributed computing field.',
+      title: 'What is Fescar?',
+      desc: 'Fescar is a distributed messaging and streaming computing platform with high performance and high throughput. It is an open source project from Alibaba, which has been donated to the Apache Software Foundation in 2016. On September 25, 2017, it became an Apache top-level project. Its predecessor was MetaQ, a data messaging engine created by Alibaba in 2011. And it was created as an open source project known as RocketMQ 3.0 in 2012. Low latency, high reliability, and scalability make Apache RocketMQ popular among enterprises and individuals in the distributed computing field.',
       img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
     },
     features: {
