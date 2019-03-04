@@ -30,13 +30,13 @@ export default {
     ],
     vision: {
       title: 'Vision',
-      content: 'RocketMQ is dedicated to improving the efficiency of large-scale file distribution, building the go-to solution and standards of container image distribution, and providing you with file and image distribution service which is efficient, easy-to-use, and of high availability.',
+      content: 'Fescar is dedicated to improving the efficiency of large-scale file distribution, building the go-to solution and standards of container image distribution, and providing you with file and image distribution service which is efficient, easy-to-use, and of high availability.',
     },
     documentation: {
       title: 'Documentation',
       list: [
         {
-          text: 'What is RocketMQ?',
+          text: 'What is Fescar?',
           link: '/en-us/docs/overview/what_is_dragonfly.html',
         },
         {
@@ -85,13 +85,13 @@ export default {
     ],
     vision: {
       title: '愿景',
-      content: 'RocketMQ 致力于解决大规模文件分发的效率问题，打造容器镜像分发的第一解决方案和标准规范，并为用户提供高可用、高效率以及简单易用的文件及镜像分发服务。',
+      content: 'Fescar 致力于解决大规模文件分发的效率问题，打造容器镜像分发的第一解决方案和标准规范，并为用户提供高可用、高效率以及简单易用的文件及镜像分发服务。',
     },
     documentation: {
       title: '文档',
       list: [
         {
-          text: '什么是 RocketMQ？',
+          text: '什么是 Fescar？',
           link: '/zh-cn/docs/overview/what_is_dragonfly.html',
         },
         {

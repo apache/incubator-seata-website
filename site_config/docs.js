@@ -2,7 +2,7 @@ export default {
   'en-us': {
     sidemenu: [
       {
-        title: 'RocketMQ',
+        title: 'Fescar',
         children: [
           {
             title: 'Overview',
@@ -74,7 +74,7 @@ export default {
   'zh-cn': {
     sidemenu: [
       {
-        title: 'RocketMQ',
+        title: 'Fescar',
         children: [
           {
             title: '概述',
