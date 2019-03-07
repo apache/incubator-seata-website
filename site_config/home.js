@@ -2,11 +2,11 @@ export default {
   'zh-cn': {
     brand: {
       brandName: 'Fescar',
-      briefIntroduction: 'Fescar是阿里巴巴开源的分布式事务中间件，以高效并且对业务0侵入的方式，解决微服务场景下面临的分布式事务问题',
+      briefIntroduction: 'Fescar 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
       buttons: [
         {
           text: '快速入门',
-          link: '/zh-cn/docs/quickstart.html',
+          link: '/zh-cn/docs/overview/what_is_fescar.html',
           type: 'primary',
         },
         {
@@ -18,7 +18,7 @@ export default {
     },
     introduction: {
       title: '什么是 Fescar？',
-      desc: 'Fescar是由阿里巴巴开源的基于Java的高性能、高吞吐量的分布式消息和流计算平台，于2016年捐赠给Apache Software Foundation，2017年9月25日成为Apache 顶级项目。前身是阿里巴巴2011年诞生的数据消息引擎 — MetaQ，并且于2012年对外开源为Fescar 3.0。低延时、高可靠、弹性扩缩等特性，使得Apache Fescar在分布式计算领域受到企业和个人用户青睐。',
+      desc: 'Fescar 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。Fescar 于2019.1 正式对外开源，前身是阿里巴巴2014年诞生的 TXC（Taobao Transaction Constructor），在集团业务得到了广泛使用。并且于2016年对外发布阿里云 GTS（Global Transactional Service），使得 Fescar 在分布式事务领域受到企业和个人用户青睐。',
       img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
     },
     features: {
@@ -26,32 +26,32 @@ export default {
       list: [
         {
           icon: 'feature-1',
-          title: '弹性扩缩',
-          content: 'Brokers, producers, consumers, name servers都采用了特殊的部署和处理方式，具备很强的横向扩展能力。',
+          title: '微服务框架支持',
+          content: '目前已支持 Dubbo 和 Spring Cloud 微服务框架，其他微服务框架持续集成中',
         },
         {
           icon: 'feature-2',
-          title: '分布式事务',
-          content: 'TBD',
+          title: '数据库支持',
+          content: '已支持 MySQL 自动模式, Oracle、PostgreSQL、H2 开发中',
         },
         {
           icon: 'feature-3',
-          title: '快速存储和持久化',
-          content: 'TBD',
+          title: 'TCC 模式（开发中）',
+          content: '支持 用户自定义 TCC 接口模式并可与 AT 混用',
         },
         {
           icon: 'feature-4',
-          title: '消息过滤',
-          content: 'TBD',
+          title: 'XA 模式（开发中）',
+          content: '支持已实现 XA 接口的数据库的 XA 模式',
         },
         {
           icon: 'feature-5',
-          title: '回溯消费',
+          title: '动态伸缩',
           content: 'TBD',
         },
         {
           icon: 'feature-6',
-          title: '定时消息',
+          title: '高可用',
           content: 'TBD',
         },
       ],
