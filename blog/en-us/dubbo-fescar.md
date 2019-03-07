@@ -2,6 +2,8 @@
 title: How to use Fescar to ensure consistency between Dubbo Microservices
 keywords: Dubbo,Fescar,Consistency
 description: This article will introduce you how to use Fescar to ensure consistency between Dubbo Microservices.
+author: slievrly
+date: 2019-03-07
 ---
 # How to use Fescar to ensure consistency between Dubbo Microservices
 ## Use case

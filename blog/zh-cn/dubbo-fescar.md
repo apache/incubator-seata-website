@@ -2,6 +2,8 @@
 title: 如何使用Fescar保证Dubbo微服务间的一致性
 keywords: Dubbo,Fescar,一致性
 description: 本文主要介绍如何使用Fescar保证Dubbo微服务间的一致性
+author: slievrly
+date: 2019-03-07
 ---
 # 如何使用Fescar保证Dubbo微服务间的一致性
 
