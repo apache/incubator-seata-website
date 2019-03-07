@@ -67,6 +67,21 @@
   ],
   "zh-cn": [
     {
+      "filename": "fescar_at.md",
+      "link": "/zh-cn/docs/architecture/fescar_at.html",
+      "meta": {}
+    },
+    {
+      "filename": "fescar_mertics.md",
+      "link": "/zh-cn/docs/architecture/fescar_mertics.html",
+      "meta": {}
+    },
+    {
+      "filename": "fescar_tcc.md",
+      "link": "/zh-cn/docs/architecture/fescar_tcc.html",
+      "meta": {}
+    },
+    {
       "filename": "dfdaemon.md",
       "link": "/zh-cn/docs/cli_ref/dfdaemon.html",
       "meta": {}

@@ -91,7 +91,25 @@ export default {
                         ],
                     },
                     {
-                        title: '快速开始',
+                        title: '设计原理',
+                        opened: true,
+                        children: [
+                            {
+                                title: 'Fescar AT 模式',
+                                link: '/zh-cn/docs/architecture/fescar_at.html',
+                            },
+                            {
+                                title: 'Fescar TCC 模式',
+                                link: '/zh-cn/docs/architecture/fescar_tcc.html',
+                            },
+                            {
+                                title: 'Metrics设计',
+                                link: '/zh-cn/docs/architecture/fescar_mertics.html',
+                            },
+                        ],
+                    },
+                    {
+                        title: '开发指南',
                         opened: true,
                         children: [
                             {
