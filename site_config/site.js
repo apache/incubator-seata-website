@@ -15,7 +15,7 @@ export default {
       {
         key: 'docs',
         text: 'DOCS',
-        link: '/en-us/docs/overview/what_is_dragonfly.html',
+        link: '/en-us/docs/overview/what_is_fescar.html',
       },
       {
         key: 'blog',
@@ -37,7 +37,7 @@ export default {
       list: [
         {
           text: 'What is Fescar?',
-          link: '/en-us/docs/overview/what_is_dragonfly.html',
+          link: '/en-us/docs/overview/what_is_fescar.html',
         },
         {
           text: 'Quick Start',
@@ -70,7 +70,7 @@ export default {
       {
         key: 'docs',
         text: '文档',
-        link: '/zh-cn/docs/overview/what_is_dragonfly.html',
+        link: '/zh-cn/docs/overview/what_is_fescar.html',
       },
       {
         key: 'blog',
@@ -85,14 +85,14 @@ export default {
     ],
     vision: {
       title: '愿景',
-      content: 'Fescar 致力于解决大规模文件分发的效率问题，打造容器镜像分发的第一解决方案和标准规范，并为用户提供高可用、高效率以及简单易用的文件及镜像分发服务。',
+      content: 'Fescar 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。',
     },
     documentation: {
       title: '文档',
       list: [
         {
           text: '什么是 Fescar？',
-          link: '/zh-cn/docs/overview/what_is_dragonfly.html',
+          link: '/zh-cn/docs/overview/what_is_fescar.html',
         },
         {
           text: '快速开始',
