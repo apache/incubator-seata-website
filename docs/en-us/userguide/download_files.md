@@ -1,6 +1,6 @@
-# Downloading Files with Dragonfly
+# Downloading Files with Fescar
 
-Things are done differently when you download container images and download general files with Dragonfly.
+Things are done differently when you download container images and download general files with Fescar.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Things are done differently when you download container images and download gene
 
 1. Specify the supernodes.
 
-    a. Open the Dragonfly configuration file.
+    a. Open the Fescar configuration file.
 
     ```sh
     vi /etc/dragonfly.conf
@@ -60,7 +60,7 @@ Things are done differently when you download container images and download gene
     systemctl restart docker
     ```
 
-4. Download an image with Dragonfly.
+4. Download an image with Fescar.
 
     ```bash
     docker pull {imageName}
@@ -75,7 +75,7 @@ Things are done differently when you download container images and download gene
     - Specifying with the configuration file.
 
         ```sh
-        # Open the Dragonfly configuration file.
+        # Open the Fescar configuration file.
         vi /etc/dragonfly.conf
 
         # Add the IP of supernodes separated by comma to the configuration file
@@ -91,7 +91,7 @@ Things are done differently when you download container images and download gene
 
         **Note:** When using this method, you must add the `node` parameter every time when you run the dfget command. And the parameter in the command line takes precedence over the configuration file.
 
-2. Download general files with Dragonfly in one of the following ways.
+2. Download general files with Fescar in one of the following ways.
 
     - Download files with the default `/etc/dragonfly.conf` configuration.
 

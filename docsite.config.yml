@@ -3,12 +3,12 @@ pages:
  home:
   # 首页配置
   zh-cn:
-   title: 'Dragonfly'
+   title: 'Fescar'
    keywords: '关键词1，关键词2'
    description: '页面内容简介'
   # home config
   en-us:
-   title: 'Dragonfly'
+   title: 'Fescar'
    keywords: 'keyword1,keyword2'
    description: 'page description'
  community:

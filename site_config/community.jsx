@@ -99,7 +99,7 @@ export default {
         {
           img: '/img/channels/github_gray.svg',
           title: 'Issue',
-          content: <span>Submit a <a href="https://github.com/dragonflyoss/Dragonfly/issues/new">new issue</a>.</span>,
+          content: <span>Submit a <a href="https://github.com/dragonflyoss/Fescar/issues/new">new issue</a>.</span>,
         },
         {
           img: '/img/documents.png',
@@ -109,7 +109,7 @@ export default {
         {
           img: '/img/pullrequest.png',
           title: 'Pull Request',
-          content: <span>Create a brilliant <a href="https://github.com/dragonflyoss/Dragonfly/pulls">pull request</a>.  </span>,
+          content: <span>Create a brilliant <a href="https://github.com/dragonflyoss/Fescar/pulls">pull request</a>.  </span>,
         },
       ],
     },
@@ -212,7 +212,7 @@ export default {
         {
           img: '/img/channels/github_gray.svg',
           title: '报告问题',
-          content: <span>提交<a href="https://github.com/dragonflyoss/Dragonfly/issues/new">新问题</a>。</span>,
+          content: <span>提交<a href="https://github.com/dragonflyoss/Fescar/issues/new">新问题</a>。</span>,
         },
         {
           img: '/img/documents.png',
@@ -222,7 +222,7 @@ export default {
         {
           img: '/img/pullrequest.png',
           title: '提交 PR',
-          content: <span>创建一个<a href="https://github.com/dragonflyoss/Dragonfly/pulls">PR</a>。</span>,
+          content: <span>创建一个<a href="https://github.com/dragonflyoss/Fescar/pulls">PR</a>。</span>,
         },
       ],
     },
