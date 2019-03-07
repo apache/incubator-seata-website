@@ -1,27 +1,23 @@
 {
   "en-us": [
     {
-      "filename": "example.md",
-      "link": "/en-us/blog/example.html",
+      "filename": "dubbo-fescar.md",
+      "link": "/en-us/blog/dubbo-fescar.html",
       "meta": {
-        "title": "title",
-        "keywords": "keywords1,keywords2",
-        "description": "some description",
-        "author": "author name",
-        "date": "2018-12-23"
+        "title": "How to use Fescar to ensure consistency between Dubbo Microservices",
+        "keywords": "Dubbo,Fescar,Consistency",
+        "description": "This article will introduce you how to use Fescar to ensure consistency between Dubbo Microservices."
       }
     }
   ],
   "zh-cn": [
     {
-      "filename": "example.md",
-      "link": "/zh-cn/blog/example.html",
+      "filename": "dubbo-fescar.md",
+      "link": "/zh-cn/blog/dubbo-fescar.html",
       "meta": {
-        "title": "文章标题",
-        "keywords": "关键词1，关键词2",
-        "description": "文章的简单描述",
-        "author": "作者名称",
-        "date": "2018-12-23"
+        "title": "如何使用Fescar保证Dubbo微服务间的一致性",
+        "keywords": "Dubbo,Fescar,一致性",
+        "description": "本文主要介绍如何使用Fescar保证Dubbo微服务间的一致性"
       }
     }
   ]
