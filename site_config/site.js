@@ -85,7 +85,7 @@ export default {
     ],
     vision: {
       title: '愿景',
-      content: 'Fescar 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。',
+      content: 'Fescar 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
     },
     documentation: {
       title: '文档',
