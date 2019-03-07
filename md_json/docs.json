@@ -67,11 +67,6 @@
   ],
   "zh-cn": [
     {
-      "filename": "api.md",
-      "link": "/zh-cn/docs/api.html",
-      "meta": {}
-    },
-    {
       "filename": "dfdaemon.md",
       "link": "/zh-cn/docs/cli_ref/dfdaemon.html",
       "meta": {}
@@ -79,6 +74,31 @@
     {
       "filename": "dfget.md",
       "link": "/zh-cn/docs/cli_ref/dfget.html",
+      "meta": {}
+    },
+    {
+      "filename": "activity.md",
+      "link": "/zh-cn/docs/community/activity.html",
+      "meta": {}
+    },
+    {
+      "filename": "contact.md",
+      "link": "/zh-cn/docs/community/contact.html",
+      "meta": {}
+    },
+    {
+      "filename": "contribution.md",
+      "link": "/zh-cn/docs/community/contribution.html",
+      "meta": {}
+    },
+    {
+      "filename": "question.md",
+      "link": "/zh-cn/docs/community/question.html",
+      "meta": {}
+    },
+    {
+      "filename": "roadmap.md",
+      "link": "/zh-cn/docs/community/roadmap.html",
       "meta": {}
     },
     {
@@ -96,38 +116,43 @@
       "meta": {}
     },
     {
+      "filename": "operation.md",
+      "link": "/zh-cn/docs/ops/operation.html",
+      "meta": {}
+    },
+    {
       "filename": "terminology.md",
       "link": "/zh-cn/docs/overview/terminology.html",
       "meta": {}
     },
     {
-      "filename": "what_is_dragonfly.md",
-      "link": "/zh-cn/docs/overview/what_is_dragonfly.html",
+      "filename": "what_is_fescar.md",
+      "link": "/zh-cn/docs/overview/what_is_fescar.html",
       "meta": {}
     },
     {
-      "filename": "quickstart.md",
-      "link": "/zh-cn/docs/quickstart.html",
+      "filename": "api.md",
+      "link": "/zh-cn/docs/quickstart/api.html",
       "meta": {}
     },
     {
-      "filename": "download_files.md",
-      "link": "/zh-cn/docs/userguide/download_files.html",
+      "filename": "datasource.md",
+      "link": "/zh-cn/docs/quickstart/datasource.html",
       "meta": {}
     },
     {
-      "filename": "install_client.md",
-      "link": "/zh-cn/docs/userguide/install_client.html",
+      "filename": "microservice.md",
+      "link": "/zh-cn/docs/quickstart/microservice.html",
       "meta": {}
     },
     {
-      "filename": "install_server.md",
-      "link": "/zh-cn/docs/userguide/install_server.html",
+      "filename": "ormframework.md",
+      "link": "/zh-cn/docs/quickstart/ormframework.html",
       "meta": {}
     },
     {
-      "filename": "supernode_configuration.md",
-      "link": "/zh-cn/docs/userguide/supernode_configuration.html",
+      "filename": "spring.md",
+      "link": "/zh-cn/docs/quickstart/spring.html",
       "meta": {}
     }
   ]
