@@ -1,6 +1,6 @@
-# Dragonfly Quick Start
+# Fescar Quick Start
 
-In this quick start guide, you will get a feeling of Dragonfly by starting a [SuperNode](overview/terminology.md) (the server) in your Docker container, installing the Dragonfly client (the client), and then downloading a container image and a general file, which are likely what you'll be doing frequently in your use case.
+In this quick start guide, you will get a feeling of Fescar by starting a [SuperNode](overview/terminology.md) (the server) in your Docker container, installing the Fescar client (the client), and then downloading a container image and a general file, which are likely what you'll be doing frequently in your use case.
 
 ## Prerequisites
 
@@ -35,9 +35,9 @@ docker pull registry.cn-hangzhou.aliyuncs.com/alidragonfly/supernode:0.2.0
 docker run -d -p 8001:8001 -p 8002:8002 registry.cn-hangzhou.aliyuncs.com/alidragonfly/supernode:0.2.0
 ```
 
-## Step 2: Installing Dragonfly Client
+## Step 2: Installing Fescar Client
 
-You have two options of installing Dragonfly client: installing from source code, or installing by pulling the image.
+You have two options of installing Fescar client: installing from source code, or installing by pulling the image.
 
 ### Option 1: Installing from Source Code
 
@@ -59,9 +59,9 @@ You have two options of installing Dragonfly client: installing from source code
 
     - If you're not in China:
 
-        - [Linux 64-bit](https://github.com/dragonflyoss/Dragonfly/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz): `https://github.com/dragonflyoss/Dragonfly/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz`
+        - [Linux 64-bit](https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz): `https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz`
 
-        - [MacOS 64-bit](https://github.com/dragonflyoss/Dragonfly/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz): `https://github.com/dragonflyoss/Dragonfly/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz`
+        - [MacOS 64-bit](https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz): `https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz`
 
 2. Unzip the package.
 
@@ -125,19 +125,19 @@ export PATH=$PATH:$HOME/df-client/
 
 ## Step 3: Downloading Images or Files
 
-Now that you have started your SuperNode, and installed Dragonfly client, you can start downloading images or general files, both of which are supported by Dragonfly, but with slightly different downloading methods.
+Now that you have started your SuperNode, and installed Fescar client, you can start downloading images or general files, both of which are supported by Fescar, but with slightly different downloading methods.
 
-### Use Case 1: Downloading a General File with Dragonfly
+### Use Case 1: Downloading a General File with Fescar
 
-Once you have installed the Dragonfly client, you can use the `dfget` command to download a file.
+Once you have installed the Fescar client, you can use the `dfget` command to download a file.
 
 ```bash
-dfget -u 'https://github.com/dragonflyoss/Dragonfly/blob/master/docs/images/logo.png' -o /tmp/logo.png
+dfget -u 'https://github.com/dragonflyoss/Fescar/blob/master/docs/images/logo.png' -o /tmp/logo.png
 ```
 
 **Tip:** For more information on the dfget command, see [dfget](cli_ref/dfget.md).
 
-### Use Case 2: Pulling an Image with Dragonfly
+### Use Case 2: Pulling an Image with Fescar
 
 1. Start `dfdaemon` with a specified registry, such as `https://index.docker.io`.
 
@@ -157,7 +157,7 @@ dfget -u 'https://github.com/dragonflyoss/Dragonfly/blob/master/docs/images/logo
     systemctl restart docker
     ```
 
-4. Download an image with Dragonfly.
+4. Download an image with Fescar.
 
     ```bash
     docker pull nginx:latest

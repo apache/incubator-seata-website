@@ -19,9 +19,9 @@
       "filename": "maintainers.md",
       "link": "/en-us/docs/developers/maintainers.html",
       "meta": {
-        "title": "Dragonfly Maintainers",
-        "keywords": "Dragonfly, Maintainers",
-        "description": "A list of Dragonfly maintainers"
+        "title": "Fescar Maintainers",
+        "keywords": "Fescar, Maintainers",
+        "description": "A list of Fescar maintainers"
       }
     },
     {
@@ -120,9 +120,9 @@
       "filename": "maintainers.md",
       "link": "/zh-cn/docs/developers/maintainers.html",
       "meta": {
-        "title": "Dragonfly 维护者",
-        "keywords": "Dragonfly, 维护者",
-        "description": "Dragonfly 维护者名单"
+        "title": "Fescar 维护者",
+        "keywords": "Fescar, 维护者",
+        "description": "Fescar 维护者名单"
       }
     },
     {
