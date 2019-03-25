@@ -1783,9 +1783,8 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px; }
     .home-page .top-section .github-buttons a {
       margin-right: 20px; }
-      .home-page .top-section .github-buttons a img {
-        width: 16px;
-        height: 16px; }
+      .home-page .top-section .github-buttons a:last-child {
+        margin-right: 0; }
       .home-page .top-section .github-buttons a div {
         border-radius: 2px;
         display: inline-block;
@@ -1793,16 +1792,26 @@ h1, h2, h3, h4, h5, h6 {
         line-height: 24px;
         padding-left: 10px;
         color: #fff;
+        font-size: 0;
         background: rgba(255, 255, 255, 0.2); }
+        .home-page .top-section .github-buttons a div img {
+          width: 16px;
+          height: 16px;
+          vertical-align: middle; }
         .home-page .top-section .github-buttons a div .type {
-          padding: 0 8px 0 4px; }
+          font-size: 16px;
+          padding: 0 8px 0 4px;
+          vertical-align: middle; }
         .home-page .top-section .github-buttons a div .line {
+          vertical-align: middle;
           display: inline-block;
           box-sizing: border-box;
           width: 1px;
           height: 12px;
           border-left: 1px solid rgba(255, 255, 255, 0.2); }
         .home-page .top-section .github-buttons a div .count {
+          vertical-align: middle;
+          font-size: 16px;
           padding: 0 8px; }
   .home-page .top-section .animation {
     width: 546px;
