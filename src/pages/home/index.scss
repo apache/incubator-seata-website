@@ -75,9 +75,8 @@
       margin-top: 10px;
       a {
         margin-right: 20px;
-        img {
-          width: 16px;
-          height: 16px;
+        &:last-child {
+          margin-right: 0;
         }
         div {
           border-radius: 2px;
@@ -86,11 +85,20 @@
           line-height: 24px;
           padding-left: 10px;
           color: #fff;
+          font-size: 0;
           background: rgba(255, 255, 255, 0.2);
+          img {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+          }
           .type {
+            font-size: 16px;
             padding: 0 8px 0 4px;
+            vertical-align: middle;
           }
           .line {
+            vertical-align: middle;
             display: inline-block;
             box-sizing: border-box;
             width: 1px;
@@ -98,6 +106,8 @@
             border-left: 1px solid rgba(255, 255, 255, 0.2);
           }
           .count {
+            vertical-align: middle;
+            font-size: 16px;
             padding: 0 8px;
           }
         }

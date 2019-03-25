@@ -72,7 +72,7 @@ class Home extends Language {
               }
               </div>
               <div className="github-buttons">
-                <a href="https://github.com/alibaba/fescar">
+                <a href="https://github.com/alibaba/fescar" target="_blank" rel="noopener noreferrer">
                   <div className="star">
                     <img src="https://img.alicdn.com/tfs/TB1FlB1JwHqK1RjSZFPXXcwapXa-32-32.png" />
                     <span className="type">Star</span>
@@ -80,7 +80,7 @@ class Home extends Language {
                     <span className="count">{starCount}</span>
                   </div>
                 </a>
-                <a href="https://github.com/alibaba/fescar/fork">
+                <a href="https://github.com/alibaba/fescar/fork" target="_blank" rel="noopener noreferrer">
                 <div className="fork">
                   <img src="https://img.alicdn.com/tfs/TB1zbxSJwDqK1RjSZSyXXaxEVXa-32-32.png" />
                   <span className="type">Fork</span>
