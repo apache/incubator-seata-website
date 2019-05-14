@@ -1,7 +1,7 @@
 # website
 All website material  of Seata
 
-开发前请仔细阅读[https://docsite.js.org](https://docsite.js.org)
+开发前请仔细阅读 [https://docsite.js.org](https://docsite.js.org)
 
 ### 准备
 
