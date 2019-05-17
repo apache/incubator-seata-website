@@ -2,15 +2,15 @@ export default {
     'en-us': {
         sidemenu: [
             {
-                title: 'Seata',
+                title: 'Fescar',
                 children: [
                     {
                         title: 'Overview',
                         opened: true,
                         children: [
                             {
-                                title: 'What is Seata?',
-                                link: '/en-us/docs/overview/what_is_seata.html',
+                                title: 'What is Fescar?',
+                                link: '/en-us/docs/overview/what_is_fescar.html',
                             },
                             {
                                 title: 'Terminology',
@@ -74,15 +74,15 @@ export default {
     'zh-cn': {
         sidemenu: [
             {
-                title: 'Seata',
+                title: 'Fescar',
                 children: [
                     {
                         title: '概述',
                         opened: true,
                         children: [
                             {
-                                title: '什么是 Seata？',
-                                link: '/zh-cn/docs/overview/what_is_seata.html',
+                                title: '什么是 Fescar？',
+                                link: '/zh-cn/docs/overview/what_is_fescar.html',
                             },
                             {
                                 title: '术语表',
@@ -95,16 +95,16 @@ export default {
                         opened: true,
                         children: [
                             {
-                                title: 'Seata AT 模式',
-                                link: '/zh-cn/docs/architecture/seata_at.html',
+                                title: 'Fescar AT 模式',
+                                link: '/zh-cn/docs/architecture/fescar_at.html',
                             },
                             {
-                                title: 'Seata TCC 模式',
-                                link: '/zh-cn/docs/architecture/seata_tcc.html',
+                                title: 'Fescar TCC 模式',
+                                link: '/zh-cn/docs/architecture/fescar_tcc.html',
                             },
                             {
                                 title: 'Metrics设计',
-                                link: '/zh-cn/docs/architecture/seata_mertics.html',
+                                link: '/zh-cn/docs/architecture/fescar_mertics.html',
                             },
                         ],
                     },
