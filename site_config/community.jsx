@@ -89,7 +89,7 @@ export default {
     },
     contributorGuide: {
       title: 'Contributor Guide',
-      desc: 'You can always contribute to Seata.',
+      desc: 'You can always contribute to Fescar.',
       list: [
         {
           img: '/img/channels/email_gray.svg',
@@ -99,7 +99,7 @@ export default {
         {
           img: '/img/channels/github_gray.svg',
           title: 'Issue',
-          content: <span>Submit a <a href="https://github.com/dragonflyoss/Seata/issues/new">new issue</a>.</span>,
+          content: <span>Submit a <a href="https://github.com/dragonflyoss/Fescar/issues/new">new issue</a>.</span>,
         },
         {
           img: '/img/documents.png',
@@ -109,7 +109,7 @@ export default {
         {
           img: '/img/pullrequest.png',
           title: 'Pull Request',
-          content: <span>Create a brilliant <a href="https://github.com/dragonflyoss/Seata/pulls">pull request</a>.  </span>,
+          content: <span>Create a brilliant <a href="https://github.com/dragonflyoss/Fescar/pulls">pull request</a>.  </span>,
         },
       ],
     },
@@ -202,7 +202,7 @@ export default {
     },
     contributorGuide: {
       title: '贡献指南',
-      desc: '欢迎为 Seata 做贡献！',
+      desc: '欢迎为 Fescar 做贡献！',
       list: [
         {
           img: '/img/channels/email_gray.svg',
@@ -212,7 +212,7 @@ export default {
         {
           img: '/img/channels/github_gray.svg',
           title: '报告问题',
-          content: <span>提交<a href="https://github.com/dragonflyoss/Seata/issues/new">新问题</a>。</span>,
+          content: <span>提交<a href="https://github.com/dragonflyoss/Fescar/issues/new">新问题</a>。</span>,
         },
         {
           img: '/img/documents.png',
@@ -222,7 +222,7 @@ export default {
         {
           img: '/img/pullrequest.png',
           title: '提交 PR',
-          content: <span>创建一个<a href="https://github.com/dragonflyoss/Seata/pulls">PR</a>。</span>,
+          content: <span>创建一个<a href="https://github.com/dragonflyoss/Fescar/pulls">PR</a>。</span>,
         },
       ],
     },

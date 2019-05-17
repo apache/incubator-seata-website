@@ -1,10 +1,10 @@
 ---
-title: Seata Maintainers
-keywords: Seata, Maintainers
-description: A list of Seata maintainers
+title: Fescar Maintainers
+keywords: Fescar, Maintainers
+description: A list of Fescar maintainers
 ---
 
-# Seata Maintainers
+# Fescar Maintainers
 
 | GitHub ID | Name | Email| Company |
 |:---:| :----:| :---:|:--:|

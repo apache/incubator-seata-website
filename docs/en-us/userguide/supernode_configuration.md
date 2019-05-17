@@ -1,4 +1,4 @@
-# Seata SuperNode Configuration
+# Fescar SuperNode Configuration
 
 The SuperNode is written in Java based on Spring Boot. You can easily set properties with command line parameters or with the configuration file.
 

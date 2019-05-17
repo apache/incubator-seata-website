@@ -15,7 +15,7 @@ export default {
       {
         key: 'docs',
         text: 'DOCS',
-        link: '/en-us/docs/overview/what_is_seata.html',
+        link: '/en-us/docs/overview/what_is_fescar.html',
       },
       {
         key: 'blog',
@@ -30,14 +30,14 @@ export default {
     ],
     vision: {
       title: 'Vision',
-      content: 'Seata is dedicated to improving the efficiency of large-scale file distribution, building the go-to solution and standards of container image distribution, and providing you with file and image distribution service which is efficient, easy-to-use, and of high availability.',
+      content: 'Fescar is dedicated to improving the efficiency of large-scale file distribution, building the go-to solution and standards of container image distribution, and providing you with file and image distribution service which is efficient, easy-to-use, and of high availability.',
     },
     documentation: {
       title: 'Documentation',
       list: [
         {
-          text: 'What is Seata?',
-          link: '/en-us/docs/overview/what_is_seata.html',
+          text: 'What is Fescar?',
+          link: '/en-us/docs/overview/what_is_fescar.html',
         },
         {
           text: 'Quick Start',
@@ -58,7 +58,7 @@ export default {
         },
       ],
     },
-    copyright: 'Copyright © 2019 Seata',
+    copyright: 'Copyright © 2019 Fescar',
   },
   'zh-cn': {
     pageMenu: [
@@ -70,7 +70,7 @@ export default {
       {
         key: 'docs',
         text: '文档',
-        link: '/zh-cn/docs/overview/what_is_seata.html',
+        link: '/zh-cn/docs/overview/what_is_fescar.html',
       },
       {
         key: 'blog',
@@ -85,14 +85,14 @@ export default {
     ],
     vision: {
       title: '愿景',
-      content: 'Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
+      content: 'Fescar 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
     },
     documentation: {
       title: '文档',
       list: [
         {
-          text: '什么是 Seata？',
-          link: '/zh-cn/docs/overview/what_is_seata.html',
+          text: '什么是 Fescar？',
+          link: '/zh-cn/docs/overview/what_is_fescar.html',
         },
         {
           text: '快速开始',
@@ -113,6 +113,6 @@ export default {
         },
       ],
     },
-    copyright: 'Copyright © 2019 Seata',
+    copyright: 'Copyright © 2019 Fescar',
   },
 };
