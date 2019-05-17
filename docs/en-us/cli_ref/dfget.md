@@ -1,10 +1,10 @@
 # dfget
 
-dfget is the client of Fescar. You can use the dfget command in the command line tool.
+dfget is the client of Seata. You can use the dfget command in the command line tool.
 
 ## Name
 
-dfget - the client of Fescar, a non-interactive P2P downloader.
+dfget - the client of Seata, a non-interactive P2P downloader.
 
 ## Synopsis
 

@@ -1,12 +1,12 @@
-# Installing Fescar Server
+# Installing Seata Server
 
-This topic explains how to install the Fescar server.
+This topic explains how to install the Seata server.
 
 **Tip:** For a data center or a cluster, we recommend that you use at least two machines with eight cores, 16GB RAM and Gigabit Ethernet connections for deploying supernodes.
 
 ## Context
 
-There are two layers in Fescar’s architecture: server (supernodes) and client (hosts). Install the supernodes in one of the following ways:
+There are two layers in Seata’s architecture: server (supernodes) and client (hosts). Install the supernodes in one of the following ways:
 
 - Deploying with Docker: Recommended for quick local deployment and test.
 - Deploying with physical machines: Recommended for production usage.
@@ -31,16 +31,16 @@ Nginx|0.8+
 
 ## Procedure - When Deploying with Docker
 
-1. Obtain the source code of Fescar.
+1. Obtain the source code of Seata.
 
     ```sh
-    git clone https://github.com/dragonflyoss/Fescar.git
+    git clone https://github.com/dragonflyoss/Seata.git
     ```
 
 2. Enter the project directory.
 
     ```sh
-    cd Fescar
+    cd Seata
     ```
 
 3. Build the Docker image.
@@ -64,16 +64,16 @@ Nginx|0.8+
 
 ## Procedure - When Deploying with Physical Machines
 
-1. Obtain the source code of Fescar.
+1. Obtain the source code of Seata.
 
     ```sh
-    git clone https://github.com/dragonflyoss/Fescar.git
+    git clone https://github.com/dragonflyoss/Seata.git
     ```
 
 2. Enter the project directory.
 
     ```sh
-    cd Fescar/src/supernode
+    cd Seata/src/supernode
     ```
 
 3. Compile the source code.
@@ -127,7 +127,7 @@ Nginx|0.8+
     telent 127.0.0.1 8002
     ```
 
-- Install the Fescar client and test if the downloading works.
+- Install the Seata client and test if the downloading works.
 
     ```sh
     dfget --url "http://${resourceUrl}" --output ./resource.png --node "127.0.0.1"

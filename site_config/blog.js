@@ -4,11 +4,11 @@ export default {
         postsTitle: 'All posts',
         list: [
             {
-                title: 'How to use Fescar to ensure consistency between Dubbo Microservices',
+                title: 'How to use Seata to ensure consistency between Dubbo Microservices',
                 author: '@slievrly',
                 dateStr: 'Jan 17th, 2019',
-                desc: 'This blog describes details of using Fescar to ensure consistency between Dubbo Microservices',
-                link: '/en-us/blog/dubbo-fescar.html',
+                desc: 'This blog describes details of using Seata to ensure consistency between Dubbo Microservices',
+                link: '/en-us/blog/dubbo-seata.html',
             }
         ]
     },
@@ -17,11 +17,11 @@ export default {
         postsTitle: '所有文章',
         list: [
             {
-                title: '如何使用Fescar保证Dubbo微服务间的一致性',
+                title: '如何使用Seata保证Dubbo微服务间的一致性',
                 author: '@slievrly',
                 dateStr: 'Jan 17th, 2019',
-                desc: '本文详细介绍了如何使用Fescar保证Dubbo微服务间的一致性',
-                link: '/zh-cn/blog/dubbo-fescar.html',
+                desc: '本文详细介绍了如何使用Seata保证Dubbo微服务间的一致性',
+                link: '/zh-cn/blog/dubbo-seata.html',
             }
         ]
     },

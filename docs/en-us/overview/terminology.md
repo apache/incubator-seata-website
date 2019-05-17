@@ -1,6 +1,6 @@
-# Fescar Terminology
+# Seata Terminology
 
-This topic lists the common terms used throughout Fescar.
+This topic lists the common terms used throughout Seata.
 
 ## SuperNode
 
@@ -11,7 +11,7 @@ SuperNode is a long-time process with two primary responsibilities:
 
 ## dfget
 
-Dfget is the client of Fescar used for downloading files. It's similar to wget.
+Dfget is the client of Seata used for downloading files. It's similar to wget.
 
 At the same time, it also plays the role of peer, which can transfer data between each other in P2P network.
 
