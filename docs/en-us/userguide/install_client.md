@@ -1,6 +1,6 @@
-# Installing Fescar Client
+# Installing Seata Client
 
-You have three options when installing the Fescar client: installing from the latest package, installing by pulling the image, or installing from the source code.
+You have three options when installing the Seata client: installing from the latest package, installing by pulling the image, or installing from the source code.
 
 ## Installing from the Latest Package
 
@@ -24,9 +24,9 @@ You can install from the latest packages we provided.
 
     - If you're not in China:
 
-        - [Linux 64-bit](https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz): `https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz`
+        - [Linux 64-bit](https://github.com/dragonflyoss/Seata/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz): `https://github.com/dragonflyoss/Seata/releases/download/v0.2.0/df-client_0.2.0_linux_amd64.tar.gz`
 
-        - [MacOS 64-bit](https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz): `https://github.com/dragonflyoss/Fescar/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz`
+        - [MacOS 64-bit](https://github.com/dragonflyoss/Seata/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz): `https://github.com/dragonflyoss/Seata/releases/download/v0.2.0/df-client_0.2.0_darwin_amd64.tar.gz`
 
 2. Unzip the package.
 
@@ -87,16 +87,16 @@ You can also install from the source code.
 
 ### Installing in $HOME/.dragonfly
 
-1. Obtain the source code of Fescar.
+1. Obtain the source code of Seata.
 
     ```sh
-    git clone https://github.com/dragonflyoss/Fescar.git
+    git clone https://github.com/dragonflyoss/Seata.git
     ```
 
 2. Enter the target directory.
 
     ```sh
-    cd Fescar
+    cd Seata
     ```
 
 3. Install `dfdaemon` and `dfget` in `$HOME/.dragonfly/df-client`.
@@ -114,16 +114,16 @@ You can also install from the source code.
 
 ### Installing in Another Directory
 
-1. Obtain the source code of Fescar.
+1. Obtain the source code of Seata.
 
     ```sh
-    git clone https://github.com/dragonflyoss/Fescar.git
+    git clone https://github.com/dragonflyoss/Seata.git
     ```
 
 2. Enter the target directory.
 
     ```sh
-    cd Fescar/build/client
+    cd Seata/build/client
     ```
 
 3. Install the client.

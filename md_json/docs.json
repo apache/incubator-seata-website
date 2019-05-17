@@ -2,172 +2,172 @@
   "en-us": [
     {
       "filename": "api.md",
-      "link": "/en-us/docs/api.html",
+      "link": "\\en-us\\docs\\api.html",
       "meta": {}
     },
     {
       "filename": "dfdaemon.md",
-      "link": "/en-us/docs/cli_ref/dfdaemon.html",
+      "link": "\\en-us\\docs\\cli_ref\\dfdaemon.html",
       "meta": {}
     },
     {
       "filename": "dfget.md",
-      "link": "/en-us/docs/cli_ref/dfget.html",
+      "link": "\\en-us\\docs\\cli_ref\\dfget.html",
       "meta": {}
     },
     {
       "filename": "maintainers.md",
-      "link": "/en-us/docs/developers/maintainers.html",
+      "link": "\\en-us\\docs\\developers\\maintainers.html",
       "meta": {
-        "title": "Fescar Maintainers",
-        "keywords": "Fescar, Maintainers",
-        "description": "A list of Fescar maintainers"
+        "title": "Seata Maintainers",
+        "keywords": "Seata, Maintainers",
+        "description": "A list of Seata maintainers"
       }
     },
     {
       "filename": "faq.md",
-      "link": "/en-us/docs/faq.html",
+      "link": "\\en-us\\docs\\faq.html",
       "meta": {}
     },
     {
       "filename": "terminology.md",
-      "link": "/en-us/docs/overview/terminology.html",
+      "link": "\\en-us\\docs\\overview\\terminology.html",
       "meta": {}
     },
     {
-      "filename": "what_is_fescar.md",
-      "link": "/en-us/docs/overview/what_is_fescar.html",
+      "filename": "what_is_seata.md",
+      "link": "\\en-us\\docs\\overview\\what_is_seata.html",
       "meta": {}
     },
     {
       "filename": "quickstart.md",
-      "link": "/en-us/docs/quickstart.html",
+      "link": "\\en-us\\docs\\quickstart.html",
       "meta": {}
     },
     {
       "filename": "download_files.md",
-      "link": "/en-us/docs/userguide/download_files.html",
+      "link": "\\en-us\\docs\\userguide\\download_files.html",
       "meta": {}
     },
     {
       "filename": "install_client.md",
-      "link": "/en-us/docs/userguide/install_client.html",
+      "link": "\\en-us\\docs\\userguide\\install_client.html",
       "meta": {}
     },
     {
       "filename": "install_server.md",
-      "link": "/en-us/docs/userguide/install_server.html",
+      "link": "\\en-us\\docs\\userguide\\install_server.html",
       "meta": {}
     },
     {
       "filename": "supernode_configuration.md",
-      "link": "/en-us/docs/userguide/supernode_configuration.html",
+      "link": "\\en-us\\docs\\userguide\\supernode_configuration.html",
       "meta": {}
     }
   ],
   "zh-cn": [
     {
-      "filename": "fescar_at.md",
-      "link": "/zh-cn/docs/architecture/fescar_at.html",
+      "filename": "seatatcc.md",
+      "link": "\\zh-cn\\docs\\architecture\\seatatcc.html",
       "meta": {}
     },
     {
-      "filename": "fescar_mertics.md",
-      "link": "/zh-cn/docs/architecture/fescar_mertics.html",
+      "filename": "seata_at.md",
+      "link": "\\zh-cn\\docs\\architecture\\seata_at.html",
       "meta": {}
     },
     {
-      "filename": "fescar_tcc.md",
-      "link": "/zh-cn/docs/architecture/fescar_tcc.html",
+      "filename": "seata_mertics.md",
+      "link": "\\zh-cn\\docs\\architecture\\seata_mertics.html",
       "meta": {}
     },
     {
       "filename": "dfdaemon.md",
-      "link": "/zh-cn/docs/cli_ref/dfdaemon.html",
+      "link": "\\zh-cn\\docs\\cli_ref\\dfdaemon.html",
       "meta": {}
     },
     {
       "filename": "dfget.md",
-      "link": "/zh-cn/docs/cli_ref/dfget.html",
+      "link": "\\zh-cn\\docs\\cli_ref\\dfget.html",
       "meta": {}
     },
     {
       "filename": "activity.md",
-      "link": "/zh-cn/docs/community/activity.html",
+      "link": "\\zh-cn\\docs\\community\\activity.html",
       "meta": {}
     },
     {
       "filename": "contact.md",
-      "link": "/zh-cn/docs/community/contact.html",
+      "link": "\\zh-cn\\docs\\community\\contact.html",
       "meta": {}
     },
     {
       "filename": "contribution.md",
-      "link": "/zh-cn/docs/community/contribution.html",
+      "link": "\\zh-cn\\docs\\community\\contribution.html",
       "meta": {}
     },
     {
       "filename": "question.md",
-      "link": "/zh-cn/docs/community/question.html",
+      "link": "\\zh-cn\\docs\\community\\question.html",
       "meta": {}
     },
     {
       "filename": "roadmap.md",
-      "link": "/zh-cn/docs/community/roadmap.html",
+      "link": "\\zh-cn\\docs\\community\\roadmap.html",
       "meta": {}
     },
     {
       "filename": "maintainers.md",
-      "link": "/zh-cn/docs/developers/maintainers.html",
+      "link": "\\zh-cn\\docs\\developers\\maintainers.html",
       "meta": {
-        "title": "Fescar 维护者",
-        "keywords": "Fescar, 维护者",
-        "description": "Fescar 维护者名单"
+        "title": "Seata 维护者",
+        "keywords": "Seata, 维护者",
+        "description": "Seata 维护者名单"
       }
     },
     {
       "filename": "faq.md",
-      "link": "/zh-cn/docs/faq.html",
+      "link": "\\zh-cn\\docs\\faq.html",
       "meta": {}
     },
     {
       "filename": "operation.md",
-      "link": "/zh-cn/docs/ops/operation.html",
+      "link": "\\zh-cn\\docs\\ops\\operation.html",
       "meta": {}
     },
     {
       "filename": "terminology.md",
-      "link": "/zh-cn/docs/overview/terminology.html",
+      "link": "\\zh-cn\\docs\\overview\\terminology.html",
       "meta": {}
     },
     {
-      "filename": "what_is_fescar.md",
-      "link": "/zh-cn/docs/overview/what_is_fescar.html",
+      "filename": "what_is_seata.md",
+      "link": "\\zh-cn\\docs\\overview\\what_is_seata.html",
       "meta": {}
     },
     {
       "filename": "api.md",
-      "link": "/zh-cn/docs/quickstart/api.html",
+      "link": "\\zh-cn\\docs\\quickstart\\api.html",
       "meta": {}
     },
     {
       "filename": "datasource.md",
-      "link": "/zh-cn/docs/quickstart/datasource.html",
+      "link": "\\zh-cn\\docs\\quickstart\\datasource.html",
       "meta": {}
     },
     {
       "filename": "microservice.md",
-      "link": "/zh-cn/docs/quickstart/microservice.html",
+      "link": "\\zh-cn\\docs\\quickstart\\microservice.html",
       "meta": {}
     },
     {
       "filename": "ormframework.md",
-      "link": "/zh-cn/docs/quickstart/ormframework.html",
+      "link": "\\zh-cn\\docs\\quickstart\\ormframework.html",
       "meta": {}
     },
     {
       "filename": "spring.md",
-      "link": "/zh-cn/docs/quickstart/spring.html",
+      "link": "\\zh-cn\\docs\\quickstart\\spring.html",
       "meta": {}
     }
   ]
