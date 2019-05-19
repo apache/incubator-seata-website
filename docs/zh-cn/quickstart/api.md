@@ -170,8 +170,8 @@ public class TransactionalTemplate {
 外层调用逻辑 try-catch 这个异常，根据异常编码进行处理：
 
 - **BeginFailure** （开启事务失败）：getCause() 得到开启事务失败的框架异常，getOriginalException() 为空。
-- **CommitFailure** （全局提交失败）：getCause() 得到开启事务失败的框架异常，getOriginalException() 为空。
-- **RollbackFailure** （全局回滚失败）：getCause() 得到开启事务失败的框架异常，getOriginalException() 业务应用的原始异常。
+- **CommitFailure** （全局提交失败）：getCause() 得到全局提交失败的框架异常，getOriginalException() 为空。
+- **RollbackFailure** （全局回滚失败）：getCause() 得到全局回滚失败的框架异常，getOriginalException() 业务应用的原始异常。
 - **RollbackDone** （全局回滚成功）：getCause() 为空，getOriginalException() 业务应用的原始异常。
 
 # 3. Low-Level API
