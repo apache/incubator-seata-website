@@ -1,11 +1,11 @@
 ---
-title: 如何使用Fescar保证Dubbo微服务间的一致性
-keywords: Dubbo,Fescar,一致性
-description: 本文主要介绍如何使用Fescar保证Dubbo微服务间的一致性
+title: 如何使用Seata保证Dubbo微服务间的一致性
+keywords: Dubbo,Seata,一致性
+description: 本文主要介绍如何使用Seata保证Dubbo微服务间的一致性
 author: slievrly
 date: 2019-03-07
 ---
-# 如何使用Fescar保证Dubbo微服务间的一致性
+# 如何使用Seata保证Dubbo微服务间的一致性
 
 ## 案例
 
@@ -17,7 +17,7 @@ date: 2019-03-07
 
 ### 业务结构图
 
-![Architecture](../../img/blog/fescar/fescar-1.png) 
+![Architecture](../../img/blog/seata/seata-1.png) 
 
 
 ### StorageService
@@ -116,9 +116,9 @@ public class OrderServiceImpl implements OrderService {
 }
 ```
 
-## Fescar 分布式事务解决方案
+## Seata 分布式事务解决方案
 
-![undefined](../../img/blog/fescar/fescar-2.png) 
+![undefined](../../img/blog/seata/seata-2.png) 
 
 此处仅仅需要一行注解 `@GlobalTransactional` 写在业务发起方的方法上: 
 
@@ -130,7 +130,7 @@ public class OrderServiceImpl implements OrderService {
     }
 ```
 
-##  Dubbo 与 Fescar 结合的例子
+##  Dubbo 与 Seata 结合的例子
 
 ### Step 1: 安装数据库
 
@@ -149,9 +149,9 @@ dubbo-storage-service.xml
     <property name="username" value="xxx" />
     <property name="password" value="xxx" />
 ```
-### Step 2: 为 Fescar 创建 UNDO_LOG 表
+### Step 2: 为 Seata 创建 UNDO_LOG 表
 
-`UNDO_LOG` 此表用于 Fescar 的AT模式。
+`UNDO_LOG` 此表用于 Seata 的AT模式。
 
 ```sql
 CREATE TABLE `undo_log` (
@@ -201,26 +201,26 @@ CREATE TABLE `account_tbl` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
-### Step 4: 启动 Fescar-Server 服务
+### Step 4: 启动 Seata-Server 服务
 
-- 下载Server [package](https://github.com/alibaba/fescar/releases), 并解压。
+- 下载Server [package](https://github.com/seata/seata/releases), 并解压。
 - 运行bin目录下的启动脚本。
 
 ```shell
-sh fescar-server.sh $LISTEN_PORT $PATH_FOR_PERSISTENT_DATA
+sh seata-server.sh $LISTEN_PORT $PATH_FOR_PERSISTENT_DATA
 
 e.g.
 
-sh fescar-server.sh 8091 /home/admin/fescar/data/
+sh seata-server.sh 8091 /home/admin/seata/data/
 ```
 
 ### Step 5: 运行例子
 
-- 启动账户服务 ([DubboAccountServiceStarter](https://github.com/fescar-group/fescar-samples/blob/master/dubbo/src/main/java/com/alibaba/fescar/samples/dubbo/starter/DubboAccountServiceStarter.java))。
-- 启动库存服务 ([DubboStorageServiceStarter](https://github.com/fescar-group/fescar-samples/blob/master/dubbo/src/main/java/com/alibaba/fescar/samples/dubbo/starter/DubboStorageServiceStarter.java))。
-- 启动订单服务 ([DubboOrderServiceStarter](https://github.com/fescar-group/fescar-samples/blob/master/dubbo/src/main/java/com/alibaba/fescar/samples/dubbo/starter/DubboOrderServiceStarter.java))。
-- 运行BusinessService入口 ([DubboBusinessTester](https://github.com/fescar-group/fescar-samples/blob/master/dubbo/src/main/java/com/alibaba/fescar/samples/dubbo/starter/DubboBusinessTester.java))。
+- 启动账户服务 ([DubboAccountServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboAccountServiceStarter.java))。
+- 启动库存服务 ([DubboStorageServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboStorageServiceStarter.java))。
+- 启动订单服务 ([DubboOrderServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboOrderServiceStarter.java))。
+- 运行BusinessService入口 ([DubboBusinessTester](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboBusinessTester.java))。
 
 ### 相关项目
-* fescar:          https://github.com/alibaba/fescar/
-* fescar-samples : https://github.com/fescar-group/fescar-samples  
+* seata:          https://github.com/seata/seata/
+* seata-samples : https://github.com/seata/seata-samples  

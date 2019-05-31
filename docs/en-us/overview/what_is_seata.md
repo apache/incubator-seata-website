@@ -1,29 +1,29 @@
-# What Is Fescar?
+# What Is Seata?
 
-Fescar is an intelligent P2P-based image and file distribution tool. It aims to improve the efficiency and success rate of file transferring, and maximize the usage of network bandwidth, especially for the distribution of larget amounts of data, such as application distribution, cache distribution, log distribution, and image distribution.
+Seata is an intelligent P2P-based image and file distribution tool. It aims to improve the efficiency and success rate of file transferring, and maximize the usage of network bandwidth, especially for the distribution of larget amounts of data, such as application distribution, cache distribution, log distribution, and image distribution.
 
-At Alibaba, every month Fescar is invoked two billion times and distributes 3.4PB of data. Fescar has become one of the most important pieces of infrastructure at Alibaba.
+At Alibaba, every month Seata is invoked two billion times and distributes 3.4PB of data. Seata has become one of the most important pieces of infrastructure at Alibaba.
 
 While container technologies makes DevOps life easier most of the time, it surely brings some challenges: for example the efficiency of image distribution, especially when you have to replicate image distribution on several hosts.
 
-Fescar works extremely well with both Docker and [PouchContainer](https://github.com/alibaba/pouch) in this scenario. It's also compatible with containers of other formats. It delivers up to 57 times the throughput of native docker and saves up to 99.5% of the out bandwidth of registry.
+Seata works extremely well with both Docker and [PouchContainer](https://github.com/alibaba/pouch) in this scenario. It's also compatible with containers of other formats. It delivers up to 57 times the throughput of native docker and saves up to 99.5% of the out bandwidth of registry.
 
-Fescar makes it simple and cost-effective to set up, operate, and scale any kind of file, image, or data distribution.
+Seata makes it simple and cost-effective to set up, operate, and scale any kind of file, image, or data distribution.
 
-## Why Fescar
+## Why Seata
 
-This project is an open-source version of the Fescar used at Alibaba. It has the following features:
+This project is an open-source version of the Seata used at Alibaba. It has the following features:
 
 **Note:** More Alibaba-internal features will be made available to open-source users soon. Stay tuned!
 
 - **P2P-based file distribution**: By using the P2P technology for file transmission, it makes the most out of the bandwidth resources of each peer to improve downloading efficiency,  and saves a lot of cross-IDC bandwidth, especially the costly cross-board bandwidth.
-- **Non-invasive support to all kinds of container technologies**: Fescar can seamlessly support various containers for distributing images.
-- **Host level speed limit**: In addition to rate limit for the current download task like many other downloading tools (for example wget and curl), Fescar also provides rate limit for the entire host.
+- **Non-invasive support to all kinds of container technologies**: Seata can seamlessly support various containers for distributing images.
+- **Host level speed limit**: In addition to rate limit for the current download task like many other downloading tools (for example wget and curl), Seata also provides rate limit for the entire host.
 - **Passive CDN**: The CDN mechanism can avoid repetitive remote downloads.
-- **Strong consistency**: Fescar can make sure that all downloaded files are consistent even if users do not provide any check code (MD5).
+- **Strong consistency**: Seata can make sure that all downloaded files are consistent even if users do not provide any check code (MD5).
 - **Disk protection and highly efficient IO**: Prechecking disk space, delaying synchronization, writing file blocks in the best order, isolating net-read/disk-write, and so on.
 - **High performance**: Cluster Manager is completely closed-loop, which means that it doesn't rely on any database or distributed cache, processing requests with extremely high performance.
-- **Auto-isolation of Exception**: Fescar will automatically isolate exception nodes (peer or Cluster Manager) to improve download stability.
+- **Auto-isolation of Exception**: Seata will automatically isolate exception nodes (peer or Cluster Manager) to improve download stability.
 - **No pressure on file source**: Generally, only a few Cluster Managers will download files from the source.
 - **Support standard HTTP header**: Support submitting authentication information through HTTP header.
 - **Effective concurrency control of Registry Auth**: Reduce the pressure on the Registry Auth Service.
@@ -31,11 +31,11 @@ This project is an open-source version of the Fescar used at Alibaba. It has the
 
 ## How Does It Stack Up Against Traditional Solution?
 
-We carried out an experiment to compare the performance of Fescar and wget.
+We carried out an experiment to compare the performance of Seata and wget.
 
 |Test Environment ||
 |---|---|
-|Fescar Server|2 * (24-Core 64GB-RAM 2000Mb/s)|
+|Seata Server|2 * (24-Core 64GB-RAM 2000Mb/s)|
 |File Source Server|2 * (24-Core 64GB-RAM 2000Mb/s)|
 |Client|4-Core 8GB-RAM 200Mb/s|
 |Target File Size|200MB|
@@ -45,11 +45,11 @@ The expeirment result is as shown in the following figure.
 
 ![How it stacks up](../img/performance.png)
 
-As you can see in the chart, for Fescar, no matter how many clients are downloading, the average downloading time is always about 12 seconds. But for wget, the downloading time keeps increasing with the number of clients. When the number of wget clients reaches 1,200, the file source crashed and therefore cannot serve any client.
+As you can see in the chart, for Seata, no matter how many clients are downloading, the average downloading time is always about 12 seconds. But for wget, the downloading time keeps increasing with the number of clients. When the number of wget clients reaches 1,200, the file source crashed and therefore cannot serve any client.
 
 ## How Does It Work?
 
-Fescar works slightly differently when downloading general files and downloading container images.
+Seata works slightly differently when downloading general files and downloading container images.
 
 ### Downloading General Files
 
