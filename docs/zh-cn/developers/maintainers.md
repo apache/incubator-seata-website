@@ -1,10 +1,10 @@
 ---
-title: Fescar 维护者
-keywords: Fescar, 维护者
-description: Fescar 维护者名单
+title: Seata 维护者
+keywords: Seata, 维护者
+description: Seata 维护者名单
 ---
 
-# Fescar 维护者
+# Seata 维护者
 
 | GitHub ID | 姓名 | 邮箱 | 公司 |
 |:---:| :----:| :---:|:--:|

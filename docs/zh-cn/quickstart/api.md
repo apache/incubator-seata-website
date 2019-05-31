@@ -1,6 +1,6 @@
 # 1. 概述
 
-Fescar API 分为两大类：High-Level API 和 Low-Level API ：
+Seata API 分为两大类：High-Level API 和 Low-Level API ：
 
 - **High-Level API** ：用于事务边界定义、控制及事务状态查询。
 - **Low-Level API** ：用于控制事务上下文的传播。

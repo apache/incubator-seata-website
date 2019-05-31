@@ -19,9 +19,9 @@
       "filename": "maintainers.md",
       "link": "/en-us/docs/developers/maintainers.html",
       "meta": {
-        "title": "Fescar Maintainers",
-        "keywords": "Fescar, Maintainers",
-        "description": "A list of Fescar maintainers"
+        "title": "Seata Maintainers",
+        "keywords": "Seata, Maintainers",
+        "description": "A list of Seata maintainers"
       }
     },
     {
@@ -35,8 +35,8 @@
       "meta": {}
     },
     {
-      "filename": "what_is_fescar.md",
-      "link": "/en-us/docs/overview/what_is_fescar.html",
+      "filename": "what_is_seata.md",
+      "link": "/en-us/docs/overview/what_is_seata.html",
       "meta": {}
     },
     {
@@ -67,18 +67,18 @@
   ],
   "zh-cn": [
     {
-      "filename": "fescar_at.md",
-      "link": "/zh-cn/docs/architecture/fescar_at.html",
+      "filename": "seata_at.md",
+      "link": "/zh-cn/docs/architecture/seata_at.html",
       "meta": {}
     },
     {
-      "filename": "fescar_mertics.md",
-      "link": "/zh-cn/docs/architecture/fescar_mertics.html",
+      "filename": "seata_mertics.md",
+      "link": "/zh-cn/docs/architecture/seata_mertics.html",
       "meta": {}
     },
     {
-      "filename": "fescar_tcc.md",
-      "link": "/zh-cn/docs/architecture/fescar_tcc.html",
+      "filename": "seata_tcc.md",
+      "link": "/zh-cn/docs/architecture/seata_tcc.html",
       "meta": {}
     },
     {
@@ -120,9 +120,9 @@
       "filename": "maintainers.md",
       "link": "/zh-cn/docs/developers/maintainers.html",
       "meta": {
-        "title": "Fescar 维护者",
-        "keywords": "Fescar, 维护者",
-        "description": "Fescar 维护者名单"
+        "title": "Seata 维护者",
+        "keywords": "Seata, 维护者",
+        "description": "Seata 维护者名单"
       }
     },
     {
@@ -141,8 +141,8 @@
       "meta": {}
     },
     {
-      "filename": "what_is_fescar.md",
-      "link": "/zh-cn/docs/overview/what_is_fescar.html",
+      "filename": "what_is_seata.md",
+      "link": "/zh-cn/docs/overview/what_is_seata.html",
       "meta": {}
     },
     {
