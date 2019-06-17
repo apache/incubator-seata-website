@@ -167,8 +167,8 @@
 <p>外层调用逻辑 try-catch 这个异常，根据异常编码进行处理：</p>
 <ul>
 <li><strong>BeginFailure</strong> （开启事务失败）：getCause() 得到开启事务失败的框架异常，getOriginalException() 为空。</li>
-<li><strong>CommitFailure</strong> （全局提交失败）：getCause() 得到开启事务失败的框架异常，getOriginalException() 为空。</li>
-<li><strong>RollbackFailure</strong> （全局回滚失败）：getCause() 得到开启事务失败的框架异常，getOriginalException() 业务应用的原始异常。</li>
+<li><strong>CommitFailure</strong> （全局提交失败）：getCause() 得到全局提交失败的框架异常，getOriginalException() 为空。</li>
+<li><strong>RollbackFailure</strong> （全局回滚失败）：getCause() 得到全局回滚失败的框架异常，getOriginalException() 业务应用的原始异常。</li>
 <li><strong>RollbackDone</strong> （全局回滚成功）：getCause() 为空，getOriginalException() 业务应用的原始异常。</li>
 </ul>
 <h1>3. Low-Level API</h1>
