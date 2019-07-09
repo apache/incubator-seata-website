@@ -99,7 +99,7 @@ class BlogDetail extends Language {
         <Header
           type="normal"
           currentKey={currentKey}
-          logo="https://img.alicdn.com/tfs/TB1t3pWJCzqK1RjSZFjXXblCFXa-246-64.png"
+          logo="/img/seata_logo.png"
           language={language}
           onLanguageChange={this.onLanguageChange}
         />
