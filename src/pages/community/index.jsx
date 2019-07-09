@@ -22,7 +22,7 @@ class Community extends Language {
         <Header
           currentKey="community"
           type="normal"
-          logo="https://img.alicdn.com/tfs/TB1t3pWJCzqK1RjSZFjXXblCFXa-246-64.png"
+          logo="/img/seata_logo.png"
           language={language}
           onLanguageChange={this.onLanguageChange}
         />
