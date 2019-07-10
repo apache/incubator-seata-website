@@ -107,7 +107,7 @@ class Documentation extends Language {
             dangerouslySetInnerHTML={{ __html }}
           />
         </section>
-        <Footer logo="https://img.alicdn.com/tfs/TB1VohYJwHqK1RjSZFgXXa7JXXa-278-72.png" language={language} />
+        <Footer logo="/img/seata_logo_white.png" language={language} />
       </div>
     );
   }
