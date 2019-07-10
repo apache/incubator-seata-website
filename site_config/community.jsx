@@ -68,8 +68,8 @@ export default {
           link: 'mailto:dev-seata+subscribe@googlegroups.com'
         },
         {
-          img: '/img/weibo.png',
-          imgHover: '/img/weibo_hover.png',
+          img: '/img/twitter.png',
+          imgHover: '/img/twitter_hover.png',
           title: '@Seata',
           link: 'https://twitter.com/seataio',
         },
@@ -128,8 +128,8 @@ export default {
           link: 'mailto:dev-seata+subscribe@googlegroups.com'
         },
         {
-          img: '/img/weibo.png',
-          imgHover: '/img/weibo_hover.png',
+          img: '/img/twitter.png',
+          imgHover: '/img/twitter_hover.png',
           title: '@Seata',
           link: 'https://twitter.com/seataio',
         },
