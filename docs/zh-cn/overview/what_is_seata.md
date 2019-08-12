@@ -34,11 +34,11 @@ Seata 是一款开源的分布式事务解决方案，致力于提供高性能�
 tx1 先开始，开启本地事务，拿到本地锁，更新操作 m = 1000 - 100 = 900。本地事务提交前，先拿到该记录的 **全局锁** ，本地提交释放本地锁。
 tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 100 = 800。本地事务提交前，尝试拿该记录的 **全局锁** ，tx1 全局提交前，该记录的全局锁被 tx1 持有，tx2 需要重试等待 **全局锁** 。
 
-![Write-Isolation: Commit](https://upload-images.jianshu.io/upload_images/4420767-90b8bf0388953ee8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Write-Isolation: Commit](../../../img/overview-1.png)
 
 tx1 二阶段全局提交，释放 **全局锁** 。tx2 拿到 **全局锁** 提交本地事务。
 
-![Write-Isolation: Rollback](https://upload-images.jianshu.io/upload_images/4420767-434090412a6a07b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Write-Isolation: Rollback](../../../img/overview-2.png)
 
 如果 tx1 的二阶段全局回滚，则 tx1 需要重新获取该数据的本地锁，进行反向补偿的更新操作，实现分支的回滚。
 
@@ -52,7 +52,7 @@ tx1 二阶段全局提交，释放 **全局锁** 。tx2 拿到 **全局锁** 提
 
 如果应用在特定场景下，必需要求全局的 **读已提交** ，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。
 
-![Read Isolation: SELECT FOR UPDATE](https://upload-images.jianshu.io/upload_images/4420767-6236f075d02c5e34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Read Isolation: SELECT FOR UPDATE](../../../img/overview-3.png)
 
 SELECT FOR UPDATE 语句的执行会申请 **全局锁** ，如果 **全局锁** 被其他事务持有，则释放本地锁（回滚 SELECT FOR UPDATE 语句的本地执行）并重试。这个过程中，查询是被 block 住的，直到 **全局锁** 拿到，即读取的相关数据是 **已提交** 的，才返回。
 
@@ -216,7 +216,7 @@ CREATE TABLE `undo_log` (
 - 一阶段 prepare 行为
 - 二阶段 commit 或 rollback 行为
 
-![Overview of a global transaction](https://upload-images.jianshu.io/upload_images/4420767-e48f0284a037d1df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Overview of a global transaction](../../../img/overview-4.png)
 
 根据两阶段行为模式的不同，我们将分支事务划分为 **Automatic (Branch) Transaction Mode** 和 **Manual (Branch) Transaction Mode**.
 
