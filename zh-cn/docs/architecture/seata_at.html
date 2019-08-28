@@ -224,6 +224,10 @@ tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 10
 <td>varchar(100)</td>
 </tr>
 <tr>
+<td>context</td>
+<td>varchar(128)</td>
+</tr>
+<tr>
 <td>rollback_info</td>
 <td>longblob</td>
 </tr>
@@ -239,22 +243,18 @@ tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 10
 <td>log_modified</td>
 <td>datetime</td>
 </tr>
-<tr>
-<td>ext</td>
-<td>varchar(100)</td>
-</tr>
 </tbody>
 </table>
-<pre><code class="language-sql"><span class="hljs-comment">-- 注意此处0.3.0+ 增加唯一索引 ux_undo_log</span>
+<pre><code class="language-sql"><span class="hljs-comment">-- 注意此处0.7.0+ 增加字段 context</span>
 <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-string">`undo_log`</span> (
   <span class="hljs-string">`id`</span> <span class="hljs-built_in">bigint</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT,
   <span class="hljs-string">`branch_id`</span> <span class="hljs-built_in">bigint</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
   <span class="hljs-string">`xid`</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  <span class="hljs-string">`context`</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">128</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
   <span class="hljs-string">`rollback_info`</span> longblob <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
   <span class="hljs-string">`log_status`</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
   <span class="hljs-string">`log_created`</span> datetime <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
   <span class="hljs-string">`log_modified`</span> datetime <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-  <span class="hljs-string">`ext`</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">NULL</span>,
   PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-string">`id`</span>),
   <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">KEY</span> <span class="hljs-string">`ux_undo_log`</span> (<span class="hljs-string">`xid`</span>,<span class="hljs-string">`branch_id`</span>)
 ) <span class="hljs-keyword">ENGINE</span>=<span class="hljs-keyword">InnoDB</span> AUTO_INCREMENT=<span class="hljs-number">1</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CHARSET</span>=utf8;
