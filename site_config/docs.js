@@ -37,7 +37,7 @@ export default {
                 title: '概述',
                 children: [
                     {
-                        title: '什么是 Seata？',
+                        title: 'Seata 是什么？',
                         link: '/zh-cn/docs/overview/what_is_seata.html',
                     },
                     {
