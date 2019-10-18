@@ -4,8 +4,6 @@ node_modules/
 npm-debug.log
 *.orig
 *.iml
-
-
 package-lock.json
 en-us/
 zh-cn/
