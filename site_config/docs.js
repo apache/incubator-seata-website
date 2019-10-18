@@ -54,7 +54,7 @@ export default {
                         link: '/zh-cn/user/quickstart.html',
                     },
                     {
-                        title: '配置属性',
+                        title: '参数配置',
                         link: '/zh-cn/docs/user/configurations.html',
                     },
                     {
