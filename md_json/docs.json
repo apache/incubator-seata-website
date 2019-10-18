@@ -1,21 +1,6 @@
 {
   "en-us": [
     {
-      "filename": "api.md",
-      "link": "/en-us/docs/api.html",
-      "meta": {}
-    },
-    {
-      "filename": "dfdaemon.md",
-      "link": "/en-us/docs/cli_ref/dfdaemon.html",
-      "meta": {}
-    },
-    {
-      "filename": "dfget.md",
-      "link": "/en-us/docs/cli_ref/dfget.html",
-      "meta": {}
-    },
-    {
       "filename": "maintainers.md",
       "link": "/en-us/docs/developers/maintainers.html",
       "meta": {
@@ -41,56 +26,11 @@
     },
     {
       "filename": "quickstart.md",
-      "link": "/en-us/docs/quickstart.html",
-      "meta": {}
-    },
-    {
-      "filename": "download_files.md",
-      "link": "/en-us/docs/userguide/download_files.html",
-      "meta": {}
-    },
-    {
-      "filename": "install_client.md",
-      "link": "/en-us/docs/userguide/install_client.html",
-      "meta": {}
-    },
-    {
-      "filename": "install_server.md",
-      "link": "/en-us/docs/userguide/install_server.html",
-      "meta": {}
-    },
-    {
-      "filename": "supernode_configuration.md",
-      "link": "/en-us/docs/userguide/supernode_configuration.html",
+      "link": "/en-us/docs/user/quickstart.html",
       "meta": {}
     }
   ],
   "zh-cn": [
-    {
-      "filename": "seata_at.md",
-      "link": "/zh-cn/docs/architecture/seata_at.html",
-      "meta": {}
-    },
-    {
-      "filename": "seata_mertics.md",
-      "link": "/zh-cn/docs/architecture/seata_mertics.html",
-      "meta": {}
-    },
-    {
-      "filename": "seata_tcc.md",
-      "link": "/zh-cn/docs/architecture/seata_tcc.html",
-      "meta": {}
-    },
-    {
-      "filename": "dfdaemon.md",
-      "link": "/zh-cn/docs/cli_ref/dfdaemon.html",
-      "meta": {}
-    },
-    {
-      "filename": "dfget.md",
-      "link": "/zh-cn/docs/cli_ref/dfget.html",
-      "meta": {}
-    },
     {
       "filename": "activity.md",
       "link": "/zh-cn/docs/community/activity.html",
@@ -114,6 +54,21 @@
     {
       "filename": "roadmap.md",
       "link": "/zh-cn/docs/community/roadmap.html",
+      "meta": {}
+    },
+    {
+      "filename": "seata_at.md",
+      "link": "/zh-cn/docs/dev/architecture/seata_at.html",
+      "meta": {}
+    },
+    {
+      "filename": "seata_mertics.md",
+      "link": "/zh-cn/docs/dev/architecture/seata_mertics.html",
+      "meta": {}
+    },
+    {
+      "filename": "seata_tcc.md",
+      "link": "/zh-cn/docs/dev/architecture/seata_tcc.html",
       "meta": {}
     },
     {
@@ -147,27 +102,37 @@
     },
     {
       "filename": "api.md",
-      "link": "/zh-cn/docs/quickstart/api.html",
+      "link": "/zh-cn/docs/user/api.html",
+      "meta": {}
+    },
+    {
+      "filename": "configurations.md",
+      "link": "/zh-cn/docs/user/configurations.html",
       "meta": {}
     },
     {
       "filename": "datasource.md",
-      "link": "/zh-cn/docs/quickstart/datasource.html",
+      "link": "/zh-cn/docs/user/datasource.html",
       "meta": {}
     },
     {
       "filename": "microservice.md",
-      "link": "/zh-cn/docs/quickstart/microservice.html",
+      "link": "/zh-cn/docs/user/microservice.html",
       "meta": {}
     },
     {
       "filename": "ormframework.md",
-      "link": "/zh-cn/docs/quickstart/ormframework.html",
+      "link": "/zh-cn/docs/user/ormframework.html",
+      "meta": {}
+    },
+    {
+      "filename": "quickstart.md",
+      "link": "/zh-cn/docs/user/quickstart.html",
       "meta": {}
     },
     {
       "filename": "spring.md",
-      "link": "/zh-cn/docs/quickstart/spring.html",
+      "link": "/zh-cn/docs/user/spring.html",
       "meta": {}
     }
   ]
