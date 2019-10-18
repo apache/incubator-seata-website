@@ -151,6 +151,11 @@
       "meta": {}
     },
     {
+      "filename": "configurations.md",
+      "link": "/zh-cn/docs/quickstart/configurations.html",
+      "meta": {}
+    },
+    {
       "filename": "datasource.md",
       "link": "/zh-cn/docs/quickstart/datasource.html",
       "meta": {}
