@@ -3,7 +3,7 @@ name: seata.io deploy
 on:
   push:
     branches:
-    - master
+    - develop
 
 jobs:
   Build-Deploy:
