@@ -1,4 +1,7 @@
 # website
+
+[![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg?branch=develop)](https://github.com/seata/seata.github.io/actions)
+
 All website material  of Seata
 
 开发前请仔细阅读 [https://docsite.js.org](https://docsite.js.org)
