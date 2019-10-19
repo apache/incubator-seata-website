@@ -8,8 +8,8 @@ All website material  of Seata
 
 ### 准备
 
-+ 确保终端中有安装node
-+ 在终端中执行`npm i docsite -g`全局安装`docsite`
++ 确保终端中有安装node, node保证是8.x版本
++ 在终端中执行`npm i docsite -g`全局安装`docsite`   
 + git下载整个工程文件
 + 进入工程目录，执行 `npm i`执行依赖安装
 + 执行`docsite start`进行本地验证查看
