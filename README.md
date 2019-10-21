@@ -1,6 +1,6 @@
 # website
 
-[![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg?branch=develop)](https://github.com/seata/seata.github.io/actions)
+[![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions)
 
 All website material  of Seata
 
