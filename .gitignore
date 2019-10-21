@@ -4,4 +4,12 @@ node_modules/
 npm-debug.log
 *.orig
 package-lock.json
+<<<<<<< HEAD
 *.iml
+=======
+/en-us/
+/zh-cn/
+build/
+index.html
+md_json/
+>>>>>>> e68e30a08f63a5a1d96502aa90afd519ac179df8
