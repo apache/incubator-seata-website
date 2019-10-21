@@ -192,7 +192,7 @@ public interface InventoryAction {
 * ServiceName: 服务名称，通常是服务的beanId
 * ServiceMethod: 服务方法名称
 * CompensateState: 该"状态"的补偿"状态"
-* Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可
+* Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可
 * Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。，value是当这个条件表达式成立时则将服务执行状态映射成这个值
 * Catch: 捕获到异常后的路由
