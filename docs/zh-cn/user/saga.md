@@ -419,7 +419,7 @@ public interface StateMachineEngine {
 
 ## State language referance
 ### "状态机"的属性列表
-```
+```json
 {
     "Name": "reduceInventoryAndBalance",
     "Comment": "reduce inventory then reduce balance in a transaction",
@@ -497,7 +497,7 @@ public interface StateMachineEngine {
 > * 存在事务提交或回滚失败的情况Seata Sever都会不断发起重试
 
 #### Choice: 
-``` java
+```java
 "ChoiceState":{
     "Type": "Choice",
     "Choices":[
@@ -515,7 +515,7 @@ Expression: SpringEL表达式
 Next: 当Expression表达式成立时执行的下一个"状态"
 
 #### CompensationTrigger:
-```
+```java
 "CompensationTrigger": {
     "Type": "CompensationTrigger",
     "Next": "Fail"
