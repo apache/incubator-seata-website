@@ -81,35 +81,6 @@
       }
     },
     {
-      "filename": "maintainers.md",
-      "link": "/zh-cn/docs/en-us/developers/maintainers.html",
-      "meta": {
-        "title": "Seata Maintainers",
-        "keywords": "Seata, Maintainers",
-        "description": "A list of Seata maintainers"
-      }
-    },
-    {
-      "filename": "faq.md",
-      "link": "/zh-cn/docs/en-us/faq.html",
-      "meta": {}
-    },
-    {
-      "filename": "terminology.md",
-      "link": "/zh-cn/docs/en-us/overview/terminology.html",
-      "meta": {}
-    },
-    {
-      "filename": "what_is_seata.md",
-      "link": "/zh-cn/docs/en-us/overview/what_is_seata.html",
-      "meta": {}
-    },
-    {
-      "filename": "quickstart.md",
-      "link": "/zh-cn/docs/en-us/user/quickstart.html",
-      "meta": {}
-    },
-    {
       "filename": "faq.md",
       "link": "/zh-cn/docs/faq.html",
       "meta": {}

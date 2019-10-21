@@ -22,7 +22,7 @@
 <li>Account service: debit the balance of user's account.</li>
 </ul>
 <h3>Architecture</h3>
-<p><img src="https://cdn.nlark.com/lark/0/2018/png/18862/1536060281719-07f33361-6014-410e-a5b7-c4a85857c906.png" alt="Architecture"></p>
+<p><img src="../../../img/architecture.png" alt="Architecture"></p>
 <h3>StorageService</h3>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StorageService</span> </span>{
 
@@ -91,7 +91,7 @@
     }
 </code></pre>
 <h2>Distributed Transaction Solution with SEATA</h2>
-<p><img src="https://cdn.nlark.com/lark/0/2018/png/18862/1545209155589-11ebe02d-72ef-47a4-92f5-36be54fe9b17.png" alt="undefined"></p>
+<p><img src="../../../img/solution.png" alt=""></p>
 <p>We just need an annotation <code>@GlobalTransactional</code> on business method:</p>
 <pre><code class="language-java">
     <span class="hljs-meta">@GlobalTransactional</span>
