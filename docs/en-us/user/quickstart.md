@@ -12,7 +12,7 @@ A business logic for user purchasing commodities. The whole business logic is po
 
 ### Architecture
 
-![Architecture](https://cdn.nlark.com/lark/0/2018/png/18862/1536060281719-07f33361-6014-410e-a5b7-c4a85857c906.png) 
+![Architecture](../../../img/architecture.png) 
 
 
 ### StorageService
@@ -98,7 +98,7 @@ public class OrderServiceImpl implements OrderService {
 
 ## Distributed Transaction Solution with SEATA
 
-![undefined](https://cdn.nlark.com/lark/0/2018/png/18862/1545209155589-11ebe02d-72ef-47a4-92f5-36be54fe9b17.png) 
+![](../../../img/solution.png)
 
 We just need an annotation `@GlobalTransactional` on business method: 
 

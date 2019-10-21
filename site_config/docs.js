@@ -104,7 +104,17 @@ export default {
             },
             {
                 title: '运维指南',
-                link: '/zh-cn/docs/ops/operation.html',
+                children: [
+                    {
+                        title: 'Metrics配置',
+                        link: '/zh-cn/docs/ops/operation.html',
+                    },
+                ]
+
+            },
+            {
+                title: '常见问题',
+                link: '/zh-cn/docs/faq.html',
             },
             {
                 title: '开源共建',
@@ -130,12 +140,7 @@ export default {
                         link: '/zh-cn/docs/community/contact.html',
                     },
                 ],
-            },
-            {
-                title: '常见问题',
-                link: '/zh-cn/docs/faq.html',
             }
-
         ],
         barText: '文档',
     },

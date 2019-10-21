@@ -1,3 +1,0 @@
-# Seata Terminology
-
-
