@@ -28,13 +28,17 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
    > 注意: 异常发生时是否进行补偿也可由用户自定义决定
   4. 可以实现服务编排需求，支持单项选择、并发、子流程、参数转换、参数映射、服务执行状态判断、异常捕获等功能
 
+示例状态图:
+
 ![示例状态图](https://github.com/long187/seata.github.io/blob/develop/img/saga/demo_statelang.png?raw=true)
 
 ## 快速开始
 
 ### Demo简介
 基于dubbo构建的微服务下，使用Saga模式演示分布式事务的提交和回滚；
+
 业务流程图如下图所示：
+
 ![demo业务流程图](https://github.com/long187/seata.github.io/blob/develop/img/saga/demo_business_process.png?raw=true)
 
 先下载seata-samples工程：https://github.com/seata/seata-samples.git
@@ -169,6 +173,7 @@ public interface InventoryAction {
 ```
 
 该json表示的状态图:
+
 ![该json表示的状态图](https://github.com/long187/seata.github.io/blob/develop/img/saga/demo_statelang.png?raw=true)
 
 状态语言在一定程度上参考了[AWS Step Functions](https://docs.aws.amazon.com/zh_cn/step-functions/latest/dg/tutorial-creating-lambda-state-machine.html)
@@ -279,7 +284,7 @@ public interface InventoryAction {
 
 ## API referance
 
-#### StateMachineEngine
+#### StateMachineEngine API
 ``` java
 public interface StateMachineEngine {
 
@@ -391,7 +396,7 @@ public interface StateMachineEngine {
 ```
 
 ## Config referance
-#### config a StateMachineEngine in spring config xml
+#### 在Spring Bean配置文件中配置一个StateMachineEngine
 ``` xml
 <bean id="stateMachineEngine" class="io.seata.saga.engine.impl.ProcessCtrlStateMachineEngine">
         <property name="stateMachineConfig" ref="dbStateMachineConfig"></property>
