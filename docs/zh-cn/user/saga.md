@@ -2,7 +2,7 @@
 ## 概述
 Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
 
-![Saga模式示意图](https://github.com/long187/seata.github.io/tree/develop/img/saga/sagas.png)
+![Saga模式示意图](https://github.com/long187/seata.github.io/tree/develop/img/saga/sagas.png?raw=true)
 
 理论基础：Hector & Kenneth 发表论⽂ Sagas （1987）
 
@@ -28,14 +28,14 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
    > 注意: 异常发生时是否进行补偿也可由用户自定义决定
   4. 可以实现服务编排需求，支持单项选择、并发、子流程、参数转换、参数映射、服务执行状态判断、异常捕获等功能
 
-![示例状态图](https://github.com/long187/seata.github.io/tree/develop/img/saga/demo_statelang.png)
+![示例状态图](https://github.com/long187/seata.github.io/tree/develop/img/saga/demo_statelang.png?raw=true)
 
 ## 快速开始
 
 ### Demo简介
 基于dubbo构建的微服务下，使用Saga模式演示分布式事务的提交和回滚；
 业务流程图如下图所示：
-![demo业务流程图](https://github.com/long187/seata.github.io/tree/develop/img/saga/demo_business_process.png)
+![demo业务流程图](https://github.com/long187/seata.github.io/tree/develop/img/saga/demo_business_process.png?raw=true)
 
 先下载seata-samples工程：https://github.com/seata/seata-samples.git
 
@@ -169,7 +169,7 @@ public interface InventoryAction {
 ```
 
 该json表示的状态图:
-![该json表示的状态图](https://github.com/long187/seata.github.io/tree/develop/img/saga/demo_statelang.png)
+![该json表示的状态图](https://github.com/long187/seata.github.io/tree/develop/img/saga/demo_statelang.png?raw=true)
 
 状态语言在一定程度上参考了[AWS Step Functions](https://docs.aws.amazon.com/zh_cn/step-functions/latest/dg/tutorial-creating-lambda-state-machine.html)
 
@@ -224,7 +224,7 @@ public interface InventoryAction {
 ## 设计
 ### 状态机引擎原理:
 
-![状态机引擎原理](https://github.com/long187/seata.github.io/tree/develop/img/saga/saga_engine_mechanism.png)
+![状态机引擎原理](https://github.com/long187/seata.github.io/tree/develop/img/saga/saga_engine_mechanism.png?raw=true)
 
 * 图中的状态图是先执行stateA, 再执行stataB，然后执行stateC
 * "状态"的执行是基于事件驱动的模型，stataA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB
@@ -235,7 +235,7 @@ public interface InventoryAction {
 
 ### 状态机引擎设计:
 
-![状态机引擎设计](https://github.com/long187/seata.github.io/tree/develop/img/saga/saga_engine.png)
+![状态机引擎设计](https://github.com/long187/seata.github.io/tree/develop/img/saga/saga_engine.png?raw=true)
 
 状态机引擎的设计主要分成三层, 上层依赖下层，从下往上分别是：
 * Eventing 层:
@@ -478,7 +478,7 @@ public interface StateMachineEngine {
 * CompensateState: 该"状态"的补偿"状态"
 * IsForUpdate: 标识该服务会更新数据, 默认是false, 如果配置了CompensateState则默认是true, 有补偿服务的服务肯定是数据更新类服务
 * IsPersist: 执行日志是否进行存储, 默认是true, 有一些查询类的服务可以配置在true, 执行日志不进行存储提高性能, 因为当异常恢复时可以重复执行
-* Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:
+* Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:
 * Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。，value是当这个条件表达式成立时则将服务执行状态映射成这个值
 * Catch: 捕获到异常后的路由
