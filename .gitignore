@@ -5,7 +5,6 @@ npm-debug.log
 *.orig
 *.iml
 package-lock.json
-build/
 /en-us/
 /zh-cn/
 index.html
