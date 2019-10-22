@@ -1,6 +1,6 @@
 # seata参数配置
 
-###公共部分
+### 公共部分
 
 | key         | desc         | remark|
 |---------------|--------------|----|
@@ -38,9 +38,9 @@
 | metrics.exporter-list            |指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
 | metrics.exporter-prometheus-port            |prometheus输出器Client端口号   |默认9898 |
 
-###client端
+### client端
 
-| key      | role     | desc    | Key|
+| key      | role     | desc    | remark|
 |----------|--------|--------------|----|
 | service.vgroup_mapping.my_test_tx_group       |  TM,RM    | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist     |   TM,RM   | TC服务列表（附录2） |  仅注册中心为file时使用  |
@@ -59,14 +59,14 @@
 | support.spring.datasource.autoproxy    |  RM    | 数据源自动代理开关 |  默认false关闭  |
 
 
-###未使用
+### 未使用
 | key         | desc         | remark|
 |---------------|--------------|----|
 | lock.mode            | 锁存储方式   |local、remote |
 | lock.local          |  |    |
 | lock.remote          |  |  |
 
-###附录1：
+### 附录1：
     事务分组说明。
     1.什么是事务分组？
     事务分组是seata的资源逻辑，类似于服务实例。在file.conf中的my_test_tx_group就是一个事务分组。
@@ -75,7 +75,7 @@
     3.为什么这么设计，不直接取服务名？
     这里多了一层获取事务分组到映射集群的配置。这样设计后，事务分组可以作为资源的逻辑隔离单位，当发生故障时可以快速failover。
     
-###附录2：
+### 附录2：
     关于grouplist问题说明下。
     1. 什么时候会用到file.conf中的default.grouplist？
     当registry.type=file时会用到，其他时候不读。
@@ -84,7 +84,6 @@
     3. 是否推荐使用default.grouplist？
     不推荐，如问题1，当registry.type=file时会用到，也就是说这里用的不是真正的注册中心，不具体服务的健康检查机制当tc不可用时无法自动剔除列表，推荐使用nacos 、eureka、redis、zk、consul、etcd3、sofa。registry.type=file或config.type=file 设计的初衷是让用户再不依赖第三方注册中心或配置中心的前提下，通过直连的方式，快速验证seata服务。    
 
-###附录3：
+### 附录3：
     log_status=1的是防御性的，是收到全局回滚请求，但是不确定某个事务分支的本地事务是否已经执行完成了，这时事先插入一条branchid相同的数据，插入的假数据成功了，本地事务继续执行就会报主键冲突自动回滚。
     假如插入不成功说明表里有数据这个本地事务已经执行完成了，那么取出这条undolog数据做反向回滚操作。
-}
