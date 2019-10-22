@@ -5,7 +5,7 @@
 - 一阶段 prepare 行为
 - 二阶段 commit 或 rollback 行为
 
-![Overview of a global transaction](../../../img/seata_tcc-1.png)
+![Overview of a global transaction](../../../../img/seata_tcc-1.png)
 
 根据两阶段行为模式的不同，我们将分支事务划分为 **Automatic (Branch) Transaction Mode** 和 **TCC (Branch) Transaction Mode**.
 
