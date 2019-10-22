@@ -465,7 +465,7 @@ public interface StateMachineEngine {
 * CompensateState: 该"状态"的补偿"状态"
 * IsForUpdate: 标识该服务会更新数据, 默认是false, 如果配置了CompensateState则默认是true, 有补偿服务的服务肯定是数据更新类服务
 * IsPersist: 执行日志是否进行存储, 默认是true, 有一些查询类的服务可以配置在true, 执行日志不进行存储提高性能, 因为当异常恢复时可以重复执行
-* Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:
+* Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:[复杂参数的Input定义](#复杂参数的Input定义)
 * Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
 * Catch: 捕获到异常后的路由
@@ -668,3 +668,11 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 ```
 
 > 注意ParameterTypes属性是可以不用传的，调用的方法的参数列表中有Map, List这种可以带泛型的集合类型, 因为java编译会丢失泛型, 所以需要用这个属性, 同时在Input的json中对应的对这个json加"@type"来申明泛型(集合的元素类型)
+
+
+## FAQ
+***
+**问:** saga服务流程可以不配置吗，使用全局事务id串起来，这样省去配置的工作量，再加上人工配置难免会配置错误？
+
+**答:** saga一般有两种实现，一种是基于状态机定义，比如apache camel saga、eventuate，一种是基于注解+拦截器实现，比如service comb saga，后者是不需要配置状态图的。由于 Saga 事务不保证隔离性, 在极端情况下可能由于脏写无法完成回滚操作, 比如举一个极端的例子, 分布式事务内先给用户A充值, 然后给用户B扣减余额, 如果在给A用户充值成功, 在事务提交以前, A用户把余额消费掉了, 如果事务发生回滚, 这时则没有办法进行补偿了，有些业务场景可以允许让业务最终成功, 在回滚不了的情况下可以继续重试完成后面的流程, 基于状态机引擎除可以提供“回滚”能力外, 还需可以提供“向前”恢复上下文继续执行的能力, 让业务最终执行成功, 达到最终一致性的目的，所以在实际生产中基于状态机的实现应用更多。后续也会提供基于注解+拦截器实现。
+****
