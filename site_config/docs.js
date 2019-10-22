@@ -54,6 +54,10 @@ export default {
                         link: '/zh-cn/docs/user/quickstart.html',
                     },
                     {
+                        title: 'Saga 模式',
+                        link: '/zh-cn/docs/user/saga.html',
+                    },
+                    {
                         title: '参数配置',
                         link: '/zh-cn/docs/user/configurations.html',
                     },
@@ -93,6 +97,10 @@ export default {
                             {
                                 title: 'Seata TCC 模式',
                                 link: '/zh-cn/docs/dev/architecture/seata_tcc.html',
+                            },
+                            {
+                                title: 'Seata Saga 模式',
+                                link: '/zh-cn/docs/dev/architecture/seata_saga.html',
                             },
                             {
                                 title: 'Metrics设计',

@@ -67,6 +67,11 @@
       "meta": {}
     },
     {
+      "filename": "seata_saga.md",
+      "link": "/zh-cn/docs/dev/architecture/seata_saga.html",
+      "meta": {}
+    },
+    {
       "filename": "seata_tcc.md",
       "link": "/zh-cn/docs/dev/architecture/seata_tcc.html",
       "meta": {}
@@ -128,6 +133,11 @@
     {
       "filename": "quickstart.md",
       "link": "/zh-cn/docs/user/quickstart.html",
+      "meta": {}
+    },
+    {
+      "filename": "saga.md",
+      "link": "/zh-cn/docs/user/saga.html",
       "meta": {}
     },
     {
