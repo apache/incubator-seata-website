@@ -53,6 +53,7 @@
 | client.report.retry.count    |  TM,RM    | 一阶段结果上报TC重试次数 |  默认5次  |
 | client.tm.commit.retry.count    |  TM    | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.rollback.retry.count    |  TM    | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
+| client.table.meta.check.enable    |  RM    | 自动刷新缓存中的表结构 |  默认60000，单位毫秒  |
 | transaction.undo.data.validation    |  RM    | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
 | transaction.undo.log.serialization    |  RM    | undo序列化方式 |  默认jackson  |
 | transaction.undo.log.table    |  RM    | 自定义undo表名 |  默认undo_log  |
