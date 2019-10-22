@@ -208,6 +208,8 @@ public interface InventoryAction {
 
 更多详细的状态语言解释请看[State language referance](#State-language-referance)章节
 
+更多详细的状态语言使用示例见[https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine)
+
 
 ### Demo 运行指南
 
