@@ -2,7 +2,7 @@
 ## 概述
 Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
 
-![Saga模式示意图](https://github.com/long187/seata.github.io/blob/develop/img/saga/sagas.png?raw=true)
+![Saga模式示意图](../../../img/saga/sagas.png)
 
 理论基础：Hector & Kenneth 发表论⽂ Sagas （1987）
 
@@ -30,7 +30,7 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 示例状态图:
 
-![示例状态图](https://github.com/long187/seata.github.io/blob/develop/img/saga/demo_statelang.png?raw=true)
+![示例状态图](../../../img/saga/demo_statelang.png?raw=true)
 
 ## 快速开始
 
@@ -39,7 +39,7 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 业务流程图如下图所示：
 
-![demo业务流程图](https://github.com/long187/seata.github.io/blob/develop/img/saga/demo_business_process.png?raw=true)
+![demo业务流程图](../../../img/saga/demo_business_process.png?raw=true)
 
 先下载seata-samples工程：https://github.com/seata/seata-samples.git
 
@@ -174,7 +174,7 @@ public interface InventoryAction {
 
 该json表示的状态图:
 
-![该json表示的状态图](https://github.com/long187/seata.github.io/blob/develop/img/saga/demo_statelang.png?raw=true)
+![该json表示的状态图](../../../img/saga/demo_statelang.png?raw=true)
 
 状态语言在一定程度上参考了[AWS Step Functions](https://docs.aws.amazon.com/zh_cn/step-functions/latest/dg/tutorial-creating-lambda-state-machine.html)
 
@@ -199,7 +199,7 @@ public interface InventoryAction {
 * CompensateState: 该"状态"的补偿"状态"
 * Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可
 * Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
-* Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。，value是当这个条件表达式成立时则将服务执行状态映射成这个值
+* Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
 * Catch: 捕获到异常后的路由
 * Next: 服务执行完成后下一个执行的"状态"
 * Choices: Choice类型的"状态"里, 可选的分支列表, 分支中的Expression为SpringEL表达式, Next为当表达式成立时执行的下一个"状态"
@@ -209,7 +209,7 @@ public interface InventoryAction {
 更多详细的状态语言解释请看[State language referance](#State-language-referance)章节
 
 
-### demo 运行指南
+### Demo 运行指南
 
 #### step 1 启动 SEATA Server
 
@@ -224,33 +224,9 @@ public interface InventoryAction {
 运行 [DubboSagaTransactionStarter](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/starter/DubboSagaTransactionStarter.java) , 启动 demo工程；
 
 
-与这个Demo一起的还有调用本地服务和调用SOFA RPC服务的示例
+> Demo中的数据库使用的是H2内存数据库, 生产上建议使用与业务相同的库, 目前支持Oracle, Mysql, DB2. 建表语句在 [https://github.com/seata/seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql](https://github.com/seata/seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql)
 
-## 设计
-### 状态机引擎原理:
-
-![状态机引擎原理](https://github.com/long187/seata.github.io/blob/develop/img/saga/saga_engine_mechanism.png?raw=true)
-
-* 图中的状态图是先执行stateA, 再执行stataB，然后执行stateC
-* "状态"的执行是基于事件驱动的模型，stataA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB
-* 在整个状态机启动时会调用Seata Server开启分布式事务，并生产xid, 然后记录"状态机实例"启动事件到本地数据库
-* 当执行到一个"状态"时会调用Seata Server注册分支事务，并生产branchId, 然后记录"状态实例"开始执行事件到本地数据库
-* 当一个"状态"执行完成后会记录"状态实例"执行结束事件到本地数据库, 然后调用Seata Server上报分支事务的状态
-* 当整个状态机执行完成, 会记录"状态机实例"执行完成事件到本地数据库, 然后调用Seata Server提交或回滚分布式事务
-
-### 状态机引擎设计:
-
-![状态机引擎设计](https://github.com/long187/seata.github.io/blob/develop/img/saga/saga_engine.png?raw=true)
-
-状态机引擎的设计主要分成三层, 上层依赖下层，从下往上分别是：
-* Eventing 层:
-  * 实现事件驱动架构, 可以压入事件, 并由消费端消费事件, 本层不关心事件是什么消费端执行什么，由上层实现
-* ProcessController 层:
-  * 由于上层的Eventing驱动一个“空”流程执行的执行，"state"的行为和路由都未实现, 由上层实现
-* StateMachineEngine 层:
-  * 实现状态机引擎每种state的行为和路由逻辑
-  * 提供 API、状态机语言仓库
-
+> Demo中还有调用本地服务和调用SOFA RPC服务的示例
 
 ## 最佳实践
 
@@ -277,8 +253,8 @@ public interface InventoryAction {
 * 原服务与补偿服务都需要保证幂等性, 由于网络可能超时, 可以设置重试策略，重试发生时要通过幂等控制避免业务数据重复更新
 
 ### 缺乏隔离性的应对
-* 由于 Saga 事务不保证隔离性, 在极端情况下可能由于脏写无法完成回滚操作, 比如举一个极端的例子, 分布式事务内先给用户A充值, 然后给用户B扣减余额, 如果在给A用户充值成功, 在事务提交以前, A用户把线消费掉了, 如果事务发生回滚, 这时则没有办法进行补偿了。这就是缺乏隔离性造成的典型的问题, 实践中一般的应对方法是：
-  * 业务流程设计时遵循“宁可长款, 不可短款”的原则, 长款意思是客户少了线机构多了钱, 以机构信誉可以给客户退款, 反之则是短款, 少的线可能追不回来了。所以在业务流程设计上一定是先扣款。
+* 由于 Saga 事务不保证隔离性, 在极端情况下可能由于脏写无法完成回滚操作, 比如举一个极端的例子, 分布式事务内先给用户A充值, 然后给用户B扣减余额, 如果在给A用户充值成功, 在事务提交以前, A用户把余额消费掉了, 如果事务发生回滚, 这时则没有办法进行补偿了。这就是缺乏隔离性造成的典型的问题, 实践中一般的应对方法是：
+  * 业务流程设计时遵循“宁可长款, 不可短款”的原则, 长款意思是客户少了钱机构多了钱, 以机构信誉可以给客户退款, 反之则是短款, 少的钱可能追不回来了。所以在业务流程设计上一定是先扣款。
   * 有些业务场景可以允许让业务最终成功, 在回滚不了的情况下可以继续重试完成后面的流程, 所以状态机引擎除了提供“回滚”能力还需要提供“向前”恢复上下文继续执行的能力, 让业务最终执行成功, 达到最终一致性的目的。
 
 ## API referance
@@ -394,9 +370,14 @@ public interface StateMachineEngine {
 }
 ```
 
+#### StateMachineEngine API
+
 ## Config referance
 #### 在Spring Bean配置文件中配置一个StateMachineEngine
 ``` xml
+<bean id="dataSource" class="...">
+...
+<bean>
 <bean id="stateMachineEngine" class="io.seata.saga.engine.impl.ProcessCtrlStateMachineEngine">
         <property name="stateMachineConfig" ref="dbStateMachineConfig"></property>
 </bean>
@@ -445,35 +426,35 @@ public interface StateMachineEngine {
 "States": {
     ...
     "ReduceBalance": {
-    "Type": "ServiceTask",
-    "ServiceName": "balanceAction",
-    "ServiceMethod": "reduce",
-    "CompensateState": "CompensateReduceBalance",
-    "Input": [
-        "$.[businessKey]",
-        "$.[amount]",
-        {
-            "throwException" : "$.[mockReduceBalanceFail]"
-        }
-    ],
-    "Output": {
-        "compensateReduceBalanceResult": "$.#root"
-    },
-    "Status": {
-        "#root == true": "SU",
-        "#root == false": "FA",
-        "$Exception{java.lang.Throwable}": "UN"
-    },
-    "Catch": [
-        {
-            "Exceptions": [
-                "java.lang.Throwable"
-            ],
-            "Next": "CompensationTrigger"
-        }
-    ],
-    "Next": "Succeed"
-}
+        "Type": "ServiceTask",
+        "ServiceName": "balanceAction",
+        "ServiceMethod": "reduce",
+        "CompensateState": "CompensateReduceBalance",
+        "Input": [
+            "$.[businessKey]",
+            "$.[amount]",
+            {
+                "throwException" : "$.[mockReduceBalanceFail]"
+            }
+        ],
+        "Output": {
+            "compensateReduceBalanceResult": "$.#root"
+        },
+        "Status": {
+            "#root == true": "SU",
+            "#root == false": "FA",
+            "$Exception{java.lang.Throwable}": "UN"
+        },
+        "Catch": [
+            {
+                "Exceptions": [
+                    "java.lang.Throwable"
+                ],
+                "Next": "CompensationTrigger"
+            }
+        ],
+        "Next": "Succeed"
+    }
     ...
 }
 ```
@@ -484,7 +465,7 @@ public interface StateMachineEngine {
 * IsPersist: 执行日志是否进行存储, 默认是true, 有一些查询类的服务可以配置在true, 执行日志不进行存储提高性能, 因为当异常恢复时可以重复执行
 * Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:
 * Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
-* Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。，value是当这个条件表达式成立时则将服务执行状态映射成这个值
+* Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
 * Catch: 捕获到异常后的路由
 * Next: 服务执行完成后下一个执行的"状态"
 
@@ -501,7 +482,7 @@ public interface StateMachineEngine {
 > * 存在事务提交或回滚失败的情况Seata Sever都会不断发起重试
 
 #### Choice: 
-```java
+```json
 "ChoiceState":{
     "Type": "Choice",
     "Choices":[
@@ -518,8 +499,27 @@ Choices: 可选的分支列表, 只会选择第一个条件成立的分支
 Expression: SpringEL表达式
 Next: 当Expression表达式成立时执行的下一个"状态"
 
+#### Succeed: 
+```json
+"Succeed": {
+    "Type":"Succeed"
+}
+```
+运行到"Succeed状态"表示状态机正常结束, 正常结束不代表成功结束, 是否成功要看每个"状态"是否都成功
+
+#### Fail: 
+```json
+"Fail": {
+    "Type":"Fail",
+    "ErrorCode": "PURCHASE_FAILED",
+    "Message": "purchase failed"
+}
+```
+运行到"Fail状态"状态机异常结束, 异常结束时可以配置ErrorCode和Message, 表示错误码和错误信息, 可以用于给调用方返回错误码和消息
+
+
 #### CompensationTrigger:
-```java
+```json
 "CompensationTrigger": {
     "Type": "CompensationTrigger",
     "Next": "Fail"

@@ -64,11 +64,11 @@ SELECT FOR UPDATE 语句的执行会申请 **全局锁** ，如果 **全局锁**
 
 业务表：`product`
 
-| Field         | Type         | Key|
-|---------------|--------------|----|
-| id            | bigint(20)   |PRI |
-| name          | varchar(100) |    |
-| since         | varchar(100) |    |
+| Field | Type         | Key |
+| ----- | ------------ | --- |
+| id    | bigint(20)   | PRI |
+| name  | varchar(100) |     |
+| since | varchar(100) |     |
 
 AT 分支事务的业务逻辑：
 
@@ -87,9 +87,9 @@ select id, name, since from product where name = 'TXC';
 ```
 得到前镜像：
 
-|id|name|since|
-|---|---|---|
-|1|TXC|2014|
+| id  | name | since |
+| --- | ---- | ----- |
+| 1   | TXC  | 2014  |
 
 
 3. 执行业务 SQL：更新这条记录的 name 为 'GTS'。
@@ -100,9 +100,9 @@ select id, name, since from product where id = 1`;
 ```
 得到后镜像：
 
-|id|name|since|
-|---|---|---|
-|1|GTS|2014|
+| id  | name | since |
+| --- | ---- | ----- |
+| 1   | GTS  | 2014  |
 
 5. 插入回滚日志：把前后镜像数据以及业务 SQL 相关的信息组成一条回滚日志记录，插入到 `UNDO_LOG` 表中。
 
@@ -183,15 +183,15 @@ UNDO_LOG Table：不同数据库在类型上会略有差别。
 
 以 MySQL 为例：
 
-| Field         | Type         |
-|---------------|--------------|
-| branch_id     | bigint     PK|
-| xid           | varchar(100) |
-| context       | varchar(128) |
-| rollback_info | longblob     |
-| log_status    | tinyint      |
-| log_created   | datetime     |
-| log_modified  | datetime     |
+| Field         | Type          |
+| ------------- | ------------- |
+| branch_id     | bigint     PK |
+| xid           | varchar(100)  |
+| context       | varchar(128)  |
+| rollback_info | longblob      |
+| log_status    | tinyint       |
+| log_created   | datetime      |
+| log_modified  | datetime      |
 
 ```sql
 -- 注意此处0.7.0+ 增加字段 context
@@ -233,5 +233,27 @@ AT 模式（[参考链接 TBD]()）基于 **支持本地 ACID 事务** 的 **关
 - 二阶段 rollback 行为：调用 **自定义** 的 rollback 逻辑。
 
 所谓 TCC 模式，是指支持把 **自定义** 的分支事务纳入到全局事务的管理中。
+
+
+# Saga 模式
+
+Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
+
+![Saga模式示意图](../../../img/saga/sagas.png)
+
+理论基础：Hector & Kenneth 发表论⽂ Sagas （1987）
+
+## 适用场景：
+* 业务流程长、业务流程多
+* 参与者包含其它公司或遗留系统服务，无法提供 TCC 模式要求的三个接口
+
+## 优势：
+* 一阶段提交本地事务，无锁，高性能
+* 事件驱动架构，参与者可异步执行，高吞吐
+* 补偿服务易于实现
+
+## 缺点：
+* 不保证隔离性（应对方案见[用户文档](../user/saga.html)）
+
 
 

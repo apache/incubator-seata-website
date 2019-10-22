@@ -51,7 +51,11 @@ export default {
                 children: [
                     {
                         title: '快速启动',
-                        link: '/zh-cn/user/quickstart.html',
+                        link: '/zh-cn/docs/user/quickstart.html',
+                    },
+                    {
+                        title: 'Saga 模式',
+                        link: '/zh-cn/docs/user/saga.html',
                     },
                     {
                         title: '参数配置',
@@ -88,15 +92,19 @@ export default {
                         children: [
                             {
                                 title: 'Seata AT 模式',
-                                link: '/zh-cn/docs/architecture/seata_at.html',
+                                link: '/zh-cn/docs/dev/architecture/seata_at.html',
                             },
                             {
                                 title: 'Seata TCC 模式',
-                                link: '/zh-cn/docs/architecture/seata_tcc.html',
+                                link: '/zh-cn/docs/dev/architecture/seata_tcc.html',
+                            },
+                            {
+                                title: 'Seata Saga 模式',
+                                link: '/zh-cn/docs/dev/architecture/seata_saga.html',
                             },
                             {
                                 title: 'Metrics设计',
-                                link: '/zh-cn/docs/architecture/seata_mertics.html',
+                                link: '/zh-cn/docs/dev/architecture/seata_mertics.html',
                             },
                         ],
                     }
@@ -104,11 +112,20 @@ export default {
             },
             {
                 title: '运维指南',
-                link: '/zh-cn/docs/ops/operation.html',
+                children: [
+                    {
+                        title: 'Metrics配置',
+                        link: '/zh-cn/docs/ops/operation.html',
+                    },
+                ]
+
+            },
+            {
+                title: '常见问题',
+                link: '/zh-cn/docs/faq.html',
             },
             {
                 title: '开源共建',
-                link: '/zh-cn/docs/api.html',
                 children: [
                     {
                         title: '社区贡献',
@@ -131,12 +148,7 @@ export default {
                         link: '/zh-cn/docs/community/contact.html',
                     },
                 ],
-            },
-            {
-                title: '常见问题',
-                link: '/zh-cn/docs/faq.html',
             }
-
         ],
         barText: '文档',
     },
