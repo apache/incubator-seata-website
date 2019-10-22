@@ -665,4 +665,4 @@ String stateMachineName = "simpleStateMachineWithComplexParams";
 StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, paramMap);
 ```
 
-> 注意ParameterTypes属性是可以不用传的，调用的方法的参数列表中有Map, List这种可以带泛型的集合类型, 因为java编译会丢失泛型, 所以需要用这个属性, 同时在Input的json中对应的对这个json加"@type"来申明泛型
+> 注意ParameterTypes属性是可以不用传的，调用的方法的参数列表中有Map, List这种可以带泛型的集合类型, 因为java编译会丢失泛型, 所以需要用这个属性, 同时在Input的json中对应的对这个json加"@type"来申明泛型(集合的元素类型)
