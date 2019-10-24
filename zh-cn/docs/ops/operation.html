@@ -65,9 +65,9 @@ seata_transaction{meter=&quot;timer&quot;,role=&quot;tc&quot;,statistic=&quot;av
 </code></pre>
 <h4>步骤三：在Prometheus UI或Grafana中查看Seata TC的Metrics</h4>
 <p>在浏览器中打开Prometheus UI<code>http://localhost:9090/graph</code>，选择<code>seata_transaction</code>，点击查询，即可获取到最新数据：</p>
-<p><img src="../img/tc-prometheus.png" alt="tc-prometheus"></p>
+<p><img src="/img/tc-prometheus.png" alt="tc-prometheus"></p>
 <p>推荐在Prometheus中结合配置<a href="https://prometheus.io/docs/visualization/grafana/">Grafana</a>获得更好的查询效果：</p>
-<p><img src="../img/tc-grafana.png" alt="tc-grafana"></p>
+<p><img src="/img/tc-grafana.png" alt="tc-grafana"></p>
 <blockquote>
 <p>提示：此配置是将Prometheus作为Grafana的数据源，因此数据完全相同，只是使用Grafana显示效果更佳。</p>
 </blockquote>
