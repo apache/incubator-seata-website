@@ -41,8 +41,12 @@ export default {
         },
         {
           text: 'Quick Start',
-          link: '/en-us/docs/quickstart.html',
+          link: '/en-us/docs/user/quickstart.html',
         },
+        {
+          text: 'Report a doc issue',
+          link: 'https://github.com/seata/seata.github.io/issues/new',
+        }
       ],
     },
     resources: {
@@ -91,13 +95,17 @@ export default {
       title: '文档',
       list: [
         {
-          text: '什么是 Seata？',
+          text: 'Seata 是什么？',
           link: '/zh-cn/docs/overview/what_is_seata.html',
         },
         {
           text: '快速开始',
-          link: '/zh-cn/docs/quickstart.html',
+          link: '/zh-cn/docs/user/quickstart.html',
         },
+        {
+          text: '报告文档问题',
+          link: 'https://github.com/seata/seata.github.io/issues/new',
+        }
       ],
     },
     resources: {
