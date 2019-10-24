@@ -476,11 +476,12 @@ public interface StateMachineEngine {
 > * 如果有异常, 则判断异常是不是网路连接超时, 如果是则认为是FA
 > * 如果是其它异常, 服务IsForUpdate=true则状态为UN, 否则为FA
 
-> 整个状态机的执行状态如何判断？是由框架自己判断的：
-> * 如果所有服务执行成功（事务提交成功）则为成功
-> * 如果补偿成功（事务回滚成功）则为FA
-> * 如果有更新类服务未成功且没有进行补偿（事务提交失败） 则为UN
-> * 发生补偿且有未补偿成功的服务（回滚失败）则为UN
+> 整个状态机的执行状态如何判断？是由框架自己判断的, 状态机有两个状态: status(正向执行状态), compensateStatus(补偿状态)：
+> * 如果所有服务执行成功（事务提交成功）则status=SU, compensateStatus=null
+> * 如果有服务执行失败且存在更新类服务执行成功且没有进行补偿（事务提交失败） 则status=UN, compensateStatus=null
+> * 如果有服务执行失败且不存在更新类服务执行成功且没有进行补偿（事务提交失败） 则status=FA, compensateStatus=null
+> * 如果补偿成功（事务回滚成功）则status=FA/UN, compensateStatus=SU
+> * 发生补偿且有未补偿成功的服务（回滚失败）则status=FA/UN, compensateStatus=UN
 > * 存在事务提交或回滚失败的情况Seata Sever都会不断发起重试
 
 #### Choice: 
