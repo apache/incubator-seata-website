@@ -29,11 +29,11 @@
 tx1 先开始，开启本地事务，拿到本地锁，更新操作 m = 1000 - 100 = 900。本地事务提交前，先拿到该记录的 **全局锁** ，本地提交释放本地锁。
 tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 100 = 800。本地事务提交前，尝试拿该记录的 **全局锁** ，tx1 全局提交前，该记录的全局锁被 tx1 持有，tx2 需要重试等待 **全局锁** 。
 
-![Write-Isolation: Commit](../../../img/seata_at-1.png)
+![Write-Isolation: Commit](/img/seata_at-1.png)
 
 tx1 二阶段全局提交，释放 **全局锁** 。tx2 拿到 **全局锁** 提交本地事务。
 
-![Write-Isolation: Rollback](../../../img/seata_at-2.png)
+![Write-Isolation: Rollback](/img/seata_at-2.png)
 
 如果 tx1 的二阶段全局回滚，则 tx1 需要重新获取该数据的本地锁，进行反向补偿的更新操作，实现分支的回滚。
 
@@ -47,7 +47,7 @@ tx1 二阶段全局提交，释放 **全局锁** 。tx2 拿到 **全局锁** 提
 
 如果应用在特定场景下，必需要求全局的 **读已提交** ，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。
 
-![Read Isolation: SELECT FOR UPDATE](../../../img/seata_at-3.png)
+![Read Isolation: SELECT FOR UPDATE](/img/seata_at-3.png)
 
 SELECT FOR UPDATE 语句的执行会申请 **全局锁** ，如果 **全局锁** 被其他事务持有，则释放本地锁（回滚 SELECT FOR UPDATE 语句的本地执行）并重试。这个过程中，查询是被 block 住的，直到 **全局锁** 拿到，即读取的相关数据是 **已提交** 的，才返回。
 
