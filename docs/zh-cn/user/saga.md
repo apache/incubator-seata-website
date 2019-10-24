@@ -2,7 +2,7 @@
 ## 概述
 Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
 
-![Saga模式示意图](../../../img/saga/sagas.png)
+![Saga模式示意图](/img/saga/sagas.png)
 
 理论基础：Hector & Kenneth 发表论⽂ Sagas （1987）
 
@@ -30,7 +30,7 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 示例状态图:
 
-![示例状态图](../../../img/saga/demo_statelang.png?raw=true)
+![示例状态图](/img/saga/demo_statelang.png?raw=true)
 
 ## 快速开始
 
@@ -39,7 +39,7 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 业务流程图如下图所示：
 
-![demo业务流程图](../../../img/saga/demo_business_process.png?raw=true)
+![demo业务流程图](/img/saga/demo_business_process.png?raw=true)
 
 先下载seata-samples工程：https://github.com/seata/seata-samples.git
 
@@ -174,7 +174,7 @@ public interface InventoryAction {
 
 该json表示的状态图:
 
-![该json表示的状态图](../../../img/saga/demo_statelang.png?raw=true)
+![该json表示的状态图](/img/saga/demo_statelang.png?raw=true)
 
 状态语言在一定程度上参考了[AWS Step Functions](https://docs.aws.amazon.com/zh_cn/step-functions/latest/dg/tutorial-creating-lambda-state-machine.html)
 
