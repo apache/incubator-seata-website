@@ -432,6 +432,9 @@ public interface StateMachineEngine {
         "ServiceName": "balanceAction",
         "ServiceMethod": "reduce",
         "CompensateState": "CompensateReduceBalance",
+        "IsForUpdate": true,
+        "IsPersist": true,
+        "IsAsync": false,
         "Input": [
             "$.[businessKey]",
             "$.[amount]",
@@ -465,8 +468,9 @@ public interface StateMachineEngine {
 * CompensateState: 该"状态"的补偿"状态"
 * IsForUpdate: 标识该服务会更新数据, 默认是false, 如果配置了CompensateState则默认是true, 有补偿服务的服务肯定是数据更新类服务
 * IsPersist: 执行日志是否进行存储, 默认是true, 有一些查询类的服务可以配置为false, 执行日志不进行存储提高性能, 因为当异常恢复时可以重复执行
+* IsAsync: 异步调用服务, 注意: 因为异步调用服务会忽略服务的返回结果, 所以用户定义的服务执行状态映射(下面的Status属性)将被忽略, 默认为服务调用成功, 如果提交异步调用就失败(比如线程池已满)则为服务执行状态为失败
 * Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:[复杂参数的Input定义](#复杂参数的Input定义)
-* Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
+* Output: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
 * Catch: 捕获到异常后的路由
 * Next: 服务执行完成后下一个执行的"状态"
@@ -699,7 +703,7 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 ***
 **问:** 考虑一个业务流程， 它后续的子流程， 不管谁先运行都不会相互影响，可以异步调用。子流程是其它系统服务。Seata Saga 是不是实现了这点，其实我没看明白 ，Seata Saga异步调用具体是不是各个节点异步了？
 
-**答:** 你说的是并发节点类型，还未实现，接下来会实现。目前的事件驱动是指的节点的执行是事件驱动的，流程的顺序是同步的。上一个节点执行完成后，产生事件，触发下一个节点执行。如果要满足你刚说的需求要扩展并发节点。
+**答:** Saga的异步启动一个状态机(stateMachineEngine.startAsync)是指状态机内所有的状态都是事件驱动来执行的, 整个流程实际是同步的, 上一个状态结束才产生下一个状态的事件. 而异步调用一个服务是配置该ServiceTask为"IsAsync":true, 这个服务将会异步调用, 不会阻塞状态机的推进, 状态机不关心它的执行结果.
 ***
 **问:** Saga源码中事件驱动层同步bus和异步bus是什么作用？
 
@@ -708,4 +712,11 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 **问:** IsPersist: 执行日志是否进行存储，默认是true，有一些查询类的服务可以配置在false，执行日志不进行存储提高性能，因为当异常恢复时可以重复执行？
 
 **答:** 是的可以配置成false, 不过建议先保持默认，这样在查询执行日志比较全，真的要做性能调优再配，一般不会有性能问题
+***
+**问:**  seata saga  开启事务的客户端或者seata server服务端宕机或者重启，未完成的状态机实例是怎么保证继续执行下去的?谁去触发这个操作?
 
+**答:** 状态机实例在本地数据库有记录日志，通过日志恢复。seata server 会触触发事务恢复。
+***
+**问:** saga 的json文件  支持热部署吗?
+
+**答:** 支持, stateMachineEngine.getStateMachineConfig().getStateMachineRepository().registryByResources()。不过java代码和服务需要自己实现支持热部署
