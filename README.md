@@ -1,8 +1,8 @@
-# website
+# Seata Official Website
 
 [![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions)
 
-All website material  of Seata
+All website material  of https://seata.io
 
 开发前请仔细阅读 [https://docsite.js.org](https://docsite.js.org)
 
