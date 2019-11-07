@@ -18,6 +18,10 @@ All website material  of Seata
 
 ### 文档编写及放置
 
+### Add a new blog
+
+1. Add new .md file under blog/en-us or blog/zh-cn.
+
 #### 一般文档
 
 放置在`docs/en-us`和`docs/zh-cn`下，分别对应中文文档和英文文档，中英文件名需保持一致。
@@ -25,6 +29,13 @@ All website material  of Seata
 #### 博客文档
 
 放置在`blog/en-us`和`blog/zh-cn`下，分别对应中文文档和英文文档，中英文件名需保持一致。
+
+2. Update site_config/blog.js, add a new entry to the blog in either en-us or zh-cn.
+3. Run docsite start locally to verify the blog can be displayed correctly.
+4. Send the pull request contains the .md and blog.js only.
+
+### SEO
+
 内容形式为
 ```
 ---
@@ -40,14 +51,6 @@ date: 2018-12-29
 
 暂时不想显示的文档`hidden`设为`true`
 
-## Guide for adding new document
-
-### Add a new blog
-
-1. Add new .md file under blog/en-us or blog/zh-cn.
-2. Update site_config/blog.js, add a new entry to the blog in either en-us or zh-cn.
-3. Run docsite start locally to verify the blog can be displayed correctly.
-4. Send the pull request contains the .md and blog.js only.
 
 ### 其他
 
