@@ -40,6 +40,15 @@ date: 2018-12-29
 
 暂时不想显示的文档`hidden`设为`true`
 
+## Guide for adding new document
+
+### Add a new blog
+
+1. Add new .md file under blog/en-us or blog/zh-cn.
+2. Update site_config/blog.js, add a new entry to the blog in either en-us or zh-cn.
+3. Run docsite start locally to verify the blog can be displayed correctly.
+4. Send the pull request contains the .md and blog.js only.
+
 ### 其他
 
 + 如需添加全局搜索，详见[https://docsite.js.org/zh-cn/docs/search.html](https://docsite.js.org/zh-cn/docs/search.html)
