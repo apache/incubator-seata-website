@@ -1,3 +1,10 @@
+---
+title: 基于 Seata Saga 设计更有弹性的金融应用
+keywords: Saga,Seata,一致性,金融,弹性,分布式,事务
+description: 本文从金融分布式应用开发的一些痛点出发，结合理论和实践对社区和行业的解决方案进行了分析，并讲解了如何基于Seata saga设计更有弹性的金融应用
+author: long187
+date: 2019-11-04
+---
 # 基于 Seata Saga 设计更有弹性的金融应用
 
 Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套一站式分布式事务解决方案，提供了 AT、TCC、Saga 和 XA 事务模式，本文详解其中的 Saga 模式。<br />项目地址：[https://github.com/seata/seata](https://github.com/seata/seata)
@@ -239,8 +246,8 @@ Seata Saga 采用了状态机+DSL 方案来实现，原因有以下几个：
 ### 状态定义语言(Seata State Language)
 
 1. 通过状态图来定义服务调用的流程并生成 json 状态语言定义文件；
-1. 状态图中一个节点可以是调用一个服务，节点可以配置它的补偿节点；
-1. 状态图 json 由状态机引擎驱动执行，当出现异常时状态引擎反向执行已成功节点对应的补偿节点将事务回滚；
+2. 状态图中一个节点可以是调用一个服务，节点可以配置它的补偿节点；
+3. 状态图 json 由状态机引擎驱动执行，当出现异常时状态引擎反向执行已成功节点对应的补偿节点将事务回滚；
 > 注意: 异常发生时是否进行补偿也可由用户自定义决定
 
 4. 可以实现服务编排需求，支持单项选择、并发、异步、子状态机、参数转换、参数映射、服务执行状态判断、异常捕获等功能；

@@ -1,3 +1,10 @@
+---
+title: 分布式事务 Seata 及其三种模式详解
+keywords: Saga,Seata,AT,TCC,一致性,金融,分布式,事务
+description: 着重分享分布式事务产生的背景、理论基础，以及 Seata 分布式事务的原理以及三种模式（AT、TCC、Saga）的分布式事务实现
+author: long187
+date: 2019-08-11
+---
 # 分布式事务 Seata 及其三种模式详解 | Meetup#3 回顾
 
 作者：屹远（陈龙），蚂蚁金服分布式事务框架核心研发，Seata Committer。
