@@ -14,6 +14,11 @@
   ],
   "zh-cn": [
     {
+      "filename": "design-more-flexable-application-by-saga.md",
+      "link": "/zh-cn/blog/design-more-flexable-application-by-saga.html",
+      "meta": {}
+    },
+    {
       "filename": "dubbo-seata.md",
       "link": "/zh-cn/blog/dubbo-seata.html",
       "meta": {
@@ -23,6 +28,11 @@
         "author": "slievrly",
         "date": "2019-03-07"
       }
+    },
+    {
+      "filename": "seata-at-tcc-saga.md",
+      "link": "/zh-cn/blog/seata-at-tcc-saga.html",
+      "meta": {}
     }
   ]
 }
