@@ -1,8 +1,8 @@
-# website
+# Seata Official Website
 
 [![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions)
 
-All website material  of Seata
+All website material  of https://seata.io
 
 开发前请仔细阅读 [https://docsite.js.org](https://docsite.js.org)
 
@@ -18,13 +18,28 @@ All website material  of Seata
 
 ### 文档编写及放置
 
+### Add a new blog
+
+
+
 #### 一般文档
 
 放置在`docs/en-us`和`docs/zh-cn`下，分别对应中文文档和英文文档，中英文件名需保持一致。
+1. Add new .md file under doc/en-us or doc/zh-cn.
+2. Update site_config/doc.js, add a new entry to the blog in either en-us or zh-cn.
+3. Run docsite start locally to verify the blog can be displayed correctly.
+4. Send the pull request contains the .md and doc.js only.
 
 #### 博客文档
 
 放置在`blog/en-us`和`blog/zh-cn`下，分别对应中文文档和英文文档，中英文件名需保持一致。
+1. Add new .md file under blog/en-us or blog/zh-cn.
+2. Update site_config/blog.js, add a new entry to the blog in either en-us or zh-cn.
+3. Run docsite start locally to verify the blog can be displayed correctly.
+4. Send the pull request contains the .md and blog.js only.
+
+### SEO
+
 内容形式为
 ```
 ---
@@ -39,6 +54,7 @@ date: 2018-12-29
 博客文档会按时间先后自动进行排序，无需进行菜单配置.
 
 暂时不想显示的文档`hidden`设为`true`
+
 
 ### 其他
 

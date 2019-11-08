@@ -17,7 +17,7 @@ date: 2019-03-07
 
 ### 业务结构图
 
-![Architecture](../../img/blog/seata/seata-1.png) 
+![Architecture](/img/blog/seata/seata-1.png) 
 
 
 ### StorageService
@@ -118,7 +118,7 @@ public class OrderServiceImpl implements OrderService {
 
 ## Seata 分布式事务解决方案
 
-![undefined](../../img/blog/seata/seata-2.png) 
+![undefined](/img/blog/seata/seata-2.png) 
 
 此处仅仅需要一行注解 `@GlobalTransactional` 写在业务发起方的方法上: 
 
