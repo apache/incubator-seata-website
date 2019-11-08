@@ -1,3 +1,10 @@
+---
+title: 基于 Seata Saga 设计更有弹性的金融应用
+keywords: Saga,Seata,一致性,金融,弹性,分布式,事务
+description: 本文从金融分布式应用开发的一些痛点出发，结合理论和实践对社区和行业的解决方案进行了分析，并讲解了如何基于Seata saga设计更有弹性的金融应用
+author: long187
+date: 2019-11-04
+---
 # 基于 Seata Saga 设计更有弹性的金融应用
 
 Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套一站式分布式事务解决方案，提供了 AT、TCC、Saga 和 XA 事务模式，本文详解其中的 Saga 模式。<br />项目地址：[https://github.com/seata/seata](https://github.com/seata/seata)
