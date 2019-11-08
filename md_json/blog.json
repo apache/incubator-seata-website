@@ -16,7 +16,13 @@
     {
       "filename": "design-more-flexable-application-by-saga.md",
       "link": "/zh-cn/blog/design-more-flexable-application-by-saga.html",
-      "meta": {}
+      "meta": {
+        "title": "基于 Seata Saga 设计更有弹性的金融应用",
+        "keywords": "Saga,Seata,一致性,金融,弹性,分布式,事务",
+        "description": "本文从金融分布式应用开发的一些痛点出发，结合理论和实践对社区和行业的解决方案进行了分析，并讲解了如何基于Seata saga设计更有弹性的金融应用",
+        "author": "long187",
+        "date": "2019-11-04"
+      }
     },
     {
       "filename": "dubbo-seata.md",
@@ -32,7 +38,13 @@
     {
       "filename": "seata-at-tcc-saga.md",
       "link": "/zh-cn/blog/seata-at-tcc-saga.html",
-      "meta": {}
+      "meta": {
+        "title": "分布式事务 Seata 及其三种模式详解",
+        "keywords": "Saga,Seata,AT,TCC,一致性,金融,分布式,事务",
+        "description": "着重分享分布式事务产生的背景、理论基础，以及 Seata 分布式事务的原理以及三种模式（AT、TCC、Saga）的分布式事务实现",
+        "author": "long187",
+        "date": "2019-08-11"
+      }
     }
   ]
 }
