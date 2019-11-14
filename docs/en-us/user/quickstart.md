@@ -94,6 +94,7 @@ public class OrderServiceImpl implements OrderService {
         // INSERT INTO orders ...
         return orderDAO.insert(order);
     }
+}
 ```
 
 ## Distributed Transaction Solution with SEATA
