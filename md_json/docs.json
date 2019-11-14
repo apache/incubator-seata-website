@@ -25,6 +25,11 @@
       "meta": {}
     },
     {
+      "filename": "api.md",
+      "link": "/en-us/docs/user/api.html",
+      "meta": {}
+    },
+    {
       "filename": "quickstart.md",
       "link": "/en-us/docs/user/quickstart.html",
       "meta": {}
