@@ -1,57 +1,57 @@
-# Quick Start
+# 快速开始
 
-Let's begin with a Microservices example.
+让我们从一个微服务示例开始。
 
-## Use case
+## 用例
 
-A business logic for user purchasing commodities. The whole business logic is powered by 3 microservices:
+用户购买商品的业务逻辑。整个业务逻辑由3个微服务提供支持：
 
-- Storage service: deduct storage count on given commodity.
-- Order service: create order according to purchase request.
-- Account service: debit the balance of user's account.
+- 仓储服务：对给定的商品扣除仓储数量。
+- 订单服务：根据采购需求创建订单。
+- 帐户服务：从用户帐户中扣除余额。
 
-### Architecture
+### 架构图
 
 ![Architecture](/img/architecture.png) 
 
 
-### StorageService
+### 仓储服务
 
 ```java
 public interface StorageService {
 
     /**
-     * deduct storage count
+     * 扣除存储数量
      */
     void deduct(String commodityCode, int count);
 }
 ```
 
-### OrderService
+### 订单服务
 
 ```java
 public interface OrderService {
 
     /**
-     * create order
+     * 创建订单
      */
     Order create(String userId, String commodityCode, int orderCount);
 }
 ```
 
-### AccountService
+### 帐户服务
 
 ```java
 public interface AccountService {
 
     /**
-     * debit balance of user's account
+     * 从用户账户中借出
      */
     void debit(String userId, int money);
 }
 ```
 
-### Main business logic
+### 主要业务逻辑
 
 ```java
 public class BusinessServiceImpl implements BusinessService {
@@ -61,7 +61,7 @@ public class BusinessServiceImpl implements BusinessService {
     private OrderService orderService;
 
     /**
-     * purchase
+     * 采购
      */
     public void purchase(String userId, String commodityCode, int orderCount) {
 
@@ -94,12 +94,13 @@ public class OrderServiceImpl implements OrderService {
         // INSERT INTO orders ...
         return orderDAO.insert(order);
     }
+}
 ```
 
-## Distributed Transaction Solution with SEATA
+## SEATA 的分布式交易解决方案
 
 ![](/img/solution.png)
-We just need an annotation `@GlobalTransactional` on business method: 
+我们只需要使用一个 `@GlobalTransactional` 注解在业务方法上: 
 
 ```java
 
@@ -109,15 +110,15 @@ We just need an annotation `@GlobalTransactional` on business method:
     }
 ```
 
-## Example powered by Dubbo + SEATA
+## 由Dubbo + SEATA提供支持的示例
 
-### Step 1: Setup database
+### 步骤 1：建立数据库
 
-- Requirement: MySQL with InnoDB engine.
+- 要求：具有InnoDB引擎的MySQL。
 
-**Note:** In fact, there should be 3 database for the 3 services in the example use case. However, we can just create one database and configure 3 data sources for simple. 
+**注意:** 实际上，在示例用例中，这3个服务应该有3个数据库。 但是，为了简单起见，我们只能创建一个数据库并配置3个数据源。 
 
-Modify Spring XML with the database URL/username/password you just created.
+使用您刚创建的数据库 URL/username/password 修改Spring XML。
 
 dubbo-account-service.xml
 dubbo-order-service.xml
@@ -128,9 +129,9 @@ dubbo-storage-service.xml
         <property name="username" value="xxx" />
         <property name="password" value="xxx" />
 ```
-### Step 2: Create UNDO_LOG table
+### 步骤 2：创建 UNDO_LOG 表
 
-`UNDO_LOG` table is required by SEATA AT mode.
+SEATA AT 模式需要 `UNDO_LOG` 表
 
 ```sql
 -- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
@@ -149,7 +150,7 @@ CREATE TABLE `undo_log` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 ```
 
-### Step 3: Create tables for example business
+### 步骤 3：为示例业务创建表
 
 ```sql
 
@@ -182,9 +183,9 @@ CREATE TABLE `account_tbl` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
-### Step 4: Start Server
+### 步骤 4: 启动服务
 
-- Download server package from <https://github.com/seata/seata/releases>, unzip it.
+- 从 <https://github.com/seata/seata/releases>,下载服务器软件包，将其解压缩。
 
 ```shell
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]
@@ -205,13 +206,13 @@ e.g.
 sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 ```
 
-### Step 5: Run example
+### 步骤 5: 运行示例
 
-Go to samples repo: [seata-samples](https://github.com/seata/seata-samples)
+示例仓库: [seata-samples](https://github.com/seata/seata-samples)
 
-- Start DubboAccountServiceStarter
-- Start DubboStorageServiceStarter
-- Start DubboOrderServiceStarter
-- Run DubboBusinessTester for demo test
+- 启动 DubboAccountServiceStarter
+- 启动 DubboStorageServiceStarter
+- 启动 DubboOrderServiceStarter
+- 运行 DubboBusinessTester for demo test
 
-TBD: scripts for run demo applications
+TBD: 运行演示应用程序的脚本
