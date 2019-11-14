@@ -22,6 +22,10 @@ export default {
                         title: 'Quick Start',
                         link: '/en-us/docs/user/quickstart.html',
                     },
+                    {
+                        title: 'API Guide',
+                        link: '/en-us/docs/user/api.html',
+                    }
                 ],
             },
             {
