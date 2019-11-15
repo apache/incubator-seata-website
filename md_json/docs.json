@@ -30,6 +30,11 @@
       "meta": {}
     },
     {
+      "filename": "microservice.md",
+      "link": "/en-us/docs/user/microservice.html",
+      "meta": {}
+    },
+    {
       "filename": "quickstart.md",
       "link": "/en-us/docs/user/quickstart.html",
       "meta": {}
