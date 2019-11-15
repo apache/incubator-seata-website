@@ -25,6 +25,10 @@ export default {
                     {
                         title: 'API Guide',
                         link: '/en-us/docs/user/api.html',
+                    },
+                    {
+                        title: 'Microservices Framework Supports',
+                        link: '/en-us/docs/user/microservice.html',
                     }
                 ],
             },
