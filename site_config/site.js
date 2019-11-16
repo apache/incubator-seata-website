@@ -46,6 +46,10 @@ export default {
         {
           text: 'Report a doc issue',
           link: 'https://github.com/seata/seata.github.io/issues/new',
+        },
+        {
+          text: 'Edit This Page on GitHub',
+          link: 'https://github.com/seata/seata.github.io',
         }
       ],
     },
@@ -105,6 +109,10 @@ export default {
         {
           text: '报告文档问题',
           link: 'https://github.com/seata/seata.github.io/issues/new',
+        },
+        {
+          text: '在Github上编辑此文档',
+          link: 'https://github.com/seata/seata.github.io',
         }
       ],
     },
