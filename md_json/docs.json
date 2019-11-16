@@ -1,6 +1,26 @@
 {
   "en-us": [
     {
+      "filename": "at-mode.md",
+      "link": "/en-us/docs/dev/mode/at-mode.html",
+      "meta": {}
+    },
+    {
+      "filename": "saga-mode.md",
+      "link": "/en-us/docs/dev/mode/saga-mode.html",
+      "meta": {}
+    },
+    {
+      "filename": "tcc-mode.md",
+      "link": "/en-us/docs/dev/mode/tcc-mode.html",
+      "meta": {}
+    },
+    {
+      "filename": "seata-mertics.md",
+      "link": "/en-us/docs/dev/seata-mertics.html",
+      "meta": {}
+    },
+    {
       "filename": "maintainers.md",
       "link": "/en-us/docs/developers/maintainers.html",
       "meta": {
@@ -10,8 +30,13 @@
       }
     },
     {
+      "filename": "multi-configuration-isolation.md",
+      "link": "/en-us/docs/ops/multi-configuration-isolation.html",
+      "meta": {}
+    },
+    {
       "filename": "faq.md",
-      "link": "/en-us/docs/faq.html",
+      "link": "/en-us/docs/overview/faq.html",
       "meta": {}
     },
     {
@@ -20,8 +45,8 @@
       "meta": {}
     },
     {
-      "filename": "what_is_seata.md",
-      "link": "/en-us/docs/overview/what_is_seata.html",
+      "filename": "what-is-seata.md",
+      "link": "/en-us/docs/overview/what-is-seata.html",
       "meta": {}
     },
     {
@@ -67,23 +92,23 @@
       "meta": {}
     },
     {
-      "filename": "seata_at.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_at.html",
+      "filename": "at-mode.md",
+      "link": "/zh-cn/docs/dev/mode/at-mode.html",
       "meta": {}
     },
     {
-      "filename": "seata_mertics.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_mertics.html",
+      "filename": "saga-mode.md",
+      "link": "/zh-cn/docs/dev/mode/saga-mode.html",
       "meta": {}
     },
     {
-      "filename": "seata_saga.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_saga.html",
+      "filename": "tcc-mode.md",
+      "link": "/zh-cn/docs/dev/mode/tcc-mode.html",
       "meta": {}
     },
     {
-      "filename": "seata_tcc.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_tcc.html",
+      "filename": "seata-mertics.md",
+      "link": "/zh-cn/docs/dev/seata-mertics.html",
       "meta": {}
     },
     {
@@ -96,13 +121,13 @@
       }
     },
     {
-      "filename": "faq.md",
-      "link": "/zh-cn/docs/faq.html",
+      "filename": "operation.md",
+      "link": "/zh-cn/docs/ops/operation.html",
       "meta": {}
     },
     {
-      "filename": "operation.md",
-      "link": "/zh-cn/docs/ops/operation.html",
+      "filename": "faq.md",
+      "link": "/zh-cn/docs/overview/faq.html",
       "meta": {}
     },
     {
@@ -111,8 +136,8 @@
       "meta": {}
     },
     {
-      "filename": "what_is_seata.md",
-      "link": "/zh-cn/docs/overview/what_is_seata.html",
+      "filename": "what-is-seata.md",
+      "link": "/zh-cn/docs/overview/what-is-seata.html",
       "meta": {}
     },
     {

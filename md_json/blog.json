@@ -1,8 +1,19 @@
 {
   "en-us": [
     {
-      "filename": "dubbo-seata.md",
-      "link": "/en-us/blog/dubbo-seata.html",
+      "filename": "manual-transaction-mode.md",
+      "link": "/en-us/blog/manual-transaction-mode.html",
+      "meta": {
+        "title": "MT mode",
+        "keywords": "MT mode",
+        "description": "introduce MT mode",
+        "author": "kmmshmily",
+        "date": "2019-02-13"
+      }
+    },
+    {
+      "filename": "quick-start-use-seata-and-dubbo-services.md",
+      "link": "/en-us/blog/quick-start-use-seata-and-dubbo-services.html",
       "meta": {
         "title": "How to use Seata to ensure consistency between Dubbo Microservices",
         "keywords": "Dubbo,Seata,Consistency",
@@ -25,14 +36,85 @@
       }
     },
     {
-      "filename": "dubbo-seata.md",
-      "link": "/zh-cn/blog/dubbo-seata.html",
+      "filename": "how-to-support-spring-cloud.md",
+      "link": "/zh-cn/blog/how-to-support-spring-cloud.html",
+      "meta": {
+        "title": "Seata（Fescar）分布式事务 整合 Spring Cloud",
+        "author": "郭树抗 季敏",
+        "date": "2019/04/15",
+        "keywords": "fescar、seata、分布式事务"
+      }
+    },
+    {
+      "filename": "integrate-seata-with-spring-cloud.md",
+      "link": "/zh-cn/blog/integrate-seata-with-spring-cloud.html",
+      "meta": {
+        "title": "Seata（Fescar）分布式事务 整合 Spring Cloud",
+        "author": "大菲.Fei",
+        "date": "2019/04/15",
+        "keywords": "fescar、seata、分布式事务"
+      }
+    },
+    {
+      "filename": "manual-transaction-mode.md",
+      "link": "/zh-cn/blog/manual-transaction-mode.html",
+      "meta": {
+        "title": "MT 模式",
+        "keywords": "MT 模式",
+        "description": "介绍 MT 模式",
+        "author": "kmmshmily",
+        "date": "2019-02-13"
+      }
+    },
+    {
+      "filename": "quick-start-use-seata-and-dubbo-services.md",
+      "link": "/zh-cn/blog/quick-start-use-seata-and-dubbo-services.html",
       "meta": {
         "title": "如何使用Seata保证Dubbo微服务间的一致性",
         "keywords": "Dubbo,Seata,一致性",
         "description": "本文主要介绍如何使用Seata保证Dubbo微服务间的一致性",
         "author": "slievrly",
         "date": "2019-03-07"
+      }
+    },
+    {
+      "filename": "seata-analysis-go-server.md",
+      "link": "/zh-cn/blog/seata-analysis-go-server.html",
+      "meta": {
+        "title": "Seata分布式Go Server正式开源-TaaS设计简介",
+        "author": "fagongzi(zhangxu19830126@gmail.com)",
+        "date": "2019/04/23",
+        "keywords": "seata、分布式事务、高可用"
+      }
+    },
+    {
+      "filename": "seata-analysis-java-client.md",
+      "link": "/zh-cn/blog/seata-analysis-java-client.html",
+      "meta": {
+        "title": "分布式事务之Seata-Client原理及流程详解",
+        "author": "fangliangsheng",
+        "date": "2019/04/15",
+        "keywords": "fescar、seata、分布式事务"
+      }
+    },
+    {
+      "filename": "seata-analysis-java-server.md",
+      "link": "/zh-cn/blog/seata-analysis-java-server.html",
+      "meta": {
+        "title": "深度剖析一站式分布式事务方案Seata-Server",
+        "author": "李钊,季敏",
+        "date": "2019/04/08",
+        "keywords": "fescar、seata、分布式事务"
+      }
+    },
+    {
+      "filename": "seata-analysis-simple.md",
+      "link": "/zh-cn/blog/seata-analysis-simple.html",
+      "meta": {
+        "title": "Fescar分布式事务原理解析探秘",
+        "author": "陈凯玲",
+        "keywords": "Fescar、分布式事务",
+        "date": "2019/02/18"
       }
     },
     {
@@ -44,6 +126,26 @@
         "description": "着重分享分布式事务产生的背景、理论基础，以及 Seata 分布式事务的原理以及三种模式（AT、TCC、Saga）的分布式事务实现",
         "author": "long187",
         "date": "2019-08-11"
+      }
+    },
+    {
+      "filename": "tcc-mode-applicable-scenario-analysis.md",
+      "link": "/zh-cn/blog/tcc-mode-applicable-scenario-analysis.html",
+      "meta": {
+        "title": "TCC适用模型与适用场景分析",
+        "author": "zhangthen",
+        "date": "2019/03/27",
+        "keywords": "seata、分布式事务、TCC、roadmap"
+      }
+    },
+    {
+      "filename": "tcc-mode-design-principle.md",
+      "link": "/zh-cn/blog/tcc-mode-design-principle.html",
+      "meta": {
+        "title": "TCC 理论及设计实现指南介绍",
+        "author": "zhangthen",
+        "date": "2019/03/26",
+        "keywords": "fescar、分布式事务、TCC、roadmap"
       }
     }
   ]

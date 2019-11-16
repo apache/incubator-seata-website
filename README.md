@@ -25,8 +25,8 @@ All website material  of https://seata.io
 #### 一般文档
 
 放置在`docs/en-us`和`docs/zh-cn`下，分别对应中文文档和英文文档，中英文件名需保持一致。
-1. Add new .md file under doc/en-us or doc/zh-cn.
-2. Update site_config/doc.js, add a new entry to the blog in either en-us or zh-cn.
+1. Add new .md file under docs/en-us or docs/zh-cn.
+2. Update site_config/docs.js, add a new entry to the blog in either en-us or zh-cn.
 3. Run docsite start locally to verify the blog can be displayed correctly.
 4. Send the pull request contains the .md and doc.js only.
 
