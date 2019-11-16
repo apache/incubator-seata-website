@@ -6,7 +6,7 @@ export default {
       buttons: [
         {
           text: '快速入门',
-          link: '/zh-cn/docs/overview/what_is_seata.html',
+          link: '/zh-cn/docs/overview/what-is-seata.html',
           type: 'primary',
         },
         {

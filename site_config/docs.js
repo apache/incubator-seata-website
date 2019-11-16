@@ -6,7 +6,7 @@ export default {
                 children: [
                     {
                         title: 'What is Seata?',
-                        link: '/en-us/docs/overview/what_is_seata.html',
+                        link: '/en-us/docs/overview/what-is-seata.html',
                     },
                     {
                         title: 'Terminology',
@@ -33,8 +33,44 @@ export default {
                 ],
             },
             {
+                title: 'Developer Guide',
+                children: [
+                    {
+                        title: 'Transaction Mode',
+                        children: [
+                            {
+                                title: 'Seata AT mode',
+                                link: '/en-us/docs/dev/mode/at-mode.html',
+                            },
+                            {
+                                title: 'Seata TCC mode',
+                                link: '/en-us/docs/dev/mode/tcc-mode.html',
+                            },
+                            {
+                                title: 'Seata Saga mode',
+                                link: '/en-us/docs/dev/mode/saga-mode.html',
+                            }
+                        ],
+                    },
+                    {
+                        title: 'Metrics',
+                        link: '/en-us/docs/dev/seata-mertics.html',
+                    },
+                ],
+            },
+            {
+                title: 'Ops Guide',
+                children: [
+                    {
+                        title: 'Metrics配置',
+                        link: '/en-us/docs/ops/multi-configuration-isolation.html',
+                    },
+                ]
+
+            },
+            {
                 title: 'FAQ',
-                link: '/en-us/docs/faq.html',
+                link: '/en-us/docs/overview/faq.html',
             }
         ],
         barText: 'Documentation'
@@ -46,7 +82,7 @@ export default {
                 children: [
                     {
                         title: 'Seata 是什么？',
-                        link: '/zh-cn/docs/overview/what_is_seata.html',
+                        link: '/zh-cn/docs/overview/what-is-seata.html',
                     },
                     {
                         title: '术语表',
@@ -96,26 +132,26 @@ export default {
                 title: '开发者指南',
                 children: [
                     {
-                        title: '设计原理',
+                        title: '各事务模式',
                         children: [
                             {
                                 title: 'Seata AT 模式',
-                                link: '/zh-cn/docs/dev/architecture/seata_at.html',
+                                link: '/zh-cn/docs/dev/mode/at-mode.html',
                             },
                             {
                                 title: 'Seata TCC 模式',
-                                link: '/zh-cn/docs/dev/architecture/seata_tcc.html',
+                                link: '/zh-cn/docs/dev/mode/tcc-mode.html',
                             },
                             {
                                 title: 'Seata Saga 模式',
-                                link: '/zh-cn/docs/dev/architecture/seata_saga.html',
-                            },
-                            {
-                                title: 'Metrics设计',
-                                link: '/zh-cn/docs/dev/architecture/seata_mertics.html',
-                            },
+                                link: '/zh-cn/docs/dev/mode/saga-mode.html',
+                            }
                         ],
-                    }
+                    },
+                    {
+                        title: 'Metrics',
+                        link: '/zh-cn/docs/dev/seata-mertics.html',
+                    },
                 ],
             },
             {
@@ -130,7 +166,7 @@ export default {
             },
             {
                 title: '常见问题',
-                link: '/zh-cn/docs/faq.html',
+                link: '/zh-cn/docs/overview/faq.html',
             },
             {
                 title: '开源共建',

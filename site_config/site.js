@@ -15,7 +15,7 @@ export default {
       {
         key: 'docs',
         text: 'DOCS',
-        link: '/en-us/docs/overview/what_is_seata.html',
+        link: '/en-us/docs/overview/what-is-seata.html',
       },
       {
         key: 'blog',
@@ -37,7 +37,7 @@ export default {
       list: [
         {
           text: 'What is Seata?',
-          link: '/en-us/docs/overview/what_is_seata.html',
+          link: '/en-us/docs/overview/what-is-seata.html',
         },
         {
           text: 'Quick Start',
@@ -78,7 +78,7 @@ export default {
       {
         key: 'docs',
         text: '文档',
-        link: '/zh-cn/docs/overview/what_is_seata.html',
+        link: '/zh-cn/docs/overview/what-is-seata.html',
       },
       {
         key: 'blog',
@@ -100,7 +100,7 @@ export default {
       list: [
         {
           text: 'Seata 是什么？',
-          link: '/zh-cn/docs/overview/what_is_seata.html',
+          link: '/zh-cn/docs/overview/what-is-seata.html',
         },
         {
           text: '快速开始',
