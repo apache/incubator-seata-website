@@ -26,16 +26,10 @@ If you have higher version of node installed, you may consider `nvm` to allow di
 3. Run `nvm use v8.16.0` to switch the working environment to node v8
 4. Run `npm install docsite -g`
 
+Make sure `npm` and `docsite` are configured in the environmet configuration of os . eg: /etc/profile or .bash_profile of Macos
+
 Then you are all set to run and build the website. Follow the build instruction above for the details.
 
-### 准备
-+ Make sure `npm` and `docsite` are configured in the environmet configuration of os . eg: /etc/profile or .bash_profile of Macos
-
-+ git下载整个工程文件
-+ 进入工程目录，执行 `npm i`执行依赖安装
-+ 执行`docsite start`进行本地验证查看
-+ 执行`docsite build`进行本地代码构建
-+ 提交代码推送至仓库
 
 ## 文档编写及放置
 
