@@ -4,11 +4,10 @@
 
 All website material  of https://seata.io
 
-开发前请仔细阅读 [https://docsite.js.org](https://docsite.js.org)
 
 ## Prerequisite
 
-seata.github.io is powered by [docsite](https://github.com/txd-team/docsite).
+seata.github.io is powered by [docsite](https://github.com/txd-team/docsite).please read [https://docsite.js.org](https://docsite.js.org) 
 If your version of docsite is less than `1.3.3`, please upgrade to `1.3.3`.
 Please also make sure your node version is 8.x, versions higher than 8.x is not supported by docsite yet.
 
@@ -30,7 +29,8 @@ If you have higher version of node installed, you may consider `nvm` to allow di
 Then you are all set to run and build the website. Follow the build instruction above for the details.
 
 ### 准备
- 
++ Make sure `npm` and `docsite` are configured in the environmet configuration of os . eg: /etc/profile or .bash_profile of Macos
+
 + git下载整个工程文件
 + 进入工程目录，执行 `npm i`执行依赖安装
 + 执行`docsite start`进行本地验证查看
