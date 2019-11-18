@@ -63,6 +63,16 @@ export default {
                 ],
             },
             {
+                title: 'FAQ',
+                link: '/en-us/docs/faq/faq.html',
+		children: [
+		    {
+			title: 'FAQ',
+			link: '/en-us/docs/faq/faq.html',
+		    }
+		]
+	    },
+	    {
                 title: 'Ops Guide',
                 children: [
                     {
@@ -70,7 +80,6 @@ export default {
                         link: '/en-us/docs/ops/multi-configuration-isolation.html',
                     },
                 ]
-
             }
         ],
         barText: 'Documentation'
@@ -167,6 +176,16 @@ export default {
                     },
                 ]
 
+            },
+            {
+                title: '常见问题',
+                link: '/zh-cn/docs/faq/faq.html',
+		children: [
+		    {
+			title: '常见问题',
+			link: '/zh-cn/docs/faq/faq.html',
+		    }
+		]
             },
             {
                 title: '开源共建',
