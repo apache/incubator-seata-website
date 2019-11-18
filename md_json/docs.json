@@ -30,6 +30,11 @@
       }
     },
     {
+      "filename": "faq.md",
+      "link": "/en-us/docs/faq/faq.html",
+      "meta": {}
+    },
+    {
       "filename": "multi-configuration-isolation.md",
       "link": "/en-us/docs/ops/multi-configuration-isolation.html",
       "meta": {}
@@ -119,6 +124,11 @@
         "keywords": "Seata, 维护者",
         "description": "Seata 维护者名单"
       }
+    },
+    {
+      "filename": "faq.md",
+      "link": "/zh-cn/docs/faq/faq.html",
+      "meta": {}
     },
     {
       "filename": "operation.md",
