@@ -6,7 +6,7 @@ export default {
       buttons: [
         {
           text: '快速入门',
-          link: '/zh-cn/docs/overview/what_is_seata.html',
+          link: '/zh-cn/docs/overview/what-is-seata.html',
           type: 'primary',
         },
         {
@@ -17,7 +17,7 @@ export default {
       ],
     },
     introduction: {
-      title: '什么是 Seata？',
+      title: 'Seata 是什么？',
       desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。Seata 于2019.1 正式对外开源，前身是阿里巴巴2014年诞生的 TXC（Taobao Transaction Constructor），在集团业务得到了广泛使用。并且于2016年对外发布阿里云 GTS（Global Transactional Service），使得 Seata 在分布式事务领域受到企业和个人用户青睐。',
       img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
     },
@@ -64,7 +64,7 @@ export default {
       buttons: [
         {
           text: 'Get Started',
-          link: '/en-us/docs/quickstart.html',
+          link: '/en-us/docs/user/quickstart.html',
           type: 'primary',
         },
         {
