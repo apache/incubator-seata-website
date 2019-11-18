@@ -1,6 +1,15 @@
 {
   "en-us": [
     {
+      "filename": "download.md",
+      "link": "/en-us/blog/download.html",
+      "meta": {
+        "title": "Downloads",
+        "keywords": "Seata, Downloads, Version",
+        "description": "This article will introduce you how to understand the details of each version and upgrade matters needing attention."
+      }
+    },
+    {
       "filename": "manual-transaction-mode.md",
       "link": "/en-us/blog/manual-transaction-mode.html",
       "meta": {
@@ -33,6 +42,15 @@
         "description": "本文从金融分布式应用开发的一些痛点出发，结合理论和实践对社区和行业的解决方案进行了分析，并讲解了如何基于Seata saga设计更有弹性的金融应用",
         "author": "long187",
         "date": "2019-11-04"
+      }
+    },
+    {
+      "filename": "download.md",
+      "link": "/zh-cn/blog/download.html",
+      "meta": {
+        "title": "下载中心",
+        "keywords": "Seata, Downloads, Version",
+        "description": "本文将向你介绍如何点击了解各版本详情和升级注意事项。"
       }
     },
     {
