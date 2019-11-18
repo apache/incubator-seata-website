@@ -27,6 +27,11 @@ export default {
         text: 'COMMUNITY',
         link: '/en-us/community/index.html',
       },
+      {
+        key: 'download',
+        text: 'DOWNLOAD',
+        link: '/en-us/blog/download.html',
+      },
     ],
     vision: {
       title: 'Vision',
@@ -89,6 +94,11 @@ export default {
         key: 'community',
         text: '社区',
         link: '/zh-cn/community/index.html',
+      },
+      {
+        key: 'download',
+        text: '下载',
+        link: '/zh-cn/blog/download.html',
       },
     ],
     vision: {
