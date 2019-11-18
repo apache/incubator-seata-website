@@ -27,6 +27,11 @@ export default {
         text: 'COMMUNITY',
         link: '/en-us/community/index.html',
       },
+      {
+        key: 'download',
+        text: 'DOWNLOAD',
+        link: '/en-us/blog/download.html',
+      },
     ],
     vision: {
       title: 'Vision',
