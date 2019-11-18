@@ -26,7 +26,13 @@ export default {
             },
             {
                 title: 'FAQ',
-                link: '/en-us/docs/faq.html',
+                link: '/en-us/docs/faq/faq.html',
+		children: [
+		    {
+			title: 'FAQ',
+			link: '/en-us/docs/faq/faq.html',
+		    }
+		]
             }
         ],
         barText: 'Documentation'
@@ -122,7 +128,13 @@ export default {
             },
             {
                 title: '常见问题',
-                link: '/zh-cn/docs/faq.html',
+                link: '/zh-cn/docs/faq/faq.html',
+		children: [
+		    {
+			title: '常见问题',
+			link: '/zh-cn/docs/faq/faq.html',
+		    }
+		]
             },
             {
                 title: '开源共建',
