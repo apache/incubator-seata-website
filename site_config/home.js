@@ -27,32 +27,32 @@ export default {
         {
           icon: 'feature-1',
           title: '微服务框架支持',
-          content: '目前已支持 Dubbo 和 Spring Cloud 微服务框架，其他微服务框架持续集成中',
+          content: '目前已支持 Dubbo、Spring Cloud、Sofa-RPC、Motan 和 grpc 等RPC框架，其他框架持续集成中',
         },
         {
           icon: 'feature-2',
-          title: '数据库支持',
-          content: '已支持 MySQL 自动模式, Oracle、PostgreSQL、H2 开发中',
+          title: 'AT 模式',
+          content: '提供无侵入自动补偿的事务模式，目前已支持 MySQL、 Oracle 的AT模式、PostgreSQL、H2 开发中',
         },
         {
           icon: 'feature-3',
-          title: 'TCC 模式（开发中）',
-          content: '支持 用户自定义 TCC 接口模式并可与 AT 混用',
+          title: 'TCC 模式',
+          content: '支持 TCC 模式并可与 AT 混用，灵活度更高',
         },
         {
           icon: 'feature-4',
+          title: 'SAGA 模式',
+          content: '为长事务提供有效的解决方案',
+        },
+        {
+          icon: 'feature-5',
           title: 'XA 模式（开发中）',
           content: '支持已实现 XA 接口的数据库的 XA 模式',
         },
         {
-          icon: 'feature-5',
-          title: '动态伸缩',
-          content: 'TBD',
-        },
-        {
           icon: 'feature-6',
           title: '高可用',
-          content: 'TBD',
+          content: '支持基于数据库存储的集群模式，水平扩展能力强',
         },
       ],
     },
@@ -100,7 +100,7 @@ export default {
         {
           icon: 'feature-4',
           title: 'Message filtering',
-          content: 'Apache Seata supports flexible syntax expressions to filter messages, which reduces transmission of useless messages to consumers.',
+          content: ' Seata supports flexible syntax expressions to filter messages, which reduces transmission of useless messages to consumers.',
         },
         {
           icon: 'feature-5',
@@ -110,7 +110,7 @@ export default {
         {
           icon: 'feature-6',
           title: 'Timed messaging',
-          content: 'Apache Seata supports timed messaging, but the time precision has specific levels. ',
+          content: ' Seata supports timed messaging, but the time precision has specific levels. ',
         },
       ]
     },
