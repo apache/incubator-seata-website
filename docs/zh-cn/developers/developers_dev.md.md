@@ -37,11 +37,29 @@ Contributor是对Seata项目有贡献的个人，标准为：
 
 # Seata 维护者
 
-| GitHub ID       | Github URL                            | 姓名           | 邮箱                           | 公司        |
-| --------------- | ------------------------------------- | ------------- | ------------------------------ | ----------- |
-| allencloud      | <https://github.com/allencloud>       | Allen Sun     | allensun.shl@alibaba-inc.com   | 阿里巴巴集团 |
-| chenchaobing    | <https://github.com/chenchaobing>     | Chaobing Chen | chenchaobing@126.com           | 美图        |
-| garfield009     | <https://github.com/garfield009>      | Zuozheng Hu   | zuozheng.hzz@alibaba-inc.com   | 阿里巴巴集团 |
-| lowzj           | <https://github.com/lowzj>            | Jin Zhang     | zj3142063@gmail.com            | 阿里巴巴集团 |
-| wangj998        | <https://github.com/wangj998>         | Jian Wang     | mingzhi.wj@alibaba-inc.com     | 阿里巴巴集团 |
-| zhouhaibing089  | <https://github.com/zhouhaibing089>   | Haibing Zhou  | zhouhaibing089@gmail.com       | eBay        |
+| 姓名   | github          | 公司             |
+| ------ | --------------- | --------------- |
+| 季敏   | [slievrly](https://github.com/slievrly)        | Alibabba        |
+| 申海强 | [sharajava](https://github.com/sharajava)       | Alibabba        |
+| 厉启鹏 | [wlliqipeng](https://github.com/wlliqipeng)      | Alibabba        |
+| 陈连东 | [purple-force](https://github.com/purple-force)    | Alibabba        |
+| 姜宇   | [jiangyu-gts](https://github.com/jiangyu-gts)     | Alibabba        |
+| 张伟   | [jezhang2014](https://github.com/jezhang2014)     | Alibabba        |
+| 张森   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
+| 王光树 | [wgs13579](https://github.com/wgs13579)        | Antfin          |
+| 章耿   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
+| 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
+| 王清   | [jovany-wang](https://github.com/jovany-wang)     | Antfin          |
+| 吴江坷 | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
+| 李钊   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
+| 王欣   | [lovepoem](https://github.com/lovepoem)        | WeiDian         |
+| 袁国尧 | [github-ygy](https://github.com/github-ygy)      | Tuya            |
+| 张旭   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
+| 任帅鹏 | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
+| 翟东林 | [tony-zdl](https://github.com/tony-zdl)        | Springs Capital |
+| 申旭刚 | [xuririse](https://github.com/xuririse)        | CNIC            |
+| 许德佑 | [skyesx](https://github.com/skyesx)          | WeBank          |
+| 庄金雷 | [zjinlei](https://github.com/zjinlei)         | Helios          |
+| 张嘉伟 | [l81893521](https://github.com/l81893521)       | Locals          |
+| 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
+| 陈龙   | [long187](https://github.com/long187)         | Antfin          |
