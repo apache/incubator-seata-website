@@ -31,28 +31,36 @@ Make sure `npm` and `docsite` are configured in the environmet configuration of 
 Then you are all set to run and build the website. Follow the build instruction above for the details.
 
 
-## 文档编写及放置
+## How To Write Documents
 
 ### Add a new doc
  
-
-放置在`docs/en-us`和`docs/zh-cn`下，分别对应中文文档和英文文档，中英文件名需保持一致。
-1. Add new .md file under docs/en-us or docs/zh-cn.
+1. Add new .md file under docs/en-us or docs/zh-cn. Corresponding to Chinese file and English file , and the Chinese and English file names should be consistent.
 2. Update site_config/docs.js, add a new entry to the blog in either en-us or zh-cn.
 3. Run docsite start locally to verify the blog can be displayed correctly.
 4. Send the pull request contains the .md and doc.js only.
 
+### Add a new article for developers
+
+1. Add new .md file under docs/en-us/developers or docs/zh-cn/developers, the file name should end up with _dev.md. Note that the suffix _dev is necessary.
+2. Update site_config/develop.js, add a new entry in either en-us or zh-cn.
+3. Run docsite start locally to verify the article can be displayed correctly.
+4. Send the pull request contains the *_dev.md and develop.js only.
+
 ### Add a new blog
 
-放置在`blog/en-us`和`blog/zh-cn`下，分别对应中文文档和英文文档，中英文件名需保持一致。
-1. Add new .md file under blog/en-us or blog/zh-cn.
+1. Add new .md file under blog/en-us or blog/zh-cn. Corresponding to Chinese file and English file , and the Chinese and English file names should be consistent.
 2. Update site_config/blog.js, add a new entry to the blog in either en-us or zh-cn.
 3. Run docsite start locally to verify the blog can be displayed correctly.
 4. Send the pull request contains the .md and blog.js only.
+5. `SEO` config is required,
+notice : Blog documents will be automatically sorted by time, without menu configuration
+         
+Set 'hidden' to 'true' for documents you don't want to display temporarily`
 
 ## SEO
 
-内容形式为
+the type is :
 ```
 ---
 hidden: false
@@ -63,15 +71,11 @@ author: author name
 date: 2018-12-29
 ---
 ```
-博客文档会按时间先后自动进行排序，无需进行菜单配置.
 
-暂时不想显示的文档`hidden`设为`true`
+## Others
 
-
-## 其他
-
-+ 如需添加全局搜索，详见[https://docsite.js.org/zh-cn/docs/search.html](https://docsite.js.org/zh-cn/docs/search.html)
-+ 上线前看下这里[https://docsite.js.org/zh-cn/docs/path.html](https://docsite.js.org/zh-cn/docs/path.html)
++ If you want to add `search in site`，see [https://docsite.js.org/zh-cn/docs/search.html](https://docsite.js.org/zh-cn/docs/search.html)
++ This is docsite docs :[https://docsite.js.org/zh-cn/docs/path.html](https://docsite.js.org/zh-cn/docs/path.html)
 
 
 
