@@ -86,6 +86,11 @@ export default {
         link: '/zh-cn/docs/overview/what-is-seata.html',
       },
       {
+        key: 'developers',
+        text: '开发者',
+        link: '/zh-cn/docs/developers/developers_dev.md.html',
+      },
+      {
         key: 'blog',
         text: '博客',
         link: '/zh-cn/blog/index.html',
