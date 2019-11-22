@@ -21,13 +21,18 @@
       "meta": {}
     },
     {
-      "filename": "maintainers.md",
-      "link": "/en-us/docs/developers/maintainers.html",
+      "filename": "developers_dev.md",
+      "link": "/en-us/docs/developers/developers_dev.html",
       "meta": {
-        "title": "Seata Maintainers",
-        "keywords": "Seata, Maintainers",
-        "description": "A list of Seata maintainers"
+        "title": "Seata 维护者",
+        "keywords": "Seata, 维护者",
+        "description": "Seata 维护者名单"
       }
+    },
+    {
+      "filename": "guide_dev.md",
+      "link": "/en-us/docs/developers/guide_dev.html",
+      "meta": {}
     },
     {
       "filename": "faq.md",
@@ -37,11 +42,6 @@
     {
       "filename": "multi-configuration-isolation.md",
       "link": "/en-us/docs/ops/multi-configuration-isolation.html",
-      "meta": {}
-    },
-    {
-      "filename": "faq.md",
-      "link": "/en-us/docs/overview/faq.html",
       "meta": {}
     },
     {
@@ -71,31 +71,6 @@
     }
   ],
   "zh-cn": [
-    {
-      "filename": "activity.md",
-      "link": "/zh-cn/docs/community/activity.html",
-      "meta": {}
-    },
-    {
-      "filename": "contact.md",
-      "link": "/zh-cn/docs/community/contact.html",
-      "meta": {}
-    },
-    {
-      "filename": "contribution.md",
-      "link": "/zh-cn/docs/community/contribution.html",
-      "meta": {}
-    },
-    {
-      "filename": "question.md",
-      "link": "/zh-cn/docs/community/question.html",
-      "meta": {}
-    },
-    {
-      "filename": "roadmap.md",
-      "link": "/zh-cn/docs/community/roadmap.html",
-      "meta": {}
-    },
     {
       "filename": "at-mode.md",
       "link": "/zh-cn/docs/dev/mode/at-mode.html",
@@ -147,8 +122,8 @@
       "meta": {}
     },
     {
-      "filename": "developers_dev.md.md",
-      "link": "/zh-cn/docs/developers/developers_dev.md.html",
+      "filename": "developers_dev.md",
+      "link": "/zh-cn/docs/developers/developers_dev.html",
       "meta": {
         "title": "Seata 维护者",
         "keywords": "Seata, 维护者",
@@ -168,11 +143,6 @@
     {
       "filename": "operation.md",
       "link": "/zh-cn/docs/ops/operation.html",
-      "meta": {}
-    },
-    {
-      "filename": "faq.md",
-      "link": "/zh-cn/docs/overview/faq.html",
       "meta": {}
     },
     {
