@@ -59,6 +59,15 @@ export default {
                 ],
             },
             {
+                title: 'Ops Guide',
+                children: [
+                    {
+                        title: 'Configuration Isolation',
+                        link: '/en-us/docs/ops/multi-configuration-isolation.html',
+                    },
+                ]
+            },
+            {
                 title: 'FAQ',
                 link: '/en-us/docs/faq/faq.html',
                 children: [
@@ -68,15 +77,6 @@ export default {
                     }
                 ]
             },
-            {
-                title: 'Ops Guide',
-                children: [
-                    {
-                        title: 'Configuration Isolation',
-                        link: '/en-us/docs/ops/multi-configuration-isolation.html',
-                    },
-                ]
-            }
         ],
         barText: 'Documentation'
     },
