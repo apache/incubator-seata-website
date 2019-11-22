@@ -2,6 +2,16 @@ export default {
     'en-us': {
         sidemenu: [
             {
+                title: 'Developers List',
+                children: [
+
+                    {
+                        title: 'Developers',
+                        link: '/en-us/docs/developers/developers_dev.html',
+                    },
+                ],
+            },
+            {
                 title: 'Contribute Guide',
                 children: [
                     {
@@ -15,7 +25,11 @@ export default {
                     {
                         title: 'How to report security issues',
                         link: '/en-us/docs/developers/contributor-guide/reporting-security-issues_dev.html',
-                    }
+                    },
+                    {
+                        title: 'How to contribute',
+                        link: '/en-us/docs/developers/guide_dev.html', // 开发者文档均以_dev结尾作为文件名，md文件放在docs目录下
+                    },
                 ]
             },
             {
@@ -34,18 +48,6 @@ export default {
                         link: '/en-us/docs/developers/committer-guide/release-guide_dev.html',
                     }
                 ]
-            },
-            {
-                children: [
-                    {
-                        title: 'How to contribute',
-                        link: '/en-us/docs/developers/guide_dev.html', // 开发者文档均以_dev结尾作为文件名，md文件放在docs目录下
-                    },
-                    {
-                        title: 'Developers',
-                        link: '/en-us/docs/developers/developers_dev.html',
-                    },
-                ],
             }
         ],
         barText: 'Developers',
@@ -54,13 +56,13 @@ export default {
         {
             sidemenu: [
                 {
-                    title: '用户向导',
+                    title: '开发者列表',
                     children: [
                         {
-                            title: 'FAQ',
-                            link: '/zh-cn/docs/developers/user-guide/faq_dev.html',
+                            title: '开发人员',
+                            link: '/zh-cn/docs/developers/developers_dev.html',
                         }
-                    ]
+                    ],
                 },
                 {
                     title: '贡献者向导',
@@ -76,7 +78,11 @@ export default {
                         {
                             title: '如何汇报安全漏洞',
                             link: '/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev.html',
-                        }
+                        },
+                        {
+                            title: '参与贡献',
+                            link: '/zh-cn/docs/developers/guide_dev.html',
+                        },
                     ]
                 },
                 {
@@ -95,22 +101,9 @@ export default {
                             link: '/zh-cn/docs/developers/committer-guide/release-guide_dev.html',
                         }
                     ]
-                },
-                {
-                    children: [
-                        {
-                            title: '参与贡献',
-                            link: '/zh-cn/docs/developers/guide_dev.html',
-                        },
-                        {
-                            title: '开发人员',
-                            link: '/zh-cn/docs/developers/developers_dev.html',
-                        }
-                    ],
                 }
             ],
-            barText:
-                '开发者',
+            barText: '开发者',
         }
 }
 ;
