@@ -26,6 +26,9 @@ A: 场景：分支事务a注册TC后，a的本地事务提交前发生了全局�
 A: 因seata一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。
     1.脏读 select语句加for update，代理方法增加@GlobalLock或@GlobalTransaction
     2.脏写 必须使用@GlobalTransaction
+    注：如果你查询的业务的接口没有GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock 注解，并且在查询语句上加 for update。
+        如果你查询的接口在事务链路上外层有GlobalTransactional注解，那么你查询的语句只要加for update就行。设计这个注解的原因是在没有这个注解之前，需要查询分布式事务读已提交的数据，但业务本身不需要分布式事务。
+        若使用GlobalTransactional注解就会增加一些没用的额外的rpc开销比如begin 返回xid，提交事务等。GlobalLock简化了rpc过程，使其做到更高的性能。
 ```
 
 ## Q: 脏数据回滚失败如何处理
@@ -45,5 +48,6 @@ A:
     描述：分支事务注册时，全局事务状态需是一阶段状态begin，非begin不允许注册。属于seata框架层面正常的处理，用户可以从自身业务层面解决。
     有以下几种情况会出现该异常（可继续补充）
     1.分支事务是异步，全局事务无法感知它的执行进度，全局事务已进入二阶段，该异步分支才来注册
-    2.服务a rpc 服务b超时（dubbo、fegin等默认1秒超时），a上抛异常给tm，tm通知tc回滚，但是b还是收到了请求（网络延迟或rpc框架重试），然后去tc注册时发现全局事务已在回滚
+    2.服务a rpc 服务b超时（dubbo、feign等默认1秒超时），a上抛异常给tm，tm通知tc回滚，但是b还是收到了请求（网络延迟或rpc框架重试），然后去tc注册时发现全局事务已在回滚
+    3.tc感知全局事务超时(@GlobalTransactional(timeoutMills = 默认60秒))，主动变更状态并通知各分支事务回滚，此时有新的分支事务来注册
 ```
