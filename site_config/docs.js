@@ -65,6 +65,10 @@ export default {
                         title: 'Configuration Isolation',
                         link: '/en-us/docs/ops/multi-configuration-isolation.html',
                     },
+                    {
+                        title: 'Deploy By Docker',
+                        link: '/en-us/docs/ops/deploy-by-docker.html',
+                    },
                 ]
             },
             {
@@ -165,6 +169,10 @@ export default {
                     {
                         title: 'Metrics配置',
                         link: '/zh-cn/docs/ops/operation.html',
+                    },
+                    {
+                        title: 'Docker部署',
+                        link: '/zh-cn/docs/ops/deploy-by-docker.html',
                     },
                 ]
 
