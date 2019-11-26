@@ -51,3 +51,31 @@ A:
     2.服务a rpc 服务b超时（dubbo、feign等默认1秒超时），a上抛异常给tm，tm通知tc回滚，但是b还是收到了请求（网络延迟或rpc框架重试），然后去tc注册时发现全局事务已在回滚
     3.tc感知全局事务超时(@GlobalTransactional(timeoutMills = 默认60秒))，主动变更状态并通知各分支事务回滚，此时有新的分支事务来注册
 ```
+
+## Q: Nacos 作为 Seata 配置中心时，项目启动报错找不到服务，如何排查，如何处理
+
+```
+A： 异常：io.seata.common.exception.FrameworkException: can not register RM,err:can not connect to services-server.
+    1.查看nacos配置列表，seata配置是否已经导入成功
+    2.查看nacos服务列表，serverAddr是否已经注册成功
+    3.检查client端的registry.conf里面的namespace，registry.nacos.namespace和config.nacos.namespace填入nacos的命名空间ID，默认""，server端和client端对应，namespace
+为public是nacos的一个保留控件，如果您需要创建自己的namespace，最好不要和public重名，以一个实际业务场景有具体语义的名字来命名
+    4.nacos上服务列表，serverAddr地址对应ip地址应为seata启动指定ip地址，如：sh seata-server.sh -p 8091 -h 122.51.204.197 -m file
+    5.查看seata/conf/nacos-config.txt 事务分组service.vgroup_mapping.trade_group=default配置与项目分组配置名称是否一致
+    6.telnet ip 端口 查看端口是都开放，以及防火墙状态
+    注：1.080版本启动指定ip问题，出现异常Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot addign request address，请升级到081以上版本
+       2.项目使用jdk13，启动出现Error: Could not create the Java Virtual Machine.
+                              Error: A fatal exception has occurred. Program will exit.
+        如环境为sh，替换脚本中最后一段：
+        exec "$JAVACMD" $JAVA_OPTS -server -Xmx2048m -Xms2048m -Xmn1024m -Xss512k -XX:SurvivorRatio=10 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:
+MaxDirectMemorySize=1024m -XX:-OmitStackTraceInFastThrow -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$BASEDIR"/logs
+/java_heapdump.hprof -XX:+DisableExplicitGC -XX:+CMSParallelRemarkEnabled -XX:+
+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc -Dio.netty.leakDetectionLevel=advanced \
+          -classpath "$CLASSPATH" \
+          -Dapp.name="seata-server" \
+          -Dapp.pid="$$" \
+          -Dapp.repo="$REPO" \
+          -Dapp.home="$BASEDIR" \
+          -Dbasedir="$BASEDIR" \
+          io.seata.server.Server \
+          "$@"
