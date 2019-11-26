@@ -40,6 +40,18 @@
       "meta": {}
     },
     {
+      "filename": "deploy-by-docker.md",
+      "link": "/en-us/docs/ops/deploy-by-docker.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Docker",
+        "keywords": "docker",
+        "description": "Deploy Seata Server By Docker",
+        "author": "helloworlde",
+        "date": "2019-11-25"
+      }
+    },
+    {
       "filename": "multi-configuration-isolation.md",
       "link": "/en-us/docs/ops/multi-configuration-isolation.html",
       "meta": {}
@@ -139,6 +151,18 @@
       "filename": "faq.md",
       "link": "/zh-cn/docs/faq/faq.html",
       "meta": {}
+    },
+    {
+      "filename": "deploy-by-docker.md",
+      "link": "/zh-cn/docs/ops/deploy-by-docker.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Docker 部署 Seata Server",
+        "keywords": "docker",
+        "description": "使用 Docker 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-11-25"
+      }
     },
     {
       "filename": "operation.md",
