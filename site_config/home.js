@@ -60,7 +60,7 @@ export default {
   'en-us': {
     brand: {
       brandName: 'Seata',
-      briefIntroduction: 'Seata is a distributed transaction solution with high performance and ease of use for microservices architecture',
+      briefIntroduction: 'Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.',
       buttons: [
         {
           text: 'Get Started',
@@ -76,7 +76,7 @@ export default {
     },
     introduction: {
       title: 'What is Seata?',
-      desc: 'Seata is a distributed messaging and streaming computing platform with high performance and high throughput. It is an open source project from Alibaba, which has been donated to the Apache Software Foundation in 2016. On September 25, 2017, it became an Apache top-level project. Its predecessor was MetaQ, a data messaging engine created by Alibaba in 2011. And it was created as an open source project known as Seata 3.0 in 2012. Low latency, high reliability, and scalability make Apache Seata popular among enterprises and individuals in the distributed computing field.',
+      desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Seata officially opened sourced in January  2019, TXC(Taobao Transaction Constructor) was born in 2014 by alibaba, It is widely used in group business. In 2016, the company released the Global Transactional Service (GTS), which made Seata popular among enterprises and individual users in the field of distributed transactions.',
       img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
     },
     features: {
@@ -84,33 +84,33 @@ export default {
       list: [
         {
           icon: 'feature-1',
-          title: 'Scalability',
-          content: 'Brokers, producers, consumers, and name servers adopt special deployment and processing methods that bring strong scale-out ability. ',
+          title: 'Microservices Framework Support',
+          content: 'RPC frameworks such as Dubbo, Spring Cloud, Sofa-RPC, Motan, and grpc are currently supported, and other frameworks are continuously integrated.',
         },
         {
           icon: 'feature-2',
-          title: 'Distributed transaction',
-          content: 'Seata implements a function similar to distributed transaction processing of X/Open XA, which allows multiple resources to be accessed within the same transaction.',
+          title: 'AT mode',
+          content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle\'s AT mode, PostgreSQL, In developing the H2.',
         },
         {
           icon: 'feature-3',
-          title: 'Cache and Cache Maintenance',
-          content: 'Seata makes the best use of system memory cache to maintain data to the file system through flushing either synchronously or asynchronously.',
+          title: 'TCC mode',
+          content: 'Support TCC mode and mix with AT for greater flexibility.',
         },
         {
           icon: 'feature-4',
-          title: 'Message filtering',
-          content: ' Seata supports flexible syntax expressions to filter messages, which reduces transmission of useless messages to consumers.',
+          title: 'SAGA mode',
+          content: 'Provide an effective solution for long transactions.',
         },
         {
           icon: 'feature-5',
-          title: 'Consumer offset',
-          content: 'Based on the message storage model of Apache Seata, consumer offset can be reset by the time, accurate to a millisecond. Messages can be re-consumed from the earliest offset and the latest offset.',
+          title: 'XA mode (under development)',
+          content: 'Support for XA schemas for databases that have implemented XA interfaces.',
         },
         {
           icon: 'feature-6',
-          title: 'Timed messaging',
-          content: ' Seata supports timed messaging, but the time precision has specific levels. ',
+          title: 'High availability',
+          content: 'Support cluster mode based on database storage, strong horizontal scalability.',
         },
       ]
     },
