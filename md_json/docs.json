@@ -21,6 +21,36 @@
       "meta": {}
     },
     {
+      "filename": "label-an-issue-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/label-an-issue-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "release-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/release-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "website-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/website-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "new-contributor-guide_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/new-contributor-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "reporting-security-issues_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/reporting-security-issues_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "test-coverage-guide_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/test-coverage-guide_dev.html",
+      "meta": {}
+    },
+    {
       "filename": "developers_dev.md",
       "link": "/en-us/docs/developers/developers_dev.html",
       "meta": {
