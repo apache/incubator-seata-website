@@ -136,6 +136,26 @@
       }
     },
     {
+      "filename": "seata-at-mode-design.md",
+      "link": "/zh-cn/blog/seata-at-mode-design.html",
+      "meta": {
+        "title": "分布式事务中间件 Seata 的设计原理",
+        "author": "张乘辉",
+        "keywords": "Seata、分布式事务、AT模式",
+        "date": "2019/07/11"
+      }
+    },
+    {
+      "filename": "seata-at-mode-start.md",
+      "link": "/zh-cn/blog/seata-at-mode-start.html",
+      "meta": {
+        "title": "Seata AT 模式启动源码分析",
+        "author": "张乘辉",
+        "keywords": "Seata、分布式事务、AT模式",
+        "date": "2019/11/27"
+      }
+    },
+    {
       "filename": "seata-at-tcc-saga.md",
       "link": "/zh-cn/blog/seata-at-tcc-saga.html",
       "meta": {
