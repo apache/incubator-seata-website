@@ -18,7 +18,7 @@ export default {
     },
     introduction: {
       title: 'Seata 是什么？',
-      desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。Seata 于2019.1 正式对外开源，前身是阿里巴巴2014年诞生的 TXC（Taobao Transaction Constructor），在集团业务得到了广泛使用。并且于2016年对外发布阿里云 GTS（Global Transactional Service），使得 Seata 在分布式事务领域受到企业和个人用户青睐。',
+      desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，Seata 对应的内部版本在阿里经济体内部一直扮演着分布式一致性中间件的角色，帮助经济体平稳的度过历年的双11，对各BU业务进行了有力的支撑。经过多年沉淀与积累，商业化产品先后在阿里云、金融云进行售卖。2019.1 为了打造更加完善的技术生态和普惠技术成果，Seata 正式宣布对外开源，未来 Seata 将以社区共建的形式帮助其技术更加可靠与完备。',
       img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
     },
     features: {
