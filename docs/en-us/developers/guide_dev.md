@@ -1,86 +1,85 @@
-# 为Seata贡献
+# Contributing to Seata
 
-如果您有兴趣攻克Seata，欢迎您。首先，我们非常鼓励这种意愿。这是为您提供帮助的列表。
+It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you.
 
-## 话题
+## Topics
 
-* [报告安全问题](#报告安全问题) 
-* [报告一般问题](#报告一般问题) 
-* [代码和文档贡献](#代码和文档贡献) 
-* [测试用例贡献](#测试用例贡献)
-* [致力于帮助任何事情](#致力于帮助任何事情)
-* [代码风格](#代码风格)
+* [Reporting security issues](#reporting-security-issues)
+* [Reporting general issues](#reporting-general-issues)
+* [Code and doc contribution](#code-and-doc-contribution)
+* [Test case contribution](#test-case-contribution)
+* [Engage to help anything](#engage-to-help-anything)
+* [Code Style](#code-style)
 
-## 报告安全问题
+## Reporting security issues
 
-安全问题应该始终得到认真对待。按照我们通常的原则，我们不鼓励任何人散布安全问题。如果您发现Seata的安全问题，请不要公开讨论，甚至不要公开问题。相反，我们建议您向我们发送一封私人电子邮件至 [dev-seata@googlegroups.com](mailto:dev-seata@googlegroups.com)进行举报。
+Security issues are always treated seriously. As our usual principle, we discourage anyone to spread security issues. If you find a security issue of Seata, please do not discuss it in public and even do not open a public issue. Instead we encourage you to send us a private email to  [dev-seata@googlegroups.com](mailto:dev-seata@googlegroups.com) to report this.
 
-## 报告一般问题
+## Reporting general issues
 
-坦白地说，我们认为Seata的每位用户都是非常友好的贡献者。体验Seata之后，您可能会对项目有一些反馈。然后随时通过[NEW ISSUE](https://github.com/seata/seata/issues/new/choose)打开[问题](https://github.com/seata/seata/issues/new/choose)。
+To be honest, we regard every user of Seata as a very kind contributor. After experiencing Seata, you may have some feedback for the project. Then feel free to open an issue via [NEW ISSUE](https://github.com/seata/seata/issues/new/choose).
 
-因为我们在一个分布式的方式合作项目Seata，我们对此表示赞赏**编写良好**，**详细**，**明确**的问题报告。为了提高沟通效率，我们希望每个人都可以搜索您的问题是否在搜索列表中。如果发现它存在，请在现有问题下的评论中添加您的详细信息，而不要打开一个全新的issue。
+Since we collaborate project Seata in a distributed way, we appreciate **WELL-WRITTEN**, **DETAILED**, **EXPLICIT** issue reports. To make the communication more efficient, we wish everyone could search if your issue is an existing one in the searching list. If you find it existing, please add your details in comments under the existing issue instead of opening a brand new one.
 
-为了使问题详细信息尽可能地标准，我们为问题报告者设置了“ [问题模板](https://github.com/seata/seata/blob/develop/.github/ISSUE_TEMPLATE) ”。请**务必**按照说明填写模板中的字段。
+To make the issue details as standard as possible, we setup an [ISSUE TEMPLATE](https://github.com/seata/seata/blob/develop/.github/ISSUE_TEMPLATE) for issue reporters. Please **BE SURE** to follow the instructions to fill fields in template.
 
-在很多情况下，您可以打开一个问题：
+There are a lot of cases when you could open an issue:
 
-*   错误报告
-*   功能要求
-*   性能问题
-*   功能提案
-*   功能设计
-*   需要帮助
-*   doc不完整
-*   测试改进
-*   有关项目的任何问题
-*   等等
+* bug report
+* feature request
+* performance issues
+* feature proposal
+* feature design
+* help wanted
+* doc incomplete
+* test improvement
+* any questions on project
+* and so on
 
-另外，我们必须提醒您，在填写新issue时，请记住从您的帖子中删除敏感数据。敏感数据可以是密码，密钥，网络位置，私人业务数据等。
+Also we must remind that when filling a new issue, please remember to remove the sensitive data from your post. Sensitive data could be password, secret key, network locations, private business data and so on.
 
-## 代码和文档贡献
+## Code and doc contribution
 
-鼓励采取一切措施使Seata项目变得更好。在GitHub上，Seata的每个改进都可以通过PR（拉取请求的缩写）来实现。
+Every action to make project Seata better is encouraged. On GitHub, every improvement for Seata could be via a PR (short for pull request).
 
-*   如果发现错字，请尝试解决！
-*   如果发现错误，请尝试修复它！
-*   如果发现一些冗余代码，请尝试将其删除！
-*   如果发现缺少一些测试用例，请尝试添加它们！
-*   如果您可以增强功能，请**不要**犹豫！
-*   如果发现隐式代码，请尝试添加注释以使其清晰！
-*   如果您发现代码丑陋，请尝试重构它！
-*   如果可以帮助改善文档，那就再好不过了！
-*   如果发现文档不正确，请直接解决该问题！
-*   ...
+* If you find a typo, try to fix it!
+* If you find a bug, try to fix it!
+* If you find some redundant codes, try to remove them!
+* If you find some test cases missing, try to add them!
+* If you could enhance a feature, please **DO NOT** hesitate!
+* If you find code implicit, try to add comments to make it clear!
+* If you find code ugly, try to refactor that!
+* If you can help to improve documents, it could not be better!
+* If you find document incorrect, just do it and fix that!
+* ...
 
-实际上，不可能完全列出它们。只要记住一个原则：
+Actually it is impossible to list them completely. Just remember one principle:
 
-> 我们期待您的任何回复。
+> WE ARE LOOKING FORWARD TO ANY PR FROM YOU.
 
-由于您已准备好通过PR改善Seata，因此建议您在此处查看PR规则。
+Since you are ready to improve Seata with a PR, we suggest you could take a look at the PR rules here.
 
-*   [工作准备](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#workspace-preparation)
-*   [分支定义](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#branch-definition)
-*   [提交规则](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#commit-rules)
-*   [PR说明](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#pr-description)
+* [Workspace Preparation](#workspace-preparation)
+* [Branch Definition](#branch-definition)
+* [Commit Rules](#commit-rules)
+* [PR Description](#pr-description)
 
-### 工作准备
+### Workspace Preparation
 
-要提出PR，我们假设您已经注册了GitHub ID。然后，您可以按照以下步骤完成准备工作：
+To put forward a PR, we assume you have registered a GitHub ID. Then you could finish the preparation in the following steps:
 
-1.  **FORK** Seata分支到您的存储库。要使此工作有效，您只需要单击[seata / seata](https://github.com/seata/seata)主页右边的按钮Fork 。然后，您将在`https://github.com/<your-username>/seata`中`your-username`找到您的存储库，这是您的GitHub用户名。
+1. **FORK** Seata to your repository. To make this work, you just need to click the button Fork in right-left of [seata/seata](https://github.com/seata/seata) main page. Then you will end up with your repository in `https://github.com/<your-username>/seata`, in which `your-username` is your GitHub username.
 
-2.  **CLONE**您自己的存储库以在本地进行开发。用于`git clone git@github.com:<your-username>/seata.git`将存储库克隆到本地计算机。然后，您可以创建新分支来完成您希望进行的更改。
+1. **CLONE** your own repository to develop locally. Use `git clone git@github.com:<your-username>/seata.git` to clone repository to your local machine. Then you can create new branches to finish the change you wish to make.
 
-3.  **Set Remote**上游设置为`git@github.com:seata/seata.git`使用以下两个命令：
+1. **Set Remote** upstream to be `git@github.com:seata/seata.git` using the following two commands:
 
 ```
 git remote add upstream git@github.com:seata/seata.git
 git remote set-url --push upstream no-pushing
-
 ```
 
-使用此远程设置，您可以像这样检查git远程配置：
+With this remote setting, you can check your git remote configuration like this:
 
 ```
 $ git remote -v
@@ -88,104 +87,109 @@ origin     git@github.com:<your-username>/seata.git (fetch)
 origin     git@github.com:<your-username>/seata.git (push)
 upstream   git@github.com:seata/seata.git (fetch)
 upstream   no-pushing (push)
-
 ```
 
-加上这一点，我们可以很容易地将本地分支与上游分支同步。
+Adding this, we can easily synchronize local branches with upstream branches.
 
-### 分支定义
+### Branch Definition
 
-现在，我们假设通过拉取请求所做的所有贡献都是针对Seata中的[分支发展](https://github.com/seata/seata/tree/develop)。在做出贡献之前，了解分支定义会有所帮助。
+Right now we assume every contribution via pull request is for [branch develop](https://github.com/seata/seata/tree/develop) in Seata. Before contributing, be aware of branch definition would help a lot.
 
-作为贡献者，请再次记住，通过拉取请求进行的每个贡献都是为了分支发展。在Seata项目中，还有其他几个分支，我们通常称它们为发布分支（例如0.6.0、0.6.1），功能分支，修补程序分支和主分支。
+As a contributor, keep in mind again that every contribution via pull request is for branch develop. While in project Seata, there are several other branches, we generally call them release branches(such as 0.6.0,0.6.1), feature branches, hotfix branches and master branch.
 
-正式发布版本时，将有一个发布分支，并以版本号命名。
+When officially releasing a version, there will be a release branch and named with the version number. 
 
-发布之后，我们将发布分支的提交合并到master分支中。
+After the release, we will merge the commit of the release branch into the master branch.
 
-当发现某个版本中存在错误时，我们将决定在更高版本中进行修复或在特定修补程序版本中进行修复。当我们决定修复此修补程序版本时，我们将根据相应的发行分支检出该修补程序分支，执行代码修复和验证，然后将其合并到开发分支和master分支中。
+When we find that there is a bug in a certain version, we will decide to fix it in a later version or fix it in a specific hotfix version. When we decide to fix the hotfix version, we will checkout the hotfix branch based on the corresponding release branch, perform code repair and verification, and merge it into the develop branch and the master branch.
 
-对于更大的功能，我们将拉出功能分支以进行开发和验证。
+For larger features, we will pull out the feature branch for development and verification.
 
-### 提交规则
 
-实际上，在Seata中，我们在提交时要认真对待两个规则：
+### Commit Rules
 
-*   [提交讯息](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#commit-message)
-*   [提交内容](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#commit-content)
+Actually in Seata, we take two rules serious when committing:
 
-#### 提交讯息
+* [Commit Message](#commit-message)
+* [Commit Content](#commit-content)
 
-提交消息可以帮助审稿人更好地了解提交的PR的目的。它也可以帮助加快代码审查过程。我们鼓励贡献者**清楚明白**提交消息而不是模棱两可的消息。通常，我们提倡以下提交消息类型：
+#### Commit Message
 
-*   docs：xxxx。例如，“ docs：添加有关Seata群集安装的文档”。
-*   feature：xxxx。例如，“新功能：在AT模式下支持oracle”。
-*   bugfix：xxxx。例如，“错误修正：修正了输入nil参数时的错误”。
-*   refactor：xxxx。例如，“重构：简化以使代码更具可读性”。
-*   test：xxx。例如，“测试：为func InsertIntoArray添加单元测试用例”。
-*   其他可读和显式的表达方式。
+Commit message could help reviewers better understand what is the purpose of submitted PR. It could help accelerate the code review procedure as well. We encourage contributors to use **EXPLICIT** commit message rather than ambiguous message. In general, we advocate the following commit message type:
 
-另一方面，我们不鼓励捐助者像以下方式提交消息：
+* docs: xxxx. For example, "docs: add docs about Seata cluster installation".
+* feature: xxxx.For example, "feature: support oracle in AT mode".
+* bugfix: xxxx. For example, "bugfix: fix panic when input nil parameter".
+* refactor: xxxx. For example, "refactor: simplify to make codes more readable".
+* test: xxx. For example, "test: add unit test case for func InsertIntoArray".
+* other readable and explicit expression ways.
 
-*   ~~修正错误~~
-*   ~~更新~~
-*   ~~添加文档~~
+On the other side, we discourage contributors from committing message like the following ways:
 
-如果您迷路了，请参阅《[如何编写Git提交消息](http://chris.beams.io/posts/git-commit/)》作为开始。
+* ~~fix bug~~
+* ~~update~~
+* ~~add doc~~
 
-#### 提交内容
+If you get lost, please see [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/) for a start.
 
-提交内容表示一次提交中包含的所有内容更改。我们最好将内容包含在一个提交中，这样可以在没有任何其他提交帮助的情况下支持审阅者的完整审阅。换句话说，一次提交中的内容可以传递CI以避免代码混乱。简而言之，我们要记住三个小规则：
+#### Commit Content
 
-*   避免在提交中进行很大的更改；
-*   每次提交均完整且可审查。
-*   提交时检查git config（`user.name`，`user.email`）以确保它与您的github ID相关联。
+Commit content represents all content changes included in one commit. We had better include things in one single commit which could support reviewer's complete review without any other commits' help. In another word, contents in one single commit can pass the CI to avoid code mess. In brief, there are three minor rules for us to keep in mind:
 
-另外，在代码更改部分，我们建议所有贡献者都应阅读[Seata](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#code-style)的[代码样式](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#code-style)。
+* avoid very large change in a commit;
+* complete and reviewable for each commit.
+* check git config(`user.name`, `user.email`) when committing to ensure that it is associated with your github ID.
 
-无论提交消息还是提交内容，我们都更加注重代码审查。
 
-### PR 说明
+In addition, in the code change part, we suggest that all contributors should read the [code style of Seata](#code-style).
 
-PR是更改Seata项目文件的唯一方法。为了帮助审稿人更好地实现目标，PR 说明不能太详细。我们鼓励贡献者遵循[PR模板](https://github.com/seata/seata/blob/develop/.github/PULL_REQUEST_TEMPLATE.md)完成请求请求。
+No matter commit message, or commit content, we do take more emphasis on code review.
 
-## 测试用例贡献
 
-任何测试用例都将受到欢迎。当前，Seata功能测试用例是高度优先的。
+### PR Description
 
-*   对于单元测试，您需要创建一个`xxxTest.java`在同一模块的测试目录中命名的测试文件。推荐您使用junit5 UT框架
+PR is the only way to make change to Seata project files. To help reviewers better get your purpose, PR description could not be too detailed. We encourage contributors to follow the [PR template](./.github/PULL_REQUEST_TEMPLATE.md) to finish the pull request.
 
-*   对于集成测试，您可以将集成测试放在测试目录或seata-test模块中。建议使用 mockito 测试框架。
+## Test case contribution
 
-## 致力于帮助任何事情
+Any test case would be welcomed. Currently, Seata function test cases are high priority.
 
-我们选择GitHub作为Seata合作的主要场所。因此，Seata的最新更新始终在这里。尽管通过PR捐款是一种明确的帮助方式，但我们仍然呼吁其他方式。
+* For unit test, you need to create a test file named `xxxTest.java` in the test directory of the same module. Recommend you to use the junit5 UT framework
 
-*   如果可以的话，回复他人的问题；
-*   帮助解决其他用户的问题；
-*   帮助审查他人的PR设计；
-*   帮助审查PR中其他人的代码；
-*   讨论有关Seata的问题，以使事情更加清晰；
-*   在GitHub之外倡导Seata技术;
-*   在Seata上写博客，等等。
+* For integration test, you can put the integration test in the test directory or the seata-test module. It is recommended to use the mockito test framework.
 
-## 代码风格
+## Engage to help anything
 
-Seata代码样式符合阿里巴巴Java编码准则。
+We choose GitHub as the primary place for Seata to collaborate. So the latest updates of Seata are always here. Although contributions via PR is an explicit way to help, we still call for any other ways.
 
-### 指导方针
+* reply to other's issues if you could;
+* help solve other user's problems;
+* help review other's PR design;
+* help review other's codes in PR;
+* discuss about Seata to make things clearer;
+* advocate Seata technology beyond GitHub;
+* write blogs on Seata and so on.
 
-[阿里巴巴Java编码指南](https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/)
 
-### IDE插件安装（不必要）
+## Code Style
 
-_如果要在编码时发现问题，则无需安装。_
+Seata code style Comply with Alibaba Java Coding Guidelines.
+
+
+### Guidelines
+[Alibaba-Java-Coding-Guidelines](https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/) 
+
+
+### IDE Plugin Install（not necessary）
+
+*It is not necessary to install, if you want to find a problem when you are coding.*
+
 
 #### idea IDE
-
-[p3c-idea-plugin-install](https://github.com/alibaba/p3c/blob/master/idea-plugin/README.md)
+[p3c-idea-plugin-install](https://github.com/alibaba/p3c/blob/master/idea-plugin/README.md) 
 
 #### eclipse IDE
-
 [p3c-eclipse-plugin-install](https://github.com/alibaba/p3c/blob/master/eclipse-plugin/README.md)
-总之，**任何帮助都是贡献。**
+
+
+In a word, **ANY HELP IS CONTRIBUTION.**

@@ -12,56 +12,56 @@ description: Seata 维护者名单
 
 | 姓名   | github          | 公司             |
 | ------ | --------------- | --------------- |
-| 季敏   | [slievrly](https://github.com/slievrly)        | Alibabba        |
-| 申海强 | [sharajava](https://github.com/sharajava)       | Alibabba        |
-| 厉启鹏 | [wlliqipeng](https://github.com/wlliqipeng)      | Alibabba        |
-| 陈连东 | [purple-force](https://github.com/purple-force)    | Alibabba        |
-| 姜宇   | [jiangyu-gts](https://github.com/jiangyu-gts)     | Alibabba        |
-| 张伟   | [jezhang2014](https://github.com/jezhang2014)     | Alibabba        |
-| 张森   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
-| 王光树 | [wgs13579](https://github.com/wgs13579)        | Antfin          |
-| 章耿   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
-| 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
-| 王清   | [jovany-wang](https://github.com/jovany-wang)     | Antfin          |
-| 吴江坷 | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
-| 李钊   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
-| 王欣   | [lovepoem](https://github.com/lovepoem)        | WeiDian         |
-| 袁国尧 | [github-ygy](https://github.com/github-ygy)      | Tuya            |
-| 张旭   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
-| 任帅鹏 | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
-| 翟东林 | [tony-zdl](https://github.com/tony-zdl)        | Springs Capital |
-| 申旭刚 | [xuririse](https://github.com/xuririse)        | CNIC            |
-| 许德佑 | [skyesx](https://github.com/skyesx)          | WeBank          |
-| 庄金雷 | [zjinlei](https://github.com/zjinlei)         | Helios          |
-| 张嘉伟 | [l81893521](https://github.com/l81893521)       | Locals          |
-| 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
-| 陈龙   | [long187](https://github.com/long187)         | Antfin          |
+| Min Ji   | [slievrly](https://github.com/slievrly)        | Alibabba        |
+| Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibabba        |
+| Qipeng Li| [wlliqipeng](https://github.com/wlliqipeng)      | Alibabba        |
+| Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibabba        |
+| Jiang Yu   | [jiangyu-gts](https://github.com/jiangyu-gts)     | Alibabba        |
+| Wei Zhang   | [jezhang2014](https://github.com/jezhang2014)     | Alibabba        |
+| Sen Zhang   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
+| Guangshu Wang | [wgs13579](https://github.com/wgs13579)        | Antfin          |
+| Geng Zhang   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
+| Zhiyuan Lei | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
+| Qing Wang   | [jovany-wang](https://github.com/jovany-wang)     | Antfin          |
+| Jiangke Wu | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
+| Zhao Li   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
+| Xin Wang   | [lovepoem](https://github.com/lovepoem)        | WeiDian         |
+| Guoyao Yuan | [github-ygy](https://github.com/github-ygy)      | Tuya            |
+| Xu Zhang   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
+| Shuaipeng Ren | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
+| Donglin Zhai | [tony-zdl](https://github.com/tony-zdl)        | Springs Capital |
+| Xugang Shen | [xuririse](https://github.com/xuririse)        | CNIC            |
+| Deyou Xu | [skyesx](https://github.com/skyesx)          | WeBank          |
+| Jinlei Zhuang | [zjinlei](https://github.com/zjinlei)         | Helios          |
+| Jiawei Zhang | [l81893521](https://github.com/l81893521)       | Locals          |
+| Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
+| Long Chen   | [long187](https://github.com/long187)         | Antfin          |
 
-## Seata开发者角色
+## Seata Developer Roles
 
-Seata开发者包含Maintainer、Committer、Contributor三种角色，每种角色的标准定义如下。
+Seata developers include three roles: Maintainer, Committer, and Contributor. The standard definitions for each role are as follows.
 
 ### Maintainer
 
-Maintainer是对Seata项目（包括Seata下的项目）的演进和发展做出显著贡献的个人。具体包含以下的标准：
+Maintainer is an individual who has made a significant contribution to the evolution and development of the Seata project, including projects under the seata group. Specifically includes the following criteria:
 
-*   完成多个关键模块或者工程的设计与开发，是项目的核心开发人员；
-*   持续的投入和激情，能够积极参与社区、官网、issue、PR等项目相关事项的维护；
-*   在社区中具有有目共睹的影响力，能够代表Seata参加重要的社区会议和活动；
-*   具有培养Committer和Contributor的意识和能力；
+*   Completing the design and development of multiple key modules or projects, is an core developer of the project.
+*   Continuous investment and passion, can actively participate in the maintenance of related matters such as community, official website, issue, PR, etc.
+*   Has a visible influence in the community and is able to represent Seata in important community meetings and events.
+*   Have the consciousness and ability to cultivate Committer and Contributor.
 
 ### Committer
 
-Committer是具有Seata仓库写权限的个人，包含以下的标准：
+Committer is an individual with write access to the Seata repository and includes the following criteria:
 
-*   能够在长时间内做持续贡献issue、PR的个人；
-*   参与issue列表的维护及重要feature的讨论；
-*   参与code review；
+*   An individual who can contribute to the issue and PR continuously for a long time.
+*   Participate in the maintenance of the issue list and discussion of important features.
+*   Participate in code review.
 
 ### Contributor
 
-Contributor是对Seata项目有贡献的个人，标准为：
+Contributor is an individual who contributes to the Seata project. The standard is:
 
-*   提交过PR并被合并；
+*   Submitted a PR that is merged.
 
 
