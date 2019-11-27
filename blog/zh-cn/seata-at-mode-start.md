@@ -452,7 +452,7 @@ TM client 的注册大体类似，把本次注册的信息放入对应的缓存�
 
 # 作者简介
 
-张乘辉，目前就职于中通科技信息中心技术平台部，担任 Java 工程师，主要负责中通消息平台与全链路压测项目的研发，热爱分享技术，微信公众号「后端进阶」作者，技术博客（[https:/objcoding.com/](https:/objcoding.com/)）博主，Seata Contributor，GitHub ID：objcoding。
+张乘辉，目前就职于中通科技信息中心技术平台部，担任 Java 工程师，主要负责中通消息平台与全链路压测项目的研发，热爱分享技术，微信公众号「后端进阶」作者，技术博客（[https://objcoding.com/](https://objcoding.com/)）博主，Seata Contributor，GitHub ID：objcoding。
 
 
 
