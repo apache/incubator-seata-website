@@ -57,7 +57,7 @@ class Community extends Language {
           }
           </div>
         </section>
-        <Footer logo="/img/seata_logo_white.png" language={language} />
+        <Footer logo="/img/seata_logo_gray.png" language={language} />
       </div>
     );
   }

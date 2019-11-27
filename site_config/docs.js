@@ -53,30 +53,34 @@ export default {
                         ],
                     },
                     {
-                        title: 'Metrics',
+                        title: 'Metrics design',
                         link: '/en-us/docs/dev/seata-mertics.html',
                     },
                 ],
             },
             {
-                title: 'FAQ',
-                link: '/en-us/docs/faq/faq.html',
-		children: [
-		    {
-			title: 'FAQ',
-			link: '/en-us/docs/faq/faq.html',
-		    }
-		]
-	    },
-	    {
                 title: 'Ops Guide',
                 children: [
                     {
-                        title: 'Metrics配置',
+                        title: 'Configuration Isolation',
                         link: '/en-us/docs/ops/multi-configuration-isolation.html',
                     },
+                    {
+                        title: 'Deploy By Docker',
+                        link: '/en-us/docs/ops/deploy-by-docker.html',
+                    },
                 ]
-            }
+            },
+            {
+                title: 'FAQ',
+                link: '/en-us/docs/faq/faq.html',
+                children: [
+                    {
+                        title: 'FAQ',
+                        link: '/en-us/docs/faq/faq.html',
+                    }
+                ]
+            },
         ],
         barText: 'Documentation'
     },
@@ -154,7 +158,7 @@ export default {
                         ],
                     },
                     {
-                        title: 'Metrics',
+                        title: 'Metrics设计',
                         link: '/zh-cn/docs/dev/seata-mertics.html',
                     },
                 ],
@@ -166,44 +170,23 @@ export default {
                         title: 'Metrics配置',
                         link: '/zh-cn/docs/ops/operation.html',
                     },
+                    {
+                        title: 'Docker部署',
+                        link: '/zh-cn/docs/ops/deploy-by-docker.html',
+                    },
                 ]
 
             },
             {
                 title: '常见问题',
                 link: '/zh-cn/docs/faq/faq.html',
-		children: [
-		    {
-			title: '常见问题',
-			link: '/zh-cn/docs/faq/faq.html',
-		    }
-		]
-            },
-            {
-                title: '开源共建',
                 children: [
                     {
-                        title: '社区贡献',
-                        link: '/zh-cn/docs/community/contribution.html',
-                    },
-                    {
-                        title: '有奖活动',
-                        link: '/zh-cn/docs/community/activity.html',
-                    },
-                    {
-                        title: '提交问题',
-                        link: '/zh-cn/docs/community/question.html',
-                    },
-                    {
-                        title: '社区规划',
-                        link: '/zh-cn/docs/community/roadmap.html',
-                    },
-                    {
-                        title: '联系我们',
-                        link: '/zh-cn/docs/community/contact.html',
-                    },
-                ],
-            }
+                        title: '常见问题',
+                        link: '/zh-cn/docs/faq/faq.html',
+                    }
+                ]
+            },
         ],
         barText: '文档',
     },

@@ -18,6 +18,11 @@ export default {
         link: '/en-us/docs/overview/what-is-seata.html',
       },
       {
+        key: 'developers',
+        text: 'DEVELOPERS',
+        link: '/en-us/docs/developers/developers_dev.html',
+      },
+      {
         key: 'blog',
         text: 'BLOG',
         link: '/en-us/blog/index.html',
@@ -35,7 +40,7 @@ export default {
     ],
     vision: {
       title: 'Vision',
-      content: 'Seata is dedicated to improving the efficiency of large-scale file distribution, building the go-to solution and standards of container image distribution, and providing you with file and image distribution service which is efficient, easy-to-use, and of high availability.',
+      content: 'Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.',
     },
     documentation: {
       title: 'Documentation',
@@ -84,6 +89,11 @@ export default {
         key: 'docs',
         text: '文档',
         link: '/zh-cn/docs/overview/what-is-seata.html',
+      },
+      {
+        key: 'developers',
+        text: '开发者',
+        link: '/zh-cn/docs/developers/developers_dev.html',
       },
       {
         key: 'blog',
