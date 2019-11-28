@@ -79,4 +79,3 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
           -Dbasedir="$BASEDIR" \
           io.seata.server.Server \
           "$@"
-```

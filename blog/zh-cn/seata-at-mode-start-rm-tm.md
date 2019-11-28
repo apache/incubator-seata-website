@@ -24,7 +24,7 @@ date: 2019/11/28
 
 但是 Seata 后面的优化迭代中，还需要考虑的一点是：
 
-当 Provider 服务出现异常时，是否可以直接由 Provider 的 TM client 发起全局回滚？这也就意味着可以缩短分布式事务的周期时间，尽快释放全局锁让其他数据冲突的事务尽早的获取到锁执行。
+当参与方出现异常时，是否可以直接由参与方的 TM client 发起全局回滚？这也就意味着可以缩短分布式事务的周期时间，尽快释放全局锁让其他数据冲突的事务尽早的获取到锁执行。
 
 ![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191127202606.png)
 
