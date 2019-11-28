@@ -79,3 +79,25 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
           -Dbasedir="$BASEDIR" \
           io.seata.server.Server \
           "$@"
+```
+
+## Q: Seata 客户端需要同时启动 RM 和 TM 吗？
+```
+这里附上关联 PR 地址：[https://github.com/seata/seata/pull/1936](https://github.com/seata/seata/pull/1936)
+
+随后在 PR 中讨论中得知，目前 Seata 的设计是只有在发起方的 TM 才可以发起 GlobalRollbackRequest，RM 只能发送 BranchReport(false) 上报分支状态个 TC 服务端，无法直接发送 GlobalRollbackRequest 进行全局回滚操作。具体的交互逻辑如下：
+
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191128094250.png)
+
+那么根据上面的设计模型，自然可以按需启动 TM client 了。
+
+但是 Seata 后面的优化迭代中，还需要考虑的一点是：
+
+当 Provider 服务出现异常时，是否可以直接由 Provider 的 TM client 发起全局回滚？这也就意味着可以缩短分布式事务的周期时间，尽快释放全局锁让其他数据冲突的事务尽早的获取到锁执行。
+
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191127202606.png)
+
+
+也就是说在一个全局事务当中，只要有一个 RM client 执行本地事务失败了，直接当前服务的 TM client 发起全局事务回滚，不必要等待发起方的 TM 发起的决议回滚通知了。如果要实现这个优化，那么就需要每个服务都需要同时启动 TM client 和 RM client。
+
+```
