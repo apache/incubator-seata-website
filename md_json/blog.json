@@ -180,6 +180,17 @@
       }
     },
     {
+      "filename": "springboot-dubbo-mybatisplus-seata.md",
+      "link": "/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html",
+      "meta": {
+        "title": "springboot+dubbo+mybatisplus整合seata分布式事务",
+        "keywords": "Seata,dubbo,mybatis,分布式事务",
+        "description": "本文讲述如何将springboot+dubbo+mybatisplus整合seata直连方式搭建",
+        "author": "FUNKYE",
+        "date": "2019-11-29"
+      }
+    },
+    {
       "filename": "tcc-mode-applicable-scenario-analysis.md",
       "link": "/zh-cn/blog/tcc-mode-applicable-scenario-analysis.html",
       "meta": {
