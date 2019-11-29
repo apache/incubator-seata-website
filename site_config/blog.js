@@ -36,6 +36,13 @@ export default {
                 dateStr: 'Nov 4th, 2019',
                 desc: '本文从金融分布式应用开发的一些痛点出发，结合理论和实践对社区和行业的解决方案进行了分析，并讲解了如何基于Seata saga设计更有弹性的金融应用',
                 link: '/zh-cn/blog/design-more-flexable-application-by-saga.html',
+            },
+            {
+                title: 'SpringBoot+Dubbo+MybatisPlus整合Seata分布式事务',
+                author: '@FUNKYE',
+                dateStr: 'Nov 29th, 2019',
+                desc: '本文讲述如何将springboot+dubbo+mybatisplus整合seata直连方式搭建',
+                link: '/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html',
             }
         ]
     },
