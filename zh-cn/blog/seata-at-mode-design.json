@@ -6,6 +6,7 @@
     "title": "分布式事务中间件 Seata 的设计原理",
     "author": "张乘辉",
     "keywords": "Seata、分布式事务、AT模式",
+    "description": "AT 模式设计原理",
     "date": "2019/07/11"
   }
 }

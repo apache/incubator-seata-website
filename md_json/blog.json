@@ -142,7 +142,19 @@
         "title": "分布式事务中间件 Seata 的设计原理",
         "author": "张乘辉",
         "keywords": "Seata、分布式事务、AT模式",
+        "description": "AT 模式设计原理",
         "date": "2019/07/11"
+      }
+    },
+    {
+      "filename": "seata-at-mode-start-rm-tm.md",
+      "link": "/zh-cn/blog/seata-at-mode-start-rm-tm.html",
+      "meta": {
+        "title": "Seata 客户端需要同时启动 RM 和 TM 吗？",
+        "author": "张乘辉",
+        "keywords": "Seata、分布式事务、AT模式、RM、TM",
+        "description": "关于 Seata 后续优化的一个讨论点",
+        "date": "2019/11/28"
       }
     },
     {
@@ -152,6 +164,7 @@
         "title": "Seata AT 模式启动源码分析",
         "author": "张乘辉",
         "keywords": "Seata、分布式事务、AT模式",
+        "description": "Seata 源码分析系列",
         "date": "2019/11/27"
       }
     },
