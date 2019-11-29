@@ -76,7 +76,7 @@ export default {
     },
     introduction: {
       title: 'What is Seata?',
-      desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Seata officially opened sourced in January  2019, TXC(Taobao Transaction Constructor) was born in 2014 by alibaba, It is widely used in group business. In 2016, the company released the Global Transactional Service (GTS), which made Seata popular among enterprises and individual users in the field of distributed transactions.',
+      desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open-source of Seata, the internal version of Seata played a role of distributed consistency Middleware in Ali economy, helping the economy to survive the double 11 of the past years smoothly, and providing strong support for businesses of all departments. After years of precipitation and accumulation, commercial products have been sold in Alibaba cloud and financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will help its technology become more reliable and complete in the form of community building.',
       img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
     },
     features: {
