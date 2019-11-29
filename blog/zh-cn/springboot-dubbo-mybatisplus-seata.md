@@ -1,12 +1,12 @@
 ---
-title: springboot+dubbo+mybatisplus整合seata分布式事务
-keywords: Seata,dubbo,mybatis,分布式事务
-description: 本文讲述如何将springboot+dubbo+mybatisplus整合seata直连方式搭建
+title: SpringBoot+Dubbo+Mybatis-Plus整合Seata分布式事务
+keywords: Seata,Dubbo,Mybatis,分布式事务
+description: 本文讲述如何将SpringBoot+Dubbo+Mybatis-Plus整合Seata直连方式搭建
 author: FUNKYE
-date: 2019-11-29
+date: 2019/11/29
 ---
 
-# springboot+dubbo+mybatisplus整合seata分布式事务
+# SpringBoot+Dubbo+Mybatis-Plus整合Seata分布式事务
 
 项目地址： https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata 
 
