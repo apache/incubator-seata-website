@@ -8,7 +8,7 @@ date: 2019/11/29
 
 # SpringBoot+Dubbo+Mybatis-Plus整合Seata分布式事务
 
-项目地址： https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata 
+项目地址：https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata 
 
 本文作者：FUNKYE（陈健斌），杭州某互联网公司主程。
 
