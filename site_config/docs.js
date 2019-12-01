@@ -167,7 +167,7 @@ export default {
                 title: '运维指南',
                 children: [
                     {
-                        title: '部署入门文档',
+                        title: '部署文档',
                         link: '/zh-cn/docs/ops/deploy-guide-beginner.html',
                     },
                     {
