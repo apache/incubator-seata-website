@@ -14,7 +14,7 @@ If you are reporting bugs, please refer to the issue report [template](https://g
 
 If you are reporting feature, please refer to the issue report [template](https://github.com/seata/seata/issues/new?template=FEATURE_REQUEST.md).
 
-If you are reporting regualur issues, like raise an question, you can open an [regular issue](https://github.com/seata/seata/issues/new)
+If you are reporting regular issues, like raise an question, you can open an [regular issue](https://github.com/seata/seata/issues/new).
 
 ### Sending pull request
 
