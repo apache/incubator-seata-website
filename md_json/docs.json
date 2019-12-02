@@ -253,6 +253,11 @@
       }
     },
     {
+      "filename": "deploy-guide-beginner.md",
+      "link": "/zh-cn/docs/ops/deploy-guide-beginner.html",
+      "meta": {}
+    },
+    {
       "filename": "deploy-server.md",
       "link": "/zh-cn/docs/ops/deploy-server.html",
       "meta": {}
