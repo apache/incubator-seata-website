@@ -63,7 +63,7 @@ A： abnormal：io.seata.common.exception.FrameworkException: can not register R
     4.For the list of services on nacos, the IP address corresponding to serverAddr address should be the IP address specified for seata startup, such as: sh seata-server.sh-p 8091-h 122.51.204.197-m file.
     5.Check to see if the seata/conf/nacos-config.txt, transaction group service.vgroup_mapping.trade_group=default configuration is the same as the project group configuration name.
     6.Telnet IP port view ports are open as well as firewall status.
-    note：1.Version 080 starts the specified IP problem, the exception "Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot addign request address", please upgrade to version 081 or above.
+    note：1.Version 080 starts the specified IP problem, the exception "Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot assign request address", please upgrade to version 081 or above.
           2.The project USES jdk13 and starts with "Error: Could not create the Java Virtual Machine".
                               Error: A fatal exception has occurred. Program will exit.
         If the environment is sh, replace the last paragraph in the script：
