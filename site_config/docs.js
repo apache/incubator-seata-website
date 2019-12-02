@@ -14,7 +14,7 @@ export default {
                     },
                     {
                         title: 'FAQ',
-                        link: '/en-us/docs/faq/faq.html',
+                        link: '/en-us/docs/overview/faq.html',
                     }
                 ],
             },
@@ -110,7 +110,7 @@ export default {
                     },
                     {
                         title: 'FAQ',
-                        link: '/zh-cn/docs/faq/faq.html',
+                        link: '/zh-cn/docs/overview/faq.html',
                     }
                 ],
             },
