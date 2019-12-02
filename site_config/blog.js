@@ -50,6 +50,13 @@
                 dateStr: 'Nov 30th, 2019',
                 desc: '本文讲述如何透过源码解决Seata整合Mybatis-Plus失去MP特性的问题',
                 link: '/zh-cn/blog/seata-mybatisplus-analysis.html',
+            },
+            {
+                title: 'Seata分布式事务启用Nacos做配置中心',
+                author: '@FUNKYE',
+                dateStr: 'Dec 2th, 2019',
+                desc: '本文讲述如何使用Seata整合Nacos配置',
+                link: '/zh-cn/blog/seata-nacos-analysis.html',
             }
         ]
     },
