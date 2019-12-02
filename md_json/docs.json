@@ -65,11 +65,6 @@
       "meta": {}
     },
     {
-      "filename": "faq.md",
-      "link": "/en-us/docs/faq/faq.html",
-      "meta": {}
-    },
-    {
       "filename": "deploy-by-docker.md",
       "link": "/en-us/docs/ops/deploy-by-docker.html",
       "meta": {
@@ -113,6 +108,11 @@
     {
       "filename": "multi-configuration-isolation.md",
       "link": "/en-us/docs/ops/multi-configuration-isolation.html",
+      "meta": {}
+    },
+    {
+      "filename": "faq.md",
+      "link": "/en-us/docs/overview/faq.html",
       "meta": {}
     },
     {
@@ -207,11 +207,6 @@
       "meta": {}
     },
     {
-      "filename": "faq.md",
-      "link": "/zh-cn/docs/faq/faq.html",
-      "meta": {}
-    },
-    {
       "filename": "config-center.md",
       "link": "/zh-cn/docs/ops/config-center.html",
       "meta": {}
@@ -265,6 +260,11 @@
     {
       "filename": "operation.md",
       "link": "/zh-cn/docs/ops/operation.html",
+      "meta": {}
+    },
+    {
+      "filename": "faq.md",
+      "link": "/zh-cn/docs/overview/faq.html",
       "meta": {}
     },
     {
