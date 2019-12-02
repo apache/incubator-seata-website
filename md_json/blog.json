@@ -180,6 +180,17 @@
       }
     },
     {
+      "filename": "seata-mybatisplus-analysis.md",
+      "link": "/zh-cn/blog/seata-mybatisplus-analysis.html",
+      "meta": {
+        "title": "透过源码解决SeataAT模式整合Mybatis-Plus失去MP特性的问题",
+        "keywords": "Seata,Mybatis-Plus,分布式事务",
+        "description": "本文讲述如何透过源码解决Seata整合Mybatis-Plus失去MP特性的问题",
+        "author": "FUNKYE",
+        "date": "2019/11/30"
+      }
+    },
+    {
       "filename": "springboot-dubbo-mybatisplus-seata.md",
       "link": "/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html",
       "meta": {
