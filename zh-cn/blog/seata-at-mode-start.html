@@ -75,7 +75,7 @@ RMClient.init(applicationId, txServiceGroup);
   tmRpcClient.init();
 }
 </code></pre>
-<p>调用 TmRpcClient.getInstance() 方法会获取一个 TM 客户端实例，在获取过程中，会创建 Netty 客户端配置文件对象，以及创建 messageExecutor 线程池，该线程池用于在处理各种与服务端的消息交互，在创建 TmRpcClient 实例时，创建 ClientBootstrap，用于管理 Netty 服务的启停，以及 ClientChannelManager，它是专门用于管理 Netty 客户端对象池，Seata 的 Netty 部分配合使用了对象吃，后面在分析网络模块会讲到。</p>
+<p>调用 TmRpcClient.getInstance() 方法会获取一个 TM 客户端实例，在获取过程中，会创建 Netty 客户端配置文件对象，以及创建 messageExecutor 线程池，该线程池用于在处理各种与服务端的消息交互，在创建 TmRpcClient 实例时，创建 ClientBootstrap，用于管理 Netty 服务的启停，以及 ClientChannelManager，它是专门用于管理 Netty 客户端对象池，Seata 的 Netty 部分配合使用了对象池，后面在分析网络模块会讲到。</p>
 <p>io.seata.core.rpc.netty.AbstractRpcRemotingClient#init</p>
 <pre><code class="language-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
   clientBootstrap.start();
@@ -129,7 +129,7 @@ RMClient.init(applicationId, txServiceGroup);
 }
 </code></pre>
 <p>RmRpcClient.getInstance 处理逻辑与 TM 大致相同；ResourceManager 是 RM 资源管理器，负责分支事务的注册、提交、上报、以及回滚操作，以及全局锁的查询操作，DefaultResourceManager 会持有当前所有的 RM 资源管理器，进行统一调用处理，而 get() 方法主要是加载当前的资源管理器，主要用了类似 SPI 的机制，进行灵活加载，如下图，Seata 会扫描 META-INF/services/ 目录下的配置类并进行动态加载。</p>
-<p>ClientMessageListener 是 RM 消息处理监听器，用于负责处理从 TC 发送过来的指令，并对分支进行分支提交、分支回滚，以及 undo log 文件删除操作；最后 init 方法跟 TM 逻辑也大体一致；DefaultRMHandler 封装了 RM 分支事务的一些具体操作逻辑。</p>
+<p>ClientMessageListener 是 RM 消息处理监听器，用于负责处理从 TC 发送过来的指令，并对分支进行分支提交、分支回滚，以及 undo log 删除操作；最后 init 方法跟 TM 逻辑也大体一致；DefaultRMHandler 封装了 RM 分支事务的一些具体操作逻辑。</p>
 <p>接下来再看看 wrapIfNecessary 方法究竟做了哪些操作。</p>
 <p>io.seata.spring.annotation.GlobalTransactionScanner#wrapIfNecessary</p>
 <pre><code class="language-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> Object <span class="hljs-title">wrapIfNecessary</span><span class="hljs-params">(Object bean, String beanName, Object cacheKey)</span> </span>{

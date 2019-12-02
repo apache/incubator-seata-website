@@ -20,12 +20,13 @@
 注：file模式为单机模式，全局事务会话信息内存中读写并持久化本地文件root.data，性能较高;<br>
 db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些。</p>
 <h4>步骤一：启动包</h4>
-<p>a.<a href="https://github.com/seata/seata/releases%E4%B8%8B%E8%BD%BD">https://github.com/seata/seata/releases下载</a><br>
+<p>a.<a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a> 下载<br>
 b.官方钉钉群（群号：23171167），qq群（群号：254657148）群文件共享下载<br>
 c.其它途径</p>
 <h4>步骤二：建表</h4>
 <p>全局事务会话信息由3块内容构成，全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table，<br>
-mysql建表脚本存放于module seata-server--&gt;resources--&gt;db_store.sql，oracle脚本（可参考 <a href="https://github.com/seata/seata/pull/1640%EF%BC%89%E6%9A%82%E6%9C%AA%E5%90%88%E5%B9%B6%E3%80%82">https://github.com/seata/seata/pull/1640）暂未合并。</a></p>
+mysql建表脚本存放于module seata-server--&gt;resources--&gt;db_store.sql<br>
+oracle脚本（可参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a> ）暂未合并。</p>
 <h4>步骤三：修改store.mode</h4>
 <p>打开seata-server--&gt;resources--&gt;file.conf，修改store.mode=&quot;db&quot;;也可以在启动时加命令参数-m db指定。</p>
 <h4>步骤四：修改数据库连接</h4>
@@ -43,13 +44,13 @@ b.命令启动: <a href="http://seata-server.sh">seata-server.sh</a> -h 127.0.0.
 <p>注: 堆内存建议分配4G</p>
 <h3>业务系统集成Client</h3>
 <h4>步骤一：添加seata依赖</h4>
-<p>a.依赖seata-all
-b.依赖seata-spring-boot-starter，支持yml配置
+<p>a.依赖seata-all<br>
+b.依赖seata-spring-boot-starter，支持yml配置<br>
 c.依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递</p>
 <h4>步骤二：undo_log建表、配置参数</h4>
 <p>统一放置在源码script文件夹下，也可以看module seata-server resources的db_undo_log.sql和file.conf.example。<br>
-oracle暂时参考https://github.com/seata/seata/pull/1640<br>
-参数配置介绍请看https://seata.io/zh-cn/docs/user/configurations.html</p>
+oracle暂时参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a><br>
+参数配置介绍请看 <a href="https://seata.io/zh-cn/docs/user/configurations.html">https://seata.io/zh-cn/docs/user/configurations.html</a></p>
 <h4>步骤三：数据源代理</h4>
 <p>a.0.9.0版本开始可通过配置client.support.spring.datasource.autoproxy=true由seata自动实现数据源代理<br>
 b.手动配置可参考下方mybatis的例子</p>
@@ -93,8 +94,8 @@ b.自动<br>
 springCloud用户可以引入spring-cloud-alibaba-seata，内部已经实现xid传递</p>
 <h3>事务分组专题简介</h3>
 <p>事务分组可以作为资源的逻辑隔离单位，去注册中心获得相应的TC服务列表。<br>
-seata注册、配置中心分为两类，内置file、第三方注册（配置）中心如nacos等等，单选。</p>
-<h3>file注册中心和file配置中心</h3>
+seata注册、配置中心分为两类，内置file、第三方注册（配置）中心如nacos等等，注册中心和配置中心之间没有约束，可使用不同类型。</p>
+<h3>file注册中心和file配置中心（file注册中心也可以搭配nacos、zk等其他配置中心）</h3>
 <h4>Server端</h4>
 <pre><code>registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
@@ -155,7 +156,7 @@ config {
 
 </code></pre>
 <p>1.获取源码scrpit--&gt;<a href="http://xn--config-center3nacosnacos-config-4t23cj3al2r845tb25e.py">config-center下的3个nacos文件nacos-config.py</a>、<a href="http://nacos-config.sh">nacos-config.sh</a>、nacos-config.txt<br>
-txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本(本人未使用)。<br>
+txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。<br>
 2.用命令执行脚本导入seata配置参数至nacos，在nacos控制台查看配置确认是否成功<br>
 3.RT配置为nacos,启动seata-server注册至nacos，查看nacos控制台服务列表确认是否成功</p>
 <pre><code>RNS：nacos注册中心ip
