@@ -14,7 +14,7 @@
 <body>
 	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>透过源码解决SeataAT模式整合Mybatis-Plus失去MP特性的问题</h1>
 <p>项目地址：<a href="https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata">https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata</a></p>
-<p>本文作者：FUNKYE（陈健斌），杭州某互联网公司主程。</p>
+<p>本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。</p>
 <h1>介绍</h1>
 <p>Mybatis-Plus：<a href="https://github.com/baomidou/mybatis-plus">MyBatis-Plus</a>（简称 MP）是一个 <a href="http://www.mybatis.org/mybatis-3/">MyBatis</a> 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</p>
 <p>MP配置：</p>
@@ -439,9 +439,10 @@
 <p>没错,就是把被代理过的数据源给放到mp的sqlSessionFactory中.</p>
 <p>很简单,我们需要稍微改动一下我们的seata配置类就行了</p>
 <pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.config;
- 
-<span class="hljs-keyword">import</span> javax.sql.DataSource; 
- 
+
+<span class="hljs-keyword">import</span> javax.sql.DataSource;
+
+<span class="hljs-keyword">import</span> org.mybatis.spring.annotation.MapperScan;
 <span class="hljs-keyword">import</span> org.slf4j.Logger;
 <span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
 <span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
@@ -449,67 +450,69 @@
 <span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
 <span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
 <span class="hljs-keyword">import</span> org.springframework.context.annotation.Primary;
- 
+
 <span class="hljs-keyword">import</span> com.alibaba.druid.pool.DruidDataSource;
- 
+
 <span class="hljs-keyword">import</span> io.seata.rm.datasource.DataSourceProxy;
 <span class="hljs-keyword">import</span> io.seata.spring.annotation.GlobalTransactionScanner;
- 
+
 <span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@MapperScan</span>(<span class="hljs-string">"com.baomidou.springboot.mapper*"</span>)
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SeataAutoConfig</span> </span>{
-	<span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
-	<span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
-	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
- 	DataSourceProxy dataSourceProxy;
-	<span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"dataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>
-	<span class="hljs-meta">@Primary</span> <span class="hljs-comment">// 在同样的DataSource中，首先使用被标注的DataSource</span>
-	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSource <span class="hljs-title">druidDataSource</span><span class="hljs-params">()</span> </span>{
-		DruidDataSource druidDataSource = <span class="hljs-keyword">new</span> DruidDataSource();
-		logger.info(<span class="hljs-string">"dataSourceProperties.getUrl():{}"</span>,dataSourceProperties.getUrl());
-		druidDataSource.setUrl(dataSourceProperties.getUrl());
-		druidDataSource.setUsername(dataSourceProperties.getUsername());
-		druidDataSource.setPassword(dataSourceProperties.getPassword());
-		druidDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
-		druidDataSource.setInitialSize(<span class="hljs-number">0</span>);
-		druidDataSource.setMaxActive(<span class="hljs-number">180</span>);
-		druidDataSource.setMaxWait(<span class="hljs-number">60000</span>);
-		druidDataSource.setMinIdle(<span class="hljs-number">0</span>);
-		druidDataSource.setValidationQuery(<span class="hljs-string">"Select 1 from DUAL"</span>);
-		druidDataSource.setTestOnBorrow(<span class="hljs-keyword">false</span>);
-		druidDataSource.setTestOnReturn(<span class="hljs-keyword">false</span>);
-		druidDataSource.setTestWhileIdle(<span class="hljs-keyword">true</span>);
-		druidDataSource.setTimeBetweenEvictionRunsMillis(<span class="hljs-number">60000</span>);
-		druidDataSource.setMinEvictableIdleTimeMillis(<span class="hljs-number">25200000</span>);
-		druidDataSource.setRemoveAbandoned(<span class="hljs-keyword">true</span>);
-		druidDataSource.setRemoveAbandonedTimeout(<span class="hljs-number">1800</span>);
-		druidDataSource.setLogAbandoned(<span class="hljs-keyword">true</span>);
-		logger.info(<span class="hljs-string">"装载dataSource........"</span>);
-        dataSourceProxy=<span class="hljs-keyword">new</span> DataSourceProxy(druidDataSource)
-		<span class="hljs-keyword">return</span> dataSourceProxy;
-	}
-    
-	<span class="hljs-comment">/**
-	 * init datasource proxy
-	 * 
-	 * <span class="hljs-doctag">@Param</span>: druidDataSource datasource bean instance
-	 * <span class="hljs-doctag">@Return</span>: DataSourceProxy datasource proxy
-	 */</span>
-	<span class="hljs-meta">@Bean</span>
-	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSourceProxy <span class="hljs-title">dataSourceProxy</span><span class="hljs-params">()</span> </span>{
-		<span class="hljs-keyword">return</span> dataSourceProxy;
-	}
- 
- 
-	<span class="hljs-comment">/**
-	 * init global transaction scanner
-	 *
-	 * <span class="hljs-doctag">@Return</span>: GlobalTransactionScanner
-	 */</span>
-	<span class="hljs-meta">@Bean</span>
-	<span class="hljs-function"><span class="hljs-keyword">public</span> GlobalTransactionScanner <span class="hljs-title">globalTransactionScanner</span><span class="hljs-params">()</span> </span>{
-		logger.info(<span class="hljs-string">"配置seata........"</span>);
-		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> GlobalTransactionScanner(<span class="hljs-string">"test-service"</span>, <span class="hljs-string">"test-group"</span>);
-	}
+    <span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
+    <span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
+    <span class="hljs-keyword">private</span> DataSourceProxy dataSourceProxy;
+
+    <span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"dataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>
+    <span class="hljs-meta">@Primary</span> <span class="hljs-comment">// 在同样的DataSource中，首先使用被标注的DataSource</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DataSource <span class="hljs-title">druidDataSource</span><span class="hljs-params">()</span> </span>{
+        DruidDataSource druidDataSource = <span class="hljs-keyword">new</span> DruidDataSource();
+        logger.info(<span class="hljs-string">"dataSourceProperties.getUrl():{}"</span>, dataSourceProperties.getUrl());
+        druidDataSource.setUrl(dataSourceProperties.getUrl());
+        druidDataSource.setUsername(dataSourceProperties.getUsername());
+        druidDataSource.setPassword(dataSourceProperties.getPassword());
+        druidDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+        druidDataSource.setInitialSize(<span class="hljs-number">0</span>);
+        druidDataSource.setMaxActive(<span class="hljs-number">180</span>);
+        druidDataSource.setMaxWait(<span class="hljs-number">60000</span>);
+        druidDataSource.setMinIdle(<span class="hljs-number">0</span>);
+        druidDataSource.setValidationQuery(<span class="hljs-string">"Select 1 from DUAL"</span>);
+        druidDataSource.setTestOnBorrow(<span class="hljs-keyword">false</span>);
+        druidDataSource.setTestOnReturn(<span class="hljs-keyword">false</span>);
+        druidDataSource.setTestWhileIdle(<span class="hljs-keyword">true</span>);
+        druidDataSource.setTimeBetweenEvictionRunsMillis(<span class="hljs-number">60000</span>);
+        druidDataSource.setMinEvictableIdleTimeMillis(<span class="hljs-number">25200000</span>);
+        druidDataSource.setRemoveAbandoned(<span class="hljs-keyword">true</span>);
+        druidDataSource.setRemoveAbandonedTimeout(<span class="hljs-number">1800</span>);
+        druidDataSource.setLogAbandoned(<span class="hljs-keyword">true</span>);
+        logger.info(<span class="hljs-string">"装载dataSource........"</span>);
+        dataSourceProxy = <span class="hljs-keyword">new</span> DataSourceProxy(druidDataSource);
+        <span class="hljs-keyword">return</span> dataSourceProxy;
+    }
+
+    <span class="hljs-comment">/**
+     * init datasource proxy
+     * 
+     * <span class="hljs-doctag">@Param</span>: druidDataSource datasource bean instance
+     * <span class="hljs-doctag">@Return</span>: DataSourceProxy datasource proxy
+     */</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DataSourceProxy <span class="hljs-title">dataSourceProxy</span><span class="hljs-params">()</span> </span>{
+        logger.info(<span class="hljs-string">"代理dataSource........"</span>);
+        <span class="hljs-keyword">return</span> dataSourceProxy;
+    }
+
+    <span class="hljs-comment">/**
+     * init global transaction scanner
+     *
+     * <span class="hljs-doctag">@Return</span>: GlobalTransactionScanner
+     */</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> GlobalTransactionScanner <span class="hljs-title">globalTransactionScanner</span><span class="hljs-params">()</span> </span>{
+        logger.info(<span class="hljs-string">"配置seata........"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> GlobalTransactionScanner(<span class="hljs-string">"test-service"</span>, <span class="hljs-string">"test-group"</span>);
+    }
 }
 
 </code></pre>
