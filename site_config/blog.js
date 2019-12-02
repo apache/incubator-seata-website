@@ -1,4 +1,4 @@
-export default {
+﻿export default {
     'en-us': {
         barText: 'Blog',
         postsTitle: 'All posts',
@@ -43,6 +43,13 @@ export default {
                 dateStr: 'Nov 29th, 2019',
                 desc: '本文讲述如何将springboot+dubbo+mybatisplus整合seata直连方式搭建',
                 link: '/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html',
+            },
+            {
+                title: '透过源码解决SeataAT模式整合Mybatis-Plus失去MP特性的问题',
+                author: '@FUNKYE',
+                dateStr: 'Nov 30th, 2019',
+                desc: '本文讲述如何透过源码解决Seata整合Mybatis-Plus失去MP特性的问题',
+                link: '/zh-cn/blog/seata-mybatisplus-analysis.html',
             }
         ]
     },
