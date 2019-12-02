@@ -44,6 +44,7 @@
 | key(1.0)     | key(1.0前)     | desc    | remark|
 |-------------------------------------------|-------------------------------------------|----------------------------|----------------------------|
 | seata.enabled   | 无       | 是否开启spring-boot自动装配   |true、false，默认true（附录4） |
+| client.rm.report.success.enable   | 无       | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
 | service.vgroup_mapping.my_test_tx_group   | service.vgroup_mapping.my_test_tx_group       | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | service.default.grouplist                     | TC服务列表（附录2） |  仅注册中心为file时使用  |
 | service.disableGlobalTransaction          | service.disableGlobalTransaction              | 全局事务开关 |  默认false。false为开启，true为关闭  |
