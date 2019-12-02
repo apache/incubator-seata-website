@@ -82,6 +82,35 @@
       }
     },
     {
+      "filename": "deploy-by-helm.md",
+      "link": "/en-us/docs/ops/deploy-by-helm.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Helm",
+        "keywords": "kubernetes,helm,ops",
+        "description": "Deploy Seata Server By Helm",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-by-kubernetes.md",
+      "link": "/en-us/docs/ops/deploy-by-kubernetes.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Kubernetes",
+        "keywords": "kubernetes,ops",
+        "description": "Deploy Seata Server By Kubernetes",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-server.md",
+      "link": "/en-us/docs/ops/deploy-server.html",
+      "meta": {}
+    },
+    {
       "filename": "multi-configuration-isolation.md",
       "link": "/en-us/docs/ops/multi-configuration-isolation.html",
       "meta": {}
@@ -183,16 +212,50 @@
       "meta": {}
     },
     {
+      "filename": "config-center.md",
+      "link": "/zh-cn/docs/ops/config-center.html",
+      "meta": {}
+    },
+    {
       "filename": "deploy-by-docker.md",
       "link": "/zh-cn/docs/ops/deploy-by-docker.html",
       "meta": {
         "hidden": "true",
         "title": "使用 Docker 部署 Seata Server",
-        "keywords": "docker",
+        "keywords": "docker,docker-compose,ops",
         "description": "使用 Docker 部署 Seata Server",
         "author": "helloworlde",
         "date": "2019-11-25"
       }
+    },
+    {
+      "filename": "deploy-by-helm.md",
+      "link": "/zh-cn/docs/ops/deploy-by-helm.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Helm 部署 Seata Server",
+        "keywords": "kubernetes,helm,ops",
+        "description": "使用 Helm 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-by-kubernetes.md",
+      "link": "/zh-cn/docs/ops/deploy-by-kubernetes.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Kubernetes 部署 Seata Server",
+        "keywords": "kubernetes,ops",
+        "description": "使用 Kubernetes 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-server.md",
+      "link": "/zh-cn/docs/ops/deploy-server.html",
+      "meta": {}
     },
     {
       "filename": "operation.md",

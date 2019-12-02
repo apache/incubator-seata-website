@@ -1,0 +1,13 @@
+{
+  "filename": "deploy-by-helm.md",
+  "__html": "<h1>使用 Helm 部署 Seata Server</h1>\n<h3>快速启动</h3>\n<pre><code class=\"language-bash\">$ <span class=\"hljs-built_in\">cd</span> ./script/server/helm/seata-server\n$ helm install seata-server ./seata-server\n</code></pre>\n<h2>自定义配置</h2>\n<h3>环境变量</h3>\n<p>支持的环境变量和 Docker 相同，可以参考 <a href=\"./deploy-by-docker.md\">使用 Docker 部署 Seata Server</a></p>\n<h3>使用自定义配置文件</h3>\n<p>指定配置文件可以通过挂载的方式实现，如将<code>/root/workspace/seata/seata-config/file</code>  下的配置文件挂载到 pod 中，挂载后需要通过指定 <code>SEATA_CONFIG_NAME</code> 指定配置文件位置，并且环境变量的值需要以<code>file:</code>开始, 如: <code>file:/root/seata-config/registry</code></p>\n<ul>\n<li>Values.yaml</li>\n</ul>\n<pre><code class=\"language-yaml\"><span class=\"hljs-attr\">replicaCount:</span> <span class=\"hljs-number\">1</span>\n\n<span class=\"hljs-attr\">namespace:</span> <span class=\"hljs-string\">default</span>\n\n<span class=\"hljs-attr\">image:</span>\n<span class=\"hljs-attr\">  repository:</span> <span class=\"hljs-string\">seataio/seata-server</span>\n<span class=\"hljs-attr\">  tag:</span> <span class=\"hljs-string\">latest</span>\n<span class=\"hljs-attr\">  pullPolicy:</span> <span class=\"hljs-string\">IfNotPresent</span>\n\n<span class=\"hljs-attr\">service:</span>\n<span class=\"hljs-attr\">  type:</span> <span class=\"hljs-string\">NodePort</span>\n<span class=\"hljs-attr\">  port:</span> <span class=\"hljs-number\">30091</span>\n\n<span class=\"hljs-attr\">env:</span>\n<span class=\"hljs-attr\">  seataPort:</span> <span class=\"hljs-string\">\"8091\"</span>\n<span class=\"hljs-attr\">  storeMode:</span> <span class=\"hljs-string\">\"file\"</span>\n<span class=\"hljs-attr\">  seataIp:</span> <span class=\"hljs-string\">\"127.0.0.1\"</span>\n<span class=\"hljs-attr\">  seataConfigName:</span> <span class=\"hljs-string\">\"file:/root/seata-config/registry\"</span>\n\n<span class=\"hljs-attr\">volume:</span>\n<span class=\"hljs-attr\">  - name:</span> <span class=\"hljs-string\">seata-config</span>\n<span class=\"hljs-attr\">    mountPath:</span> <span class=\"hljs-string\">/root/seata-config</span>\n<span class=\"hljs-attr\">    hostPath:</span> <span class=\"hljs-string\">/root/workspace/seata/seata-config/file</span>\n</code></pre>\n",
+  "link": "/zh-cn/docs/ops/deploy-by-helm.html",
+  "meta": {
+    "hidden": "true",
+    "title": "使用 Helm 部署 Seata Server",
+    "keywords": "kubernetes,helm,ops",
+    "description": "使用 Helm 部署 Seata Server",
+    "author": "helloworlde",
+    "date": "2019-12-01"
+  }
+}
