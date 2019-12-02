@@ -184,6 +184,10 @@ export default {
                 title: '运维指南',
                 children: [
                     {
+                        title: '部署文档',
+                        link: '/zh-cn/docs/ops/deploy-guide-beginner.html',
+                    },
+                    {
                         title: 'Metrics配置',
                         link: '/zh-cn/docs/ops/operation.html',
                     },
