@@ -11,6 +11,10 @@ export default {
                     {
                         title: 'Terminology',
                         link: '/en-us/docs/overview/terminology.html',
+                    },
+                    {
+                        title: 'FAQ',
+                        link: '/en-us/docs/faq/faq.html',
                     }
                 ],
             },
@@ -88,16 +92,6 @@ export default {
                     }
                 ]
             },
-            {
-                title: 'FAQ',
-                link: '/en-us/docs/faq/faq.html',
-                children: [
-                    {
-                        title: 'FAQ',
-                        link: '/en-us/docs/faq/faq.html',
-                    }
-                ]
-            },
         ],
         barText: 'Documentation'
     },
@@ -114,6 +108,10 @@ export default {
                         title: '术语表',
                         link: '/zh-cn/docs/overview/terminology.html',
                     },
+                    {
+                        title: 'FAQ',
+                        link: '/zh-cn/docs/faq/faq.html',
+                    }
                 ],
             },
             {
@@ -214,16 +212,6 @@ export default {
                     }
                 ]
 
-            },
-            {
-                title: '常见问题',
-                link: '/zh-cn/docs/faq/faq.html',
-                children: [
-                    {
-                        title: '常见问题',
-                        link: '/zh-cn/docs/faq/faq.html',
-                    }
-                ]
             },
         ],
         barText: '文档',
