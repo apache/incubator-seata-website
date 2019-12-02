@@ -66,9 +66,26 @@ export default {
                         link: '/en-us/docs/ops/multi-configuration-isolation.html',
                     },
                     {
-                        title: 'Deploy By Docker',
-                        link: '/en-us/docs/ops/deploy-by-docker.html',
-                    },
+                        title: 'Deploy',
+                        children: [
+                            {
+                                title: 'Deploy Directly',
+                                link: '/en-us/docs/ops/deploy-server.html',
+                            },
+                            {
+                                title: 'Deploy by Docker',
+                                link: '/en-us/docs/ops/deploy-by-docker.html',
+                            },
+                            {
+                                title: 'Deploy by Kubernetes',
+                                link: '/en-us/docs/ops/deploy-by-kubernetes.html',
+                            },
+                            {
+                                title: 'Deploy by Helm',
+                                link: '/en-us/docs/ops/deploy-by-helm.html',
+                            },
+                        ]
+                    }
                 ]
             },
             {
@@ -171,9 +188,30 @@ export default {
                         link: '/zh-cn/docs/ops/operation.html',
                     },
                     {
-                        title: 'Docker部署',
-                        link: '/zh-cn/docs/ops/deploy-by-docker.html',
-                    },
+                        title: '部署',
+                        children: [
+                            {
+                                title: '新人文档',
+                                link: '/zh-cn/docs/ops/deploy-guide-beginner.html',
+                            },
+                            {
+                                title: '直接部署',
+                                link: '/zh-cn/docs/ops/deploy-server.html',
+                            },
+                            {
+                                title: 'Docker部署',
+                                link: '/zh-cn/docs/ops/deploy-by-docker.html',
+                            },
+                            {
+                                title: 'Kubernetes部署',
+                                link: '/zh-cn/docs/ops/deploy-by-kubernetes.html',
+                            },
+                            {
+                                title: 'Helm 部署',
+                                link: '/zh-cn/docs/ops/deploy-by-helm.html',
+                            },
+                        ]
+                    }
                 ]
 
             },

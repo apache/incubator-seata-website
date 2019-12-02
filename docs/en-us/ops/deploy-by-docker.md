@@ -41,19 +41,16 @@ $ docker run --name seata-server \
 Example of `docker-conmpose.yaml`
 
 ```yaml
-version: "3.1"
-
+version: "3"
 services:
-
   seata-server:
-    image: seataio/seata-server:latest
+    image: seataio/seata-server
     hostname: seata-server
     ports:
-      - 8091:8091
+      - "8091:8091"
     environment:
       - SEATA_PORT=8091
-    expose:
-      - 8091
+      - STORE_MODE=file
 ```
 
 ## Container shell access and viewing logs
