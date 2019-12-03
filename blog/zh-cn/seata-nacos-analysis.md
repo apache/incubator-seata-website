@@ -20,7 +20,7 @@ date: 2019/12/02
 
 ## 准备工作
 
-​	1.首先去nacos的github上下载最新版本:https://github.com/alibaba/nacos/releases/tag/1.1.4
+​	1.首先去nacos的github上下载[最新版本](https://github.com/alibaba/nacos/releases/tag/1.1.4)
 
 ​	![](img\blog\20191202203649.png)
 
@@ -426,7 +426,7 @@ config {
 
 # 总结
 
-关于nacos的使用跟seata的简单搭建已经完成了,更详细的内容希望希望大家访问一下地址阅读详细文档
+关于nacos的使用跟seata的简单搭建已经完成了,更详细的内容希望希望大家访问以下地址阅读详细文档
 
 [nacos官网](https://nacos.io/zh-cn/index.html)
 
