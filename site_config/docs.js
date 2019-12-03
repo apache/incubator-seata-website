@@ -176,6 +176,10 @@ export default {
                         title: 'Metrics设计',
                         link: '/zh-cn/docs/dev/seata-mertics.html',
                     },
+					{
+                        title: 'Seata Nacos配置',
+                        link: '/zh-cn/docs/dev/seata-nacos-analysis.html',
+                    },
                 ],
             },
             {

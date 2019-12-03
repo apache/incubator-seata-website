@@ -1,26 +1,16 @@
----
-title: Seata分布式事务启用Nacos做配置中心
-keywords: Seata,Nacos,分布式事务
-description: 本文讲述如何使用Seata整合Nacos配置
-author: FUNKYE
-date: 2019/12/02
----
-
 # Seata分布式事务启用Nacos做配置中心
 
-项目地址：https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata 
-
-本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
+[示例地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata )
 
 # 前言
 
-上次发布了直连方式的seata配置,详细可以看这篇博客:http://seata.io/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html
+直连方式的seata配置,详细可以看这篇[博客](http://seata.io/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html)
 
-我们接着上一篇的基础上去配置nacos做配置中心跟dubbo注册中心.
+接着上一篇的基础上去配置nacos做配置中心跟dubbo注册中心.
 
 ## 准备工作
 
-​	1.首先去nacos的github上下载最新版本:https://github.com/alibaba/nacos/releases/tag/1.1.4
+​	1.首先去nacos的github上下载[最新版本](https://github.com/alibaba/nacos/releases/tag/1.1.4)
 
 ​	![](img\blog\20191202203649.png)
 
@@ -428,8 +418,10 @@ config {
 
 关于nacos的使用跟seata的简单搭建已经完成了,更详细的内容希望希望大家访问以下地址阅读详细文档
 
-具体的nacos介绍以及文档请访问:https://nacos.io/zh-cn/index.html
+[nacos官网](https://nacos.io/zh-cn/index.html)
 
-dubbo官网:http://dubbo.apache.org/en-us/
+[dubbo官网](http://dubbo.apache.org/en-us/)
 
-seata官网:http://seata.io/zh-cn/
+[seata官网](http://seata.io/zh-cn/)
+
+[seata参数配置](http://seata.io/zh-cn/docs/user/configurations.html)
