@@ -1,17 +1,118 @@
 {
   "en-us": [
     {
-      "filename": "maintainers.md",
-      "link": "/en-us/docs/developers/maintainers.html",
+      "filename": "at-mode.md",
+      "link": "/en-us/docs/dev/mode/at-mode.html",
+      "meta": {}
+    },
+    {
+      "filename": "saga-mode.md",
+      "link": "/en-us/docs/dev/mode/saga-mode.html",
+      "meta": {}
+    },
+    {
+      "filename": "tcc-mode.md",
+      "link": "/en-us/docs/dev/mode/tcc-mode.html",
+      "meta": {}
+    },
+    {
+      "filename": "seata-mertics.md",
+      "link": "/en-us/docs/dev/seata-mertics.html",
+      "meta": {}
+    },
+    {
+      "filename": "label-an-issue-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/label-an-issue-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "release-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/release-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "website-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/website-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "new-contributor-guide_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/new-contributor-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "reporting-security-issues_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/reporting-security-issues_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "test-coverage-guide_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/test-coverage-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "developers_dev.md",
+      "link": "/en-us/docs/developers/developers_dev.html",
       "meta": {
-        "title": "Seata Maintainers",
-        "keywords": "Seata, Maintainers",
-        "description": "A list of Seata maintainers"
+        "title": "Seata 维护者",
+        "keywords": "Seata, 维护者",
+        "description": "Seata 维护者名单"
       }
     },
     {
+      "filename": "guide_dev.md",
+      "link": "/en-us/docs/developers/guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "deploy-by-docker.md",
+      "link": "/en-us/docs/ops/deploy-by-docker.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Docker",
+        "keywords": "docker",
+        "description": "Deploy Seata Server By Docker",
+        "author": "helloworlde",
+        "date": "2019-11-25"
+      }
+    },
+    {
+      "filename": "deploy-by-helm.md",
+      "link": "/en-us/docs/ops/deploy-by-helm.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Helm",
+        "keywords": "kubernetes,helm,ops",
+        "description": "Deploy Seata Server By Helm",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-by-kubernetes.md",
+      "link": "/en-us/docs/ops/deploy-by-kubernetes.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Kubernetes",
+        "keywords": "kubernetes,ops",
+        "description": "Deploy Seata Server By Kubernetes",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-server.md",
+      "link": "/en-us/docs/ops/deploy-server.html",
+      "meta": {}
+    },
+    {
+      "filename": "multi-configuration-isolation.md",
+      "link": "/en-us/docs/ops/multi-configuration-isolation.html",
+      "meta": {}
+    },
+    {
       "filename": "faq.md",
-      "link": "/en-us/docs/faq.html",
+      "link": "/en-us/docs/overview/faq.html",
       "meta": {}
     },
     {
@@ -20,8 +121,18 @@
       "meta": {}
     },
     {
-      "filename": "what_is_seata.md",
-      "link": "/en-us/docs/overview/what_is_seata.html",
+      "filename": "what-is-seata.md",
+      "link": "/en-us/docs/overview/what-is-seata.html",
+      "meta": {}
+    },
+    {
+      "filename": "api.md",
+      "link": "/en-us/docs/user/api.html",
+      "meta": {}
+    },
+    {
+      "filename": "microservice.md",
+      "link": "/en-us/docs/user/microservice.html",
       "meta": {}
     },
     {
@@ -32,53 +143,58 @@
   ],
   "zh-cn": [
     {
-      "filename": "activity.md",
-      "link": "/zh-cn/docs/community/activity.html",
+      "filename": "at-mode.md",
+      "link": "/zh-cn/docs/dev/mode/at-mode.html",
       "meta": {}
     },
     {
-      "filename": "contact.md",
-      "link": "/zh-cn/docs/community/contact.html",
+      "filename": "saga-mode.md",
+      "link": "/zh-cn/docs/dev/mode/saga-mode.html",
       "meta": {}
     },
     {
-      "filename": "contribution.md",
-      "link": "/zh-cn/docs/community/contribution.html",
+      "filename": "tcc-mode.md",
+      "link": "/zh-cn/docs/dev/mode/tcc-mode.html",
       "meta": {}
     },
     {
-      "filename": "question.md",
-      "link": "/zh-cn/docs/community/question.html",
+      "filename": "seata-mertics.md",
+      "link": "/zh-cn/docs/dev/seata-mertics.html",
       "meta": {}
     },
     {
-      "filename": "roadmap.md",
-      "link": "/zh-cn/docs/community/roadmap.html",
+      "filename": "label-an-issue-guide_dev.md",
+      "link": "/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev.html",
       "meta": {}
     },
     {
-      "filename": "seata_at.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_at.html",
+      "filename": "release-guide_dev.md",
+      "link": "/zh-cn/docs/developers/committer-guide/release-guide_dev.html",
       "meta": {}
     },
     {
-      "filename": "seata_mertics.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_mertics.html",
+      "filename": "website-guide_dev.md",
+      "link": "/zh-cn/docs/developers/committer-guide/website-guide_dev.html",
       "meta": {}
     },
     {
-      "filename": "seata_saga.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_saga.html",
+      "filename": "new-contributor-guide_dev.md",
+      "link": "/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev.html",
       "meta": {}
     },
     {
-      "filename": "seata_tcc.md",
-      "link": "/zh-cn/docs/dev/architecture/seata_tcc.html",
+      "filename": "reporting-security-issues_dev.md",
+      "link": "/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev.html",
       "meta": {}
     },
     {
-      "filename": "maintainers.md",
-      "link": "/zh-cn/docs/developers/maintainers.html",
+      "filename": "test-coverage-guide_dev.md",
+      "link": "/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "developers_dev.md",
+      "link": "/zh-cn/docs/developers/developers_dev.html",
       "meta": {
         "title": "Seata 维护者",
         "keywords": "Seata, 维护者",
@@ -86,8 +202,59 @@
       }
     },
     {
-      "filename": "faq.md",
-      "link": "/zh-cn/docs/faq.html",
+      "filename": "guide_dev.md",
+      "link": "/zh-cn/docs/developers/guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "config-center.md",
+      "link": "/zh-cn/docs/ops/config-center.html",
+      "meta": {}
+    },
+    {
+      "filename": "deploy-by-docker.md",
+      "link": "/zh-cn/docs/ops/deploy-by-docker.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Docker 部署 Seata Server",
+        "keywords": "docker,docker-compose,ops",
+        "description": "使用 Docker 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-11-25"
+      }
+    },
+    {
+      "filename": "deploy-by-helm.md",
+      "link": "/zh-cn/docs/ops/deploy-by-helm.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Helm 部署 Seata Server",
+        "keywords": "kubernetes,helm,ops",
+        "description": "使用 Helm 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-by-kubernetes.md",
+      "link": "/zh-cn/docs/ops/deploy-by-kubernetes.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Kubernetes 部署 Seata Server",
+        "keywords": "kubernetes,ops",
+        "description": "使用 Kubernetes 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-guide-beginner.md",
+      "link": "/zh-cn/docs/ops/deploy-guide-beginner.html",
+      "meta": {}
+    },
+    {
+      "filename": "deploy-server.md",
+      "link": "/zh-cn/docs/ops/deploy-server.html",
       "meta": {}
     },
     {
@@ -96,13 +263,18 @@
       "meta": {}
     },
     {
+      "filename": "faq.md",
+      "link": "/zh-cn/docs/overview/faq.html",
+      "meta": {}
+    },
+    {
       "filename": "terminology.md",
       "link": "/zh-cn/docs/overview/terminology.html",
       "meta": {}
     },
     {
-      "filename": "what_is_seata.md",
-      "link": "/zh-cn/docs/overview/what_is_seata.html",
+      "filename": "what-is-seata.md",
+      "link": "/zh-cn/docs/overview/what-is-seata.html",
       "meta": {}
     },
     {

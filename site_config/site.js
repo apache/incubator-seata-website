@@ -15,7 +15,12 @@ export default {
       {
         key: 'docs',
         text: 'DOCS',
-        link: '/en-us/docs/overview/what_is_seata.html',
+        link: '/en-us/docs/overview/what-is-seata.html',
+      },
+      {
+        key: 'developers',
+        text: 'DEVELOPERS',
+        link: '/en-us/docs/developers/developers_dev.html',
       },
       {
         key: 'blog',
@@ -27,22 +32,35 @@ export default {
         text: 'COMMUNITY',
         link: '/en-us/community/index.html',
       },
+      {
+        key: 'download',
+        text: 'DOWNLOAD',
+        link: '/en-us/blog/download.html',
+      },
     ],
     vision: {
       title: 'Vision',
-      content: 'Seata is dedicated to improving the efficiency of large-scale file distribution, building the go-to solution and standards of container image distribution, and providing you with file and image distribution service which is efficient, easy-to-use, and of high availability.',
+      content: 'Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.',
     },
     documentation: {
       title: 'Documentation',
       list: [
         {
           text: 'What is Seata?',
-          link: '/en-us/docs/overview/what_is_seata.html',
+          link: '/en-us/docs/overview/what-is-seata.html',
         },
         {
           text: 'Quick Start',
-          link: '/en-us/docs/quickstart.html',
+          link: '/en-us/docs/user/quickstart.html',
         },
+        {
+          text: 'Report a doc issue',
+          link: 'https://github.com/seata/seata.github.io/issues/new',
+        },
+        {
+          text: 'Edit This Page on GitHub',
+          link: 'https://github.com/seata/seata.github.io',
+        }
       ],
     },
     resources: {
@@ -70,7 +88,12 @@ export default {
       {
         key: 'docs',
         text: '文档',
-        link: '/zh-cn/docs/overview/what_is_seata.html',
+        link: '/zh-cn/docs/overview/what-is-seata.html',
+      },
+      {
+        key: 'developers',
+        text: '开发者',
+        link: '/zh-cn/docs/developers/developers_dev.html',
       },
       {
         key: 'blog',
@@ -82,6 +105,11 @@ export default {
         text: '社区',
         link: '/zh-cn/community/index.html',
       },
+      {
+        key: 'download',
+        text: '下载',
+        link: '/zh-cn/blog/download.html',
+      },
     ],
     vision: {
       title: '愿景',
@@ -91,13 +119,21 @@ export default {
       title: '文档',
       list: [
         {
-          text: '什么是 Seata？',
-          link: '/zh-cn/docs/overview/what_is_seata.html',
+          text: 'Seata 是什么？',
+          link: '/zh-cn/docs/overview/what-is-seata.html',
         },
         {
           text: '快速开始',
-          link: '/zh-cn/docs/quickstart.html',
+          link: '/zh-cn/docs/user/quickstart.html',
         },
+        {
+          text: '报告文档问题',
+          link: 'https://github.com/seata/seata.github.io/issues/new',
+        },
+        {
+          text: '在Github上编辑此文档',
+          link: 'https://github.com/seata/seata.github.io',
+        }
       ],
     },
     resources: {

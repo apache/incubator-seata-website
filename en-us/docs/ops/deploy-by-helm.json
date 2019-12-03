@@ -1,0 +1,13 @@
+{
+  "filename": "deploy-by-helm.md",
+  "__html": "<h1>Deploy Seata Server By Helm</h1>\n<h3>Quick start</h3>\n<pre><code class=\"language-bash\">$ <span class=\"hljs-built_in\">cd</span> ./script/server/helm/seata-server\n$ helm install seata-server ./seata-server\n</code></pre>\n<h2>Custom configuration</h2>\n<h3>Environment</h3>\n<p>The environment is same with Docker, can reference <a href=\"./deploy-by-docker.md\">Deploy Seata Server By Docker</a></p>\n<h3>Use specify configuration file</h3>\n<p>Can specify configuration file by mount files, like mount files under <code>/root/workspace/seata/seata-config/file</code> to pod. And need specify environment <code>SEATA_CONFIG_NAME</code> also, the value need start with <code>file:</code>, like <code>file:/root/seata-config/registry</code></p>\n<ul>\n<li>Values.yaml</li>\n</ul>\n<pre><code class=\"language-yaml\"><span class=\"hljs-attr\">replicaCount:</span> <span class=\"hljs-number\">1</span>\n\n<span class=\"hljs-attr\">namespace:</span> <span class=\"hljs-string\">default</span>\n\n<span class=\"hljs-attr\">image:</span>\n<span class=\"hljs-attr\">  repository:</span> <span class=\"hljs-string\">seataio/seata-server</span>\n<span class=\"hljs-attr\">  tag:</span> <span class=\"hljs-string\">latest</span>\n<span class=\"hljs-attr\">  pullPolicy:</span> <span class=\"hljs-string\">IfNotPresent</span>\n\n<span class=\"hljs-attr\">service:</span>\n<span class=\"hljs-attr\">  type:</span> <span class=\"hljs-string\">NodePort</span>\n<span class=\"hljs-attr\">  port:</span> <span class=\"hljs-number\">30091</span>\n\n<span class=\"hljs-attr\">env:</span>\n<span class=\"hljs-attr\">  seataPort:</span> <span class=\"hljs-string\">\"8091\"</span>\n<span class=\"hljs-attr\">  storeMode:</span> <span class=\"hljs-string\">\"file\"</span>\n<span class=\"hljs-attr\">  seataIp:</span> <span class=\"hljs-string\">\"127.0.0.1\"</span>\n<span class=\"hljs-attr\">  seataConfigName:</span> <span class=\"hljs-string\">\"file:/root/seata-config/registry\"</span>\n\n<span class=\"hljs-attr\">volume:</span>\n<span class=\"hljs-attr\">  - name:</span> <span class=\"hljs-string\">seata-config</span>\n<span class=\"hljs-attr\">    mountPath:</span> <span class=\"hljs-string\">/root/seata-config</span>\n<span class=\"hljs-attr\">    hostPath:</span> <span class=\"hljs-string\">/root/workspace/seata/seata-config/file</span>\n</code></pre>\n",
+  "link": "/en-us/docs/ops/deploy-by-helm.html",
+  "meta": {
+    "hidden": "true",
+    "title": "Deploy Seata Server By Helm",
+    "keywords": "kubernetes,helm,ops",
+    "description": "Deploy Seata Server By Helm",
+    "author": "helloworlde",
+    "date": "2019-12-01"
+  }
+}
