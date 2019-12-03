@@ -17,7 +17,7 @@ $ sh ./bin/seata-server.sh
 在 Windows 下
 
 ```cmd
-cmd ./bin/seata-server.bat
+bin\seata-server.bat
 ```
 
 ### 支持的启动参数

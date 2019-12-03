@@ -17,7 +17,7 @@ $ sh ./bin/seata-server.sh
 On Windows
 
 ```cmd
-.\bin\seata-server.bat
+bin\seata-server.bat
 ```
 
 ### Arguments
