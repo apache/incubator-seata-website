@@ -191,6 +191,17 @@
       }
     },
     {
+      "filename": "seata-nacos-analysis.md",
+      "link": "/zh-cn/blog/seata-nacos-analysis.html",
+      "meta": {
+        "title": "Seata分布式事务启用Nacos做配置中心",
+        "keywords": "Seata,Nacos,分布式事务",
+        "description": "本文讲述如何使用Seata整合Nacos配置",
+        "author": "FUNKYE",
+        "date": "2019/12/02"
+      }
+    },
+    {
       "filename": "springboot-dubbo-mybatisplus-seata.md",
       "link": "/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html",
       "meta": {
