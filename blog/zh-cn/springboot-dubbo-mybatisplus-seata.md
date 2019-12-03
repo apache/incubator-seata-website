@@ -8,7 +8,7 @@ date: 2019/11/29
 
 # SpringBoot+Dubbo+MybatisPlus整合Seata分布式事务
 
-项目地址： https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata 
+[项目地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata )
 
 本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
 
@@ -16,7 +16,7 @@ date: 2019/11/29
 
 1.首先安装mysql,eclipse之类常用的工具,这不展开了. 
 
-2.访问seata下载中心地址下载我们使用的0.9.0版本:http://seata.io/zh-cn/blog/download.html
+2.访问seata下载中心[地址](http://seata.io/zh-cn/blog/download.html)我们使用的0.9.0版本
 
 3.下载并解压seata-server
 
