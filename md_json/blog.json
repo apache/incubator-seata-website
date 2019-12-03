@@ -202,6 +202,17 @@
       }
     },
     {
+      "filename": "seata-nacos-docker.md",
+      "link": "/zh-cn/blog/seata-nacos-docker.html",
+      "meta": {
+        "title": "Docker部署Seata与Nacos整合",
+        "keywords": "Seata,Nacos,分布式事务",
+        "description": "本文讲述如何使用Seata整合Nacos配置的Docker部署",
+        "author": "FUNKYE",
+        "date": "2019/12/03"
+      }
+    },
+    {
       "filename": "springboot-dubbo-mybatisplus-seata.md",
       "link": "/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html",
       "meta": {
