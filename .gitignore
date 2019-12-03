@@ -3,9 +3,5 @@ node_modules/
 .DS_Store
 npm-debug.log
 *.orig
-*.iml
 package-lock.json
-/en-us/
-/zh-cn/
-index.html
-md_json/
+*.iml
