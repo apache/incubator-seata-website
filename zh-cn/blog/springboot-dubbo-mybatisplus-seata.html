@@ -12,15 +12,15 @@
 	<link rel="stylesheet" href="/build/blogDetail.css" />
 </head>
 <body>
-	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>SpringBoot+Dubbo+MybatisPlus整合seata分布式事务</h1>
-<p>项目地址： <a href="https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata">https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata</a></p>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>SpringBoot+Dubbo+MybatisPlus整合Seata分布式事务</h1>
+<p><a href="https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata">项目地址</a></p>
 <p>本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。</p>
 <h1>准备工作</h1>
 <p>1.首先安装mysql,eclipse之类常用的工具,这不展开了.</p>
-<p>2.访问seata下载中心地址下载我们使用的0.9.0版本:<a href="http://seata.io/zh-cn/blog/download.html">http://seata.io/zh-cn/blog/download.html</a></p>
-<p>3.下载并解压seata-service</p>
+<p>2.访问seata下载中心<a href="http://seata.io/zh-cn/blog/download.html">地址</a>我们使用的0.9.0版本</p>
+<p>3.下载并解压seata-server</p>
 <h2>建库建表</h2>
-<p>1.首先我们链接mysql创建一个名为seata的数据库,然后运行一下建表sql,这个在seata-service的conf文件夹内的db_store.sql就是我的所需要使用的sql了.</p>
+<p>1.首先我们链接mysql创建一个名为seata的数据库,然后运行一下建表sql,这个在seata-server的conf文件夹内的db_store.sql就是我的所需要使用的sql了.</p>
 <pre><code class="language-mysql">/*
 Navicat MySQL Data Transfer
 Source Server         : mysql
@@ -209,7 +209,7 @@ CREATE TABLE `undo_log` (
 
 -- Records of undo_log
 </code></pre>
-<p>3.我们找到seata-service/conf 文件夹内的file编辑它:<img src="/img/blog/20191129132933.png" alt="20191129132933"></p>
+<p>3.我们找到seata-server/conf 文件夹内的file编辑它:<img src="/img/blog/20191129132933.png" alt="20191129132933"></p>
 <p>4.再次找到其中的db配置方法块,更改方法如下图:<img src="/img/blog/20191129133111.png" alt=""></p>
 <p>好了,可以到bin目录去./seata-server.bat 运行看看了</p>
 <h1>创建项目</h1>
@@ -1001,7 +1001,7 @@ config {
 }
 
 </code></pre>
-<p>​	 大功告成,可以直接运行啦,这时候观察seata-service的日志会发现已经连接成功! <img src="/img/blog/20191129142115.png" alt="20191129142115"></p>
+<p>​	 大功告成,可以直接运行啦,这时候观察seata-server<img src="/img/blog/20191129142115.png" alt="20191129142115"></p>
 <p>​	接下来我们创建test-client项目项目,这里就不赘述了,跟上面的test-service一样的创建方式</p>
 <p>​	接下来我们复制test-service内的service跟实体过去,当然你嫌麻烦,可以单独搞个子项目放通用的service跟实体,一些工具类等等,我这边为了快速搭建这个demo,就选择复制黏贴的方式了.</p>
 <p>目录结构:<img src="/img/blog/20191129142349.png" alt=""></p>
@@ -1358,7 +1358,7 @@ server:
 <p><img src="/img/blog/20191129143124.png" alt="20191129143124"></p>
 <p>再查看日志:</p>
 <p><img src="/img/blog/20191129143407.png" alt="20191129143407"></p>
-<p>显示已经回滚,我们再看看seata-service的日志:</p>
+<p>显示已经回滚,我们再看看seata-server的日志:</p>
 <img src="/img/blog/20191129143419.png" style="zoom:200%;" />
 <p>显示回滚成功,事务id也是一致的,这下我们的分布式事务就跑通咯,通过打断点方式,大家可以查看undo_log,会发现再事务提交前,会存入一条事务信息的数据,如果回滚成功,该信息就会被删除.</p>
 <h1>总结</h1>
