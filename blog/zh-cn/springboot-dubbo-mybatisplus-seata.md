@@ -6,9 +6,9 @@ author: FUNKYE
 date: 2019/11/29
 ---
 
-# SpringBoot+Dubbo+MybatisPlus整合seata分布式事务
+# SpringBoot+Dubbo+MybatisPlus整合Seata分布式事务
 
-项目地址： https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata 
+[项目地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata )
 
 本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
 
@@ -16,13 +16,13 @@ date: 2019/11/29
 
 1.首先安装mysql,eclipse之类常用的工具,这不展开了. 
 
-2.访问seata下载中心地址下载我们使用的0.9.0版本:http://seata.io/zh-cn/blog/download.html
+2.访问seata下载中心[地址](http://seata.io/zh-cn/blog/download.html)我们使用的0.9.0版本
 
-3.下载并解压seata-service
+3.下载并解压seata-server
 
 ## 建库建表
 
-1.首先我们链接mysql创建一个名为seata的数据库,然后运行一下建表sql,这个在seata-service的conf文件夹内的db_store.sql就是我的所需要使用的sql了.
+1.首先我们链接mysql创建一个名为seata的数据库,然后运行一下建表sql,这个在seata-server的conf文件夹内的db_store.sql就是我的所需要使用的sql了.
 
 ```mysql
 /*
@@ -217,7 +217,7 @@ CREATE TABLE `undo_log` (
 -- Records of undo_log
 ```
 
- 3.我们找到seata-service/conf 文件夹内的file编辑它:![20191129132933](/img/blog/20191129132933.png)
+ 3.我们找到seata-server/conf 文件夹内的file编辑它:![20191129132933](/img/blog/20191129132933.png)
 
  4.再次找到其中的db配置方法块,更改方法如下图:![](/img/blog/20191129133111.png)
 
@@ -1049,7 +1049,7 @@ config {
 
 ```
 
-​	 大功告成,可以直接运行啦,这时候观察seata-service的日志会发现已经连接成功! ![20191129142115](/img/blog/20191129142115.png)
+​	 大功告成,可以直接运行啦,这时候观察seata-server![20191129142115](/img/blog/20191129142115.png)
 
 ​	接下来我们创建test-client项目项目,这里就不赘述了,跟上面的test-service一样的创建方式
 
@@ -1438,7 +1438,7 @@ server:
 
 ![20191129143407](/img/blog/20191129143407.png)
 
- 显示已经回滚,我们再看看seata-service的日志: 
+ 显示已经回滚,我们再看看seata-server的日志: 
 
 <img src="/img/blog/20191129143419.png" style="zoom:200%;" />
 
