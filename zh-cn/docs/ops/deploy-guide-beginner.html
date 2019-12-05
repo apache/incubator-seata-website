@@ -13,86 +13,47 @@
 </head>
 <body>
 	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>部署指南</h1>
-<h2>Seata新手部署指南(1.0.0版本)</h2>
-<h3>资源目录介绍</h3>
-<ul>
-<li>script</li>
-</ul>
-<blockquote>
-<p>seata根目录--&gt;script，存放client所需脚本、配置，各个注册中心配置参数脚本（Server和Client并存）</p>
-</blockquote>
-<ul>
-<li>server</li>
-</ul>
-<blockquote>
-<p>seata根目录--&gt;seata-server，存放db模式所需建表脚本，server端配置参数在script。</p>
-</blockquote>
-<h3>注意事项</h3>
-<ul>
-<li>seata-spring-boot-starter</li>
-</ul>
-<blockquote>
-<p>1.0.0可用于替换seata-all，starter默认开启数据源自动代理，GlobalTransactionScanner自动初始化（依赖SpringUtils）<br>
-若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化</p>
-</blockquote>
+<h2>Seata新手部署指南(1.0版本)</h2>
 <p>Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。</p>
 <h3>启动Server</h3>
 <p>Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。<br>
 注：file模式为单机模式，全局事务会话信息内存中读写并持久化本地文件root.data，性能较高;<br>
 db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些。</p>
 <h4>步骤一：启动包</h4>
-<ul>
-<li><a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a> 下载</li>
-<li>官方钉钉群（群号：23171167），qq群（群号：254657148）群文件共享下载</li>
-<li>其它途径</li>
-</ul>
+<p>a.<a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a> 下载<br>
+b.官方钉钉群（群号：23171167），qq群（群号：254657148）群文件共享下载<br>
+c.其它途径</p>
 <h4>步骤二：建表</h4>
-<p>全局事务会话信息由3块内容构成，全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table，</p>
-<ul>
-<li>mysql建表脚本存放于module seata-server--&gt;resources--&gt;db_store.sql</li>
-<li>oracle脚本（可参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a> ）暂未合并。</li>
-</ul>
+<p>全局事务会话信息由3块内容构成，全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table，<br>
+mysql建表脚本存放于module seata-server--&gt;resources--&gt;db_store.sql<br>
+oracle脚本（可参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a> ）暂未合并。</p>
 <h4>步骤三：修改store.mode</h4>
 <p>打开seata-server--&gt;resources--&gt;file.conf，修改store.mode=&quot;db&quot;;也可以在启动时加命令参数-m db指定。</p>
 <h4>步骤四：修改数据库连接</h4>
 <p>打开seata-server--&gt;resources--&gt;file.conf，修改store.db相关属性</p>
 <h4>步骤五：启动</h4>
-<ul>
-<li>源码启动: 执行Server.java的main方法</li>
-<li>命令启动: <a href="http://seata-server.sh">seata-server.sh</a> -h 127.0.0.1 -p 8091 -m db -n 1 -DSEATA_ENV=test</li>
-</ul>
+<p>a.源码启动: 执行Server.java的main方法<br>
+b.命令启动: <a href="http://seata-server.sh">seata-server.sh</a> -h 127.0.0.1 -p 8091 -m db -n 1 -DSEATA_ENV=test</p>
 <pre><code>    -h: 注册到注册中心的ip
     -p: Server rpc 监听端口
     -m: 全局事务会话信息存储模式，file、db，优先读取启动参数
     -n: Server node，多个Server时，需区分各自节点，用于生成不同的transactionId范围，以免冲突
     SEATA_ENV: 多环境配置参考 https://github.com/seata/seata/wiki/Multi-configuration-Isolation
 </code></pre>
-<ul>
-<li>docker部署请看 <a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html">https://seata.io/zh-cn/docs/ops/deploy-by-docker.html</a></li>
-</ul>
-<p>注: 堆内存建议分配4G，堆外内存1-2G</p>
+<p>c.docker部署请看 <a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html">https://seata.io/zh-cn/docs/ops/deploy-by-docker.html</a></p>
+<p>注: 堆内存建议分配4G</p>
 <h3>业务系统集成Client</h3>
 <h4>步骤一：添加seata依赖</h4>
-<ul>
-<li>依赖seata-all</li>
-<li>依赖seata-spring-boot-starter，支持yml配置</li>
-<li>依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递</li>
-</ul>
+<p>a.依赖seata-all<br>
+b.依赖seata-spring-boot-starter，支持yml配置<br>
+c.依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递</p>
 <h4>步骤二：undo_log建表、配置参数</h4>
-<ul>
-<li>oracle暂时参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a></li>
-<li>参数配置介绍 <a href="https://seata.io/zh-cn/docs/user/configurations.html">https://seata.io/zh-cn/docs/user/configurations.html</a></li>
-</ul>
+<p>统一放置在源码script文件夹下，也可以看module seata-server resources的db_undo_log.sql和file.conf.example。<br>
+oracle暂时参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a><br>
+参数配置介绍请看 <a href="https://seata.io/zh-cn/docs/user/configurations.html">https://seata.io/zh-cn/docs/user/configurations.html</a></p>
 <h4>步骤三：数据源代理</h4>
-<ul>
-<li>0.9.0版本开始seata支持自动代理数据源</li>
-</ul>
-<pre><code>    1.0.0: client.support.spring.datasource.autoproxy=true  
-    0.9.0: support.spring.datasource.autoproxy=true
-</code></pre>
-<ul>
-<li>手动配置可参考下方mybatis的例子</li>
-</ul>
+<p>a.0.9.0版本开始可通过配置client.support.spring.datasource.autoproxy=true由seata自动实现数据源代理<br>
+b.手动配置可参考下方mybatis的例子</p>
 <pre><code> @Bean
     @ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
     public DataSource druidDataSource() {
@@ -113,9 +74,7 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
     }
 </code></pre>
 <h4>步骤四：初始化GlobalTransactionScanner</h4>
-<ul>
-<li>手动</li>
-</ul>
+<p>a.手动</p>
 <pre><code class="language-@Bean">       public GlobalTransactionScanner globalTransactionScanner() {
            String applicationName = this.applicationContext.getEnvironment().getProperty(&quot;spring.application.name&quot;);
            String txServiceGroup = this.seataProperties.getTxServiceGroup();
@@ -127,93 +86,67 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
            return new GlobalTransactionScanner(applicationName, txServiceGroup);
        }
 </code></pre>
-<ul>
-<li>自动，引入seata-spring-boot-starter、spring-cloud-alibaba-seata等jar</li>
-</ul>
+<p>b.自动，依赖seata-spring-boot-starter、spring-cloud-alibaba-seata等jar</p>
 <h4>步骤五：实现xid跨服务传递</h4>
-<ul>
-<li>手动
-参考源码integration文件夹下的各种rpc实现 module</li>
-<li>自动
-springCloud用户可以引入spring-cloud-alibaba-seata，内部已经实现xid传递</li>
-</ul>
+<p>a.手动<br>
+参考源码integration文件夹下的各种rpc实现 module<br>
+b.自动<br>
+springCloud用户可以引入spring-cloud-alibaba-seata，内部已经实现xid传递</p>
 <h3>事务分组专题简介</h3>
 <p>事务分组可以作为资源的逻辑隔离单位，去注册中心获得相应的TC服务列表。<br>
-seata注册、配置中心分为两类，内置file、第三方注册（配置）中心如nacos等等，注册中心和配置中心之间没有约束，可各自使用不同类型。</p>
-<h3>file注册中心和配置中心</h3>
+seata注册、配置中心分为两类，内置file、第三方注册（配置）中心如nacos等等，注册中心和配置中心之间没有约束，可使用不同类型。</p>
+<h3>file注册中心和file配置中心（file注册中心也可以搭配nacos、zk等其他配置中心）</h3>
 <h4>Server端</h4>
 <pre><code>registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-  type = &quot;file&quot;                ---------------&gt; 使用file作为注册中心
+  type = &quot;file&quot;                                ---------------&gt; 该行简称RT
 }
 config {
   # file、nacos 、apollo、zk、consul、etcd3
-  type = &quot;file&quot;                ---------------&gt; 使用file作为e配置中心
+  type = &quot;file&quot;
   file {
     name = &quot;file.conf&quot;
   }
 }
 </code></pre>
-<ul>
-<li>file、db模式启动server，见文章上方节点：启动Server</li>
-</ul>
+<p>1.RT配置为file<br>
+2.file、db模式启动server，见文章上方节点：启动Server</p>
 <h4>Client端</h4>
 <pre><code>registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-  type = &quot;file&quot;                ---------------&gt; 使用file作为注册中心
+  type = &quot;file&quot;                                ---------------&gt; 该行简称RT2
 }
 config {
   # file、nacos 、apollo、zk、consul、etcd3
-  type = &quot;file&quot;                ---------------&gt; 使用file作为配置中心
+  type = &quot;file&quot;                                 ---------------&gt; CF
   file {
-    name = &quot;file.conf&quot;         ---------------&gt; 配置参数存储文件
+    name = &quot;file.conf&quot;                          ---------------&gt; CFN
   }
 }
-spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------&gt; 事务分组配置
-file.conf: 
-    service {
-      vgroup_mapping.my_test_tx_group = &quot;default&quot;
-      default.grouplist = &quot;127.0.0.1:8091&quot;
-    }
+spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------&gt; TG
+service {
+  vgroup_mapping.my_test_tx_group = &quot;default&quot;   ---------------&gt; VM
+  default.grouplist = &quot;127.0.0.1:8091&quot;          ---------------&gt; DG
+}
 </code></pre>
-<ul>
-<li>读取配置</li>
-</ul>
-<blockquote>
-<p>通过FileConfiguration本地加载file.conf的配置参数</p>
-</blockquote>
-<ul>
-<li>获取事务分组</li>
-</ul>
-<blockquote>
-<p>spring配置，springboot可配置在yml、properties中，服务启动时加载配置，对应的值&quot;my_test_tx_group&quot;即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+&quot;-fescar-service-group&quot;</p>
-</blockquote>
-<ul>
-<li>查找TC集群名</li>
-</ul>
-<blockquote>
-<p>拿到事务分组名&quot;my_test_tx_group&quot;拼接成&quot;service.vgroup_mapping.my_test_tx_group&quot;查找TC集群名clusterName为&quot;default&quot;</p>
-</blockquote>
-<ul>
-<li>查询TC服务</li>
-</ul>
-<blockquote>
-<p>拼接&quot;service.&quot;+clusterName+&quot;.grouplist&quot;找到真实TC服务地址127.0.0.1:8091</p>
-</blockquote>
+<p>1.配置CF为file，CNF为file.conf，通过FileConfiguration本地加载seata配置参数<br>
+2.TG为spring配置，springboot可配置在yml、properties中，服务启动时加载配置，对应的值&quot;my_test_tx_group&quot;即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+&quot;-fescar-service-group&quot;<br>
+3.以VM为例，拿到事务分组名&quot;my_test_tx_group&quot;拼接成&quot;service.vgroup_mapping.my_test_tx_group&quot;查找TC集群名clusterName为&quot;default&quot;<br>
+4.再拼接&quot;service.&quot;+clusterName+&quot;.grouplist&quot;找到真实TC服务列表127.0.0.1:8091</p>
 <h3>nacos注册中心和配置中心</h3>
 <h4>Server端</h4>
 <pre><code>registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-  type = &quot;nacos&quot;                ---------------&gt; 使用nacos作为注册中心
+  type = &quot;nacos&quot;                                ---------------&gt; 该行简称RT
   nacos {
-    serverAddr = &quot;localhost&quot;    ---------------&gt; nacos注册中心所在ip
-    namespace = &quot;&quot;              ---------------&gt; nacos命名空间id，&quot;&quot;为nacos保留public空间控件，用户勿配置namespace = &quot;public&quot;
-    cluster = &quot;default&quot;         ---------------&gt; seata-server在nacos的集群名
+    serverAddr = &quot;localhost&quot;                    ---------------&gt; RNS
+    namespace = &quot;&quot;                              ---------------&gt; RNN
+    cluster = &quot;default&quot;                         ---------------&gt; RNC
   }
 }
 config {
   # file、nacos 、apollo、zk、consul、etcd3
-  type = &quot;nacos&quot;                ---------------&gt; 使用nacos作为配置中心
+  type = &quot;nacos&quot;
   nacos {
     serverAddr = &quot;localhost&quot;
     namespace = &quot;&quot;
@@ -222,69 +155,38 @@ config {
 }
 
 </code></pre>
-<ul>
-<li>脚本</li>
-</ul>
-<blockquote>
-<p>scrpit--&gt;<a href="http://xn--config-center3nacosnacos-config-4t23cj3al2r845tb25e.py">config-center下的3个nacos文件nacos-config.py</a>、<a href="http://nacos-config.sh">nacos-config.sh</a>、nacos-config.txt<br>
-txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。</p>
-</blockquote>
-<ul>
-<li>导入配置</li>
-</ul>
-<blockquote>
-<p>用命令执行脚本导入seata配置参数至nacos，在nacos控制台查看配置确认是否成功</p>
-</blockquote>
-<ul>
-<li>注册TC</li>
-</ul>
-<blockquote>
-<p>启动seata-server注册至nacos，查看nacos控制台服务列表确认是否成功</p>
-</blockquote>
+<p>1.获取源码scrpit--&gt;<a href="http://xn--config-center3nacosnacos-config-4t23cj3al2r845tb25e.py">config-center下的3个nacos文件nacos-config.py</a>、<a href="http://nacos-config.sh">nacos-config.sh</a>、nacos-config.txt<br>
+txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。<br>
+2.用命令执行脚本导入seata配置参数至nacos，在nacos控制台查看配置确认是否成功<br>
+3.RT配置为nacos,启动seata-server注册至nacos，查看nacos控制台服务列表确认是否成功</p>
+<pre><code>RNS：nacos注册中心ip
+RNN：nacos命名空间id，&quot;&quot;为nacos保留public空间控件，用户勿配置namespace = &quot;public&quot;
+RNC：seata-server在nacos的集群名
+</code></pre>
 <h4>Client端</h4>
-<pre><code>spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------&gt; 事务分组配置
+<pre><code>spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------&gt; TG
 registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-  type = &quot;nacos&quot;                ---------------&gt; 从nacos获取TC服务
+  type = &quot;nacos&quot;                                ---------------&gt; RT2
   nacos {
-    serverAddr = &quot;localhost&quot;
-    namespace = &quot;&quot;
+    serverAddr = &quot;localhost&quot;                    ---------------&gt; RNS2
+    namespace = &quot;&quot;                              ---------------&gt; RNN2
   }
 }
 config {
   # file、nacos 、apollo、zk、consul、etcd3
-  type = &quot;nacos&quot;                ---------------&gt; 使用nacos作为配置中心
+  type = &quot;nacos&quot;                                 ---------------&gt; CF
   nacos {
     serverAddr = &quot;localhost&quot;
     namespace = &quot;&quot;
   }
 }
 </code></pre>
-<ul>
-<li>读取配置</li>
-</ul>
-<blockquote>
-<p>通过NacosConfiguration远程读取seata配置参数</p>
-</blockquote>
-<ul>
-<li>获取事务分组</li>
-</ul>
-<blockquote>
-<p>springboot可配置在yml、properties中，服务启动时加载配置，对应的值&quot;my_test_tx_group&quot;即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+&quot;-fescar-service-group&quot;</p>
-</blockquote>
-<ul>
-<li>查找TC集群名</li>
-</ul>
-<blockquote>
-<p>拿到事务分组名&quot;my_test_tx_group&quot;拼接成&quot;service.vgroup_mapping.my_test_tx_group&quot;从配置中心查找到TC集群名clusterName为&quot;default&quot;</p>
-</blockquote>
-<ul>
-<li>查找TC服务</li>
-</ul>
-<blockquote>
-<p>根据serverAddr和namespace以及clusterName在注册中心找到真实TC服务列表</p>
-</blockquote>
-<p>注：serverAddr和namespace与Server端一致，clusterName与Server端cluster一致</p>
+<p>1.配置CF为nacos，通过NacosConfiguration远程读取seata配置参数<br>
+2.TG为spring配置，springboot可配置在yml、properties中，服务启动时加载配置，对应的值&quot;my_test_tx_group&quot;即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+&quot;-fescar-service-group&quot;<br>
+4.拿到事务分组名&quot;my_test_tx_group&quot;拼接成&quot;service.vgroup_mapping.my_test_tx_group&quot;查找TC集群名clusterName为&quot;default&quot;<br>
+5.再根据serverAddr和namespace以及clusterName找到真实TC服务列表<br>
+注：serverAddr和namespace与Server端一致，clusterName与Server端cluster一致</p>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
