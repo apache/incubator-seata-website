@@ -94,4 +94,4 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
 eureka.lease.renewalInterval=1  
 eureka.lease.duration=2
 ```
-  属性前缀为eureka，其后的属性名可以参考类com.netflix.appinfo.PropertyBasedInstanceConfigConstants，也可自行研究seata源码中的discovery模块的seata-discovery-eureka工程
+  属性前缀为eureka，其后的属性名可以参考类com.netflix.appinfo.PropertyBasedInstanceConfigConstants，也可研究seata源码中的discovery模块的seata-discovery-eureka工程
