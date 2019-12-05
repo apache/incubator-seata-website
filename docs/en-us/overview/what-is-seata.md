@@ -1,109 +1,108 @@
 # What Is Seata?
 
-Seata 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。Seata 将为用户提供了 AT、TCC、SAGA 和 XA 事务模式，为用户打造一站式的分布式解决方案。
+Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users.
 
-# AT 模式
+# AT Mode
 
-## 前提
+## Prerequisite
 
-- 基于支持本地 ACID 事务的关系型数据库。
-- Java 应用，通过 JDBC 访问数据库。
+- Relational databases that support local ACID transaction.
+- Java applications that access database via JDBC.
 
-## 整体机制
+## Overall mechanism
 
-两阶段提交协议的演变：
+Evolution from the two phases commit protocol:
 
-- 一阶段：业务数据和回滚日志记录在同一个本地事务中提交，释放本地锁和连接资源。
-- 二阶段：
+- Phase 1：commit business data and rollback log in the same local transaction, then release local lock and connection resources.
+- Phase 2：
+  - for commit case, do the work asynchronously and quickly.
+  - for rollback case, do compensation, base on the rollback log created in the phase 1.
 
-  - 提交异步化，非常快速地完成。
-  - 回滚通过一阶段的回滚日志进行反向补偿。
+# Write isolation
 
+- The **global lock** must be acquired before committing the local transaction of phase 1. 
+- If the **global lock** is not acquired, the local transaction should not be committed.
+- One transaction will try to acquire the **global lock** many times if it fails to, but there is a timeout, if it's timeout, rollback local transaction and release local lock as well. 
 
-# 写隔离
+For example:
 
-- 一阶段本地事务提交前，需要确保先拿到 **全局锁** 。
-- 拿不到 **全局锁** ，不能提交本地事务。
-- 拿 **全局锁** 的尝试被限制在一定范围内，超出范围将放弃，并回滚本地事务，释放本地锁。
+Two transactions tx1 and tx2 are trying to update field m of table a. The original value of m is 1000.
 
-以一个示例来说明：
+tx1 starts first, begins a local transaction, acquires the local lock, do the update operation: m = 1000 - 100 = 900. tx1 must acquire the **global lock** before committing the local transaction, after that, commit local transaction and release local lock. 
 
-两个全局事务 tx1 和 tx2，分别对 a 表的 m 字段进行更新操作，m 的初始值 1000。
-
-tx1 先开始，开启本地事务，拿到本地锁，更新操作 m = 1000 - 100 = 900。本地事务提交前，先拿到该记录的 **全局锁** ，本地提交释放本地锁。
-tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 100 = 800。本地事务提交前，尝试拿该记录的 **全局锁** ，tx1 全局提交前，该记录的全局锁被 tx1 持有，tx2 需要重试等待 **全局锁** 。
+next, tx2 begins local transaction, acquires local lock, do the update operation: m = 900 - 100 = 800. Before tx2 can commit local transaction, it must acquire the **global lock**, but the **global lock** may be hold by tx1, so tx2 will do retry. After tx1 does the global commit and releases the **global lock**, tx2 can acquire the **global lock**, then it can commit local transaction and release local lock.
 
 ![Write-Isolation: Commit](/img/overview-1.png)
 
-tx1 二阶段全局提交，释放 **全局锁** 。tx2 拿到 **全局锁** 提交本地事务。
+See the figure above, tx1 does the global commit in phase 2 and release the **global lock**, tx2 acquires the **global lock** and commits local transaction.
 
 ![Write-Isolation: Rollback](/img/overview-2.png)
 
-如果 tx1 的二阶段全局回滚，则 tx1 需要重新获取该数据的本地锁，进行反向补偿的更新操作，实现分支的回滚。
+See the figure above, if tx1 wants to do the global rollback, it must acquire local lock to revert the update operation of phase 1.
 
-此时，如果 tx2 仍在等待该数据的 **全局锁**，同时持有本地锁，则 tx1 的分支回滚会失败。分支的回滚会一直重试，直到 tx2 的 **全局锁** 等锁超时，放弃 **全局锁** 并回滚本地事务释放本地锁，tx1 的分支回滚最终成功。
+However, now the local lock is held by tx2 which hopes to acquire the **global lock**, so tx1 fails to rollback, but it would try it many times until it's timeout for tx2 to acquire the **global lock**, then tx2 rollbacks local transaction and releases local lock, after that, tx1 can acquire the local lock, and do the branch rollback successfully.
 
-因为整个过程 **全局锁** 在 tx1 结束前一直是被 tx1 持有的，所以不会发生 **脏写** 的问题。
+Because the **global lock** is held by tx1 during the whole process, there isn't no problem of **dirty write**.
 
-# 读隔离
+# Read isolation
 
-在数据库本地事务隔离级别 **读已提交（Read Committed）** 或以上的基础上，Seata（AT 模式）的默认全局隔离级别是 **读未提交（Read Uncommitted）** 。
+The isolation level of local database is **read committed** or above, so the default isolation level of the global transaction is **read uncommitted**.
 
-如果应用在特定场景下，必需要求全局的 **读已提交** ，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。
+If it needs the isolation level of the global transaction is **read committed**, currently, Seata implements it via SELECT FOR UPDATE statement.
 
 ![Read Isolation: SELECT FOR UPDATE](/img/overview-3.png)
 
-SELECT FOR UPDATE 语句的执行会申请 **全局锁** ，如果 **全局锁** 被其他事务持有，则释放本地锁（回滚 SELECT FOR UPDATE 语句的本地执行）并重试。这个过程中，查询是被 block 住的，直到 **全局锁** 拿到，即读取的相关数据是 **已提交** 的，才返回。
+The **global lock** is be applied during the execution of SELECT FOR UPDATE statement, if the **global lock** is held by other transactions, the transaction will release local lock retry execute the SELECT FOR UPDATE statement. During the whole process, the query is blocked until the **global lock** is acquired, if the lock is acquired, it means the other global transaction has committed, so the isolation level of global transaction is **read committed**.
 
-出于总体性能上的考虑，Seata 目前的方案并没有对所有 SELECT 语句都进行代理，仅针对 FOR UPDATE 的 SELECT 语句。
+For the performance consideration, Seata only does proxy work for SELECT FOR UPDATE. For the general SELECT statement, do nothing.
 
-# 工作机制
+# Work process
 
-以一个示例来说明整个 AT 分支的工作过程。
+Take an example to illustrate it.
 
-业务表：`product`
+A business table:`product`
 
-| Field | Type         | Key |
-| ----- | ------------ | --- |
-| id    | bigint(20)   | PRI |
-| name  | varchar(100) |     |
-| since | varchar(100) |     |
+| Field | Type         | Key  |
+| ----- | ------------ | ---- |
+| id    | bigint(20)   | PRI  |
+| name  | varchar(100) |      |
+| since | varchar(100) |      |
 
-AT 分支事务的业务逻辑：
+The sql of branch transaction in AT mode:
 
 ```sql
 update product set name = 'GTS' where name = 'TXC';
 ```
-## 一阶段
+## Phase 1
 
-过程：
+Process:
 
-1. 解析 SQL：得到 SQL 的类型（UPDATE），表（product），条件（where name = 'TXC'）等相关的信息。
-2. 查询前镜像：根据解析得到的条件信息，生成查询语句，定位数据。
+1. Parse sql:  know the sql type is update operation, table name is product, the where condition is name = 'TXC' and so on.
+2. Query the data before update(Named before image): In order to  locate the data that will be updated, generate a query statement by the where condition above.
 
 ```sql
 select id, name, since from product where name = 'TXC';
 ```
-得到前镜像：
 
-| id  | name | since |
-| --- | ---- | ----- |
-| 1   | TXC  | 2014  |
+Got the "before image"：
 
+| id   | name | since |
+| ---- | ---- | ----- |
+| 1    | TXC  | 2014  |
 
-3. 执行业务 SQL：更新这条记录的 name 为 'GTS'。
-4. 查询后镜像：根据前镜像的结果，通过 **主键** 定位数据。
+3. Execute the update sql: update the record of name equals 'GTS'. 
+4. Query the data after update(Named after image): locate the record by the **primary key** of image data before update.
 
 ```sql
-select id, name, since from product where id = 1`;
+select id, name, since from product where id = 1;
 ```
-得到后镜像：
+Got the after image:
 
-| id  | name | since |
-| --- | ---- | ----- |
-| 1   | GTS  | 2014  |
+| id   | name | since |
+| ---- | ---- | ----- |
+| 1    | GTS  | 2014  |
 
-5. 插入回滚日志：把前后镜像数据以及业务 SQL 相关的信息组成一条回滚日志记录，插入到 `UNDO_LOG` 表中。
+5. Insert a rollback log: build the rollback log with image before and after, as well as SQL statement relelated information, then insert into table `UNDO_LOG` .
 
 ```json
 {
@@ -151,36 +150,35 @@ select id, name, since from product where id = 1`;
 }
 ```
 
-6. 提交前，向 TC 注册分支：申请 `product` 表中，主键值等于 1 的记录的 **全局锁** 。
-7. 本地事务提交：业务数据的更新和前面步骤中生成的 UNDO LOG 一并提交。
-8. 将本地事务提交的结果上报给 TC。
+6. Before local commit, the transaction submmit an application to TC to acquire a **global lock** for the record whose primary key equals 1 in the table product. 
+7. Commit local transaction: commit the update of PRODUCT table and the insert of UNDO_LOG table in the same local transaction.
+8. Report the result of step 7 to TC.
 
-## 二阶段-回滚
+## Phase 2 - Rollback case
 
-1. 收到 TC 的分支回滚请求，开启一个本地事务，执行如下操作。
-2. 通过 XID 和 Branch ID 查找到相应的 UNDO LOG 记录。
-3. 数据校验：拿 UNDO LOG 中的后镜与当前数据进行比较，如果有不同，说明数据被当前全局事务之外的动作做了修改。这种情况，需要根据配置策略来做处理，详细的说明在另外的文档中介绍。
-4. 根据 UNDO LOG 中的前镜像和业务 SQL 的相关信息生成并执行回滚的语句：
+1. After receive the rollback request from TC, begin a local transaction, execute operation as following.
+2. Retrieve the UNDO LOG by XID and Branch ID. 
+3. Validate data: Compare the image data after update in UNDO LOG with current data, if there is difference, it means the data has been changed by operation out of current transaction, it should be handled in different policy, we will describe it detailedly in other document.
+4. Generate rollback SQL statement base on before image in UNDO LOG and related information of the business SQL. 
 
 ```sql
 update product set name = 'TXC' where id = 1;
 ```
 
-5. 提交本地事务。并把本地事务的执行结果（即分支事务回滚的结果）上报给 TC。
+5. Commit local transaction, report the result of execution of local transaction(The rollback result of the Branch transaction) to TC.
 
-## 二阶段-提交
+## Phase 2 - Commit case
 
-1. 收到 TC 的分支提交请求，把请求放入一个异步任务的队列中，马上返回提交成功的结果给 TC。
-2. 异步任务阶段的分支提交请求将异步和批量地删除相应 UNDO LOG 记录。
+1. After receive the commit request from TC, put the request into a work queue, return success to TC immediately. 
+2. During the phase of doing the asynchronous work in the queue, the UNDO LOGs are deleted in batch way.
 
+# Appendix
 
-# 附录
+## Undo log table
 
-## 回滚日志表
+UNDO_LOG Table：there is a little bit difference on the data type for different databases.
 
-UNDO_LOG Table：不同数据库在类型上会略有差别。
-
-以 MySQL 为例：
+For MySQL example:
 
 | Field         | Type          |
 | ------------- | ------------- |
@@ -193,7 +191,7 @@ UNDO_LOG Table：不同数据库在类型上会略有差别。
 | log_modified  | datetime      |
 
 ```sql
--- 注意此处0.7.0+ 增加字段 context
+-- Note that 0.7.0+ adds the field context
 CREATE TABLE `undo_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `branch_id` bigint(20) NOT NULL,
@@ -208,48 +206,48 @@ CREATE TABLE `undo_log` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 ```
 
-# TCC 模式
+# TCC Mode
 
-回顾总览中的描述：一个分布式的全局事务，整体是 **两阶段提交** 的模型。全局事务是由若干分支事务组成的，分支事务要满足 **两阶段提交** 的模型要求，即需要每个分支事务都具备自己的：
+Review the description in the overview: A distributed global transaction, the whole is a **two-phase commit** model. The global transaction is composed of several branch transactions. The branch transaction must meet the requirements of the **two-phase commit** model, that is, each branch transaction must have its own:
 
-- 一阶段 prepare 行为
-- 二阶段 commit 或 rollback 行为
+- One-stage prepare behavior
+- Two-phase commit or rollback behavior
 
 ![Overview of a global transaction](/img/overview-4.png)
 
-根据两阶段行为模式的不同，我们将分支事务划分为 **Automatic (Branch) Transaction Mode** 和 **Manual (Branch) Transaction Mode**.
+According to the two-phase behavior mode, we divide branch transactions into **Automatic (Branch) Transaction Mode** and **TCC (Branch) Transaction Mode**.
 
-AT 模式（[参考链接 TBD]()）基于 **支持本地 ACID 事务** 的 **关系型数据库**：
+The AT mode ([Reference Link TBD]()) is based on a **relational database** that **supports local ACID transactions**:
 
-- 一阶段 prepare 行为：在本地事务中，一并提交业务数据更新和相应回滚日志记录。
-- 二阶段 commit 行为：马上成功结束，**自动** 异步批量清理回滚日志。
-- 二阶段 rollback 行为：通过回滚日志，**自动** 生成补偿操作，完成数据回滚。
+- One-stage prepare behavior: In local transactions, business data updates and corresponding rollback log records are submitted together.
+- Two-phase commit behavior: Immediately completed successfully, **automatically** asynchronously clean up the rollback log.
+- Two-phase rollback behavior: Through the rollback log, **automatically** generates compensation operations to complete data rollback.
 
-相应的，TCC 模式，不依赖于底层数据资源的事务支持：
+Correspondingly, the TCC mode does not rely on transaction support of the underlying data resources:
 
-- 一阶段 prepare 行为：调用 **自定义** 的 prepare 逻辑。
-- 二阶段 commit 行为：调用 **自定义** 的 commit 逻辑。
-- 二阶段 rollback 行为：调用 **自定义** 的 rollback 逻辑。
+- One-stage prepare behavior: Call the **custom** prepare logic.
+- Two-phase commit behavior: Call **custom** commit logic.
+- Two-phase rollback behavior: Call the **custom** rollback logic.
 
-所谓 TCC 模式，是指支持把 **自定义** 的分支事务纳入到全局事务的管理中。
+The so-called TCC mode refers to the support of **customized's** branch transactions into the management of global transactions.
 
 
-# Saga 模式
+# Saga Mode
 
-Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
+The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.
 
-![Saga模式示意图](/img/saga/sagas.png)
+![Saga mode diagram](/img/saga/sagas.png)
 
-理论基础：Hector & Kenneth 发表论⽂ Sagas （1987）
+Theoretical basis: Hector & Kenneth Post a comment Sagas （1987）
 
-## 适用场景：
-* 业务流程长、业务流程多
-* 参与者包含其它公司或遗留系统服务，无法提供 TCC 模式要求的三个接口
+## Applicable scene:
+* Long business processes, many business processes
+* Participants include other company or legacy system services and cannot provide the three interfaces required by the TCC model
 
-## 优势：
-* 一阶段提交本地事务，无锁，高性能
-* 事件驱动架构，参与者可异步执行，高吞吐
-* 补偿服务易于实现
+## Advantage:
+* Commit local transactions in one phase, lock-free, high performance
+* Event-driven architecture, participants can execute asynchronously, high throughput
+* Compensation services are easy to implement
 
-## 缺点：
-* 不保证隔离性（应对方案见[用户文档](../user/saga.html)）
+## Disadvantages:
+* Isolation is not guaranteed see [User Documentation](../user/saga.html)

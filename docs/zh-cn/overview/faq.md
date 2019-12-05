@@ -26,7 +26,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 **A:** 
     因seata一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。
   1. 脏读 select语句加for update，代理方法增加@GlobalLock或@GlobalTransaction
-  2. 脏写 必须使用@GlobalTransaction
+  2. 脏写 必须使用@GlobalTransaction  
         注：如果你查询的业务的接口没有GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock 注解，并且在查询语句上加 for update。
         如果你查询的接口在事务链路上外层有GlobalTransactional注解，那么你查询的语句只要加for update就行。设计这个注解的原因是在没有这个注解之前，需要查询分布式事务读已提交的数据，但业务本身不需要分布式事务。
         若使用GlobalTransactional注解就会增加一些没用的额外的rpc开销比如begin 返回xid，提交事务等。GlobalLock简化了rpc过程，使其做到更高的性能。
@@ -36,20 +36,21 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 
 **A:** 
   1. 脏数据需手动处理，根据日志提示修正数据或者将对应undo删除（可自定义实现FailureHandler做邮件通知或其他）
-  2. 关闭回滚时undo镜像校验，不推荐该方案。
+  2. 关闭回滚时undo镜像校验，不推荐该方案。  
     注：建议事前做好隔离保证无脏数据
 
 ********
 ### Q: 为什么分支事务注册时, 全局事务状态不是begin ？
 
 **A:**  
-    异常：Could not register branch into global session xid = status = Rollbacked（还有Rollbacking、AsyncCommitting等等二阶段状态） while expecting Begin
-    描述：分支事务注册时，全局事务状态需是一阶段状态begin，非begin不允许注册。属于seata框架层面正常的处理，用户可以从自身业务层面解决。
-    有以下几种情况会出现该异常（可继续补充）
+* 异常：Could not register branch into global session xid = status = Rollbacked（还有Rollbacking、AsyncCommitting等等二阶段状态） while expecting Begin
+* 描述：分支事务注册时，全局事务状态需是一阶段状态begin，非begin不允许注册。属于seata框架层面正常的处理，用户可以从自身业务层面解决。
+* 出现场景（可继续补充）
+```
   1. 分支事务是异步，全局事务无法感知它的执行进度，全局事务已进入二阶段，该异步分支才来注册
   2. 服务a rpc 服务b超时（dubbo、feign等默认1秒超时），a上抛异常给tm，tm通知tc回滚，但是b还是收到了请求（网络延迟或rpc框架重试），然后去tc注册时发现全局事务已在回滚
   3. tc感知全局事务超时(@GlobalTransactional(timeoutMills = 默认60秒))，主动变更状态并通知各分支事务回滚，此时有新的分支事务来注册
-
+```
 ********
 ### Q: Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?
 
@@ -62,9 +63,9 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 为public是nacos的一个保留控件，如果您需要创建自己的namespace，最好不要和public重名，以一个实际业务场景有具体语义的名字来命名
   4. nacos上服务列表，serverAddr地址对应ip地址应为seata启动指定ip地址，如：sh seata-server.sh -p 8091 -h 122.51.204.197 -m file
   5. 查看seata/conf/nacos-config.txt 事务分组service.vgroup_mapping.trade_group=default配置与项目分组配置名称是否一致
-  6. telnet ip 端口 查看端口是都开放，以及防火墙状态
-    注：1.080版本启动指定ip问题，出现异常Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot assign request address，请升级到081以上版本
-       2.项目使用jdk13，启动出现
+  6. telnet ip 端口 查看端口是都开放，以及防火墙状态  
+    注：1.080版本启动指定ip问题，出现异常Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot assign request address，请升级到081以上版本  
+        2.项目使用jdk13，启动出现
 ```verilog 
 Error: Could not create the Java Virtual Machine.
 Error: A fatal exception has occurred. Program will exit.
@@ -82,3 +83,15 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
           io.seata.server.Server \
           "$@"
 ```
+
+********
+### Q: Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性 ?
+
+**A：**
+  在seata\conf目录下新增eureka-client.properties文件，添加要覆盖的Eureka属性即可。  
+  例如，要覆盖eureka.instance.lease-renewal-interval-in-seconds和eureka.instance.lease-expiration-duration-in-seconds，添加如下内容：
+```
+eureka.lease.renewalInterval=1  
+eureka.lease.duration=2
+```
+  属性前缀为eureka，其后的属性名可以参考类com.netflix.appinfo.PropertyBasedInstanceConfigConstants，也可研究seata源码中的discovery模块的seata-discovery-eureka工程
