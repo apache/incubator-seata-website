@@ -4,7 +4,7 @@
 
 ## Prerequisite
 
-- Relational databases that suport local ACID transaction.
+- Relational databases that support local ACID transaction.
 - Java applications that access database via JDBC.
 
 ## Overall mechanism
@@ -93,7 +93,7 @@ Got the "before image"：
 4. Query the data after update(Named after image): locate the record by the **primary key** of image data before update.
 
 ```sql
-select id, name, since from product where id = 1`;
+select id, name, since from product where id = 1;
 ```
 
 Got the after image:
