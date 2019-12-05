@@ -85,10 +85,10 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
 ```
 
 ********
-### Q: Eureak做注册中心，TC高可用时，如何在TC端覆盖Eureak属性 ?
+### Q: Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性 ?
 
 **A：**
-  在seata\conf目录下新增eureka-client.properties文件，添加要覆盖的Eureaka属性即可。  
+  在seata\conf目录下新增eureka-client.properties文件，添加要覆盖的Eureka属性即可。  
   例如，要覆盖eureka.instance.lease-renewal-interval-in-seconds和eureka.instance.lease-expiration-duration-in-seconds，添加如下内容：
 ```
 eureka.lease.renewalInterval=1  
