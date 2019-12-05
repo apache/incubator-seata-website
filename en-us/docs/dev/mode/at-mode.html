@@ -16,7 +16,7 @@
 <h1>The basic idea</h1>
 <h2>Prerequisite</h2>
 <ul>
-<li>Relational databases that suport local ACID transaction.</li>
+<li>Relational databases that support local ACID transaction.</li>
 <li>Java applications that access database via JDBC.</li>
 </ul>
 <h2>Overall mechanism</h2>
@@ -113,8 +113,8 @@
 <li>Execute the update sql: update the record of name equals 'GTS'.</li>
 <li>Query the data after update(Named after image): locate the record by the <strong>primary key</strong> of image data before update.</li>
 </ol>
-<pre><code class="language-sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>, <span class="hljs-keyword">name</span>, since <span class="hljs-keyword">from</span> product <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span><span class="hljs-string">`;
-</span></code></pre>
+<pre><code class="language-sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>, <span class="hljs-keyword">name</span>, since <span class="hljs-keyword">from</span> product <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span>;
+</code></pre>
 <p>Got the after image:</p>
 <table>
 <thead>
