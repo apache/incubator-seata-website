@@ -283,6 +283,11 @@
       "meta": {}
     },
     {
+      "filename": "configurations-old.md",
+      "link": "/zh-cn/docs/user/configurations-old.html",
+      "meta": {}
+    },
+    {
       "filename": "configurations.md",
       "link": "/zh-cn/docs/user/configurations.html",
       "meta": {}
