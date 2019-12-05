@@ -3,7 +3,7 @@
 
 ### 变更记录
 ```
-增加seata.enabled、client.rm.report.success.enable
+20191205: 增加seata.enabled、client.rm.report.success.enable
 ```
 
 ### 公共部分
