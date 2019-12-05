@@ -16,7 +16,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
  [source](https://github.com/seata/seata/archive/v0.9.0.zip) | 
  [binary](https://github.com/seata/seata/releases/download/v0.9.0/seata-server-0.9.0.zip)
 <details>
-  <summary><mark>发布记录</mark></summary>
+  <summary><mark>Release notes</mark></summary>
    
    ### Seata 0.9.0   
    Seata 0.9.0 正式发布。
@@ -101,7 +101,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
  [source](https://github.com/seata/seata/archive/v0.8.1.zip) |
  [binary](https://github.com/seata/seata/releases/download/v0.8.1/seata-server-0.8.1.zip)  
 <details>
-  <summary><mark>发布记录</mark></summary>
+    <summary><mark>Release notes</mark></summary>
    
    ### Seata 0.8.1 
    
