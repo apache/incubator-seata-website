@@ -4,13 +4,17 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 
 ### 资源目录介绍
 - script
-> seata根目录-->script，存放client所需脚本、配置，各个注册中心配置参数脚本（Server和Client并存）
+> seata根目录-->script，存放client所需脚本、配置，各个配置中心配置参数脚本（Server和Client并存）
 - server
 > seata根目录-->seata-server，存放db模式所需建表脚本，server端配置参数在script。
 ### 注意事项
 - seata-spring-boot-starter
-> 1.0.0可用于替换seata-all，starter默认开启数据源自动代理，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
-若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化
+> 1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
+若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；  
+starter默认开启数据源自动代理，用户若再手动配置DataSourceProxy将会导致异常
+- spring-cloud-alibaba-seata
+> 截止20191207日，现在版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本。  
+可以手动改造让SpringUtils先初始化，以实现兼容。
 
 ### 启动Server
 Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。  
@@ -135,7 +139,7 @@ config {
     name = "file.conf"         ---------------> 配置参数存储文件
   }
 }
-spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------> 事务分组配置
+spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置
 file.conf: 
     service {
       vgroup_mapping.my_test_tx_group = "default"
@@ -174,8 +178,9 @@ config {
 
 ```
 - 脚本
-> scrpit-->config-center下的3个nacos文件nacos-config.py、nacos-config.sh、nacos-config.txt  
-txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。  
+> script-->config-center下的3个nacos文件nacos-config.py、nacos-config.sh、nacos-config.txt  
+txt为参数明细（包含S
+.erver和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。  
 - 导入配置
 > 用命令执行脚本导入seata配置参数至nacos，在nacos控制台查看配置确认是否成功  
 - 注册TC
@@ -183,7 +188,7 @@ txt为参数明细（包含Server和Client），sh为linux脚本，windows可下
 
 #### Client端
 ```
-spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------> 事务分组配置
+spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置
 registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
   type = "nacos"                ---------------> 从nacos获取TC服务

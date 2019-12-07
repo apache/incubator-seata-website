@@ -1,5 +1,5 @@
 # seata参数配置 1.0.0版本
-0.9.0.1前版本 https://seata.io/zh-cn/docs/user/configurations-old.html
+0.9.0.1前版本 https://seata.io/zh-cn/docs/user/configurations090.html
 
 ### 变更记录
 ```
@@ -84,7 +84,7 @@
     首先程序中配置了事务分组（GlobalTransactionScanner 构造方法的txServiceGroup参数），程序会通过用户配置的配置中心去寻找service.vgroup_mapping.事务分组配置项，取得配置项的值就是TC集群的名称。拿到集群名称程序通过一定的前后缀+集群名称去构造服务名，各配置中心的服务名实现不同。拿到服务名去相应的注册中心去拉取相应服务名的服务列表，获得后端真实的TC服务列表。
     3.为什么这么设计，不直接取服务名？
     这里多了一层获取事务分组到映射集群的配置。这样设计后，事务分组可以作为资源的逻辑隔离单位，当发生故障时可以快速failover。
-    
+    h
 ### 附录2：
     关于grouplist问题说明下。
     1. 什么时候会用到file.conf中的default.grouplist？
