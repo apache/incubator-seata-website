@@ -1,5 +1,7 @@
 # 部署指南
 ## Seata新手部署指南(1.0.0版本)
+Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
+
 ### 资源目录介绍
 - script
 > seata根目录-->script，存放client所需脚本、配置，各个注册中心配置参数脚本（Server和Client并存）
@@ -10,7 +12,6 @@
 > 1.0.0可用于替换seata-all，starter默认开启数据源自动代理，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
 若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化
 
-Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 ### 启动Server
 Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。  
 注：file模式为单机模式，全局事务会话信息内存中读写并持久化本地文件root.data，性能较高;  
@@ -114,7 +115,7 @@ registry {
 }
 config {
   # file、nacos 、apollo、zk、consul、etcd3
-  type = "file"                ---------------> 使用file作为e配置中心
+  type = "file"                ---------------> 使用file作为配置中心
   file {
     name = "file.conf"
   }
