@@ -1,6 +1,6 @@
 # Deploy Server
 
-The server can deploy by multiple method: Directly, Docker, Docker-Compose, Kuberntes, Helm.
+The server can deploy by multiple method: Directly, Docker, Docker-Compose, Kubernetes, Helm.
 
 ## Directly 
 
