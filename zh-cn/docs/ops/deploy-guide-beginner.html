@@ -20,7 +20,7 @@
 <li>script</li>
 </ul>
 <blockquote>
-<p>seata根目录--&gt;script，存放client所需脚本、配置，各个注册中心配置参数脚本（Server和Client并存）</p>
+<p>seata根目录--&gt;script，存放client所需脚本、配置，各个配置中心配置参数脚本（Server和Client并存）</p>
 </blockquote>
 <ul>
 <li>server</li>
@@ -33,8 +33,16 @@
 <li>seata-spring-boot-starter</li>
 </ul>
 <blockquote>
-<p>1.0.0可用于替换seata-all，starter默认开启数据源自动代理，GlobalTransactionScanner自动初始化（依赖SpringUtils）<br>
-若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化</p>
+<p>1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）<br>
+若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；<br>
+starter默认开启数据源自动代理，用户若再手动配置DataSourceProxy将会导致异常</p>
+</blockquote>
+<ul>
+<li>spring-cloud-alibaba-seata</li>
+</ul>
+<blockquote>
+<p>截止20191207日，现在版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本。<br>
+可以手动改造让SpringUtils先初始化，以实现兼容。</p>
 </blockquote>
 <h3>启动Server</h3>
 <p>Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。<br>
@@ -169,7 +177,7 @@ config {
     name = &quot;file.conf&quot;         ---------------&gt; 配置参数存储文件
   }
 }
-spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------&gt; 事务分组配置
+spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------&gt; 事务分组配置
 file.conf: 
     service {
       vgroup_mapping.my_test_tx_group = &quot;default&quot;
@@ -226,8 +234,9 @@ config {
 <li>脚本</li>
 </ul>
 <blockquote>
-<p>scrpit--&gt;<a href="http://xn--config-center3nacosnacos-config-4t23cj3al2r845tb25e.py">config-center下的3个nacos文件nacos-config.py</a>、<a href="http://nacos-config.sh">nacos-config.sh</a>、nacos-config.txt<br>
-txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。</p>
+<p>script--&gt;<a href="http://xn--config-center3nacosnacos-config-4t23cj3al2r845tb25e.py">config-center下的3个nacos文件nacos-config.py</a>、<a href="http://nacos-config.sh">nacos-config.sh</a>、nacos-config.txt<br>
+txt为参数明细（包含S
+.erver和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。</p>
 </blockquote>
 <ul>
 <li>导入配置</li>
@@ -242,7 +251,7 @@ txt为参数明细（包含Server和Client），sh为linux脚本，windows可下
 <p>启动seata-server注册至nacos，查看nacos控制台服务列表确认是否成功</p>
 </blockquote>
 <h4>Client端</h4>
-<pre><code>spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group   ---------------&gt; 事务分组配置
+<pre><code>spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------&gt; 事务分组配置
 registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
   type = &quot;nacos&quot;                ---------------&gt; 从nacos获取TC服务
