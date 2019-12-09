@@ -73,7 +73,6 @@
 ********
 <h3 id='7'>Q: 7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</h3>
 
-
 **A：** 
    异常：io.seata.common.exception.FrameworkException: can not register RM,err:can not connect to services-server.
   1. 查看nacos配置列表，seata配置是否已经导入成功
