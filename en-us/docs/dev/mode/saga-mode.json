@@ -2,5 +2,9 @@
   "filename": "saga-mode.md",
   "__html": "<p>TODO : Should be translated from docs/zh-cn/dev/mode/saga-mode.md</p>\n",
   "link": "/en-us/docs/dev/mode/saga-mode.html",
-  "meta": {}
+  "meta": {
+    "title": "Seata Saga Mode",
+    "keywords": "Seata, Saga mode",
+    "description": "Seata Saga mode."
+  }
 }

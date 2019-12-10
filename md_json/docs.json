@@ -3,27 +3,47 @@
     {
       "filename": "at-mode.md",
       "link": "/en-us/docs/dev/mode/at-mode.html",
-      "meta": {}
+      "meta": {
+        "title": "Seata AT Mode",
+        "keywords": "Seata, AT mode",
+        "description": "Seata AT mode."
+      }
     },
     {
       "filename": "saga-mode.md",
       "link": "/en-us/docs/dev/mode/saga-mode.html",
-      "meta": {}
+      "meta": {
+        "title": "Seata Saga Mode",
+        "keywords": "Seata, Saga mode",
+        "description": "Seata Saga mode."
+      }
     },
     {
       "filename": "tcc-mode.md",
       "link": "/en-us/docs/dev/mode/tcc-mode.html",
-      "meta": {}
+      "meta": {
+        "title": "Seata TCC Mode",
+        "keywords": "Seata, TCC Mode",
+        "description": "Seata TCC mode."
+      }
     },
     {
       "filename": "seata-mertics.md",
       "link": "/en-us/docs/dev/seata-mertics.html",
-      "meta": {}
+      "meta": {
+        "title": "Seata Metrics",
+        "keywords": "Seata, Metrics",
+        "description": "Seata Metrics."
+      }
     },
     {
       "filename": "label-an-issue-guide_dev.md",
       "link": "/en-us/docs/developers/committer-guide/label-an-issue-guide_dev.html",
-      "meta": {}
+      "meta": {
+        "title": "Label an Issue",
+        "keywords": "Seata",
+        "description": "Label an Issue."
+      }
     },
     {
       "filename": "release-guide_dev.md",
@@ -33,36 +53,56 @@
     {
       "filename": "website-guide_dev.md",
       "link": "/en-us/docs/developers/committer-guide/website-guide_dev.html",
-      "meta": {}
+      "meta": {
+        "title": "Website Guide",
+        "keywords": "Seata",
+        "description": "Website Guide."
+      }
     },
     {
       "filename": "new-contributor-guide_dev.md",
       "link": "/en-us/docs/developers/contributor-guide/new-contributor-guide_dev.html",
-      "meta": {}
+      "meta": {
+        "title": "New contributor guide",
+        "keywords": "Seata, contributor",
+        "description": "This is a guide for new comers who wants to contribute to Seata."
+      }
     },
     {
       "filename": "reporting-security-issues_dev.md",
       "link": "/en-us/docs/developers/contributor-guide/reporting-security-issues_dev.html",
-      "meta": {}
+      "meta": {
+        "title": "New contributor guide",
+        "keywords": "Seata, contributor",
+        "description": "This is a guide for new comers who wants to contribute to Seata."
+      }
     },
     {
       "filename": "test-coverage-guide_dev.md",
       "link": "/en-us/docs/developers/contributor-guide/test-coverage-guide_dev.html",
-      "meta": {}
+      "meta": {
+        "title": "Test coverage guide",
+        "keywords": "Seata, coverage",
+        "description": "Test coverage guide."
+      }
     },
     {
       "filename": "developers_dev.md",
       "link": "/en-us/docs/developers/developers_dev.html",
       "meta": {
-        "title": "Seata 维护者",
-        "keywords": "Seata, 维护者",
-        "description": "Seata 维护者名单"
+        "title": "Developers",
+        "keywords": "Seata, Developers",
+        "description": "Seata Team."
       }
     },
     {
       "filename": "guide_dev.md",
       "link": "/en-us/docs/developers/guide_dev.html",
-      "meta": {}
+      "meta": {
+        "title": "Contributing to Seata",
+        "keywords": "Seata",
+        "description": "It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you."
+      }
     },
     {
       "filename": "deploy-by-docker.md",
@@ -103,42 +143,74 @@
     {
       "filename": "deploy-server.md",
       "link": "/en-us/docs/ops/deploy-server.html",
-      "meta": {}
+      "meta": {
+        "title": "Deploy Server",
+        "keywords": "Seata",
+        "description": "The server can deploy by multiple method: Directly, Docker, Docker-Compose, Kubernetes, Helm."
+      }
     },
     {
       "filename": "multi-configuration-isolation.md",
       "link": "/en-us/docs/ops/multi-configuration-isolation.html",
-      "meta": {}
+      "meta": {
+        "title": "Multi-configuration Isolation",
+        "keywords": "Seata",
+        "description": "Seata supports Multi-configuration Isolation since 0.6.1,You can configure it in the following steps."
+      }
     },
     {
       "filename": "faq.md",
       "link": "/en-us/docs/overview/faq.html",
-      "meta": {}
+      "meta": {
+        "title": "Seata FAQ",
+        "keywords": "Seata",
+        "description": "Seata FAQ."
+      }
     },
     {
       "filename": "terminology.md",
       "link": "/en-us/docs/overview/terminology.html",
-      "meta": {}
+      "meta": {
+        "title": "Seata Terminology",
+        "keywords": "Seata",
+        "description": "Seata Terminology."
+      }
     },
     {
       "filename": "what-is-seata.md",
       "link": "/en-us/docs/overview/what-is-seata.html",
-      "meta": {}
+      "meta": {
+        "title": "What Is Seata",
+        "keywords": "Seata",
+        "description": "Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users."
+      }
     },
     {
       "filename": "api.md",
       "link": "/en-us/docs/user/api.html",
-      "meta": {}
+      "meta": {
+        "title": "Api Guide",
+        "keywords": "Seata",
+        "description": "Api Guide."
+      }
     },
     {
       "filename": "microservice.md",
       "link": "/en-us/docs/user/microservice.html",
-      "meta": {}
+      "meta": {
+        "title": "Microservice Framework Guide",
+        "keywords": "Seata",
+        "description": "Microservice Framework Guide."
+      }
     },
     {
       "filename": "quickstart.md",
       "link": "/en-us/docs/user/quickstart.html",
-      "meta": {}
+      "meta": {
+        "title": "Quick Start",
+        "keywords": "Seata",
+        "description": "Let's begin with a Microservices example."
+      }
     }
   ],
   "zh-cn": [
