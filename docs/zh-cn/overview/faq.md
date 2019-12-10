@@ -18,7 +18,7 @@
 
 <a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a>
 
-<a href="#10" target="_self">10.mybatis没有返回自增ID</a>
+<a href="#10" target="_self">10.为设么mybatis没有返回自增ID? </a>
 
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -125,9 +125,9 @@ eureka.lease.duration=2
 undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 
 ********
-<h3 id='10'>Q: 10. mybatis没有返回自增ID</h3>
+<h3 id='10'>Q: 10. mybatis没有返回自增I? D</h3>
 
 **A:** 
-需要使用`@Options(useGeneratedKeys = true, keyProperty = "id")`或者在xml中指定useGeneratedKeys 和 keyProperty属性
+需要修改mybatis的配置: 在`@Options(useGeneratedKeys = true, keyProperty = "id")`或者在xml中指定useGeneratedKeys 和 keyProperty属性
 
 ********
