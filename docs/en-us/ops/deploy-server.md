@@ -1,3 +1,9 @@
+---
+title: Deploy Server
+keywords: Seata
+description: The server can deploy by multiple method: Directly, Docker, Docker-Compose, Kubernetes, Helm.
+---
+
 # Deploy Server
 
 The server can deploy by multiple method: Directly, Docker, Docker-Compose, Kuberntes, Helm.

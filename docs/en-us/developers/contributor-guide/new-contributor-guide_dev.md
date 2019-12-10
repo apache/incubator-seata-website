@@ -1,3 +1,9 @@
+---
+title: New contributor guide
+keywords: Seata, contributor
+description: This is a guide for new comers who wants to contribute to Seata.
+---
+
 # New contributor guide
 
 This is a guide for new comers who wants to contribute to Seata.

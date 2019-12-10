@@ -1,3 +1,9 @@
+---
+title: Label an Issue
+keywords: Seata
+description: Label an Issue.
+---
+
 # Label an Issue
 
 If you are handling an issue, remember to **mark the issue cearly with one or more labels** whenever you think it's meaningful. With labels on, other developers can easily recognize problems, classify them or track progress. 

@@ -1,3 +1,9 @@
+---
+title: Seata FAQ
+keywords: Seata
+description: Seata FAQ.
+---
+
 # FAQ
 
 ### Q: What's the reason of java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;) ?
