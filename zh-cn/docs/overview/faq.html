@@ -22,7 +22,7 @@
 <p><a href="#7" target="_self">7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</a></p>
 <p><a href="#8" target="_self">8.Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性?</a></p>
 <p><a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a></p>
-<p><a href="#10" target="_self">10.为设么mybatis没有返回自增ID? </a></p>
+<p><a href="#10" target="_self">10.为什么mybatis没有返回自增ID? </a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -117,7 +117,7 @@ eureka.lease.duration=2
 <p><strong>A:</strong>
 undolog序列化配置为jackson时，jackson版本需要为2.9.9+</p>
 <hr>
-<h3 id='10'>Q: 10. mybatis没有返回自增I? D</h3>
+<h3 id='10'>Q: 10.为什么mybatis没有返回自增ID?</h3>
 <p><strong>A:</strong>
 需要修改mybatis的配置: 在<code>@Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)</code>或者在xml中指定useGeneratedKeys 和 keyProperty属性</p>
 <hr>
