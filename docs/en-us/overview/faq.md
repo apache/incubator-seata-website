@@ -139,7 +139,8 @@ when the undolog serialization is configured as Jackson, the Jackson version nee
 ********
 
 <h3 id='10'>Q: 10. Why didn't my mybatis operation return auto-generated ID? </h3>
-**A:** 
+
+**A:**
 You should update the configuraton of `mybatis`:  set annotation `@Options(useGeneratedKeys = true, keyProperty = "id")` or set the value of useGeneratedKeys and keyProperty  in `mybatis` xml configuraton
 
 ********
