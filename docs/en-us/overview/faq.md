@@ -1,3 +1,9 @@
+---
+title: Seata FAQ
+keywords: Seata
+description: Seata FAQ.
+---
+
 # FAQ
 
 <a href="#1" target="_self">1.Can Seata be used in a production environment?</a>

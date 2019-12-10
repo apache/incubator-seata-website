@@ -1,3 +1,9 @@
+---
+title: Multi-configuration Isolation
+keywords: Seata
+description: Seata supports Multi-configuration Isolation since 0.6.1,You can configure it in the following steps.
+---
+
 # Multi-configuration Isolation
 
 Seata supports Multi-configuration Isolation since 0.6.1,You can configure it in the following steps.

@@ -1,3 +1,9 @@
+---
+title: New contributor guide
+keywords: Seata, contributor
+description: This is a guide for new comers who wants to contribute to Seata.
+---
+
 # Reporting Security Issues
 
 The Seata Group takes a rigorous standpoint in annihilating the security issues in its software projects. Seata is highly sensitive and forthcoming to issues pertaining to its features and functionality.
