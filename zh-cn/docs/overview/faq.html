@@ -22,6 +22,7 @@
 <p><a href="#7" target="_self">7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</a></p>
 <p><a href="#8" target="_self">8.Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性?</a></p>
 <p><a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a></p>
+<p><a href="#10" target="_self">10.为设么mybatis没有返回自增ID? </a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -54,9 +55,10 @@
 <p><strong>A:</strong></p>
 <ol>
 <li>脏数据需手动处理，根据日志提示修正数据或者将对应undo删除（可自定义实现FailureHandler做邮件通知或其他）</li>
-<li>关闭回滚时undo镜像校验，不推荐该方案。<br>
-注：建议事前做好隔离保证无脏数据</li>
+<li>关闭回滚时undo镜像校验，不推荐该方案。</li>
 </ol>
+<pre><code>注：建议事前做好隔离保证无脏数据
+</code></pre>
 <hr>
 <h3 id='6'>Q: 6.为什么分支事务注册时, 全局事务状态不是begin?</h3>
 <p><strong>A:</strong></p>
@@ -80,10 +82,11 @@
 为public是nacos的一个保留控件，如果您需要创建自己的namespace，最好不要和public重名，以一个实际业务场景有具体语义的名字来命名</li>
 <li>nacos上服务列表，serverAddr地址对应ip地址应为seata启动指定ip地址，如：sh <a href="http://seata-server.sh">seata-server.sh</a> -p 8091 -h 122.51.204.197 -m file</li>
 <li>查看seata/conf/nacos-config.txt 事务分组service.vgroup_mapping.trade_group=default配置与项目分组配置名称是否一致</li>
-<li>telnet ip 端口 查看端口是都开放，以及防火墙状态<br>
-注：1.080版本启动指定ip问题，出现异常Exception in thread &quot;main&quot; java.lang.RuntimeException: java.net.BindException: Cannot assign request address，请升级到081以上版本<br>
-2.项目使用jdk13，启动出现</li>
+<li>telnet ip 端口 查看端口是都开放，以及防火墙状态</li>
 </ol>
+<pre><code>注：1.080版本启动指定ip问题，出现异常Exception in thread &quot;main&quot; java.lang.RuntimeException: java.net.BindException: Cannot assign request address，请升级到081以上版本  
+    2.项目使用jdk13，启动出现
+</code></pre>
 <pre><code class="language-verilog">Error: Could <span class="hljs-keyword">not</span> create the Java Virtual Machine.
 Error: A fatal exception has occurred. Program will exit.
 </code></pre>
@@ -105,7 +108,7 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
 <p><strong>A：</strong>
 在seata\conf目录下新增eureka-client.properties文件，添加要覆盖的Eureka属性即可。<br>
 例如，要覆盖eureka.instance.lease-renewal-interval-in-seconds和eureka.instance.lease-expiration-duration-in-seconds，添加如下内容：</p>
-<pre><code>eureka.lease.renewalInterval=1  
+<pre><code>eureka.lease.renewalInterval=1
 eureka.lease.duration=2
 </code></pre>
 <p>属性前缀为eureka，其后的属性名可以参考类com.netflix.appinfo.PropertyBasedInstanceConfigConstants，也可研究seata源码中的discovery模块的seata-discovery-eureka工程</p>
@@ -113,6 +116,10 @@ eureka.lease.duration=2
 <h3 id='9'>Q: 9.发生下面异常是啥原因？ java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</h3>
 <p><strong>A:</strong>
 undolog序列化配置为jackson时，jackson版本需要为2.9.9+</p>
+<hr>
+<h3 id='10'>Q: 10. mybatis没有返回自增I? D</h3>
+<p><strong>A:</strong>
+需要修改mybatis的配置: 在<code>@Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)</code>或者在xml中指定useGeneratedKeys 和 keyProperty属性</p>
 <hr>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
