@@ -1,3 +1,9 @@
+---
+title: Seata 微服务框架支持
+keywords: Seata
+description: Seata 微服务框架支持。
+---
+
 # 事务上下文
 
 Seata 的事务上下文由 RootContext 来管理。

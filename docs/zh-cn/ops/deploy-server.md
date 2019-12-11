@@ -1,3 +1,9 @@
+---
+title: 部署 Server
+keywords: Seata
+description: Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Compose, 使用 Kubernetes,  使用 Helm。
+---
+
 # 部署 Server
 
 Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Compose, 使用 Kubernetes,  使用 Helm.
