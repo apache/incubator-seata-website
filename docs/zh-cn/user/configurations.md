@@ -1,5 +1,5 @@
 # seata参数配置 1.0.0版本
-0.9.0.1前版本 https://seata.io/zh-cn/docs/user/configurations090.html
+0.9.0.1之前版本 <a href="./configurations090.md">点击这里</a>
 
 ### 变更记录
 ```
