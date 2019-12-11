@@ -1,3 +1,9 @@
+---
+title: Seata FAQ
+keywords: Seata
+description: Seata FAQ.
+---
+
 # FAQ
 
 <a href="#1" target="_self">1.Can Seata be used in a production environment?</a>
@@ -17,6 +23,8 @@
 <a href="#8" target="_self">8.When Eureka is the registry and TC is highly available, how to overwrite Eureka properties at the TC end?</a>
 
 <a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a>
+
+<a href="#10" target="_self">10. Why didn't my mybatis operation return auto-generated ID? </a>
 
 ********
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
@@ -127,5 +135,12 @@ The attribute prefix is eureka, and the subsequent attribute names can refer to 
 
 **A:**
 when the undolog serialization is configured as Jackson, the Jackson version needs to be 2.9.9+
+
+********
+
+<h3 id='10'>Q: 10. Why didn't my mybatis operation return auto-generated ID? </h3>
+
+**A:**
+You should update the configuraton of `mybatis`:  set annotation `@Options(useGeneratedKeys = true, keyProperty = "id")` or set the value of useGeneratedKeys and keyProperty  in `mybatis` xml configuraton
 
 ********
