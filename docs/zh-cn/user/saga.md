@@ -232,11 +232,13 @@ public interface InventoryAction {
 
 ## 状态机设计器
 
-Seata Saga 提供了一个可视化的状态机设计器方便用户使用，请参考：
+Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代码和运行指南请参考：
 [https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer)
 
 状态机设计器截图:
 ![状态机设计器](/img/saga/seata-saga-statemachine-designer.png?raw=true)
+
+状态机设计器演示地址:[http://seata.io/saga_designer/index.html](http://seata.io/saga_designer/index.html)
 
 ## 最佳实践
 
