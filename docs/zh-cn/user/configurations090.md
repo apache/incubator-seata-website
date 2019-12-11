@@ -1,3 +1,9 @@
+---
+title: Seata 参数配置 0.9.0版本
+keywords: Seata
+description: Seata 参数配置 0.9.0版本。
+---
+
 # seata参数配置 0.9.0版本
 
 ### 公共部分

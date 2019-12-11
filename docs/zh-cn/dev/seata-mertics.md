@@ -1,3 +1,9 @@
+---
+title: Metrics
+keywords: Seata
+description: Metrics。
+---
+
 ### Metrics
 #### 设计思路
 1. Seata作为一个被集成的数据一致性框架，Metrics模块将尽可能少的使用第三方依赖以降低发生冲突的风险；

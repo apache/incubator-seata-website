@@ -1,3 +1,9 @@
+---
+title: Seata术语
+keywords: Seata
+description: Seata术语。
+---
+
 # Seata术语
 
 #### TC - 事务协调者
