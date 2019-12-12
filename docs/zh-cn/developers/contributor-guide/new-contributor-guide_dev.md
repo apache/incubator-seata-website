@@ -1,3 +1,9 @@
+---
+title: 新贡献者向导
+keywords: Seata
+description: 这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。
+---
+
 # 新贡献者向导
 
 这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。
@@ -7,6 +13,14 @@
 TBD
 
 ### 报告问题
+
+您始终可以通过Github [Issues](https://Github.com/Seata/Seata/Issues) 向Seata报告问题。
+
+如果您正在报告bug，请参阅问题报告[模版](https://github.com/seata/seata/issues/new?template=BUG_REPORT.md)。
+
+如果您正在报告功能要求，请参阅问题报告[模版](https://github.com/seata/seata/issues/new?template=FEATURE_REQUEST.md)。
+
+如果您正在报告常规问题，比如提出一个问题，则可以打开[常规问题](https://github.com/seata/seata/issues/new)
 
 ### 发送 pull request
 

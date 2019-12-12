@@ -50,12 +50,12 @@ Then you are all set to run and build the website. Follow the build instruction 
 ### Add a new blog
 
 1. Add new .md file under blog/en-us or blog/zh-cn. Corresponding to Chinese file and English file , and the Chinese and English file names should be consistent.
-2. Update site_config/blog.js, add a new entry to the blog in either en-us or zh-cn.
+2. ~~Update site_config/blog.js, add a new entry to the blog in either en-us or zh-cn.~~
 3. Run docsite start locally to verify the blog can be displayed correctly.
-4. Send the pull request contains the .md and blog.js only.
-5. `SEO` config is required,
-notice : Blog documents will be automatically sorted by time, without menu configuration
-         
+4. Send the pull request contains the .md ~~and blog.js~~ only.
+5. `SEO` config is required.
+
+notice : Blog documents will be automatically sorted by time, without menu configuration         
 Set 'hidden' to 'true' for documents you don't want to display temporarily`
 
 ## SEO
@@ -76,6 +76,8 @@ date: 2018-12-29
 
 + If you want to add `search in site`，see [https://docsite.js.org/zh-cn/docs/search.html](https://docsite.js.org/zh-cn/docs/search.html)
 + This is docsite docs :[https://docsite.js.org/zh-cn/docs/path.html](https://docsite.js.org/zh-cn/docs/path.html)
+
++ If you want to update saga statemachine designer, rebuild it, see [https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer), and copy `index.html` and `dist/` directory to  `seata.github.io/saga_designer/` directory.
 
 
 

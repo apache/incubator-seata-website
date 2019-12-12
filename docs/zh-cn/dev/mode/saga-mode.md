@@ -1,3 +1,9 @@
+---
+title: Seata Saga 模式
+keywords: Seata
+description: Seata Saga 模式。
+---
+
 # SEATA Saga 模式
 ## 概述
 Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。

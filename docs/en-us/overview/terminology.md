@@ -1,8 +1,14 @@
+---
+title: Seata Terminology
+keywords: Seata
+description: Seata Terminology.
+---
+
 # Seata Terminology
 #### TC - Transaction Coordinator
  Maintain status of global and branch transactions, drive the global commit or rollback.
  
-#### RM - Transaction Manager 
+#### TM - Transaction Manager 
  Define the scope of global transaction: begin a global transaction, commit or rollback a global transaction.
  
 #### RM - Resource Manager 

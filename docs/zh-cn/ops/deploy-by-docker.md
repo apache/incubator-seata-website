@@ -1,7 +1,7 @@
 ---
 hidden: true
 title: 使用 Docker 部署 Seata Server
-keywords: docker
+keywords: docker,docker-compose,ops
 description: 使用 Docker 部署 Seata Server
 author: helloworlde
 date: 2019-11-25
@@ -41,20 +41,19 @@ $ docker run --name seata-server \
 `docker-conmpose.yaml` 示例
 
 ```yaml
-version: "3.1"
-
+version: "3"
 services:
-
   seata-server:
-    image: seataio/seata-server:latest
+    image: seataio/seata-server
     hostname: seata-server
     ports:
-      - 8091:8091
+      - "8091:8091"
     environment:
       - SEATA_PORT=8091
-    expose:
-      - 8091
+      - STORE_MODE=file
 ```
+
+
 
 ## 容器命令行及查看日志
 
@@ -68,7 +67,7 @@ $ tail -f /root/logs/seata/seata-server.log
 
 ## 使用自定义配置文件
 
-默认的配置文件路径为 `/seata-server/resources`, 建议将自定义配置文件放到其他目录下; 使用自定义配置文件时必须指定环境变量 `SEATA_CONFIG_NAME`, 并且环境变量的值需要以`file:`开始, 如: `seata-config/registry`
+默认的配置文件路径为 `/seata-server/resources`, 建议将自定义配置文件放到其他目录下; 使用自定义配置文件时必须指定环境变量 `SEATA_CONFIG_NAME`, 并且环境变量的值需要以`file:`开始, 如: `file:/root/seata-config/registry`
 
 ```bash
 $ docker run --name seata-server \
