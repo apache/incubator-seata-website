@@ -180,6 +180,17 @@
       }
     },
     {
+      "filename": "seata-config-center.md",
+      "link": "/zh-cn/blog/seata-config-center.html",
+      "meta": {
+        "title": "Seata 配置中心实现原理",
+        "author": "张乘辉",
+        "keywords": "Seata、Config",
+        "description": "Seata 可以支持多个第三方配置中心，那么 Seata 是如何同时兼容那么多个配置中心的呢？",
+        "date": "2019/12/12"
+      }
+    },
+    {
       "filename": "seata-mybatisplus-analysis.md",
       "link": "/zh-cn/blog/seata-mybatisplus-analysis.html",
       "meta": {
