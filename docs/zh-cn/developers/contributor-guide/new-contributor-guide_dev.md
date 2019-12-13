@@ -1,3 +1,9 @@
+---
+title: 新贡献者向导
+keywords: Seata
+description: 这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。
+---
+
 # 新贡献者向导
 
 这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。

@@ -1,18 +1,45 @@
+---
+title: Seata常见问题
+keywords: Seata
+description: Seata 常见问题。
+---
+
 # 常见问题
 
-### Q: 发生下面异常是啥原因？ java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;) ？
+<a href="#1" target="_self">1.Seata 目前可以用于生产环境吗？</a>
 
-**A:** 
-undolog序列化配置为jackson时，jackson版本需要为2.9.9+
+<a href="#2" target="_self">2.Seata 目前支持高可用吗？</a>
+
+<a href="#3" target="_self">3.undo_log表log_status=1的记录是做什么用的？</a>
+
+<a href="#4" target="_self">4.怎么使用Seata框架，来保证事务的隔离性？</a>
+
+<a href="#5" target="_self">5.脏数据回滚失败如何处理?</a>
+
+<a href="#6" target="_self">6.为什么分支事务注册时, 全局事务状态不是begin？</a>
+
+<a href="#7" target="_self">7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</a>
+
+<a href="#8" target="_self">8.Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性?</a>
+
+<a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a>
+
+<a href="#10" target="_self">10.为什么mybatis没有返回自增ID? </a>
 
 ********
-### Q: Seata 目前支持高可用吗？
+<h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
+
+**A:** 
+0.4.2版本之后就可以上生产环境，欢迎已经在使用的企业参与此issue:[who's using Seata](https://github.com/seata/seata/issues/1246)
+
+********
+<h3 id='2'>Q: 2.Seata 目前支持高可用吗？</h3>
 
 **A:** 
 0.6版本开始支持，tc使用db模式共享全局事务会话信息，注册中心使用非file的seata支持的第三方注册中心
 
 ********
-### Q: undo_log表log_status=1的记录是做什么用的？
+<h3 id='3'>Q: 3.undo_log表log_status=1的记录是做什么用的？</h3>
 
 **A:** 
 
@@ -21,7 +48,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 * 防悬挂措施： a回滚时发现回滚undo还未插入，则插入一条log_status=1的undo记录，a本地事务（业务写操作sql和对应undo为一个本地事务）提交时会因为undo表主键冲突而提交失败。
 
 ********
-### Q: 怎么使用Seata框架，来保证事务的隔离性？
+<h3 id='4'>Q: 4.怎么使用Seata框架，来保证事务的隔离性？</h3>
 
 **A:** 
     因seata一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。
@@ -32,15 +59,16 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
         若使用GlobalTransactional注解就会增加一些没用的额外的rpc开销比如begin 返回xid，提交事务等。GlobalLock简化了rpc过程，使其做到更高的性能。
 
 ********
-### Q: 脏数据回滚失败如何处理 ?
+<h3 id='5'>Q: 5.脏数据回滚失败如何处理?</h3>
 
 **A:** 
   1. 脏数据需手动处理，根据日志提示修正数据或者将对应undo删除（可自定义实现FailureHandler做邮件通知或其他）
   2. 关闭回滚时undo镜像校验，不推荐该方案。  
+
     注：建议事前做好隔离保证无脏数据
 
 ********
-### Q: 为什么分支事务注册时, 全局事务状态不是begin ？
+<h3 id='6'>Q: 6.为什么分支事务注册时, 全局事务状态不是begin?</h3>
 
 **A:**  
 * 异常：Could not register branch into global session xid = status = Rollbacked（还有Rollbacking、AsyncCommitting等等二阶段状态） while expecting Begin
@@ -52,8 +80,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
   3. tc感知全局事务超时(@GlobalTransactional(timeoutMills = 默认60秒))，主动变更状态并通知各分支事务回滚，此时有新的分支事务来注册
 ```
 ********
-### Q: Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?
-
+<h3 id='7'>Q: 7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</h3>
 
 **A：** 
    异常：io.seata.common.exception.FrameworkException: can not register RM,err:can not connect to services-server.
@@ -64,6 +91,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
   4. nacos上服务列表，serverAddr地址对应ip地址应为seata启动指定ip地址，如：sh seata-server.sh -p 8091 -h 122.51.204.197 -m file
   5. 查看seata/conf/nacos-config.txt 事务分组service.vgroup_mapping.trade_group=default配置与项目分组配置名称是否一致
   6. telnet ip 端口 查看端口是都开放，以及防火墙状态  
+
     注：1.080版本启动指定ip问题，出现异常Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot assign request address，请升级到081以上版本  
         2.项目使用jdk13，启动出现
 ```verilog 
@@ -85,13 +113,27 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
 ```
 
 ********
-### Q: Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性 ?
+<h3 id='8'>Q: 8.Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性?</h3>
 
 **A：**
   在seata\conf目录下新增eureka-client.properties文件，添加要覆盖的Eureka属性即可。  
   例如，要覆盖eureka.instance.lease-renewal-interval-in-seconds和eureka.instance.lease-expiration-duration-in-seconds，添加如下内容：
 ```
-eureka.lease.renewalInterval=1  
+eureka.lease.renewalInterval=1
 eureka.lease.duration=2
 ```
   属性前缀为eureka，其后的属性名可以参考类com.netflix.appinfo.PropertyBasedInstanceConfigConstants，也可研究seata源码中的discovery模块的seata-discovery-eureka工程
+
+********
+<h3 id='9'>Q: 9.发生下面异常是啥原因？ java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</h3>
+
+**A:** 
+undolog序列化配置为jackson时，jackson版本需要为2.9.9+
+
+********
+<h3 id='10'>Q: 10.为什么mybatis没有返回自增ID?</h3>
+
+**A:** 
+需要修改mybatis的配置: 在`@Options(useGeneratedKeys = true, keyProperty = "id")`或者在xml中指定useGeneratedKeys 和 keyProperty属性
+
+********

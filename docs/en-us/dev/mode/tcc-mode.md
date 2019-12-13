@@ -1,3 +1,9 @@
+---
+title: Seata TCC Mode
+keywords: Seata, TCC Mode
+description: Seata TCC mode.
+---
+
 # Seata TCC Mode
 
 Review the description in the overview: A distributed global transaction, the whole is a **two-phase commit** model. The global transaction is composed of several branch transactions. The branch transaction must meet the requirements of the **two-phase commit** model, that is, each branch transaction must have its own:

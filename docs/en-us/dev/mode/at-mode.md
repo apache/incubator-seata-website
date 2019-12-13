@@ -1,3 +1,9 @@
+---
+title: Seata AT Mode
+keywords: Seata, AT mode
+description: Seata AT mode.
+---
+
 #  Seata AT mode
 
 # The basic idea
@@ -30,11 +36,11 @@ tx1 starts first, begins a local transaction, acquires the local lock, do the up
 
 next, tx2 begins local transaction, acquires local lock, do the update operation: m = 900 - 100 = 800. Before tx2 can commit local transaction, it must acquire the **global lock**, but the **global lock** may be hold by tx1, so tx2 will do retry. After tx1 does the global commit and releases the **global lock**, tx2 can acquire the **global lock**, then it can commit local transaction and release local lock.
 
-![Write-Isolation: Commit](https://upload-images.jianshu.io/upload_images/4420767-90b8bf0388953ee8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Write-Isolation: Commit](/img/seata_at-1.png)
 
 See the figure above, tx1 does the global commit in phase 2 and release the **global lock**, tx2 acquires the **global lock** and commits local transaction.
 
-![Write-Isolation: Rollback](https://upload-images.jianshu.io/upload_images/4420767-434090412a6a07b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Write-Isolation: Rollback](/img/seata_at-2.png)
 
 See the figure above, if tx1 wants to do the global rollback, it must acquire local lock to revert the update operation of phase 1.
 
@@ -48,7 +54,7 @@ The isolation level of local database is **read committed** or above, so the def
 
 If it needs the isolation level of the global transaction is **read committed**, currently, Fescar implements it via SELECT FOR UPDATE statement.
 
-![Read Isolation: SELECT FOR UPDATE](https://upload-images.jianshu.io/upload_images/4420767-6236f075d02c5e34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Read Isolation: SELECT FOR UPDATE](/img/seata_at-3.png)
 
 The **global lock** is be applied during the execution of SELECT FOR UPDATE statement, if the **global lock** is held by other transactions, the transaction will release local lock retry execute the SELECT FOR UPDATE statement. During the whole process, the query is blocked until the **global lock** is acquired, if the lock is acquired, it means the other global transaction has committed, so the isolation level of global transaction is **read committed**.
 
