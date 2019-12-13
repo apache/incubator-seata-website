@@ -388,7 +388,119 @@ public interface StateMachineEngine {
 }
 ```
 
-#### StateMachineEngine API
+
+#### StateMachine Execution Instance API: 
+``` java
+StateLogRepository stateLogRepository = stateMachineEngine.getStateMachineConfig().getStateLogRepository();
+StateMachineInstance stateMachineInstance = stateLogRepository.getStateMachineInstanceByBusinessKey(businessKey, tenantId);
+
+/**
+ * State Log Repository
+ *
+ * @author lorne.cl
+ */
+public interface StateLogRepository {
+
+    /**
+     * Get state machine instance
+     *
+     * @param stateMachineInstanceId
+     * @return
+     */
+    StateMachineInstance getStateMachineInstance(String stateMachineInstanceId);
+
+    /**
+     * Get state machine instance by businessKey
+     *
+     * @param businessKey
+     * @param tenantId
+     * @return
+     */
+    StateMachineInstance getStateMachineInstanceByBusinessKey(String businessKey, String tenantId);
+
+    /**
+     * Query the list of state machine instances by parent id
+     *
+     * @param parentId
+     * @return
+     */
+    List<StateMachineInstance> queryStateMachineInstanceByParentId(String parentId);
+
+    /**
+     * Get state instance
+     *
+     * @param stateInstanceId
+     * @param machineInstId
+     * @return
+     */
+    StateInstance getStateInstance(String stateInstanceId, String machineInstId);
+
+    /**
+     * Get a list of state instances by state machine instance id
+     *
+     * @param stateMachineInstanceId
+     * @return
+     */
+    List<StateInstance> queryStateInstanceListByMachineInstanceId(String stateMachineInstanceId);
+}
+```
+
+
+#### StateMachine Definition API:
+``` java
+StateMachineRepository stateMachineRepository = stateMachineEngine.getStateMachineConfig().getStateMachineRepository();
+StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineName, tenantId);
+
+/**
+ * StateMachineRepository
+ *
+ * @author lorne.cl
+ */
+public interface StateMachineRepository {
+
+    /**
+     * Gets get state machine by id.
+     *
+     * @param stateMachineId the state machine id
+     * @return the get state machine by id
+     */
+    StateMachine getStateMachineById(String stateMachineId);
+
+    /**
+     * Gets get state machine.
+     *
+     * @param stateMachineName the state machine name
+     * @param tenantId         the tenant id
+     * @return the get state machine
+     */
+    StateMachine getStateMachine(String stateMachineName, String tenantId);
+
+    /**
+     * Gets get state machine.
+     *
+     * @param stateMachineName the state machine name
+     * @param tenantId         the tenant id
+     * @param version          the version
+     * @return the get state machine
+     */
+    StateMachine getStateMachine(String stateMachineName, String tenantId, String version);
+
+    /**
+     * Register the state machine to the repository (if the same version already exists, return the existing version)
+     *
+     * @param stateMachine
+     */
+    StateMachine registryStateMachine(StateMachine stateMachine);
+
+    /**
+     * registry by resources
+     *
+     * @param resources
+     * @param tenantId
+     */
+    void registryByResources(Resource[] resources, String tenantId) throws IOException;
+}
+```
 
 ## Config referance
 #### 在Spring Bean配置文件中配置一个StateMachineEngine
