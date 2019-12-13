@@ -387,7 +387,114 @@
     <span class="hljs-function">StateMachineConfig <span class="hljs-title">getStateMachineConfig</span><span class="hljs-params">()</span></span>;
 }
 </code></pre>
-<h4>StateMachineEngine API</h4>
+<h4>StateMachine Execution Instance API:</h4>
+<pre><code class="language-java">StateLogRepository stateLogRepository = stateMachineEngine.getStateMachineConfig().getStateLogRepository();
+StateMachineInstance stateMachineInstance = stateLogRepository.getStateMachineInstanceByBusinessKey(businessKey, tenantId);
+
+<span class="hljs-comment">/**
+ * State Log Repository
+ *
+ * <span class="hljs-doctag">@author</span> lorne.cl
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StateLogRepository</span> </span>{
+
+    <span class="hljs-comment">/**
+     * Get state machine instance
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineInstanceId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">StateMachineInstance <span class="hljs-title">getStateMachineInstance</span><span class="hljs-params">(String stateMachineInstanceId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get state machine instance by businessKey
+     *
+     * <span class="hljs-doctag">@param</span> businessKey
+     * <span class="hljs-doctag">@param</span> tenantId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">StateMachineInstance <span class="hljs-title">getStateMachineInstanceByBusinessKey</span><span class="hljs-params">(String businessKey, String tenantId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Query the list of state machine instances by parent id
+     *
+     * <span class="hljs-doctag">@param</span> parentId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">List&lt;StateMachineInstance&gt; <span class="hljs-title">queryStateMachineInstanceByParentId</span><span class="hljs-params">(String parentId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get state instance
+     *
+     * <span class="hljs-doctag">@param</span> stateInstanceId
+     * <span class="hljs-doctag">@param</span> machineInstId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">StateInstance <span class="hljs-title">getStateInstance</span><span class="hljs-params">(String stateInstanceId, String machineInstId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get a list of state instances by state machine instance id
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineInstanceId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">List&lt;StateInstance&gt; <span class="hljs-title">queryStateInstanceListByMachineInstanceId</span><span class="hljs-params">(String stateMachineInstanceId)</span></span>;
+}
+</code></pre>
+<h4>StateMachine Definition API:</h4>
+<pre><code class="language-java">StateMachineRepository stateMachineRepository = stateMachineEngine.getStateMachineConfig().getStateMachineRepository();
+StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineName, tenantId);
+
+<span class="hljs-comment">/**
+ * StateMachineRepository
+ *
+ * <span class="hljs-doctag">@author</span> lorne.cl
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StateMachineRepository</span> </span>{
+
+    <span class="hljs-comment">/**
+     * Gets get state machine by id.
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineId the state machine id
+     * <span class="hljs-doctag">@return</span> the get state machine by id
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">getStateMachineById</span><span class="hljs-params">(String stateMachineId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Gets get state machine.
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineName the state machine name
+     * <span class="hljs-doctag">@param</span> tenantId         the tenant id
+     * <span class="hljs-doctag">@return</span> the get state machine
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">getStateMachine</span><span class="hljs-params">(String stateMachineName, String tenantId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Gets get state machine.
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineName the state machine name
+     * <span class="hljs-doctag">@param</span> tenantId         the tenant id
+     * <span class="hljs-doctag">@param</span> version          the version
+     * <span class="hljs-doctag">@return</span> the get state machine
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">getStateMachine</span><span class="hljs-params">(String stateMachineName, String tenantId, String version)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Register the state machine to the repository (if the same version already exists, return the existing version)
+     *
+     * <span class="hljs-doctag">@param</span> stateMachine
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">registryStateMachine</span><span class="hljs-params">(StateMachine stateMachine)</span></span>;
+
+    <span class="hljs-comment">/**
+     * registry by resources
+     *
+     * <span class="hljs-doctag">@param</span> resources
+     * <span class="hljs-doctag">@param</span> tenantId
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">registryByResources</span><span class="hljs-params">(Resource[] resources, String tenantId)</span> <span class="hljs-keyword">throws</span> IOException</span>;
+}
+</code></pre>
 <h2>Config referance</h2>
 <h4>在Spring Bean配置文件中配置一个StateMachineEngine</h4>
 <pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"..."</span>&gt;</span>
