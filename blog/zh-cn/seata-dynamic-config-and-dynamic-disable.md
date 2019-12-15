@@ -2,7 +2,7 @@
 title: Seata 动态配置订阅与降级实现原理
 author: 张乘辉
 keywords: Seata、Dynamic、Config
-description: 讲述了 Seata 动态配置订阅与降级的实现原理
+description: 讲述了 Seata 结合动态配置订阅如何实现降级的功能
 date: 2019/12/16
 ---
 
