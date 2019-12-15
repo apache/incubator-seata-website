@@ -1,0 +1,10 @@
+{
+  "filename": "terminology.md",
+  "__html": "<h1>Seata术语</h1>\n<h4>TC - 事务协调者</h4>\n<p>维护全局和分支事务的状态，驱动全局事务提交或回滚。</p>\n<h4>TM - 事务管理器</h4>\n<p>定义全局事务的范围：开始全局事务、提交或回滚全局事务。</p>\n<h4>RM - 资源管理器</h4>\n<p>管理分支事务处理的资源，与TC交谈以注册分支事务和报告分支事务的状态，并驱动分支事务提交或回滚。</p>\n",
+  "link": "/zh-cn/docs/overview/terminology.html",
+  "meta": {
+    "title": "Seata术语",
+    "keywords": "Seata",
+    "description": "Seata术语。"
+  }
+}

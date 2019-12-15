@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you." />
+	<!-- 网页标签标题 -->
+	<title>Contributing to Seata</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/en-us/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">中</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/en-us/index.html" target="_self">HOME</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">DOCS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/docs/developers/developers_dev.html" target="_self">DEVELOPERS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/index.html" target="_self">BLOG</a></li><li class="menu-item menu-item-normal"><a href="/en-us/community/index.html" target="_self">COMMUNITY</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/download.html" target="_self">DOWNLOAD</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>Documentation</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>Overview</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/terminology.html" target="_self">Terminology</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>User Doc</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/api.html" target="_self">API Guide</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/microservice.html" target="_self">Microservices Framework Supports</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Developer Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Transaction Mode<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/at-mode.html" target="_self">Seata AT mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/saga-mode.html" target="_self">Seata Saga mode</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/dev/seata-mertics.html" target="_self">Metrics design</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Ops Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/ops/multi-configuration-isolation.html" target="_self">Configuration Isolation</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Deploy<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-server.html" target="_self">Deploy Directly</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-docker.html" target="_self">Deploy by Docker</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-kubernetes.html" target="_self">Deploy by Kubernetes</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-helm.html" target="_self">Deploy by Helm</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>Contributing to Seata</h1>
+<p>It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you.</p>
+<h2>Topics</h2>
+<ul>
+<li><a href="#reporting-security-issues">Reporting security issues</a></li>
+<li><a href="#reporting-general-issues">Reporting general issues</a></li>
+<li><a href="#code-and-doc-contribution">Code and doc contribution</a></li>
+<li><a href="#test-case-contribution">Test case contribution</a></li>
+<li><a href="#engage-to-help-anything">Engage to help anything</a></li>
+<li><a href="#code-style">Code Style</a></li>
+</ul>
+<h2>Reporting security issues</h2>
+<p>Security issues are always treated seriously. As our usual principle, we discourage anyone to spread security issues. If you find a security issue of Seata, please do not discuss it in public and even do not open a public issue. Instead we encourage you to send us a private email to  <a href="mailto:dev-seata@googlegroups.com">dev-seata@googlegroups.com</a> to report this.</p>
+<h2>Reporting general issues</h2>
+<p>To be honest, we regard every user of Seata as a very kind contributor. After experiencing Seata, you may have some feedback for the project. Then feel free to open an issue via <a href="https://github.com/seata/seata/issues/new/choose">NEW ISSUE</a>.</p>
+<p>Since we collaborate project Seata in a distributed way, we appreciate <strong>WELL-WRITTEN</strong>, <strong>DETAILED</strong>, <strong>EXPLICIT</strong> issue reports. To make the communication more efficient, we wish everyone could search if your issue is an existing one in the searching list. If you find it existing, please add your details in comments under the existing issue instead of opening a brand new one.</p>
+<p>To make the issue details as standard as possible, we setup an <a href="https://github.com/seata/seata/blob/develop/.github/ISSUE_TEMPLATE">ISSUE TEMPLATE</a> for issue reporters. Please <strong>BE SURE</strong> to follow the instructions to fill fields in template.</p>
+<p>There are a lot of cases when you could open an issue:</p>
+<ul>
+<li>bug report</li>
+<li>feature request</li>
+<li>performance issues</li>
+<li>feature proposal</li>
+<li>feature design</li>
+<li>help wanted</li>
+<li>doc incomplete</li>
+<li>test improvement</li>
+<li>any questions on project</li>
+<li>and so on</li>
+</ul>
+<p>Also we must remind that when filling a new issue, please remember to remove the sensitive data from your post. Sensitive data could be password, secret key, network locations, private business data and so on.</p>
+<h2>Code and doc contribution</h2>
+<p>Every action to make project Seata better is encouraged. On GitHub, every improvement for Seata could be via a PR (short for pull request).</p>
+<ul>
+<li>If you find a typo, try to fix it!</li>
+<li>If you find a bug, try to fix it!</li>
+<li>If you find some redundant codes, try to remove them!</li>
+<li>If you find some test cases missing, try to add them!</li>
+<li>If you could enhance a feature, please <strong>DO NOT</strong> hesitate!</li>
+<li>If you find code implicit, try to add comments to make it clear!</li>
+<li>If you find code ugly, try to refactor that!</li>
+<li>If you can help to improve documents, it could not be better!</li>
+<li>If you find document incorrect, just do it and fix that!</li>
+<li>...</li>
+</ul>
+<p>Actually it is impossible to list them completely. Just remember one principle:</p>
+<blockquote>
+<p>WE ARE LOOKING FORWARD TO ANY PR FROM YOU.</p>
+</blockquote>
+<p>Since you are ready to improve Seata with a PR, we suggest you could take a look at the PR rules here.</p>
+<ul>
+<li><a href="#workspace-preparation">Workspace Preparation</a></li>
+<li><a href="#branch-definition">Branch Definition</a></li>
+<li><a href="#commit-rules">Commit Rules</a></li>
+<li><a href="#pr-description">PR Description</a></li>
+</ul>
+<h3>Workspace Preparation</h3>
+<p>To put forward a PR, we assume you have registered a GitHub ID. Then you could finish the preparation in the following steps:</p>
+<ol>
+<li>
+<p><strong>FORK</strong> Seata to your repository. To make this work, you just need to click the button Fork in right-left of <a href="https://github.com/seata/seata">seata/seata</a> main page. Then you will end up with your repository in <code>https://github.com/&lt;your-username&gt;/seata</code>, in which <code>your-username</code> is your GitHub username.</p>
+</li>
+<li>
+<p><strong>CLONE</strong> your own repository to develop locally. Use <code>git clone git@github.com:&lt;your-username&gt;/seata.git</code> to clone repository to your local machine. Then you can create new branches to finish the change you wish to make.</p>
+</li>
+<li>
+<p><strong>Set Remote</strong> upstream to be <code>git@github.com:seata/seata.git</code> using the following two commands:</p>
+</li>
+</ol>
+<pre><code>git remote add upstream git@github.com:seata/seata.git
+git remote set-url --push upstream no-pushing
+</code></pre>
+<p>With this remote setting, you can check your git remote configuration like this:</p>
+<pre><code>$ git remote -v
+origin     git@github.com:&lt;your-username&gt;/seata.git (fetch)
+origin     git@github.com:&lt;your-username&gt;/seata.git (push)
+upstream   git@github.com:seata/seata.git (fetch)
+upstream   no-pushing (push)
+</code></pre>
+<p>Adding this, we can easily synchronize local branches with upstream branches.</p>
+<h3>Branch Definition</h3>
+<p>Right now we assume every contribution via pull request is for <a href="https://github.com/seata/seata/tree/develop">branch develop</a> in Seata. Before contributing, be aware of branch definition would help a lot.</p>
+<p>As a contributor, keep in mind again that every contribution via pull request is for branch develop. While in project Seata, there are several other branches, we generally call them release branches(such as 0.6.0,0.6.1), feature branches, hotfix branches and master branch.</p>
+<p>When officially releasing a version, there will be a release branch and named with the version number.</p>
+<p>After the release, we will merge the commit of the release branch into the master branch.</p>
+<p>When we find that there is a bug in a certain version, we will decide to fix it in a later version or fix it in a specific hotfix version. When we decide to fix the hotfix version, we will checkout the hotfix branch based on the corresponding release branch, perform code repair and verification, and merge it into the develop branch and the master branch.</p>
+<p>For larger features, we will pull out the feature branch for development and verification.</p>
+<h3>Commit Rules</h3>
+<p>Actually in Seata, we take two rules serious when committing:</p>
+<ul>
+<li><a href="#commit-message">Commit Message</a></li>
+<li><a href="#commit-content">Commit Content</a></li>
+</ul>
+<h4>Commit Message</h4>
+<p>Commit message could help reviewers better understand what is the purpose of submitted PR. It could help accelerate the code review procedure as well. We encourage contributors to use <strong>EXPLICIT</strong> commit message rather than ambiguous message. In general, we advocate the following commit message type:</p>
+<ul>
+<li>docs: xxxx. For example, &quot;docs: add docs about Seata cluster installation&quot;.</li>
+<li>feature: xxxx.For example, &quot;feature: support oracle in AT mode&quot;.</li>
+<li>bugfix: xxxx. For example, &quot;bugfix: fix panic when input nil parameter&quot;.</li>
+<li>refactor: xxxx. For example, &quot;refactor: simplify to make codes more readable&quot;.</li>
+<li>test: xxx. For example, &quot;test: add unit test case for func InsertIntoArray&quot;.</li>
+<li>other readable and explicit expression ways.</li>
+</ul>
+<p>On the other side, we discourage contributors from committing message like the following ways:</p>
+<ul>
+<li><s>fix bug</s></li>
+<li><s>update</s></li>
+<li><s>add doc</s></li>
+</ul>
+<p>If you get lost, please see <a href="http://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a> for a start.</p>
+<h4>Commit Content</h4>
+<p>Commit content represents all content changes included in one commit. We had better include things in one single commit which could support reviewer's complete review without any other commits' help. In another word, contents in one single commit can pass the CI to avoid code mess. In brief, there are three minor rules for us to keep in mind:</p>
+<ul>
+<li>avoid very large change in a commit;</li>
+<li>complete and reviewable for each commit.</li>
+<li>check git config(<code>user.name</code>, <code>user.email</code>) when committing to ensure that it is associated with your github ID.</li>
+</ul>
+<p>In addition, in the code change part, we suggest that all contributors should read the <a href="#code-style">code style of Seata</a>.</p>
+<p>No matter commit message, or commit content, we do take more emphasis on code review.</p>
+<h3>PR Description</h3>
+<p>PR is the only way to make change to Seata project files. To help reviewers better get your purpose, PR description could not be too detailed. We encourage contributors to follow the <a href="./.github/PULL_REQUEST_TEMPLATE.md">PR template</a> to finish the pull request.</p>
+<h2>Test case contribution</h2>
+<p>Any test case would be welcomed. Currently, Seata function test cases are high priority.</p>
+<ul>
+<li>
+<p>For unit test, you need to create a test file named <code>xxxTest.java</code> in the test directory of the same module. Recommend you to use the junit5 UT framework</p>
+</li>
+<li>
+<p>For integration test, you can put the integration test in the test directory or the seata-test module. It is recommended to use the mockito test framework.</p>
+</li>
+</ul>
+<h2>Engage to help anything</h2>
+<p>We choose GitHub as the primary place for Seata to collaborate. So the latest updates of Seata are always here. Although contributions via PR is an explicit way to help, we still call for any other ways.</p>
+<ul>
+<li>reply to other's issues if you could;</li>
+<li>help solve other user's problems;</li>
+<li>help review other's PR design;</li>
+<li>help review other's codes in PR;</li>
+<li>discuss about Seata to make things clearer;</li>
+<li>advocate Seata technology beyond GitHub;</li>
+<li>write blogs on Seata and so on.</li>
+</ul>
+<h2>Code Style</h2>
+<p>Seata code style Comply with Alibaba Java Coding Guidelines.</p>
+<h3>Guidelines</h3>
+<p><a href="https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/">Alibaba-Java-Coding-Guidelines</a></p>
+<h3>IDE Plugin Install（not necessary）</h3>
+<p><em>It is not necessary to install, if you want to find a problem when you are coding.</em></p>
+<h4>idea IDE</h4>
+<p><a href="https://github.com/alibaba/p3c/blob/master/idea-plugin/README.md">p3c-idea-plugin-install</a></p>
+<h4>eclipse IDE</h4>
+<p><a href="https://github.com/alibaba/p3c/blob/master/eclipse-plugin/README.md">p3c-eclipse-plugin-install</a></p>
+<p>In a word, <strong>ANY HELP IS CONTRIBUTION.</strong></p>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

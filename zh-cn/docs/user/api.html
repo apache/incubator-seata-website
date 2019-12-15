@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Seata API 分为两大类：High-Level API 和 Low-Level API。" />
+	<!-- 网页标签标题 -->
+	<title>Seata api</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>1. 概述</h1>
+<p>Seata API 分为两大类：High-Level API 和 Low-Level API ：</p>
+<ul>
+<li><strong>High-Level API</strong> ：用于事务边界定义、控制及事务状态查询。</li>
+<li><strong>Low-Level API</strong> ：用于控制事务上下文的传播。</li>
+</ul>
+<h1>2. High-Level API</h1>
+<h2>2.1 GlobalTransaction</h2>
+<p>全局事务：包括开启事务、提交、回滚、获取当前状态等方法。</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">GlobalTransaction</span> </span>{
+
+    <span class="hljs-comment">/**
+     * 开启一个全局事务（使用默认的事务名和超时时间）
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">begin</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TransactionException</span>;
+
+    <span class="hljs-comment">/**
+     * 开启一个全局事务，并指定超时时间（使用默认的事务名）
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">begin</span><span class="hljs-params">(<span class="hljs-keyword">int</span> timeout)</span> <span class="hljs-keyword">throws</span> TransactionException</span>;
+
+    <span class="hljs-comment">/**
+     * 开启一个全局事务，并指定事务名和超时时间
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">begin</span><span class="hljs-params">(<span class="hljs-keyword">int</span> timeout, String name)</span> <span class="hljs-keyword">throws</span> TransactionException</span>;
+
+    <span class="hljs-comment">/**
+     * 全局提交
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">commit</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TransactionException</span>;
+
+    <span class="hljs-comment">/**
+     * 全局回滚
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rollback</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TransactionException</span>;
+
+    <span class="hljs-comment">/**
+     * 获取事务的当前状态
+     */</span>
+    <span class="hljs-function">GlobalStatus <span class="hljs-title">getStatus</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TransactionException</span>;
+
+    <span class="hljs-comment">/**
+     * 获取事务的 XID
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">getXid</span><span class="hljs-params">()</span></span>;
+
+}
+</code></pre>
+<h2>2.2 GlobalTransactionContext</h2>
+<p>GlobalTransaction 实例的获取需要通过 GlobalTransactionContext：</p>
+<pre><code class="language-java">
+    <span class="hljs-comment">/**
+     * 获取当前的全局事务实例，如果没有则创建一个新的实例。
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> GlobalTransaction <span class="hljs-title">getCurrentOrCreate</span><span class="hljs-params">()</span> </span>{
+        GlobalTransaction tx = getCurrent();
+        <span class="hljs-keyword">if</span> (tx == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span> createNew();
+        }
+        <span class="hljs-keyword">return</span> tx;
+    }
+
+    <span class="hljs-comment">/**
+     * 重新载入给定 XID 的全局事务实例，这个实例不允许执行开启事务的操作。
+     * 这个 API 通常用于失败的事务的后续集中处理。
+     * 比如：全局提交超时，后续集中处理通过重新载入该实例，通过实例方法获取事务当前状态，并根据状态判断是否需要重试全局提交操作。
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> GlobalTransaction <span class="hljs-title">reload</span><span class="hljs-params">(String xid)</span> <span class="hljs-keyword">throws</span> TransactionException </span>{
+        GlobalTransaction tx = <span class="hljs-keyword">new</span> DefaultGlobalTransaction(xid, GlobalStatus.UnKnown, GlobalTransactionRole.Launcher) {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">begin</span><span class="hljs-params">(<span class="hljs-keyword">int</span> timeout, String name)</span> <span class="hljs-keyword">throws</span> TransactionException </span>{
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">"Never BEGIN on a RELOADED GlobalTransaction. "</span>);
+            }
+        };
+        <span class="hljs-keyword">return</span> tx;
+    }
+</code></pre>
+<h2>2.3 TransactionalTemplate</h2>
+<p>事务化模板：通过上述 GlobalTransaction 和 GlobalTransactionContext API 把一个业务服务的调用包装成带有分布式事务支持的服务。</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TransactionalTemplate</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">execute</span><span class="hljs-params">(TransactionalExecutor business)</span> <span class="hljs-keyword">throws</span> TransactionalExecutor.ExecutionException </span>{
+
+        <span class="hljs-comment">// 1. 获取当前全局事务实例或创建新的实例</span>
+        GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
+
+        <span class="hljs-comment">// 2. 开启全局事务</span>
+        <span class="hljs-keyword">try</span> {
+            tx.begin(business.timeout(), business.name());
+
+        } <span class="hljs-keyword">catch</span> (TransactionException txe) {
+            <span class="hljs-comment">// 2.1 开启失败</span>
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> TransactionalExecutor.ExecutionException(tx, txe,
+                TransactionalExecutor.Code.BeginFailure);
+
+        }
+
+        Object rs = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// 3. 调用业务服务</span>
+            rs = business.execute();
+
+        } <span class="hljs-keyword">catch</span> (Throwable ex) {
+
+            <span class="hljs-comment">// 业务调用本身的异常</span>
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-comment">// 全局回滚</span>
+                tx.rollback();
+
+                <span class="hljs-comment">// 3.1 全局回滚成功：抛出原始业务异常</span>
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> TransactionalExecutor.ExecutionException(tx, TransactionalExecutor.Code.RollbackDone, ex);
+
+            } <span class="hljs-keyword">catch</span> (TransactionException txe) {
+                <span class="hljs-comment">// 3.2 全局回滚失败：</span>
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> TransactionalExecutor.ExecutionException(tx, txe,
+                    TransactionalExecutor.Code.RollbackFailure, ex);
+
+            }
+
+        }
+
+        <span class="hljs-comment">// 4. 全局提交</span>
+        <span class="hljs-keyword">try</span> {
+            tx.commit();
+
+        } <span class="hljs-keyword">catch</span> (TransactionException txe) {
+            <span class="hljs-comment">// 4.1 全局提交失败：</span>
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> TransactionalExecutor.ExecutionException(tx, txe,
+                TransactionalExecutor.Code.CommitFailure);
+
+        }
+        <span class="hljs-keyword">return</span> rs;
+    }
+
+}
+</code></pre>
+<p>模板方法执行的异常：ExecutionException</p>
+<pre><code>    class ExecutionException extends Exception {
+
+        // 发生异常的事务实例
+        private GlobalTransaction transaction;
+
+        // 异常编码：
+        // BeginFailure（开启事务失败）
+        // CommitFailure（全局提交失败）
+        // RollbackFailure（全局回滚失败）
+        // RollbackDone（全局回滚成功）
+        private Code code;
+
+        // 触发回滚的业务原始异常
+        private Throwable originalException;
+</code></pre>
+<p>外层调用逻辑 try-catch 这个异常，根据异常编码进行处理：</p>
+<ul>
+<li><strong>BeginFailure</strong> （开启事务失败）：getCause() 得到开启事务失败的框架异常，getOriginalException() 为空。</li>
+<li><strong>CommitFailure</strong> （全局提交失败）：getCause() 得到全局提交失败的框架异常，getOriginalException() 为空。</li>
+<li><strong>RollbackFailure</strong> （全局回滚失败）：getCause() 得到全局回滚失败的框架异常，getOriginalException() 业务应用的原始异常。</li>
+<li><strong>RollbackDone</strong> （全局回滚成功）：getCause() 为空，getOriginalException() 业务应用的原始异常。</li>
+</ul>
+<h1>3. Low-Level API</h1>
+<h2>3.1 RootContext</h2>
+<p>事务的根上下文：负责在应用的运行时，维护 XID 。</p>
+<pre><code class="language-java">    <span class="hljs-comment">/**
+     * 得到当前应用运行时的全局事务 XID
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getXID</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> CONTEXT_HOLDER.get(KEY_XID);
+    }
+
+    <span class="hljs-comment">/**
+     * 将全局事务 XID 绑定到当前应用的运行时中
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bind</span><span class="hljs-params">(String xid)</span> </span>{
+        <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+            LOGGER.debug(<span class="hljs-string">"bind "</span> + xid);
+        }
+        CONTEXT_HOLDER.put(KEY_XID, xid);
+    }
+
+    <span class="hljs-comment">/**
+     * 将全局事务 XID 从当前应用的运行时中解除绑定，同时将 XID 返回
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">unbind</span><span class="hljs-params">()</span> </span>{
+        String xid = CONTEXT_HOLDER.remove(KEY_XID);
+        <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+            LOGGER.debug(<span class="hljs-string">"unbind "</span> + xid);
+        }
+        <span class="hljs-keyword">return</span> xid;
+    }
+
+    <span class="hljs-comment">/**
+     * 判断当前应用的运行时是否处于全局事务的上下文中
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">inGlobalTransaction</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> CONTEXT_HOLDER.get(KEY_XID) != <span class="hljs-keyword">null</span>;
+    }
+</code></pre>
+<p>High-Level API 的实现都是基于 RootContext 中维护的 XID 来做的。</p>
+<p>应用的当前运行的操作是否在一个全局事务的上下文中，就是看 RootContext 中是否有 XID。</p>
+<p>RootContext 的默认实现是基于 ThreadLocal 的，即 XID 保存在当前线程上下文中。</p>
+<p>Low-Level API 的两个典型的应用场景：</p>
+<h3>1. 远程调用事务上下文的传播</h3>
+<p>远程调用前获取当前 XID：</p>
+<pre><code class="language-java">String xid = RootContext.getXID();
+</code></pre>
+<p>远程调用过程把 XID 也传递到服务提供方，在执行服务提供方的业务逻辑前，把 XID 绑定到当前应用的运行时：</p>
+<pre><code class="language-java">RootContext.bind(rpcXid);
+</code></pre>
+<h3>2. 事务的暂停和恢复</h3>
+<p>在一个全局事务中，如果需要某些业务逻辑不在全局事务的管辖范围内，则在调用前，把 XID 解绑：</p>
+<pre><code class="language-java">String unbindXid = RootContext.unbind();
+</code></pre>
+<p>待相关业务逻辑执行完成，再把 XID 绑定回去，即可实现全局事务的恢复：</p>
+<pre><code class="language-java">RootContext.bind(unbindXid);
+</code></pre>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

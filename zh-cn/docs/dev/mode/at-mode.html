@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Seata AT 模式。" />
+	<!-- 网页标签标题 -->
+	<title>Seata AT 模式</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>Seata AT 模式</h1>
+<h2>前提</h2>
+<ul>
+<li>基于支持本地 ACID 事务的关系型数据库。</li>
+<li>Java 应用，通过 JDBC 访问数据库。</li>
+</ul>
+<h2>整体机制</h2>
+<p>两阶段提交协议的演变：</p>
+<ul>
+<li>
+<p>一阶段：业务数据和回滚日志记录在同一个本地事务中提交，释放本地锁和连接资源。</p>
+</li>
+<li>
+<p>二阶段：</p>
+<ul>
+<li>提交异步化，非常快速地完成。</li>
+<li>回滚通过一阶段的回滚日志进行反向补偿。</li>
+</ul>
+</li>
+</ul>
+<h1>写隔离</h1>
+<ul>
+<li>一阶段本地事务提交前，需要确保先拿到 <strong>全局锁</strong> 。</li>
+<li>拿不到 <strong>全局锁</strong> ，不能提交本地事务。</li>
+<li>拿 <strong>全局锁</strong> 的尝试被限制在一定范围内，超出范围将放弃，并回滚本地事务，释放本地锁。</li>
+</ul>
+<p>以一个示例来说明：</p>
+<p>两个全局事务 tx1 和 tx2，分别对 a 表的 m 字段进行更新操作，m 的初始值 1000。</p>
+<p>tx1 先开始，开启本地事务，拿到本地锁，更新操作 m = 1000 - 100 = 900。本地事务提交前，先拿到该记录的 <strong>全局锁</strong> ，本地提交释放本地锁。
+tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 100 = 800。本地事务提交前，尝试拿该记录的 <strong>全局锁</strong> ，tx1 全局提交前，该记录的全局锁被 tx1 持有，tx2 需要重试等待 <strong>全局锁</strong> 。</p>
+<p><img src="/img/seata_at-1.png" alt="Write-Isolation: Commit"></p>
+<p>tx1 二阶段全局提交，释放 <strong>全局锁</strong> 。tx2 拿到 <strong>全局锁</strong> 提交本地事务。</p>
+<p><img src="/img/seata_at-2.png" alt="Write-Isolation: Rollback"></p>
+<p>如果 tx1 的二阶段全局回滚，则 tx1 需要重新获取该数据的本地锁，进行反向补偿的更新操作，实现分支的回滚。</p>
+<p>此时，如果 tx2 仍在等待该数据的 <strong>全局锁</strong>，同时持有本地锁，则 tx1 的分支回滚会失败。分支的回滚会一直重试，直到 tx2 的 <strong>全局锁</strong> 等锁超时，放弃 <strong>全局锁</strong> 并回滚本地事务释放本地锁，tx1 的分支回滚最终成功。</p>
+<p>因为整个过程 <strong>全局锁</strong> 在 tx1 结束前一直是被 tx1 持有的，所以不会发生 <strong>脏写</strong> 的问题。</p>
+<h1>读隔离</h1>
+<p>在数据库本地事务隔离级别 <strong>读已提交（Read Committed）</strong> 或以上的基础上，Seata（AT 模式）的默认全局隔离级别是 <strong>读未提交（Read Uncommitted）</strong> 。</p>
+<p>如果应用在特定场景下，必需要求全局的 <strong>读已提交</strong> ，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。</p>
+<p><img src="/img/seata_at-3.png" alt="Read Isolation: SELECT FOR UPDATE"></p>
+<p>SELECT FOR UPDATE 语句的执行会申请 <strong>全局锁</strong> ，如果 <strong>全局锁</strong> 被其他事务持有，则释放本地锁（回滚 SELECT FOR UPDATE 语句的本地执行）并重试。这个过程中，查询是被 block 住的，直到 <strong>全局锁</strong> 拿到，即读取的相关数据是 <strong>已提交</strong> 的，才返回。</p>
+<p>出于总体性能上的考虑，Seata 目前的方案并没有对所有 SELECT 语句都进行代理，仅针对 FOR UPDATE 的 SELECT 语句。</p>
+<h1>工作机制</h1>
+<p>以一个示例来说明整个 AT 分支的工作过程。</p>
+<p>业务表：<code>product</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>bigint(20)</td>
+<td>PRI</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(100)</td>
+<td></td>
+</tr>
+<tr>
+<td>since</td>
+<td>varchar(100)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>AT 分支事务的业务逻辑：</p>
+<pre><code class="language-sql"><span class="hljs-keyword">update</span> product <span class="hljs-keyword">set</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">'GTS'</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">'TXC'</span>;
+</code></pre>
+<h2>一阶段</h2>
+<p>过程：</p>
+<ol>
+<li>解析 SQL：得到 SQL 的类型（UPDATE），表（product），条件（where name = 'TXC'）等相关的信息。</li>
+<li>查询前镜像：根据解析得到的条件信息，生成查询语句，定位数据。</li>
+</ol>
+<pre><code class="language-sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>, <span class="hljs-keyword">name</span>, since <span class="hljs-keyword">from</span> product <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">'TXC'</span>;
+</code></pre>
+<p>得到前镜像：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>TXC</td>
+<td>2014</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>执行业务 SQL：更新这条记录的 name 为 'GTS'。</li>
+<li>查询后镜像：根据前镜像的结果，通过 <strong>主键</strong> 定位数据。</li>
+</ol>
+<pre><code class="language-sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>, <span class="hljs-keyword">name</span>, since <span class="hljs-keyword">from</span> product <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span><span class="hljs-string">`;
+</span></code></pre>
+<p>得到后镜像：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GTS</td>
+<td>2014</td>
+</tr>
+</tbody>
+</table>
+<ol start="5">
+<li>插入回滚日志：把前后镜像数据以及业务 SQL 相关的信息组成一条回滚日志记录，插入到 <code>UNDO_LOG</code> 表中。</li>
+</ol>
+<pre><code class="language-json">{
+	<span class="hljs-attr">"branchId"</span>: <span class="hljs-number">641789253</span>,
+	<span class="hljs-attr">"undoItems"</span>: [{
+		<span class="hljs-attr">"afterImage"</span>: {
+			<span class="hljs-attr">"rows"</span>: [{
+				<span class="hljs-attr">"fields"</span>: [{
+					<span class="hljs-attr">"name"</span>: <span class="hljs-string">"id"</span>,
+					<span class="hljs-attr">"type"</span>: <span class="hljs-number">4</span>,
+					<span class="hljs-attr">"value"</span>: <span class="hljs-number">1</span>
+				}, {
+					<span class="hljs-attr">"name"</span>: <span class="hljs-string">"name"</span>,
+					<span class="hljs-attr">"type"</span>: <span class="hljs-number">12</span>,
+					<span class="hljs-attr">"value"</span>: <span class="hljs-string">"GTS"</span>
+				}, {
+					<span class="hljs-attr">"name"</span>: <span class="hljs-string">"since"</span>,
+					<span class="hljs-attr">"type"</span>: <span class="hljs-number">12</span>,
+					<span class="hljs-attr">"value"</span>: <span class="hljs-string">"2014"</span>
+				}]
+			}],
+			<span class="hljs-attr">"tableName"</span>: <span class="hljs-string">"product"</span>
+		},
+		<span class="hljs-attr">"beforeImage"</span>: {
+			<span class="hljs-attr">"rows"</span>: [{
+				<span class="hljs-attr">"fields"</span>: [{
+					<span class="hljs-attr">"name"</span>: <span class="hljs-string">"id"</span>,
+					<span class="hljs-attr">"type"</span>: <span class="hljs-number">4</span>,
+					<span class="hljs-attr">"value"</span>: <span class="hljs-number">1</span>
+				}, {
+					<span class="hljs-attr">"name"</span>: <span class="hljs-string">"name"</span>,
+					<span class="hljs-attr">"type"</span>: <span class="hljs-number">12</span>,
+					<span class="hljs-attr">"value"</span>: <span class="hljs-string">"TXC"</span>
+				}, {
+					<span class="hljs-attr">"name"</span>: <span class="hljs-string">"since"</span>,
+					<span class="hljs-attr">"type"</span>: <span class="hljs-number">12</span>,
+					<span class="hljs-attr">"value"</span>: <span class="hljs-string">"2014"</span>
+				}]
+			}],
+			<span class="hljs-attr">"tableName"</span>: <span class="hljs-string">"product"</span>
+		},
+		<span class="hljs-attr">"sqlType"</span>: <span class="hljs-string">"UPDATE"</span>
+	}],
+	<span class="hljs-attr">"xid"</span>: <span class="hljs-string">"xid:xxx"</span>
+}
+</code></pre>
+<ol start="6">
+<li>提交前，向 TC 注册分支：申请 <code>product</code> 表中，主键值等于 1 的记录的 <strong>全局锁</strong> 。</li>
+<li>本地事务提交：业务数据的更新和前面步骤中生成的 UNDO LOG 一并提交。</li>
+<li>将本地事务提交的结果上报给 TC。</li>
+</ol>
+<h2>二阶段-回滚</h2>
+<ol>
+<li>收到 TC 的分支回滚请求，开启一个本地事务，执行如下操作。</li>
+<li>通过 XID 和 Branch ID 查找到相应的 UNDO LOG 记录。</li>
+<li>数据校验：拿 UNDO LOG 中的后镜与当前数据进行比较，如果有不同，说明数据被当前全局事务之外的动作做了修改。这种情况，需要根据配置策略来做处理，详细的说明在另外的文档中介绍。</li>
+<li>根据 UNDO LOG 中的前镜像和业务 SQL 的相关信息生成并执行回滚的语句：</li>
+</ol>
+<pre><code class="language-sql"><span class="hljs-keyword">update</span> product <span class="hljs-keyword">set</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">'TXC'</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span>;
+</code></pre>
+<ol start="5">
+<li>提交本地事务。并把本地事务的执行结果（即分支事务回滚的结果）上报给 TC。</li>
+</ol>
+<h2>二阶段-提交</h2>
+<ol>
+<li>收到 TC 的分支提交请求，把请求放入一个异步任务的队列中，马上返回提交成功的结果给 TC。</li>
+<li>异步任务阶段的分支提交请求将异步和批量地删除相应 UNDO LOG 记录。</li>
+</ol>
+<h1>附录</h1>
+<h2>回滚日志表</h2>
+<p>UNDO_LOG Table：不同数据库在类型上会略有差别。</p>
+<p>以 MySQL 为例：</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>branch_id</td>
+<td>bigint     PK</td>
+</tr>
+<tr>
+<td>xid</td>
+<td>varchar(100)</td>
+</tr>
+<tr>
+<td>context</td>
+<td>varchar(128)</td>
+</tr>
+<tr>
+<td>rollback_info</td>
+<td>longblob</td>
+</tr>
+<tr>
+<td>log_status</td>
+<td>tinyint</td>
+</tr>
+<tr>
+<td>log_created</td>
+<td>datetime</td>
+</tr>
+<tr>
+<td>log_modified</td>
+<td>datetime</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql"><span class="hljs-comment">-- 注意此处0.7.0+ 增加字段 context</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-string">`undo_log`</span> (
+  <span class="hljs-string">`id`</span> <span class="hljs-built_in">bigint</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT,
+  <span class="hljs-string">`branch_id`</span> <span class="hljs-built_in">bigint</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  <span class="hljs-string">`xid`</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  <span class="hljs-string">`context`</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">128</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  <span class="hljs-string">`rollback_info`</span> longblob <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  <span class="hljs-string">`log_status`</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  <span class="hljs-string">`log_created`</span> datetime <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  <span class="hljs-string">`log_modified`</span> datetime <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-string">`id`</span>),
+  <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">KEY</span> <span class="hljs-string">`ux_undo_log`</span> (<span class="hljs-string">`xid`</span>,<span class="hljs-string">`branch_id`</span>)
+) <span class="hljs-keyword">ENGINE</span>=<span class="hljs-keyword">InnoDB</span> AUTO_INCREMENT=<span class="hljs-number">1</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CHARSET</span>=utf8;
+</code></pre>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

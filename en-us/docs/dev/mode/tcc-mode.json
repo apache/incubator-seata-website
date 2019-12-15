@@ -1,0 +1,10 @@
+{
+  "filename": "tcc-mode.md",
+  "__html": "<h1>Seata TCC Mode</h1>\n<p>Review the description in the overview: A distributed global transaction, the whole is a <strong>two-phase commit</strong> model. The global transaction is composed of several branch transactions. The branch transaction must meet the requirements of the <strong>two-phase commit</strong> model, that is, each branch transaction must have its own:</p>\n<ul>\n<li>One-stage prepare behavior</li>\n<li>Two-phase commit or rollback behavior</li>\n</ul>\n<p><img src=\"/img/seata_tcc-1.png\" alt=\"Overview of a global transaction\"></p>\n<p>According to the two-phase behavior mode, we divide branch transactions into <strong>Automatic (Branch) Transaction Mode</strong> and <strong>TCC (Branch) Transaction Mode</strong>.</p>\n<p>The AT mode (<a href=\"\">Reference Link TBD</a>) is based on a <strong>relational database</strong> that <strong>supports local ACID transactions</strong>:</p>\n<ul>\n<li>One-stage prepare behavior: In local transactions, business data updates and corresponding rollback log records are submitted together.</li>\n<li>Two-phase commit behavior: Immediately completed successfully, <strong>automatically</strong> asynchronously clean up the rollback log.</li>\n<li>Two-phase rollback behavior: Through the rollback log, <strong>automatically</strong> generates compensation operations to complete data rollback.</li>\n</ul>\n<p>Correspondingly, the TCC mode does not rely on transaction support of the underlying data resources:</p>\n<ul>\n<li>One-stage prepare behavior: Call the <strong>custom</strong> prepare logic.</li>\n<li>Two-phase commit behavior: Call <strong>custom</strong> commit logic.</li>\n<li>Two-phase rollback behavior: Call the <strong>custom</strong> rollback logic.</li>\n</ul>\n<p>The so-called TCC mode refers to the support of putting <strong>customized's</strong> branch transactions into the management of global transactions.</p>\n",
+  "link": "/en-us/docs/dev/mode/tcc-mode.html",
+  "meta": {
+    "title": "Seata TCC Mode",
+    "keywords": "Seata, TCC Mode",
+    "description": "Seata TCC mode."
+  }
+}
