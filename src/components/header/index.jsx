@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { autobind } from 'core-decorators';
 import siteConfig from '../../../site_config/site';
 import { getLink } from '../../../utils';
 import './index.scss';
@@ -39,6 +40,7 @@ const defaultProps = {
   onLanguageChange: noop,
 };
 
+@autobind
 class Header extends React.Component {
   constructor(props) {
     super(props);
