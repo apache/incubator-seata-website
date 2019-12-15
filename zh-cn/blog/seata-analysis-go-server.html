@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="seata、分布式事务、高可用" />
+	<meta name="description" content="seata-analysis-go-server" />
+	<!-- 网页标签标题 -->
+	<title>Seata分布式Go Server正式开源-TaaS设计简介</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>Seata 高可用服务端 TaaS 正式开源</h1>
+<h3>前言</h3>
+<p>TaaS 是 Seata 服务端（TC, Transaction Coordinator）的一种高可用实现，使用 <code>Golang</code> 编写。Taas 由InfiniVision (<a href="http://infinivision.cn">http://infinivision.cn</a>) 贡献给Seata开源社区。现已正式开源，并贡献给 Seata 社区。</p>
+<p>在Seata开源之前，我们内部开始借鉴GTS以及一些开源项目来实现分布式事务的解决方案TaaS(Transaction as a Service)。</p>
+<p>在我们完成TaaS的服务端的开发工作后，Seata（当时还叫Fescar）开源了，并且引起了开源社区的广泛关注，加上阿里巴巴的平台影响力以及社区活跃度，我们认为Seata会成为今后开源分布式事务的标准，我们决定TaaS兼容Seata。</p>
+<p>在发现Seata的服务端的实现是单机的，高可用等并没有实现，于是我们与Seata社区负责人取得联系，并且决定把TaaS开源，回馈开源社区。 同时，我们会长期维护，并且和Seata版本保持同步。</p>
+<p>目前，Seata官方的Java高可用版本也在开发中，TaaS和该高可用版本的设计思想不同，在今后会长期共存。</p>
+<p>TaaS已经开源， github (<a href="https://github.com/seata/seata-go-server">https://github.com/seata/seata-go-server</a>)，欢迎大家试用。</p>
+<h3>设计原则</h3>
+<ol>
+<li>高性能，性能和机器数量成正比，即通过加入新机器到集群中，就可以提升性能</li>
+<li>高可用，一台机器出现故障，系统能依旧可以对外提供服务，或者在较短的时间内恢复对外服务（Leader切换的时间）</li>
+<li>Auto-Rebalance，集群中增加新的机器，或者有机器下线，系统能够自动的做负载均衡</li>
+<li>强一致，系统的元数据强一致在多个副本中存储</li>
+</ol>
+<h3>设计</h3>
+<p><img src="/img/blog/taas.png" alt=""></p>
+<h4>高性能</h4>
+<p>TaaS的性能和机器数量成正比，为了支持这个特性，在TaaS中处理全局事务的最小单元称为<code>Fragment</code>，系统在启动的时候会设定每个Fragment支持的活跃全局事务的并发数，同时系统会对每个Fragment进行采样，一旦发现Fragment超负荷，会生成新的Fragment来处理更多的并发。</p>
+<h4>高可用</h4>
+<p>每个<code>Fragment</code>有多个副本和一个Leader，由Leader来处理请求。当Leader出现故障，系统会产生一个新的Leader来处理请求，在新Leader的选举过程中，这个Fragment对外不提供服务，通常这个间隔时间是几秒钟。</p>
+<h4>强一致</h4>
+<p>TaaS本身不存储全局事务的元数据，元数据存储在Elasticell   (<a href="https://github.com/deepfabric/elasticell">https://github.com/deepfabric/elasticell</a>) 中，Elasticell是一个兼容redis协议的分布式的KV存储，它基于Raft协议来保证数据的一致性。</p>
+<h4>Auto-Rebalance</h4>
+<p>随着系统的运行，在系统中会存在许多<code>Fragment</code>以及它们的副本，这样会导致在每个机器上，<code>Fragment</code>的分布不均匀，特别是当旧的机器下线或者新的机器上线的时候。TaaS在启动的时候，会选择3个节点作为调度器的角色，调度器负责调度这些<code>Fragment</code>，用来保证每个机器上的Fragment的数量以及Leader个数大致相等，同时还会保证每个Fragment的副本数维持在指定的副本个数。</p>
+<h5>Fragment副本创建</h5>
+<p><img src="/img/blog/taas_add.png" alt=""></p>
+<ol>
+<li>t0时间点，Fragment1在Seata-TC1机器上创建</li>
+<li>t1时间点，Fragment1的副本Fragment1'在Seata-TC2机器上创建</li>
+<li>t2时间点，Fragment1的副本Fragment1&quot;在Seata-TC3机器上创建</li>
+</ol>
+<p>在t2时间点，Fragment1的三个副本创建完毕。</p>
+<h5>Fragment副本迁移</h5>
+<p><img src="/img/blog/taas_move.png" alt=""></p>
+<ol>
+<li>t0时刻点，系统一个存在4个Fragment，分别存在于Seata-TC1，Seata-TC2，Seata-TC3三台机器上</li>
+<li>t1时刻，加入新机器Seata-TC4</li>
+<li>t2时刻，有3个Fragment的副本被迁移到了Seata-TC4这台机器上</li>
+</ol>
+<h3>在线快速体验</h3>
+<p>我们在公网搭建了一个体验的环境：</p>
+<ul>
+<li>Seata服务端地址： 39.97.115.141:8091</li>
+<li>UI： <a href="http://39.97.115.141:8084/ui/index.html">http://39.97.115.141:8084/ui/index.html</a></li>
+</ul>
+<h3>本地快速体验</h3>
+<p>使用docker-compose快速体验TaaS的功能。</p>
+<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/seata/taas.git
+docker-compse up -d
+</code></pre>
+<p>由于组件依赖较多，docker-compose启动30秒后，可以对外服务</p>
+<h4>Seata服务地址</h4>
+<p>服务默认监听在8091端口，修改Seata对应的服务端地址体验</p>
+<h4>Seata UI</h4>
+<p>访问WEB UI <code>http://127.0.0.1:8084/ui/index.html</code></p>
+<h3>关于InfiniVision</h3>
+<p>深见网络是一家技术驱动的企业级服务提供商，致力于利用人工智能、云计算、区块链、大数据，以及物联网边缘计算技术助力传统企业的数字化转型和升级。深见网络积极拥抱开源文化并将核心算法和架构开源，知名人脸识别软件 InsightFace (<a href="https://github.com/deepinsight/insightface">https://github.com/deepinsight/insightface</a>) (曾多次获得大规模人脸识别挑战冠军)，以及分布式存储引擎 Elasticell (<a href="https://github.com/deepfabric/elasticell">https://github.com/deepfabric/elasticell</a>) 等均是深见网络的开源产品。</p>
+<h3>关于作者</h3>
+<p>作者张旭，开源网关Gateway (<a href="https://github.com/fagongzi/gateway">https://github.com/fagongzi/gateway</a>) 作者，目前就职于InfiniVision，负责基础架构相关的研发工作。</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

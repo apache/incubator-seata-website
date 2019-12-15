@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata、分布式事务、AT模式、RM、TM" />
+	<meta name="description" content="关于 Seata 后续优化的一个讨论点" />
+	<!-- 网页标签标题 -->
+	<title>Seata 客户端需要同时启动 RM 和 TM 吗？</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><p>在分析启动部分源码时，我发现 GlobalTransactionScanner 会同时启动 RM 和 TM client，但根据 Seata 的设计来看，TM 负责全局事务的操作，如果一个服务中不需要开启全局事务，此时是不需要启动 TM client的，也就是说项目中如果没有全局事务注解，此时是不是就不需要初始化 TM client 了，因为不是每个微服务，都需要 GlobalTransactional，它此时仅仅作为一个 RM client 而已。</p>
+<p>于是我着手将 GlobalTransactionScanner 稍微更改了初始化的规则，由于之前 GlobalTransactionScanner 调用 初始化方法是在 InitializingBean 中的 afterPropertiesSet() 方法中进行，afterPropertySet() 仅仅是当前 bean 初始化后被调用，此时无法得知当前 Spring 容器是否有全局事务注解。</p>
+<p>因此我去掉了 InitializingBean，改成了是实现 ApplicationListener，在实例化 bean 的过程中检查是否有 GlobalTransactional 注解的存在，最后在 Spring 容器初始化完成之后再调用 RM 和 TM client 初始化方法，这时候就可以根据项目是否有用到全局事务注解来决定是否启动 TM client 了。</p>
+<p>这里附上 PR 地址：<a href="https://github.com/seata/seata/pull/1936">https://github.com/seata/seata/pull/1936</a></p>
+<p>随后在 pr 中讨论中得知，目前 Seata 的设计是只有在发起方的 TM 才可以发起 GlobalRollbackRequest，RM 只能发送 BranchReport(false) 上报分支状态个 TC 服务端，无法直接发送 GlobalRollbackRequest 进行全局回滚操作。具体的交互逻辑如下：</p>
+<p><img src="https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191128094250.png" alt=""></p>
+<p>那么根据上面的设计模型，自然可以按需启动 TM client 了。</p>
+<p>但是 Seata 后面的优化迭代中，还需要考虑的一点是：</p>
+<p>当参与方出现异常时，是否可以直接由参与方的 TM client 发起全局回滚？这也就意味着可以缩短分布式事务的周期时间，尽快释放全局锁让其他数据冲突的事务尽早的获取到锁执行。</p>
+<p><img src="https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191127202606.png" alt=""></p>
+<p>也就是说在一个全局事务当中，只要有一个 RM client 执行本地事务失败了，直接当前服务的 TM client 发起全局事务回滚，不必要等待发起方的 TM 发起的决议回滚通知了。如果要实现这个优化，那么就需要每个服务都需要同时启动 TM client 和 RM client。</p>
+<h1>作者简介：</h1>
+<p>张乘辉，目前就职于中通科技信息中心技术平台部，担任 Java 工程师，主要负责中通消息平台与全链路压测项目的研发，热爱分享技术，微信公众号「后端进阶」作者，技术博客（<a href="https://objcoding.com/">https://objcoding.com/</a>）博主，Seata Contributor，GitHub ID：objcoding。</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

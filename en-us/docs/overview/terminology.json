@@ -1,0 +1,10 @@
+{
+  "filename": "terminology.md",
+  "__html": "<h1>Seata Terminology</h1>\n<h4>TC - Transaction Coordinator</h4>\n<p>Maintain status of global and branch transactions, drive the global commit or rollback.</p>\n<h4>TM - Transaction Manager</h4>\n<p>Define the scope of global transaction: begin a global transaction, commit or rollback a global transaction.</p>\n<h4>RM - Resource Manager</h4>\n<p>Manage resources that branch transactions working on, talk to TC for registering branch transactions and reporting status of branch transactions, and drive the branch transaction commit or rollback.</p>\n",
+  "link": "/en-us/docs/overview/terminology.html",
+  "meta": {
+    "title": "Seata Terminology",
+    "keywords": "Seata",
+    "description": "Seata Terminology."
+  }
+}

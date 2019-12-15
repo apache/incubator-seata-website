@@ -86,11 +86,7 @@ RootContext.bind(xid);
 <span class="hljs-meta">@Activate</span>(group = { Constants.PROVIDER, Constants.CONSUMER }, order = <span class="hljs-number">100</span>)
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TransactionPropagationFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span> </span>{
 
-<<<<<<< HEAD
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(TransactionPropagationFilter.class);
-=======
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(TransactionPropagationFilter<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-function"><span class="hljs-keyword">public</span> Result <span class="hljs-title">invoke</span><span class="hljs-params">(Invoker&lt;?&gt; invoker, Invocation invocation)</span> <span class="hljs-keyword">throws</span> RpcException </span>{

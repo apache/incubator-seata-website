@@ -1,0 +1,10 @@
+{
+  "filename": "new-contributor-guide_dev.md",
+  "__html": "<h1>New contributor guide</h1>\n<p>This is a guide for new comers who wants to contribute to Seata.</p>\n<h3>Subscribe to the mailing list</h3>\n<p>TBD</p>\n<h3>Reporting issue</h3>\n<p>You can always reporting an issue to Seata via Github <a href=\"https://github.com/seata/seata/issues\">Issues</a>.</p>\n<p>If you are reporting bugs, please refer to the issue report <a href=\"https://github.com/seata/seata/issues/new?template=BUG_REPORT.md\">template</a>.</p>\n<p>If you are reporting feature, please refer to the issue report <a href=\"https://github.com/seata/seata/issues/new?template=FEATURE_REQUEST.md\">template</a>.</p>\n<p>If you are reporting regular issues, like raise an question, you can open an <a href=\"https://github.com/seata/seata/issues/new\">regular issue</a>.</p>\n<h3>Sending pull request</h3>\n<ul>\n<li>Follow the checklist in the <a href=\"https://github.com/seata/seata/blob/develop/.github/PULL_REQUEST_TEMPLATE.md\">pull request template</a></li>\n<li>Before you sending out the pull request, please sync your forked repository with remote repository, this will make your pull request simple and clear. See guide below:</li>\n</ul>\n<pre><code class=\"language-sh\">git remote add upstream git@github.com:seata/seata.git\ngit fetch upstream\ngit rebase upstream/master\ngit checkout -b your_awesome_patch\n... add some work\ngit push origin your_awesome_patch\n</code></pre>\n<h3>Code convention</h3>\n<p>Please check the <a href=\"https://github.com/seata/seata/blob/develop/CONTRIBUTING.md\">CONTRIBUTING.md</a> for code convention.</p>\n",
+  "link": "/en-us/docs/developers/contributor-guide/new-contributor-guide_dev.html",
+  "meta": {
+    "title": "New contributor guide",
+    "keywords": "Seata, contributor",
+    "description": "This is a guide for new comers who wants to contribute to Seata."
+  }
+}

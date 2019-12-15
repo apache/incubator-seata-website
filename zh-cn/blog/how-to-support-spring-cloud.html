@@ -79,11 +79,7 @@ FescarProperties 包含了 Fescar 的重要属性 txServiceGroup ，此属性的
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FescarHandlerInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">HandlerInterceptor</span> </span>{
 
 	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger log = LoggerFactory
-<<<<<<< HEAD
-			.getLogger(FescarHandlerInterceptor.class);
-=======
 			.getLogger(FescarHandlerInterceptor<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 
 	<span class="hljs-meta">@Override</span>
 	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">preHandle</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response,
@@ -187,15 +183,9 @@ FescarProperties 包含了 Fescar 的重要属性 txServiceGroup ，此属性的
 <p><img src="/img/blog/20190305184812.png" alt="Feign 类关系图"></p>
 <p>接下来看下 Feign 的相关代码，该包下面的类还是比较多的，我们先从其 AutoConfiguration 入手。</p>
 <pre><code class="language-java"><span class="hljs-meta">@Configuration</span>
-<<<<<<< HEAD
-<span class="hljs-meta">@ConditionalOnClass</span>(Client.class)
-<span class="hljs-meta">@AutoConfigureBefore</span>(FeignAutoConfiguration.class)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FescarFeignClientAutoConfiguration</span> </span>{
-=======
 <span class="hljs-meta">@ConditionalOnClass</span>(Client<span class="hljs-class">.<span class="hljs-keyword">class</span>)
 @<span class="hljs-title">AutoConfigureBefore</span>(<span class="hljs-title">FeignAutoConfiguration</span>.<span class="hljs-title">class</span>)
 <span class="hljs-title">public</span> <span class="hljs-title">class</span> <span class="hljs-title">FescarFeignClientAutoConfiguration</span> </span>{
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 
 	<span class="hljs-meta">@Bean</span>
 	<span class="hljs-meta">@Scope</span>(<span class="hljs-string">"prototype"</span>)
@@ -338,11 +328,7 @@ FescarBeanPostProcessor  将 FeignClient 根据是否继承了 LoadBalancerFeign
 	 * <span class="hljs-doctag">@return</span> a {<span class="hljs-doctag">@link</span> Feign} client created with the specified data and the context information
 	 */</span>
 	&lt;T&gt; <span class="hljs-function">T <span class="hljs-title">getTarget</span><span class="hljs-params">()</span> </span>{
-<<<<<<< HEAD
-		FeignContext context = applicationContext.getBean(FeignContext.class);
-=======
 		FeignContext context = applicationContext.getBean(FeignContext<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 		Feign.Builder builder = feign(context);
 
 		<span class="hljs-keyword">if</span> (!StringUtils.hasText(<span class="hljs-keyword">this</span>.url)) {
@@ -360,11 +346,7 @@ FescarBeanPostProcessor  将 FeignClient 根据是否继承了 LoadBalancerFeign
 			<span class="hljs-keyword">this</span>.url = <span class="hljs-string">"http://"</span> + <span class="hljs-keyword">this</span>.url;
 		}
 		String url = <span class="hljs-keyword">this</span>.url + cleanPath();
-<<<<<<< HEAD
-		Client client = getOptional(context, Client.class);
-=======
 		Client client = getOptional(context, Client<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 		<span class="hljs-keyword">if</span> (client != <span class="hljs-keyword">null</span>) {
 			<span class="hljs-keyword">if</span> (client <span class="hljs-keyword">instanceof</span> LoadBalancerFeignClient) {
 				<span class="hljs-comment">// not load balancing because we have a url,</span>
@@ -373,11 +355,7 @@ FescarBeanPostProcessor  将 FeignClient 根据是否继承了 LoadBalancerFeign
 			}
 			builder.client(client);
 		}
-<<<<<<< HEAD
-		Targeter targeter = get(context, Targeter.class);
-=======
 		Targeter targeter = get(context, Targeter<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 		<span class="hljs-keyword">return</span> (T) targeter.target(<span class="hljs-keyword">this</span>, builder, context, <span class="hljs-keyword">new</span> HardCodedTarget&lt;&gt;(
 				<span class="hljs-keyword">this</span>.type, <span class="hljs-keyword">this</span>.name, url));
 	}
@@ -466,13 +444,8 @@ Generally the only time you should use semaphore isolation for HystrixCommands i
 </code></pre>
 <p>Fescar 也提供一个 FescarHystrixAutoConfiguration，在存在 HystrixCommand 的时候生成FescarHystrixConcurrencyStrategy</p>
 <pre><code class="language-java"><span class="hljs-meta">@Configuration</span>
-<<<<<<< HEAD
-<span class="hljs-meta">@ConditionalOnClass</span>(HystrixCommand.class)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FescarHystrixAutoConfiguration</span> </span>{
-=======
 <span class="hljs-meta">@ConditionalOnClass</span>(HystrixCommand<span class="hljs-class">.<span class="hljs-keyword">class</span>)
 <span class="hljs-title">public</span> <span class="hljs-title">class</span> <span class="hljs-title">FescarHystrixAutoConfiguration</span> </span>{
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 
 	<span class="hljs-meta">@Bean</span>
 	<span class="hljs-function">FescarHystrixConcurrencyStrategy <span class="hljs-title">fescarHystrixConcurrencyStrategy</span><span class="hljs-params">()</span> </span>{

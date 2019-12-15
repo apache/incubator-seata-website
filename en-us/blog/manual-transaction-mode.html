@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="MT mode" />
+	<meta name="description" content="introduce MT mode" />
+	<!-- 网页标签标题 -->
+	<title>MT mode</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/en-us/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">中</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/en-us/index.html" target="_self">HOME</a></li><li class="menu-item menu-item-normal"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">DOCS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/docs/developers/developers_dev.html" target="_self">DEVELOPERS</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/en-us/blog/index.html" target="_self">BLOG</a></li><li class="menu-item menu-item-normal"><a href="/en-us/community/index.html" target="_self">COMMUNITY</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/download.html" target="_self">DOWNLOAD</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>Manual Transaction Mode</h1>
+<p>Review the description in the overview: a distributed global transaction, the whole is a model of <strong>the two-phase commit</strong>. A global transaction consists of several branch transactions that meet the model requirements of <strong>the two-phase commit</strong>, which requires each branch transaction to have its own:</p>
+<ul>
+<li>One phase prepare behavior</li>
+<li>Two phase commit or rollback behavior</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4420767-e48f0284a037d1df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Overview of a global transaction"></p>
+<p>According to the two phase behavior pattern，We divide the branch transaction into <strong>Automatic (Branch) Transaction Mode</strong> and <strong>Manual (Branch) Transaction Mode</strong>.</p>
+<p>The AT mode（<a href="">Reference Link TBD</a>）is based on the <strong>Relational Database</strong> that <strong>supports local ACID transactions</strong>：</p>
+<ul>
+<li>One phase prepare behavior: In the local transaction, the business data update and the corresponding rollback log record are submitted together.</li>
+<li>Two phase commit behavior: Immediately ended successfully, <strong>Auto</strong> asynchronous batch cleanup of the rollback log.</li>
+<li>Two phase rollback behavior: By rolling back the log, <strong>automatic</strong> generates a compensation operation to complete the data rollback.</li>
+</ul>
+<p>Accordingly, the MT mode does not rely on transaction support for the underlying data resources:</p>
+<ul>
+<li>One phase prepare behavior: Call the prepare logic of <strong>custom</strong> .</li>
+<li>Two phase commit behavior:Call the commit logic of <strong>custom</strong> .</li>
+<li>Two phase rollback behavior:Call the rollback logic of <strong>custom</strong> .</li>
+</ul>
+<p>The so-called MT mode refers to the support of the branch transaction of <strong>custom</strong> into the management of global transactions.</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

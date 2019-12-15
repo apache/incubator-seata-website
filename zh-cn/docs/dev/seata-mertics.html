@@ -116,37 +116,21 @@
 <p>下载完毕后，修改Prometheus的配置文件<code>prometheus.yml</code>，在<code>scrape_configs</code>中增加一项抓取Seata的度量数据：</p>
 <pre><code class="language-yaml"><span class="hljs-attr">scrape_configs:</span>
   <span class="hljs-comment"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span>
-<<<<<<< HEAD
-<span class="hljs-attr">  - job_name:</span> <span class="hljs-string">'prometheus'</span>
-=======
   <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">'prometheus'</span>
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 
     <span class="hljs-comment"># metrics_path defaults to '/metrics'</span>
     <span class="hljs-comment"># scheme defaults to 'http'.</span>
 
-<<<<<<< HEAD
-<span class="hljs-attr">    static_configs:</span>
-<span class="hljs-attr">    - targets:</span> <span class="hljs-string">['localhost:9090']</span>
-
-<span class="hljs-attr">  - job_name:</span> <span class="hljs-string">'seata'</span>
-=======
     <span class="hljs-attr">static_configs:</span>
     <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> <span class="hljs-string">['localhost:9090']</span>
 
   <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">'seata'</span>
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 
     <span class="hljs-comment"># metrics_path defaults to '/metrics'</span>
     <span class="hljs-comment"># scheme defaults to 'http'.</span>
 
-<<<<<<< HEAD
-<span class="hljs-attr">    static_configs:</span>
-<span class="hljs-attr">    - targets:</span> <span class="hljs-string">['tc-server-ip:9898']</span>
-=======
     <span class="hljs-attr">static_configs:</span>
     <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> <span class="hljs-string">['tc-server-ip:9898']</span>
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 </code></pre>
 <h5>查看数据输出</h5>
 <p>推荐结合配置<a href="https://prometheus.io/docs/visualization/grafana/">Grafana</a>获得更好的查询效果，初期Seata导出的Metrics包括：</p>
