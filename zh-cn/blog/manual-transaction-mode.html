@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="MT 模式" />
+	<meta name="description" content="介绍 MT 模式" />
+	<!-- 网页标签标题 -->
+	<title>MT 模式</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>Manual Transaction 模式</h1>
+<p>回顾总览中的描述：一个分布式的全局事务，整体是 <strong>两阶段提交</strong> 的模型。全局事务是由若干分支事务组成的，分支事务要满足 <strong>两阶段提交</strong> 的模型要求，即需要每个分支事务都具备自己的：</p>
+<ul>
+<li>一阶段 prepare 行为</li>
+<li>二阶段 commit 或 rollback 行为</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4420767-e48f0284a037d1df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Overview of a global transaction"></p>
+<p>根据两阶段行为模式的不同，我们将分支事务划分为 <strong>Automatic (Branch) Transaction Mode</strong> 和 <strong>Manual (Branch) Transaction Mode</strong>.</p>
+<p>AT 模式（<a href="">参考链接 TBD</a>）基于 <strong>支持本地 ACID 事务</strong> 的 <strong>关系型数据库</strong>：</p>
+<ul>
+<li>一阶段 prepare 行为：在本地事务中，一并提交业务数据更新和相应回滚日志记录。</li>
+<li>二阶段 commit 行为：马上成功结束，<strong>自动</strong> 异步批量清理回滚日志。</li>
+<li>二阶段 rollback 行为：通过回滚日志，<strong>自动</strong> 生成补偿操作，完成数据回滚。</li>
+</ul>
+<p>相应的，MT 模式，不依赖于底层数据资源的事务支持：</p>
+<ul>
+<li>一阶段 prepare 行为：调用 <strong>自定义</strong> 的 prepare 逻辑。</li>
+<li>二阶段 commit 行为：调用 <strong>自定义</strong> 的 commit 逻辑。</li>
+<li>二阶段 rollback 行为：调用 <strong>自定义</strong> 的 rollback 逻辑。</li>
+</ul>
+<p>所谓 MT 模式，是指支持把 <strong>自定义</strong> 的分支事务纳入到全局事务的管理中。</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

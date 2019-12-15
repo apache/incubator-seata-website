@@ -34,16 +34,6 @@
 <p>Example of <code>docker-conmpose.yaml</code></p>
 <pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3"</span>
 <span class="hljs-attr">services:</span>
-<<<<<<< HEAD
-<span class="hljs-attr">  seata-server:</span>
-<span class="hljs-attr">    image:</span> <span class="hljs-string">seataio/seata-server</span>
-<span class="hljs-attr">    hostname:</span> <span class="hljs-string">seata-server</span>
-<span class="hljs-attr">    ports:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">"8091:8091"</span>
-<span class="hljs-attr">    environment:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8091</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">STORE_MODE=file</span>
-=======
   <span class="hljs-attr">seata-server:</span>
     <span class="hljs-attr">image:</span> <span class="hljs-string">seataio/seata-server</span>
     <span class="hljs-attr">hostname:</span> <span class="hljs-string">seata-server</span>
@@ -52,7 +42,6 @@
     <span class="hljs-attr">environment:</span>
       <span class="hljs-bullet">-</span> <span class="hljs-string">SEATA_PORT=8091</span>
       <span class="hljs-bullet">-</span> <span class="hljs-string">STORE_MODE=file</span>
->>>>>>> 250d9723a3877b76a542774cd275e5431575f284
 </code></pre>
 <h2>Container shell access and viewing logs</h2>
 <pre><code class="language-bash">$ docker <span class="hljs-built_in">exec</span> -it seata-server sh
