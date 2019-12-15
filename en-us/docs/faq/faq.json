@@ -1,6 +1,0 @@
-{
-  "filename": "faq.md",
-  "__html": "<h1>FAQ</h1>\n<h2>java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)</h2>\n<pre><code>undolog序列化配置为jackson时，jackson版本需要为2.9.9+\n</code></pre>\n",
-  "link": "/en-us/docs/faq/faq.html",
-  "meta": {}
-}
