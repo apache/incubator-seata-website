@@ -1,5 +1,5 @@
 ---
-title: Seata 配置中心实现原理
+title: Seata 动态配置订阅与降级实现原理
 author: 张乘辉
 keywords: Seata、Dynamic、Config
 description: 讲述了 Seata 动态配置订阅与降级的实现原理
