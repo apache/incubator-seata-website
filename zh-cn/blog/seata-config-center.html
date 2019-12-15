@@ -69,7 +69,7 @@ config {
 <p>首先从 ConfigurationFactory 中的静态代码块根据 registry.conf 创建的 CURRENT_FILE_INSTANCE 中获取当前环境使用的配置中心，默认为为 File 类型，我们也可以在 registry.conf 配置其它第三方配置中心，这里也是利用了 SPI 机制去加载第三方配置中心的实现类，具体实现如下：</p>
 <p><img src="https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211205127.png" alt=""></p>
 <p>如上，即是刚刚我所说的 ZookeeperConfigurationProvider 配置实现输出类，我们再来看看这行代码：</p>
-<pre><code class="language-java">EnhancedServiceLoader.load(ConfigurationProvider.class,Objects.requireNonNull(configType).name()).provide();
+<pre><code class="language-java">EnhancedServiceLoader.load(ConfigurationProvider<span class="hljs-class">.<span class="hljs-keyword">class</span>,<span class="hljs-title">Objects</span>.<span class="hljs-title">requireNonNull</span>(<span class="hljs-title">configType</span>).<span class="hljs-title">name</span>()).<span class="hljs-title">provide</span>()</span>;
 </code></pre>
 <p>EnhancedServiceLoader 是 Seata SPI 实现核心类，这行代码会加载 <code>META-INF/services/</code>和 <code>META-INF/seata/</code>目录中文件填写的类名，那么如果其中有多个配置中心实现类都被加载了怎么办呢？</p>
 <p>我们注意到 ZookeeperConfigurationProvider 类的上面有一个注解：</p>

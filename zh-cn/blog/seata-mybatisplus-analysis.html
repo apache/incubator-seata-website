@@ -59,7 +59,7 @@
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SeataAutoConfig</span> </span>{
 	<span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
 	<span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
-	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
  
 	<span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"dataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>
 	<span class="hljs-meta">@Primary</span> <span class="hljs-comment">// 在同样的DataSource中，首先使用被标注的DataSource</span>
@@ -213,13 +213,13 @@
  * <span class="hljs-doctag">@author</span> Eduardo Macarrón
  */</span>
 <span class="hljs-meta">@Configuration</span>
-<span class="hljs-meta">@ConditionalOnClass</span>({SqlSessionFactory.class, SqlSessionFactoryBean.class})
-<span class="hljs-meta">@ConditionalOnSingleCandidate</span>(DataSource.class)
-<span class="hljs-meta">@EnableConfigurationProperties</span>(MybatisPlusProperties.class)
-<span class="hljs-meta">@AutoConfigureAfter</span>(DataSourceAutoConfiguration.class)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MybatisPlusAutoConfiguration</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span> </span>{
+<span class="hljs-meta">@ConditionalOnClass</span>({SqlSessionFactory<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">SqlSessionFactoryBean</span>.<span class="hljs-title">class</span>})
+@<span class="hljs-title">ConditionalOnSingleCandidate</span>(<span class="hljs-title">DataSource</span>.<span class="hljs-title">class</span>)
+@<span class="hljs-title">EnableConfigurationProperties</span>(<span class="hljs-title">MybatisPlusProperties</span>.<span class="hljs-title">class</span>)
+@<span class="hljs-title">AutoConfigureAfter</span>(<span class="hljs-title">DataSourceAutoConfiguration</span>.<span class="hljs-title">class</span>)
+<span class="hljs-title">public</span> <span class="hljs-title">class</span> <span class="hljs-title">MybatisPlusAutoConfiguration</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span> </span>{
  
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger logger = LoggerFactory.getLogger(MybatisPlusAutoConfiguration.class);
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger logger = LoggerFactory.getLogger(MybatisPlusAutoConfiguration<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
  
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> MybatisPlusProperties properties;
  
@@ -283,7 +283,7 @@
         <span class="hljs-comment">// TODO 使用 MybatisSqlSessionFactoryBean 而不是 SqlSessionFactoryBean</span>
         MybatisSqlSessionFactoryBean factory = <span class="hljs-keyword">new</span> MybatisSqlSessionFactoryBean();
         factory.setDataSource(dataSource);
-        factory.setVfs(SpringBootVFS.class);
+        factory.setVfs(SpringBootVFS<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
         <span class="hljs-keyword">if</span> (StringUtils.hasText(<span class="hljs-keyword">this</span>.properties.getConfigLocation())) {
             factory.setConfigLocation(<span class="hljs-keyword">this</span>.resourceLoader.getResource(<span class="hljs-keyword">this</span>.properties.getConfigLocation()));
         }
@@ -327,21 +327,21 @@
         <span class="hljs-comment">// TODO 此处必为非 NULL</span>
         GlobalConfig globalConfig = <span class="hljs-keyword">this</span>.properties.getGlobalConfig();
         <span class="hljs-comment">// TODO 注入填充器</span>
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(MetaObjectHandler.class,
-            <span class="hljs-keyword">false</span>, <span class="hljs-keyword">false</span>).length &gt; <span class="hljs-number">0</span>) {
-            MetaObjectHandler metaObjectHandler = <span class="hljs-keyword">this</span>.applicationContext.getBean(MetaObjectHandler.class);
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(MetaObjectHandler<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+            <span class="hljs-title">false</span>, <span class="hljs-title">false</span>).<span class="hljs-title">length</span> &gt; 0) </span>{
+            MetaObjectHandler metaObjectHandler = <span class="hljs-keyword">this</span>.applicationContext.getBean(MetaObjectHandler<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
             globalConfig.setMetaObjectHandler(metaObjectHandler);
         }
         <span class="hljs-comment">// TODO 注入主键生成器</span>
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(IKeyGenerator.class, <span class="hljs-keyword">false</span>,
-            <span class="hljs-keyword">false</span>).length &gt; <span class="hljs-number">0</span>) {
-            IKeyGenerator keyGenerator = <span class="hljs-keyword">this</span>.applicationContext.getBean(IKeyGenerator.class);
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(IKeyGenerator<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">false</span>,
+            <span class="hljs-title">false</span>).<span class="hljs-title">length</span> &gt; 0) </span>{
+            IKeyGenerator keyGenerator = <span class="hljs-keyword">this</span>.applicationContext.getBean(IKeyGenerator<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
             globalConfig.getDbConfig().setKeyGenerator(keyGenerator);
         }
         <span class="hljs-comment">// TODO 注入sql注入器</span>
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(ISqlInjector.class, <span class="hljs-keyword">false</span>,
-            <span class="hljs-keyword">false</span>).length &gt; <span class="hljs-number">0</span>) {
-            ISqlInjector iSqlInjector = <span class="hljs-keyword">this</span>.applicationContext.getBean(ISqlInjector.class);
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(ISqlInjector<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">false</span>,
+            <span class="hljs-title">false</span>).<span class="hljs-title">length</span> &gt; 0) </span>{
+            ISqlInjector iSqlInjector = <span class="hljs-keyword">this</span>.applicationContext.getBean(ISqlInjector<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
             globalConfig.setSqlInjector(iSqlInjector);
         }
         <span class="hljs-comment">// TODO 设置 GlobalConfig 到 MybatisSqlSessionFactoryBean</span>
@@ -399,16 +399,16 @@
                 packages.forEach(pkg -&gt; logger.debug(<span class="hljs-string">"Using auto-configuration base package '{}'"</span>, pkg));
             }
  
-            BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(MapperScannerConfigurer.class);
+            BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(MapperScannerConfigurer<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
             builder.addPropertyValue(<span class="hljs-string">"processPropertyPlaceHolders"</span>, <span class="hljs-keyword">true</span>);
-            builder.addPropertyValue(<span class="hljs-string">"annotationClass"</span>, Mapper.class);
+            builder.addPropertyValue(<span class="hljs-string">"annotationClass"</span>, Mapper<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
             builder.addPropertyValue(<span class="hljs-string">"basePackage"</span>, StringUtils.collectionToCommaDelimitedString(packages));
-            BeanWrapper beanWrapper = <span class="hljs-keyword">new</span> BeanWrapperImpl(MapperScannerConfigurer.class);
+            BeanWrapper beanWrapper = <span class="hljs-keyword">new</span> BeanWrapperImpl(MapperScannerConfigurer<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
             Stream.of(beanWrapper.getPropertyDescriptors())
                 <span class="hljs-comment">// Need to mybatis-spring 2.0.2+</span>
                 .filter(x -&gt; x.getName().equals(<span class="hljs-string">"lazyInitialization"</span>)).findAny()
                 .ifPresent(x -&gt; builder.addPropertyValue(<span class="hljs-string">"lazyInitialization"</span>, <span class="hljs-string">"${mybatis.lazy-initialization:false}"</span>));
-            registry.registerBeanDefinition(MapperScannerConfigurer.class.getName(), builder.getBeanDefinition());
+            registry.registerBeanDefinition(MapperScannerConfigurer<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>(), <span class="hljs-title">builder</span>.<span class="hljs-title">getBeanDefinition</span>())</span>;
         }
  
         <span class="hljs-meta">@Override</span>
@@ -422,9 +422,9 @@
      * mappers based on the same component-scanning path as Spring Boot itself.
      */</span>
     <span class="hljs-meta">@Configuration</span>
-    <span class="hljs-meta">@Import</span>(AutoConfiguredMapperScannerRegistrar.class)
-    <span class="hljs-meta">@ConditionalOnMissingBean</span>({MapperFactoryBean.class, MapperScannerConfigurer.class})
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MapperScannerRegistrarNotFoundConfiguration</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span> </span>{
+    <span class="hljs-meta">@Import</span>(AutoConfiguredMapperScannerRegistrar<span class="hljs-class">.<span class="hljs-keyword">class</span>)
+    @<span class="hljs-title">ConditionalOnMissingBean</span>(</span>{MapperFactoryBean<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">MapperScannerConfigurer</span>.<span class="hljs-title">class</span>})
+    <span class="hljs-title">public</span> <span class="hljs-title">static</span> <span class="hljs-title">class</span> <span class="hljs-title">MapperScannerRegistrarNotFoundConfiguration</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span> </span>{
  
         <span class="hljs-meta">@Override</span>
         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterPropertiesSet</span><span class="hljs-params">()</span> </span>{
@@ -461,7 +461,7 @@
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SeataAutoConfig</span> </span>{
     <span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
     <span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
     <span class="hljs-keyword">private</span> DataSourceProxy dataSourceProxy;
 
     <span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"dataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>

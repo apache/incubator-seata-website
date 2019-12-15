@@ -289,40 +289,40 @@ fi
 </code></pre>
 <p>​	2.然后更改test-service的目录结构,删除zk的配置并更改application.yml文件,目录结构与代码:</p>
 <pre><code class="language-yaml"><span class="hljs-attr">server:</span>
-<span class="hljs-attr">  port:</span> <span class="hljs-number">38888</span>
+  <span class="hljs-attr">port:</span> <span class="hljs-number">38888</span>
 <span class="hljs-attr">spring:</span>
-<span class="hljs-attr">  application:</span> 
-<span class="hljs-attr">      name:</span> <span class="hljs-string">test-service</span>
-<span class="hljs-attr">  datasource:</span>
-<span class="hljs-attr">    type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span>
-<span class="hljs-attr">    url:</span> <span class="hljs-attr">jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
-<span class="hljs-attr">    driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
-<span class="hljs-attr">    username:</span> <span class="hljs-string">root</span>
-<span class="hljs-attr">    password:</span> <span class="hljs-number">123456</span>
+  <span class="hljs-attr">application:</span> 
+      <span class="hljs-attr">name:</span> <span class="hljs-string">test-service</span>
+  <span class="hljs-attr">datasource:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
+    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
+    <span class="hljs-attr">username:</span> <span class="hljs-string">root</span>
+    <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span>
 <span class="hljs-attr">dubbo:</span>
-<span class="hljs-attr">  protocol:</span>
-<span class="hljs-attr">    loadbalance:</span> <span class="hljs-string">leastactive</span>
-<span class="hljs-attr">    threadpool:</span> <span class="hljs-string">cached</span>
-<span class="hljs-attr">  scan:</span>
-<span class="hljs-attr">    base-packages:</span> <span class="hljs-string">org。test.service</span>
-<span class="hljs-attr">  application:</span>
-<span class="hljs-attr">    qos-enable:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">    name:</span> <span class="hljs-string">testserver</span>
-<span class="hljs-attr">  registry:</span>
-<span class="hljs-attr">    id:</span> <span class="hljs-string">my-registry</span>
-<span class="hljs-attr">    address:</span>  <span class="hljs-attr">nacos://127.0.0.1:8848</span>
+  <span class="hljs-attr">protocol:</span>
+    <span class="hljs-attr">loadbalance:</span> <span class="hljs-string">leastactive</span>
+    <span class="hljs-attr">threadpool:</span> <span class="hljs-string">cached</span>
+  <span class="hljs-attr">scan:</span>
+    <span class="hljs-attr">base-packages:</span> <span class="hljs-string">org。test.service</span>
+  <span class="hljs-attr">application:</span>
+    <span class="hljs-attr">qos-enable:</span> <span class="hljs-literal">false</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">testserver</span>
+  <span class="hljs-attr">registry:</span>
+    <span class="hljs-attr">id:</span> <span class="hljs-string">my-registry</span>
+    <span class="hljs-attr">address:</span>  <span class="hljs-string">nacos://127.0.0.1:8848</span>
 <span class="hljs-attr">mybatis-plus:</span>
-<span class="hljs-attr">  mapper-locations:</span> <span class="hljs-attr">classpath:/mapper/*Mapper.xml</span>
-<span class="hljs-attr">  typeAliasesPackage:</span> <span class="hljs-string">org.test.entity</span>
-<span class="hljs-attr">  global-config:</span>
-<span class="hljs-attr">    db-config:</span>
-<span class="hljs-attr">      field-strategy:</span> <span class="hljs-string">not-empty</span>
-<span class="hljs-attr">      id-type:</span> <span class="hljs-string">auto</span>
-<span class="hljs-attr">      db-type:</span> <span class="hljs-string">mysql</span>
-<span class="hljs-attr">  configuration:</span>
-<span class="hljs-attr">    map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">    cache-enabled:</span> <span class="hljs-literal">true</span>      
-<span class="hljs-attr">    auto-mapping-unknown-column-behavior:</span> <span class="hljs-string">none</span>
+  <span class="hljs-attr">mapper-locations:</span> <span class="hljs-string">classpath:/mapper/*Mapper.xml</span>
+  <span class="hljs-attr">typeAliasesPackage:</span> <span class="hljs-string">org.test.entity</span>
+  <span class="hljs-attr">global-config:</span>
+    <span class="hljs-attr">db-config:</span>
+      <span class="hljs-attr">field-strategy:</span> <span class="hljs-string">not-empty</span>
+      <span class="hljs-attr">id-type:</span> <span class="hljs-string">auto</span>
+      <span class="hljs-attr">db-type:</span> <span class="hljs-string">mysql</span>
+  <span class="hljs-attr">configuration:</span>
+    <span class="hljs-attr">map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">cache-enabled:</span> <span class="hljs-literal">true</span>      
+    <span class="hljs-attr">auto-mapping-unknown-column-behavior:</span> <span class="hljs-string">none</span>
 </code></pre>
 <img src="/img/blog/20191202211833.png" alt="20191202211833" style="zoom:100%;" />
 <p>​	3.再更改registry.conf文件,如果你的nacos是其它服务器,请改成对应都ip跟端口</p>

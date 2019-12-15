@@ -34,14 +34,14 @@
 <p><code>docker-conmpose.yaml</code> 示例</p>
 <pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3"</span>
 <span class="hljs-attr">services:</span>
-<span class="hljs-attr">  seata-server:</span>
-<span class="hljs-attr">    image:</span> <span class="hljs-string">seataio/seata-server</span>
-<span class="hljs-attr">    hostname:</span> <span class="hljs-string">seata-server</span>
-<span class="hljs-attr">    ports:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">"8091:8091"</span>
-<span class="hljs-attr">    environment:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8091</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">STORE_MODE=file</span>
+  <span class="hljs-attr">seata-server:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">seataio/seata-server</span>
+    <span class="hljs-attr">hostname:</span> <span class="hljs-string">seata-server</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"8091:8091"</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">SEATA_PORT=8091</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">STORE_MODE=file</span>
 </code></pre>
 <h2>容器命令行及查看日志</h2>
 <pre><code class="language-bash">$ docker <span class="hljs-built_in">exec</span> -it seata-server sh
