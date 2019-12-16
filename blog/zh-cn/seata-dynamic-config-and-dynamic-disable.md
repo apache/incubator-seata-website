@@ -23,7 +23,7 @@ io.seata.config.ConfigurationChangeListener
 该监听器基准接口主要有两个实现类型：
 
 1. 实现注册配置订阅事件监听器：用于实现各种功能的动态配置订阅，比如 GlobalTransactionalInterceptor 实现了 ConfigurationChangeListener，根据动态配置订阅实现的动态降级功能；
-2. 实现配置中心动态订阅功能：对于没有订阅功能的配置中心来说，可实现 ConfigurationChangeListener 接口来提供动态订阅功能，比如默认的 file，以及 consul、etcd 等。有些配置中心已经有订阅功能，就不要实现该接口了，比如 zk、apollo、nacos 等。
+2. 实现配置中心动态订阅功能：对于没有订阅功能的配置中心来说，可实现 ConfigurationChangeListener 接口来提供动态订阅功能，比如默认的 file，以及 consul 等。有些配置中心已经有订阅功能，可以不用实现该接口，直接用原生的监听器，比如 zk、apollo、nacos等。
 
 这里就用默认的 file 配置中心，以它的实现类 FileListener 举例子，它的实现逻辑如下：
 
