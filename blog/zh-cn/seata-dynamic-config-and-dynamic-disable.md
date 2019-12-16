@@ -2,15 +2,17 @@
 title: Seata 动态配置订阅与降级实现原理
 author: 张乘辉
 keywords: Seata、Dynamic、Config
-description: 讲述了 Seata 结合动态配置订阅如何实现降级的功能
-date: 2019/12/16
+description: 讲述了 Seata 支持的多个配置中心是如何适配不同的动态配置订阅以及如何实现降级功能。
+date: 2019/12/17
 ---
 
 
 # 前言
 Seata 的动态降级需要结合配置中心的动态配置订阅功能。动态配置订阅，即通过配置中心监听订阅，根据需要读取已更新的缓存值，ZK、Apollo、Nacos 等第三方配置中心都有现成的监听器可实现动态刷新配置；动态降级，即通过动态更新指定配置参数值，使得 Seata 能够在运行过程中动态控制全局事务失效（目前只有 AT 模式有这个功能）。
 
-那么 Seata 的默认配置中心类型 file 是怎么实现这个功能的呢？下面给大家介绍 Seata 结合动态刷新配置实现动态降级的功能。
+那么 Seata 支持的多个配置中心是如何适配不同的动态配置订阅以及如何实现降级的呢？下面从源码的层面详细给大家讲解一番。
+
+
 
 # 动态配置订阅
 
@@ -23,7 +25,7 @@ io.seata.config.ConfigurationChangeListener
 该监听器基准接口主要有两个实现类型：
 
 1. 实现注册配置订阅事件监听器：用于实现各种功能的动态配置订阅，比如 GlobalTransactionalInterceptor 实现了 ConfigurationChangeListener，根据动态配置订阅实现的动态降级功能；
-2. 实现配置中心动态订阅功能：对于没有订阅功能的配置中心来说，可实现 ConfigurationChangeListener 接口来提供动态订阅功能，比如默认的 file。有些配置中心已经有订阅功能，可以不用实现该接口，直接用原生的监听器，比如 zk、apollo、nacos等。
+2. 实现配置中心动态订阅功能与适配：对于目前还没有动态订阅功能的 file 类型默认配置中心，可以实现该基准接口来实现动态配置订阅功能；对于阻塞订阅需要另起一个线程去执行，这时候可以实现该基准接口进行适配，还可以复用该基准接口的线程池；以及还有异步订阅，有订阅单个 key，有一下子订阅多个 key，我们都可以实现该基准接口以适配各种配置中心的监听器。
 
 这里就用默认的 file 配置中心，以它的实现类 FileListener 举例子，它的实现逻辑如下：
 
@@ -33,7 +35,7 @@ io.seata.config.ConfigurationChangeListener
 
 - dataId：为订阅的配置属性；
 
-- listener：配置订阅事件监听器，用于将外部传入的 listener 作为一个 wrapper，执行真正的变更逻辑，这里特别需要注意的是，**该监听器与 FileListener 同样实现了 ConfigurationChangeListener 接口，只不过 FileListener 是用于给 file 提供动态配置订阅功能，而 listener 用于实现配置订阅事件**；
+- listener：配置订阅事件监听器，用于将外部传入的 listener 作为一个 wrapper，执行真正的变更逻辑，这里特别需要注意的是，**该监听器与 FileListener 同样实现了 ConfigurationChangeListener 接口，只不过 FileListener 是用于给 file 提供动态配置订阅功能，而 listener 用于执行配置订阅事件**；
 
 - executor：用于处理配置变更逻辑的线程池，在 ConfigurationChangeListener#onProcessEvent 方法中用到。
 
