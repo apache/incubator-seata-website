@@ -20,7 +20,7 @@ Seata 配置中心有一个监听器基准接口，它主要有一个抽象方�
 
 io.seata.config.ConfigurationChangeListener
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215145944.png)
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191216212442.png)
 
 该监听器基准接口主要有两个实现类型：
 
