@@ -10,9 +10,10 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 
 ### 资源目录介绍
 - script
-> seata根目录-->script，存放client所需脚本、配置，各个配置中心配置参数脚本（Server和Client并存）
-- server
-> seata根目录-->seata-server，存放db模式所需建表脚本，server端配置参数在script。
+> seata根目录-->script，存放server、client所需数据库脚本、配置参数（.conf、.yml、.properties等）
+和配置中心导入脚本（配置中心的参数文件包含Server和Client）  
+url: https://github.com/seata/seata/tree/develop/script
+
 ### 注意事项
 - seata-spring-boot-starter
 > 1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
@@ -32,9 +33,7 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
 - 其它途径
 
 #### 步骤二：建表
-全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table，  
-- mysql建表脚本存放于module seata-server-->resources-->db_store.sql  
-- oracle脚本（可参考 https://github.com/seata/seata/pull/1640 ）暂未合并。
+全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
 
 #### 步骤三：修改store.mode
 打开seata-server-->resources-->file.conf，修改store.mode="db";也可以在启动时加命令参数-m db指定。
@@ -50,14 +49,14 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
     -p: Server rpc 监听端口
     -m: 全局事务会话信息存储模式，file、db，优先读取启动参数
     -n: Server node，多个Server时，需区分各自节点，用于生成不同的transactionId范围，以免冲突
-    SEATA_ENV: 多环境配置参考 https://github.com/seata/seata/wiki/Multi-configuration-Isolation
+    SEATA_ENV: 多环境配置参考 http://seata.io/en-us/docs/ops/multi-configuration-isolation.html
 ```  
 - docker部署请看 https://seata.io/zh-cn/docs/ops/deploy-by-docker.html  
 
 注: 堆内存建议分配4G，堆外内存1-2G
 
 ### 业务系统集成Client
-#### 步骤一：添加seata依赖
+#### 步骤一：添加seata依赖（建议单选）
 - 依赖seata-all
 - 依赖seata-spring-boot-starter，支持yml配置
 - 依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递
@@ -71,7 +70,7 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
     1.0.0: client.support.spring.datasource.autoproxy=true  
     0.9.0: support.spring.datasource.autoproxy=true
 ```
-- 手动配置可参考下方mybatis的例子
+- 手动配置可参考下方的例子
 ```
  @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
@@ -83,13 +82,6 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
     @Bean("dataSource")
     public DataSourceProxy dataSource(DataSource druidDataSource) {
         return new DataSourceProxy(druidDataSource);
-    }
-    @Bean
-    public MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean(DataSourceProxy druidDataSource, ResourcePatternResolver resourcePatternResolver) throws IOException {
-        MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
-        mybatisSqlSessionFactoryBean.setDataSource(druidDataSource);
-        mybatisSqlSessionFactoryBean.setMapperLocations(resourcePatternResolver.getResources("classpath:mapper/*.xml"));
-        return mybatisSqlSessionFactoryBean;
     }
 ```  
 #### 步骤四：初始化GlobalTransactionScanner  
