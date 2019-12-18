@@ -43,13 +43,13 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
 
 #### 步骤五：启动
 - 源码启动: 执行Server.java的main方法  
-- 命令启动: seata-server.sh -h 127.0.0.1 -p 8091 -m db -n 1 -DSEATA_ENV=test
+- 命令启动: seata-server.sh -h 127.0.0.1 -p 8091 -m db -n 1 -e test
 ```
     -h: 注册到注册中心的ip
     -p: Server rpc 监听端口
     -m: 全局事务会话信息存储模式，file、db，优先读取启动参数
-    -n: Server node，多个Server时，需区分各自节点，用于生成不同的transactionId范围，以免冲突
-    SEATA_ENV: 多环境配置参考 http://seata.io/en-us/docs/ops/multi-configuration-isolation.html
+    -n: Server node，多个Server时，需区分各自节点，用于生成不同区间的transactionId，以免冲突
+    -e: 多环境配置参考 http://seata.io/en-us/docs/ops/multi-configuration-isolation.html
 ```  
 - docker部署请看 https://seata.io/zh-cn/docs/ops/deploy-by-docker.html  
 
