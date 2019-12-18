@@ -191,6 +191,17 @@
       }
     },
     {
+      "filename": "seata-dynamic-config-and-dynamic-disable.md",
+      "link": "/zh-cn/blog/seata-dynamic-config-and-dynamic-disable.html",
+      "meta": {
+        "title": "Seata 动态配置订阅与降级实现原理",
+        "author": "张乘辉",
+        "keywords": "Seata、Dynamic、Config",
+        "description": "讲述了 Seata 支持的多个配置中心是如何适配不同的动态配置订阅以及如何实现降级功能。",
+        "date": "2019/12/17"
+      }
+    },
+    {
       "filename": "seata-mybatisplus-analysis.md",
       "link": "/zh-cn/blog/seata-mybatisplus-analysis.html",
       "meta": {

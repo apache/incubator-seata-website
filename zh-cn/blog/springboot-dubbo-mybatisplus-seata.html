@@ -372,234 +372,234 @@ CREATE TABLE `undo_log` (
 <img src="/img/blog/20191129140048.png" alt="20191129140048" style="zoom:200%;" />
 <pre><code>创建EmbeddedZooKeeper.java文件,跟 ProviderApplication.java,代码如下:
 </code></pre>
-<pre><code class="language-java">package org.test;
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test;
  
-import java.io.File;
-import java.lang.reflect.Method;
-import java.util.Properties;
-import java.util.UUID;
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">import</span> java.util.Properties;
+<span class="hljs-keyword">import</span> java.util.UUID;
  
-import org.apache.zookeeper.server.ServerConfig;
-import org.apache.zookeeper.server.ZooKeeperServerMain;
-import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.util.ErrorHandler;
-import org.springframework.util.SocketUtils;
+<span class="hljs-keyword">import</span> org.apache.zookeeper.server.ServerConfig;
+<span class="hljs-keyword">import</span> org.apache.zookeeper.server.ZooKeeperServerMain;
+<span class="hljs-keyword">import</span> org.apache.zookeeper.server.quorum.QuorumPeerConfig;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.context.SmartLifecycle;
+<span class="hljs-keyword">import</span> org.springframework.util.ErrorHandler;
+<span class="hljs-keyword">import</span> org.springframework.util.SocketUtils;
  
-/**
+<span class="hljs-comment">/**
  * from:
  * https://github.com/spring-projects/spring-xd/blob/v1.3.1.RELEASE/spring-xd-dirt/src/main/java/org/springframework/xd/dirt/zookeeper/ZooKeeperUtils.java
  * 
  * Helper class to start an embedded instance of standalone (non clustered) ZooKeeper.
  * 
- * NOTE: at least an external standalone server (if not an ensemble) are recommended, even for
- * {@link org.springframework.xd.dirt.server.singlenode.SingleNodeApplication}
+ * <span class="hljs-doctag">NOTE:</span> at least an external standalone server (if not an ensemble) are recommended, even for
+ * {<span class="hljs-doctag">@link</span> org.springframework.xd.dirt.server.singlenode.SingleNodeApplication}
  * 
- * @author Patrick Peralta
- * @author Mark Fisher
- * @author David Turanski
- */
-public class EmbeddedZooKeeper implements SmartLifecycle {
+ * <span class="hljs-doctag">@author</span> Patrick Peralta
+ * <span class="hljs-doctag">@author</span> Mark Fisher
+ * <span class="hljs-doctag">@author</span> David Turanski
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmbeddedZooKeeper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SmartLifecycle</span> </span>{
  
-    /**
+    <span class="hljs-comment">/**
      * Logger.
-     */
-    private static final Logger logger = LoggerFactory.getLogger(EmbeddedZooKeeper.class);
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger logger = LoggerFactory.getLogger(EmbeddedZooKeeper.class);
  
-    /**
+    <span class="hljs-comment">/**
      * ZooKeeper client port. This will be determined dynamically upon startup.
-     */
-    private final int clientPort;
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> clientPort;
  
-    /**
+    <span class="hljs-comment">/**
      * Whether to auto-start. Default is true.
-     */
-    private boolean autoStartup = true;
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> autoStartup = <span class="hljs-keyword">true</span>;
  
-    /**
+    <span class="hljs-comment">/**
      * Lifecycle phase. Default is 0.
-     */
-    private int phase = 0;
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> phase = <span class="hljs-number">0</span>;
  
-    /**
+    <span class="hljs-comment">/**
      * Thread for running the ZooKeeper server.
-     */
-    private volatile Thread zkServerThread;
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> Thread zkServerThread;
  
-    /**
+    <span class="hljs-comment">/**
      * ZooKeeper server.
-     */
-    private volatile ZooKeeperServerMain zkServer;
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> ZooKeeperServerMain zkServer;
  
-    /**
-     * {@link ErrorHandler} to be invoked if an Exception is thrown from the ZooKeeper server thread.
-     */
-    private ErrorHandler errorHandler;
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@link</span> ErrorHandler} to be invoked if an Exception is thrown from the ZooKeeper server thread.
+     */</span>
+    <span class="hljs-keyword">private</span> ErrorHandler errorHandler;
  
-    private boolean daemon = true;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> daemon = <span class="hljs-keyword">true</span>;
  
-    /**
+    <span class="hljs-comment">/**
      * Construct an EmbeddedZooKeeper with a random port.
-     */
-    public EmbeddedZooKeeper() {
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EmbeddedZooKeeper</span><span class="hljs-params">()</span> </span>{
         clientPort = SocketUtils.findAvailableTcpPort();
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Construct an EmbeddedZooKeeper with the provided port.
      *
-     * @param clientPort
+     * <span class="hljs-doctag">@param</span> clientPort
      *            port for ZooKeeper server to bind to
-     */
-    public EmbeddedZooKeeper(int clientPort, boolean daemon) {
-        this.clientPort = clientPort;
-        this.daemon = daemon;
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EmbeddedZooKeeper</span><span class="hljs-params">(<span class="hljs-keyword">int</span> clientPort, <span class="hljs-keyword">boolean</span> daemon)</span> </span>{
+        <span class="hljs-keyword">this</span>.clientPort = clientPort;
+        <span class="hljs-keyword">this</span>.daemon = daemon;
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Returns the port that clients should use to connect to this embedded server.
      * 
-     * @return dynamically determined client port
-     */
-    public int getClientPort() {
-        return this.clientPort;
+     * <span class="hljs-doctag">@return</span> dynamically determined client port
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getClientPort</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.clientPort;
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Specify whether to start automatically. Default is true.
      * 
-     * @param autoStartup
+     * <span class="hljs-doctag">@param</span> autoStartup
      *            whether to start automatically
-     */
-    public void setAutoStartup(boolean autoStartup) {
-        this.autoStartup = autoStartup;
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAutoStartup</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> autoStartup)</span> </span>{
+        <span class="hljs-keyword">this</span>.autoStartup = autoStartup;
     }
  
-    /**
-     * {@inheritDoc}
-     */
-    public boolean isAutoStartup() {
-        return this.autoStartup;
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritDoc</span>}
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isAutoStartup</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.autoStartup;
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Specify the lifecycle phase for the embedded server.
      * 
-     * @param phase
+     * <span class="hljs-doctag">@param</span> phase
      *            the lifecycle phase
-     */
-    public void setPhase(int phase) {
-        this.phase = phase;
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPhase</span><span class="hljs-params">(<span class="hljs-keyword">int</span> phase)</span> </span>{
+        <span class="hljs-keyword">this</span>.phase = phase;
     }
  
-    /**
-     * {@inheritDoc}
-     */
-    public int getPhase() {
-        return this.phase;
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritDoc</span>}
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPhase</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.phase;
     }
  
-    /**
-     * {@inheritDoc}
-     */
-    public boolean isRunning() {
-        return (zkServerThread != null);
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritDoc</span>}
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isRunning</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> (zkServerThread != <span class="hljs-keyword">null</span>);
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Start the ZooKeeper server in a background thread.
      * &lt;p&gt;
-     * Register an error handler via {@link #setErrorHandler} in order to handle any exceptions thrown during startup or
+     * Register an error handler via {<span class="hljs-doctag">@link</span> #setErrorHandler} in order to handle any exceptions thrown during startup or
      * execution.
-     */
-    public synchronized void start() {
-        if (zkServerThread == null) {
-            zkServerThread = new Thread(new ServerRunnable(), "ZooKeeper Server Starter");
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (zkServerThread == <span class="hljs-keyword">null</span>) {
+            zkServerThread = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> ServerRunnable(), <span class="hljs-string">"ZooKeeper Server Starter"</span>);
             zkServerThread.setDaemon(daemon);
             zkServerThread.start();
         }
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Shutdown the ZooKeeper server.
-     */
-    public synchronized void stop() {
-        if (zkServerThread != null) {
-            // The shutdown method is protected...thus this hack to invoke it.
-            // This will log an exception on shutdown; see
-            // https://issues.apache.org/jira/browse/ZOOKEEPER-1873 for details.
-            try {
-                Method shutdown = ZooKeeperServerMain.class.getDeclaredMethod("shutdown");
-                shutdown.setAccessible(true);
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (zkServerThread != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">// The shutdown method is protected...thus this hack to invoke it.</span>
+            <span class="hljs-comment">// This will log an exception on shutdown; see</span>
+            <span class="hljs-comment">// https://issues.apache.org/jira/browse/ZOOKEEPER-1873 for details.</span>
+            <span class="hljs-keyword">try</span> {
+                Method shutdown = ZooKeeperServerMain.class.getDeclaredMethod(<span class="hljs-string">"shutdown"</span>);
+                shutdown.setAccessible(<span class="hljs-keyword">true</span>);
                 shutdown.invoke(zkServer);
             }
  
-            catch (Exception e) {
-                throw new RuntimeException(e);
+            <span class="hljs-keyword">catch</span> (Exception e) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(e);
             }
  
-            // It is expected that the thread will exit after
-            // the server is shutdown; this will block until
-            // the shutdown is complete.
-            try {
-                zkServerThread.join(5000);
-                zkServerThread = null;
-            } catch (InterruptedException e) {
+            <span class="hljs-comment">// It is expected that the thread will exit after</span>
+            <span class="hljs-comment">// the server is shutdown; this will block until</span>
+            <span class="hljs-comment">// the shutdown is complete.</span>
+            <span class="hljs-keyword">try</span> {
+                zkServerThread.join(<span class="hljs-number">5000</span>);
+                zkServerThread = <span class="hljs-keyword">null</span>;
+            } <span class="hljs-keyword">catch</span> (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                logger.warn("Interrupted while waiting for embedded ZooKeeper to exit");
-                // abandoning zk thread
-                zkServerThread = null;
+                logger.warn(<span class="hljs-string">"Interrupted while waiting for embedded ZooKeeper to exit"</span>);
+                <span class="hljs-comment">// abandoning zk thread</span>
+                zkServerThread = <span class="hljs-keyword">null</span>;
             }
         }
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Stop the server if running and invoke the callback when complete.
-     */
-    public void stop(Runnable callback) {
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stop</span><span class="hljs-params">(Runnable callback)</span> </span>{
         stop();
         callback.run();
     }
  
-    /**
-     * Provide an {@link ErrorHandler} to be invoked if an Exception is thrown from the ZooKeeper server thread. If none
+    <span class="hljs-comment">/**
+     * Provide an {<span class="hljs-doctag">@link</span> ErrorHandler} to be invoked if an Exception is thrown from the ZooKeeper server thread. If none
      * is provided, only error-level logging will occur.
      * 
-     * @param errorHandler
-     *            the {@link ErrorHandler} to be invoked
-     */
-    public void setErrorHandler(ErrorHandler errorHandler) {
-        this.errorHandler = errorHandler;
+     * <span class="hljs-doctag">@param</span> errorHandler
+     *            the {<span class="hljs-doctag">@link</span> ErrorHandler} to be invoked
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setErrorHandler</span><span class="hljs-params">(ErrorHandler errorHandler)</span> </span>{
+        <span class="hljs-keyword">this</span>.errorHandler = errorHandler;
     }
  
-    /**
+    <span class="hljs-comment">/**
      * Runnable implementation that starts the ZooKeeper server.
-     */
-    private class ServerRunnable implements Runnable {
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServerRunnable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>{
  
-        public void run() {
-            try {
-                Properties properties = new Properties();
-                File file = new File(System.getProperty("java.io.tmpdir") + File.separator + UUID.randomUUID());
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">try</span> {
+                Properties properties = <span class="hljs-keyword">new</span> Properties();
+                File file = <span class="hljs-keyword">new</span> File(System.getProperty(<span class="hljs-string">"java.io.tmpdir"</span>) + File.separator + UUID.randomUUID());
                 file.deleteOnExit();
-                properties.setProperty("dataDir", file.getAbsolutePath());
-                properties.setProperty("clientPort", String.valueOf(clientPort));
+                properties.setProperty(<span class="hljs-string">"dataDir"</span>, file.getAbsolutePath());
+                properties.setProperty(<span class="hljs-string">"clientPort"</span>, String.valueOf(clientPort));
  
-                QuorumPeerConfig quorumPeerConfig = new QuorumPeerConfig();
+                QuorumPeerConfig quorumPeerConfig = <span class="hljs-keyword">new</span> QuorumPeerConfig();
                 quorumPeerConfig.parseProperties(properties);
  
-                zkServer = new ZooKeeperServerMain();
-                ServerConfig configuration = new ServerConfig();
+                zkServer = <span class="hljs-keyword">new</span> ZooKeeperServerMain();
+                ServerConfig configuration = <span class="hljs-keyword">new</span> ServerConfig();
                 configuration.readFrom(quorumPeerConfig);
  
                 zkServer.runFromConfig(configuration);
-            } catch (Exception e) {
-                if (errorHandler != null) {
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+                <span class="hljs-keyword">if</span> (errorHandler != <span class="hljs-keyword">null</span>) {
                     errorHandler.handleError(e);
-                } else {
-                    logger.error("Exception running embedded ZooKeeper", e);
+                } <span class="hljs-keyword">else</span> {
+                    logger.error(<span class="hljs-string">"Exception running embedded ZooKeeper"</span>, e);
                 }
             }
         }
@@ -629,7 +629,7 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
  
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
         <span class="hljs-keyword">new</span> EmbeddedZooKeeper(<span class="hljs-number">2181</span>, <span class="hljs-keyword">false</span>).start();
-        SpringApplication app = <span class="hljs-keyword">new</span> SpringApplication(ProviderApplication<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+        SpringApplication app = <span class="hljs-keyword">new</span> SpringApplication(ProviderApplication.class);
         app.run(args);
     }
  
@@ -720,8 +720,8 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
  
 <span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  
-<span class="hljs-meta">@Service</span>(version = <span class="hljs-string">"1.0.0"</span>,interfaceClass =ITestService<span class="hljs-class">.<span class="hljs-keyword">class</span> )
-<span class="hljs-title">public</span> <span class="hljs-title">class</span> <span class="hljs-title">TestServiceImpl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceImpl</span>&lt;<span class="hljs-title">TestMapper</span>, <span class="hljs-title">Test</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">ITestService</span> </span>{
+<span class="hljs-meta">@Service</span>(version = <span class="hljs-string">"1.0.0"</span>,interfaceClass =ITestService.class )
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestServiceImpl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceImpl</span>&lt;<span class="hljs-title">TestMapper</span>, <span class="hljs-title">Test</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">ITestService</span> </span>{
  
 }
 
@@ -769,7 +769,7 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SeataAutoConfig</span> </span>{
 	<span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
 	<span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
-	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
 
 	<span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"druidDataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>
 	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSource <span class="hljs-title">druidDataSource</span><span class="hljs-params">()</span> </span>{
@@ -871,40 +871,40 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
 </code></pre>
 <p>​	 再创建<strong>resources目录,创建mapper文件夹,application.yml等文件</strong></p>
 <pre><code class="language-yaml"><span class="hljs-attr">server:</span>
-  <span class="hljs-attr">port:</span> <span class="hljs-number">38888</span>
+<span class="hljs-attr">  port:</span> <span class="hljs-number">38888</span>
 <span class="hljs-attr">spring:</span>
-  <span class="hljs-attr">application:</span> 
-      <span class="hljs-attr">name:</span> <span class="hljs-string">test-service</span>
-  <span class="hljs-attr">datasource:</span>
-    <span class="hljs-attr">type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span>
-    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
-    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
-    <span class="hljs-attr">username:</span> <span class="hljs-string">root</span>
-    <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span>
+<span class="hljs-attr">  application:</span> 
+<span class="hljs-attr">      name:</span> <span class="hljs-string">test-service</span>
+<span class="hljs-attr">  datasource:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span>
+<span class="hljs-attr">    url:</span> <span class="hljs-attr">jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
+<span class="hljs-attr">    driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-attr">    username:</span> <span class="hljs-string">root</span>
+<span class="hljs-attr">    password:</span> <span class="hljs-number">123456</span>
 <span class="hljs-attr">dubbo:</span>
-  <span class="hljs-attr">protocol:</span>
-    <span class="hljs-attr">loadbalance:</span> <span class="hljs-string">leastactive</span>
-    <span class="hljs-attr">threadpool:</span> <span class="hljs-string">cached</span>
-  <span class="hljs-attr">scan:</span>
-    <span class="hljs-attr">base-packages:</span> <span class="hljs-string">org。test.service</span>
-  <span class="hljs-attr">application:</span>
-    <span class="hljs-attr">qos-enable:</span> <span class="hljs-literal">false</span>
-    <span class="hljs-attr">name:</span> <span class="hljs-string">testserver</span>
-  <span class="hljs-attr">registry:</span>
-    <span class="hljs-attr">id:</span> <span class="hljs-string">my-registry</span>
-    <span class="hljs-attr">address:</span>  <span class="hljs-string">zookeeper://127.0.0.1:2181?client=curator</span>
+<span class="hljs-attr">  protocol:</span>
+<span class="hljs-attr">    loadbalance:</span> <span class="hljs-string">leastactive</span>
+<span class="hljs-attr">    threadpool:</span> <span class="hljs-string">cached</span>
+<span class="hljs-attr">  scan:</span>
+<span class="hljs-attr">    base-packages:</span> <span class="hljs-string">org。test.service</span>
+<span class="hljs-attr">  application:</span>
+<span class="hljs-attr">    qos-enable:</span> <span class="hljs-literal">false</span>
+<span class="hljs-attr">    name:</span> <span class="hljs-string">testserver</span>
+<span class="hljs-attr">  registry:</span>
+<span class="hljs-attr">    id:</span> <span class="hljs-string">my-registry</span>
+<span class="hljs-attr">    address:</span>  <span class="hljs-attr">zookeeper://127.0.0.1:2181?client=curator</span>
 <span class="hljs-attr">mybatis-plus:</span>
-  <span class="hljs-attr">mapper-locations:</span> <span class="hljs-string">classpath:/mapper/*Mapper.xml</span>
-  <span class="hljs-attr">typeAliasesPackage:</span> <span class="hljs-string">org.test.entity</span>
-  <span class="hljs-attr">global-config:</span>
-    <span class="hljs-attr">db-config:</span>
-      <span class="hljs-attr">field-strategy:</span> <span class="hljs-string">not-empty</span>
-      <span class="hljs-attr">id-type:</span> <span class="hljs-string">auto</span>
-      <span class="hljs-attr">db-type:</span> <span class="hljs-string">mysql</span>
-  <span class="hljs-attr">configuration:</span>
-    <span class="hljs-attr">map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">cache-enabled:</span> <span class="hljs-literal">true</span>      
-    <span class="hljs-attr">auto-mapping-unknown-column-behavior:</span> <span class="hljs-string">none</span>
+<span class="hljs-attr">  mapper-locations:</span> <span class="hljs-attr">classpath:/mapper/*Mapper.xml</span>
+<span class="hljs-attr">  typeAliasesPackage:</span> <span class="hljs-string">org.test.entity</span>
+<span class="hljs-attr">  global-config:</span>
+<span class="hljs-attr">    db-config:</span>
+<span class="hljs-attr">      field-strategy:</span> <span class="hljs-string">not-empty</span>
+<span class="hljs-attr">      id-type:</span> <span class="hljs-string">auto</span>
+<span class="hljs-attr">      db-type:</span> <span class="hljs-string">mysql</span>
+<span class="hljs-attr">  configuration:</span>
+<span class="hljs-attr">    map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    cache-enabled:</span> <span class="hljs-literal">true</span>      
+<span class="hljs-attr">    auto-mapping-unknown-column-behavior:</span> <span class="hljs-string">none</span>
 
 </code></pre>
 <p>​	 创建file.conf,此处的service 内的vgroup_mapping.你的事务分组,比如上<strong>面SeataAutoConfig内配置了test-group,那么这里也要改为test-group</strong>,然后下面ip端口都是seata运行的ip跟端口就行了</p>
@@ -1023,16 +1023,16 @@ config {
  
 <span class="hljs-keyword">import</span> com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
  
-<span class="hljs-meta">@SpringBootApplication</span>(exclude = {DataSourceAutoConfiguration<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">MybatisPlusAutoConfiguration</span>.<span class="hljs-title">class</span>})
-@<span class="hljs-title">EnableScheduling</span>
-@<span class="hljs-title">EnableAsync</span>
-@<span class="hljs-title">Configuration</span>
-@<span class="hljs-title">EnableDubbo</span>(<span class="hljs-title">scanBasePackages</span> </span>= {<span class="hljs-string">"org.test.service"</span>})
+<span class="hljs-meta">@SpringBootApplication</span>(exclude = {DataSourceAutoConfiguration.class, MybatisPlusAutoConfiguration.class})
+<span class="hljs-meta">@EnableScheduling</span>
+<span class="hljs-meta">@EnableAsync</span>
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@EnableDubbo</span>(scanBasePackages = {<span class="hljs-string">"org.test.service"</span>})
 <span class="hljs-meta">@ComponentScan</span>(basePackages = {<span class="hljs-string">"org.test.service"</span>, <span class="hljs-string">"org.test.controller"</span>, <span class="hljs-string">"org.test.config"</span>})
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClientApplication</span> </span>{
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
         TimeZone.setDefault(TimeZone.getTimeZone(<span class="hljs-string">"Asia/Shanghai"</span>));
-        SpringApplication app = <span class="hljs-keyword">new</span> SpringApplication(ClientApplication<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+        SpringApplication app = <span class="hljs-keyword">new</span> SpringApplication(ClientApplication.class);
         app.run(args);
     }
  
@@ -1213,7 +1213,7 @@ config {
 <span class="hljs-meta">@Api</span>(tags = <span class="hljs-string">"测试接口"</span>)
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestController</span> </span>{
  
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(TestController<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(TestController.class);
     <span class="hljs-meta">@Autowired</span>
     <span class="hljs-meta">@Lazy</span>
     DemoService demoService;
@@ -1254,7 +1254,7 @@ config {
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoService</span> </span>{
 	<span class="hljs-meta">@Reference</span>(version = <span class="hljs-string">"1.0.0"</span>, timeout = <span class="hljs-number">60000</span>)
 	<span class="hljs-keyword">private</span> ITestService testService;
-	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(DemoService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(DemoService.class);
  
 	<span class="hljs-comment">/**
 	 * 手动回滚示例

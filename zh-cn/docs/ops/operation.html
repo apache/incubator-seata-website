@@ -47,21 +47,21 @@ seata_transaction{meter=&quot;timer&quot;,role=&quot;tc&quot;,statistic=&quot;av
 <p>打开Prometheus的配置文件<code>prometheus.yml</code>，在<code>scrape_configs</code>中增加一项抓取Seata TC的Metrics数据：</p>
 <pre><code class="language-yaml"><span class="hljs-attr">scrape_configs:</span>
   <span class="hljs-comment"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">'prometheus'</span>
+<span class="hljs-attr">  - job_name:</span> <span class="hljs-string">'prometheus'</span>
 
     <span class="hljs-comment"># metrics_path defaults to '/metrics'</span>
     <span class="hljs-comment"># scheme defaults to 'http'.</span>
 
-    <span class="hljs-attr">static_configs:</span>
-    <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> <span class="hljs-string">['localhost:9090']</span>
+<span class="hljs-attr">    static_configs:</span>
+<span class="hljs-attr">    - targets:</span> <span class="hljs-string">['localhost:9090']</span>
 
-  <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">'seata'</span>
+<span class="hljs-attr">  - job_name:</span> <span class="hljs-string">'seata'</span>
 
     <span class="hljs-comment"># metrics_path defaults to '/metrics'</span>
     <span class="hljs-comment"># scheme defaults to 'http'.</span>
 
-    <span class="hljs-attr">static_configs:</span>
-    <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> <span class="hljs-string">['tc-server-ip:9898']</span>
+<span class="hljs-attr">    static_configs:</span>
+<span class="hljs-attr">    - targets:</span> <span class="hljs-string">['tc-server-ip:9898']</span>
 </code></pre>
 <h4>步骤三：在Prometheus UI或Grafana中查看Seata TC的Metrics</h4>
 <p>在浏览器中打开Prometheus UI<code>http://localhost:9090/graph</code>，选择<code>seata_transaction</code>，点击查询，即可获取到最新数据：</p>

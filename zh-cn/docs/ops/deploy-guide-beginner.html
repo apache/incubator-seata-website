@@ -20,13 +20,9 @@
 <li>script</li>
 </ul>
 <blockquote>
-<p>seata根目录--&gt;script，存放client所需脚本、配置，各个配置中心配置参数脚本（Server和Client并存）</p>
-</blockquote>
-<ul>
-<li>server</li>
-</ul>
-<blockquote>
-<p>seata根目录--&gt;seata-server，存放db模式所需建表脚本，server端配置参数在script。</p>
+<p>seata根目录--&gt;script，存放server、client所需数据库脚本、配置参数（.conf、.yml、.properties等）
+和配置中心导入脚本（配置中心的参数文件包含Server和Client）<br>
+url: <a href="https://github.com/seata/seata/tree/develop/script">https://github.com/seata/seata/tree/develop/script</a></p>
 </blockquote>
 <h3>注意事项</h3>
 <ul>
@@ -55,11 +51,7 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 <li>其它途径</li>
 </ul>
 <h4>步骤二：建表</h4>
-<p>全局事务会话信息由3块内容构成，全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table，</p>
-<ul>
-<li>mysql建表脚本存放于module seata-server--&gt;resources--&gt;db_store.sql</li>
-<li>oracle脚本（可参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a> ）暂未合并。</li>
-</ul>
+<p>全局事务会话信息由3块内容构成，全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table</p>
 <h4>步骤三：修改store.mode</h4>
 <p>打开seata-server--&gt;resources--&gt;file.conf，修改store.mode=&quot;db&quot;;也可以在启动时加命令参数-m db指定。</p>
 <h4>步骤四：修改数据库连接</h4>
@@ -67,20 +59,20 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 <h4>步骤五：启动</h4>
 <ul>
 <li>源码启动: 执行Server.java的main方法</li>
-<li>命令启动: <a href="http://seata-server.sh">seata-server.sh</a> -h 127.0.0.1 -p 8091 -m db -n 1 -DSEATA_ENV=test</li>
+<li>命令启动: <a href="http://seata-server.sh">seata-server.sh</a> -h 127.0.0.1 -p 8091 -m db -n 1 -e test</li>
 </ul>
 <pre><code>    -h: 注册到注册中心的ip
     -p: Server rpc 监听端口
     -m: 全局事务会话信息存储模式，file、db，优先读取启动参数
-    -n: Server node，多个Server时，需区分各自节点，用于生成不同的transactionId范围，以免冲突
-    SEATA_ENV: 多环境配置参考 https://github.com/seata/seata/wiki/Multi-configuration-Isolation
+    -n: Server node，多个Server时，需区分各自节点，用于生成不同区间的transactionId，以免冲突
+    -e: 多环境配置参考 http://seata.io/en-us/docs/ops/multi-configuration-isolation.html
 </code></pre>
 <ul>
 <li>docker部署请看 <a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html">https://seata.io/zh-cn/docs/ops/deploy-by-docker.html</a></li>
 </ul>
 <p>注: 堆内存建议分配4G，堆外内存1-2G</p>
 <h3>业务系统集成Client</h3>
-<h4>步骤一：添加seata依赖</h4>
+<h4>步骤一：添加seata依赖（建议单选）</h4>
 <ul>
 <li>依赖seata-all</li>
 <li>依赖seata-spring-boot-starter，支持yml配置</li>
@@ -99,7 +91,7 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
     0.9.0: support.spring.datasource.autoproxy=true
 </code></pre>
 <ul>
-<li>手动配置可参考下方mybatis的例子</li>
+<li>手动配置可参考下方的例子</li>
 </ul>
 <pre><code> @Bean
     @ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
@@ -111,13 +103,6 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
     @Bean(&quot;dataSource&quot;)
     public DataSourceProxy dataSource(DataSource druidDataSource) {
         return new DataSourceProxy(druidDataSource);
-    }
-    @Bean
-    public MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean(DataSourceProxy druidDataSource, ResourcePatternResolver resourcePatternResolver) throws IOException {
-        MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
-        mybatisSqlSessionFactoryBean.setDataSource(druidDataSource);
-        mybatisSqlSessionFactoryBean.setMapperLocations(resourcePatternResolver.getResources(&quot;classpath:mapper/*.xml&quot;));
-        return mybatisSqlSessionFactoryBean;
     }
 </code></pre>
 <h4>步骤四：初始化GlobalTransactionScanner</h4>

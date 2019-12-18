@@ -191,8 +191,8 @@ RMClient.init(applicationId, txServiceGroup);
   Method specificMethod = ClassUtils.getMostSpecificMethod(methodInvocation.getMethod(), targetClass);
   <span class="hljs-keyword">final</span> Method method = BridgeMethodResolver.findBridgedMethod(specificMethod);
 
-  <span class="hljs-keyword">final</span> GlobalTransactional globalTransactionalAnnotation = getAnnotation(method, GlobalTransactional<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
-  <span class="hljs-keyword">final</span> GlobalLock globalLockAnnotation = getAnnotation(method, GlobalLock<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+  <span class="hljs-keyword">final</span> GlobalTransactional globalTransactionalAnnotation = getAnnotation(method, GlobalTransactional.class);
+  <span class="hljs-keyword">final</span> GlobalLock globalLockAnnotation = getAnnotation(method, GlobalLock.class);
   <span class="hljs-keyword">if</span> (globalTransactionalAnnotation != <span class="hljs-keyword">null</span>) {
     <span class="hljs-comment">// 全局事务注解</span>
     <span class="hljs-keyword">return</span> handleGlobalTransaction(methodInvocation, globalTransactionalAnnotation);
