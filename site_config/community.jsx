@@ -91,6 +91,16 @@ export default {
           title: '@Seata',
           link: 'https://twitter.com/seataio',
         },
+        {
+          img: '/img/dingding_group_one.png',
+          imgHover: '/img/dingding_group_one.png',
+          title: '钉钉①群(已满)',
+        },
+		{
+          img: '/img/dingding_group_two.png',
+          imgHover: '/img/dingding_group_two.png',
+          title: '钉钉②群(可加入)',
+        },
       ],
     },
     contributorGuide: {
