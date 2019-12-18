@@ -9,7 +9,7 @@ description: Seata 参数配置。
 
 ### 变更记录
 ```
-20191205: 增加seata.enabled、client.rm.report.success.enable
+20191205: 增加seata.enabled、client.rm.report.success.enable、transport.enable-client-batch-send-request
 ```
 
 ### 公共部分
@@ -19,7 +19,7 @@ description: Seata 参数配置。
 | transport.serialization            | client和server通信编解码方式   |seata（ByteBuf）、protobuf、kryo、hession，默认seata |
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip，默认none |
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
-
+| transport.enable-client-batch-send-request            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
 
 ### server端
 
@@ -56,7 +56,6 @@ description: Seata 参数配置。
 | key| desc    | remark|
 |-------------------------------------------|----------------------------|----------------------------|
 | seata.enabled   | 是否开启spring-boot自动装配   |true、false，默认true（附录4） |
-| client.rm.report.success.enable   | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
 | service.vgroup_mapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | TC服务列表（附录2） |  仅注册中心为file时使用  |
 | service.disableGlobalTransaction          | 全局事务开关 |  默认false。false为开启，true为关闭  |
@@ -67,6 +66,7 @@ description: Seata 参数配置。
 | client.rm.lock.retry.policy.branch-rollback-on-conflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
 | client.rm.report.retry.count                 | 一阶段结果上报TC重试次数 |  默认5次  |
 | client.rm.table.meta.check.enable            | 自动刷新缓存中的表结构 |  默认true  |
+| client.rm.report.success.enable   | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
 | client.tm.commit.retry.count              | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.rollback.retry.count            | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.undo.data.validation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
