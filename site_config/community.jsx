@@ -31,6 +31,16 @@ export default {
           title: '@Seata',
           link: 'https://twitter.com/seataio',
         },
+        {
+          img: '/img/dingding_group_one.png',
+          imgHover: '/img/dingding_group_one.png',
+          title: 'DingTalk①Group(full)',
+        },
+		{
+          img: '/img/dingding_group_two.png',
+          imgHover: '/img/dingding_group_two.png',
+          title: 'DingTalk②Group(allow)',
+        },
       ],
     },
     contributorGuide: {
