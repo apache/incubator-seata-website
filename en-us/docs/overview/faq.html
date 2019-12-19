@@ -23,6 +23,7 @@
 <p><a href="#8" target="_self">8.When Eureka is the registry and TC is highly available, how to overwrite Eureka properties at the TC end?</a></p>
 <p><a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a></p>
 <p><a href="#10" target="_self">10. Why didn't my mybatis operation return auto-generated ID? </a></p>
+<p><a href="#11" target="_self">11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</a></p>
 <hr>
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
 <p><strong>A:</strong>
@@ -116,6 +117,10 @@ when the undolog serialization is configured as Jackson, the Jackson version nee
 <h3 id='10'>Q: 10. Why didn't my mybatis operation return auto-generated ID? </h3>
 <p><strong>A:</strong>
 You should update the configuraton of <code>mybatis</code>:  set annotation <code>@Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)</code> or set the value of useGeneratedKeys and keyProperty  in <code>mybatis</code> xml configuraton</p>
+<hr>
+<h3 id='11'>Q: 11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</h3>
+<p><strong>A:</strong>
+You can execute this command:mvn clean install -DskipTests=true,These codes have been removed in version 0.8.1.</p>
 <hr>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
