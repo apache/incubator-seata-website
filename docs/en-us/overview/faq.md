@@ -26,6 +26,9 @@ description: Seata FAQ.
 
 <a href="#10" target="_self">10. Why didn't my mybatis operation return auto-generated ID? </a>
 
+<a href="#11" target="_self">11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</a>
+
+
 ********
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
 
@@ -142,5 +145,11 @@ when the undolog serialization is configured as Jackson, the Jackson version nee
 
 **A:**
 You should update the configuraton of `mybatis`:  set annotation `@Options(useGeneratedKeys = true, keyProperty = "id")` or set the value of useGeneratedKeys and keyProperty  in `mybatis` xml configuraton
+
+********
+<h3 id='11'>Q: 11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</h3>
+
+**A:** 
+You can execute this command:mvn clean install -DskipTests=true,These codes have been removed in version 0.8.1.
 
 ********
