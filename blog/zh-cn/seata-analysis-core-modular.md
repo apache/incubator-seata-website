@@ -10,6 +10,8 @@ core 模块定义了事务的类型、状态，通用的行为，client 和 serv
 
 按包顺序来分析一下 core 模块主要功能类：
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191223162313317.png)
+
 codec：定义了一个 codec 的工厂类，提供了一个方法，根据序列化类型来找对应的处理类。还提供了一个接口类 Codec ，有两个抽象方法：
 
 ```java
@@ -111,4 +113,4 @@ dispatch()：调用 clientMessageListener 处理 server 发送过来的消息，
 core 模块涉及的功能很多，其中的类大多都是其他模块的抽象类。抽象出业务模型，具体的实现分布在不同的模块。core 模块的代码非常的优秀，很多设计都是经典，比如上文分析的基于模板模式改造的，非常实用也非常美，值得仔细研究。
 
 ## 五  . seata源码分析系列地址
-https://blog.csdn.net/qq_37804737/category_9530078.html
+[系列地址](https://blog.csdn.net/qq_37804737/category_9530078.html)
