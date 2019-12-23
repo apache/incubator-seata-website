@@ -1,12 +1,12 @@
 ---
-title: 通过AOP动态关闭Seata分布式事务
+title: 通过AOP动态创建/关闭Seata分布式事务
 keywords: Seata,Nacos,分布式事务,spring
-description: 本文讲述如何通过AOP动态关闭Seata分布式事务
+description: 本文讲述如何通过AOP动态创建/关闭Seata分布式事务
 author: FUNKYE
 date: 2019/12/23
 ---
 
-# 通过AOP动态关闭Seata分布式事务
+# 通过AOP动态创建/关闭Seata分布式事务
 
 本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
 
@@ -46,7 +46,7 @@ import io.seata.tm.api.GlobalTransactionContext;
 @Aspect
 @Component
 public class TestAspect {
-    private final static Logger logger = LoggerFactory.getLogger(Aspect.class);
+    private final static Logger logger = LoggerFactory.getLogger(TestAspect.class);
     
     @Before("execution(* org.test.service.*.*(..))")
     public void before(JoinPoint joinPoint) throws TransactionException {

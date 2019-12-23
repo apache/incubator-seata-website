@@ -66,10 +66,10 @@
                 link: '/zh-cn/blog/seata-nacos-docker.html',
             },
             {
-                title: '通过AOP动态关闭Seata分布式事务',
+                title: '通过AOP动态创建/关闭Seata分布式事务',
                 author: '@FUNKYE',
                 dateStr: 'Dec 23th, 2019',
-                desc: '本文讲述如何通过AOP动态关闭Seata分布式事务',
+                desc: '本文讲述如何通过AOP动态创建/关闭Seata分布式事务',
                 link: '/zh-cn/blog/seata-spring-boot-aop-aspectj.html',
             }
         ]
