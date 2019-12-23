@@ -72,7 +72,7 @@ AbstractExceptionHandler 目前有两个子类：AbstractTCInboundHandler 负责
 seata 对于 rpc 的封装，细节不需要纠结，可以研究一下一下对于事务业务的处理。
 
 client 端的 rpc 类是 AbstractRpcRemotingClient：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191211180129741.png)
+(https://img-blog.csdnimg.cn/20191211180129741.png)
 重要的属性和方法都在类图中，消息发送和初始化方法没画在类图中，详细分析一下类图：
 
 clientBootstrap：是 netty 启动类 Bootstrap 的封装类，持有了 Bootstrap 的实例，并自定义自己想要的属性。
