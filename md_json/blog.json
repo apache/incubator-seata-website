@@ -253,9 +253,9 @@
       "filename": "seata-spring-boot-aop-aspectj.md",
       "link": "/zh-cn/blog/seata-spring-boot-aop-aspectj.html",
       "meta": {
-        "title": "通过AOP动态关闭Seata分布式事务",
+        "title": "通过AOP动态创建/关闭Seata分布式事务",
         "keywords": "Seata,Nacos,分布式事务,spring",
-        "description": "本文讲述如何通过AOP动态关闭Seata分布式事务",
+        "description": "本文讲述如何通过AOP动态创建/关闭Seata分布式事务",
         "author": "FUNKYE",
         "date": "2019/12/23"
       }
