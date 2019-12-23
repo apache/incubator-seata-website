@@ -13,7 +13,7 @@ description: This article will introduce you how to understand the details of ea
 > Release Notes: https://github.com/seata/seata/releases
 >
 
-## 1.0.0 (2019-12-21)
+### 1.0.0 (2019-12-21)
 
  [source](https://github.com/seata/seata/archive/v1.0.0.zip) |
  [binary](https://github.com/seata/seata/releases/download/v1.0.0/seata-server-1.0.0.zip) 
@@ -208,7 +208,7 @@ description: This article will introduce you how to understand the details of ea
    
 </details>
 
-## 0.9.0 (2019-10-16)
+### 0.9.0 (2019-10-16)
 
  [source](https://github.com/seata/seata/archive/v0.9.0.zip) |
  [binary](https://github.com/seata/seata/releases/download/v0.9.0/seata-server-0.9.0.zip) 
