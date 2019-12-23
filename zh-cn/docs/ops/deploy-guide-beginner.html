@@ -16,13 +16,24 @@
 <h2>Seata新手部署指南(1.0.0版本)</h2>
 <p>Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。</p>
 <h3>资源目录介绍</h3>
+<h4><a href="https://github.com/seata/seata/tree/develop/script" target="_blank">script</a></h4>
 <ul>
-<li>script</li>
+<li>client</li>
 </ul>
 <blockquote>
-<p>seata根目录--&gt;script，存放server、client所需数据库脚本、配置参数（.conf、.yml、.properties等）
-和配置中心导入脚本（配置中心的参数文件包含Server和Client）<br>
-url: <a href="https://github.com/seata/seata/tree/develop/script">https://github.com/seata/seata/tree/develop/script</a></p>
+<p>存放client端sql脚本，参数配置</p>
+</blockquote>
+<ul>
+<li>config-center</li>
+</ul>
+<blockquote>
+<p>各个配置中心参数导入脚本，config.txt(包含server和client，原名nacos-config.txt)为通用参数文件</p>
+</blockquote>
+<ul>
+<li>server</li>
+</ul>
+<blockquote>
+<p>server端数据库脚本及各个容器配置</p>
 </blockquote>
 <h3>注意事项</h3>
 <ul>
@@ -37,8 +48,9 @@ starter默认开启数据源自动代理，用户若再手动配置DataSourcePro
 <li>spring-cloud-alibaba-seata</li>
 </ul>
 <blockquote>
-<p>截止20191207日，现在版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本。<br>
-可以手动改造让SpringUtils先初始化，以实现兼容。</p>
+<p>2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0。<br>
+截止20191222日，现有版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本；<br>
+也可以手动改造让SpringUtils先初始化，以实现兼容。</p>
 </blockquote>
 <h3>启动Server</h3>
 <p>Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。<br>
@@ -46,16 +58,18 @@ starter默认开启数据源自动代理，用户若再手动配置DataSourcePro
 db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些。</p>
 <h4>步骤一：启动包</h4>
 <ul>
-<li><a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a> 下载</li>
-<li>官方钉钉群（群号：23171167），qq群（群号：254657148）群文件共享下载</li>
+<li><a href="https://github.com/seata/seata/releases" target="_blank">点击下载</a></li>
+<li>官方钉钉群（群号：23171167，1群5000人已满，可扫描官网二维码加2群），qq群（群号：254657148）群文件共享下载</li>
 <li>其它途径</li>
 </ul>
 <h4>步骤二：建表</h4>
 <p>全局事务会话信息由3块内容构成，全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table</p>
 <h4>步骤三：修改store.mode</h4>
-<p>打开seata-server--&gt;resources--&gt;file.conf，修改store.mode=&quot;db&quot;;也可以在启动时加命令参数-m db指定。</p>
+<p>启动包: seata--&gt;conf--&gt;file.conf，修改store.mode=&quot;db&quot;;也可以在启动时加命令参数-m db指定。<br>
+源码:   根目录--&gt;seata-server--&gt;resources--&gt;file.conf，修改store.mode=&quot;db&quot;;也可以在启动时加命令参数-m db指定。</p>
 <h4>步骤四：修改数据库连接</h4>
-<p>打开seata-server--&gt;resources--&gt;file.conf，修改store.db相关属性</p>
+<p>启动包: seata--&gt;conf--&gt;file.conf，修改store.db相关属性。<br>
+源码:   根目录--&gt;seata-server--&gt;resources--&gt;file.conf，修改store.db相关属性。</p>
 <h4>步骤五：启动</h4>
 <ul>
 <li>源码启动: 执行Server.java的main方法</li>
@@ -68,9 +82,9 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
     -e: 多环境配置参考 http://seata.io/en-us/docs/ops/multi-configuration-isolation.html
 </code></pre>
 <ul>
-<li>docker部署请看 <a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html">https://seata.io/zh-cn/docs/ops/deploy-by-docker.html</a></li>
+<li><a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html" target="_blank">点击查看docker部署</a></li>
 </ul>
-<p>注: 堆内存建议分配4G，堆外内存1-2G</p>
+<p>注: 堆内存建议分配2G，堆外内存1G</p>
 <h3>业务系统集成Client</h3>
 <h4>步骤一：添加seata依赖（建议单选）</h4>
 <ul>
@@ -80,8 +94,7 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 </ul>
 <h4>步骤二：undo_log建表、配置参数</h4>
 <ul>
-<li>oracle暂时参考 <a href="https://github.com/seata/seata/pull/1640">https://github.com/seata/seata/pull/1640</a></li>
-<li>参数配置介绍 <a href="https://seata.io/zh-cn/docs/user/configurations.html">https://seata.io/zh-cn/docs/user/configurations.html</a></li>
+<li><a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置介绍</a></li>
 </ul>
 <h4>步骤三：数据源代理</h4>
 <ul>
