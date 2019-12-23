@@ -512,7 +512,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - **Seata-Samples:** https://github.com/seata/seata-samples   
    - **Release:** https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.7.1 (2019-07-15)
 
@@ -539,7 +539,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/seata/seata-samples   
    - Release：https://github.com/seata/seata/releases
-<details/>
+</details>
 
 ### 0.7.0 (2019-07-12)
 
@@ -621,7 +621,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata-Samples: https://github.com/seata/seata-samples   
    - Release：https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.6.1 (2019-05-31)
 
@@ -661,7 +661,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata-Samples: https://github.com/seata/seata-samples   
    - Release：https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.6.0 (2019-05-24)
 
@@ -699,7 +699,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata-Samples: https://github.com/seata/seata-samples   
    - Release：https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.5.2 (2019-05-17)
 
@@ -759,7 +759,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata-Samples: https://github.com/seata/seata-samples   
    - Release：https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.5.1 (2019-04-30)
 
@@ -820,7 +820,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata-Samples: https://github.com/seata/seata-samples   
    - Release：https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.5.0 (2019-04-19)
 
@@ -864,7 +864,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.4.2 (2019-04-12)
 
@@ -910,7 +910,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Seata-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/seata/seata/releases
 
-<details/>
+</details>
 
 ### 0.4.1 (2019-03-29)
 
@@ -919,7 +919,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 <details>
     <summary><mark>Release notes</mark></summary>
     
-<details/>
+</details>
 
 ### 0.4.0 (2019-03-19)
 
@@ -946,7 +946,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/alibaba/fescar/releases
 
-<details/>
+</details>
 
 ### 0.3.1 (2019-03-15)
 
@@ -980,7 +980,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/alibaba/fescar/releases
 
-<details/>
+</details>
 
 ### 0.3.0 (2019-03-08)
 
@@ -1014,7 +1014,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/alibaba/fescar/releases
 
-<details/>
+</details>
 
 ### 0.2.3 (2019-03-02)
 
@@ -1046,7 +1046,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/alibaba/fescar/releases
 
-<details/>
+</details>
 
 ### 0.2.2 (2019-02-22)
 
@@ -1055,7 +1055,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 <details>
     <summary><mark>Release notes</mark></summary>
     
-<details/>
+</details>
 
 ### 0.2.1 (2019-02-18)
 
@@ -1087,7 +1087,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/alibaba/fescar/releases
  
-<details/>
+</details>
 
 ### 0.2.0 (2019-02-14)
 
@@ -1132,7 +1132,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/alibaba/fescar/releases
 
-<details/>
+</details>
 
 ### 0.1.4 (2019-02-11)
 
