@@ -73,6 +73,7 @@ seata 对于 rpc 的封装，细节不需要纠结，可以研究一下一下对
 
 client 端的 rpc 类是 AbstractRpcRemotingClient：
 (https://img-blog.csdnimg.cn/20191211180129741.png)
+
 重要的属性和方法都在类图中，消息发送和初始化方法没画在类图中，详细分析一下类图：
 
 clientBootstrap：是 netty 启动类 Bootstrap 的封装类，持有了 Bootstrap 的实例，并自定义自己想要的属性。
@@ -108,3 +109,7 @@ dispatch()：调用 clientMessageListener 处理 server 发送过来的消息，
 
 ## 四  . 总结
 core 模块涉及的功能很多，其中的类大多都是其他模块的抽象类。抽象出业务模型，具体的实现分布在不同的模块。core 模块的代码非常的优秀，很多设计都是经典，比如上文分析的基于模板模式改造的，非常实用也非常美，值得仔细研究。
+
+
+## 五  . seata源码分析系列地址
+https://blog.csdn.net/qq_37804737/category_9530078.html
