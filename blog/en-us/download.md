@@ -538,8 +538,8 @@ description: This article will introduce you how to understand the details of ea
     
   #### Bugfix & Optimize
      
-  -[[#1297](https://github.com/seata/seata/pull/1297)] seata-spring add dependency seata-codec-all
-  -[[#1305](https://github.com/seata/seata/pull/1305)] fix unable to instantiate org.springframework.cloud.alibaba.seata.GlobalTransactionAutoConfiguration
+  - [[#1297](https://github.com/seata/seata/pull/1297)] seata-spring add dependency seata-codec-all
+  - [[#1305](https://github.com/seata/seata/pull/1305)] fix unable to instantiate org.springframework.cloud.alibaba.seata.GlobalTransactionAutoConfiguration
   - fix in the 0.7.0 version, unable to get the seata dependency problem from the central repository
        
   #### Link
@@ -578,52 +578,52 @@ description: This article will introduce you how to understand the details of ea
 
    #### Bugfix & Optimize
     
-  -[[#1286](https://github.com/seata/seata/pull/1286)] bugfix: add some configuration and exclude log dependency ([97](https://github.com/seata/seata/issues/97))
-  -[[#1278](https://github.com/seata/seata/pull/1278)] bugfix: pass txId into TCC interceptor
-  -[[#1274](https://github.com/seata/seata/pull/1274)] 1. optimization SQL join
-  -[[#1271](https://github.com/seata/seata/pull/1271)] bugfix: @GlobalLock get error with Response ([97](https://github.com/seata/seata/issues/97), [1224](https://github.com/seata/seata/issues/1224))
-  -[[#1270](https://github.com/seata/seata/pull/1270)] bugfix: print error exception
-  -[[#1269](https://github.com/seata/seata/pull/1269)] bugfix: fix TMClinet reconnect exception
-  -[[#1265](https://github.com/seata/seata/pull/1265)] Invoke addBatch of targetStatement if not in global transaction
-  -[[#1264](https://github.com/seata/seata/pull/1264)] configuration:update ignore and coverage ([97](https://github.com/seata/seata/issues/97))
-  -[[#1263](https://github.com/seata/seata/pull/1263)] docs: add doc about contribution ([97](https://github.com/seata/seata/issues/97))
-  -[[#1262](https://github.com/seata/seata/pull/1262)] bugfix: fix find target class issue if scan the web scope bean such a… ([97](https://github.com/seata/seata/issues/97))
-  -[[#1261](https://github.com/seata/seata/pull/1261)] add warn log when fail to get auto-generated keys. (#1259) ([97](https://github.com/seata/seata/issues/97), [1259](https://github.com/seata/seata/issues/1259))
-  -[[#1258](https://github.com/seata/seata/pull/1258)] move metrics config keys and simplify metrics modules dependency
-  -[[#1250](https://github.com/seata/seata/pull/1250)] fix codecov for protobuf ([97](https://github.com/seata/seata/issues/97))
-  -[[#1245](https://github.com/seata/seata/pull/1245)] refactor metrics let it initialize by configuration
-  -[[#1242](https://github.com/seata/seata/pull/1242)] perfect sql
-  -[[#1239](https://github.com/seata/seata/pull/1239)] bugfix:fix CME in ZK discovery implementation. ([97](https://github.com/seata/seata/issues/97))
-  -[[#1237](https://github.com/seata/seata/pull/1237)] bugfix:server start  and handle remain branch session may cause NPE ([97](https://github.com/seata/seata/issues/97))
-  -[[#1232](https://github.com/seata/seata/pull/1232)] Add unit tests for io.seata.common.util CompressUtil, DurationUtil, ReflectionUtil
-  -[[#1230](https://github.com/seata/seata/pull/1230)] prioritize global transaction scanner #1227 ([97](https://github.com/seata/seata/issues/97), [1227](https://github.com/seata/seata/issues/1227))
-  -[[#1229](https://github.com/seata/seata/pull/1229)] fix a typo ([97](https://github.com/seata/seata/issues/97))
-  -[[#1225](https://github.com/seata/seata/pull/1225)] optimize the name of seata config environment. ([97](https://github.com/seata/seata/issues/97), [1209](https://github.com/seata/seata/issues/1209))
-  -[[#1222](https://github.com/seata/seata/pull/1222)] fix bug of refresh cluster ([1160](https://github.com/seata/seata/issues/1160))
-  -[[#1221](https://github.com/seata/seata/pull/1221)] bugfix: fix in which SQL and database field names are inconsistent#1217 ([1217](https://github.com/seata/seata/issues/1217))
-  -[[#1218](https://github.com/seata/seata/pull/1218)] bugfix:containsPK ignoreCase ([1217](https://github.com/seata/seata/issues/1217))
-  -[[#1210](https://github.com/seata/seata/pull/1210)] 1. optimize arrayList single value
-  -[[#1207](https://github.com/seata/seata/pull/1207)] All overriding methods must be preceded by @Override annotations.
-  -[[#1205](https://github.com/seata/seata/pull/1205)] remove useless code
-  -[[#1202](https://github.com/seata/seata/pull/1202)] output branchRollback failed log ([97](https://github.com/seata/seata/issues/97))
-  -[[#1200](https://github.com/seata/seata/pull/1200)] bugfix:DefaultCoreTest.branchRegisterTest ([1199](https://github.com/seata/seata/issues/1199))
-  -[[#1198](https://github.com/seata/seata/pull/1198)] check the third-party dependencies license ([1197](https://github.com/seata/seata/issues/1197))
-  -[[#1195](https://github.com/seata/seata/pull/1195)] Clear the transaction context in TCC prepare methed
-  -[[#1193](https://github.com/seata/seata/pull/1193)] Get lockmode by the storemode
-  -[[#1190](https://github.com/seata/seata/pull/1190)] remove unused semicolons ([97](https://github.com/seata/seata/issues/97), [540](https://github.com/seata/seata/issues/540))
-  -[[#1179](https://github.com/seata/seata/pull/1179)] fix jackson default content
-  -[[#1177](https://github.com/seata/seata/pull/1177)] write session may be failed，throw TransactionException but hold lock. ([97](https://github.com/seata/seata/issues/97), [1154](https://github.com/seata/seata/issues/1154))
-  -[[#1169](https://github.com/seata/seata/pull/1169)] bugfix: use Set to avoid duplicate listeners. fixes #1126 ([1126](https://github.com/seata/seata/issues/1126))
-  -[[#1165](https://github.com/seata/seata/pull/1165)] add a missing placeholder in INSERT_UNDO_LOG_SQL ([1164](https://github.com/seata/seata/issues/1164))
-  -[[#1162](https://github.com/seata/seata/pull/1162)] Reset initialized flag & instance while destroy(). split [##1105 ([983](https://github.com/seata/seata/issues/983), [97](https://github.com/seata/seata/issues/97))
-  -[[#1159](https://github.com/seata/seata/pull/1159)] bugfix: AT mode resourceId(row_key) too long ([97](https://github.com/seata/seata/issues/97), [1158](https://github.com/seata/seata/issues/1158))
-  -[[#1150](https://github.com/seata/seata/pull/1150)] updates seata's version in README.md ([97](https://github.com/seata/seata/issues/97))
-  -[[#1148](https://github.com/seata/seata/pull/1148)] bugfix:the buffer may cause overflows when sql statement is long
-  -[[#1146](https://github.com/seata/seata/pull/1146)] revise the package name of the module ([97](https://github.com/seata/seata/issues/97))
-  -[[#1105](https://github.com/seata/seata/pull/1105)] refactor TmRpcClient & RmClient for common use. ([97](https://github.com/seata/seata/issues/97))
-  -[[#1075](https://github.com/seata/seata/pull/1075)] Multiple environmental isolation
-  -[[#768](https://github.com/seata/seata/pull/768)] #751 add event bus mechanism and apply it in tc
-    
+  - [[#1286](https://github.com/seata/seata/pull/1286)] bugfix: add some configuration and exclude log dependency ([97](https://github.com/seata/seata/issues/97))
+  - [[#1278](https://github.com/seata/seata/pull/1278)] bugfix: pass txId into TCC interceptor
+  - [[#1274](https://github.com/seata/seata/pull/1274)] 1. optimization SQL join
+  - [[#1271](https://github.com/seata/seata/pull/1271)] bugfix: @GlobalLock get error with Response ([97](https://github.com/seata/seata/issues/97), [1224](https://github.com/seata/seata/issues/1224))
+  - [[#1270](https://github.com/seata/seata/pull/1270)] bugfix: print error exception
+  - [[#1269](https://github.com/seata/seata/pull/1269)] bugfix: fix TMClinet reconnect exception
+  - [[#1265](https://github.com/seata/seata/pull/1265)] Invoke addBatch of targetStatement if not in global transaction
+  - [[#1264](https://github.com/seata/seata/pull/1264)] configuration:update ignore and coverage ([97](https://github.com/seata/seata/issues/97))
+  - [[#1263](https://github.com/seata/seata/pull/1263)] docs: add doc about contribution ([97](https://github.com/seata/seata/issues/97))
+  - [[#1262](https://github.com/seata/seata/pull/1262)] bugfix: fix find target class issue if scan the web scope bean such a… ([97](https://github.com/seata/seata/issues/97))
+  - [[#1261](https://github.com/seata/seata/pull/1261)] add warn log when fail to get auto-generated keys. (#1259) ([97](https://github.com/seata/seata/issues/97), [1259](https://github.com/seata/seata/issues/1259))
+  - [[#1258](https://github.com/seata/seata/pull/1258)] move metrics config keys and simplify metrics modules dependency
+  - [[#1250](https://github.com/seata/seata/pull/1250)] fix codecov for protobuf ([97](https://github.com/seata/seata/issues/97))
+  - [[#1245](https://github.com/seata/seata/pull/1245)] refactor metrics let it initialize by configuration
+  - [[#1242](https://github.com/seata/seata/pull/1242)] perfect sql
+  - [[#1239](https://github.com/seata/seata/pull/1239)] bugfix:fix CME in ZK discovery implementation. ([97](https://github.com/seata/seata/issues/97))
+  - [[#1237](https://github.com/seata/seata/pull/1237)] bugfix:server start  and handle remain branch session may cause NPE ([97](https://github.com/seata/seata/issues/97))
+  - [[#1232](https://github.com/seata/seata/pull/1232)] Add unit tests for io.seata.common.util CompressUtil, DurationUtil, ReflectionUtil
+  - [[#1230](https://github.com/seata/seata/pull/1230)] prioritize global transaction scanner #1227 ([97](https://github.com/seata/seata/issues/97), [1227](https://github.com/seata/seata/issues/1227))
+  - [[#1229](https://github.com/seata/seata/pull/1229)] fix a typo ([97](https://github.com/seata/seata/issues/97))
+  - [[#1225](https://github.com/seata/seata/pull/1225)] optimize the name of seata config environment. ([97](https://github.com/seata/seata/issues/97), [1209](https://github.com/seata/seata/issues/1209))
+  - [[#1222](https://github.com/seata/seata/pull/1222)] fix bug of refresh cluster ([1160](https://github.com/seata/seata/issues/1160))
+  - [[#1221](https://github.com/seata/seata/pull/1221)] bugfix: fix in which SQL and database field names are inconsistent#1217 ([1217](https://github.com/seata/seata/issues/1217))
+  - [[#1218](https://github.com/seata/seata/pull/1218)] bugfix:containsPK ignoreCase ([1217](https://github.com/seata/seata/issues/1217))
+  - [[#1210](https://github.com/seata/seata/pull/1210)] 1. optimize arrayList single value
+  - [[#1207](https://github.com/seata/seata/pull/1207)] All overriding methods must be preceded by @Override annotations.
+  - [[#1205](https://github.com/seata/seata/pull/1205)] remove useless code
+  - [[#1202](https://github.com/seata/seata/pull/1202)] output branchRollback failed log ([97](https://github.com/seata/seata/issues/97))
+  - [[#1200](https://github.com/seata/seata/pull/1200)] bugfix:DefaultCoreTest.branchRegisterTest ([1199](https://github.com/seata/seata/issues/1199))
+  - [[#1198](https://github.com/seata/seata/pull/1198)] check the third-party dependencies license ([1197](https://github.com/seata/seata/issues/1197))
+  - [[#1195](https://github.com/seata/seata/pull/1195)] Clear the transaction context in TCC prepare methed
+  - [[#1193](https://github.com/seata/seata/pull/1193)] Get lockmode by the storemode
+  - [[#1190](https://github.com/seata/seata/pull/1190)] remove unused semicolons ([97](https://github.com/seata/seata/issues/97), [540](https://github.com/seata/seata/issues/540))
+  - [[#1179](https://github.com/seata/seata/pull/1179)] fix jackson default content
+  - [[#1177](https://github.com/seata/seata/pull/1177)] write session may be failed，throw TransactionException but hold lock. ([97](https://github.com/seata/seata/issues/97), [1154](https://github.com/seata/seata/issues/1154))
+  - [[#1169](https://github.com/seata/seata/pull/1169)] bugfix: use Set to avoid duplicate listeners. fixes #1126 ([1126](https://github.com/seata/seata/issues/1126))
+  - [[#1165](https://github.com/seata/seata/pull/1165)] add a missing placeholder in INSERT_UNDO_LOG_SQL ([1164](https://github.com/seata/seata/issues/1164))
+  - [[#1162](https://github.com/seata/seata/pull/1162)] Reset initialized flag & instance while destroy(). split [##1105 ([983](https://github.com/seata/seata/issues/983), [97](https://github.com/seata/seata/issues/97))
+  - [[#1159](https://github.com/seata/seata/pull/1159)] bugfix: AT mode resourceId(row_key) too long ([97](https://github.com/seata/seata/issues/97), [1158](https://github.com/seata/seata/issues/1158))
+  - [[#1150](https://github.com/seata/seata/pull/1150)] updates seata's version in README.md ([97](https://github.com/seata/seata/issues/97))
+  - [[#1148](https://github.com/seata/seata/pull/1148)] bugfix:the buffer may cause overflows when sql statement is long
+  - [[#1146](https://github.com/seata/seata/pull/1146)] revise the package name of the module ([97](https://github.com/seata/seata/issues/97))
+  - [[#1105](https://github.com/seata/seata/pull/1105)] refactor TmRpcClient & RmClient for common use. ([97](https://github.com/seata/seata/issues/97))
+  - [[#1075](https://github.com/seata/seata/pull/1075)] Multiple environmental isolation
+  - [[#768](https://github.com/seata/seata/pull/768)] #751 add event bus mechanism and apply it in tc
+     
   #### Link
   - **Seata:** https://github.com/seata/seata  
   - **Seata-Samples:** https://github.com/seata/seata-samples   
@@ -779,40 +779,40 @@ description: This article will introduce you how to understand the details of ea
     
    #### Feature
      
-  -[[#774](https://github.com/seata/seata/pull/869)] support Etcd3 registration center
-  -[[#793](https://github.com/seata/seata/pull/793)] support sofa-registry registration center
-  -[[#856](https://github.com/seata/seata/pull/856)] add batch delete undolog processing
-  -[[#786](https://github.com/seata/seata/pull/786)] support for branch transaction concurrency in global transactions
+  - [[#774](https://github.com/seata/seata/pull/869)] support Etcd3 registration center
+  - [[#793](https://github.com/seata/seata/pull/793)] support sofa-registry registration center
+  - [[#856](https://github.com/seata/seata/pull/856)] add batch delete undolog processing
+  - [[#786](https://github.com/seata/seata/pull/786)] support for branch transaction concurrency in global transactions
      
      
      
    #### Bugfix & Optimize
      
-  -[[#879](https://github.com/seata/seata/pull/879)] fix when batch delete undolog,the preparedStatement does not close
-  -[[#945](https://github.com/seata/seata/pull/945)] add the releaseLock method in the LockManager interface to optimize the calling logic
-  -[[#938](https://github.com/seata/seata/pull/938)] optimize the TransactionManager service loading logic
-  -[[#913](https://github.com/seata/seata/pull/913)] optimize the module structure of the RPC integration framework
-  -[[#795](https://github.com/seata/seata/pull/795)] optimize the performance of server node write files
-  -[[#921](https://github.com/seata/seata/pull/921)] fix NPE exception when select for update
-  -[[#925](https://github.com/seata/seata/pull/925)] optimize the same DefaultCoordinator instance when the server starts
-  -[[#930](https://github.com/seata/seata/pull/930)] optimize field access modifiers 
-  -[[#907](https://github.com/seata/seata/pull/907)] fix hostname can't be null exception
-  -[[#923](https://github.com/seata/seata/pull/923)] fix the problem that the key is not formatted when the nettyClientKeyPool connection is destroyed
-  -[[#891](https://github.com/seata/seata/pull/891)] fix the NPE exception when using select union all
-  -[[#888](https://github.com/seata/seata/pull/888)] fix copyright checkstyle verification
-  -[[#901](https://github.com/seata/seata/pull/901)] fix parent node path does not exist when Zookeeper is registered
-  -[[#904](https://github.com/seata/seata/pull/904)] optimize updated data query logic in UpdateExecutort
-  -[[#802](https://github.com/seata/seata/pull/802)] optimize checkstyle and add plugins
-  -[[#882](https://github.com/seata/seata/pull/882)] modify copyright, add copyright automatic plugin
-  -[[#874](https://github.com/seata/seata/pull/874)] add the communication default configuration value
-  -[[#866](https://github.com/seata/seata/pull/866)] fix unable to generate dubbo:reference proxy class
-  -[[#877](https://github.com/seata/seata/pull/877)] fix concurrentModifyException when batch deleting undolog
-  -[[#855](https://github.com/seata/seata/pull/855)] optimize the globalCommit always returns committed to the user in AT mode
-  -[[#875](https://github.com/seata/seata/pull/875)] fix select for update, Boolean cast ResultSet failed
-  -[[#830](https://github.com/seata/seata/pull/830)] fix RM late registration problem
-  -[[#872](https://github.com/seata/seata/pull/872)] fix RegisterRMRequest decoding message length check is not accurate
-  -[[#831](https://github.com/seata/seata/pull/831)] optimize CountDownLatch in MessageFuture and replace it with CompletableFuture
-  -[[#834](https://github.com/seata/seata/pull/834)] fix non-SQLException in ExecuteTemplate does not throw a exception
+  - [[#879](https://github.com/seata/seata/pull/879)] fix when batch delete undolog,the preparedStatement does not close
+  - [[#945](https://github.com/seata/seata/pull/945)] add the releaseLock method in the LockManager interface to optimize the calling logic
+  - [[#938](https://github.com/seata/seata/pull/938)] optimize the TransactionManager service loading logic
+  - [[#913](https://github.com/seata/seata/pull/913)] optimize the module structure of the RPC integration framework
+  - [[#795](https://github.com/seata/seata/pull/795)] optimize the performance of server node write files
+  - [[#921](https://github.com/seata/seata/pull/921)] fix NPE exception when select for update
+  - [[#925](https://github.com/seata/seata/pull/925)] optimize the same DefaultCoordinator instance when the server starts
+  - [[#930](https://github.com/seata/seata/pull/930)] optimize field access modifiers 
+  - [[#907](https://github.com/seata/seata/pull/907)] fix hostname can't be null exception
+  - [[#923](https://github.com/seata/seata/pull/923)] fix the problem that the key is not formatted when the nettyClientKeyPool connection is destroyed
+  - [[#891](https://github.com/seata/seata/pull/891)] fix the NPE exception when using select union all
+  - [[#888](https://github.com/seata/seata/pull/888)] fix copyright checkstyle verification
+  - [[#901](https://github.com/seata/seata/pull/901)] fix parent node path does not exist when Zookeeper is registered
+  - [[#904](https://github.com/seata/seata/pull/904)] optimize updated data query logic in UpdateExecutort
+  - [[#802](https://github.com/seata/seata/pull/802)] optimize checkstyle and add plugins
+  - [[#882](https://github.com/seata/seata/pull/882)] modify copyright, add copyright automatic plugin
+  - [[#874](https://github.com/seata/seata/pull/874)] add the communication default configuration value
+  - [[#866](https://github.com/seata/seata/pull/866)] fix unable to generate dubbo:reference proxy class
+  - [[#877](https://github.com/seata/seata/pull/877)] fix concurrentModifyException when batch deleting undolog
+  - [[#855](https://github.com/seata/seata/pull/855)] optimize the globalCommit always returns committed to the user in AT mode
+  - [[#875](https://github.com/seata/seata/pull/875)] fix select for update, Boolean cast ResultSet failed
+  - [[#830](https://github.com/seata/seata/pull/830)] fix RM late registration problem
+  - [[#872](https://github.com/seata/seata/pull/872)] fix RegisterRMRequest decoding message length check is not accurate
+  - [[#831](https://github.com/seata/seata/pull/831)] optimize CountDownLatch in MessageFuture and replace it with CompletableFuture
+  - [[#834](https://github.com/seata/seata/pull/834)] fix non-SQLException in ExecuteTemplate does not throw a exception
        
   #### Link
   - **Seata:** https://github.com/seata/seata  
@@ -835,7 +835,7 @@ description: This article will introduce you how to understand the details of ea
   
   The version is updated as follows:
 
-   ### Compatibility
+   #### Compatibility
    
    - [[#809](https://github.com/seata/seata/pull/809)] Change groupId,artifactId, and package
    - [[#815](https://github.com/seata/seata/pull/815)] Add maven plugin to release seata with groupId io.seata
@@ -923,6 +923,8 @@ description: This article will introduce you how to understand the details of ea
   Seata is an easy-to-use, high-performance, open source distributed transaction solution.
   
   The version is updated as follows:
+
+  - TBD
     
   #### Link
   - **Seata:** https://github.com/seata/seata  
@@ -1234,9 +1236,9 @@ description: This article will introduce you how to understand the details of ea
 <details>
   <summary><mark>Release notes</mark></summary>
 
-  ### Seata 0.2.0
+  ### Seata 0.1.1
   
-  Seata 0.2.0 Released.
+  Seata 0.1.1 Released.
   
   Seata is an easy-to-use, high-performance, open source distributed transaction solution.
   
