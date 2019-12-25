@@ -26,7 +26,11 @@ starter默认开启数据源自动代理，用户若再手动配置DataSourcePro
 - spring-cloud-alibaba-seata
 > 2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0。  
 > 截止20191222日，现有版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本；  
-> 也可以手动改造让SpringUtils先初始化，以实现兼容。
+```
+    临时兼容解决方案(单选即可): 
+    a.@SpringBootApplication注解内exclude掉spring-cloud-alibaba-seata内的com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration
+    b.让SpringUtils先初始化
+```  
 
 ### 启动Server
 Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。  
