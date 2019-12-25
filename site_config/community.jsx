@@ -82,6 +82,13 @@ export default {
           dateStr: 'Dec 18nd，2019',
           link: '/zh-cn/blog/seata-community-meetup-hangzhou-ready.html',
         },
+        {
+          img: '/img/blog/20191221171543.jpg',
+          title: 'Seata Meetup·杭州站成功举办',
+          content: 'Seata Community Meetup·杭州站,于12月21号在杭州市梦想小镇浙江青年众创空间完美举办',
+          dateStr: 'Dec 25nd，2019',
+          link: '/zh-cn/blog/seata-meetup-hangzhou.html',
+        },
       ]
     },
     contacts: {
