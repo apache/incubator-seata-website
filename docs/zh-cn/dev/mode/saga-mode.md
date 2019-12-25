@@ -1,7 +1,7 @@
 ---
 title: Seata Saga 模式
 keywords: Seata
-description: Seata Saga 模式。
+description: Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
 ---
 
 # SEATA Saga 模式
@@ -31,8 +31,8 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 ![状态机引擎原理](/img/saga/saga_engine_mechanism.png?raw=true)
 
-* 图中的状态图是先执行stateA, 再执行stataB，然后执行stateC
-* "状态"的执行是基于事件驱动的模型，stataA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB
+* 图中的状态图是先执行stateA, 再执行stateB，然后执行stateC
+* "状态"的执行是基于事件驱动的模型，stateA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB
 * 在整个状态机启动时会调用Seata Server开启分布式事务，并生产xid, 然后记录"状态机实例"启动事件到本地数据库
 * 当执行到一个"状态"时会调用Seata Server注册分支事务，并生产branchId, 然后记录"状态实例"开始执行事件到本地数据库
 * 当一个"状态"执行完成后会记录"状态实例"执行结束事件到本地数据库, 然后调用Seata Server上报分支事务的状态

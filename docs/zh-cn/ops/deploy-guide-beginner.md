@@ -26,7 +26,11 @@ starter默认开启数据源自动代理，用户若再手动配置DataSourcePro
 - spring-cloud-alibaba-seata
 > 2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0。  
 > 截止20191222日，现有版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本；  
-> 也可以手动改造让SpringUtils先初始化，以实现兼容。
+```
+    临时兼容解决方案(单选即可): 
+    a.@SpringBootApplication注解内exclude掉spring-cloud-alibaba-seata内的com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration
+    b.让SpringUtils先初始化
+```  
 
 ### 启动Server
 Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。  
@@ -34,15 +38,15 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
     db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些。
 #### 步骤一：启动包
 - <a href="https://github.com/seata/seata/releases" target="_blank">点击下载</a>
-- 官方钉钉群（群号：23171167，1群5000人已满，可扫描官网二维码加2群），qq群（群号：254657148）群文件共享下载
+- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community/index.html" target="_blank">2群</a>），qq群（群号：254657148）群文件共享下载
 - 其它途径
 
 #### 步骤二：建表
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
 
 #### 步骤三：修改store.mode
-启动包: seata-->conf-->file.conf，修改store.mode="db";也可以在启动时加命令参数-m db指定。  
-源码:   根目录-->seata-server-->resources-->file.conf，修改store.mode="db";也可以在启动时加命令参数-m db指定。
+启动包: seata-->conf-->file.conf，修改store.mode="db"
+源码:   根目录-->seata-server-->resources-->file.conf，修改store.mode="db"
 
 #### 步骤四：修改数据库连接
 启动包: seata-->conf-->file.conf，修改store.db相关属性。  
@@ -182,9 +186,8 @@ config {
 
 ```
 - 脚本
-> script-->config-center下的3个nacos文件nacos-config.py、nacos-config.sh、nacos-config.txt  
-txt为参数明细（包含S
-.erver和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。  
+> script-->config-center下的3个文件nacos-config.py、nacos-config.sh、config.txt  
+txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。  
 - 导入配置
 > 用命令执行脚本导入seata配置参数至nacos，在nacos控制台查看配置确认是否成功  
 - 注册TC
