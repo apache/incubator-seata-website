@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="keywords" content="Seata" />
-	<meta name="description" content="Seata Saga 模式。" />
+	<meta name="description" content="Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。" />
 	<!-- 网页标签标题 -->
 	<title>Seata Saga 模式</title>
   <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
@@ -37,8 +37,8 @@
 <h3>状态机引擎原理:</h3>
 <p><img src="/img/saga/saga_engine_mechanism.png?raw=true" alt="状态机引擎原理"></p>
 <ul>
-<li>图中的状态图是先执行stateA, 再执行stataB，然后执行stateC</li>
-<li>&quot;状态&quot;的执行是基于事件驱动的模型，stataA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB</li>
+<li>图中的状态图是先执行stateA, 再执行stateB，然后执行stateC</li>
+<li>&quot;状态&quot;的执行是基于事件驱动的模型，stateA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB</li>
 <li>在整个状态机启动时会调用Seata Server开启分布式事务，并生产xid, 然后记录&quot;状态机实例&quot;启动事件到本地数据库</li>
 <li>当执行到一个&quot;状态&quot;时会调用Seata Server注册分支事务，并生产branchId, 然后记录&quot;状态实例&quot;开始执行事件到本地数据库</li>
 <li>当一个&quot;状态&quot;执行完成后会记录&quot;状态实例&quot;执行结束事件到本地数据库, 然后调用Seata Server上报分支事务的状态</li>

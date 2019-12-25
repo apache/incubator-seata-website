@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata、分布式事务" />
+	<meta name="description" content="seata-analysis-tcc-modular" />
+	<!-- 网页标签标题 -->
+	<title>Seata tcc 模块源码分析</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h2>一  .导读</h2>
+<p>spring 模块分析中讲到，Seata 的 spring 模块会对涉及到分布式业务的 bean 进行处理。项目启动时，当 GlobalTransactionalScanner 扫描到 TCC 服务的 reference 时（即tcc事务参与方），会对其进行动态代理，即给 bean 织入 TCC 模式下的 MethodInterceptor 的实现类。tcc 事务发起方依然使用 @GlobalTransactional 注解开启，织入的是通用的 MethodInterceptor 的实现类。</p>
+<p>TCC 模式下的 MethodInterceptor 实现类即 TccActionInterceptor(spring模块) ，这个类中调用了 ActionInterceptorHandler(tcc模块) 进行 TCC 模式下事务流程的处理。</p>
+<p>TCC 动态代理的主要功能是：生成TCC运行时上下文、透传业务参数、注册分支事务记录。</p>
+<h2>二  .TCC模式介绍</h2>
+<p>在2PC（两阶段提交）协议中，事务管理器分两阶段协调资源管理，资源管理器对外提供三个操作，分别是一阶段的准备操作，和二阶段的提交操作和回滚操作。</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">TccAction</span> </span>{
+
+    <span class="hljs-meta">@TwoPhaseBusinessAction</span>(name = <span class="hljs-string">"tccActionForTest"</span> , commitMethod = <span class="hljs-string">"commit"</span>, rollbackMethod = <span class="hljs-string">"rollback"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">prepare</span><span class="hljs-params">(BusinessActionContext actionContext,
+                           @BusinessActionContextParameter(paramName = <span class="hljs-string">"a"</span>)</span> <span class="hljs-keyword">int</span> a,
+                           @<span class="hljs-title">BusinessActionContextParameter</span><span class="hljs-params">(paramName = <span class="hljs-string">"b"</span>, index = <span class="hljs-number">0</span>)</span> List b,
+                           @<span class="hljs-title">BusinessActionContextParameter</span><span class="hljs-params">(isParamInProperty = <span class="hljs-keyword">true</span>)</span> TccParam tccParam)</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">commit</span><span class="hljs-params">(BusinessActionContext actionContext)</span></span>;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">rollback</span><span class="hljs-params">(BusinessActionContext actionContext)</span></span>;
+}
+</code></pre>
+<p>这是 TCC 参与者实例，参与者需要实现三个方法，第一个参数必须是 BusinessActionContext ，方法返回类型固定，对外发布成微服务，供事务管理器调用。</p>
+<p>prepare：资源的检查和预留。例：扣减账户的余额，并增加相同的冻结余额。</p>
+<p>commit：使用预留的资源，完成真正的业务操作。例：减少冻结余额，扣减资金业务完成。</p>
+<p>cancel：释放预留资源。例：冻结余额加回账户的余额。</p>
+<p>其中 BusinessActionContext 封装了本次事务的上下文环境：xid、branchId、actionName 和被 @BusinessActionContextParam 注解的参数等。</p>
+<p>参与方业务有几个需要注意的地方：
+1.控制业务幂等性，需要支持同一笔事务的重复提交和重复回滚。
+2.防悬挂，即二阶段的回滚，比一阶段的 try 先执行。
+3.放宽一致性协议，最终一致，所以是读已修改</p>
+<h2>三  . remoting 包解析</h2>
+<p><img src="https://img-blog.csdnimg.cn/20191124211806237.png?" alt="在这里插入图片描述"></p>
+<p>包中所有的类都是为包中的 DefaultRemotingParser 服务，Dubbo、LocalTCC、SofaRpc 分别负责解析各自RPC协议下的类。</p>
+<p>DefaultRemotingParser 的主要方法：
+1.判断 bean 是否是 remoting bean，代码：</p>
+<pre><code class="language-java">    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isRemoting</span><span class="hljs-params">(Object bean, String beanName)</span> <span class="hljs-keyword">throws</span> FrameworkException </span>{
+        <span class="hljs-comment">//判断是否是服务调用方或者是否是服务提供方</span>
+        <span class="hljs-keyword">return</span> isReference(bean, beanName) || isService(bean, beanName);
+    }
+</code></pre>
+<p>2.远程 bean 解析，把 rpc类 解析成 RemotingDesc，，代码：</p>
+<pre><code class="language-java"><span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isRemoting</span><span class="hljs-params">(Object bean, String beanName)</span> <span class="hljs-keyword">throws</span> FrameworkException </span>{
+        <span class="hljs-comment">//判断是否是服务调用方或者是否是服务提供方</span>
+        <span class="hljs-keyword">return</span> isReference(bean, beanName) || isService(bean, beanName);
+    }
+</code></pre>
+<p>利用 allRemotingParsers 来解析远程 bean 。allRemotingParsers是在：initRemotingParser()  中调用EnhancedServiceLoader.loadAll(RemotingParser.class) 动态进行 RemotingParser 子类的加载，即 SPI 加载机制。</p>
+<p>如果想扩展，比如实现一个feign远程调用的解析类，只要把RemotingParser相关实现类写在 SPI 的配置中就可以了，扩展性很强。</p>
+<p>RemotingDesc 事务流程需要的远程 bean 的一些具体信息，比如 targetBean、interfaceClass、interfaceClassName、protocol、isReference等等。</p>
+<p>3.TCC资源注册</p>
+<pre><code class="language-java"><span class="hljs-function"><span class="hljs-keyword">public</span> RemotingDesc <span class="hljs-title">parserRemotingServiceInfo</span><span class="hljs-params">(Object bean, String beanName)</span> </span>{
+        RemotingDesc remotingBeanDesc = getServiceDesc(bean, beanName);
+        <span class="hljs-keyword">if</span> (remotingBeanDesc == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        }
+        remotingServiceMap.put(beanName, remotingBeanDesc);
+
+        Class&lt;?&gt; interfaceClass = remotingBeanDesc.getInterfaceClass();
+        Method[] methods = interfaceClass.getMethods();
+        <span class="hljs-keyword">if</span> (isService(bean, beanName)) {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-comment">//service bean, registry resource</span>
+                Object targetBean = remotingBeanDesc.getTargetBean();
+                <span class="hljs-keyword">for</span> (Method m : methods) {
+                    TwoPhaseBusinessAction twoPhaseBusinessAction = m.getAnnotation(TwoPhaseBusinessAction.class);
+                    <span class="hljs-keyword">if</span> (twoPhaseBusinessAction != <span class="hljs-keyword">null</span>) {
+                        TCCResource tccResource = <span class="hljs-keyword">new</span> TCCResource();
+                        tccResource.setActionName(twoPhaseBusinessAction.name());
+                        tccResource.setTargetBean(targetBean);
+                        tccResource.setPrepareMethod(m);
+                        tccResource.setCommitMethodName(twoPhaseBusinessAction.commitMethod());
+                        tccResource.setCommitMethod(ReflectionUtil
+                            .getMethod(interfaceClass, twoPhaseBusinessAction.commitMethod(),
+                                <span class="hljs-keyword">new</span> Class[] {BusinessActionContext.class}));
+                        tccResource.setRollbackMethodName(twoPhaseBusinessAction.rollbackMethod());
+                        tccResource.setRollbackMethod(ReflectionUtil
+                            .getMethod(interfaceClass, twoPhaseBusinessAction.rollbackMethod(),
+                                <span class="hljs-keyword">new</span> Class[] {BusinessActionContext.class}));
+                        <span class="hljs-comment">//registry tcc resource</span>
+                        DefaultResourceManager.get().registerResource(tccResource);
+                    }
+                }
+            } <span class="hljs-keyword">catch</span> (Throwable t) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> FrameworkException(t, <span class="hljs-string">"parser remoting service error"</span>);
+            }
+        }
+        <span class="hljs-keyword">if</span> (isReference(bean, beanName)) {
+            <span class="hljs-comment">//reference bean, TCC proxy</span>
+            remotingBeanDesc.setReference(<span class="hljs-keyword">true</span>);
+        }
+        <span class="hljs-keyword">return</span> remotingBeanDesc;
+    }
+</code></pre>
+<p>首先判断是否是事务参与方，如果是，拿到 RemotingDesc 中的 interfaceClass，遍历接口中的方法，判断方法上是否有@TwoParserBusinessAction 注解，如果有，把参数封装成 TCCRecource，通过 DefaultResourceManager 进行 TCC 资源的注册。</p>
+<p>这里 DefaultResourceManager 会根据 Resource 的 BranchType 来寻找对应的资源管理器，TCC 模式下资源管理类，在 tcc 模块中。</p>
+<p>这个 rpc 解析类主要提供给 spring 模块进行使用。parserRemotingServiceInfo() 被封装到了 spring 模块的 TCCBeanParserUtils 工具类中。spring 模块的 GlobalTransactionScanner 在项目启动的时候，通过工具类解析 TCC bean，工具类 TCCBeanParserUtils 会调用 TCCResourceManager 进行资源的注册，并且如果是全局事务的服务提供者，会织入 TccActionInterceptor 代理。这些个流程是 spring 模块的功能，tcc 模块是提供功能类给 spring 模块使用。</p>
+<h2>三  .tcc 资源管理器</h2>
+<p>TCCResourceManager 负责管理 TCC 模式下资源的注册、分支的注册、提交、和回滚。</p>
+<p>1.在项目启动时， spring 模块的 GlobalTransactionScanner 扫描到 bean 是 tcc bean 时，会本地缓存资源，并向 server 注册：</p>
+<pre><code class="language-java">    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">registerResource</span><span class="hljs-params">(Resource resource)</span> </span>{
+        TCCResource tccResource = (TCCResource)resource;
+        tccResourceCache.put(tccResource.getResourceId(), tccResource);
+        <span class="hljs-keyword">super</span>.registerResource(tccResource);
+    }
+</code></pre>
+<p>与server通信的逻辑被封装在了父类 AbstractResourceManage 中，这里根据 resourceId 对 TCCResource 进行缓存。父类 AbstractResourceManage  注册资源的时候，使用 resourceGroupId + actionName，actionName 就是 @TwoParseBusinessAction 注解中的 name，resourceGroupId 默认是 DEFAULT。</p>
+<p>2.事务分支的注册在 rm-datasource 包下的 AbstractResourceManager 中，注册时参数 lockKeys 为 null，和 AT 模式下事务分支的注册还是有些不一样的。</p>
+<p>3.分支的提交或者回滚：</p>
+<pre><code class="language-java">    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> BranchStatus <span class="hljs-title">branchCommit</span><span class="hljs-params">(BranchType branchType, String xid, <span class="hljs-keyword">long</span> branchId, String resourceId,
+                                     String applicationData)</span> <span class="hljs-keyword">throws</span> TransactionException </span>{
+        TCCResource tccResource = (TCCResource)tccResourceCache.get(resourceId);
+        <span class="hljs-keyword">if</span> (tccResource == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ShouldNeverHappenException(<span class="hljs-string">"TCC resource is not exist, resourceId:"</span> + resourceId);
+        }
+        Object targetTCCBean = tccResource.getTargetBean();
+        Method commitMethod = tccResource.getCommitMethod();
+        <span class="hljs-keyword">if</span> (targetTCCBean == <span class="hljs-keyword">null</span> || commitMethod == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ShouldNeverHappenException(<span class="hljs-string">"TCC resource is not available, resourceId:"</span> + resourceId);
+        }
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">boolean</span> result = <span class="hljs-keyword">false</span>;
+            <span class="hljs-comment">//BusinessActionContext</span>
+            BusinessActionContext businessActionContext = getBusinessActionContext(xid, branchId, resourceId,
+                applicationData);
+            Object ret = commitMethod.invoke(targetTCCBean, businessActionContext);
+            <span class="hljs-keyword">if</span> (ret != <span class="hljs-keyword">null</span>) {
+                <span class="hljs-keyword">if</span> (ret <span class="hljs-keyword">instanceof</span> TwoPhaseResult) {
+                    result = ((TwoPhaseResult)ret).isSuccess();
+                } <span class="hljs-keyword">else</span> {
+                    result = (<span class="hljs-keyword">boolean</span>)ret;
+                }
+            }
+            <span class="hljs-keyword">return</span> result ? BranchStatus.PhaseTwo_Committed : BranchStatus.PhaseTwo_CommitFailed_Retryable;
+        } <span class="hljs-keyword">catch</span> (Throwable t) {
+            LOGGER.error(msg, t);
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> FrameworkException(t, msg);
+        }
+    }
+</code></pre>
+<p>通过参数 xid、branchId、resourceId、applicationData 恢复业务的上下文 businessActionContext。</p>
+<p>根据获取到的上下文通过反射执行 commit 方法，并返回执行结果。回滚方法类似。</p>
+<p>这里 branchCommit() 和 branchRollback() 提供给 rm 模块资源处理的抽象类 AbstractRMHandler 调用，这个 handler 是 core 模块定义的模板方法的进一步实现类。和 registerResource() 不一样，后者是 spring 扫描时主动注册资源。</p>
+<h2>四  . tcc 模式事务处理</h2>
+<p>spring 模块中的 TccActionInterceptor 的 invoke() 方法在被代理的 rpc bean 被调用时执行。该方法先获取 rpc 拦截器透传过来的全局事务 xid ，然后 TCC 模式下全局事务参与者的事务流程还是交给 tcc 模块 ActionInterceptorHandler  处理。</p>
+<p>也就是说，事务参与者，在项目启动的时候，被代理。真实的业务方法，在 ActionInterceptorHandler 中，通过回调执行。</p>
+<pre><code class="language-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> Map&lt;String, Object&gt; <span class="hljs-title">proceed</span><span class="hljs-params">(Method method, Object[] arguments, String xid, TwoPhaseBusinessAction businessAction,
+                                       Callback&lt;Object&gt; targetCallback)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        Map&lt;String, Object&gt; ret = <span class="hljs-keyword">new</span> HashMap&lt;String, Object&gt;(<span class="hljs-number">4</span>);
+
+        <span class="hljs-comment">//TCC name</span>
+        String actionName = businessAction.name();
+        BusinessActionContext actionContext = <span class="hljs-keyword">new</span> BusinessActionContext();
+        actionContext.setXid(xid);
+        <span class="hljs-comment">//set action anme</span>
+        actionContext.setActionName(actionName);
+
+        <span class="hljs-comment">//Creating Branch Record</span>
+        String branchId = doTccActionLogStore(method, arguments, businessAction, actionContext);
+        actionContext.setBranchId(branchId);
+
+        <span class="hljs-comment">//set the parameter whose type is BusinessActionContext</span>
+        Class&lt;?&gt;[] types = method.getParameterTypes();
+        <span class="hljs-keyword">int</span> argIndex = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (Class&lt;?&gt; cls : types) {
+            <span class="hljs-keyword">if</span> (cls.getName().equals(BusinessActionContext.class.getName())) {
+                arguments[argIndex] = actionContext;
+                <span class="hljs-keyword">break</span>;
+            }
+            argIndex++;
+        }
+        <span class="hljs-comment">//the final parameters of the try method</span>
+        ret.put(Constants.TCC_METHOD_ARGUMENTS, arguments);
+        <span class="hljs-comment">//the final result</span>
+        ret.put(Constants.TCC_METHOD_RESULT, targetCallback.execute());
+        <span class="hljs-keyword">return</span> ret;
+    }
+</code></pre>
+<p>这里有两个重要操作：</p>
+<p>1.doTccActionLogStore() 这个方法中，调用了两个比较重要的方法：
+fetchActionRequestContext(method, arguments)，这个方法把被 @BusinessActionContextParam 注解的参数取出来，在下面的 init 方法中塞入 BusinessActionComtext ，同时塞入的还有事务相关参数。
+DefaultResourceManager.get().branchRegister(BranchType.TCC, actionName, null, xid,applicationContextStr, null)，这个方法执行 TCC 模式下事务参与者事务分支的注册。</p>
+<p>2.回调执行 targetCallback.execute() ，被代理的 bean 具体的业务，即 prepare() 方法。</p>
+<h2>五  .总结</h2>
+<p>tcc模块，主要提供以下功能 ：</p>
+<ol>
+<li>定义两阶段协议注解，提供 tcc 模式下事务流程需要的属性。</li>
+<li>提供解析不同 rpc 框架 remoting bean 的 ParserRemoting 实现，供 spring 模块调用。</li>
+<li>提供 TCC 模式下资源管理器，进行资源注册、事务分支注册提交回滚等。</li>
+<li>提供 TCC 模式下事务流程的处理类，让 MethodInterceptor 代理类不执行具体模式的事务流程，而是下放到 tcc 模块。</li>
+</ol>
+<h2>五  .相关</h2>
+<p>作者：赵润泽，<a href="https://blog.csdn.net/qq_37804737/category_9530078.html">系列地址</a>。</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
