@@ -17,7 +17,20 @@ TCC 动态代理的主要功能是：生成TCC运行时上下文、透传业务�
 
 在2PC（两阶段提交）协议中，事务管理器分两阶段协调资源管理，资源管理器对外提供三个操作，分别是一阶段的准备操作，和二阶段的提交操作和回滚操作。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191225134451125.png)
+```java
+public interface TccAction {
+
+    @TwoPhaseBusinessAction(name = "tccActionForTest" , commitMethod = "commit", rollbackMethod = "rollback")
+    public boolean prepare(BusinessActionContext actionContext,
+                           @BusinessActionContextParameter(paramName = "a") int a,
+                           @BusinessActionContextParameter(paramName = "b", index = 0) List b,
+                           @BusinessActionContextParameter(isParamInProperty = true) TccParam tccParam);
+
+    public boolean commit(BusinessActionContext actionContext);
+    
+    public boolean rollback(BusinessActionContext actionContext);
+}
+```
 
 这是 TCC 参与者实例，参与者需要实现三个方法，第一个参数必须是 BusinessActionContext ，方法返回类型固定，对外发布成微服务，供事务管理器调用。
 
@@ -43,11 +56,23 @@ cancel：释放预留资源。例：冻结余额加回账户的余额。
 DefaultRemotingParser 的主要方法：
 1.判断 bean 是否是 remoting bean，代码：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191224215523850.png)
+```java
+    @Override
+    public boolean isRemoting(Object bean, String beanName) throws FrameworkException {
+        //判断是否是服务调用方或者是否是服务提供方
+        return isReference(bean, beanName) || isService(bean, beanName);
+    }
+```
 
 2.远程 bean 解析，把 rpc类 解析成 RemotingDesc，，代码：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019112421303581.png?)
+```java
+@Override
+    public boolean isRemoting(Object bean, String beanName) throws FrameworkException {
+        //判断是否是服务调用方或者是否是服务提供方
+        return isReference(bean, beanName) || isService(bean, beanName);
+    }
+```
 
 利用 allRemotingParsers 来解析远程 bean 。allRemotingParsers是在：initRemotingParser()  中调用EnhancedServiceLoader.loadAll(RemotingParser.class) 动态进行 RemotingParser 子类的加载，即 SPI 加载机制。
 
@@ -57,7 +82,50 @@ RemotingDesc 事务流程需要的远程 bean 的一些具体信息，比如 tar
 
 3.TCC资源注册
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191124214457177.png?)
+```java
+public RemotingDesc parserRemotingServiceInfo(Object bean, String beanName) {
+        RemotingDesc remotingBeanDesc = getServiceDesc(bean, beanName);
+        if (remotingBeanDesc == null) {
+            return null;
+        }
+        remotingServiceMap.put(beanName, remotingBeanDesc);
+
+        Class<?> interfaceClass = remotingBeanDesc.getInterfaceClass();
+        Method[] methods = interfaceClass.getMethods();
+        if (isService(bean, beanName)) {
+            try {
+                //service bean, registry resource
+                Object targetBean = remotingBeanDesc.getTargetBean();
+                for (Method m : methods) {
+                    TwoPhaseBusinessAction twoPhaseBusinessAction = m.getAnnotation(TwoPhaseBusinessAction.class);
+                    if (twoPhaseBusinessAction != null) {
+                        TCCResource tccResource = new TCCResource();
+                        tccResource.setActionName(twoPhaseBusinessAction.name());
+                        tccResource.setTargetBean(targetBean);
+                        tccResource.setPrepareMethod(m);
+                        tccResource.setCommitMethodName(twoPhaseBusinessAction.commitMethod());
+                        tccResource.setCommitMethod(ReflectionUtil
+                            .getMethod(interfaceClass, twoPhaseBusinessAction.commitMethod(),
+                                new Class[] {BusinessActionContext.class}));
+                        tccResource.setRollbackMethodName(twoPhaseBusinessAction.rollbackMethod());
+                        tccResource.setRollbackMethod(ReflectionUtil
+                            .getMethod(interfaceClass, twoPhaseBusinessAction.rollbackMethod(),
+                                new Class[] {BusinessActionContext.class}));
+                        //registry tcc resource
+                        DefaultResourceManager.get().registerResource(tccResource);
+                    }
+                }
+            } catch (Throwable t) {
+                throw new FrameworkException(t, "parser remoting service error");
+            }
+        }
+        if (isReference(bean, beanName)) {
+            //reference bean, TCC proxy
+            remotingBeanDesc.setReference(true);
+        }
+        return remotingBeanDesc;
+    }
+```
 
 首先判断是否是事务参与方，如果是，拿到 RemotingDesc 中的 interfaceClass，遍历接口中的方法，判断方法上是否有@TwoParserBusinessAction 注解，如果有，把参数封装成 TCCRecource，通过 DefaultResourceManager 进行 TCC 资源的注册。
 
@@ -71,7 +139,14 @@ TCCResourceManager 负责管理 TCC 模式下资源的注册、分支的注册�
 
 1.在项目启动时， spring 模块的 GlobalTransactionScanner 扫描到 bean 是 tcc bean 时，会本地缓存资源，并向 server 注册：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/201911242209057.png)
+```java
+    @Override
+    public void registerResource(Resource resource) {
+        TCCResource tccResource = (TCCResource)resource;
+        tccResourceCache.put(tccResource.getResourceId(), tccResource);
+        super.registerResource(tccResource);
+    }
+```
 
 与server通信的逻辑被封装在了父类 AbstractResourceManage 中，这里根据 resourceId 对 TCCResource 进行缓存。父类 AbstractResourceManage  注册资源的时候，使用 resourceGroupId + actionName，actionName 就是 @TwoParseBusinessAction 注解中的 name，resourceGroupId 默认是 DEFAULT。
 
@@ -79,8 +154,39 @@ TCCResourceManager 负责管理 TCC 模式下资源的注册、分支的注册�
 
 3.分支的提交或者回滚：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191124221641648.png?)
-
+```java
+    @Override
+    public BranchStatus branchCommit(BranchType branchType, String xid, long branchId, String resourceId,
+                                     String applicationData) throws TransactionException {
+        TCCResource tccResource = (TCCResource)tccResourceCache.get(resourceId);
+        if (tccResource == null) {
+            throw new ShouldNeverHappenException("TCC resource is not exist, resourceId:" + resourceId);
+        }
+        Object targetTCCBean = tccResource.getTargetBean();
+        Method commitMethod = tccResource.getCommitMethod();
+        if (targetTCCBean == null || commitMethod == null) {
+            throw new ShouldNeverHappenException("TCC resource is not available, resourceId:" + resourceId);
+        }
+        try {
+            boolean result = false;
+            //BusinessActionContext
+            BusinessActionContext businessActionContext = getBusinessActionContext(xid, branchId, resourceId,
+                applicationData);
+            Object ret = commitMethod.invoke(targetTCCBean, businessActionContext);
+            if (ret != null) {
+                if (ret instanceof TwoPhaseResult) {
+                    result = ((TwoPhaseResult)ret).isSuccess();
+                } else {
+                    result = (boolean)ret;
+                }
+            }
+            return result ? BranchStatus.PhaseTwo_Committed : BranchStatus.PhaseTwo_CommitFailed_Retryable;
+        } catch (Throwable t) {
+            LOGGER.error(msg, t);
+            throw new FrameworkException(t, msg);
+        }
+    }
+```
 通过参数 xid、branchId、resourceId、applicationData 恢复业务的上下文 businessActionContext。
 
 根据获取到的上下文通过反射执行 commit 方法，并返回执行结果。回滚方法类似。
@@ -88,11 +194,44 @@ TCCResourceManager 负责管理 TCC 模式下资源的注册、分支的注册�
 这里 branchCommit() 和 branchRollback() 提供给 rm 模块资源处理的抽象类 AbstractRMHandler 调用，这个 handler 是 core 模块定义的模板方法的进一步实现类。和 registerResource() 不一样，后者是 spring 扫描时主动注册资源。
 
 ## 四  . tcc 模式事务处理
+
 spring 模块中的 TccActionInterceptor 的 invoke() 方法在被代理的 rpc bean 被调用时执行。该方法先获取 rpc 拦截器透传过来的全局事务 xid ，然后 TCC 模式下全局事务参与者的事务流程还是交给 tcc 模块 ActionInterceptorHandler  处理。
  
 也就是说，事务参与者，在项目启动的时候，被代理。真实的业务方法，在 ActionInterceptorHandler 中，通过回调执行。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019112422405346.png?)
+```java
+    public Map<String, Object> proceed(Method method, Object[] arguments, String xid, TwoPhaseBusinessAction businessAction,
+                                       Callback<Object> targetCallback) throws Throwable {
+        Map<String, Object> ret = new HashMap<String, Object>(4);
+
+        //TCC name
+        String actionName = businessAction.name();
+        BusinessActionContext actionContext = new BusinessActionContext();
+        actionContext.setXid(xid);
+        //set action anme
+        actionContext.setActionName(actionName);
+
+        //Creating Branch Record
+        String branchId = doTccActionLogStore(method, arguments, businessAction, actionContext);
+        actionContext.setBranchId(branchId);
+
+        //set the parameter whose type is BusinessActionContext
+        Class<?>[] types = method.getParameterTypes();
+        int argIndex = 0;
+        for (Class<?> cls : types) {
+            if (cls.getName().equals(BusinessActionContext.class.getName())) {
+                arguments[argIndex] = actionContext;
+                break;
+            }
+            argIndex++;
+        }
+        //the final parameters of the try method
+        ret.put(Constants.TCC_METHOD_ARGUMENTS, arguments);
+        //the final result
+        ret.put(Constants.TCC_METHOD_RESULT, targetCallback.execute());
+        return ret;
+    }
+```
 
 这里有两个重要操作：
 
