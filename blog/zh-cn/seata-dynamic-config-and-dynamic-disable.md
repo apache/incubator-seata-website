@@ -27,7 +27,28 @@ io.seata.config.ConfigurationChangeListener
 1. 实现注册配置订阅事件监听器：用于实现各种功能的动态配置订阅，比如 GlobalTransactionalInterceptor 实现了 ConfigurationChangeListener，根据动态配置订阅实现的动态降级功能；
 2. 实现配置中心动态订阅功能与适配：对于目前还没有动态订阅功能的 file 类型默认配置中心，可以实现该基准接口来实现动态配置订阅功能；对于阻塞订阅需要另起一个线程去执行，这时候可以实现该基准接口进行适配，还可以复用该基准接口的线程池；以及还有异步订阅，有订阅单个 key，有订阅多个 key 等等，我们都可以实现该基准接口以适配各个配置中心。
 
-这里就用默认的 file 配置中心，以它的实现类 FileListener 举例子，它的实现逻辑如下：
+## Nacos 动态订阅实现
+
+Nacos 有自己内部实现的监听器，因此直接直接继承它内部抽象监听器 AbstractSharedListener，实现如下：
+
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191223212237.png)
+
+如上，
+
+- dataId：为订阅的配置属性；
+- listener：配置订阅事件监听器，用于将外部传入的 listener 作为一个 wrapper，执行真正的变更逻辑。
+
+值得一提的是，nacos 并没有使用 ConfigurationChangeListener 实现自己的监听配置，一方面是因为 Nacos 本身已有监听订阅功能，不需要自己再去实现；另一方面因为 nacos 属于非阻塞式订阅，不需要复用 ConfigurationChangeListener 的线程池，即无需进行适配。
+
+添加订阅：
+
+![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191223213347.png)
+
+Nacos 配置中心为某个 dataId 添加订阅的逻辑很简单，用 dataId 和 listener 创建一个 NacosListener 调用 configService#addListener 方法，把 NacosListener 作为 dataId 的监听器，dataId 就实现了动态配置订阅功能。
+
+## file 动态订阅实现
+
+以它的实现类 FileListener 举例子，它的实现逻辑如下：
 
 ![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191215151642.png)
 
