@@ -16,7 +16,7 @@
 <p>本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。</p>
 <h1>前言</h1>
 <p>通过GA大会上滴滴出行的高级研发工程陈鹏志的在滴滴两轮车业务中的实践,发现动态降级的必要性是非常的高,所以这边简单利用spring boot aop来简单的处理降级相关的处理,这边非常感谢陈鹏志的分享!</p>
-<p>可利用次demo<a href="https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata">项目地址</a></p>
+<p>可利用此demo<a href="https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata">项目地址</a></p>
 <p>通过以下代码改造实践.</p>
 <h2>准备工作</h2>
 <p>​	1.创建测试用的TestAspect:</p>
@@ -51,9 +51,13 @@
         Method method = signature.getMethod();
         logger.info(<span class="hljs-string">"拦截到需要分布式事务的方法,"</span> + method.getName());
         <span class="hljs-comment">// 此处可用redis或者定时任务来获取一个key判断是否需要关闭分布式事务</span>
-        GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
-        tx.begin(<span class="hljs-number">300000</span>, <span class="hljs-string">"test-client"</span>);
-        logger.info(<span class="hljs-string">"创建分布式事务完毕"</span> + tx.getXid());
+        <span class="hljs-comment">// 模拟动态关闭分布式事务</span>
+        <span class="hljs-keyword">if</span> ((<span class="hljs-keyword">int</span>)(Math.random() * <span class="hljs-number">100</span>) % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+            GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
+            tx.begin(<span class="hljs-number">300000</span>, <span class="hljs-string">"test-client"</span>);
+        } <span class="hljs-keyword">else</span> {
+            logger.info(<span class="hljs-string">"关闭分布式事务"</span>);
+        }
     }
 
     <span class="hljs-meta">@AfterThrowing</span>(throwing = <span class="hljs-string">"e"</span>, pointcut = <span class="hljs-string">"execution(* org.test.service.*.*(..))"</span>)
