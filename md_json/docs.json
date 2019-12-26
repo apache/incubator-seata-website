@@ -15,7 +15,7 @@
       "meta": {
         "title": "Seata Saga Mode",
         "keywords": "Seata, Saga mode",
-        "description": "Seata Saga mode."
+        "description": "The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development."
       }
     },
     {
