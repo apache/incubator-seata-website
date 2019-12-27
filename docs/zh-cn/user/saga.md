@@ -244,7 +244,9 @@ Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代
 状态机设计器截图:
 ![状态机设计器](/img/saga/seata-saga-statemachine-designer.png?raw=true)
 
-状态机设计器演示地址:[http://seata.io/saga_designer/index.html](http://seata.io/saga_designer/index.html)
+状态机设计器演示地址:[http://seata.io/saga_designer/index.html](/saga_designer/index.html)
+
+状态机设计器视频教程:[http://seata.io/saga_designer/vedio.html](/saga_designer/vedio.html)
 
 ## 最佳实践
 
