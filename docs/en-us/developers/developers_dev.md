@@ -10,7 +10,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 
 # Seata Committer List
 
-| 姓名   | github          | 公司             |
+| name   | github          | company             |
 | ------ | --------------- | --------------- |
 | Min Ji   | [slievrly](https://github.com/slievrly)        | Alibabba        |
 | Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibabba        |
