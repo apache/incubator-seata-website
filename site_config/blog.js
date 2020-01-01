@@ -73,7 +73,7 @@
                 link: '/zh-cn/blog/seata-spring-boot-aop-aspectj.html',
             },
             {
-                title: '源码解析Seata如何通过Dubbo传递XID',
+                title: '源码分析Seata-XID传递 Dubbo篇',
                 author: '@FUNKYE',
                 dateStr: 'Jan 1th, 2020',
                 desc: '本文讲述通过源码解析Seata-Dubbo传递XID',

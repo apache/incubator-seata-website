@@ -1,12 +1,12 @@
 ---
-title: 源码解析Seata-Dubbo传递XID
+title: 源码分析Seata-XID传递 Dubbo篇
 keywords: Seata,Dubbo,分布式事务,spring
 description: 本文讲述通过源码解析Seata-Dubbo传递XID
 author: FUNKYE
 date: 2020/01/01
 ---
 
-# 源码解析Seata如何通过Dubbo传递XID
+# 源码分析Seata-XID传递 Dubbo篇
 
 本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
 
