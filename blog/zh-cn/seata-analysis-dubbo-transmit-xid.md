@@ -14,8 +14,6 @@ date: 2020/01/01
 
 ​	1.首先来看下包结构,在seata-dubbo合seata-dubbo-alibaba下有统一由TransactionPropagationFilter这个类.
 
- <!--more--> 
-
 ![20200101203229](/img/blog/20200101203229.png)
 
 ## 分析源码
