@@ -1,4 +1,4 @@
-# Seata Official Website 
+# Seata Official Website
 
 [![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions)
 
