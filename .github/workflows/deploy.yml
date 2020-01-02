@@ -19,9 +19,9 @@ jobs:
       run: |
         npm install && npm run build && mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ deploy-dist/ && mv .htaccess *.html deploy-dist/
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2
+      uses: peaceiris/actions-gh-pages@v2.8.0
       env:
-        PERSONAL_TOKEN: 06d54f103be7ef4fbf372d49c9bf5a65cd90445a
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: master
         PUBLISH_DIR: ./deploy-dist
       with:
