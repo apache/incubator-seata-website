@@ -71,6 +71,13 @@
                 dateStr: 'Dec 23th, 2019',
                 desc: '本文讲述如何通过AOP动态创建/关闭Seata分布式事务',
                 link: '/zh-cn/blog/seata-spring-boot-aop-aspectj.html',
+            },
+            {
+                title: '源码分析Seata-XID传递 Dubbo篇',
+                author: '@FUNKYE',
+                dateStr: 'Jan 1th, 2020',
+                desc: '本文讲述通过源码解析Seata-Dubbo传递XID',
+                link: '/zh-cn/blog/seata-analysis-dubbo-transmit-xid.html',
             }
         ]
     },
