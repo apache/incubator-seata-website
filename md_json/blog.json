@@ -106,6 +106,17 @@
       }
     },
     {
+      "filename": "seata-analysis-dubbo-transmit-xid.md",
+      "link": "/zh-cn/blog/seata-analysis-dubbo-transmit-xid.html",
+      "meta": {
+        "title": "源码分析Seata-XID传递 Dubbo篇",
+        "keywords": "Seata,Dubbo,分布式事务,spring",
+        "description": "本文讲述通过源码解析Seata-Dubbo传递XID",
+        "author": "FUNKYE",
+        "date": "2020/01/01"
+      }
+    },
+    {
       "filename": "seata-analysis-go-server.md",
       "link": "/zh-cn/blog/seata-analysis-go-server.html",
       "meta": {
