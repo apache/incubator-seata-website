@@ -21,7 +21,7 @@ jobs:
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.8.0
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.seata_io_token }}
+        ACTIONS_DEPLOY_KEY: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: master
         PUBLISH_DIR: ./deploy-dist
       with:
