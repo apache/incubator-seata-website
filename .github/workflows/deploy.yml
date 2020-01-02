@@ -21,7 +21,7 @@ jobs:
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
       env:
-        PERSONAL_TOKEN: ${{ secrets.seata_io_token }}
+        PERSONAL_TOKEN: 06d54f103be7ef4fbf372d49c9bf5a65cd90445a
         PUBLISH_BRANCH: master
         PUBLISH_DIR: ./deploy-dist
       with:
