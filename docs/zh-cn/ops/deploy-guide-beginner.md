@@ -45,7 +45,7 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
 
 #### 步骤三：修改store.mode
-启动包: seata-->conf-->file.conf，修改store.mode="db"
+启动包: seata-->conf-->file.conf，修改store.mode="db"  
 源码:   根目录-->seata-server-->resources-->file.conf，修改store.mode="db"
 
 #### 步骤四：修改数据库连接
