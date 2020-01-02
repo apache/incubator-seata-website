@@ -24,6 +24,9 @@
 <p><a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a></p>
 <p><a href="#10" target="_self">10.为什么mybatis没有返回自增ID? </a></p>
 <p><a href="#11" target="_self">11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了? </a></p>
+<p><a href="#12" target="_self">12.TC如何使用mysql8? </a></p>
+<p><a href="#13" target="_self">13.支持多主键? </a></p>
+<p><a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -125,6 +128,22 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+</p>
 <h3 id='11'>Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
 <p><strong>A:</strong>
 本地执行下:mvn clean install -DskipTests=true,相关代码在0.8.1已经移除。</p>
+<hr>
+<h3 id='12'>Q: 12.TC如何使用mysql8?</h3>
+<p><strong>A:</strong> 1.修改file.conf的驱动配置store.db.driver-class-name;  2.lib目录下删除mysql5驱动,添加mysql8驱动<br>
+ps: oracle同理</p>
+<hr>
+<h3 id='13'>Q: 13.支持多主键?</h3>
+<p><strong>A:</strong>
+暂不支持，建议先建一列自增id主键，原复合主键改为唯一键来规避下</p>
+<hr>
+<h3 id='14'>Q: 14.使用HikariDataSource报错如何解决?</h3>
+<p><strong>A:</strong></p>
+<pre><code>异常1:ClassCastException: com.sun.proxy.$Proxy153 cannot be cast to com.zaxxer.hikari.HikariDataSource
+原因: 自动代理时，实例类型转换错误，注入的是$Proxy153实例，不是HikariDataSource的本身或子类实例。
+解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。
+1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。
+</code></pre>
 <hr>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>

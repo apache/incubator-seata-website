@@ -68,7 +68,7 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 <h4>步骤二：建表</h4>
 <p>全局事务会话信息由3块内容构成，全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table</p>
 <h4>步骤三：修改store.mode</h4>
-<p>启动包: seata--&gt;conf--&gt;file.conf，修改store.mode=&quot;db&quot;
+<p>启动包: seata--&gt;conf--&gt;file.conf，修改store.mode=&quot;db&quot;<br>
 源码:   根目录--&gt;seata-server--&gt;resources--&gt;file.conf，修改store.mode=&quot;db&quot;</p>
 <h4>步骤四：修改数据库连接</h4>
 <p>启动包: seata--&gt;conf--&gt;file.conf，修改store.db相关属性。<br>
