@@ -22,7 +22,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v2.4.0
       env:
         PERSONAL_TOKEN: ${{ secrets.seata_io_token }}
-        PUBLISH_BRANCH: gh-pages
+        PUBLISH_BRANCH: master
         PUBLISH_DIR: ./deploy-dist
       with:
         keepFiles: true
