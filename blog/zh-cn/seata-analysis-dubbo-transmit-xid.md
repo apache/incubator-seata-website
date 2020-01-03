@@ -40,9 +40,10 @@ public class TransactionPropagationFilter implements Filter {
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
+        //获取本地XID
         String xid = RootContext.getXID();
         String xidInterceptorType = RootContext.getXIDInterceptorType();
-
+        //获取Dubbo隐式传参中的XID
         String rpcXid = getRpcXid();
         String rpcXidInterceptorType = RpcContext.getContext().getAttachment(RootContext.KEY_XID_INTERCEPTOR_TYPE);
         if (LOGGER.isDebugEnabled()) {
@@ -50,10 +51,12 @@ public class TransactionPropagationFilter implements Filter {
         }
         boolean bind = false;
         if (xid != null) {
+            //传递XID
             RpcContext.getContext().setAttachment(RootContext.KEY_XID, xid);
             RpcContext.getContext().setAttachment(RootContext.KEY_XID_INTERCEPTOR_TYPE, xidInterceptorType);
         } else {
             if (rpcXid != null) {
+                //绑定XID
                 RootContext.bind(rpcXid);
                 RootContext.bindInterceptorType(rpcXidInterceptorType);
                 bind = true;
@@ -66,14 +69,17 @@ public class TransactionPropagationFilter implements Filter {
             return invoker.invoke(invocation);
         } finally {
             if (bind) {
+                //进行剔除已完成事务的XID
                 String unbindInterceptorType = RootContext.unbindInterceptorType();
                 String unbindXid = RootContext.unbind();
                 if (LOGGER.isDebugEnabled()) {
                     LOGGER.debug("unbind[{}] interceptorType[{}] from RootContext", unbindXid, unbindInterceptorType);
                 }
+                //如果发现解绑的XID并不是当前接收到的XID
                 if (!rpcXid.equalsIgnoreCase(unbindXid)) {
                     LOGGER.warn("xid in change during RPC from {} to {}, xidInterceptorType from {} to {} ", rpcXid, unbindXid, rpcXidInterceptorType, unbindInterceptorType);
                     if (unbindXid != null) {
+                        //重新绑定XID
                         RootContext.bind(unbindXid);
                         RootContext.bindInterceptorType(unbindInterceptorType);
                         LOGGER.warn("bind [{}] interceptorType[{}] back to RootContext", unbindXid, unbindInterceptorType);
