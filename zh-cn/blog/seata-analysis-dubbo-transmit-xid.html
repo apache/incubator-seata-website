@@ -39,9 +39,10 @@
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-function"><span class="hljs-keyword">public</span> Result <span class="hljs-title">invoke</span><span class="hljs-params">(Invoker&lt;?&gt; invoker, Invocation invocation)</span> <span class="hljs-keyword">throws</span> RpcException </span>{
+        <span class="hljs-comment">//获取本地XID</span>
         String xid = RootContext.getXID();
         String xidInterceptorType = RootContext.getXIDInterceptorType();
-
+        <span class="hljs-comment">//获取Dubbo隐式传参中的XID</span>
         String rpcXid = getRpcXid();
         String rpcXidInterceptorType = RpcContext.getContext().getAttachment(RootContext.KEY_XID_INTERCEPTOR_TYPE);
         <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
@@ -49,10 +50,12 @@
         }
         <span class="hljs-keyword">boolean</span> bind = <span class="hljs-keyword">false</span>;
         <span class="hljs-keyword">if</span> (xid != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">//传递XID</span>
             RpcContext.getContext().setAttachment(RootContext.KEY_XID, xid);
             RpcContext.getContext().setAttachment(RootContext.KEY_XID_INTERCEPTOR_TYPE, xidInterceptorType);
         } <span class="hljs-keyword">else</span> {
             <span class="hljs-keyword">if</span> (rpcXid != <span class="hljs-keyword">null</span>) {
+                <span class="hljs-comment">//绑定XID</span>
                 RootContext.bind(rpcXid);
                 RootContext.bindInterceptorType(rpcXidInterceptorType);
                 bind = <span class="hljs-keyword">true</span>;
@@ -65,14 +68,17 @@
             <span class="hljs-keyword">return</span> invoker.invoke(invocation);
         } <span class="hljs-keyword">finally</span> {
             <span class="hljs-keyword">if</span> (bind) {
+                <span class="hljs-comment">//进行剔除已完成事务的XID</span>
                 String unbindInterceptorType = RootContext.unbindInterceptorType();
                 String unbindXid = RootContext.unbind();
                 <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
                     LOGGER.debug(<span class="hljs-string">"unbind[{}] interceptorType[{}] from RootContext"</span>, unbindXid, unbindInterceptorType);
                 }
+                <span class="hljs-comment">//如果发现解绑的XID并不是当前接收到的XID</span>
                 <span class="hljs-keyword">if</span> (!rpcXid.equalsIgnoreCase(unbindXid)) {
                     LOGGER.warn(<span class="hljs-string">"xid in change during RPC from {} to {}, xidInterceptorType from {} to {} "</span>, rpcXid, unbindXid, rpcXidInterceptorType, unbindInterceptorType);
                     <span class="hljs-keyword">if</span> (unbindXid != <span class="hljs-keyword">null</span>) {
+                        <span class="hljs-comment">//重新绑定XID</span>
                         RootContext.bind(unbindXid);
                         RootContext.bindInterceptorType(unbindInterceptorType);
                         LOGGER.warn(<span class="hljs-string">"bind [{}] interceptorType[{}] back to RootContext"</span>, unbindXid, unbindInterceptorType);
