@@ -8,7 +8,7 @@ description: 测试覆盖率向导。
 
 ## 测试粒度如何划分
   <img src="https://microservices.io/i/test-pyramid.jpeg">
-        测试粒度如何划分是个大问题。Chris Richardson 在《[降低测试金字塔：微服务的有效测试策略](https://microservices.io/microservices/testing/2019/09/20/oracle-code-one-testing.html)》对于服务划分了单元测试、集成测试、组件测试、端到端的测试。我们可以在设计测试用例的过程中借鉴，来进进行用例的设计。
+        测试粒度如何划分是个大问题。Chris Richardson 在" [降低测试金字塔：微服务的有效测试策略](https://microservices.io/microservices/testing/2019/09/20/oracle-code-one-testing.html)"对于服务划分了单元测试、集成测试、组件测试、端到端的测试。我们可以在设计测试用例的过程中借鉴，来进进行用例的设计。
 
 ## 单元测试
 
