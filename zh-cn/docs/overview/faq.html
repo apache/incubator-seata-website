@@ -26,7 +26,8 @@
 <p><a href="#11" target="_self">11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了? </a></p>
 <p><a href="#12" target="_self">12.TC如何使用mysql8? </a></p>
 <p><a href="#13" target="_self">13.支持多主键? </a></p>
-<p><a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a></p>
+<p><a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a><br>
+<a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -144,6 +145,12 @@ ps: oracle同理</p>
 解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。
 1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。
 </code></pre>
+<hr>
+<h3 id='15'>Q: 15.是否可以不使用conf类型配置文件，直接将配置写入application.properties?</h3>
+<p><strong>A:</strong>
+目前seata-all是需要使用conf类型配置文件，后续会支持properties和yml类型文件。当前可以在项目中依赖seata-spring-boot-starter，然后将配置项写入到application
+.properties 这样可以不使用conf类型文件。</p>
+<hr>
 <hr>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
