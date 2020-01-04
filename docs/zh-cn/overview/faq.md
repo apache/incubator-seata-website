@@ -32,7 +32,8 @@ description: Seata 常见问题。
 
 <a href="#13" target="_self">13.支持多主键? </a>
 
-<a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>
+<a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>   
+<a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
 
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -171,6 +172,13 @@ ps: oracle同理
 解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。
 1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。
 ``` 
+********
+<h3 id='15'>Q: 15.是否可以不使用conf类型配置文件，直接将配置写入application.properties?</h3>
 
+**A:** 
+目前seata-all是需要使用conf类型配置文件，后续会支持properties和yml类型文件。当前可以在项目中依赖seata-spring-boot-starter，然后将配置项写入到application
+.properties 这样可以不使用conf类型文件。
+
+********
 
 ********
