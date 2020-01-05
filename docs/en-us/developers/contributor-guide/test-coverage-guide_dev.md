@@ -8,7 +8,7 @@ description: Test coverage guide.
 
 ## How to divide test granularity
   <img src="https://microservices.io/i/test-pyramid.jpeg">
-        How to divide test granularity is a big problem. Chris Richardson has divided unit test, integration test, component test and end-to-end test for services test in "[Descending the Testing Pyramid: Effective Testing Strategies for Microservices](https://microservices.io/microservices/testing/2019/09/20/oracle-code-one-testing.html)". We can use it for reference in the process of designing test cases to design use cases.
+        How to divide test granularity is a big problem. Chris Richardson has divided unit test, integration test, component test and end-to-end test for services test in "[Descending the Testing Pyramid: Effective Testing Strategies for Microservices](https://microservices.io/microservices/testing/2019/09/20/oracle-code-one-testing.html)". We can use it for reference in the process of designing test cases.
 
 ## Unit Test
 
