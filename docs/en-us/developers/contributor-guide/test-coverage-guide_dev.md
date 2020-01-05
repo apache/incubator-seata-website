@@ -37,3 +37,4 @@ description: Test coverage guide.
   * Different from unit test, if a test case needs to rely on the third-party middleware, you can use the above tools to build the docker environment and test without mock. But also pay attention to the granularity of building components. For an overly complex environment, you can: the middleware on which the core test depends can be built by docker, and the middleware on which the core test depends can be mocked
   * The integration test cases of the Seata project are uniformly placed in the integration-test sub module, and the test assertion class ends with IT.
   * [Junit5](https://junit.org/junit5/) is used here
+  * In the process of parallel running of test cases, pay attention to the isolation state of common middleware, plan the test data and prevent conflicts.
