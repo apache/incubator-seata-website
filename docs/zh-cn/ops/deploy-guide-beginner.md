@@ -19,6 +19,8 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 
 
 ### 注意事项
+- 加索引
+> TC端表lock_table新增了字段branch_id的普通索引
 - seata-spring-boot-starter
 > 1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
 若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；  
