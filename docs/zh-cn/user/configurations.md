@@ -16,6 +16,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 
 | server端         | client端|
 |---------------|----|
+| registry.type            |registry.type|
+| config.type            |config.type|
 | store.mode            |service.vgroup_mapping.my_test_tx_group|
 | store.db.driver-class-name            | service.default.grouplist |
 | store.db.url            |service.disableGlobalTransaction |
