@@ -12,6 +12,21 @@ description: Seata 参数配置。
 20191221: 增加seata.enabled、client.rm.report.success.enable、
 transport.enable-client-batch-send-request、client.log.exceptionRate
 ```
+## 关注属性(详细描述见全属性)
+
+| server端         | client端|
+|---------------|----|
+| registry.type            |registry.type|
+| config.type            |config.type|
+| store.mode            |service.vgroup_mapping.my_test_tx_group|
+| store.db.driver-class-name            | service.default.grouplist |
+| store.db.url            |service.disableGlobalTransaction |
+| store.db.user            | client.support.spring.datasource.autoproxy|
+| store.db.password            | |
+
+
+
+## 全属性
 
 ### 公共部分
 
@@ -20,6 +35,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | transport.serialization            | client和server通信编解码方式   |seata（ByteBuf）、protobuf、kryo、hession，默认seata |
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip，默认none |
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
+| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa |
+| config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3 |
 
 ### server端
 
@@ -38,14 +55,15 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.db.datasource                       | db模式数据源类型 |默认dbcp    |
 | store.db.db-type                          | db模式数据库类型 |默认mysql    |
 | store.db.driver-class-name                | db模式数据库驱动 |默认com.mysql.jdbc.Driver    |
-| store.db.url                              | db模式数据源库url | 默认jdbc:mysql://127.0.0.1:3306/seata   |
+| store.db.url                              | db模式数据库url | 默认jdbc:mysql://127.0.0.1:3306/seata   |
 | store.db.user                             | db模式数据库账户 |默认mysql    |
+| store.db.password                         | db模式数据库账户密码 |默认mysql    |
 | store.db.min-conn                         | db模式数据库初始连接数 |默认1    |
 | store.db.max-conn                         | db模式数据库最大连接数|默认3    |
 | store.db.global.table                     | db模式全局事务表名 |默认global_table    |
 | store.db.branch.table                     | db模式分支事务表名 |默认branch_table    |
 | store.db.lock-table                       | db模式全局锁表名 |默认lock_table    |
-| store.db.query-limit                      | db模式查询全局事务一次的最大条数 |默认1000    |
+| store.db.query-limit                      | db模式查询全局事务一次的最大条数 |默认100    |
 | metrics.enabled                           | 是否启用Metrics  |默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低|
 | metrics.registry-type                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
 | metrics.exporter-list                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
