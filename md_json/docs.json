@@ -501,6 +501,15 @@
         "keywords": "Seata",
         "description": "Seata Spring支持。"
       }
+    },
+    {
+      "filename": "transaction-group.md",
+      "link": "/zh-cn/docs/user/transaction-group.html",
+      "meta": {
+        "title": "Seata 事务分组",
+        "keywords": "Seata",
+        "description": "Seata 事务分组。"
+      }
     }
   ]
 }
