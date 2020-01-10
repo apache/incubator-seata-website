@@ -6,6 +6,8 @@ description: Seata 常见问题。
 
 # 常见问题
 
+<a href="#0" target="_self">0.8、0.9如何升级到1.0？</a>
+
 <a href="#1" target="_self">1.Seata 目前可以用于生产环境吗？</a>
 
 <a href="#2" target="_self">2.Seata 目前支持高可用吗？</a>
@@ -35,6 +37,14 @@ description: Seata 常见问题。
 <a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>   
 <a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
 
+********
+<h3 id='0'>Q: 0.8、0.9如何升级到1.0？</h3>
+
+**A:** 
+* （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉seata-all
+* （必选）TC端表lock_table字段branch_id增加普通索引
+* （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置</a>
+* （可选） client.report.success.enable可以置为false，提升性能
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
