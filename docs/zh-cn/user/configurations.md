@@ -74,7 +74,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | key| desc    | remark|
 |-------------------------------------------|----------------------------|----------------------------|
 | seata.enabled   | 是否开启spring-boot自动装配   |true、false，默认true（附录4） |
-| client.rm.report.success.enable   | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
+| client.report.success.enable   | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
 | transport.enable-client-batch-send-request            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
 | client.log.exceptionRate                | 日志异常输出概率 |  默认100，目前用于undo回滚失败时异常堆栈输出，百分之一的概率输出，回滚失败基本是脏数据，无需输出堆栈占用硬盘空间  |
 | service.vgroup_mapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
