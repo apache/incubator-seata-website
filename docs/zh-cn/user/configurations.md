@@ -9,7 +9,7 @@ description: Seata 参数配置。
 
 ### 变更记录
 ```
-20191221: 增加seata.enabled、client.rm.report.success.enable、
+20191221: 增加seata.enabled、client.report.success.enable、
 transport.enable-client-batch-send-request、client.log.exceptionRate
 ```
 ## 关注属性(详细描述见全属性)
