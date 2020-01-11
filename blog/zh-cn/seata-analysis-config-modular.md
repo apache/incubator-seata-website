@@ -2,7 +2,7 @@
 title: Seata core 模块源码分析
 author: 赵润泽
 keywords: Seata、分布式事务
-date: 2019/12/23
+date: 2020/1/11
 ---
 ## 一 . 导读
 根据[大佬](https://www.iteye.com/blog/javatar-949527)定义的分类，配置可以有三种：环境配置、描述配置、扩展配置。
