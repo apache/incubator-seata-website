@@ -39,7 +39,7 @@ Seata 内部定义了 3个模块来处理全局事务和分支事务的关系和
 - Transaction Manager (TM)： 控制全局事务的边界，负责开启一个全局事务，并最终发起全局提交或全局回滚的决议。
 - Resource Manager (RM)： 控制分支事务，负责分支注册、状态汇报，并接收事务协调器的指令，驱动分支（本地）事务的提交和回滚。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/seata.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata.png)
 
 简要说说整个全局事务的执行步骤：
 
@@ -58,17 +58,17 @@ Seata 的事务提交方式跟 XA 协议的两段式提交在总体上来说基�
 
 基于 XA 协议以上的问题，Seata 另辟蹊径，既然在依赖数据库层会导致这么多问题，那我就从应用层做手脚，这还得从 Seata 的 RM 模块说起，前面也说过 RM 的主要作用了，其实 RM 在内部做了对数据库操作的代理层，如下：
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/seata5.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata5.png)
 
 Seata 在数据源做了一层代理层，所以我们使用 Seata 时，我们使用的数据源实际上用的是 Seata 自带的数据源代理 DataSourceProxy，Seata 在这层代理中加入了很多逻辑，主要是解析 SQL，把业务数据在更新前后的数据镜像组织成回滚日志，并将 undo log 日志插入 undo_log 表中，保证每条更新数据的业务 sql 都有对应的回滚日志存在。
 
 这样做的好处就是，本地事务执行完可以立即释放本地事务锁定的资源，然后向 TC 上报分支状态。当 TM 决议全局提交时，就不需要同步协调处理了，TC 会异步调度各个 RM 分支事务删除对应的 undo log 日志即可，这个步骤非常快速地可以完成；当 TM 决议全局回滚时，RM 收到 TC 发送的回滚请求，RM 通过 XID 找到对应的 undo log 回滚日志，然后执行回滚日志完成回滚操作。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/seata6.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata6.png)
 
 如上图所示，XA 方案的 RM 是放在数据库层的，它依赖了数据库的 XA 驱动程序。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/Seata7.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/Seata7.png)
 
 如上图所示，Seata 的 RM 实际上是已中间件的形式放在应用层，不用依赖数据库对协议的支持，完全剥离了分布式事务方案对数据库在协议支持上的要求。
 
@@ -83,7 +83,7 @@ Seata 在数据源做了一层代理层，所以我们使用 Seata 时，我们�
 
 分支事务利用 RM 模块中对 JDBC 数据源代理，加入了若干流程，对业务 SQL 进行解释，把业务数据在更新前后的数据镜像组织成回滚日志，并生成 undo log 日志，对全局事务锁的检查以及分支事务的注册等，利用本地事务 ACID 特性，将业务 SQL 和 undo log 写入同一个事物中一同提交到数据库中，保证业务 SQL 必定存在相应的回滚日志，最后对分支事务状态向 TC 进行上报。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/seata2.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata2.png)
 
 - 第二阶段：
 
@@ -94,7 +94,7 @@ TM决议全局提交：
 
 
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/seata3.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata3.png)
 
 
 
@@ -102,7 +102,7 @@ TM决议全局回滚：
 
 当 TM 决议回滚时，RM 收到 TC 发送的回滚请求，RM 通过 XID 找到对应的 undo log 回滚日志，然后利用本地事务 ACID 特性，执行回滚日志完成回滚操作并删除 undo log 日志，最后向 TC 进行回滚结果上报。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/seata4.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata4.png)
 
 业务对以上所有的流程都无感知，业务完全不关心全局事务的具体提交和回滚，而且最重要的一点是 Seata 将两段式提交的同步协调分解到各个分支事务中了，分支事务与普通的本地事务无任何差异，这意味着我们使用 Seata 后，分布式事务就像使用本地事务一样，完全将数据库层的事务协调机制交给了中间件层 Seata 去做了，这样虽然事务协调搬到应用层了，但是依然可以做到对业务的零侵入，从而剥离了分布式事务方案对数据库在协议支持上的要求，且 Seata 在分支事务完成之后直接释放资源，极大减少了分支事务对资源的锁定时间，完美避免了 XA 协议需要同步协调导致资源锁定时间过长的问题。
 
@@ -112,7 +112,7 @@ TM决议全局回滚：
 
 上面说的其实是 Seata 的默认模式，也叫 AT 模式，它是类似于 XA 方案的两段式提交方案，并且是对业务无侵入，但是这种机制依然是需要依赖数据库本地事务的 ACID 特性，有没有发现，我在上面的图中都强调了必须是支持 ACID 特性的关系型数据库，那么问题就来了，非关系型或者不支持 ACID 的数据库就无法使用 Seata 了，别慌，Seata 现阶段为我们准备了另外一种模式，叫 MT 模式，它是一种对业务有入侵的方案，提交回滚等操作需要我们自行定义，业务逻辑需要被分解为 Prepare/Commit/Rollback 3 部分，形成一个 MT 分支，加入全局事务，它存在的意义是为 Seata 触达更多的场景。
 
-![](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/seata8.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata8.png)
 
 只不过，它不是 Seata “主打”的模式，它的存在仅仅作为补充的方案，从以上官方的发展远景就可以看出来，Seata 的目标是始终是对业务无入侵的方案。
 

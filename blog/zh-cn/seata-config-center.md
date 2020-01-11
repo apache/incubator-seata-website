@@ -14,7 +14,7 @@ Seata 可以支持多个第三方配置中心，那么 Seata 是如何同时兼�
 
 在 Seata 配置中心，有两个默认的配置文件：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211193041.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211193041.png)
 
 file.conf 是默认的配置属性，registry.conf 主要存储第三方注册中心与配置中心的信息，主要有两大块：
 
@@ -42,7 +42,7 @@ config {
 
 在 config 模块的 core 目录中，有个配置工厂类 ConfigurationFactory，它的结构如下：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191210211022.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191210211022.png)
 
 可以看到都是一些配置的静态常量：
 
@@ -54,11 +54,11 @@ ConfigurationFactory 里面有一处静态代码块，如下：
 
 io.seata.config.ConfigurationFactory
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211102702.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211102702.png)
 
 根据自定义文件名配置变量找出配置文件名称与类型，如果没有配置，默认使用 registry.conf，FileConfiguration 是 Seata 默认的配置实现类，如果为默认值，则会更具  registry.conf 配置文件生成 FileConfiguration 默认配置对象，这里也可以利用 SPI 机制支持第三方扩展配置实现，具体实现是继承 ExtConfigurationProvider 接口，在`META-INF/services/`创建一个文件并填写实现类的全路径名，如下所示：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211194643.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211194643.png)
 
 
 
@@ -79,7 +79,7 @@ long getLong(String dataId, long defaultValue, long timeoutMills);
 
 首先，第三方配置中心需要实现一个 Provider 类：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211200155.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211200155.png)
 
 实现的 provider 方法如其名，主要是输出具体的 Configuration 实现类。
 
@@ -95,11 +95,11 @@ Configuration CONFIG = ConfigurationFactory.getInstance();
 
 io.seata.config.ConfigurationFactory#buildConfiguration：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211102905.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211102905.png)
 
 首先从 ConfigurationFactory 中的静态代码块根据 registry.conf 创建的 CURRENT_FILE_INSTANCE 中获取当前环境使用的配置中心，默认为为 File 类型，我们也可以在 registry.conf 配置其它第三方配置中心，这里也是利用了 SPI 机制去加载第三方配置中心的实现类，具体实现如下：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211205127.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211205127.png)
 
 如上，即是刚刚我所说的 ZookeeperConfigurationProvider 配置实现输出类，我们再来看看这行代码：
 
@@ -119,11 +119,11 @@ EnhancedServiceLoader 是 Seata SPI 实现核心类，这行代码会加载 `MET
 
 io.seata.common.loader.EnhancedServiceLoader#findAllExtensionClass：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211210438.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211210438.png)
 
 io.seata.common.loader.EnhancedServiceLoader#loadFile：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211210347.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211210347.png)
 
 这样，就不会产生冲突了。
 
@@ -143,7 +143,7 @@ public enum ConfigType {
 
 我们注意到，LoadLevel 注解上还有一个 name 属性，在进行筛选实现类时，Seata 还做了这个操作：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211211210.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211211210.png)
 
 根据当前 configType 来判断是否等于 LoadLevel 的 name 属性，如果相等，那么就是当前配置的第三方配置中心实现类。
 
@@ -153,7 +153,7 @@ public enum ConfigType {
 
 ZookeeperConfiguration 继承了 AbstractConfiguration，它的构造方法如下：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211202510.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211202510.png)
 
 构造方法创建了一个 zkClient 对象，这里的 FILE_CONFIG 是什么呢？
 
@@ -163,7 +163,7 @@ private static final Configuration FILE_CONFIG = ConfigurationFactory.CURRENT_FI
 
 原来就是刚刚静态代码块中创建的 registry.conf 配置实现类，从该配置实现类拿到第三方配置中心的相关属性，构造第三方配置中心客户端，然后实现 Configuration 接口时：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211203735.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211203735.png)
 
 就可以利用客户端相关方法去第三方配置获取对应的参数值了。
 
@@ -175,7 +175,7 @@ private static final Configuration FILE_CONFIG = ConfigurationFactory.CURRENT_FI
 
 具体位置在 Seata 项目的 script 目录中：
 
-![](https://raw.githubusercontent.com/objcoding/md-picture/master/img/20191211212141.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191211212141.png)
 
 config.txt 为本地配置好的值，搭建好第三方配置中心之后，运行脚本会将 config.txt 的配置同步到第三方配置中心。
 
