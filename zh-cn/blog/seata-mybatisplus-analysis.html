@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata,Mybatis-Plus,分布式事务" />
+	<meta name="description" content="本文讲述如何透过源码解决Seata整合Mybatis-Plus失去MP特性的问题" />
+	<!-- 网页标签标题 -->
+	<title>透过源码解决SeataAT模式整合Mybatis-Plus失去MP特性的问题</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>透过源码解决SeataAT模式整合Mybatis-Plus失去MP特性的问题</h1>
+<p>项目地址：<a href="https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata">https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata</a></p>
+<p>本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。</p>
+<h1>介绍</h1>
+<p>Mybatis-Plus：<a href="https://github.com/baomidou/mybatis-plus">MyBatis-Plus</a>（简称 MP）是一个 <a href="http://www.mybatis.org/mybatis-3/">MyBatis</a> 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</p>
+<p>MP配置：</p>
+<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sqlSessionFactory"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+</code></pre>
+<p>Seata：Seata 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。Seata 将为用户提供了 AT、TCC、SAGA 和 XA 事务模式，为用户打造一站式的分布式解决方案。</p>
+<p>AT模式机制：</p>
+<ul>
+<li>一阶段：业务数据和回滚日志记录在同一个本地事务中提交，释放本地锁和连接资源。</li>
+<li>二阶段：
+<ul>
+<li>提交异步化，非常快速地完成。</li>
+<li>回滚通过一阶段的回滚日志进行反向补偿。</li>
+</ul>
+</li>
+</ul>
+<h2>分析原因</h2>
+<p>​	1.首先我们通过介绍，可以看到，mp是需要注册sqlSessionFactory，注入数据源，而Seata是通过代理数据源来保证事务的正常回滚跟提交。</p>
+<p>​	2.我们来看基于seata的官方demo提供的SeataAutoConfig的代码</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.config;
+ 
+<span class="hljs-keyword">import</span> javax.sql.DataSource; 
+ 
+<span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Primary;
+ 
+<span class="hljs-keyword">import</span> com.alibaba.druid.pool.DruidDataSource;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+ 
+<span class="hljs-keyword">import</span> io.seata.rm.datasource.DataSourceProxy;
+<span class="hljs-keyword">import</span> io.seata.spring.annotation.GlobalTransactionScanner;
+ 
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SeataAutoConfig</span> </span>{
+	<span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
+	<span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
+ 
+	<span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"dataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>
+	<span class="hljs-meta">@Primary</span> <span class="hljs-comment">// 在同样的DataSource中，首先使用被标注的DataSource</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSource <span class="hljs-title">druidDataSource</span><span class="hljs-params">()</span> </span>{
+		DruidDataSource druidDataSource = <span class="hljs-keyword">new</span> DruidDataSource();
+		logger.info(<span class="hljs-string">"dataSourceProperties.getUrl():{}"</span>,dataSourceProperties.getUrl());
+		druidDataSource.setUrl(dataSourceProperties.getUrl());
+		druidDataSource.setUsername(dataSourceProperties.getUsername());
+		druidDataSource.setPassword(dataSourceProperties.getPassword());
+		druidDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+		druidDataSource.setInitialSize(<span class="hljs-number">0</span>);
+		druidDataSource.setMaxActive(<span class="hljs-number">180</span>);
+		druidDataSource.setMaxWait(<span class="hljs-number">60000</span>);
+		druidDataSource.setMinIdle(<span class="hljs-number">0</span>);
+		druidDataSource.setValidationQuery(<span class="hljs-string">"Select 1 from DUAL"</span>);
+		druidDataSource.setTestOnBorrow(<span class="hljs-keyword">false</span>);
+		druidDataSource.setTestOnReturn(<span class="hljs-keyword">false</span>);
+		druidDataSource.setTestWhileIdle(<span class="hljs-keyword">true</span>);
+		druidDataSource.setTimeBetweenEvictionRunsMillis(<span class="hljs-number">60000</span>);
+		druidDataSource.setMinEvictableIdleTimeMillis(<span class="hljs-number">25200000</span>);
+		druidDataSource.setRemoveAbandoned(<span class="hljs-keyword">true</span>);
+		druidDataSource.setRemoveAbandonedTimeout(<span class="hljs-number">1800</span>);
+		druidDataSource.setLogAbandoned(<span class="hljs-keyword">true</span>);
+		logger.info(<span class="hljs-string">"装载dataSource........"</span>);
+		<span class="hljs-keyword">return</span> druidDataSource;
+	}
+ 
+	<span class="hljs-comment">/**
+	 * init datasource proxy
+	 * 
+	 * <span class="hljs-doctag">@Param</span>: druidDataSource datasource bean instance
+	 * <span class="hljs-doctag">@Return</span>: DataSourceProxy datasource proxy
+	 */</span>
+	<span class="hljs-meta">@Bean</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSourceProxy <span class="hljs-title">dataSourceProxy</span><span class="hljs-params">(DataSource dataSource)</span> </span>{
+		logger.info(<span class="hljs-string">"代理dataSource........"</span>);
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DataSourceProxy(dataSource);
+	}
+ 
+	<span class="hljs-meta">@Bean</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> SqlSessionFactory <span class="hljs-title">sqlSessionFactory</span><span class="hljs-params">(DataSourceProxy dataSourceProxy)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+		MybatisSqlSessionFactoryBean factory = <span class="hljs-keyword">new</span> MybatisSqlSessionFactoryBean();
+		factory.setDataSource(dataSourceProxy);
+        factory.setMapperLocations(<span class="hljs-keyword">new</span> PathMatchingResourcePatternResolver()
+            .getResources(<span class="hljs-string">"classpath*:/mapper/*.xml"</span>));
+		<span class="hljs-keyword">return</span> factory.getObject();
+	}
+ 
+	<span class="hljs-comment">/**
+	 * init global transaction scanner
+	 *
+	 * <span class="hljs-doctag">@Return</span>: GlobalTransactionScanner
+	 */</span>
+	<span class="hljs-meta">@Bean</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> GlobalTransactionScanner <span class="hljs-title">globalTransactionScanner</span><span class="hljs-params">()</span> </span>{
+		logger.info(<span class="hljs-string">"配置seata........"</span>);
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> GlobalTransactionScanner(<span class="hljs-string">"test-service"</span>, <span class="hljs-string">"test-group"</span>);
+	}
+}
+
+</code></pre>
+<p>首先看到我们的seata配置数据源的类里,我们配置了一个数据源,然后又配置了一个seata代理datasource的bean,这时候.</p>
+<p>然后我们如果直接启动mp整合seata的项目会发现,分页之类的插件会直接失效,连扫描mapper都得从代码上写,这是为什么呢?</p>
+<p>通过阅读以上代码,是因为我们另外的配置了一个sqlSessionFactory,导致mp的sqlSessionFactory失效了,这时候我们发现了问题的所在了，即使我们不配置sqlSessionFactoryl，也会因为mp所使用的数据源不是被seata代理过后的数据源，导致分布式事务失效.但是如何解决这个问题呢?</p>
+<p>这时候我们需要去阅读mp的源码,找到他的启动类,一看便知</p>
+<pre><code class="language-java"><span class="hljs-comment">/*
+ * Copyright (c) 2011-2020, baomidou (jobob@qq.com).
+ * &lt;p&gt;
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * &lt;p&gt;
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * &lt;p&gt;
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */</span>
+<span class="hljs-keyword">package</span> com.baomidou.mybatisplus.autoconfigure;
+ 
+ 
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.MybatisConfiguration;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.config.GlobalConfig;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.incrementer.IKeyGenerator;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.injector.ISqlInjector;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+<span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Mapper;
+<span class="hljs-keyword">import</span> org.apache.ibatis.mapping.DatabaseIdProvider;
+<span class="hljs-keyword">import</span> org.apache.ibatis.plugin.Interceptor;
+<span class="hljs-keyword">import</span> org.apache.ibatis.scripting.LanguageDriver;
+<span class="hljs-keyword">import</span> org.apache.ibatis.session.ExecutorType;
+<span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;
+<span class="hljs-keyword">import</span> org.apache.ibatis.type.TypeHandler;
+<span class="hljs-keyword">import</span> org.mybatis.spring.SqlSessionFactoryBean;
+<span class="hljs-keyword">import</span> org.mybatis.spring.SqlSessionTemplate;
+<span class="hljs-keyword">import</span> org.mybatis.spring.mapper.MapperFactoryBean;
+<span class="hljs-keyword">import</span> org.mybatis.spring.mapper.MapperScannerConfigurer;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.beans.BeanWrapper;
+<span class="hljs-keyword">import</span> org.springframework.beans.BeanWrapperImpl;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.BeanFactory;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.BeanFactoryAware;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.InitializingBean;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.ObjectProvider;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.support.BeanDefinitionBuilder;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.support.BeanDefinitionRegistry;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.AutoConfigurationPackages;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.AutoConfigureAfter;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+<span class="hljs-keyword">import</span> org.springframework.boot.context.properties.EnableConfigurationProperties;
+<span class="hljs-keyword">import</span> org.springframework.context.ApplicationContext;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Import;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
+<span class="hljs-keyword">import</span> org.springframework.core.io.Resource;
+<span class="hljs-keyword">import</span> org.springframework.core.io.ResourceLoader;
+<span class="hljs-keyword">import</span> org.springframework.core.type.AnnotationMetadata;
+<span class="hljs-keyword">import</span> org.springframework.util.Assert;
+<span class="hljs-keyword">import</span> org.springframework.util.CollectionUtils;
+<span class="hljs-keyword">import</span> org.springframework.util.ObjectUtils;
+<span class="hljs-keyword">import</span> org.springframework.util.StringUtils;
+ 
+<span class="hljs-keyword">import</span> javax.sql.DataSource;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Optional;
+<span class="hljs-keyword">import</span> java.util.stream.Stream;
+ 
+<span class="hljs-comment">/**
+ * {<span class="hljs-doctag">@link</span> EnableAutoConfiguration Auto-Configuration} for Mybatis. Contributes a
+ * {<span class="hljs-doctag">@link</span> SqlSessionFactory} and a {<span class="hljs-doctag">@link</span> SqlSessionTemplate}.
+ * &lt;p&gt;
+ * If {<span class="hljs-doctag">@link</span> org.mybatis.spring.annotation.MapperScan} is used, or a
+ * configuration file is specified as a property, those will be considered,
+ * otherwise this auto-configuration will attempt to register mappers based on
+ * the interface definitions in or under the root auto-configuration package.
+ * &lt;/p&gt;
+ * &lt;p&gt; copy from {<span class="hljs-doctag">@link</span> org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration}&lt;/p&gt;
+ *
+ * <span class="hljs-doctag">@author</span> Eddú Meléndez
+ * <span class="hljs-doctag">@author</span> Josh Long
+ * <span class="hljs-doctag">@author</span> Kazuki Shimizu
+ * <span class="hljs-doctag">@author</span> Eduardo Macarrón
+ */</span>
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@ConditionalOnClass</span>({SqlSessionFactory.class, SqlSessionFactoryBean.class})
+<span class="hljs-meta">@ConditionalOnSingleCandidate</span>(DataSource.class)
+<span class="hljs-meta">@EnableConfigurationProperties</span>(MybatisPlusProperties.class)
+<span class="hljs-meta">@AutoConfigureAfter</span>(DataSourceAutoConfiguration.class)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MybatisPlusAutoConfiguration</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span> </span>{
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger logger = LoggerFactory.getLogger(MybatisPlusAutoConfiguration.class);
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> MybatisPlusProperties properties;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Interceptor[] interceptors;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> TypeHandler[] typeHandlers;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> LanguageDriver[] languageDrivers;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ResourceLoader resourceLoader;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> DatabaseIdProvider databaseIdProvider;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> List&lt;ConfigurationCustomizer&gt; configurationCustomizers;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> List&lt;MybatisPlusPropertiesCustomizer&gt; mybatisPlusPropertiesCustomizers;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ApplicationContext applicationContext;
+ 
+ 
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MybatisPlusAutoConfiguration</span><span class="hljs-params">(MybatisPlusProperties properties,
+                                        ObjectProvider&lt;Interceptor[]&gt; interceptorsProvider,
+                                        ObjectProvider&lt;TypeHandler[]&gt; typeHandlersProvider,
+                                        ObjectProvider&lt;LanguageDriver[]&gt; languageDriversProvider,
+                                        ResourceLoader resourceLoader,
+                                        ObjectProvider&lt;DatabaseIdProvider&gt; databaseIdProvider,
+                                        ObjectProvider&lt;List&lt;ConfigurationCustomizer&gt;&gt; configurationCustomizersProvider,
+                                        ObjectProvider&lt;List&lt;MybatisPlusPropertiesCustomizer&gt;&gt; mybatisPlusPropertiesCustomizerProvider,
+                                        ApplicationContext applicationContext)</span> </span>{
+        <span class="hljs-keyword">this</span>.properties = properties;
+        <span class="hljs-keyword">this</span>.interceptors = interceptorsProvider.getIfAvailable();
+        <span class="hljs-keyword">this</span>.typeHandlers = typeHandlersProvider.getIfAvailable();
+        <span class="hljs-keyword">this</span>.languageDrivers = languageDriversProvider.getIfAvailable();
+        <span class="hljs-keyword">this</span>.resourceLoader = resourceLoader;
+        <span class="hljs-keyword">this</span>.databaseIdProvider = databaseIdProvider.getIfAvailable();
+        <span class="hljs-keyword">this</span>.configurationCustomizers = configurationCustomizersProvider.getIfAvailable();
+        <span class="hljs-keyword">this</span>.mybatisPlusPropertiesCustomizers = mybatisPlusPropertiesCustomizerProvider.getIfAvailable();
+        <span class="hljs-keyword">this</span>.applicationContext = applicationContext;
+    }
+ 
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterPropertiesSet</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (!CollectionUtils.isEmpty(mybatisPlusPropertiesCustomizers)) {
+            mybatisPlusPropertiesCustomizers.forEach(i -&gt; i.customize(properties));
+        }
+        checkConfigFileExists();
+    }
+ 
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkConfigFileExists</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.properties.isCheckConfigLocation() &amp;&amp; StringUtils.hasText(<span class="hljs-keyword">this</span>.properties.getConfigLocation())) {
+            Resource resource = <span class="hljs-keyword">this</span>.resourceLoader.getResource(<span class="hljs-keyword">this</span>.properties.getConfigLocation());
+            Assert.state(resource.exists(),
+                <span class="hljs-string">"Cannot find config location: "</span> + resource + <span class="hljs-string">" (please add config file or check your Mybatis configuration)"</span>);
+        }
+    }
+ 
+    <span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">"SpringJavaInjectionPointsAutowiringInspection"</span>)
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-meta">@ConditionalOnMissingBean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> SqlSessionFactory <span class="hljs-title">sqlSessionFactory</span><span class="hljs-params">(DataSource dataSource)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">// TODO 使用 MybatisSqlSessionFactoryBean 而不是 SqlSessionFactoryBean</span>
+        MybatisSqlSessionFactoryBean factory = <span class="hljs-keyword">new</span> MybatisSqlSessionFactoryBean();
+        factory.setDataSource(dataSource);
+        factory.setVfs(SpringBootVFS.class);
+        <span class="hljs-keyword">if</span> (StringUtils.hasText(<span class="hljs-keyword">this</span>.properties.getConfigLocation())) {
+            factory.setConfigLocation(<span class="hljs-keyword">this</span>.resourceLoader.getResource(<span class="hljs-keyword">this</span>.properties.getConfigLocation()));
+        }
+        applyConfiguration(factory);
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.properties.getConfigurationProperties() != <span class="hljs-keyword">null</span>) {
+            factory.setConfigurationProperties(<span class="hljs-keyword">this</span>.properties.getConfigurationProperties());
+        }
+        <span class="hljs-keyword">if</span> (!ObjectUtils.isEmpty(<span class="hljs-keyword">this</span>.interceptors)) {
+            factory.setPlugins(<span class="hljs-keyword">this</span>.interceptors);
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.databaseIdProvider != <span class="hljs-keyword">null</span>) {
+            factory.setDatabaseIdProvider(<span class="hljs-keyword">this</span>.databaseIdProvider);
+        }
+        <span class="hljs-keyword">if</span> (StringUtils.hasLength(<span class="hljs-keyword">this</span>.properties.getTypeAliasesPackage())) {
+            factory.setTypeAliasesPackage(<span class="hljs-keyword">this</span>.properties.getTypeAliasesPackage());
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.properties.getTypeAliasesSuperType() != <span class="hljs-keyword">null</span>) {
+            factory.setTypeAliasesSuperType(<span class="hljs-keyword">this</span>.properties.getTypeAliasesSuperType());
+        }
+        <span class="hljs-keyword">if</span> (StringUtils.hasLength(<span class="hljs-keyword">this</span>.properties.getTypeHandlersPackage())) {
+            factory.setTypeHandlersPackage(<span class="hljs-keyword">this</span>.properties.getTypeHandlersPackage());
+        }
+        <span class="hljs-keyword">if</span> (!ObjectUtils.isEmpty(<span class="hljs-keyword">this</span>.typeHandlers)) {
+            factory.setTypeHandlers(<span class="hljs-keyword">this</span>.typeHandlers);
+        }
+        <span class="hljs-keyword">if</span> (!ObjectUtils.isEmpty(<span class="hljs-keyword">this</span>.properties.resolveMapperLocations())) {
+            factory.setMapperLocations(<span class="hljs-keyword">this</span>.properties.resolveMapperLocations());
+        }
+ 
+        <span class="hljs-comment">// TODO 对源码做了一定的修改(因为源码适配了老旧的mybatis版本,但我们不需要适配)</span>
+        Class&lt;? extends LanguageDriver&gt; defaultLanguageDriver = <span class="hljs-keyword">this</span>.properties.getDefaultScriptingLanguageDriver();
+        <span class="hljs-keyword">if</span> (!ObjectUtils.isEmpty(<span class="hljs-keyword">this</span>.languageDrivers)) {
+            factory.setScriptingLanguageDrivers(<span class="hljs-keyword">this</span>.languageDrivers);
+        }
+        Optional.ofNullable(defaultLanguageDriver).ifPresent(factory::setDefaultScriptingLanguageDriver);
+ 
+        <span class="hljs-comment">// TODO 自定义枚举包</span>
+        <span class="hljs-keyword">if</span> (StringUtils.hasLength(<span class="hljs-keyword">this</span>.properties.getTypeEnumsPackage())) {
+            factory.setTypeEnumsPackage(<span class="hljs-keyword">this</span>.properties.getTypeEnumsPackage());
+        }
+        <span class="hljs-comment">// TODO 此处必为非 NULL</span>
+        GlobalConfig globalConfig = <span class="hljs-keyword">this</span>.properties.getGlobalConfig();
+        <span class="hljs-comment">// TODO 注入填充器</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(MetaObjectHandler.class,
+            <span class="hljs-keyword">false</span>, <span class="hljs-keyword">false</span>).length &gt; <span class="hljs-number">0</span>) {
+            MetaObjectHandler metaObjectHandler = <span class="hljs-keyword">this</span>.applicationContext.getBean(MetaObjectHandler.class);
+            globalConfig.setMetaObjectHandler(metaObjectHandler);
+        }
+        <span class="hljs-comment">// TODO 注入主键生成器</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(IKeyGenerator.class, <span class="hljs-keyword">false</span>,
+            <span class="hljs-keyword">false</span>).length &gt; <span class="hljs-number">0</span>) {
+            IKeyGenerator keyGenerator = <span class="hljs-keyword">this</span>.applicationContext.getBean(IKeyGenerator.class);
+            globalConfig.getDbConfig().setKeyGenerator(keyGenerator);
+        }
+        <span class="hljs-comment">// TODO 注入sql注入器</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.applicationContext.getBeanNamesForType(ISqlInjector.class, <span class="hljs-keyword">false</span>,
+            <span class="hljs-keyword">false</span>).length &gt; <span class="hljs-number">0</span>) {
+            ISqlInjector iSqlInjector = <span class="hljs-keyword">this</span>.applicationContext.getBean(ISqlInjector.class);
+            globalConfig.setSqlInjector(iSqlInjector);
+        }
+        <span class="hljs-comment">// TODO 设置 GlobalConfig 到 MybatisSqlSessionFactoryBean</span>
+        factory.setGlobalConfig(globalConfig);
+        <span class="hljs-keyword">return</span> factory.getObject();
+    }
+ 
+    <span class="hljs-comment">// TODO 入参使用 MybatisSqlSessionFactoryBean</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">applyConfiguration</span><span class="hljs-params">(MybatisSqlSessionFactoryBean factory)</span> </span>{
+        <span class="hljs-comment">// TODO 使用 MybatisConfiguration</span>
+        MybatisConfiguration configuration = <span class="hljs-keyword">this</span>.properties.getConfiguration();
+        <span class="hljs-keyword">if</span> (configuration == <span class="hljs-keyword">null</span> &amp;&amp; !StringUtils.hasText(<span class="hljs-keyword">this</span>.properties.getConfigLocation())) {
+            configuration = <span class="hljs-keyword">new</span> MybatisConfiguration();
+        }
+        <span class="hljs-keyword">if</span> (configuration != <span class="hljs-keyword">null</span> &amp;&amp; !CollectionUtils.isEmpty(<span class="hljs-keyword">this</span>.configurationCustomizers)) {
+            <span class="hljs-keyword">for</span> (ConfigurationCustomizer customizer : <span class="hljs-keyword">this</span>.configurationCustomizers) {
+                customizer.customize(configuration);
+            }
+        }
+        factory.setConfiguration(configuration);
+    }
+ 
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-meta">@ConditionalOnMissingBean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> SqlSessionTemplate <span class="hljs-title">sqlSessionTemplate</span><span class="hljs-params">(SqlSessionFactory sqlSessionFactory)</span> </span>{
+        ExecutorType executorType = <span class="hljs-keyword">this</span>.properties.getExecutorType();
+        <span class="hljs-keyword">if</span> (executorType != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SqlSessionTemplate(sqlSessionFactory, executorType);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SqlSessionTemplate(sqlSessionFactory);
+        }
+    }
+ 
+    <span class="hljs-comment">/**
+     * This will just scan the same base package as Spring Boot does. If you want more power, you can explicitly use
+     * {<span class="hljs-doctag">@link</span> org.mybatis.spring.annotation.MapperScan} but this will get typed mappers working correctly, out-of-the-box,
+     * similar to using Spring Data JPA repositories.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutoConfiguredMapperScannerRegistrar</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">BeanFactoryAware</span>, <span class="hljs-title">ImportBeanDefinitionRegistrar</span> </span>{
+ 
+        <span class="hljs-keyword">private</span> BeanFactory beanFactory;
+ 
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">registerBeanDefinitions</span><span class="hljs-params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry)</span> </span>{
+ 
+            <span class="hljs-keyword">if</span> (!AutoConfigurationPackages.has(<span class="hljs-keyword">this</span>.beanFactory)) {
+                logger.debug(<span class="hljs-string">"Could not determine auto-configuration package, automatic mapper scanning disabled."</span>);
+                <span class="hljs-keyword">return</span>;
+            }
+ 
+            logger.debug(<span class="hljs-string">"Searching for mappers annotated with @Mapper"</span>);
+ 
+            List&lt;String&gt; packages = AutoConfigurationPackages.get(<span class="hljs-keyword">this</span>.beanFactory);
+            <span class="hljs-keyword">if</span> (logger.isDebugEnabled()) {
+                packages.forEach(pkg -&gt; logger.debug(<span class="hljs-string">"Using auto-configuration base package '{}'"</span>, pkg));
+            }
+ 
+            BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(MapperScannerConfigurer.class);
+            builder.addPropertyValue(<span class="hljs-string">"processPropertyPlaceHolders"</span>, <span class="hljs-keyword">true</span>);
+            builder.addPropertyValue(<span class="hljs-string">"annotationClass"</span>, Mapper.class);
+            builder.addPropertyValue(<span class="hljs-string">"basePackage"</span>, StringUtils.collectionToCommaDelimitedString(packages));
+            BeanWrapper beanWrapper = <span class="hljs-keyword">new</span> BeanWrapperImpl(MapperScannerConfigurer.class);
+            Stream.of(beanWrapper.getPropertyDescriptors())
+                <span class="hljs-comment">// Need to mybatis-spring 2.0.2+</span>
+                .filter(x -&gt; x.getName().equals(<span class="hljs-string">"lazyInitialization"</span>)).findAny()
+                .ifPresent(x -&gt; builder.addPropertyValue(<span class="hljs-string">"lazyInitialization"</span>, <span class="hljs-string">"${mybatis.lazy-initialization:false}"</span>));
+            registry.registerBeanDefinition(MapperScannerConfigurer.class.getName(), builder.getBeanDefinition());
+        }
+ 
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setBeanFactory</span><span class="hljs-params">(BeanFactory beanFactory)</span> </span>{
+            <span class="hljs-keyword">this</span>.beanFactory = beanFactory;
+        }
+    }
+ 
+    <span class="hljs-comment">/**
+     * If mapper registering configuration or mapper scanning configuration not present, this configuration allow to scan
+     * mappers based on the same component-scanning path as Spring Boot itself.
+     */</span>
+    <span class="hljs-meta">@Configuration</span>
+    <span class="hljs-meta">@Import</span>(AutoConfiguredMapperScannerRegistrar.class)
+    <span class="hljs-meta">@ConditionalOnMissingBean</span>({MapperFactoryBean.class, MapperScannerConfigurer.class})
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MapperScannerRegistrarNotFoundConfiguration</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span> </span>{
+ 
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterPropertiesSet</span><span class="hljs-params">()</span> </span>{
+            logger.debug(
+                <span class="hljs-string">"Not found configuration for registering mapper bean using @MapperScan, MapperFactoryBean and MapperScannerConfigurer."</span>);
+        }
+    }
+}
+
+</code></pre>
+<p>看到mp启动类里的sqlSessionFactory方法了吗,他也是一样的注入一个数据源,这时候大家应该都知道解决方法了吧?</p>
+<p>没错,就是把被代理过的数据源给放到mp的sqlSessionFactory中.</p>
+<p>很简单,我们需要稍微改动一下我们的seata配置类就行了</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.config;
+
+<span class="hljs-keyword">import</span> javax.sql.DataSource;
+
+<span class="hljs-keyword">import</span> org.mybatis.spring.annotation.MapperScan;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Primary;
+
+<span class="hljs-keyword">import</span> com.alibaba.druid.pool.DruidDataSource;
+
+<span class="hljs-keyword">import</span> io.seata.rm.datasource.DataSourceProxy;
+<span class="hljs-keyword">import</span> io.seata.spring.annotation.GlobalTransactionScanner;
+
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@MapperScan</span>(<span class="hljs-string">"com.baomidou.springboot.mapper*"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SeataAutoConfig</span> </span>{
+    <span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
+    <span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
+    <span class="hljs-keyword">private</span> DataSourceProxy dataSourceProxy;
+
+    <span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"dataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>
+    <span class="hljs-meta">@Primary</span> <span class="hljs-comment">// 在同样的DataSource中，首先使用被标注的DataSource</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DataSource <span class="hljs-title">druidDataSource</span><span class="hljs-params">()</span> </span>{
+        DruidDataSource druidDataSource = <span class="hljs-keyword">new</span> DruidDataSource();
+        logger.info(<span class="hljs-string">"dataSourceProperties.getUrl():{}"</span>, dataSourceProperties.getUrl());
+        druidDataSource.setUrl(dataSourceProperties.getUrl());
+        druidDataSource.setUsername(dataSourceProperties.getUsername());
+        druidDataSource.setPassword(dataSourceProperties.getPassword());
+        druidDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+        druidDataSource.setInitialSize(<span class="hljs-number">0</span>);
+        druidDataSource.setMaxActive(<span class="hljs-number">180</span>);
+        druidDataSource.setMaxWait(<span class="hljs-number">60000</span>);
+        druidDataSource.setMinIdle(<span class="hljs-number">0</span>);
+        druidDataSource.setValidationQuery(<span class="hljs-string">"Select 1 from DUAL"</span>);
+        druidDataSource.setTestOnBorrow(<span class="hljs-keyword">false</span>);
+        druidDataSource.setTestOnReturn(<span class="hljs-keyword">false</span>);
+        druidDataSource.setTestWhileIdle(<span class="hljs-keyword">true</span>);
+        druidDataSource.setTimeBetweenEvictionRunsMillis(<span class="hljs-number">60000</span>);
+        druidDataSource.setMinEvictableIdleTimeMillis(<span class="hljs-number">25200000</span>);
+        druidDataSource.setRemoveAbandoned(<span class="hljs-keyword">true</span>);
+        druidDataSource.setRemoveAbandonedTimeout(<span class="hljs-number">1800</span>);
+        druidDataSource.setLogAbandoned(<span class="hljs-keyword">true</span>);
+        logger.info(<span class="hljs-string">"装载dataSource........"</span>);
+        dataSourceProxy = <span class="hljs-keyword">new</span> DataSourceProxy(druidDataSource);
+        <span class="hljs-keyword">return</span> dataSourceProxy;
+    }
+
+    <span class="hljs-comment">/**
+     * init datasource proxy
+     * 
+     * <span class="hljs-doctag">@Param</span>: druidDataSource datasource bean instance
+     * <span class="hljs-doctag">@Return</span>: DataSourceProxy datasource proxy
+     */</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DataSourceProxy <span class="hljs-title">dataSourceProxy</span><span class="hljs-params">()</span> </span>{
+        logger.info(<span class="hljs-string">"代理dataSource........"</span>);
+        <span class="hljs-keyword">return</span> dataSourceProxy;
+    }
+
+    <span class="hljs-comment">/**
+     * init global transaction scanner
+     *
+     * <span class="hljs-doctag">@Return</span>: GlobalTransactionScanner
+     */</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> GlobalTransactionScanner <span class="hljs-title">globalTransactionScanner</span><span class="hljs-params">()</span> </span>{
+        logger.info(<span class="hljs-string">"配置seata........"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> GlobalTransactionScanner(<span class="hljs-string">"test-service"</span>, <span class="hljs-string">"test-group"</span>);
+    }
+}
+
+</code></pre>
+<p>看代码,我们去掉了自己配置的sqlSessionFactory,直接让DataSource bean返回的是一个被代理过的bean,并且我们加入了@Primary,导致mp优先使用我们配置的数据源,这样就解决了mp因为seata代理了数据源跟创建了新的sqlSessionFactory,导致mp的插件,组件失效的bug了!</p>
+<h1>总结</h1>
+<p>踩到坑不可怕，主要又耐心的顺着每个组件实现的原理，再去思考，查找对应冲突的代码块，你一定能找到个兼容二者的方法。</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

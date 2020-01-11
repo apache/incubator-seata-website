@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Seata FAQ." />
+	<!-- 网页标签标题 -->
+	<title>Seata FAQ</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/en-us/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">中</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/en-us/index.html" target="_self">HOME</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">DOCS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/docs/developers/developers_dev.html" target="_self">DEVELOPERS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/index.html" target="_self">BLOG</a></li><li class="menu-item menu-item-normal"><a href="/en-us/community/index.html" target="_self">COMMUNITY</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/download.html" target="_self">DOWNLOAD</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>Documentation</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>Overview</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/terminology.html" target="_self">Terminology</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>User Doc</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/api.html" target="_self">API Guide</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/microservice.html" target="_self">Microservices Framework Supports</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Developer Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Transaction Mode<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/at-mode.html" target="_self">Seata AT mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/saga-mode.html" target="_self">Seata Saga mode</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/dev/seata-mertics.html" target="_self">Metrics design</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Ops Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/ops/multi-configuration-isolation.html" target="_self">Configuration Isolation</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Deploy<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-server.html" target="_self">Deploy Directly</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-docker.html" target="_self">Deploy by Docker</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-kubernetes.html" target="_self">Deploy by Kubernetes</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-helm.html" target="_self">Deploy by Helm</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>FAQ</h1>
+<p><a href="#1" target="_self">1.Can Seata be used in a production environment?</a></p>
+<p><a href="#2" target="_self">2.Dose Seata support high availability ?</a></p>
+<p><a href="#3" target="_self">3.What is the use of the record of undo log table log status = 1 ?</a></p>
+<p><a href="#4" target="_self">4.How to use the Seata framework to ensure transaction isolation?</a></p>
+<p><a href="#5" target="_self">5.When Failed to roll back dirty data, what shall I do ?</a></p>
+<p><a href="#6" target="_self">6.Why the global transaction state is not &quot;begin&quot; when a branch transaction is registered ?</a></p>
+<p><a href="#7" target="_self">7.When Nacos is used as the Seata configuration center, the project startup error report cannot find the service. How to check and deal with it ?</a></p>
+<p><a href="#8" target="_self">8.When Eureka is the registry and TC is highly available, how to overwrite Eureka properties at the TC end?</a></p>
+<p><a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a></p>
+<p><a href="#10" target="_self">10. Why didn't my mybatis operation return auto-generated ID? </a></p>
+<p><a href="#11" target="_self">11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</a></p>
+<hr>
+<h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
+<p><strong>A:</strong>
+Since version 0.4.2,it is supported in production environment,Users who are using seata are welcome to complete this issue together:<a href="https://github.com/seata/seata/issues/1246">who's using Seata</a></p>
+<hr>
+<h3 id='2'>Q: 2.Dose Seata support high availability ?</h3>
+<p><strong>A:</strong>
+supported from version 0.6, tc USES db mode to share global transaction session information, and the registry USES non-file seata-supported third-party registries</p>
+<hr>
+<h3 id='3'>Q: 3.What is the use of the record of undo log table log status = 1 ?</h3>
+<p><strong>A:</strong></p>
+<p><strong>Scenario:</strong>  after A branch transaction A registers TC, A global transaction rollback occurs before A local transaction commits</p>
+<p><strong>Consequence:</strong> global transaction rollback succeeds, a resource is occupied, resulting in resource suspension problem</p>
+<p><strong>Anti-suspension measures:</strong> when a rolls back and finds that the rollback undo has not been inserted, an undo record with log_status=1 is inserted. When a local transaction (business write operation SQL and corresponding undo are a local transaction) is committed, it fails due to the primary key conflict of the undo table.</p>
+<hr>
+<h3 id='4'>Q: 4.How to use the Seata framework to ensure transaction isolation?</h3>
+<p><strong>A:</strong>
+Since seata phase 1 local transactions have been committed, enhanced isolation is needed to prevent other transactions from dirty reads and dirty writes.</p>
+<ol>
+<li>Dirty read Select statement with for update, proxy method with @GlobalLock or @GlobalTransaction</li>
+<li>Dirty write You must use @globaltransaction
+note：If the interface of the business you are querying does not use the @globaltransactional annotation, which means there is no need for distributed transactions on the method, you can annotate the @globallock annotation on the method and add a for update statement to the query.
+If your query interface has the @globaltransactional annotation on the outer edge of the transactional link, you can simply add a for update statement to your query. The reason for designing this annotation is that before it is available, distributed transactions need to query the committed data, but the business does not need distributed transactions.
+Using the GlobalTransactional annotation adds some unnecessary additional RPC overhead such as begin returning xid, commit transaction, etc. GlobalLock simplifies the RPC process for higher performance.</li>
+</ol>
+<hr>
+<h3 id='5'>Q: 5.When Failed to roll back dirty data, what shall I do ?</h3>
+<p><strong>A:</strong></p>
+<ol>
+<li>The dirty data needs to be processed manually, and the data can be corrected according to the log prompt, or the corresponding undo can be deleted (the FailureHandler can be customized for email notification or other purposes).</li>
+<li>This option is not recommended when &quot;undo&quot; mirror validation is turned off during rollback.
+node：It is recommended to isolate the dirty data in advance</li>
+</ol>
+<hr>
+<h3 id='6'>Q: 6.Why the global transaction state is not "begin" when a branch transaction is registered ?</h3>
+<p><strong>A:</strong></p>
+<p><strong>abnormal：</strong> Could not register branch into global session xid = status = Rollbacked（Two phase state and Rollbacking, AsyncCommitting, etc） while expecting Begin</p>
+<p><strong>describe：</strong> When a branch transaction is registered, the global transaction status must be a one-phase state &quot;begin&quot;, and registration other than &quot;begin&quot; is not allowed. It belongs to the normal processing at the seata framework level, and users can solve it from their own business level.</p>
+<p>This exception can occur in the following situations (you can continue to add).</p>
+<ol>
+<li>The branch transaction is asynchronous. The global transaction is not aware of its progress. The global transaction has entered phase 2 before the asynchronous branch comes to register.</li>
+<li>Service a rpc service b timed out (dubbo, feign, etc. timeout by default for 1 second), a throws an exception to tm, tm informs tc to roll back, but b still receives the request (network delay or rpc framework retry), and then registers at tc Global transaction was found to be rolling back.</li>
+<li>Tc is aware of the global transaction timeout (@globaltransactional (timeoutMills = default 60 seconds)), actively changes the state and notifies each branch transaction to rollback when a new branch transaction is registered.</li>
+</ol>
+<hr>
+<h3 id='7'>Q: 7.When Nacos is used as the Seata configuration center, the project startup error report cannot find the service. How to check and deal with it ?</h3>
+<p><strong>A:</strong>
+abnormal：io.seata.common.exception.FrameworkException: can not register RM,err:can not connect to services-server.</p>
+<ol>
+<li>Check the nacos configuration list to see if the seata configuration has been imported successfully.</li>
+<li>Check the list of nacos services to see if serverAddr has been registered successfully.</li>
+<li>Check the namespace, registry.nacos.namespace and config.nacos.namespace in the client's registry.conf and enter the nacos namespace ID. The default is &quot;&quot;. The server and client correspond to the namespace.
+It is public and is a reserved control of nacos. If you need to create your own namespace, it is better not to use the same name as public, and use a name that has specific semantics in an actual business scenario.</li>
+<li>For the list of services on nacos, the IP address corresponding to serverAddr address should be the IP address specified for seata startup, such as: sh seata-server.sh-p 8091-h 122.51.204.197-m file.</li>
+<li>Check to see if the seata/conf/nacos-config.txt, transaction group service.vgroup_mapping.trade_group=default configuration is the same as the project group configuration name.</li>
+<li>Telnet IP port view ports are open as well as firewall status.
+note：1.Version 080 starts the specified IP problem, the exception &quot;Exception in thread &quot;main&quot; java.lang.RuntimeException: java.net.BindException: Cannot assign request address&quot;, please upgrade to version 081 or above.
+The project USES jdk13 and starts with</li>
+</ol>
+<pre><code class="language-verilog">   Error: Could <span class="hljs-keyword">not</span> create the Java Virtual Machine
+   Error: A fatal exception has occurred. Program will exit.
+</code></pre>
+<p>​    If the environment is sh, replace the last paragraph in the script：</p>
+<pre><code class="language-shell">        exec "$JAVACMD" $JAVA_OPTS -server -Xmx2048m -Xms2048m -Xmn1024m -Xss512k -XX:SurvivorRatio=10 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:
+MaxDirectMemorySize=1024m -XX:-OmitStackTraceInFastThrow -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$BASEDIR"/logs
+/java_heapdump.hprof -XX:+DisableExplicitGC -XX:+CMSParallelRemarkEnabled -XX:+
+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc -Dio.netty.leakDetectionLevel=advanced \
+          -classpath "$CLASSPATH" \
+          -Dapp.name="seata-server" \
+          -Dapp.pid="$$" \
+          -Dapp.repo="$REPO" \
+          -Dapp.home="$BASEDIR" \
+          -Dbasedir="$BASEDIR" \
+          io.seata.server.Server \
+          "$@"
+</code></pre>
+<hr>
+<h3 id='8'>Q: 8.When Eureka is the registry and TC is highly available, how to overwrite Eureka properties at the TC end?</h3>
+<p><strong>A:</strong>
+Add the eureka-client.properties file in the seata\conf directory and add the Eureka properties to be overwritten.
+For example, to overwrite eureka.instance.lease-renewal-interval-in-seconds and eureka.instance.lease-expiration-duration-in-seconds, add the following:</p>
+<pre><code class="language-java">eureka.lease.renewalInterval=<span class="hljs-number">1</span>  
+eureka.lease.duration=<span class="hljs-number">2</span>
+</code></pre>
+<p>The attribute prefix is eureka, and the subsequent attribute names can refer to the class com.netflix.appinfo.PropertyBasedInstanceConfigConstants. You can also study the seata-discovery-eureka project of the discovery module in the seata source code.</p>
+<hr>
+<h3 id='9'>Q: 9.What's the reason of java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;) ?</h3>
+<p><strong>A:</strong>
+when the undolog serialization is configured as Jackson, the Jackson version needs to be 2.9.9+</p>
+<hr>
+<h3 id='10'>Q: 10. Why didn't my mybatis operation return auto-generated ID? </h3>
+<p><strong>A:</strong>
+You should update the configuraton of <code>mybatis</code>:  set annotation <code>@Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)</code> or set the value of useGeneratedKeys and keyProperty  in <code>mybatis</code> xml configuraton</p>
+<hr>
+<h3 id='11'>Q: 11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</h3>
+<p><strong>A:</strong>
+You can execute this command:mvn clean install -DskipTests=true,These codes have been removed in version 0.8.1.</p>
+<hr>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata,dubbo,mybatis,分布式事务" />
+	<meta name="description" content="本文讲述如何将springboot+dubbo+mybatisplus整合seata直连方式搭建" />
+	<!-- 网页标签标题 -->
+	<title>SpringBoot+Dubbo+MybatisPlus整合seata分布式事务</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>SpringBoot+Dubbo+MybatisPlus整合Seata分布式事务</h1>
+<p><a href="https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata">项目地址</a></p>
+<p>本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。</p>
+<h1>前言</h1>
+<p>​    <strong>事务</strong>：事务是由一组操作构成的可靠的独立的工作单元，事务具备ACID的特性，即原子性、一致性、隔离性和持久性。
+​    <strong>分布式事务</strong>:当一个操作牵涉到多个服务,多台数据库协力完成时(比如分表分库后,业务拆分),多个服务中，本地的Transaction已经无法应对这个情况了,为了保证数据一致性，就需要用到分布式事务。
+​    <strong>Seata</strong> ：是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。
+​    <strong>本文目的</strong>：现如今微服务越来越流行，而市面上的分布式事务的方案可谓不少，参差不齐，比较流行的以MQ代表的保证的是消息最终一致性的解决方案（消费确认，消息回查，消息补偿机制等），以及TX-LCN的LCN模式协调本地事务来保证事务统一提交或回滚（已经停止更新，对Dubbo2.7不兼容）。而MQ的分布式事务太过复杂，TX-LCN断更，这时候需要一个高效可靠及易上手的分布式事务解决方案，Seata脱颖而出，本文要介绍的就是如何快速搭建一个整合Seata的Demo项目，一起来吧！</p>
+<h1>准备工作</h1>
+<p>1.首先安装mysql,eclipse之类常用的工具,这不展开了.</p>
+<p>2.访问seata下载中心<a href="http://seata.io/zh-cn/blog/download.html">地址</a>我们使用的0.9.0版本</p>
+<p>3.下载并解压seata-server</p>
+<h2>建库建表</h2>
+<p>1.首先我们链接mysql创建一个名为seata的数据库,然后运行一下建表sql,这个在seata-server的conf文件夹内的db_store.sql就是我的所需要使用的sql了.</p>
+<pre><code class="language-mysql">/*
+Navicat MySQL Data Transfer
+Source Server         : mysql
+Source Server Version : 50721
+Source Host           : localhost:3306
+Source Database       : seata
+Target Server Type    : MYSQL
+Target Server Version : 50721
+File Encoding         : 65001
+Date: 2019-11-23 22:03:18
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+
+-- Table structure for branch_table
+
+-- ----------------------------
+
+DROP TABLE IF EXISTS `branch_table`;
+CREATE TABLE `branch_table` (
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(128) NOT NULL,
+  `transaction_id` bigint(20) DEFAULT NULL,
+  `resource_group_id` varchar(32) DEFAULT NULL,
+  `resource_id` varchar(256) DEFAULT NULL,
+  `lock_key` varchar(128) DEFAULT NULL,
+  `branch_type` varchar(8) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `client_id` varchar(64) DEFAULT NULL,
+  `application_data` varchar(2000) DEFAULT NULL,
+  `gmt_create` datetime DEFAULT NULL,
+  `gmt_modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`branch_id`),
+  KEY `idx_xid` (`xid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+
+-- Records of branch_table
+
+-- ----------------------------
+
+-- ----------------------------
+
+-- Table structure for global_table
+
+-- ----------------------------
+
+DROP TABLE IF EXISTS `global_table`;
+CREATE TABLE `global_table` (
+  `xid` varchar(128) NOT NULL,
+  `transaction_id` bigint(20) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL,
+  `application_id` varchar(32) DEFAULT NULL,
+  `transaction_service_group` varchar(32) DEFAULT NULL,
+  `transaction_name` varchar(128) DEFAULT NULL,
+  `timeout` int(11) DEFAULT NULL,
+  `begin_time` bigint(20) DEFAULT NULL,
+  `application_data` varchar(2000) DEFAULT NULL,
+  `gmt_create` datetime DEFAULT NULL,
+  `gmt_modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`xid`),
+  KEY `idx_gmt_modified_status` (`gmt_modified`,`status`),
+  KEY `idx_transaction_id` (`transaction_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+
+-- Records of global_table
+
+-- ----------------------------
+
+-- ----------------------------
+
+-- Table structure for lock_table
+
+-- ----------------------------
+
+DROP TABLE IF EXISTS `lock_table`;
+CREATE TABLE `lock_table` (
+  `row_key` varchar(128) NOT NULL,
+  `xid` varchar(96) DEFAULT NULL,
+  `transaction_id` mediumtext,
+  `branch_id` mediumtext,
+  `resource_id` varchar(256) DEFAULT NULL,
+  `table_name` varchar(32) DEFAULT NULL,
+  `pk` varchar(36) DEFAULT NULL,
+  `gmt_create` datetime DEFAULT NULL,
+  `gmt_modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`row_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+
+-- Records of lock_table
+
+-- ----------------------------
+
+-- ----------------------------
+
+-- Table structure for undo_log
+
+-- ----------------------------
+
+DROP TABLE IF EXISTS `undo_log`;
+CREATE TABLE `undo_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(100) NOT NULL,
+  `context` varchar(128) NOT NULL,
+  `rollback_info` longblob NOT NULL,
+  `log_status` int(11) NOT NULL,
+  `log_created` datetime NOT NULL,
+  `log_modified` datetime NOT NULL,
+  `ext` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+
+-- Records of undo_log
+</code></pre>
+<p>2.运行完上面的seata所需要的数据库后,我们进行搭建我们所需要写的demo的库,创建一个名为test的数据库,然后执行以下sql代码:</p>
+<pre><code class="language-mysql">/*
+Navicat MySQL Data Transfer
+Source Server         : mysql
+Source Server Version : 50721
+Source Host           : localhost:3306
+Source Database       : test
+Target Server Type    : MYSQL
+Target Server Version : 50721
+File Encoding         : 65001
+Date: 2019-11-23 22:03:24
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+
+-- Table structure for test
+
+-- ----------------------------
+
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `one` varchar(255) DEFAULT NULL,
+  `two` varchar(255) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+
+-- Records of test
+
+-- ----------------------------
+
+INSERT INTO `test` VALUES ('1', '1', '2', '2019-11-23 16:07:34');
+
+-- ----------------------------
+
+-- Table structure for undo_log
+
+-- ----------------------------
+
+DROP TABLE IF EXISTS `undo_log`;
+CREATE TABLE `undo_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(100) NOT NULL,
+  `context` varchar(128) NOT NULL,
+  `rollback_info` longblob NOT NULL,
+  `log_status` int(11) NOT NULL,
+  `log_created` datetime NOT NULL,
+  `log_modified` datetime NOT NULL,
+  `ext` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+
+-- Records of undo_log
+</code></pre>
+<p>3.我们找到seata-server/conf 文件夹内的file编辑它:<img src="/img/blog/20191129132933.png" alt="20191129132933"></p>
+<p>4.再次找到其中的db配置方法块,更改方法如下图:<img src="/img/blog/20191129133111.png" alt=""></p>
+<p>好了,可以到bin目录去./seata-server.bat 运行看看了</p>
+<h1>创建项目</h1>
+<p>​	首先我们使用的是eclipse,当然你也可以用idea之类的工具,详细请按下面步骤来运行</p>
+<p>​	1.创建一个新的maven项目,并删除多余文件夹:<img src="/img/blog/20191129133354.png" alt="20191129133354"><img src="/img/blog/20191129133441.png" alt="20191129133441" style="zoom:150%;" /></p>
+<p>​	2.打开项目的pom.xml,加入以下依赖:</p>
+<pre><code class="language-java">	&lt;properties&gt;
+		&lt;webVersion&gt;3.1&lt;/webVersion&gt;
+		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+		&lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+		&lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+		&lt;HikariCP.version&gt;3.2.0&lt;/HikariCP.version&gt;
+		&lt;mybatis-plus-boot-starter.version&gt;3.2.0&lt;/mybatis-plus-boot-starter.version&gt;
+	&lt;/properties&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+		&lt;version&gt;2.1.8.RELEASE&lt;/version&gt;
+	&lt;/parent&gt;
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+			&lt;artifactId&gt;curator-framework&lt;/artifactId&gt;
+			&lt;version&gt;4.2.0&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+			&lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+			&lt;version&gt;4.2.0&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;
+			&lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;
+			&lt;version&gt;2.7.4.1&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+			&lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
+			&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+			&lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+			&lt;version&gt;1.2.60&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;!-- &lt;dependency&gt; &lt;groupId&gt;javax&lt;/groupId&gt; &lt;artifactId&gt;javaee-api&lt;/artifactId&gt; 
+			&lt;version&gt;7.0&lt;/version&gt; &lt;scope&gt;provided&lt;/scope&gt; &lt;/dependency&gt; --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;io.springfox&lt;/groupId&gt;
+			&lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+			&lt;version&gt;2.9.2&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;io.springfox&lt;/groupId&gt;
+			&lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+			&lt;version&gt;2.9.2&lt;/version&gt;
+		&lt;/dependency&gt;
+ 
+		&lt;!-- mybatis-plus begin --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+			&lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+			&lt;version&gt;${mybatis-plus-boot-starter.version}&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;!-- mybatis-plus end --&gt;
+		&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+			&lt;artifactId&gt;lombok&lt;/artifactId&gt;
+			&lt;scope&gt;provided&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;io.seata&lt;/groupId&gt;
+			&lt;artifactId&gt;seata-all&lt;/artifactId&gt;
+			&lt;version&gt;0.9.0.1&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;!-- Zookeeper --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+			&lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+			&lt;version&gt;3.4.9&lt;/version&gt;
+			&lt;exclusions&gt;
+				&lt;exclusion&gt;
+					&lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+					&lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+				&lt;/exclusion&gt;
+			&lt;/exclusions&gt;
+		&lt;/dependency&gt;
+		&lt;!-- &lt;dependency&gt; &lt;groupId&gt;com.baomidou&lt;/groupId&gt; &lt;artifactId&gt;dynamic-datasource-spring-boot-starter&lt;/artifactId&gt; 
+			&lt;version&gt;2.5.4&lt;/version&gt; &lt;/dependency&gt; --&gt;
+ 
+		&lt;!-- &lt;dependency&gt; &lt;groupId&gt;com.baomidou&lt;/groupId&gt; &lt;artifactId&gt;mybatis-plus-generator&lt;/artifactId&gt; 
+			&lt;version&gt;3.1.0&lt;/version&gt; &lt;/dependency&gt; --&gt;
+		&lt;!-- https://mvnrepository.com/artifact/org.freemarker/freemarker --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.freemarker&lt;/groupId&gt;
+			&lt;artifactId&gt;freemarker&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+			&lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+			&lt;version&gt;1.1.20&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;!-- 加上这个才能辨认到log4j2.yml文件 --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.fasterxml.jackson.dataformat&lt;/groupId&gt;
+			&lt;artifactId&gt;jackson-dataformat-yaml&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt; &lt;!-- 引入log4j2依赖 --&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-log4j2&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;mysql&lt;/groupId&gt;
+			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+			&lt;exclusions&gt;
+				&lt;exclusion&gt;
+					&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+					&lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;
+				&lt;/exclusion&gt;
+				&lt;exclusion&gt;
+					&lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+					&lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+				&lt;/exclusion&gt;
+			&lt;/exclusions&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;!-- &lt;dependency&gt; &lt;groupId&gt;org.scala-lang&lt;/groupId&gt; &lt;artifactId&gt;scala-library&lt;/artifactId&gt; 
+			&lt;version&gt;2.11.0&lt;/version&gt; &lt;/dependency&gt; --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+			&lt;optional&gt;true&lt;/optional&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+
+</code></pre>
+<p>​	3.再切换父项目为pom模式,还是pom文件,切换为 overview ,做如图操作:<img src="/img/blog/20191129134127.png" alt="20191129134127"></p>
+<p>4.创建我们的demo子项目,test-service:<img src="/img/blog/20191129135935.png" alt="20191129135935"></p>
+<p>​	目录如下:</p>
+<img src="/img/blog/20191129140048.png" alt="20191129140048" style="zoom:200%;" />
+<pre><code>创建EmbeddedZooKeeper.java文件,跟 ProviderApplication.java,代码如下:
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test;
+ 
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">import</span> java.util.Properties;
+<span class="hljs-keyword">import</span> java.util.UUID;
+ 
+<span class="hljs-keyword">import</span> org.apache.zookeeper.server.ServerConfig;
+<span class="hljs-keyword">import</span> org.apache.zookeeper.server.ZooKeeperServerMain;
+<span class="hljs-keyword">import</span> org.apache.zookeeper.server.quorum.QuorumPeerConfig;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.context.SmartLifecycle;
+<span class="hljs-keyword">import</span> org.springframework.util.ErrorHandler;
+<span class="hljs-keyword">import</span> org.springframework.util.SocketUtils;
+ 
+<span class="hljs-comment">/**
+ * from:
+ * https://github.com/spring-projects/spring-xd/blob/v1.3.1.RELEASE/spring-xd-dirt/src/main/java/org/springframework/xd/dirt/zookeeper/ZooKeeperUtils.java
+ * 
+ * Helper class to start an embedded instance of standalone (non clustered) ZooKeeper.
+ * 
+ * <span class="hljs-doctag">NOTE:</span> at least an external standalone server (if not an ensemble) are recommended, even for
+ * {<span class="hljs-doctag">@link</span> org.springframework.xd.dirt.server.singlenode.SingleNodeApplication}
+ * 
+ * <span class="hljs-doctag">@author</span> Patrick Peralta
+ * <span class="hljs-doctag">@author</span> Mark Fisher
+ * <span class="hljs-doctag">@author</span> David Turanski
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmbeddedZooKeeper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SmartLifecycle</span> </span>{
+ 
+    <span class="hljs-comment">/**
+     * Logger.
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger logger = LoggerFactory.getLogger(EmbeddedZooKeeper.class);
+ 
+    <span class="hljs-comment">/**
+     * ZooKeeper client port. This will be determined dynamically upon startup.
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> clientPort;
+ 
+    <span class="hljs-comment">/**
+     * Whether to auto-start. Default is true.
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> autoStartup = <span class="hljs-keyword">true</span>;
+ 
+    <span class="hljs-comment">/**
+     * Lifecycle phase. Default is 0.
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> phase = <span class="hljs-number">0</span>;
+ 
+    <span class="hljs-comment">/**
+     * Thread for running the ZooKeeper server.
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> Thread zkServerThread;
+ 
+    <span class="hljs-comment">/**
+     * ZooKeeper server.
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> ZooKeeperServerMain zkServer;
+ 
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@link</span> ErrorHandler} to be invoked if an Exception is thrown from the ZooKeeper server thread.
+     */</span>
+    <span class="hljs-keyword">private</span> ErrorHandler errorHandler;
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> daemon = <span class="hljs-keyword">true</span>;
+ 
+    <span class="hljs-comment">/**
+     * Construct an EmbeddedZooKeeper with a random port.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EmbeddedZooKeeper</span><span class="hljs-params">()</span> </span>{
+        clientPort = SocketUtils.findAvailableTcpPort();
+    }
+ 
+    <span class="hljs-comment">/**
+     * Construct an EmbeddedZooKeeper with the provided port.
+     *
+     * <span class="hljs-doctag">@param</span> clientPort
+     *            port for ZooKeeper server to bind to
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EmbeddedZooKeeper</span><span class="hljs-params">(<span class="hljs-keyword">int</span> clientPort, <span class="hljs-keyword">boolean</span> daemon)</span> </span>{
+        <span class="hljs-keyword">this</span>.clientPort = clientPort;
+        <span class="hljs-keyword">this</span>.daemon = daemon;
+    }
+ 
+    <span class="hljs-comment">/**
+     * Returns the port that clients should use to connect to this embedded server.
+     * 
+     * <span class="hljs-doctag">@return</span> dynamically determined client port
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getClientPort</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.clientPort;
+    }
+ 
+    <span class="hljs-comment">/**
+     * Specify whether to start automatically. Default is true.
+     * 
+     * <span class="hljs-doctag">@param</span> autoStartup
+     *            whether to start automatically
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAutoStartup</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> autoStartup)</span> </span>{
+        <span class="hljs-keyword">this</span>.autoStartup = autoStartup;
+    }
+ 
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritDoc</span>}
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isAutoStartup</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.autoStartup;
+    }
+ 
+    <span class="hljs-comment">/**
+     * Specify the lifecycle phase for the embedded server.
+     * 
+     * <span class="hljs-doctag">@param</span> phase
+     *            the lifecycle phase
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPhase</span><span class="hljs-params">(<span class="hljs-keyword">int</span> phase)</span> </span>{
+        <span class="hljs-keyword">this</span>.phase = phase;
+    }
+ 
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritDoc</span>}
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPhase</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.phase;
+    }
+ 
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritDoc</span>}
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isRunning</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> (zkServerThread != <span class="hljs-keyword">null</span>);
+    }
+ 
+    <span class="hljs-comment">/**
+     * Start the ZooKeeper server in a background thread.
+     * &lt;p&gt;
+     * Register an error handler via {<span class="hljs-doctag">@link</span> #setErrorHandler} in order to handle any exceptions thrown during startup or
+     * execution.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (zkServerThread == <span class="hljs-keyword">null</span>) {
+            zkServerThread = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> ServerRunnable(), <span class="hljs-string">"ZooKeeper Server Starter"</span>);
+            zkServerThread.setDaemon(daemon);
+            zkServerThread.start();
+        }
+    }
+ 
+    <span class="hljs-comment">/**
+     * Shutdown the ZooKeeper server.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (zkServerThread != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-comment">// The shutdown method is protected...thus this hack to invoke it.</span>
+            <span class="hljs-comment">// This will log an exception on shutdown; see</span>
+            <span class="hljs-comment">// https://issues.apache.org/jira/browse/ZOOKEEPER-1873 for details.</span>
+            <span class="hljs-keyword">try</span> {
+                Method shutdown = ZooKeeperServerMain.class.getDeclaredMethod(<span class="hljs-string">"shutdown"</span>);
+                shutdown.setAccessible(<span class="hljs-keyword">true</span>);
+                shutdown.invoke(zkServer);
+            }
+ 
+            <span class="hljs-keyword">catch</span> (Exception e) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(e);
+            }
+ 
+            <span class="hljs-comment">// It is expected that the thread will exit after</span>
+            <span class="hljs-comment">// the server is shutdown; this will block until</span>
+            <span class="hljs-comment">// the shutdown is complete.</span>
+            <span class="hljs-keyword">try</span> {
+                zkServerThread.join(<span class="hljs-number">5000</span>);
+                zkServerThread = <span class="hljs-keyword">null</span>;
+            } <span class="hljs-keyword">catch</span> (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                logger.warn(<span class="hljs-string">"Interrupted while waiting for embedded ZooKeeper to exit"</span>);
+                <span class="hljs-comment">// abandoning zk thread</span>
+                zkServerThread = <span class="hljs-keyword">null</span>;
+            }
+        }
+    }
+ 
+    <span class="hljs-comment">/**
+     * Stop the server if running and invoke the callback when complete.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stop</span><span class="hljs-params">(Runnable callback)</span> </span>{
+        stop();
+        callback.run();
+    }
+ 
+    <span class="hljs-comment">/**
+     * Provide an {<span class="hljs-doctag">@link</span> ErrorHandler} to be invoked if an Exception is thrown from the ZooKeeper server thread. If none
+     * is provided, only error-level logging will occur.
+     * 
+     * <span class="hljs-doctag">@param</span> errorHandler
+     *            the {<span class="hljs-doctag">@link</span> ErrorHandler} to be invoked
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setErrorHandler</span><span class="hljs-params">(ErrorHandler errorHandler)</span> </span>{
+        <span class="hljs-keyword">this</span>.errorHandler = errorHandler;
+    }
+ 
+    <span class="hljs-comment">/**
+     * Runnable implementation that starts the ZooKeeper server.
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServerRunnable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>{
+ 
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">try</span> {
+                Properties properties = <span class="hljs-keyword">new</span> Properties();
+                File file = <span class="hljs-keyword">new</span> File(System.getProperty(<span class="hljs-string">"java.io.tmpdir"</span>) + File.separator + UUID.randomUUID());
+                file.deleteOnExit();
+                properties.setProperty(<span class="hljs-string">"dataDir"</span>, file.getAbsolutePath());
+                properties.setProperty(<span class="hljs-string">"clientPort"</span>, String.valueOf(clientPort));
+ 
+                QuorumPeerConfig quorumPeerConfig = <span class="hljs-keyword">new</span> QuorumPeerConfig();
+                quorumPeerConfig.parseProperties(properties);
+ 
+                zkServer = <span class="hljs-keyword">new</span> ZooKeeperServerMain();
+                ServerConfig configuration = <span class="hljs-keyword">new</span> ServerConfig();
+                configuration.readFrom(quorumPeerConfig);
+ 
+                zkServer.runFromConfig(configuration);
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+                <span class="hljs-keyword">if</span> (errorHandler != <span class="hljs-keyword">null</span>) {
+                    errorHandler.handleError(e);
+                } <span class="hljs-keyword">else</span> {
+                    logger.error(<span class="hljs-string">"Exception running embedded ZooKeeper"</span>, e);
+                }
+            }
+        }
+    }
+ 
+}
+
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test;
+ 
+<span class="hljs-keyword">import</span> org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
+<span class="hljs-keyword">import</span> org.springframework.boot.SpringApplication;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.ComponentScan;
+<span class="hljs-keyword">import</span> org.springframework.transaction.annotation.EnableTransactionManagement;
+ 
+<span class="hljs-comment">/**
+ * 
+ * <span class="hljs-doctag">@author</span> cjb
+ * <span class="hljs-doctag">@date</span> 2019/10/24
+ */</span>
+<span class="hljs-meta">@EnableTransactionManagement</span>
+<span class="hljs-meta">@ComponentScan</span>(basePackages = {<span class="hljs-string">"org.test.config"</span>, <span class="hljs-string">"org.test.service.impl"</span>})
+<span class="hljs-meta">@DubboComponentScan</span>(basePackages = <span class="hljs-string">"org.test.service.impl"</span>)
+<span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProviderApplication</span> </span>{
+ 
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">new</span> EmbeddedZooKeeper(<span class="hljs-number">2181</span>, <span class="hljs-keyword">false</span>).start();
+        SpringApplication app = <span class="hljs-keyword">new</span> SpringApplication(ProviderApplication.class);
+        app.run(args);
+    }
+ 
+}
+
+</code></pre>
+<pre><code>创建实体包 org.test.entity以及创建实体类Test 用到了lombok,详细百度一下,eclipse装lombok插件
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.entity;
+ 
+<span class="hljs-keyword">import</span> java.io.Serializable;
+<span class="hljs-keyword">import</span> java.time.LocalDateTime;
+ 
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.annotation.IdType;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.annotation.TableField;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.annotation.TableId;
+ 
+<span class="hljs-keyword">import</span> io.swagger.annotations.ApiModel;
+<span class="hljs-keyword">import</span> io.swagger.annotations.ApiModelProperty;
+<span class="hljs-keyword">import</span> lombok.Data;
+<span class="hljs-keyword">import</span> lombok.EqualsAndHashCode;
+<span class="hljs-keyword">import</span> lombok.experimental.Accessors;
+ 
+<span class="hljs-comment">/**
+ * &lt;p&gt;
+ * 功能
+ * &lt;/p&gt;
+ *
+ * <span class="hljs-doctag">@author</span> Funkye
+ * <span class="hljs-doctag">@since</span> 2019-04-23
+ */</span>
+<span class="hljs-meta">@Data</span>
+<span class="hljs-meta">@EqualsAndHashCode</span>(callSuper = <span class="hljs-keyword">false</span>)
+<span class="hljs-meta">@Accessors</span>(chain = <span class="hljs-keyword">true</span>)
+<span class="hljs-meta">@ApiModel</span>(value = <span class="hljs-string">"test对象"</span>, description = <span class="hljs-string">"功能"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>{
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">1L</span>;
+ 
+    <span class="hljs-meta">@ApiModelProperty</span>(value = <span class="hljs-string">"主键"</span>)
+    <span class="hljs-meta">@TableId</span>(value = <span class="hljs-string">"id"</span>, type = IdType.AUTO)
+    <span class="hljs-keyword">private</span> Integer id;
+ 
+    <span class="hljs-meta">@ApiModelProperty</span>(value = <span class="hljs-string">"one"</span>)
+    <span class="hljs-meta">@TableField</span>(<span class="hljs-string">"one"</span>)
+    <span class="hljs-keyword">private</span> String one;
+ 
+    <span class="hljs-meta">@ApiModelProperty</span>(value = <span class="hljs-string">"two"</span>)
+    <span class="hljs-meta">@TableField</span>(<span class="hljs-string">"two"</span>)
+    <span class="hljs-keyword">private</span> String two;
+ 
+    <span class="hljs-meta">@ApiModelProperty</span>(value = <span class="hljs-string">"createTime"</span>)
+    <span class="hljs-meta">@TableField</span>(<span class="hljs-string">"createTime"</span>)
+    <span class="hljs-keyword">private</span> LocalDateTime createTime;
+ 
+}
+
+</code></pre>
+<p>​	创建service,service.impl,mapper等包,依次创建ITestservice,以及实现类,mapper</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.service;
+ 
+<span class="hljs-keyword">import</span> org.test.entity.Test;
+ 
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.service.IService; 
+ 
+<span class="hljs-comment">/**
+ * &lt;p&gt;
+ * 功能 服务类
+ * &lt;/p&gt;
+ *
+ * <span class="hljs-doctag">@author</span> Funkye
+ * <span class="hljs-doctag">@since</span> 2019-04-10
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ITestService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">IService</span>&lt;<span class="hljs-title">Test</span>&gt; </span>{
+ 
+}
+
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.service.impl;
+ 
+ 
+ 
+ 
+<span class="hljs-keyword">import</span> org.apache.dubbo.config.annotation.Service;
+<span class="hljs-keyword">import</span> org.test.entity.Test;
+<span class="hljs-keyword">import</span> org.test.mapper.TestMapper;
+<span class="hljs-keyword">import</span> org.test.service.ITestService;
+ 
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+ 
+<span class="hljs-meta">@Service</span>(version = <span class="hljs-string">"1.0.0"</span>,interfaceClass =ITestService.class )
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestServiceImpl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceImpl</span>&lt;<span class="hljs-title">TestMapper</span>, <span class="hljs-title">Test</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">ITestService</span> </span>{
+ 
+}
+
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.mapper;
+ 
+<span class="hljs-keyword">import</span> org.test.entity.Test; 
+ 
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;
+ 
+<span class="hljs-comment">/**
+ * &lt;p&gt;
+ * 功能 Mapper 接口
+ * &lt;/p&gt;
+ *
+ * <span class="hljs-doctag">@author</span> Funkye
+ * <span class="hljs-doctag">@since</span> 2019-04-10
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">TestMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseMapper</span>&lt;<span class="hljs-title">Test</span>&gt; </span>{
+ 
+}
+
+</code></pre>
+<pre><code>创建org.test.config包,创建SeataAutoConfig.java,配置信息都在此处,主要作用为代理数据,连接事务服务分组 
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.config;
+
+<span class="hljs-keyword">import</span> javax.sql.DataSource;
+
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Primary;
+
+<span class="hljs-keyword">import</span> com.alibaba.druid.pool.DruidDataSource;
+
+<span class="hljs-keyword">import</span> io.seata.rm.datasource.DataSourceProxy;
+<span class="hljs-keyword">import</span> io.seata.spring.annotation.GlobalTransactionScanner;
+
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SeataAutoConfig</span> </span>{
+	<span class="hljs-meta">@Autowired</span>(required = <span class="hljs-keyword">true</span>)
+	<span class="hljs-keyword">private</span> DataSourceProperties dataSourceProperties;
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
+
+	<span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"druidDataSource"</span>) <span class="hljs-comment">// 声明其为Bean实例</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSource <span class="hljs-title">druidDataSource</span><span class="hljs-params">()</span> </span>{
+		DruidDataSource druidDataSource = <span class="hljs-keyword">new</span> DruidDataSource();
+		logger.info(<span class="hljs-string">"dataSourceProperties.getUrl():{}"</span>, dataSourceProperties.getUrl());
+		druidDataSource.setUrl(dataSourceProperties.getUrl());
+		druidDataSource.setUsername(dataSourceProperties.getUsername());
+		druidDataSource.setPassword(dataSourceProperties.getPassword());
+		druidDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+		druidDataSource.setInitialSize(<span class="hljs-number">0</span>);
+		druidDataSource.setMaxActive(<span class="hljs-number">180</span>);
+		druidDataSource.setMaxWait(<span class="hljs-number">60000</span>);
+		druidDataSource.setMinIdle(<span class="hljs-number">0</span>);
+		druidDataSource.setValidationQuery(<span class="hljs-string">"Select 1 from DUAL"</span>);
+		druidDataSource.setTestOnBorrow(<span class="hljs-keyword">false</span>);
+		druidDataSource.setTestOnReturn(<span class="hljs-keyword">false</span>);
+		druidDataSource.setTestWhileIdle(<span class="hljs-keyword">true</span>);
+		druidDataSource.setTimeBetweenEvictionRunsMillis(<span class="hljs-number">60000</span>);
+		druidDataSource.setMinEvictableIdleTimeMillis(<span class="hljs-number">25200000</span>);
+		druidDataSource.setRemoveAbandoned(<span class="hljs-keyword">true</span>);
+		druidDataSource.setRemoveAbandonedTimeout(<span class="hljs-number">1800</span>);
+		druidDataSource.setLogAbandoned(<span class="hljs-keyword">true</span>);
+		logger.info(<span class="hljs-string">"装载dataSource........"</span>);
+		<span class="hljs-keyword">return</span> druidDataSource;
+	}
+
+	<span class="hljs-comment">/**
+	 * init datasource proxy
+	 * 
+	 * <span class="hljs-doctag">@Param</span>: druidDataSource datasource bean instance
+	 * <span class="hljs-doctag">@Return</span>: DataSourceProxy datasource proxy
+	 */</span>
+	<span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"dataSource"</span>)
+	<span class="hljs-meta">@Primary</span> <span class="hljs-comment">// 在同样的DataSource中，首先使用被标注的DataSource</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSourceProxy <span class="hljs-title">dataSourceProxy</span><span class="hljs-params">(@Qualifier(value = <span class="hljs-string">"druidDataSource"</span>)</span> DruidDataSource druidDataSource) </span>{
+		logger.info(<span class="hljs-string">"代理dataSource........"</span>);
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DataSourceProxy(druidDataSource);
+	}
+
+	<span class="hljs-comment">/**
+	 * init global transaction scanner
+	 *
+	 * <span class="hljs-doctag">@Return</span>: GlobalTransactionScanner
+	 */</span>
+	<span class="hljs-meta">@Bean</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> GlobalTransactionScanner <span class="hljs-title">globalTransactionScanner</span><span class="hljs-params">()</span> </span>{
+		logger.info(<span class="hljs-string">"配置seata........"</span>);
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> GlobalTransactionScanner(<span class="hljs-string">"test-service"</span>, <span class="hljs-string">"test-group"</span>);
+	}
+}
+</code></pre>
+<pre><code>再创建mybatisplus所需的配置文件MybatisPlusConfig  
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.config;
+ 
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+ 
+<span class="hljs-keyword">import</span> org.mybatis.spring.mapper.MapperScannerConfigurer;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+ 
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.parser.ISqlParser;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.parsers.BlockAttackSqlParser;
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+ 
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-comment">// @MapperScan("com.baomidou.springboot.mapper*")//这个注解，作用相当于下面的@Bean</span>
+<span class="hljs-comment">// MapperScannerConfigurer，2者配置1份即可</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MybatisPlusConfig</span> </span>{
+ 
+    <span class="hljs-comment">/**
+     * mybatis-plus分页插件&lt;br&gt;
+     * 文档：http://mp.baomidou.com&lt;br&gt;
+     */</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> PaginationInterceptor <span class="hljs-title">paginationInterceptor</span><span class="hljs-params">()</span> </span>{
+        PaginationInterceptor paginationInterceptor = <span class="hljs-keyword">new</span> PaginationInterceptor();
+        List&lt;ISqlParser&gt; sqlParserList = <span class="hljs-keyword">new</span> ArrayList&lt;ISqlParser&gt;();
+        <span class="hljs-comment">// 攻击 SQL 阻断解析器、加入解析链</span>
+        sqlParserList.add(<span class="hljs-keyword">new</span> BlockAttackSqlParser());
+        paginationInterceptor.setSqlParserList(sqlParserList);
+        <span class="hljs-keyword">return</span> paginationInterceptor;
+    }
+ 
+    <span class="hljs-comment">/**
+     * 相当于顶部的： {<span class="hljs-doctag">@code</span> <span class="hljs-doctag">@MapperScan</span>("com.baomidou.springboot.mapper*")} 这里可以扩展，比如使用配置文件来配置扫描Mapper的路径
+     */</span>
+ 
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> MapperScannerConfigurer <span class="hljs-title">mapperScannerConfigurer</span><span class="hljs-params">()</span> </span>{
+        MapperScannerConfigurer scannerConfigurer = <span class="hljs-keyword">new</span> MapperScannerConfigurer();
+        scannerConfigurer.setBasePackage(<span class="hljs-string">"org.test.mapper"</span>);
+        <span class="hljs-keyword">return</span> scannerConfigurer;
+    }
+ 
+}
+
+</code></pre>
+<p>​	 再创建<strong>resources目录,创建mapper文件夹,application.yml等文件</strong></p>
+<pre><code class="language-yaml"><span class="hljs-attr">server:</span>
+<span class="hljs-attr">  port:</span> <span class="hljs-number">38888</span>
+<span class="hljs-attr">spring:</span>
+<span class="hljs-attr">  application:</span> 
+<span class="hljs-attr">      name:</span> <span class="hljs-string">test-service</span>
+<span class="hljs-attr">  datasource:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span>
+<span class="hljs-attr">    url:</span> <span class="hljs-attr">jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
+<span class="hljs-attr">    driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-attr">    username:</span> <span class="hljs-string">root</span>
+<span class="hljs-attr">    password:</span> <span class="hljs-number">123456</span>
+<span class="hljs-attr">dubbo:</span>
+<span class="hljs-attr">  protocol:</span>
+<span class="hljs-attr">    loadbalance:</span> <span class="hljs-string">leastactive</span>
+<span class="hljs-attr">    threadpool:</span> <span class="hljs-string">cached</span>
+<span class="hljs-attr">  scan:</span>
+<span class="hljs-attr">    base-packages:</span> <span class="hljs-string">org。test.service</span>
+<span class="hljs-attr">  application:</span>
+<span class="hljs-attr">    qos-enable:</span> <span class="hljs-literal">false</span>
+<span class="hljs-attr">    name:</span> <span class="hljs-string">testserver</span>
+<span class="hljs-attr">  registry:</span>
+<span class="hljs-attr">    id:</span> <span class="hljs-string">my-registry</span>
+<span class="hljs-attr">    address:</span>  <span class="hljs-attr">zookeeper://127.0.0.1:2181?client=curator</span>
+<span class="hljs-attr">mybatis-plus:</span>
+<span class="hljs-attr">  mapper-locations:</span> <span class="hljs-attr">classpath:/mapper/*Mapper.xml</span>
+<span class="hljs-attr">  typeAliasesPackage:</span> <span class="hljs-string">org.test.entity</span>
+<span class="hljs-attr">  global-config:</span>
+<span class="hljs-attr">    db-config:</span>
+<span class="hljs-attr">      field-strategy:</span> <span class="hljs-string">not-empty</span>
+<span class="hljs-attr">      id-type:</span> <span class="hljs-string">auto</span>
+<span class="hljs-attr">      db-type:</span> <span class="hljs-string">mysql</span>
+<span class="hljs-attr">  configuration:</span>
+<span class="hljs-attr">    map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    cache-enabled:</span> <span class="hljs-literal">true</span>      
+<span class="hljs-attr">    auto-mapping-unknown-column-behavior:</span> <span class="hljs-string">none</span>
+
+</code></pre>
+<p>​	 创建file.conf,此处的service 内的vgroup_mapping.你的事务分组,比如上<strong>面SeataAutoConfig内配置了test-group,那么这里也要改为test-group</strong>,然后下面ip端口都是seata运行的ip跟端口就行了</p>
+<pre><code class="language-java">transport {
+  type = <span class="hljs-string">"TCP"</span>
+  server = <span class="hljs-string">"NIO"</span>
+  heartbeat = <span class="hljs-keyword">true</span>
+  thread-factory {
+    boss-thread-prefix = <span class="hljs-string">"NettyBoss"</span>
+    worker-thread-prefix = <span class="hljs-string">"NettyServerNIOWorker"</span>
+    server-executor-thread-prefix = <span class="hljs-string">"NettyServerBizHandler"</span>
+    share-boss-worker = <span class="hljs-keyword">false</span>
+    client-selector-thread-prefix = <span class="hljs-string">"NettyClientSelector"</span>
+    client-selector-thread-size = <span class="hljs-number">1</span>
+    client-worker-thread-prefix = <span class="hljs-string">"NettyClientWorkerThread"</span>
+    boss-thread-size = <span class="hljs-number">1</span>
+    worker-thread-size = <span class="hljs-number">8</span>
+  }
+  shutdown {
+    wait = <span class="hljs-number">3</span>
+  }
+  serialization = <span class="hljs-string">"seata"</span>
+  compressor = <span class="hljs-string">"none"</span>
+}
+service {
+  vgroup_mapping.test-group = <span class="hljs-string">"default"</span>
+  <span class="hljs-keyword">default</span>.grouplist = <span class="hljs-string">"127.0.0.1:8091"</span>
+  enableDegrade = <span class="hljs-keyword">false</span>
+  disable = <span class="hljs-keyword">false</span>
+  max.commit.retry.timeout = <span class="hljs-string">"-1"</span>
+  max.rollback.retry.timeout = <span class="hljs-string">"-1"</span>
+}
+ 
+client {
+  async.commit.buffer.limit = <span class="hljs-number">10000</span>
+  lock {
+    retry.internal = <span class="hljs-number">10</span>
+    retry.times = <span class="hljs-number">30</span>
+  }
+  report.retry.count = <span class="hljs-number">5</span>
+  tm.commit.retry.count = <span class="hljs-number">1</span>
+  tm.rollback.retry.count = <span class="hljs-number">1</span>
+  undo.log.table = <span class="hljs-string">"undo_log"</span>
+}
+ 
+recovery {
+  committing-retry-period = <span class="hljs-number">1000</span>
+  asyn-committing-retry-period = <span class="hljs-number">1000</span>
+  rollbacking-retry-period = <span class="hljs-number">1000</span>
+  timeout-retry-period = <span class="hljs-number">1000</span>
+}
+ 
+transaction {
+  undo.data.validation = <span class="hljs-keyword">true</span>
+  undo.log.serialization = <span class="hljs-string">"jackson"</span>
+  undo.log.save.days = <span class="hljs-number">7</span>
+  undo.log.delete.period = <span class="hljs-number">86400000</span>
+  undo.log.table = <span class="hljs-string">"undo_log"</span>
+}
+ 
+metrics {
+  enabled = <span class="hljs-keyword">false</span>
+  registry-type = <span class="hljs-string">"compact"</span>
+  exporter-list = <span class="hljs-string">"prometheus"</span>
+  exporter-prometheus-port = <span class="hljs-number">9898</span>
+}
+ 
+support {
+  spring {
+    datasource.autoproxy = <span class="hljs-keyword">false</span>
+  }
+}
+
+</code></pre>
+<p>创建registry.conf,来指定file,zk的ip端口之类的配置</p>
+<pre><code class="language-java">registry {
+  type = <span class="hljs-string">"file"</span>
+  file {
+    name = <span class="hljs-string">"file.conf"</span>
+  }
+}
+config {
+  type = <span class="hljs-string">"file"</span>
+  file {
+    name = <span class="hljs-string">"file.conf"</span>
+  }
+  zk {
+    serverAddr = <span class="hljs-string">"127.0.0.1:2181"</span>
+    session.timeout = <span class="hljs-number">6000</span>
+    connect.timeout = <span class="hljs-number">2000</span>
+  }
+}
+
+</code></pre>
+<p>​	 大功告成,可以直接运行啦,这时候观察seata-server<img src="/img/blog/20191129142115.png" alt="20191129142115"></p>
+<p>​	接下来我们创建test-client项目项目,这里就不赘述了,跟上面的test-service一样的创建方式</p>
+<p>​	接下来我们复制test-service内的service跟实体过去,当然你嫌麻烦,可以单独搞个子项目放通用的service跟实体,一些工具类等等,我这边为了快速搭建这个demo,就选择复制黏贴的方式了.</p>
+<p>目录结构:<img src="/img/blog/20191129142349.png" alt=""></p>
+<pre><code>然后我们创建ClientApplication:
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test;
+ 
+<span class="hljs-keyword">import</span> java.util.TimeZone;
+<span class="hljs-keyword">import</span> java.util.concurrent.Executor;
+ 
+<span class="hljs-keyword">import</span> org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+<span class="hljs-keyword">import</span> org.springframework.boot.SpringApplication;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.ComponentScan;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="hljs-keyword">import</span> org.springframework.scheduling.annotation.EnableAsync;
+<span class="hljs-keyword">import</span> org.springframework.scheduling.annotation.EnableScheduling;
+<span class="hljs-keyword">import</span> org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+ 
+<span class="hljs-keyword">import</span> com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
+ 
+<span class="hljs-meta">@SpringBootApplication</span>(exclude = {DataSourceAutoConfiguration.class, MybatisPlusAutoConfiguration.class})
+<span class="hljs-meta">@EnableScheduling</span>
+<span class="hljs-meta">@EnableAsync</span>
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@EnableDubbo</span>(scanBasePackages = {<span class="hljs-string">"org.test.service"</span>})
+<span class="hljs-meta">@ComponentScan</span>(basePackages = {<span class="hljs-string">"org.test.service"</span>, <span class="hljs-string">"org.test.controller"</span>, <span class="hljs-string">"org.test.config"</span>})
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClientApplication</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        TimeZone.setDefault(TimeZone.getTimeZone(<span class="hljs-string">"Asia/Shanghai"</span>));
+        SpringApplication app = <span class="hljs-keyword">new</span> SpringApplication(ClientApplication.class);
+        app.run(args);
+    }
+ 
+    <span class="hljs-meta">@Bean</span>(name = <span class="hljs-string">"threadPoolTaskExecutor"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Executor <span class="hljs-title">threadPoolTaskExecutor</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ThreadPoolTaskExecutor();
+    }
+}
+
+</code></pre>
+<p>再到config包内创建SwaggerConfig :</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.config;
+ 
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+ 
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+ 
+<span class="hljs-keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;
+<span class="hljs-keyword">import</span> springfox.documentation.builders.PathSelectors;
+<span class="hljs-keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;
+<span class="hljs-keyword">import</span> springfox.documentation.service.ApiInfo;
+<span class="hljs-keyword">import</span> springfox.documentation.service.Contact;
+<span class="hljs-keyword">import</span> springfox.documentation.service.Parameter;
+<span class="hljs-keyword">import</span> springfox.documentation.spi.DocumentationType;
+<span class="hljs-keyword">import</span> springfox.documentation.spring.web.plugins.Docket;
+<span class="hljs-keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;
+ 
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@EnableSwagger</span>2
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwaggerConfig</span> </span>{
+    <span class="hljs-comment">// swagger2的配置文件，这里可以配置swagger2的一些基本的内容，比如扫描的包等等</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Docket <span class="hljs-title">createRestApi</span><span class="hljs-params">()</span> </span>{
+        List&lt;Parameter&gt; pars = <span class="hljs-keyword">new</span> ArrayList&lt;Parameter&gt;();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
+            <span class="hljs-comment">// 为当前包路径</span>
+            .apis(RequestHandlerSelectors.basePackage(<span class="hljs-string">"org.test.controller"</span>)).paths(PathSelectors.any()).build()
+            .globalOperationParameters(pars);
+    }
+ 
+    <span class="hljs-comment">// 构建 api文档的详细信息函数,注意这里的注解引用的是哪个</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> ApiInfo <span class="hljs-title">apiInfo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ApiInfoBuilder()
+            <span class="hljs-comment">// 页面标题</span>
+            .title(<span class="hljs-string">"项目接口"</span>)
+            <span class="hljs-comment">// 创建人</span>
+            .contact(<span class="hljs-keyword">new</span> Contact(<span class="hljs-string">"FUNKYE"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">""</span>))
+            <span class="hljs-comment">// 版本号</span>
+            .version(<span class="hljs-string">"1.0"</span>)
+            <span class="hljs-comment">// 描述</span>
+            .description(<span class="hljs-string">"API 描述"</span>).build();
+    }
+}
+
+</code></pre>
+<p>​	再创建SpringMvcConfigure,再里面放入seata的配置,我为了偷懒直接集成在mvc配置的类里了,大家规范点可以另外创建个配置seata的类,大家可以发现下面还是有个组名称,我把两个项目都分配到一个组去,貌似另外取一个也没事的.</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.config;
+ 
+<span class="hljs-keyword">import</span> java.nio.charset.Charset; 
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Map;
+ 
+<span class="hljs-keyword">import</span> org.apache.dubbo.config.annotation.Reference;
+<span class="hljs-keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="hljs-keyword">import</span> org.springframework.core.Ordered;
+<span class="hljs-keyword">import</span> org.springframework.http.MediaType;
+<span class="hljs-keyword">import</span> org.springframework.http.converter.HttpMessageConverter;
+<span class="hljs-keyword">import</span> org.springframework.http.converter.StringHttpMessageConverter;
+<span class="hljs-keyword">import</span> org.springframework.web.cors.CorsConfiguration;
+<span class="hljs-keyword">import</span> org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+<span class="hljs-keyword">import</span> org.springframework.web.filter.CorsFilter;
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.HandlerInterceptor;
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.view.InternalResourceViewResolver;
+ 
+<span class="hljs-keyword">import</span> com.alibaba.fastjson.serializer.SerializerFeature;
+<span class="hljs-keyword">import</span> com.alibaba.fastjson.support.config.FastJsonConfig;
+<span class="hljs-keyword">import</span> com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+<span class="hljs-keyword">import</span> com.google.common.collect.Maps;
+ 
+<span class="hljs-keyword">import</span> io.seata.spring.annotation.GlobalTransactionScanner;
+ 
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpringMvcConfigure</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">WebMvcConfigurer</span> </span>{
+ 
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> FilterRegistrationBean <span class="hljs-title">corsFilter</span><span class="hljs-params">()</span> </span>{
+        UrlBasedCorsConfigurationSource source = <span class="hljs-keyword">new</span> UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = <span class="hljs-keyword">new</span> CorsConfiguration();
+        config.setAllowCredentials(<span class="hljs-keyword">true</span>);
+        config.addAllowedOrigin(<span class="hljs-string">"*"</span>);
+        config.addAllowedHeader(CorsConfiguration.ALL);
+        config.addAllowedMethod(CorsConfiguration.ALL);
+        source.registerCorsConfiguration(<span class="hljs-string">"/**"</span>, config);
+        FilterRegistrationBean filterRegistrationBean = <span class="hljs-keyword">new</span> FilterRegistrationBean(<span class="hljs-keyword">new</span> CorsFilter(source));
+        filterRegistrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        filterRegistrationBean.setOrder(<span class="hljs-number">1</span>);
+        filterRegistrationBean.setEnabled(<span class="hljs-keyword">true</span>);
+        filterRegistrationBean.addUrlPatterns(<span class="hljs-string">"/**"</span>);
+        Map&lt;String, String&gt; initParameters = Maps.newHashMap();
+        initParameters.put(<span class="hljs-string">"excludes"</span>, <span class="hljs-string">"/favicon.ico,/img/*,/js/*,/css/*"</span>);
+        initParameters.put(<span class="hljs-string">"isIncludeRichText"</span>, <span class="hljs-string">"true"</span>);
+        filterRegistrationBean.setInitParameters(initParameters);
+        <span class="hljs-keyword">return</span> filterRegistrationBean;
+    }
+ 
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> InternalResourceViewResolver <span class="hljs-title">viewResolver</span><span class="hljs-params">()</span> </span>{
+        InternalResourceViewResolver viewResolver = <span class="hljs-keyword">new</span> InternalResourceViewResolver();
+        viewResolver.setPrefix(<span class="hljs-string">"/WEB-INF/jsp/"</span>);
+        viewResolver.setSuffix(<span class="hljs-string">".jsp"</span>);
+        <span class="hljs-comment">// viewResolver.setViewClass(JstlView.class);</span>
+        <span class="hljs-comment">// 这个属性通常并不需要手动配置，高版本的Spring会自动检测</span>
+        <span class="hljs-keyword">return</span> viewResolver;
+    }
+ 
+ 
+ 
+    <span class="hljs-comment">/**
+     * 替换框架json为fastjson
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">configureMessageConverters</span><span class="hljs-params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> </span>{
+        FastJsonHttpMessageConverter fastConverter = <span class="hljs-keyword">new</span> FastJsonHttpMessageConverter();
+        FastJsonConfig fastJsonConfig = <span class="hljs-keyword">new</span> FastJsonConfig();
+        fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
+            SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.DisableCircularReferenceDetect);
+        <span class="hljs-comment">// 处理中文乱码问题</span>
+        List&lt;MediaType&gt; fastMediaTypes = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        fastConverter.setSupportedMediaTypes(fastMediaTypes);
+        fastConverter.setFastJsonConfig(fastJsonConfig);
+        <span class="hljs-comment">// 处理字符串, 避免直接返回字符串的时候被添加了引号</span>
+        StringHttpMessageConverter smc = <span class="hljs-keyword">new</span> StringHttpMessageConverter(Charset.forName(<span class="hljs-string">"UTF-8"</span>));
+        converters.add(smc);
+        converters.add(fastConverter);
+    }
+ 
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> GlobalTransactionScanner <span class="hljs-title">globalTransactionScanner</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> GlobalTransactionScanner(<span class="hljs-string">"test-client"</span>, <span class="hljs-string">"test-group"</span>);
+    }
+ 
+}
+
+</code></pre>
+<p>再创建c<strong>ontroller包,再包下创建TestController</strong> :</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.controller;
+ 
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Lazy;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.GetMapping;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;
+<span class="hljs-keyword">import</span> org.test.service.DemoService;
+ 
+<span class="hljs-keyword">import</span> io.swagger.annotations.Api;
+<span class="hljs-keyword">import</span> io.swagger.annotations.ApiOperation;
+ 
+<span class="hljs-comment">/**
+ * &lt;p&gt;
+ * 文件表 前端控制器
+ * &lt;/p&gt;
+ *
+ * <span class="hljs-doctag">@author</span> funkye
+ * <span class="hljs-doctag">@since</span> 2019-03-20
+ */</span>
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/test"</span>)
+<span class="hljs-meta">@Api</span>(tags = <span class="hljs-string">"测试接口"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestController</span> </span>{
+ 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(TestController.class);
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-meta">@Lazy</span>
+    DemoService demoService;
+ 
+    <span class="hljs-meta">@GetMapping</span>(value = <span class="hljs-string">"testSeataOne"</span>)
+    <span class="hljs-meta">@ApiOperation</span>(value = <span class="hljs-string">"测试手动回滚分布式事务接口"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">testSeataOne</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> demoService.One();
+    }
+ 
+    <span class="hljs-meta">@GetMapping</span>(value = <span class="hljs-string">"testSeataTwo"</span>)
+    <span class="hljs-meta">@ApiOperation</span>(value = <span class="hljs-string">"测试异常回滚分布式事务接口"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">testSeataTwo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> demoService.Two();
+    }
+ 
+}
+
+</code></pre>
+<p>再到service去创建需要依赖的DemoService</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> org.test.service;
+ 
+<span class="hljs-keyword">import</span> java.time.LocalDateTime;
+ 
+<span class="hljs-keyword">import</span> org.apache.dubbo.config.annotation.Reference;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Service;
+<span class="hljs-keyword">import</span> org.test.controller.TestController;
+<span class="hljs-keyword">import</span> org.test.entity.Test;
+ 
+<span class="hljs-keyword">import</span> io.seata.core.context.RootContext;
+<span class="hljs-keyword">import</span> io.seata.core.exception.TransactionException;
+<span class="hljs-keyword">import</span> io.seata.spring.annotation.GlobalTransactional;
+<span class="hljs-keyword">import</span> io.seata.tm.api.GlobalTransactionContext;
+ 
+<span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoService</span> </span>{
+	<span class="hljs-meta">@Reference</span>(version = <span class="hljs-string">"1.0.0"</span>, timeout = <span class="hljs-number">60000</span>)
+	<span class="hljs-keyword">private</span> ITestService testService;
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(DemoService.class);
+ 
+	<span class="hljs-comment">/**
+	 * 手动回滚示例
+	 * 
+	 * <span class="hljs-doctag">@return</span>
+	 */</span>
+	<span class="hljs-meta">@GlobalTransactional</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">One</span><span class="hljs-params">()</span> </span>{
+		logger.info(<span class="hljs-string">"seata分布式事务Id:{}"</span>, RootContext.getXID());
+		Test t = <span class="hljs-keyword">new</span> Test();
+		t.setOne(<span class="hljs-string">"1"</span>);
+		t.setTwo(<span class="hljs-string">"2"</span>);
+		t.setCreateTime(LocalDateTime.now());
+		testService.save(t);
+		<span class="hljs-keyword">try</span> {
+			<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> / <span class="hljs-number">0</span>;
+			<span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+		} <span class="hljs-keyword">catch</span> (Exception e) {
+			<span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> handle exception</span>
+			<span class="hljs-keyword">try</span> {
+				logger.info(<span class="hljs-string">"载入事务id进行回滚"</span>);
+				GlobalTransactionContext.reload(RootContext.getXID()).rollback();
+			} <span class="hljs-keyword">catch</span> (TransactionException e1) {
+				<span class="hljs-comment">// TODO Auto-generated catch block</span>
+				e1.printStackTrace();
+			}
+		}
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+	}
+ 
+	<span class="hljs-comment">/**
+	 * 抛出异常进行回滚示例
+	 * 
+	 * <span class="hljs-doctag">@return</span>
+	 */</span>
+	<span class="hljs-meta">@GlobalTransactional</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">Two</span><span class="hljs-params">()</span> </span>{
+		logger.info(<span class="hljs-string">"seata分布式事务Id:{}"</span>, RootContext.getXID());
+		Test t = <span class="hljs-keyword">new</span> Test();
+		t.setOne(<span class="hljs-string">"1"</span>);
+		t.setTwo(<span class="hljs-string">"2"</span>);
+		t.setCreateTime(LocalDateTime.now());
+		testService.save(t);
+		<span class="hljs-keyword">try</span> {
+			<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> / <span class="hljs-number">0</span>;
+			<span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+		} <span class="hljs-keyword">catch</span> (Exception e) {
+			<span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> handle exception</span>
+			<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException();
+		}
+	}
+}
+
+</code></pre>
+<p>一样创建resources文件夹,先创建常用的<strong>application.yml</strong></p>
+<pre><code class="language-java">spring:
+  application:
+     name: test
+  datasource:
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     url: jdbc:mysql://127.0.0.1:3306/test?userSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;serverTimezone=Asia/Shanghai
+     username: root
+     password: 123456
+  mvc:
+    servlet:
+      load-on-startup: 1
+  http:
+    encoding:
+            force: true
+            charset: utf-8
+            enabled: true
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+dubbo:
+  registry:
+    id: my-registry
+    address:  zookeeper://127.0.0.1:2181?client=curator
+#    address:  zookeeper://127.0.0.1:2181?client=curator
+  application:
+    name: dubbo-demo-client
+    qos-enable: false
+server:
+  port: 28888
+  max-http-header-size: 8192
+  address: 0.0.0.0
+  tomcat:
+    max-http-post-size: 104857600
+
+</code></pre>
+<p>再把之前service配置好的file跟registry文件复制来,如果你的client组名称再配置类里修改了,那么这里的file文件内的组名称一样需要更改.</p>
+<p><img src="/img/blog/20191129142851.png" alt=""></p>
+<p>完整的目录结构如上,这时候可以启动test-service后,再启动test-client,到swagger里测试咯</p>
+<p>​	4.访问127.0.0.1:28888/swagger-ui.html做最后的收尾		<img src="/img/blog/20191129143041.png" alt=""></p>
+<p><img src="/img/blog/20191129143124.png" alt="20191129143124"></p>
+<p>这里数据我已经存了一条记录了,我们看看会不会成功回滚:</p>
+<p><img src="/img/blog/20191129143252.png" alt="20191129143252"></p>
+<p>刷新数据库,发现还是只有一条数据:</p>
+<p><img src="/img/blog/20191129143124.png" alt="20191129143124"></p>
+<p>再查看日志:</p>
+<p><img src="/img/blog/20191129143407.png" alt="20191129143407"></p>
+<p>显示已经回滚,我们再看看seata-server的日志:</p>
+<img src="/img/blog/20191129143419.png" style="zoom:200%;" />
+<p>显示回滚成功,事务id也是一致的,这下我们的分布式事务就跑通咯,通过打断点方式,大家可以查看undo_log,会发现再事务提交前,会存入一条事务信息的数据,如果回滚成功,该信息就会被删除.</p>
+<h1>总结</h1>
+<p>seata的整合还是比较简单易入手,稍微用心一些你肯定写的比我更好!</p>
+<p>欢迎大家也多去阅读seata,dubbo之类的源代码,能解决业务中遇到的大量的坑哦!</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

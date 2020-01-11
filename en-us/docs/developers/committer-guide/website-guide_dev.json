@@ -1,0 +1,10 @@
+{
+  "filename": "website-guide_dev.md",
+  "__html": "<h1>Website Guide</h1>\n<ol>\n<li>The website repository of Seata is <a href=\"https://github.com/seata/seata.github.io\">https://github.com/seata/seata.github.io</a>.</li>\n<li>After building the website, it'll be published to <a href=\"http://seata.io\">seata.io</a> automatically.</li>\n</ol>\n",
+  "link": "/en-us/docs/developers/committer-guide/website-guide_dev.html",
+  "meta": {
+    "title": "Website Guide",
+    "keywords": "Seata",
+    "description": "Website Guide."
+  }
+}

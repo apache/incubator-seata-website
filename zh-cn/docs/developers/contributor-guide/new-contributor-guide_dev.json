@@ -1,0 +1,10 @@
+{
+  "filename": "new-contributor-guide_dev.md",
+  "__html": "<h1>新贡献者向导</h1>\n<p>这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。</p>\n<h3>邮件列表描述</h3>\n<p>TBD</p>\n<h3>报告问题</h3>\n<p>您始终可以通过Github <a href=\"https://Github.com/Seata/Seata/Issues\">Issues</a> 向Seata报告问题。</p>\n<p>如果您正在报告bug，请参阅问题报告<a href=\"https://github.com/seata/seata/issues/new?template=BUG_REPORT.md\">模版</a>。</p>\n<p>如果您正在报告功能要求，请参阅问题报告<a href=\"https://github.com/seata/seata/issues/new?template=FEATURE_REQUEST.md\">模版</a>。</p>\n<p>如果您正在报告常规问题，比如提出一个问题，则可以打开<a href=\"https://github.com/seata/seata/issues/new\">常规问题</a></p>\n<h3>发送 pull request</h3>\n<ul>\n<li>参考<a href=\"https://github.com/seata/seata/blob/develop/.github/PULL_REQUEST_TEMPLATE.md\">pull request template</a></li>\n<li>在您发送pull request之前，请同步您的github仓库和远程仓库，这会使您的pull request简单明了，具体操作请看如下所示步骤：</li>\n</ul>\n<pre><code class=\"language-sh\">git remote add upstream git@github.com:seata/seata.git\ngit fetch upstream\ngit rebase upstream/master\ngit checkout -b your_awesome_patch\n... add some work\ngit push origin your_awesome_patch\n</code></pre>\n<h3>编码规范</h3>\n<p>请按照<a href=\"https://github.com/seata/seata/blob/develop/CONTRIBUTING.md\">CONTRIBUTING.md</a>中的编码规范对自己的代码进行检查。</p>\n",
+  "link": "/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev.html",
+  "meta": {
+    "title": "新贡献者向导",
+    "keywords": "Seata",
+    "description": "这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。"
+  }
+}

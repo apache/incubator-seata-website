@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata, Saga mode" />
+	<meta name="description" content="The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development." />
+	<!-- 网页标签标题 -->
+	<title>Seata Saga Mode</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/en-us/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">中</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/en-us/index.html" target="_self">HOME</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">DOCS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/docs/developers/developers_dev.html" target="_self">DEVELOPERS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/index.html" target="_self">BLOG</a></li><li class="menu-item menu-item-normal"><a href="/en-us/community/index.html" target="_self">COMMUNITY</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/download.html" target="_self">DOWNLOAD</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>Documentation</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>Overview</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/terminology.html" target="_self">Terminology</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>User Doc</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/api.html" target="_self">API Guide</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/microservice.html" target="_self">Microservices Framework Supports</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Developer Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Transaction Mode<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/at-mode.html" target="_self">Seata AT mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/saga-mode.html" target="_self">Seata Saga mode</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/dev/seata-mertics.html" target="_self">Metrics design</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Ops Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/ops/multi-configuration-isolation.html" target="_self">Configuration Isolation</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Deploy<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-server.html" target="_self">Deploy Directly</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-docker.html" target="_self">Deploy by Docker</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-kubernetes.html" target="_self">Deploy by Kubernetes</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-helm.html" target="_self">Deploy by Helm</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>SEATA Saga Mode</h1>
+<h2>Overview</h2>
+<p>The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.</p>
+<p><img src="/img/saga/sagas.png?raw=true" alt="Saga mode diagram"></p>
+<p>Theoretical basis: Hector &amp; Kenneth Post a comment Sagas （1987）</p>
+<h2>Saga's implementation:</h2>
+<h3>Saga implementation based on state machine engine:</h3>
+<p>Currently, the Saga mode provided by SEATA is implemented based on the state machine engine. The mechanism is:</p>
+<ol>
+<li>Define the process of service invocation through state diagram and generate json state language definition file</li>
+<li>A node in the state diagram can call a service, and the node can configure its compensation node</li>
+<li>The state diagram json is driven by the state machine engine. When an exception occurs, the state engine reversely executes the compensation node corresponding to the successful node and rolls back the transaction</li>
+</ol>
+<blockquote>
+<p>Note: Whether to compensate when an exception occurs can also be determined by the user</p>
+</blockquote>
+<ol start="4">
+<li>Support the realization of service orchestration requirements, support single selection, concurrency, sub-process, parameter conversion, parameter mapping, service execution status judgment, exception capture and other functions</li>
+</ol>
+<p>Example state diagram:</p>
+<p><img src="/img/saga/demo_statelang.png?raw=true" alt="Example state diagram"></p>
+<h2>Design</h2>
+<h3>State Machine Engine Principle:</h3>
+<p><img src="/img/saga/saga_engine_mechanism.png?raw=true" alt="State Machine Engine Principle"></p>
+<ul>
+<li>The state diagram in the figure is to execute stateA, then stateB, and then stateC</li>
+<li>The execution of &quot;state&quot; is based on the event-driven model. After the execution of stateA, routing messages will be generated and put into EventQueue. The event consumer will fetch messages from EventQueue and execute stateB.</li>
+<li>When the entire state machine is started, it will call Seata Server to start distributed transactions, and generate xid, and then record &quot;state machine instance&quot; startup events to the local database</li>
+<li>When the execution reaches a &quot;state&quot;, it will call Seata Server to register branch transactions and produce branchId, and then record the &quot;state instance&quot; to start executing events to the local database</li>
+<li>When a &quot;status&quot; execution is completed, the &quot;status instance&quot; execution end event is recorded to the local database, and then the Seata Server is called to report the status of the branch transaction</li>
+<li>When the execution of the entire state machine is completed, the &quot;state machine instance&quot; execution completion event is recorded to the local database, and then Seata Server is called to submit or roll back the distributed transaction</li>
+</ul>
+<h3>State Machine Engine Design:</h3>
+<p><img src="/img/saga/saga_engine.png?raw=true" alt="State Machine Engine Design"></p>
+<p>The design of the state machine engine is mainly divided into three layers. The upper layer depends on the lower layer. From bottom to top:</p>
+<ul>
+<li>Eventing layer:
+<ul>
+<li>Implement event-driven architecture, which can push events and consume events by the consumer. This layer does not care what the event is and what the consumer performs.</li>
+</ul>
+</li>
+<li>ProcessController layer:
+<ul>
+<li>Because the upper-level Eventing drives the execution of an &quot;empty&quot; process engine, the behavior and routing of &quot;state&quot; are not implemented.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Based on the above two layers, in theory, you can customize and extend any &quot;process&quot; engine</p>
+</blockquote>
+<ul>
+<li>StateMachineEngine layer:
+<ul>
+<li>Implement the behavior and routing logic of each state of the state machine engine</li>
+<li>Provide API, state machine language warehouse</li>
+</ul>
+</li>
+</ul>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

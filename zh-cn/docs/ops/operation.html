@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Seata支持在TC、TM和RM三个角色开启Metrics数据采集并输出到Prometheus监控系统中。" />
+	<!-- 网页标签标题 -->
+	<title>运维指南</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/transaction-group.html" target="_self">事务分组介绍</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>运维指南</h1>
+<h2>Metrics配置指南</h2>
+<p>Seata支持在TC、TM和RM三个角色开启Metrics数据采集并输出到Prometheus监控系统中。</p>
+<h3>在TC中配置开启Metrics</h3>
+<h4>步骤一：在Seata Server中增加Metrics的依赖并重新编译Server</h4>
+<p>打开Seata Server源代码的<a href="https://github.com/seata/seata/blob/develop/server/pom.xml">pom</a>，添加Metrics依赖：</p>
+<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>${project.groupId}<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>seata-metrics-prometheus<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</code></pre>
+<p>重新编译Server，启动，输入<code>http://tc-server-ip:9898/metrics</code>，即可获得最新的Metrics数据，例如：</p>
+<pre><code># HELP seata seata
+# TYPE seata untyped
+seata_transaction{meter=&quot;counter&quot;,role=&quot;tc&quot;,status=&quot;committed&quot;,} 1358.0 1551946035372
+seata_transaction{meter=&quot;counter&quot;,role=&quot;tc&quot;,status=&quot;active&quot;,} 0.0 1551946035372
+seata_transaction{meter=&quot;summary&quot;,role=&quot;tc&quot;,statistic=&quot;count&quot;,status=&quot;committed&quot;,} 6.0 1551946035372
+seata_transaction{meter=&quot;summary&quot;,role=&quot;tc&quot;,statistic=&quot;total&quot;,status=&quot;committed&quot;,} 6.0 1551946035372
+seata_transaction{meter=&quot;summary&quot;,role=&quot;tc&quot;,statistic=&quot;tps&quot;,status=&quot;committed&quot;,} 1.6163793103448276 1551946035372
+seata_transaction{meter=&quot;timer&quot;,role=&quot;tc&quot;,statistic=&quot;count&quot;,status=&quot;committed&quot;,} 6.0 1551946035372
+seata_transaction{meter=&quot;timer&quot;,role=&quot;tc&quot;,statistic=&quot;total&quot;,status=&quot;committed&quot;,} 910.0 1551946035372
+seata_transaction{meter=&quot;timer&quot;,role=&quot;tc&quot;,statistic=&quot;max&quot;,status=&quot;committed&quot;,} 164.0 1551946035372
+seata_transaction{meter=&quot;timer&quot;,role=&quot;tc&quot;,statistic=&quot;average&quot;,status=&quot;committed&quot;,} 151.66666666666666 1551946035372
+</code></pre>
+<blockquote>
+<p>提示：</p>
+<ol>
+<li>目前我们使用的Prometheus数据发布端口固定为9898，未来会将其修改为可配置项，请确保此端口不会被占用；</li>
+<li>如果某些Transaction状态没有发生，例如rollback，那么对应的Metrics指标也不会存在（输出）。</li>
+</ol>
+</blockquote>
+<h4>步骤二：修改Prometheus配置文件并启动Prometheus</h4>
+<p>打开Prometheus的配置文件<code>prometheus.yml</code>，在<code>scrape_configs</code>中增加一项抓取Seata TC的Metrics数据：</p>
+<pre><code class="language-yaml"><span class="hljs-attr">scrape_configs:</span>
+  <span class="hljs-comment"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span>
+<span class="hljs-attr">  - job_name:</span> <span class="hljs-string">'prometheus'</span>
+
+    <span class="hljs-comment"># metrics_path defaults to '/metrics'</span>
+    <span class="hljs-comment"># scheme defaults to 'http'.</span>
+
+<span class="hljs-attr">    static_configs:</span>
+<span class="hljs-attr">    - targets:</span> <span class="hljs-string">['localhost:9090']</span>
+
+<span class="hljs-attr">  - job_name:</span> <span class="hljs-string">'seata'</span>
+
+    <span class="hljs-comment"># metrics_path defaults to '/metrics'</span>
+    <span class="hljs-comment"># scheme defaults to 'http'.</span>
+
+<span class="hljs-attr">    static_configs:</span>
+<span class="hljs-attr">    - targets:</span> <span class="hljs-string">['tc-server-ip:9898']</span>
+</code></pre>
+<h4>步骤三：在Prometheus UI或Grafana中查看Seata TC的Metrics</h4>
+<p>在浏览器中打开Prometheus UI<code>http://localhost:9090/graph</code>，选择<code>seata_transaction</code>，点击查询，即可获取到最新数据：</p>
+<p><img src="/img/tc-prometheus.png" alt="tc-prometheus"></p>
+<p>推荐在Prometheus中结合配置<a href="https://prometheus.io/docs/visualization/grafana/">Grafana</a>获得更好的查询效果：</p>
+<p><img src="/img/tc-grafana.png" alt="tc-grafana"></p>
+<blockquote>
+<p>提示：此配置是将Prometheus作为Grafana的数据源，因此数据完全相同，只是使用Grafana显示效果更佳。</p>
+</blockquote>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

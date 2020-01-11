@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata, TCC Mode" />
+	<meta name="description" content="Seata TCC mode." />
+	<!-- 网页标签标题 -->
+	<title>Seata TCC Mode</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/en-us/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">中</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/en-us/index.html" target="_self">HOME</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">DOCS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/docs/developers/developers_dev.html" target="_self">DEVELOPERS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/index.html" target="_self">BLOG</a></li><li class="menu-item menu-item-normal"><a href="/en-us/community/index.html" target="_self">COMMUNITY</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/download.html" target="_self">DOWNLOAD</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>Documentation</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>Overview</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/terminology.html" target="_self">Terminology</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>User Doc</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/api.html" target="_self">API Guide</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/microservice.html" target="_self">Microservices Framework Supports</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Developer Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Transaction Mode<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/at-mode.html" target="_self">Seata AT mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/saga-mode.html" target="_self">Seata Saga mode</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/dev/seata-mertics.html" target="_self">Metrics design</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Ops Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/ops/multi-configuration-isolation.html" target="_self">Configuration Isolation</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Deploy<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-server.html" target="_self">Deploy Directly</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-docker.html" target="_self">Deploy by Docker</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-kubernetes.html" target="_self">Deploy by Kubernetes</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-helm.html" target="_self">Deploy by Helm</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>Seata TCC Mode</h1>
+<p>Review the description in the overview: A distributed global transaction, the whole is a <strong>two-phase commit</strong> model. The global transaction is composed of several branch transactions. The branch transaction must meet the requirements of the <strong>two-phase commit</strong> model, that is, each branch transaction must have its own:</p>
+<ul>
+<li>One-stage prepare behavior</li>
+<li>Two-phase commit or rollback behavior</li>
+</ul>
+<p><img src="/img/seata_tcc-1.png" alt="Overview of a global transaction"></p>
+<p>According to the two-phase behavior mode, we divide branch transactions into <strong>Automatic (Branch) Transaction Mode</strong> and <strong>TCC (Branch) Transaction Mode</strong>.</p>
+<p>The AT mode (<a href="">Reference Link TBD</a>) is based on a <strong>relational database</strong> that <strong>supports local ACID transactions</strong>:</p>
+<ul>
+<li>One-stage prepare behavior: In local transactions, business data updates and corresponding rollback log records are submitted together.</li>
+<li>Two-phase commit behavior: Immediately completed successfully, <strong>automatically</strong> asynchronously clean up the rollback log.</li>
+<li>Two-phase rollback behavior: Through the rollback log, <strong>automatically</strong> generates compensation operations to complete data rollback.</li>
+</ul>
+<p>Correspondingly, the TCC mode does not rely on transaction support of the underlying data resources:</p>
+<ul>
+<li>One-stage prepare behavior: Call the <strong>custom</strong> prepare logic.</li>
+<li>Two-phase commit behavior: Call <strong>custom</strong> commit logic.</li>
+<li>Two-phase rollback behavior: Call the <strong>custom</strong> rollback logic.</li>
+</ul>
+<p>The so-called TCC mode refers to the support of putting <strong>customized's</strong> branch transactions into the management of global transactions.</p>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

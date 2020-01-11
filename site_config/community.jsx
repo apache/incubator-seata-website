@@ -31,6 +31,16 @@ export default {
           title: '@Seata',
           link: 'https://twitter.com/seataio',
         },
+        {
+          img: '/img/dingding_group_one.png',
+          imgHover: '/img/dingding_group_one.png',
+          title: 'DingTalk①Group(full)',
+        },
+		{
+          img: '/img/dingding_group_two.png',
+          imgHover: '/img/dingding_group_two.png',
+          title: 'DingTalk②Group(allow)',
+        },
       ],
     },
     contributorGuide: {
@@ -66,13 +76,19 @@ export default {
       title: '事件 & 新闻',
       list: [
         {
-          img: '/img/brhtqqzh.jpeg',
-          title: 'seata',
-          content: 'seata',
-          dateStr: 'May 12nd，2018',
-          link: '/zh-cn/blog/blog1.html',
+          img: '/img/blog/1577282612.jpg',
+          title: 'Seata Meetup·杭州站成功举办',
+          content: 'Seata Community Meetup·杭州站,于12月21号在杭州市梦想小镇浙江青年众创空间完美举办',
+          dateStr: 'Dec 25nd，2019',
+          link: '/zh-cn/blog/seata-meetup-hangzhou.html',
         },
-
+        {
+          img: '/img/blog/20191218210552.png',
+          title: 'Seata Community Meetup·杭州站',
+          content: 'Seata Community Meetup·杭州站,将于12月21号在杭州市梦想小镇浙江青年众创空间正式召开',
+          dateStr: 'Dec 18nd，2019',
+          link: '/zh-cn/blog/seata-community-meetup-hangzhou-ready.html',
+        },
       ]
     },
     contacts: {
@@ -90,6 +106,16 @@ export default {
           imgHover: '/img/twitter_hover.png',
           title: '@Seata',
           link: 'https://twitter.com/seataio',
+        },
+        {
+          img: '/img/dingding_group_one.png',
+          imgHover: '/img/dingding_group_one.png',
+          title: '钉钉①群(已满)',
+        },
+		{
+          img: '/img/dingding_group_two.png',
+          imgHover: '/img/dingding_group_two.png',
+          title: '钉钉②群(可加入)',
         },
       ],
     },

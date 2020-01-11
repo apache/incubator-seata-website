@@ -1,0 +1,515 @@
+{
+  "en-us": [
+    {
+      "filename": "at-mode.md",
+      "link": "/en-us/docs/dev/mode/at-mode.html",
+      "meta": {
+        "title": "Seata AT Mode",
+        "keywords": "Seata, AT mode",
+        "description": "Seata AT mode."
+      }
+    },
+    {
+      "filename": "saga-mode.md",
+      "link": "/en-us/docs/dev/mode/saga-mode.html",
+      "meta": {
+        "title": "Seata Saga Mode",
+        "keywords": "Seata, Saga mode",
+        "description": "The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development."
+      }
+    },
+    {
+      "filename": "tcc-mode.md",
+      "link": "/en-us/docs/dev/mode/tcc-mode.html",
+      "meta": {
+        "title": "Seata TCC Mode",
+        "keywords": "Seata, TCC Mode",
+        "description": "Seata TCC mode."
+      }
+    },
+    {
+      "filename": "seata-mertics.md",
+      "link": "/en-us/docs/dev/seata-mertics.html",
+      "meta": {
+        "title": "Seata Metrics",
+        "keywords": "Seata, Metrics",
+        "description": "Seata Metrics."
+      }
+    },
+    {
+      "filename": "label-an-issue-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/label-an-issue-guide_dev.html",
+      "meta": {
+        "title": "Label an Issue",
+        "keywords": "Seata",
+        "description": "Label an Issue."
+      }
+    },
+    {
+      "filename": "release-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/release-guide_dev.html",
+      "meta": {}
+    },
+    {
+      "filename": "website-guide_dev.md",
+      "link": "/en-us/docs/developers/committer-guide/website-guide_dev.html",
+      "meta": {
+        "title": "Website Guide",
+        "keywords": "Seata",
+        "description": "Website Guide."
+      }
+    },
+    {
+      "filename": "new-contributor-guide_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/new-contributor-guide_dev.html",
+      "meta": {
+        "title": "New contributor guide",
+        "keywords": "Seata, contributor",
+        "description": "This is a guide for new comers who wants to contribute to Seata."
+      }
+    },
+    {
+      "filename": "reporting-security-issues_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/reporting-security-issues_dev.html",
+      "meta": {
+        "title": "New contributor guide",
+        "keywords": "Seata, contributor",
+        "description": "This is a guide for new comers who wants to contribute to Seata."
+      }
+    },
+    {
+      "filename": "test-coverage-guide_dev.md",
+      "link": "/en-us/docs/developers/contributor-guide/test-coverage-guide_dev.html",
+      "meta": {
+        "title": "Test coverage guide",
+        "keywords": "Seata, coverage",
+        "description": "Test coverage guide."
+      }
+    },
+    {
+      "filename": "developers_dev.md",
+      "link": "/en-us/docs/developers/developers_dev.html",
+      "meta": {
+        "title": "Developers",
+        "keywords": "Seata, Developers",
+        "description": "Seata Team."
+      }
+    },
+    {
+      "filename": "guide_dev.md",
+      "link": "/en-us/docs/developers/guide_dev.html",
+      "meta": {
+        "title": "Contributing to Seata",
+        "keywords": "Seata",
+        "description": "It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you."
+      }
+    },
+    {
+      "filename": "deploy-by-docker.md",
+      "link": "/en-us/docs/ops/deploy-by-docker.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Docker",
+        "keywords": "docker",
+        "description": "Deploy Seata Server By Docker",
+        "author": "helloworlde",
+        "date": "2019-11-25"
+      }
+    },
+    {
+      "filename": "deploy-by-helm.md",
+      "link": "/en-us/docs/ops/deploy-by-helm.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Helm",
+        "keywords": "kubernetes,helm,ops",
+        "description": "Deploy Seata Server By Helm",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-by-kubernetes.md",
+      "link": "/en-us/docs/ops/deploy-by-kubernetes.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Deploy Seata Server By Kubernetes",
+        "keywords": "kubernetes,ops",
+        "description": "Deploy Seata Server By Kubernetes",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-server.md",
+      "link": "/en-us/docs/ops/deploy-server.html",
+      "meta": {
+        "title": "Deploy Server",
+        "keywords": "Seata",
+        "description": "The server can deploy by multiple method: Directly, Docker, Docker-Compose, Kubernetes, Helm."
+      }
+    },
+    {
+      "filename": "multi-configuration-isolation.md",
+      "link": "/en-us/docs/ops/multi-configuration-isolation.html",
+      "meta": {
+        "title": "Multi-configuration Isolation",
+        "keywords": "Seata",
+        "description": "Seata supports Multi-configuration Isolation since 0.6.1,You can configure it in the following steps."
+      }
+    },
+    {
+      "filename": "faq.md",
+      "link": "/en-us/docs/overview/faq.html",
+      "meta": {
+        "title": "Seata FAQ",
+        "keywords": "Seata",
+        "description": "Seata FAQ."
+      }
+    },
+    {
+      "filename": "terminology.md",
+      "link": "/en-us/docs/overview/terminology.html",
+      "meta": {
+        "title": "Seata Terminology",
+        "keywords": "Seata",
+        "description": "Seata Terminology."
+      }
+    },
+    {
+      "filename": "what-is-seata.md",
+      "link": "/en-us/docs/overview/what-is-seata.html",
+      "meta": {
+        "title": "What Is Seata",
+        "keywords": "Seata",
+        "description": "Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users."
+      }
+    },
+    {
+      "filename": "api.md",
+      "link": "/en-us/docs/user/api.html",
+      "meta": {
+        "title": "Api Guide",
+        "keywords": "Seata",
+        "description": "Api Guide."
+      }
+    },
+    {
+      "filename": "microservice.md",
+      "link": "/en-us/docs/user/microservice.html",
+      "meta": {
+        "title": "Microservice Framework Guide",
+        "keywords": "Seata",
+        "description": "Microservice Framework Guide."
+      }
+    },
+    {
+      "filename": "quickstart.md",
+      "link": "/en-us/docs/user/quickstart.html",
+      "meta": {
+        "title": "Quick Start",
+        "keywords": "Seata",
+        "description": "Let's begin with a Microservices example."
+      }
+    }
+  ],
+  "zh-cn": [
+    {
+      "filename": "at-mode.md",
+      "link": "/zh-cn/docs/dev/mode/at-mode.html",
+      "meta": {
+        "title": "Seata AT 模式",
+        "keywords": "Seata",
+        "description": "Seata AT 模式。"
+      }
+    },
+    {
+      "filename": "saga-mode.md",
+      "link": "/zh-cn/docs/dev/mode/saga-mode.html",
+      "meta": {
+        "title": "Seata Saga 模式",
+        "keywords": "Seata",
+        "description": "Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。"
+      }
+    },
+    {
+      "filename": "tcc-mode.md",
+      "link": "/zh-cn/docs/dev/mode/tcc-mode.html",
+      "meta": {
+        "title": "Seata Tcc 模式",
+        "keywords": "Seata",
+        "description": "Seata Tcc 模式。"
+      }
+    },
+    {
+      "filename": "seata-mertics.md",
+      "link": "/zh-cn/docs/dev/seata-mertics.html",
+      "meta": {
+        "title": "Metrics",
+        "keywords": "Seata",
+        "description": "Metrics。"
+      }
+    },
+    {
+      "filename": "label-an-issue-guide_dev.md",
+      "link": "/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev.html",
+      "meta": {
+        "title": "给问题打标签",
+        "keywords": "Seata",
+        "description": "如果您正在处理一个问题，请记得给这个问题标记一个或者多个您认为有意义的标签。有了标签，其他开发人员就会很轻松地识别出问题，以便对其进行分类并跟踪进度。"
+      }
+    },
+    {
+      "filename": "release-guide_dev.md",
+      "link": "/zh-cn/docs/developers/committer-guide/release-guide_dev.html",
+      "meta": {
+        "title": "Seata版本向导",
+        "keywords": "Seata",
+        "description": "Seata版本向导。"
+      }
+    },
+    {
+      "filename": "website-guide_dev.md",
+      "link": "/zh-cn/docs/developers/committer-guide/website-guide_dev.html",
+      "meta": {
+        "title": "网站向导",
+        "keywords": "Seata",
+        "description": "Seata 网站向导。"
+      }
+    },
+    {
+      "filename": "new-contributor-guide_dev.md",
+      "link": "/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev.html",
+      "meta": {
+        "title": "新贡献者向导",
+        "keywords": "Seata",
+        "description": "这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。"
+      }
+    },
+    {
+      "filename": "reporting-security-issues_dev.md",
+      "link": "/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev.html",
+      "meta": {
+        "title": "报告安全问题",
+        "keywords": "Seata",
+        "description": "Seata在消除其软件项目中的安全性问题方面采取严格的立场，对与其功能和特性有关的问题非常敏感并很快提出。"
+      }
+    },
+    {
+      "filename": "test-coverage-guide_dev.md",
+      "link": "/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev.html",
+      "meta": {
+        "title": "测试覆盖率向导",
+        "keywords": "Seata",
+        "description": "测试覆盖率向导。"
+      }
+    },
+    {
+      "filename": "developers_dev.md",
+      "link": "/zh-cn/docs/developers/developers_dev.html",
+      "meta": {
+        "title": "Seata 维护者",
+        "keywords": "Seata, 维护者",
+        "description": "Seata 维护者名单"
+      }
+    },
+    {
+      "filename": "guide_dev.md",
+      "link": "/zh-cn/docs/developers/guide_dev.html",
+      "meta": {
+        "title": "为Seata贡献",
+        "keywords": "Seata",
+        "description": "如果您有兴趣攻克Seata，欢迎您。首先，我们非常鼓励这种意愿。这是为您提供帮助的列表。"
+      }
+    },
+    {
+      "filename": "config-center.md",
+      "link": "/zh-cn/docs/ops/config-center.html",
+      "meta": {
+        "title": "配置中心初始化",
+        "keywords": "Seata",
+        "description": "配置中心初始化。"
+      }
+    },
+    {
+      "filename": "deploy-by-docker.md",
+      "link": "/zh-cn/docs/ops/deploy-by-docker.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Docker 部署 Seata Server",
+        "keywords": "docker,docker-compose,ops",
+        "description": "使用 Docker 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-11-25"
+      }
+    },
+    {
+      "filename": "deploy-by-helm.md",
+      "link": "/zh-cn/docs/ops/deploy-by-helm.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Helm 部署 Seata Server",
+        "keywords": "kubernetes,helm,ops",
+        "description": "使用 Helm 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-by-kubernetes.md",
+      "link": "/zh-cn/docs/ops/deploy-by-kubernetes.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Kubernetes 部署 Seata Server",
+        "keywords": "kubernetes,ops",
+        "description": "使用 Kubernetes 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-12-01"
+      }
+    },
+    {
+      "filename": "deploy-guide-beginner.md",
+      "link": "/zh-cn/docs/ops/deploy-guide-beginner.html",
+      "meta": {
+        "title": "Seata部署指南",
+        "keywords": "Seata",
+        "description": "Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。"
+      }
+    },
+    {
+      "filename": "deploy-server.md",
+      "link": "/zh-cn/docs/ops/deploy-server.html",
+      "meta": {
+        "title": "部署 Server",
+        "keywords": "Seata",
+        "description": "Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Compose, 使用 Kubernetes,  使用 Helm。"
+      }
+    },
+    {
+      "filename": "operation.md",
+      "link": "/zh-cn/docs/ops/operation.html",
+      "meta": {
+        "title": "运维指南",
+        "keywords": "Seata",
+        "description": "Seata支持在TC、TM和RM三个角色开启Metrics数据采集并输出到Prometheus监控系统中。"
+      }
+    },
+    {
+      "filename": "faq.md",
+      "link": "/zh-cn/docs/overview/faq.html",
+      "meta": {
+        "title": "Seata常见问题",
+        "keywords": "Seata",
+        "description": "Seata 常见问题。"
+      }
+    },
+    {
+      "filename": "terminology.md",
+      "link": "/zh-cn/docs/overview/terminology.html",
+      "meta": {
+        "title": "Seata术语",
+        "keywords": "Seata",
+        "description": "Seata术语。"
+      }
+    },
+    {
+      "filename": "what-is-seata.md",
+      "link": "/zh-cn/docs/overview/what-is-seata.html",
+      "meta": {
+        "title": "Seata 是什么",
+        "keywords": "Seata",
+        "description": "Seata 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。Seata 将为用户提供了 AT、TCC、SAGA 和 XA 事务模式，为用户打造一站式的分布式解决方案。"
+      }
+    },
+    {
+      "filename": "api.md",
+      "link": "/zh-cn/docs/user/api.html",
+      "meta": {
+        "title": "Seata api",
+        "keywords": "Seata",
+        "description": "Seata API 分为两大类：High-Level API 和 Low-Level API。"
+      }
+    },
+    {
+      "filename": "configurations.md",
+      "link": "/zh-cn/docs/user/configurations.html",
+      "meta": {
+        "title": "Seata 参数配置",
+        "keywords": "Seata",
+        "description": "Seata 参数配置。"
+      }
+    },
+    {
+      "filename": "configurations090.md",
+      "link": "/zh-cn/docs/user/configurations090.html",
+      "meta": {
+        "title": "Seata 参数配置 0.9.0版本",
+        "keywords": "Seata",
+        "description": "Seata 参数配置 0.9.0版本。"
+      }
+    },
+    {
+      "filename": "datasource.md",
+      "link": "/zh-cn/docs/user/datasource.html",
+      "meta": {
+        "title": "Seata 数据源支持",
+        "keywords": "Seata",
+        "description": "Seata 数据源支持。"
+      }
+    },
+    {
+      "filename": "microservice.md",
+      "link": "/zh-cn/docs/user/microservice.html",
+      "meta": {
+        "title": "Seata 微服务框架支持",
+        "keywords": "Seata",
+        "description": "Seata 微服务框架支持。"
+      }
+    },
+    {
+      "filename": "ormframework.md",
+      "link": "/zh-cn/docs/user/ormframework.html",
+      "meta": {
+        "title": "Seata ORM框架支持",
+        "keywords": "Seata",
+        "description": "Seata ORM框架支持。"
+      }
+    },
+    {
+      "filename": "quickstart.md",
+      "link": "/zh-cn/docs/user/quickstart.html",
+      "meta": {
+        "title": "Seata 快速开始",
+        "keywords": "Seata",
+        "description": "Seata 快速开始。"
+      }
+    },
+    {
+      "filename": "saga.md",
+      "link": "/zh-cn/docs/user/saga.html",
+      "meta": {
+        "title": "Seata Saga 模式",
+        "keywords": "Seata",
+        "description": "Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。"
+      }
+    },
+    {
+      "filename": "spring.md",
+      "link": "/zh-cn/docs/user/spring.html",
+      "meta": {
+        "title": "Seata Spring支持",
+        "keywords": "Seata",
+        "description": "Seata Spring支持。"
+      }
+    },
+    {
+      "filename": "transaction-group.md",
+      "link": "/zh-cn/docs/user/transaction-group.html",
+      "meta": {
+        "title": "Seata 事务分组",
+        "keywords": "Seata",
+        "description": "Seata 事务分组。"
+      }
+    }
+  ]
+}

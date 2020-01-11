@@ -1,0 +1,10 @@
+{
+  "filename": "datasource.md",
+  "__html": "<h1>数据源支持</h1>\n<p>TBD</p>\n",
+  "link": "/zh-cn/docs/user/datasource.html",
+  "meta": {
+    "title": "Seata 数据源支持",
+    "keywords": "Seata",
+    "description": "Seata 数据源支持。"
+  }
+}

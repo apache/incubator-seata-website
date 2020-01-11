@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Microservice Framework Guide." />
+	<!-- 网页标签标题 -->
+	<title>Microservice Framework Guide</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/en-us/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">中</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/en-us/index.html" target="_self">HOME</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">DOCS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/docs/developers/developers_dev.html" target="_self">DEVELOPERS</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/index.html" target="_self">BLOG</a></li><li class="menu-item menu-item-normal"><a href="/en-us/community/index.html" target="_self">COMMUNITY</a></li><li class="menu-item menu-item-normal"><a href="/en-us/blog/download.html" target="_self">DOWNLOAD</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>Documentation</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>Overview</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/terminology.html" target="_self">Terminology</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>User Doc</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/api.html" target="_self">API Guide</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/user/microservice.html" target="_self">Microservices Framework Supports</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Developer Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Transaction Mode<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/at-mode.html" target="_self">Seata AT mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC mode</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/dev/mode/saga-mode.html" target="_self">Seata Saga mode</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/dev/seata-mertics.html" target="_self">Metrics design</a></li></ul></li><li class="menu-item menu-item-level-1"><span>Ops Guide</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/en-us/docs/ops/multi-configuration-isolation.html" target="_self">Configuration Isolation</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>Deploy<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-server.html" target="_self">Deploy Directly</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-docker.html" target="_self">Deploy by Docker</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-kubernetes.html" target="_self">Deploy by Kubernetes</a></li><li class="menu-item menu-item-level-3"><a href="/en-us/docs/ops/deploy-by-helm.html" target="_self">Deploy by Helm</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>Transaction Context</h1>
+<p>Transaction context of Seata is managed by RootContext.</p>
+<p>When application begins a global transaction, RootContext will bind the XID of the transaction automatically, at the end of transaction(commit or rollback), RootContext will unbind the XID automatically.</p>
+<pre><code class="language-java"><span class="hljs-comment">// Bind XID</span>
+RootContext.bind(xid);
+
+<span class="hljs-comment">// Unbind XID</span>
+String xid = RootContext.unbind();
+</code></pre>
+<p>Application retrieve the global transaction XID through the API of RootContext.</p>
+<pre><code class="language-java"><span class="hljs-comment">// Retrieve XID</span>
+String xid = RootContext.getXID();
+</code></pre>
+<p>Whether application is running a global transaction, just check if an XID bound to RootContext.</p>
+<pre><code class="language-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">inGlobalTransaction</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> CONTEXT_HOLDER.get(KEY_XID) != <span class="hljs-keyword">null</span>;
+    }
+</code></pre>
+<h1>Transaction propagation</h1>
+<p>The mechanism of the global transaction of Seata is the propagation of transaction context,  primarily, it's the propagation way of XID in runtime.</p>
+<p><em>1. The propagation of transaction in the service</em></p>
+<p>By default, RootContext is based on ThreadLocal, which is the XID is bound in the context of thread.</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadLocalContextCore</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ContextCore</span> </span>{
+
+    <span class="hljs-keyword">private</span> ThreadLocal&lt;Map&lt;String, String&gt;&gt; threadLocal = <span class="hljs-keyword">new</span> ThreadLocal&lt;Map&lt;String, String&gt;&gt;() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> Map&lt;String, String&gt; <span class="hljs-title">initialValue</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HashMap&lt;String, String&gt;();
+        }
+
+    };
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">put</span><span class="hljs-params">(String key, String value)</span> </span>{
+        <span class="hljs-keyword">return</span> threadLocal.get().put(key, value);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">get</span><span class="hljs-params">(String key)</span> </span>{
+        <span class="hljs-keyword">return</span> threadLocal.get().get(key);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">remove</span><span class="hljs-params">(String key)</span> </span>{
+        <span class="hljs-keyword">return</span> threadLocal.get().remove(key);
+    }
+}
+</code></pre>
+<p>So the inner XID of service is tracing by the same thread naturally, do nothing to propagate the transaction by default.</p>
+<p>If it hopes to hung up the transaction context, implement it by the API of RootContext:</p>
+<pre><code class="language-java"><span class="hljs-comment">// Hung up(pause)</span>
+String xid = RootContext.unbind();
+
+<span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Logic running out of the global transaction scope</span>
+
+<span class="hljs-comment">// recover the global transaction</span>
+RootContext.bind(xid);
+
+</code></pre>
+<p><em>2. Transactional propagation across service calls</em></p>
+<p>It's easy to know by the basic idea preceding:</p>
+<blockquote>
+<p>The transaction propagation across service calls, essentially, propagate the XID via service call to service provider, and bind it to RootContext.</p>
+</blockquote>
+<p>As long as it can be done, Seata can support any microservice framework in theory.</p>
+<h1>Interpretation of supporting Dubbo</h1>
+<p>Let's interpret the inner support for Dubbo RPC to illustrate how Seata supports a specific microservice framework in follows:</p>
+<p>We use the org.apache.dubbo.rpc.Filter of Dubbo to support propagation of transaction.</p>
+<pre><code class="language-java"><span class="hljs-comment">/**
+ * The type Transaction propagation filter.
+ */</span>
+<span class="hljs-meta">@Activate</span>(group = { Constants.PROVIDER, Constants.CONSUMER }, order = <span class="hljs-number">100</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TransactionPropagationFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(TransactionPropagationFilter.class);
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Result <span class="hljs-title">invoke</span><span class="hljs-params">(Invoker&lt;?&gt; invoker, Invocation invocation)</span> <span class="hljs-keyword">throws</span> RpcException </span>{
+        String xid = RootContext.getXID(); <span class="hljs-comment">// Get XID of current transaction</span>
+        String rpcXid = RpcContext.getContext().getAttachment(RootContext.KEY_XID); <span class="hljs-comment">// Acquire the XID from RPC invoke</span>
+        <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+            LOGGER.debug(<span class="hljs-string">"xid in RootContext["</span> + xid + <span class="hljs-string">"] xid in RpcContext["</span> + rpcXid + <span class="hljs-string">"]"</span>);
+        }
+        <span class="hljs-keyword">boolean</span> bind = <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">if</span> (xid != <span class="hljs-keyword">null</span>) { <span class="hljs-comment">// Consumer：Put XID into the attachment of RPC</span>
+            RpcContext.getContext().setAttachment(RootContext.KEY_XID, xid);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> (rpcXid != <span class="hljs-keyword">null</span>) { <span class="hljs-comment">// Provider：Bind the XID propagated by RPC to current runtime</span>
+                RootContext.bind(rpcXid);
+                bind = <span class="hljs-keyword">true</span>;
+                <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+                    LOGGER.debug(<span class="hljs-string">"bind["</span> + rpcXid + <span class="hljs-string">"] to RootContext"</span>);
+                }
+            }
+        }
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> invoker.invoke(invocation); <span class="hljs-comment">// Business method invoke</span>
+
+        } <span class="hljs-keyword">finally</span> {
+            <span class="hljs-keyword">if</span> (bind) { <span class="hljs-comment">// Provider：Clean up XID after invoke</span>
+                String unbindXid = RootContext.unbind();
+                <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+                    LOGGER.debug(<span class="hljs-string">"unbind["</span> + unbindXid + <span class="hljs-string">"] from RootContext"</span>);
+                }
+                <span class="hljs-keyword">if</span> (!rpcXid.equalsIgnoreCase(unbindXid)) {
+                    LOGGER.warn(<span class="hljs-string">"xid in change during RPC from "</span> + rpcXid + <span class="hljs-string">" to "</span> + unbindXid);
+                    <span class="hljs-keyword">if</span> (unbindXid != <span class="hljs-keyword">null</span>) { <span class="hljs-comment">// if there is new transaction begin, can't do clean up</span>
+                        RootContext.bind(unbindXid);
+                        LOGGER.warn(<span class="hljs-string">"bind ["</span> + unbindXid + <span class="hljs-string">"] back to RootContext"</span>);
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

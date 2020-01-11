@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="fescar、seata、分布式事务" />
+	<meta name="description" content="integrate-seata-with-spring-cloud" />
+	<!-- 网页标签标题 -->
+	<title>Seata（Fescar）分布式事务 整合 Spring Cloud</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>1.前言</h1>
+<p>针对Fescar 相信很多开发者已经对他并不陌生，当然Fescar 已经成为了过去时，为什么说它是过去时，因为Fescar 已经华丽的变身为Seata。如果还不知道Seata 的朋友，请登录下面网址查看。</p>
+<p>SEATA GITHUB:[<a href="https://github.com/seata/seata">https://github.com/seata/seata</a>]</p>
+<p>对于阿里各位同学的前仆后继，给我们广大开发者带来很多开源软件，在这里对他们表示真挚的感谢与问候。</p>
+<p>今天在这里和大家分享下Spring Cloud 整合Seata 的相关心得。也让更多的朋友在搭建的道路上少走一些弯路，少踩一些坑。</p>
+<h1>2.工程内容</h1>
+<p>本次搭建流程为：client-&gt;网关-&gt;服务消费者-&gt;服务提供者.</p>
+<pre><code>                        技术框架：spring cloud gateway
+
+                                spring cloud fegin
+
+                                nacos1.0.RC2
+
+                                fescar-server0.4.1(Seata)
+</code></pre>
+<p>关于nacos的启动方式请参考：<a href="https://nacos.io/zh-cn/docs/quick-start.html">Nacos启动参考</a></p>
+<p>首先seata支持很多种注册服务方式，在 fescar-server-0.4.1\conf 目录下</p>
+<pre><code>    file.conf
+    logback.xml
+    nacos-config.sh
+    nacos-config.text
+    registry.conf
+</code></pre>
+<p>总共包含五个文件，其中 file.conf和 registry.conf 分别是我们在 服务消费者 &amp; 服务提供者 代码段需要用到的文件。
+注：file.conf和 registry.conf 必须在当前使用的应用程序中，即： 服务消费者 &amp; 服务提供者 两个应用在都需要包含。
+如果你采用了配置中心 是nacos 、zk ，file.cnf 是可以忽略的。但是type=“file” 如果是为file  就必须得用file.cnf</p>
+<p>下面是registry.conf 文件中的配置信息，其中 registry 是注册服务中心配置。config为配置中心的配置地方。</p>
+<p>从下面可知道目前seata支持nacos，file eureka redis zookeeper 等注册配置方式，默认下载的type=“file” 文件方式，当然这里选用什么方式，取决于</p>
+<p>每个人项目的实际情况，这里我选用的是nacos，eureka的也是可以的，我这边分别对这两个版本进行整合测试均可以通过。</p>
+<p>注：如果整合eureka请选用官方最新版本。</p>
+<h1>3.核心配置</h1>
+<pre><code class="language-java">registry {
+  # file 、nacos 、eureka、redis、zk
+  type = "nacos"
+
+  nacos {
+    serverAddr = "localhost"
+    namespace = "public"
+    cluster = "default"
+  }
+  eureka {
+    serviceUrl = "http://localhost:1001/eureka"
+    application = "default"
+    weight = "1"
+  }
+  redis {
+    serverAddr = "localhost:6379"
+    db = "0"
+  }
+  zk {
+    cluster = "default"
+    serverAddr = "127.0.0.1:2181"
+    session.timeout = 6000
+    connect.timeout = 2000
+  }
+  file {
+    name = "file.conf"
+  }
+}
+
+config {
+  # file、nacos 、apollo、zk
+  type = "nacos"
+
+  nacos {
+    serverAddr = "localhost"
+    namespace = "public"
+    cluster = "default"
+  }
+  apollo {
+    app.id = "fescar-server"
+    apollo.meta = "http://192.168.1.204:8801"
+  }
+  zk {
+    serverAddr = "127.0.0.1:2181"
+    session.timeout = 6000
+    connect.timeout = 2000
+  }
+  file {
+    name = "file.conf"
+  }
+}
+</code></pre>
+<p><a href="http://xn--nacos-config-o59yhn663rer9ctyiytr5wi.sh">这里要说明的是nacos-config.sh</a> 是针对采用nacos配置中心的话，需要执行的一些默认初始化针对nacos的脚本。</p>
+<p>SEATA的启动方式参考官方： 注意，这里需要说明下，命令启动官方是通过 空格区分参数，所以要注意。这里的IP 是可选参数，因为涉及到DNS解析，在部分情况下，有的时候在注册中心fescar 注入nacos的时候会通过获取地址，如果启动报错注册发现是计算机名称，需要指定IP。或者host配置IP指向。不过这个问题，在最新的SEATA中已经进行了修复。</p>
+<pre><code class="language-shell">sh fescar-server.sh 8091 /home/admin/fescar/data/ IP（可选）
+</code></pre>
+<p>上面提到过，在我们的代码中也是需要file.conf 和registry.conf 这里着重的地方要说的是file.conf,file.conf只有当registry中 配置file的时候才会进行加载，如果采用ZK、nacos、作为配置中心，可以忽略。因为type指定其他是不加载file.conf的，但是对应的 service.localRgroup.grouplist  和 service.vgroup_mapping  需要在支持配置中心 进行指定，这样你的client 在启动后会通过自动从配置中心获取对应的 SEATA 服务 和地址。如果不配置会出现无法连接server的错误。当然如果你采用的eureka在config的地方就需要采用type=&quot;file&quot; 目前SEATA config暂时不支持eureka的形势</p>
+<pre><code class="language-java">transport {
+  # tcp udt unix-domain-socket
+  type = "TCP"
+  #NIO NATIVE
+  server = "NIO"
+  #enable heartbeat
+  heartbeat = true
+  #thread factory for netty
+  thread-factory {
+    boss-thread-prefix = "NettyBoss"
+    worker-thread-prefix = "NettyServerNIOWorker"
+    server-executor-thread-prefix = "NettyServerBizHandler"
+    share-boss-worker = false
+    client-selector-thread-prefix = "NettyClientSelector"
+    client-selector-thread-size = 1
+    client-worker-thread-prefix = "NettyClientWorkerThread"
+    # netty boss thread size,will not be used for UDT
+    boss-thread-size = 1
+    #auto default pin or 8
+    worker-thread-size = 8
+  }
+}
+service {
+  #vgroup-&gt;rgroup
+  vgroup_mapping.service-provider-fescar-service-group = "default"
+  #only support single node
+  localRgroup.grouplist = "127.0.0.1:8091"
+  #degrade current not support
+  enableDegrade = false
+  #disable
+  disable = false
+}
+
+client {
+  async.commit.buffer.limit = 10000
+  lock {
+    retry.internal = 10
+    retry.times = 30
+  }
+}
+</code></pre>
+<h1>4.服务相关</h1>
+<p>这里有两个地方需要注意</p>
+<pre><code class="language-java">    grouplist IP，这里是当前fescar-sever的IP端口，
+    vgroup_mapping的配置。
+</code></pre>
+<p>vgroup_mapping.服务名称-fescar-service-group,这里 要说下服务名称其实是你当前的consumer 或者provider application.properties的配置的应用名称：spring.application.name=service-provider，源代码中是 获取应用名称与 fescar-service-group 进行拼接，做key值。同理value是当前fescar的服务名称，  cluster = &quot;default&quot;  / application = &quot;default&quot;</p>
+<pre><code class="language-java">     vgroup_mapping.service-provider-fescar-service-group = "default"
+      #only support single node
+      localRgroup.grouplist = "127.0.0.1:8091"
+</code></pre>
+<p>同理无论是provider 还是consumer 都需要这两个文件进行配置。</p>
+<p>如果你采用nacos做配置中心，需要在nacos通过添加配置方式进行配置添加。</p>
+<h1>5.事务使用</h1>
+<p>我这里的代码逻辑是请求通过网关进行负载转发到我的consumer上，在consumer 中通过fegin进行provider请求。官方的例子中是通过fegin进行的，而我们这边直接通过网关转发，所以全局事务同官方的demo一样 也都是在controller层。</p>
+<pre><code class="language-java"><span class="hljs-meta">@RestController</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoController</span> </span>{
+	<span class="hljs-meta">@Autowired</span>
+	<span class="hljs-keyword">private</span> DemoFeignClient demoFeignClient;
+	
+	<span class="hljs-meta">@Autowired</span>
+	<span class="hljs-keyword">private</span> DemoFeignClient2 demoFeignClient2;
+	<span class="hljs-meta">@GlobalTransactional</span>(timeoutMills = <span class="hljs-number">300000</span>, name = <span class="hljs-string">"spring-cloud-demo-tx"</span>)
+	<span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">"/getdemo"</span>)
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">demo</span><span class="hljs-params">()</span> </span>{
+		
+		<span class="hljs-comment">// 调用A 服务  简单save</span>
+		ResponseData&lt;Integer&gt; result = demoFeignClient.insertService(<span class="hljs-string">"test"</span>,<span class="hljs-number">1</span>);
+		<span class="hljs-keyword">if</span>(result.getStatus()==<span class="hljs-number">400</span>) {
+			System.out.println(result+<span class="hljs-string">"+++++++++++++++++++++++++++++++++++++++"</span>);
+			<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">"this is error1"</span>);
+		}
+	
+		<span class="hljs-comment">// 调用B 服务。报错测试A 服务回滚</span>
+		ResponseData&lt;Integer&gt;  result2 = demoFeignClient2.saveService();
+	
+		<span class="hljs-keyword">if</span>(result2.getStatus()==<span class="hljs-number">400</span>) {
+			System.out.println(result2+<span class="hljs-string">"+++++++++++++++++++++++++++++++++++++++"</span>);
+			<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">"this is error2"</span>);
+		}
+
+		<span class="hljs-keyword">return</span> <span class="hljs-string">"SUCCESS"</span>;
+	}
+}
+</code></pre>
+<p>到此为止核心的事务整合基本到此结束了，我这里是针对A,B 两个provider进行调用，当B发生报错后，进行全局事务回滚。当然每个事务内部都可以通过自己的独立本地事务去处理自己本地事务方式。</p>
+<p>SEATA是通过全局的XID方式进行事务统一标识方式。这里就不列出SEATA需要用的数据库表。具体参考：<a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba/tree/master/spring-cloud-alibaba-examples/fescar-example">spring-cloud-fescar 官方DEMO</a></p>
+<h1>5.数据代理</h1>
+<p>这里还有一个重要的说明就是，在分库服务的情况下，每一个数据库内都需要有一个undo_log的数据库表进行XID统一存储处理。</p>
+<p>同事针对每个提供服务的项目，需要进行数据库连接池的代理。也就是：</p>
+<p>目前只支持Druid连接池，后续会继续支持。</p>
+<pre><code class="language-java"><span class="hljs-meta">@Configuration</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatabaseConfiguration</span> </span>{
+
+	
+	<span class="hljs-meta">@Bean</span>(destroyMethod = <span class="hljs-string">"close"</span>, initMethod = <span class="hljs-string">"init"</span>)
+	<span class="hljs-meta">@ConfigurationProperties</span>(prefix=<span class="hljs-string">"spring.datasource"</span>)
+	<span class="hljs-function"><span class="hljs-keyword">public</span> DruidDataSource <span class="hljs-title">druidDataSource</span><span class="hljs-params">()</span> </span>{
+
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DruidDataSource();
+	}
+	
+	
+	<span class="hljs-meta">@Bean</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> DataSourceProxy <span class="hljs-title">dataSourceProxy</span><span class="hljs-params">(DruidDataSource druidDataSource)</span> </span>{
+	
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DataSourceProxy(druidDataSource);
+	}
+	
+
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> SqlSessionFactory <span class="hljs-title">sqlSessionFactory</span><span class="hljs-params">(DataSourceProxy dataSourceProxy)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        SqlSessionFactoryBean factoryBean = <span class="hljs-keyword">new</span> SqlSessionFactoryBean();
+        factoryBean.setDataSource(dataSourceProxy);    
+        <span class="hljs-keyword">return</span> factoryBean.getObject();
+    }
+}
+</code></pre>
+<p>大家要注意的就是配置文件和数据代理。如果没有进行数据源代理，undo_log是无数据的，也就是没办进行XID的管理。</p>
+<p>本文作者：大菲.Fei</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
