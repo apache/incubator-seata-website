@@ -6,6 +6,8 @@ description: Seata 常见问题。
 
 # 常见问题
 
+<a href="#0" target="_self">0.8、0.9如何升级到1.0？</a>
+
 <a href="#1" target="_self">1.Seata 目前可以用于生产环境吗？</a>
 
 <a href="#2" target="_self">2.Seata 目前支持高可用吗？</a>
@@ -28,6 +30,21 @@ description: Seata 常见问题。
 
 <a href="#11" target="_self">11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了? </a>
 
+<a href="#12" target="_self">12.TC如何使用mysql8? </a>
+
+<a href="#13" target="_self">13.支持多主键? </a>
+
+<a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>   
+<a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
+
+********
+<h3 id='0'>Q: 0.8、0.9如何升级到1.0？</h3>
+
+**A:** 
+* （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉seata-all
+* （必选）TC端表lock_table字段branch_id增加普通索引
+* （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置</a>
+* （可选） client.report.success.enable可以置为false，提升性能
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -143,5 +160,35 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 
 **A:** 
 本地执行下:mvn clean install -DskipTests=true,相关代码在0.8.1已经移除。
+
+********
+<h3 id='12'>Q: 12.TC如何使用mysql8?</h3>
+
+**A:** 1.修改file.conf的驱动配置store.db.driver-class-name;  2.lib目录下删除mysql5驱动,添加mysql8驱动  
+ps: oracle同理
+********
+<h3 id='13'>Q: 13.支持多主键?</h3>
+
+**A:** 
+暂不支持，建议先建一列自增id主键，原复合主键改为唯一键来规避下
+
+********
+<h3 id='14'>Q: 14.使用HikariDataSource报错如何解决?</h3>
+
+**A:** 
+``` 
+异常1:ClassCastException: com.sun.proxy.$Proxy153 cannot be cast to com.zaxxer.hikari.HikariDataSource
+原因: 自动代理时，实例类型转换错误，注入的是$Proxy153实例，不是HikariDataSource的本身或子类实例。
+解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。
+1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。
+``` 
+********
+<h3 id='15'>Q: 15.是否可以不使用conf类型配置文件，直接将配置写入application.properties?</h3>
+
+**A:** 
+目前seata-all是需要使用conf类型配置文件，后续会支持properties和yml类型文件。当前可以在项目中依赖seata-spring-boot-starter，然后将配置项写入到application
+.properties 这样可以不使用conf类型文件。
+
+********
 
 ********

@@ -14,7 +14,7 @@ date: 2019/12/23
 
 通过GA大会上滴滴出行的高级研发工程陈鹏志的在滴滴两轮车业务中的实践,发现动态降级的必要性是非常的高,所以这边简单利用spring boot aop来简单的处理降级相关的处理,这边非常感谢陈鹏志的分享!
 
-可利用次demo[项目地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata )
+可利用此demo[项目地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata )
 
 通过以下代码改造实践.
 
@@ -54,9 +54,13 @@ public class TestAspect {
         Method method = signature.getMethod();
         logger.info("拦截到需要分布式事务的方法," + method.getName());
         // 此处可用redis或者定时任务来获取一个key判断是否需要关闭分布式事务
-        GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
-        tx.begin(300000, "test-client");
-        logger.info("创建分布式事务完毕" + tx.getXid());
+        // 模拟动态关闭分布式事务
+        if ((int)(Math.random() * 100) % 2 == 0) {
+            GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
+            tx.begin(300000, "test-client");
+        } else {
+            logger.info("关闭分布式事务");
+        }
     }
 
     @AfterThrowing(throwing = "e", pointcut = "execution(* org.test.service.*.*(..))")
