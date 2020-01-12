@@ -1,5 +1,5 @@
 ---
-title: Seata core 模块源码分析
+title: Seata config 模块源码分析
 author: 赵润泽
 keywords: Seata、分布式事务
 date: 2020/1/11
@@ -17,7 +17,7 @@ date: 2020/1/11
 
 seata server 在加载的时候，会使用 resources/registry.conf 来确定配置中心和注册中心的类型。而 seata client 在 1.0 版本后，不仅能使用 conf 文件进行配置的加载，也可以在 springboot 的 yml 配置文件中，使用 seata.config.{type} 来进行配置中心的选择，注册中心与之类似。通过 yml 加载配置的源码在 io.seata.spring.boot.autoconfigure.properties.registry 包下。
 
-如果 seata client 即在resources下放了 conf 文件又在 yml 文件中配置了，那么会优先使用 yml 中配置的。代码：
+如果 seata 客户端的使用者即在resources下放了 conf 配置文件又在 yml 文件中配置，那么会优先使用 yml 中配置的。代码：
 
 ```java
 CURRENT_FILE_INSTANCE = null == extConfiguration ? configuration : extConfiguration;
@@ -29,7 +29,7 @@ CURRENT_FILE_INSTANCE = null == extConfiguration ? configuration : extConfigurat
 EnhancedServiceLoader.load(ExtConfigurationProvider.class).provide(configuration);
 ```
 
-上面说的是配置中心类型的选择，而配置环境的加载，是在确定了使用什么配置中心类型后，再通过相应的配置中心加载环境配置。
+上面说的是配置中心类型的选择，而配置环境的加载，是在确定了使用什么配置中心类型后，再通过相应的配置中心加载环境配置。File 即文本方式配置也是一种配置中心。
 
 client 和 server 获取配置参数，是通过 ConfigurationFactory#getInstance() 获取配置类实例，再使用配置类实例获取配置参数，配置的 key 这些常量的定义，主要在 core 模块下 config 文件中。
 
@@ -61,7 +61,7 @@ ConfigurationFactory.getInstance().addConfigListener(ConfigurationKeys.DISABLE_G
 ## 三. 描述配置 
 一般性框架描述性配置通常信息比较多，甚至有层次关系，用 xml 配置比较方便，因为树结构描述性更强。而现在的习惯都在提倡去繁琐的约束性配置，采用约定的方式。
 
-seata AT 模式是通过代理数据源的方式来进行事务处理，对业务放入侵较小，只需让 seata 在启动时，识别哪些业务方需要开启全局事务，所以用注解就可以实现描述性配置。
+seata AT 模式是通过代理数据源的方式来进行事务处理，对业务方入侵较小，只需让 seata 在启动时，识别哪些业务方需要开启全局事务，所以用注解就可以实现描述性配置。
 
 ```java
 @GlobalTransactional(timeoutMills = 300000, name = "busi-doBiz")
@@ -80,9 +80,9 @@ public boolean rollback(BusinessActionContext actionContext);
 扩展配置，通常对产品的聚合要求比较高，因为产品需要发现第三方实现，将其加入产品内部。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200110213751452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODA0NzM3,size_16,color_FFFFFF,t_70)
-这是一个自定义配置中心的例子，在 META-INF 下放置一个接口同名的文本文件，文件的内容为接口的实现类，标准的 spi 方式。然后修改配置文件 registry.conf 中的 config.type=test 。
+这是一个自定义配置中心提供类的例子，在 META-INF/services 下放置一个接口同名的文本文件，文件的内容为接口的实现类。这是标准的 spi 方式。然后修改配置文件 registry.conf 中的 config.type=test 。
 
-但是如果你认为这样就可以被 seata 识别到，并且替换掉配置中心，那你就错了。seata 在加载配置中心的时候，使用 enum ConfigType 包裹了一下配置的值：
+但是如果你认为这样就可以被 seata 识别到，并且替换掉配置中心，那你就错了。seata 在加载配置中心的时候，使用 enum ConfigType 包裹了一下配置文件中配置的配置中心的类型的值：
 
 ```java
 private static Configuration buildConfiguration() {
@@ -91,10 +91,12 @@ private static Configuration buildConfiguration() {
 }
 ```
 
-如果在 ConfigType 中没有定义 test 这种类型，那么会抛异常。所以单纯的修改配置文件是无法修改掉配置中心的。
+如果在 ConfigType 中没有定义 test 这种配置中心类型，那么会抛异常。所以单纯的修改配置文件而不改变源码是无法使用 ConfigType 中定义的配置中心提供类以外的配置中心提供类。
+
+目前1.0版本在 ConfigType 中定义的配置中心类型有：File,ZK,Nacos,Apollo,Consul,Etcd3,SpringCloudConfig,Custom。如果用户想使用自定义的配置中心类型，可以使用 Custom 这种类型。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200110215249152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODA0NzM3,size_16,color_FFFFFF,t_70)
-这里可以使用不优雅的方式，即提供一个指定名称 ZK 但是级别 order=3 更高的实现类（默认order=1），就可以让 ConfigurationFactory 使用 TestConfigurationProvider 作为配置中心提供类。
+这里可以使用不优雅的方式，即提供一个指定名称 ZK 但是级别 order=3 更高的实现类（ZK默认order=1），就可以让 ConfigurationFactory 使用 TestConfigurationProvider 作为配置中心提供类。
 
 通过上面的步骤，就可以让 seata 使用我们自己提供的代码。seata 中 codec、compressor、discovery、integration 等模块，都是使用 spi 机制加载功能类，符合微内核 + 插件化，平等对待第三方的设计思想。
 
