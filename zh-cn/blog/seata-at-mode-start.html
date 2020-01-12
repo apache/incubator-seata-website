@@ -57,7 +57,7 @@ GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
 }
 </code></pre>
 <p>在基于 Spring 项目的启动过程中，对该类会有如下初始化流程：</p>
-<p><img src="https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/image-20191124155455309.png" alt="image-20191124155455309"></p>
+<p><img src="https://gitee.com/objcoding/md-picture/raw/master/img/image-20191124155455309.png" alt="image-20191124155455309"></p>
 <p>InitializingBean 的 afterPropertiesSet() 方法调用了 initClient() 方法：</p>
 <p>io.seata.spring.annotation.GlobalTransactionScanner#initClient</p>
 <pre><code class="language-java">TMClient.init(applicationId, txServiceGroup);
