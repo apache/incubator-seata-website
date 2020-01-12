@@ -17,7 +17,7 @@ date: 2020/1/11
 
 seata server 在加载的时候，会使用 resources/registry.conf 来确定配置中心和注册中心的类型。而 seata client 在 1.0 版本后，不仅能使用 conf 文件进行配置的加载，也可以在 springboot 的 yml 配置文件中，使用 seata.config.{type} 来进行配置中心的选择，注册中心与之类似。通过 yml 加载配置的源码在 io.seata.spring.boot.autoconfigure.properties.registry 包下。
 
-如果 seata 客户端的使用者即在resources下放了 conf 配置文件又在 yml 文件中配置，那么会优先使用 yml 中配置的。代码：
+如果 seata 客户端的使用者既在resources下放了 conf 配置文件又在 yml 文件中配置，那么会优先使用 yml 中配置的。代码：
 
 ```java
 CURRENT_FILE_INSTANCE = null == extConfiguration ? configuration : extConfiguration;
