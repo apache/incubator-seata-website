@@ -69,7 +69,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator implement
 
 在基于 Spring 项目的启动过程中，对该类会有如下初始化流程：
 
-![image-20191124155455309](https://raw.githubusercontent.com/objcoding/objcoding.github.io/master/images/image-20191124155455309.png)
+![image-20191124155455309](https://gitee.com/objcoding/md-picture/raw/master/img/image-20191124155455309.png)
 
 InitializingBean 的 afterPropertiesSet() 方法调用了 initClient() 方法：
 
