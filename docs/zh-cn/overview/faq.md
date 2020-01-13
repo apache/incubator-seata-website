@@ -36,6 +36,7 @@ description: Seata 常见问题。
 
 <a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>   
 <a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
+<a href="#16" target="_self">16.如何自己修改源码后打包seata-server? </a>
 
 ********
 <h3 id='0'>Q: 0.8、0.9如何升级到1.0？</h3>
@@ -188,6 +189,17 @@ ps: oracle同理
 **A:** 
 目前seata-all是需要使用conf类型配置文件，后续会支持properties和yml类型文件。当前可以在项目中依赖seata-spring-boot-starter，然后将配置项写入到application
 .properties 这样可以不使用conf类型文件。
+
+********
+<h3 id='16'>Q: 16.如何自己修改源码后打包seata-server?</h3>
+
+**A:** 
+```xml
+1. 删除 distribution 模块的bin、conf和lib目录。
+2. mvn clean install -DskipTests=true -P release-seata。
+3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。
+
+```
 
 ********
 
