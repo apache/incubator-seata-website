@@ -6,7 +6,6 @@ description: Seata 常见问题。
 
 # 常见问题
 
-<a href="#0" target="_self">0.8、0.9如何升级到1.0？</a>
 
 <a href="#1" target="_self">1.Seata 目前可以用于生产环境吗？</a>
 
@@ -35,17 +34,13 @@ description: Seata 常见问题。
 <a href="#13" target="_self">13.支持多主键? </a>
 
 <a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>   
+
 <a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
+
 <a href="#16" target="_self">16.如何自己修改源码后打包seata-server? </a>
 
-********
-<h3 id='0'>Q: 0.8、0.9如何升级到1.0？</h3>
-
-**A:** 
-* （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉seata-all
-* （必选）TC端表lock_table字段branch_id增加普通索引
-* （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置</a>
-* （可选） client.report.success.enable可以置为false，提升性能
+<a href="#17" target="_self">17. 0.8、0.9版本如何升级到1.0版本？</a>
+ 
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -200,7 +195,13 @@ ps: oracle同理
 3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。
 
 ```
-
 ********
+<h3 id='17'>Q: 17. 0.8、0.9版本如何升级到1.0版本？</h3>
+
+**A:** 
+* （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉seata-all
+* （必选）TC端表lock_table字段branch_id增加普通索引
+* （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置</a>
+* （可选） client.report.success.enable可以置为false，提升性能
 
 ********
