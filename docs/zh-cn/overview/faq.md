@@ -41,7 +41,7 @@ description: Seata 常见问题。
 
 <a href="#17" target="_self">17. 0.8、0.9版本如何升级到1.0版本？</a>
 
-<a href="#18" target="_self">18. Seata 支持哪些RPC框架？</a>
+<a href="#18" target="_self">18. Seata 支持哪些 RPC 框架？</a>
  
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -207,10 +207,10 @@ ps: oracle同理
 * （可选） client.report.success.enable可以置为false，提升性能
 
 ********
-<h3 id='18'>Q: 18.Seata 支持哪些RPC框架?</h3>
+<h3 id='18'>Q: 18.Seata 支持哪些 RPC 框架?</h3>
 
 **A:** 
-```xml
+```
 1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
 2. TCC 模式支持Dubbo 和 sofa-RPC。
 
