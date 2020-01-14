@@ -96,6 +96,16 @@
       }
     },
     {
+      "filename": "seata-analysis-config-modular.md",
+      "link": "/zh-cn/blog/seata-analysis-config-modular.html",
+      "meta": {
+        "title": "Seata config 模块源码分析",
+        "author": "赵润泽",
+        "keywords": "Seata、分布式事务",
+        "date": "2020/1/11"
+      }
+    },
+    {
       "filename": "seata-analysis-core-modular.md",
       "link": "/zh-cn/blog/seata-analysis-core-modular.html",
       "meta": {
