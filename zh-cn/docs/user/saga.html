@@ -278,6 +278,13 @@
 </ul>
 </li>
 </ul>
+<h3>性能优化</h3>
+<ul>
+<li>配置客户端参数<code>client.rm.report.success.enable=false</code>，可以在当分支事务执行成功时不上报分支状态到server，从而提升性能。</li>
+</ul>
+<blockquote>
+<p>当上一个分支事务的状态还没有上报的时候，下一个分支事务已注册，可以认为上一个实际已成功</p>
+</blockquote>
 <h2>API referance</h2>
 <h4>StateMachineEngine API</h4>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StateMachineEngine</span> </span>{

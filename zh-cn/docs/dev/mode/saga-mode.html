@@ -70,6 +70,19 @@
 </ul>
 </li>
 </ul>
+<h3>状态机的高可用设计：</h3>
+<p><img src="/img/saga/SagaEngineHA.png?raw=true" alt="状态机的高可用"></p>
+<p>状态机引擎是无状态的，它是内嵌在应用中。</p>
+<p>当应用正常运行时（图中上半部分）：</p>
+<ul>
+<li>状态机引擎会上报状态到Seata Server；</li>
+<li>状态机执行日志存储在业务的数据库中；</li>
+</ul>
+<p>当一台应用实例宕机时（图中下半部分）：</p>
+<ul>
+<li>Seata Server 会感知到，并发送事务恢复请求到还存活的应用实例；</li>
+<li>状态机引擎收到事务恢复请求后，从数据库里装载日志，并恢复状态机上下文继续执行；</li>
+</ul>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
