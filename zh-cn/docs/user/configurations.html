@@ -376,6 +376,51 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 </tr>
 </tbody>
 </table>
+<h3>参数同步到配置中心使用demo</h3>
+<h4>Apollo</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 8070</p>
+<p>-e: 所管理的配置环境，默认值 DEV</p>
+<p>-a: Namespace 所属的 AppId，默认值 seata-server</p>
+<p>-c: 所管理的配置集群名， 一般情况下传入 default 即可。如果是特殊集群，传入相应集群的名称即可，默认值 default</p>
+<p>-n: 所管理的 Namespace 的名称，如果是非 properties 格式，需要加上后缀名，如 sample.yml，默认值 application</p>
+<p>-d: item 的创建人，格式为域账号，也就是 sso 系统的 User ID</p>
+<p>-r: 发布人，域账号，注意：如果 ApolloConfigDB.ServerConfig 中的 namespace.lock.switch 设置为 true 的话（默认是 false），那么该环境不允许发布人和编辑人为同一人。所以如果编辑人是 zhangsan，发布人就不能再是 zhangsan。</p>
+<p>-t: Apollo 管理员在 http://{portal_address}/open/manage.html 创建第三方应用，创建之前最好先查询此AppId是否已经创建。创建成功之后会生成一个 token</p>
+<p>以上参数说明详情请看：</p>
+<p><a href="https://github.com/ctripcorp/apollo/wiki/Apollo%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0">https://github.com/ctripcorp/apollo/wiki/Apollo开放平台</a></p>
+<h4>Consul</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/consul/consul-config.sh -h localhost -p 8500
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 8500</p>
+<h4>Etcd3</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 2379</p>
+<h4>Nacos</h4>
+<p>shell:</p>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/nacos/nacos-config.sh -h localhost -p 8848
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 8848</p>
+<p>python:</p>
+<pre><code class="language-bash">python <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/nacos/nacos-config.py localhost:8848
+</code></pre>
+<h4>ZK</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z <span class="hljs-string">"/Users/zhangchenghui/zookeeper-3.4.14"</span>
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 2181</p>
+<p>-z: zk所属路径</p>
 <h3>附录1：</h3>
 <pre><code>事务分组说明。
 1.事务分组是什么？
