@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Disallow: /bin/
+Sitemap: https://seata.io/site.txt
