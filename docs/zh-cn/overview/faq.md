@@ -42,6 +42,9 @@ description: Seata 常见问题。
 <a href="#17" target="_self">17. 0.8、0.9版本如何升级到1.0版本？</a>
 
 <a href="#18" target="_self">18. Seata 支持哪些 RPC 框架？</a>
+
+<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
  
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -213,6 +216,15 @@ ps: oracle同理
 ```
 1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
 2. TCC 模式支持Dubbo 和 sofa-RPC。
+
+```
+
+<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
+
+**A:** 
+```
+需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
 ```
 ********
