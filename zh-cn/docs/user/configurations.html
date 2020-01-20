@@ -86,12 +86,12 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 <tr>
 <td>registry.type</td>
 <td>注册中心类型</td>
-<td>默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa</td>
+<td>默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa、custom</td>
 </tr>
 <tr>
 <td>config.type</td>
 <td>配置中心类型</td>
-<td>默认file，支持file、nacos 、apollo、zk、consul、etcd3</td>
+<td>默认file，支持file、nacos 、apollo、zk、consul、etcd3、custom</td>
 </tr>
 </tbody>
 </table>
@@ -118,7 +118,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 <tr>
 <td>server.max.commit.retry.timeout</td>
 <td>二阶段提交重试超时时长</td>
-<td>单位毫秒，默认-1表示无限重试。公式: timeout&gt;=now-globalTransactionBeginTime,true表示超时则不再重试</td>
+<td>单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout&gt;=now-globalTransactionBeginTime,true表示超时则不再重试</td>
 </tr>
 <tr>
 <td>server.max.rollback.retry.timeout</td>
