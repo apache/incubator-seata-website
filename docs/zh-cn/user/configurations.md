@@ -35,8 +35,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | transport.serialization            | client和server通信编解码方式   |seata（ByteBuf）、protobuf、kryo、hession，默认seata |
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip，默认none |
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
-| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa |
-| config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3 |
+| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa、custom |
+| config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3、custom |
 
 ### server端
 
@@ -44,7 +44,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |-------------------------------------------|---------------------------------|----------------------------|
 | server.undo.log.save.days            | undo保留天数                  |默认7天,log_status=1（附录3）和未正常清理的undo |
 | server.undo.log.delete.period        | undo清理线程间隔时间          |默认86400000，单位毫秒    |
-| server.max.commit.retry.timeout          | 二阶段提交重试超时时长          | 单位毫秒，默认-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试   |
+| server.max.commit.retry.timeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试   |
 | server.max.rollback.retry.timeout        | 二阶段回滚重试超时时长           |  同commit  |
 | server.recovery.committing-retry-period          | 二阶段提交未完成状态全局事务重试提交线程间隔时间 |默认1000，单位毫秒    |
 | server.recovery.asyn-committing-retry-period     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
