@@ -244,7 +244,9 @@ Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代
 状态机设计器截图:
 ![状态机设计器](/img/saga/seata-saga-statemachine-designer.png?raw=true)
 
-状态机设计器演示地址:[http://seata.io/saga_designer/index.html](http://seata.io/saga_designer/index.html)
+状态机设计器演示地址:[http://seata.io/saga_designer/index.html](/saga_designer/index.html)
+
+状态机设计器视频教程:[http://seata.io/saga_designer/vedio.html](/saga_designer/vedio.html)
 
 ## 最佳实践
 
@@ -274,6 +276,11 @@ Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代
 * 由于 Saga 事务不保证隔离性, 在极端情况下可能由于脏写无法完成回滚操作, 比如举一个极端的例子, 分布式事务内先给用户A充值, 然后给用户B扣减余额, 如果在给A用户充值成功, 在事务提交以前, A用户把余额消费掉了, 如果事务发生回滚, 这时则没有办法进行补偿了。这就是缺乏隔离性造成的典型的问题, 实践中一般的应对方法是：
   * 业务流程设计时遵循“宁可长款, 不可短款”的原则, 长款意思是客户少了钱机构多了钱, 以机构信誉可以给客户退款, 反之则是短款, 少的钱可能追不回来了。所以在业务流程设计上一定是先扣款。
   * 有些业务场景可以允许让业务最终成功, 在回滚不了的情况下可以继续重试完成后面的流程, 所以状态机引擎除了提供“回滚”能力还需要提供“向前”恢复上下文继续执行的能力, 让业务最终执行成功, 达到最终一致性的目的。
+
+### 性能优化
+* 配置客户端参数`client.rm.report.success.enable=false`，可以在当分支事务执行成功时不上报分支状态到server，从而提升性能。
+> 当上一个分支事务的状态还没有上报的时候，下一个分支事务已注册，可以认为上一个实际已成功
+
 
 ## API referance
 
@@ -388,7 +395,119 @@ public interface StateMachineEngine {
 }
 ```
 
-#### StateMachineEngine API
+
+#### StateMachine Execution Instance API: 
+``` java
+StateLogRepository stateLogRepository = stateMachineEngine.getStateMachineConfig().getStateLogRepository();
+StateMachineInstance stateMachineInstance = stateLogRepository.getStateMachineInstanceByBusinessKey(businessKey, tenantId);
+
+/**
+ * State Log Repository
+ *
+ * @author lorne.cl
+ */
+public interface StateLogRepository {
+
+    /**
+     * Get state machine instance
+     *
+     * @param stateMachineInstanceId
+     * @return
+     */
+    StateMachineInstance getStateMachineInstance(String stateMachineInstanceId);
+
+    /**
+     * Get state machine instance by businessKey
+     *
+     * @param businessKey
+     * @param tenantId
+     * @return
+     */
+    StateMachineInstance getStateMachineInstanceByBusinessKey(String businessKey, String tenantId);
+
+    /**
+     * Query the list of state machine instances by parent id
+     *
+     * @param parentId
+     * @return
+     */
+    List<StateMachineInstance> queryStateMachineInstanceByParentId(String parentId);
+
+    /**
+     * Get state instance
+     *
+     * @param stateInstanceId
+     * @param machineInstId
+     * @return
+     */
+    StateInstance getStateInstance(String stateInstanceId, String machineInstId);
+
+    /**
+     * Get a list of state instances by state machine instance id
+     *
+     * @param stateMachineInstanceId
+     * @return
+     */
+    List<StateInstance> queryStateInstanceListByMachineInstanceId(String stateMachineInstanceId);
+}
+```
+
+
+#### StateMachine Definition API:
+``` java
+StateMachineRepository stateMachineRepository = stateMachineEngine.getStateMachineConfig().getStateMachineRepository();
+StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineName, tenantId);
+
+/**
+ * StateMachineRepository
+ *
+ * @author lorne.cl
+ */
+public interface StateMachineRepository {
+
+    /**
+     * Gets get state machine by id.
+     *
+     * @param stateMachineId the state machine id
+     * @return the get state machine by id
+     */
+    StateMachine getStateMachineById(String stateMachineId);
+
+    /**
+     * Gets get state machine.
+     *
+     * @param stateMachineName the state machine name
+     * @param tenantId         the tenant id
+     * @return the get state machine
+     */
+    StateMachine getStateMachine(String stateMachineName, String tenantId);
+
+    /**
+     * Gets get state machine.
+     *
+     * @param stateMachineName the state machine name
+     * @param tenantId         the tenant id
+     * @param version          the version
+     * @return the get state machine
+     */
+    StateMachine getStateMachine(String stateMachineName, String tenantId, String version);
+
+    /**
+     * Register the state machine to the repository (if the same version already exists, return the existing version)
+     *
+     * @param stateMachine
+     */
+    StateMachine registryStateMachine(StateMachine stateMachine);
+
+    /**
+     * registry by resources
+     *
+     * @param resources
+     * @param tenantId
+     */
+    void registryByResources(Resource[] resources, String tenantId) throws IOException;
+}
+```
 
 ## Config referance
 #### 在Spring Bean配置文件中配置一个StateMachineEngine

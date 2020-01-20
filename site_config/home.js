@@ -2,7 +2,7 @@ export default {
   'zh-cn': {
     brand: {
       brandName: 'Seata',
-      briefIntroduction: 'Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
+      briefIntroduction: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
       buttons: [
         {
           text: '快速入门',
@@ -60,7 +60,7 @@ export default {
   'en-us': {
     brand: {
       brandName: 'Seata',
-      briefIntroduction: 'Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.',
+      briefIntroduction: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.',
       buttons: [
         {
           text: 'Get Started',

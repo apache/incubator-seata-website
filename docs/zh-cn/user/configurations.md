@@ -9,8 +9,24 @@ description: Seata 参数配置。
 
 ### 变更记录
 ```
-20191205: 增加seata.enabled、client.rm.report.success.enable
+20191221: 增加seata.enabled、client.report.success.enable、
+transport.enable-client-batch-send-request、client.log.exceptionRate
 ```
+## 关注属性(详细描述见全属性)
+
+| server端         | client端|
+|---------------|----|
+| registry.type            |registry.type|
+| config.type            |config.type|
+| store.mode            |service.vgroup_mapping.my_test_tx_group|
+| store.db.driver-class-name            | service.default.grouplist |
+| store.db.url            |service.disableGlobalTransaction |
+| store.db.user            | client.support.spring.datasource.autoproxy|
+| store.db.password            | |
+
+
+
+## 全属性
 
 ### 公共部分
 
@@ -19,7 +35,8 @@ description: Seata 参数配置。
 | transport.serialization            | client和server通信编解码方式   |seata（ByteBuf）、protobuf、kryo、hession，默认seata |
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip，默认none |
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
-
+| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa |
+| config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3 |
 
 ### server端
 
@@ -38,14 +55,15 @@ description: Seata 参数配置。
 | store.db.datasource                       | db模式数据源类型 |默认dbcp    |
 | store.db.db-type                          | db模式数据库类型 |默认mysql    |
 | store.db.driver-class-name                | db模式数据库驱动 |默认com.mysql.jdbc.Driver    |
-| store.db.url                              | db模式数据源库url | 默认jdbc:mysql://127.0.0.1:3306/seata   |
+| store.db.url                              | db模式数据库url | 默认jdbc:mysql://127.0.0.1:3306/seata   |
 | store.db.user                             | db模式数据库账户 |默认mysql    |
+| store.db.password                         | db模式数据库账户密码 |默认mysql    |
 | store.db.min-conn                         | db模式数据库初始连接数 |默认1    |
 | store.db.max-conn                         | db模式数据库最大连接数|默认3    |
 | store.db.global.table                     | db模式全局事务表名 |默认global_table    |
 | store.db.branch.table                     | db模式分支事务表名 |默认branch_table    |
 | store.db.lock-table                       | db模式全局锁表名 |默认lock_table    |
-| store.db.query-limit                      | db模式查询全局事务一次的最大条数 |默认1000    |
+| store.db.query-limit                      | db模式查询全局事务一次的最大条数 |默认100    |
 | metrics.enabled                           | 是否启用Metrics  |默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低|
 | metrics.registry-type                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
 | metrics.exporter-list                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
@@ -56,7 +74,9 @@ description: Seata 参数配置。
 | key| desc    | remark|
 |-------------------------------------------|----------------------------|----------------------------|
 | seata.enabled   | 是否开启spring-boot自动装配   |true、false，默认true（附录4） |
-| client.rm.report.success.enable   | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
+| client.report.success.enable   | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
+| transport.enable-client-batch-send-request            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
+| client.log.exceptionRate                | 日志异常输出概率 |  默认100，目前用于undo回滚失败时异常堆栈输出，百分之一的概率输出，回滚失败基本是脏数据，无需输出堆栈占用硬盘空间  |
 | service.vgroup_mapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | TC服务列表（附录2） |  仅注册中心为file时使用  |
 | service.disableGlobalTransaction          | 全局事务开关 |  默认false。false为开启，true为关闭  |
@@ -66,7 +86,7 @@ description: Seata 参数配置。
 | client.rm.lock.retry.times                   | 校验或占用全局锁重试次数 |  默认30  |
 | client.rm.lock.retry.policy.branch-rollback-on-conflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
 | client.rm.report.retry.count                 | 一阶段结果上报TC重试次数 |  默认5次  |
-| client.rm.table.meta.check.enable            | 自动刷新缓存中的表结构 |  默认true  |
+| client.rm.table.meta.check.enable            | 自动刷新缓存中的表结构 |  默认false  |
 | client.tm.commit.retry.count              | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.rollback.retry.count            | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.undo.data.validation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
@@ -81,6 +101,85 @@ description: Seata 参数配置。
 | lock.mode            | 锁存储方式   |local、remote |
 | lock.local          |  |    |
 | lock.remote          |  |  |
+
+### 参数同步到配置中心使用demo
+#### Apollo
+```bash
+sh ${SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
+```
+参数说明：
+
+-h: host，默认值 localhost
+
+-p: port，默认值 8070
+
+-e: 所管理的配置环境，默认值 DEV
+
+-a: Namespace 所属的 AppId，默认值 seata-server
+
+-c: 所管理的配置集群名， 一般情况下传入 default 即可。如果是特殊集群，传入相应集群的名称即可，默认值 default
+
+-n: 所管理的 Namespace 的名称，如果是非 properties 格式，需要加上后缀名，如 sample.yml，默认值 application
+
+-d: item 的创建人，格式为域账号，也就是 sso 系统的 User ID
+
+-r: 发布人，域账号，注意：如果 ApolloConfigDB.ServerConfig 中的 namespace.lock.switch 设置为 true 的话（默认是 false），那么该环境不允许发布人和编辑人为同一人。所以如果编辑人是 zhangsan，发布人就不能再是 zhangsan。
+
+-t: Apollo 管理员在 http://{portal_address}/open/manage.html 创建第三方应用，创建之前最好先查询此AppId是否已经创建。创建成功之后会生成一个 token
+
+以上参数说明详情请看：
+
+https://github.com/ctripcorp/apollo/wiki/Apollo%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0
+
+#### Consul
+```bash
+sh ${SEATAPATH}/script/config-center/consul/consul-config.sh -h localhost -p 8500
+```
+参数说明：
+
+-h: host，默认值 localhost
+
+-p: port，默认值 8500
+
+#### Etcd3
+```bash
+sh ${SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
+```
+
+参数说明：
+
+-h: host，默认值 localhost
+
+-p: port，默认值 2379
+
+#### Nacos
+shell:
+```bash
+sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848
+```
+
+参数说明：
+
+-h: host，默认值 localhost
+
+-p: port，默认值 8848
+
+python:
+```bash
+python ${SEATAPATH}/script/config-center/nacos/nacos-config.py localhost:8848
+```
+
+#### ZK
+```bash
+sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/Users/zhangchenghui/zookeeper-3.4.14"
+```
+参数说明：
+
+-h: host，默认值 localhost
+
+-p: port，默认值 2181
+
+-z: zk所属路径
 
 ### 附录1：
     事务分组说明。

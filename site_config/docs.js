@@ -130,6 +130,10 @@ export default {
                         link: '/zh-cn/docs/user/configurations.html',
                     },
                     {
+                        title: '事务分组介绍',
+                        link: '/zh-cn/docs/user/transaction-group.html',
+                    },
+                    {
                         title: 'Spring 支持',
                         link: '/zh-cn/docs/user/spring.html',
                     },
