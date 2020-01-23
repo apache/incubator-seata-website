@@ -377,6 +377,15 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 </tbody>
 </table>
 <h3>参数同步到配置中心使用demo</h3>
+<h4>Nacos</h4>
+<p>shell:</p>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 8848</p>
+<p>-g: 配置分组，默认值为 'SEATA_GROUP'</p>
+<p>-t: 租户信息，对应 Nacos 的命名空间ID字段, 默认值为空 ''</p>
 <h4>Apollo</h4>
 <pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
 </code></pre>
@@ -404,13 +413,6 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 <p>参数说明：</p>
 <p>-h: host，默认值 localhost</p>
 <p>-p: port，默认值 2379</p>
-<h4>Nacos</h4>
-<p>shell:</p>
-<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/nacos/nacos-config.sh -h localhost -p 8848
-</code></pre>
-<p>参数说明：</p>
-<p>-h: host，默认值 localhost</p>
-<p>-p: port，默认值 8848</p>
 <p>python:</p>
 <pre><code class="language-bash">python <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/nacos/nacos-config.py localhost:8848
 </code></pre>
