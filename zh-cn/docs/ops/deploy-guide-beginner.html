@@ -16,7 +16,7 @@
 <h2>Seata新手部署指南(1.0.0版本)</h2>
 <p>Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。</p>
 <h3>资源目录介绍</h3>
-<h4><a href="https://github.com/seata/seata/tree/develop/script" target="_blank">script</a></h4>
+<h4><a href="https://github.com/seata/seata/tree/1.0.0/script" target="_blank">script</a></h4>
 <ul>
 <li>client</li>
 </ul>
@@ -42,18 +42,16 @@
 <blockquote>
 <p>1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）<br>
 若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；<br>
-starter默认开启数据源自动代理，用户若再手动配置DataSourceProxy将会导致异常</p>
+starter使用file配置中心时默认开启数据源自动代理</p>
 </blockquote>
 <ul>
 <li>spring-cloud-alibaba-seata</li>
 </ul>
 <blockquote>
-<p>2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0。<br>
-截止20191222日，现有版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本；</p>
+<p>2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0，2.2.0内嵌seata-spring-boot-starter 1.0.0</p>
 </blockquote>
-<pre><code>    临时兼容解决方案(单选即可): 
-    a.@SpringBootApplication注解内exclude掉spring-cloud-alibaba-seata内的com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration
-    b.让SpringUtils先初始化
+<pre><code>    2.1.0和2.1.1兼容starter解决方案:
+    @SpringBootApplication注解内exclude掉spring-cloud-alibaba-seata内的com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration
 </code></pre>
 <h3>启动Server</h3>
 <p>Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。<br>
@@ -99,23 +97,18 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 <ul>
 <li><a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置介绍</a></li>
 </ul>
-<h4>步骤三：数据源代理</h4>
+<h4>步骤三：数据源代理(不支持自动和手动配置并存)</h4>
 <ul>
 <li>0.9.0版本开始seata支持自动代理数据源</li>
 </ul>
-<pre><code>    1.0.0: client.support.spring.datasource.autoproxy=true  
+<pre><code>    1.1.0: 取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
+    1.0.0: client.support.spring.datasource.autoproxy=true
     0.9.0: support.spring.datasource.autoproxy=true
 </code></pre>
 <ul>
 <li>手动配置可参考下方的例子</li>
 </ul>
-<pre><code> @Bean
-    @ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
-    public DataSource druidDataSource() {
-        DruidDataSource druidDataSource = new DruidDataSource();
-        return druidDataSource;
-    }
-    @Primary
+<pre><code>    @Primary
     @Bean(&quot;dataSource&quot;)
     public DataSourceProxy dataSource(DataSource druidDataSource) {
         return new DataSourceProxy(druidDataSource);
@@ -146,7 +139,6 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 <li>自动
 springCloud用户可以引入spring-cloud-alibaba-seata，内部已经实现xid传递</li>
 </ul>
-<p><a href="https://seata.io/zh-cn/docs/user/transaction-group.html">查看事务分组介绍</a></p>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
