@@ -11,17 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 10.x
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 10.x
     - name: Build
       run: |
-        npm install && npm run build && mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ deploy-dist/ && mv *.html deploy-dist/
+        npm install && npm run build && mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ deploy-dist/ && mv .htaccess *.html deploy-dist/
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.4.0
+      uses: peaceiris/actions-gh-pages@v2.8.0
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         PUBLISH_BRANCH: master
         PUBLISH_DIR: ./deploy-dist
       with:
