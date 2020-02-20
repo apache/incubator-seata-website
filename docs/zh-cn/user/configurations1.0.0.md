@@ -4,21 +4,13 @@ keywords: Seata
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.1.0版本
-0.9.0.1之前版本 <a href="./configurations090.html">点击这里</a>  
-1.0.0版本 <a href="./configurations090.html">点击这里</a>
+# seata参数配置 1.0.0版本
+0.9.0.1之前版本 <a href="./configurations090.html">点击这里</a>
 
 ### 变更记录
 ```
-20191221: 
-1.增加seata.enabled、client.report.success.enable、
+20191221: 增加seata.enabled、client.report.success.enable、
 transport.enable-client-batch-send-request、client.log.exceptionRate
-20200220(1.1.0): 
-1.file.conf和registry.conf两个配置文件中的格式统一转换为驼峰格式.
-2.统一所有配置文件的默认值(file.conf、registry.conf、seata-spring-boot-starter)
-3.优化seata-spring-boot-starter中对于事务分组和TC集群的配置
-4.移除client.support.spring.datasource.autoproxy,增加@EnableAutoDataSourceProxy
-注解用于开启数据源自动代理,同时可选择代理实现方式(具体请查阅附录5)
 ```
 ## 关注属性(详细描述见全属性)
 
@@ -26,10 +18,10 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |---------------|----|
 | registry.type            |registry.type|
 | config.type            |config.type|
-| store.mode            |service.vgroupMapping.my_test_tx_group|
-| store.db.driverClassName            | service.default.grouplist |
+| store.mode            |service.vgroup_mapping.my_test_tx_group|
+| store.db.driver-class-name            | service.default.grouplist |
 | store.db.url            |service.disableGlobalTransaction |
-| store.db.user            | |
+| store.db.user            | client.support.spring.datasource.autoproxy|
 | store.db.password            | |
 
 
@@ -50,58 +42,57 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 
 | key| desc         | remark|
 |-------------------------------------------|---------------------------------|----------------------------|
-| server.undo.logSaveDays            | undo保留天数                  |默认7天,log_status=1（附录3）和未正常清理的undo |
-| server.undo.logDeletePeriod        | undo清理线程间隔时间          |默认86400000，单位毫秒    |
-| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试   |
-| server.maxRollbackRetryTimeout        | 二阶段回滚重试超时时长           |  同commit  |
-| server.recovery.committingRetryPeriod          | 二阶段提交未完成状态全局事务重试提交线程间隔时间 |默认1000，单位毫秒    |
-| server.recovery.asynCommittingRetryPeriod     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
-| server.recovery.rollbackingRetryPeriod         | 二阶段回滚状态重试回滚线程间隔时间      |默认1000，单位毫秒    |
-| server.recovery.timeoutRetryPeriod             | 超时状态检测重试线程间隔时间        |默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器    |
+| server.undo.log.save.days            | undo保留天数                  |默认7天,log_status=1（附录3）和未正常清理的undo |
+| server.undo.log.delete.period        | undo清理线程间隔时间          |默认86400000，单位毫秒    |
+| server.max.commit.retry.timeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试   |
+| server.max.rollback.retry.timeout        | 二阶段回滚重试超时时长           |  同commit  |
+| server.recovery.committing-retry-period          | 二阶段提交未完成状态全局事务重试提交线程间隔时间 |默认1000，单位毫秒    |
+| server.recovery.asyn-committing-retry-period     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
+| server.recovery.rollbacking-retry-period         | 二阶段回滚状态重试回滚线程间隔时间      |默认1000，单位毫秒    |
+| server.recovery.timeout-retry-period             | 超时状态检测重试线程间隔时间        |默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器    |
 | store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库(支持HA)    |
 | store.file.dir                            | file模式文件存储文件夹名 |默认sessionStore    |
 | store.db.datasource                       | db模式数据源类型 |默认dbcp    |
-| store.db.dbType                          | db模式数据库类型 |默认mysql    |
-| store.db.driverClassName                | db模式数据库驱动 |默认com.mysql.jdbc.Driver    |
+| store.db.db-type                          | db模式数据库类型 |默认mysql    |
+| store.db.driver-class-name                | db模式数据库驱动 |默认com.mysql.jdbc.Driver    |
 | store.db.url                              | db模式数据库url | 默认jdbc:mysql://127.0.0.1:3306/seata   |
 | store.db.user                             | db模式数据库账户 |默认mysql    |
 | store.db.password                         | db模式数据库账户密码 |默认mysql    |
-| store.db.minConn                         | db模式数据库初始连接数 |默认1    |
-| store.db.maxConn                         | db模式数据库最大连接数|默认3    |
-| store.db.globalTable                     | db模式全局事务表名 |默认global_table    |
-| store.db.branchTable                     | db模式分支事务表名 |默认branch_table    |
-| store.db.lockTable                       | db模式全局锁表名 |默认lock_table    |
-| store.db.queryLimit                      | db模式查询全局事务一次的最大条数 |默认100    |
+| store.db.min-conn                         | db模式数据库初始连接数 |默认1    |
+| store.db.max-conn                         | db模式数据库最大连接数|默认3    |
+| store.db.global.table                     | db模式全局事务表名 |默认global_table    |
+| store.db.branch.table                     | db模式分支事务表名 |默认branch_table    |
+| store.db.lock-table                       | db模式全局锁表名 |默认lock_table    |
+| store.db.query-limit                      | db模式查询全局事务一次的最大条数 |默认100    |
 | metrics.enabled                           | 是否启用Metrics  |默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低|
-| metrics.registryType                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
-| metrics.exporterList                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
-| metrics.exporterPrometheusPort          | prometheus输出器Client端口号   |默认9898 |
+| metrics.registry-type                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
+| metrics.exporter-list                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
+| metrics.exporter-prometheus-port          | prometheus输出器Client端口号   |默认9898 |
 
 ### client端
 
 | key| desc    | remark|
 |-------------------------------------------|----------------------------|----------------------------|
-| seata.enabled   | 是否开启spring-boot自动装配   |true、false,(SSBS)专有配置，默认true（附录4） |
-| seata.enableAutoDataSourceProxy=true | 是否开启数据源自动代理 | true、false,seata-spring-boot-starter(SSBS)专有配置,SSBS默认会开启数据源自动代理,可通过该配置项关闭.| 
-| seata.useJdkProxy=false |  是否使用JDK代理作为数据源自动代理的实现方式| true、false,(SSBS)专有配置,默认false,采用CGLIB作为数据源自动代理的实现方式 | 
-| transport.enableClientBatchSendRequest            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
+| seata.enabled   | 是否开启spring-boot自动装配   |true、false，默认true（附录4） |
+| client.report.success.enable   | 是否上报一阶段成功   |true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能 |
+| transport.enable-client-batch-send-request            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
 | client.log.exceptionRate                | 日志异常输出概率 |  默认100，目前用于undo回滚失败时异常堆栈输出，百分之一的概率输出，回滚失败基本是脏数据，无需输出堆栈占用硬盘空间  |
-| service.vgroupMapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
+| service.vgroup_mapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | TC服务列表（附录2） |  仅注册中心为file时使用  |
 | service.disableGlobalTransaction          | 全局事务开关 |  默认false。false为开启，true为关闭  |
 | service.enableDegrade                     | 降级开关（待实现） |  默认false。业务侧根据连续错误数自动降级不走seata事务  |
-| client.rm.reportSuccessEnable   | 是否上报一阶段成功   |true、false，从1.1.0版本开始,默认false.true用于保持分支事务生命周期记录完整，false可提高不少性能 |
-| client.rm.asynCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
-| client.rm.lock.retryInterval                | 校验或占用全局锁重试间隔 |  默认10，单位毫秒  |
-| client.rm.lock.retryTimes                   | 校验或占用全局锁重试次数 |  默认30  |
-| client.rm.lock.retryPolicyBranchRollbackOnConflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
-| client.rm.reportRetryCount                 | 一阶段结果上报TC重试次数 |  默认5次  |
-| client.rm.tableMetaCheckEnable            | 自动刷新缓存中的表结构 |  默认false  |
-| client.tm.commitRetryCount              | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
-| client.tm.rollbackRetryCount            | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
-| client.undo.dataValidation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
-| client.undo.logSerialization        | undo序列化方式 |  默认jackson  |
-| client.undo.logTable                | 自定义undo表名 |  默认undo_log  |
+| client.rm.async.commit.buffer.limit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
+| client.rm.lock.retry.internal                | 校验或占用全局锁重试间隔 |  默认10，单位毫秒  |
+| client.rm.lock.retry.times                   | 校验或占用全局锁重试次数 |  默认30  |
+| client.rm.lock.retry.policy.branch-rollback-on-conflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
+| client.rm.report.retry.count                 | 一阶段结果上报TC重试次数 |  默认5次  |
+| client.rm.table.meta.check.enable            | 自动刷新缓存中的表结构 |  默认false  |
+| client.tm.commit.retry.count              | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
+| client.tm.rollback.retry.count            | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
+| client.undo.data.validation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
+| client.undo.log.serialization        | undo序列化方式 |  默认jackson  |
+| client.undo.log.table                | 自定义undo表名 |  默认undo_log  |
+| client.support.spring.datasource.autoproxy       | 数据源自动代理开关 |  默认false关闭  |
 
 
 ### 未使用
@@ -212,8 +203,7 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
     可以配置多个，配置多个意味着集群，但当store.mode=file时，会报错。原因是在file存储模式下未提供本地文件的同步，所以需要使用store.mode=db，通过db来共享TC集群间数据
     3. 是否推荐使用default.grouplist？
     不推荐，如问题1，当registry.type=file时会用到，也就是说这里用的不是真正的注册中心，不具体服务的健康检查机制当tc不可用时无法自动剔除列表，推荐使用nacos 、eureka、redis、zk、consul、etcd3、sofa。registry.type=file或config.type=file 设计的初衷是让用户再不依赖第三方注册中心或配置中心的前提下，通过直连的方式，快速验证seata服务。    
-    4.seata-spring-boot-starter中的配置为什么是grouplist.default,也就是说和file.conf中的default.grouplist写法刚好颠倒了位置?  
-    由于spring-boot本身配置文件语法的要求,这个地方需要将file.conf中的default.grouplist写成grouplist.default,效果是一样的.
+
 ### 附录3：
     log_status=1的是防御性的，是收到全局回滚请求，但是不确定某个事务分支的本地事务是否已经执行完成了，这时事先插入一条branchid相同的数据，插入的假数据成功了，本地事务继续执行就会报主键冲突自动回滚。
     假如插入不成功说明表里有数据这个本地事务已经执行完成了，那么取出这条undolog数据做反向回滚操作。
@@ -221,18 +211,3 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
 ### 附录4：
     是否开启spring-boot自动装配，如果开启，则会自动配置seata与spring-boot的集成，包括数据源的自动代理以及GlobalTransactionScanner初始化。
     注：1.0版本新特性，需依赖seata-spring-boot-starter。
-### 附录5:
-    seata1.1.0版本新加入以下注解,用于开启数据源自动代理功能
-    @EnableAutoDataSourceProxy
-
-   | attribute| desc    | remark|
-   |-------------------------------------------|----------------------------|----------------------------|
-   | useJdkProxy   | 是否使用JDK代理作为数据源自动代理的实现方式    |false、true,默认false,采用CGLIB作为数据源自动代理的实现方式  |
-
-    
-    1.对于使用seata-spring-boot-starter的方式，默认已开启数据源自动代理,如需关闭，请配置seata.enableAutoDataSourceProxy=false，该项配置默认为true。
-      如需切换代理实现方式，请通过seata.useJdkProxy=false进行配置,默认为false，采用CGLIB作为数据源自动代理的实现方式。
-    2.对于使用seata-all的方式，请使用@EnableAutoDataSourceProxy来显式开启数据源自动代理功能。如有需要，可通过该注解的useJdkProxy属性进行代理实现方式
-      的切换。默认为false,采用CGLIB作为数据源自动代理的实现方式。
-    
-
