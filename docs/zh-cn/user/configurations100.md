@@ -5,7 +5,7 @@ description: Seata 参数配置。
 ---
 
 # seata参数配置 1.0.0版本
-0.9.0.1之前版本 <a href="./configurations090.html">点击这里</a>
+<a href="./configurations090.html">查看0.9.0.1之前版本</a>
 
 ### 变更记录
 ```
