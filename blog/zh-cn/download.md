@@ -15,7 +15,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 ### Seata 1.1.0 (2020-02-19)
 
  [source](https://github.com/seata/seata/archive/v1.1.0.zip) | 
- [binary](https://github.com/seata/seata/releases/download/v1.0.0/seata-server-1.1.0.zip)
+ [binary](https://github.com/seata/seata/releases/download/v1.1.0/seata-server-1.1.0.zip)
 <details>
     <summary><mark>Release notes</mark></summary>
    
