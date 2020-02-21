@@ -11,7 +11,129 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 
 > GitHub: https://github.com/seata/seata \
 > 发布说明: https://github.com/seata/seata/releases
-### 1.0.0 (2019-12-21)
+
+### Seata 1.1.0 (2020-02-19)
+
+ [source](https://github.com/seata/seata/archive/v1.1.0.zip) | 
+ [binary](https://github.com/seata/seata/releases/download/v1.0.0/seata-server-1.1.0.zip)
+<details>
+    <summary><mark>Release notes</mark></summary>
+   
+Seata 1.1.0 发布。
+
+Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
+
+此版本更新如下：
+
+### feature：
+- [[#2200](https://github.com/seata/seata/pull/2200)] 支持 postgresql (业务侧和 TC server) 
+- [[#1746](https://github.com/seata/seata/pull/1746)] 支持 httpClient 自动集成
+- [[#2240](https://github.com/seata/seata/pull/2240)] 支持自定义 Saga 恢复策略超时时间
+- [[#1693](https://github.com/seata/seata/pull/1693)] 支持 druid 类隔离加载，隔离中间件和业务侧的 druid 使用
+- [[#2245](https://github.com/seata/seata/pull/2245)] 支持 zookeeper 鉴权
+- [[#2239](https://github.com/seata/seata/pull/2239)] 支持 dubbo 2.7.4+
+- [[#2203](https://github.com/seata/seata/pull/2203)] 支持 nacos 配置中心设置 group 属性
+- [[#2086](https://github.com/seata/seata/pull/2086)] 支持 apollo 配置中心设置 namespace 属性
+- [[#2106](https://github.com/seata/seata/pull/2106)] 支持 FastThreadLocalContextCore 存储事务上下文
+- [[#1703](https://github.com/seata/seata/pull/1703)] 支持 sql parser SPI，提供 druid sql parser
+- [[#2151](https://github.com/seata/seata/pull/2151)] 支持 Saga 模式跳过成功分支事务的 report
+
+
+### bugfix：
+- [[#2270](https://github.com/seata/seata/pull/2270)] 修复 worker size 不支持枚举配置和其他配置问题
+- [[#2258](https://github.com/seata/seata/pull/2258)] 修复 channelHandler 重连时 not sharable 问题
+- [[#2261](https://github.com/seata/seata/pull/2261)] 修复定时任务启动但 ApplicationContext 未刷新问题
+- [[#2262](https://github.com/seata/seata/pull/2262)] 修复 nacos 初始化脚本设置 group 错误问题
+- [[#2249](https://github.com/seata/seata/pull/2249)] 修复 Saga 模式注册分支失败状态机状态错误问题
+- [[#2126](https://github.com/seata/seata/pull/2126)] 修复表名和列名转义符错误问题
+- [[#2234](https://github.com/seata/seata/pull/2234)] 修复使用 fastjson 反序列化 bigint 错误问题
+- [[#2237](https://github.com/seata/seata/pull/2237)] 修复 DefaultCoordinatorTest 在 wins 测试错误问题
+- [[#2233](https://github.com/seata/seata/pull/2233)] 修复使用 fastjson 忽略 tableMeta 失效问题
+- [[#2172](https://github.com/seata/seata/pull/2172)] 修复使用 SpringCloudConfig 配置中心无法读取配置问题
+- [[#2217](https://github.com/seata/seata/pull/2217)] 修复 seata-spring-boot-starter 错误配置名称
+- [[#2219](https://github.com/seata/seata/pull/2219)] 修复 seata-spring-boot-starter 读取disableGlobalTransaction 配置错误问题
+- [[#2187](https://github.com/seata/seata/pull/2187)] 修复有相同数据依赖的不同事务分支路由到不同server时回滚顺序错误问题
+- [[#2175](https://github.com/seata/seata/pull/2175)] 修复 server direct buffer OOM 问题
+- [[#2210](https://github.com/seata/seata/pull/2210)] 修复二阶段 commit 和 rollback 重试超时 globalSession 无法删除问题
+- [[#2179](https://github.com/seata/seata/pull/2179)] 修复 redis 注册中心 db 属性转型错误问题
+- [[#2192](https://github.com/seata/seata/pull/2192)] 修复 eureka getHostName() 返回 ipAddress 问题
+- [[#2198](https://github.com/seata/seata/pull/2198)] 修复 rollback 超时无法自动删除全局锁问题
+- [[#2167](https://github.com/seata/seata/pull/2167)] 修复 Saga 异步执行返回相同 id 问题
+- [[#2185](https://github.com/seata/seata/pull/2185)] 修复 server 启动时 kubernetes 的判断条件
+- [[#2145](https://github.com/seata/seata/pull/2145)] 修复 Saga 模式重试成功上报状态错误问题
+- [[#2113](https://github.com/seata/seata/pull/2113)] 修复分支 rollback 失败触发多个 TC 重试导致的并发异常
+
+
+### optimize： 
+- [[#2255](https://github.com/seata/seata/pull/2255)] 优化配置项的默认配置值
+- [[#2230](https://github.com/seata/seata/pull/2230)] 统一配置项命名风格和保持 seata-all 和 spring boot starter相同默认值
+- [[#1935](https://github.com/seata/seata/pull/1935)] 重构 client 和 server RPC
+- [[#2215](https://github.com/seata/seata/pull/2215)] 优化 Saga 模式的超时处理 
+- [[#2227](https://github.com/seata/seata/pull/2227)] 分离 TC In/Outbound 接口 
+- [[#2033](https://github.com/seata/seata/pull/2033)] DefaultRemotingParser 逻辑优化
+- [[#1688](https://github.com/seata/seata/pull/1688)] 减少客户端无用依赖
+- [[#2134](https://github.com/seata/seata/pull/2134)] 按照事务模式区分 TC 逻辑重构
+- [[#2224](https://github.com/seata/seata/pull/2224)] 优化 ContextCoreLoader 代码风格
+- [[#2171](https://github.com/seata/seata/pull/2171)] 优化配置初始化同步脚本和添加使用说明
+- [[#2208](https://github.com/seata/seata/pull/2208)] 使用 SPI LoadLevel name 代替 getDbType 接口方法
+- [[#2182](https://github.com/seata/seata/pull/2182)] 优化 seata-spring-boot-starter 前缀判断逻辑
+- [[#2211](https://github.com/seata/seata/pull/2211)] 优化 RootContext 代码风格
+- [[#2140](https://github.com/seata/seata/pull/2140)] 优化 GzipUtil 代码风格
+- [[#2209](https://github.com/seata/seata/pull/2209)] 重构 seata-discovery 模块，增加可读性
+- [[#2055](https://github.com/seata/seata/pull/2055)] 使用 SPI 重构 tableMetaCache 和 undoLogManager
+- [[#2184](https://github.com/seata/seata/pull/2184)] 重构 seata-config 模块，增加可读性
+- [[#2095](https://github.com/seata/seata/pull/2095)] 重构数据源自动代理，区分 jdk 和 cglib 代理属性设置
+- [[#2178](https://github.com/seata/seata/pull/2178)] Saga 状态机设计器添加默认 catch 节点
+- [[#2103](https://github.com/seata/seata/pull/2103)] 优化 tcc 模块代码，增加可读性
+- [[#2125](https://github.com/seata/seata/pull/2125)] 修改 MySQL recognizer package 路径
+- [[#2176](https://github.com/seata/seata/pull/2176)] 修复 typos
+- [[#2156](https://github.com/seata/seata/pull/2156)] 重构 sqlparser druid 名称为常量
+- [[#2170](https://github.com/seata/seata/pull/2170)] 增加 seata common 模块的单测覆盖率
+- [[#2139](https://github.com/seata/seata/pull/2139)] 优雅关闭 resources
+- [[#2097](https://github.com/seata/seata/pull/2097)] 将 codec 模块重命名为 serializer 模块
+- [[#2159](https://github.com/seata/seata/pull/2159)] 优化 spring 模块代码风格，增加可读性
+- [[#2036](https://github.com/seata/seata/pull/2036)] 优化 Dubbo parser 逻辑
+- [[#2062](https://github.com/seata/seata/pull/2062)] 优化 seata-rm-datasource 模块代码风格，增加可读性
+- [[#2146](https://github.com/seata/seata/pull/2146)] 优化日志输出字符拼接
+- [[#2038](https://github.com/seata/seata/pull/2038)] 优化 common 模块代码风格，增加可读性 
+- [[#2120](https://github.com/seata/seata/pull/2120)] 修复 typos 
+- [[#2078](https://github.com/seata/seata/pull/2078)] 增加 oracle table meta cache 单测覆盖度
+- [[#2115](https://github.com/seata/seata/pull/2115)] 修复 typos
+- [[#2099](https://github.com/seata/seata/pull/2099)] 优化 tm 模块代码风格，增加可读性
+
+非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
+ 
+- [slievrly](https://github.com/slievrly) 
+- [xingfudeshi](https://github.com/xingfudeshi)   
+- [objcoding](https://github.com/objcoding)   
+- [long187](https://github.com/long187)   
+- [zjinlei](https://github.com/zjinlei)   
+- [ggndnn](https://github.com/ggndnn)  
+- [lzf971107](https://github.com/lzf971107)    
+- [CvShrimp](https://github.com/CvShrimp)   
+- [l81893521](https://github.com/l81893521)   
+- [ph3636](https://github.com/ph3636)   
+- [koonchen](https://github.com/koonchen)   
+- [leizhiyuan](https://github.com/leizhiyuan)   
+- [a364176773](https://github.com/a364176773)   
+- [caioguedes](https://github.com/caioguedes)   
+- [helloworlde](https://github.com/helloworlde)   
+- [wxbty](https://github.com/wxbty)    
+- [bao-hp](https://github.com/bao-hp)   
+- [guojingyinan219](https://github.com/guojingyinan219)   
+- [CharmingRabbit](https://github.com/CharmingRabbit)   
+- [jaspercloud](https://github.com/jaspercloud)   
+- [jsbxyyx](https://github.com/jsbxyyx)   
+
+同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
+
+**常用链接**   
+
+**Seata**: https://github.com/seata/seata   
+**Seata-Samples**: https://github.com/seata/seata-samples   
+**Release**: https://github.com/seata/seata/releases   
+**Seata 官网**: https://seata.io/zh-cn/
+</details>
 
  [source](https://github.com/seata/seata/archive/v1.0.0.zip) | 
  [binary](https://github.com/seata/seata/releases/download/v1.0.0/seata-server-1.0.0.zip)
