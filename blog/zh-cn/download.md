@@ -135,6 +135,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 **Seata 官网**: https://seata.io/zh-cn/
 </details>
 
+ ### 1.0.0 (2019-12-21)
  [source](https://github.com/seata/seata/archive/v1.0.0.zip) | 
  [binary](https://github.com/seata/seata/releases/download/v1.0.0/seata-server-1.0.0.zip)
 <details>
