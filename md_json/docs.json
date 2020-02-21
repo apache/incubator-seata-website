@@ -449,8 +449,8 @@
       }
     },
     {
-      "filename": "configurations1.0.0.md",
-      "link": "/zh-cn/docs/user/configurations1.0.0.html",
+      "filename": "configurations100.md",
+      "link": "/zh-cn/docs/user/configurations100.html",
       "meta": {
         "title": "Seata 参数配置",
         "keywords": "Seata",
