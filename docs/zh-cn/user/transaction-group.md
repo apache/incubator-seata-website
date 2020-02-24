@@ -9,7 +9,8 @@ description: Seata 事务分组。
 ### 事务分组是什么？
 事务分组是seata的资源逻辑，类似于服务实例。在file.conf中的my_test_tx_group就是一个事务分组。
 ### 通过事务分组如何找到后端集群？
-首先程序中配置了事务分组（GlobalTransactionScanner 构造方法的txServiceGroup参数），程序会通过用户配置的配置中心去寻找service.vgroup_mapping.事务分组配置项，取得配置项的值就是TC集群的名称。拿到集群名称程序通过一定的前后缀+集群名称去构造服务名，各配置中心的服务名实现不同。拿到服务名去相应的注册中心去拉取相应服务名的服务列表，获得后端真实的TC服务列表。
+首先程序中配置了事务分组（GlobalTransactionScanner 构造方法的txServiceGroup参数），程序会通过用户配置的配置中心去寻找service.vgroupMapping
+.事务分组配置项，取得配置项的值就是TC集群的名称。拿到集群名称程序通过一定的前后缀+集群名称去构造服务名，各配置中心的服务名实现不同。拿到服务名去相应的注册中心去拉取相应服务名的服务列表，获得后端真实的TC服务列表。
 ### 为什么这么设计，不直接取服务名？
 这里多了一层获取事务分组到映射集群的配置。这样设计后，事务分组可以作为资源的逻辑隔离单位，出现某集群故障时可以快速failover，只切换对应分组，可以把故障缩减到服务级别，但前提也是你有足够server集群。
 
@@ -48,7 +49,7 @@ config {
 spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置
 file.conf: 
     service {
-      vgroup_mapping.my_test_tx_group = "default"
+      vgroupMapping.my_test_tx_group = "default"
       default.grouplist = "127.0.0.1:8091"
     }
 ```
@@ -57,7 +58,7 @@ file.conf:
 - 获取事务分组
 > spring配置，springboot可配置在yml、properties中，服务启动时加载配置，对应的值"my_test_tx_group"即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+"-fescar-service-group"  
 - 查找TC集群名
-> 拿到事务分组名"my_test_tx_group"拼接成"service.vgroup_mapping.my_test_tx_group"查找TC集群名clusterName为"default"
+> 拿到事务分组名"my_test_tx_group"拼接成"service.vgroupMapping.my_test_tx_group"查找TC集群名clusterName为"default"
 - 查询TC服务
 > 拼接"service."+clusterName+".grouplist"找到真实TC服务地址127.0.0.1:8091
 ### nacos注册中心和配置中心
@@ -116,7 +117,7 @@ config {
 - 获取事务分组
 > springboot可配置在yml、properties中，服务启动时加载配置，对应的值"my_test_tx_group"即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+"-fescar-service-group"
 - 查找TC集群名
-> 拿到事务分组名"my_test_tx_group"拼接成"service.vgroup_mapping.my_test_tx_group"从配置中心查找到TC集群名clusterName为"default"
+> 拿到事务分组名"my_test_tx_group"拼接成"service.vgroupMapping.my_test_tx_group"从配置中心查找到TC集群名clusterName为"default"
 - 查找TC服务
 > 根据serverAddr和namespace以及clusterName在注册中心找到真实TC服务列表
 
