@@ -12,7 +12,7 @@ export default {
                 {
                     text: '用户登记',
                     link: 'https://github.com/seata/seata/issues/1246',
-                    type: 'primary',
+                    type: 'normal',
                 },
                 {
                     text: 'Github',
@@ -75,7 +75,7 @@ export default {
                 {
                     text: 'User Registration',
                     link: 'https://github.com/seata/seata/issues/1246',
-                    type: 'primary',
+                    type: 'normal',
                 },
                 {
                     text: 'Github',
