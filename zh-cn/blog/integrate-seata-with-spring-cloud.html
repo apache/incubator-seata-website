@@ -99,7 +99,8 @@ config {
 <p>SEATA的启动方式参考官方： 注意，这里需要说明下，命令启动官方是通过 空格区分参数，所以要注意。这里的IP 是可选参数，因为涉及到DNS解析，在部分情况下，有的时候在注册中心fescar 注入nacos的时候会通过获取地址，如果启动报错注册发现是计算机名称，需要指定IP。或者host配置IP指向。不过这个问题，在最新的SEATA中已经进行了修复。</p>
 <pre><code class="language-shell">sh fescar-server.sh 8091 /home/admin/fescar/data/ IP（可选）
 </code></pre>
-<p>上面提到过，在我们的代码中也是需要file.conf 和registry.conf 这里着重的地方要说的是file.conf,file.conf只有当registry中 配置file的时候才会进行加载，如果采用ZK、nacos、作为配置中心，可以忽略。因为type指定其他是不加载file.conf的，但是对应的 service.localRgroup.grouplist  和 service.vgroup_mapping  需要在支持配置中心 进行指定，这样你的client 在启动后会通过自动从配置中心获取对应的 SEATA 服务 和地址。如果不配置会出现无法连接server的错误。当然如果你采用的eureka在config的地方就需要采用type=&quot;file&quot; 目前SEATA config暂时不支持eureka的形势</p>
+<p>上面提到过，在我们的代码中也是需要file.conf 和registry.conf 这里着重的地方要说的是file.conf,file.conf只有当registry中
+配置file的时候才会进行加载，如果采用ZK、nacos、作为配置中心，可以忽略。因为type指定其他是不加载file.conf的，但是对应的 service.localRgroup.grouplist  和 service.vgroupMapping  需要在支持配置中心 进行指定，这样你的client 在启动后会通过自动从配置中心获取对应的 SEATA 服务 和地址。如果不配置会出现无法连接server的错误。当然如果你采用的eureka在config的地方就需要采用type=&quot;file&quot; 目前SEATA config暂时不支持eureka的形势</p>
 <pre><code class="language-java">transport {
   # tcp udt unix-domain-socket
   type = "TCP"
