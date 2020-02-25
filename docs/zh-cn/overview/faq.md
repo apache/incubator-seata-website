@@ -6,6 +6,7 @@ description: Seata 常见问题。
 
 # 常见问题
 
+
 <a href="#1" target="_self">1.Seata 目前可以用于生产环境吗？</a>
 
 <a href="#2" target="_self">2.Seata 目前支持高可用吗？</a>
@@ -33,8 +34,18 @@ description: Seata 常见问题。
 <a href="#13" target="_self">13.支持多主键? </a>
 
 <a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>   
+
 <a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
 
+<a href="#16" target="_self">16.如何自己修改源码后打包seata-server? </a>
+
+<a href="#17" target="_self">17. 0.8、0.9版本如何升级到1.0版本？</a>
+
+<a href="#18" target="_self">18. Seata 支持哪些 RPC 框架？</a>
+
+<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
+ 
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -98,7 +109,7 @@ description: Seata 常见问题。
   3. 检查client端的registry.conf里面的namespace，registry.nacos.namespace和config.nacos.namespace填入nacos的命名空间ID，默认""，server端和client端对应，namespace
 为public是nacos的一个保留控件，如果您需要创建自己的namespace，最好不要和public重名，以一个实际业务场景有具体语义的名字来命名
   4. nacos上服务列表，serverAddr地址对应ip地址应为seata启动指定ip地址，如：sh seata-server.sh -p 8091 -h 122.51.204.197 -m file
-  5. 查看seata/conf/nacos-config.txt 事务分组service.vgroup_mapping.trade_group=default配置与项目分组配置名称是否一致
+  5. 查看seata/conf/nacos-config.txt 事务分组service.vgroupMapping.trade_group=default配置与项目分组配置名称是否一致
   6. telnet ip 端口 查看端口是都开放，以及防火墙状态  
 
     注：1.080版本启动指定ip问题，出现异常Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot assign request address，请升级到081以上版本  
@@ -180,5 +191,40 @@ ps: oracle同理
 .properties 这样可以不使用conf类型文件。
 
 ********
+<h3 id='16'>Q: 16.如何自己修改源码后打包seata-server?</h3>
 
+**A:** 
+```xml
+1. 删除 distribution 模块的bin、conf和lib目录。
+2. mvn clean install -DskipTests=true -P release-seata。
+3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。
+
+```
+********
+<h3 id='17'>Q: 17. 0.8、0.9版本如何升级到1.0版本？</h3>
+
+**A:** 
+* （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉seata-all
+* （必选）TC端表lock_table字段branch_id增加普通索引
+* （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置</a>
+* （可选） client.report.success.enable可以置为false，提升性能
+
+********
+<h3 id='18'>Q: 18.Seata 支持哪些 RPC 框架?</h3>
+
+**A:** 
+```
+1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
+2. TCC 模式支持Dubbo 和 sofa-RPC。
+
+```
+
+<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
+
+**A:** 
+```
+需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
+
+```
 ********

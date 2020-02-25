@@ -96,7 +96,8 @@ abnormal：io.seata.common.exception.FrameworkException: can not register RM,err
   3. Check the namespace, registry.nacos.namespace and config.nacos.namespace in the client's registry.conf and enter the nacos namespace ID. The default is "". The server and client correspond to the namespace.
       It is public and is a reserved control of nacos. If you need to create your own namespace, it is better not to use the same name as public, and use a name that has specific semantics in an actual business scenario.
   4. For the list of services on nacos, the IP address corresponding to serverAddr address should be the IP address specified for seata startup, such as: sh seata-server.sh-p 8091-h 122.51.204.197-m file.
-  5. Check to see if the seata/conf/nacos-config.txt, transaction group service.vgroup_mapping.trade_group=default configuration is the same as the project group configuration name.
+  5. Check to see if the seata/conf/nacos-config.txt, transaction group service.vgroupMapping.trade_group=default 
+  configuration is the same as the project group configuration name.
   6. Telnet IP port view ports are open as well as firewall status.
     note：1.Version 080 starts the specified IP problem, the exception "Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot assign request address", please upgrade to version 081 or above.
     The project USES jdk13 and starts with 

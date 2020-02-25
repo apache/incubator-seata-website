@@ -68,7 +68,7 @@ class Home extends Language {
               <p className="product-desc">{dataSource.brand.briefIntroduction}</p>
               <div className="button-area">
               {
-                dataSource.brand.buttons.map(b => <Button type={b.type} key={b.type} link={b.link} target={b.target}>{b.text}</Button>)
+                dataSource.brand.buttons.map(b => <Button type={b.type} key={b.text} link={b.link} target={b.target}>{b.text}</Button>)
               }
               </div>
               <div className="github-buttons">
@@ -89,6 +89,10 @@ class Home extends Language {
                 </div>
                 </a>
               </div>
+              <div className="version-note">
+                <a target="_blank" rel="noopener noreferrer" href={getLink(dataSource.brand.versionNote.link)}>{dataSource.brand.versionNote.text}</a>
+              </div>
+              <div className="release-date">{dataSource.brand.releaseDate}</div>
             </div>
             <div className="animation">
             <img className="img1" src="//img.alicdn.com/tfs/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png" />

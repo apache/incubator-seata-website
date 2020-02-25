@@ -9,7 +9,7 @@ description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务
 Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 
 ### 资源目录介绍
-#### <a href="https://github.com/seata/seata/tree/develop/script" target="_blank">script</a>
+#### <a href="https://github.com/seata/seata/tree/1.0.0/script" target="_blank">script</a>
 - client
 > 存放client端sql脚本，参数配置
 - config-center
@@ -19,21 +19,17 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 
 
 ### 注意事项
-- 加索引
-> TC端表lock_table新增了字段branch_id的普通索引
 - seata-spring-boot-starter
 > 1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
 若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；  
-starter默认开启数据源自动代理，用户若再手动配置DataSourceProxy将会导致异常
+starter使用file配置中心时默认开启数据源自动代理
 - spring-cloud-alibaba-seata
-> 2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0。  
-> 截止20191222日，现有版本不能与seata-spring-boot-starter兼容，后续sca会提供新的seata集成版本；  
+> 2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0，2.2.0内嵌seata-spring-boot-starter 1.0.0
 ```
-    临时兼容解决方案(单选即可): 
-    a.@SpringBootApplication注解内exclude掉spring-cloud-alibaba-seata内的com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration
-    b.让SpringUtils先初始化
+    2.1.0和2.1.1兼容starter解决方案:
+    @SpringBootApplication注解内exclude掉spring-cloud-alibaba-seata内的com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration
 ```  
-
+    
 ### 启动Server
 Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。  
 注：file模式为单机模式，全局事务会话信息内存中读写并持久化本地文件root.data，性能较高;  
@@ -76,20 +72,15 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
 #### 步骤二：undo_log建表、配置参数
 - <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置介绍</a>
 
-#### 步骤三：数据源代理
+#### 步骤三：数据源代理(不支持自动和手动配置并存)
 - 0.9.0版本开始seata支持自动代理数据源
 ```
-    1.0.0: client.support.spring.datasource.autoproxy=true  
+    1.1.0: 取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
+    1.0.0: client.support.spring.datasource.autoproxy=true
     0.9.0: support.spring.datasource.autoproxy=true
 ```
 - 手动配置可参考下方的例子
 ```
- @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource druidDataSource() {
-        DruidDataSource druidDataSource = new DruidDataSource();
-        return druidDataSource;
-    }
     @Primary
     @Bean("dataSource")
     public DataSourceProxy dataSource(DataSource druidDataSource) {
@@ -116,5 +107,3 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
 参考源码integration文件夹下的各种rpc实现 module
 - 自动
 springCloud用户可以引入spring-cloud-alibaba-seata，内部已经实现xid传递
-
-<a href="https://seata.io/zh-cn/docs/user/transaction-group.html">查看事务分组介绍</a>
