@@ -205,7 +205,7 @@ ps: oracle同理
 
 ```
 
-<h3 id='19'>Q:19.java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+<h3 id='19'>Q: 19.java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</h3>
 
 **A:** 
