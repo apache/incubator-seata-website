@@ -46,6 +46,7 @@ description: Seata 常见问题。
 <a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
  
+ <a href="#20" target="_self">20. apache-dubbo 2.7.0出现NoSuchMethodError？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -218,8 +219,8 @@ ps: oracle同理
 2. TCC 模式支持Dubbo 和 sofa-RPC。
 
 ```
-
-<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+********
+<h3 id='19'>Q: 19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 
 **A:** 
@@ -227,4 +228,17 @@ ps: oracle同理
 需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
 ```
+********
+
+<h3 id='20'>Q: 20. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
+
+**A:** 
+由于apache-dubbo 在加载Filter时,会将 alibaba-dubbo 的filter一并加载且 2.7.0 版本com.alibaba.dubbo.rpc.Invoker中   
+``Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;``  
+误使用了org.apache.dubbo.rpc.Invocation来入参(2.7.1修复),导致出现    
+```java
+java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/dubbo/rpc/Invocation;)Lcom/alibaba/dubbo/rpc/Result;
+```
+所以请升级dubbo到2.7.1及以上,保证兼容.本身是alibaba-dubbo可放心使用,alibaba-dubbo并不包含apache-dubbo的包。   
+参考链接:[issue](https://github.com/apache/dubbo/issues/3570),[PR](https://github.com/apache/dubbo/pull/3622/files)
 ********
