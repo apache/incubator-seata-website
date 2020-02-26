@@ -45,22 +45,21 @@ description: Seata 常见问题。
 
 <a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
- 
+
+<a href="#20" target="_self">20.apache-dubbo2.7.0出现NoSuchMethodError?</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
-
 **A:** 
 0.4.2版本之后就可以上生产环境，欢迎已经在使用的企业参与此issue:[who's using Seata](https://github.com/seata/seata/issues/1246)
 
 ********
 <h3 id='2'>Q: 2.Seata 目前支持高可用吗？</h3>
-
 **A:** 
 0.6版本开始支持，tc使用db模式共享全局事务会话信息，注册中心使用非file的seata支持的第三方注册中心
 
 ********
 <h3 id='3'>Q: 3.undo_log表log_status=1的记录是做什么用的？</h3>
-
 **A:** 
 
 * 场景 ： 分支事务a注册TC后，a的本地事务提交前发生了全局事务回滚
@@ -69,7 +68,6 @@ description: Seata 常见问题。
 
 ********
 <h3 id='4'>Q: 4.怎么使用Seata框架，来保证事务的隔离性？</h3>
-
 **A:** 
     因seata一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。
   1. 脏读 select语句加for update，代理方法增加@GlobalLock或@GlobalTransaction
@@ -80,7 +78,6 @@ description: Seata 常见问题。
 
 ********
 <h3 id='5'>Q: 5.脏数据回滚失败如何处理?</h3>
-
 **A:** 
   1. 脏数据需手动处理，根据日志提示修正数据或者将对应undo删除（可自定义实现FailureHandler做邮件通知或其他）
   2. 关闭回滚时undo镜像校验，不推荐该方案。  
@@ -89,7 +86,6 @@ description: Seata 常见问题。
 
 ********
 <h3 id='6'>Q: 6.为什么分支事务注册时, 全局事务状态不是begin?</h3>
-
 **A:**  
 * 异常：Could not register branch into global session xid = status = Rollbacked（还有Rollbacking、AsyncCommitting等等二阶段状态） while expecting Begin
 * 描述：分支事务注册时，全局事务状态需是一阶段状态begin，非begin不允许注册。属于seata框架层面正常的处理，用户可以从自身业务层面解决。
@@ -101,7 +97,6 @@ description: Seata 常见问题。
 ```
 ********
 <h3 id='7'>Q: 7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</h3>
-
 **A：** 
    异常：io.seata.common.exception.FrameworkException: can not register RM,err:can not connect to services-server.
   1. 查看nacos配置列表，seata配置是否已经导入成功
@@ -134,7 +129,6 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
 
 ********
 <h3 id='8'>Q: 8.Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性?</h3>
-
 **A：**
   在seata\conf目录下新增eureka-client.properties文件，添加要覆盖的Eureka属性即可。  
   例如，要覆盖eureka.instance.lease-renewal-interval-in-seconds和eureka.instance.lease-expiration-duration-in-seconds，添加如下内容：
@@ -146,53 +140,45 @@ eureka.lease.duration=2
 
 ********
 <h3 id='9'>Q: 9.发生下面异常是啥原因？ java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</h3>
-
 **A:** 
 undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 
 ********
 <h3 id='10'>Q: 10.为什么mybatis没有返回自增ID?</h3>
-
 **A:** 
 需要修改mybatis的配置: 在`@Options(useGeneratedKeys = true, keyProperty = "id")`或者在xml中指定useGeneratedKeys 和 keyProperty属性
 
 ********
 <h3 id='11'>Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
-
 **A:** 
 本地执行下:mvn clean install -DskipTests=true,相关代码在0.8.1已经移除。
 
 ********
 <h3 id='12'>Q: 12.TC如何使用mysql8?</h3>
-
 **A:** 1.修改file.conf的驱动配置store.db.driver-class-name;  2.lib目录下删除mysql5驱动,添加mysql8驱动  
 ps: oracle同理
 ********
 <h3 id='13'>Q: 13.支持多主键?</h3>
-
 **A:** 
 暂不支持，建议先建一列自增id主键，原复合主键改为唯一键来规避下
 
 ********
 <h3 id='14'>Q: 14.使用HikariDataSource报错如何解决?</h3>
-
 **A:** 
 ``` 
 异常1:ClassCastException: com.sun.proxy.$Proxy153 cannot be cast to com.zaxxer.hikari.HikariDataSource
 原因: 自动代理时，实例类型转换错误，注入的是$Proxy153实例，不是HikariDataSource的本身或子类实例。
 解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。
 1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。
-``` 
+```
 ********
 <h3 id='15'>Q: 15.是否可以不使用conf类型配置文件，直接将配置写入application.properties?</h3>
-
 **A:** 
 目前seata-all是需要使用conf类型配置文件，后续会支持properties和yml类型文件。当前可以在项目中依赖seata-spring-boot-starter，然后将配置项写入到application
 .properties 这样可以不使用conf类型文件。
 
 ********
 <h3 id='16'>Q: 16.如何自己修改源码后打包seata-server?</h3>
-
 **A:** 
 ```xml
 1. 删除 distribution 模块的bin、conf和lib目录。
@@ -202,8 +188,8 @@ ps: oracle同理
 ```
 ********
 <h3 id='17'>Q: 17. 0.8、0.9版本如何升级到1.0版本？</h3>
-
 **A:** 
+
 * （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉seata-all
 * （必选）TC端表lock_table字段branch_id增加普通索引
 * （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置</a>
@@ -211,20 +197,39 @@ ps: oracle同理
 
 ********
 <h3 id='18'>Q: 18.Seata 支持哪些 RPC 框架?</h3>
-
 **A:** 
+
 ```
 1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
 2. TCC 模式支持Dubbo 和 sofa-RPC。
 
 ```
 
-<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
-.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
+<h3 id='19'>Q: 19.java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</h3>
 
 **A:** 
+
 ```
 需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
 ```
 ********
+
+<h3 id='20'>Q: 20.apache-dubbo2.7.0出现NoSuchMethodError?</h3>
+
+**A:** 
+
+由于apache-dubbo再加载Filter时,会将alibaba-dubbo的filter一并加载且2.7.0版本com.alibaba.dubbo.rpc.Invoker中
+
+``Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;``
+
+误使用了org.apache.dubbo.rpc.Invocation来入参(2.7.1修复),导致出现
+
+```java
+java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/dubbo/rpc/Invocation;)Lcom/alibaba/dubbo/rpc/Result;
+```
+
+所以请升级dubbo到2.7.1及以上,保证兼容.本身是alibaba-dubbo可放心使用,alibaba-dubbo并不包含apache-dubbo的包.
+
+参考链接:[issue](https://github.com/apache/dubbo/issues/3570),[PR](https://github.com/apache/dubbo/pull/3622/files)
