@@ -10,15 +10,16 @@ description: Seata 参数配置。
 
 ### 变更记录
 ```
-20191221: 
-1.增加seata.enabled、client.report.success.enable、
-transport.enable-client-batch-send-request、client.log.exceptionRate
 20200220(1.1.0): 
 1.file.conf和registry.conf两个配置文件中的格式统一转换为驼峰格式.
 2.统一所有配置文件的默认值(file.conf、registry.conf、seata-spring-boot-starter)
 3.优化seata-spring-boot-starter中对于事务分组和TC集群的配置
 4.移除client.support.spring.datasource.autoproxy,增加@EnableAutoDataSourceProxy
 注解用于开启数据源自动代理,同时可选择代理实现方式(具体请查阅附录5)
+
+20191221: 
+1.增加seata.enabled、client.report.success.enable、
+transport.enable-client-batch-send-request、client.log.exceptionRate
 ```
 ## 关注属性(详细描述见全属性)
 

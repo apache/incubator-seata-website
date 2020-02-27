@@ -39,14 +39,12 @@ description: Seata 常见问题。
 
 <a href="#16" target="_self">16.如何自己修改源码后打包seata-server? </a>
 
-<a href="#17" target="_self">17. 0.8、0.9版本如何升级到1.0版本？</a>
+<a href="#17" target="_self">17. Seata 支持哪些 RPC 框架？</a>
 
-<a href="#18" target="_self">18. Seata 支持哪些 RPC 框架？</a>
-
-<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+<a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
  
- <a href="#20" target="_self">20. apache-dubbo 2.7.0出现NoSuchMethodError？</a>
+ <a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -202,16 +200,7 @@ ps: oracle同理
 
 ```
 ********
-<h3 id='17'>Q: 17. 0.8、0.9版本如何升级到1.0版本？</h3>
-
-**A:** 
-* （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉seata-all
-* （必选）TC端表lock_table字段branch_id增加普通索引
-* （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置</a>
-* （可选） client.report.success.enable可以置为false，提升性能
-
-********
-<h3 id='18'>Q: 18.Seata 支持哪些 RPC 框架?</h3>
+<h3 id='17'>Q: 17.Seata 支持哪些 RPC 框架?</h3>
 
 **A:** 
 ```
@@ -220,7 +209,7 @@ ps: oracle同理
 
 ```
 ********
-<h3 id='19'>Q: 19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+<h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 
 **A:** 
@@ -230,7 +219,7 @@ ps: oracle同理
 ```
 ********
 
-<h3 id='20'>Q: 20. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
+<h3 id='19'>Q: 19. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
 
 **A:** 
 由于apache-dubbo 在加载Filter时,会将 alibaba-dubbo 的filter一并加载且 2.7.0 版本com.alibaba.dubbo.rpc.Invoker中   

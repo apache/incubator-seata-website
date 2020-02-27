@@ -134,6 +134,10 @@ export default {
                         link: '/zh-cn/docs/user/transaction-group.html',
                     },
                     {
+                        title: '版本升级注意事项',
+                        link: '/zh-cn/docs/user/upgradeversion.html',
+                    },
+                    {
                         title: 'Spring 支持',
                         link: '/zh-cn/docs/user/spring.html',
                     },
