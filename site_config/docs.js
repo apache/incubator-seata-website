@@ -134,7 +134,7 @@ export default {
                         link: '/zh-cn/docs/user/transaction-group.html',
                     },
                     {
-                        title: '版本升级注意事项',
+                        title: '版本升级指南',
                         link: '/zh-cn/docs/user/upgradeversion.html',
                     },
                     {
