@@ -46,6 +46,7 @@ description: Seata 常见问题。
 <a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
  
+ <a href="#20" target="_self">20. apache-dubbo 2.7.0出现NoSuchMethodError？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -109,7 +110,7 @@ description: Seata 常见问题。
   3. 检查client端的registry.conf里面的namespace，registry.nacos.namespace和config.nacos.namespace填入nacos的命名空间ID，默认""，server端和client端对应，namespace
 为public是nacos的一个保留控件，如果您需要创建自己的namespace，最好不要和public重名，以一个实际业务场景有具体语义的名字来命名
   4. nacos上服务列表，serverAddr地址对应ip地址应为seata启动指定ip地址，如：sh seata-server.sh -p 8091 -h 122.51.204.197 -m file
-  5. 查看seata/conf/nacos-config.txt 事务分组service.vgroup_mapping.trade_group=default配置与项目分组配置名称是否一致
+  5. 查看seata/conf/nacos-config.txt 事务分组service.vgroupMapping.trade_group=default配置与项目分组配置名称是否一致
   6. telnet ip 端口 查看端口是都开放，以及防火墙状态  
 
     注：1.080版本启动指定ip问题，出现异常Exception in thread "main" java.lang.RuntimeException: java.net.BindException: Cannot assign request address，请升级到081以上版本  
@@ -218,8 +219,8 @@ ps: oracle同理
 2. TCC 模式支持Dubbo 和 sofa-RPC。
 
 ```
-
-<a href="#19" target="_self">19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
+********
+<h3 id='19'>Q: 19. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 
 **A:** 
@@ -227,4 +228,17 @@ ps: oracle同理
 需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
 ```
+********
+
+<h3 id='20'>Q: 20. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
+
+**A:** 
+由于apache-dubbo 在加载Filter时,会将 alibaba-dubbo 的filter一并加载且 2.7.0 版本com.alibaba.dubbo.rpc.Invoker中   
+``Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;``  
+误使用了org.apache.dubbo.rpc.Invocation来入参(2.7.1修复),导致出现    
+```java
+java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/dubbo/rpc/Invocation;)Lcom/alibaba/dubbo/rpc/Result;
+```
+所以请升级dubbo到2.7.1及以上,保证兼容.本身是alibaba-dubbo可放心使用,alibaba-dubbo并不包含apache-dubbo的包。   
+参考链接:[issue](https://github.com/apache/dubbo/issues/3570),[PR](https://github.com/apache/dubbo/pull/3622/files)
 ********
