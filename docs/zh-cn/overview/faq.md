@@ -242,11 +242,10 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 - 依赖 seata-spring-boot-starter 时，自动代理数据源，无需额外处理。
 - 依赖 seata-all 时，使用 @EnableAutoDataSourceProxy (since 1.1.0) 注解，注解参数可选择 jdk 代理或者 cglib 代理。
 - 依赖 seata-all 时，也可以手动使用 DatasourceProxy 来包装 DataSource。
-2. 配置 GlobalTransactionScanner，使用seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。
+2. 配置 GlobalTransactionScanner，使用 seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。
 3. 业务表中必须包含单列主键，若存在复合主键，请参考问题 13 。
 4. 每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。
-5. 跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于Spring 
-Cloud的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。
+5. 跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。
 6. 目前AT模式支持的数据库有：MySQL、Oracle、PostgreSQL和 TiDB。   
 7. 使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。   
 8. 使用注解开启分布式事务时，若要求事务回滚，必须将异常抛出到事务的发起方，被事务发起方的 @GlobalTransactional 注解感知到。provide 直接抛出异常 或 定义错误码由 consumer 判断再抛出异常。
