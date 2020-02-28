@@ -245,10 +245,11 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 参考链接:[issue](https://github.com/apache/dubbo/issues/3570),[PR](https://github.com/apache/dubbo/pull/3622/files)
 
 ********
+<h3 id='21'>Q: 21. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</h3>
 
-<h3 id='21'>Q: 21. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>
+**A：** 
 
-**A:** 1. 需要注意配置项的兼容性，1.1.0 版本对于配置项的风格进行了统一。
+1. 需要注意配置项的兼容性，1.1.0 版本对于配置项的风格进行了统一。
 若程序中依赖的是 seata-all，对应于 *.conf 文件，conf文件中配置项的命名风格统一为 点号+驼峰式组合，[1.1.0 配置项说明](https://seata.io/zh-cn/docs/user/configurations.html)， [1.1.0 配置参考](https://github.com/seata/seata/tree/1.1.0/script/client/conf); 
 若程序中依赖的是seata-spring-boot-starter，对应于 *.properties 或 *.yml。propertie、 yml文件命名风格统一为 点号+中划线组合 
 [1.1.0 配置参考](https://github.com/seata/seata/tree/1.1.0/script/client/spring) 需要特别注意的是1.0.0 版本配置项 seata.service
