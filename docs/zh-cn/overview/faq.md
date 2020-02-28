@@ -249,7 +249,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 <h3 id='21'>Q: 21. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>
 
 **A:**   
-
+```xml
 1. 需要注意配置项的兼容性，1.1.0 版本对于配置项的风格进行了统一。
 若程序中依赖的是 seata-all，对应于 *.conf 文件，conf文件中配置项的命名风格统一为 点号+驼峰式组合，[1.1.0 配置项说明](https://seata.io/zh-cn/docs/user/configurations.html)， [1.1.0 配置参考](https://github.com/seata/seata/tree/1.1.0/script/client/conf); 
 若程序中依赖的是seata-spring-boot-starter，对应于 *.properties 或 *.yml。propertie、 yml文件命名风格统一为 点号+中划线组合 
@@ -272,4 +272,5 @@ autoconfig 功能由其本身支持，在其后去掉 spring-cloud-alibaba-seata
 
 4. TC端采用 db 存储模式时 branch_table 中增加 gmt_create，gmt_modified 字段的精度，用于精确确认回滚的顺序，
 [各数据库脚本参考](https://github.com/seata/seata/tree/1.1.0/script/server/db)
+```
 ********
