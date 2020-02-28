@@ -33,18 +33,20 @@ description: Seata 常见问题。
 
 <a href="#13" target="_self">13.支持多主键? </a>
 
-<a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a>   
+<a href="#14" target="_self">14.使用HikariDataSource报错如何解决 ? </a>   
 
 <a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
 
-<a href="#16" target="_self">16.如何自己修改源码后打包seata-server? </a>
+<a href="#16" target="_self">16.如何自己修改源码后打包seata-server ? </a>
 
-<a href="#17" target="_self">17. Seata 支持哪些 RPC 框架？</a>
+<a href="#17" target="_self">17. Seata 支持哪些 RPC 框架 ？</a>
 
 <a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
  
- <a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError？</a>
+ <a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a>
+ 
+ <a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -210,7 +212,7 @@ ps: oracle同理
 ```
 ********
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
-.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
+.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</h3>
 
 **A:** 
 ```
@@ -231,4 +233,22 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 所以请升级dubbo到2.7.1及以上,保证兼容.本身是alibaba-dubbo可放心使用,alibaba-dubbo并不包含apache-dubbo的包。   
 参考链接:[issue](https://github.com/apache/dubbo/issues/3570),[PR](https://github.com/apache/dubbo/pull/3622/files)
 
+********
+<h3 id='20'>Q: 20. 使用 AT 模式需要的注意事项有哪些 ？<h3>
+
+**A:** 
+
+1. 必须使用代理数据源，有 3 种形式可以代理数据源：
+- 依赖 seata-spring-boot-starter 时，自动代理数据源，无需额外处理。
+- 依赖 seata-all 时，使用 @EnableAutoDataSourceProxy (since 1.1.0) 注解，注解参数可选择 jdk 代理或者 cglib 代理。
+- 依赖 seata-all 时，也可以手动使用 DatasourceProxy 来包装 DataSource。
+2. 配置 GlobalTransactionScanner，使用 seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。
+3. 业务表中必须包含单列主键，若存在复合主键，请参考问题 13 。
+4. 每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。
+5. 跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。
+6. 目前AT模式支持的数据库有：MySQL、Oracle、PostgreSQL和 TiDB。   
+7. 使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。   
+8. 使用注解开启分布式事务时，若要求事务回滚，必须将异常抛出到事务的发起方，被事务发起方的 @GlobalTransactional 注解感知到。provide 直接抛出异常 或 定义错误码由 consumer 判断再抛出异常。
+
+```
 ********
