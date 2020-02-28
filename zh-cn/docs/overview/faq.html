@@ -26,13 +26,14 @@
 <p><a href="#11" target="_self">11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了? </a></p>
 <p><a href="#12" target="_self">12.TC如何使用mysql8? </a></p>
 <p><a href="#13" target="_self">13.支持多主键? </a></p>
-<p><a href="#14" target="_self">14.使用HikariDataSource报错如何解决? </a></p>
+<p><a href="#14" target="_self">14.使用HikariDataSource报错如何解决 ? </a></p>
 <p><a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a></p>
-<p><a href="#16" target="_self">16.如何自己修改源码后打包seata-server? </a></p>
-<p><a href="#17" target="_self">17. Seata 支持哪些 RPC 框架？</a></p>
+<p><a href="#16" target="_self">16.如何自己修改源码后打包seata-server ? </a></p>
+<p><a href="#17" target="_self">17. Seata 支持哪些 RPC 框架 ？</a></p>
 <p><a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a></p>
-<p><a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError？</a></p>
+<p><a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a></p>
+<p><a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -172,7 +173,7 @@ ps: oracle同理</p>
 </code></pre>
 <hr>
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
-.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
+.SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</h3>
 <p><strong>A:</strong></p>
 <pre><code>需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
@@ -188,6 +189,26 @@ ps: oracle同理</p>
 <p>所以请升级dubbo到2.7.1及以上,保证兼容.本身是alibaba-dubbo可放心使用,alibaba-dubbo并不包含apache-dubbo的包。<br>
 参考链接:<a href="https://github.com/apache/dubbo/issues/3570">issue</a>,<a href="https://github.com/apache/dubbo/pull/3622/files">PR</a></p>
 <hr>
+<h3 id='20'>Q: 20. 使用 AT 模式需要的注意事项有哪些 ？<h3>
+<p><strong>A:</strong></p>
+<ol>
+<li>必须使用代理数据源，有 3 种形式可以代理数据源：</li>
+</ol>
+<ul>
+<li>依赖 seata-spring-boot-starter 时，自动代理数据源，无需额外处理。</li>
+<li>依赖 seata-all 时，使用 @EnableAutoDataSourceProxy (since 1.1.0) 注解，注解参数可选择 jdk 代理或者 cglib 代理。</li>
+<li>依赖 seata-all 时，也可以手动使用 DatasourceProxy 来包装 DataSource。</li>
+</ul>
+<ol start="2">
+<li>配置 GlobalTransactionScanner，使用 seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。</li>
+<li>业务表中必须包含单列主键，若存在复合主键，请参考问题 13 。</li>
+<li>每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。</li>
+<li>跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。</li>
+<li>目前AT模式支持的数据库有：MySQL、Oracle、PostgreSQL和 TiDB。</li>
+<li>使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。</li>
+<li>使用注解开启分布式事务时，若要求事务回滚，必须将异常抛出到事务的发起方，被事务发起方的 @GlobalTransactional 注解感知到。provide 直接抛出异常 或 定义错误码由 consumer 判断再抛出异常。</li>
+</ol>
+<pre><code>********</code></pre>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
