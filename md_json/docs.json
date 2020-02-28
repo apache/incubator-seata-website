@@ -519,6 +519,15 @@
         "keywords": "Seata",
         "description": "Seata 事务分组。"
       }
+    },
+    {
+      "filename": "upgrade.md",
+      "link": "/zh-cn/docs/user/upgrade.html",
+      "meta": {
+        "title": "Seata upgrade",
+        "keywords": "Seata",
+        "description": "Seata FAQ."
+      }
     }
   ]
 }
