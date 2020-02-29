@@ -395,6 +395,15 @@
       }
     },
     {
+      "filename": "upgrade.md",
+      "link": "/zh-cn/docs/ops/upgrade.html",
+      "meta": {
+        "title": "Seata upgrade",
+        "keywords": "Seata",
+        "description": "Seata upgrade."
+      }
+    },
+    {
       "filename": "faq.md",
       "link": "/zh-cn/docs/overview/faq.html",
       "meta": {
@@ -518,15 +527,6 @@
         "title": "Seata 事务分组",
         "keywords": "Seata",
         "description": "Seata 事务分组。"
-      }
-    },
-    {
-      "filename": "upgrade.md",
-      "link": "/zh-cn/docs/user/upgrade.html",
-      "meta": {
-        "title": "Seata upgrade",
-        "keywords": "Seata",
-        "description": "Seata FAQ."
       }
     }
   ]
