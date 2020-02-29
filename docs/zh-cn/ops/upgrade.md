@@ -1,7 +1,7 @@
 ---
 title: Seata upgrade
 keywords: Seata
-description: Seata FAQ.
+description: Seata upgrade.
 ---
 
 # 版本升级指南
