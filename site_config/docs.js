@@ -186,6 +186,10 @@ export default {
                 title: '运维指南',
                 children: [
                     {
+                        title: '版本升级指南',
+                        link: '/zh-cn/docs/ops/upgrade.html',
+                    },
+                    {
                         title: 'Metrics配置',
                         link: '/zh-cn/docs/ops/operation.html',
                     },
