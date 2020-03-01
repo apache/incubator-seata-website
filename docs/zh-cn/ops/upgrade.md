@@ -6,24 +6,12 @@ description: Seata upgrade.
 
 # 版本升级指南
 
-<a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>   
-<a href="#2" target="_self">2. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>   
-
-********
-<h3 id='1'>1. 0.8、0.9版本如何升级到1.0版本？</h3>   
-<details>
-  <summary><mark>注意事项</mark></summary>
-  
-   1. （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉 seata-all   
-   2.  （必选）TC端表lock_table字段branch_id增加普通索引   
-   3. （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations100.html" target="_blank">点击查看参数配置</a>   
-   4. （可选） client.report.success.enable可以置为false，提升性能   
-       
-</details>   
+<a href="#1" target="_self">1. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a> 
+<a href="#2" target="_self">2. 0.8、0.9版本如何升级到1.0版本？</a>     
 
 ********
 
-<h3 id='2'>2. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</h3>
+<h3 id='1'>1. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</h3>
 <details>
   <summary><mark>注意事项</mark></summary>
   
@@ -43,13 +31,25 @@ seata-spring-boot-starter 默认开启数据源代理，对应数据源自动代
 3. 使用spring cloud框架时需要使用[Spring Cloud Alibaba](https://github.com/alibaba/spring-cloud-alibaba)来进行seata 
 事务上下文的传递，与Spring Cloud Alibaba 版本集成依赖关系，参考 [版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)     
 spring-cloud-alibaba-seata 在 2.2.0.RELEASE 版本前 依赖的是seata-all 若继续使用低版本的 spring-cloud-alibaba-seata 可以使用高版本的 seata-all 取代内置的 seata-all 版本；   
-从spring-cloud-alibaba-seata 在 2.2.0.RELEASE 开始后（含）内部开始依赖seata-spring-boot-starter,2.2.0.RELEASE 内部集成 
-seata-spring-boot-starter 1.0.0 可以升级为 seata-spring-boot-starter 1.1.0，seata-spring-boot-starter 集成了seata-all，seata-spring-boot-starter 包装了对于properties或yml 配置的autoconfig 功能，在spring-cloud-alibaba-seata 2.2.0.RELEASE 前 
+从spring-cloud-alibaba-seata 在 2.2.0.RELEASE 开始后（含）内部开始依赖seata-spring-boot-starter,2.2.0.RELEASE 内部集成 seata-spring-boot-starter 1.0.0 可以升级为 seata-spring-boot-starter 1.1.0，seata-spring-boot-starter 集成了seata-all，seata-spring-boot-starter 包装了对于properties或yml 配置的autoconfig 功能，在spring-cloud-alibaba-seata 2.2.0.RELEASE 前 
 autoconfig 功能由其本身支持，在其后去掉 spring-cloud-alibaba-seata 中关于 seata 本身的autoconfig 由seata-spring-boot-starter 支持，因此低版本spring-cloud-alibaba-seata 只能配合 seata-all使用，高版本spring-cloud-alibaba-seata 只能配合seata-spring-boot-starter 使用，以2.2.0.RELEASE为分界点。
 
 4. TC端采用 db 存储模式时 branch_table 中增加 gmt_create，gmt_modified 字段的精度，用于精确确认回滚的顺序，
 [各数据库脚本参考](https://github.com/seata/seata/tree/1.1.0/script/server/db)
 
 </details>
+
+********
+
+<h3 id='2'>2. 0.8、0.9版本如何升级到1.0版本？</h3>   
+<details>
+  <summary><mark>注意事项</mark></summary>
+  
+   1. （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉 seata-all   
+   2.  （必选）TC端表lock_table字段branch_id增加普通索引   
+   3. （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations100.html" target="_blank">点击查看参数配置</a>   
+   4. （可选） client.report.success.enable可以置为false，提升性能   
+       
+</details>   
 
 ********
