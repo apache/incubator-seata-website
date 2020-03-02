@@ -6,7 +6,7 @@ description: Seata upgrade.
 
 # 版本升级指南
 
-<a href="#1" target="_self">1. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a> 
+<a href="#1" target="_self">1. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>   
 <a href="#2" target="_self">2. 0.8、0.9版本如何升级到1.0版本？</a>     
 
 ********
