@@ -108,7 +108,7 @@ class BlogDetail extends Language {
           ref={(node) => { this.markdownContainer = node; }}
           dangerouslySetInnerHTML={{ __html }}
         />
-        <Footer logo="/img/seata_logo_gray.png" language={language} />
+        <Footer logo="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png" language={language} />
       </div>
     );
   }
