@@ -49,7 +49,7 @@ class Home extends Language {
     const language = this.getLanguage();
     const dataSource = homeConfig[language];
     const { headerType } = this.state;
-    const headerLogo = headerType === 'primary' ? '/img/seata_logo_white.png' : '/img/seata_logo.png';
+    const headerLogo = headerType === 'primary' ? '//img.alicdn.com/tfs/TB1qTjWw.T1gK0jSZFhXXaAtVXa-4802-1285.png' : '//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png';
     return (
       <div className="home-page">
         <section className="top-section">
