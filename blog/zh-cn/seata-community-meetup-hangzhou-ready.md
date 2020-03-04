@@ -26,4 +26,4 @@ description: Seata Community Meetup·杭州站,将于12月21号在杭州市梦�
 
 ### 议程
 
-![](/img/blog/1576673893.png)
+![](https://img.alicdn.com/tfs/TB1K5nYwVP7gK0jSZFjXXc5aXXa-3175-14507.png)
