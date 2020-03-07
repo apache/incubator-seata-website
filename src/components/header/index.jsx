@@ -178,7 +178,7 @@ class Header extends React.Component {
             <img
               className="header-menu-toggle"
               onClick={this.toggleMenu}
-              src={type === 'primary' ? getLink('https://img.alicdn.com/tfs/TB1xDggwWL7gK0jSZFBXXXZZpXa-38-32.png') : getLink('https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png')}
+              src={type === 'primary' ? getLink('/img/system/menu_white.png') : getLink('/img/system/menu_gray.png')}
             />
             <ul>
               {siteConfig[language].pageMenu.map(item => (

@@ -9,7 +9,7 @@ description: The Saga model is a long transaction solution provided by SEATA. In
 
 The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.
 
-![Saga mode diagram](https://img.alicdn.com/tfs/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
+![Saga mode diagram](/img/saga/sagas.png?raw=true)
 
 Theoretical basis: Hector & Kenneth Post a comment Sagas （1987）
 
