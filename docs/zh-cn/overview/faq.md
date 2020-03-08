@@ -263,6 +263,6 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 目前是知道为什么配置会有个\r，大概是因为这个文件你是在win编写的，所以有换行符为\r\n，然后你用git bash执行（这个可认为是linux）只认\n换行，所以就多了\r
 解决办法目前有两个：
 1、sed -i ""s/\r//"" config.txt
-2、vim 进入文本编辑，再用 set fileformat=unix（亲测可用）
+2、vim 进入文本，再用命令 set fileformat=unix（亲测可用）
 
 ********
