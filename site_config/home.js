@@ -42,7 +42,7 @@ export default {
                 {
                     icon: 'feature-2',
                     title: 'AT 模式',
-                    content: '提供无侵入自动补偿的事务模式，目前已支持 MySQL、 Oracle 的AT模式、PostgreSQL、H2 开发中',
+                    content: '提供无侵入自动补偿的事务模式，目前已支持 MySQL、 Oracle 、PostgreSQL和 TiDB的AT模式，H2 开发中',
                 },
                 {
                     icon: 'feature-3',
@@ -110,7 +110,7 @@ export default {
                 {
                     icon: 'feature-2',
                     title: 'AT mode',
-                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle\'s AT mode, PostgreSQL, In developing the H2.',
+                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL and TiDB\'s AT mode, In developing the H2.',
                 },
                 {
                     icon: 'feature-3',
