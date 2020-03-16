@@ -47,6 +47,8 @@ description: Seata 常见问题。
  <a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a>
  
  <a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
+ 
+ <a href="#21" target="_self">21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -251,5 +253,15 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 7. 使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。   
 8. 使用注解开启分布式事务时，若要求事务回滚，必须将异常抛出到事务的发起方，被事务发起方的 @GlobalTransactional 注解感知到。provide 直接抛出异常 或 定义错误码由 consumer 判断再抛出异常。
 
-```
+********
+
+<h3 id='21'>Q: 21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</h3>
+
+**A:** 
+
+@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 
+连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
+只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
+
+
 ********
