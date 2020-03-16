@@ -48,6 +48,9 @@ description: Seata 常见问题。
  
  <a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
  
+<a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
+
+ 
  <a href="#21" target="_self">21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -252,6 +255,17 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 6. 目前AT模式支持的数据库有：MySQL、Oracle、PostgreSQL和 TiDB。   
 7. 使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。   
 8. 使用注解开启分布式事务时，若要求事务回滚，必须将异常抛出到事务的发起方，被事务发起方的 @GlobalTransactional 注解感知到。provide 直接抛出异常 或 定义错误码由 consumer 判断再抛出异常。
+
+********
+
+<h3 id='21'>Q: 21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</h3>
+
+**A:** 
+
+目前是知道为什么配置会有个\r，大概是因为这个文件你是在win编写的，所以有换行符为\r\n，然后你用git bash执行（这个可认为是linux）只认\n换行，所以就多了\r
+解决办法目前有两个：
+1、sed -i ""s/\r//"" config.txt
+2、vim 进入文本，再用命令 set fileformat=unix（亲测可用）
 
 ********
 
