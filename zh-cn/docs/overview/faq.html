@@ -35,6 +35,7 @@
 <p><a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a></p>
 <p><a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a></p>
 <p><a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a></p>
+<p><a href="#21" target="_self">21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -216,6 +217,12 @@ ps: oracle同理</p>
 解决办法目前有两个：
 1、sed -i &quot;&quot;s/\r//&quot;&quot; config.txt
 2、vim 进入文本，再用命令 set fileformat=unix（亲测可用）</p>
+<hr>
+<h3 id='21'>Q: 21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</h3>
+<p><strong>A:</strong></p>
+<p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager
+连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
+只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。</p>
 <hr>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
