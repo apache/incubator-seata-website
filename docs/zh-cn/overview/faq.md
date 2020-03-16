@@ -50,6 +50,8 @@ description: Seata 常见问题。
  
 <a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 
+ 
+ <a href="#21" target="_self">21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -264,5 +266,16 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 解决办法目前有两个：
 1、sed -i ""s/\r//"" config.txt
 2、vim 进入文本，再用命令 set fileformat=unix（亲测可用）
+
+********
+
+<h3 id='21'>Q: 21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</h3>
+
+**A:** 
+
+@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 
+连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
+只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
+
 
 ********
