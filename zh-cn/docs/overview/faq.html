@@ -35,7 +35,7 @@
 <p><a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a></p>
 <p><a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a></p>
 <p><a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a></p>
-<p><a href="#21" target="_self">21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</a></p>
+<p><a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -218,7 +218,7 @@ ps: oracle同理</p>
 1、sed -i &quot;&quot;s/\r//&quot;&quot; config.txt
 2、vim 进入文本，再用命令 set fileformat=unix（亲测可用）</p>
 <hr>
-<h3 id='21'>Q: 21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</h3>
+<h3 id='22'>Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</h3>
 <p><strong>A:</strong></p>
 <p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager
 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
