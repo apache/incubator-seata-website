@@ -50,7 +50,8 @@ description: Seata 常见问题。
  
 <a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 
- <a href="#22" target="_self">21. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a>
+ 
+ <a href="#21" target="_self">21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</a>
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -268,7 +269,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 
 ********
 
-<h3 id='22'>Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</h3>
+<h3 id='21'>Q: 21. AT模式和Spring @Transactional 注解连用时需要注意什么 ？</h3>
 
 **A:** 
 
