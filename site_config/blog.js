@@ -50,6 +50,34 @@
                 dateStr: 'Nov 30th, 2019',
                 desc: '本文讲述如何透过源码解决Seata整合Mybatis-Plus失去MP特性的问题',
                 link: '/zh-cn/blog/seata-mybatisplus-analysis.html',
+            },
+            {
+                title: 'Seata分布式事务启用Nacos做配置中心',
+                author: '@FUNKYE',
+                dateStr: 'Dec 2th, 2019',
+                desc: '本文讲述如何使用Seata整合Nacos配置',
+                link: '/zh-cn/blog/seata-nacos-analysis.html',
+            },
+            {
+                title: 'Docker部署Seata与Nacos整合',
+                author: '@FUNKYE',
+                dateStr: 'Dec 3th, 2019',
+                desc: '本文讲述如何使用Seata整合Nacos配置的Docker部署',
+                link: '/zh-cn/blog/seata-nacos-docker.html',
+            },
+            {
+                title: '通过AOP动态创建/关闭Seata分布式事务',
+                author: '@FUNKYE',
+                dateStr: 'Dec 23th, 2019',
+                desc: '本文讲述如何通过AOP动态创建/关闭Seata分布式事务',
+                link: '/zh-cn/blog/seata-spring-boot-aop-aspectj.html',
+            },
+            {
+                title: '源码分析Seata-XID传递 Dubbo篇',
+                author: '@FUNKYE',
+                dateStr: 'Jan 1th, 2020',
+                desc: '本文讲述通过源码解析Seata-Dubbo传递XID',
+                link: '/zh-cn/blog/seata-analysis-dubbo-transmit-xid.html',
             }
         ]
     },

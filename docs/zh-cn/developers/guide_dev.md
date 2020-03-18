@@ -1,3 +1,9 @@
+---
+title: 为Seata贡献
+keywords: Seata
+description: 如果您有兴趣攻克Seata，欢迎您。首先，我们非常鼓励这种意愿。这是为您提供帮助的列表。
+---
+
 # 为Seata贡献
 
 如果您有兴趣攻克Seata，欢迎您。首先，我们非常鼓励这种意愿。这是为您提供帮助的列表。

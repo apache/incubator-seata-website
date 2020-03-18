@@ -1,16 +1,16 @@
 ---
-title: Seata 维护者
-keywords: Seata, 维护者
-description: Seata 维护者名单
+title: Developers
+keywords: Seata, Developers
+description: Seata Team.
 ---
 
-## 开发人员
+## Seata Team
 
-本页面展示了Seata的开发团队。请通过提交PR的方式把自己的信息添加到列表上。注：排名不分先后
+This page shows Seata developers and continues to expand. The list is not prioritized.
 
-# Seata Committer 列表
+# Seata Committer List
 
-| 姓名   | github          | 公司             |
+| name   | github          | company             |
 | ------ | --------------- | --------------- |
 | Min Ji   | [slievrly](https://github.com/slievrly)        | Alibabba        |
 | Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibabba        |
@@ -36,6 +36,7 @@ description: Seata 维护者名单
 | Jiawei Zhang | [l81893521](https://github.com/l81893521)       | Locals          |
 | Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | Long Chen   | [long187](https://github.com/long187)         | Antfin          |
+| Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
 
 ## Seata Developer Roles
 

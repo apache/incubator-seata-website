@@ -1,3 +1,9 @@
+---
+title: Contributing to Seata
+keywords: Seata
+description: It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you.
+---
+
 # Contributing to Seata
 
 It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you.

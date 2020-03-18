@@ -1,8 +1,14 @@
+---
+title: Seata Saga 模式
+keywords: Seata
+description: Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
+---
+
 # SEATA Saga 模式
 ## 概述
 Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
 
-![Saga模式示意图](/img/saga/sagas.png?raw=true)
+![Saga模式示意图](https://img.alicdn.com/tfs/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
 
 理论基础：Hector & Kenneth 发表论⽂ Sagas （1987）
 
@@ -25,8 +31,8 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 ![状态机引擎原理](/img/saga/saga_engine_mechanism.png?raw=true)
 
-* 图中的状态图是先执行stateA, 再执行stataB，然后执行stateC
-* "状态"的执行是基于事件驱动的模型，stataA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB
+* 图中的状态图是先执行stateA, 再执行stateB，然后执行stateC
+* "状态"的执行是基于事件驱动的模型，stateA执行完成后，会产生路由消息放入EventQueue，事件消费端从EventQueue取出消息，执行stateB
 * 在整个状态机启动时会调用Seata Server开启分布式事务，并生产xid, 然后记录"状态机实例"启动事件到本地数据库
 * 当执行到一个"状态"时会调用Seata Server注册分支事务，并生产branchId, 然后记录"状态实例"开始执行事件到本地数据库
 * 当一个"状态"执行完成后会记录"状态实例"执行结束事件到本地数据库, 然后调用Seata Server上报分支事务的状态
@@ -45,3 +51,18 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 * StateMachineEngine 层:
   * 实现状态机引擎每种state的行为和路由逻辑
   * 提供 API、状态机语言仓库
+
+
+### 状态机的高可用设计：
+
+![状态机的高可用](/img/saga/SagaEngineHA.png?raw=true)
+
+状态机引擎是无状态的，它是内嵌在应用中。
+
+当应用正常运行时（图中上半部分）：
+* 状态机引擎会上报状态到Seata Server；
+* 状态机执行日志存储在业务的数据库中；
+
+当一台应用实例宕机时（图中下半部分）：
+* Seata Server 会感知到，并发送事务恢复请求到还存活的应用实例；
+* 状态机引擎收到事务恢复请求后，从数据库里装载日志，并恢复状态机上下文继续执行；

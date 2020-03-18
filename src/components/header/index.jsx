@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { autobind } from 'core-decorators';
 import siteConfig from '../../../site_config/site';
 import { getLink } from '../../../utils';
 import './index.scss';
@@ -39,6 +40,7 @@ const defaultProps = {
   onLanguageChange: noop,
 };
 
+@autobind
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -176,7 +178,7 @@ class Header extends React.Component {
             <img
               className="header-menu-toggle"
               onClick={this.toggleMenu}
-              src={type === 'primary' ? getLink('/img/system/menu_white.png') : getLink('/img/system/menu_gray.png')}
+              src={type === 'primary' ? getLink('https://img.alicdn.com/tfs/TB1xDggwWL7gK0jSZFBXXXZZpXa-38-32.png') : getLink('https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png')}
             />
             <ul>
               {siteConfig[language].pageMenu.map(item => (

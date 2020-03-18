@@ -1,8 +1,14 @@
+---
+title: Seata Saga 模式
+keywords: Seata
+description: Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
+---
+
 # SEATA Saga 模式
 ## 概述
 Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。
 
-![Saga模式示意图](/img/saga/sagas.png)
+![Saga模式示意图](https://img.alicdn.com/tfs/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
 
 理论基础：Hector & Kenneth 发表论⽂ Sagas （1987）
 
@@ -230,6 +236,18 @@ public interface InventoryAction {
 
 > Demo中还有调用本地服务和调用SOFA RPC服务的示例
 
+## 状态机设计器
+
+Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代码和运行指南请参考：
+[https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer)
+
+状态机设计器截图:
+![状态机设计器](/img/saga/seata-saga-statemachine-designer.png?raw=true)
+
+状态机设计器演示地址:[http://seata.io/saga_designer/index.html](/saga_designer/index.html)
+
+状态机设计器视频教程:[http://seata.io/saga_designer/vedio.html](/saga_designer/vedio.html)
+
 ## 最佳实践
 
 ### Saga 服务设计的实践经验
@@ -258,6 +276,11 @@ public interface InventoryAction {
 * 由于 Saga 事务不保证隔离性, 在极端情况下可能由于脏写无法完成回滚操作, 比如举一个极端的例子, 分布式事务内先给用户A充值, 然后给用户B扣减余额, 如果在给A用户充值成功, 在事务提交以前, A用户把余额消费掉了, 如果事务发生回滚, 这时则没有办法进行补偿了。这就是缺乏隔离性造成的典型的问题, 实践中一般的应对方法是：
   * 业务流程设计时遵循“宁可长款, 不可短款”的原则, 长款意思是客户少了钱机构多了钱, 以机构信誉可以给客户退款, 反之则是短款, 少的钱可能追不回来了。所以在业务流程设计上一定是先扣款。
   * 有些业务场景可以允许让业务最终成功, 在回滚不了的情况下可以继续重试完成后面的流程, 所以状态机引擎除了提供“回滚”能力还需要提供“向前”恢复上下文继续执行的能力, 让业务最终执行成功, 达到最终一致性的目的。
+
+### 性能优化
+* 配置客户端参数`client.rm.report.success.enable=false`，可以在当分支事务执行成功时不上报分支状态到server，从而提升性能。
+> 当上一个分支事务的状态还没有上报的时候，下一个分支事务已注册，可以认为上一个实际已成功
+
 
 ## API referance
 
@@ -372,7 +395,119 @@ public interface StateMachineEngine {
 }
 ```
 
-#### StateMachineEngine API
+
+#### StateMachine Execution Instance API: 
+``` java
+StateLogRepository stateLogRepository = stateMachineEngine.getStateMachineConfig().getStateLogRepository();
+StateMachineInstance stateMachineInstance = stateLogRepository.getStateMachineInstanceByBusinessKey(businessKey, tenantId);
+
+/**
+ * State Log Repository
+ *
+ * @author lorne.cl
+ */
+public interface StateLogRepository {
+
+    /**
+     * Get state machine instance
+     *
+     * @param stateMachineInstanceId
+     * @return
+     */
+    StateMachineInstance getStateMachineInstance(String stateMachineInstanceId);
+
+    /**
+     * Get state machine instance by businessKey
+     *
+     * @param businessKey
+     * @param tenantId
+     * @return
+     */
+    StateMachineInstance getStateMachineInstanceByBusinessKey(String businessKey, String tenantId);
+
+    /**
+     * Query the list of state machine instances by parent id
+     *
+     * @param parentId
+     * @return
+     */
+    List<StateMachineInstance> queryStateMachineInstanceByParentId(String parentId);
+
+    /**
+     * Get state instance
+     *
+     * @param stateInstanceId
+     * @param machineInstId
+     * @return
+     */
+    StateInstance getStateInstance(String stateInstanceId, String machineInstId);
+
+    /**
+     * Get a list of state instances by state machine instance id
+     *
+     * @param stateMachineInstanceId
+     * @return
+     */
+    List<StateInstance> queryStateInstanceListByMachineInstanceId(String stateMachineInstanceId);
+}
+```
+
+
+#### StateMachine Definition API:
+``` java
+StateMachineRepository stateMachineRepository = stateMachineEngine.getStateMachineConfig().getStateMachineRepository();
+StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineName, tenantId);
+
+/**
+ * StateMachineRepository
+ *
+ * @author lorne.cl
+ */
+public interface StateMachineRepository {
+
+    /**
+     * Gets get state machine by id.
+     *
+     * @param stateMachineId the state machine id
+     * @return the get state machine by id
+     */
+    StateMachine getStateMachineById(String stateMachineId);
+
+    /**
+     * Gets get state machine.
+     *
+     * @param stateMachineName the state machine name
+     * @param tenantId         the tenant id
+     * @return the get state machine
+     */
+    StateMachine getStateMachine(String stateMachineName, String tenantId);
+
+    /**
+     * Gets get state machine.
+     *
+     * @param stateMachineName the state machine name
+     * @param tenantId         the tenant id
+     * @param version          the version
+     * @return the get state machine
+     */
+    StateMachine getStateMachine(String stateMachineName, String tenantId, String version);
+
+    /**
+     * Register the state machine to the repository (if the same version already exists, return the existing version)
+     *
+     * @param stateMachine
+     */
+    StateMachine registryStateMachine(StateMachine stateMachine);
+
+    /**
+     * registry by resources
+     *
+     * @param resources
+     * @param tenantId
+     */
+    void registryByResources(Resource[] resources, String tenantId) throws IOException;
+}
+```
 
 ## Config referance
 #### 在Spring Bean配置文件中配置一个StateMachineEngine
@@ -450,6 +585,19 @@ public interface StateMachineEngine {
             "#root == false": "FA",
             "$Exception{java.lang.Throwable}": "UN"
         },
+        "Retry": [
+            {
+                "Exceptions": ["io.seata.saga.engine.mock.DemoException"],
+                "IntervalSeconds": 1.5,
+                "MaxAttempts": 3,
+                "BackoffRate": 1.5
+            },
+            {
+                "IntervalSeconds": 1,
+                "MaxAttempts": 3,
+                "BackoffRate": 1.5
+            }
+        ],
         "Catch": [
             {
                 "Exceptions": [
@@ -473,6 +621,7 @@ public interface StateMachineEngine {
 * Output: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
 * Catch: 捕获到异常后的路由
+* Retry: 捕获异常后的重试策略, 是个数组可以配置多个规则, `Exceptions` 为匹配的的异常列表, `IntervalSeconds` 为重试间隔, `MaxAttempts` 为最大重试次数, `BackoffRate` 下一次重试间隔相对于上一次重试间隔的倍数，比如说上次一重试间隔是2秒, `BackoffRate=1.5` 则下一次重试间隔是3秒。`Exceptions` 属性可以不配置, 不配置时表示框架自动匹配网络超时异常。当在重试过程中发生了别的异常，框架会重新匹配规则，并按新规则进行重试，同一种规则的总重试次数不会超过该规则的`MaxAttempts`
 * Next: 服务执行完成后下一个执行的"状态"
 
 > 当没有配置Status对服务执行状态进行映射, 系统会自动判断状态: 
