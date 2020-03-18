@@ -38,7 +38,7 @@ $ docker run --name seata-server \
 
 #### Docker compose 
 
-Example of `docker-conmpose.yaml`
+Example of `docker-compose.yaml`
 
 ```yaml
 version: "3"
