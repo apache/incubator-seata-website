@@ -166,7 +166,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 <h3 id='11'>Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
 
 **A:** 
-本地执行下:mvn clean install -DskipTests=true,相关代码在0.8.1已经移除。
+本地执行下:[mvn clean install -DskipTests=true](https://github.com/seata/seata/issues/2438),相关代码在0.8.1已经移除。
 
 ********
 <h3 id='12'>Q: 12.TC如何使用mysql8?</h3>
