@@ -36,6 +36,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Jiawei Zhang | [l81893521](https://github.com/l81893521)       | Locals          |
 | Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | Long Chen   | [long187](https://github.com/long187)         | Antfin          |
+| Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
 
 ## Seata Developer Roles
 
