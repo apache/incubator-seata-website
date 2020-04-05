@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/build/blogDetail.css" />
 </head>
 <body>
-	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>1.前言</h1>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>1.前言</h1>
 <p>针对Fescar 相信很多开发者已经对他并不陌生，当然Fescar 已经成为了过去时，为什么说它是过去时，因为Fescar 已经华丽的变身为Seata。如果还不知道Seata 的朋友，请登录下面网址查看。</p>
 <p>SEATA GITHUB:[<a href="https://github.com/seata/seata">https://github.com/seata/seata</a>]</p>
 <p>对于阿里各位同学的前仆后继，给我们广大开发者带来很多开源软件，在这里对他们表示真挚的感谢与问候。</p>
@@ -99,7 +99,8 @@ config {
 <p>SEATA的启动方式参考官方： 注意，这里需要说明下，命令启动官方是通过 空格区分参数，所以要注意。这里的IP 是可选参数，因为涉及到DNS解析，在部分情况下，有的时候在注册中心fescar 注入nacos的时候会通过获取地址，如果启动报错注册发现是计算机名称，需要指定IP。或者host配置IP指向。不过这个问题，在最新的SEATA中已经进行了修复。</p>
 <pre><code class="language-shell">sh fescar-server.sh 8091 /home/admin/fescar/data/ IP（可选）
 </code></pre>
-<p>上面提到过，在我们的代码中也是需要file.conf 和registry.conf 这里着重的地方要说的是file.conf,file.conf只有当registry中 配置file的时候才会进行加载，如果采用ZK、nacos、作为配置中心，可以忽略。因为type指定其他是不加载file.conf的，但是对应的 service.localRgroup.grouplist  和 service.vgroup_mapping  需要在支持配置中心 进行指定，这样你的client 在启动后会通过自动从配置中心获取对应的 SEATA 服务 和地址。如果不配置会出现无法连接server的错误。当然如果你采用的eureka在config的地方就需要采用type=&quot;file&quot; 目前SEATA config暂时不支持eureka的形势</p>
+<p>上面提到过，在我们的代码中也是需要file.conf 和registry.conf 这里着重的地方要说的是file.conf,file.conf只有当registry中
+配置file的时候才会进行加载，如果采用ZK、nacos、作为配置中心，可以忽略。因为type指定其他是不加载file.conf的，但是对应的 service.localRgroup.grouplist  和 service.vgroupMapping  需要在支持配置中心 进行指定，这样你的client 在启动后会通过自动从配置中心获取对应的 SEATA 服务 和地址。如果不配置会出现无法连接server的错误。当然如果你采用的eureka在config的地方就需要采用type=&quot;file&quot; 目前SEATA config暂时不支持eureka的形势</p>
 <pre><code class="language-java">transport {
   # tcp udt unix-domain-socket
   type = "TCP"
@@ -220,12 +221,21 @@ client {
 </code></pre>
 <p>大家要注意的就是配置文件和数据代理。如果没有进行数据源代理，undo_log是无数据的，也就是没办进行XID的管理。</p>
 <p>本文作者：大菲.Fei</p>
-</section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+</section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
 	<script>
 		window.rootPath = '';
   </script>
 	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
 </body>
 </html>

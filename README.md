@@ -77,5 +77,7 @@ date: 2018-12-29
 + If you want to add `search in site`，see [https://docsite.js.org/zh-cn/docs/search.html](https://docsite.js.org/zh-cn/docs/search.html)
 + This is docsite docs :[https://docsite.js.org/zh-cn/docs/path.html](https://docsite.js.org/zh-cn/docs/path.html)
 
++ If you want to update saga statemachine designer, rebuild it, see [https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer), and copy `index.html` and `dist/` directory to  `seata.github.io/saga_designer/` directory.
+
 
 

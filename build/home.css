@@ -1813,6 +1813,25 @@ h1, h2, h3, h4, h5, h6 {
           vertical-align: middle;
           font-size: 16px;
           padding: 0 8px; }
+  .home-page .top-section .version-note {
+    margin: 22px 0 10px; }
+    .home-page .top-section .version-note a {
+      text-decoration: none;
+      display: inline-block;
+      font-family: Avenir-Heavy;
+      font-size: 14px;
+      color: #FFF;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      line-height: 24px;
+      padding: 0 6px;
+      margin-right: 10px; }
+      .home-page .top-section .version-note a:last-child {
+        margin-right: 0; }
+  .home-page .top-section .release-date {
+    font-family: Avenir-Medium;
+    font-size: 12px;
+    color: #fff; }
   .home-page .top-section .animation {
     width: 546px;
     height: 578px;

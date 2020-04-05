@@ -96,6 +96,37 @@
       }
     },
     {
+      "filename": "seata-analysis-config-modular.md",
+      "link": "/zh-cn/blog/seata-analysis-config-modular.html",
+      "meta": {
+        "title": "Seata config 模块源码分析",
+        "author": "赵润泽",
+        "keywords": "Seata、分布式事务",
+        "date": "2020/1/11"
+      }
+    },
+    {
+      "filename": "seata-analysis-core-modular.md",
+      "link": "/zh-cn/blog/seata-analysis-core-modular.html",
+      "meta": {
+        "title": "Seata core 模块源码分析",
+        "author": "赵润泽",
+        "keywords": "Seata、分布式事务",
+        "date": "2019/12/23"
+      }
+    },
+    {
+      "filename": "seata-analysis-dubbo-transmit-xid.md",
+      "link": "/zh-cn/blog/seata-analysis-dubbo-transmit-xid.html",
+      "meta": {
+        "title": "源码分析Seata-XID传递 Dubbo篇",
+        "keywords": "Seata,Dubbo,分布式事务,spring",
+        "description": "本文讲述通过源码解析Seata-Dubbo传递XID",
+        "author": "FUNKYE",
+        "date": "2020/01/01"
+      }
+    },
+    {
       "filename": "seata-analysis-go-server.md",
       "link": "/zh-cn/blog/seata-analysis-go-server.html",
       "meta": {
@@ -133,6 +164,16 @@
         "author": "陈凯玲",
         "keywords": "Fescar、分布式事务",
         "date": "2019/02/18"
+      }
+    },
+    {
+      "filename": "seata-analysis-tcc-modular.md",
+      "link": "/zh-cn/blog/seata-analysis-tcc-modular.html",
+      "meta": {
+        "title": "Seata tcc 模块源码分析",
+        "author": "赵润泽",
+        "keywords": "Seata、分布式事务",
+        "date": "2019/12/25"
       }
     },
     {
@@ -180,6 +221,46 @@
       }
     },
     {
+      "filename": "seata-community-meetup-hangzhou-ready.md",
+      "link": "/zh-cn/blog/seata-community-meetup-hangzhou-ready.html",
+      "meta": {
+        "title": "Seata Community Meetup·杭州站",
+        "keywords": "Seata, 杭州, meetup",
+        "description": "Seata Community Meetup·杭州站,将于12月21号在杭州市梦想小镇浙江青年众创空间正式召开"
+      }
+    },
+    {
+      "filename": "seata-config-center.md",
+      "link": "/zh-cn/blog/seata-config-center.html",
+      "meta": {
+        "title": "Seata 配置中心实现原理",
+        "author": "张乘辉",
+        "keywords": "Seata、Config",
+        "description": "Seata 可以支持多个第三方配置中心，那么 Seata 是如何同时兼容那么多个配置中心的呢？",
+        "date": "2019/12/12"
+      }
+    },
+    {
+      "filename": "seata-dynamic-config-and-dynamic-disable.md",
+      "link": "/zh-cn/blog/seata-dynamic-config-and-dynamic-disable.html",
+      "meta": {
+        "title": "Seata 动态配置订阅与降级实现原理",
+        "author": "张乘辉",
+        "keywords": "Seata、Dynamic、Config",
+        "description": "讲述了 Seata 支持的多个配置中心是如何适配不同的动态配置订阅以及如何实现降级功能。",
+        "date": "2019/12/17"
+      }
+    },
+    {
+      "filename": "seata-meetup-hangzhou.md",
+      "link": "/zh-cn/blog/seata-meetup-hangzhou.html",
+      "meta": {
+        "title": "Seata Community Meetup·杭州站",
+        "keywords": "Seata, 杭州, meetup",
+        "description": "Seata Community Meetup·杭州站,于12月21号在杭州市梦想小镇浙江青年众创空间完美举办"
+      }
+    },
+    {
       "filename": "seata-mybatisplus-analysis.md",
       "link": "/zh-cn/blog/seata-mybatisplus-analysis.html",
       "meta": {
@@ -210,6 +291,17 @@
         "description": "本文讲述如何使用Seata整合Nacos配置的Docker部署",
         "author": "FUNKYE",
         "date": "2019/12/03"
+      }
+    },
+    {
+      "filename": "seata-spring-boot-aop-aspectj.md",
+      "link": "/zh-cn/blog/seata-spring-boot-aop-aspectj.html",
+      "meta": {
+        "title": "通过AOP动态创建/关闭Seata分布式事务",
+        "keywords": "Seata,Nacos,分布式事务,spring",
+        "description": "本文讲述如何通过AOP动态创建/关闭Seata分布式事务",
+        "author": "FUNKYE",
+        "date": "2019/12/23"
       }
     },
     {

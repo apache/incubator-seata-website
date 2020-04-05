@@ -130,6 +130,10 @@ export default {
                         link: '/zh-cn/docs/user/configurations.html',
                     },
                     {
+                        title: '事务分组介绍',
+                        link: '/zh-cn/docs/user/transaction-group.html',
+                    },
+                    {
                         title: 'Spring 支持',
                         link: '/zh-cn/docs/user/spring.html',
                     },
@@ -181,6 +185,10 @@ export default {
             {
                 title: '运维指南',
                 children: [
+                    {
+                        title: '版本升级指南',
+                        link: '/zh-cn/docs/ops/upgrade.html',
+                    },
                     {
                         title: 'Metrics配置',
                         link: '/zh-cn/docs/ops/operation.html',

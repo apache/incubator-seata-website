@@ -1,27 +1,59 @@
+---
+title: Seata FAQ
+keywords: Seata
+description: Seata FAQ.
+---
+
 # FAQ
 
-### Q: What's the reason of java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;) ?
+<a href="#1" target="_self">1.Can Seata be used in a production environment?</a>
 
-**A:**
-when the undolog serialization is configured as Jackson, the Jackson version needs to be 2.9.9+
+<a href="#2" target="_self">2.Dose Seata support high availability ?</a>
+
+<a href="#3" target="_self">3.What is the use of the record of undo log table log status = 1 ?</a>
+
+<a href="#4" target="_self">4.How to use the Seata framework to ensure transaction isolation?</a>
+
+<a href="#5" target="_self">5.When Failed to roll back dirty data, what shall I do ?</a>
+
+<a href="#6" target="_self">6.Why the global transaction state is not "begin" when a branch transaction is registered ?</a>
+
+<a href="#7" target="_self">7.When Nacos is used as the Seata configuration center, the project startup error report cannot find the service. How to check and deal with it ?</a>
+
+<a href="#8" target="_self">8.When Eureka is the registry and TC is highly available, how to overwrite Eureka properties at the TC end?</a>
+
+<a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a>
+
+<a href="#10" target="_self">10. Why didn't my mybatis operation return auto-generated ID? </a>
+
+<a href="#11" target="_self">11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</a>
+
 
 ********
-### Q: Dose Seata support high availability ?
+<h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
+
+**A:** 
+Since version 0.4.2,it is supported in production environment,Users who are using seata are welcome to complete this issue together:[who's using Seata](https://github.com/seata/seata/issues/1246)
+
+********
+<h3 id='2'>Q: 2.Dose Seata support high availability ?</h3>
 
 **A:** 
 supported from version 0.6, tc USES db mode to share global transaction session information, and the registry USES non-file seata-supported third-party registries
 
 ********
-### Q: What is the use of the record of undo log table log status = 1 ?
+<h3 id='3'>Q: 3.What is the use of the record of undo log table log status = 1 ?</h3>
 
 **A:** 
 
-* Scenario:  after A branch transaction A registers TC, A global transaction rollback occurs before A local transaction commits
+**Scenario:**  after A branch transaction A registers TC, A global transaction rollback occurs before A local transaction commits
+
 **Consequence:** global transaction rollback succeeds, a resource is occupied, resulting in resource suspension problem
+
 **Anti-suspension measures:** when a rolls back and finds that the rollback undo has not been inserted, an undo record with log_status=1 is inserted. When a local transaction (business write operation SQL and corresponding undo are a local transaction) is committed, it fails due to the primary key conflict of the undo table.
 
 ********
-### Q: How to use the Seata framework to ensure transaction isolation?
+<h3 id='4'>Q: 4.How to use the Seata framework to ensure transaction isolation?</h3>
 
 **A:** 
 Since seata phase 1 local transactions have been committed, enhanced isolation is needed to prevent other transactions from dirty reads and dirty writes.
@@ -32,7 +64,7 @@ Since seata phase 1 local transactions have been committed, enhanced isolation i
         Using the GlobalTransactional annotation adds some unnecessary additional RPC overhead such as begin returning xid, commit transaction, etc. GlobalLock simplifies the RPC process for higher performance.
 
 ********
-### Q: When Failed to roll back dirty data, what shall I do ?
+<h3 id='5'>Q: 5.When Failed to roll back dirty data, what shall I do ?</h3>
 
 **A:** 
   1. The dirty data needs to be processed manually, and the data can be corrected according to the log prompt, or the corresponding undo can be deleted (the FailureHandler can be customized for email notification or other purposes).
@@ -40,21 +72,24 @@ Since seata phase 1 local transactions have been committed, enhanced isolation i
     node：It is recommended to isolate the dirty data in advance
 
 ********
-### Q: Why the global transaction state is not "begin" when a branch transaction is registered ？
+<h3 id='6'>Q: 6.Why the global transaction state is not "begin" when a branch transaction is registered ?</h3>
 
-A:  
-    **abnormal：**Could not register branch into global session xid = status = Rollbacked（Two phase state and Rollbacking, AsyncCommitting, etc） while expecting Begin
-    **describe：**When a branch transaction is registered, the global transaction status must be a one-phase state "begin", and registration other than "begin" is not allowed. It belongs to the normal processing at the seata framework level, and users can solve it from their own business level.
-    This exception can occur in the following situations (you can continue to add).
+**A:** 
+
+**abnormal：** Could not register branch into global session xid = status = Rollbacked（Two phase state and Rollbacking, AsyncCommitting, etc） while expecting Begin
+
+**describe：** When a branch transaction is registered, the global transaction status must be a one-phase state "begin", and registration other than "begin" is not allowed. It belongs to the normal processing at the seata framework level, and users can solve it from their own business level.
+    
+This exception can occur in the following situations (you can continue to add).
 
   1. The branch transaction is asynchronous. The global transaction is not aware of its progress. The global transaction has entered phase 2 before the asynchronous branch comes to register.
   2. Service a rpc service b timed out (dubbo, feign, etc. timeout by default for 1 second), a throws an exception to tm, tm informs tc to roll back, but b still receives the request (network delay or rpc framework retry), and then registers at tc Global transaction was found to be rolling back.
   3. Tc is aware of the global transaction timeout (@globaltransactional (timeoutMills = default 60 seconds)), actively changes the state and notifies each branch transaction to rollback when a new branch transaction is registered.
 
 ********
-### Q: When Nacos is used as the Seata configuration center, the project startup error report cannot find the service. How to check and deal with it ?
+<h3 id='7'>Q: 7.When Nacos is used as the Seata configuration center, the project startup error report cannot find the service. How to check and deal with it ?</h3>
 
-A： 
+**A:** 
 abnormal：io.seata.common.exception.FrameworkException: can not register RM,err:can not connect to services-server.
   1. Check the nacos configuration list to see if the seata configuration has been imported successfully.
   2. Check the list of nacos services to see if serverAddr has been registered successfully.
@@ -84,3 +119,37 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
           io.seata.server.Server \
           "$@"
 ```
+********
+<h3 id='8'>Q: 8.When Eureka is the registry and TC is highly available, how to overwrite Eureka properties at the TC end?</h3>
+
+**A:** 
+Add the eureka-client.properties file in the seata\conf directory and add the Eureka properties to be overwritten.
+For example, to overwrite eureka.instance.lease-renewal-interval-in-seconds and eureka.instance.lease-expiration-duration-in-seconds, add the following:
+
+```java
+eureka.lease.renewalInterval=1  
+eureka.lease.duration=2
+```
+
+The attribute prefix is eureka, and the subsequent attribute names can refer to the class com.netflix.appinfo.PropertyBasedInstanceConfigConstants. You can also study the seata-discovery-eureka project of the discovery module in the seata source code.
+
+********
+<h3 id='9'>Q: 9.What's the reason of java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;) ?</h3>
+
+**A:**
+when the undolog serialization is configured as Jackson, the Jackson version needs to be 2.9.9+
+
+********
+
+<h3 id='10'>Q: 10. Why didn't my mybatis operation return auto-generated ID? </h3>
+
+**A:**
+You should update the configuraton of `mybatis`:  set annotation `@Options(useGeneratedKeys = true, keyProperty = "id")` or set the value of useGeneratedKeys and keyProperty  in `mybatis` xml configuraton
+
+********
+<h3 id='11'>Q: 11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</h3>
+
+**A:** 
+You can execute this command:mvn clean install -DskipTests=true,These codes have been removed in version 0.8.1.
+
+********

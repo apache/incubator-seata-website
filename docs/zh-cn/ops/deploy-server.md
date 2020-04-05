@@ -1,6 +1,12 @@
+---
+title: 部署 Server
+keywords: Seata
+description: Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Compose, 使用 Kubernetes,  使用 Helm。
+---
+
 # 部署 Server
 
-Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Compose, 使用 Kuberntes,  使用 Helm.
+Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Compose, 使用 Kubernetes,  使用 Helm.
 
 ## 直接部署 
 
@@ -44,6 +50,6 @@ $ sh ./bin/seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 - [使用 Docker / Docker Compose 部署 ](./deploy-by-docker.md)
 
-- [使用 Kubernetes 部署 ](./deploy-by-kuberntes.md)
+- [使用 Kubernetes 部署 ](./deploy-by-kubernetes.md)
 
 - [使用 Helm 部署](./deploy-by-helm.md)

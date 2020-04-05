@@ -6,23 +6,30 @@ author: FUNKYE
 date: 2019/11/29
 ---
 
-# SpringBoot+Dubbo+MybatisPlus整合seata分布式事务
+# SpringBoot+Dubbo+MybatisPlus整合Seata分布式事务
 
-项目地址： https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata 
+[项目地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata )
 
 本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
+
+# 前言
+
+​    **事务**：事务是由一组操作构成的可靠的独立的工作单元，事务具备ACID的特性，即原子性、一致性、隔离性和持久性。
+​    **分布式事务**:当一个操作牵涉到多个服务,多台数据库协力完成时(比如分表分库后,业务拆分),多个服务中，本地的Transaction已经无法应对这个情况了,为了保证数据一致性，就需要用到分布式事务。
+​    **Seata** ：是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。
+​    **本文目的**：现如今微服务越来越流行，而市面上的分布式事务的方案可谓不少，参差不齐，比较流行的以MQ代表的保证的是消息最终一致性的解决方案（消费确认，消息回查，消息补偿机制等），以及TX-LCN的LCN模式协调本地事务来保证事务统一提交或回滚（已经停止更新，对Dubbo2.7不兼容）。而MQ的分布式事务太过复杂，TX-LCN断更，这时候需要一个高效可靠及易上手的分布式事务解决方案，Seata脱颖而出，本文要介绍的就是如何快速搭建一个整合Seata的Demo项目，一起来吧！
 
 # 准备工作
 
 1.首先安装mysql,eclipse之类常用的工具,这不展开了. 
 
-2.访问seata下载中心地址下载我们使用的0.9.0版本:http://seata.io/zh-cn/blog/download.html
+2.访问seata下载中心[地址](http://seata.io/zh-cn/blog/download.html)我们使用的0.9.0版本
 
-3.下载并解压seata-service
+3.下载并解压seata-server
 
 ## 建库建表
 
-1.首先我们链接mysql创建一个名为seata的数据库,然后运行一下建表sql,这个在seata-service的conf文件夹内的db_store.sql就是我的所需要使用的sql了.
+1.首先我们链接mysql创建一个名为seata的数据库,然后运行一下建表sql,这个在seata-server的conf文件夹内的db_store.sql就是我的所需要使用的sql了.
 
 ```mysql
 /*
@@ -217,7 +224,7 @@ CREATE TABLE `undo_log` (
 -- Records of undo_log
 ```
 
- 3.我们找到seata-service/conf 文件夹内的file编辑它:![20191129132933](/img/blog/20191129132933.png)
+ 3.我们找到seata-server/conf 文件夹内的file编辑它:![20191129132933](/img/blog/20191129132933.png)
 
  4.再次找到其中的db配置方法块,更改方法如下图:![](/img/blog/20191129133111.png)
 
@@ -626,7 +633,7 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
 
 ```
 
-```
+```java
 package org.test;
  
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
@@ -656,7 +663,7 @@ public class ProviderApplication {
 
 ```
 
- 	创建实体包 org.test.entity以及创建实体类Test 用到了lombok,详细百度一下,eclipse装lombok插件  
+ 	创建实体包 org.test.entity以及创建实体类Test 用到了lombok,详细百度一下,eclipse装lombok插件
 
 ```java
 package org.test.entity;
@@ -710,9 +717,7 @@ public class Test implements Serializable {
 
 ```
 
-​	创建service,service.impl,mapper等包
-
-​	依次创建ITestservice,以及实现类,mapper
+​	创建service,service.impl,mapper等包,依次创建ITestservice,以及实现类,mapper
 
 ```java
 package org.test.service;
@@ -776,87 +781,82 @@ public interface TestMapper extends BaseMapper<Test> {
 
 ```
 
- 	创建org.test.config包,创建[SeataAutoConfig.java](https://gitee.com/itCjb/springboot-dubbo-mybatsiplus-seata/blob/master/test-service/src/main/java/org/test/config/SeataAutoConfig.java),配置信息都在此处,主要作用为代理数据,连接事务服务分组 
+ 	创建org.test.config包,创建SeataAutoConfig.java,配置信息都在此处,主要作用为代理数据,连接事务服务分组 
 
 ```java
 package org.test.config;
- 
+
 import javax.sql.DataSource;
- 
-import org.apache.ibatis.session.SqlSessionFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
- 
+
 import com.alibaba.druid.pool.DruidDataSource;
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
- 
+
 import io.seata.rm.datasource.DataSourceProxy;
 import io.seata.spring.annotation.GlobalTransactionScanner;
- 
+
 @Configuration
 public class SeataAutoConfig {
-    @Autowired(required = true)
-    private DataSourceProperties dataSourceProperties;
-    private final static Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
- 	DataSourceProxy dataSourceProxy;
-    @Bean(name = "dataSource") // 声明其为Bean实例
-    @Primary // 在同样的DataSource中，首先使用被标注的DataSource
-    public DataSource druidDataSource() {
-        logger.info("装载dataSource........");
-        DruidDataSource druidDataSource = new DruidDataSource();
-        logger.info("dataSourceProperties.getUrl():{}", dataSourceProperties.getUrl());
-        druidDataSource.setUrl(dataSourceProperties.getUrl());
-        druidDataSource.setUsername(dataSourceProperties.getUsername());
-        druidDataSource.setPassword(dataSourceProperties.getPassword());
-        druidDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
-        druidDataSource.setInitialSize(0);
-        druidDataSource.setMaxActive(180);
-        druidDataSource.setMaxWait(60000);
-        druidDataSource.setMinIdle(0);
-        druidDataSource.setValidationQuery("Select 1 from DUAL");
-        druidDataSource.setTestOnBorrow(false);
-        druidDataSource.setTestOnReturn(false);
-        druidDataSource.setTestWhileIdle(true);
-        druidDataSource.setTimeBetweenEvictionRunsMillis(60000);
-        druidDataSource.setMinEvictableIdleTimeMillis(25200000);
-        druidDataSource.setRemoveAbandoned(true);
-        druidDataSource.setRemoveAbandonedTimeout(1800);
-        druidDataSource.setLogAbandoned(true);
-        logger.info("代理dataSource........");
-        dataSourceProxy=new DataSourceProxy(druidDataSource);
-        return dataSourceProxy;
-    }
- 
-    /**
-     * init datasource proxy
-     * 
-     * @Param: druidDataSource datasource bean instance
-     * @Return: DataSourceProxy datasource proxy
-     */
-    @Bean
-    public DataSourceProxy dataSourceProxy() {
-        logger.info("注册bean........");
-        return dataSourceProxy;
-    }
- 
- 
-    /**
-     * init global transaction scanner
-     *
-     * @Return: GlobalTransactionScanner
-     */
-    @Bean
-    public GlobalTransactionScanner globalTransactionScanner() {
-        logger.info("配置seata........");
-        return new GlobalTransactionScanner("test-service", "test-group");
-    }
-}
+	@Autowired(required = true)
+	private DataSourceProperties dataSourceProperties;
+	private final static Logger logger = LoggerFactory.getLogger(SeataAutoConfig.class);
 
+	@Bean(name = "druidDataSource") // 声明其为Bean实例
+	public DataSource druidDataSource() {
+		DruidDataSource druidDataSource = new DruidDataSource();
+		logger.info("dataSourceProperties.getUrl():{}", dataSourceProperties.getUrl());
+		druidDataSource.setUrl(dataSourceProperties.getUrl());
+		druidDataSource.setUsername(dataSourceProperties.getUsername());
+		druidDataSource.setPassword(dataSourceProperties.getPassword());
+		druidDataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+		druidDataSource.setInitialSize(0);
+		druidDataSource.setMaxActive(180);
+		druidDataSource.setMaxWait(60000);
+		druidDataSource.setMinIdle(0);
+		druidDataSource.setValidationQuery("Select 1 from DUAL");
+		druidDataSource.setTestOnBorrow(false);
+		druidDataSource.setTestOnReturn(false);
+		druidDataSource.setTestWhileIdle(true);
+		druidDataSource.setTimeBetweenEvictionRunsMillis(60000);
+		druidDataSource.setMinEvictableIdleTimeMillis(25200000);
+		druidDataSource.setRemoveAbandoned(true);
+		druidDataSource.setRemoveAbandonedTimeout(1800);
+		druidDataSource.setLogAbandoned(true);
+		logger.info("装载dataSource........");
+		return druidDataSource;
+	}
+
+	/**
+	 * init datasource proxy
+	 * 
+	 * @Param: druidDataSource datasource bean instance
+	 * @Return: DataSourceProxy datasource proxy
+	 */
+	@Bean(name = "dataSource")
+	@Primary // 在同样的DataSource中，首先使用被标注的DataSource
+	public DataSourceProxy dataSourceProxy(@Qualifier(value = "druidDataSource") DruidDataSource druidDataSource) {
+		logger.info("代理dataSource........");
+		return new DataSourceProxy(druidDataSource);
+	}
+
+	/**
+	 * init global transaction scanner
+	 *
+	 * @Return: GlobalTransactionScanner
+	 */
+	@Bean
+	public GlobalTransactionScanner globalTransactionScanner() {
+		logger.info("配置seata........");
+		return new GlobalTransactionScanner("test-service", "test-group");
+	}
+}
 ```
 
  	再创建mybatisplus所需的配置文件MybatisPlusConfig  
@@ -934,7 +934,6 @@ dubbo:
     name: testserver
   registry:
     id: my-registry
-#    address:  zookeeper://127.0.0.1:2181?client=curator
     address:  zookeeper://127.0.0.1:2181?client=curator
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
@@ -1049,7 +1048,7 @@ config {
 
 ```
 
-​	 大功告成,可以直接运行啦,这时候观察seata-service的日志会发现已经连接成功! ![20191129142115](/img/blog/20191129142115.png)
+​	 大功告成,可以直接运行啦,这时候观察seata-server![20191129142115](/img/blog/20191129142115.png)
 
 ​	接下来我们创建test-client项目项目,这里就不赘述了,跟上面的test-service一样的创建方式
 
@@ -1438,7 +1437,7 @@ server:
 
 ![20191129143407](/img/blog/20191129143407.png)
 
- 显示已经回滚,我们再看看seata-service的日志: 
+ 显示已经回滚,我们再看看seata-server的日志: 
 
 <img src="/img/blog/20191129143419.png" style="zoom:200%;" />
 

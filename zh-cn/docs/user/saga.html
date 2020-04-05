@@ -4,18 +4,18 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="keywords" content="saga" />
-	<meta name="description" content="saga" />
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。" />
 	<!-- 网页标签标题 -->
-	<title>saga</title>
+	<title>Seata Saga 模式</title>
   <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
 	<link rel="stylesheet" href="/build/documentation.css" />
 </head>
 <body>
-	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>SEATA Saga 模式</h1>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/transaction-group.html" target="_self">事务分组介绍</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/upgrade.html" target="_self">版本升级指南</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>SEATA Saga 模式</h1>
 <h2>概述</h2>
 <p>Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。</p>
-<p><img src="/img/saga/sagas.png" alt="Saga模式示意图"></p>
+<p><img src="https://img.alicdn.com/tfs/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png" alt="Saga模式示意图"></p>
 <p>理论基础：Hector &amp; Kenneth 发表论⽂ Sagas （1987）</p>
 <h3>适用场景：</h3>
 <ul>
@@ -232,6 +232,13 @@
 <blockquote>
 <p>Demo中还有调用本地服务和调用SOFA RPC服务的示例</p>
 </blockquote>
+<h2>状态机设计器</h2>
+<p>Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代码和运行指南请参考：
+<a href="https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer">https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer</a></p>
+<p>状态机设计器截图:
+<img src="/img/saga/seata-saga-statemachine-designer.png?raw=true" alt="状态机设计器"></p>
+<p>状态机设计器演示地址:<a href="/saga_designer/index.html">http://seata.io/saga_designer/index.html</a></p>
+<p>状态机设计器视频教程:<a href="/saga_designer/vedio.html">http://seata.io/saga_designer/vedio.html</a></p>
 <h2>最佳实践</h2>
 <h3>Saga 服务设计的实践经验</h3>
 <h4>允许空补偿</h4>
@@ -271,6 +278,13 @@
 </ul>
 </li>
 </ul>
+<h3>性能优化</h3>
+<ul>
+<li>配置客户端参数<code>client.rm.report.success.enable=false</code>，可以在当分支事务执行成功时不上报分支状态到server，从而提升性能。</li>
+</ul>
+<blockquote>
+<p>当上一个分支事务的状态还没有上报的时候，下一个分支事务已注册，可以认为上一个实际已成功</p>
+</blockquote>
 <h2>API referance</h2>
 <h4>StateMachineEngine API</h4>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StateMachineEngine</span> </span>{
@@ -381,7 +395,114 @@
     <span class="hljs-function">StateMachineConfig <span class="hljs-title">getStateMachineConfig</span><span class="hljs-params">()</span></span>;
 }
 </code></pre>
-<h4>StateMachineEngine API</h4>
+<h4>StateMachine Execution Instance API:</h4>
+<pre><code class="language-java">StateLogRepository stateLogRepository = stateMachineEngine.getStateMachineConfig().getStateLogRepository();
+StateMachineInstance stateMachineInstance = stateLogRepository.getStateMachineInstanceByBusinessKey(businessKey, tenantId);
+
+<span class="hljs-comment">/**
+ * State Log Repository
+ *
+ * <span class="hljs-doctag">@author</span> lorne.cl
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StateLogRepository</span> </span>{
+
+    <span class="hljs-comment">/**
+     * Get state machine instance
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineInstanceId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">StateMachineInstance <span class="hljs-title">getStateMachineInstance</span><span class="hljs-params">(String stateMachineInstanceId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get state machine instance by businessKey
+     *
+     * <span class="hljs-doctag">@param</span> businessKey
+     * <span class="hljs-doctag">@param</span> tenantId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">StateMachineInstance <span class="hljs-title">getStateMachineInstanceByBusinessKey</span><span class="hljs-params">(String businessKey, String tenantId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Query the list of state machine instances by parent id
+     *
+     * <span class="hljs-doctag">@param</span> parentId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">List&lt;StateMachineInstance&gt; <span class="hljs-title">queryStateMachineInstanceByParentId</span><span class="hljs-params">(String parentId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get state instance
+     *
+     * <span class="hljs-doctag">@param</span> stateInstanceId
+     * <span class="hljs-doctag">@param</span> machineInstId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">StateInstance <span class="hljs-title">getStateInstance</span><span class="hljs-params">(String stateInstanceId, String machineInstId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get a list of state instances by state machine instance id
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineInstanceId
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function">List&lt;StateInstance&gt; <span class="hljs-title">queryStateInstanceListByMachineInstanceId</span><span class="hljs-params">(String stateMachineInstanceId)</span></span>;
+}
+</code></pre>
+<h4>StateMachine Definition API:</h4>
+<pre><code class="language-java">StateMachineRepository stateMachineRepository = stateMachineEngine.getStateMachineConfig().getStateMachineRepository();
+StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineName, tenantId);
+
+<span class="hljs-comment">/**
+ * StateMachineRepository
+ *
+ * <span class="hljs-doctag">@author</span> lorne.cl
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StateMachineRepository</span> </span>{
+
+    <span class="hljs-comment">/**
+     * Gets get state machine by id.
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineId the state machine id
+     * <span class="hljs-doctag">@return</span> the get state machine by id
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">getStateMachineById</span><span class="hljs-params">(String stateMachineId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Gets get state machine.
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineName the state machine name
+     * <span class="hljs-doctag">@param</span> tenantId         the tenant id
+     * <span class="hljs-doctag">@return</span> the get state machine
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">getStateMachine</span><span class="hljs-params">(String stateMachineName, String tenantId)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Gets get state machine.
+     *
+     * <span class="hljs-doctag">@param</span> stateMachineName the state machine name
+     * <span class="hljs-doctag">@param</span> tenantId         the tenant id
+     * <span class="hljs-doctag">@param</span> version          the version
+     * <span class="hljs-doctag">@return</span> the get state machine
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">getStateMachine</span><span class="hljs-params">(String stateMachineName, String tenantId, String version)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Register the state machine to the repository (if the same version already exists, return the existing version)
+     *
+     * <span class="hljs-doctag">@param</span> stateMachine
+     */</span>
+    <span class="hljs-function">StateMachine <span class="hljs-title">registryStateMachine</span><span class="hljs-params">(StateMachine stateMachine)</span></span>;
+
+    <span class="hljs-comment">/**
+     * registry by resources
+     *
+     * <span class="hljs-doctag">@param</span> resources
+     * <span class="hljs-doctag">@param</span> tenantId
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">registryByResources</span><span class="hljs-params">(Resource[] resources, String tenantId)</span> <span class="hljs-keyword">throws</span> IOException</span>;
+}
+</code></pre>
 <h2>Config referance</h2>
 <h4>在Spring Bean配置文件中配置一个StateMachineEngine</h4>
 <pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"..."</span>&gt;</span>
@@ -455,6 +576,19 @@
             "#root == false": "FA",
             "$Exception{java.lang.Throwable}": "UN"
         },
+        "Retry": [
+            {
+                "Exceptions": ["io.seata.saga.engine.mock.DemoException"],
+                "IntervalSeconds": 1.5,
+                "MaxAttempts": 3,
+                "BackoffRate": 1.5
+            },
+            {
+                "IntervalSeconds": 1,
+                "MaxAttempts": 3,
+                "BackoffRate": 1.5
+            }
+        ],
         "Catch": [
             {
                 "Exceptions": [
@@ -479,6 +613,7 @@
 <li>Output: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数</li>
 <li>Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值</li>
 <li>Catch: 捕获到异常后的路由</li>
+<li>Retry: 捕获异常后的重试策略, 是个数组可以配置多个规则, <code>Exceptions</code> 为匹配的的异常列表, <code>IntervalSeconds</code> 为重试间隔, <code>MaxAttempts</code> 为最大重试次数, <code>BackoffRate</code> 下一次重试间隔相对于上一次重试间隔的倍数，比如说上次一重试间隔是2秒, <code>BackoffRate=1.5</code> 则下一次重试间隔是3秒。<code>Exceptions</code> 属性可以不配置, 不配置时表示框架自动匹配网络超时异常。当在重试过程中发生了别的异常，框架会重新匹配规则，并按新规则进行重试，同一种规则的总重试次数不会超过该规则的<code>MaxAttempts</code></li>
 <li>Next: 服务执行完成后下一个执行的&quot;状态&quot;</li>
 </ul>
 <blockquote>
@@ -715,12 +850,21 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, <span cla
 <p><strong>问:</strong> 还有关于 json 文件，我打算一条流程，就定义一个 json，虽然有的流程很像，用 Choices，可以解决。但是感觉 json 还是要尽量简单。这样考虑对吗？</p>
 <p><strong>答:</strong> 你可以考虑用子状态机来复用，子状态机会多生成一行 stateMachineInstance 记录，但对性能影响应该不大。</p>
 <hr>
-</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
 	<script>
 		window.rootPath = '';
   </script>
 	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
 </body>
 </html>

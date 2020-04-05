@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Seata 参数配置。" />
+	<!-- 网页标签标题 -->
+	<title>Seata 参数配置</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="/img/seata_logo.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="/img/system/menu_gray.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/transaction-group.html" target="_self">事务分组介绍</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="/img/system/arrow_down.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>seata参数配置 1.0.0版本</h1>
+<p>0.9.0.1之前版本 <a href="./configurations090.html">点击这里</a></p>
+<h3>变更记录</h3>
+<pre><code>20191221: 增加seata.enabled、client.report.success.enable、
+transport.enable-client-batch-send-request、client.log.exceptionRate
+</code></pre>
+<h2>关注属性(详细描述见全属性)</h2>
+<table>
+<thead>
+<tr>
+<th>server端</th>
+<th>client端</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>registry.type</td>
+<td>registry.type</td>
+</tr>
+<tr>
+<td>config.type</td>
+<td>config.type</td>
+</tr>
+<tr>
+<td>store.mode</td>
+<td>service.vgroup_mapping.my_test_tx_group</td>
+</tr>
+<tr>
+<td>store.db.driver-class-name</td>
+<td>service.default.grouplist</td>
+</tr>
+<tr>
+<td>store.db.url</td>
+<td>service.disableGlobalTransaction</td>
+</tr>
+<tr>
+<td>store.db.user</td>
+<td>client.support.spring.datasource.autoproxy</td>
+</tr>
+<tr>
+<td>store.db.password</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>全属性</h2>
+<h3>公共部分</h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>desc</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transport.serialization</td>
+<td>client和server通信编解码方式</td>
+<td>seata（ByteBuf）、protobuf、kryo、hession，默认seata</td>
+</tr>
+<tr>
+<td>transport.compressor</td>
+<td>client和server通信数据压缩方式</td>
+<td>none、gzip，默认none</td>
+</tr>
+<tr>
+<td>transport.heartbeat</td>
+<td>client和server通信心跳检测开关</td>
+<td>默认true开启</td>
+</tr>
+<tr>
+<td>registry.type</td>
+<td>注册中心类型</td>
+<td>默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa、custom</td>
+</tr>
+<tr>
+<td>config.type</td>
+<td>配置中心类型</td>
+<td>默认file，支持file、nacos 、apollo、zk、consul、etcd3、custom</td>
+</tr>
+</tbody>
+</table>
+<h3>server端</h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>desc</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server.undo.log.save.days</td>
+<td>undo保留天数</td>
+<td>默认7天,log_status=1（附录3）和未正常清理的undo</td>
+</tr>
+<tr>
+<td>server.undo.log.delete.period</td>
+<td>undo清理线程间隔时间</td>
+<td>默认86400000，单位毫秒</td>
+</tr>
+<tr>
+<td>server.max.commit.retry.timeout</td>
+<td>二阶段提交重试超时时长</td>
+<td>单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout&gt;=now-globalTransactionBeginTime,true表示超时则不再重试</td>
+</tr>
+<tr>
+<td>server.max.rollback.retry.timeout</td>
+<td>二阶段回滚重试超时时长</td>
+<td>同commit</td>
+</tr>
+<tr>
+<td>server.recovery.committing-retry-period</td>
+<td>二阶段提交未完成状态全局事务重试提交线程间隔时间</td>
+<td>默认1000，单位毫秒</td>
+</tr>
+<tr>
+<td>server.recovery.asyn-committing-retry-period</td>
+<td>二阶段异步提交状态重试提交线程间隔时间</td>
+<td>默认1000，单位毫秒</td>
+</tr>
+<tr>
+<td>server.recovery.rollbacking-retry-period</td>
+<td>二阶段回滚状态重试回滚线程间隔时间</td>
+<td>默认1000，单位毫秒</td>
+</tr>
+<tr>
+<td>server.recovery.timeout-retry-period</td>
+<td>超时状态检测重试线程间隔时间</td>
+<td>默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器</td>
+</tr>
+<tr>
+<td>store.mode</td>
+<td>事务会话信息存储方式</td>
+<td>file本地文件(不支持HA)，db数据库(支持HA)</td>
+</tr>
+<tr>
+<td>store.file.dir</td>
+<td>file模式文件存储文件夹名</td>
+<td>默认sessionStore</td>
+</tr>
+<tr>
+<td>store.db.datasource</td>
+<td>db模式数据源类型</td>
+<td>默认dbcp</td>
+</tr>
+<tr>
+<td>store.db.db-type</td>
+<td>db模式数据库类型</td>
+<td>默认mysql</td>
+</tr>
+<tr>
+<td>store.db.driver-class-name</td>
+<td>db模式数据库驱动</td>
+<td>默认com.mysql.jdbc.Driver</td>
+</tr>
+<tr>
+<td>store.db.url</td>
+<td>db模式数据库url</td>
+<td>默认jdbc:mysql://127.0.0.1:3306/seata</td>
+</tr>
+<tr>
+<td>store.db.user</td>
+<td>db模式数据库账户</td>
+<td>默认mysql</td>
+</tr>
+<tr>
+<td>store.db.password</td>
+<td>db模式数据库账户密码</td>
+<td>默认mysql</td>
+</tr>
+<tr>
+<td>store.db.min-conn</td>
+<td>db模式数据库初始连接数</td>
+<td>默认1</td>
+</tr>
+<tr>
+<td>store.db.max-conn</td>
+<td>db模式数据库最大连接数</td>
+<td>默认3</td>
+</tr>
+<tr>
+<td>store.db.global.table</td>
+<td>db模式全局事务表名</td>
+<td>默认global_table</td>
+</tr>
+<tr>
+<td>store.db.branch.table</td>
+<td>db模式分支事务表名</td>
+<td>默认branch_table</td>
+</tr>
+<tr>
+<td>store.db.lock-table</td>
+<td>db模式全局锁表名</td>
+<td>默认lock_table</td>
+</tr>
+<tr>
+<td>store.db.query-limit</td>
+<td>db模式查询全局事务一次的最大条数</td>
+<td>默认100</td>
+</tr>
+<tr>
+<td>metrics.enabled</td>
+<td>是否启用Metrics</td>
+<td>默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低</td>
+</tr>
+<tr>
+<td>metrics.registry-type</td>
+<td>指标注册器类型</td>
+<td>Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现</td>
+</tr>
+<tr>
+<td>metrics.exporter-list</td>
+<td>指标结果Measurement数据输出器列表</td>
+<td>默认prometheus，多个输出器使用英文逗号分割，例如&quot;prometheus,jmx&quot;，目前仅实现了对接prometheus的输出器</td>
+</tr>
+<tr>
+<td>metrics.exporter-prometheus-port</td>
+<td>prometheus输出器Client端口号</td>
+<td>默认9898</td>
+</tr>
+</tbody>
+</table>
+<h3>client端</h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>desc</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seata.enabled</td>
+<td>是否开启spring-boot自动装配</td>
+<td>true、false，默认true（附录4）</td>
+</tr>
+<tr>
+<td>client.report.success.enable</td>
+<td>是否上报一阶段成功</td>
+<td>true、false，默认true用于保持分支事务生命周期记录完整，false可提高不少性能</td>
+</tr>
+<tr>
+<td>transport.enable-client-batch-send-request</td>
+<td>客户端事务消息请求是否批量合并发送</td>
+<td>默认true，false单条发送</td>
+</tr>
+<tr>
+<td>client.log.exceptionRate</td>
+<td>日志异常输出概率</td>
+<td>默认100，目前用于undo回滚失败时异常堆栈输出，百分之一的概率输出，回滚失败基本是脏数据，无需输出堆栈占用硬盘空间</td>
+</tr>
+<tr>
+<td>service.vgroup_mapping.my_test_tx_group</td>
+<td>事务群组（附录1）</td>
+<td>my_test_tx_group为分组，配置项值为TC集群名</td>
+</tr>
+<tr>
+<td>service.default.grouplist</td>
+<td>TC服务列表（附录2）</td>
+<td>仅注册中心为file时使用</td>
+</tr>
+<tr>
+<td>service.disableGlobalTransaction</td>
+<td>全局事务开关</td>
+<td>默认false。false为开启，true为关闭</td>
+</tr>
+<tr>
+<td>service.enableDegrade</td>
+<td>降级开关（待实现）</td>
+<td>默认false。业务侧根据连续错误数自动降级不走seata事务</td>
+</tr>
+<tr>
+<td>client.rm.async.commit.buffer.limit</td>
+<td>异步提交缓存队列长度</td>
+<td>默认10000。 二阶段提交成功，RM异步清理undo队列</td>
+</tr>
+<tr>
+<td>client.rm.lock.retry.internal</td>
+<td>校验或占用全局锁重试间隔</td>
+<td>默认10，单位毫秒</td>
+</tr>
+<tr>
+<td>client.rm.lock.retry.times</td>
+<td>校验或占用全局锁重试次数</td>
+<td>默认30</td>
+</tr>
+<tr>
+<td>client.rm.lock.retry.policy.branch-rollback-on-conflict</td>
+<td>分支事务与其它全局回滚事务冲突时锁策略</td>
+<td>默认true，优先释放本地锁让回滚成功</td>
+</tr>
+<tr>
+<td>client.rm.report.retry.count</td>
+<td>一阶段结果上报TC重试次数</td>
+<td>默认5次</td>
+</tr>
+<tr>
+<td>client.rm.table.meta.check.enable</td>
+<td>自动刷新缓存中的表结构</td>
+<td>默认false</td>
+</tr>
+<tr>
+<td>client.tm.commit.retry.count</td>
+<td>一阶段全局提交结果上报TC重试次数</td>
+<td>默认1次，建议大于1</td>
+</tr>
+<tr>
+<td>client.tm.rollback.retry.count</td>
+<td>一阶段全局回滚结果上报TC重试次数</td>
+<td>默认1次，建议大于1</td>
+</tr>
+<tr>
+<td>client.undo.data.validation</td>
+<td>二阶段回滚镜像校验</td>
+<td>默认true开启，false关闭</td>
+</tr>
+<tr>
+<td>client.undo.log.serialization</td>
+<td>undo序列化方式</td>
+<td>默认jackson</td>
+</tr>
+<tr>
+<td>client.undo.log.table</td>
+<td>自定义undo表名</td>
+<td>默认undo_log</td>
+</tr>
+<tr>
+<td>client.support.spring.datasource.autoproxy</td>
+<td>数据源自动代理开关</td>
+<td>默认false关闭</td>
+</tr>
+</tbody>
+</table>
+<h3>未使用</h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>desc</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lock.mode</td>
+<td>锁存储方式</td>
+<td>local、remote</td>
+</tr>
+<tr>
+<td>lock.local</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>lock.remote</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>参数同步到配置中心使用demo</h3>
+<h4>Nacos</h4>
+<p>shell:</p>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 8848</p>
+<p>-g: 配置分组，默认值为 'SEATA_GROUP'</p>
+<p>-t: 租户信息，对应 Nacos 的命名空间ID字段, 默认值为空 ''</p>
+<h4>Apollo</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 8070</p>
+<p>-e: 所管理的配置环境，默认值 DEV</p>
+<p>-a: Namespace 所属的 AppId，默认值 seata-server</p>
+<p>-c: 所管理的配置集群名， 一般情况下传入 default 即可。如果是特殊集群，传入相应集群的名称即可，默认值 default</p>
+<p>-n: 所管理的 Namespace 的名称，如果是非 properties 格式，需要加上后缀名，如 sample.yml，默认值 application</p>
+<p>-d: item 的创建人，格式为域账号，也就是 sso 系统的 User ID</p>
+<p>-r: 发布人，域账号，注意：如果 ApolloConfigDB.ServerConfig 中的 namespace.lock.switch 设置为 true 的话（默认是 false），那么该环境不允许发布人和编辑人为同一人。所以如果编辑人是 zhangsan，发布人就不能再是 zhangsan。</p>
+<p>-t: Apollo 管理员在 http://{portal_address}/open/manage.html 创建第三方应用，创建之前最好先查询此AppId是否已经创建。创建成功之后会生成一个 token</p>
+<p>以上参数说明详情请看：</p>
+<p><a href="https://github.com/ctripcorp/apollo/wiki/Apollo%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0">https://github.com/ctripcorp/apollo/wiki/Apollo开放平台</a></p>
+<h4>Consul</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/consul/consul-config.sh -h localhost -p 8500
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 8500</p>
+<h4>Etcd3</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 2379</p>
+<p>python:</p>
+<pre><code class="language-bash">python <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/nacos/nacos-config.py localhost:8848
+</code></pre>
+<h4>ZK</h4>
+<pre><code class="language-bash">sh <span class="hljs-variable">${SEATAPATH}</span>/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z <span class="hljs-string">"/Users/zhangchenghui/zookeeper-3.4.14"</span>
+</code></pre>
+<p>参数说明：</p>
+<p>-h: host，默认值 localhost</p>
+<p>-p: port，默认值 2181</p>
+<p>-z: zk所属路径</p>
+<h3>附录1：</h3>
+<pre><code>事务分组说明。
+1.事务分组是什么？
+事务分组是seata的资源逻辑，类似于服务实例。在file.conf中的my_test_tx_group就是一个事务分组。
+2.通过事务分组如何找到后端集群？
+首先程序中配置了事务分组（GlobalTransactionScanner 构造方法的txServiceGroup参数），程序会通过用户配置的配置中心去寻找service.vgroup_mapping.事务分组配置项，取得配置项的值就是TC集群的名称。拿到集群名称程序通过一定的前后缀+集群名称去构造服务名，各配置中心的服务名实现不同。拿到服务名去相应的注册中心去拉取相应服务名的服务列表，获得后端真实的TC服务列表。
+3.为什么这么设计，不直接取服务名？
+这里多了一层获取事务分组到映射集群的配置。这样设计后，事务分组可以作为资源的逻辑隔离单位，当发生故障时可以快速failover。
+</code></pre>
+<h3>附录2：</h3>
+<pre><code>关于grouplist问题说明下。
+1. 什么时候会用到file.conf中的default.grouplist？
+当registry.type=file时会用到，其他时候不读。
+2. default.grouplist的值列表是否可以配置多个？
+可以配置多个，配置多个意味着集群，但当store.mode=file时，会报错。原因是在file存储模式下未提供本地文件的同步，所以需要使用store.mode=db，通过db来共享TC集群间数据
+3. 是否推荐使用default.grouplist？
+不推荐，如问题1，当registry.type=file时会用到，也就是说这里用的不是真正的注册中心，不具体服务的健康检查机制当tc不可用时无法自动剔除列表，推荐使用nacos 、eureka、redis、zk、consul、etcd3、sofa。registry.type=file或config.type=file 设计的初衷是让用户再不依赖第三方注册中心或配置中心的前提下，通过直连的方式，快速验证seata服务。    
+</code></pre>
+<h3>附录3：</h3>
+<pre><code>log_status=1的是防御性的，是收到全局回滚请求，但是不确定某个事务分支的本地事务是否已经执行完成了，这时事先插入一条branchid相同的数据，插入的假数据成功了，本地事务继续执行就会报主键冲突自动回滚。
+假如插入不成功说明表里有数据这个本地事务已经执行完成了，那么取出这条undolog数据做反向回滚操作。
+</code></pre>
+<h3>附录4：</h3>
+<pre><code>是否开启spring-boot自动装配，如果开启，则会自动配置seata与spring-boot的集成，包括数据源的自动代理以及GlobalTransactionScanner初始化。
+注：1.0版本新特性，需依赖seata-spring-boot-starter。
+</code></pre>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="/img/seata_logo_gray.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
