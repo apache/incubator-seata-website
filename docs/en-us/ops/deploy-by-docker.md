@@ -101,4 +101,13 @@ You can modify configuration of seata-server  by the environment variables like 
 
 - **SEATA_CONFIG_NAME**
 
-> The variable is optional, specifies the configuration file path, like the `file:/root/registry`, will load file`/root/registry.conf` as configuration.
+> The variable is optional, specifies the configuration file path, like the `file:/root/registry`, will load file`/root/registry.conf` as configuration. If need specify `file.conf` configuration，the `config.file.name` value in `registry.conf` file need to change as related config, like `file:/root/file.conf`, for example:
+```
+config {
+  type = "file"
+
+  file {
+    name = "file:/root/seata-config/file.conf"
+  }
+}
+```
