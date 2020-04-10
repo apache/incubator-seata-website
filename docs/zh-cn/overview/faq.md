@@ -50,7 +50,9 @@ description: Seata 常见问题。
  
 <a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 
- <a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a>
+<a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a>
+
+<a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a>
  
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -166,7 +168,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 <h3 id='11'>Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
 
 **A:** 
-本地执行下:mvn clean install -DskipTests=true,相关代码在0.8.1已经移除。
+本地执行下:[mvn clean install -DskipTests=true](https://github.com/seata/seata/issues/2438),相关代码在0.8.1已经移除。
 
 ********
 <h3 id='12'>Q: 12.TC如何使用mysql8?</h3>
@@ -276,6 +278,18 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 @Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 
 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
 只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
+
+
+********
+<h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
+
+**A:** 
+
+```xml
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.fasterxml.jackson.databind.ObjectMapper
+```
+目前发现在 Spring Boot 1.5.x 版本中原始引入的 jackson 版本过低，会导致 Seata 依赖 jackson 的新特性找不到，Seata 要求 jackson 版本2.9.9+，但是使用 jackson 2.9.9+ 版本会导致Spring Boot中使用的jackson API找不到，也就是jackson本身的向前兼容性存在问题。因此,建议大家将Seata的序列化方式切换到非 jackson 序列化方式，比如 kryo，配置项为client.undo.logSerialization = "kryo"
+
 
 
 ********
