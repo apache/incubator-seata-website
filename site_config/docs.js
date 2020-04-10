@@ -88,6 +88,10 @@ export default {
                                 title: 'Deploy by Helm',
                                 link: '/en-us/docs/ops/deploy-by-helm.html',
                             },
+                            {
+                                title: 'Deploy in High Available Usage',
+                                link: '/en-us/docs/ops/deploy-ha.html',
+                            },
                         ]
                     }
                 ]
@@ -215,6 +219,10 @@ export default {
                             {
                                 title: 'Helm 部署',
                                 link: '/zh-cn/docs/ops/deploy-by-helm.html',
+                            },
+                            {
+                                title: '高可用部署',
+                                link: '/zh-cn/docs/ops/deploy-ha.html',
                             },
                         ]
                     }
