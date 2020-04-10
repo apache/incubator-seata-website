@@ -83,7 +83,7 @@ $ kubectl apply -f seata-server.yaml
 
 ### 使用自定义配置文件
 
-指定配置文件可以通过挂载的方式实现，如将`/root/workspace/seata/seata-config/file`  下的配置文件挂载到pod 中，挂载后需要通过指定 `SEATA_CONFIG_NAME` 指定配置文件位置，并且环境变量的值需要以`file:`开始, 如: `file:/root/seata-config/registry`
+指定配置文件可以通过挂载文件或使用 ConfigMap 的方式实现，挂载后需要通过指定 `SEATA_CONFIG_NAME` 指定配置文件位置，并且环境变量的值需要以`file:`开始, 如: `file:/root/seata-config/registry`
 
 - Deployment
 
@@ -110,10 +110,6 @@ spec:
           image: docker.io/seataio/seata-server:latest
           imagePullPolicy: IfNotPresent
           env:
-            - name: SEATA_PORT
-              value: "8091"
-            - name: STORE_MODE
-              value: file
             - name: SEATA_CONFIG_NAME
               value: file:/root/seata-config/registry
           ports:
@@ -125,8 +121,30 @@ spec:
               mountPath: /root/seata-config
       volumes:
         - name: seata-config
-          hostPath:
-            path: /root/workspace/seata/seata-config/file
+          configMap:
+            name: seata-server-config
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: seata-server-config
+data:
+  registry.conf: |
+    registry {
+        type = "nacos"
+        nacos {
+          application = "seata-server"
+          serverAddr = "192.168.199.2"
+        }
+    }
+    config {
+      type = "nacos"
+      nacos {
+        serverAddr = "192.168.199.2"
+        group = "SEATA_GROUP"
+      }
+    }
 ```
 
 
