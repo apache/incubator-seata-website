@@ -1,19 +1,19 @@
 ---
 hidden: true
-title: High Available usage deployment
+title: High Available Usage Deployment
 keywords: kubernetes,ops
-description: High Available usage deployment
+description: High Available Usage Deployment
 author: helloworlde
 date: 2020-04-10
 ---
 
-# High Available usage deployment
+# High Available Usage Deployment
 
 > High available usage deployment of Seata depends on registry center, configuration center and database.
 
 ## Seata-Server
 
-The Seata-Server need registry center, and save transaction data into database, for example, use Nacos:
+The Seata-Server need registry center, and save transaction data into database, for example, use Nacos
 
 - Modify configuration in `registry.conf`
 
@@ -145,3 +145,5 @@ data:
       }
     }
 ```
+
+You can reference [seata-ha-deploy-practice](https://seata.io/zh-cn/blog/seata-ha-practice.html) for more detail about practice of HA deploy.
