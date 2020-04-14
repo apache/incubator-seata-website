@@ -78,6 +78,13 @@
                 dateStr: 'Jan 1th, 2020',
                 desc: '本文讲述通过源码解析Seata-Dubbo传递XID',
                 link: '/zh-cn/blog/seata-analysis-dubbo-transmit-xid.html',
+            },
+            {
+                title: 'Seata 高可用部署实践',
+                author: '@helloworlde',
+                dateStr: 'Apr 10th, 2020',
+                desc: 'Seata 高可用部署实践',
+                link: '/zh-cn/blog/seata-ha-practice.html',
             }
         ]
     },

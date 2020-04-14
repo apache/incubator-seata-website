@@ -103,4 +103,13 @@ seata-server 支持以下环境变量：
 
 - **SEATA_CONFIG_NAME**
 
-> 可选, 指定配置文件位置, 如 `file:/root/registry`, 将会加载 `/root/registry.conf` 作为配置文件
+> 可选, 指定配置文件位置, 如 `file:/root/registry`, 将会加载 `/root/registry.conf` 作为配置文件，如果需要同时指定 `file.conf`文件，需要将`registry.conf`的`config.file.name`的值改为类似`file:/root/file.conf`，如：
+```
+config {
+  type = "file"
+
+  file {
+    name = "file:/root/seata-config/file.conf"
+  }
+}
+```
