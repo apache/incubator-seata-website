@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="kubernetes,ops" />
+	<meta name="description" content="Seata 高可用部署实践" />
+	<!-- 网页标签标题 -->
+	<title>Seata 高可用部署实践</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>Seata 高可用部署实践</h1>
+<p>使用配置中心和数据库来实现 Seata 的高可用，以 Nacos 和 MySQL 为例，将<a href="https://github.com/helloworlde/spring-cloud-alibaba-component/blob/master/cloud-seata-nacos/">cloud-seata-nacos</a>应用部署到 Kubernetes 集群中</p>
+<h2>准备工作</h2>
+<p>需要准备可用的注册中心、配置中心 Nacos 和 MySQL，在大多数情况下，注册中心、配置中心和数据库都是已有的，不需要特别配置，在这个实践中，为了简单，只部署单机的注册中心、配置中心和数据库，假设他们是可靠的</p>
+<ul>
+<li>部署 Nacos</li>
+</ul>
+<p>在服务器部署 Nacos，开放 8848 端口，用于 seata-server 注册，服务器地址为 <code>192.168.199.2</code></p>
+<pre><code class="language-bash">docker run --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
+</code></pre>
+<ul>
+<li>部署 MySQL</li>
+</ul>
+<p>部署一台MySQL 数据库，用于 seata-server 保存事务数据，服务器地址为 <code>192.168.199.2</code></p>
+<pre><code class="language-bash">docker run --name mysql7 -p 30060:3306<span class="hljs-_">-e</span> MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.17
+</code></pre>
+<h2>部署 seata-server</h2>
+<ul>
+<li>创建seata-server需要的表</li>
+</ul>
+<p>具体的 SQL 参考 <a href="https://github.com/seata/seata/tree/develop/script/server/db">script/server/db</a>，这里使用的是 MySQL 的脚本，数据库名称为 <code>seata</code></p>
+<p>同时，也需要创建 undo_log 表， 可以参考 <a href="https://github.com/seata/seata/blob/develop/script/client/at/db/">script/client/at/db/</a></p>
+<ul>
+<li>修改seata-server配置</li>
+</ul>
+<p>将以下配置添加到配置中心，具体添加方法可以参考 <a href="https://github.com/seata/seata/tree/develop/script/config-center">script/config-center</a></p>
+<pre><code>service.vgroupMapping.my_test_tx_group=default
+store.mode=db
+store.db.datasource=druid
+store.db.dbType=mysql
+store.db.driverClassName=com.mysql.jdbc.Driver
+store.db.url=jdbc:mysql://192.168.199.2:30060/seata?useUnicode=true
+store.db.user=root
+store.db.password=123456
+</code></pre>
+<h3>部署 seata-server 到 Kubernetes</h3>
+<ul>
+<li>seata-server.yaml</li>
+</ul>
+<p>需要将 ConfigMap 的注册中心和配置中心地址改成相应的地址</p>
+<pre><code class="language-yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">  namespace:</span> <span class="hljs-string">default</span>
+<span class="hljs-attr">  labels:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">ClusterIP</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - port:</span> <span class="hljs-number">8091</span>
+<span class="hljs-attr">      protocol:</span> <span class="hljs-string">TCP</span>
+<span class="hljs-attr">      name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">  selector:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+
+<span class="hljs-meta">---</span>
+
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">apps/v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">  namespace:</span> <span class="hljs-string">default</span>
+<span class="hljs-attr">  labels:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+      <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      labels:</span>
+        <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">        - name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">          image:</span> <span class="hljs-string">docker.io/seataio/seata-server:latest</span>
+<span class="hljs-attr">          imagePullPolicy:</span> <span class="hljs-string">IfNotPresent</span>
+<span class="hljs-attr">          env:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">SEATA_CONFIG_NAME</span>
+<span class="hljs-attr">              value:</span> <span class="hljs-attr">file:/root/seata-config/registry</span>
+<span class="hljs-attr">          ports:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">              containerPort:</span> <span class="hljs-number">8091</span>
+<span class="hljs-attr">              protocol:</span> <span class="hljs-string">TCP</span>
+<span class="hljs-attr">          volumeMounts:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">seata-config</span>
+<span class="hljs-attr">              mountPath:</span> <span class="hljs-string">/root/seata-config</span>
+<span class="hljs-attr">      volumes:</span>
+<span class="hljs-attr">        - name:</span> <span class="hljs-string">seata-config</span>
+<span class="hljs-attr">          configMap:</span>
+<span class="hljs-attr">            name:</span> <span class="hljs-string">seata-ha-server-config</span>
+
+
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">ConfigMap</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-server-config</span>
+<span class="hljs-attr">data:</span>
+  <span class="hljs-string">registry.conf:</span> <span class="hljs-string">|
+    registry {
+        type = "nacos"
+        nacos {
+          application = "seata-server"
+          serverAddr = "192.168.199.2"
+        }
+    }
+    config {
+      type = "nacos"
+      nacos {
+        serverAddr = "192.168.199.2"
+        group = "SEATA_GROUP"
+      }
+    }
+</span></code></pre>
+<ul>
+<li>部署</li>
+</ul>
+<pre><code class="language-bash">kubectl apply -f seata-server.yaml
+</code></pre>
+<p>部署完成后，会有三个 pod</p>
+<pre><code class="language-bash">kubectl get pod | grep seata-ha-server
+
+seata-ha-server-645844b8b6-9qh5j    1/1     Running   0          3m14s
+seata-ha-server-645844b8b6-pzczs    1/1     Running   0          3m14s
+seata-ha-server-645844b8b6-wkpw8    1/1     Running   0          3m14s
+</code></pre>
+<p>待启动完成后，可以在 Nacos 的服务列表中发现三个 seata-server 的实例，至此，已经完成 seata-server 的高可用部署</p>
+<h2>部署服务</h2>
+<ul>
+<li>创建业务表并初始化数据</li>
+</ul>
+<p>具体的业务表可以参考 <a href="https://github.com/helloworlde/spring-cloud-alibaba-component/blob/master/cloud-seata-nacos/README.md">cloud-seata-nacos/README.md</a></p>
+<ul>
+<li>添加 Nacos 配置</li>
+</ul>
+<p>在 public 的命名空间下，分别创建 data-id 为 <code>order-service.properties</code>, <code>pay-service.properties</code>, <code>storage-service.properties</code> 的配置，内容相同，需要修改数据库的地址、用户名和密码</p>
+<pre><code># MySQL
+spring.datasource.url=jdbc:mysql://192.168.199.2:30060/seata?useUnicode=true&amp;characterEncoding=utf8&amp;allowMultiQueries=true&amp;useSSL=false
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+# Seata
+spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group
+</code></pre>
+<ul>
+<li>部署服务</li>
+</ul>
+<p>通过 application.yaml 配置文件部署服务，需要注意的是修改 ConfigMap 的 <code>NACOS_ADDR</code>为自己的 Nacos 地址</p>
+<pre><code class="language-yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  namespace:</span> <span class="hljs-string">default</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-service</span>
+<span class="hljs-attr">  labels:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-service</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">NodePort</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - port:</span> <span class="hljs-number">8081</span>
+<span class="hljs-attr">      nodePort:</span> <span class="hljs-number">30081</span>
+<span class="hljs-attr">      protocol:</span> <span class="hljs-string">TCP</span>
+<span class="hljs-attr">      name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">  selector:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-service</span>
+
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">ConfigMap</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-service-config</span>
+<span class="hljs-attr">data:</span>
+<span class="hljs-attr">  NACOS_ADDR:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.199</span><span class="hljs-number">.2</span><span class="hljs-string">:8848</span>
+
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">apps/v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  namespace:</span> <span class="hljs-string">default</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-service</span>
+<span class="hljs-attr">  labels:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-service</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+      <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-service</span>
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      labels:</span>
+        <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-service</span>
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      serviceAccountName:</span> <span class="hljs-string">springcloud</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">        - name:</span> <span class="hljs-string">seata-ha-order-service</span>
+<span class="hljs-attr">          image:</span> <span class="hljs-string">"registry.cn-qingdao.aliyuncs.com/hellowoodes/seata-ha-order-service:1.1"</span>
+<span class="hljs-attr">          imagePullPolicy:</span> <span class="hljs-string">IfNotPresent</span>
+<span class="hljs-attr">          env:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">NACOS_ADDR</span>
+<span class="hljs-attr">              valueFrom:</span>
+<span class="hljs-attr">                configMapKeyRef:</span>
+<span class="hljs-attr">                  key:</span> <span class="hljs-string">NACOS_ADDR</span>
+<span class="hljs-attr">                  name:</span> <span class="hljs-string">seata-ha-service-config</span>
+<span class="hljs-attr">          ports:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">              containerPort:</span> <span class="hljs-number">8081</span>
+<span class="hljs-attr">              protocol:</span> <span class="hljs-string">TCP</span>
+<span class="hljs-attr">        - name:</span> <span class="hljs-string">seata-ha-pay-service</span>
+<span class="hljs-attr">          image:</span> <span class="hljs-string">"registry.cn-qingdao.aliyuncs.com/hellowoodes/seata-ha-pay-service:1.1"</span>
+<span class="hljs-attr">          imagePullPolicy:</span> <span class="hljs-string">IfNotPresent</span>
+<span class="hljs-attr">          env:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">NACOS_ADDR</span>
+<span class="hljs-attr">              valueFrom:</span>
+<span class="hljs-attr">                configMapKeyRef:</span>
+<span class="hljs-attr">                  key:</span> <span class="hljs-string">NACOS_ADDR</span>
+<span class="hljs-attr">                  name:</span> <span class="hljs-string">seata-ha-service-config</span>
+<span class="hljs-attr">          ports:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">              containerPort:</span> <span class="hljs-number">8082</span>
+<span class="hljs-attr">              protocol:</span> <span class="hljs-string">TCP</span>
+<span class="hljs-attr">        - name:</span> <span class="hljs-string">seata-ha-storage-service</span>
+<span class="hljs-attr">          image:</span> <span class="hljs-string">"registry.cn-qingdao.aliyuncs.com/hellowoodes/seata-ha-storage-service:1.1"</span>
+<span class="hljs-attr">          imagePullPolicy:</span> <span class="hljs-string">IfNotPresent</span>
+<span class="hljs-attr">          env:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">NACOS_ADDR</span>
+<span class="hljs-attr">              valueFrom:</span>
+<span class="hljs-attr">                configMapKeyRef:</span>
+<span class="hljs-attr">                  key:</span> <span class="hljs-string">NACOS_ADDR</span>
+<span class="hljs-attr">                  name:</span> <span class="hljs-string">seata-ha-service-config</span>
+<span class="hljs-attr">          ports:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">              containerPort:</span> <span class="hljs-number">8083</span>
+<span class="hljs-attr">              protocol:</span> <span class="hljs-string">TCP</span>
+</code></pre>
+<p>通过以下命令，将应用部署到集群中</p>
+<pre><code class="language-bash">kubectl apply -f application.yaml
+</code></pre>
+<p>然后查看创建的 pod，seata-ha-service 这个服务下有三个 pod</p>
+<pre><code class="language-bash">kubectl get pod | grep seata-ha-service
+
+seata-ha-service-7dbdc6894b-5r8q4      3/3     Running   0          12m
+</code></pre>
+<p>待应用启动后，在 Nacos 的服务列表中，会有相应的服务</p>
+<p><img src="/img/blog/seata-ha-service-list.png" alt="seata-ha-service-list.png"></p>
+<p>此时查看服务的日志，会看到服务向每一个 TC 都注册了</p>
+<p><img src="/img/blog/seata-ha-service-register.png" alt="seata-ha-service-register.png"></p>
+<h2>测试</h2>
+<ul>
+<li>测试成功场景</li>
+</ul>
+<p>调用 placeOrder 接口，将 price 设置为 1，此时余额为 10，可以下单成功</p>
+<pre><code class="language-bash">curl -X POST \
+  http://192.168.199.2:30081/order/placeOrder \
+  -H <span class="hljs-string">'Content-Type: application/json'</span> \
+  -d <span class="hljs-string">'{
+    "userId": 1,
+    "productId": 1,
+    "price": 1
+}'</span>
+</code></pre>
+<p>此时返回结果为：</p>
+<pre><code class="language-json">{<span class="hljs-attr">"success"</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">"message"</span>:<span class="hljs-literal">null</span>,<span class="hljs-attr">"data"</span>:<span class="hljs-literal">null</span>}
+</code></pre>
+<ul>
+<li>测试失败场景</li>
+</ul>
+<p>设置 price 为 100，此时余额不足，会下单失败，pay-service会抛出异常，事务会回滚</p>
+<pre><code class="language-bash">curl -X POST \
+  http://192.168.199.2:30081/order/placeOrder \
+  -H <span class="hljs-string">'Content-Type: application/json'</span> \
+  -d <span class="hljs-string">'{
+    "userId": 1,
+    "productId": 1,
+    "price": 100
+}'</span>
+</code></pre>
+<p>多次调用查看服务日志，发现会随机的向其中某台TC发起事务注册，当扩容或缩容后，有相应的 TC 参与或退出</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

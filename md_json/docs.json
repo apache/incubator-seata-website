@@ -141,6 +141,18 @@
       }
     },
     {
+      "filename": "deploy-ha.md",
+      "link": "/en-us/docs/ops/deploy-ha.html",
+      "meta": {
+        "hidden": "true",
+        "title": "High Available Usage Deployment",
+        "keywords": "kubernetes,ops",
+        "description": "High Available Usage Deployment",
+        "author": "helloworlde",
+        "date": "2020-04-10"
+      }
+    },
+    {
       "filename": "deploy-server.md",
       "link": "/en-us/docs/ops/deploy-server.html",
       "meta": {
@@ -374,6 +386,18 @@
         "title": "Seata部署指南",
         "keywords": "Seata",
         "description": "Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。"
+      }
+    },
+    {
+      "filename": "deploy-ha.md",
+      "link": "/zh-cn/docs/ops/deploy-ha.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Seata 高可用部署",
+        "keywords": "kubernetes,ops",
+        "description": "Seata 高可用部署",
+        "author": "helloworlde",
+        "date": "2020-04-10"
       }
     },
     {

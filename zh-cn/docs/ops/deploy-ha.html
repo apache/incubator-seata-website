@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="kubernetes,ops" />
+	<meta name="description" content="Seata 高可用部署" />
+	<!-- 网页标签标题 -->
+	<title>Seata 高可用部署</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/saga.html" target="_self">Saga 模式</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/transaction-group.html" target="_self">事务分组介绍</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/spring.html" target="_self">Spring 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据源类型支持</a></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/saga-mode.html" target="_self">Seata Saga 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/upgrade.html" target="_self">版本升级指南</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-ha.html" target="_self">高可用部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>Seata 高可用部署</h1>
+<blockquote>
+<p>Seata 的高可用依赖于注册中心、配置中心和数据库来实现</p>
+</blockquote>
+<h2>Seata-Server</h2>
+<p>Seata-Server 需要使用注册中心，并把事务数据保存到数据库中，以 Nacos 为例</p>
+<ul>
+<li>修改<code>registry.conf</code>的注册中心配置</li>
+</ul>
+<pre><code>registry {
+  type = &quot;nacos&quot;
+
+  nacos {
+    application = &quot;seata-server&quot;
+    serverAddr = &quot;192.168.199.2&quot;
+    namespace = &quot;&quot;
+    cluster = &quot;default&quot;
+    username = &quot;&quot;
+    password = &quot;&quot;
+  }
+}
+
+config {
+  type = &quot;nacos&quot;
+  
+  nacos {
+    serverAddr = &quot;192.168.199.2&quot;
+    namespace = &quot;&quot;
+    group = &quot;SEATA_GROUP&quot;
+    username = &quot;&quot;
+    password = &quot;&quot;
+  }
+}
+</code></pre>
+<ul>
+<li>需要修改配置中心的以下几个配置</li>
+</ul>
+<pre><code>service.vgroupMapping.my_test_tx_group=default
+store.mode=db
+store.db.datasource=druid
+store.db.dbType=mysql
+store.db.driverClassName=com.mysql.jdbc.Driver
+store.db.url=jdbc:mysql://192.168.199.2:30060/seata?useUnicode=true
+store.db.user=root
+store.db.password=123456
+</code></pre>
+<ul>
+<li>在数据库创建 <code>global_table</code>, <code>branch_table</code>, <code>lock_table</code>表</li>
+</ul>
+<p>相应的脚本在GitHub 的 <a href="https://github.com/seata/seata/tree/develop/script/server/db">/script/server/db/</a> 目录下</p>
+<p>这样，启动多个seata-server，即可实现其高可用</p>
+<hr>
+<p>以 Kubernetes 为例，部署文件参考:</p>
+<pre><code class="language-yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">  namespace:</span> <span class="hljs-string">default</span>
+<span class="hljs-attr">  labels:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">ClusterIP</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - port:</span> <span class="hljs-number">8091</span>
+<span class="hljs-attr">      protocol:</span> <span class="hljs-string">TCP</span>
+<span class="hljs-attr">      name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">  selector:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+
+<span class="hljs-meta">---</span>
+
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">apps/v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">  namespace:</span> <span class="hljs-string">default</span>
+<span class="hljs-attr">  labels:</span>
+    <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+      <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      labels:</span>
+        <span class="hljs-string">app.kubernetes.io/name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">        - name:</span> <span class="hljs-string">seata-ha-server</span>
+<span class="hljs-attr">          image:</span> <span class="hljs-string">docker.io/seataio/seata-server:latest</span>
+<span class="hljs-attr">          imagePullPolicy:</span> <span class="hljs-string">IfNotPresent</span>
+<span class="hljs-attr">          env:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">SEATA_CONFIG_NAME</span>
+<span class="hljs-attr">              value:</span> <span class="hljs-attr">file:/root/seata-config/registry</span>
+<span class="hljs-attr">          ports:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">              containerPort:</span> <span class="hljs-number">8091</span>
+<span class="hljs-attr">              protocol:</span> <span class="hljs-string">TCP</span>
+<span class="hljs-attr">          volumeMounts:</span>
+<span class="hljs-attr">            - name:</span> <span class="hljs-string">seata-config</span>
+<span class="hljs-attr">              mountPath:</span> <span class="hljs-string">/root/seata-config</span>
+<span class="hljs-attr">      volumes:</span>
+<span class="hljs-attr">        - name:</span> <span class="hljs-string">seata-config</span>
+<span class="hljs-attr">          configMap:</span>
+<span class="hljs-attr">            name:</span> <span class="hljs-string">seata-ha-server-config</span>
+
+
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">ConfigMap</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">seata-ha-server-config</span>
+<span class="hljs-attr">data:</span>
+  <span class="hljs-string">registry.conf:</span> <span class="hljs-string">|
+    registry {
+        type = "nacos"
+        nacos {
+          application = "seata-server"
+          serverAddr = "192.168.199.2"
+        }
+    }
+    config {
+      type = "nacos"
+      nacos {
+        serverAddr = "192.168.199.2"
+        group = "SEATA_GROUP"
+      }
+    }
+</span></code></pre>
+<p>关于 Seata 高可用部署的实践可以参考 <a href="https://seata.io/zh-cn/blog/seata-ha-practice.html">Seata 高可用部署实践</a></p>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

@@ -252,6 +252,18 @@
       }
     },
     {
+      "filename": "seata-ha-practice.md",
+      "link": "/zh-cn/blog/seata-ha-practice.html",
+      "meta": {
+        "hidden": "true",
+        "title": "Seata 高可用部署实践",
+        "keywords": "kubernetes,ops",
+        "description": "Seata 高可用部署实践",
+        "author": "helloworlde",
+        "date": "2020-04-10"
+      }
+    },
+    {
       "filename": "seata-meetup-hangzhou.md",
       "link": "/zh-cn/blog/seata-meetup-hangzhou.html",
       "meta": {
