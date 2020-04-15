@@ -11,9 +11,11 @@ date: 2020-04-10
 
 使用配置中心和数据库来实现 Seata 的高可用，以 Nacos 和 MySQL 为例，将[cloud-seata-nacos](https://github.com/helloworlde/spring-cloud-alibaba-component/blob/master/cloud-seata-nacos/)应用部署到 Kubernetes 集群中
 
+该应用使用 Nacos 作为配置和注册中心，总共有三个服务: order-service, pay-service, storage-service, 其中 order-service 对外提供下单接口，当余额和库存充足时，下单成功，会提交事务，当不足时会抛出异常，下单失败，回滚事务
+
 ## 准备工作
 
-需要准备可用的注册中心、配置中心 Nacos 和 MySQL，在大多数情况下，注册中心、配置中心和数据库都是已有的，不需要特别配置，在这个实践中，为了简单，只部署单机的注册中心、配置中心和数据库，假设他们是可靠的
+需要准备可用的注册中心、配置中心 Nacos 和 MySQL，通常情况下，注册中心、配置中心和数据库都是已有的，不需要特别配置，在这个实践中，为了简单，只部署单机的注册中心、配置中心和数据库，假设他们是可靠的
 
 - 部署 Nacos 
 
@@ -25,10 +27,10 @@ docker run --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
 
 - 部署 MySQL 
 
-部署一台MySQL 数据库，用于 seata-server 保存事务数据，服务器地址为 `192.168.199.2`
+部署一台MySQL 数据库，用于保存事务数据，服务器地址为 `192.168.199.2`
 
 ```bash
-docker run --name mysql7 -p 30060:3306-e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.17
+docker run --name mysql -p 30060:3306-e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.17
 ```
 
 ## 部署 seata-server
@@ -41,7 +43,7 @@ docker run --name mysql7 -p 30060:3306-e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
 
 - 修改seata-server配置
 
-将以下配置添加到配置中心，具体添加方法可以参考 [script/config-center](https://github.com/seata/seata/tree/develop/script/config-center)
+将以下配置添加到 Nacos 配置中心，具体添加方法可以参考 [script/config-center](https://github.com/seata/seata/tree/develop/script/config-center)
 
 ```
 service.vgroupMapping.my_test_tx_group=default
@@ -157,7 +159,28 @@ seata-ha-server-645844b8b6-wkpw8    1/1     Running   0          3m14s
 
 待启动完成后，可以在 Nacos 的服务列表中发现三个 seata-server 的实例，至此，已经完成 seata-server 的高可用部署
 
-## 部署服务
+- 查看服务日志 
+
+```bash
+kubelet logs -f seata-ha-server-645844b8b6-9qh5j
+```
+
+```java
+[0.012s][info   ][gc] Using Serial
+2020-04-15 00:55:09.880 INFO [main]io.seata.server.ParameterParser.init:90 -The server is running in container.
+2020-04-15 00:55:10.013 INFO [main]io.seata.config.FileConfiguration.<init>:110 -The configuration file used is file:/root/seata-config/registry.conf
+2020-04-15 00:55:12.426 INFO [main]com.alibaba.druid.pool.DruidDataSource.init:947 -{dataSource-1} inited
+2020-04-15 00:55:13.127 INFO [main]io.seata.core.rpc.netty.RpcServerBootstrap.start:155 -Server started 
+```
+
+其中`{dataSource-1} `说明使用了数据库，并正常初始化完成
+
+- 查看注册中心，此时seata-serve 这个服务会有三个实例
+
+![seata-ha-nacos-list.png](/img/blog/seata-ha-nacos-list.png)
+
+
+## 部署业务服务
 
 - 创建业务表并初始化数据
 
@@ -288,15 +311,27 @@ seata-ha-service-7dbdc6894b-5r8q4      3/3     Running   0          12m
 
 此时查看服务的日志，会看到服务向每一个 TC 都注册了
 
+```bash
+kubectl logs -f seata-ha-service-7dbdc6894b-5r8q4 seata-ha-order-service
+```
+
 ![seata-ha-service-register.png](/img/blog/seata-ha-service-register.png)
+
+查看任意的 TC 日志，会发现每一个服务都向 TC 注册了
+
+```bash
+kubelet logs -f seata-ha-server-645844b8b6-9qh5j
+```
+
+![seata-ha-tc-register.png](/img/blog/seata-ha-tc-register.png)
 
 
 ## 测试
 
 
-- 测试成功场景
+### 测试成功场景
 
-调用 placeOrder 接口，将 price 设置为 1，此时余额为 10，可以下单成功
+调用下单接口，将 price 设置为 1，因为初始化的余额为 10，可以下单成功
 
 ```bash
 curl -X POST \
@@ -315,9 +350,17 @@ curl -X POST \
 {"success":true,"message":null,"data":null}
 ```
 
-- 测试失败场景
+查看TC 的日志，事务成功提交：
 
-设置 price 为 100，此时余额不足，会下单失败，pay-service会抛出异常，事务会回滚
+![seata-ha-commit-tc-success.png](/img/blog/seata-ha-commit-tc-success.png)
+
+查看 order-service 服务日志
+![seata-ha-commit-success.png](/img/blog/seata-ha-commit-service-success.png)
+
+
+### 测试失败场景
+
+设置 price 为 100，此时余额不足，会下单失败抛出异常，事务会回滚
 
 ```bash
 curl -X POST \
@@ -330,5 +373,11 @@ curl -X POST \
 }'
 ```
 
-多次调用查看服务日志，发现会随机的向其中某台TC发起事务注册，当扩容或缩容后，有相应的 TC 参与或退出
+查看 TC 的日志：
+![seata-ha-commit-tc-rollback.png](/img/blog/seata-ha-commit-tc-rollback.png)
+
+查看服务的日志 ：
+![seata-ha-commit-service-rollback.png](/img/blog/seata-ha-commit-service-rollback.png)
+
+多次调用查看服务日志，发现会随机的向其中某台TC发起事务注册，当扩容或缩容后，有相应的 TC 参与或退出，证明高可用部署生效
 
