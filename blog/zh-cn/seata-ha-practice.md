@@ -82,13 +82,14 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: seata-ha-server
   namespace: default
   labels:
     app.kubernetes.io/name: seata-ha-server
 spec:
+  serviceName: seata-ha-server
   replicas: 3
   selector:
     matchLabels:
@@ -231,6 +232,27 @@ data:
   NACOS_ADDR: 192.168.199.2:8848
 
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: seata-ha-account
+  namespace: default
+  
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: seata-ha-account
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: seata-ha-account
+    namespace: default
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -248,7 +270,7 @@ spec:
       labels:
         app.kubernetes.io/name: seata-ha-service
     spec:
-      serviceAccountName: springcloud
+      serviceAccountName: seata-ha-account
       containers:
         - name: seata-ha-order-service
           image: "registry.cn-qingdao.aliyuncs.com/hellowoodes/seata-ha-order-service:1.1"
