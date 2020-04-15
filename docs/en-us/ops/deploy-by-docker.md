@@ -17,22 +17,13 @@ date: 2019-11-25
 $ docker run --name seata-server -p 8091:8091 seataio/seata-server:latest
 ```
 
-#### Use custom configuration file 
-
-```bash
-$ docker run --name seata-server \
-        -p 8091:8091 \
-        -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /PATH/TO/CONFIG_FILE:/root/seata-config  \
-        seataio/seata-server
-```
-
-#### Specify server IP 
+#### Specify server IP and port
 
 ```bash
 $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_IP=192.168.1.1 \
+        -e SEATA_PORT=8091 \
         seataio/seata-server
 ```
 
@@ -53,26 +44,46 @@ services:
       - STORE_MODE=file
 ```
 
-## Container shell access and viewing logs
+## Access container and view log
 
 ```bash
 $ docker exec -it seata-server sh
 ```
 
 ```bash
-$ tail -f /root/logs/seata/seata-server.log
+$ docker logs -f seata-server
 ```
 
 ## Using custom configuration file
 
-The default configuration could be found under path `/seata-server/resources`,  suggest that put your custom configuration under other directories. And the environment variable`SEATA_CONFIG_NAME` is required when use custom configuration, and the value must be started with `file:` like `file:/root/seata-config/registry`:
+Custom configuration implement by mount `registry.conf` and `file.conf` to container.
+
+- Specify registry.conf 
+
+The environment variable`SEATA_CONFIG_NAME` is required when use a custom configuration , and the value must be started with `file:` like `file:/root/seata-config/registry`:
 
 ```bash
 $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /PATH/TO/CONFIG_FILE:/root/seata-config  \
+        -v /User/seata/config:/root/seata-config  \
         seataio/seata-server
+```
+
+The param `-e` specify environment, and the param `-v` specify mount volume.
+
+- Specify file.conf 
+
+If you need specify `file.conf`, just modify `config` like below in `registry.conf` file:
+
+```
+config {
+  type = "file"
+
+  file {
+    name = "file:/root/seata-config/file.conf"
+  }
+}
 ```
 
 ## Environment Variables 
@@ -101,13 +112,4 @@ You can modify configuration of seata-server  by the environment variables like 
 
 - **SEATA_CONFIG_NAME**
 
-> The variable is optional, specifies the configuration file path, like the `file:/root/registry`, will load file`/root/registry.conf` as configuration. If need specify `file.conf` configuration，the `config.file.name` value in `registry.conf` file need to change as related config, like `file:/root/file.conf`, for example:
-```
-config {
-  type = "file"
-
-  file {
-    name = "file:/root/seata-config/file.conf"
-  }
-}
-```
+> The variable is optional, specifies the configuration file path, like the `file:/root/registry`, will load file`/root/registry.conf` as configuration. If need specify `file.conf` configuration，the `config.file.name` value in `registry.conf` file need to change as related config, like `file:/root/file.conf`
