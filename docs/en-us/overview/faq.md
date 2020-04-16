@@ -151,6 +151,6 @@ You should update the configuraton of `mybatis`:  set annotation `@Options(useGe
 <h3 id='11'>Q: 11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</h3>
 
 **A:** 
-You can execute this command:[mvn clean install -DskipTests=true](https://github.com/seata/seata/issues/2438),These codes have been removed in version 0.8.1.
+You can execute this command: `./mvnw clean install -DskipTests=true` (Mac,Linux) or `mvnw.cmd clean install -DskipTests=true`, (Win)[reference issues/2438](https://github.com/seata/seata/issues/2438),These codes have been removed in version 0.8.1.
 
 ********
