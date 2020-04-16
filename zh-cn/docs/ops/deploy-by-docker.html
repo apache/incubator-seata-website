@@ -17,17 +17,11 @@
 <h4>启动seata-server实例</h4>
 <pre><code class="language-bash">$ docker run --name seata-server -p 8091:8091 seataio/seata-server:latest
 </code></pre>
-<h4>指定自定义配置文件启动</h4>
-<pre><code class="language-bash">$ docker run --name seata-server \
-        -p 8091:8091 \
-        -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /PATH/TO/CONFIG_FILE:/root/seata-config  \
-        seataio/seata-server
-</code></pre>
-<h4>指定seata-server IP 启动</h4>
+<h4>指定seata-server IP和端口 启动</h4>
 <pre><code class="language-bash">$ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_IP=192.168.1.1 \
+        -e SEATA_PORT=8091 \
         seataio/seata-server
 </code></pre>
 <h4>Docker compose 启动</h4>
@@ -46,15 +40,32 @@
 <h2>容器命令行及查看日志</h2>
 <pre><code class="language-bash">$ docker <span class="hljs-built_in">exec</span> -it seata-server sh
 </code></pre>
-<pre><code class="language-bash">$ tail -f /root/logs/seata/seata-server.log
+<pre><code class="language-bash">$ docker logs -f seata-server
 </code></pre>
 <h2>使用自定义配置文件</h2>
-<p>默认的配置文件路径为 <code>/seata-server/resources</code>, 建议将自定义配置文件放到其他目录下; 使用自定义配置文件时必须指定环境变量 <code>SEATA_CONFIG_NAME</code>, 并且环境变量的值需要以<code>file:</code>开始, 如: <code>file:/root/seata-config/registry</code></p>
+<p>自定义配置文件需要通过挂载文件的方式实现，将宿主机上的 <code>registry.conf</code> 和 <code>file.conf</code> 挂载到容器中相应的目录</p>
+<ul>
+<li>指定 registry.conf</li>
+</ul>
+<p>使用自定义配置文件时必须指定环境变量 <code>SEATA_CONFIG_NAME</code>, 并且值需要以<code>file:</code>开始, 如: <code>file:/root/seata-config/registry</code></p>
 <pre><code class="language-bash">$ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /PATH/TO/CONFIG_FILE:/root/seata-config  \
+        -v /User/seata/config:/root/seata-config  \
         seataio/seata-server
+</code></pre>
+<p>其中 <code>-e</code> 用于配置环境变量， <code>-v</code> 用于挂载宿主机的目录</p>
+<ul>
+<li>指定 file.conf</li>
+</ul>
+<p>如果需要同时指定 <code>file.conf</code> 配置文件，则需要在 <code>registry.conf</code> 文件中将 <code>config</code> 配置改为以下内容，<code>name</code> 的值为容器中对应的路径</p>
+<pre><code>config {
+  type = &quot;file&quot;
+
+  file {
+    name = &quot;file:/root/seata-config/file.conf&quot;
+  }
+}
 </code></pre>
 <h2>环境变量</h2>
 <p>seata-server 支持以下环境变量：</p>
@@ -92,16 +103,8 @@
 <li><strong>SEATA_CONFIG_NAME</strong></li>
 </ul>
 <blockquote>
-<p>可选, 指定配置文件位置, 如 <code>file:/root/registry</code>, 将会加载 <code>/root/registry.conf</code> 作为配置文件，如果需要同时指定 <code>file.conf</code>文件，需要将<code>registry.conf</code>的<code>config.file.name</code>的值改为类似<code>file:/root/file.conf</code>，如：</p>
+<p>可选, 指定配置文件位置, 如 <code>file:/root/registry</code>, 将会加载 <code>/root/registry.conf</code> 作为配置文件，如果需要同时指定 <code>file.conf</code>文件，需要将<code>registry.conf</code>的<code>config.file.name</code>的值改为类似<code>file:/root/file.conf</code>：</p>
 </blockquote>
-<pre><code>config {
-  type = &quot;file&quot;
-
-  file {
-    name = &quot;file:/root/seata-config/file.conf&quot;
-  }
-}
-</code></pre>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>

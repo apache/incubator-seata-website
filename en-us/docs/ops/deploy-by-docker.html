@@ -17,17 +17,11 @@
 <h4>Start a seata-server instance</h4>
 <pre><code class="language-bash">$ docker run --name seata-server -p 8091:8091 seataio/seata-server:latest
 </code></pre>
-<h4>Use custom configuration file</h4>
-<pre><code class="language-bash">$ docker run --name seata-server \
-        -p 8091:8091 \
-        -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /PATH/TO/CONFIG_FILE:/root/seata-config  \
-        seataio/seata-server
-</code></pre>
-<h4>Specify server IP</h4>
+<h4>Specify server IP and port</h4>
 <pre><code class="language-bash">$ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_IP=192.168.1.1 \
+        -e SEATA_PORT=8091 \
         seataio/seata-server
 </code></pre>
 <h4>Docker compose</h4>
@@ -43,18 +37,35 @@
 <span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8091</span>
 <span class="hljs-bullet">      -</span> <span class="hljs-string">STORE_MODE=file</span>
 </code></pre>
-<h2>Container shell access and viewing logs</h2>
+<h2>Access container and view log</h2>
 <pre><code class="language-bash">$ docker <span class="hljs-built_in">exec</span> -it seata-server sh
 </code></pre>
-<pre><code class="language-bash">$ tail -f /root/logs/seata/seata-server.log
+<pre><code class="language-bash">$ docker logs -f seata-server
 </code></pre>
 <h2>Using custom configuration file</h2>
-<p>The default configuration could be found under path <code>/seata-server/resources</code>,  suggest that put your custom configuration under other directories. And the environment variable<code>SEATA_CONFIG_NAME</code> is required when use custom configuration, and the value must be started with <code>file:</code> like <code>file:/root/seata-config/registry</code>:</p>
+<p>Custom configuration implement by mount <code>registry.conf</code> and <code>file.conf</code> to container.</p>
+<ul>
+<li>Specify registry.conf</li>
+</ul>
+<p>The environment variable<code>SEATA_CONFIG_NAME</code> is required when use a custom configuration , and the value must be started with <code>file:</code> like <code>file:/root/seata-config/registry</code>:</p>
 <pre><code class="language-bash">$ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /PATH/TO/CONFIG_FILE:/root/seata-config  \
+        -v /User/seata/config:/root/seata-config  \
         seataio/seata-server
+</code></pre>
+<p>The param <code>-e</code> specify environment, and the param <code>-v</code> specify mount volume.</p>
+<ul>
+<li>Specify file.conf</li>
+</ul>
+<p>If you need specify <code>file.conf</code>, just modify <code>config</code> like below in <code>registry.conf</code> file:</p>
+<pre><code>config {
+  type = &quot;file&quot;
+
+  file {
+    name = &quot;file:/root/seata-config/file.conf&quot;
+  }
+}
 </code></pre>
 <h2>Environment Variables</h2>
 <p>You can modify configuration of seata-server  by the environment variables like this:</p>
@@ -92,16 +103,8 @@
 <li><strong>SEATA_CONFIG_NAME</strong></li>
 </ul>
 <blockquote>
-<p>The variable is optional, specifies the configuration file path, like the <code>file:/root/registry</code>, will load file<code>/root/registry.conf</code> as configuration. If need specify <code>file.conf</code> configuration，the <code>config.file.name</code> value in <code>registry.conf</code> file need to change as related config, like <code>file:/root/file.conf</code>, for example:</p>
+<p>The variable is optional, specifies the configuration file path, like the <code>file:/root/registry</code>, will load file<code>/root/registry.conf</code> as configuration. If need specify <code>file.conf</code> configuration，the <code>config.file.name</code> value in <code>registry.conf</code> file need to change as related config, like <code>file:/root/file.conf</code></p>
 </blockquote>
-<pre><code>config {
-  type = &quot;file&quot;
-
-  file {
-    name = &quot;file:/root/seata-config/file.conf&quot;
-  }
-}
-</code></pre>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>Vision</h3><p>Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.</p></div><div class="col col-6"><dl><dt>Documentation</dt><dd><a href="/en-us/docs/overview/what-is-seata.html" target="_self">What is Seata?</a></dd><dd><a href="/en-us/docs/user/quickstart.html" target="_self">Quick Start</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">Report a doc issue</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">Edit This Page on GitHub</a></dd></dl></div><div class="col col-6"><dl><dt>Resources</dt><dd><a href="/en-us/blog/index.html" target="_self">Blog</a></dd><dd><a href="/en-us/community/index.html" target="_self">Community</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
