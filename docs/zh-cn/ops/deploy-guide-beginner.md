@@ -5,11 +5,11 @@ description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务
 ---
 
 # 部署指南
-## Seata新手部署指南(1.0.0版本)
+## Seata新手部署指南(1.2.0版本)
 Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 
 ### 资源目录介绍
-#### <a href="https://github.com/seata/seata/tree/1.0.0/script" target="_blank">script</a>
+#### <a href="https://github.com/seata/seata/tree/1.2.0/script" target="_blank">点击查看</a>
 - client
 > 存放client端sql脚本，参数配置
 - config-center
@@ -22,8 +22,9 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 - seata-spring-boot-starter
 > 1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
 若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；  
-starter使用file配置中心时默认开启数据源自动代理
+starter默认开启数据源自动代理，可配置seata.enable-auto-data-source-proxy: false关闭
 - spring-cloud-alibaba-seata
+> <a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E" target="_blank">查看版本说明</a>
 > 2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0，2.2.0内嵌seata-spring-boot-starter 1.0.0
 ```
     2.1.0和2.1.1兼容starter解决方案:
@@ -31,13 +32,12 @@ starter使用file配置中心时默认开启数据源自动代理
 ```  
     
 ### 启动Server
-Server端存储模式（store.mode）现有file、db两种（后续将引入raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。  
+Server端存储模式（store.mode）现有file、db两种（后续将引入redis、raft），file模式无需改动，直接启动即可，下面专门讲下db启动步骤。  
 注：file模式为单机模式，全局事务会话信息内存中读写并持久化本地文件root.data，性能较高;  
     db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些。
 #### 步骤一：启动包
 - <a href="https://github.com/seata/seata/releases" target="_blank">点击下载</a>
 - 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community/index.html" target="_blank">2群</a>），qq群（群号：254657148）群文件共享下载
-- 其它途径
 
 #### 步骤二：建表
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
@@ -67,15 +67,15 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入raft
 ### 业务系统集成Client
 #### 步骤一：添加seata依赖（建议单选）
 - 依赖seata-all
-- 依赖seata-spring-boot-starter，支持yml配置
+- 依赖seata-spring-boot-starter，支持yml、properties配置，内部已依赖seata-all
 - 依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递
 #### 步骤二：undo_log建表、配置参数
-- <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">点击查看参数配置介绍</a>
+- <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>
 
 #### 步骤三：数据源代理(不支持自动和手动配置并存)
 - 0.9.0版本开始seata支持自动代理数据源
 ```
-    1.1.0: 取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
+    1.1.0: seata-all取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
     1.0.0: client.support.spring.datasource.autoproxy=true
     0.9.0: support.spring.datasource.autoproxy=true
 ```

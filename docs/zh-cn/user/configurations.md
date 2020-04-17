@@ -10,15 +10,15 @@ description: Seata 参数配置。
 
 ### 变更记录
 ```
-20191221: 
-1.增加seata.enabled、client.report.success.enable、
-transport.enable-client-batch-send-request、client.log.exceptionRate
 20200220(1.1.0): 
 1.file.conf和registry.conf两个配置文件中的格式统一转换为驼峰格式.
 2.统一所有配置文件的默认值(file.conf、registry.conf、seata-spring-boot-starter)
 3.优化seata-spring-boot-starter中对于事务分组和TC集群的配置
 4.移除client.support.spring.datasource.autoproxy,增加@EnableAutoDataSourceProxy
 注解用于开启数据源自动代理,同时可选择代理实现方式(具体请查阅附录5)
+20191221: 
+1.增加seata.enabled、client.report.success.enable、
+transport.enable-client-batch-send-request、client.log.exceptionRate
 ```
 ## 关注属性(详细描述见全属性)
 
@@ -104,14 +104,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.logTable                | 自定义undo表名 |  默认undo_log  |
 
 
-### 未使用
-| key         | desc         | remark|
-|---------------|--------------|----|
-| lock.mode            | 锁存储方式   |local、remote |
-| lock.local          |  |    |
-| lock.remote          |  |  |
-
-### 参数同步到配置中心使用demo
+<details>
+  <summary><mark>参数同步到配置中心使用demo</mark></summary>
 
 #### Nacos
 shell:
@@ -195,6 +189,8 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
 
 -z: zk所属路径
 
+</details>
+
 ### 附录1：
     事务分组说明。
     1.事务分组是什么？
@@ -216,7 +212,7 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
     4.seata-spring-boot-starter中的配置为什么是grouplist.default,也就是说和file.conf中的default.grouplist写法刚好颠倒了位置?  
     由于spring-boot本身配置文件语法的要求,这个地方需要将file.conf中的default.grouplist写成grouplist.default,效果是一样的.
 ### 附录3：
-    log_status=1的是防御性的，是收到全局回滚请求，但是不确定某个事务分支的本地事务是否已经执行完成了，这时事先插入一条branchid相同的数据，插入的假数据成功了，本地事务继续执行就会报主键冲突自动回滚。
+    log_status=1的是防御性的，是收到全局回滚请求，但是不确定某个事务分支的本地事务是否已经执行完成了，这时事先插入一条branchid相同的数据，插入的假数据成功了，本地事务继续执行就会报唯一索引冲突自动回滚。
     假如插入不成功说明表里有数据这个本地事务已经执行完成了，那么取出这条undolog数据做反向回滚操作。
 
 ### 附录4：
