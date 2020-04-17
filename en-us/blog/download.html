@@ -18,6 +18,108 @@
 <p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a> <br>
 Release Notes: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.2.0 (2020-04-18)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.2.0.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.2.0/seata-server-1.2.0.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.2.0</h3>
+<p>Seata 1.2.0 Released.</p>
+<p>Seata is an easy-to-use, high-performance, open source distributed transaction solution.</p>
+<p>The version is updated as follows:</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/2206">#2206</a>] support to set propagation of global transaction</li>
+<li>[<a href="https://github.com/seata/seata/pull/2108">#2108</a>] support zip bzip2 7z compressor</li>
+<li>[<a href="https://github.com/seata/seata/pull/2328">#2328</a>] mysql 5.x and 8.x jdbc drivers coexist in server</li>
+<li>[<a href="https://github.com/seata/seata/pull/2367">#2367</a>] added permission configuration support for nacos 1.2</li>
+<li>[<a href="https://github.com/seata/seata/pull/2359">#2359</a>] support propagation.never, propagation.mandatory, transaction suspend and resume api</li>
+<li>[<a href="https://github.com/seata/seata/pull/2418">#2418</a>] added fst serialization</li>
+<li>[<a href="https://github.com/seata/seata/pull/2135">#2135</a>] support SPI scope</li>
+<li>[<a href="https://github.com/seata/seata/pull/2370">#2370</a>] failureHandler implement can be read from the container</li>
+<li>[<a href="https://github.com/seata/seata/pull/2481">#2481</a>] add the max wait configuration for db</li>
+<li>[<a href="https://github.com/seata/seata/pull/2379">#2379</a>] support custom service name when registering with nacos</li>
+<li>[<a href="https://github.com/seata/seata/pull/2381">#2381</a>] support  XA transaction mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/2112">#2112</a>] support batch update and delete with multiple sql</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/2283">#2283</a>] fix oracle get table meta fail</li>
+<li>[<a href="https://github.com/seata/seata/pull/2312">#2312</a>] fix the judgement of configuration condition</li>
+<li>[<a href="https://github.com/seata/seata/pull/2309">#2309</a>] Timestamp deserialize lost nano</li>
+<li>[<a href="https://github.com/seata/seata/pull/2292">#2292</a>] fix some configuration not converted to camel style</li>
+<li>[<a href="https://github.com/seata/seata/pull/2306">#2306</a>] fix deprecated prerequisites</li>
+<li>[<a href="https://github.com/seata/seata/pull/2287">#2287</a>] fix connection context can't be remove when global lock retry</li>
+<li>[<a href="https://github.com/seata/seata/pull/2361">#2361</a>] modify the error configuration name</li>
+<li>[<a href="https://github.com/seata/seata/pull/2333">#2333</a>] fix wrong exception information when rollback fails due to dirty data</li>
+<li>[<a href="https://github.com/seata/seata/pull/2390">#2390</a>] fix configuration item containing spaces</li>
+<li>[<a href="https://github.com/seata/seata/pull/2408">#2408</a>] fix missing sequence in undo_log table</li>
+<li>[<a href="https://github.com/seata/seata/pull/2391">#2391</a>] configuration exceptions lead to increased CPU usage</li>
+<li>[<a href="https://github.com/seata/seata/pull/2427">#2427</a>] stringutils stackoverflowerror.</li>
+<li>[<a href="https://github.com/seata/seata/pull/2384">#2384</a>] saga StateMachineRepository#getStateMachineById will replace the last version in cache</li>
+<li>[<a href="https://github.com/seata/seata/pull/2323">#2323</a>] fix wrong proxy of datasource bean</li>
+<li>[<a href="https://github.com/seata/seata/pull/2466">#2466</a>] memory visibility of active attribute in file mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/2349">#2349</a>] insert sql primary key value support type</li>
+<li>[<a href="https://github.com/seata/seata/pull/2479">#2479</a>] postgresql schema lowerCase</li>
+<li>[<a href="https://github.com/seata/seata/pull/2449">#2449</a>] can not get table structure when start</li>
+<li>[<a href="https://github.com/seata/seata/pull/2505">#2505</a>] fix bug of session store path value judgment</li>
+<li>[<a href="https://github.com/seata/seata/pull/2456">#2456</a>] fix server encode request error</li>
+<li>[<a href="https://github.com/seata/seata/pull/2495">#2495</a>] fix the NPE and reduce the request when lockkey is null</li>
+<li>[<a href="https://github.com/seata/seata/pull/2490">#2490</a>] fix RpcContext.addResource when resource is null</li>
+<li>[<a href="https://github.com/seata/seata/pull/2419">#2419</a>] fix http testcase run failed</li>
+<li>[<a href="https://github.com/seata/seata/pull/2529">#2529</a>] druid parameter optimization</li>
+<li>[<a href="https://github.com/seata/seata/pull/2535">#2535</a>] fix wrong configuration name in config txt</li>
+<li>[<a href="https://github.com/seata/seata/pull/2524">#2524</a>] registration service configuration missing and inconsistent</li>
+<li>[<a href="https://github.com/seata/seata/pull/2473">#2473</a>] flush condition of disk in file mode</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/2288">#2288</a>] codecov ignore mock</li>
+<li>[<a href="https://github.com/seata/seata/pull/2297">#2297</a>] remove duplicated dependency</li>
+<li>[<a href="https://github.com/seata/seata/pull/2336">#2336</a>] supplement using organization logs</li>
+<li>[<a href="https://github.com/seata/seata/pull/2348">#2348</a>] remove redundant configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/2354">#2354</a>] adjust the processing logic for unsupported listeners</li>
+<li>[<a href="https://github.com/seata/seata/pull/2362">#2362</a>] stackTraceLogger param</li>
+<li>[<a href="https://github.com/seata/seata/pull/2351">#2351</a>] add get local global status</li>
+<li>[<a href="https://github.com/seata/seata/pull/2320">#2320</a>] protostuff and kryo serialize timestamp</li>
+<li>[<a href="https://github.com/seata/seata/pull/2307">#2307</a>] optimize transaction context switch logic when transaction mode switching</li>
+<li>[<a href="https://github.com/seata/seata/pull/2382">#2382</a>] optimize RegistryFactory singleton pattern and RegistryType judge mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/2400">#2400</a>] optimize the magic num of date at UUIDGenerator</li>
+<li>[<a href="https://github.com/seata/seata/pull/2368">#2368</a>] add zk configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/2397">#2397</a>] fix typo</li>
+<li>[<a href="https://github.com/seata/seata/pull/2407">#2407</a>] Inaccurate judgment will lead to NPE</li>
+<li>[<a href="https://github.com/seata/seata/pull/2402">#2402</a>] optimize the rm and tm register log</li>
+<li>[<a href="https://github.com/seata/seata/pull/2422">#2422</a>] add link of script in document</li>
+<li>[<a href="https://github.com/seata/seata/pull/2329">#2329</a>] separate the different storage pattern processing logic</li>
+<li>[<a href="https://github.com/seata/seata/pull/2364">#2364</a>] generated instances that were not actually used when the class was loaded</li>
+<li>[<a href="https://github.com/seata/seata/pull/2440">#2440</a>] optimize contact us and startup log</li>
+<li>[<a href="https://github.com/seata/seata/pull/2445">#2445</a>] the class registration method of kryo and fst</li>
+<li>[<a href="https://github.com/seata/seata/pull/2372">#2372</a>] refactor lock store sql with SPI</li>
+<li>[<a href="https://github.com/seata/seata/pull/2453">#2453</a>] optimize server configuration item</li>
+<li>[<a href="https://github.com/seata/seata/pull/2369">#2369</a>] log store sql with spi</li>
+<li>[<a href="https://github.com/seata/seata/pull/2526">#2526</a>] optimize spring-boot startup log</li>
+<li>[<a href="https://github.com/seata/seata/pull/2530">#2530</a>] remove use connPool</li>
+<li>[<a href="https://github.com/seata/seata/pull/2489">#2489</a>] optimize exceptionHandler code logic</li>
+<li>[<a href="https://github.com/seata/seata/pull/2494">#2494</a>] add methods to reduce redundant code</li>
+<li>[<a href="https://github.com/seata/seata/pull/2409">#2409</a>] reduce the db and network request when undoLog  or lockKey is empty</li>
+<li>[<a href="https://github.com/seata/seata/pull/2523">#2523</a>] optimize abnormal global transaction's output logs according to frequency</li>
+<li>[<a href="https://github.com/seata/seata/pull/2549">#2549</a>] optimize ZookeeperConfiguration log</li>
+<li>[<a href="https://github.com/seata/seata/pull/2558">#2558</a>] optimize config and server module log</li>
+<li>[<a href="https://github.com/seata/seata/pull/2464">#2464</a>] saga transaction editor enhancements</li>
+</ul>
+<p>Thanks to these contributors for their code commits. Please report an unintended omission.</p>
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+</ul>
+<p>Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.1.0 (2020-02-19)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.1.0.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.1.0/seata-server-1.1.0.zip">binary</a></p>
