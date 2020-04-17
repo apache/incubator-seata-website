@@ -9,7 +9,7 @@ description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务
 Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 
 ### 资源目录介绍
-#### <a href="https://github.com/seata/seata/tree/1.2.0/script" target="_blank">点击打开</a>
+#### <a href="https://github.com/seata/seata/tree/1.2.0/script" target="_blank">点击查看</a>
 - client
 > 存放client端sql脚本，参数配置
 - config-center
