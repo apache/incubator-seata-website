@@ -135,7 +135,7 @@ description: This article will introduce you how to understand the details of ea
   - [Zh1Cheung](https://github.com/Zh1Cheung) 
   - [wangwei-ying](https://github.com/wangwei-ying) 
   - [mxszs](https://github.com/mxszs) 
-
+  - [q294881866](https://github.com/q294881866)   
   
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
@@ -266,7 +266,6 @@ description: This article will introduce you how to understand the details of ea
   - [CharmingRabbit](https://github.com/CharmingRabbit)   
   - [jaspercloud](https://github.com/jaspercloud)   
   - [jsbxyyx](https://github.com/jsbxyyx)   
-  - [q294881866](https://github.com/q294881866)   
   
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
