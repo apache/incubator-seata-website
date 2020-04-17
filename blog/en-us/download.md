@@ -174,6 +174,9 @@ description: This article will introduce you how to understand the details of ea
   - [[#2106](https://github.com/seata/seata/pull/2106)] support FastThreadLocalContextCore
   - [[#1703](https://github.com/seata/seata/pull/1703)] create sql parser SPI and a druid type sql parser
   - [[#2151](https://github.com/seata/seata/pull/2151)] Saga provide a switch to skip branch report on branch success
+  - [[#2308](https://github.com/seata/seata/pull/2308)] Saga add switch to control whether to register branch
+  - [[#2275](https://github.com/seata/seata/pull/2275)] support hsf on TCC transaction mode
+  - [[#2301](https://github.com/seata/seata/pull/2301)] postgresql add default expr and nextval
   
   
   ### bugfix：
@@ -200,6 +203,7 @@ description: This article will introduce you how to understand the details of ea
   - [[#2185](https://github.com/seata/seata/pull/2185)] fix issue of judgement container in kubernetes
   - [[#2145](https://github.com/seata/seata/pull/2145)] fix Saga report branch status incorrect when service retried succeed
   - [[#2113](https://github.com/seata/seata/pull/2113)] fix when branchRollback failed, it will trigger retry of multi-tc
+  - [[#2455](https://github.com/seata/seata/pull/2455)] child module can't execute copyright and checkstyle inspection
   
   
   ### optimize： 
@@ -238,6 +242,7 @@ description: This article will introduce you how to understand the details of ea
   - [[#2078](https://github.com/seata/seata/pull/2078)] enhance oracle table meta cache code coverage 
   - [[#2115](https://github.com/seata/seata/pull/2115)] fix typos
   - [[#2099](https://github.com/seata/seata/pull/2099)] optimize tm module code style
+  - [[#2553](https://github.com/seata/seata/pull/2553)] add some notes about using scripts
   
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
@@ -261,6 +266,7 @@ description: This article will introduce you how to understand the details of ea
   - [CharmingRabbit](https://github.com/CharmingRabbit)   
   - [jaspercloud](https://github.com/jaspercloud)   
   - [jsbxyyx](https://github.com/jsbxyyx)   
+  - [q294881866](https://github.com/q294881866)   
   
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
