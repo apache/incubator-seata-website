@@ -40,6 +40,9 @@ description: This article will introduce you how to understand the details of ea
   - [[#2379](https://github.com/seata/seata/pull/2379)] support custom service name when registering with nacos
   - [[#2381](https://github.com/seata/seata/pull/2381)] support  XA transaction mode
   - [[#2112](https://github.com/seata/seata/pull/2112)] support batch update and delete with multiple sql
+  - [[#2308](https://github.com/seata/seata/pull/2308)] Saga add switch to control whether to register branch
+  - [[#2275](https://github.com/seata/seata/pull/2275)] support hsf on TCC transaction mode
+  - [[#2301](https://github.com/seata/seata/pull/2301)] postgresql add default expr and nextval
   
   
   ### bugfix：
@@ -70,7 +73,7 @@ description: This article will introduce you how to understand the details of ea
   - [[#2535](https://github.com/seata/seata/pull/2535)] fix wrong configuration name in config txt
   - [[#2524](https://github.com/seata/seata/pull/2524)] registration service configuration missing and inconsistent
   - [[#2473](https://github.com/seata/seata/pull/2473)] flush condition of disk in file mode
-
+  - [[#2455](https://github.com/seata/seata/pull/2455)] child module can't execute copyright and checkstyle inspection
   
   
   ### optimize： 
@@ -106,11 +109,36 @@ description: This article will introduce you how to understand the details of ea
   - [[#2549](https://github.com/seata/seata/pull/2549)] optimize ZookeeperConfiguration log
   - [[#2558](https://github.com/seata/seata/pull/2558)] optimize config and server module log
   - [[#2464](https://github.com/seata/seata/pull/2464)] saga transaction editor enhancements
-
+  - [[#2553](https://github.com/seata/seata/pull/2553)] add some notes about using scripts
   
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
-
+  - [a364176773](https://github.com/a364176773) 
+  - [ph3636](https://github.com/ph3636) 
+  - [lightClouds917](https://github.com/lightClouds917) 
+  - [l81893521](https://github.com/l81893521) 
+  - [jsbxyyx](https://github.com/jsbxyyx) 
+  - [objcoding](https://github.com/objcoding) 
+  - [CharmingRabbit](https://github.com/CharmingRabbit) 
+  - [xingfudeshi](https://github.com/xingfudeshi) 
+  - [lovepoem](https://github.com/lovepoem) 
+  - [SevenSecondsOfMemory](https://github.com/SevenSecondsOfMemory ) 
+  - [zjinlei](https://github.com/zjinlei) 
+  - [ggndnn](https://github.com/ggndnn) 
+  - [tauntongo](https://github.com/tauntongo) 
+  - [threefish](https://github.com/threefish) 
+  - [helloworlde](https://github.com/helloworlde) 
+  - [long187](https://github.com/long187) 
+  - [jaspercloud](https://github.com/jaspercloud) 
+  - [dk-lockdown](https://github.com/dk-lockdown) 
+  - [wxbty](https://github.com/wxbty) 
+  - [sharajava](https://github.com/sharajava) 
+  - [ppj19891020](https://github.com/ppj19891020) 
+  - [YuKongEr](https://github.com/YuKongEr) 
+  - [Zh1Cheung](https://github.com/Zh1Cheung) 
+  - [wangwei-ying](https://github.com/wangwei-ying) 
+  - [mxszs](https://github.com/mxszs) 
+  - [q294881866](https://github.com/q294881866)   
   
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
