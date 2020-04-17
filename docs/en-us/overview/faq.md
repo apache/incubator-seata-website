@@ -50,7 +50,7 @@ supported from version 0.6, tc USES db mode to share global transaction session 
 
 **Consequence:** global transaction rollback succeeds, a resource is occupied, resulting in resource suspension problem
 
-**Anti-suspension measures:** when a rolls back and finds that the rollback undo has not been inserted, an undo record with log_status=1 is inserted. When a local transaction (business write operation SQL and corresponding undo are a local transaction) is committed, it fails due to the primary key conflict of the undo table.
+**Anti-suspension measures:** when a rolls back and finds that the rollback undo has not been inserted, an undo record with log_status=1 is inserted. When a local transaction (business write operation SQL and corresponding undo are a local transaction) is committed, it fails due to the unique key conflict of the undo table.
 
 ********
 <h3 id='4'>Q: 4.How to use the Seata framework to ensure transaction isolation?</h3>
