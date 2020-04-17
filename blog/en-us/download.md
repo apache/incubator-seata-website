@@ -40,6 +40,9 @@ description: This article will introduce you how to understand the details of ea
   - [[#2379](https://github.com/seata/seata/pull/2379)] support custom service name when registering with nacos
   - [[#2381](https://github.com/seata/seata/pull/2381)] support  XA transaction mode
   - [[#2112](https://github.com/seata/seata/pull/2112)] support batch update and delete with multiple sql
+  - [[#2308](https://github.com/seata/seata/pull/2308)] Saga add switch to control whether to register branch
+  - [[#2275](https://github.com/seata/seata/pull/2275)] support hsf on TCC transaction mode
+  - [[#2301](https://github.com/seata/seata/pull/2301)] postgresql add default expr and nextval
   
   
   ### bugfix：
@@ -70,7 +73,7 @@ description: This article will introduce you how to understand the details of ea
   - [[#2535](https://github.com/seata/seata/pull/2535)] fix wrong configuration name in config txt
   - [[#2524](https://github.com/seata/seata/pull/2524)] registration service configuration missing and inconsistent
   - [[#2473](https://github.com/seata/seata/pull/2473)] flush condition of disk in file mode
-
+  - [[#2455](https://github.com/seata/seata/pull/2455)] child module can't execute copyright and checkstyle inspection
   
   
   ### optimize： 
@@ -106,7 +109,7 @@ description: This article will introduce you how to understand the details of ea
   - [[#2549](https://github.com/seata/seata/pull/2549)] optimize ZookeeperConfiguration log
   - [[#2558](https://github.com/seata/seata/pull/2558)] optimize config and server module log
   - [[#2464](https://github.com/seata/seata/pull/2464)] saga transaction editor enhancements
-
+  - [[#2553](https://github.com/seata/seata/pull/2553)] add some notes about using scripts
   
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
@@ -174,9 +177,6 @@ description: This article will introduce you how to understand the details of ea
   - [[#2106](https://github.com/seata/seata/pull/2106)] support FastThreadLocalContextCore
   - [[#1703](https://github.com/seata/seata/pull/1703)] create sql parser SPI and a druid type sql parser
   - [[#2151](https://github.com/seata/seata/pull/2151)] Saga provide a switch to skip branch report on branch success
-  - [[#2308](https://github.com/seata/seata/pull/2308)] Saga add switch to control whether to register branch
-  - [[#2275](https://github.com/seata/seata/pull/2275)] support hsf on TCC transaction mode
-  - [[#2301](https://github.com/seata/seata/pull/2301)] postgresql add default expr and nextval
   
   
   ### bugfix：
@@ -203,7 +203,6 @@ description: This article will introduce you how to understand the details of ea
   - [[#2185](https://github.com/seata/seata/pull/2185)] fix issue of judgement container in kubernetes
   - [[#2145](https://github.com/seata/seata/pull/2145)] fix Saga report branch status incorrect when service retried succeed
   - [[#2113](https://github.com/seata/seata/pull/2113)] fix when branchRollback failed, it will trigger retry of multi-tc
-  - [[#2455](https://github.com/seata/seata/pull/2455)] child module can't execute copyright and checkstyle inspection
   
   
   ### optimize： 
@@ -242,7 +241,6 @@ description: This article will introduce you how to understand the details of ea
   - [[#2078](https://github.com/seata/seata/pull/2078)] enhance oracle table meta cache code coverage 
   - [[#2115](https://github.com/seata/seata/pull/2115)] fix typos
   - [[#2099](https://github.com/seata/seata/pull/2099)] optimize tm module code style
-  - [[#2553](https://github.com/seata/seata/pull/2553)] add some notes about using scripts
   
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
