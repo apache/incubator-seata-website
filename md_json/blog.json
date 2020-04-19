@@ -306,6 +306,17 @@
       }
     },
     {
+      "filename": "seata-quick-start.md",
+      "link": "/zh-cn/blog/seata-quick-start.html",
+      "meta": {
+        "title": "Seata 极简入门",
+        "description": "从 0 开始入门 Seata，搭建 Seata 服务，并接入 Java 项目中实现分布式事务",
+        "keywords": "fescar、seata、分布式事务",
+        "author": "芋道源码",
+        "date": "2020/04/19"
+      }
+    },
+    {
       "filename": "seata-spring-boot-aop-aspectj.md",
       "link": "/zh-cn/blog/seata-spring-boot-aop-aspectj.html",
       "meta": {
