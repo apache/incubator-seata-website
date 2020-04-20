@@ -86,7 +86,7 @@ description: This article will introduce you how to understand the details of ea
   - [[#2368](https://github.com/seata/seata/pull/2368)] add zk missing configuration
   - [[#2351](https://github.com/seata/seata/pull/2351)] add get local global status
   - [[#2529](https://github.com/seata/seata/pull/2529)] optimize druid parameter
-  - [[#2288](https://github.com/seata/seata/pull/2288)] codecov ignore mock test
+  - [[#2288](https://github.com/seata/seata/pull/2288)] codecov.yml ignore mock test
   - [[#2297](https://github.com/seata/seata/pull/2297)] remove duplicated dependency
   - [[#2336](https://github.com/seata/seata/pull/2336)] add using organization logos
   - [[#2348](https://github.com/seata/seata/pull/2348)] remove redundant configuration
