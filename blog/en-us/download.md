@@ -33,11 +33,9 @@ description: This article will introduce you how to understand the details of ea
   - [[#2112](https://github.com/seata/seata/pull/2112)] support batch update and delete with multiple sql
   - [[#2275](https://github.com/seata/seata/pull/2275)] support hsf on TCC transaction mode
   - [[#2108](https://github.com/seata/seata/pull/2108)] support zip bzip2 7z compressor
-  - [[#2328](https://github.com/seata/seata/pull/2328)] support for isolated loading of mysql 5.x and 8.x jdbc 
-  drivers classes                                                                                          - 
+  - [[#2328](https://github.com/seata/seata/pull/2328)] support for isolated loading of mysql 5.x and 8.x jdbc drivers classes                                                                                     
   - [[#2367](https://github.com/seata/seata/pull/2367)] add permission configuration support for Nacos 1.2
-  - [[#2359](https://github.com/seata/seata/pull/2359)] support propagation.never, propagation.mandatory and 
-  transaction suspend and resume api
+  - [[#2359](https://github.com/seata/seata/pull/2359)] support propagation.never, propagation.mandatory and transaction suspend and resume api
   - [[#2418](https://github.com/seata/seata/pull/2418)] support fst serialization
   - [[#2135](https://github.com/seata/seata/pull/2135)] support SPI scope
   - [[#2370](https://github.com/seata/seata/pull/2370)] support failureHandler implement can be read from the container
@@ -87,8 +85,7 @@ description: This article will introduce you how to understand the details of ea
   - [[#2362](https://github.com/seata/seata/pull/2362)] optimize stackTraceLogger param
   - [[#2351](https://github.com/seata/seata/pull/2351)] add get local global status
   - [[#2320](https://github.com/seata/seata/pull/2320)] optimize protostuff and kryo serialize timestamp
-  - [[#2307](https://github.com/seata/seata/pull/2307)] optimize transaction context switch logic when 
-  switch transaction mode
+  - [[#2307](https://github.com/seata/seata/pull/2307)] optimize transaction context switch logic when switch transaction mode
   - [[#2382](https://github.com/seata/seata/pull/2382)] optimize RegistryFactory singleton pattern and RegistryType judgement
   - [[#2400](https://github.com/seata/seata/pull/2400)] optimize the magic num of date at UUIDGenerator
   - [[#2368](https://github.com/seata/seata/pull/2368)] add zk missing configuration
