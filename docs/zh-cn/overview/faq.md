@@ -43,17 +43,19 @@ description: Seata 常见问题。
 
 <a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
- 
+
  <a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a>
- 
+
  <a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
- 
+
 <a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 
 <a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a>
 
 <a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a>
- 
+
+<a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -190,7 +192,7 @@ ps: oracle同理
 原因: 自动代理时，实例类型转换错误，注入的是$Proxy153实例，不是HikariDataSource的本身或子类实例。
 解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。
 1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。
-``` 
+```
 ********
 <h3 id='15'>Q: 15.是否可以不使用conf类型配置文件，直接将配置写入application.properties?</h3>
 
@@ -279,7 +281,6 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
 只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
 
-
 ********
 <h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
 
@@ -293,3 +294,14 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 
 ********
+
+<h3 id='24'>Q: 24. SpringCloud xid无法传递 ？</h3>
+
+**A:** 
+
+1.首先确保你引入了spring-cloud-alibaba-seata的依赖.
+
+2.如果xid还无法传递,请确认你是否实现了WebMvcConfigurer,如果是,请参考com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors的方法.把SeataHandlerInterceptor加入到你的拦截链路中.
+
+------
+
