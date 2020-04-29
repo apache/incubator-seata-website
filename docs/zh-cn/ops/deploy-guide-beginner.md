@@ -20,9 +20,10 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 
 ### 注意事项
 - seata-spring-boot-starter
-> 1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）  
-若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；  
-starter默认开启数据源自动代理，可配置seata.enable-auto-data-source-proxy: false关闭
+```
+内置GlobalTransactionScanner自动初始化功能，若外部实现初始化，请参考SeataAutoConfiguration保证依赖加载顺序
+默认开启数据源自动代理，可配置seata.enable-auto-data-source-proxy: false关闭
+```
 - spring-cloud-alibaba-seata
 > <a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E" target="_blank">查看版本说明</a>
 > 2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0，2.2.0内嵌seata-spring-boot-starter 1.0.0
@@ -67,7 +68,7 @@ Server端存储模式（store.mode）现有file、db两种（后续将引入redi
 ### 业务系统集成Client
 #### 步骤一：添加seata依赖（建议单选）
 - 依赖seata-all
-- 依赖seata-spring-boot-starter，支持yml、properties配置，内部已依赖seata-all
+- 依赖seata-spring-boot-starter，支持yml、properties配置(.conf可删除)，内部已依赖seata-all
 - 依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递
 #### 步骤二：undo_log建表、配置参数
 - <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>

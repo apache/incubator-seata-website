@@ -4,12 +4,14 @@ keywords: Seata
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.1.0版本
+# seata参数配置 1.2.0版本
 <a href="./configurations100.html">查看1.0.0版本</a>  
 <a href="./configurations090.html">查看0.9.0.1之前版本</a>
 
 ### 变更记录
 ```
+20200421(1.2.0): 
+1.增加registry.nacos.application属性，默认seata-server，Server和Client端的值需一致
 20200220(1.1.0): 
 1.file.conf和registry.conf两个配置文件中的格式统一转换为驼峰格式.
 2.统一所有配置文件的默认值(file.conf、registry.conf、seata-spring-boot-starter)
