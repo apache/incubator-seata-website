@@ -39,11 +39,9 @@
 <ul>
 <li>seata-spring-boot-starter</li>
 </ul>
-<blockquote>
-<p>1.0.0可用于替换seata-all，GlobalTransactionScanner自动初始化（依赖SpringUtils）<br>
-若其他途径实现GlobalTransactionScanner初始化，请保证io.seata.spring.boot.autoconfigure.util.SpringUtils先初始化；<br>
-starter默认开启数据源自动代理，可配置seata.enable-auto-data-source-proxy: false关闭</p>
-</blockquote>
+<pre><code>内置GlobalTransactionScanner自动初始化功能，若外部实现初始化，请参考SeataAutoConfiguration保证依赖加载顺序
+默认开启数据源自动代理，可配置seata.enable-auto-data-source-proxy: false关闭
+</code></pre>
 <ul>
 <li>spring-cloud-alibaba-seata</li>
 </ul>
@@ -90,7 +88,7 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 <h4>步骤一：添加seata依赖（建议单选）</h4>
 <ul>
 <li>依赖seata-all</li>
-<li>依赖seata-spring-boot-starter，支持yml、properties配置，内部已依赖seata-all</li>
+<li>依赖seata-spring-boot-starter，支持yml、properties配置(.conf可删除)，内部已依赖seata-all</li>
 <li>依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递</li>
 </ul>
 <h4>步骤二：undo_log建表、配置参数</h4>
