@@ -6,12 +6,23 @@ description: Seata upgrade.
 
 # 版本升级指南
 
-<a href="#1" target="_self">1. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>   
-<a href="#2" target="_self">2. 0.8、0.9版本如何升级到1.0版本？</a>     
+<a href="#1" target="_self">1. 升级到 seata 1.2.0 有哪些兼容性事项是需要注意的？</a>   
+<a href="#2" target="_self">2. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>   
+<a href="#3" target="_self">3. 0.8、0.9版本如何升级到1.0版本？</a>     
 
 ********
 
-<h3 id='1'>1. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</h3>
+<h3 id='1'>1. 升级到 seata 1.2.0 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+  
+1. nacos注册中心新增服务名的属性配置registry.nacos.application = "seata-server"，原固定名为serverAddr，现默认为seata-server，Server和Client端需保持一致。
+       
+</details>  
+
+********
+
+<h3 id='2'>2. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</h3>
 <details>
   <summary><mark>注意事项</mark></summary>
   
@@ -41,7 +52,7 @@ autoconfig 功能由其本身支持，在其后去掉 spring-cloud-alibaba-seata
 
 ********
 
-<h3 id='2'>2. 0.8、0.9版本如何升级到1.0版本？</h3>   
+<h3 id='3'>3. 0.8、0.9版本如何升级到1.0版本？</h3>   
 <details>
   <summary><mark>注意事项</mark></summary>
   
