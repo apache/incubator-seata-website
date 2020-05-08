@@ -164,8 +164,8 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 <h3 id='10'>Q: 10.为什么mybatis没有返回自增ID?</h3>
 
 **A:** 
-需要修改mybatis的配置: 在`@Options(useGeneratedKeys = true, keyProperty = "id")`或者在xml中指定useGeneratedKeys 和 keyProperty属性
-
+方案1.需要修改mybatis的配置: 在`@Options(useGeneratedKeys = true, keyProperty = "id")`或者在xml中指定useGeneratedKeys 和 keyProperty属性  
+方案2.删除undo_log表的id字段
 ********
 <h3 id='11'>Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
 
@@ -176,7 +176,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 <h3 id='12'>Q: 12.TC如何使用mysql8?</h3>
 
 **A:** 1.修改file.conf的驱动配置store.db.driver-class-name;  2.lib目录下删除mysql5驱动,添加mysql8驱动  
-ps: oracle同理
+ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 ********
 <h3 id='13'>Q: 13.支持多主键?</h3>
 
