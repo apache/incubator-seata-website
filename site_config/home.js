@@ -21,10 +21,10 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.1.0',
-                link: 'https://github.com/seata/seata/releases/tag/v1.1.0',
+                text: 'Release Note of 1.2.0',
+                link: 'https://github.com/seata/seata/releases/tag/v1.2.0',
             },
-            releaseDate: 'Released on Feb 19, 2020',
+            releaseDate: 'Released on Apr 21, 2020',
         },
         introduction: {
             title: 'Seata 是什么？',
@@ -89,10 +89,10 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.1.0',
-                link: 'https://github.com/seata/seata/releases/tag/v1.1.0',
+                text: 'Release Note of 1.2.0',
+                link: 'https://github.com/seata/seata/releases/tag/v1.2.0',
             },
-            releaseDate: 'Released on Feb 19, 2020',
+            releaseDate: 'Released on Apr 21, 2020',
         },
         introduction: {
             title: 'What is Seata?',

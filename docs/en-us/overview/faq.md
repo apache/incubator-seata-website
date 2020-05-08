@@ -145,8 +145,8 @@ when the undolog serialization is configured as Jackson, the Jackson version nee
 <h3 id='10'>Q: 10. Why didn't my mybatis operation return auto-generated ID? </h3>
 
 **A:**
-You should update the configuraton of `mybatis`:  set annotation `@Options(useGeneratedKeys = true, keyProperty = "id")` or set the value of useGeneratedKeys and keyProperty  in `mybatis` xml configuraton
-
+plan1.You should update the configuraton of `mybatis`:  set annotation `@Options(useGeneratedKeys = true, keyProperty = "id")` or set the value of useGeneratedKeys and keyProperty  in `mybatis` xml configuraton  
+plan2.Delete the id field of the undo_log table
 ********
 <h3 id='11'>Q: 11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</h3>
 
