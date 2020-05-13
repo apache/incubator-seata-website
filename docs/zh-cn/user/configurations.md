@@ -70,6 +70,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.db.password                         | db模式数据库账户密码 |默认mysql    |
 | store.db.minConn                         | db模式数据库初始连接数 |默认1    |
 | store.db.maxConn                         | db模式数据库最大连接数|默认3    |
+| store.db.maxWait                         | db模式获取连接时最大等待时间 |默认5000，单位毫秒    |
 | store.db.globalTable                     | db模式全局事务表名 |默认global_table    |
 | store.db.branchTable                     | db模式分支事务表名 |默认branch_table    |
 | store.db.lockTable                       | db模式全局锁表名 |默认lock_table    |
