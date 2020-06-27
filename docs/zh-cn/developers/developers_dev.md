@@ -37,6 +37,7 @@ description: Seata 维护者名单
 | 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | 陈龙   | [long187](https://github.com/long187)         | Antfin          |
 | 郭云嵩 | [ggndnn](https://github.com/ggndnn)         | FND          |
+| 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
 
 ## Seata开发者角色
 
