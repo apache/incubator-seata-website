@@ -28,23 +28,22 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   The version is updated as follows:
   
   ### feature：
+  - [[#2398](https://github.com/seata/seata/pull/2398)] support Multi pk
+  - [[#2484](https://github.com/seata/seata/pull/2484)] store mode add redis realize
+  - [[#2817](https://github.com/seata/seata/pull/2817)] Saga StateMachine Engine and Designer support Groovy Script Task
+  - [[#2646](https://github.com/seata/seata/pull/2646)] add support for HikariCP
+  - [[#2253](https://github.com/seata/seata/pull/2253)] dynamic adjustment grade
   - [[#2565](https://github.com/seata/seata/pull/2565)] support for transaction annotations on classes
   - [[#2510](https://github.com/seata/seata/pull/2510)] add LZ4 compressor
-  - [[#2509](https://github.com/seata/seata/pull/2509)] support for undo full data columns on update operate
-  - [[#2253](https://github.com/seata/seata/pull/2253)] dynamic adjustment grade
-  - [[#2646](https://github.com/seata/seata/pull/2646)] add support for HikariCP
+  - [[#2622](https://github.com/seata/seata/pull/2622)] support version valid check
   - [[#2658](https://github.com/seata/seata/pull/2658)] data sources supporting different permissions of Oracle users
+  - [[#2620](https://github.com/seata/seata/pull/2620)] support group configuration in nacos registry
   - [[#2699](https://github.com/seata/seata/pull/2699)] compatible with acm
-  - [[#2484](https://github.com/seata/seata/pull/2484)] store mode add redis realize
+  - [[#2509](https://github.com/seata/seata/pull/2509)] support for undo full data columns on update operate
   - [[#2584](https://github.com/seata/seata/pull/2584)] StateHandlerInterceptor and StateRouterInterceptor support SPI 
   - [[#2808](https://github.com/seata/seata/pull/2808)] server check auth support SPI
-  - [[#2620](https://github.com/seata/seata/pull/2620)] support group configuration in nacos registry
   - [[#2616](https://github.com/seata/seata/pull/2616)] TCC adapter for Dubbo And Sofa reference annotation
-  - [[#2817](https://github.com/seata/seata/pull/2817)] Saga StateMachine Engine and Designer support Groovy Script Task
   - [[#2831](https://github.com/seata/seata/pull/2831)] Saga support jackson json parser
-  - [[#2398](https://github.com/seata/seata/pull/2398)] support Multi pk
-  - [[#2622](https://github.com/seata/seata/pull/2622)] support version valid check
-  
   
   ### bugfix：
   - [[#2588](https://github.com/seata/seata/pull/2588)] fix when the check_style does not pass, no detail information output
