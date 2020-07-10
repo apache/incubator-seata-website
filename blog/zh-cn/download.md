@@ -28,7 +28,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   The version is updated as follows:
   
   ### feature：
-  - [[#2398](https://github.com/seata/seata/pull/2398)] support Multi pk
+  - [[#2398](https://github.com/seata/seata/pull/2398)] support multi pk for mysql
   - [[#2484](https://github.com/seata/seata/pull/2484)] store mode add redis realize
   - [[#2817](https://github.com/seata/seata/pull/2817)] Saga StateMachine Engine and Designer support Groovy Script Task
   - [[#2646](https://github.com/seata/seata/pull/2646)] add support for HikariCP
