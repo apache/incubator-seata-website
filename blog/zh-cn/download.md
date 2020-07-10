@@ -12,7 +12,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 > GitHub: https://github.com/seata/seata \
 > 发布说明: https://github.com/seata/seata/releases
 
-### 1.3.0 (2020-04-18)
+### 1.3.0 (2020-07-10)
 
  [source](https://github.com/seata/seata/archive/v1.3.0.zip) |
  [binary](https://github.com/seata/seata/releases/download/v1.3.0/seata-server-1.3.0.zip) 
