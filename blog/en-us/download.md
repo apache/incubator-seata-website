@@ -50,7 +50,8 @@ description: This article will introduce you how to understand the details of ea
   - [[#2611](https://github.com/seata/seata/pull/2611)] support the cache of configuration values
   
   ### bugfix：
-  - [[#2610](https://github.com/seata/seata/pull/2610)] nacos-script adapt to Nacos 1.2 on permission control.
+  - [[#2887](https://github.com/seata/seata/pull/2887)] fix rm client receive response logic
+  - [[#2610](https://github.com/seata/seata/pull/2610)] nacos-script adapt to Nacos 1.2 on permission control
   - [[#2588](https://github.com/seata/seata/pull/2588)] fix when the check_style does not pass, no detail information output
   - [[#2543](https://github.com/seata/seata/pull/2543)] fix ApplicationKeeper ShutdownHook signal invalid.
   - [[#2598](https://github.com/seata/seata/pull/2598)] fix unable to register Nacos
