@@ -77,7 +77,7 @@ redis模式,性能较高,存在事务信息丢失风险,请提前配置合适当
 
 #### 步骤四：修改数据库连接|redis属性配置
 启动包: seata-->conf-->file.conf，修改store.db或store.redis相关属性。  
-源码:   根目录-->seata-server-->resources-->file.conf，修改store.redis相关属性。
+源码:   根目录-->seata-server-->resources-->file.conf，修改store.db或store.redis相关属性。
 
 #### 步骤五：启动
 - 源码启动: 执行Server.java的main方法  
