@@ -44,20 +44,29 @@ config {
 }
 ```
 
--  需要修改配置中心的以下几个配置
+-  需要修改配置中心的以下几个配置(含db与redis,二者选其一)
 
 ```
 service.vgroupMapping.my_test_tx_group=default
-store.mode=db
+store.mode=db|redis
+-----db-----
 store.db.datasource=druid
 store.db.dbType=mysql
 store.db.driverClassName=com.mysql.jdbc.Driver
-store.db.url=jdbc:mysql://192.168.199.2:30060/seata?useUnicode=true
+store.db.url=jdbc:mysql://127.0.0.1:3306/seata?useUnicode=true
 store.db.user=root
 store.db.password=123456
+----redis----
+store.redis.host=127.0.0.1
+store.redis.port=6379
+store.redis.maxConn=10
+store.redis.minConn=1
+store.redis.database=0
+store.redis.password=null
+store.redis.queryLimit=100
 ```
 
-- 在数据库创建 `global_table`, `branch_table`, `lock_table`表
+- db模式需要在数据库创建 `global_table`, `branch_table`, `lock_table`表
 
 相应的脚本在GitHub 的 [/script/server/db/](https://github.com/seata/seata/tree/develop/script/server/db) 目录下
 
