@@ -50,6 +50,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2611](https://github.com/seata/seata/pull/2611)] 支持配置缓存，去除配置中心强依赖
   
   ### bugfix：
+  - [[#2893](https://github.com/seata/seata/pull/2893)] 修复 postgresql 表名中含 schema 取 tableMeta 错误的问题
   - [[#2887](https://github.com/seata/seata/pull/2887)] 修复 RM 接收 response 的逻辑
   - [[#2610](https://github.com/seata/seata/pull/2610)] Nacos 配置同步脚本加入Nacos权限属性控制
   - [[#2588](https://github.com/seata/seata/pull/2588)] 修复check style不通过时，无详细信息报出的问题
