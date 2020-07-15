@@ -56,6 +56,8 @@ description: Seata 常见问题。
 
 <a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a>
 
+<a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -302,6 +304,25 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 1.首先确保你引入了spring-cloud-alibaba-seata的依赖.
 
 2.如果xid还无法传递,请确认你是否实现了WebMvcConfigurer,如果是,请参考com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors的方法.把SeataHandlerInterceptor加入到你的拦截链路中.
+
+------
+
+<h3 id='25'>Q: 25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</h3>
+
+**A:** 
+
+dynamic-datasource-sring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容
+
+1.如果你引入的是seata-all,请不要使用@EnableAutoDataSourceProxy注解.
+
+2.如果你引入的是seata-spring-boot-starter 请关闭自动代理
+
+```yaml
+seata:
+  enable-auto-data-source-proxy: false
+```
+
+
 
 ------
 
