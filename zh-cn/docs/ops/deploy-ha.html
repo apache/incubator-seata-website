@@ -47,19 +47,28 @@ config {
 }
 </code></pre>
 <ul>
-<li>需要修改配置中心的以下几个配置</li>
+<li>需要修改配置中心的以下几个配置(含db与redis,二者选其一 注:redis需seata-server 1.3版本及以上)</li>
 </ul>
 <pre><code>service.vgroupMapping.my_test_tx_group=default
-store.mode=db
+store.mode=db|redis
+-----db-----
 store.db.datasource=druid
 store.db.dbType=mysql
 store.db.driverClassName=com.mysql.jdbc.Driver
-store.db.url=jdbc:mysql://192.168.199.2:30060/seata?useUnicode=true
+store.db.url=jdbc:mysql://127.0.0.1:3306/seata?useUnicode=true
 store.db.user=root
 store.db.password=123456
+----redis----
+store.redis.host=127.0.0.1
+store.redis.port=6379
+store.redis.maxConn=10
+store.redis.minConn=1
+store.redis.database=0
+store.redis.password=null
+store.redis.queryLimit=100
 </code></pre>
 <ul>
-<li>在数据库创建 <code>global_table</code>, <code>branch_table</code>, <code>lock_table</code>表</li>
+<li>db模式需要在数据库创建 <code>global_table</code>, <code>branch_table</code>, <code>lock_table</code>表</li>
 </ul>
 <p>相应的脚本在GitHub 的 <a href="https://github.com/seata/seata/tree/develop/script/server/db">/script/server/db/</a> 目录下</p>
 <p>这样，启动多个seata-server，即可实现其高可用</p>
