@@ -57,9 +57,9 @@ supported from version 0.6, tc USES db mode to share global transaction session 
 
 **A:** 
 Since seata phase 1 local transactions have been committed, enhanced isolation is needed to prevent other transactions from dirty reads and dirty writes.
-  1. Dirty read Select statement with for update, proxy method with @GlobalLock or @GlobalTransaction
+  1. Dirty read Select statement with for update, proxy method with @GlobalLock+@Transactional or @GlobalTransaction
   2. Dirty write You must use @globaltransaction
-    note：If the interface of the business you are querying does not use the @globaltransactional annotation, which means there is no need for distributed transactions on the method, you can annotate the @globallock annotation on the method and add a for update statement to the query.
+    note：If the interface of the business you are querying does not use the @globaltransactional annotation, which means there is no need for distributed transactions on the method, you can annotate the @globallock+@Transactional annotation on the method and add a for update statement to the query.
         If your query interface has the @globaltransactional annotation on the outer edge of the transactional link, you can simply add a for update statement to your query. The reason for designing this annotation is that before it is available, distributed transactions need to query the committed data, but the business does not need distributed transactions.
         Using the GlobalTransactional annotation adds some unnecessary additional RPC overhead such as begin returning xid, commit transaction, etc. GlobalLock simplifies the RPC process for higher performance.
 
