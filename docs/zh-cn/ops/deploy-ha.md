@@ -44,7 +44,7 @@ config {
 }
 ```
 
--  需要修改配置中心的以下几个配置(含db与redis,二者选其一)
+-  需要修改配置中心的以下几个配置(含db与redis,二者选其一 注:redis需seata-server 1.3版本及以上)
 
 ```
 service.vgroupMapping.my_test_tx_group=default
