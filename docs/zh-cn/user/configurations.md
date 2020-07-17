@@ -107,7 +107,9 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | service.vgroupMapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | TC服务列表（附录2） |  仅注册中心为file时使用  |
 | service.disableGlobalTransaction          | 全局事务开关 |  默认false。false为开启，true为关闭  |
-| service.enableDegrade                     | 降级开关（待实现） |  默认false。业务侧根据连续错误数自动降级不走seata事务  |
+| client.tm.degradeCheck | 降级开关 |  默认false。业务侧根据连续错误数自动降级不走seata事务(详细介绍请阅读附录6)  |
+| client.tm.degradeCheckAllowTimes | 升降级达标阈值 | 默认10 |
+| client.tm.degradeCheckPeriod | 服务自检周期 | 默认2000,单位ms.每2秒进行一次服务自检,来决定 |
 | client.rm.reportSuccessEnable   | 是否上报一阶段成功   |true、false，从1.1.0版本开始,默认false.true用于保持分支事务生命周期记录完整，false可提高不少性能 |
 | client.rm.asynCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
 | client.rm.lock.retryInterval                | 校验或占用全局锁重试间隔 |  默认10，单位毫秒  |
@@ -250,4 +252,13 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
     2.对于使用seata-all的方式，请使用@EnableAutoDataSourceProxy来显式开启数据源自动代理功能。如有需要，可通过该注解的useJdkProxy属性进行代理实现方式
       的切换。默认为false,采用CGLIB作为数据源自动代理的实现方式。
 
+### 附录6:
+
+```
+关于服务自动降级策略的具体实现介绍:
+首先通过读取client.tm.degradeCheck是否为true,决定是否开启自检线程.随后读取degradeCheckAllowTimes和degradeCheckPeriod,确认阈值与自检周期.
+假设degradeCheckAllowTimes=10,degradeCheckPeriod=2000
+那么每2秒钟会进行一个begin,commit的测试,如果失败,则记录连续失败数,如果成功则清空连续失败数.连续错误由用户接口及自检线程进行累计,直到连续失败次数达到用户的阈值,则关闭Seata分布式事务,避免用户自身业务长时间不可用.
+反之,假如当前分布式事务关闭,那么自检线程继续按照2秒一次的自检,直到连续成功数达到用户设置的阈值,那么Seata分布式事务将恢复使用
+```
 
