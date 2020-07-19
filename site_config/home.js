@@ -124,7 +124,7 @@ export default {
                 },
                 {
                     icon: 'feature-5',
-                    title: 'XA mode (under development)',
+                    title: 'XA mode',
                     content: 'Support for XA schemas for databases that have implemented XA interfaces.',
                 },
                 {
