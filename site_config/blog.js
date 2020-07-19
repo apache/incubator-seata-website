@@ -85,7 +85,15 @@
                 dateStr: 'Apr 10th, 2020',
                 desc: 'Seata 高可用部署实践',
                 link: '/zh-cn/blog/seata-ha-practice.html',
+            },
+            {
+                title: '分布式事务如何实现？深入解读 Seata 的 XA 模式',
+                author: '@sharajava',
+                dateStr: 'Apr 28th, 2020',
+                desc: '深入解读 Seata 的 XA 模式',
+                link: '/zh-cn/blog/seata-xa-introduce.html',
             }
+            
         ]
     },
 };
