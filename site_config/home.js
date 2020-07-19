@@ -56,7 +56,7 @@ export default {
                 },
                 {
                     icon: 'feature-5',
-                    title: 'XA 模式（开发中）',
+                    title: 'XA 模式',
                     content: '支持已实现 XA 接口的数据库的 XA 模式',
                 },
                 {
