@@ -108,4 +108,3 @@ XA start 需要 Xid 参数。
         return new DataSourceProxyXA(druidDataSource);
     }
 ```
-
