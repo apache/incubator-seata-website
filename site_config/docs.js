@@ -177,6 +177,10 @@ export default {
                             {
                                 title: 'Seata Saga 模式',
                                 link: '/zh-cn/docs/dev/mode/saga-mode.html',
+                            },
+                            {
+                                title: 'Seata XA 模式',
+                                link: '/zh-cn/docs/dev/mode/xa-mode.html',
                             }
                         ],
                     },
