@@ -6,18 +6,32 @@ description: Seata upgrade.
 
 # 版本升级指南
 
+<a href="#4" target="_self">4. 升级到 seata 1.3.0 有哪些兼容性事项是需要注意的？</a>
+
 <a href="#3" target="_self">3. 升级到 seata 1.2.0 有哪些兼容性事项是需要注意的？</a>   
 <a href="#2" target="_self">2. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>   
 <a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>     
+
+------
+
+<h3 id='4'>4. 升级到 seata 1.3.0 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+
+1. nacos注册中心新增group的属性配置seata.registry.nacos.group，如果无配置,则默认为DEFAULT_GROUP，Server和Client端需保持一致。
+       
+
+</details>  
 
 ********
 
 <h3 id='3'>3. 升级到 seata 1.2.0 有哪些兼容性事项是需要注意的？</h3>
 <details>
   <summary><mark>注意事项</mark></summary>
-  
+
 1. nacos注册中心新增服务名的属性配置registry.nacos.application = "seata-server"，原固定名为serverAddr，现默认为seata-server，Server和Client端需保持一致。
        
+
 </details>  
 
 ********
@@ -25,7 +39,7 @@ description: Seata upgrade.
 <h3 id='2'>2. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</h3>
 <details>
   <summary><mark>注意事项</mark></summary>
-  
+
 1. 需要注意配置项的兼容性，1.1.0 版本对于配置项的风格进行了统一。
 若程序中依赖的是 seata-all，对应于 *.conf 文件，conf文件中配置项的命名风格统一为 点号+驼峰式组合，[1.1.0 配置项说明](https://seata.io/zh-cn/docs/user/configurations.html)， [1.1.0 配置参考](https://github.com/seata/seata/tree/1.1.0/script/client/conf); 
 若程序中依赖的是seata-spring-boot-starter，对应于 *.properties 或 *.yml。propertie、 yml文件命名风格统一为 点号+中划线组合 
@@ -55,12 +69,13 @@ autoconfig 功能由其本身支持，在其后去掉 spring-cloud-alibaba-seata
 <h3 id='1'>1. 0.8、0.9版本如何升级到1.0版本？</h3>   
 <details>
   <summary><mark>注意事项</mark></summary>
-  
+
    1. （可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉 seata-all   
    2.  （必选）TC端表lock_table字段branch_id增加普通索引   
    3. （可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations100.html" target="_blank">点击查看参数配置</a>   
    4. （可选） client.report.success.enable可以置为false，提升性能   
-       
+      
+
 </details>   
 
 ********
