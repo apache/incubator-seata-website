@@ -20,7 +20,7 @@
 </ul>
 <h2>整体机制</h2>
 <p>在 Seata 定义的分布式事务框架内，利用事务资源（数据库、消息服务等）对 XA 协议的支持，以 XA 协议的机制来管理分支事务的一种 事务模式。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/8XkvNnTiapOODXhMq7lSW4fHRRa0EvINCBBfPegN1aYkRXEmxMnEFt2f8xV5pyVbY9L6pTmhQXM7OZTBUs7P3Lw/640?wx_fmt=png" alt="img"></p>
+<img src="/img/xa/pics/xa-mod.png" alt="xa-mod" style="zoom:50%;" />
 <ul>
 <li>
 <p>执行阶段：</p>
@@ -44,7 +44,7 @@
 <h1>工作机制</h1>
 <h4>1. 整体运行机制</h4>
 <p>XA 模式 运行在 Seata 定义的事务框架内：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/8XkvNnTiapOODXhMq7lSW4fHRRa0EvINCgesnUic0eEoBM4cHgbcybuXX8MRs4v9M7gDPM4Zib83W7wxP7r2qYgmA/640?wx_fmt=png" alt="img"></p>
+<img src="/img/xa/pics/xa-fw.png" alt="xa-fw" style="zoom:50%;" />
 <ul>
 <li>
 <p>执行阶段（E xecute）：</p>
@@ -74,13 +74,13 @@
 <p>第二种方式，对开发者比较友好，和 AT 模式使用一样，开发者完全不必关心 XA 层面的任何问题，保持本地编程模型即可。</p>
 <p>我们优先设计实现第二种方式：数据源代理根据普通数据源中获取的普通 JDBC 连接创建出相应的 XAConnection。</p>
 <p>类比 AT 模式的数据源代理机制，如下：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/8XkvNnTiapOODXhMq7lSW4fHRRa0EvINCBp8qwfiadnF3VpdXVGY5YMFzt4QFo7Nas81qFB4japicMeD376Kxuu3Q/640?wx_fmt=png" alt="img"></p>
+<img src="/img/xa/pics/ds1.png" alt="ds1" style="zoom:50%;" />
 <p>但是，第二种方法有局限：无法保证兼容的正确性。</p>
 <p>实际上，这种方法是在做数据库驱动程序要做的事情。不同的厂商、不同版本的数据库驱动实现机制是厂商私有的，我们只能保证在充分测试过的驱动程序上是正确的，开发者使用的驱动程序版本差异很可能造成机制的失效。</p>
 <p>这点在 Oracle 上体现非常明显。参见 Druid issue：<a href="https://github.com/alibaba/druid/issues/3707">https://github.com/alibaba/druid/issues/3707</a></p>
 <p>综合考虑，XA 模式的数据源代理设计需要同时支持第一种方式：基于 XA 数据源进行代理。</p>
 <p>类比 AT 模式的数据源代理机制，如下：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/8XkvNnTiapOODXhMq7lSW4fHRRa0EvINCcqvY2bOEC0NoCLRlg0humicdTaaF7kFawH8xXLE2s1xvB9T4vibCRmtg/640?wx_fmt=png" alt="img"></p>
+<img src="/img/xa/pics/ds2.png" alt="ds2" style="zoom:50%;" />
 <h4>3. 分支注册</h4>
 <p>XA start 需要 Xid 参数。</p>
 <p>这个 Xid 需要和 Seata 全局事务的 XID 和 BranchId 关联起来，以便由 TC 驱动 XA 分支的提交或回滚。</p>
