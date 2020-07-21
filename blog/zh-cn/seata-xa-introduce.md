@@ -49,7 +49,7 @@ Seata 定义了全局事务的框架。
 4. RM 把分支事务的执行结果上报给 TC。（可选）
 5. TC 发送分支提交（Branch Commit）或分支回滚（Branch Rollback）命令给 RM。
 
-<img src="/img/xa/pics/seata-mod.png" alt="seata-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB19qmhOrY1gK0jSZTEXXXDQVXa-1330-924.png" alt="seata-mod" style="zoom:50%;" />
 
 Seata 的 全局事务 处理过程，分为两个阶段：
 
@@ -67,7 +67,7 @@ Seata 的所谓 事务模式 是指：运行在 Seata 全局事务框架下的 �
 
 AT 模式
 
-<img src="/img/xa/pics/at-mod.png" alt="at-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1NTuzOBr0gK0jSZFnXXbRRXXa-1330-924.png" alt="at-mod" style="zoom:50%;" />
 
 - 执行阶段：
 
@@ -81,7 +81,7 @@ AT 模式
 
 TCC 模式
 
-<img src="/img/xa/pics/tcc-mod.png" alt="tcc-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1m59pOEY1gK0jSZFCXXcwqXXa-1330-924.png" alt="tcc-mod" style="zoom:50%;" />
 
 - 执行阶段：
 
@@ -98,7 +98,7 @@ XA 模式：
 
 在 Seata 定义的分布式事务框架内，利用事务资源（数据库、消息服务等）对 XA 协议的支持，以 XA 协议的机制来管理分支事务的一种 事务模式。
 
-<img src="/img/xa/pics/xa-mod.png" alt="xa-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" alt="xa-mod" style="zoom:50%;" />
 
 - 执行阶段：
 
@@ -120,7 +120,7 @@ XA 模式：
 
 补偿型 事务处理机制构建在 事务资源 之上（要么在中间件层面，要么在应用层面），事务资源 本身对分布式事务是无感知的。
 
-<img src="/img/xa/pics/ct.png" alt="img" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1z.qyOET1gK0jSZFrXXcNCXXa-602-460.png" alt="img" style="zoom:50%;" />
 
 事务资源 对分布式事务的无感知存在一个根本性的问题：无法做到真正的 全局一致性 。
 
@@ -132,7 +132,7 @@ XA 模式：
 
 与 补偿型 不同，XA 协议 要求 事务资源 本身提供对规范和协议的支持。
 
-<img src="/img/xa/pics/nct.png" alt="nct" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1vs9kOvb2gK0jSZK9XXaEgFXa-602-486.png" alt="nct" style="zoom:50%;" />
 
 因为 事务资源 感知并参与分布式事务处理过程，所以 事务资源（如数据库）可以保障从任意视角对数据的访问有效隔离，满足全局数据一致性。
 
@@ -219,7 +219,7 @@ XA 模式的基本设计目标，两个主要方面：
 
 XA 模式 运行在 Seata 定义的事务框架内：
 
-<img src="/img/xa/pics/xa-fw.png" alt="xa-fw" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style="zoom:50%;" />
 
 - 执行阶段（E xecute）：
 
@@ -323,7 +323,7 @@ Seata 项目最核心的价值在于：构建一个全面解决分布式事务�
 
 基于 Seata，上层应用架构可以根据实际场景的需求，灵活选择合适的分布式事务解决方案。
 
-<img src="/img/xa/pics/4mod.png" alt="img" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1lTSoOqL7gK0jSZFBXXXZZpXa-1028-528.png" alt="img" style="zoom:50%;" />
 
 XA 模式的加入，补齐了 Seata 在 全局一致性 场景下的缺口，形成 AT、TCC、Saga、XA 四大 事务模式 的版图，基本可以满足所有场景的分布式事务处理诉求。
 

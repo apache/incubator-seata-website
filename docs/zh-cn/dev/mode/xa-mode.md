@@ -15,7 +15,7 @@ description: Seata XA 模式。
 
 在 Seata 定义的分布式事务框架内，利用事务资源（数据库、消息服务等）对 XA 协议的支持，以 XA 协议的机制来管理分支事务的一种 事务模式。
 
-<img src="/img/xa/pics/xa-mod.png" alt="xa-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" style="zoom:50%;" />
 
 - 执行阶段：
 
@@ -33,7 +33,7 @@ description: Seata XA 模式。
 
 XA 模式 运行在 Seata 定义的事务框架内：
 
-<img src="/img/xa/pics/xa-fw.png" alt="xa-fw" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style="zoom:50%;" />
 
 - 执行阶段（E xecute）：
 
@@ -60,7 +60,7 @@ XA 模式需要 XAConnection。
 
 类比 AT 模式的数据源代理机制，如下：
 
-<img src="/img/xa/pics/ds1.png" alt="ds1" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB11_LJcggP7K4jSZFqXXamhVXa-1564-894.png" alt="ds1" style="zoom:50%;" />
 
 但是，第二种方法有局限：无法保证兼容的正确性。
 
@@ -72,7 +72,7 @@ XA 模式需要 XAConnection。
 
 类比 AT 模式的数据源代理机制，如下：
 
-<img src="/img/xa/pics/ds2.png" alt="ds2" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1qJ57XZieb18jSZFvXXaI3FXa-1564-894.png" alt="ds2" style="zoom:50%;" />
 
 #### 3. 分支注册
 
