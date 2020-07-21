@@ -43,7 +43,7 @@
 <li>RM 把分支事务的执行结果上报给 TC。（可选）</li>
 <li>TC 发送分支提交（Branch Commit）或分支回滚（Branch Rollback）命令给 RM。</li>
 </ol>
-<img src="/img/xa/pics/seata-mod.png" alt="seata-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB19qmhOrY1gK0jSZTEXXXDQVXa-1330-924.png" alt="seata-mod" style="zoom:50%;" />
 <p>Seata 的 全局事务 处理过程，分为两个阶段：</p>
 <ul>
 <li>执行阶段 ：执行 分支事务，并 保证 执行结果满足是 <em>可回滚的（Rollbackable）</em> 和 <em>持久化的（Durable）</em>。</li>
@@ -57,7 +57,7 @@
 </ul>
 <p>以我们 Seata 的 AT 模式和 TCC 模式为例来理解：</p>
 <p>AT 模式</p>
-<img src="/img/xa/pics/at-mod.png" alt="at-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1NTuzOBr0gK0jSZFnXXbRRXXa-1330-924.png" alt="at-mod" style="zoom:50%;" />
 <ul>
 <li>
 <p>执行阶段：</p>
@@ -79,7 +79,7 @@
 </li>
 </ul>
 <p>TCC 模式</p>
-<img src="/img/xa/pics/tcc-mod.png" alt="tcc-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1m59pOEY1gK0jSZFCXXcwqXXa-1330-924.png" alt="tcc-mod" style="zoom:50%;" />
 <ul>
 <li>
 <p>执行阶段：</p>
@@ -102,7 +102,7 @@
 <h2>1.3 什么是 Seata 的 XA 模式？</h2>
 <p>XA 模式：</p>
 <p>在 Seata 定义的分布式事务框架内，利用事务资源（数据库、消息服务等）对 XA 协议的支持，以 XA 协议的机制来管理分支事务的一种 事务模式。</p>
-<img src="/img/xa/pics/xa-mod.png" alt="xa-mod" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" alt="xa-mod" style="zoom:50%;" />
 <ul>
 <li>
 <p>执行阶段：</p>
@@ -128,13 +128,13 @@
 <h2>2.1 补偿型事务模式的问题</h2>
 <p>本质上，Seata 已经支持的 3 大事务模式：AT、TCC、Saga 都是 补偿型 的。</p>
 <p>补偿型 事务处理机制构建在 事务资源 之上（要么在中间件层面，要么在应用层面），事务资源 本身对分布式事务是无感知的。</p>
-<img src="/img/xa/pics/ct.png" alt="img" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1z.qyOET1gK0jSZFrXXcNCXXa-602-460.png" alt="img" style="zoom:50%;" />
 <p>事务资源 对分布式事务的无感知存在一个根本性的问题：无法做到真正的 全局一致性 。</p>
 <p>比如，一条库存记录，处在 补偿型 事务处理过程中，由 100 扣减为 50。此时，仓库管理员连接数据库，查询统计库存，就看到当前的 50。之后，事务因为异外回滚，库存会被补偿回滚为 100。显然，仓库管理员查询统计到的 50 就是 脏 数据。</p>
 <p>可以看到，补偿型 分布式事务机制因为不要求 事务资源 本身（如数据库）的机制参与，所以无法保证从事务框架之外的全局视角的数据一致性。</p>
 <h2>2.2 XA 的价值</h2>
 <p>与 补偿型 不同，XA 协议 要求 事务资源 本身提供对规范和协议的支持。</p>
-<img src="/img/xa/pics/nct.png" alt="nct" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1vs9kOvb2gK0jSZK9XXaEgFXa-602-486.png" alt="nct" style="zoom:50%;" />
 <p>因为 事务资源 感知并参与分布式事务处理过程，所以 事务资源（如数据库）可以保障从任意视角对数据的访问有效隔离，满足全局数据一致性。</p>
 <p>比如，上一节提到的库存更新场景，XA 事务处理过程中，中间态数据库存 50 由数据库本身保证，是不会仓库管理员的查询统计 <em>看</em> 到的。（当然隔离级别需要 读已提交 以上）</p>
 <p>除了 全局一致性 这个根本性的价值外，支持 XA 还有如下几个方面的好处：</p>
@@ -199,7 +199,7 @@
 <h3>3.1.2 核心设计</h3>
 <h4>1. 整体运行机制</h4>
 <p>XA 模式 运行在 Seata 定义的事务框架内：</p>
-<img src="/img/xa/pics/xa-fw.png" alt="xa-fw" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style="zoom:50%;" />
 <ul>
 <li>
 <p>执行阶段（E xecute）：</p>
@@ -275,7 +275,7 @@
 <p>一致性、可靠性、易用性、性能等诸多方面的系统设计约束，需要用不同的事务处理机制去满足。</p>
 <p>Seata 项目最核心的价值在于：构建一个全面解决分布式事务问题的 标准化 平台。</p>
 <p>基于 Seata，上层应用架构可以根据实际场景的需求，灵活选择合适的分布式事务解决方案。</p>
-<img src="/img/xa/pics/4mod.png" alt="img" style="zoom:50%;" />
+<img src="https://img.alicdn.com/tfs/TB1lTSoOqL7gK0jSZFBXXXZZpXa-1028-528.png" alt="img" style="zoom:50%;" />
 <p>XA 模式的加入，补齐了 Seata 在 全局一致性 场景下的缺口，形成 AT、TCC、Saga、XA 四大 事务模式 的版图，基本可以满足所有场景的分布式事务处理诉求。</p>
 <p>当然 XA 模式和 Seata 项目本身都还不尽完美，有很多需要改进和完善的地方。非常欢迎大家参与到项目的建设中，共同打造一个标准化的分布式事务平台。</p>
 </section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
