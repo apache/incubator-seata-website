@@ -328,6 +328,17 @@
       }
     },
     {
+      "filename": "seata-xa-introduce.md",
+      "link": "/zh-cn/blog/seata-xa-introduce.html",
+      "meta": {
+        "title": "分布式事务如何实现？深入解读 Seata 的 XA 模式",
+        "keywords": "Seata,分布式事务,XA,AT",
+        "description": "深入解读 Seata 的 XA 模式",
+        "author": "煊檍",
+        "date": "2020/04/28"
+      }
+    },
+    {
       "filename": "springboot-dubbo-mybatisplus-seata.md",
       "link": "/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html",
       "meta": {
