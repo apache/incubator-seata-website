@@ -17,7 +17,7 @@ keywords: seata, 分布式事务, demo, mac, at
 
 先看一下seata项目cloc代码统计（截止到2020-07-20）
 
-![cloc-seata](/Users/portman/portman/github/iportman/p/blog/seata-at-demo-in-mac/cloc-seata.png)
+![cloc-seata](https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/cloc-seata.png?raw=true)
 
 Java代码行数大约是 97K
 
@@ -25,7 +25,7 @@ Java代码行数大约是 97K
 
 单元测试覆盖率50%
 
-![cloc-seata](/Users/portman/portman/github/iportman/p/blog/seata-at-demo-in-mac/coverage.png)
+![cloc-seata](https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/coverage.png?raw=true)
 
 ### Demo代码
 
@@ -130,7 +130,7 @@ $ tree -C  -I 'target' .
 
 ### 时序图
 
-![cloc-seata](/Users/portman/portman/github/iportman/p/blog/seata-at-demo-in-mac/timing-diagram.png)
+![cloc-seata](https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/timing-diagram.png?raw=true)
 
 Ok, 赶紧动手, Make It Happen!
 
@@ -239,7 +239,7 @@ io.seata.samples.dubbo.starter.DubboStorageServiceStarter
 Application is keep running ...
 ```
 
-![cloc-seata](/Users/portman/portman/github/iportman/p/blog/seata-at-demo-in-mac/service-boot.png)
+![cloc-seata](https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/service-boot.png?raw=true)
 
 启动成功后，account_tbl，storage_tbl表会有两条初始化的数据，分别是账户余额和商品库存
 
