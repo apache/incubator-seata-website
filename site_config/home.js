@@ -21,10 +21,10 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.2.0',
-                link: 'https://github.com/seata/seata/releases/tag/v1.2.0',
+                text: 'Release Note of 1.3.0',
+                link: 'https://github.com/seata/seata/releases/tag/v1.3.0',
             },
-            releaseDate: 'Released on Apr 21, 2020',
+            releaseDate: 'Released on Jul 15, 2020',
         },
         introduction: {
             title: 'Seata 是什么？',
@@ -56,7 +56,7 @@ export default {
                 },
                 {
                     icon: 'feature-5',
-                    title: 'XA 模式（开发中）',
+                    title: 'XA 模式',
                     content: '支持已实现 XA 接口的数据库的 XA 模式',
                 },
                 {
@@ -124,7 +124,7 @@ export default {
                 },
                 {
                     icon: 'feature-5',
-                    title: 'XA mode (under development)',
+                    title: 'XA mode',
                     content: 'Support for XA schemas for databases that have implemented XA interfaces.',
                 },
                 {

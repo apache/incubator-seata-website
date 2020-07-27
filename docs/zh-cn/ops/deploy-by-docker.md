@@ -102,11 +102,11 @@ seata-server 支持以下环境变量：
 
 - **STORE_MODE**
 
-> 可选, 指定seata-server的事务日志存储方式, 支持`db` 和 `file`, 默认是 `file`
+> 可选, 指定seata-server的事务日志存储方式, 支持`db` ,`file`,redis(Seata-Server 1.3及以上版本支持), 默认是 `file`
 
 - **SERVER_NODE**
 
-> 可选, 用于指定seata-server节点ID, 如 `1`,`2`,`3`..., 默认为 `1`
+> 可选, 用于指定seata-server节点ID, 如 `1`,`2`,`3`..., 默认为 `根据ip生成`
 
 - **SEATA_ENV**
 
