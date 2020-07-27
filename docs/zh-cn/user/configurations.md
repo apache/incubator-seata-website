@@ -70,14 +70,14 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.recovery.timeoutRetryPeriod             | 超时状态检测重试线程间隔时间        |默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器    |
 | store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库\|redis(支持HA)    |
 | store.file.dir                            | file模式文件存储文件夹名 |默认sessionStore    |
-| store.db.datasource                       | db模式数据源类型 |默认dbcp    |
-| store.db.dbType                          | db模式数据库类型 |默认mysql    |
-| store.db.driverClassName                | db模式数据库驱动 |默认com.mysql.jdbc.Driver    |
-| store.db.url                              | db模式数据库url | 默认jdbc:mysql://127.0.0.1:3306/seata   |
-| store.db.user                             | db模式数据库账户 |默认mysql    |
-| store.db.password                         | db模式数据库账户密码 |默认mysql    |
+| store.db.datasource                       | db模式数据源类型 |dbcp、druid、hikari；无默认值，store.mode=db时必须指定。    |
+| store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。   |
+| store.db.driverClassName                | db模式数据库驱动 |store.mode=db时必须指定    |
+| store.db.url                              | db模式数据库url | store.mode=db时必须指定   |
+| store.db.user                             | db模式数据库账户 |store.mode=db时必须指定    |
+| store.db.password                         | db模式数据库账户密码 |store.mode=db时必须指定    |
 | store.db.minConn                         | db模式数据库初始连接数 |默认1    |
-| store.db.maxConn                         | db模式数据库最大连接数|默认3    |
+| store.db.maxConn                         | db模式数据库最大连接数|默认20    |
 | store.db.maxWait                         | db模式获取连接时最大等待时间 |默认5000，单位毫秒    |
 | store.db.globalTable                     | db模式全局事务表名 |默认global_table    |
 | store.db.branchTable                     | db模式分支事务表名 |默认branch_table    |
