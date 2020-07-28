@@ -92,6 +92,13 @@
                 dateStr: 'Apr 28th, 2020',
                 desc: '深入解读 Seata 的 XA 模式',
                 link: '/zh-cn/blog/seata-xa-introduce.html',
+            },
+            {
+                title: 'Seata Server端启动流程源码解读',
+                author: '@杨同学',
+                dateStr: 'Jul 27th, 2020',
+                desc: '本文从源码的角度讲述了Seata 1.3.0版本Server端启动流程',
+                link: '/zh-cn/blog/seata-sourcecode-server-bootstrap.html',
             }
             
         ]
