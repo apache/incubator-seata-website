@@ -317,6 +317,16 @@
       }
     },
     {
+      "filename": "seata-sourcecode-server-bootstrap.md",
+      "link": "/zh-cn/blog/seata-sourcecode-server-bootstrap.html",
+      "meta": {
+        "title": "分布式事务Seata源码-Server端启动流程",
+        "author": "杨晓兵|中原银行",
+        "date": "2020/07/02",
+        "keywords": "fescar、seata、分布式事务"
+      }
+    },
+    {
       "filename": "seata-spring-boot-aop-aspectj.md",
       "link": "/zh-cn/blog/seata-spring-boot-aop-aspectj.html",
       "meta": {
