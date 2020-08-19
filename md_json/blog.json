@@ -177,6 +177,16 @@
       }
     },
     {
+      "filename": "seata-at-demo-in-mac.md",
+      "link": "/zh-cn/blog/seata-at-demo-in-mac.html",
+      "meta": {
+        "title": "Mac下的Seata Demo环境搭建（AT模式）",
+        "author": "portman xu",
+        "date": "2020/07/20",
+        "keywords": "seata, 分布式事务, demo, mac, at"
+      }
+    },
+    {
       "filename": "seata-at-mode-design.md",
       "link": "/zh-cn/blog/seata-at-mode-design.html",
       "meta": {

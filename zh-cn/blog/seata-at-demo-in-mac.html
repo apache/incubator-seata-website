@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="seata, 分布式事务, demo, mac, at" />
+	<meta name="description" content="seata-at-demo-in-mac" />
+	<!-- 网页标签标题 -->
+	<title>Mac下的Seata Demo环境搭建（AT模式）</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>Mac下的Seata Demo环境搭建（AT模式）</h1>
+<h2>前言</h2>
+<p>最近因为工作需要，研究学习了Seata分布式事务框架，本文把自己学习的知识记录一下</p>
+<h2>Seata总览</h2>
+<h3>cloc代码统计</h3>
+<p>先看一下seata项目cloc代码统计（截止到2020-07-20）</p>
+<p><img src="https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/cloc-seata.png?raw=true" alt="cloc-seata"></p>
+<p>Java代码行数大约是 97K</p>
+<h3>代码质量</h3>
+<p>单元测试覆盖率50%</p>
+<p><img src="https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/coverage.png?raw=true" alt="cloc-seata"></p>
+<h3>Demo代码</h3>
+<p>本文讲的Demo代码是seata-samples项目下的seata-samples-dubbo模块，地址如下：</p>
+<p><a href="https://github.com/seata/seata-samples/tree/master/dubbo">https://github.com/seata/seata-samples/tree/master/dubbo</a></p>
+<h2>解决的核心问题</h2>
+<p>AT模式的Demo例子给出了一个典型的分布式事务场景：</p>
+<ul>
+<li>在一个采购交易中，需要：</li>
+</ul>
+<ol>
+<li>扣减商品库存</li>
+<li>扣减用户账号余额</li>
+<li>生成采购订单</li>
+</ol>
+<ul>
+<li>很明显，以上3个步骤必须：要么全部成功，要么全部失败，否则系统的数据会错乱</li>
+<li>而现在流行的微服务架构，一般来说，库存，账号余额，订单是3个独立的系统</li>
+<li>每个微服务有自己的数据库，相互独立</li>
+</ul>
+<p>这里就是分布式事务的场景。</p>
+<p><img src="http://seata.io/img/architecture.png" alt="设计图"></p>
+<h2>解决方案</h2>
+<p>AT模式解决这个问题的思路其实很简单，一句话概括就是：</p>
+<p>在分布式事务过程中，记录待修改的数据修改前和修改后的值到undo_log表，万一交易中出现异常，通过这个里的数据做回滚</p>
+<p>当然，具体代码实现起来，我相信很多细节远没这么简单。</p>
+<h2>Demo代码结构</h2>
+<p>从github上clone最新的代码</p>
+<pre><code class="language-sh">git <span class="hljs-built_in">clone</span> git@github.com:seata/seata-samples.git
+</code></pre>
+<p>阅读Demo代码结构</p>
+<pre><code class="language-sh">$ <span class="hljs-built_in">cd</span> seata-samples/dubbo/
+$ tree -C  -I <span class="hljs-string">'target'</span> .
+.
+├── README.md
+├── pom.xml
+├── seata-samples-dubbo.iml
+└── src
+    └── main
+        ├── java
+        │   └── io
+        │       └── seata
+        │           └── samples
+        │               └── dubbo
+        │                   ├── ApplicationKeeper.java
+        │                   ├── Order.java
+        │                   ├── service
+        │                   │   ├── AccountService.java
+        │                   │   ├── BusinessService.java
+        │                   │   ├── OrderService.java
+        │                   │   ├── StorageService.java
+        │                   │   └── impl
+        │                   │       ├── AccountServiceImpl.java
+        │                   │       ├── BusinessServiceImpl.java
+        │                   │       ├── OrderServiceImpl.java
+        │                   │       └── StorageServiceImpl.java
+        │                   └── starter
+        │                       ├── DubboAccountServiceStarter.java
+        │                       ├── DubboBusinessTester.java
+        │                       ├── DubboOrderServiceStarter.java
+        │                       └── DubboStorageServiceStarter.java
+        └── resources
+            ├── file.conf
+            ├── jdbc.properties
+            ├── log4j.properties
+            ├── registry.conf
+            ├── spring
+            │   ├── dubbo-account-service.xml
+            │   ├── dubbo-business.xml
+            │   ├── dubbo-order-service.xml
+            │   └── dubbo-storage-service.xml
+            └── sql
+                ├── dubbo_biz.sql
+                └── undo_log.sql
+
+13 directories, 27 files
+</code></pre>
+<ul>
+<li>
+<p>在io.seata.samples.dubbo.starter包下的4个*Starter类，分别模拟上面所述的4个微服务</p>
+<ul>
+<li>Account</li>
+<li>Business</li>
+<li>Order</li>
+<li>Storage</li>
+</ul>
+</li>
+<li>
+<p>4个服务都是标准的dubbo服务，配置文件在seata-samples/dubbo/src/main/resources/spring目录下</p>
+</li>
+<li>
+<p>运行demo需要把这4个服务都启动起来，Business最后启动</p>
+</li>
+<li>
+<p>主要的逻辑在io.seata.samples.dubbo.service，4个实现类分别对应4个微服务的业务逻辑</p>
+</li>
+<li>
+<p>数据库信息的配置文件：src/main/resources/jdbc.properties</p>
+</li>
+</ul>
+<h3>时序图</h3>
+<p><img src="https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/timing-diagram.png?raw=true" alt="cloc-seata"></p>
+<p>Ok, 赶紧动手, Make It Happen!</p>
+<h2>运行Demo</h2>
+<h3>MySQL</h3>
+<h3>建表</h3>
+<p>执行seata-samples/dubbo/src/main/resources/sql的脚本dubbo_biz.sql和undo_log.sql</p>
+<pre><code class="language-sh">mysql&gt; show tables;
++-----------------+
+| Tables_in_seata |
++-----------------+
+| account_tbl     |
+| order_tbl       |
+| storage_tbl     |
+| undo_log        |
++-----------------+
+4 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.01 sec)
+</code></pre>
+<p>执行完之后，数据库里应该有4个表</p>
+<p>修改seata-samples/dubbo/src/main/resources/jdbc.properties文件</p>
+<p>根据你MySQL运行的环境修改变量的值</p>
+<pre><code class="language-properties"><span class="hljs-meta">jdbc.account.url</span>=<span class="hljs-string">jdbc:mysql://localhost:3306/seata</span>
+<span class="hljs-meta">jdbc.account.username</span>=<span class="hljs-string">your_username</span>
+<span class="hljs-meta">jdbc.account.password</span>=<span class="hljs-string">your_password</span>
+<span class="hljs-meta">jdbc.account.driver</span>=<span class="hljs-string">com.mysql.jdbc.Driver</span>
+<span class="hljs-comment"># storage db config</span>
+<span class="hljs-meta">jdbc.storage.url</span>=<span class="hljs-string">jdbc:mysql://localhost:3306/seata</span>
+<span class="hljs-meta">jdbc.storage.username</span>=<span class="hljs-string">your_username</span>
+<span class="hljs-meta">jdbc.storage.password</span>=<span class="hljs-string">your_password</span>
+<span class="hljs-meta">jdbc.storage.driver</span>=<span class="hljs-string">com.mysql.jdbc.Driver</span>
+<span class="hljs-comment"># order db config</span>
+<span class="hljs-meta">jdbc.order.url</span>=<span class="hljs-string">jdbc:mysql://localhost:3306/seata</span>
+<span class="hljs-meta">jdbc.order.username</span>=<span class="hljs-string">your_username</span>
+<span class="hljs-meta">jdbc.order.password</span>=<span class="hljs-string">your_password</span>
+<span class="hljs-meta">jdbc.order.driver</span>=<span class="hljs-string">com.mysql.jdbc.Driver</span>
+</code></pre>
+<h3>ZooKeeper</h3>
+<p>启动ZooKeeper，我的本地的Mac是使用Homebrew安装启动的</p>
+<pre><code class="language-sh">$ brew services start zookeeper 
+==&gt; Successfully started `zookeeper` (label: homebrew.m
+
+$ brew services list           
+Name              Status  User    Plist
+docker-machine    stopped         
+elasticsearch     stopped         
+kafka             stopped         
+kibana            stopped         
+mysql             started portman /Users/portman/Librar
+y/LaunchAgents/homebrew.mxcl.mysql.plist
+nginx             stopped         
+postgresql        stopped         
+redis             stopped         
+zookeeper         started portman /Users/portman/Librar
+y/LaunchAgents/homebrew.mxcl.zookeeper.plist
+</code></pre>
+<h3>启动TC事务协调器</h3>
+<p>在这个<a href="https://github.com/seata/seata/releases">链接</a>里页面中，下载对应版本的seata-server程序，我本地下载的是1.2.0版本</p>
+<ol>
+<li>进入文件所在目录并解压文件</li>
+<li>进入seata目录</li>
+<li>执行启动脚本</li>
+</ol>
+<pre><code class="language-sh">$ tar -zxvf seata-server-1.2.0.tar.gz
+$ <span class="hljs-built_in">cd</span> seata
+$ bin/seata-server.sh
+</code></pre>
+<p>观察启动日志是否有报错信息，如果一切正常，并看到了以下的Server started的信息，说明启动成功了。</p>
+<pre><code class="language-sh">2020-07-23 13:45:13.810 INFO [main]io.seata.core.rpc.netty.RpcServerBootstrap.start:155 -Server started ...
+</code></pre>
+<h3>IDE中启动模拟的微服务</h3>
+<ol>
+<li>首先要把seata-samples项目导入到本地IDE中，这里我用的是IntelliJ IDEA</li>
+<li>刷新Maven的工程依赖</li>
+<li>先启动Account，Order，Storage这个3个服务，然后Business才能去调用，对应的启动类分别是：</li>
+</ol>
+<pre><code class="language-java">io.seata.samples.dubbo.starter.DubboStorageServiceStarter
+io.seata.samples.dubbo.starter.DubboOrderServiceStarter
+io.seata.samples.dubbo.starter.DubboStorageServiceStarter
+</code></pre>
+<p>每个服务启动完之后，看到这句提示信息，说明服务启动成功了</p>
+<pre><code class="language-sh">Application is keep running ...
+</code></pre>
+<p><img src="https://github.com/iportman/p/blob/master/blog/seata-at-demo-in-mac/service-boot.png?raw=true" alt="cloc-seata"></p>
+<p>启动成功后，account_tbl，storage_tbl表会有两条初始化的数据，分别是账户余额和商品库存</p>
+<pre><code class="language-sh">mysql&gt; SELECT * FROM account_tbl; SELECT * FROM storage_tbl;
++----+---------+-------+
+| id | user_id | money |
++----+---------+-------+
+|  1 | U100001 |   999 |
++----+---------+-------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+
++----+----------------+-------+
+| id | commodity_code | count |
++----+----------------+-------+
+|  1 | C00321         |   100 |
++----+----------------+-------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+</code></pre>
+<h3>使用Business验证效果</h3>
+<h4>正常情况</h4>
+<p>还是在IDE中执行DubboBusinessTester类的主函数，程序跑完会自动退出</p>
+<p>在程序一切正常的情况下，每个微服务的事物都应该是提交了的，数据保持一致</p>
+<p>我们来看一下MySQL中数据的变化</p>
+<pre><code class="language-sh">mysql&gt; SELECT * FROM account_tbl; SELECT * FROM order_tbl; SELECT * FROM storage_tbl;
++----+---------+-------+
+| id | user_id | money |
++----+---------+-------+
+|  1 | U100001 |   599 |
++----+---------+-------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+
++----+---------+----------------+-------+-------+
+| id | user_id | commodity_code | count | money |
++----+---------+----------------+-------+-------+
+|  1 | U100001 | C00321         |     2 |   400 |
++----+---------+----------------+-------+-------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+
++----+----------------+-------+
+| id | commodity_code | count |
++----+----------------+-------+
+|  1 | C00321         |    98 |
++----+----------------+-------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+</code></pre>
+<p>从3个表的数据可以看到：账户余额扣减了400块；订单表增加了1条记录；商品库存扣减了2个</p>
+<p>这个结果是程序的逻辑是一致的，说明事务没有问题</p>
+<h4>异常情况</h4>
+<p>其实即使不加入分布式事务的控制，一切都正常情况下，事务本身就不会有问题的</p>
+<p>所以我们来重点关注，当程序出现异常时的情况</p>
+<p>现在我把BusinessServiceImpl的抛异常的代码注释放开，然后再执行一次DubboBusinessTester，来看看有什么情况发生</p>
+<pre><code class="language-java">		<span class="hljs-meta">@Override</span>
+    <span class="hljs-meta">@GlobalTransactional</span>(timeoutMills = <span class="hljs-number">300000</span>, name = <span class="hljs-string">"dubbo-demo-tx"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">purchase</span><span class="hljs-params">(String userId, String commodityCode, <span class="hljs-keyword">int</span> orderCount)</span> </span>{
+        LOGGER.info(<span class="hljs-string">"purchase begin ... xid: "</span> + RootContext.getXID());
+        storageService.deduct(commodityCode, orderCount);
+        orderService.create(userId, commodityCode, orderCount);
+      
+        <span class="hljs-comment">//放开这句抛异常的注释，模拟程序出现异常</span>
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">"portman's foooooobar error."</span>);
+
+    }
+</code></pre>
+<p>接着，我再一次执行DubboBusinessTester，执行过程中在控制台可以看到异常报错信息</p>
+<pre><code class="language-java">Exception in thread "main" java.lang.RuntimeException: portman's foooooobar error.
+</code></pre>
+<p>现在我们再看一下MySQL里的数据变化，发现数据没有任何变化，说明分布式事务的控制已经起作用了</p>
+<h2>待思考问题</h2>
+<p>上面的步骤只是演示了seata最简单的demo程序，更多更复杂的情况后续大家可以一起讨论和验证</p>
+<p>学习过程中还有一些问题和疑惑，后续进一步学习</p>
+<ul>
+<li>全局锁对性能的影响程度</li>
+<li>undo_log日志可以回滚到原来状态，但是如果数据状态已经发生变化如何处理（比如增加的用户积分已经被别的本地事务花掉了）</li>
+</ul>
+<h2>参考文献</h2>
+<ul>
+<li><a href="http://seata.io/zh-cn/docs/overview/what-is-seata.html">Seata 是什么?</a></li>
+<li><a href="http://seata.io/zh-cn/docs/user/quickstart.html">快速开始</a></li>
+</ul>
+<h2>作者信息</h2>
+<p>许晓加，金蝶软件架构师</p>
+<p><a href="https://github.com/iportman">Github</a></p>
+</section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
