@@ -94,29 +94,28 @@ export default {
     contacts: {
       title: '联系我们',
       desc: '有问题需要反馈？请通过一下方式联系我们。',
-      list: [
-        {
-          img: '/img/mailinglist.png',
-          imgHover: '/img/mailinglist_hover.png',
-          title: '邮件列表',
-          link: 'mailto:dev-seata+subscribe@googlegroups.com'
-        },
-        {
-          img: '/img/twitter.png',
-          imgHover: '/img/twitter_hover.png',
-          title: '@Seata',
-          link: 'https://twitter.com/seataio',
-        },
-        {
-          img: '//img.alicdn.com/tfs/TB1zUYVw4z1gK0jSZSgXXavwpXa-514-512.png',
-          imgHover: '//img.alicdn.com/tfs/TB1zUYVw4z1gK0jSZSgXXavwpXa-514-512.png',
-          title: '钉钉①群(已满)',
-        },
-		{
-          img: '/img/dingding_group_two.png',
-          imgHover: '/img/dingding_group_two.png',
-          title: '钉钉②群(可加入)',
-        },
+        list: [
+            {
+                img: '/img/mailinglist.png',
+                imgHover: '/img/mailinglist_hover.png',
+                title: '邮件列表',
+                link: 'mailto:dev-seata+subscribe@googlegroups.com'
+            },
+            {
+                img: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
+                imgHover: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
+                title: 'Seata 官微',
+            },
+            {
+                img: '//img.alicdn.com/tfs/TB1nccZi79l0K4jSZFKXXXFjpXa-614-614.jpg',
+                imgHover: '//img.alicdn.com/tfs/TB1nccZi79l0K4jSZFKXXXFjpXa-614-614.jpg',
+                title: '微信群拉取小助手',
+            },
+            {
+                img: '//img.alicdn.com/tfs/TB1UrmTj639YK4jSZPcXXXrUFXa-422-422.jpg',
+                imgHover: '//img.alicdn.com/tfs/TB1UrmTj639YK4jSZPcXXXrUFXa-422-422.jpg',
+                title: '钉钉③群(推荐)',
+            },
       ],
     },
     contributorGuide: {
