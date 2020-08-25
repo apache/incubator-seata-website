@@ -4,12 +4,15 @@ keywords: Seata
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.2.0版本
+# seata参数配置 1.3.0版本
 <a href="./configurations100.html">查看1.0.0版本</a>  
 <a href="./configurations090.html">查看0.9.0.1之前版本</a>
 
 ### 变更记录
 ```
+20200716(1.3.0):
+1.增加了store.redis相关配置
+2.增加了nacos注册中心配置group项,Server和Client端的值需一致
 20200421(1.2.0): 
 1.增加registry.nacos.application属性，默认seata-server，Server和Client端的值需一致
 20200220(1.1.0): 
@@ -28,11 +31,16 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |---------------|----|
 | registry.type            |registry.type|
 | config.type            |config.type|
-| store.mode            |service.vgroupMapping.my_test_tx_group|
+| #store.mode=db需要以下配置 |service.vgroupMapping.my_test_tx_group|
 | store.db.driverClassName            | service.default.grouplist |
 | store.db.url            |service.disableGlobalTransaction |
 | store.db.user            | |
-| store.db.password            | |
+| store.db.password | |
+| #store.mode=redis 需要以下配置 | |
+| store.redis.host | |
+| store.redis.port | |
+| store.redis.database | |
+| store.redis.password | |
 
 
 
@@ -60,21 +68,28 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.recovery.asynCommittingRetryPeriod     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
 | server.recovery.rollbackingRetryPeriod         | 二阶段回滚状态重试回滚线程间隔时间      |默认1000，单位毫秒    |
 | server.recovery.timeoutRetryPeriod             | 超时状态检测重试线程间隔时间        |默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器    |
-| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库(支持HA)    |
+| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库\|redis(支持HA)    |
 | store.file.dir                            | file模式文件存储文件夹名 |默认sessionStore    |
-| store.db.datasource                       | db模式数据源类型 |默认dbcp    |
-| store.db.dbType                          | db模式数据库类型 |默认mysql    |
-| store.db.driverClassName                | db模式数据库驱动 |默认com.mysql.jdbc.Driver    |
-| store.db.url                              | db模式数据库url | 默认jdbc:mysql://127.0.0.1:3306/seata   |
-| store.db.user                             | db模式数据库账户 |默认mysql    |
-| store.db.password                         | db模式数据库账户密码 |默认mysql    |
+| store.db.datasource                       | db模式数据源类型 |dbcp、druid、hikari；无默认值，store.mode=db时必须指定。    |
+| store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。   |
+| store.db.driverClassName                | db模式数据库驱动 |store.mode=db时必须指定    |
+| store.db.url                              | db模式数据库url | store.mode=db时必须指定   |
+| store.db.user                             | db模式数据库账户 |store.mode=db时必须指定    |
+| store.db.password                         | db模式数据库账户密码 |store.mode=db时必须指定    |
 | store.db.minConn                         | db模式数据库初始连接数 |默认1    |
-| store.db.maxConn                         | db模式数据库最大连接数|默认3    |
+| store.db.maxConn                         | db模式数据库最大连接数|默认20    |
 | store.db.maxWait                         | db模式获取连接时最大等待时间 |默认5000，单位毫秒    |
 | store.db.globalTable                     | db模式全局事务表名 |默认global_table    |
 | store.db.branchTable                     | db模式分支事务表名 |默认branch_table    |
 | store.db.lockTable                       | db模式全局锁表名 |默认lock_table    |
 | store.db.queryLimit                      | db模式查询全局事务一次的最大条数 |默认100    |
+| store.redis.host | redis模式ip |默认127.0.0.1 |
+| store.redis.port | redis模式端口 |默认6379 |
+| store.redis.maxConn | redis模式最大连接数 |默认10 |
+| store.redis.minConn | redis模式最小连接数 |默认1 |
+| store.redis.database | redis模式默认库 |默认0 |
+| store.redis.password | redis模式密码(无可不填) |默认null |
+| store.redis.queryLimit | redis模式一次查询最大条数 |默认100 |
 | metrics.enabled                           | 是否启用Metrics  |默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低|
 | metrics.registryType                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
 | metrics.exporterList                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
@@ -85,14 +100,16 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | key| desc    | remark|
 |-------------------------------------------|----------------------------|----------------------------|
 | seata.enabled   | 是否开启spring-boot自动装配   |true、false,(SSBS)专有配置，默认true（附录4） |
-| seata.enableAutoDataSourceProxy=true | 是否开启数据源自动代理 | true、false,seata-spring-boot-starter(SSBS)专有配置,SSBS默认会开启数据源自动代理,可通过该配置项关闭.| 
-| seata.useJdkProxy=false |  是否使用JDK代理作为数据源自动代理的实现方式| true、false,(SSBS)专有配置,默认false,采用CGLIB作为数据源自动代理的实现方式 | 
+| seata.enableAutoDataSourceProxy=true | 是否开启数据源自动代理 | true、false,seata-spring-boot-starter(SSBS)专有配置,SSBS默认会开启数据源自动代理,可通过该配置项关闭.|
+| seata.useJdkProxy=false |  是否使用JDK代理作为数据源自动代理的实现方式| true、false,(SSBS)专有配置,默认false,采用CGLIB作为数据源自动代理的实现方式 |
 | transport.enableClientBatchSendRequest            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
 | client.log.exceptionRate                | 日志异常输出概率 |  默认100，目前用于undo回滚失败时异常堆栈输出，百分之一的概率输出，回滚失败基本是脏数据，无需输出堆栈占用硬盘空间  |
 | service.vgroupMapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | TC服务列表（附录2） |  仅注册中心为file时使用  |
 | service.disableGlobalTransaction          | 全局事务开关 |  默认false。false为开启，true为关闭  |
-| service.enableDegrade                     | 降级开关（待实现） |  默认false。业务侧根据连续错误数自动降级不走seata事务  |
+| client.tm.degradeCheck | 降级开关 |  默认false。业务侧根据连续错误数自动降级不走seata事务(详细介绍请阅读附录6)  |
+| client.tm.degradeCheckAllowTimes | 升降级达标阈值 | 默认10 |
+| client.tm.degradeCheckPeriod | 服务自检周期 | 默认2000,单位ms.每2秒进行一次服务自检,来决定 |
 | client.rm.reportSuccessEnable   | 是否上报一阶段成功   |true、false，从1.1.0版本开始,默认false.true用于保持分支事务生命周期记录完整，false可提高不少性能 |
 | client.rm.asynCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
 | client.rm.lock.retryInterval                | 校验或占用全局锁重试间隔 |  默认10，单位毫秒  |
@@ -225,14 +242,22 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
     seata1.1.0版本新加入以下注解,用于开启数据源自动代理功能
     @EnableAutoDataSourceProxy
 
-   | attribute| desc    | remark|
-   |-------------------------------------------|----------------------------|----------------------------|
-   | useJdkProxy   | 是否使用JDK代理作为数据源自动代理的实现方式    |false、true,默认false,采用CGLIB作为数据源自动代理的实现方式  |
+| attribute| desc    | remark|
+|-------------------------------------------|----------------------------|----------------------------|
+| useJdkProxy   | 是否使用JDK代理作为数据源自动代理的实现方式    |false、true,默认false,采用CGLIB作为数据源自动代理的实现方式  |
 
-    
+
     1.对于使用seata-spring-boot-starter的方式，默认已开启数据源自动代理,如需关闭，请配置seata.enableAutoDataSourceProxy=false，该项配置默认为true。
       如需切换代理实现方式，请通过seata.useJdkProxy=false进行配置,默认为false，采用CGLIB作为数据源自动代理的实现方式。
     2.对于使用seata-all的方式，请使用@EnableAutoDataSourceProxy来显式开启数据源自动代理功能。如有需要，可通过该注解的useJdkProxy属性进行代理实现方式
       的切换。默认为false,采用CGLIB作为数据源自动代理的实现方式。
-    
 
+### 附录6:
+
+```
+关于服务自动降级策略的具体实现介绍:
+首先通过读取client.tm.degradeCheck是否为true,决定是否开启自检线程.随后读取degradeCheckAllowTimes和degradeCheckPeriod,确认阈值与自检周期.
+假设degradeCheckAllowTimes=10,degradeCheckPeriod=2000
+那么每2秒钟会进行一个begin,commit的测试,如果失败,则记录连续失败数,如果成功则清空连续失败数.连续错误由用户接口及自检线程进行累计,直到连续失败次数达到用户的阈值,则关闭Seata分布式事务,避免用户自身业务长时间不可用.
+反之,假如当前分布式事务关闭,那么自检线程继续按照2秒一次的自检,直到连续成功数达到用户设置的阈值,那么Seata分布式事务将恢复使用
+```

@@ -56,6 +56,8 @@ description: Seata 常见问题。
 
 <a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a>
 
+<a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -82,9 +84,9 @@ description: Seata 常见问题。
 
 **A:** 
     因seata一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。
-  1. 脏读 select语句加for update，代理方法增加@GlobalLock或@GlobalTransaction
+  1. 脏读 select语句加for update，代理方法增加@GlobalLock+@Transactional或@GlobalTransaction
   2. 脏写 必须使用@GlobalTransaction  
-        注：如果你查询的业务的接口没有GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock 注解，并且在查询语句上加 for update。
+        注：如果你查询的业务的接口没有GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock+@Transactional 注解，并且在查询语句上加 for update。
         如果你查询的接口在事务链路上外层有GlobalTransactional注解，那么你查询的语句只要加for update就行。设计这个注解的原因是在没有这个注解之前，需要查询分布式事务读已提交的数据，但业务本身不需要分布式事务。
         若使用GlobalTransactional注解就会增加一些没用的额外的rpc开销比如begin 返回xid，提交事务等。GlobalLock简化了rpc过程，使其做到更高的性能。
 
@@ -181,7 +183,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 <h3 id='13'>Q: 13.支持多主键?</h3>
 
 **A:** 
-暂不支持，建议先建一列自增id主键，原复合主键改为唯一键来规避下
+暂时只支持mysql，其他类型数据库建议先建一列自增id主键，原复合主键改为唯一键来规避下
 
 ********
 <h3 id='14'>Q: 14.使用HikariDataSource报错如何解决?</h3>
@@ -302,6 +304,25 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 1.首先确保你引入了spring-cloud-alibaba-seata的依赖.
 
 2.如果xid还无法传递,请确认你是否实现了WebMvcConfigurer,如果是,请参考com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors的方法.把SeataHandlerInterceptor加入到你的拦截链路中.
+
+------
+
+<h3 id='25'>Q: 25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</h3>
+
+**A:** 
+
+dynamic-datasource-sring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容
+
+1.如果你引入的是seata-all,请不要使用@EnableAutoDataSourceProxy注解.
+
+2.如果你引入的是seata-spring-boot-starter 请关闭自动代理
+
+```yaml
+seata:
+  enable-auto-data-source-proxy: false
+```
+
+
 
 ------
 
