@@ -265,8 +265,8 @@ export default {
                     }
                 ]
 
-            }
-        ]
+            },
+        ],
+        barText: '文档',
     },
-    barText: '文档',
-}
+};
