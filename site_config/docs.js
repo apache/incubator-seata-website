@@ -138,26 +138,63 @@ export default {
                         link: '/zh-cn/docs/user/transaction-group.html',
                     },
                     {
-                        title: 'Spring 支持',
-                        link: '/zh-cn/docs/user/spring.html',
+                        title: '配置中心',
+                        children: [
+                            {
+                                title: '简介',
+                                link: '/zh-cn/docs/user/configuration/index.html',
+                            },
+                            {
+                                title: 'Nacos 配置中心',
+                                link: '/zh-cn/docs/user/configuration/nacos.html',
+                            },
+                            {
+                                title: 'Apollo 配置中心',
+                                link: '/zh-cn/docs/user/configuration/apollo.html',
+                            },
+                            {
+                                title: 'Etcd3 配置中心',
+                                link: '/zh-cn/docs/user/configuration/etcd3.html',
+                            },
+                            {
+                                title: 'Consul 配置中心',
+                                link: '/zh-cn/docs/user/configuration/consul.html',
+                            },
+                            {
+                                title: 'Zookeeper 配置中心',
+                                link: '/zh-cn/docs/user/configuration/zookeeper.html',
+                            }
+                        ],
                     },
                     {
-                        title: 'API 支持',
-                        link: '/zh-cn/docs/user/api.html',
-                    },
-                    {
-                        title: '微服务框架支持',
-                        link: '/zh-cn/docs/user/microservice.html',
-                    },
-                    {
-                        title: 'ORM 框架支持',
-                        link: '/zh-cn/docs/user/ormframework.html',
-                    },
-                    {
-                        title: '数据源类型支持',
-                        link: '/zh-cn/docs/user/datasource.html',
-                    },
-                ],
+                        title: '注册中心',
+                        children: [
+                            {
+                                title: '简介',
+                                link: '/zh-cn/docs/user/registry/index.html',
+                            },
+                            {
+                                title: 'Nacos 注册中心',
+                                link: '/zh-cn/docs/user/registry/nacos.html',
+                            },
+                            {
+                                title: 'Eureka 注册中心',
+                                link: '/zh-cn/docs/user/registry/eureka.html',
+                            },
+                            {
+                                title: 'Etcd3 注册中心',
+                                link: '/zh-cn/docs/user/registry/etcd3.html',
+                            },
+                            {
+                                title: 'Consul 注册中心',
+                                link: '/zh-cn/docs/user/registry/consul.html',
+                            },
+                            {
+                                title: 'Zookeeper 注册中心',
+                                link: '/zh-cn/docs/user/registry/zookeeper.html',
+                            }
+                        ],
+                    }]
             },
 
             {
@@ -176,7 +213,7 @@ export default {
                             },
                             {
                                 title: 'Seata Saga 模式',
-                                link: '/zh-cn/docs/dev/mode/saga-mode.html',
+                                link: '/zh-cn/docs/user/saga.html',// zh-cn/docs/dev/mode/saga-mode.html
                             },
                             {
                                 title: 'Seata XA 模式',
@@ -232,8 +269,8 @@ export default {
                     }
                 ]
 
+                    },
+                ],
+                barText: '文档',
             },
-        ],
-        barText: '文档',
-    },
-};
+    };
