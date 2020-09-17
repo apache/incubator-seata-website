@@ -99,8 +99,14 @@
                 dateStr: 'Jul 27th, 2020',
                 desc: '本文从源码的角度讲述了Seata 1.3.0版本Server端启动流程',
                 link: '/zh-cn/blog/seata-sourcecode-server-bootstrap.html',
+            },
+            {
+                title: 'Seata Client端启动流程源码解读[一]',
+                author: '@杨同学',
+                dateStr: 'AUG 25th, 2020',
+                desc: '本文从源码的角度讲述了Seata 1.3.0版本Client端启动流程',
+                link: '/zh-cn/blog/seata-sourcecode-client-bootstrap.html',
             }
-            
         ]
     },
 };
