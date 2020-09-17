@@ -473,6 +473,31 @@
       }
     },
     {
+      "filename": "apollo.md",
+      "link": "/zh-cn/docs/user/configuration/apollo.html",
+      "meta": {}
+    },
+    {
+      "filename": "consul.md",
+      "link": "/zh-cn/docs/user/configuration/consul.html",
+      "meta": {}
+    },
+    {
+      "filename": "etcd3.md",
+      "link": "/zh-cn/docs/user/configuration/etcd3.html",
+      "meta": {}
+    },
+    {
+      "filename": "index.md",
+      "link": "/zh-cn/docs/user/configuration/index.html",
+      "meta": {}
+    },
+    {
+      "filename": "nacos.md",
+      "link": "/zh-cn/docs/user/configuration/nacos.html",
+      "meta": {}
+    },
+    {
       "filename": "configurations.md",
       "link": "/zh-cn/docs/user/configurations.html",
       "meta": {
@@ -534,6 +559,36 @@
         "keywords": "Seata",
         "description": "Seata 快速开始。"
       }
+    },
+    {
+      "filename": "consul.md",
+      "link": "/zh-cn/docs/user/registry/consul.html",
+      "meta": {}
+    },
+    {
+      "filename": "etcd3.md",
+      "link": "/zh-cn/docs/user/registry/etcd3.html",
+      "meta": {}
+    },
+    {
+      "filename": "eureka.md",
+      "link": "/zh-cn/docs/user/registry/eureka.html",
+      "meta": {}
+    },
+    {
+      "filename": "index.md",
+      "link": "/zh-cn/docs/user/registry/index.html",
+      "meta": {}
+    },
+    {
+      "filename": "nacos.md",
+      "link": "/zh-cn/docs/user/registry/nacos.html",
+      "meta": {}
+    },
+    {
+      "filename": "zookeeper.md",
+      "link": "/zh-cn/docs/user/registry/zookeeper.html",
+      "meta": {}
     },
     {
       "filename": "saga.md",
