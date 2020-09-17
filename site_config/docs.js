@@ -126,6 +126,10 @@ export default {
                         link: '/zh-cn/docs/user/quickstart.html',
                     },
                     {
+                        title: 'Saga 模式',
+                        link: '/zh-cn/docs/user/saga.html',
+                    },
+                    {
                         title: '参数配置',
                         link: '/zh-cn/docs/user/configurations.html',
                     },
@@ -190,79 +194,80 @@ export default {
                                 link: '/zh-cn/docs/user/registry/zookeeper.html',
                             }
                         ],
-                    },
+                    }]
+            },
 
+            {
+                title: '开发者指南',
+                children: [
                     {
-                        title: '开发者指南',
+                        title: '各事务模式',
                         children: [
                             {
-                                title: '各事务模式',
-                                children: [
-                                    {
-                                        title: 'Seata AT 模式',
-                                        link: '/zh-cn/docs/dev/mode/at-mode.html',
-                                    },
-                                    {
-                                        title: 'Seata TCC 模式',
-                                        link: '/zh-cn/docs/dev/mode/tcc-mode.html',
-                                    },
-                                    {
-                                        title: 'Seata Saga 模式',
-                                        link: '/zh-cn/docs/user/saga.html',// zh-cn/docs/dev/mode/saga-mode.html
-                                    },
-                                    {
-                                        title: 'Seata XA 模式',
-                                        link: '/zh-cn/docs/dev/mode/xa-mode.html',
-                                    }
-                                ],
+                                title: 'Seata AT 模式',
+                                link: '/zh-cn/docs/dev/mode/at-mode.html',
                             },
                             {
-                                title: 'Metrics设计',
-                                link: '/zh-cn/docs/dev/seata-mertics.html',
+                                title: 'Seata TCC 模式',
+                                link: '/zh-cn/docs/dev/mode/tcc-mode.html',
                             },
+                            {
+                                title: 'Seata Saga 模式',
+                                link: '/zh-cn/docs/user/saga.html',// zh-cn/docs/dev/mode/saga-mode.html
+                            },
+                            {
+                                title: 'Seata XA 模式',
+                                link: '/zh-cn/docs/dev/mode/xa-mode.html',
+                            }
                         ],
                     },
                     {
-                        title: '运维指南',
+                        title: 'Metrics设计',
+                        link: '/zh-cn/docs/dev/seata-mertics.html',
+                    },
+                ],
+            },
+            {
+                title: '运维指南',
+                children: [
+                    {
+                        title: '版本升级指南',
+                        link: '/zh-cn/docs/ops/upgrade.html',
+                    },
+                    {
+                        title: 'Metrics配置',
+                        link: '/zh-cn/docs/ops/operation.html',
+                    },
+                    {
+                        title: '部署',
                         children: [
                             {
-                                title: '版本升级指南',
-                                link: '/zh-cn/docs/ops/upgrade.html',
+                                title: '新人文档',
+                                link: '/zh-cn/docs/ops/deploy-guide-beginner.html',
                             },
                             {
-                                title: 'Metrics配置',
-                                link: '/zh-cn/docs/ops/operation.html',
+                                title: '直接部署',
+                                link: '/zh-cn/docs/ops/deploy-server.html',
                             },
                             {
-                                title: '部署',
-                                children: [
-                                    {
-                                        title: '新人文档',
-                                        link: '/zh-cn/docs/ops/deploy-guide-beginner.html',
-                                    },
-                                    {
-                                        title: '直接部署',
-                                        link: '/zh-cn/docs/ops/deploy-server.html',
-                                    },
-                                    {
-                                        title: 'Docker部署',
-                                        link: '/zh-cn/docs/ops/deploy-by-docker.html',
-                                    },
-                                    {
-                                        title: 'Kubernetes部署',
-                                        link: '/zh-cn/docs/ops/deploy-by-kubernetes.html',
-                                    },
-                                    {
-                                        title: 'Helm 部署',
-                                        link: '/zh-cn/docs/ops/deploy-by-helm.html',
-                                    },
-                                    {
-                                        title: '高可用部署',
-                                        link: '/zh-cn/docs/ops/deploy-ha.html',
-                                    },
-                                ]
-                            }
+                                title: 'Docker部署',
+                                link: '/zh-cn/docs/ops/deploy-by-docker.html',
+                            },
+                            {
+                                title: 'Kubernetes部署',
+                                link: '/zh-cn/docs/ops/deploy-by-kubernetes.html',
+                            },
+                            {
+                                title: 'Helm 部署',
+                                link: '/zh-cn/docs/ops/deploy-by-helm.html',
+                            },
+                            {
+                                title: '高可用部署',
+                                link: '/zh-cn/docs/ops/deploy-ha.html',
+                            },
                         ]
+                    }
+                ]
 
                     },
                 ],
