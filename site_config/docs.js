@@ -126,6 +126,10 @@ export default {
                         link: '/zh-cn/docs/user/quickstart.html',
                     },
                     {
+                        title: 'Saga 模式',
+                        link: '/zh-cn/docs/user/saga.html',
+                    },
+                    {
                         title: '参数配置',
                         link: '/zh-cn/docs/user/configurations.html',
                     },
@@ -265,8 +269,8 @@ export default {
                     }
                 ]
 
+                    },
+                ],
+                barText: '文档',
             },
-        ],
-        barText: '文档',
-    },
-};
+    };
