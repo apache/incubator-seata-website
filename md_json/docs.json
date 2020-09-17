@@ -552,6 +552,11 @@
       }
     },
     {
+      "filename": "performance.md",
+      "link": "/zh-cn/docs/user/performance.html",
+      "meta": {}
+    },
+    {
       "filename": "quickstart.md",
       "link": "/zh-cn/docs/user/quickstart.html",
       "meta": {

@@ -126,10 +126,6 @@ export default {
                         link: '/zh-cn/docs/user/quickstart.html',
                     },
                     {
-                        title: 'Saga 模式',
-                        link: '/zh-cn/docs/user/saga.html',
-                    },
-                    {
                         title: '参数配置',
                         link: '/zh-cn/docs/user/configurations.html',
                     },
@@ -194,9 +190,34 @@ export default {
                                 link: '/zh-cn/docs/user/registry/zookeeper.html',
                             }
                         ],
+                    },
+                    {
+                        title: 'API 支持',
+                        link: '/zh-cn/docs/user/api.html',
+                    },
+                    {
+                        title: '微服务框架支持',
+                        link: '/zh-cn/docs/user/microservice.html',
+                    },
+                    {
+                        title: 'ORM 框架支持',
+                        link: '/zh-cn/docs/user/ormframework.html',
+                    },
+                    {
+                        title: '数据库类型支持',
+                        link: '/zh-cn/docs/user/datasource.html',
+                    },
+                    {
+                        title: '测试报告',
+                        children: [
+                            {
+                                title: '性能测试报告',
+                                link: '/zh-cn/docs/user/performance.html',
+
+                            },
+                        ]
                     }]
             },
-
             {
                 title: '开发者指南',
                 children: [
@@ -269,8 +290,8 @@ export default {
                     }
                 ]
 
-                    },
-                ],
-                barText: '文档',
             },
-    };
+        ],
+        barText: '文档',
+    },
+};
