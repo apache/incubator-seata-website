@@ -38,6 +38,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Long Chen   | [long187](https://github.com/long187)         | Antfin          |
 | Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
 | Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
+| Liang Wang | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
 
 ## Seata Developer Roles
 
