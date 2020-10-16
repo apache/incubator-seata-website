@@ -2,15 +2,15 @@
 title: Seata数据源代理解析
 keywords: Seata,数据源、数据源代理、多数据源
 description: 本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题
-author: 罗小勇
-date: 2020-10-15
+author: luoxy
+date: 2020/10/15
 ---
 
 
 # 数据源代理
-1. 数据源自动代理和手动代理一定不能混合使用，会有严重问题
-2. 单数据源时，多层代理会导致分支事务在提交时，`undo_log`本身也被代理；在`undo_log`分支事务回滚时，导致将业务表对应的`undo_log`删除，导致业务对应的分支事务回滚时发现undo_log不存在，从而生成一条`status==1的undo_log`
-3. 多数据源时，多层代理除了会导致单数据源时的问题，还会导致在回滚时死锁
+在Seata1.3.0版本中，数据源自动代理和手动代理一定不能混合使用，否则会导致多层代理，从而导致以下问题：
+1. 单数据源情况下：导致分支事务提交时，undo_log本身也被代理，即`为 undo_log 生成了 undo_log， 假设为undo_log2`，此时undo_log将被当作分支事务来处理；分支事务回滚时，因为`undo_log2`生成的有问题，在`undo_log对应的事务分支`回滚时会将`业务表关联的undo_log`也一起删除，从而导致`业务表对应的事务分支`回滚时发现undo_log不存在，从而又多生成一条状态为1的undo_log。这时候整体逻辑已经乱了，很严重的问题
+2. 多数据源和`逻辑数据源被代理`情况下：除了单数据源情况下会出现的问题，还可能会造成死锁问题。死锁的原因就是针对undo_log的操作，本该在一个事务中执行的`select for update` 和 `delete` 操作，被分散在多个事务中执行，导致一个事务在执行完`select for update`后一直不提交，一个事务在执行`delete`时一直等待锁，直到超时
 
 
 ## 代理描述
@@ -131,9 +131,7 @@ public DataSourceProxy dataSource(DataSource druidDataSource) {
 
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/837aa0462d994e9a8614707c6a50b5ae~tplv-k3u1fbpfcp-watermark.image)
 
-数据源多层代理会导致两个问题，下面会有案例介绍
-1. 单数据源情况下：导致分支事务提交时，undo_log本身也被代理，即为`为undo_log 生成了 undo_log， 假设为undo_log2`，此时将undo_log被当作分支事务来处理了；分支事务回滚时，因为`undo_log2`生成的有问题，在`undo_log对应的事务分支`回滚时会将`业务表关联的undo_log`也一起删除，从而导致`业务表对应的事务分支`回滚时发现undo_log不存在，从而又多生成一条状态为为1的undo_log。这时候整体逻辑已经乱了，很严重的问题
-2. 多数据源情况下：除了但数据源情况下会出现的问题，还会造成死锁问题。死锁的原因就是针对undo_log的操作，本该在一个事务中执行的`select for update` 和 `delete` 操作，被分散在多个事务中执行，导致一个事务在执行完`select for update`后一直不提交，一个事务在执行`delete`时一直等待锁，直到超时
+数据源多层代理会导致的两个问题在文章开头处已经总结了，下面会有案例介绍。
 
 
 
@@ -191,7 +189,7 @@ private void processGlobalTransactionCommit() throws SQLException {
         // 注册分支事务，简单理解向server发一个请求，然后server在branch_table表里插入一条记录，不关注
         register();
     } catch (TransactionException e) {
-        // 这里会抛出异常
+        // 如果没有for update 的sql,会直接在commit之前做注册,此时不止插入一条branch记录,而会附带锁信息进行竞争,下方的异常一般就是在注册时没拿到锁抛出,一般就是纯update语句的并发下会触发竞争锁失败的异常 @FUNKYE
         recognizeLockKeyConflictException(e, context.buildLockKeys());
     }
     try {
@@ -238,6 +236,9 @@ public void flushUndoLogs(ConnectionProxy cp) throws SQLException {
 }
 ```
 2. 提交本地事务@2，即通过`TargetConnection`提交事务。即 `务SQL执行`、`undo_log写入`、`即事务提交` 用的都是同一个`TargetConnection`
+
+>lcn的内置数据库方案,lcn是将undolog写到他内嵌的h2(忘了是不是这个来着了)数据库上,此时会变成2个本地事务,一个是h2的undolog插入事务,一个是业务数据库的事务,如果在h2插入后,业务数据库异常,lcn的方案就会出现数据冗余,回滚数据的时候也是一样,删除undolog跟回滚业务数据不是一个本地事务.
+但是lcn这样的好处就是入侵小,不需要另外添加undolog表。 感谢@FUNKYE大佬给的建议，对lcn不太了解，有机会好好研究一下
 
 
 # 分支事务回滚
@@ -325,9 +326,7 @@ public void undo(DataSourceProxy dataSourceProxy, String xid, long branchId) thr
 
 
 # 多层代理问题
-数据源多层代理会导致两个问题：
-1. 单数据源情况下：导致分支事务提交时，undo_log本身也被代理，即为`为undo_log 生成了 undo_log， 假设为undo_log2`，此时将undo_log被当作分支事务来处理了；分支事务回滚时，因为`undo_log2`生成的有问题，在`undo_log对应的事务分支`回滚时会将`业务表关联的undo_log`也一起删除，从而导致`业务表对应的事务分支`回滚时发现undo_log不存在，从而又多生成一条状态为为1的undo_log。这时候整体逻辑已经乱了，很严重的问题
-2. 多数据源情况下：除了但数据源情况下会出现的问题，还会造成死锁问题。死锁的原因就是针对undo_log的操作，本该在一个事务中执行的`select for update` 和 `delete` 操作，被分散在多个事务中执行，导致一个事务在执行完`select for update`后一直不提交，一个事务在执行`delete`时一直等待锁，直到超时
+数据源多层代理会导致的几个问题在文章开头的时候已经提到过了，重点分析一下为什么会造成以上问题：
 
 
 ## 对分支事务提交的影响
@@ -353,7 +352,6 @@ ConnectionProxy2#getTargetConnection ->
 TargetConnection#prepareStatement ->
 PreparedStatement#executeUpdate
 ```
-同理，如果未改造Seata的自动代理，此时就多了一层代理，将会多注册一个分支事务和多了一条undo_log日志
 
 
 ## 对分支事务回滚的影响
@@ -385,17 +383,15 @@ jdbc:mysql://xx^^^undo_log^^^84	    59734075254222849	jdbc:mysql://172.16.248.10
 
 ### 问题分析
 1. 根据xid和branchId找到对应的undo_log日志
-2. 对`undo_log`进行解析，主要就是解析它的`rollback_info`字段，`rollback_info`解析出来就是一个`SQLUndoLog集合`，每条`SQLUndoLog`对应着一个操作，里面包含了该操作的前后的快照，然后执行对应的回滚
+2. 对undo_log进行解析，主要就是解析它的`rollback_info`字段，`rollback_info`解析出来就是一个`SQLUndoLog集合`，每条`SQLUndoLog`对应着一个操作，里面包含了该操作的前后的快照，然后执行对应的回滚
 3. 根据xid和branchId删除undo_log日志
 
 因为双层代理问题，导致一条undo_log变成了一个分支事务，所以发生回滚时，我们也需要对undo_log分支事务进行回滚：
 1、首先根据xid和branchId找到对应的`undo_log`并解析其`rollback_info`属性，这里解析出来的rollback_info包含了两条`SQLUndoLog`。为什么有两条？
 >仔细想想也可以可以理解，第一层代理针对`seata_storage`的操作，放到缓存中，本来执行完之后是需要清掉的，但因为这里是双层代理，所以这时候这个流程并没有结束。轮到第二层代理对`undo_log`操作时，将该操作放到缓存中，此时缓存中有两个操作，分别为`seata_storage的UPDATE` 和 `undo_log的INSERT`。所以这也就很好理解为什么针对`undo_log操作`的那条undo_log格外大(4KB)，因为它的`rollback_info`包含了两个操作。
 
-但这都是理想情况，问题的关键是，第一条`SQLUndoLog`对应的after快照，里面的branchId=`59734070967644161` pk=`84`， 即 `seata_storage分支对应的branchId`  和 `seata_storage对应的undo_log PK`。
-
-
-也就是说，undo_log回滚时候 把 `seata_storage` 对应的 undo_log 删掉了。 那 undo_log 本身对应的undo_log 如何删除呢？ 根据xid和branchId删除
+有一点需要注意的是，第一条`SQLUndoLog`对应的after快照，里面的branchId=`59734070967644161` pk=`84`， 即 `seata_storage分支对应的branchId`  和 `seata_storage对应的undo_log PK`。也就是说，undo_log回滚时候 把`seata_storage对应的undo_log`删掉了。
+那undo_log本身对应的undo_log 如何删除呢？在接下来的逻辑中会根据xid和branchId删除
 
 2、解析第一条`SQLUndoLog`，此时对应的是`undo_log的INSERT`操作，所以其对应的回滚操作是`DELETE`。因为`undo_log`此时被当作了业务表。所以这一步会将`59734075254222849`对应的undo_log删除，**但这个其实是业务表对应的对应的`undo_log`**
 
@@ -404,7 +400,6 @@ jdbc:mysql://xx^^^undo_log^^^84	    59734075254222849	jdbc:mysql://172.16.248.10
 4、根据xid和branchId删除undo_log日志，这里删除的是`undo_log 的 undo_log , 即 undo_log2`。所以，执行到这里，两条undo_log就已经被删除了
 
 5、接下来回滚`seata_storage`，因为这时候它对应的undo_log已经在步骤2删掉了，所以此时查不到undo_log，然后重新生成一条`status == 1 的 undo_log`
-
 
 
 # 案例分析
@@ -482,8 +477,9 @@ update seata_account set count = count - 1 where id = 100;
 ## 问题现象
 
 Client：在控制台日志中，不断重复打印以下日志
-   1. 以上日志打印的间隔为20s，而我查看了数据库的`innodb_lock_wait_timeout`属性值，刚好就是20，说明每次回滚请求过来的时候，都因为获取锁超时(20)而回滚失败
-   2. 为什么会没过20s打印一次？因为Server端会有定时处理回滚请求
+1. 以上日志打印的间隔为20s，而我查看了数据库的`innodb_lock_wait_timeout`属性值，刚好就是20，说明每次回滚请求过来的时候，都因为获取锁超时(20)而回滚失败
+2. 为什么会没过20s打印一次？因为Server端会有定时处理回滚请求
+
 ```
 // 分支事务开始回滚
 Branch rollback start: 172.16.120.59:23004:59991911632711680 59991915571163137 jdbc:mysql://172.16.248.10:3306/tuya_middleware
@@ -506,7 +502,7 @@ Rollback branch transaction fail and will retry, xid = 172.16.120.59:23004:59991
 ```
 
 在该过程中，涉及到的SQL大概如下：
-```
+```sql
 1. SELECT * FROM undo_log WHERE branch_id = ? AND xid = ? FOR UPDATE							slaveDS
 2. SELECT * FROM undo_log WHERE  (id ) in (  (?)  )												        slaveDS
 3. DELETE FROM undo_log WHERE id = ?  															              masterDS
@@ -518,19 +514,19 @@ Rollback branch transaction fail and will retry, xid = 172.16.120.59:23004:59991
 
 此时查看数据库的 事务情况、锁情况 、锁等待关系 
 1、查当前正在执行的事务
-```
+```sql
 SELECT * FROM information_schema.INNODB_TRX;
 ```
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1d9852b91a9949f781e1f90bffe95fbf~tplv-k3u1fbpfcp-watermark.image)
 
 2、查当前锁情况
-```
+```sql
 SELECT * FROM information_schema.INNODB_LOCKs;
 ```
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a29748a3af34e7c90e3aa7cb78564bc~tplv-k3u1fbpfcp-watermark.image)
 
 3、查当前锁等待关系
-```
+```sql
 SELECT * FROM information_schema.INNODB_LOCK_waits;
 
 SELECT
@@ -573,10 +569,10 @@ FROM
 
 ## 验证猜想
 我尝试用了两个方法验证这个问题：
-1、修改Seata代码，将`select for update`改成`select`，此时在查询undo_log就不需要持有该记录的锁，也就不会造成死锁
+1. 修改Seata代码，将`select for update`改成`select`，此时在查询undo_log就不需要持有该记录的锁，也就不会造成死锁
 
 
-2、修改数据源代理逻辑，这才是问题的关键，该问题主要原因不是`select for update`。在此之前多层代理问题已经产生，然后才会造成死锁问题。从头到尾我们就不应该对`masterSlave`数据源进行代理。它只是一个逻辑数据源，为什么要对它进行代理呢？如果代理`masterSlave`，就不会造成多层代理问题，也就不会造成删除undo_log时的死锁问题
+2. 修改数据源代理逻辑，这才是问题的关键，该问题主要原因不是`select for update`。在此之前多层代理问题已经产生，然后才会造成死锁问题。从头到尾我们就不应该对`masterSlave`数据源进行代理。它只是一个逻辑数据源，为什么要对它进行代理呢？如果代理`masterSlave`，就不会造成多层代理问题，也就不会造成删除undo_log时的死锁问题
 
 
 ## 最终实现
@@ -596,3 +592,135 @@ protected boolean shouldSkip(Class<?> beanClass, String beanName) {
 ````
 
 
+# 自动代理在新版本中的优化
+因为`Seata 1.4.0`还没有正式发布，我目前看的是`1.4.0-SNAPSHOT`版本的代码，即当前时间`ddevelop`分支最新的代码
+
+## 代码改动
+主要改动如下，一些小的细节就不过多说明了：
+1. `DataSourceProxyHolder`调整
+2. `DataSourceProxy`调整
+3. `SeataDataSourceBeanPostProcessor`新增
+
+### DataSourceProxyHolder
+在这个类改动中，最主要是其`putDataSource`方法的改动
+```java
+public SeataDataSourceProxy putDataSource(DataSource dataSource, BranchType dataSourceProxyMode) {
+    DataSource originalDataSource;
+    if (dataSource instanceof SeataDataSourceProxy) {
+        SeataDataSourceProxy dataSourceProxy = (SeataDataSourceProxy) dataSource;
+        // 如果是代理数据源，并且和当前应用配置的数据源代理模式(AT/XA)一样, 则直接返回
+        if (dataSourceProxyMode == dataSourceProxy.getBranchType()) {
+            return (SeataDataSourceProxy)dataSource;
+        }
+
+        // 如果是代理数据源，和当前应用配置的数据源代理模式(AT/XA)不一样，则需要获取其TargetDataSource,然后为其创建一个代理数据源
+        originalDataSource = dataSourceProxy.getTargetDataSource();
+    } else {
+        originalDataSource = dataSource;
+    }
+
+    // 如果有必要，基于 TargetDataSource 创建 代理数据源
+    return this.dataSourceProxyMap.computeIfAbsent(originalDataSource,
+            BranchType.XA == dataSourceProxyMode ? DataSourceProxyXA::new : DataSourceProxy::new);
+}
+```
+`DataSourceProxyHolder#putDataSource`方法主要在两个地方被用到：一个是在`SeataAutoDataSourceProxyAdvice`切面中；一个是在`SeataDataSourceBeanPostProcessor`中。
+这段判断为我们解决了什么问题？数据源多层代理问题。在开启了数据源自动代理的前提下，思考以下场景：
+1. 如果我们在项目中手动注入了一个`DataSourceProxy`，这时候在切面调用`DataSourceProxyHolder#putDataSource`方法时会直接返回该`DataSourceProxy`本身，而不会为其再创建一个`DataSourceProxy`
+2. 如果我们在项目中手动注入了一个`DruidSource`，这时候在切面调用`DataSourceProxyHolder#putDataSource`方法时会为其再创建一个`DataSourceProxy`并返回
+
+这样看好像问题已经解决了，有没有可能会有其它的问题呢？看看下面的代码
+```java
+@Bean
+public DataSourceProxy dsA(){
+    return new DataSourceProxy(druidA)
+}
+
+@Bean
+public DataSourceProxy dsB(DataSourceProxy dsA){
+    return new DataSourceProxy(dsA)
+}
+```
+1. 这样写肯定是不对，但如果他就要这样写你也没办法
+2. `dsA`没什么问题，但`dsB`还是会产生双层代理的问题，因为此时`dsB 的 TargetDataSource`是`dsA`
+3. 这就涉及到`DataSourceProxy`的改动
+
+### DataSourceProxy
+```java
+public DataSourceProxy(DataSource targetDataSource, String resourceGroupId) {
+    // 下面这个判断，保证了在我们传入一个DataSourceProxy的时候，也不会产生双层代理问题
+    if (targetDataSource instanceof SeataDataSourceProxy) {
+        LOGGER.info("Unwrap the target data source, because the type is: {}", targetDataSource.getClass().getName());
+        targetDataSource = ((SeataDataSourceProxy) targetDataSource).getTargetDataSource();
+    }
+    this.targetDataSource = targetDataSource;
+    init(targetDataSource, resourceGroupId);
+}
+```
+
+### SeataDataSourceBeanPostProcessor
+```java
+public class SeataDataSourceBeanPostProcessor implements BeanPostProcessor {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SeataDataSourceBeanPostProcessor.class);
+
+    ......
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        if (bean instanceof DataSource) {
+            //When not in the excludes, put and init proxy.
+            if (!excludes.contains(bean.getClass().getName())) {
+                //Only put and init proxy, not return proxy.
+                DataSourceProxyHolder.get().putDataSource((DataSource) bean, dataSourceProxyMode);
+            }
+
+            //If is SeataDataSourceProxy, return the original data source.
+            if (bean instanceof SeataDataSourceProxy) {
+                LOGGER.info("Unwrap the bean of the data source," +
+                    " and return the original data source to replace the data source proxy.");
+                return ((SeataDataSourceProxy) bean).getTargetDataSource();
+            }
+        }
+        return bean;
+    }
+}
+```
+1. `SeataDataSourceBeanPostProcessor`实现了`BeanPostProcessor`接口，在一个bean初始化后，会执行`BeanPostProcessor#postProcessAfterInitialization`方法。也就是说，在`postProcessAfterInitialization`方法中，这时候的bean已经是可用状态了
+2. 为什么要提供这么一个类呢？从它的代码上来看，仅仅是为了再bean初始化之后，为数据源初始化对应的`DataSourceProxy`，但为什么要这样做呢？
+>因为有些数据源在应用启动之后，可能并不会初始化(即不会调用数据源的相关方法)。如果没有提供`SeataDataSourceBeanPostProcessor`类，那么就只有在`SeataAutoDataSourceProxyAdvice`切面中才会触发`DataSourceProxyHolder#putDataSource`方法。假如有一个客户端在回滚的时候宕机了，在重启之后，Server端通过定时任务向其派发回滚请求，这时候客户端需要先根据`rsourceId`(连接地址)找到对应的`DatasourceProxy`。但如果在此之前客户端还没有主动触发数据源的相关方法，就不会进入`SeataAutoDataSourceProxyAdvice`切面逻辑，也就不会为该数据源初始化对应的`DataSourceProxy`，从而导致回滚失败
+
+## 多层代理总结
+通过上面的分析，我们大概已经知道了seata在避免多层代理上的一些优化，但其实还有一个问题需要注意：**逻辑数据源的代理**
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6910095aadab436eaffe03a752e44240~tplv-k3u1fbpfcp-watermark.image)
+
+这时候的调用关系为： `masterSlaveProxy ->　masterSlave ->  masterproxy/slaveProxy ->  master/slave`
+
+此时可以通过`excludes`属性排除逻辑数据源，从而不为其创建数据源代理。
+
+
+总结一下：
+1. 在为`数据源`初始化对应的`DataSourceProxy`时，判断是否有必要为其创建对应的`DataSourceProxy`，如果本身就是`DataSourceProxy`，就直接返回
+2. 针对一些`数据源`手动注入的情况，为了避免一些人为误操作的导致的多层代理问题，在`DataSourceProxy`构造函数中添加了判断，`如果入参TragetDatasource本身就是一个DataSourceProxy， 则获取其target属性作为新DataSourceProxy的tragetDatasource`
+3. 针对一些其它情况，比如**逻辑数据源代理问题**，通过`excludes`属性添加排除项，这样可以避免为逻辑数据源创建`DataSourceProxy`
+
+
+# 全局事务和本地事务使用建议
+有一个问题，如果在一个方法里涉及到多个DB操作，比如涉及到3条update操作，我们需不需在这个方法使用spring中的`@Transactional`注解？针对这个问题，我们分别从两个角度考虑：不使用`@Transactional`注解 和 使用`@Transactional`注解
+
+
+## 不使用`@Transactional`注解
+1. 在提交阶段，因为该分支事务有3条update操作，每次执行update操作的时候，都会通过数据代理向TC注册一个分支事务，并为其生成对应的undo_log，最终3个update操作被当作3个分支事务来处理
+2. 在回滚阶段，需要回滚3个分支事务
+3. 数据的一致性通过seata全局事务来保证
+
+## 使用`@Transactional`注解
+1. 在提交阶段，3个update操作被当作一个分支事务来提交，所以最终只会注册一个分支事务
+2. 在回滚阶段，需要回滚1个分支事务
+3. 数据的一致性：这3个update的操作通过本地事务的一致性保证；全局一致性由seata全局事务来保证。此时3个update仅仅是一个分支事务而已
+
+## 结论
+通过上面的对比，答案是显而易见的，合理的使用本地事务，可以大大的提升全局事务的处理速度。上面仅仅是3个DB操作，如果一个方法里面涉及到的DB操作更多呢，这时候两种方式的差别是不是更大呢？
+
+
+
+最后，感谢@FUNKYE大佬为我解答了很多问题并提供了宝贵建议！
