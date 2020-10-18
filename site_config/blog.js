@@ -106,6 +106,13 @@
                 dateStr: 'AUG 25th, 2020',
                 desc: '本文从源码的角度讲述了Seata 1.3.0版本Client端启动流程',
                 link: '/zh-cn/blog/seata-sourcecode-client-bootstrap.html',
+            },
+            {
+                title: 'Seata数据源代理解析',
+                author: '@luoxy',
+                dateStr: 'Oct 16th, 2020',
+                desc: '本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题',
+                link: '/zh-cn/blog/seata-datasource-proxy.html',
             }
         ]
     },
