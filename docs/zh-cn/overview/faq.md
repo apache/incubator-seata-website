@@ -310,7 +310,7 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 **A:** 
 
-dynamic-datasource-sring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容
+dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容
 
 1.如果你引入的是seata-all,请不要使用@EnableAutoDataSourceProxy注解.
 
