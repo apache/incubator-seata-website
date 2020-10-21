@@ -28,6 +28,7 @@ description: Seata FAQ.
 
 <a href="#11" target="_self">11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</a>
 
+<a href="#12" target="_self">12.What RPC frameworks does seata support now?</a>
 
 ********
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
@@ -156,7 +157,7 @@ You can execute this command: `./mvnw clean install -DskipTests=true` (Mac,Linux
 ********
 
 
-<h3 id='11'>Q: 12.What RPC frameworks does seata support now?</h3>
+<h3 id='12'>Q: 12.What RPC frameworks does seata support now?</h3>
 
 **A:**
 
