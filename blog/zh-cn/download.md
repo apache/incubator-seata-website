@@ -12,13 +12,151 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 > GitHub: https://github.com/seata/seata \
 > 发布说明: https://github.com/seata/seata/releases
 
+### 1.4.0 (2020-10-30)
+
+ [source](https://github.com/seata/seata/archive/v1.4.0.zip) |
+ [binary](https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip) 
+
+<details>
+  <summary><mark>Release notes</mark></summary>
+
+
+  ### Seata 1.4.0
+
+  Seata 1.4.0 Released.
+
+  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+  The version is updated as follows:
+
+  ### feature：
+
+  - [[#2825](https://github.com/seata/seata/pull/2825)] support send authentication msg
+  - [[#2380](https://github.com/seata/seata/pull/2380)] support yml configuration
+  - [[#3191](https://github.com/seata/seata/pull/3191)] support jdbc type nclob
+  - [[#2676](https://github.com/seata/seata/pull/2676)] support least active load balance
+  - [[#3198](https://github.com/seata/seata/pull/3198)] spring boot support for custom config and registry type
+  - [[#2806](https://github.com/seata/seata/pull/2806)] support configuring default global transaction timeoutMillis
+  - [[#2941](https://github.com/seata/seata/pull/2941)] add apollo secret key configuration
+  - [[#2080](https://github.com/seata/seata/pull/2080)] support ConsistentHashLoadBalance
+  - [[#2950](https://github.com/seata/seata/pull/2950)] support the reentrant lock in redis module
+  - [[#2913](https://github.com/seata/seata/pull/2913)] The data source proxy mode can be selected as AT or XA
+
+  ### bugfix：
+
+  - [[#3214](https://github.com/seata/seata/pull/3214)] fix the 'RootContext.DEFAULT_BRANCH_TYPE' is wrong in some cases
+  - [[#3129](https://github.com/seata/seata/pull/3129)] forbidding execute SQL which update pk value
+  - [[#3205](https://github.com/seata/seata/pull/3205)] fix can not get boolean value in configuration
+  - [[#3170](https://github.com/seata/seata/pull/3170)] the disposables tree set won't accept another Disposable with the same priority
+  - [[#3180](https://github.com/seata/seata/pull/3180)] serializer fst package name error
+  - [[#3178](https://github.com/seata/seata/pull/3178)] remove next line to space
+  - [[#2929](https://github.com/seata/seata/pull/2929)] fix the application was configured to degrade at startup and can't be dynamically switch to upgraded
+  - [[#3050](https://github.com/seata/seata/pull/3050)] fix fetch before images when delete and update statements
+  - [[#2935](https://github.com/seata/seata/pull/2935)] fix saga designer bug that the property box does not switch when switching nodes
+  - [[#3140](https://github.com/seata/seata/pull/3140)] fix Propagation.REQUIRES_NEW and add some comments
+  - [[#3130](https://github.com/seata/seata/pull/3130)] fix some problems in the automatic data source proxy
+  - [[#3148](https://github.com/seata/seata/pull/3148)] the redis lock key and the session key has conflict
+  - [[#3136](https://github.com/seata/seata/pull/3136)] fix the redis pipeline
+  - [[#2551](https://github.com/seata/seata/pull/2551)] Saga can't be used when the dataSource is AT's dataSourceProxy
+  - [[#3073](https://github.com/seata/seata/pull/3073)] do not proxy connections without an xid
+  - [[#3074](https://github.com/seata/seata/pull/3074)] There is no need to retry if the XA schema cannot find the XID
+  - [[#3097](https://github.com/seata/seata/pull/3097)] fix HttpAutoConfiguration always instantiation in springboot env
+  - [[#3071](https://github.com/seata/seata/pull/3071)] part of the connection is not unpacked
+  - [[#3056](https://github.com/seata/seata/pull/3056)] fixed a bug that after branch deletion, there are still remaining branch lock
+  - [[#3025](https://github.com/seata/seata/pull/3025)] fix the wrong package path
+  - [[#3031](https://github.com/seata/seata/pull/3031)] redis locker delete lock incomplete 
+  - [[#2973](https://github.com/seata/seata/pull/2973)] fix oracle database in field size over 1000
+  - [[#2986](https://github.com/seata/seata/pull/2986)] fix checkstyle plugin can't exclude single file
+  - [[#2910](https://github.com/seata/seata/pull/2910)] fix error registry type comment 
+  - [[#2914](https://github.com/seata/seata/pull/2914)] fix branchType not cleaned when consumer is in TCC mode
+  - [[#2926](https://github.com/seata/seata/pull/2926)] fastjson write undo log not parser
+  - [[#2897](https://github.com/seata/seata/pull/2897)] fix jedis unlock fail 
+  - [[#2918](https://github.com/seata/seata/pull/2918)] fix the isolation problem when rollback in AT mode
+  - [[#2972](https://github.com/seata/seata/pull/2972)] UUIDGenerator generates duplicated id
+  - [[#2932](https://github.com/seata/seata/pull/2932)] nacos-config.py script could not run with namespace
+  - [[#2900](https://github.com/seata/seata/pull/2900)] ColumnUtils add escape with scheme
+  - [[#2904](https://github.com/seata/seata/pull/2904)] fix getConfig cache value is 'null'
+  - [[#2890](https://github.com/seata/seata/pull/2890)] fix misspelling in statelang examples
+
+
+  ### optimize： 
+
+  - [[#3201](https://github.com/seata/seata/pull/3201)] no longer substring the message in rpc transmission
+  - [[#3062](https://github.com/seata/seata/pull/3062)] refactor the redis session store 
+  - [[#3117](https://github.com/seata/seata/pull/3117)] make log more clearly and remove the useless code
+  - [[#3134](https://github.com/seata/seata/pull/3134)] optimizecodes related to Map and List
+  - [[#3195](https://github.com/seata/seata/pull/3195)] optimizeXID related codes
+  - [[#3200](https://github.com/seata/seata/pull/3200)] optimize rpc message when message was substring
+  - [[#3186](https://github.com/seata/seata/pull/3186)] remove duplicated in string utils
+  - [[#2962](https://github.com/seata/seata/pull/2962)]  @GlobalTransactional and @GlobalLock can now customize lock retry config
+  - [[#3162](https://github.com/seata/seata/pull/3162)] remove repeated conditional tests
+  - [[#2969](https://github.com/seata/seata/pull/2969)] Upgrade to druid 1.1.23
+  - [[#3141](https://github.com/seata/seata/pull/3141)] Upgrade nacos and FastJSON dependencies
+  - [[#3118](https://github.com/seata/seata/pull/3118)] Add more configuration tips in additional-spring-configuration-metadata.json
+  - [[#2597](https://github.com/seata/seata/pull/2597)] judging xid status to avoid repeated processing
+  - [[#3102](https://github.com/seata/seata/pull/3102)] optimize ContextCore, can be set 'Object' value
+  - [[#3016](https://github.com/seata/seata/pull/3016)] refactor the redis lock string to hash
+  - [[#3046](https://github.com/seata/seata/pull/3046)] remove unused code in serializer factory
+  - [[#3053](https://github.com/seata/seata/pull/3053)] jedis pool adds maxtotal configuration
+  - [[#3012](https://github.com/seata/seata/pull/3012)] remove set port repeatedly
+  - [[#2978](https://github.com/seata/seata/pull/2978)] optimize globalCommit for mixed use of AT and TCC
+  - [[#2967](https://github.com/seata/seata/pull/2967)] replace with lambda
+  - [[#2968](https://github.com/seata/seata/pull/2968)] ensure that the register message is sent after RM client initialization
+  - [[#2945](https://github.com/seata/seata/pull/2945)] optimize async commit and reduce one update
+  - [[#2952](https://github.com/seata/seata/pull/2952)] optimize additional-spring-configuration-metadata.json
+  - [[#2920](https://github.com/seata/seata/pull/2920)] optimize some grammatical errors
+  - [[#2906](https://github.com/seata/seata/pull/2906)] added some configuration items to keep consistent with official documents 
+
+
+  非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。  
+
+  - [slievrly](https://github.com/slievrly) 
+  - [wangliang1986](https://github.com/wangliang1986) 
+  - [a364176773](https://github.com/a364176773) 
+  - [jsbxyyx](https://github.com/jsbxyyx)
+  - [l81893521](https://github.com/l81893521)
+  - [lightClouds917](https://github.com/lightClouds917)
+  - [yujianfei1986](https://github.com/yujianfei1986)
+  - [ph3636](https://github.com/ph3636)
+  - [PeineLiang](https://github.com/PeineLiang)
+  - [caohdgege](https://github.com/caohdgege)
+  - [heyaping388](https://github.com/heyaping388)
+  - [guang384](https://github.com/guang384)
+  - [zdrjson](https://github.com/zdrjson)
+  - [ITAlexSun](https://github.com/ITAlexSun)
+  - [dongzl](https://github.com/dongzl)
+  - [81519434](https://github.com/81519434)
+  - [wangwei-yin](https://github.com/wangwei-yin)
+  - [jujinghao](https://github.com/jujinghao)
+  - [JRial95](https://github.com/JRial95)
+  - [mxszs1](https://github.com/mxszs1)
+  - [RayneHwang](https://github.com/RayneHwang)
+  - [everyhook1](https://github.com/everyhook1)
+  - [li469791221](https://github.com/li469791221)
+  - [luorenjin](https://github.com/luorenjin)
+  - [yangxb2010000](https://github.com/yangxb2010000)
+  - [selfishlover](https://github.com/selfishlover)
+
+  同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
+
+   #### Link
+
+   - **Seata:** https://github.com/seata/seata  
+   - **Seata-Samples:** https://github.com/seata/seata-samples   
+   - **Release:** https://github.com/seata/seata/releases
+   - **WebSite:** https://seata.io
+
+</details>
+
 ### 1.3.0 (2020-07-14)
 
  [source](https://github.com/seata/seata/archive/v1.3.0.zip) |
  [binary](https://github.com/seata/seata/releases/download/v1.3.0/seata-server-1.3.0.zip) 
+
 <details>
   <summary><mark>Release notes</mark></summary>
-  
+
+
   ### Seata 1.3.0
 
   Seata 1.3.0 Released.
@@ -26,8 +164,9 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
   The version is updated as follows:
-  
+
   ### feature：
+
   - [[#2398](https://github.com/seata/seata/pull/2398)] 支持 MySQL 多主键
   - [[#2484](https://github.com/seata/seata/pull/2484)] 支持 Redis 存储模式
   - [[#2817](https://github.com/seata/seata/pull/2817)] Saga 流程设计器 Groovy Script Task
@@ -48,8 +187,9 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2708](https://github.com/seata/seata/pull/2708)] 支持 array, datalink 等 JDBC 类型
   - [[#2412](https://github.com/seata/seata/pull/2412)] xid 生成支持雪花算法
   - [[#2611](https://github.com/seata/seata/pull/2611)] 支持配置缓存，去除配置中心强依赖
-  
+
   ### bugfix：
+
   - [[#2893](https://github.com/seata/seata/pull/2893)] 修复 postgresql 表名中含 schema 取 tableMeta 错误的问题
   - [[#2887](https://github.com/seata/seata/pull/2887)] 修复 RM 接收 response 的逻辑
   - [[#2610](https://github.com/seata/seata/pull/2610)] Nacos 配置同步脚本加入Nacos权限属性控制
@@ -80,8 +220,9 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2872](https://github.com/seata/seata/pull/2872)] 修复 undo sql 中主键缺失转义符的问题
   - [[#2875](https://github.com/seata/seata/pull/2875)] 修复 ColumnUtils delEscape删除表名带 schema 转义符错误的问题.
 
-  
+
   ### optimize： 
+
   - [[#2573](https://github.com/seata/seata/pull/2573)] 在随机负载均衡中使用 ThreadLocalRandom 代替 Random
   - [[#2540](https://github.com/seata/seata/pull/2540)] 重构 RPC 处理方法名和接口
   - [[#2642](https://github.com/seata/seata/pull/2642)] 优化 SofaRegistryServiceImpl 线程不安全的 double check
@@ -122,8 +263,9 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2242](https://github.com/seata/seata/pull/2242)] 优化 PreparedStatementProxy 初始化逻辑
   - [[#2613](https://github.com/seata/seata/pull/2613)] 优化 DTO 和 typo
 
-  
+
   非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。  
+
   - [slievrly](https://github.com/slievrly) 
   - [a364176773](https://github.com/a364176773) 
   - [wangliang1986](https://github.com/wangliang1986) 
@@ -159,11 +301,12 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
 
    #### Link
+
    - **Seata:** https://github.com/seata/seata  
    - **Seata-Samples:** https://github.com/seata/seata-samples   
    - **Release:** https://github.com/seata/seata/releases
    - **WebSite:** https://seata.io
-   
+
 </details>
 
 
@@ -173,15 +316,15 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
  [binary](https://github.com/seata/seata/releases/download/v1.2.0/seata-server-1.2.0.zip) 
 <details>
   <summary><mark>Release notes</mark></summary>
-  
+
   ### Seata 1.2.0
 
   Seata 1.2.0 发布。
-  
+
   Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-  
+
   此版本更新如下：
-  
+
   ### feature：
   - [[#2381](https://github.com/seata/seata/pull/2381)] 支持 XA 事务模式
   - [[#2206](https://github.com/seata/seata/pull/2206)] 支持 REQUIRED、REQUIRES_NEW、SUPPORTS 和 NOT_SUPPORTED 事务传播模式
@@ -198,8 +341,8 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2379](https://github.com/seata/seata/pull/2379)] 支持使用 Nacos 注册服务时自定义服务名
   - [[#2308](https://github.com/seata/seata/pull/2308)] 增加 Saga 模式是否注册分支的开关
   - [[#2301](https://github.com/seata/seata/pull/2301)] 支持 postgresql 的 default 和 nextval 语法支持
-  
-  
+
+
   ### bugfix：
   - [[#2575](https://github.com/seata/seata/pull/2575)] 修复 executeBatch 无法获取 targetSql 问题
   - [[#2283](https://github.com/seata/seata/pull/2283)] 修复 oracle 获取 tableMeta 失败问题
@@ -229,8 +372,8 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2524](https://github.com/seata/seata/pull/2524)] 修复客户端注册服务名配置冗余导致的配置不一致问题
   - [[#2473](https://github.com/seata/seata/pull/2473)] 修复文件存储模式刷盘条件的判断逻辑
   - [[#2455](https://github.com/seata/seata/pull/2455)] 修复子模块下无法执行copyright 和 checkstyle maven 插件问题
-  
-  
+
+
   ### optimize： 
   - [[#2409](https://github.com/seata/seata/pull/2409)] 当 undolog 和 lockKey 为空时减少不必要的db 和 server 交互
   - [[#2329](https://github.com/seata/seata/pull/2329)] 按照不同的存储模式重构抽象相关逻辑
@@ -266,7 +409,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2558](https://github.com/seata/seata/pull/2558)] 规范统一 config 和 server 模块的日志
   - [[#2464](https://github.com/seata/seata/pull/2464)] 增强 Saga 状态流程设计器
   - [[#2553](https://github.com/seata/seata/pull/2553)] 增加使用同步脚本的一些说明
-  
+
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
   - [a364176773](https://github.com/a364176773) 
@@ -296,7 +439,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [mxszs](https://github.com/mxszs) 
   - [q294881866](https://github.com/q294881866)  
   - [HankDevelop](https://github.com/HankDevelop)  
-  
+
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
    #### Link
@@ -304,7 +447,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - **Seata-Samples:** https://github.com/seata/seata-samples   
    - **Release:** https://github.com/seata/seata/releases
    - **WebSite:** https://seata.io
-   
+
 </details>
 
 
@@ -314,7 +457,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
  [binary](https://github.com/seata/seata/releases/download/v1.1.0/seata-server-1.1.0.zip)
 <details>
     <summary><mark>Release notes</mark></summary>
-   
+
 Seata 1.1.0 发布。
 
 Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
@@ -398,7 +541,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#2099](https://github.com/seata/seata/pull/2099)] 优化 tm 模块代码风格，增加可读性
 
 非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
- 
+
 - [slievrly](https://github.com/slievrly) 
 - [xingfudeshi](https://github.com/xingfudeshi)   
 - [objcoding](https://github.com/objcoding)   
@@ -436,7 +579,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
  [binary](https://github.com/seata/seata/releases/download/v1.0.0/seata-server-1.0.0.zip)
 <details>
     <summary><mark>Release notes</mark></summary>
-   
+
    ### Seata 1.0.0 GA版本重磅发布
    Seata 1.0.0 GA版本重磅发布。
 
@@ -444,8 +587,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
     
    此版本更新如下：
 
-      
-   
+​      
+
    ### feature：
    - [[#1966](https://github.com/seata/seata/pull/1966)] 增加client端单条消息发送方式
    - [[#2004](https://github.com/seata/seata/pull/2004)] 增加配置中心配置同步脚本
@@ -463,7 +606,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1742](https://github.com/seata/seata/pull/1742)] 增加seata-spring-boot-starter
    - [[#1460](https://github.com/seata/seata/pull/1460)] 支持gzip压缩
    - [[#1492](https://github.com/seata/seata/pull/1492)] 支持grpc事务自动传递和绑定
-   
+
    ### bugfix：
    - [[#2066](https://github.com/seata/seata/pull/2066)] 修复初始化eureka client线程安全问题
    - [[#2059](https://github.com/seata/seata/pull/2059)] 修复异步回滚线程导致重复回滚问题
@@ -517,7 +660,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1764](https://github.com/seata/seata/pull/1764)] 修复Jdk11下远程地址为空
    - [[#1778](https://github.com/seata/seata/pull/1778)] 修复单元测试未清空测试资源
    - [[#1777](https://github.com/seata/seata/pull/1777)] 修复DeleteExecutor未根据数据库类型来构建前置镜像
-   
+
    ### optimize： 
    - [[#2068](https://github.com/seata/seata/pull/2068)] 优化数据库连接获取
    - [[#2056](https://github.com/seata/seata/pull/2056)] 移除代码中非java doc注释
@@ -578,7 +721,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1786](https://github.com/seata/seata/pull/1786)] 简化Eureka注册实现类代码
    - [[#1766](https://github.com/seata/seata/pull/1766)] 移除无用方法
    - [[#1770](https://github.com/seata/seata/pull/1770)] 优化String拼接方式和无用的释放锁方法
-   
+
    非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
    - [slievrly](https://github.com/slievrly)
    - [long187](https://github.com/long187)
@@ -612,9 +755,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [yangfuhai](https://github.com/yangfuhai)
    - [zhongfuhua](https://github.com/zhongfuhua)
    - [lizwmaster](https://github.com/lizwmaster)
-   
+
    同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
-   
+
    ### 常用链接
    - **Seata:** https://github.com/seata/seata  
    - **Seata-Samples:** https://github.com/seata/seata-samples   
@@ -628,23 +771,23 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
  [binary](https://github.com/seata/seata/releases/download/v0.9.0/seata-server-0.9.0.zip)
 <details>
   <summary><mark>Release notes</mark></summary>
-   
+
    ### Seata 0.9.0   
    Seata 0.9.0 正式发布。
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    此版本更新如下：
     
-   
+
    #### feature：
    - [[#1608](https://github.com/seata/seata/pull/1608)] 长事务解决方案: Saga 模式（基于状态机实现）
    - [[#1625](https://github.com/seata/seata/pull/1625)] 支持自定义配置和注册中心类型
    - [[#1656](https://github.com/seata/seata/pull/1656)] 支持 spring cloud config 配置中心
    - [[#1689](https://github.com/seata/seata/pull/1689)] 支持 -e 启动参数，用于指定环境名称
    - [[#1739](https://github.com/seata/seata/pull/1739)] 支持 TM commit 或rollback 失败时的重试
-   
-   
+
+
    #### bugfix：
    - [[#1605](https://github.com/seata/seata/pull/1605)] 修复对象锁和全局锁可能造成的死锁和优化锁的粒度
    - [[#1685](https://github.com/seata/seata/pull/1685)] 修复db存储类异常被忽略的问题
@@ -659,9 +802,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1761](https://github.com/seata/seata/pull/1761)] 修复 oracle 在回滚时 Blob 或 Clob null 值回滚失败问题
    - [[#1759](https://github.com/seata/seata/pull/1759)] 修复 saga 模式下 service method 不支持接口类型参数问题
    - [[#1401](https://github.com/seata/seata/pull/1401)] 修复 RM 启动时第一次注册 resource 为 null 的问题
+
    
-   
-   
+
    #### optimize： 
    - [[#1701](https://github.com/seata/seata/pull/1701)] 移除无用的 imports
    - [[#1705](https://github.com/seata/seata/pull/1705)] 优化了一些基于 java5 的语法结构
@@ -677,9 +820,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1755](https://github.com/seata/seata/pull/1755)] 提高 seata-common 模块的单测覆盖率
    - [[#1756](https://github.com/seata/seata/pull/1756)] 升级 jackson 版本防止潜在的安全漏洞
    - [[#1657](https://github.com/seata/seata/pull/1657)] 优化文件存储模式下文件 rolling 时占用较大 direct buffer的问题
-   
+
    非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
-   
+
    - [slievrly](https://github.com/slievrly)
    - [long187](https://github.com/long187)
    - [ggndnn](https://github.com/ggndnn)
@@ -696,15 +839,15 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [github-ygy](https://github.com/github-ygy)
    - [worstenemy](https://github.com/worstenemy)
    - [caioguedes](https://github.com/caioguedes)
-   
+
    同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
-   
-   
+
+
    #### 常用链接
    - **Seata:** https://github.com/seata/seata  
    - **Seata-Samples:** https://github.com/seata/seata-samples   
    - **Release:** https://github.com/seata/seata/releases
-   
+
 </details>
 
 ### 0.8.1 (2019-09-18)
@@ -713,16 +856,16 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
  [binary](https://github.com/seata/seata/releases/download/v0.8.1/seata-server-0.8.1.zip)  
 <details>
     <summary><mark>Release notes</mark></summary>
-   
+
    ### Seata 0.8.1 
-   
+
    Seata 0.8.1 正式发布。
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    此版本更新如下：
-   
-   
+
+
    #### feature：
    - [[#1598](https://github.com/seata/seata/pull/1598)] 支持配置文件使用绝对路径
    - [[#1617](https://github.com/seata/seata/pull/1617)] 支持配置文件名称（registry.conf） 可配置
@@ -732,8 +875,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1478](https://github.com/seata/seata/pull/1478)] 支持 db mock
    - [[#1512](https://github.com/seata/seata/pull/1512)] 扩展支持 mysql 和 oracle 的多种批量插入语法
    - [[#1496](https://github.com/seata/seata/pull/1496)] 支持 DataSource 的自动代理
-   
-   
+
+
    #### bugfix：
    - [[#1646](https://github.com/seata/seata/pull/1646)] 修复 file 存储模式的 selectForUpdate lockQuery exception
    - [[#1572](https://github.com/seata/seata/pull/1572)] 修复在oracle 小写表名时获取 tablemeta 失败问题 
@@ -758,9 +901,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1514](https://github.com/seata/seata/pull/1514)] 修复当缺少序列化依赖无法生成undolog并report true问题
    - [[#1445](https://github.com/seata/seata/pull/1445)] 修复 DefaultCoordinatorMetricsTest 单测失败问题
    - [[#1481](https://github.com/seata/seata/pull/1481)] 修复 TableMetaCache 在多数据源刷新失败问题
+
    
-   
-   
+
    #### optimize： 
    - [[#1629](https://github.com/seata/seata/pull/1629)] 优化etcd3中watcher订阅的效率
    - [[#1661](https://github.com/seata/seata/pull/1661)] 优化 global_table 中 transaction_name 长度问题
@@ -790,9 +933,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1444](https://github.com/seata/seata/pull/1444)] 简化map操作
    - [[#1497](https://github.com/seata/seata/pull/1497)] 增加 seata-all 依赖
    - [[#1490](https://github.com/seata/seata/pull/1490)] 移除不必要代码
-   
+
    非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
-   
+
    - [slievrly](https://github.com/slievrly)
    - [BeiKeJieDeLiuLangMao](https://github.com/BeiKeJieDeLiuLangMao)
    - [jsbxyyx](https://github.com/jsbxyyx)
@@ -811,15 +954,15 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [andyqian](https://github.com/andyqian)
    - [tswstarplanet](https://github.com/tswstarplanet)
    - [zhengyangyong](https://github.com/zhengyangyong)
-   
+
    同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
-   
-   
+
+
    #### 常用链接
    - **Seata:** https://github.com/seata/seata  
    - **Seata-Samples:** https://github.com/seata/seata-samples   
    - **Release:** https://github.com/seata/seata/releases
-   
+
 </details>
 
 ### 0.8.0 (2019-08-16)
@@ -828,12 +971,12 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.8.0/seata-server-0.8.0.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    ## Seata 0.8.0 
    Seata 0.8.0 正式发布。
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    ### feature：
    - [[#902](https://github.com/seata/seata/pull/902)] 支持 oracle 数据库的 AT 模式
    - [[#1447](https://github.com/seata/seata/pull/1447)] 支持 oracle 数据库的批量操作
@@ -846,8 +989,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1235](https://github.com/seata/seata/pull/1453)] 支持兜底定时删除 undolog 使用protobuf codec 
    - [[#1235](https://github.com/seata/seata/pull/1235)] 支持兜底定时删除 undolog 使用 seata codec
    - [[#1323](https://github.com/seata/seata/pull/1323)] 支持db driver class 可配置
-   
-   
+
+
    ### bugfix：
    - [[#1456](https://github.com/seata/seata/pull/1456)] 修复 xid 在 db 模式可重复的问题
    - [[#1454](https://github.com/seata/seata/pull/1454)] 修复 DateCompareUtils 不能比对 byte array 的问题
@@ -871,8 +1014,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1338](https://github.com/seata/seata/pull/1338)] 修复db模式下可重入锁后不再获取其他所的问题
    - [[#1334](https://github.com/seata/seata/pull/1334)] 修复使用 protobuf 时 tcc 模式下lock key NPE 的问题
    - [[#1313](https://github.com/seata/seata/pull/1313)] 修复 DefaultFailureHandler 检查 status NPE 的问题
-   
-   
+
+
    ### optimize： 
    - [[#1474](https://github.com/seata/seata/pull/1474)] 优化数据镜像比对日志
    - [[#1446](https://github.com/seata/seata/pull/1446)] 优化了 server 的 schedule tasks 
@@ -897,10 +1040,10 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1357](https://github.com/seata/seata/pull/1357)] 优化 Consul&Etcd 配置中心代码
    - [[#1345](https://github.com/seata/seata/pull/1345)] 代码清理和调整日志级别
    - [[#1329](https://github.com/seata/seata/pull/1329)] 增加 `STORE_FILE_DIR` 配置项的默认值
-   
-   
+
+
    非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告.  
-   
+
    - [slievrly](https://github.com/slievrly)
    - [Justice-love](https://github.com/Justice-love)
    - [l81893521](https://github.com/l81893521)
@@ -922,10 +1065,10 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [ujjboy](https://github.com/ujjboy)
    - [leizhiyuan](https://github.com/leizhiyuan)
    - [vikenlove](https://github.com/vikenlove)
-   
+
    同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
-   
-   
+
+
    ### 常用链接
    - **Seata:** https://github.com/seata/seata  
    - **Seata-Samples:** https://github.com/seata/seata-samples   
@@ -939,21 +1082,21 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.7.1/seata-server-0.7.1.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Seata 0.7.1 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    0.7.1 版本是针对0.7.0 版本问题的紧急修复，本次更新主要内容如下：
-   
-   
+
+
    ## Bug 修复及优化
-   
+
    - [[#1297](https://github.com/seata/seata/pull/1297)] 兼容seata-spring独立依赖用法，对seata-spring添加了seata-codec-all依赖
    - [[#1305](https://github.com/seata/seata/pull/1305)] 修复GlobalTransactionScanner 切面优先级导致的Spring Cloud 的AutoConfiguration无法初始化问题
    - 修复了0.7.0 因mvn插件过低导致的版本号无替换，无法从中央仓库拉取依赖的问题。
-   
-   
+
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/seata/seata-samples   
@@ -966,17 +1109,17 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.7.0/seata-server-0.7.0.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
-   
+​    
+
    Seata 0.7.0 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新主要内容如下：
-   
-   
+
+
    ## 功能特性
-   
+
    - [[#1276](https://github.com/seata/seata/pull/1276)] 新的 RPC 通信协议
    - [[#1266](https://github.com/seata/seata/pull/1266)] metrics 可配置 ([97](https://github.com/seata/seata/issues/97))
    - [[#1236](https://github.com/seata/seata/pull/1236)] tc server 支持metrics
@@ -986,9 +1129,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1145](https://github.com/seata/seata/pull/1145)] 修复lock模式和存储模式的关联
    - [[#1125](https://github.com/seata/seata/pull/1125)] 支持 protostuff 作为 UndoLogParser 的序列化
    - [[#1007](https://github.com/seata/seata/pull/1007)] 支持 Protobuf 作为序列化 ([97](https://github.com/seata/seata/issues/97))
-   
+
    ## Bug 修复及优化
-   
+
    - [[#1286](https://github.com/seata/seata/pull/1286)] 排除 log 依赖 ([97](https://github.com/seata/seata/issues/97))
    - [[#1278](https://github.com/seata/seata/pull/1278)] 传递 txId 到 TCC 拦截器
    - [[#1274](https://github.com/seata/seata/pull/1274)] 优化 SQL join
@@ -1034,7 +1177,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1105](https://github.com/seata/seata/pull/1105)] 重构 TmRpcClient & RmClient. ([97](https://github.com/seata/seata/issues/97))
    - [[#1075](https://github.com/seata/seata/pull/1075)] 多环境隔离
    - [[#768](https://github.com/seata/seata/pull/768)] #751 添加事件机制
-   
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/seata/seata-samples   
@@ -1048,22 +1191,22 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.6.1/seata-server-0.6.1.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
-   
+​    
+
    Seata 0.6.1 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新主要内容如下：
-   
-   
+
+
    ## 功能特性
-   
+
    - [[#1119](https://github.com/seata/seata/pull/1119)] 支持 weibo/motan 上下文透传
    - [[#1075](https://github.com/seata/seata/pull/1075)] 支持多环境配置隔离
-   
+
    ## Bug 修复及优化
-   
+
    - [[#1099](https://github.com/seata/seata/pull/1099)] 将UndoLogParser修改成SPI形式
    - [[#1113](https://github.com/seata/seata/pull/1113)] 优化代码格式
    - [[#1087](https://github.com/seata/seata/pull/1087)] 去掉无用的字节复制
@@ -1073,8 +1216,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1138](https://github.com/seata/seata/pull/1138)] 修复windows下seata-server.bat classpath过长的问题
    - [[#1117](https://github.com/seata/seata/pull/1117)] 修复脏写校验时时间类型数据校验失败问题
    - [[#1115](https://github.com/seata/seata/pull/1115)] 配置 seata-all 和 seata-bom 打包发布环境
-   
-   
+
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/seata/seata-samples   
@@ -1088,31 +1231,31 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.6.0/seata-server-0.6.0.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Seata 0.6.0 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新主要内容如下：
-   
-   
+
+
    ## 功能特性
-   
+
    - [[#942](https://github.com/seata/seata/pull/942)] 服务端使用数据库存储事务日志，支持服务端集群部署
    - [[#1014](https://github.com/seata/seata/pull/1014)] 支持 etcd3 作为配置中心
    - [[#1060](https://github.com/seata/seata/pull/1060)] 添加事务回滚时脏写校验
-   
+
    ## Bug 修复及优化
-   
+
    - [[#1064](https://github.com/seata/seata/pull/1064)] 修复 xid 和 branchId 长度错误
    - [[#1074](https://github.com/seata/seata/pull/1074)] 修复一些拼写错误，并用lambda替换匿名类 
    - [[#824](https://github.com/seata/seata/pull/824)] 添加事务恢复重试超时时间限制
    - [[#1082](https://github.com/seata/seata/pull/1082)] 添加配置中心单实例缓存
    - [[#1084](https://github.com/seata/seata/pull/1084)] 重构字符集和blob工具类
    - [[#1080](https://github.com/seata/seata/pull/1080)] 升级fastjson和nacos-client版本
+
    
-   
-   
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/seata/seata-samples   
@@ -1126,22 +1269,22 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.5.2/seata-server-0.5.2.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Seata 0.5.2 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新主要内容如下：
-   
-   
+
+
    ## 功能特性
-   
+
    - [[#988](https://github.com/seata/seata/pull/988)] 增加配置中心Consul支持
    - [[#1043](https://github.com/seata/seata/pull/1043)] 增加sofa-rpc支持
-   
-   
+
+
    ## Bug 修复及优化
-   
+
    - [[#987](https://github.com/seata/seata/pull/987)] 优化同事务内并发使用 reentrantLock 代替 spinlock
    - [[#943](https://github.com/seata/seata/pull/943)] 修复无相应文件配置项时取配置等待超时问题
    - [[#965](https://github.com/seata/seata/pull/965)] 修复PreparedStatement 时where语句中 in、between 报错问题
@@ -1169,10 +1312,10 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#1051](https://github.com/seata/seata/pull/1051)] 优化回滚时校验数据变化，若无变化停止回滚
    - [[#1017](https://github.com/seata/seata/pull/1017)] 优化mysql undo executor构造undo sql逻辑处理
    - [[#1063](https://github.com/seata/seata/pull/1063)] 修复server重启后事务恢复后，可能造成新事务id冲突失败问题
+
    
-   
-   
-   
+
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/seata/seata-samples   
@@ -1186,25 +1329,25 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.5.1/seata-server-0.5.1.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Seata 0.5.1 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新主要内容如下：
-   
-   
+
+
    ## 功能特性
-   
+
    - [[#774](https://github.com/seata/seata/pull/869)] 增加注册中心Etcd3支持
    - [[#793](https://github.com/seata/seata/pull/793)] 增加注册中心sofa-registry支持
    - [[#856](https://github.com/seata/seata/pull/856)] 增加批量删除undolog处理
    - [[#786](https://github.com/seata/seata/pull/786)] 增加全局事务内分支事务并发支持
+
    
-   
-   
+
    ## Bug 修复及优化
-   
+
    - [[#879](https://github.com/seata/seata/pull/879)] 修复批量删除undolog PreparedStatement不关闭问题
    - [[#945](https://github.com/seata/seata/pull/945)] 增加LockManager中releaseLock接口，优化调用逻辑
    - [[#938](https://github.com/seata/seata/pull/938)] 优化TransactionManager服务加载逻辑
@@ -1230,10 +1373,10 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#872](https://github.com/seata/seata/pull/872)] 修复RegisterRMRequest解码消息长度校验不准确问题
    - [[#831](https://github.com/seata/seata/pull/831)] 优化MessageFuture中CountDownLatch，使用CompletableFuture替代
    - [[#834](https://github.com/seata/seata/pull/834)] 修复ExecuteTemplate中非SQLException异常不抛出问题
+
    
-   
-   
-   
+
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/seata/seata-samples   
@@ -1247,37 +1390,37 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/0.5.0/seata-server-0.5.0.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Seata 0.5.0 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新主要内容如下：
-   
+
    ### 兼容性变更
-   
+
    - [[#809](https://github.com/seata/seata/pull/809)] 更改 groupid、artifactid和包路径
    - [[#815](https://github.com/seata/seata/pull/815)] 添加maven 插件，以支持使用 groupId “io.seata” 发包
    - [[#790](https://github.com/seata/seata/pull/790)] 修改服务器的启动参数以支持数据库存储模式
    - [[#769](https://github.com/seata/seata/pull/769)] 重构RPC协议，在客户端中去掉XID的解析，使得服务端变成无状态
-   
+
    ## 功能特性
-   
+
    - [[#774](https://github.com/seata/seata/pull/774)] 优化配置中心和注册中心的结构
    - [[#783](https://github.com/seata/seata/pull/783)] 允许用户自定义分支事务记录报告重试次数
    - [[#791](https://github.com/seata/seata/pull/791)] 用状态枚举替换超时状态的模糊判断
    - [[#836](https://github.com/seata/seata/pull/836)] 添加maven插件，管理工程版本号
    - [[#820](https://github.com/seata/seata/pull/820)] 添加按异常回滚事务的特性
-   
-   
+
+
    ## Bug 修复
-   
+
    - [[#772](https://github.com/seata/seata/pull/772)] 修复文件配置中心监听器问题
    - [[#807](https://github.com/seata/seata/pull/807)] 优化服务端文件存储器的文件路径
    - [[#804](https://github.com/seata/seata/pull/804)] 修复分支提交不断重试问题
+
    
-   
-   
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/fescar-group/fescar-samples   
@@ -1291,15 +1434,15 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.4.2/fescar-server-0.4.2.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Seata 0.4.2 发布
-   
+
    Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新主要内容如下：
-   
+
    ## 特性
-   
+
    - [[#704](https://github.com/seata/seata/pull/704)] 增加 本地文件写入时 ByteBuffer 池
    - [[#679](https://github.com/seata/seata/issues/679)] 增加 现有注册中心增加了 close 接口实现，优化了 server 优雅下线 
    - [[#713](https://github.com/seata/seata/pull/713)] 增加 本地文件写入对超过配置大小的消息启用压缩功能  
@@ -1308,9 +1451,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#726](https://github.com/seata/seata/pull/726)] 增加 DBCP, C3P0, BoneCP, HikariCP 和 Tomcat-JDBC 连接池的支持
    - [[#744](https://github.com/seata/seata/pull/744)] 增加 ZooKeeper 断线重连时重新注册和订阅
    - [[#728](https://github.com/seata/seata/pull/728)] 增加 Consul 注册中心支持
-   
+
    ## Bug 修复
-   
+
    - [[#569](https://github.com/seata/seata/pull/695)] 修复 已是jdk代理且无 target 只遍历第一个实现接口的问题
    - [[#721](https://github.com/seata/seata/pull/721)] 修复 ConfigFuture 构造方法超时参数不起作用的问题
    - [[#725](https://github.com/seata/seata/pull/725)] 修复 MergedSendRunnable channel被意外关闭问题，增加 fail-fast 机制
@@ -1321,9 +1464,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - [[#747](https://github.com/seata/seata/pull/747)] 删除 MT 模式，之后将被 TCC 模式代替 
    - [[#757](https://github.com/seata/seata/pull/757)] 修复 BranchRollback 异常后回滚重试被终止问题
    - [[#776](https://github.com/seata/seata/pull/776)] 修复 连接池创建 channel 时 toString 异常导致的连接创建失败问题
+
    
-   
-   
+
    ## 相关链接
    - Seata: https://github.com/seata/seata 
    - Seata-Samples: https://github.com/fescar-group/fescar-samples   
@@ -1337,7 +1480,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.4.1/fescar-server-0.4.1.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
 </details>
 
 ### 0.4.0 (2019-03-19)
@@ -1346,20 +1489,20 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.4.0/fescar-server-0.4.0.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Alibaba Fescar 0.4.0 发布
-   
+
    Fescar 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新内容如下：
-   
+
    ## 特性
-   
+
    - [[#583](https://github.com/alibaba/fescar/pull/583)] 新增蚂蚁金服的TCC模式，自动代理Dubbo服务和SOFARPC服务，使fescar支持除数据库以外的其他资源（RPC服务、restful服务、消息以及NoSQL等）作为分布式事务资源
    - [[#594](https://github.com/alibaba/fescar/pull/611)] 新增 p3c pmd Maven插件，自动进行代码扫描并找出不规范的代码格式
    - [[#627](https://github.com/alibaba/fescar/pull/627)] Maven依赖优化
-   
-   
+
+
    ## 相关链接
    - Fescar: https://github.com/alibaba/fescar   
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
@@ -1373,27 +1516,27 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.3.1/fescar-server-0.3.1.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Alibaba Fescar 0.3.1 发布
-   
+
    Fescar 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新内容如下：
-   
+
    ## 特性
-   
+
    - [[#557](https://github.com/alibaba/fescar/issues/557)] 增加事务处理各阶段用户自定义 hook 接入点支持
    - [[#594](https://github.com/alibaba/fescar/pull/594)] 增加 ZooKeeper 注册中心支持   
-   
+
    ## Bug 修复
-   
+
    - [[#569](https://github.com/alibaba/fescar/issues/569)] 修复 Eureka renew 问题
    - [[#551](https://github.com/alibaba/fescar/pull/551)] 修复 ConfigType NPE 问题   
    - [[#489](https://github.com/alibaba/fescar/issues/489)] 修复 GlobalRollback 请求时未收到分支 branchReport 问题
    - [[#598](https://github.com/alibaba/fescar/pull/598)] 修复 p3c 扫描出不符合规范的若干问题；
+
    
-   
-   
+
    ## 相关链接
    - Fescar: https://github.com/alibaba/fescar   
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
@@ -1407,27 +1550,27 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.3.0/fescar-server-0.3.0.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Alibaba Fescar 0.3.0 发布
-   
+
    Fescar 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新内容如下：
-   
+
    ## 特性
-   
+
    - [[#510](https://github.com/alibaba/fescar/pull/510)] 新增 eureka 注册中心支持
    - [[#498](https://github.com/alibaba/fescar/pull/498)] 实现带全局锁的本地事务模式并解决本地事务隔离性问题   
-   
+
    ## Bug 修复
-   
+
    - [[#459](https://github.com/alibaba/fescar/issues/459)] 修复了 mysql 关键字作为表名和列名生成 sql 问题
    - [[#312](https://github.com/alibaba/fescar/issues/312)] 修复了原始业务 sql 无 where 条件生成 sql 出错问题   
    - [[#522](https://github.com/alibaba/fescar/issues/522)] 修复文件路径安全漏洞问题
    - 对所有模块代码进行了 remove useless、 format 、optimize import、javadoc、copyright 整理
+
    
-   
-   
+
    ## 相关链接
    - Fescar: https://github.com/alibaba/fescar   
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
@@ -1441,25 +1584,25 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.2.3/fescar-server-0.2.3.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Alibaba Fescar 0.2.3 发布
-   
+
    Fescar 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新内容如下：
-   
+
    ## 特性
-   
+
    - [[#478](https://github.com/alibaba/fescar/pull/478)] 支持 Redis 注册中心
    - [[#478](https://github.com/alibaba/fescar/pull/478)] 支持 Apollo 配置中心
-   
+
    ## Bug 修复
-   
+
    - [[#462](https://github.com/alibaba/fescar/issues/462)] 分离注册中心和配置中心入口
    
    - [[#466](https://github.com/alibaba/fescar/issues/466)] 修正RM线程池的拒绝策略
-   
-   
+
+
    ## 相关链接
    - Fescar: https://github.com/alibaba/fescar   
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
@@ -1473,7 +1616,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.2.2/fescar-server-0.2.2.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
 </details>
 
 ### 0.2.1 (2019-02-18)
@@ -1484,28 +1627,28 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
     <summary><mark>Release notes</mark></summary>
 
    Alibaba Fescar 0.2.1 发布
-   
+
    Fescar 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新内容如下：
-   
+
    ## 特性
-   
+
    - 支持 update 语句中的 between 语法
    - 支持 Random 和 RoundRobin 负载策略
    - 增加 dubbo-alibaba 模块以支持 Alibaba Dubbo
-   
+
    ## Bug 修复
-   
+
    - 修复 NettyClientConfig 方法及变量名 fifo-> lifo
    - 修复 fescar-dubbo 模块中 filter SPI 引用错误问题
-   
-   
+
+
    ## 相关链接
    - Fescar: https://github.com/alibaba/fescar   
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
    - Release：https://github.com/alibaba/fescar/releases
- 
+
 </details>
 
 ### 0.2.0 (2019-02-14)
@@ -1514,15 +1657,15 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 * [binary](https://github.com/seata/seata/releases/download/v0.2.0/fescar-server-0.2.0.zip) 
 <details>
     <summary><mark>Release notes</mark></summary>
-    
+
    Alibaba Fescar 0.2.0 发布
-   
+
    Fescar 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
-   
+
    本次更新内容如下：
-   
+
    ## 特性
-   
+
    - 支持 MySQL 分布式事务自动模式（AT）
    - 支持 Dubbo 无缝集成
    - 支持 分布式事务 API
@@ -1531,21 +1674,21 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
    - 支持 Nacos 服务注册和配置中心
    - 增加 server 重启时从文件自动恢复未完成事务操作至内存
    - 支持 多 IP 环境下，启动 server 指定 IP 参数
-   
+
    ## Bug 修复
-   
+
    - 修复 server 重启可能导致 XID 重复问题
    - 修复 Windows 启动脚本 $EXTRA_JVM_ARGUMENTS 参数报错
    - 修复分布式事务本地嵌套内层事务提交/回滚导致外层事务异常问题
    - 修复本地事务提交时异常，本地事务不回滚问题
    - 修复 MySQL 表别名解析问题
-   
+
    ## 其他
    - 升级依赖 JDK 版本至 1.8
    - 将依赖 Alibaba Dubbo 升级至 Apache Dubbo 2.7.0
    - 优化相关依赖引用
-   
-   
+
+
    ## 相关链接
    - Fescar: https://github.com/alibaba/fescar   
    - Fescar-Samples: https://github.com/fescar-group/fescar-samples   
