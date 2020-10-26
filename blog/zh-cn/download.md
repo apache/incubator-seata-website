@@ -41,6 +41,8 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2080](https://github.com/seata/seata/pull/2080)] support ConsistentHashLoadBalance
   - [[#2950](https://github.com/seata/seata/pull/2950)] support the reentrant lock in redis module
   - [[#2913](https://github.com/seata/seata/pull/2913)] The data source proxy mode can be selected as AT or XA
+  - [[#2856](https://github.com/seata/seata/pull/2856)] add FstUndoLogParser
+  - [[#3076](https://github.com/seata/seata/pull/3076)] check lock in TC when use @GlobalLock
 
   ### bugfix：
 
