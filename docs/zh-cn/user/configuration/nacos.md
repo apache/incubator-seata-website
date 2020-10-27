@@ -16,14 +16,14 @@ Seata 融合 Nacos 配置中心的操作步骤非常简单，大致步骤可分�
 
 ```java
            <dependency>
-				<groupId>com.alibaba.nacos</groupId>
-				<artifactId>nacos-client</artifactId>
-				<version>1.3.2</version>
-           </dependency>
-           <dependency>
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>最新版</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>1.3.2</version>
             </dependency>
 ```
 
