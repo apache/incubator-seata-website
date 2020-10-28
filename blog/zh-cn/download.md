@@ -79,6 +79,10 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2900](https://github.com/seata/seata/pull/2900)] ColumnUtils add escape with scheme
   - [[#2904](https://github.com/seata/seata/pull/2904)] fix getConfig cache value is 'null'
   - [[#2890](https://github.com/seata/seata/pull/2890)] fix misspelling in statelang examples
+  - [[#3034](https://github.com/seata/seata/pull/3034)] fix repeated commit when autocommit is false
+  - [[#3230](https://github.com/seata/seata/pull/3230)] fix use @EnableAutoDataSourceProxy startup failed
+  - [[#2979](https://github.com/seata/seata/pull/2979)] columns of resultset integrated with sharingjdbc need to be lowercase
+  - [[#3233](https://github.com/seata/seata/pull/3233)] fix Collections NPE
 
 
   ### optimize： 
@@ -108,6 +112,9 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2952](https://github.com/seata/seata/pull/2952)] optimize additional-spring-configuration-metadata.json
   - [[#2920](https://github.com/seata/seata/pull/2920)] optimize some grammatical errors
   - [[#2906](https://github.com/seata/seata/pull/2906)] added some configuration items to keep consistent with official documents 
+  - [[#3222](https://github.com/seata/seata/pull/3222)] optimize fileListener to decrease cpu time usage
+  - [[#2843](https://github.com/seata/seata/pull/2843)] Removed Reloadable from the redis/db SessionManager
+  - [[#3209](https://github.com/seata/seata/pull/3209)] add more company logos
 
 
   非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。  
@@ -118,10 +125,10 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [jsbxyyx](https://github.com/jsbxyyx)
   - [l81893521](https://github.com/l81893521)
   - [lightClouds917](https://github.com/lightClouds917)
+  - [caohdgege](https://github.com/caohdgege)
   - [yujianfei1986](https://github.com/yujianfei1986)
   - [ph3636](https://github.com/ph3636)
   - [PeineLiang](https://github.com/PeineLiang)
-  - [caohdgege](https://github.com/caohdgege)
   - [heyaping388](https://github.com/heyaping388)
   - [guang384](https://github.com/guang384)
   - [zdrjson](https://github.com/zdrjson)
@@ -138,6 +145,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [luorenjin](https://github.com/luorenjin)
   - [yangxb2010000](https://github.com/yangxb2010000)
   - [selfishlover](https://github.com/selfishlover)
+  - [yyjgit66](https://github.com/yyjgit66)
 
   同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
 

@@ -50,7 +50,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 
 | key         | desc         | remark|
 |---------------|--------------|----|
-| transport.serialization            | client和server通信编解码方式   |seata（ByteBuf）、protobuf、kryo、hession，默认seata |
+| transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hession、fst，默认seata |
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip，默认none |
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
 | registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、eureka、redis、zk、consul、etcd3、sofa、custom |

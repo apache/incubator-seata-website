@@ -5,11 +5,11 @@ description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务
 ---
 
 # 部署指南
-## Seata新手部署指南(1.3.0版本)
+## Seata新手部署指南(1.4.0版本)
 Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 
 ### 资源目录介绍
-#### <a href="https://github.com/seata/seata/tree/1.2.0/script" target="_blank">点击查看</a>
+#### <a href="https://github.com/seata/seata/tree/1.4.0/script" target="_blank">点击查看</a>
 - client
 > 存放client端sql脚本，参数配置
 - config-center
@@ -66,7 +66,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 
 #### 步骤一：启动包
 - <a href="https://github.com/seata/seata/releases" target="_blank">点击下载</a>
-- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community/index.html" target="_blank">2群</a>, 3群: 32033786），qq群（群号：254657148）群文件共享下载
+- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community/index.html" target="_blank">2群</a>, 3群: 32033786），qq群（群号：254657148,2群:）群文件共享下载
 
 #### 步骤二：建表(仅db)
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
