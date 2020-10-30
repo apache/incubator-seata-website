@@ -83,6 +83,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#3230](https://github.com/seata/seata/pull/3230)] fix use @EnableAutoDataSourceProxy startup failed
   - [[#2979](https://github.com/seata/seata/pull/2979)] columns of resultset integrated with sharingjdbc need to be lowercase
   - [[#3233](https://github.com/seata/seata/pull/3233)] fix Collections NPE
+  - [[#3242](https://github.com/seata/seata/pull/3242)] fix batch sql getTableMeta error
 
 
   ### optimize： 
