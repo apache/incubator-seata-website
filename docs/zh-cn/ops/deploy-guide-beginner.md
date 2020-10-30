@@ -66,7 +66,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 
 #### 步骤一：启动包
 - <a href="https://github.com/seata/seata/releases" target="_blank">点击下载</a>
-- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community/index.html" target="_blank">2群</a>, 3群: 32033786），qq群（群号：254657148,2群:）群文件共享下载
+- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community/index.html" target="_blank">2群</a>, 3群: 32033786），qq群（群号: 254657148,2群: 216012363）群文件共享下载
 
 #### 步骤二：建表(仅db)
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
