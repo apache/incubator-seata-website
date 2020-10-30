@@ -118,7 +118,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#3209](https://github.com/seata/seata/pull/3209)] add more company logos
 
 
-  非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。  
+  Thanks to these contributors for their code commits. Please report an unintended omission. 
 
   - [slievrly](https://github.com/slievrly) 
   - [wangliang1986](https://github.com/wangliang1986) 
@@ -148,7 +148,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [selfishlover](https://github.com/selfishlover)
   - [yyjgit66](https://github.com/yyjgit66)
 
-  同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
+  Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
    #### Link
 
