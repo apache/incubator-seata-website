@@ -9,7 +9,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 
 ## Seata
 
-> GitHub: https://github.com/seata/seata \
+> GitHub: https://github.com/seata/seata 
 > 发布说明: https://github.com/seata/seata/releases
 
 ### 1.4.0 (2020-10-30)
@@ -79,7 +79,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   - [[#2900](https://github.com/seata/seata/pull/2900)] ColumnUtils add escape with scheme
   - [[#2904](https://github.com/seata/seata/pull/2904)] fix getConfig cache value is 'null'
   - [[#2890](https://github.com/seata/seata/pull/2890)] fix misspelling in statelang examples
-  - [[#3034](https://github.com/seata/seata/pull/3034)] fix repeated commit when autocommit is false
+  - [[#3040](https://github.com/seata/seata/pull/3040)] fix repeated commit when autocommit is false
   - [[#3230](https://github.com/seata/seata/pull/3230)] fix use @EnableAutoDataSourceProxy startup failed
   - [[#2979](https://github.com/seata/seata/pull/2979)] columns of resultset integrated with sharingjdbc need to be lowercase
   - [[#3233](https://github.com/seata/seata/pull/3233)] fix Collections NPE
