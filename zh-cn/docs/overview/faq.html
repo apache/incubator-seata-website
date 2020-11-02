@@ -174,8 +174,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <h3 id='17'>Q: 17.Seata 支持哪些 RPC 框架?</h3>
 <p><strong>A:</strong></p>
 <pre><code>1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
-2. TCC 模式支持Dubbo 和 sofa-RPC。
-
+2. TCC 模式支持Dubbo、Spring Cloud和sofa-RPC。
 </code></pre>
 <hr>
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
@@ -241,7 +240,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <hr>
 <h3 id='25'>Q: 25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</h3>
 <p><strong>A:</strong></p>
-<p>dynamic-datasource-sring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容</p>
+<p>dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容</p>
 <p>1.如果你引入的是seata-all,请不要使用@EnableAutoDataSourceProxy注解.</p>
 <p>2.如果你引入的是seata-spring-boot-starter 请关闭自动代理</p>
 <pre><code class="language-yaml"><span class="hljs-attr">seata:</span>

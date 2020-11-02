@@ -15,9 +15,145 @@
 	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>下载中心</h1>
 <h2>Seata</h2>
 <blockquote>
-<p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a> <br>
+<p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a>
 发布说明: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.4.0 (2020-10-30)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.4.0.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.4.0</h3>
+<p>Seata 1.4.0 Released.</p>
+<p>Seata is an easy-to-use, high-performance, open source distributed transaction solution.</p>
+<p>The version is updated as follows:</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/2825">#2825</a>] support send authentication msg</li>
+<li>[<a href="https://github.com/seata/seata/pull/2380">#2380</a>] support yml configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/3191">#3191</a>] support jdbc type nclob</li>
+<li>[<a href="https://github.com/seata/seata/pull/2676">#2676</a>] support least active load balance</li>
+<li>[<a href="https://github.com/seata/seata/pull/3198">#3198</a>] spring boot support for custom config and registry type</li>
+<li>[<a href="https://github.com/seata/seata/pull/2806">#2806</a>] support configuring default global transaction timeoutMillis</li>
+<li>[<a href="https://github.com/seata/seata/pull/2941">#2941</a>] add apollo secret key configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/2080">#2080</a>] support ConsistentHashLoadBalance</li>
+<li>[<a href="https://github.com/seata/seata/pull/2950">#2950</a>] support the reentrant lock in redis module</li>
+<li>[<a href="https://github.com/seata/seata/pull/2913">#2913</a>] The data source proxy mode can be selected as AT or XA</li>
+<li>[<a href="https://github.com/seata/seata/pull/2856">#2856</a>] add FstUndoLogParser</li>
+<li>[<a href="https://github.com/seata/seata/pull/3076">#3076</a>] check lock in TC when use @GlobalLock</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3214">#3214</a>] fix the 'RootContext.DEFAULT_BRANCH_TYPE' is wrong in some cases</li>
+<li>[<a href="https://github.com/seata/seata/pull/3129">#3129</a>] forbidding execute SQL which update pk value</li>
+<li>[<a href="https://github.com/seata/seata/pull/3205">#3205</a>] fix can not get boolean value in configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/3170">#3170</a>] the disposables tree set won't accept another Disposable with the same priority</li>
+<li>[<a href="https://github.com/seata/seata/pull/3180">#3180</a>] serializer fst package name error</li>
+<li>[<a href="https://github.com/seata/seata/pull/3178">#3178</a>] remove next line to space</li>
+<li>[<a href="https://github.com/seata/seata/pull/2929">#2929</a>] fix the application was configured to degrade at startup and can't be dynamically switch to upgraded</li>
+<li>[<a href="https://github.com/seata/seata/pull/3050">#3050</a>] fix fetch before images when delete and update statements</li>
+<li>[<a href="https://github.com/seata/seata/pull/2935">#2935</a>] fix saga designer bug that the property box does not switch when switching nodes</li>
+<li>[<a href="https://github.com/seata/seata/pull/3140">#3140</a>] fix Propagation.REQUIRES_NEW and add some comments</li>
+<li>[<a href="https://github.com/seata/seata/pull/3130">#3130</a>] fix some problems in the automatic data source proxy</li>
+<li>[<a href="https://github.com/seata/seata/pull/3148">#3148</a>] the redis lock key and the session key has conflict</li>
+<li>[<a href="https://github.com/seata/seata/pull/3136">#3136</a>] fix the redis pipeline</li>
+<li>[<a href="https://github.com/seata/seata/pull/2551">#2551</a>] Saga can't be used when the dataSource is AT's dataSourceProxy</li>
+<li>[<a href="https://github.com/seata/seata/pull/3073">#3073</a>] do not proxy connections without an xid</li>
+<li>[<a href="https://github.com/seata/seata/pull/3074">#3074</a>] There is no need to retry if the XA schema cannot find the XID</li>
+<li>[<a href="https://github.com/seata/seata/pull/3097">#3097</a>] fix HttpAutoConfiguration always instantiation in springboot env</li>
+<li>[<a href="https://github.com/seata/seata/pull/3071">#3071</a>] part of the connection is not unpacked</li>
+<li>[<a href="https://github.com/seata/seata/pull/3056">#3056</a>] fixed a bug that after branch deletion, there are still remaining branch lock</li>
+<li>[<a href="https://github.com/seata/seata/pull/3025">#3025</a>] fix the wrong package path</li>
+<li>[<a href="https://github.com/seata/seata/pull/3031">#3031</a>] redis locker delete lock incomplete</li>
+<li>[<a href="https://github.com/seata/seata/pull/2973">#2973</a>] fix oracle database in field size over 1000</li>
+<li>[<a href="https://github.com/seata/seata/pull/2986">#2986</a>] fix checkstyle plugin can't exclude single file</li>
+<li>[<a href="https://github.com/seata/seata/pull/2910">#2910</a>] fix error registry type comment</li>
+<li>[<a href="https://github.com/seata/seata/pull/2914">#2914</a>] fix branchType not cleaned when consumer is in TCC mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/2926">#2926</a>] fastjson write undo log not parser</li>
+<li>[<a href="https://github.com/seata/seata/pull/2897">#2897</a>] fix jedis unlock fail</li>
+<li>[<a href="https://github.com/seata/seata/pull/2918">#2918</a>] fix the isolation problem when rollback in AT mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/2972">#2972</a>] UUIDGenerator generates duplicated id</li>
+<li>[<a href="https://github.com/seata/seata/pull/2932">#2932</a>] <a href="http://nacos-config.py">nacos-config.py</a> script could not run with namespace</li>
+<li>[<a href="https://github.com/seata/seata/pull/2900">#2900</a>] ColumnUtils add escape with scheme</li>
+<li>[<a href="https://github.com/seata/seata/pull/2904">#2904</a>] fix getConfig cache value is 'null'</li>
+<li>[<a href="https://github.com/seata/seata/pull/2890">#2890</a>] fix misspelling in statelang examples</li>
+<li>[<a href="https://github.com/seata/seata/pull/3040">#3040</a>] fix repeated commit when autocommit is false</li>
+<li>[<a href="https://github.com/seata/seata/pull/3230">#3230</a>] fix use @EnableAutoDataSourceProxy startup failed</li>
+<li>[<a href="https://github.com/seata/seata/pull/2979">#2979</a>] columns of resultset integrated with sharingjdbc need to be lowercase</li>
+<li>[<a href="https://github.com/seata/seata/pull/3233">#3233</a>] fix Collections NPE</li>
+<li>[<a href="https://github.com/seata/seata/pull/3242">#3242</a>] fix batch sql getTableMeta error</li>
+<li>[<a href="https://github.com/seata/seata/pull/3246">#3246</a>] fix the exception when limit condition contains VariantRefExpr</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3201">#3201</a>] no longer substring the message in rpc transmission</li>
+<li>[<a href="https://github.com/seata/seata/pull/3062">#3062</a>] refactor the redis session store</li>
+<li>[<a href="https://github.com/seata/seata/pull/3117">#3117</a>] make log more clearly and remove the useless code</li>
+<li>[<a href="https://github.com/seata/seata/pull/3134">#3134</a>] optimizecodes related to Map and List</li>
+<li>[<a href="https://github.com/seata/seata/pull/3195">#3195</a>] optimizeXID related codes</li>
+<li>[<a href="https://github.com/seata/seata/pull/3200">#3200</a>] optimize rpc message when message was substring</li>
+<li>[<a href="https://github.com/seata/seata/pull/3186">#3186</a>] remove duplicated in string utils</li>
+<li>[<a href="https://github.com/seata/seata/pull/2962">#2962</a>]  @GlobalTransactional and @GlobalLock can now customize lock retry config</li>
+<li>[<a href="https://github.com/seata/seata/pull/3162">#3162</a>] remove repeated conditional tests</li>
+<li>[<a href="https://github.com/seata/seata/pull/2969">#2969</a>] Upgrade to druid 1.1.23</li>
+<li>[<a href="https://github.com/seata/seata/pull/3141">#3141</a>] Upgrade nacos and FastJSON dependencies</li>
+<li>[<a href="https://github.com/seata/seata/pull/3118">#3118</a>] Add more configuration tips in additional-spring-configuration-metadata.json</li>
+<li>[<a href="https://github.com/seata/seata/pull/2597">#2597</a>] judging xid status to avoid repeated processing</li>
+<li>[<a href="https://github.com/seata/seata/pull/3102">#3102</a>] optimize ContextCore, can be set 'Object' value</li>
+<li>[<a href="https://github.com/seata/seata/pull/3016">#3016</a>] refactor the redis lock string to hash</li>
+<li>[<a href="https://github.com/seata/seata/pull/3046">#3046</a>] remove unused code in serializer factory</li>
+<li>[<a href="https://github.com/seata/seata/pull/3053">#3053</a>] jedis pool adds maxtotal configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/3012">#3012</a>] remove set port repeatedly</li>
+<li>[<a href="https://github.com/seata/seata/pull/2978">#2978</a>] optimize globalCommit for mixed use of AT and TCC</li>
+<li>[<a href="https://github.com/seata/seata/pull/2967">#2967</a>] replace with lambda</li>
+<li>[<a href="https://github.com/seata/seata/pull/2968">#2968</a>] ensure that the register message is sent after RM client initialization</li>
+<li>[<a href="https://github.com/seata/seata/pull/2945">#2945</a>] optimize async commit and reduce one update</li>
+<li>[<a href="https://github.com/seata/seata/pull/2952">#2952</a>] optimize additional-spring-configuration-metadata.json</li>
+<li>[<a href="https://github.com/seata/seata/pull/2920">#2920</a>] optimize some grammatical errors</li>
+<li>[<a href="https://github.com/seata/seata/pull/2906">#2906</a>] added some configuration items to keep consistent with official documents</li>
+<li>[<a href="https://github.com/seata/seata/pull/3222">#3222</a>] optimize fileListener to decrease cpu time usage</li>
+<li>[<a href="https://github.com/seata/seata/pull/2843">#2843</a>] Removed Reloadable from the redis/db SessionManager</li>
+<li>[<a href="https://github.com/seata/seata/pull/3209">#3209</a>] add more company logos</li>
+</ul>
+<p>Thanks to these contributors for their code commits. Please report an unintended omission.</p>
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/wangliang1986">wangliang1986</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/jsbxyyx">jsbxyyx</a></li>
+<li><a href="https://github.com/l81893521">l81893521</a></li>
+<li><a href="https://github.com/lightClouds917">lightClouds917</a></li>
+<li><a href="https://github.com/caohdgege">caohdgege</a></li>
+<li><a href="https://github.com/yujianfei1986">yujianfei1986</a></li>
+<li><a href="https://github.com/ph3636">ph3636</a></li>
+<li><a href="https://github.com/PeineLiang">PeineLiang</a></li>
+<li><a href="https://github.com/heyaping388">heyaping388</a></li>
+<li><a href="https://github.com/guang384">guang384</a></li>
+<li><a href="https://github.com/zdrjson">zdrjson</a></li>
+<li><a href="https://github.com/ITAlexSun">ITAlexSun</a></li>
+<li><a href="https://github.com/dongzl">dongzl</a></li>
+<li><a href="https://github.com/81519434">81519434</a></li>
+<li><a href="https://github.com/wangwei-yin">wangwei-yin</a></li>
+<li><a href="https://github.com/jujinghao">jujinghao</a></li>
+<li><a href="https://github.com/JRial95">JRial95</a></li>
+<li><a href="https://github.com/mxszs1">mxszs1</a></li>
+<li><a href="https://github.com/RayneHwang">RayneHwang</a></li>
+<li><a href="https://github.com/everyhook1">everyhook1</a></li>
+<li><a href="https://github.com/li469791221">li469791221</a></li>
+<li><a href="https://github.com/luorenjin">luorenjin</a></li>
+<li><a href="https://github.com/yangxb2010000">yangxb2010000</a></li>
+<li><a href="https://github.com/selfishlover">selfishlover</a></li>
+<li><a href="https://github.com/yyjgit66">yyjgit66</a></li>
+</ul>
+<p>Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.3.0 (2020-07-14)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.3.0.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.3.0/seata-server-1.3.0.zip">binary</a></p>
@@ -427,6 +563,7 @@
 <p>Seata 1.0.0 GA版本重磅发布。</p>
 <p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
 <p>此版本更新如下：</p>
+<p>​</p>
 <h3>feature：</h3>
 <ul>
 <li>[<a href="https://github.com/seata/seata/pull/1966">#1966</a>] 增加client端单条消息发送方式</li>
@@ -926,6 +1063,7 @@
 </ul>
 <details>
     <summary><mark>Release notes</mark></summary>
+​    
 <p>Seata 0.7.0 发布</p>
 <p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
 <p>本次更新主要内容如下：</p>
@@ -1003,6 +1141,7 @@
 </ul>
 <details>
     <summary><mark>Release notes</mark></summary>
+​    
 <p>Seata 0.6.1 发布</p>
 <p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
 <p>本次更新主要内容如下：</p>
