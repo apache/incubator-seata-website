@@ -6,11 +6,27 @@ description: Seata upgrade.
 
 # 版本升级指南
 
+<a href="#5" target="_self">4. 升级到 seata 1.4.0 有哪些兼容性事项是需要注意的？</a>
+
 <a href="#4" target="_self">4. 升级到 seata 1.3.0 有哪些兼容性事项是需要注意的？</a>
 
 <a href="#3" target="_self">3. 升级到 seata 1.2.0 有哪些兼容性事项是需要注意的？</a>   
 <a href="#2" target="_self">2. 升级到 seata 1.1.0 有哪些兼容性事项是需要注意的？</a>   
 <a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>     
+
+
+
+------
+
+<h3 id='5'>5. 升级到 seata 1.4.0 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+
+
+1. 1.3与1.4的Redis数据无法兼容,因Redis模式重构数据存储结构为hash,1.3升级的用户需等待事务全部运行完毕后再做迭代.
+       
+
+</details>  
 
 ------
 
@@ -19,7 +35,7 @@ description: Seata upgrade.
   <summary><mark>注意事项</mark></summary>
 
 1. nacos注册中心新增group的属性配置seata.registry.nacos.group，如果无配置,则默认为DEFAULT_GROUP，Server和Client端需保持一致。
-       
+2. mysql undolog表去除id字段,与branch_table一并加强时间戳精度,防止undolog回滚时顺序错误导致出现脏数据无法回滚.(注:需要mysql5.6版本以上)
 
 </details>  
 
