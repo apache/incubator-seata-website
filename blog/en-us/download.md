@@ -12,6 +12,172 @@ description: This article will introduce you how to understand the details of ea
 > GitHub: https://github.com/seata/seata \
 > Release Notes: https://github.com/seata/seata/releases
 >
+
+### 1.4.0 (2020-10-30)
+
+ [source](https://github.com/seata/seata/archive/v1.4.0.zip) |
+ [binary](https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip) 
+
+<details>
+  <summary><mark>Release notes</mark></summary>
+
+
+  ### Seata 1.4.0
+
+  Seata 1.4.0 Released.
+
+  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+  The version is updated as follows:
+
+  ### 1.4.0 (2020-10-30)
+  
+   [source](https://github.com/seata/seata/archive/v1.4.0.zip) |
+   [binary](https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip) 
+  
+  <details>
+    <summary><mark>Release notes</mark></summary>
+  
+  
+   ### Seata 1.4.0
+  
+   Seata 1.4.0 Released.
+  
+   Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+  
+   The version is updated as follows:
+  
+   ### feature：
+    
+   - [[#2380](https://github.com/seata/seata/pull/2380)] 支持yml配置文件
+   - [[#3191](https://github.com/seata/seata/pull/3191)] 支持oracle nclob类型
+   - [[#2676](https://github.com/seata/seata/pull/2676)] 支持客户端最少的活动负载均衡
+   - [[#2080](https://github.com/seata/seata/pull/2080)] 支持客户端一致性哈希的负载均衡
+   - [[#3198](https://github.com/seata/seata/pull/3198)] 支持Spring Boot 使用自定义配置中心和注册中心
+   - [[#2806](https://github.com/seata/seata/pull/2806)] 支持配置默认全局事务超时时间
+   - [[#2941](https://github.com/seata/seata/pull/2941)] 支持apollo密钥key配置
+   - [[#2950](https://github.com/seata/seata/pull/2950)] 支持redis存储模式可重入锁
+   - [[#2913](https://github.com/seata/seata/pull/2913)] 支持配置AT或XA事务模式的数据源代理
+   - [[#2856](https://github.com/seata/seata/pull/2856)] 支持undo_log 使用 fst 序列化
+   - [[#3076](https://github.com/seata/seata/pull/3076)] 支持 GlobalLock 锁重试
+   - [[#2825](https://github.com/seata/seata/pull/2825)] 支持客户端发送鉴权信息
+   - [[#2962](https://github.com/seata/seata/pull/2962)] 支持在 @GlobalTransactional和@GlobalLock 注解上锁的重试配置
+    
+    
+  ### bugfix：
+    
+   - [[#3214](https://github.com/seata/seata/pull/3214)] 修复在某些情况下'RootContext.DEFAULT_BRANCH_TYPE' 的取值错误的问题
+   - [[#3129](https://github.com/seata/seata/pull/3129)] 修复禁止执行更新主键值的SQL
+   - [[#3205](https://github.com/seata/seata/pull/3205)] 修复在配置中获取boolean类型配置异常
+   - [[#3170](https://github.com/seata/seata/pull/3170)] 修复Disposable 同优先级的无法执行的问题
+   - [[#3180](https://github.com/seata/seata/pull/3180)] 修复fst序列化包名错误
+   - [[#3178](https://github.com/seata/seata/pull/3178)] 修复sqlparser 换行替换为空格问题
+   - [[#2929](https://github.com/seata/seata/pull/2929)] 修复将应用配置为在启动时降级但在运行中无法升级问题
+   - [[#3050](https://github.com/seata/seata/pull/3050)] 修复update和delete不支持order，limit语法问题
+   - [[#2935](https://github.com/seata/seata/pull/2935)] 修复了Saga Designer在切换节点时属性框不会切换的问题
+   - [[#3140](https://github.com/seata/seata/pull/3140)] 修复`Propagation.REQUIRES_NEW`无效的问题
+   - [[#3130](https://github.com/seata/seata/pull/3130)] 修复数据源多重代理和使用非代理类方法的问题
+   - [[#3148](https://github.com/seata/seata/pull/3148)] 修复 Redis 存储模式下lock和session存储时key冲突问题
+   - [[#3136](https://github.com/seata/seata/pull/3136)] 修复Redis pipeline执行报错问题
+   - [[#2551](https://github.com/seata/seata/pull/2551)] 修复当使用AT数据源代理时Saga事务模式无法使用的问题
+   - [[#3073](https://github.com/seata/seata/pull/3073)] 修复在没有xid的情况下使用XA模式的问题
+   - [[#3074](https://github.com/seata/seata/pull/3074)] 修复若XA模式找不到 xid 重试问题
+   - [[#3097](https://github.com/seata/seata/pull/3097)] 修复HttpAutoConfiguration只在springboot web项目中启动
+   - [[#3071](https://github.com/seata/seata/pull/3071)] 修复XA 模式中无法获取真实连接的问题
+   - [[#3056](https://github.com/seata/seata/pull/3056)] 修复了删除分支后仍然存在分支锁的错误
+   - [[#3025](https://github.com/seata/seata/pull/3025)] 修复错误的包装路径问题
+   - [[#3031](https://github.com/seata/seata/pull/3031)] 修复 redis 存储模式锁删除锁不完整问题
+   - [[#2973](https://github.com/seata/seata/pull/2973)] 修复oracle数据库 where in 超过1000的问题
+   - [[#2986](https://github.com/seata/seata/pull/2986)] 修复 checkstyle插件无法排除单个文件的问题
+   - [[#2910](https://github.com/seata/seata/pull/2910)] 修复错误的注释 
+   - [[#2914](https://github.com/seata/seata/pull/2914)] 修复TCC模式下，调用方未清除branchType的问题
+   - [[#2926](https://github.com/seata/seata/pull/2926)] 修复 fastjson 序列化不记录类名的问题
+   - [[#2897](https://github.com/seata/seata/pull/2897)] 修复Jedis删除锁失败的问题 
+   - [[#2918](https://github.com/seata/seata/pull/2918)] 修复 AT 模式下回滚时的未加锁的问题
+   - [[#2972](https://github.com/seata/seata/pull/2972)] 修复UUIDGenerator高并发下生成重复的id问题
+   - [[#2932](https://github.com/seata/seata/pull/2932)] 修复nacos-config.py 不支持namespace 问题
+   - [[#2900](https://github.com/seata/seata/pull/2900)] 修复数据库转义符问题
+   - [[#2904](https://github.com/seata/seata/pull/2904)] 修复getConfig配置不存在获取到null的问题
+   - [[#2890](https://github.com/seata/seata/pull/2890)] 修复statelang示例中的拼写错误
+   - [[#3040](https://github.com/seata/seata/pull/3040)] 修复 autocommit=false时的重复提交问题
+   - [[#3230](https://github.com/seata/seata/pull/3230)] 修复使用@EnableAutoDataSourceProxy启动失败问题
+   - [[#2979](https://github.com/seata/seata/pull/2979)] 修复与sharedjdbc集成postgresql 无法获取元数据问题
+   - [[#3233](https://github.com/seata/seata/pull/3233)] 修复Collections空指针异常
+   - [[#3242](https://github.com/seata/seata/pull/3242)] 修复批处理SQL获取TableMeta错误问题
+    
+    
+   ### optimize:
+    
+   - [[#3201](https://github.com/seata/seata/pull/3201)] 修复异常时报错堆栈显示不全的问题
+   - [[#3062](https://github.com/seata/seata/pull/3062)] 重构Redis存储模式下session的存储结构 
+   - [[#3117](https://github.com/seata/seata/pull/3117)] 优化日志输出以及清除无用代码
+   - [[#3134](https://github.com/seata/seata/pull/3134)] 优化Map 和 List 相关写法
+   - [[#3195](https://github.com/seata/seata/pull/3195)] 优化 XID 相关的代码写法
+   - [[#3200](https://github.com/seata/seata/pull/3200)] 优化 rpc 日志提示
+   - [[#3186](https://github.com/seata/seata/pull/3186)] 移除 StringUtils 的重复代码
+   - [[#3162](https://github.com/seata/seata/pull/3162)] 删除重复的代码
+   - [[#2969](https://github.com/seata/seata/pull/2969)] 升级druid的依赖到1.1.23
+   - [[#3141](https://github.com/seata/seata/pull/3141)] 升级Nacos和FastJSON的依赖版本
+   - [[#3118](https://github.com/seata/seata/pull/3118)] 添加`additional-spring-configuration-metadata.json` 配置提示信息
+   - [[#2597](https://github.com/seata/seata/pull/2597)]  优化web拦截器中的xid状态避免重复处理
+   - [[#3102](https://github.com/seata/seata/pull/3102)] 优化ContextCore 接口可设置非 String 类型的值
+   - [[#3016](https://github.com/seata/seata/pull/3016)] 重构 Redis 存储模式下 的lock的存储结构 
+   - [[#3046](https://github.com/seata/seata/pull/3046)] 删除SerializerFactory类
+   - [[#3053](https://github.com/seata/seata/pull/3053)] 支持 TC端jedis连接池最大数量配置
+   - [[#3012](https://github.com/seata/seata/pull/3012)] 移除重复设置端口的代码
+   - [[#2978](https://github.com/seata/seata/pull/2978)] 优化AT和TCC 事务模式混用时，AT模式可异步提交
+   - [[#2967](https://github.com/seata/seata/pull/2967)] 优化代码为lambda风格
+   - [[#2968](https://github.com/seata/seata/pull/2968)] 优化在RM客户端初始化后发送注册消息
+   - [[#2945](https://github.com/seata/seata/pull/2945)] 优化DB存储模式异步提交，减少更新操作
+   - [[#2952](https://github.com/seata/seata/pull/2952)] 支持 additional-spring-configuration-metadata.json配置提示信息
+   - [[#2920](https://github.com/seata/seata/pull/2920)] 修正 README.md 中的单词和语法错误
+   - [[#3222](https://github.com/seata/seata/pull/3222)] 优化fileListener的CPU利用率
+   - [[#2843](https://github.com/seata/seata/pull/2843)] 移除 redis和db 存储模式的中移除接口Reloadable 和 重构 reload`方法 
+   - [[#3209](https://github.com/seata/seata/pull/3209)] 新增使用用户 logo 信息
+  
+  
+   Thanks to these contributors for their code commits. Please report an unintended omission. 
+  
+   - [slievrly](https://github.com/slievrly) 
+   - [wangliang1986](https://github.com/wangliang1986) 
+   - [a364176773](https://github.com/a364176773) 
+   - [jsbxyyx](https://github.com/jsbxyyx)
+   - [l81893521](https://github.com/l81893521)
+   - [lightClouds917](https://github.com/lightClouds917)
+   - [caohdgege](https://github.com/caohdgege)
+   - [yujianfei1986](https://github.com/yujianfei1986)
+   - [ph3636](https://github.com/ph3636)
+   - [PeineLiang](https://github.com/PeineLiang)
+   - [heyaping388](https://github.com/heyaping388)
+   - [guang384](https://github.com/guang384)
+   - [zdrjson](https://github.com/zdrjson)
+   - [ITAlexSun](https://github.com/ITAlexSun)
+   - [dongzl](https://github.com/dongzl)
+   - [81519434](https://github.com/81519434)
+   - [wangwei-yin](https://github.com/wangwei-yin)
+   - [jujinghao](https://github.com/jujinghao)
+   - [JRial95](https://github.com/JRial95)
+   - [mxszs1](https://github.com/mxszs1)
+   - [RayneHwang](https://github.com/RayneHwang)
+   - [everyhook1](https://github.com/everyhook1)
+   - [li469791221](https://github.com/li469791221)
+   - [luorenjin](https://github.com/luorenjin)
+   - [yangxb2010000](https://github.com/yangxb2010000)
+   - [selfishlover](https://github.com/selfishlover)
+   - [yyjgit66](https://github.com/yyjgit66)
+  
+   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+  
+   #### Link
+  
+   - **Seata:** https://github.com/seata/seata  
+   - **Seata-Samples:** https://github.com/seata/seata-samples   
+   - **Release:** https://github.com/seata/seata/releases
+   - **WebSite:** https://seata.io
+  
+  </details>
+
+
 ### 1.3.0 (2020-07-14)
 
  [source](https://github.com/seata/seata/archive/v1.3.0.zip) |
