@@ -12,6 +12,173 @@ description: This article will introduce you how to understand the details of ea
 > GitHub: https://github.com/seata/seata \
 > Release Notes: https://github.com/seata/seata/releases
 >
+
+### 1.4.0 (2020-10-30)
+
+ [source](https://github.com/seata/seata/archive/v1.4.0.zip) |
+ [binary](https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip) 
+
+<details>
+  <summary><mark>Release notes</mark></summary>
+
+
+  ### Seata 1.4.0
+
+  Seata 1.4.0 Released.
+
+  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+  The version is updated as follows:
+
+  ### 1.4.0 (2020-10-30)
+  
+   [source](https://github.com/seata/seata/archive/v1.4.0.zip) |
+   [binary](https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip) 
+  
+  <details>
+    <summary><mark>Release notes</mark></summary>
+  
+  
+   ### Seata 1.4.0
+  
+   Seata 1.4.0 Released.
+   
+   Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+   
+   The version is updated as follows:
+   
+   ### feature：
+   
+   - [[#2380](https://github.com/seata/seata/pull/2380)] support yml configuration
+   - [[#3191](https://github.com/seata/seata/pull/3191)] support jdbc type nclob
+   - [[#2676](https://github.com/seata/seata/pull/2676)] support least active load balance
+   - [[#3198](https://github.com/seata/seata/pull/3198)] spring boot support for custom config and registry type
+   - [[#2806](https://github.com/seata/seata/pull/2806)] support configuring default global transaction timeoutMillis
+   - [[#2941](https://github.com/seata/seata/pull/2941)] add apollo secret key configuration
+   - [[#2080](https://github.com/seata/seata/pull/2080)] support ConsistentHashLoadBalance
+   - [[#2950](https://github.com/seata/seata/pull/2950)] support the reentrant lock in redis module
+   - [[#2913](https://github.com/seata/seata/pull/2913)] The data source proxy mode can be selected as AT or XA
+   - [[#2856](https://github.com/seata/seata/pull/2856)] support for undoLog using Fst serialization
+   - [[#3076](https://github.com/seata/seata/pull/3076)] check lock in TC when use @GlobalLock
+   - [[#2825](https://github.com/seata/seata/pull/2825)] support send authentication msg
+   - [[#2962](https://github.com/seata/seata/pull/2962)] @GlobalTransactional and @GlobalLock can support customize lock retry config
+   
+  ### bugfix：
+   
+   - [[#3214](https://github.com/seata/seata/pull/3214)] fix the 'RootContext.DEFAULT_BRANCH_TYPE' is wrong in some cases
+   - [[#3129](https://github.com/seata/seata/pull/3129)] forbidding execute SQL which update pk value
+   - [[#3205](https://github.com/seata/seata/pull/3205)] fix can not get boolean value in configuration
+   - [[#3170](https://github.com/seata/seata/pull/3170)] the disposables tree set won't accept another Disposable with the same priority
+   - [[#3180](https://github.com/seata/seata/pull/3180)] serializer fst package name error
+   - [[#3178](https://github.com/seata/seata/pull/3178)] remove next line to space
+   - [[#2929](https://github.com/seata/seata/pull/2929)] fix the application was configured to degrade at startup and can't be dynamically switch to upgraded
+   - [[#3050](https://github.com/seata/seata/pull/3050)] fix fetch before images when delete and update statements
+   - [[#2935](https://github.com/seata/seata/pull/2935)] fix saga designer bug that the property box does not switch when switching nodes
+   - [[#3140](https://github.com/seata/seata/pull/3140)] fix Propagation.REQUIRES_NEW and add some comments
+   - [[#3130](https://github.com/seata/seata/pull/3130)] fix some problems in the automatic data source proxy
+   - [[#3148](https://github.com/seata/seata/pull/3148)] the redis lock key and the session key has conflict
+   - [[#3136](https://github.com/seata/seata/pull/3136)] fix the redis pipeline
+   - [[#2551](https://github.com/seata/seata/pull/2551)] Saga can't be used when the dataSource is AT's dataSourceProxy
+   - [[#3073](https://github.com/seata/seata/pull/3073)] do not proxy connections without an xid
+   - [[#3074](https://github.com/seata/seata/pull/3074)] There is no need to retry if the XA schema cannot find the XID
+   - [[#3097](https://github.com/seata/seata/pull/3097)] fix HttpAutoConfiguration always instantiation in springboot env
+   - [[#3071](https://github.com/seata/seata/pull/3071)] part of the connection is not unpacked
+   - [[#3056](https://github.com/seata/seata/pull/3056)] fixed a bug that after branch deletion, there are still remaining branch lock
+   - [[#3025](https://github.com/seata/seata/pull/3025)] fix the wrong package path
+   - [[#3031](https://github.com/seata/seata/pull/3031)] redis locker delete lock incomplete 
+   - [[#2973](https://github.com/seata/seata/pull/2973)] fix oracle database in field size over 1000
+   - [[#2986](https://github.com/seata/seata/pull/2986)] fix checkstyle plugin can't exclude single file
+   - [[#2910](https://github.com/seata/seata/pull/2910)] fix error registry type comment 
+   - [[#2914](https://github.com/seata/seata/pull/2914)] fix branchType not cleaned when consumer is in TCC mode
+   - [[#2926](https://github.com/seata/seata/pull/2926)] fastjson write undo log not parser
+   - [[#2897](https://github.com/seata/seata/pull/2897)] fix jedis unlock fail 
+   - [[#2918](https://github.com/seata/seata/pull/2918)] fix the isolation problem when rollback in AT mode
+   - [[#2972](https://github.com/seata/seata/pull/2972)] UUIDGenerator generates duplicated id
+   - [[#2932](https://github.com/seata/seata/pull/2932)] nacos-config.py script could not run with namespace
+   - [[#2900](https://github.com/seata/seata/pull/2900)] ColumnUtils add escape with scheme
+   - [[#2904](https://github.com/seata/seata/pull/2904)] fix getConfig cache value is 'null'
+   - [[#2890](https://github.com/seata/seata/pull/2890)] fix misspelling in statelang examples
+   - [[#3040](https://github.com/seata/seata/pull/3040)] fix repeated commit when autocommit is false
+   - [[#3230](https://github.com/seata/seata/pull/3230)] fix use @EnableAutoDataSourceProxy startup failed
+   - [[#2979](https://github.com/seata/seata/pull/2979)] columns of resultset integrated with sharingjdbc need to be lowercase
+   - [[#3233](https://github.com/seata/seata/pull/3233)] fix Collections NPE
+   - [[#3242](https://github.com/seata/seata/pull/3242)] fix batch sql getTableMeta error
+   - [[#3246](https://github.com/seata/seata/pull/3246)] fix the exception when limit condition contains VariantRefExpr
+   
+   
+   ### optimize： 
+   
+   - [[#3062](https://github.com/seata/seata/pull/3062)] refactor the redis session store 
+   - [[#3201](https://github.com/seata/seata/pull/3201)] optimize the wrong stack not fully display
+   - [[#3117](https://github.com/seata/seata/pull/3117)] make log more clearly and remove the useless code
+   - [[#3134](https://github.com/seata/seata/pull/3134)] optimize codes related to Map and List
+   - [[#3195](https://github.com/seata/seata/pull/3195)] optimize XID related codes
+   - [[#3200](https://github.com/seata/seata/pull/3200)] optimize rpc message when message was substring
+   - [[#3186](https://github.com/seata/seata/pull/3186)] remove duplicated in string utils
+   - [[#3162](https://github.com/seata/seata/pull/3162)] remove repeated conditional tests
+   - [[#2969](https://github.com/seata/seata/pull/2969)] upgrade to druid 1.1.23
+   - [[#3141](https://github.com/seata/seata/pull/3141)] upgrade nacos and FastJSON dependencies
+   - [[#3118](https://github.com/seata/seata/pull/3118)] add more configuration tips in additional-spring-configuration-metadata.json
+   - [[#2597](https://github.com/seata/seata/pull/2597)] judging xid status to avoid repeated processing
+   - [[#3102](https://github.com/seata/seata/pull/3102)] optimize ContextCore, can be set 'Object' value
+   - [[#3016](https://github.com/seata/seata/pull/3016)] refactor the redis lock string to hash
+   - [[#3046](https://github.com/seata/seata/pull/3046)] remove unused code in serializer factory
+   - [[#3053](https://github.com/seata/seata/pull/3053)] jedis pool adds maxtotal configuration
+   - [[#3012](https://github.com/seata/seata/pull/3012)] remove set port repeatedly
+   - [[#2978](https://github.com/seata/seata/pull/2978)] optimize globalCommit for mixed use of AT and TCC
+   - [[#2967](https://github.com/seata/seata/pull/2967)] replace with lambda
+   - [[#2968](https://github.com/seata/seata/pull/2968)] ensure that the register message is sent after RM client initialization
+   - [[#2945](https://github.com/seata/seata/pull/2945)] optimize async commit and reduce one update
+   - [[#2952](https://github.com/seata/seata/pull/2952)] optimize additional-spring-configuration-metadata.json
+   - [[#2920](https://github.com/seata/seata/pull/2920)] optimize some grammatical errors
+   - [[#2906](https://github.com/seata/seata/pull/2906)] added some configuration items to keep consistent with official documents 
+   - [[#3222](https://github.com/seata/seata/pull/3222)] optimize fileListener to decrease cpu time usage
+   - [[#2843](https://github.com/seata/seata/pull/2843)] removed Reloadable from the redis/db SessionManager
+   - [[#3209](https://github.com/seata/seata/pull/3209)] add using company logos
+  
+  
+   Thanks to these contributors for their code commits. Please report an unintended omission. 
+  
+   - [slievrly](https://github.com/slievrly) 
+   - [wangliang1986](https://github.com/wangliang1986) 
+   - [a364176773](https://github.com/a364176773) 
+   - [jsbxyyx](https://github.com/jsbxyyx)
+   - [l81893521](https://github.com/l81893521)
+   - [lightClouds917](https://github.com/lightClouds917)
+   - [caohdgege](https://github.com/caohdgege)
+   - [yujianfei1986](https://github.com/yujianfei1986)
+   - [ph3636](https://github.com/ph3636)
+   - [PeineLiang](https://github.com/PeineLiang)
+   - [heyaping388](https://github.com/heyaping388)
+   - [guang384](https://github.com/guang384)
+   - [zdrjson](https://github.com/zdrjson)
+   - [ITAlexSun](https://github.com/ITAlexSun)
+   - [dongzl](https://github.com/dongzl)
+   - [81519434](https://github.com/81519434)
+   - [wangwei-yin](https://github.com/wangwei-yin)
+   - [jujinghao](https://github.com/jujinghao)
+   - [JRial95](https://github.com/JRial95)
+   - [mxszs1](https://github.com/mxszs1)
+   - [RayneHwang](https://github.com/RayneHwang)
+   - [everyhook1](https://github.com/everyhook1)
+   - [li469791221](https://github.com/li469791221)
+   - [luorenjin](https://github.com/luorenjin)
+   - [yangxb2010000](https://github.com/yangxb2010000)
+   - [selfishlover](https://github.com/selfishlover)
+   - [yyjgit66](https://github.com/yyjgit66)
+  
+   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+  
+   #### Link
+  
+   - **Seata:** https://github.com/seata/seata  
+   - **Seata-Samples:** https://github.com/seata/seata-samples   
+   - **Release:** https://github.com/seata/seata/releases
+   - **WebSite:** https://seata.io
+  
+  </details>
+
+
 ### 1.3.0 (2020-07-14)
 
  [source](https://github.com/seata/seata/archive/v1.3.0.zip) |
