@@ -39,7 +39,7 @@ seata:
       application: seata-server
       server-addr: 127.0.0.1:8848
       group : "SEATA_GROUP"
-      namespace:
+      namespace: ""
       username: "nacos"
       password: "nacos"
 ```
