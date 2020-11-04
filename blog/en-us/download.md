@@ -140,7 +140,7 @@ description: This article will introduce you how to understand the details of ea
    Thanks to these contributors for their code commits. Please report an unintended omission. 
   
    - [slievrly](https://github.com/slievrly) 
-   - [wangliang1986](https://github.com/wangliang1986) 
+   - [wangliang181230](https://github.com/wangliang181230) 
    - [a364176773](https://github.com/a364176773) 
    - [jsbxyyx](https://github.com/jsbxyyx)
    - [l81893521](https://github.com/l81893521)
@@ -293,7 +293,7 @@ description: This article will introduce you how to understand the details of ea
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
   - [a364176773](https://github.com/a364176773) 
-  - [wangliang1986](https://github.com/wangliang1986) 
+  - [wangliang181230](https://github.com/wangliang181230) 
   - [jsbxyyx](https://github.com/jsbxyyx) 
   - [l81893521](https://github.com/l81893521) 
   - [objcoding](https://github.com/objcoding) 
