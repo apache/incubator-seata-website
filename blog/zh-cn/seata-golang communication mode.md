@@ -1,4 +1,3 @@
-
 ---
 title: seata-golang 通信模型详解
 keywords: seata,seata-golang,seata-go,getty,分布式事务
@@ -31,7 +30,7 @@ Java 的世界里，大家广泛使用的一个高性能网络通信框架 netty
 getty 框架的整体模型图如下：
 
 
-![image.png](/img/blog/9F2A5662-4AC7-4A3C-BFA8-F1F06B82C04E.png)
+![image.png]( https://img.alicdn.com/imgextra/i1/O1CN011TIcL01jY4JaweOfV_!!6000000004559-2-tps-954-853.png)
 
 
 下面结合相关代码，详述 seata-golang 的 RPC 通信过程。
@@ -689,18 +688,15 @@ var (
 
 ## 三、seata-golang 的未来
 
-
-[seata-golang](https://github.com/opentrx/seata-golang)  从今年 4 月份开始开发，到 8 月份基本实现和 java 版 [seata 1.2](https://github.com/seata/seata) 协议的互通，对 mysql 数据库实现了 AT 模式（自动协调分布式事务的提交回滚），实现了 TCC 模式，TC 端使用 mysql 存储数据，使 TC 变成一个无状态应用支持高可用部署。下图展示了 AT 模式的原理：![image20201205-232516.png](/img/blog/image20201205-232516.png)
+[seata-golang](https://github.com/opentrx/seata-golang)  从今年 4 月份开始开发，到 8 月份基本实现和 java 版 [seata 1.2](https://github.com/seata/seata) 协议的互通，对 mysql 数据库实现了 AT 模式（自动协调分布式事务的提交回滚），实现了 TCC 模式，TC 端使用 mysql 存储数据，使 TC 变成一个无状态应用支持高可用部署。下图展示了 AT 模式的原理：![image20201205-232516.png]( https://img.alicdn.com/imgextra/i3/O1CN01alqsQS1G2oQecFYIs_!!6000000000565-2-tps-1025-573.png)
 
 
 后续，还有许多工作可以做，比如：对注册中心的支持、对配置中心的支持、和 java 版 seata 1.4 的协议互通、其他数据库的支持、raft transaction coordinator 的实现等，希望对分布式事务问题感兴趣的开发者可以加入进来一起来打造一个完善的 golang 的分布式事务框架。
 
-
 如果你有任何疑问，欢迎钉钉扫码加入交流群【钉钉群号 33069364】：
-<img src="/img/blog/seata-golang_ding_talk.png" width="200px" />
+<img src="https://img.alicdn.com/imgextra/i2/O1CN01IjOVG425erjuzqcOi_!!6000000007552-2-tps-600-621.png" width="200px" />
 
 ### **作者简介**
-
 
 刘晓敏 (GitHubID dk-lockdown)，目前就职于 h3c 成都分公司，擅长使用 Java/Go 语言，在云原生和微服务相关技术方向均有涉猎，目前专攻分布式事务。
 于雨(github @AlexStocks)，dubbo-go 项目和社区负责人，一个有十多年服务端基础架构研发一线工作经验的程序员，陆续参与改进过 Muduo/Pika/Dubbo/Sentinel-go 等知名项目，目前在蚂蚁金服可信原生部从事容器编排和 service mesh 工作。
