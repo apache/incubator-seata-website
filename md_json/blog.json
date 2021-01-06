@@ -273,6 +273,17 @@
       }
     },
     {
+      "filename": "seata-golang communication mode.md",
+      "link": "/zh-cn/blog/seata-golang communication mode.html",
+      "meta": {
+        "title": "seata-golang 通信模型详解",
+        "keywords": "seata,seata-golang,seata-go,getty,分布式事务",
+        "description": "本文详细讲述 seata-golang 底层 rpc 通信的实现原理",
+        "author": "刘晓敏",
+        "date": "2021/01/04"
+      }
+    },
+    {
       "filename": "seata-ha-practice.md",
       "link": "/zh-cn/blog/seata-ha-practice.html",
       "meta": {
