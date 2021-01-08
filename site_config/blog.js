@@ -113,6 +113,13 @@
                 dateStr: 'Oct 16th, 2020',
                 desc: '本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题',
                 link: '/zh-cn/blog/seata-datasource-proxy.html',
+            },
+            {
+                title: 'seata-golang 通信模型详解',
+                author: '@刘晓敏',
+                dateStr: 'Jan 4th, 2021',
+                desc: '本文详细讲述 seata-golang 底层 rpc 通信的实现原理',
+                link: 'http://seata.io/zh-cn/blog/seata-golang-communication-mode.html',
             }
         ]
     },
