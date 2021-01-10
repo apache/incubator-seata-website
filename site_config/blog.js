@@ -109,7 +109,7 @@
             },
             {
                 title: 'Seata数据源代理解析',
-                author: '@luoxy',
+                author: '@罗小勇',
                 dateStr: 'Oct 16th, 2020',
                 desc: '本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题',
                 link: '/zh-cn/blog/seata-datasource-proxy.html',
@@ -120,7 +120,14 @@
                 dateStr: 'Jan 4th, 2021',
                 desc: '本文详细讲述 seata-golang 底层 rpc 通信的实现原理',
                 link: 'http://seata.io/zh-cn/blog/seata-golang-communication-mode.html',
-            }
+            },
+            {
+                title: 'Seata配置管理原理解析',
+                author: '@罗小勇',
+                dateStr: 'Jan 10th, 2021',
+                desc: '本文主要介绍Seata配置管理的核心实现以及和Spring配置的交互过程',
+                link: '/zh-cn/blog/seata-config-manager.html',
+            },
         ]
     },
 };
