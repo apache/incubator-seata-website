@@ -136,7 +136,7 @@ if (null != extConfiguration) {
 8. 基于key找到对应的SpringBean
 9. 执行SpringBean的getXxx方法
 
-![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/12b9a5cd8d544e63bcdb3edab4289dd6~tplv-k3u1fbpfcp-watermark.image)
+![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0cb93fec40df40ba9e8ab9db06cc9b93~tplv-k3u1fbpfcp-watermark.image)
 
 ## 配置增强实现
 上面也简单提到过配置增强，相关代码如下：
