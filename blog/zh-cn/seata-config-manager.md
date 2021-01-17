@@ -126,6 +126,18 @@ if (null != extConfiguration) {
 # 配置管理增强
 配置增强，简单来说就是为其创建一个代理对象，在执行目标独对象的目标方法时候，执行代理逻辑，从配置中心的角度来讲，就是在通过配置中心获取对应配置的时候，执行代理逻辑。
 
+1. 通过`ConfigurationFactory.CURRENT_FILE_INSTANCE.getgetConfig(key)`获取配置
+2. 加载`registry.conf`文件创建FileConfiguration对象`configuration`
+3. 基于`SpringBootConfigurationProvider`为`configuration`创建代理对象`configurationProxy`
+4. 从`configurationProxy`中获取配置中心的连接信息`file zk nacos 等`
+5. 基于连接信息创建配中心Configuration对象`configuration2`
+6. 基于`SpringBootConfigurationProvider`为`configuration2`创建代理对象`configurationProxy2`
+7. 执行`configurationProxy2`的代理逻辑
+8. 基于key找到对应的SpringBean
+9. 执行SpringBean的getXxx方法
+
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/12b9a5cd8d544e63bcdb3edab4289dd6~tplv-k3u1fbpfcp-watermark.image)
+
 ## 配置增强实现
 上面也简单提到过配置增强，相关代码如下：
 ```java
