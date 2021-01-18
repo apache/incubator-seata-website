@@ -251,13 +251,24 @@
       }
     },
     {
+      "filename": "seata-config-manager.md",
+      "link": "/zh-cn/blog/seata-config-manager.html",
+      "meta": {
+        "title": "Seata配置管理原理解析",
+        "keywords": "Seata、配置中心、配置管理、Spring配置",
+        "description": "本文主要介绍Seata配置管理的核心实现以及和Spring配置的交互过程",
+        "author": "罗小勇",
+        "date": "2021/01/10"
+      }
+    },
+    {
       "filename": "seata-datasource-proxy.md",
       "link": "/zh-cn/blog/seata-datasource-proxy.html",
       "meta": {
         "title": "Seata数据源代理解析",
-        "keywords": "Seata,数据源、数据源代理、多数据源",
+        "keywords": "Seata、数据源、数据源代理、多数据源",
         "description": "本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题",
-        "author": "luoxy",
+        "author": "罗小勇",
         "date": "2020/10/16"
       }
     },
