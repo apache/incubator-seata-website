@@ -9,24 +9,25 @@ date: 2021-01-23
 
 # Spring Cloud集成Seata分布式事务-TCC模式
 
-本文将介绍基于Spring Cloud + feign 如何集成 Seata的TCC模式。实际上，Seata的AT模式基本上能满足我们使用分布式事务80%的需求，但涉及非关系型数据库与中间件（如redis等）的操作、跨公司服务的调用，跨语言的应用调用或者需要手动控制整个二阶段提交过程，则需要结合TCC模式。
+本文将介绍基于Spring Cloud + feign 如何集成 Seata(1.4.0)的TCC模式。实际上，Seata的AT模式基本上能满足我们使用分布式事务80%的需求，但涉及不支持事务的数据库与中间件（如redis）等的操作，或AT模式暂未支持的数据库（目前AT支持Mysql、Oracle与PostgreSQL）、跨公司服务的调用、跨语言的应用调用或有手动控制整个二阶段提交过程的需求，则需要结合TCC模式。不仅如此，TCC模式还支持与AT模式混合使用。
+
 本文作者：弓行（谭志坚）
 
 # 一、TCC模式的概念
 
-一个分布式的全局事务，整体是两阶段提交**（Try-[Comfirm/Cancel]）**的模型。在SEATA中，AT模式与TCC模式事实上都是两阶段提交的具体实现。他们的区别在于：
+一个分布式的全局事务，整体是两阶段提交**Try-[Comfirm/Cancel]** 的模型。在Seata中，AT模式与TCC模式事实上都是两阶段提交的具体实现。他们的区别在于：
 
-AT 模式基于**支持本地 ACID 事务** 的 **关系型数据库**（目前支持Mysql、Oracle与Postgresql）：
+AT 模式基于**支持本地 ACID 事务** 的 **关系型数据库**（目前支持Mysql、Oracle与PostgreSQL）：
 
 一阶段 prepare 行为：在本地事务中，一并提交业务数据更新和相应回滚日志记录。
-二阶段 commit 行为：马上成功结束，**自动 **异步批量清理回滚日志。
-二阶段 rollback 行为：通过回滚日志，**自动 **生成补偿操作，完成数据回滚。
+二阶段 commit 行为：马上成功结束，**自动**异步批量清理回滚日志。
+二阶段 rollback 行为：通过回滚日志，**自动**生成补偿操作，完成数据回滚。
 
 相应的，TCC 模式，不依赖于底层数据资源的事务支持：
 
 一阶段 prepare 行为：调用 自定义 的 prepare 逻辑。
-二阶段 commit 行为：调用 **自定义 **的 commit 逻辑。
-二阶段 rollback 行为：调用 **自定义 **的 rollback 逻辑。
+二阶段 commit 行为：调用 **自定义**的 commit 逻辑。
+二阶段 rollback 行为：调用 **自定义**的 rollback 逻辑。
 
 所谓 TCC 模式，是指支持把 **自定义** 的分支事务纳入到全局事务的管理中。
 
@@ -40,7 +41,7 @@ AT 模式基于**支持本地 ACID 事务** 的 **关系型数据库**（目前�
 
 # 三、TM与TCC-RM的搭建
 
-本章着重讲基于Spring Cloud + Feign的TCC的实现，项目的搭建直接看源码
+本章着重讲基于Spring Cloud + Feign的TCC的实现，项目的搭建直接看源码(本工程提供了AT模式与TCC模式的DEMO)
 
 [DEMO工程源码](https://github.com/tanzzj/springcloud-seata-feign "服务端搭建文档")
 
@@ -52,14 +53,14 @@ AT 模式基于**支持本地 ACID 事务** 的 **关系型数据库**（目前�
 
 [service-tm](https://github.com/tanzzj/springcloud-seata-feign/tree/master/service-tm)
 
-## 3.3 TCC-RM的搭建
+## 3.3 RM-TCC的搭建
 
 ### 3.3.1 定义TCC接口
 
 由于我们使用的是 SpringCloud + Feign，Feign的调用基于http，因此此处我们使用`@LocalTCC`便可。值得注意的是，`@LocalTCC`一定需要注解在接口上，此接口可以是寻常的业务接口，只要实现了TCC的两阶段提交对应方法便可，TCC相关注解如下：
 
 -  `@LocalTCC` 适用于SpringCloud+Feign模式下的TCC
--  `@TwoPhaseBusinessAction` 注解try方法，其中name为当前tcc方法的bean名称，写方法名便可（记得全局唯一），commitMethod指向提交方法，rollbackMethod指向事务回滚方法。指定好三个方法之后，seata会根据全局事务的成功或失败，去帮我们自动调用提交方法或者回滚方法。
+-  `@TwoPhaseBusinessAction` 注解try方法，其中name为当前tcc方法的bean名称，写方法名便可（全局唯一），commitMethod指向提交方法，rollbackMethod指向事务回滚方法。指定好三个方法之后，seata会根据全局事务的成功或失败，去帮我们自动调用提交方法或者回滚方法。
 -  `@BusinessActionContextParameter` 注解可以将参数传递到二阶段（commitMethod/rollbackMethod）的方法。
 -  `BusinessActionContext` 便是指TCC事务上下文
 
@@ -176,7 +177,10 @@ public class TccServiceImpl implements  TccService {
 }
 ```
 
+### 3.3.3 在TM中开启全局事务，调用RM-TCC接口
 
+工程源码见3.2
 
+---
 至此，Spring Cloud整合TCC模式完成
 
