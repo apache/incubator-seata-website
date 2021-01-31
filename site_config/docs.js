@@ -130,8 +130,17 @@ export default {
                         link: '/zh-cn/docs/user/configurations.html',
                     },
                     {
-                        title: '事务分组介绍',
-                        link: '/zh-cn/docs/user/transaction-group.html',
+                        title: '事务分组',
+                        children: [
+                            {
+                                title: '事务分组介绍',
+                                link: '/zh-cn/docs/user/txgroup/transaction-group.html',
+                            },
+                            {
+                                title: '事务分组与高可用',
+                                link: '/zh-cn/docs/user/txgroup/transaction-group-and-ha.html',
+                            }
+                        ]
                     },
                     {
                         title: '配置中心',
