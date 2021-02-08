@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="TCC,Seata,Spring Cloud,分布式,事务" />
+	<meta name="description" content="本文主要介绍Spring Cloud集成Seata分布式事务TCC模式" />
+	<!-- 网页标签标题 -->
+	<title>Spring Cloud集成Seata分布式事务-TCC模式</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>Spring Cloud集成Seata分布式事务-TCC模式</h1>
+<p>本文将介绍基于Spring Cloud + feign 如何集成 Seata(1.4.0)的TCC模式。实际上，Seata的AT模式基本上能满足我们使用分布式事务80%的需求，但涉及不支持事务的数据库与中间件（如redis）等的操作，或AT模式暂未支持的数据库（目前AT支持Mysql、Oracle与PostgreSQL）、跨公司服务的调用、跨语言的应用调用或有手动控制整个二阶段提交过程的需求，则需要结合TCC模式。不仅如此，TCC模式还支持与AT模式混合使用。</p>
+<p>本文作者：弓行（谭志坚）</p>
+<h1>一、TCC模式的概念</h1>
+<p>一个分布式的全局事务，整体是两阶段提交<strong>Try-[Comfirm/Cancel]</strong> 的模型。在Seata中，AT模式与TCC模式事实上都是两阶段提交的具体实现。他们的区别在于：</p>
+<p>AT 模式基于<strong>支持本地 ACID 事务</strong> 的 <strong>关系型数据库</strong>（目前支持Mysql、Oracle与PostgreSQL）：</p>
+<p>一阶段 prepare 行为：在本地事务中，一并提交业务数据更新和相应回滚日志记录。
+二阶段 commit 行为：马上成功结束，<strong>自动</strong>异步批量清理回滚日志。
+二阶段 rollback 行为：通过回滚日志，<strong>自动</strong>生成补偿操作，完成数据回滚。</p>
+<p>相应的，TCC 模式，不依赖于底层数据资源的事务支持：</p>
+<p>一阶段 prepare 行为：调用 自定义 的 prepare 逻辑。
+二阶段 commit 行为：调用 <strong>自定义</strong>的 commit 逻辑。
+二阶段 rollback 行为：调用 <strong>自定义</strong>的 rollback 逻辑。</p>
+<p>所谓 TCC 模式，是指支持把 <strong>自定义</strong> 的分支事务纳入到全局事务的管理中。</p>
+<p>简单点概括，SEATA的TCC模式就是<strong>手工的AT模式</strong>，它允许你自定义两阶段的处理逻辑而不依赖AT模式的undo_log。</p>
+<h1>二、前提准备</h1>
+<ul>
+<li>注册中心 <a href="https://nacos.io/zh-cn/" title="nacos">nacos</a></li>
+<li><a href="http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html" title="seata服务端(TC）">seata服务端(TC）</a></li>
+</ul>
+<h1>三、TM与TCC-RM的搭建</h1>
+<p>本章着重讲基于Spring Cloud + Feign的TCC的实现，项目的搭建直接看源码(本工程提供了AT模式与TCC模式的DEMO)</p>
+<p><a href="https://github.com/tanzzj/springcloud-seata-feign" title="服务端搭建文档">DEMO工程源码</a></p>
+<h2>3.1 seata服务端的搭建</h2>
+<p><a href="http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html" title="服务端搭建文档">服务端搭建文档</a></p>
+<h2>3.2 TM的搭建</h2>
+<p><a href="https://github.com/tanzzj/springcloud-seata-feign/tree/master/service-tm">service-tm</a></p>
+<h2>3.3 RM-TCC的搭建</h2>
+<h3>3.3.1 定义TCC接口</h3>
+<p>由于我们使用的是 SpringCloud + Feign，Feign的调用基于http，因此此处我们使用<code>@LocalTCC</code>便可。值得注意的是，<code>@LocalTCC</code>一定需要注解在接口上，此接口可以是寻常的业务接口，只要实现了TCC的两阶段提交对应方法便可，TCC相关注解如下：</p>
+<ul>
+<li><code>@LocalTCC</code> 适用于SpringCloud+Feign模式下的TCC</li>
+<li><code>@TwoPhaseBusinessAction</code> 注解try方法，其中name为当前tcc方法的bean名称，写方法名便可（全局唯一），commitMethod指向提交方法，rollbackMethod指向事务回滚方法。指定好三个方法之后，seata会根据全局事务的成功或失败，去帮我们自动调用提交方法或者回滚方法。</li>
+<li><code>@BusinessActionContextParameter</code> 注解可以将参数传递到二阶段（commitMethod/rollbackMethod）的方法。</li>
+<li><code>BusinessActionContext</code> 便是指TCC事务上下文</li>
+</ul>
+<p>实例如下：</p>
+<pre><code class="language-java"><span class="hljs-comment">/**
+ * 这里定义tcc的接口
+ * 一定要定义在接口上
+ * 我们使用springCloud的远程调用
+ * 那么这里使用LocalTCC便可
+ *
+ * <span class="hljs-doctag">@author</span> tanzj
+ */</span>
+<span class="hljs-meta">@LocalTCC</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">TccService</span> </span>{
+ 
+    <span class="hljs-comment">/**
+     * 定义两阶段提交
+     * name = 该tcc的bean名称,全局唯一
+     * commitMethod = commit 为二阶段确认方法
+     * rollbackMethod = rollback 为二阶段取消方法
+     * BusinessActionContextParameter注解 传递参数到二阶段中
+     *
+     * <span class="hljs-doctag">@param</span> params  -入参
+     * <span class="hljs-doctag">@return</span> String
+     */</span>
+    <span class="hljs-meta">@TwoPhaseBusinessAction</span>(name = <span class="hljs-string">"insert"</span>, commitMethod = <span class="hljs-string">"commitTcc"</span>, rollbackMethod = <span class="hljs-string">"cancel"</span>)
+    <span class="hljs-function">String <span class="hljs-title">insert</span><span class="hljs-params">(
+            @BusinessActionContextParameter(paramName = <span class="hljs-string">"params"</span>)</span> Map&lt;String, String&gt; params
+    )</span>;
+ 
+    <span class="hljs-comment">/**
+     * 确认方法、可以另命名，但要保证与commitMethod一致
+     * context可以传递try方法的参数
+     *
+     * <span class="hljs-doctag">@param</span> context 上下文
+     * <span class="hljs-doctag">@return</span> boolean
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">commitTcc</span><span class="hljs-params">(BusinessActionContext context)</span></span>;
+ 
+    <span class="hljs-comment">/**
+     * 二阶段取消方法
+     *
+     * <span class="hljs-doctag">@param</span> context 上下文
+     * <span class="hljs-doctag">@return</span> boolean
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">cancel</span><span class="hljs-params">(BusinessActionContext context)</span></span>;
+}
+</code></pre>
+<h3>3.3.2 TCC接口的业务实现</h3>
+<p>为了保证代码的简洁，此处将路由层与业务层结合讲解，实际项目则不然。</p>
+<ul>
+<li>在try方法中使用<code>@Transational</code>可以直接通过spring事务回滚关系型数据库中的操作，而非关系型数据库等中间件的回滚操作可以交给rollbackMethod方法处理。</li>
+<li>使用context.getActionContext(&quot;params&quot;)便可以得到一阶段try中定义的参数，在二阶段对此参数进行业务回滚操作。</li>
+<li>**注意1：**此处亦不可以捕获异常（同理切面处理异常），否则TCC将识别该操作为成功，二阶段直接执行commitMethod。</li>
+<li><strong>注意2：<strong>TCC模式要</strong>开发者自行</strong>保证幂等和事务防悬挂</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-meta">@Slf</span>4j
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TccServiceImpl</span> <span class="hljs-keyword">implements</span>  <span class="hljs-title">TccService</span> </span>{
+ 
+    <span class="hljs-meta">@Autowired</span>
+    TccDAO tccDAO;
+ 
+    <span class="hljs-comment">/**
+     * tcc服务t（try）方法
+     * 根据实际业务场景选择实际业务执行逻辑或者资源预留逻辑
+     *
+     * <span class="hljs-doctag">@param</span> params - name
+     * <span class="hljs-doctag">@return</span> String
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-meta">@PostMapping</span>(<span class="hljs-string">"/tcc-insert"</span>)
+    <span class="hljs-meta">@Transactional</span>(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">insert</span><span class="hljs-params">(@RequestBody Map&lt;String, String&gt; params)</span> </span>{
+        log.info(<span class="hljs-string">"xid = "</span> + RootContext.getXID());
+        <span class="hljs-comment">//todo 实际的操作，或操作MQ、redis等</span>
+        tccDAO.insert(params);
+        <span class="hljs-comment">//放开以下注解抛出异常</span>
+        <span class="hljs-comment">//throw new RuntimeException("服务tcc测试回滚");</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"success"</span>;
+    }
+ 
+    <span class="hljs-comment">/**
+     * tcc服务 confirm方法
+     * 若一阶段采用资源预留，在二阶段确认时要提交预留的资源
+     *
+     * <span class="hljs-doctag">@param</span> context 上下文
+     * <span class="hljs-doctag">@return</span> boolean
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">commitTcc</span><span class="hljs-params">(BusinessActionContext context)</span> </span>{
+        log.info(<span class="hljs-string">"xid = "</span> + context.getXid() + <span class="hljs-string">"提交成功"</span>);
+        <span class="hljs-comment">//todo 若一阶段资源预留，这里则要提交资源</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+ 
+    <span class="hljs-comment">/**
+     * tcc 服务 cancel方法
+     *
+     * <span class="hljs-doctag">@param</span> context 上下文
+     * <span class="hljs-doctag">@return</span> boolean
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">cancel</span><span class="hljs-params">(BusinessActionContext context)</span> </span>{
+        <span class="hljs-comment">//todo 这里写中间件、非关系型数据库的回滚操作</span>
+        System.out.println(<span class="hljs-string">"please manually rollback this data:"</span> + context.getActionContext(<span class="hljs-string">"params"</span>));
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}
+</code></pre>
+<h3>3.3.3 在TM中开启全局事务，调用RM-TCC接口</h3>
+<p>工程源码见3.2</p>
+<hr>
+<p>至此，Spring Cloud整合TCC模式完成</p>
+</section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

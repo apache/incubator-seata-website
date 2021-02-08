@@ -64,6 +64,17 @@
       }
     },
     {
+      "filename": "integrate-seata-tcc-mode-with-spring-cloud.md",
+      "link": "/zh-cn/blog/integrate-seata-tcc-mode-with-spring-cloud.html",
+      "meta": {
+        "title": "Spring Cloud集成Seata分布式事务-TCC模式",
+        "keywords": "TCC,Seata,Spring Cloud,分布式,事务",
+        "description": "本文主要介绍Spring Cloud集成Seata分布式事务TCC模式",
+        "author": "弓行（谭志坚）",
+        "date": "2021-01-23"
+      }
+    },
+    {
       "filename": "integrate-seata-with-spring-cloud.md",
       "link": "/zh-cn/blog/integrate-seata-with-spring-cloud.html",
       "meta": {
