@@ -225,6 +225,15 @@ export default {
 
                             },
                         ]
+                    },
+                    {
+                        title: '附录',
+                        children: [
+                            {
+                                title: '事务状态',
+                                link: '/zh-cn/docs/user/appendix/global-transaction-status.html',
+                            },
+                        ]
                     }]
             },
             {
