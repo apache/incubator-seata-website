@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata" />
+	<meta name="description" content="Seata 事务分组。" />
+	<!-- 网页标签标题 -->
+	<title>Seata 事务分组</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>事务分组<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group.html" target="_self">事务分组介绍</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group-and-ha.html" target="_self">事务分组与高可用</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>配置中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/nacos.html" target="_self">Nacos 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/apollo.html" target="_self">Apollo 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/etcd3.html" target="_self">Etcd3 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/consul.html" target="_self">Consul 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/zookeeper.html" target="_self">Zookeeper 配置中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>注册中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/nacos.html" target="_self">Nacos 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/eureka.html" target="_self">Eureka 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/etcd3.html" target="_self">Etcd3 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/consul.html" target="_self">Consul 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/zookeeper.html" target="_self">Zookeeper 注册中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据库类型支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>测试报告<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/performance.html" target="_self">性能测试报告</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>附录<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/appendix/global-transaction-status.html" target="_self">事务状态</a></li></ul></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/saga.html" target="_self">Seata Saga 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/xa-mode.html" target="_self">Seata XA 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/upgrade.html" target="_self">版本升级指南</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-ha.html" target="_self">高可用部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>事务分组专题</h1>
+<h3>事务分组是什么？</h3>
+<p>事务分组是seata的资源逻辑，类似于服务实例。在file.conf中的my_test_tx_group就是一个事务分组。</p>
+<h3>通过事务分组如何找到后端集群？</h3>
+<ol>
+<li>首先程序中配置了事务分组（GlobalTransactionScanner 构造方法的txServiceGroup参数）</li>
+<li>程序会通过用户配置的配置中心去寻找service.vgroupMapping
+.[<em>事务分组配置项</em>]，取得配置项的值就是TC集群的名称</li>
+<li>拿到集群名称程序通过一定的前后缀+集群名称去构造服务名，各配置中心的服务名实现不同</li>
+<li>拿到服务名去相应的注册中心去拉取相应服务名的服务列表，获得后端真实的TC服务列表</li>
+</ol>
+<h3>为什么这么设计，不直接取服务名？</h3>
+<p>这里多了一层获取事务分组到映射集群的配置。这样设计后，事务分组可以作为资源的逻辑隔离单位，出现某集群故障时可以快速failover，只切换对应分组，可以把故障缩减到服务级别，但前提也是你有足够server集群。</p>
+<h2>事务分组使用案例</h2>
+<p>seata注册、配置中心分为两类，内置file、第三方注册（配置）中心如nacos等等，注册中心和配置中心之间没有约束，可各自使用不同类型。</p>
+<h3>file注册中心和配置中心</h3>
+<h4>Server端</h4>
+<pre><code>registry {
+  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+  type = &quot;file&quot;                ---------------&gt; 使用file作为注册中心
+}
+config {
+  # file、nacos 、apollo、zk、consul、etcd3
+  type = &quot;file&quot;                ---------------&gt; 使用file作为配置中心
+  file {
+    name = &quot;file.conf&quot;
+  }
+}
+</code></pre>
+<ul>
+<li>file、db模式启动server，见文章上方节点：启动Server</li>
+</ul>
+<h4>Client端</h4>
+<pre><code>registry {
+  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+  type = &quot;file&quot;                ---------------&gt; 使用file作为注册中心
+}
+config {
+  # file、nacos 、apollo、zk、consul、etcd3
+  type = &quot;file&quot;                ---------------&gt; 使用file作为配置中心
+  file {
+    name = &quot;file.conf&quot;         ---------------&gt; 配置参数存储文件
+  }
+}
+spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------&gt; 事务分组配置
+file.conf: 
+    service {
+      vgroupMapping.my_test_tx_group = &quot;default&quot;
+      default.grouplist = &quot;127.0.0.1:8091&quot;
+    }
+</code></pre>
+<ul>
+<li>读取配置</li>
+</ul>
+<blockquote>
+<p>通过FileConfiguration本地加载file.conf的配置参数</p>
+</blockquote>
+<ul>
+<li>获取事务分组</li>
+</ul>
+<blockquote>
+<p>spring配置，springboot可配置在yml、properties中，服务启动时加载配置，对应的值&quot;my_test_tx_group&quot;即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+&quot;-fescar-service-group&quot;</p>
+</blockquote>
+<ul>
+<li>查找TC集群名</li>
+</ul>
+<blockquote>
+<p>拿到事务分组名&quot;my_test_tx_group&quot;拼接成&quot;service.vgroupMapping.my_test_tx_group&quot;查找TC集群名clusterName为&quot;default&quot;</p>
+</blockquote>
+<ul>
+<li>查询TC服务</li>
+</ul>
+<blockquote>
+<p>拼接&quot;service.&quot;+clusterName+&quot;.grouplist&quot;找到真实TC服务地址127.0.0.1:8091</p>
+</blockquote>
+<h3>nacos注册中心和配置中心</h3>
+<h4>Server端</h4>
+<pre><code>registry {
+  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+  type = &quot;nacos&quot;                ---------------&gt; 使用nacos作为注册中心
+  nacos {
+    serverAddr = &quot;localhost&quot;    ---------------&gt; nacos注册中心所在ip
+    namespace = &quot;&quot;              ---------------&gt; nacos命名空间id，&quot;&quot;为nacos保留public空间控件，用户勿配置namespace = &quot;public&quot;
+    cluster = &quot;default&quot;         ---------------&gt; seata-server在nacos的集群名
+  }
+}
+config {
+  # file、nacos 、apollo、zk、consul、etcd3
+  type = &quot;nacos&quot;                ---------------&gt; 使用nacos作为配置中心
+  nacos {
+    serverAddr = &quot;localhost&quot;
+    namespace = &quot;&quot;
+    cluster = &quot;default&quot;
+  }
+}
+
+</code></pre>
+<ul>
+<li>脚本</li>
+</ul>
+<blockquote>
+<p>script--&gt;<a href="http://xn--config-center3nacos-config-9s15b3yaj3py01r5bse.py">config-center下的3个文件nacos-config.py</a>、<a href="http://nacos-config.sh">nacos-config.sh</a>、config.txt<br>
+txt为参数明细（包含Server和Client），sh为linux脚本，windows可下载git来操作，py为python脚本。</p>
+</blockquote>
+<ul>
+<li>导入配置</li>
+</ul>
+<blockquote>
+<p>用命令执行脚本导入seata配置参数至nacos，在nacos控制台查看配置确认是否成功</p>
+</blockquote>
+<ul>
+<li>注册TC</li>
+</ul>
+<blockquote>
+<p>启动seata-server注册至nacos，查看nacos控制台服务列表确认是否成功</p>
+</blockquote>
+<h4>Client端</h4>
+<pre><code>spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------&gt; 事务分组配置
+registry {
+  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+  type = &quot;nacos&quot;                ---------------&gt; 从nacos获取TC服务
+  nacos {
+    serverAddr = &quot;localhost&quot;
+    namespace = &quot;&quot;
+  }
+}
+config {
+  # file、nacos 、apollo、zk、consul、etcd3
+  type = &quot;nacos&quot;                ---------------&gt; 使用nacos作为配置中心
+  nacos {
+    serverAddr = &quot;localhost&quot;
+    namespace = &quot;&quot;
+  }
+}
+</code></pre>
+<ul>
+<li>读取配置</li>
+</ul>
+<blockquote>
+<p>通过NacosConfiguration远程读取seata配置参数</p>
+</blockquote>
+<ul>
+<li>获取事务分组</li>
+</ul>
+<blockquote>
+<p>springboot可配置在yml、properties中，服务启动时加载配置，对应的值&quot;my_test_tx_group&quot;即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+&quot;-fescar-service-group&quot;</p>
+</blockquote>
+<ul>
+<li>查找TC集群名</li>
+</ul>
+<blockquote>
+<p>拿到事务分组名&quot;my_test_tx_group&quot;拼接成&quot;service.vgroupMapping.my_test_tx_group&quot;从配置中心查找到TC集群名clusterName为&quot;default&quot;</p>
+</blockquote>
+<ul>
+<li>查找TC服务</li>
+</ul>
+<blockquote>
+<p>根据serverAddr和namespace以及clusterName在注册中心找到真实TC服务列表</p>
+</blockquote>
+<p>注：serverAddr和namespace与Server端一致，clusterName与Server端cluster一致</p>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
