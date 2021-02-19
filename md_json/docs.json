@@ -473,6 +473,15 @@
       }
     },
     {
+      "filename": "global-transaction-status.md",
+      "link": "/zh-cn/docs/user/appendix/global-transaction-status.html",
+      "meta": {
+        "title": "事务状态",
+        "keywords": "事务状态",
+        "description": "全局事务状态、分支事务状态"
+      }
+    },
+    {
       "filename": "apollo.md",
       "link": "/zh-cn/docs/user/configuration/apollo.html",
       "meta": {}
@@ -614,8 +623,17 @@
       }
     },
     {
+      "filename": "transaction-group-and-ha.md",
+      "link": "/zh-cn/docs/user/txgroup/transaction-group-and-ha.html",
+      "meta": {
+        "title": "事务分组与高可用",
+        "keywords": "Seata 事务分组",
+        "description": "Seata 事务分组与高可用的最佳实践"
+      }
+    },
+    {
       "filename": "transaction-group.md",
-      "link": "/zh-cn/docs/user/transaction-group.html",
+      "link": "/zh-cn/docs/user/txgroup/transaction-group.html",
       "meta": {
         "title": "Seata 事务分组",
         "keywords": "Seata",

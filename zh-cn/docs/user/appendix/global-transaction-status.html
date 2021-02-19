@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="事务状态" />
+	<meta name="description" content="全局事务状态、分支事务状态" />
+	<!-- 网页标签标题 -->
+	<title>事务状态</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>事务分组<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group.html" target="_self">事务分组介绍</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group-and-ha.html" target="_self">事务分组与高可用</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>配置中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/nacos.html" target="_self">Nacos 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/apollo.html" target="_self">Apollo 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/etcd3.html" target="_self">Etcd3 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/consul.html" target="_self">Consul 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/zookeeper.html" target="_self">Zookeeper 配置中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>注册中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/nacos.html" target="_self">Nacos 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/eureka.html" target="_self">Eureka 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/etcd3.html" target="_self">Etcd3 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/consul.html" target="_self">Consul 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/zookeeper.html" target="_self">Zookeeper 注册中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据库类型支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>测试报告<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/performance.html" target="_self">性能测试报告</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>附录<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/appendix/global-transaction-status.html" target="_self">事务状态</a></li></ul></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/saga.html" target="_self">Seata Saga 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/xa-mode.html" target="_self">Seata XA 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/upgrade.html" target="_self">版本升级指南</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/operation.html" target="_self">Metrics配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-ha.html" target="_self">高可用部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><p>#全局事务状态表</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>代码</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全局事务开始（Begin）</td>
+<td>1</td>
+<td>此状态可以接受新的分支事务注册</td>
+</tr>
+<tr>
+<td>全局事务提交中（Committing）</td>
+<td>2</td>
+<td>这个状态会随时改变</td>
+</tr>
+<tr>
+<td>全局事务提交重试（CommitRetry）</td>
+<td>3</td>
+<td>在提交异常被解决后尝试重试提交</td>
+</tr>
+<tr>
+<td>全局事务回滚中（Rollbacking）</td>
+<td>4</td>
+<td>正在重新回滚全局事务</td>
+</tr>
+<tr>
+<td>全局事务回滚重试中（RollbackRetrying）</td>
+<td>5</td>
+<td>在全局回滚异常被解决后尝试事务重试回滚中</td>
+</tr>
+<tr>
+<td>全局事务超时回滚中（TimeoutRollbacking）</td>
+<td>6</td>
+<td>全局事务超时回滚中</td>
+</tr>
+<tr>
+<td>全局事务超时回滚重试中（TimeoutRollbackRetrying）</td>
+<td>7</td>
+<td>全局事务超时回滚重试中</td>
+</tr>
+<tr>
+<td>异步提交中（AsyncCommitting）</td>
+<td>8</td>
+<td>异步提交中</td>
+</tr>
+<tr>
+<td>二阶段已提交（Committed）</td>
+<td>9</td>
+<td>二阶段已提交，此状态后全局事务状态不会再改变</td>
+</tr>
+<tr>
+<td>二阶段提交失败（CommitFailed）</td>
+<td>10</td>
+<td>二阶段提交失败</td>
+</tr>
+<tr>
+<td>二阶段决议全局回滚（Rollbacked）</td>
+<td>11</td>
+<td>二阶段决议全局回滚</td>
+</tr>
+<tr>
+<td>二阶段全局回滚失败（RollbackFailed）</td>
+<td>12</td>
+<td>二阶段全局回滚失败</td>
+</tr>
+<tr>
+<td>二阶段超时回滚（TimeoutRollbacked）</td>
+<td>13</td>
+<td>二阶段超时回滚</td>
+</tr>
+<tr>
+<td>二阶段超时回滚失败（TimeoutRollbackFailed）</td>
+<td>14</td>
+<td>二阶段超时回滚失败</td>
+</tr>
+<tr>
+<td>全局事务结束（Finished）</td>
+<td>15</td>
+<td>全局事务结束</td>
+</tr>
+<tr>
+<td>未知状态（UnKnown）</td>
+<td>0</td>
+<td>未知状态</td>
+</tr>
+</tbody>
+</table>
+<h1>分支事务状态表</h1>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>代码</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分支事务注册（Registered）</td>
+<td>1</td>
+<td>向TC注册分支事务</td>
+</tr>
+<tr>
+<td>分支事务一阶段完成（PhaseOne_Done）</td>
+<td>2</td>
+<td>分支事务一阶段业务逻辑完成</td>
+</tr>
+<tr>
+<td>分支事务一阶段失败（PhaseOne_Failed）</td>
+<td>3</td>
+<td>分支事务一阶段业务逻辑失败</td>
+</tr>
+<tr>
+<td>分支事务一阶段超时（PhaseOne_Timeout）</td>
+<td>4</td>
+<td>分支事务一阶段处理超时</td>
+</tr>
+<tr>
+<td>分支事务二阶段已提交（PhaseTwo_Committed）</td>
+<td>5</td>
+<td>分支事务二阶段提交</td>
+</tr>
+<tr>
+<td>分支事务二阶段提交失败重试（PhaseTwo_CommitFailed_Retryable）</td>
+<td>6</td>
+<td>分支事务二阶段提交失败重试</td>
+</tr>
+<tr>
+<td>分支事务二阶段提交失败不重试（PhaseTwo_CommitFailed_Unretryable）</td>
+<td>7</td>
+<td>分支事务二阶段提交失败不重试</td>
+</tr>
+<tr>
+<td>分支事务二阶段已回滚（PhaseTwo_Rollbacked）</td>
+<td>8</td>
+<td>分支事务二阶段已回滚</td>
+</tr>
+<tr>
+<td>分支事务二阶段回滚失败重试（PhaseTwo_RollbackFailed_Retryable）</td>
+<td>9</td>
+<td>分支事务二阶段回滚失败重试</td>
+</tr>
+<tr>
+<td>分支事务二阶段回滚失败不重试（PhaseTwo_RollbackFailed_Unretryable）</td>
+<td>10</td>
+<td>二阶段提交失败</td>
+</tr>
+<tr>
+<td>未知状态（UnKnown）</td>
+<td>0</td>
+<td>未知状态</td>
+</tr>
+</tbody>
+</table>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2019 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
