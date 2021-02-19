@@ -100,7 +100,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
   // applicationId是一个服务的唯一标识，
   // 对应springcloud项目中的spring.application.name
   private final String applicationId;
-  // 事务的分组标识，参考文章wiki：http://seata.io/zh-cn/docs/user/transaction-group.html
+  // 事务的分组标识，参考文章wiki：http://seata.io/zh-cn/docs/user/txgroup/transaction-group.html
   private final String txServiceGroup;
   
   ...
