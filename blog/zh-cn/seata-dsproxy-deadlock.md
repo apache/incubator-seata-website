@@ -1,5 +1,5 @@
 ---
-title: ConcurrentHashMap导致的Seata死锁问题
+title: Seata配置管理原理解析
 keywords: Seata、动态数据源、DataSource、ConcurrentHashMap、computeIfAbsent
 description: 本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁
 author: 罗小勇
@@ -18,7 +18,7 @@ date: 2021/03/13
 2. 消费者先执行本地的一些逻辑，然后向提供者发送RPC请求，确定消费者发出了请求已经并且提供者接到了请求
 3. 提供者先打印一条日志，然后执行一条纯查询SQL，如果SQL正常执行会打印日志，但目前的现象是只打印了执行SQL前的那条日志，而没有打印任何SQL相关的日志。找DBA查SQL日志，发现该SQL没有执行
 4. 确定了该操作只是全局事务下的一个纯查询操作，在该操作之前，全局事务中的整体流程完全正常
-5. 气死到这里显现应很明显了，不过当时想法没转变过来，一直关注那条查询SQL，总在想就算查询超时等原因也应该抛出异常啊，不应该什么都没有。DBA都找不到查询记录，那是不是说明SQL可能根本就没执行啊，而是在执行SQL前就出问题了，比如代理？
+5. 其实到这里现象已经很明显了，不过当时想法没转变过来，一直关注那条查询SQL，总在想就算查询超时等原因也应该抛出异常啊，不应该什么都没有。DBA都找不到查询记录，那是不是说明SQL可能根本就没执行啊，而是在执行SQL前就出问题了，比如代理？
 6. 借助arthas的watch命令，一直没有东西输出。第一条日志的输出代表这个方法一定执行了，迟迟没有结果输出说明当前请求卡住了，为什么卡住了呢？
 7. 借助arthas的thread命令 `thread -b` 、`thread -n`，就是要找出当前最忙的线程。这个效果很好，有一个线程CPU使用率`92%`,并且因为该线程导致其它20多个Dubbo线程`BLOCKED`了。堆栈信息如下
 8. 分析堆栈信息，已经可以很明显的发现和seata相关的接口了，估计和seata的数据源代理有关；同时发现CPU占用最高的那个线程卡在了`ConcurrentHashMap#computeIfAbsent`方法中。难道`ConcurrentHashMap#computeIfAbsent`方法有bug？
@@ -132,7 +132,7 @@ P6DataSource p6DataSource(@Qualifier("dsMaster") DataSource dataSource) {
 
 ### 分析过程
 
-`**假设现在大家都已经知道了 ConcurrentHashMap#computeIfAbsent 可能会产生的问题**`，已知现在产生了这个问题，结合堆栈信息，我们可以知道大概哪里产生了这个问题。
+`假设现在大家都已经知道了 ConcurrentHashMap#computeIfAbsent 可能会产生的问题`，已知现在产生了这个问题，结合堆栈信息，我们可以知道大概哪里产生了这个问题。
 
 1、`ConcurrentHashMap#computeIfAbsent`会产生这个问题的前提条件是：`两个key的hashcode相同`；`mappingFunction中对应了一个put操作`。结合我们seata的使用场景，mappingFunction对应的是`DataSourceProxy::new`，说明在DataSourceProxy的构造方法中可能会触发put操作
 
@@ -147,7 +147,7 @@ AOP代理数据源的getConnection方法 =>
 进入SeataAutoDataSourceProxyAdvice切面逻辑 => 
 执行DataSourceProxyHolder#putDataSource方法 => 
 执行DataSourceProxy::new  => 
-DuridDataSource的getConnection方法
+DuridDataSource的getConnection方法
 ```
 
 2、步骤1中说的`AOP代理数据源`和`原生数据源`分别是什么？看下面这张图
@@ -182,13 +182,13 @@ public class Test {
 1. 为了方便重现问题，我们重写了`Num#hashCode`方法，保证构造函数入参就是hashcode的值
 2. 创建一个ConcurrentHashMap对象，initialCapacity为8，sizeCtl计算出来的值为16，即该mao中数组长度默认为16
 3. 创建对象`n1`，入参为3，即hashcode为3，计算得出其对应的数组下标为3
-4. 创建对象`n2`，入参为19，即hashcode为19，计算得出其对应的数组下标为3，此时我么可以认为`n1和n2产生了hash冲突`
+4. 创建对象`n2`，入参为19，即hashcode为19，计算得出其对应的数组下标为3，此时我们可以认为`n1和n2产生了hash冲突`
 5. 创建对象`n3`，入参为20，即hashcode为20，计算得出其对应的数组下标为4
 6. 执行`map.computeIfAbsent(n1, k1 -> map.computeIfAbsent(n3, k2 -> 200))`，程序正常退出：`因为n1和n3没有hash冲突，所以正常结束`
 7. 执行`map.computeIfAbsent(n1, k1 -> map.computeIfAbsent(n2, k2 -> 200))`，程序正常退出：`因为n1和n2产生了hash冲突，所以陷入死循环`
 
 
-4、在对象初始化的时候，`SeataDataSourceBeanPostProcessor`不是已经将对象的对应的数据源代理初始化好了吗？为什么在`SeataAutoDataSourceProxyAdvice`中还是会创建对应的数据源代理呢？
+4、在对象初始化的时候，`SeataDataSourceBeanPostProcessor`不是已经将对象对应的数据源代理初始化好了吗？为什么在`SeataAutoDataSourceProxyAdvice`中还是会创建对应的数据源代理呢？
 1. 首先，`SeataDataSourceBeanPostProcessor`执行时期是晚于AOP代理对象创建的，所以在执行`SeataDataSourceBeanPostProcessor`相关方法的时候，`SeataAutoDataSourceProxyAdvice`其实应生效了
 2. `SeataDataSourceBeanPostProcessor`中向map中添加元素时，key为`AOP代理数据源`；`SeataAutoDataSourceProxyAdvice`中的`invocation.getThis()`中拿到的是`原生数据源`，所以key不相同
 
@@ -200,7 +200,7 @@ public class Test {
 
 # 问题总结
 1. 在两个key会产生hash冲突的时候，会触发`ConcurrentHashMap#computeIfAbsent`BUG，该BUG的表现就是让当前线程陷入死循环
-2. 业务反馈，该问题是偶现的，偶像的原因有两种：首先，该应用是多节点部署，但线上只有一个节点触发了该BUG(hashcode冲突)，所以只有当请求打到这个节点的时候才有可能会触发该BUG；其次，因为每次重启对象地址(hashcode)都是不确定的，所以并不是每次应用重启之后都会触发，但如果一旦触发，该节点就会一直存在这个问题。有一个线程一直在死循环，并将其它尝试从map中获取代理数据源的线程阻塞了，这种现象在业务上的反馈就是请求卡住了。如果连续请求都是这样，此时业务方可能会重启服务，然后`因为重启后hash冲突不一定存在，可能重启后业务表现就正常了，但也有可能在下次重启的时候又会触发了这个BUG`
+2. 业务反馈，该问题是偶现的，偶现的原因有两种：首先，该应用是多节点部署，但线上只有一个节点触发了该BUG(hashcode冲突)，所以只有当请求打到这个节点的时候才有可能会触发该BUG；其次，因为每次重启对象地址(hashcode)都是不确定的，所以并不是每次应用重启之后都会触发，但如果一旦触发，该节点就会一直存在这个问题。有一个线程一直在死循环，并将其它尝试从map中获取代理数据源的线程阻塞了，这种现象在业务上的反馈就是请求卡住了。如果连续请求都是这样，此时业务方可能会重启服务，然后`因为重启后hash冲突不一定存在，可能重启后业务表现就正常了，但也有可能在下次重启的时候又会触发了这个BUG`
 3. 当遇到这个问题时，从整个问题上来看，确实就是死锁了，因为那个死循环的线程占者锁一直不释放，导致其它操作该map的线程被BLOCK了
 4. 本质上还是因为`ConcurrentHashMap#computeIfAbsent方法可能会触发BUG`，而seata的使用场景刚好就触发了该BUG
 5. 下面这个demo其实就完整的模拟了线上出问题时的场景，如下：
@@ -276,7 +276,8 @@ P6DataSource p6DataSource(@Qualifier("dsMaster") DataSource dataSource) {
 SeataDataSourceProxy dsProxy = dataSourceProxyMap.get(originalDataSource);
 if (dsProxy == null) {
     synchronized (dataSourceProxyMap) {
-        if ((dsProxy = dataSourceProxyMap.get(originalDataSource)) == null) {
+        dsProxy = dataSourceProxyMap.get(originalDataSource);
+        if (dsProxy == null) {
             dsProxy = createDsProxyByMode(dataSourceProxyMode, originalDataSource);
             dataSourceProxyMap.put(originalDataSource, dsProxy);
         }
@@ -297,10 +298,10 @@ public static <K, V> V computeIfAbsent(Map<K, V> map, K key, Function<? super K,
 }
 ```
 
-2、SeataAutoDataSourceProxyAdvice切面逻辑中对一些原生方法进行排除
+2、SeataAutoDataSourceProxyAdvice切面逻辑中添加一些过滤
 ```java
 Method m = BeanUtils.findDeclaredMethod(dataSourceProxyClazz, method.getName(), method.getParameterTypes());
-if (m != null && !Object.class.equals(method.getDeclaringClass())) {
+if (m != null && DataSource.class.isAssignableFrom(method.getDeclaringClass())) {
     SeataDataSourceProxy dataSourceProxy = DataSourceProxyHolder.get().putDataSource((DataSource) invocation.getThis(), dataSourceProxyMode);
     return m.invoke(dataSourceProxy, args);
 } else {
