@@ -128,6 +128,13 @@
                 desc: '本文主要介绍Seata配置管理的核心实现以及和Spring配置的交互过程',
                 link: '/zh-cn/blog/seata-config-manager.html',
             },
+            {
+                title: 'ConcurrentHashMap导致的Seata死锁问题分析',
+                author: '@罗小勇',
+                dateStr: 'Mar 13th, 2021',
+                desc: '本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁',
+                link: '/zh-cn/blog/seata-dsproxy-deadlock.html',
+            },
         ]
     },
 };
