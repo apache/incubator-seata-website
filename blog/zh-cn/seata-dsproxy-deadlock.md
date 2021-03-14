@@ -1,5 +1,5 @@
 ---
-title: Seata配置管理原理解析
+title: ConcurrentHashMap导致的Seata死锁问题
 keywords: Seata、动态数据源、DataSource、ConcurrentHashMap、computeIfAbsent
 description: 本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁
 author: 罗小勇
@@ -247,7 +247,7 @@ public class Test {
 
 
 ### 解决问题
-可以从两方方面解决这个问题：
+可以从两方面解决这个问题：
 1. 业务方改动：P6DataSource 和 DynamicDataSource 没必要都被代理，直接代理P6DataSource就可以了，DynamicDataSource没有必要声明成一个Bean；或者通过excluds属性排除P6DataSource，这样就不会存在重复代理问题
 2. Seata完善：完善数据源代理相关逻辑
 
