@@ -1,5 +1,5 @@
 ---
-title: Seata配置管理原理解析
+title: ConcurrentHashMap导致的Seata死锁问题
 keywords: Seata、动态数据源、DataSource、ConcurrentHashMap、computeIfAbsent
 description: 本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁
 author: 罗小勇
