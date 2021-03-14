@@ -8,7 +8,7 @@ date: 2021/03/13
 
 
 # 背景介绍
-1. seata版本：1.4.0
+1. seata版本：1.4.0，但1.4在内的所有版本都有这个问题
 2. 问题描述：在一个全局事务中，一个分支事务上的纯查询操作突然卡住了，没有任何反馈(日志/日常)，直到消费端RPC超时
 
 ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/03a7f737b56e45b4b74e662033ec74f6~tplv-k3u1fbpfcp-watermark.image)
