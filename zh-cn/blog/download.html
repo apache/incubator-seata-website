@@ -18,6 +18,169 @@
 <p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a>
 发布说明: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.4.2 (2021-04-26)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.4.2.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.4.2/seata-server-1.4.2.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.4.2</h3>
+<p>Seata 1.4.2 发布。</p>
+<p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
+<p>此版本更新如下：</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/2933">#2933</a>] 支持mysql antlr sqlparser</li>
+<li>[<a href="https://github.com/seata/seata/pull/3228">#3228</a>] 支持自定义序列化插件</li>
+<li>[<a href="https://github.com/seata/seata/pull/3172">#3172</a>] 支持 AT 模式 undo_log 压缩模式</li>
+<li>[<a href="https://github.com/seata/seata/pull/3372">#3372</a>] 支持saga模式下用户自定义是否更新最后一次重试日志</li>
+<li>[<a href="https://github.com/seata/seata/pull/3411">#3411</a>] 支持seata-server 线程池参数可配置</li>
+<li>[<a href="https://github.com/seata/seata/pull/3348">#3348</a>] 支持 TC 存储模式使用 redis-sentinel</li>
+<li>[<a href="https://github.com/seata/seata/pull/2667">#2667</a>] 支持使用db和redis存储模式时密码的加解密</li>
+<li>[<a href="https://github.com/seata/seata/pull/3427">#3427</a>] 支持分布式锁接口</li>
+<li>[<a href="https://github.com/seata/seata/pull/3443">#3443</a>] 支持将seata-server的日志发送到logstash或kafka中</li>
+<li>[<a href="https://github.com/seata/seata/pull/3486">#3486</a>] 支持Metrics增加事务分组属性</li>
+<li>[<a href="https://github.com/seata/seata/pull/3317">#3317</a>] 支持当zookeeper作为配置中心时从单node获取全部配置</li>
+<li>[<a href="https://github.com/seata/seata/pull/3516">#3516</a>] 支持 consul 作为注册中心和配置中心时的 acl-token</li>
+<li>[<a href="https://github.com/seata/seata/pull/3116">#3116</a>] 支持配置 apollo 配置中心配置 configService 和 cluster</li>
+<li>[<a href="https://github.com/seata/seata/pull/3468">#3468</a>] 支持saga模式下任务循环执行</li>
+<li>[<a href="https://github.com/seata/seata/pull/3447">#3447</a>] 支持日志框架中事务上下文的打印</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3258">#3258</a>] 修复AsyncWorker潜在的OOM问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3293">#3293</a>] 修复配置缓存获取值类型不匹配的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3241">#3241</a>] 禁止在多SQL的情况下使用 limit 和 order by 语法</li>
+<li>[<a href="https://github.com/seata/seata/pull/3406">#3406</a>] 修复当config.txt中包含特殊字符时无法推送至 nacos 的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3367">#3367</a>] 修复最后一个XA分支二阶段时偶发无法回滚的异常</li>
+<li>[<a href="https://github.com/seata/seata/pull/3418">#3418</a>] 修复 getGeneratedKeys 可能会取到历史的主键的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3448">#3448</a>] 修复多个锁竞争失败时，仅删除单个锁，并优化锁竞争逻辑提升处理性能</li>
+<li>[<a href="https://github.com/seata/seata/pull/3408">#3408</a>] 修复jar运行模式第三方依赖分离打包时的NPE问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3431">#3431</a>] 修复在读取配置时Property Bean可能未初始化的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3413">#3413</a>] 修复回滚到savepoint以及releaseSavepoint的逻辑</li>
+<li>[<a href="https://github.com/seata/seata/pull/3451">#3451</a>] 修复autoCommit=true，全局锁竞争失败时的脏写问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3481">#3481</a>] 修复当 consul client 抛出异常时导致刷新任务中断的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3491">#3491</a>] 修复README.md文件中的拼写错误</li>
+<li>[<a href="https://github.com/seata/seata/pull/3531">#3531</a>] 修复RedisTransactionStoreManager 获取 brachTransaction 可能的 NPE 问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3500">#3500</a>] 修复 oracle 和 postgreSql 无法获取 column info 的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3560">#3560</a>] 修复 Committing 状态的事务异步任务没有时间阈值和无法进行事务恢复的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3555">#3555</a>] 通过setBytes代替setBlob，避免高版本jdbc驱动工作异常</li>
+<li>[<a href="https://github.com/seata/seata/pull/3540">#3540</a>] 修复server发布打包时缺失文件的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3597">#3597</a>] 修复可能的 NPE问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3568">#3568</a>] 修复自动数据源代理因 ConcurrentHashMap.computeIfAbsent 导致的死锁问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3402">#3402</a>] 修复更新SQL中字段名含有库名无法解析更新列的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3464">#3464</a>] 修复测试用例空指针异常和StackTraceLogger中错误的日志格式.</li>
+<li>[<a href="https://github.com/seata/seata/pull/3522">#3522</a>] 修复当 DML 影响行数为0时注册分支和插入undo_log的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3635">#3635</a>] 修复zookeeper 配置变更无法推送通知的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3133">#3133</a>] 修复某些场景下无法重试全局锁的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3156">#3156</a>] 修复嵌套代理类无法 获取target的问题</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3341">#3341</a>] 优化获取指定配置文件的路径格式问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3385">#3385</a>] 优化 GitHub Actions 配置,修复单测失败问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3175">#3175</a>] 支持雪花算法时钟回拨</li>
+<li>[<a href="https://github.com/seata/seata/pull/3291">#3291</a>] 优化mysql连接参数</li>
+<li>[<a href="https://github.com/seata/seata/pull/3336">#3336</a>] 支持使用System.getProperty获取Netty配置参数</li>
+<li>[<a href="https://github.com/seata/seata/pull/3369">#3369</a>] 添加github action的dockerHub秘钥</li>
+<li>[<a href="https://github.com/seata/seata/pull/3343">#3343</a>] 将CI程序从Travis CI迁移到Github Actions</li>
+<li>[<a href="https://github.com/seata/seata/pull/3397">#3397</a>] 增加代码变更记录</li>
+<li>[<a href="https://github.com/seata/seata/pull/3303">#3303</a>] 支持从nacos单一dataId中读取所有配置</li>
+<li>[<a href="https://github.com/seata/seata/pull/3380">#3380</a>] 优化 globalTransactionScanner 中的 DISABLE_GLOBAL_TRANSACTION listener</li>
+<li>[<a href="https://github.com/seata/seata/pull/3123">#3123</a>] 优化 seata-server 打包策略</li>
+<li>[<a href="https://github.com/seata/seata/pull/3415">#3415</a>] 优化 maven 打包时清除 distribution 目录</li>
+<li>[<a href="https://github.com/seata/seata/pull/3316">#3316</a>] 优化读取配置值时属性bean未初始化的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3420">#3420</a>] 优化枚举类的使用并添加单元测试</li>
+<li>[<a href="https://github.com/seata/seata/pull/3533">#3533</a>] 支持获取当前事务角色</li>
+<li>[<a href="https://github.com/seata/seata/pull/3436">#3436</a>] 优化SQLType类中的错别字</li>
+<li>[<a href="https://github.com/seata/seata/pull/3439">#3439</a>] 调整springApplicationContextProvider order以使其可以在xml bean之前被调用</li>
+<li>[<a href="https://github.com/seata/seata/pull/3248">#3248</a>] 优化负载均衡配置迁移到client节点下</li>
+<li>[<a href="https://github.com/seata/seata/pull/3441">#3441</a>] 优化starter的自动配置处理</li>
+<li>[<a href="https://github.com/seata/seata/pull/3466">#3466</a>] 优化使用equalsIgnoreCase() 进行字符串比较</li>
+<li>[<a href="https://github.com/seata/seata/pull/3476">#3476</a>] 支持 server 参数传入hostname时自动将其转换为 ip</li>
+<li>[<a href="https://github.com/seata/seata/pull/3236">#3236</a>] 优化执行解锁操作的条件，减少不必要的 unlock 操作</li>
+<li>[<a href="https://github.com/seata/seata/pull/3485">#3485</a>] 删除 ConfigurationFactory 中无用的代码</li>
+<li>[<a href="https://github.com/seata/seata/pull/3505">#3505</a>] 删除 GlobalTransactionScanner 中无用的 if 判断</li>
+<li>[<a href="https://github.com/seata/seata/pull/3544">#3544</a>] 优化无法通过Statement#getGeneratedKeys时，只能获取到批量插入的第一个主键的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3549">#3549</a>] 统一DB存储模式下不同表中的xid字段的长度</li>
+<li>[<a href="https://github.com/seata/seata/pull/3551">#3551</a>] 调大RETRY_DEAD_THRESHOLD的值以及设置成可配置</li>
+<li>[<a href="https://github.com/seata/seata/pull/3589">#3589</a>] 使用JUnit API做异常检查</li>
+<li>[<a href="https://github.com/seata/seata/pull/3601">#3601</a>] 使<code>LoadBalanceProperties</code>与<code>spring-boot:2.x</code>及以上版本兼容</li>
+<li>[<a href="https://github.com/seata/seata/pull/3513">#3513</a>] Saga SpringBeanService调用器支持切换 json 解析器</li>
+<li>[<a href="https://github.com/seata/seata/pull/3318">#3318</a>] 支持 CLIENT_TABLE_META_CHECKER_INTERVAL 可配置化</li>
+<li>[<a href="https://github.com/seata/seata/pull/3371">#3371</a>] 支持 metric 按 applicationId 分组</li>
+<li>[<a href="https://github.com/seata/seata/pull/3459">#3459</a>] 删除重复的ValidadAddress代码</li>
+<li>[<a href="https://github.com/seata/seata/pull/3215">#3215</a>] 优化seata-server 在file模式下启动时的reload逻辑</li>
+<li>[<a href="https://github.com/seata/seata/pull/3631">#3631</a>] 优化 <a href="http://nacos-config.py">nacos-config.py</a> 脚本的入参问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3638">#3638</a>] 优化 update 和 delete 的 SQL 不支持 join 的错误提示</li>
+<li>[<a href="https://github.com/seata/seata/pull/3523">#3523</a>] 优化当使用oracle时调用releaseSavepoint()方法报异常的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3458">#3458</a>] 还原已删除的md</li>
+<li>[<a href="https://github.com/seata/seata/pull/3574">#3574</a>] 修复EventBus.java文件中注释拼写错误</li>
+<li>[<a href="https://github.com/seata/seata/pull/3573">#3573</a>] 修复 <a href="http://README.md">README.md</a> 文件中设计器路径错误</li>
+<li>[<a href="https://github.com/seata/seata/pull/3662">#3662</a>] 更新gpg密钥对</li>
+<li>[<a href="https://github.com/seata/seata/pull/3664">#3664</a>] 优化 javadoc</li>
+<li>[<a href="https://github.com/seata/seata/pull/3637">#3637</a>] 登记使用seata的公司和1.4.2版本包含的新增pr信息</li>
+</ul>
+<h3>test</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3381">#3381</a>] 添加 TmClient 的测试用例</li>
+<li>[<a href="https://github.com/seata/seata/pull/3607">#3607</a>] 修复 EventBus 的单元测试问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3579">#3579</a>] 添加 StringFormatUtils 测试用例</li>
+<li>[<a href="https://github.com/seata/seata/pull/3365">#3365</a>] 修复ParameterParserTest测试用例</li>
+<li>[<a href="https://github.com/seata/seata/pull/3359">#3359</a>] 删除未使用的测试用例</li>
+<li>[<a href="https://github.com/seata/seata/pull/3383">#3383</a>] 优化StatementProxyTest单元测试</li>
+<li>[<a href="https://github.com/seata/seata/pull/3578">#3578</a>] 修复单元测试case里的UnfinishedStubbing异常</li>
+</ul>
+<p>非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。</p>
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/caohdgege">caohdgege</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/wangliang181230">wangliang181230</a></li>
+<li><a href="https://github.com/xingfudeshi">xingfudeshi</a></li>
+<li><a href="https://github.com/jsbxyyx">jsbxyyx</a></li>
+<li><a href="https://github.com/selfishlover">selfishlover</a></li>
+<li><a href="https://github.com/l81893521">l8189352</a></li>
+<li><a href="https://github.com/Rubbernecker">Rubbernecker</a></li>
+<li><a href="https://github.com/lj2018110133">lj2018110133</a></li>
+<li><a href="https://github.com/github-ganyu">github-ganyu</a></li>
+<li><a href="https://github.com/dmego">dmego</a></li>
+<li><a href="https://github.com/spilledyear">spilledyear</a></li>
+<li><a href="https://github.com/hoverruan">hoverruan</a></li>
+<li><a href="https://github.com/anselleeyy">anselleeyy</a></li>
+<li><a href="https://github.com/Ifdevil">Ifdevil</a></li>
+<li><a href="https://github.com/lvxianzheng">lvxianzheng</a></li>
+<li><a href="https://github.com/MentosL">MentosL</a></li>
+<li><a href="https://github.com/lian88jian">lian88jian</a></li>
+<li><a href="https://github.com/litianyu1992">litianyu1992</a></li>
+<li><a href="https://github.com/xyz327">xyz327</a></li>
+<li><a href="https://github.com/13414850431">13414850431</a></li>
+<li><a href="https://github.com/xuande">xuande</a></li>
+<li><a href="https://github.com/tanggen">tanggen</a></li>
+<li><a href="https://github.com/eas5">eas5</a></li>
+<li><a href="https://github.com/nature80">nature80</a></li>
+<li><a href="https://github.com/ls9527">ls9527</a></li>
+<li><a href="https://github.com/drgnchan">drgnchan</a></li>
+<li><a href="https://github.com/imyangyong">imyangyong</a></li>
+<li><a href="https://github.com/sunlggggg">sunlggggg</a></li>
+<li><a href="https://github.com/long187">long187</a></li>
+<li><a href="https://github.com/h-zhi">h-zhi</a></li>
+<li><a href="https://github.com/StellaiYang">StellaiYang</a></li>
+<li><a href="https://github.com/slinpq">slinpq</a></li>
+<li><a href="https://github.com/sustly">sustly</a></li>
+<li><a href="https://github.com/cznc">cznc</a></li>
+<li><a href="https://github.com/squallliu">squallliu</a></li>
+<li><a href="https://github.com/81519434">81519434</a></li>
+<li><a href="https://github.com/luoxn28">luoxn28</a></li>
+</ul>
+<p>同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.4.1 (2021-02-08)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.4.1.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.4.1/seata-server-1.4.1.zip">binary</a></p>
