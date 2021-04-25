@@ -26,8 +26,8 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.4.0',
-                link: 'https://github.com/seata/seata/releases/tag/v1.4.0',
+                text: 'Release Note of 1.4.2',
+                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
             },
             releaseDate: 'Released on Oct 30, 2020',
         },
@@ -99,8 +99,8 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.4.0',
-                link: 'https://github.com/seata/seata/releases/tag/v1.4.0',
+                text: 'Release Note of 1.4.2',
+                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
             },
             releaseDate: 'Released on Oct 30, 2020',
         },

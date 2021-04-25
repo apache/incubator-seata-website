@@ -12,6 +12,85 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 > GitHub: https://github.com/seata/seata 
 > 发布说明: https://github.com/seata/seata/releases
 
+
+### 1.4.1 (2021-02-08)
+
+[source](https://github.com/seata/seata/archive/v1.4.1.zip) |
+[binary](https://github.com/seata/seata/releases/download/v1.4.1/seata-server-1.4.1.zip)
+
+<details>
+  <summary><mark>Release notes</mark></summary>
+
+
+### Seata 1.4.1
+
+Seata 1.4.1 发布。
+
+Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
+
+此版本更新如下：
+
+### feature：
+
+- [[#3238](https://github.com/seata/seata/pull/3238)] 添加deflater压缩算法支持
+
+### bugfix：
+
+- [[#2879](https://github.com/seata/seata/pull/2879)] 修复springboot项目启动过程中可能产生死锁的问题
+- [[#3296](https://github.com/seata/seata/pull/3296)] 修复当AT模式和TCC模式混用的时候，AT的分支无法被删除
+- [[#3254](https://github.com/seata/seata/pull/3254)] 在调用恢复在恢复之前清除监听器映射
+- [[#3309](https://github.com/seata/seata/pull/3309)] 修复Saga状态机无法使用Jackson parser以及当没有选择正确的状态会抛出NPE的问题
+- [[#3287](https://github.com/seata/seata/pull/3287)] 修复当更新主键时抛出异常
+- [[#3323](https://github.com/seata/seata/pull/3323)] Saga模式下创建状态机实例并存入数据库时出现异常，移除xid和branchType，避免影响其他事务执行
+- [[#3281](https://github.com/seata/seata/pull/3281)] 修复Saga模式下，分支事务启动异常，上报TC状态不正确
+- [[#2949](https://github.com/seata/seata/pull/2949)] 修复当获取state列表时的NPE
+- [[#3351](https://github.com/seata/seata/pull/3351)] 修复使用hystrix和SCA 2.2.3.RELEASE及以下版本时抛出IllegalArgumentException异常的问题
+- [[#3349](https://github.com/seata/seata/pull/3349)] 修复测试用例中的问题
+- [[#3325](https://github.com/seata/seata/pull/3325)] 修复找不到上一次子状态机实例，导致重试一直失败问题
+- [[#3357](https://github.com/seata/seata/pull/3357)] 修复发布规则检测失败的问题
+
+
+### optimize：
+
+- [[#3188](https://github.com/seata/seata/pull/3188)] 优化检查队列offer的返回值
+- [[#3247](https://github.com/seata/seata/pull/3247)] 把client.log.exceptionRate配置移动到log.exceptionRate
+- [[#3260](https://github.com/seata/seata/pull/3260)] 通过PriorityQueue来简化ShutdownHook的代码
+- [[#3319](https://github.com/seata/seata/pull/3319)] 删除无用的@Sharable
+- [[#3313](https://github.com/seata/seata/pull/3313)] 把StringBuffer替换成StringBuilder
+- [[#3335](https://github.com/seata/seata/pull/3335)] 把TransactionPropagationIntercepter重命名为TransactionPropagationInterceptor
+- [[#3310](https://github.com/seata/seata/pull/3310)] 支持NamedThreadFactory从SecurityManager或当前线程中获取ThreadGroup
+- [[#3320](https://github.com/seata/seata/pull/3320)] 使用常量去优化负载均衡配置策略的可读性
+- [[#3345](https://github.com/seata/seata/pull/3345)] 调整GlobalLockTemplateTest的测试用例
+
+
+非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
+
+- [slievrly](https://github.com/slievrly)
+- [dongzl](https://github.com/dongzl)
+- [wangliang181230](https://github.com/wangliang181230)
+- [ls9527](https://github.com/ls9527)
+- [long187](https://github.com/long187)
+- [81519434](https://github.com/81519434)
+- [anselleeyy](https://github.com/anselleeyy)
+- [a364176773](https://github.com/a364176773)
+- [selfishlover](https://github.com/selfishlover)
+- [suichen](https://github.com/suichen)
+- [h-zhi](https://github.com/h-zhi)
+- [jxlgzwh](https://github.com/jxlgzwh)
+- [LiWenGu](https://github.com/LiWenGu)
+
+同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
+
+#### Link
+
+- **Seata:** https://github.com/seata/seata
+- **Seata-Samples:** https://github.com/seata/seata-samples
+- **Release:** https://github.com/seata/seata/releases
+- **WebSite:** https://seata.io
+
+</details>
+
+
 ### 1.4.0 (2020-10-30)
 
  [source](https://github.com/seata/seata/archive/v1.4.0.zip) |
