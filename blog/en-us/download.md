@@ -11,7 +11,85 @@ description: This article will introduce you how to understand the details of ea
 
 > GitHub: https://github.com/seata/seata \
 > Release Notes: https://github.com/seata/seata/releases
->
+
+### 1.4.1 (2021-02-08)
+
+[source](https://github.com/seata/seata/archive/v1.4.1.zip) |
+[binary](https://github.com/seata/seata/releases/download/v1.4.1/seata-server-1.4.1.zip)
+
+<details>
+  <summary><mark>Release notes</mark></summary>
+
+
+### Seata 1.4.1
+
+Seata 1.4.1 发布。
+
+Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
+
+此版本更新如下：
+
+### feature：
+
+- [[#3238](https://github.com/seata/seata/pull/3238)] add deflater support for seata compressor
+
+
+### bugfix：
+
+- [[#2879](https://github.com/seata/seata/pull/2879)] fix deadlock during springboot project startup
+- [[#3296](https://github.com/seata/seata/pull/3296)] when mixed use of AT and TCC, AT branchs is not deleted
+- [[#3254](https://github.com/seata/seata/pull/3254)] clear the listener map of zk registry
+- [[#3309](https://github.com/seata/seata/pull/3309)] Saga statemachine definition json cannot enable jackson parser, and when no choice matched in choice state will throw NPE
+- [[#3287](https://github.com/seata/seata/pull/3287)] throw exception when update pk
+- [[#3323](https://github.com/seata/seata/pull/3323)] clean root context when state machine inst record failed
+- [[#3281](https://github.com/seata/seata/pull/3281)] fix wrong status when exception
+- [[#2949](https://github.com/seata/seata/pull/2949)] fix throw NPE when get the state list
+- [[#3351](https://github.com/seata/seata/pull/3351)] fix throw IllegalArgumentException when use hystrix when using SCA 2.2.3.RELEASE and below
+- [[#3349](https://github.com/seata/seata/pull/3349)] the problem test case
+- [[#3325](https://github.com/seata/seata/pull/3325)] fix retry commit unsuccess when record subMachineInst failed
+- [[#3357](https://github.com/seata/seata/pull/3357)] fix deploy staging rule check failed
+
+
+### optimize：
+
+- [[#3188](https://github.com/seata/seata/pull/3188)] Local variable 'map' is redundant and check queue offer return value
+- [[#3247](https://github.com/seata/seata/pull/3247)] change client.log.exceptionRate to log.exceptionRate
+- [[#3260](https://github.com/seata/seata/pull/3260)] use PriorityQueue to simply ShutdownHook
+- [[#3319](https://github.com/seata/seata/pull/3319)] delete unnecessary @Sharable
+- [[#3313](https://github.com/seata/seata/pull/3313)] replace StringBuffer to StringBuilder
+- [[#3335](https://github.com/seata/seata/pull/3335)] modify TransactionPropagationInterceptor name
+- [[#3310](https://github.com/seata/seata/pull/3310)] enable NamedThreadFactory to get ThreadGroup from the SecurityManager or Current thread
+- [[#3320](https://github.com/seata/seata/pull/3320)] load balance strategy use constants
+- [[#3345](https://github.com/seata/seata/pull/3345)] adjust GlobalLockTemplateTest
+
+
+Thanks to these contributors for their code commits. Please report an unintended omission.
+
+- [slievrly](https://github.com/slievrly)
+- [dongzl](https://github.com/dongzl)
+- [wangliang181230](https://github.com/wangliang181230)
+- [ls9527](https://github.com/ls9527)
+- [long187](https://github.com/long187)
+- [81519434](https://github.com/81519434)
+- [anselleeyy](https://github.com/anselleeyy)
+- [a364176773](https://github.com/a364176773)
+- [selfishlover](https://github.com/selfishlover)
+- [suichen](https://github.com/suichen)
+- [h-zhi](https://github.com/h-zhi)
+- [jxlgzwh](https://github.com/jxlgzwh)
+- [LiWenGu](https://github.com/LiWenGu)
+
+Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+
+
+#### Link
+
+- **Seata:** https://github.com/seata/seata
+- **Seata-Samples:** https://github.com/seata/seata-samples
+- **Release:** https://github.com/seata/seata/releases
+- **WebSite:** https://seata.io
+
+</details>
 
 ### 1.4.0 (2020-10-30)
 
