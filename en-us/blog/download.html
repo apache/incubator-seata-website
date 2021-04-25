@@ -18,6 +18,71 @@
 <p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a> <br>
 Release Notes: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.4.1 (2021-02-08)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.4.1.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.4.1/seata-server-1.4.1.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.4.1</h3>
+<p>Seata 1.4.1 发布。</p>
+<p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
+<p>此版本更新如下：</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3238">#3238</a>] add deflater support for seata compressor</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/2879">#2879</a>] fix deadlock during springboot project startup</li>
+<li>[<a href="https://github.com/seata/seata/pull/3296">#3296</a>] when mixed use of AT and TCC, AT branchs is not deleted</li>
+<li>[<a href="https://github.com/seata/seata/pull/3254">#3254</a>] clear the listener map of zk registry</li>
+<li>[<a href="https://github.com/seata/seata/pull/3309">#3309</a>] Saga statemachine definition json cannot enable jackson parser, and when no choice matched in choice state will throw NPE</li>
+<li>[<a href="https://github.com/seata/seata/pull/3287">#3287</a>] throw exception when update pk</li>
+<li>[<a href="https://github.com/seata/seata/pull/3323">#3323</a>] clean root context when state machine inst record failed</li>
+<li>[<a href="https://github.com/seata/seata/pull/3281">#3281</a>] fix wrong status when exception</li>
+<li>[<a href="https://github.com/seata/seata/pull/2949">#2949</a>] fix throw NPE when get the state list</li>
+<li>[<a href="https://github.com/seata/seata/pull/3351">#3351</a>] fix throw IllegalArgumentException when use hystrix when using SCA 2.2.3.RELEASE and below</li>
+<li>[<a href="https://github.com/seata/seata/pull/3349">#3349</a>] the problem test case</li>
+<li>[<a href="https://github.com/seata/seata/pull/3325">#3325</a>] fix retry commit unsuccess when record subMachineInst failed</li>
+<li>[<a href="https://github.com/seata/seata/pull/3357">#3357</a>] fix deploy staging rule check failed</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3188">#3188</a>] Local variable 'map' is redundant and check queue offer return value</li>
+<li>[<a href="https://github.com/seata/seata/pull/3247">#3247</a>] change client.log.exceptionRate to log.exceptionRate</li>
+<li>[<a href="https://github.com/seata/seata/pull/3260">#3260</a>] use PriorityQueue to simply ShutdownHook</li>
+<li>[<a href="https://github.com/seata/seata/pull/3319">#3319</a>] delete unnecessary @Sharable</li>
+<li>[<a href="https://github.com/seata/seata/pull/3313">#3313</a>] replace StringBuffer to StringBuilder</li>
+<li>[<a href="https://github.com/seata/seata/pull/3335">#3335</a>] modify TransactionPropagationInterceptor name</li>
+<li>[<a href="https://github.com/seata/seata/pull/3310">#3310</a>] enable NamedThreadFactory to get ThreadGroup from the SecurityManager or Current thread</li>
+<li>[<a href="https://github.com/seata/seata/pull/3320">#3320</a>] load balance strategy use constants</li>
+<li>[<a href="https://github.com/seata/seata/pull/3345">#3345</a>] adjust GlobalLockTemplateTest</li>
+</ul>
+<p>Thanks to these contributors for their code commits. Please report an unintended omission.</p>
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/dongzl">dongzl</a></li>
+<li><a href="https://github.com/wangliang181230">wangliang181230</a></li>
+<li><a href="https://github.com/ls9527">ls9527</a></li>
+<li><a href="https://github.com/long187">long187</a></li>
+<li><a href="https://github.com/81519434">81519434</a></li>
+<li><a href="https://github.com/anselleeyy">anselleeyy</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/selfishlover">selfishlover</a></li>
+<li><a href="https://github.com/suichen">suichen</a></li>
+<li><a href="https://github.com/h-zhi">h-zhi</a></li>
+<li><a href="https://github.com/jxlgzwh">jxlgzwh</a></li>
+<li><a href="https://github.com/LiWenGu">LiWenGu</a></li>
+</ul>
+<p>Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.4.0 (2020-10-30)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.4.0.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip">binary</a></p>

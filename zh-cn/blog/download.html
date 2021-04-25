@@ -18,6 +18,71 @@
 <p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a>
 发布说明: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.4.1 (2021-02-08)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.4.1.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.4.1/seata-server-1.4.1.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.4.1</h3>
+<p>Seata 1.4.1 发布。</p>
+<p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
+<p>此版本更新如下：</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3238">#3238</a>] 添加deflater压缩算法支持</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/2879">#2879</a>] 修复springboot项目启动过程中可能产生死锁的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3296">#3296</a>] 修复当AT模式和TCC模式混用的时候，AT的分支无法被删除</li>
+<li>[<a href="https://github.com/seata/seata/pull/3254">#3254</a>] 在调用恢复在恢复之前清除监听器映射</li>
+<li>[<a href="https://github.com/seata/seata/pull/3309">#3309</a>] 修复Saga状态机无法使用Jackson parser以及当没有选择正确的状态会抛出NPE的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3287">#3287</a>] 修复当更新主键时抛出异常</li>
+<li>[<a href="https://github.com/seata/seata/pull/3323">#3323</a>] Saga模式下创建状态机实例并存入数据库时出现异常，移除xid和branchType，避免影响其他事务执行</li>
+<li>[<a href="https://github.com/seata/seata/pull/3281">#3281</a>] 修复Saga模式下，分支事务启动异常，上报TC状态不正确</li>
+<li>[<a href="https://github.com/seata/seata/pull/2949">#2949</a>] 修复当获取state列表时的NPE</li>
+<li>[<a href="https://github.com/seata/seata/pull/3351">#3351</a>] 修复使用hystrix和SCA 2.2.3.RELEASE及以下版本时抛出IllegalArgumentException异常的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3349">#3349</a>] 修复测试用例中的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3325">#3325</a>] 修复找不到上一次子状态机实例，导致重试一直失败问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/3357">#3357</a>] 修复发布规则检测失败的问题</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/3188">#3188</a>] 优化检查队列offer的返回值</li>
+<li>[<a href="https://github.com/seata/seata/pull/3247">#3247</a>] 把client.log.exceptionRate配置移动到log.exceptionRate</li>
+<li>[<a href="https://github.com/seata/seata/pull/3260">#3260</a>] 通过PriorityQueue来简化ShutdownHook的代码</li>
+<li>[<a href="https://github.com/seata/seata/pull/3319">#3319</a>] 删除无用的@Sharable</li>
+<li>[<a href="https://github.com/seata/seata/pull/3313">#3313</a>] 把StringBuffer替换成StringBuilder</li>
+<li>[<a href="https://github.com/seata/seata/pull/3335">#3335</a>] 把TransactionPropagationIntercepter重命名为TransactionPropagationInterceptor</li>
+<li>[<a href="https://github.com/seata/seata/pull/3310">#3310</a>] 支持NamedThreadFactory从SecurityManager或当前线程中获取ThreadGroup</li>
+<li>[<a href="https://github.com/seata/seata/pull/3320">#3320</a>] 使用常量去优化负载均衡配置策略的可读性</li>
+<li>[<a href="https://github.com/seata/seata/pull/3345">#3345</a>] 调整GlobalLockTemplateTest的测试用例</li>
+</ul>
+<p>非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。</p>
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/dongzl">dongzl</a></li>
+<li><a href="https://github.com/wangliang181230">wangliang181230</a></li>
+<li><a href="https://github.com/ls9527">ls9527</a></li>
+<li><a href="https://github.com/long187">long187</a></li>
+<li><a href="https://github.com/81519434">81519434</a></li>
+<li><a href="https://github.com/anselleeyy">anselleeyy</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/selfishlover">selfishlover</a></li>
+<li><a href="https://github.com/suichen">suichen</a></li>
+<li><a href="https://github.com/h-zhi">h-zhi</a></li>
+<li><a href="https://github.com/jxlgzwh">jxlgzwh</a></li>
+<li><a href="https://github.com/LiWenGu">LiWenGu</a></li>
+</ul>
+<p>同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.4.0 (2020-10-30)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.4.0.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.4.0/seata-server-1.4.0.zip">binary</a></p>
