@@ -205,6 +205,7 @@ public interface InventoryAction {
 * ServiceName: 服务名称，通常是服务的beanId
 * ServiceMethod: 服务方法名称
 * CompensateState: 该"状态"的补偿"状态"
+* Loop: 标识该事务节点是否为循环事务, 即由框架本身根据循环属性的配置, 遍历集合元素对该事务节点进行循环执行
 * Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可
 * Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
@@ -583,9 +584,18 @@ public interface StateMachineRepository {
         "IsAsync": false,
         "IsRetryPersistModeUpdate": false,
         "IsCompensatePersistModeUpdate": false,
+        "Loop": {
+            "Parallel": 3,
+            "Collection": "$.[collection]",
+            "ElementVariableName": "element",
+            "ElementIndexName": "loopCounter",
+            "CompletionCondition": "[nrOfCompletedInstances] / [nrOfInstances] >= 0.6"
+        },
         "Input": [
             "$.[businessKey]",
             "$.[amount]",
+            "loopCounter": "$.[loopCounter]",
+            "element": "$.[element]",
             {
                 "throwException" : "$.[mockReduceBalanceFail]"
             }
@@ -632,6 +642,7 @@ public interface StateMachineRepository {
 * IsAsync: 异步调用服务, 注意: 因为异步调用服务会忽略服务的返回结果, 所以用户定义的服务执行状态映射(下面的Status属性)将被忽略, 默认为服务调用成功, 如果提交异步调用就失败(比如线程池已满)则为服务执行状态为失败
 * IsRetryPersistModeUpdate: 向前重试时, 日志是否基于上次失败日志进行更新, 默认是false, 即新增一条重试日志 (优先级高于状态机属性配置)
 * IsCompensatePersistModeUpdate: 向后补偿重试时, 日志是否基于上次补偿日志进行更新, 默认是false, 即新增一条补偿日志 (优先级高于状态机属性配置)
+* Loop: 标识该事务节点是否为循环事务, 即由框架本身根据循环属性的配置, 遍历集合元素对该事务节点进行循环执行. 具体使用见: [Loop 循环事务使用](#Loop%20循环事务使用)
 * Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:[复杂参数的Input定义](#复杂参数的Input定义)
 * Output: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
@@ -839,6 +850,73 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 ```
 
 > 注意ParameterTypes属性是可以不用传的，调用的方法的参数列表中有Map, List这种可以带泛型的集合类型, 因为java编译会丢失泛型, 所以需要用这个属性, 同时在Input的json中对应的对这个json加"@type"来申明泛型(集合的元素类型)
+
+#### Loop 循环事务使用
+
+```json
+"States": {
+    ...
+    "ReduceBalance": {
+        "Type": "ServiceTask",
+        "ServiceName": "balanceAction",
+        "ServiceMethod": "reduce",
+        "CompensateState": "CompensateReduceBalance",
+        "Loop": {
+            "Parallel": 3,
+            "Collection": "$.[collection]",
+            "ElementVariableName": "loopElement",
+            "ElementIndexName": "loopCounter",
+            "CompletionCondition": "[nrOfCompletedInstances] / [nrOfInstances] >= 0.6"
+        },
+        "Input": [
+            {
+                "loopCounter": "$.[loopCounter]",
+                "element": "$.[element]",
+                "throwException": "$.[fooThrowException]"
+            }
+        ],
+        "Output": {
+            "fooResult": "$.#root"
+        },
+        "Status": {
+            "#root == true": "SU",
+            "#root == false": "FA",
+            "$Exception{java.lang.Throwable}": "UN"
+        },
+        "Next": "ChoiceState"
+    },
+    "ChoiceState": {
+        "Type": "Choice",
+        "Choices": [
+            {
+                "Expression": "[loopResult].?[#this[fooResult] == null].size() == 0",
+                "Next": "SecondState"
+            }
+        ],
+        "Default":"Fail"
+    }
+    ...
+}
+```
+
+- Loop: Loop 属性配置
+  - Parallel: 并发执行事务的线程数, 支持并发执行循环任务, 默认: 1
+  - Collection: 集合变量名, 在状态机启动时的入参, 用于框架获取需要循环遍历的集合对象
+  - ElementVariableName: 集合单个元素名称, 用于在分支事务中获取元素值, 默认: `loopElement`
+  - CompletionCondition: 自定义循环结束条件, 不写默认全部执行完成, 即: `[nrOfInstances] == [nrOfCompletedInstances]`
+  - ElementIndexName: 集合下标名称, 用于在分支事务中获取元素下标, 默认: `loopCounter`
+
+在循环任务中, 其每次事务出参会存放于一个 List: `loopResult`中, 在事务上下文中可以通过 `loopResult`获取事务的运行结果集, 并遍历获取单次执行结果
+
+- Loop 上下文参数
+  - nrOfInstances: 循环实例总数
+  - nrOfActiveInstances: 当前活动的实例总数
+  - nrOfCompletedInstances: 当前完成的实例总数
+  - loopResult: 循环实例执行的结果集
+
+示例状态图:
+
+![Saga_Loop示例状态图](/img/saga/saga_loop_process.png?raw=true)
 
 
 ## FAQ
