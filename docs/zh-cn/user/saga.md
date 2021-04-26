@@ -190,6 +190,8 @@ public interface InventoryAction {
 * Version: 状态机定义版本
 * StartState: 启动时运行的第一个"状态"
 * States: 状态列表，是一个map结构，key是"状态"的名称，在状态机内必须唯一
+* IsRetryPersistModeUpdate: 向前重试时, 日志是否基于上次失败日志进行更新
+* IsCompensatePersistModeUpdate: 向后补偿重试时, 日志是否基于上次补偿日志进行更新
 
 #### "状态" 属性简介:
 * Type: "状态" 的类型，比如有:
@@ -519,12 +521,17 @@ public interface StateMachineRepository {
         <property name="stateMachineConfig" ref="dbStateMachineConfig"></property>
 </bean>
 <bean id="dbStateMachineConfig" class="io.seata.saga.engine.config.DbStateMachineConfig">
-    <property name="dataSource" ref="dataSource"></property>
-    <property name="resources" value="statelang/*.json"></property>
-    <property name="enableAsync" value="true"></property>
-    <property name="threadPoolExecutor" ref="threadExecutor"></property><!-- 事件驱动执行时使用的线程池, 如果所有状态机都同步执行可以不需要 -->
-    <property name="applicationId" value="saga_sample"></property>
-    <property name="txServiceGroup" value="my_test_tx_group"></property>
+    <property name="dataSource" ref="dataSource" />
+    <property name="resources" value="statelang/*.json" />
+    <property name="enableAsync" value="true" />
+    <!-- 事件驱动执行时使用的线程池, 如果所有状态机都同步执行且不存在循环任务可以不需要 -->
+    <property name="threadPoolExecutor" ref="threadExecutor" />
+    <property name="applicationId" value="saga_sample" />
+    <property name="txServiceGroup" value="my_test_tx_group" />
+    <property name="sagaBranchRegisterEnable" value="false" />
+    <property name="sagaJsonParser" value="fastjson" />
+    <property name="sagaRetryPersistModeUpdate" value="false" />
+    <property name="sagaCompensatePersistModeUpdate" value="false" />
 </bean>
 <bean id="threadExecutor"
         class="org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean">
@@ -548,7 +555,9 @@ public interface StateMachineRepository {
     "StartState": "ReduceInventory",
     "Version": "0.0.1",
     "States": {
-    }
+    },
+    "IsRetryPersistModeUpdate": false,
+    "IsCompensatePersistModeUpdate": false
 }
 ```
 * Name: 表示状态机的名称，必须唯一
@@ -556,6 +565,8 @@ public interface StateMachineRepository {
 * Version: 状态机定义版本
 * StartState: 启动时运行的第一个"状态"
 * States: 状态列表，是一个map结构，key是"状态"的名称，在状态机内必须唯一, value是一个map结构表示"状态"的属性列表
+* IsRetryPersistModeUpdate: 向前重试时, 日志是否基于上次失败日志进行更新, 默认是false, 即新增一条重试日志 (优先级高于全局 stateMachineConfig 配置属性)
+* IsCompensatePersistModeUpdate: 向后补偿重试时, 日志是否基于上次补偿日志进行更新, 默认是false, 即新增一条补偿日志 (优先级高于全局 stateMachineConfig 配置属性)
 
 ### 各种"状态"的属性列表
 #### ServiceTask: 
@@ -570,6 +581,8 @@ public interface StateMachineRepository {
         "IsForUpdate": true,
         "IsPersist": true,
         "IsAsync": false,
+        "IsRetryPersistModeUpdate": false,
+        "IsCompensatePersistModeUpdate": false,
         "Input": [
             "$.[businessKey]",
             "$.[amount]",
@@ -617,6 +630,8 @@ public interface StateMachineRepository {
 * IsForUpdate: 标识该服务会更新数据, 默认是false, 如果配置了CompensateState则默认是true, 有补偿服务的服务肯定是数据更新类服务
 * IsPersist: 执行日志是否进行存储, 默认是true, 有一些查询类的服务可以配置为false, 执行日志不进行存储提高性能, 因为当异常恢复时可以重复执行
 * IsAsync: 异步调用服务, 注意: 因为异步调用服务会忽略服务的返回结果, 所以用户定义的服务执行状态映射(下面的Status属性)将被忽略, 默认为服务调用成功, 如果提交异步调用就失败(比如线程池已满)则为服务执行状态为失败
+* IsRetryPersistModeUpdate: 向前重试时, 日志是否基于上次失败日志进行更新, 默认是false, 即新增一条重试日志 (优先级高于状态机属性配置)
+* IsCompensatePersistModeUpdate: 向后补偿重试时, 日志是否基于上次补偿日志进行更新, 默认是false, 即新增一条补偿日志 (优先级高于状态机属性配置)
 * Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的[SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html), 如果是常量直接写值即可。复杂的参数如何传入见:[复杂参数的Input定义](#复杂参数的Input定义)
 * Output: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数
 * Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值
@@ -691,6 +706,8 @@ Next: 补偿成功后路由到的state
     "Type": "SubStateMachine",
     "StateMachineName": "simpleCompensationStateMachine",
     "CompensateState": "CompensateSubMachine",
+    "IsRetryPersistModeUpdate": false,
+    "IsCompensatePersistModeUpdate": false,
     "Input": [
         {
             "a": "$.1",
@@ -885,4 +902,5 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 **问:** 还有关于 json 文件，我打算一条流程，就定义一个 json，虽然有的流程很像，用 Choices，可以解决。但是感觉 json 还是要尽量简单。这样考虑对吗？
 
 **答:** 你可以考虑用子状态机来复用，子状态机会多生成一行 stateMachineInstance 记录，但对性能影响应该不大。
+
 ***
