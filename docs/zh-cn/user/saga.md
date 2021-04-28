@@ -594,9 +594,9 @@ public interface StateMachineRepository {
         "Input": [
             "$.[businessKey]",
             "$.[amount]",
-            "loopCounter": "$.[loopCounter]",
-            "element": "$.[element]",
             {
+                "loopCounter": "$.[loopCounter]",
+                "element": "$.[element]",
                 "throwException" : "$.[mockReduceBalanceFail]"
             }
         ],
@@ -980,5 +980,4 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 **问:** 还有关于 json 文件，我打算一条流程，就定义一个 json，虽然有的流程很像，用 Choices，可以解决。但是感觉 json 还是要尽量简单。这样考虑对吗？
 
 **答:** 你可以考虑用子状态机来复用，子状态机会多生成一行 stateMachineInstance 记录，但对性能影响应该不大。
-
 ***
