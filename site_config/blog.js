@@ -135,6 +135,20 @@
                 desc: '本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁',
                 link: '/zh-cn/blog/seata-dsproxy-deadlock.html',
             },
+            {
+                title: 'Seata应用侧启动过程剖析——RM & TM如何与TC建立连接',
+                author: '@booogu',
+                dateStr: 'Feb 28th, 2021',
+                desc: '本文分析了Seata的RM & TM两个应用侧模块在启动过程中与TC建立连接的过程',
+                link: '/zh-cn/blog/seata-client-start-analysis-01.html',
+            },
+            {
+                title: 'Seata应用侧启动过程剖析——注册中心与配置中心模块',
+                author: '@booogu',
+                dateStr: 'Mar 4th, 2021',
+                desc: '本文分析了Seata的RM & TM两个应用侧模块在启动过程中通过注册中心/配置中心模块寻找TC集群的过程',
+                link: '/zh-cn/blog/seata-client-start-analysis-02.html',
+            }
         ]
     },
 };
