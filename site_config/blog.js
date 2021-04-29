@@ -135,6 +135,13 @@
                 desc: '本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁',
                 link: '/zh-cn/blog/seata-dsproxy-deadlock.html',
             },
+            {
+                title: 'Seata基于改良版雪花算法的分布式UUID生成器分析',
+                author: '@selfishlover',
+                dateStr: 'Apr 29th, 2021',
+                desc: '深入浅出地解读Seata内置的分布式UUID生成器及其对于雪花算法的改良',
+                link: '/zh-cn/blog/seata-analysis-UUID-generator.html',
+            },
         ]
     },
 };
