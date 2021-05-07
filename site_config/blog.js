@@ -113,6 +113,13 @@
                 dateStr: 'Oct 16th, 2020',
                 desc: '本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题',
                 link: '/zh-cn/blog/seata-datasource-proxy.html',
+            },
+            {
+                title: 'Seata新特性支持 -- undo_log压缩',
+                author: '@chd',
+                dateStr: 'May 07th, 2021',
+                desc: '本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题',
+                link: '/zh-cn/blog/seata-datasource-proxy.html',
             }
         ]
     },
