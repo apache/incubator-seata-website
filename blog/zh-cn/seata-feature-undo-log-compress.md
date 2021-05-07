@@ -1,4 +1,14 @@
-## Seata新特性支持 -- undo_log压缩
+---
+layout:     post
+comments:   true
+title:      Seata新特性支持 -- undo_log压缩
+date:       2021-05-07 21:08:00
+author:     "chd"
+catalog: true
+tags:
+    - Seata
+---
+
 
 ### 现状 & 痛点
 
