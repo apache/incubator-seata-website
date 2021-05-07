@@ -11,11 +11,11 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 ### 资源目录介绍
 #### <a href="https://github.com/seata/seata/tree/1.4.0/script" target="_blank">点击查看</a>
 - client
-> 存放client端sql脚本，参数配置
+> 存放client端sql脚本 (包含 undo_log表) ，参数配置
 - config-center
 > 各个配置中心参数导入脚本，config.txt(包含server和client，原名nacos-config.txt)为通用参数文件
 - server
-> server端数据库脚本及各个容器配置
+> server端数据库脚本 (包含 lock_table、branch_table 与 global_table) 及各个容器配置
 
 
 ### 注意事项

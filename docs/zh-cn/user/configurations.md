@@ -73,7 +73,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.db.datasource                       | db模式数据源类型 |dbcp、druid、hikari；无默认值，store.mode=db时必须指定。    |
 | store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。   |
 | store.db.driverClassName                | db模式数据库驱动 |store.mode=db时必须指定    |
-| store.db.url                              | db模式数据库url | store.mode=db时必须指定   |
+| store.db.url                              | db模式数据库url | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7)   |
 | store.db.user                             | db模式数据库账户 |store.mode=db时必须指定    |
 | store.db.password                         | db模式数据库账户密码 |store.mode=db时必须指定    |
 | store.db.minConn                         | db模式数据库初始连接数 |默认1    |
@@ -261,3 +261,7 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
 那么每2秒钟会进行一个begin,commit的测试,如果失败,则记录连续失败数,如果成功则清空连续失败数.连续错误由用户接口及自检线程进行累计,直到连续失败次数达到用户的阈值,则关闭Seata分布式事务,避免用户自身业务长时间不可用.
 反之,假如当前分布式事务关闭,那么自检线程继续按照2秒一次的自检,直到连续成功数达到用户设置的阈值,那么Seata分布式事务将恢复使用
 ```
+
+### 附录7:
+    在store.mode=db，由于seata是通过jdbc的executeBatch来批量插入全局锁的，根据MySQL官网的说明，连接参数中的rewriteBatchedStatements为true时，在执行executeBatch，并且操作类型为insert时，jdbc驱动会把对应的SQL优化成`insert into () values (), ()`的形式来提升批量插入的性能。
+    根据实际的测试，该参数设置为true后，对应的批量插入性能为原来的10倍多，因此在数据源为MySQL时，建议把该参数设置为true。
