@@ -94,7 +94,7 @@ if (needCompress(undoLogContent)) {
 // else 不需要压缩就不需要做任何操作
 ```
 
-将来压缩类型同步报错到数据库，供回滚时使用：
+将压缩类型同步保存到数据库，供回滚时使用：
 
 ```java
 protected String buildContext(String serializer, CompressorType compressorType) {
@@ -112,7 +112,7 @@ protected String buildContext(String serializer, CompressorType compressorType) 
 protected byte[] getRollbackInfo(ResultSet rs) throws SQLException  {
     // 获取保存到数据库的回滚信息的字节数组
     byte[] rollbackInfo = rs.getBytes(ClientTableColumnsName.UNDO_LOG_ROLLBACK_INFO);
-	// 获取压缩类型
+    // 获取压缩类型
     // getOrDefault使用默认值CompressorType.NONE来兼容1.4.2之前的版本直接升级1.4.2+
     String rollbackInfoContext = rs.getString(ClientTableColumnsName.UNDO_LOG_CONTEXT);
     Map<String, String> context = CollectionUtils.decodeMap(rollbackInfoContext);
