@@ -153,8 +153,8 @@
                 title: 'Seata新特性支持 -- undo_log压缩',
                 author: '@chd',
                 dateStr: 'May 07th, 2021',
-                desc: '本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题',
-                link: '/zh-cn/blog/seata-datasource-proxy.html',
+                desc: '本文主要分析了关于Seata1.4.2支持的新特性undo_log信息压缩解决的问题以及代码实现',
+                link: '/zh-cn/blog/seata-feature-undo-log-compress.html',
             }
         ]
     },
