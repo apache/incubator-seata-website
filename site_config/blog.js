@@ -148,6 +148,13 @@
                 dateStr: 'Mar 4th, 2021',
                 desc: '本文分析了Seata的RM & TM两个应用侧模块在启动过程中通过注册中心/配置中心模块寻找TC集群的过程',
                 link: '/zh-cn/blog/seata-client-start-analysis-02.html',
+            },
+            {
+                title: 'Seata新特性支持 -- undo_log压缩',
+                author: '@chd',
+                dateStr: 'May 07th, 2021',
+                desc: '本文主要分析了关于Seata1.4.2支持的新特性undo_log信息压缩解决的问题以及代码实现',
+                link: '/zh-cn/blog/seata-feature-undo-log-compress.html',
             }
         ]
     },

@@ -334,14 +334,17 @@
       }
     },
     {
-      "filename": "seata-golang communication mode.md",
-      "link": "/zh-cn/blog/seata-golang communication mode.html",
+      "filename": "seata-feature-undo-log-compress.md",
+      "link": "/zh-cn/blog/seata-feature-undo-log-compress.html",
       "meta": {
-        "title": "seata-golang 通信模型详解",
-        "keywords": "seata,seata-golang,seata-go,getty,分布式事务",
-        "description": "本文详细讲述 seata-golang 底层 rpc 通信的实现原理",
-        "author": "刘晓敏",
-        "date": "2021/01/04"
+        "layout": "post",
+        "comments": "true",
+        "title": "Seata新特性支持 -- undo_log压缩",
+        "date": "2021-05-07 21:08:00",
+        "author": "\"chd\"",
+        "catalog": "true",
+        "tags": "",
+        "- Seata": ""
       }
     },
     {
