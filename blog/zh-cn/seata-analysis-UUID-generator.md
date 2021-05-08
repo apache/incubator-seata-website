@@ -1,3 +1,10 @@
+---
+title: Seata基于改良版雪花算法的分布式UUID生成器分析
+author: selfishlover
+keywords: Seata, snowflake, UUID
+date: 2021/05/08
+---
+
 # Seata基于改良版雪花算法的分布式UUID生成器分析
 
 Seata内置了一个分布式UUID生成器，用于辅助生成全局事务ID和分支事务ID。我们希望该生成器具有如下特点：
