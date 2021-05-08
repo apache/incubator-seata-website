@@ -136,6 +136,27 @@
                 link: '/zh-cn/blog/seata-dsproxy-deadlock.html',
             },
             {
+                title: 'Seata应用侧启动过程剖析——RM & TM如何与TC建立连接',
+                author: '@booogu',
+                dateStr: 'Feb 28th, 2021',
+                desc: '本文分析了Seata的RM & TM两个应用侧模块在启动过程中与TC建立连接的过程',
+                link: '/zh-cn/blog/seata-client-start-analysis-01.html',
+            },
+            {
+                title: 'Seata应用侧启动过程剖析——注册中心与配置中心模块',
+                author: '@booogu',
+                dateStr: 'Mar 4th, 2021',
+                desc: '本文分析了Seata的RM & TM两个应用侧模块在启动过程中通过注册中心/配置中心模块寻找TC集群的过程',
+                link: '/zh-cn/blog/seata-client-start-analysis-02.html',
+            },
+            {
+                title: 'Seata新特性支持 -- undo_log压缩',
+                author: '@chd',
+                dateStr: 'May 07th, 2021',
+                desc: '本文主要分析了关于Seata1.4.2支持的新特性undo_log信息压缩解决的问题以及代码实现',
+                link: '/zh-cn/blog/seata-feature-undo-log-compress.html',
+            },
+            {
                 title: 'Seata基于改良版雪花算法的分布式UUID生成器分析',
                 author: '@selfishlover',
                 dateStr: 'Apr 29th, 2021',
