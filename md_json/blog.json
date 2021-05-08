@@ -107,6 +107,16 @@
       }
     },
     {
+      "filename": "seata-analysis-UUID-generator.md",
+      "link": "/zh-cn/blog/seata-analysis-UUID-generator.html",
+      "meta": {
+        "title": "Seata基于改良版雪花算法的分布式UUID生成器分析",
+        "author": "selfishlover",
+        "keywords": "Seata, snowflake, UUID",
+        "date": "2021/05/08"
+      }
+    },
+    {
       "filename": "seata-analysis-config-modular.md",
       "link": "/zh-cn/blog/seata-analysis-config-modular.html",
       "meta": {
@@ -337,14 +347,10 @@
       "filename": "seata-feature-undo-log-compress.md",
       "link": "/zh-cn/blog/seata-feature-undo-log-compress.html",
       "meta": {
-        "layout": "post",
-        "comments": "true",
         "title": "Seata新特性支持 -- undo_log压缩",
-        "date": "2021-05-07 21:08:00",
-        "author": "\"chd\"",
-        "catalog": "true",
-        "tags": "",
-        "- Seata": ""
+        "author": "chd",
+        "keywords": "Seata, undo_log, compress",
+        "date": "2021/05/07"
       }
     },
     {
