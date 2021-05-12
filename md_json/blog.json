@@ -107,6 +107,16 @@
       }
     },
     {
+      "filename": "seata-analysis-UUID-generator.md",
+      "link": "/zh-cn/blog/seata-analysis-UUID-generator.html",
+      "meta": {
+        "title": "Seata基于改良版雪花算法的分布式UUID生成器分析",
+        "author": "selfishlover",
+        "keywords": "Seata, snowflake, UUID",
+        "date": "2021/05/08"
+      }
+    },
+    {
       "filename": "seata-analysis-config-modular.md",
       "link": "/zh-cn/blog/seata-analysis-config-modular.html",
       "meta": {
@@ -242,6 +252,34 @@
       }
     },
     {
+      "filename": "seata-client-start-analysis-01.md",
+      "link": "/zh-cn/blog/seata-client-start-analysis-01.html",
+      "meta": {
+        "layout": "post",
+        "comments": "true",
+        "title": "Seata应用侧启动过程剖析——RM & TM如何与TC建立连接",
+        "date": "2021-02-28 21:08:00",
+        "author": "\"booogu\"",
+        "catalog": "true",
+        "tags": "",
+        "- Seata": ""
+      }
+    },
+    {
+      "filename": "seata-client-start-analysis-02.md",
+      "link": "/zh-cn/blog/seata-client-start-analysis-02.html",
+      "meta": {
+        "layout": "post",
+        "comments": "true",
+        "title": "Seata应用侧启动过程剖析——注册中心与配置中心模块",
+        "date": "2021-03-04 1:35:01",
+        "author": "\"booogu\"",
+        "catalog": "true",
+        "tags": "",
+        "- Seata": ""
+      }
+    },
+    {
       "filename": "seata-community-meetup-hangzhou-ready.md",
       "link": "/zh-cn/blog/seata-community-meetup-hangzhou-ready.html",
       "meta": {
@@ -306,14 +344,13 @@
       }
     },
     {
-      "filename": "seata-golang communication mode.md",
-      "link": "/zh-cn/blog/seata-golang communication mode.html",
+      "filename": "seata-feature-undo-log-compress.md",
+      "link": "/zh-cn/blog/seata-feature-undo-log-compress.html",
       "meta": {
-        "title": "seata-golang 通信模型详解",
-        "keywords": "seata,seata-golang,seata-go,getty,分布式事务",
-        "description": "本文详细讲述 seata-golang 底层 rpc 通信的实现原理",
-        "author": "刘晓敏",
-        "date": "2021/01/04"
+        "title": "Seata新特性支持 -- undo_log压缩",
+        "author": "chd",
+        "keywords": "Seata, undo_log, compress",
+        "date": "2021/05/07"
       }
     },
     {
