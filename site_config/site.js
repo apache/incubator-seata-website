@@ -28,6 +28,11 @@ export default {
                 link: '/en-us/blog/index.html',
             },
             {
+                key: 'Summer2021',
+                text: 'Summer2021',
+                link: 'https://github.com/seata/seata/issues/3741',
+            },
+            {
                 key: 'community',
                 text: 'COMMUNITY',
                 link: '/en-us/community/index.html',
@@ -76,7 +81,7 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2019 Seata',
+        copyright: 'Copyright © 2021 Seata',
     },
     'zh-cn': {
         pageMenu: [
@@ -99,6 +104,11 @@ export default {
                 key: 'blog',
                 text: '博客',
                 link: '/zh-cn/blog/index.html',
+            },
+            {
+                key: 'Summer2021',
+                text: '暑期2021',
+                link: 'https://github.com/seata/seata/issues/3741',
             },
             {
                 key: 'community',
@@ -149,6 +159,6 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2019 Seata',
+        copyright: 'Copyright © 2021 Seata',
     },
 };
