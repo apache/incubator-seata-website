@@ -41,3 +41,7 @@ Seata服务端探针参数可参考
 ```
 java -javaagent:{path}/skywalking-agent.jar -Dskywalking.agent.service_name=seata_tc -Dskywalking.plugin.jdbc.trace_sql_parameters=true -Dskywalking.plugin.seata.server=true -jar seata_tc.jar
 ```
+
+## 注意事项
+
+1. 当前只支持非批处理（enableClientBatchSendRequest 为 false）的分布式事务模式
