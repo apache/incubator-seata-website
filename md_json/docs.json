@@ -473,6 +473,11 @@
       }
     },
     {
+      "filename": "skywalking.md",
+      "link": "/zh-cn/docs/user/apm/skywalking.html",
+      "meta": {}
+    },
+    {
       "filename": "global-transaction-status.md",
       "link": "/zh-cn/docs/user/appendix/global-transaction-status.html",
       "meta": {
