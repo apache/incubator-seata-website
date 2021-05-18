@@ -217,6 +217,16 @@ export default {
                         link: '/zh-cn/docs/user/datasource.html',
                     },
                     {
+                        title: 'APM',
+                        children: [
+                            {
+                                title: 'SkyWalking',
+                                link: '/zh-cn/docs/user/apm/skywalking.html',
+
+                            },
+                        ]
+                    },
+                    {
                         title: '测试报告',
                         children: [
                             {
