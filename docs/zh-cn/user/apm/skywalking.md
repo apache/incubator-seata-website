@@ -18,7 +18,7 @@ Seata 融合 SkyWalking 应用性能监控的操作步骤非常简单，大致�
 
 将`seata/ext/apm-skywalking/target/seata-skywalking-{version}.jar`放入SkyWalking 探针插件文件夹中
 
-强烈地推荐您使用 Seata `1.4.1`：
+强烈地推荐您使用 Seata 最新版：
 
 ### 接入监控
 
