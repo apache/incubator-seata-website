@@ -180,7 +180,7 @@ public class Test {
 }
 ```
 1. 为了方便重现问题，我们重写了`Num#hashCode`方法，保证构造函数入参就是hashcode的值
-2. 创建一个ConcurrentHashMap对象，initialCapacity为8，sizeCtl计算出来的值为16，即该mao中数组长度默认为16
+2. 创建一个ConcurrentHashMap对象，initialCapacity为8，sizeCtl计算出来的值为16，即该map中数组长度默认为16
 3. 创建对象`n1`，入参为3，即hashcode为3，计算得出其对应的数组下标为3
 4. 创建对象`n2`，入参为19，即hashcode为19，计算得出其对应的数组下标为3，此时我们可以认为`n1和n2产生了hash冲突`
 5. 创建对象`n3`，入参为20，即hashcode为20，计算得出其对应的数组下标为4
