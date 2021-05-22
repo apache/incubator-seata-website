@@ -14,13 +14,13 @@
 <body>
 	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><a href="/zh-cn/index.html" target="_self">首页</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">文档</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/docs/developers/developers_dev.html" target="_self">开发者</a></li><li class="menu-item menu-item-normal menu-item-normal-active"><a href="/zh-cn/blog/index.html" target="_self">博客</a></li><li class="menu-item menu-item-normal"><a href="https://github.com/seata/seata/issues/3741" target="_self">暑期2021</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/community/index.html" target="_self">社区</a></li><li class="menu-item menu-item-normal"><a href="/zh-cn/blog/download.html" target="_self">下载</a></li></ul></div></div></header><section class="blog-content markdown-body"><h1>Seata新特性支持 -- undo_log压缩</h1>
 <h3>现状 &amp; 痛点</h3>
-<p>对于Seata而言，是通过记录DML操作的前后的数据进行用于后续可能的回滚操作的，并且把这些数据报错到数据库的一个blob的字段里面。对于批量插入，更新，删除等操作，其影响的行数可能会比较多，拼接成一个大的字段插入到数据库，可能会带来以下问题：</p>
+<p>对于Seata而言，是通过记录DML操作的前后的数据用于进行后续可能的回滚操作的，并且把这些数据保存到数据库的一个blob的字段里面。对于批量插入，更新，删除等操作，其影响的行数可能会比较多，拼接成一个大的字段插入到数据库，可能会带来以下问题：</p>
 <ol>
 <li>超出数据库单次操作的最大写入限制(比如MySQL的max_allowed_package参数)；</li>
 <li>较大的数据量带来的网络IO和数据库磁盘IO开销比较大。</li>
 </ol>
 <h3>头脑风暴</h3>
-<p>对于第1点的问题，可以根据业务的实际情况，调大max_allowed_package参数的限制，从而避免出现query is to large的问题；对于第2点，可以通过提高带宽和选用高性能的SSD作为数据库的存储介质。</p>
+<p>对于第1点的问题，可以根据业务的实际情况，调大max_allowed_package参数的限制，从而避免出现query is too large的问题；对于第2点，可以通过提高带宽和选用高性能的SSD作为数据库的存储介质。</p>
 <p>以上都是通过外部方案或者加钱方案去解决的。那么有没有框架层面解决方案以解决上面的痛点？</p>
 <p>此时结合到以上的痛点出现的根源，在于生成的数据字段过大。为此，如果可以把对应的数据进行业务方压缩之后，再进行数据传输以及落库，理论上也可以解决上面的问题。</p>
 <h3>可行性分析</h3>
