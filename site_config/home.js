@@ -15,16 +15,21 @@ export default {
                     type: 'normal',
                 },
                 {
-                    text: 'Github',
+                    text: 'Github-Java',
                     link: 'https://github.com/seata/seata',
+                    type: 'normal',
+                },
+                {
+                    text: 'Github-Golang',
+                    link: 'https://github.com/opentrx/seata-golang',
                     type: 'normal',
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.4.0',
-                link: 'https://github.com/seata/seata/releases/tag/v1.4.0',
+                text: 'Release Note of 1.4.2',
+                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
             },
-            releaseDate: 'Released on Oct 30, 2020',
+            releaseDate: 'Released on Apr 26, 2021',
         },
         introduction: {
             title: 'Seata 是什么？',
@@ -83,16 +88,21 @@ export default {
                     type: 'normal',
                 },
                 {
-                    text: 'Github',
+                    text: 'Github-Java',
                     link: 'https://github.com/seata/seata',
+                    type: 'normal',
+                },
+                {
+                    text: 'Github-Golang',
+                    link: 'https://github.com/opentrx/seata-golang',
                     type: 'normal',
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.2.0',
-                link: 'https://github.com/seata/seata/releases/tag/v1.2.0',
+                text: 'Release Note of 1.4.2',
+                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
             },
-            releaseDate: 'Released on Apr 21, 2020',
+            releaseDate: 'Released on Apr 26, 2021',
         },
         introduction: {
             title: 'What is Seata?',

@@ -109,11 +109,60 @@
             },
             {
                 title: 'Seata数据源代理解析',
-                author: '@luoxy',
+                author: '@罗小勇',
                 dateStr: 'Oct 16th, 2020',
                 desc: '本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题',
                 link: '/zh-cn/blog/seata-datasource-proxy.html',
-            }
+            },
+            {
+                title: 'seata-golang 通信模型详解',
+                author: '@刘晓敏',
+                dateStr: 'Jan 4th, 2021',
+                desc: '本文详细讲述 seata-golang 底层 rpc 通信的实现原理',
+                link: 'http://seata.io/zh-cn/blog/seata-golang-communication-mode.html',
+            },
+            {
+                title: 'Seata配置管理原理解析',
+                author: '@罗小勇',
+                dateStr: 'Jan 10th, 2021',
+                desc: '本文主要介绍Seata配置管理的核心实现以及和Spring配置的交互过程',
+                link: '/zh-cn/blog/seata-config-manager.html',
+            },
+            {
+                title: 'ConcurrentHashMap导致的Seata死锁问题分析',
+                author: '@罗小勇',
+                dateStr: 'Mar 13th, 2021',
+                desc: '本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁',
+                link: '/zh-cn/blog/seata-dsproxy-deadlock.html',
+            },
+            {
+                title: 'Seata应用侧启动过程剖析——RM & TM如何与TC建立连接',
+                author: '@booogu',
+                dateStr: 'Feb 28th, 2021',
+                desc: '本文分析了Seata的RM & TM两个应用侧模块在启动过程中与TC建立连接的过程',
+                link: '/zh-cn/blog/seata-client-start-analysis-01.html',
+            },
+            {
+                title: 'Seata应用侧启动过程剖析——注册中心与配置中心模块',
+                author: '@booogu',
+                dateStr: 'Mar 4th, 2021',
+                desc: '本文分析了Seata的RM & TM两个应用侧模块在启动过程中通过注册中心/配置中心模块寻找TC集群的过程',
+                link: '/zh-cn/blog/seata-client-start-analysis-02.html',
+            },
+            {
+                title: 'Seata新特性支持 -- undo_log压缩',
+                author: '@chd',
+                dateStr: 'May 07th, 2021',
+                desc: '本文主要分析了关于Seata1.4.2支持的新特性undo_log信息压缩解决的问题以及代码实现',
+                link: '/zh-cn/blog/seata-feature-undo-log-compress.html',
+            },
+            {
+                title: 'Seata基于改良版雪花算法的分布式UUID生成器分析',
+                author: '@selfishlover',
+                dateStr: 'Apr 29th, 2021',
+                desc: '深入浅出地解读Seata内置的分布式UUID生成器及其对于雪花算法的改良',
+                link: '/zh-cn/blog/seata-analysis-UUID-generator.html',
+            },
         ]
     },
 };

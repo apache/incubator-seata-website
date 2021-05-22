@@ -1,8 +1,8 @@
 ---
 title: Seata数据源代理解析
-keywords: Seata,数据源、数据源代理、多数据源
+keywords: Seata、数据源、数据源代理、多数据源
 description: 本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题
-author: luoxy
+author: 罗小勇
 date: 2020/10/16
 ---
 

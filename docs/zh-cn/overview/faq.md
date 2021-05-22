@@ -320,8 +320,5 @@ dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用
 seata:
   enable-auto-data-source-proxy: false
 ```
-
-
-
 ------
 
