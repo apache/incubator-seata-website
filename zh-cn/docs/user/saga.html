@@ -191,6 +191,8 @@
 <li>Version: 状态机定义版本</li>
 <li>StartState: 启动时运行的第一个&quot;状态&quot;</li>
 <li>States: 状态列表，是一个map结构，key是&quot;状态&quot;的名称，在状态机内必须唯一</li>
+<li>IsRetryPersistModeUpdate: 向前重试时, 日志是否基于上次失败日志进行更新</li>
+<li>IsCompensatePersistModeUpdate: 向后补偿重试时, 日志是否基于上次补偿日志进行更新</li>
 </ul>
 <h4>&quot;状态&quot; 属性简介:</h4>
 <ul>
@@ -208,6 +210,7 @@
 <li>ServiceName: 服务名称，通常是服务的beanId</li>
 <li>ServiceMethod: 服务方法名称</li>
 <li>CompensateState: 该&quot;状态&quot;的补偿&quot;状态&quot;</li>
+<li>Loop: 标识该事务节点是否为循环事务, 即由框架本身根据循环属性的配置, 遍历集合元素对该事务节点进行循环执行</li>
 <li>Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的<a href="https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html">SpringEL</a>, 如果是常量直接写值即可</li>
 <li>Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数</li>
 <li>Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值</li>
@@ -512,12 +515,17 @@ StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineN
         <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stateMachineConfig"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dbStateMachineConfig"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dbStateMachineConfig"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"io.seata.saga.engine.config.DbStateMachineConfig"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"resources"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"statelang/*.json"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"enableAsync"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"threadPoolExecutor"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"threadExecutor"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><span class="hljs-comment">&lt;!-- 事件驱动执行时使用的线程池, 如果所有状态机都同步执行可以不需要 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"applicationId"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"saga_sample"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"txServiceGroup"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"my_test_tx_group"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"resources"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"statelang/*.json"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"enableAsync"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+    <span class="hljs-comment">&lt;!-- 事件驱动执行时使用的线程池, 如果所有状态机都同步执行且不存在循环任务可以不需要 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"threadPoolExecutor"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"threadExecutor"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"applicationId"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"saga_sample"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"txServiceGroup"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"my_test_tx_group"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sagaBranchRegisterEnable"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"false"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sagaJsonParser"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"fastjson"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sagaRetryPersistModeUpdate"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"false"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sagaCompensatePersistModeUpdate"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"false"</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"threadExecutor"</span>
         <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean"</span>&gt;</span>
@@ -539,7 +547,9 @@ StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineN
     <span class="hljs-attr">"StartState"</span>: <span class="hljs-string">"ReduceInventory"</span>,
     <span class="hljs-attr">"Version"</span>: <span class="hljs-string">"0.0.1"</span>,
     <span class="hljs-attr">"States"</span>: {
-    }
+    },
+    <span class="hljs-attr">"IsRetryPersistModeUpdate"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"IsCompensatePersistModeUpdate"</span>: <span class="hljs-literal">false</span>
 }
 </code></pre>
 <ul>
@@ -548,6 +558,8 @@ StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineN
 <li>Version: 状态机定义版本</li>
 <li>StartState: 启动时运行的第一个&quot;状态&quot;</li>
 <li>States: 状态列表，是一个map结构，key是&quot;状态&quot;的名称，在状态机内必须唯一, value是一个map结构表示&quot;状态&quot;的属性列表</li>
+<li>IsRetryPersistModeUpdate: 向前重试时, 日志是否基于上次失败日志进行更新, 默认是false, 即新增一条重试日志 (优先级高于全局 stateMachineConfig 配置属性)</li>
+<li>IsCompensatePersistModeUpdate: 向后补偿重试时, 日志是否基于上次补偿日志进行更新, 默认是false, 即新增一条补偿日志 (优先级高于全局 stateMachineConfig 配置属性)</li>
 </ul>
 <h3>各种&quot;状态&quot;的属性列表</h3>
 <h4>ServiceTask:</h4>
@@ -561,10 +573,21 @@ StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineN
         "IsForUpdate": true,
         "IsPersist": true,
         "IsAsync": false,
+        "IsRetryPersistModeUpdate": false,
+        "IsCompensatePersistModeUpdate": false,
+        "Loop": {
+            "Parallel": 3,
+            "Collection": "$.[collection]",
+            "ElementVariableName": "element",
+            "ElementIndexName": "loopCounter",
+            "CompletionCondition": "[nrOfCompletedInstances] / [nrOfInstances] &gt;= 0.6"
+        },
         "Input": [
             "$.[businessKey]",
             "$.[amount]",
             {
+                "loopCounter": "$.[loopCounter]",
+                "element": "$.[element]",
                 "throwException" : "$.[mockReduceBalanceFail]"
             }
         ],
@@ -609,6 +632,9 @@ StateMachine stateMachine = stateMachineRepository.getStateMachine(stateMachineN
 <li>IsForUpdate: 标识该服务会更新数据, 默认是false, 如果配置了CompensateState则默认是true, 有补偿服务的服务肯定是数据更新类服务</li>
 <li>IsPersist: 执行日志是否进行存储, 默认是true, 有一些查询类的服务可以配置为false, 执行日志不进行存储提高性能, 因为当异常恢复时可以重复执行</li>
 <li>IsAsync: 异步调用服务, 注意: 因为异步调用服务会忽略服务的返回结果, 所以用户定义的服务执行状态映射(下面的Status属性)将被忽略, 默认为服务调用成功, 如果提交异步调用就失败(比如线程池已满)则为服务执行状态为失败</li>
+<li>IsRetryPersistModeUpdate: 向前重试时, 日志是否基于上次失败日志进行更新, 默认是false, 即新增一条重试日志 (优先级高于状态机属性配置)</li>
+<li>IsCompensatePersistModeUpdate: 向后补偿重试时, 日志是否基于上次补偿日志进行更新, 默认是false, 即新增一条补偿日志 (优先级高于状态机属性配置)</li>
+<li>Loop: 标识该事务节点是否为循环事务, 即由框架本身根据循环属性的配置, 遍历集合元素对该事务节点进行循环执行. 具体使用见: <a href="#Loop%20%E5%BE%AA%E7%8E%AF%E4%BA%8B%E5%8A%A1%E4%BD%BF%E7%94%A8">Loop 循环事务使用</a></li>
 <li>Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的<a href="https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html">SpringEL</a>, 如果是常量直接写值即可。复杂的参数如何传入见:<a href="#%E5%A4%8D%E6%9D%82%E5%8F%82%E6%95%B0%E7%9A%84Input%E5%AE%9A%E4%B9%89">复杂参数的Input定义</a></li>
 <li>Output: 将服务返回的参数赋值到状态机上下文中, 是一个map结构，key为放入到状态机上文时的key（状态机上下文也是一个map），value中$.是表示SpringEL表达式，表示从服务的返回参数中取值，#root表示服务的整个返回参数</li>
 <li>Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个map结构，key是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是SpringEL表达式判断服务返回参数，带$Exception{开头表示判断异常类型。value是当这个条件表达式成立时则将服务执行状态映射成这个值</li>
@@ -678,6 +704,8 @@ Next: 补偿成功后路由到的state</p>
     "Type": "SubStateMachine",
     "StateMachineName": "simpleCompensationStateMachine",
     "CompensateState": "CompensateSubMachine",
+    "IsRetryPersistModeUpdate": false,
+    "IsCompensatePersistModeUpdate": false,
     "Input": [
         {
             "a": "$.1",
@@ -803,6 +831,75 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, <span cla
 <blockquote>
 <p>注意ParameterTypes属性是可以不用传的，调用的方法的参数列表中有Map, List这种可以带泛型的集合类型, 因为java编译会丢失泛型, 所以需要用这个属性, 同时在Input的json中对应的对这个json加&quot;@type&quot;来申明泛型(集合的元素类型)</p>
 </blockquote>
+<h4>Loop 循环事务使用</h4>
+<pre><code class="language-json">"States": {
+    ...
+    "ReduceBalance": {
+        "Type": "ServiceTask",
+        "ServiceName": "balanceAction",
+        "ServiceMethod": "reduce",
+        "CompensateState": "CompensateReduceBalance",
+        "Loop": {
+            "Parallel": 3,
+            "Collection": "$.[collection]",
+            "ElementVariableName": "loopElement",
+            "ElementIndexName": "loopCounter",
+            "CompletionCondition": "[nrOfCompletedInstances] / [nrOfInstances] &gt;= 0.6"
+        },
+        "Input": [
+            {
+                "loopCounter": "$.[loopCounter]",
+                "element": "$.[element]",
+                "throwException": "$.[fooThrowException]"
+            }
+        ],
+        "Output": {
+            "fooResult": "$.#root"
+        },
+        "Status": {
+            "#root == true": "SU",
+            "#root == false": "FA",
+            "$Exception{java.lang.Throwable}": "UN"
+        },
+        "Next": "ChoiceState"
+    },
+    "ChoiceState": {
+        "Type": "Choice",
+        "Choices": [
+            {
+                "Expression": "[loopResult].?[#this[fooResult] == null].size() == 0",
+                "Next": "SecondState"
+            }
+        ],
+        "Default":"Fail"
+    }
+    ...
+}
+</code></pre>
+<ul>
+<li>Loop: Loop 属性配置
+<ul>
+<li>Parallel: 并发执行事务的线程数, 支持并发执行循环任务, 默认: 1</li>
+<li>Collection: 集合变量名, 在状态机启动时的入参, 用于框架获取需要循环遍历的集合对象</li>
+<li>ElementVariableName: 集合单个元素名称, 用于在分支事务中获取元素值, 默认: <code>loopElement</code></li>
+<li>CompletionCondition: 自定义循环结束条件, 不写默认全部执行完成, 即: <code>[nrOfInstances] == [nrOfCompletedInstances]</code></li>
+<li>ElementIndexName: 集合下标名称, 用于在分支事务中获取元素下标, 默认: <code>loopCounter</code></li>
+</ul>
+</li>
+</ul>
+<p>在循环任务中, 其每次事务出参会存放于一个 List: <code>loopResult</code>中, 在事务上下文中可以通过 <code>loopResult</code>获取事务的运行结果集, 并遍历获取单次执行结果</p>
+<ul>
+<li>Loop 上下文参数
+<ul>
+<li>nrOfInstances: 循环实例总数</li>
+<li>nrOfActiveInstances: 当前活动的实例总数</li>
+<li>nrOfCompletedInstances: 当前完成的实例总数</li>
+<li>loopResult: 循环实例执行的结果集</li>
+</ul>
+</li>
+</ul>
+<p>示例状态图:</p>
+<p><img src="/img/saga/saga_loop_process.png?raw=true" alt="Saga_Loop示例状态图"></p>
 <h2>FAQ</h2>
 <hr>
 <p><strong>问:</strong> saga服务流程可以不配置吗，使用全局事务id串起来，这样省去配置的工作量，再加上人工配置难免会配置错误？</p>
