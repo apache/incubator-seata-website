@@ -39,6 +39,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
 | Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
 | Liang Wang | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
+| Huadong Cao | [caohdgege](https://github.com/caohdgege) | BEIKE |
 
 ## Seata Developer Roles
 

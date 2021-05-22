@@ -122,7 +122,7 @@ public class OrderServiceImpl implements OrderService {
 
 - 要求：具有InnoDB引擎的MySQL。
 
-**注意:** 实际上，在示例用例中，这3个服务应该有3个数据库。 但是，为了简单起见，我们只能创建一个数据库并配置3个数据源。 
+**注意:** 实际上，在示例用例中，这3个服务应该有3个数据库。 但是，为了简单起见，我们只创建一个数据库并配置3个数据源。 
 
 使用您刚创建的数据库 URL/username/password 修改Spring XML。
 

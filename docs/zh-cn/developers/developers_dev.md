@@ -39,6 +39,7 @@ description: Seata 维护者名单
 | 郭云嵩 | [ggndnn](https://github.com/ggndnn)         | FND          |
 | 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
 | 王良 | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
+| 曹华栋 | [caohdgege](https://github.com/caohdgege) | BEIKE |
 
 ## Seata开发者角色
 
