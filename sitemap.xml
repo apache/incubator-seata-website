@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://seata.io/zh-cn/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/overview/what-is-seata.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/developers/developers_dev.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/community/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/download.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/quickstart.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/overview/terminology.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/overview/faq.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configurations.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/txgroup/transaction-group.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/txgroup/transaction-group-and-ha.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configuration/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configuration/nacos.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configuration/apollo.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configuration/etcd3.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configuration/consul.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/registry/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/registry/nacos.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/registry/eureka.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/registry/etcd3.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/registry/consul.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/registry/zookeeper.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/api.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/microservice.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/ormframework.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/datasource.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/apm/skywalking.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/performance.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/appendix/global-transaction-status.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/dev/mode/at-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/dev/mode/tcc-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/saga.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/dev/mode/xa-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/dev/seata-mertics.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/upgrade.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/operation.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/deploy-server.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/deploy-by-kubernetes.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/deploy-by-helm.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/ops/deploy-ha.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-UUID-generator.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-feature-undo-log-compress.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-dsproxy-deadlock.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-client-start-analysis-02.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-client-start-analysis-01.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/integrate-seata-tcc-mode-with-spring-cloud.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-config-manager.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-golang-communication-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-datasource-proxy.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-sourcecode-client-bootstrap.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-at-demo-in-mac.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-sourcecode-server-bootstrap.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-xa-introduce.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-quick-start.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-config-modular.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-dubbo-transmit-xid.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-tcc-modular.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-spring-boot-aop-aspectj.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-core-modular.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-dynamic-config-and-dynamic-disable.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-config-center.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-nacos-docker.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-nacos-analysis.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-mybatisplus-analysis.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-at-mode-start-rm-tm.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-at-mode-start.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-community-meetup-hangzhou-ready.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/design-more-flexable-application-by-saga.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-meetup-hangzhou.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-at-tcc-saga.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-at-mode-design.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-go-server.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/integrate-seata-with-spring-cloud.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/how-to-support-spring-cloud.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-java-server.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/tcc-mode-applicable-scenario-analysis.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/tcc-mode-design-principle.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/quick-start-use-seata-and-dubbo-services.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-analysis-simple.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/manual-transaction-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configurations100.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/user/configurations090.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-ha-practice.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/docs/dev/mode/saga-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/overview/what-is-seata.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/developers/developers_dev.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/blog/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/community/index.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/blog/download.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/user/quickstart.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/overview/terminology.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/overview/faq.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/user/api.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/user/microservice.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/dev/mode/at-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/dev/mode/tcc-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/dev/mode/saga-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/dev/seata-mertics.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/ops/multi-configuration-isolation.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/ops/deploy-server.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/ops/deploy-by-docker.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/ops/deploy-by-kubernetes.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/ops/deploy-by-helm.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/docs/ops/deploy-ha.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/blog/quick-start-use-seata-and-dubbo-services.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/en-us/blog/manual-transaction-mode.html</loc>
+  <lastmod>2021-05-26T05:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+</urlset>
