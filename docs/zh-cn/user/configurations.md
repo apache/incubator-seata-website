@@ -62,7 +62,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |-------------------------------------------|---------------------------------|----------------------------|
 | server.undo.logSaveDays            | undo保留天数                  |默认7天,log_status=1（附录3）和未正常清理的undo |
 | server.undo.logDeletePeriod        | undo清理线程间隔时间          |默认86400000，单位毫秒    |
-| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试   |
+| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试(注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用) |
 | server.maxRollbackRetryTimeout        | 二阶段回滚重试超时时长           |  同commit  |
 | server.recovery.committingRetryPeriod          | 二阶段提交未完成状态全局事务重试提交线程间隔时间 |默认1000，单位毫秒    |
 | server.recovery.asynCommittingRetryPeriod     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
