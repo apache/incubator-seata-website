@@ -430,6 +430,16 @@
       }
     },
     {
+      "filename": "seata-snowflake-explain.md",
+      "link": "/zh-cn/blog/seata-snowflake-explain.html",
+      "meta": {
+        "title": "关于新版雪花算法的答疑",
+        "author": "selfishlover",
+        "keywords": "Seata, snowflake, UUID, page split",
+        "date": "2021/06/21"
+      }
+    },
+    {
       "filename": "seata-sourcecode-client-bootstrap.md",
       "link": "/zh-cn/blog/seata-sourcecode-client-bootstrap.html",
       "meta": {
