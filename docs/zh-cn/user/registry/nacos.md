@@ -12,7 +12,7 @@ Seata 融合 Nacos 注册中心的操作步骤非常简单，大致步骤可分�
 
 ### 增加 Maven 依赖
 
-首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，并且强烈地推荐您使用 Seata `1.4.0`：
+首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，并且强烈地推荐您使用 Seata `1.4.0+`：
 
 ```java
            <dependency>
@@ -65,4 +65,4 @@ registry {
 
 ```
 
-随后,重启 Seata-Server 应用后，您同样也能发现Server端的服务提供信息在 Nacos 控制台中.此时重启Client端即可看到注册效果.
+随后,启动 Seata-Server 后，会发现Server端的服务出现在 Nacos 控制台中的注册中心列表中. Client 配置完成后启动应用就可以正式体验 Seata 服务。

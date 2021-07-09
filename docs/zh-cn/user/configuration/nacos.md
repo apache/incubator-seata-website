@@ -12,7 +12,7 @@ Seata 融合 Nacos 配置中心的操作步骤非常简单，大致步骤可分�
 
 ### 增加 Maven 依赖
 
-首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，并且强烈地推荐您使用 Seata `1.4.0`：
+首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，建议使用 Seata `1.4.0+`：
 
 ```java
            <dependency>
@@ -66,4 +66,8 @@ config {
 
 参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的nacos脚本,将信息提交到nacos控制台,如果有需要更改,可直接通过控制台更改.
 
-随后,重启 Seata-Server 和Client应用后，您同样也能发现部分配置已经从配置中心中读取,例如:store.mode.
+eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
+
+详细解析参考 [Readme文档](https://github.com/seata/seata/blob/develop/script/config-center/README.md)
+
+随后,启动 Seata-Server 和 Client（业务侧）应用，如果在导入配置至Nacos前，已启动Seata-Server 和Client（业务侧）应用需要进行重启。
