@@ -4,14 +4,13 @@ keywords: Seata
 description: Seata支持在TC开启Metrics数据采集并输出到Prometheus监控系统中。
 ---
 
-# 运维指南
-## Metrics配置指南
+# Prometheus Metrics 配置指南
 Seata支持在TC开启Metrics数据采集并输出到Prometheus监控系统中。
 
-### 在TC中配置开启 Metrics
-#### 步骤一：在Seata Server中增加Metrics的依赖并重新编译Server
+### 在 TC 中配置开启 Metrics
+#### 步骤一：打开 TC 中 Metrics 的配置项
 
-Seata Server 已经包含了 metrics(seata-metrics-all)依赖, 但是默认是关闭状态，开启 metrics 采集。
+Seata Server 已经包含了 metrics(seata-metrics-all)依赖, 但是默认是关闭状态，需要开启 metrics 的采集配置。
 
 ```yml
 seata:
