@@ -224,6 +224,11 @@ export default {
                                 link: '/zh-cn/docs/user/apm/skywalking.html',
 
                             },
+                            {
+                                title: 'Prometheus',
+                                link: '/zh-cn/docs/user/apm/prometheus.html',
+
+                            },
                         ]
                     },
                     {
@@ -282,10 +287,6 @@ export default {
                     {
                         title: '版本升级指南',
                         link: '/zh-cn/docs/ops/upgrade.html',
-                    },
-                    {
-                        title: 'Metrics配置',
-                        link: '/zh-cn/docs/ops/operation.html',
                     },
                     {
                         title: '部署',
