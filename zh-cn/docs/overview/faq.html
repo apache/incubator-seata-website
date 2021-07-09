@@ -39,6 +39,7 @@
 <p><a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a></p>
 <p><a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a></p>
 <p><a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a></p>
+<p><a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -246,6 +247,23 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <pre><code class="language-yaml"><span class="hljs-attr">seata:</span>
 <span class="hljs-attr">  enable-auto-data-source-proxy:</span> <span class="hljs-literal">false</span>
 </code></pre>
+<hr>
+<h3 id='26'>Q: 26. Could not found global transaction xid = %s, may be has finished.</h3>
+<p><strong>A:</strong></p>
+<p>举例说明：</p>
+<p>@GlobalTransactional(timeout=60000)
+public void A（）{</p>
+<p>call remoting B();//远程调用B服务
+local DB operation;</p>
+<p>}</p>
+<p>public void B(){</p>
+<p>}</p>
+<p>可能原因：</p>
+<p>1.A 执行的总体时间超过了60000ms，导致全局事务发起了全局回滚，此时A或B方法继续执行DB操作，校验全局事务状态，发现全局事务已经回滚。</p>
+<ol start="2">
+<li>B服务执行超出其设定的readTimeout 返回异常给A并将异常抛出导致全局事务回滚，此时B服务执行DB操作时，校验全局事务状态，发现全局事务已经回滚。</li>
+</ol>
+<p>影响：出现这种情况时，数据会整体回滚至A方法执行前的数据的初态，从数据一致性的视角上看，数据是整体一致的。</p>
 <hr>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2021 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
