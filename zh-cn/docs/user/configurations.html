@@ -151,7 +151,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 <tr>
 <td>server.maxCommitRetryTimeout</td>
 <td>二阶段提交重试超时时长</td>
-<td>单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout&gt;=now-globalTransactionBeginTime,true表示超时则不再重试</td>
+<td>单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout&gt;=now-globalTransactionBeginTime,true表示超时则不再重试(注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用)</td>
 </tr>
 <tr>
 <td>server.maxRollbackRetryTimeout</td>

@@ -163,6 +163,13 @@
                 desc: '深入浅出地解读Seata内置的分布式UUID生成器及其对于雪花算法的改良',
                 link: '/zh-cn/blog/seata-analysis-UUID-generator.html',
             },
+            {
+                title: '关于新版雪花算法的答疑',
+                author: '@selfishlover',
+                dateStr: 'June 21th, 2021',
+                desc: '回答读者关于Seata的新版雪花算法的疑虑，并结合实践分析算法的优劣',
+                link: '/zh-cn/blog/seata-snowflake-explain.html',
+            },
         ]
     },
 };
