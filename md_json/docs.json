@@ -419,15 +419,6 @@
       }
     },
     {
-      "filename": "operation.md",
-      "link": "/zh-cn/docs/ops/operation.html",
-      "meta": {
-        "title": "运维指南",
-        "keywords": "Seata",
-        "description": "Seata支持在TC开启Metrics数据采集并输出到Prometheus监控系统中。"
-      }
-    },
-    {
       "filename": "upgrade.md",
       "link": "/zh-cn/docs/ops/upgrade.html",
       "meta": {
@@ -470,6 +461,15 @@
         "title": "Seata api",
         "keywords": "Seata",
         "description": "Seata API 分为两大类：High-Level API 和 Low-Level API。"
+      }
+    },
+    {
+      "filename": "prometheus.md",
+      "link": "/zh-cn/docs/user/apm/prometheus.html",
+      "meta": {
+        "title": "运维指南",
+        "keywords": "Seata",
+        "description": "Seata支持在TC开启Metrics数据采集并输出到Prometheus监控系统中。"
       }
     },
     {
