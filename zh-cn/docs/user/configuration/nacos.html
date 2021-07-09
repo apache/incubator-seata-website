@@ -19,7 +19,7 @@
 <h2>快速上手</h2>
 <p>Seata 融合 Nacos 配置中心的操作步骤非常简单，大致步骤可分为“增加 Maven 依赖”以及“配置nacos配置中心“和提交配置至Nacos-Server。</p>
 <h3>增加 Maven 依赖</h3>
-<p>首先，您需要将 <code>nacos-client</code> 的 Maven 依赖添加到您的项目 <code>pom.xml</code> 文件中，并且强烈地推荐您使用 Seata <code>1.4.0</code>：</p>
+<p>首先，您需要将 <code>nacos-client</code> 的 Maven 依赖添加到您的项目 <code>pom.xml</code> 文件中，建议使用 Seata <code>1.4.0+</code>：</p>
 <pre><code class="language-java">           &lt;dependency&gt;
                 &lt;groupId&gt;io.seata&lt;/groupId&gt;
                 &lt;artifactId&gt;seata-spring-boot-starter&lt;/artifactId&gt;
@@ -60,7 +60,9 @@
 </code></pre>
 <h3>上传配置至Nacos配置中心</h3>
 <p>参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的nacos脚本,将信息提交到nacos控制台,如果有需要更改,可直接通过控制台更改.</p>
-<p>随后,重启 Seata-Server 和Client应用后，您同样也能发现部分配置已经从配置中心中读取,例如:store.mode.</p>
+<p>eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password</p>
+<p>详细解析参考 <a href="https://github.com/seata/seata/blob/develop/script/config-center/README.md">Readme文档</a></p>
+<p>随后,启动 Seata-Server 和 Client（业务侧）应用，如果在导入配置至Nacos前，已启动Seata-Server 和Client（业务侧）应用需要进行重启。</p>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2021 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
