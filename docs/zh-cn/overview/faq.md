@@ -58,6 +58,8 @@ description: Seata 常见问题。
 
 <a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a>
 
+<a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -320,5 +322,33 @@ dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用
 seata:
   enable-auto-data-source-proxy: false
 ```
+********
+
+<h3 id='26'>Q: 26. Could not found global transaction xid = %s, may be has finished.</h3>
+
+**A:**
+
+举例说明：
+
+@GlobalTransactional(timeout=60000)
+public void A（）{
+
+call remoting B();//远程调用B服务
+local DB operation;
+
+}
+
+public void B(){
+
+}
+
+可能原因：
+
+1.A 执行的总体时间超过了60000ms，导致全局事务发起了全局回滚，此时A或B方法继续执行DB操作，校验全局事务状态，发现全局事务已经回滚。
+
+2. B服务执行超出其设定的readTimeout 返回异常给A并将异常抛出导致全局事务回滚，此时B服务执行DB操作时，校验全局事务状态，发现全局事务已经回滚。
+
+影响：出现这种情况时，数据会整体回滚至A方法执行前的数据的初态，从数据一致性的视角上看，数据是整体一致的。
+
 ------
 
