@@ -230,57 +230,60 @@ INSERT INTO roles (username, role) VALUES ('nacos', 'ROLE_ADMIN');
 
 ```mysql
 -- the table to store GlobalSession data
-drop table if exists `global_table`;
-create table `global_table` (
-  `xid` varchar(128)  not null,
-  `transaction_id` bigint,
-  `status` tinyint not null,
-  `application_id` varchar(32),
-  `transaction_service_group` varchar(32),
-  `transaction_name` varchar(128),
-  `timeout` int,
-  `begin_time` bigint,
-  `application_data` varchar(2000),
-  `gmt_create` datetime,
-  `gmt_modified` datetime,
-  primary key (`xid`),
-  key `idx_gmt_modified_status` (`gmt_modified`, `status`),
-  key `idx_transaction_id` (`transaction_id`)
-);
+CREATE TABLE IF NOT EXISTS `global_table`
+(
+    `xid`                       VARCHAR(128) NOT NULL,
+    `transaction_id`            BIGINT,
+    `status`                    TINYINT      NOT NULL,
+    `application_id`            VARCHAR(32),
+    `transaction_service_group` VARCHAR(32),
+    `transaction_name`          VARCHAR(128),
+    `timeout`                   INT,
+    `begin_time`                BIGINT,
+    `application_data`          VARCHAR(2000),
+    `gmt_create`                DATETIME,
+    `gmt_modified`              DATETIME,
+    PRIMARY KEY (`xid`),
+    KEY `idx_gmt_modified_status` (`gmt_modified`, `status`),
+    KEY `idx_transaction_id` (`transaction_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- the table to store BranchSession data
-drop table if exists `branch_table`;
-create table `branch_table` (
-  `branch_id` bigint not null,
-  `xid` varchar(128) not null,
-  `transaction_id` bigint ,
-  `resource_group_id` varchar(32),
-  `resource_id` varchar(256) ,
-  `lock_key` varchar(128) ,
-  `branch_type` varchar(8) ,
-  `status` tinyint,
-  `client_id` varchar(64),
-  `application_data` varchar(2000),
-  `gmt_create` datetime,
-  `gmt_modified` datetime,
-  primary key (`branch_id`),
-  key `idx_xid` (`xid`)
-);
+CREATE TABLE IF NOT EXISTS `branch_table`
+(
+    `branch_id`         BIGINT       NOT NULL,
+    `xid`               VARCHAR(128) NOT NULL,
+    `transaction_id`    BIGINT,
+    `resource_group_id` VARCHAR(32),
+    `resource_id`       VARCHAR(256),
+    `branch_type`       VARCHAR(8),
+    `status`            TINYINT,
+    `client_id`         VARCHAR(64),
+    `application_data`  VARCHAR(2000),
+    `gmt_create`        DATETIME(6),
+    `gmt_modified`      DATETIME(6),
+    PRIMARY KEY (`branch_id`),
+    KEY `idx_xid` (`xid`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- the table to store lock data
-drop table if exists `lock_table`;
-create table `lock_table` (
-  `row_key` varchar(128) not null,
-  `xid` varchar(96),
-  `transaction_id` long ,
-  `branch_id` long,
-  `resource_id` varchar(256) ,
-  `table_name` varchar(32) ,
-  `pk` varchar(36) ,
-  `gmt_create` datetime ,
-  `gmt_modified` datetime,
-  primary key(`row_key`)
-);
+CREATE TABLE IF NOT EXISTS `lock_table`
+(
+    `row_key`        VARCHAR(128) NOT NULL,
+    `xid`            VARCHAR(128),
+    `transaction_id` BIGINT,
+    `branch_id`      BIGINT       NOT NULL,
+    `resource_id`    VARCHAR(256),
+    `table_name`     VARCHAR(32),
+    `pk`             VARCHAR(36),
+    `gmt_create`     DATETIME,
+    `gmt_modified`   DATETIME,
+    PRIMARY KEY (`row_key`),
+    KEY `idx_branch_id` (`branch_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 ```
 
@@ -291,7 +294,7 @@ docker run -d --name nacos -p 8848:8848 -e MODE=standalone -e MYSQL_MASTER_SERVI
 ```
 
 ```shell
-docker run -d --name seata -p 8091:8091 -e SEATA_IP=你想指定的ip -e SEATA_PORT=8091 seataio/seata-server:latest
+docker run -d --name seata -p 8091:8091 -e SEATA_IP=你想指定的ip -e SEATA_PORT=8091 seataio/seata-server:1.4.2
 ```
 
 ## Seata配置
@@ -314,65 +317,81 @@ docker inspect --format='{{.NetworkSettings.IPAddress}}' ID/NAMES
 transport.type=TCP
 transport.server=NIO
 transport.heartbeat=true
-transport.thread-factory.boss-thread-prefix=NettyBoss
-transport.thread-factory.worker-thread-prefix=NettyServerNIOWorker
-transport.thread-factory.server-executor-thread-prefix=NettyServerBizHandler
-transport.thread-factory.share-boss-worker=false
-transport.thread-factory.client-selector-thread-prefix=NettyClientSelector
-transport.thread-factory.client-selector-thread-size=1
-transport.thread-factory.client-worker-thread-prefix=NettyClientWorkerThread
-transport.thread-factory.boss-thread-size=1
-transport.thread-factory.worker-thread-size=8
+transport.enableClientBatchSendRequest=false
+transport.threadFactory.bossThreadPrefix=NettyBoss
+transport.threadFactory.workerThreadPrefix=NettyServerNIOWorker
+transport.threadFactory.serverExecutorThreadPrefix=NettyServerBizHandler
+transport.threadFactory.shareBossWorker=false
+transport.threadFactory.clientSelectorThreadPrefix=NettyClientSelector
+transport.threadFactory.clientSelectorThreadSize=1
+transport.threadFactory.clientWorkerThreadPrefix=NettyClientWorkerThread
+transport.threadFactory.bossThreadSize=1
+transport.threadFactory.workerThreadSize=default
 transport.shutdown.wait=3
-service.vgroup_mapping.你的事务组名=default
+service.vgroupMapping.你的事务组名=default
+service.default.grouplist=127.0.0.1:8091
 service.enableDegrade=false
-service.disable=false
-client.rm.async.commit.buffer.limit=10000
-client.rm.lock.retry.internal=10
-client.rm.lock.retry.times=30
-client.rm.report.retry.count=5
-client.rm.lock.retry.policy.branch-rollback-on-conflict=true
-client.rm.table.meta.check.enable=true
-client.rm.report.success.enable=true
-client.tm.commit.retry.count=5
-client.tm.rollback.retry.count=5
-store.mode=db
+service.disableGlobalTransaction=false
+client.rm.asyncCommitBufferLimit=10000
+client.rm.lock.retryInterval=10
+client.rm.lock.retryTimes=30
+client.rm.lock.retryPolicyBranchRollbackOnConflict=true
+client.rm.reportRetryCount=5
+client.rm.tableMetaCheckEnable=false
+client.rm.tableMetaCheckerInterval=60000
+client.rm.sqlParserType=druid
+client.rm.reportSuccessEnable=false
+client.rm.sagaBranchRegisterEnable=false
+client.tm.commitRetryCount=5
+client.tm.rollbackRetryCount=5
+client.tm.defaultGlobalTransactionTimeout=60000
+client.tm.degradeCheck=false
+client.tm.degradeCheckAllowTimes=10
+client.tm.degradeCheckPeriod=2000
+store.mode=file
+store.publicKey=
 store.file.dir=file_store/data
-store.file.max-branch-session-size=16384
-store.file.max-global-session-size=512
-store.file.file-write-buffer-cache-size=16384
-store.file.flush-disk-mode=async
-store.file.session.reload.read_size=100
-store.db.datasource=dbcp
-store.db.db-type=mysql
-store.db.driver-class-name=com.mysql.jdbc.Driver
-store.db.url=jdbc:mysql://你的mysql所在ip:3306/seata?useUnicode=true
-store.db.user=mysql帐号
+store.file.maxBranchSessionSize=16384
+store.file.maxGlobalSessionSize=512
+store.file.fileWriteBufferCacheSize=16384
+store.file.flushDiskMode=async
+store.file.sessionReloadReadSize=100
+store.db.datasource=druid
+store.db.dbType=mysql
+store.db.driverClassName=com.mysql.jdbc.Driver
+store.db.url=jdbc:mysql://你的mysql所在ip:3306/seata?useUnicode=true&rewriteBatchedStatements=true
+store.db.user=mysql账号
 store.db.password=mysql密码
-store.db.min-conn=1
-store.db.max-conn=3
-store.db.global.table=global_table
-store.db.branch.table=branch_table
-store.db.query-limit=100
-store.db.lock-table=lock_table
-server.recovery.committing-retry-period=1000
-server.recovery.asyn-committing-retry-period=1000
-server.recovery.rollbacking-retry-period=1000
-server.recovery.timeout-retry-period=1000
-server.max.commit.retry.timeout=-1
-server.max.rollback.retry.timeout=-1
-client.undo.data.validation=true
-client.undo.log.serialization=jackson
-server.undo.log.save.days=7
-server.undo.log.delete.period=86400000
-client.undo.log.table=undo_log
+store.db.minConn=5
+store.db.maxConn=30
+store.db.globalTable=global_table
+store.db.branchTable=branch_table
+store.db.queryLimit=100
+store.db.lockTable=lock_table
+store.db.maxWait=5000
+server.recovery.committingRetryPeriod=1000
+server.recovery.asynCommittingRetryPeriod=1000
+server.recovery.rollbackingRetryPeriod=1000
+server.recovery.timeoutRetryPeriod=1000
+server.maxCommitRetryTimeout=-1
+server.maxRollbackRetryTimeout=-1
+server.rollbackRetryTimeoutUnlockEnable=false
+client.undo.dataValidation=true
+client.undo.logSerialization=jackson
+client.undo.onlyCareUpdateColumns=true
+server.undo.logSaveDays=7
+server.undo.logDeletePeriod=86400000
+client.undo.logTable=undo_log
+client.undo.compress.enable=true
+client.undo.compress.type=zip
+client.undo.compress.threshold=64k
+log.exceptionRate=100
 transport.serialization=seata
 transport.compressor=none
 metrics.enabled=false
-metrics.registry-type=compact
-metrics.exporter-list=prometheus
-metrics.exporter-prometheus-port=9898
-client.support.spring.datasource.autoproxy=false
+metrics.registryType=compact
+metrics.exporterList=prometheus
+metrics.exporterPrometheusPort=9898
 ```
 
 详细参数配置请点[此处](http://seata.io/zh-cn/docs/user/configurations.html)
@@ -389,41 +408,6 @@ registry {
     namespace = ""
     cluster = "default"
   }
-  eureka {
-    serviceUrl = "http://localhost:8761/eureka"
-    application = "default"
-    weight = "1"
-  }
-  redis {
-    serverAddr = "localhost:6379"
-    db = "0"
-  }
-  zk {
-    cluster = "default"
-    serverAddr = "127.0.0.1:2181"
-    session.timeout = 6000
-    connect.timeout = 2000
-  }
-  consul {
-    cluster = "default"
-    serverAddr = "127.0.0.1:8500"
-  }
-  etcd3 {
-    cluster = "default"
-    serverAddr = "http://localhost:2379"
-  }
-  sofa {
-    serverAddr = "127.0.0.1:9603"
-    application = "default"
-    region = "DEFAULT_ZONE"
-    datacenter = "DefaultDataCenter"
-    cluster = "default"
-    group = "SEATA_GROUP"
-    addressWaitTime = "3000"
-  }
-  file {
-    name = "file.conf"
-  }
 }
 
 config {
@@ -433,24 +417,6 @@ config {
   nacos {
     serverAddr = "nacos容器ip:8848"
     namespace = ""
-  }
-  consul {
-    serverAddr = "127.0.0.1:8500"
-  }
-  apollo {
-    app.id = "seata-server"
-    apollo.meta = "http://192.168.1.204:8801"
-  }
-  zk {
-    serverAddr = "127.0.0.1:2181"
-    session.timeout = 6000
-    connect.timeout = 2000
-  }
-  etcd3 {
-    serverAddr = "http://localhost:2379"
-  }
-  file {
-    name = "file.conf"
   }
 }
 ```
@@ -463,45 +429,15 @@ docker restart seata
 docker logs -f seata
 ```
 
-​	6.修改nacos-config.sh
+​	6.运行nacos-config.sh导入Nacos配置
 
-```
-for line in $(cat nacos-config.txt)
+eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 
+5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
 
-do
-
-key=${line%%=*}
-value=${line#*=}
-echo "\r\n set "${key}" = "${value}
-
-result=`curl -X POST "http://nacos容器的ip:8848/nacos/v1/cs/configs?dataId=$key&group=SEATA_GROUP&content=$value"`
-
-if [ "$result"x == "true"x ]; then
-
-  echo "\033[42;37m $result \033[0m"
-
-else
-
-  echo "\033[41;37 $result \033[0m"
-  let error++
-
-fi
-
-done
+具体参数释义参考：[配置导入说明](https://github.com/seata/seata/blob/1.4.2/script/config-center/README.md)
 
 
-if [ $error -eq 0 ]; then
-
-echo  "\r\n\033[42;37m init nacos config finished, please start seata-server. \033[0m"
-
-else
-
-echo  "\r\n\033[41;33m init nacos config fail. \033[0m"
-
-fi
-```
-
-​	7.运行nacos-config.sh将配置上传的nacos中,登录nacos控制中心查看
+​	7.登录nacos控制中心查看
 
 ![20191202205912](/img/blog/20191202205912.png)
 
@@ -514,9 +450,6 @@ fi
 ```
 registry {
   type = "nacos"
-  file {
-    name = "file.conf"
-  }
   nacos {
     serverAddr = "宿主机ip:8848"
     namespace = ""
@@ -525,14 +458,6 @@ registry {
 }
 config {
   type = "nacos"
-  file {
-    name = "file.conf"
-  }
-  zk {
-    serverAddr = "127.0.0.1:2181"
-    session.timeout = 6000
-    connect.timeout = 2000
-  }
   nacos {
     serverAddr = "宿主机ip:8848"
     namespace = ""
@@ -616,10 +541,26 @@ server:
   tomcat:
     max-http-post-size: 104857600
 ```
+​	4. 在每个所涉及的 db 执行 undo_log 脚本.
+```sql
+CREATE TABLE IF NOT EXISTS `undo_log`
+(
+    `branch_id`     BIGINT       NOT NULL COMMENT 'branch transaction id',
+    `xid`           VARCHAR(128) NOT NULL COMMENT 'global transaction id',
+    `context`       VARCHAR(128) NOT NULL COMMENT 'undo_log context,such as serialization',
+    `rollback_info` LONGBLOB     NOT NULL COMMENT 'rollback info',
+    `log_status`    INT(11)      NOT NULL COMMENT '0:normal status,1:defense status',
+    `log_created`   DATETIME(6)  NOT NULL COMMENT 'create datetime',
+    `log_modified`  DATETIME(6)  NOT NULL COMMENT 'modify datetime',
+    UNIQUE KEY `ux_undo_log` (`xid`, `branch_id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8 COMMENT ='AT transaction mode undo table';
+```
 
-​	4.依次运行test-service,test-client.
+​	5.依次运行test-service,test-client.
 
-​	5.查看nacos中服务列表是否如下图所示
+​	6.查看nacos中服务列表是否如下图所示
 
 ![20191203132351](/img/blog/20191203132351.png)
 
