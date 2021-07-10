@@ -14,17 +14,17 @@ Seata 融合 Nacos 注册中心的操作步骤非常简单，大致步骤可分�
 
 首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，建议使用 Seata `1.4.0+`：
 
-```java
-           <dependency>
-                <groupId>io.seata</groupId>
-                <artifactId>seata-spring-boot-starter</artifactId>
-                <version>最新版</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.nacos</groupId>
-                <artifactId>nacos-client</artifactId>
-                <version>1.3.2</version>
-            </dependency>
+```xml
+<dependency>
+    <groupId>io.seata</groupId>
+    <artifactId>seata-spring-boot-starter</artifactId>
+    <version>最新版</version>
+</dependency>
+<dependency>
+    <groupId>com.alibaba.nacos</groupId>
+    <artifactId>nacos-client</artifactId>
+    <version>1.2.0及以上版本</version>
+</dependency>
 ```
 
 ### Client端配置注册中心
