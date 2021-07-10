@@ -8,6 +8,5 @@
   3. apollo
   4. etcd
   5. zookeeper
-  6. redis 
   7. file (读本地文件, 包含conf、properties、yml配置文件的支持)
 
