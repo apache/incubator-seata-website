@@ -89,7 +89,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
     -n: Server node，多个Server时，需区分各自节点，用于生成不同区间的transactionId，以免冲突
     -e: 多环境配置参考 http://seata.io/en-us/docs/ops/multi-configuration-isolation.html
 ```
-- <a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html" target="_blank">点击查看docker部署</a>
+- <a href="http://seata.io/zh-cn/docs/ops/deploy-by-docker.html" target="_blank">点击查看docker部署</a>
 
 注: 堆内存建议分配2G，堆外内存1G
 
@@ -99,7 +99,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 - 依赖seata-spring-boot-starter，支持yml、properties配置(.conf可删除)，内部已依赖seata-all
 - 依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递
 #### 步骤二：undo_log建表、配置参数
-- <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>
+- <a href="http://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>
 
 #### 步骤三：数据源代理(不支持自动和手动配置并存,不支持XA数据源自动代理)
 - 0.9.0版本开始seata支持自动代理数据源
