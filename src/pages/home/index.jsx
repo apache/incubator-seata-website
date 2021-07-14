@@ -7,7 +7,7 @@ import Button from '../../components/button';
 import Footer from '../../components/footer';
 import Language from '../../components/language';
 import Item from './featureItem';
-import homeConfig from '../../../site_config/home';
+import homeConfig from '../../../site_config/home.jsx';
 import './index.scss';
 
 class Home extends Language {
@@ -146,7 +146,6 @@ class Home extends Language {
         </section>
         <section className="users-section">
           <h3>{dataSource.users.title}</h3>
-          <Bone type="dark" />
           <p>{dataSource.users.desc}</p>
           <div className="users">
             {
