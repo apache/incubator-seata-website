@@ -76,7 +76,7 @@ export default {
         users: {
             title: '谁在使用 Seata',
             desc: <span>请在 <a rel="noopener noreferrer" target="_blank"
-                              href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> 上提供信息来帮助Seata 做的更好。</span>,
+                              href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> 上提供信息来帮助 Seata 做的更好。</span>,
             list: [
                 'https://cdn.nlark.com/yuque/0/2019/jpeg/338441/1561540563438-a13d7097-fcfd-400f-b066-82564ff31647.jpeg',
                 'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg',
