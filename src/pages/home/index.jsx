@@ -140,6 +140,20 @@ class Home extends Language {
             </ul>
           </div>
         </section>
+        <section className="users-section">
+          <h3>{dataSource.users.title}</h3>
+          <Bone type="dark" />
+          <p>{dataSource.users.desc}</p>
+          <div className="users">
+            {
+              dataSource.users.list.map((user, i) => (
+                  <div className="user-item" key={i}>
+                    <img src={user} />
+                  </div>
+              ))
+            }
+          </div>
+        </section>
         <Footer logo="/img/seata_logo_gray.png" language={language} />
       </div>
     );
