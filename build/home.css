@@ -308,6 +308,41 @@
 
 .docsite-icon-feature-4:before {
   content: "\e64b"; }
+.bone {
+  width: 24px;
+  height: 2px;
+  position: relative; }
+  .bone::before {
+    position: absolute;
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    left: 0;
+    top: -2px; }
+  .bone::after {
+    position: absolute;
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    right: 0;
+    top: -2px; }
+  .bone-dark {
+    background-color: #1161F6; }
+    .bone-dark::before {
+      background-color: #1161F6; }
+    .bone-dark::after {
+      background-color: #1161F6; }
+  .bone-light {
+    background-color: #fff;
+    opacity: 0.8; }
+    .bone-light::before {
+      background-color: #fff;
+      opacity: 0.8; }
+    .bone-light::after {
+      background-color: #fff;
+      opacity: 0.8; }
 @charset "UTF-8";
 @font-face {
   font-family: octicons-link;

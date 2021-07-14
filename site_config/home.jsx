@@ -78,7 +78,7 @@ export default {
             desc: <span>请在 <a rel="noopener noreferrer" target="_blank"
                               href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> 上提供信息来帮助 Seata 做的更好。</span>,
             list: [
-                'https://cdn.nlark.com/yuque/0/2019/jpeg/338441/1561540563438-a13d7097-fcfd-400f-b066-82564ff31647.jpeg',
+                'https://docs.alibabagroup.com/assets2/images/en/global/logo_header.png',
                 'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg',
             ],
         },
@@ -160,7 +160,7 @@ export default {
             desc: <span>请在 <a rel="noopener noreferrer" target="_blank"
                               href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> to help improving seata better.</span>,
             list: [
-                'https://cdn.nlark.com/yuque/0/2019/jpeg/338441/1561540563438-a13d7097-fcfd-400f-b066-82564ff31647.jpeg',
+                'https://docs.alibabagroup.com/assets2/images/en/global/logo_header.png',
                 'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg',
             ],
         },
