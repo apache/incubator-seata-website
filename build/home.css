@@ -1997,9 +1997,9 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
- .home-page .users-section .bone {
+.home-page .users-section .bone {
   margin: 0 auto 40px;
- }
+}
 
 .home-page .users-section h3 {
   font-family: Avenir-Heavy;
