@@ -169,7 +169,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <pre><code class="language-xml">1. 删除 distribution 模块的bin、conf和lib目录。
 2. ./mvnw clean install -DskipTests=true(Mac,Linux) 或 mvnw.cmd clean install -DskipTests=true(Win) -P release-seata。
 3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。
-
+4. seata-1.5之后(最新develop分支)的打包命令：mvn -Prelease-seata -Dmaven.test.skip=true clean install -U
 </code></pre>
 <hr>
 <h3 id='17'>Q: 17.Seata 支持哪些 RPC 框架?</h3>
