@@ -114,7 +114,7 @@ store {
 }
 ```
 
-seata-server的 regiistry.conf 配置如下（以nacos为例）
+seata-server的 registry.conf 配置如下（以nacos为例）
 
 ```
 registry {
