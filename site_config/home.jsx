@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default {
     'zh-cn': {
         brand: {
@@ -69,6 +71,15 @@ export default {
                     title: '高可用',
                     content: '支持基于数据库存储的集群模式，水平扩展能力强',
                 },
+            ],
+        },
+        users: {
+            title: '谁在使用 Seata',
+            desc: <span>请在 <a rel="noopener noreferrer" target="_blank"
+                              href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> 上提供信息来帮助 Seata 做的更好。</span>,
+            list: [
+                'https://docs.alibabagroup.com/assets2/images/en/global/logo_header.png',
+                'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg',
             ],
         },
     },
@@ -143,6 +154,15 @@ export default {
                     content: 'Support cluster mode based on database storage, strong horizontal scalability.',
                 },
             ]
+        },
+        users: {
+            title: 'Who is using Seata',
+            desc: <span>请在 <a rel="noopener noreferrer" target="_blank"
+                              href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> to help improving seata better.</span>,
+            list: [
+                'https://docs.alibabagroup.com/assets2/images/en/global/logo_header.png',
+                'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg',
+            ],
         },
     },
 };
