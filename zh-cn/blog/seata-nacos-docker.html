@@ -221,63 +221,66 @@ INSERT INTO roles (username, role) VALUES ('nacos', 'ROLE_ADMIN');
 
 </code></pre>
 <pre><code class="language-mysql">-- the table to store GlobalSession data
-drop table if exists `global_table`;
-create table `global_table` (
-  `xid` varchar(128)  not null,
-  `transaction_id` bigint,
-  `status` tinyint not null,
-  `application_id` varchar(32),
-  `transaction_service_group` varchar(32),
-  `transaction_name` varchar(128),
-  `timeout` int,
-  `begin_time` bigint,
-  `application_data` varchar(2000),
-  `gmt_create` datetime,
-  `gmt_modified` datetime,
-  primary key (`xid`),
-  key `idx_gmt_modified_status` (`gmt_modified`, `status`),
-  key `idx_transaction_id` (`transaction_id`)
-);
+CREATE TABLE IF NOT EXISTS `global_table`
+(
+    `xid`                       VARCHAR(128) NOT NULL,
+    `transaction_id`            BIGINT,
+    `status`                    TINYINT      NOT NULL,
+    `application_id`            VARCHAR(32),
+    `transaction_service_group` VARCHAR(32),
+    `transaction_name`          VARCHAR(128),
+    `timeout`                   INT,
+    `begin_time`                BIGINT,
+    `application_data`          VARCHAR(2000),
+    `gmt_create`                DATETIME,
+    `gmt_modified`              DATETIME,
+    PRIMARY KEY (`xid`),
+    KEY `idx_gmt_modified_status` (`gmt_modified`, `status`),
+    KEY `idx_transaction_id` (`transaction_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- the table to store BranchSession data
-drop table if exists `branch_table`;
-create table `branch_table` (
-  `branch_id` bigint not null,
-  `xid` varchar(128) not null,
-  `transaction_id` bigint ,
-  `resource_group_id` varchar(32),
-  `resource_id` varchar(256) ,
-  `lock_key` varchar(128) ,
-  `branch_type` varchar(8) ,
-  `status` tinyint,
-  `client_id` varchar(64),
-  `application_data` varchar(2000),
-  `gmt_create` datetime,
-  `gmt_modified` datetime,
-  primary key (`branch_id`),
-  key `idx_xid` (`xid`)
-);
+CREATE TABLE IF NOT EXISTS `branch_table`
+(
+    `branch_id`         BIGINT       NOT NULL,
+    `xid`               VARCHAR(128) NOT NULL,
+    `transaction_id`    BIGINT,
+    `resource_group_id` VARCHAR(32),
+    `resource_id`       VARCHAR(256),
+    `branch_type`       VARCHAR(8),
+    `status`            TINYINT,
+    `client_id`         VARCHAR(64),
+    `application_data`  VARCHAR(2000),
+    `gmt_create`        DATETIME(6),
+    `gmt_modified`      DATETIME(6),
+    PRIMARY KEY (`branch_id`),
+    KEY `idx_xid` (`xid`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 -- the table to store lock data
-drop table if exists `lock_table`;
-create table `lock_table` (
-  `row_key` varchar(128) not null,
-  `xid` varchar(96),
-  `transaction_id` long ,
-  `branch_id` long,
-  `resource_id` varchar(256) ,
-  `table_name` varchar(32) ,
-  `pk` varchar(36) ,
-  `gmt_create` datetime ,
-  `gmt_modified` datetime,
-  primary key(`row_key`)
-);
+CREATE TABLE IF NOT EXISTS `lock_table`
+(
+    `row_key`        VARCHAR(128) NOT NULL,
+    `xid`            VARCHAR(128),
+    `transaction_id` BIGINT,
+    `branch_id`      BIGINT       NOT NULL,
+    `resource_id`    VARCHAR(256),
+    `table_name`     VARCHAR(32),
+    `pk`             VARCHAR(36),
+    `gmt_create`     DATETIME,
+    `gmt_modified`   DATETIME,
+    PRIMARY KEY (`row_key`),
+    KEY `idx_branch_id` (`branch_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 </code></pre>
 <p>​	3.拉取nacos以及seata镜像并运行</p>
 <pre><code class="language-shell">docker run -d --name nacos -p 8848:8848 -e MODE=standalone -e MYSQL_MASTER_SERVICE_HOST=你的mysql所在ip -e MYSQL_MASTER_SERVICE_DB_NAME=nacos -e MYSQL_MASTER_SERVICE_USER=root -e MYSQL_MASTER_SERVICE_PASSWORD=mysql密码 -e MYSQL_SLAVE_SERVICE_HOST=你的mysql所在ip -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_DATABASE_NUM=1 nacos/nacos-server:latest
 </code></pre>
-<pre><code class="language-shell">docker run -d --name seata -p 8091:8091 -e SEATA_IP=你想指定的ip -e SEATA_PORT=8091 seataio/seata-server:latest
+<pre><code class="language-shell">docker run -d --name seata -p 8091:8091 -e SEATA_IP=你想指定的ip -e SEATA_PORT=8091 seataio/seata-server:1.4.2
 </code></pre>
 <h2>Seata配置</h2>
 <p>​	1.由于seata容器内没有内置vim,我们可以直接将要文件夹cp到宿主机外来编辑好了,再cp回去</p>
@@ -290,65 +293,81 @@ create table `lock_table` (
 <pre><code>transport.type=TCP
 transport.server=NIO
 transport.heartbeat=true
-transport.thread-factory.boss-thread-prefix=NettyBoss
-transport.thread-factory.worker-thread-prefix=NettyServerNIOWorker
-transport.thread-factory.server-executor-thread-prefix=NettyServerBizHandler
-transport.thread-factory.share-boss-worker=false
-transport.thread-factory.client-selector-thread-prefix=NettyClientSelector
-transport.thread-factory.client-selector-thread-size=1
-transport.thread-factory.client-worker-thread-prefix=NettyClientWorkerThread
-transport.thread-factory.boss-thread-size=1
-transport.thread-factory.worker-thread-size=8
+transport.enableClientBatchSendRequest=false
+transport.threadFactory.bossThreadPrefix=NettyBoss
+transport.threadFactory.workerThreadPrefix=NettyServerNIOWorker
+transport.threadFactory.serverExecutorThreadPrefix=NettyServerBizHandler
+transport.threadFactory.shareBossWorker=false
+transport.threadFactory.clientSelectorThreadPrefix=NettyClientSelector
+transport.threadFactory.clientSelectorThreadSize=1
+transport.threadFactory.clientWorkerThreadPrefix=NettyClientWorkerThread
+transport.threadFactory.bossThreadSize=1
+transport.threadFactory.workerThreadSize=default
 transport.shutdown.wait=3
-service.vgroup_mapping.你的事务组名=default
+service.vgroupMapping.你的事务组名=default
+service.default.grouplist=127.0.0.1:8091
 service.enableDegrade=false
-service.disable=false
-client.rm.async.commit.buffer.limit=10000
-client.rm.lock.retry.internal=10
-client.rm.lock.retry.times=30
-client.rm.report.retry.count=5
-client.rm.lock.retry.policy.branch-rollback-on-conflict=true
-client.rm.table.meta.check.enable=true
-client.rm.report.success.enable=true
-client.tm.commit.retry.count=5
-client.tm.rollback.retry.count=5
-store.mode=db
+service.disableGlobalTransaction=false
+client.rm.asyncCommitBufferLimit=10000
+client.rm.lock.retryInterval=10
+client.rm.lock.retryTimes=30
+client.rm.lock.retryPolicyBranchRollbackOnConflict=true
+client.rm.reportRetryCount=5
+client.rm.tableMetaCheckEnable=false
+client.rm.tableMetaCheckerInterval=60000
+client.rm.sqlParserType=druid
+client.rm.reportSuccessEnable=false
+client.rm.sagaBranchRegisterEnable=false
+client.tm.commitRetryCount=5
+client.tm.rollbackRetryCount=5
+client.tm.defaultGlobalTransactionTimeout=60000
+client.tm.degradeCheck=false
+client.tm.degradeCheckAllowTimes=10
+client.tm.degradeCheckPeriod=2000
+store.mode=file
+store.publicKey=
 store.file.dir=file_store/data
-store.file.max-branch-session-size=16384
-store.file.max-global-session-size=512
-store.file.file-write-buffer-cache-size=16384
-store.file.flush-disk-mode=async
-store.file.session.reload.read_size=100
-store.db.datasource=dbcp
-store.db.db-type=mysql
-store.db.driver-class-name=com.mysql.jdbc.Driver
-store.db.url=jdbc:mysql://你的mysql所在ip:3306/seata?useUnicode=true
-store.db.user=mysql帐号
+store.file.maxBranchSessionSize=16384
+store.file.maxGlobalSessionSize=512
+store.file.fileWriteBufferCacheSize=16384
+store.file.flushDiskMode=async
+store.file.sessionReloadReadSize=100
+store.db.datasource=druid
+store.db.dbType=mysql
+store.db.driverClassName=com.mysql.jdbc.Driver
+store.db.url=jdbc:mysql://你的mysql所在ip:3306/seata?useUnicode=true&amp;rewriteBatchedStatements=true
+store.db.user=mysql账号
 store.db.password=mysql密码
-store.db.min-conn=1
-store.db.max-conn=3
-store.db.global.table=global_table
-store.db.branch.table=branch_table
-store.db.query-limit=100
-store.db.lock-table=lock_table
-server.recovery.committing-retry-period=1000
-server.recovery.asyn-committing-retry-period=1000
-server.recovery.rollbacking-retry-period=1000
-server.recovery.timeout-retry-period=1000
-server.max.commit.retry.timeout=-1
-server.max.rollback.retry.timeout=-1
-client.undo.data.validation=true
-client.undo.log.serialization=jackson
-server.undo.log.save.days=7
-server.undo.log.delete.period=86400000
-client.undo.log.table=undo_log
+store.db.minConn=5
+store.db.maxConn=30
+store.db.globalTable=global_table
+store.db.branchTable=branch_table
+store.db.queryLimit=100
+store.db.lockTable=lock_table
+store.db.maxWait=5000
+server.recovery.committingRetryPeriod=1000
+server.recovery.asynCommittingRetryPeriod=1000
+server.recovery.rollbackingRetryPeriod=1000
+server.recovery.timeoutRetryPeriod=1000
+server.maxCommitRetryTimeout=-1
+server.maxRollbackRetryTimeout=-1
+server.rollbackRetryTimeoutUnlockEnable=false
+client.undo.dataValidation=true
+client.undo.logSerialization=jackson
+client.undo.onlyCareUpdateColumns=true
+server.undo.logSaveDays=7
+server.undo.logDeletePeriod=86400000
+client.undo.logTable=undo_log
+client.undo.compress.enable=true
+client.undo.compress.type=zip
+client.undo.compress.threshold=64k
+log.exceptionRate=100
 transport.serialization=seata
 transport.compressor=none
 metrics.enabled=false
-metrics.registry-type=compact
-metrics.exporter-list=prometheus
-metrics.exporter-prometheus-port=9898
-client.support.spring.datasource.autoproxy=false
+metrics.registryType=compact
+metrics.exporterList=prometheus
+metrics.exporterPrometheusPort=9898
 </code></pre>
 <p>详细参数配置请点<a href="http://seata.io/zh-cn/docs/user/configurations.html">此处</a></p>
 <p>​	4.registry.conf编辑为如下内容</p>
@@ -361,41 +380,6 @@ client.support.spring.datasource.autoproxy=false
     namespace = &quot;&quot;
     cluster = &quot;default&quot;
   }
-  eureka {
-    serviceUrl = &quot;http://localhost:8761/eureka&quot;
-    application = &quot;default&quot;
-    weight = &quot;1&quot;
-  }
-  redis {
-    serverAddr = &quot;localhost:6379&quot;
-    db = &quot;0&quot;
-  }
-  zk {
-    cluster = &quot;default&quot;
-    serverAddr = &quot;127.0.0.1:2181&quot;
-    session.timeout = 6000
-    connect.timeout = 2000
-  }
-  consul {
-    cluster = &quot;default&quot;
-    serverAddr = &quot;127.0.0.1:8500&quot;
-  }
-  etcd3 {
-    cluster = &quot;default&quot;
-    serverAddr = &quot;http://localhost:2379&quot;
-  }
-  sofa {
-    serverAddr = &quot;127.0.0.1:9603&quot;
-    application = &quot;default&quot;
-    region = &quot;DEFAULT_ZONE&quot;
-    datacenter = &quot;DefaultDataCenter&quot;
-    cluster = &quot;default&quot;
-    group = &quot;SEATA_GROUP&quot;
-    addressWaitTime = &quot;3000&quot;
-  }
-  file {
-    name = &quot;file.conf&quot;
-  }
 }
 
 config {
@@ -406,24 +390,6 @@ config {
     serverAddr = &quot;nacos容器ip:8848&quot;
     namespace = &quot;&quot;
   }
-  consul {
-    serverAddr = &quot;127.0.0.1:8500&quot;
-  }
-  apollo {
-    app.id = &quot;seata-server&quot;
-    apollo.meta = &quot;http://192.168.1.204:8801&quot;
-  }
-  zk {
-    serverAddr = &quot;127.0.0.1:2181&quot;
-    session.timeout = 6000
-    connect.timeout = 2000
-  }
-  etcd3 {
-    serverAddr = &quot;http://localhost:2379&quot;
-  }
-  file {
-    name = &quot;file.conf&quot;
-  }
 }
 </code></pre>
 <p>​	5.配置完成后使用如下命令,把修改完成的registry.conf复制到容器中,并重启查看日志运行</p>
@@ -431,51 +397,16 @@ config {
 docker restart seata
 docker logs -f seata
 </code></pre>
-<p>​	<a href="http://6.xn--nacos-config-w19s089u.sh">6.修改nacos-config.sh</a></p>
-<pre><code>for line in $(cat nacos-config.txt)
-
-do
-
-key=${line%%=*}
-value=${line#*=}
-echo &quot;\r\n set &quot;${key}&quot; = &quot;${value}
-
-result=`curl -X POST &quot;http://nacos容器的ip:8848/nacos/v1/cs/configs?dataId=$key&amp;group=SEATA_GROUP&amp;content=$value&quot;`
-
-if [ &quot;$result&quot;x == &quot;true&quot;x ]; then
-
-  echo &quot;\033[42;37m $result \033[0m&quot;
-
-else
-
-  echo &quot;\033[41;37 $result \033[0m&quot;
-  let error++
-
-fi
-
-done
-
-
-if [ $error -eq 0 ]; then
-
-echo  &quot;\r\n\033[42;37m init nacos config finished, please start seata-server. \033[0m&quot;
-
-else
-
-echo  &quot;\r\n\033[41;33m init nacos config fail. \033[0m&quot;
-
-fi
-</code></pre>
-<p>​	7.运行nacos-config.sh将配置上传的nacos中,登录nacos控制中心查看</p>
+<p>​	6.运行nacos-config.sh导入Nacos配置</p>
+<p>eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password</p>
+<p>具体参数释义参考：<a href="https://github.com/seata/seata/blob/1.4.2/script/config-center/README.md">配置导入说明</a></p>
+<p>​	7.登录nacos控制中心查看</p>
 <p><img src="/img/blog/20191202205912.png" alt="20191202205912"></p>
 <p>​	如图所示便是成功了.</p>
 <h1>进行调试</h1>
 <p>​	1.拉取博文中所示的项目,修改test-service的application.yml与registry.conf</p>
 <pre><code>registry {
   type = &quot;nacos&quot;
-  file {
-    name = &quot;file.conf&quot;
-  }
   nacos {
     serverAddr = &quot;宿主机ip:8848&quot;
     namespace = &quot;&quot;
@@ -484,14 +415,6 @@ fi
 }
 config {
   type = &quot;nacos&quot;
-  file {
-    name = &quot;file.conf&quot;
-  }
-  zk {
-    serverAddr = &quot;127.0.0.1:2181&quot;
-    session.timeout = 6000
-    connect.timeout = 2000
-  }
   nacos {
     serverAddr = &quot;宿主机ip:8848&quot;
     namespace = &quot;&quot;
@@ -570,8 +493,23 @@ server:
   tomcat:
     max-http-post-size: 104857600
 </code></pre>
-<p>​	4.依次运行test-service,test-client.</p>
-<p>​	5.查看nacos中服务列表是否如下图所示</p>
+<p>​	4. 在每个所涉及的 db 执行 undo_log 脚本.</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> <span class="hljs-string">`undo_log`</span>
+(
+    <span class="hljs-string">`branch_id`</span>     <span class="hljs-built_in">BIGINT</span>       <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">'branch transaction id'</span>,
+    <span class="hljs-string">`xid`</span>           <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">128</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">'global transaction id'</span>,
+    <span class="hljs-string">`context`</span>       <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">128</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">'undo_log context,such as serialization'</span>,
+    <span class="hljs-string">`rollback_info`</span> LONGBLOB     <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">'rollback info'</span>,
+    <span class="hljs-string">`log_status`</span>    <span class="hljs-built_in">INT</span>(<span class="hljs-number">11</span>)      <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">'0:normal status,1:defense status'</span>,
+    <span class="hljs-string">`log_created`</span>   DATETIME(<span class="hljs-number">6</span>)  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">'create datetime'</span>,
+    <span class="hljs-string">`log_modified`</span>  DATETIME(<span class="hljs-number">6</span>)  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">'modify datetime'</span>,
+    <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">KEY</span> <span class="hljs-string">`ux_undo_log`</span> (<span class="hljs-string">`xid`</span>, <span class="hljs-string">`branch_id`</span>)
+) <span class="hljs-keyword">ENGINE</span> = <span class="hljs-keyword">InnoDB</span>
+  AUTO_INCREMENT = <span class="hljs-number">1</span>
+  <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CHARSET</span> = utf8 <span class="hljs-keyword">COMMENT</span> =<span class="hljs-string">'AT transaction mode undo table'</span>;
+</code></pre>
+<p>​	5.依次运行test-service,test-client.</p>
+<p>​	6.查看nacos中服务列表是否如下图所示</p>
 <p><img src="/img/blog/20191203132351.png" alt="20191203132351"></p>
 <h1>总结</h1>
 <p>关于nacos与seata的docker部署已经完成了,更详细的内容希望希望大家访问以下地址阅读详细文档</p>
