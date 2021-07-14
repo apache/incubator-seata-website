@@ -1,6 +1,6 @@
 {
   "filename": "datasource.md",
-  "__html": "<h1>数据源支持</h1>\n<p>TBD</p>\n",
+  "__html": "<h1>数据源支持</h1>\n<h2>AT模式</h2>\n<p>AT模式支持的数据库有：MySQL、Oracle、PostgreSQL和 TiDB</p>\n<h2>TCC模式</h2>\n<p>TCC模式不依赖数据源(1.4.2版本)</p>\n",
   "link": "/zh-cn/docs/user/datasource.html",
   "meta": {
     "title": "Seata 数据源支持",
