@@ -49,7 +49,7 @@ class Home extends Language {
     const language = this.getLanguage();
     const dataSource = homeConfig[language];
     const { headerType } = this.state;
-    const headerLogo = headerType === 'primary' ? '/img/seata_logo_white.png' : '/img/seata_logo.png';
+    const headerLogo = headerType === 'primary' ? '//img.alicdn.com/tfs/TB1qTjWw.T1gK0jSZFhXXaAtVXa-4802-1285.png' : '//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png';
     return (
       <div className="home-page">
         <section className="top-section">
@@ -68,7 +68,7 @@ class Home extends Language {
               <p className="product-desc">{dataSource.brand.briefIntroduction}</p>
               <div className="button-area">
               {
-                dataSource.brand.buttons.map(b => <Button type={b.type} key={b.type} link={b.link} target={b.target}>{b.text}</Button>)
+                dataSource.brand.buttons.map(b => <Button type={b.type} key={b.text} link={b.link} target={b.target}>{b.text}</Button>)
               }
               </div>
               <div className="github-buttons">
@@ -89,6 +89,10 @@ class Home extends Language {
                 </div>
                 </a>
               </div>
+              <div className="version-note">
+                <a target="_blank" rel="noopener noreferrer" href={getLink(dataSource.brand.versionNote.link)}>{dataSource.brand.versionNote.text}</a>
+              </div>
+              <div className="release-date">{dataSource.brand.releaseDate}</div>
             </div>
             <div className="animation">
             <img className="img1" src="//img.alicdn.com/tfs/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png" />
@@ -154,7 +158,7 @@ class Home extends Language {
             }
           </div>
         </section>
-        <Footer logo="/img/seata_logo_gray.png" language={language} />
+        <Footer logo="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png" language={language} />
       </div>
     );
   }
