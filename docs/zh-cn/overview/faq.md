@@ -6,7 +6,6 @@ description: Seata 常见问题。
 
 # 常见问题
 
-
 <a href="#1" target="_self">1.Seata 目前可以用于生产环境吗？</a>
 
 <a href="#2" target="_self">2.Seata 目前支持高可用吗？</a>
@@ -33,7 +32,7 @@ description: Seata 常见问题。
 
 <a href="#13" target="_self">13.支持多主键? </a>
 
-<a href="#14" target="_self">14.使用HikariDataSource报错如何解决 ? </a>   
+<a href="#14" target="_self">14.使用HikariDataSource报错如何解决 ? </a>
 
 <a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
 
@@ -59,6 +58,14 @@ description: Seata 常见问题。
 <a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a>
 
 <a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
+
+<a href="#27" target="_self">27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</a>
+
+<a href="#28" target="_self">28. 数据库开启自动更新时间戳导致脏数据无法回滚？</a>
+
+<a href="#29" target="_self">29. 还没到全局事务超时时间就出现了timeoutrollcking?</a>
+
+<a href="#30" target="_self">30. Seata现阶段支持的分库分表解决方案？</a>
 
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -353,3 +360,36 @@ public void B(){
 
 ------
 
+<h3 id='27'>Q: 27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</h3>
+
+**A：**
+
+这个错误是由非正常Seata客户端建立连接引起（如通过http访问Seata server的端口，云服务器的端口扫描等）。这种连接没有发送注册信息，被认为是无用连接，该异常可以忽视。
+
+****
+
+<h3 id='28'>Q: 28. 数据库开启自动更新时间戳导致脏数据无法回滚？</h3>
+
+**A:**
+
+由于业务提交，seata记录当前镜像后，数据库又进行了一次时间戳的更新，导致镜像校验不通过。
+
+解决方案1：关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。
+
+解决方案2：update语句别把没更新的字段也放入更新语句。
+
+****
+
+<h3 id='29'>Q: 29. 还没到全局事务超时时间就出现了timeoutrollcking?</h3>
+
+**A:**
+
+有可能是多tc时区不一致导致的，建议将多个tc时区与db模式数据库时区保持一致统一。
+
+****
+
+<h3 id='30'>Q: 30. Seata现阶段支持的分库分表解决方案？</h3>
+
+**A：**
+
+现阶段只支持ShardingSphere。关于分库分表与Seata兼容的问题，Seata支持某一个分库分表方案是需要分库分表框架团队来提供集成兼容方案，而不是Seata提供。目前Seata正与各分库分表框架团队进行沟通来商讨集成兼容方案。
