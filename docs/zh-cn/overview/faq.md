@@ -66,6 +66,7 @@ description: Seata 常见问题。
 <a href="#29" target="_self">29. 还没到全局事务超时时间就出现了timeoutrollcking?</a>
 
 <a href="#30" target="_self">30. Seata现阶段支持的分库分表解决方案？</a>
+
 <a href="#31" target="_self">31. Seata 使用注册中心注册的地址有什么限制？</a>
 
 ********
