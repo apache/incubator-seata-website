@@ -43,9 +43,9 @@ description: Seata 常见问题。
 <a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 
- <a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a>
+<a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a>
 
- <a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
+<a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
 
 <a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 
@@ -235,8 +235,8 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 ********
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</h3>
-
 **A:** 
+
 ```
 需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
@@ -249,6 +249,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 由于apache-dubbo 在加载Filter时,会将 alibaba-dubbo 的filter一并加载且 2.7.0 版本com.alibaba.dubbo.rpc.Invoker中   
 ``Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;``  
 误使用了org.apache.dubbo.rpc.Invocation来入参(2.7.1修复),导致出现    
+
 ```java
 java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/dubbo/rpc/Invocation;)Lcom/alibaba/dubbo/rpc/Result;
 ```
@@ -290,9 +291,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 
 **A:** 
 
-@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 
-连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
-只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
+@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional 只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
 
 ********
 <h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
@@ -343,8 +342,8 @@ seata:
 @GlobalTransactional(timeout=60000)
 public void A（）{
 
-call remoting B();//远程调用B服务
-local DB operation;
+​	call remoting B();//远程调用B服务
+​	local DB operation;
 
 }
 
@@ -376,9 +375,9 @@ public void B(){
 
 由于业务提交，seata记录当前镜像后，数据库又进行了一次时间戳的更新，导致镜像校验不通过。
 
-解决方案1：关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。
+**解决方案1：**关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。
 
-解决方案2：update语句别把没更新的字段也放入更新语句。
+**解决方案2：**update语句别把没更新的字段也放入更新语句。
 
 ****
 
