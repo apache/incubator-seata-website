@@ -28,7 +28,7 @@ description: Seata FAQ.
 
 <a href="#11" target="_self">11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</a>
 
-<a href="#12" target="_self">12.How TC uses mysql8？</a>
+<a href="#12" target="_self">12.How TC uses mysql8?</a>
 
 <a href="#13" target="_self">13.Support multiple primary keys?</a>
 
@@ -43,7 +43,7 @@ description: Seata FAQ.
 <a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 
- <a href="#19" target="_self">19. NoSuchMethodError in apache-dubbo 2.7.0？</a>
+ <a href="#19" target="_self">19. NoSuchMethodError in apache-dubbo 2.7.0?</a>
 
  <a href="#20" target="_self">20.What are the precautions for using AT mode?</a>
 
