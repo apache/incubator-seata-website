@@ -185,7 +185,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <hr>
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</h3>
-<p><strong>A:</strong></p>
+**A:** 
 <pre><code>需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
 </code></pre>
@@ -229,9 +229,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <hr>
 <h3 id='22'>Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</h3>
 <p><strong>A:</strong></p>
-<p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager
-连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
-只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。</p>
+<p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional 只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。</p>
 <hr>
 <h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
 <p><strong>A:</strong></p>
@@ -258,8 +256,8 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <p>举例说明：</p>
 <p>@GlobalTransactional(timeout=60000)
 public void A（）{</p>
-<p>call remoting B();//远程调用B服务
-local DB operation;</p>
+<p>​	call remoting B();//远程调用B服务
+​	local DB operation;</p>
 <p>}</p>
 <p>public void B(){</p>
 <p>}</p>
@@ -281,8 +279,8 @@ local DB operation;</p>
 <h3 id='28'>Q: 28. 数据库开启自动更新时间戳导致脏数据无法回滚？</h3>
 <p><strong>A:</strong></p>
 <p>由于业务提交，seata记录当前镜像后，数据库又进行了一次时间戳的更新，导致镜像校验不通过。</p>
-<p>解决方案1：关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。</p>
-<p>解决方案2：update语句别把没更新的字段也放入更新语句。</p>
+<p>**解决方案1：**关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。</p>
+<p>**解决方案2：**update语句别把没更新的字段也放入更新语句。</p>
 <hr>
 <h3 id='29'>Q: 29. 还没到全局事务超时时间就出现了timeoutrollcking?</h3>
 <p><strong>A:</strong></p>
