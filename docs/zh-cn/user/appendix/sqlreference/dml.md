@@ -10,7 +10,7 @@ description: Seata DML语句
 
 | 类型     | SQL 实例                                                     | 是否支持 |
 | :------- | :----------------------------------------------------------- | :------- |
-| INSERT   | `INSERT INTO tb1_name (col_name,...)VALUES ({expr | FAULT},...),(...),...` 或 `INSERT INTO tb1_nameSET col_name={expr | DEFAULT}, ...` | 是       |
+| INSERT   | `INSERT INTO tb1_name (col_name,...) VALUES ({expr | FAULT},...),(...),...` 或 `INSERT INTO tb1_name SET col_name={expr | DEFAULT}, ...`或`INSERT INTO tb1_name (col_name,...) VALUES ({expr | FAULT},...) ON DUPLICATE KEY UPDATE field1=value1,...;` | 是       |
 | UPDATE   | `UPDATE tb1_nameSET col_name1=expr1 [, col_name2=expr2 ...][WHERE where_definition]` | 是       |
 | DELETE   | `DELETE FROM tb1_name [WHERE where_definition]`              | 是       |
 | SELECT   | `SELECT [ALL | DISTINCT | DISTINCTROW ]select_expr, ... FROM tb1_name[WHERE where_definition]` | 是       |
