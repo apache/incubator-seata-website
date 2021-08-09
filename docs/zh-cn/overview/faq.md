@@ -73,6 +73,8 @@ description: Seata 常见问题。
 Error: Could not create the Java Virtual Machine.
 Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</a>
 
+<a href="#33" target="_self">33. Seata的SQL支持范围？</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -414,10 +416,18 @@ Seata 注册中心不能注册 0.0.0.0 或 127.0.0.1 的地址，当自动注册
 <h3 id='32'>Q: 32.Unrecognized VM option 'CMSParallelRemarkEnabled'
 Error: Could not create the Java Virtual Machine.
 Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</h3>
-
 **A:**
 
 这个是因为使用了高版本的jdk导致。高版本的jdk取消了cms处理器，转而采用了zgc代替他。
 解决方案有两个，选其中之一便可：
 1、降级jdk版本
 2、在seata的启动脚本中删除cms的jdk命令
+
+****
+
+<h3 id='33'>Q: 33.Seata的SQL支持范围？</h3>
+
+**A:**
+
+请参考附录->[SQL参考](http://seata.io/zh-cn/docs/user/appendix/sqlreference/sql-restrictions.html)
+
