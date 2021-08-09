@@ -69,6 +69,10 @@ description: Seata FAQ.
 
 <a href="#31" target="_self">31.What are the restrictions on Seata's address registered with the registry?</a>
 
+<a href="#32" target="_self">32.seata-server cannot be started due to Unrecognized VM option 'CMSParallelRemarkEnabled'
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.?</a>
+
 ********
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
 
@@ -408,7 +412,7 @@ Due to the business submission, after Seata records the current image, the datab
 
 **Solution 1:** Turn off automatic timestamp update of the database. The timestamp update of data, such as modification and creation time, is maintained at the code level. For example, MybatisPlus can automatically fill in.
 
-**Solution 2: **UPDATE statement don't put the fields that haven't been updated into the update statement.
+**Solution 2:**UPDATE statement don't put the fields that haven't been updated into the update statement.
 
 ****
 
@@ -433,3 +437,19 @@ Only shardingsphere is supported at this stage. With regard to the compatibility
 **A:**
 
 The Seata registry cannot register addresses of 0.0.0.0 or 127.0.0.1. When the address is automatically registered as the above address, you can start the parameter `-h` or the container environment variable `SEATA_IP`. When the and business services are on different networks, the registered address can be specified as `NAT_IP` or `public network IP`, but it is necessary to ensure that the health inspection activities of the registration center are unobstructed.
+
+****
+
+<h3 id='32'>Q: 32. seata-server cannot be started due to Unrecognized VM option 'CMSParallelRemarkEnabled'
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.?</h3>
+
+**A:**
+
+This is due to the use of a higher version of JDK. The higher version of JDK cancels the CMS processor and replaces it with ZGC.
+
+There are two solutions. Choose one of them:
+
+1. Downgrade JDK version
+
+2. Delete the JDK command of CMS in the startup script of Seata
