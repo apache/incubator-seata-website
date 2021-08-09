@@ -429,5 +429,5 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 **A:**
 
-请参考附录->[SQL参考](http://seata.io/zh-cn/docs/user/appendix/sqlreference/sql-restrictions.html)
+请参考附录->[SQL参考](http://seata.io/zh-cn/docs/user/sqlreference/sql-restrictions.html)
 
