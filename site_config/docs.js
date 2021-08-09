@@ -248,6 +248,27 @@ export default {
                                 title: '事务状态',
                                 link: '/zh-cn/docs/user/appendix/global-transaction-status.html',
                             },
+                            {
+                                title: 'SQL参考',
+                                children: [
+                                    {
+                                        title: 'SQL限制',
+                                        link: '/zh-cn/docs/user/appendix/sqlreference/sql-restrictions.html',
+                                    },
+                                    {
+                                        title: 'DML语句',
+                                        link: '/zh-cn/docs/user/appendix/sqlreference/dml.html',
+                                    },
+                                    {
+                                        title: 'SQL修饰',
+                                        link: '/zh-cn/docs/user/appendix/sql-decoration.html',
+                                    },
+                                    {
+                                        title: '函数',
+                                        link: '/zh-cn/docs/user/appendix/function.html',
+                                    },
+                                ]
+                            },
                         ]
                     }]
             },
