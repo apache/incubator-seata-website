@@ -487,42 +487,6 @@
       }
     },
     {
-      "filename": "dml.md",
-      "link": "/zh-cn/docs/user/appendix/sqlreference/dml.html",
-      "meta": {
-        "title": "DML语句",
-        "keywords": "Seata",
-        "description": "Seata DML语句"
-      }
-    },
-    {
-      "filename": "function.md",
-      "link": "/zh-cn/docs/user/appendix/sqlreference/function.html",
-      "meta": {
-        "title": "函数",
-        "keywords": "Seata",
-        "description": "Seata 函数"
-      }
-    },
-    {
-      "filename": "sql-decoration.md",
-      "link": "/zh-cn/docs/user/appendix/sqlreference/sql-decoration.html",
-      "meta": {
-        "title": "DML语句",
-        "keywords": "Seata",
-        "description": "Seata DML语句"
-      }
-    },
-    {
-      "filename": "sql-restrictions.md",
-      "link": "/zh-cn/docs/user/appendix/sqlreference/sql-restrictions.html",
-      "meta": {
-        "title": "SQL限制",
-        "keywords": "Seata",
-        "description": "Seata SQL限制"
-      }
-    },
-    {
       "filename": "apollo.md",
       "link": "/zh-cn/docs/user/configuration/apollo.html",
       "meta": {}
@@ -661,6 +625,42 @@
         "title": "Seata Spring支持",
         "keywords": "Seata",
         "description": "Seata Spring支持。"
+      }
+    },
+    {
+      "filename": "dml.md",
+      "link": "/zh-cn/docs/user/sqlreference/dml.html",
+      "meta": {
+        "title": "DML语句",
+        "keywords": "Seata",
+        "description": "Seata DML语句"
+      }
+    },
+    {
+      "filename": "function.md",
+      "link": "/zh-cn/docs/user/sqlreference/function.html",
+      "meta": {
+        "title": "函数",
+        "keywords": "Seata",
+        "description": "Seata 函数"
+      }
+    },
+    {
+      "filename": "sql-decoration.md",
+      "link": "/zh-cn/docs/user/sqlreference/sql-decoration.html",
+      "meta": {
+        "title": "DML语句",
+        "keywords": "Seata",
+        "description": "Seata DML语句"
+      }
+    },
+    {
+      "filename": "sql-restrictions.md",
+      "link": "/zh-cn/docs/user/sqlreference/sql-restrictions.html",
+      "meta": {
+        "title": "SQL限制",
+        "keywords": "Seata",
+        "description": "Seata SQL限制"
       }
     },
     {

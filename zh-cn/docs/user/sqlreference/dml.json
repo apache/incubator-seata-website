@@ -1,0 +1,10 @@
+{
+  "filename": "dml.md",
+  "__html": "<h1>DML语句</h1>\n<p>本文介绍 DML 语句类型、SQL 实例以及 Seata 是否支持，帮助您在 Seata 更顺畅的使用 SQL。</p>\n<table>\n<thead>\n<tr>\n<th style=\"text-align:left\">类型</th>\n<th style=\"text-align:left\">SQL 实例</th>\n<th style=\"text-align:left\">是否支持</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left\">INSERT</td>\n<td style=\"text-align:left\"><code>INSERT INTO tb1_name (col_name,...) VALUES ({expr | FAULT},...),(...),...</code> 或 <code>INSERT INTO tb1_name SET col_name={expr | DEFAULT}, ...</code>或<code>INSERT INTO tb1_name (col_name,...) VALUES ({expr | FAULT},...) ON DUPLICATE KEY UPDATE field1=value1,...;</code></td>\n<td style=\"text-align:left\">是</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">UPDATE</td>\n<td style=\"text-align:left\"><code>UPDATE tb1_nameSET col_name1=expr1 [, col_name2=expr2 ...][WHERE where_definition]</code></td>\n<td style=\"text-align:left\">是</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">DELETE</td>\n<td style=\"text-align:left\"><code>DELETE FROM tb1_name [WHERE where_definition]</code></td>\n<td style=\"text-align:left\">是</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">SELECT</td>\n<td style=\"text-align:left\"><code>SELECT [ALL | DISTINCT | DISTINCTROW ]select_expr, ... FROM tb1_name[WHERE where_definition]</code></td>\n<td style=\"text-align:left\">是</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">REPLACE</td>\n<td style=\"text-align:left\"><code>REPLACE [LOW_PRIORITY | DELAYED][INTO] tb1_name [(col_name,...)]VALUES ({expr | DEFAULT},...),(...),...</code>或<code>REPLACE [LOW_PRIORITY | DELAYED][INTO] tb1_nameSET col_name={expr | DEFAULT}, ...</code></td>\n<td style=\"text-align:left\">否</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">TRUNCATE</td>\n<td style=\"text-align:left\"><code>TRUNCATE [TABLE] tb1_name</code></td>\n<td style=\"text-align:left\">否</td>\n</tr>\n</tbody>\n</table>\n",
+  "link": "/zh-cn/docs/user/sqlreference/dml.html",
+  "meta": {
+    "title": "DML语句",
+    "keywords": "Seata",
+    "description": "Seata DML语句"
+  }
+}
