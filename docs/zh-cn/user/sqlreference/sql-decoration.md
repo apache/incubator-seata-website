@@ -6,7 +6,7 @@ description: Seata DML语句
 
 # SQL修饰
 
-GTS 的隔离级别默认为读未提交，该模式下本文表中的 select 语句的 SQL 修饰用法都是支持的；使用 for update 代理可以让 Seata 达到读已提交，该模式下 select 语句的用法只能部分支持。
+Seata 的隔离级别默认为读未提交，该模式下本文表中的 select 语句的 SQL 修饰用法都是支持的；使用 for update 代理可以让 Seata 达到读已提交，该模式下 select 语句的用法只能部分支持。
 
 ### DML语句支持
 
