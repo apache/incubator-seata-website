@@ -69,6 +69,10 @@ description: Seata 常见问题。
 
 <a href="#31" target="_self">31. Seata 使用注册中心注册的地址有什么限制？</a>
 
+<a href="#32" target="_self">32. seata-server cannot be started due to Unrecognized VM option 'CMSParallelRemarkEnabled'
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -228,6 +232,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 <h3 id='17'>Q: 17.Seata 支持哪些 RPC 框架?</h3>
 
 **A:** 
+
 ```
 1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
 2. TCC 模式支持Dubbo、Spring Cloud和sofa-RPC。
@@ -246,6 +251,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 <h3 id='19'>Q: 19. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
 
 **A:** 
+
 由于apache-dubbo 在加载Filter时,会将 alibaba-dubbo 的filter一并加载且 2.7.0 版本com.alibaba.dubbo.rpc.Invoker中   
 ``Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;``  
 误使用了org.apache.dubbo.rpc.Invocation来入参(2.7.1修复),导致出现    
@@ -375,9 +381,9 @@ public void B(){
 
 由于业务提交，seata记录当前镜像后，数据库又进行了一次时间戳的更新，导致镜像校验不通过。
 
-**解决方案1：**关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。
+**解决方案1:**关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。
 
-**解决方案2：**update语句别把没更新的字段也放入更新语句。
+**解决方案2:**update语句别把没更新的字段也放入更新语句。
 
 ****
 
@@ -391,7 +397,7 @@ public void B(){
 
 <h3 id='30'>Q: 30. Seata现阶段支持的分库分表解决方案？</h3>
 
-**A：**
+**A:**
 
 现阶段只支持ShardingSphere。关于分库分表与Seata兼容的问题，Seata支持某一个分库分表方案是需要分库分表框架团队来提供集成兼容方案，而不是Seata提供。目前Seata正与各分库分表框架团队进行沟通来商讨集成兼容方案。
 
@@ -399,6 +405,19 @@ public void B(){
 
 <h3 id='31'>Q: 31.Seata 使用注册中心注册的地址有什么限制？</h3>
 
-**A：**
+**A:**
 
 Seata 注册中心不能注册 0.0.0.0 或 127.0.0.1 的地址，当自动注册为上述地址时可以通过启动参数 -h 或容器环境变量SEATA_IP来指定。当和业务服务处于不同的网络时注册地址可以指定为 NAT_IP或公网IP，但需要保证注册中心的健康检查探活是通畅的。
+
+****
+
+<h3 id='32'>Q: 32.Unrecognized VM option 'CMSParallelRemarkEnabled'
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</h3>
+
+**A:**
+
+这个是因为使用了高版本的jdk导致。高版本的jdk取消了cms处理器，转而采用了zgc代替他。
+解决方案有两个，选其中之一便可：
+1、降级jdk版本
+2、在seata的启动脚本中删除cms的jdk命令
