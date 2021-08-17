@@ -27,13 +27,13 @@ export default {
                     text: 'Distributed transaction solution',
                     link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0'
                 }, {
-                    key: 'msha',
-                    text: 'High-availability solution',
-                    link: 'https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0'
-                }, {
                     key: 'micoservice',
                     text: 'Microservice solutions',
                     link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0'
+                }, {
+                    key: 'msha',
+                    text: 'High-availability solution',
+                    link: 'https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0'
                 }, {
                     key: 'serverless',
                     text: 'Serverless solution for miscoservices',
@@ -41,7 +41,7 @@ export default {
                 },
                 {
                     key: 'appas',
-                    text: 'APaaS solution',
+                    text: 'PaaS solution',
                     link: 'https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0'
                 }, {
                     key: 'mesh',
@@ -138,13 +138,13 @@ export default {
                     text: '分布式事务解决方案',
                     link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0'
                 }, {
-                    key: 'msha',
-                    text: '高可用解决方案',
-                    link: 'https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0'
-                }, {
                     key: 'micoservice',
                     text: '微服务解决方案',
                     link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0'
+                }, {
+                    key: 'msha',
+                    text: '高可用解决方案',
+                    link: 'https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0'
                 }, {
                     key: 'serverless',
                     text: '微服务Serverless解决方案',
@@ -152,7 +152,7 @@ export default {
                 },
                 {
                     key: 'appas',
-                    text: 'APaaS解决方案',
+                    text: 'PaaS解决方案',
                     link: 'https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0'
                 }, {
                     key: 'mesh',
