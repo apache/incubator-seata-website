@@ -269,6 +269,10 @@ export default {
                                 title: '事务状态',
                                 link: '/zh-cn/docs/user/appendix/global-transaction-status.html',
                             },
+                            {
+                                title: '事务隔离',
+                                link: '/zh-cn/docs/user/appendix/isolation.html',
+                            }
                         ]
                     }]
             },
