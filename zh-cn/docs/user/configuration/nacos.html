@@ -59,6 +59,30 @@
 
 </code></pre>
 <h3>上传配置至Nacos配置中心</h3>
+<h4>通过dataId配置</h4>
+<ol>
+<li>
+<p>从v1.4.2版本开始，已支持从一个Nacos dataId中获取所有配置信息,你只需要额外添加一个dataId配置项。</p>
+</li>
+<li>
+<p>首先你需要在nacos新建配置，此处dataId为seataServer.properties,配置内容参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并按需修改保存</p>
+</li>
+<li>
+<p>在client参考如下配置进行修改,</p>
+</li>
+</ol>
+<pre><code class="language-yaml"><span class="hljs-attr">seata:</span>
+<span class="hljs-attr">  config:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">nacos</span>
+<span class="hljs-attr">    nacos:</span>
+<span class="hljs-attr">      server-addr:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span><span class="hljs-string">:8848</span>
+      <span class="hljs-string">group</span> <span class="hljs-string">:</span> <span class="hljs-string">"SEATA_GROUP"</span>
+<span class="hljs-attr">      namespace:</span> <span class="hljs-string">""</span>
+<span class="hljs-attr">      dataId:</span> <span class="hljs-string">"seataServer.properties"</span>
+<span class="hljs-attr">      username:</span> <span class="hljs-string">"nacos"</span>
+<span class="hljs-attr">      password:</span> <span class="hljs-string">"nacos"</span>
+</code></pre>
+<h4>通过脚本上传配置到Nacos</h4>
 <p>参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的nacos脚本,将信息提交到nacos控制台,如果有需要更改,可直接通过控制台更改.</p>
 <p>eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password</p>
 <p>详细解析参考 <a href="https://github.com/seata/seata/blob/develop/script/config-center/README.md">Readme文档</a></p>
