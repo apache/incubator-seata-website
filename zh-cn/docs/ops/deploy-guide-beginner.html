@@ -116,26 +116,59 @@
 <ul>
 <li><a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a></li>
 </ul>
-<h4>步骤三：数据源代理(不支持自动和手动配置并存,不支持XA数据源自动代理)</h4>
+<h4>步骤三：数据源代理（不支持自动和手动配置并存）</h4>
+<ol>
+<li>
+<p>如果使用seata-all</p>
 <ul>
-<li>0.9.0版本开始seata支持自动代理数据源</li>
-</ul>
-<pre><code>    1.1.0: seata-all取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
-    1.0.0: client.support.spring.datasource.autoproxy=true
-    0.9.0: support.spring.datasource.autoproxy=true
+<li>
+<p>0.9.0版本开始seata支持自动代理数据源</p>
+<pre><code>1.1.0: seata-all取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
+1.0.0: client.support.spring.datasource.autoproxy=true
+0.9.0: support.spring.datasource.autoproxy=true
 </code></pre>
+<p>如果采用XA模式，<code>@EnableAutoDataSourceProxy(dataSourceProxyMode = &quot;XA&quot;)</code></p>
+</li>
+<li>
+<p>手动配置可参考下方的例子</p>
+<pre><code>@Primary
+@Bean(&quot;dataSource&quot;)
+public DataSource dataSource(DataSource druidDataSource) {
+    //AT 代理 二选一
+    return new DataSourceProxy(druidDataSource);
+    //XA 代理
+    return new DataSourceProxyXA(druidDataSource)
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>如果使用seata-starter</p>
 <ul>
-<li>手动配置可参考下方的例子</li>
-</ul>
-<pre><code>    @Primary
-    @Bean(&quot;dataSource&quot;)
-    public DataSourceProxy dataSource(DataSource druidDataSource) {
-    	//AT 代理 二选一
-        return new DataSourceProxy(druidDataSource);
-        //XA 代理
-        return new DataSourceProxyXA(druidDataSource)
-    }
+<li>
+<p>使用自动代理数据源时，如果使用XA模式还需要调整配置文件<br>
+application.properties</p>
+<pre><code>seata.data-source-proxy-mode=XA  
 </code></pre>
+<p>application.yml</p>
+<pre><code>seata:
+  data-source-proxy-mode: XA
+</code></pre>
+</li>
+<li>
+<p>如何关闭seata-spring-boot-starter的数据源自动代理？<br>
+application.properties</p>
+<pre><code>seata.enable-auto-data-source-proxy=false  
+</code></pre>
+<p>application.yml</p>
+<pre><code>seata:
+  enable-auto-data-source-proxy: false
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
 <h4>步骤四：初始化GlobalTransactionScanner</h4>
 <ul>
 <li>手动</li>
