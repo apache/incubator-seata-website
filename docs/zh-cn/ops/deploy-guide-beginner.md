@@ -101,24 +101,52 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 #### 步骤二：undo_log建表、配置参数
 - <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>
 
-#### 步骤三：数据源代理(不支持自动和手动配置并存,不支持XA数据源自动代理)
-- 0.9.0版本开始seata支持自动代理数据源
-```
-    1.1.0: seata-all取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
-    1.0.0: client.support.spring.datasource.autoproxy=true
-    0.9.0: support.spring.datasource.autoproxy=true
-```
-- 手动配置可参考下方的例子
-```
-    @Primary
-    @Bean("dataSource")
-    public DataSourceProxy dataSource(DataSource druidDataSource) {
-    	//AT 代理 二选一
-        return new DataSourceProxy(druidDataSource);
-        //XA 代理
-        return new DataSourceProxyXA(druidDataSource)
-    }
-```
+#### 步骤三：数据源代理（不支持自动和手动配置并存）
+
+1. 如果使用seata-all
+    - 0.9.0版本开始seata支持自动代理数据源
+        ```
+        1.1.0: seata-all取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
+        1.0.0: client.support.spring.datasource.autoproxy=true
+        0.9.0: support.spring.datasource.autoproxy=true
+        ```
+        如果采用XA模式，`@EnableAutoDataSourceProxy(dataSourceProxyMode = "XA")`
+    
+    - 手动配置可参考下方的例子
+        ```
+        @Primary
+        @Bean("dataSource")
+        public DataSource dataSource(DataSource druidDataSource) {
+            //AT 代理 二选一
+            return new DataSourceProxy(druidDataSource);
+            //XA 代理
+            return new DataSourceProxyXA(druidDataSource)
+        }
+        ```
+
+2. 如果使用seata-starter
+    - 使用自动代理数据源时，如果使用XA模式还需要调整配置文件  
+        application.properties
+        ```
+        seata.data-source-proxy-mode=XA  
+        ```
+        application.yml
+        ```
+        seata:
+          data-source-proxy-mode: XA
+        ```
+    
+    - 如何关闭seata-spring-boot-starter的数据源自动代理？   
+        application.properties
+        ```
+        seata.enable-auto-data-source-proxy=false  
+        ```
+        application.yml
+        ```
+        seata:
+          enable-auto-data-source-proxy: false
+        ```
+  
 #### 步骤四：初始化GlobalTransactionScanner  
 - 手动
 ```  @Bean
