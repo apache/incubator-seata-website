@@ -75,6 +75,10 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#33" target="_self">33. Seata的SQL支持范围？</a>
 
+<a href="#34" target="_self">34. Seata的JDK版本要求？</a>
+
+<a href="#35" target="_self">35. Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -369,6 +373,8 @@ public void B(){
 
 影响：出现这种情况时，数据会整体回滚至A方法执行前的数据的初态，从数据一致性的视角上看，数据是整体一致的。
 
+除了上述情况，如果引用的是`seata-spring-boot-starter`的话，产生这个错误的原因也可能是因为一个bug，目前在1.5版本进行了修复，具体可以参考[issues4020](https://github.com/seata/seata/issues/4020)，[PR4039](https://github.com/seata/seata/pull/4039)。
+
 ------
 
 <h3 id='27'>Q: 27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</h3>
@@ -432,4 +438,18 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 **A:**
 
 请参考附录->[SQL参考](http://seata.io/zh-cn/docs/user/sqlreference/sql-restrictions.html)
+
+****
+
+<h3 id='34'>Q: 34.Seata的JDK版本要求？</h3>
+
+**A:**
+
+Seata需要的JDK版本为JDK8及以上。
+
+****
+
+<h3 id='35'>Q: 35.Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</h3>
+
+Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数据来，将实体的Long修改为BigInteger或BigDecimal即可解决问题。
 
