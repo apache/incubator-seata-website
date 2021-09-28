@@ -49,6 +49,8 @@
 Error: Could not create the Java Virtual Machine.
 Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</a></p>
 <p><a href="#33" target="_self">33. Seata的SQL支持范围？</a></p>
+<p><a href="#34" target="_self">34. Seata的JDK版本要求？</a></p>
+<p><a href="#35" target="_self">35. Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -278,6 +280,7 @@ public void A（）{</p>
 </li>
 </ol>
 <p>影响：出现这种情况时，数据会整体回滚至A方法执行前的数据的初态，从数据一致性的视角上看，数据是整体一致的。</p>
+<p>除了上述情况，如果引用的是<code>seata-spring-boot-starter</code>的话，产生这个错误的原因也可能是因为一个bug，目前在1.5版本进行了修复，具体可以参考<a href="https://github.com/seata/seata/issues/4020">issues4020</a>，<a href="https://github.com/seata/seata/pull/4039">PR4039</a>。</p>
 <hr>
 <h3 id='27'>Q: 27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</h3>
 <p><strong>A：</strong></p>
@@ -313,6 +316,13 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <h3 id='33'>Q: 33.Seata的SQL支持范围？</h3>
 <p><strong>A:</strong></p>
 <p>请参考附录-&gt;<a href="http://seata.io/zh-cn/docs/user/sqlreference/sql-restrictions.html">SQL参考</a></p>
+<hr>
+<h3 id='34'>Q: 34.Seata的JDK版本要求？</h3>
+<p><strong>A:</strong></p>
+<p>Seata需要的JDK版本为JDK8及以上。</p>
+<hr>
+<h3 id='35'>Q: 35.Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</h3>
+<p>Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数据来，将实体的Long修改为BigInteger或BigDecimal即可解决问题。</p>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2021 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
