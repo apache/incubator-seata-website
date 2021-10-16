@@ -487,6 +487,15 @@
       }
     },
     {
+      "filename": "isolation.md",
+      "link": "/zh-cn/docs/user/appendix/isolation.html",
+      "meta": {
+        "title": "Seata事务隔离",
+        "keywords": "Seata事务隔离",
+        "description": "Seata事务隔离"
+      }
+    },
+    {
       "filename": "apollo.md",
       "link": "/zh-cn/docs/user/configuration/apollo.html",
       "meta": {}

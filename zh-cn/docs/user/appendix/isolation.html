@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Seata事务隔离" />
+	<meta name="description" content="Seata事务隔离" />
+	<!-- 网页标签标题 -->
+	<title>Seata事务隔离</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><span><a href="/zh-cn/index.html">首页</a></span></li><li class="menu-item menu-item-normal menu-item-normal-active"><span><a href="/zh-cn/docs/overview/what-is-seata.html">文档</a></span></li><li class="menu-item menu-item-normal"><div class="nav-container"><div class="word"><a>解决方案</a><img class="menu-img" src="https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png"/></div><ul class="sub-nav-container" style="width:220px"><li><a href="https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0" target="_blank">分布式事务解决方案</a></li><li><a href="https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0" target="_blank">微服务解决方案</a></li><li><a href="https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0" target="_blank">高可用解决方案</a></li><li><a href="https://cn.aliyun.com/product/aliware/sae?spm=seata-website.topbar.0.0.0" target="_blank">微服务Serverless解决方案</a></li><li><a href="https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0" target="_blank">PaaS解决方案</a></li><li><a href="https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0" target="_blank">服务网格解决方案</a></li></ul> </div></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/docs/developers/developers_dev.html">开发者</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/blog/index.html">博客</a></span></li><li class="menu-item menu-item-normal"><span><a href="https://github.com/seata/seata/issues/3741">暑期2021</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/community/index.html">社区</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/blog/download.html">下载</a></span></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>事务分组<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group.html" target="_self">事务分组介绍</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group-and-ha.html" target="_self">事务分组与高可用</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>配置中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/nacos.html" target="_self">Nacos 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/apollo.html" target="_self">Apollo 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/etcd3.html" target="_self">Etcd3 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/consul.html" target="_self">Consul 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/zookeeper.html" target="_self">Zookeeper 配置中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>注册中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/nacos.html" target="_self">Nacos 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/eureka.html" target="_self">Eureka 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/etcd3.html" target="_self">Etcd3 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/consul.html" target="_self">Consul 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/zookeeper.html" target="_self">Zookeeper 注册中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据库类型支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>SQL参考<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/sql-restrictions.html" target="_self">SQL限制</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/dml.html" target="_self">DML语句</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/sql-decoration.html" target="_self">SQL修饰</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/function.html" target="_self">函数</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>APM<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/apm/skywalking.html" target="_self">SkyWalking</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/apm/prometheus.html" target="_self">Prometheus</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>测试报告<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/performance.html" target="_self">性能测试报告</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>附录<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/appendix/global-transaction-status.html" target="_self">事务状态</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/appendix/isolation.html" target="_self">事务隔离</a></li></ul></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/saga.html" target="_self">Seata Saga 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/xa-mode.html" target="_self">Seata XA 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/upgrade.html" target="_self">版本升级指南</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-ha.html" target="_self">高可用部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>Seata事务隔离</h1>
+<blockquote>
+<p>本文目标：帮助用户明白使用Seata <strong>AT模式</strong>时，该如何正确实现事务隔离，防止脏读脏写。</p>
+<p><strong>希望读者在阅读本文前，已阅读过seata官网中对AT模式的介绍，并且对数据库本地锁有所了解</strong></p>
+<p>（例如，两个事务同时在对同一条记录做update时，只有拿到record lock的事务才能更新成功，另一个事务在record lock未释放前只能等待，直到事务超时）</p>
+</blockquote>
+<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourBussinessService</span> </span>{
+
+    DbServiceA serviceA;
+    DbServiceB serviceB;
+
+    <span class="hljs-meta">@GlobalTransactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateAll</span><span class="hljs-params">(DTO dto)</span> </span>{
+        serviceA.update(dto.getA());
+        serviceB.update(dto.getB());
+    }
+
+
+    <span class="hljs-meta">@GlobalLock</span>
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateA</span><span class="hljs-params">(DTO dto)</span> </span>{
+        serviceA.selectForUpdate(dto.getA());
+        serviceA.update(dto.getA());
+    }
+
+    <span class="hljs-meta">@GlobalLock</span>
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">queryA</span><span class="hljs-params">(DTO dto)</span> </span>{
+        serviceA.selectForUpdate(dto.getA());
+    }
+
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceA</span> </span>{
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">update</span><span class="hljs-params">(A a)</span> </span>{
+    
+    }
+}
+
+</code></pre>
+<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceB</span> </span>{
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">update</span><span class="hljs-params">(B b)</span> </span>{
+
+    }
+}
+</code></pre>
+<h2><strong><code>DataSourceProxy</code>的作用</strong></h2>
+<p>DataSourceProxy帮助我们获得几个重要的代理对象</p>
+<ul>
+<li>
+<p>通过<code>DataSourceProxy.getConnection()</code>获得<code>ConnectionProxy</code></p>
+</li>
+<li>
+<p>通过<code>ConnectionProxy.prepareStatement(...)</code>获得<code>StatementProxy</code></p>
+</li>
+</ul>
+<h3><strong><code>StatementProxy.executeXXX()</code>的处理逻辑</strong></h3>
+<ul>
+<li>
+<p>当调用<code>io.seata.rm.datasource.StatementProxy.executeXXX()</code>会将sql交给<code>io.seata.rm.datasource.exec.ExecuteTemplate.execute(...)</code>处理。</p>
+<ul>
+<li><code>ExecuteTemplate.execute(...)</code>方法中，Seata根据不同dbType和sql语句类型使用不同的Executer，调用<code>io.seata.rm.datasource.exec.Executer</code>类的<code>execute(Object... args)</code>。</li>
+<li>如果选了DML类型Executer，主要做了以下事情：
+<ul>
+<li>查询前镜像（select for update，因此此时获得本地锁）</li>
+<li>执行业务sql</li>
+<li>查询后镜像</li>
+<li>准备undoLog</li>
+</ul>
+</li>
+<li>如果你的sql是select for update则会使用<code>SelectForUpdateExecutor</code>（Seata代理了select for update），代理后处理的逻辑是这样的：
+<ul>
+<li>先执行 select for update（获取数据库本地锁）</li>
+<li>如果处于<code>@GlobalTransactional</code> or <code>@GlobalLock</code>，<strong>检查</strong>是否有全局锁</li>
+<li>如果有全局锁，则未开启本地事务下会rollback本地事务,再重新争抢本地锁和全局锁,以此类推,除非拿到全局锁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><strong><code>ConnectionProxy.commit()</code>的处理逻辑</strong></h3>
+<ul>
+<li>处于全局事务中（即，数据持久化方法带有<code>@GlobalTransactional</code>）
+<ul>
+<li>注册分支事务，获取全局锁</li>
+<li>undoLog数据入库</li>
+<li>让数据库commit本次事务</li>
+</ul>
+</li>
+<li>处于<code>@GlobalLock</code>中（即，数据持久化方法带有<code>@GlobalLock</code>）
+<ul>
+<li>向tc查询是否有全局锁存在</li>
+<li>让数据库commit本次事务</li>
+</ul>
+</li>
+<li>除了以上情况（<code>else</code>分支）
+<ul>
+<li>让数据库commit本次事务</li>
+</ul>
+</li>
+</ul>
+<h2><strong>@GlobalTransactional的作用</strong></h2>
+<p>标识一个全局事务</p>
+<h2><strong>@GlobalLock + select for update的作用</strong></h2>
+<p>如果像<code>updateA()</code>方法带有<code>@GlobalLock + select for update</code>，Seata在处理时，会先获取数据库本地锁，然后查询该记录是否有全局锁存在，若有，则抛出LockConflictException。</p>
+<h2><strong>脏写如何发生？</strong></h2>
+<p>假如你的<code>updateA()</code>是这样的</p>
+<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceA</span> </span>{
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateA</span><span class="hljs-params">(DTO dto)</span> </span>{
+
+        serviceA.update(dto.getA());
+
+    }
+}
+</code></pre>
+<p><img src="/img/seata-isolation/dirty-write.png" alt="dirty-write">
+|</p>
+<h2><strong>如何防止脏写？</strong></h2>
+<h3>办法一：<code>updateA()</code>也加上<code>@GlobalTransactional</code>，此时Seata会如何保证事务隔离？</h3>
+<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceA</span> </span>{
+
+    <span class="hljs-meta">@GlobalTransactional</span>
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateA</span><span class="hljs-params">(DTO dto)</span> </span>{
+
+        serviceA.update(dto.getA());
+
+    }
+}
+</code></pre>
+<ul>
+<li><code>updateAll()</code>先被调用（未完成），<code>updateA()</code>后被调用</li>
+</ul>
+<p><img src="/img/seata-isolation/prevent-dirty-write-by-GlobalTransaction.png" alt="dirty-write"></p>
+<h3>办法二： <strong>@GlobalLock + select for update</strong></h3>
+<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceA</span> </span>{
+    
+    <span class="hljs-meta">@GlobalLock</span>
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateA</span><span class="hljs-params">(DTO dto)</span> </span>{
+
+        serviceA.selectForUpdate(dto.getA());
+
+        serviceA.update(dto.getA());
+
+    }
+}
+</code></pre>
+<ul>
+<li>
+<p><code>updateAll()</code>先被调用（未完成），<code>updateA()</code>后被调用
+<img src="/img/seata-isolation/prevent-dirty-write-by-GlobalLock.png" alt="dirty-write"></p>
+</li>
+<li>
+<p>那如果是<code>updateA()</code>先被调用（未完成），<code>updateAll()</code>后被调用呢？<br>
+由于2个业务都是要先获得本地锁，因此同样不会发生脏写</p>
+</li>
+</ul>
+<h2><strong>如何防止脏读？</strong></h2>
+<h3>场景：   某业务先调用<code>updateAll()</code>，<code>updateAll()</code>未执行完成，另一业务后调用<code>queryA()</code></h3>
+<p><img src="/img/seata-isolation/prevent-dirty-read.png" alt="dirty-write"></p>
+<hr>
+<h1><strong>源码展示</strong></h1>
+<pre><code class="language-java"><span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StorageService</span> </span>{
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> DataSource dataSource;
+
+    <span class="hljs-meta">@GlobalTransactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        Connection connection = <span class="hljs-keyword">null</span>;
+        PreparedStatement preparedStatement = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> {
+            connection = dataSource.getConnection();
+            connection.setAutoCommit(<span class="hljs-keyword">false</span>);
+            String sql = <span class="hljs-string">"update storage_tbl set count = ?"</span> +
+                <span class="hljs-string">"    where id = ? and commodity_code = ?"</span>;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>);
+            preparedStatement.setLong(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+            preparedStatement.setString(<span class="hljs-number">3</span>, <span class="hljs-string">"2001"</span>);
+            preparedStatement.execute();
+            connection.commit();
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-keyword">throw</span> e;
+        } <span class="hljs-keyword">finally</span> {
+            connection.close();
+            preparedStatement.close();
+        }
+    }
+
+}
+</code></pre>
+<p>这段代码虽然看着很初级，没有使用持久层框架，但如果将框架帮我们做的事情抽象出来，其实也就是上面这段代码。</p>
+<p><strong>简单说明接下来源码介绍的脉络（主要关注和事务隔离有关的源码）</strong></p>
+<ul>
+<li>代理数据源的用途
+<ul>
+<li><code>DataSourceProxy</code>的作用（返回<code>ConnectionProxy</code>）
+<ul>
+<li>介绍 <code>ConnectionProxy</code>的一个小功能（存放undolog）</li>
+</ul>
+</li>
+<li><code>ConnectionProxy</code>的作用（返回<code>StatementProxy</code>）</li>
+<li><code>StatementProxy.execute()</code>的处理逻辑
+<ul>
+<li><code>io.seata.rm.datasource.exec.UpdateExecutor</code>的执行逻辑（查前镜像、执行sql、查后镜像、准备undoLog）</li>
+<li><code>SelectForUpdateExecutor</code>的执行逻辑（挣本地锁，查全局锁。有全局锁，回滚，再争...）</li>
+</ul>
+</li>
+<li><code>ConnectionProxy.commit()</code>的处理逻辑（注册分支事务（争全局锁），写入undoLog，数据库提交）</li>
+</ul>
+</li>
+<li>介绍RootContext</li>
+<li><code>GlobalTransactionalInterceptor</code>的不同代理逻辑
+<ul>
+<li>带有<code>@GlobalTransactional</code>如何处理</li>
+<li>带有<code>@GlobalLock</code>如何处理</li>
+</ul>
+</li>
+</ul>
+<h2><strong>DataSourceProxy的作用</strong></h2>
+<p>DataSourceProxy帮助我们获得几个重要的代理对象</p>
+<ul>
+<li>通过<code>DataSourceProxy.getConnection()</code>获得<code>ConnectionProxy</code><pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource;
+
+<span class="hljs-keyword">import</span> java.sql.Connection;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataSourceProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDataSourceProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Resource</span> </span>{
+    
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ConnectionProxy <span class="hljs-title">getConnection</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        Connection targetConnection = targetDataSource.getConnection();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ConnectionProxy(<span class="hljs-keyword">this</span>, targetConnection);
+    }
+}
+</code></pre>
+<ul>
+<li>现在先介绍下<code>ConnectionProxy</code>中的<code>ConnectionContext</code>，它的有一个功能是<strong>存放undoLog</strong>。<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource;
+
+<span class="hljs-keyword">import</span> io.seata.rm.datasource.undo.SQLUndoLog;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProxy</span> </span>{
+
+    <span class="hljs-keyword">private</span> ConnectionContext context = <span class="hljs-keyword">new</span> ConnectionContext();
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">appendUndoLog</span><span class="hljs-params">(SQLUndoLog sqlUndoLog)</span> </span>{
+        context.appendUndoItem(sqlUndoLog);
+    }
+
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionContext</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Savepoint DEFAULT_SAVEPOINT = <span class="hljs-keyword">new</span> Savepoint() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSavepointId</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getSavepointName</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"DEFAULT_SEATA_SAVEPOINT"</span>;
+        }
+    };
+    
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Map&lt;Savepoint, List&lt;SQLUndoLog&gt;&gt; sqlUndoItemsBuffer = <span class="hljs-keyword">new</span> LinkedHashMap&lt;&gt;();
+
+    <span class="hljs-keyword">private</span> Savepoint currentSavepoint = DEFAULT_SAVEPOINT;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">appendUndoItem</span><span class="hljs-params">(SQLUndoLog sqlUndoLog)</span> </span>{
+        sqlUndoItemsBuffer.computeIfAbsent(currentSavepoint, k -&gt; <span class="hljs-keyword">new</span> ArrayList&lt;&gt;()).add(sqlUndoLog);
+    }
+
+}
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2><strong>通过<code>ConnectionProxy.prepareStatement(...)</code>获得<code>StatementProxy</code></strong></h2>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProxy</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ConnectionProxy</span><span class="hljs-params">(DataSourceProxy dataSourceProxy, Connection targetConnection)</span> </span>{
+        <span class="hljs-keyword">super</span>(dataSourceProxy, targetConnection);
+    }
+
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource;
+
+<span class="hljs-keyword">import</span> java.sql.Connection;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractConnectionProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Connection</span> </span>{
+
+    <span class="hljs-keyword">protected</span> Connection targetConnection;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AbstractConnectionProxy</span><span class="hljs-params">(DataSourceProxy dataSourceProxy, Connection targetConnection)</span> </span>{
+        <span class="hljs-keyword">this</span>.dataSourceProxy = dataSourceProxy;
+        <span class="hljs-keyword">this</span>.targetConnection = targetConnection;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> PreparedStatement <span class="hljs-title">prepareStatement</span><span class="hljs-params">(String sql)</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        String dbType = getDbType();
+        <span class="hljs-comment">// support oracle 10.2+</span>
+        PreparedStatement targetPreparedStatement = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">if</span> (BranchType.AT == RootContext.getBranchType()) { <span class="hljs-comment">//为什么这里会返回AT？</span>
+            List&lt;SQLRecognizer&gt; sqlRecognizers = SQLVisitorFactory.get(sql, dbType);
+            <span class="hljs-keyword">if</span> (sqlRecognizers != <span class="hljs-keyword">null</span> &amp;&amp; sqlRecognizers.size() == <span class="hljs-number">1</span>) {
+                SQLRecognizer sqlRecognizer = sqlRecognizers.get(<span class="hljs-number">0</span>);
+                <span class="hljs-keyword">if</span> (sqlRecognizer != <span class="hljs-keyword">null</span> &amp;&amp; sqlRecognizer.getSQLType() == SQLType.INSERT) {
+                    TableMeta tableMeta = TableMetaCacheFactory.getTableMetaCache(dbType).getTableMeta(getTargetConnection(),
+                            sqlRecognizer.getTableName(), getDataSourceProxy().getResourceId());
+                    String[] pkNameArray = <span class="hljs-keyword">new</span> String[tableMeta.getPrimaryKeyOnlyName().size()];
+                    tableMeta.getPrimaryKeyOnlyName().toArray(pkNameArray);
+                    <span class="hljs-comment">// 如果是insert语句，这里创建的PreparedStatement需要可以返回自动生成的主键，因此使用这个prepareStatement()</span>
+                    targetPreparedStatement = getTargetConnection().prepareStatement(sql,pkNameArray);
+
+                }
+            }
+        }
+        <span class="hljs-keyword">if</span> (targetPreparedStatement == <span class="hljs-keyword">null</span>) {
+            targetPreparedStatement = getTargetConnection().prepareStatement(sql);
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PreparedStatementProxy(<span class="hljs-keyword">this</span>, targetPreparedStatement, sql);
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Connection <span class="hljs-title">getTargetConnection</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> targetConnection;
+    }
+
+}
+</code></pre>
+<blockquote>
+<p>先在这打下个疑问，后边解释。<br>
+<strong><code>RootContext.getBranchType()</code>的返回值怎么会是AT？</strong></p>
+</blockquote>
+<h2><strong><code>StatementProxy.execute()</code>的处理逻辑</strong></h2>
+<ul>
+<li>
+<p>当调用<code>io.seata.rm.datasource.StatementProxy.execute()</code>会将sql交给<code>io.seata.rm.datasource.exec.ExecuteTemplate.execute(...)</code>处理。</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PreparedStatementProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractPreparedStatementProxy</span>
+    <span class="hljs-keyword">implements</span> <span class="hljs-title">PreparedStatement</span>, <span class="hljs-title">ParametersHolder</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        <span class="hljs-keyword">return</span> ExecuteTemplate.execute(<span class="hljs-keyword">this</span>, (statement, args) -&gt; statement.execute());
+    }
+
+}
+</code></pre>
+<ul>
+<li>
+<p><code>ExecuteTemplate.execute(...)</code>方法中，Seata根据不同dbType和sql语句类型使用不同的Executer，调用<code>io.seata.rm.datasource.exec.Executer</code>类的<code>execute(Object... args)</code>。</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource.exec;
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExecuteTemplate</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T, S extends Statement&gt; <span class="hljs-function">T <span class="hljs-title">execute</span><span class="hljs-params">(StatementProxy&lt;S&gt; statementProxy,
+                                             StatementCallback&lt;T, S&gt; statementCallback,
+                                             Object... args)</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        <span class="hljs-keyword">return</span> execute(<span class="hljs-keyword">null</span>, statementProxy, statementCallback, args);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T, S extends Statement&gt; <span class="hljs-function">T <span class="hljs-title">execute</span><span class="hljs-params">(List&lt;SQLRecognizer&gt; sqlRecognizers,
+                                         StatementProxy&lt;S&gt; statementProxy,
+                                         StatementCallback&lt;T, S&gt; statementCallback,
+                                         Object... args)</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        <span class="hljs-keyword">if</span> (!RootContext.requireGlobalLock() &amp;&amp; BranchType.AT != RootContext.getBranchType()) {
+            <span class="hljs-comment">// Just work as original statement</span>
+            <span class="hljs-keyword">return</span> statementCallback.execute(statementProxy.getTargetStatement(), args);
+        }
+
+        String dbType = statementProxy.getConnectionProxy().getDbType();
+        <span class="hljs-keyword">if</span> (CollectionUtils.isEmpty(sqlRecognizers)) {
+            sqlRecognizers = SQLVisitorFactory.get(
+                    statementProxy.getTargetSQL(),
+                    dbType);
+        }
+        Executor&lt;T&gt; executor;
+        <span class="hljs-keyword">if</span> (CollectionUtils.isEmpty(sqlRecognizers)) {
+            executor = <span class="hljs-keyword">new</span> PlainExecutor&lt;&gt;(statementProxy, statementCallback);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> (sqlRecognizers.size() == <span class="hljs-number">1</span>) {
+                SQLRecognizer sqlRecognizer = sqlRecognizers.get(<span class="hljs-number">0</span>);
+                <span class="hljs-keyword">switch</span> (sqlRecognizer.getSQLType()) {
+                    <span class="hljs-keyword">case</span> INSERT:
+                        executor = EnhancedServiceLoader.load(InsertExecutor.class, dbType,
+                                <span class="hljs-keyword">new</span> Class[]{StatementProxy.class, StatementCallback.class, SQLRecognizer.class},
+                                <span class="hljs-keyword">new</span> Object[]{statementProxy, statementCallback, sqlRecognizer});
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> UPDATE:
+                        executor = <span class="hljs-keyword">new</span> UpdateExecutor&lt;&gt;(statementProxy, statementCallback, sqlRecognizer);
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> DELETE:
+                        executor = <span class="hljs-keyword">new</span> DeleteExecutor&lt;&gt;(statementProxy, statementCallback, sqlRecognizer);
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> SELECT_FOR_UPDATE:
+                        executor = <span class="hljs-keyword">new</span> SelectForUpdateExecutor&lt;&gt;(statementProxy, statementCallback, sqlRecognizer);
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">default</span>:
+                        executor = <span class="hljs-keyword">new</span> PlainExecutor&lt;&gt;(statementProxy, statementCallback);
+                        <span class="hljs-keyword">break</span>;
+                }
+            } <span class="hljs-keyword">else</span> {
+                executor = <span class="hljs-keyword">new</span> MultiExecutor&lt;&gt;(statementProxy, statementCallback, sqlRecognizers);
+            }
+        }
+        T rs;
+        <span class="hljs-keyword">try</span> {
+            rs = executor.execute(args);
+        } <span class="hljs-keyword">catch</span> (Throwable ex) {
+            <span class="hljs-keyword">if</span> (!(ex <span class="hljs-keyword">instanceof</span> SQLException)) {
+                <span class="hljs-comment">// Turn other exception into SQLException</span>
+                ex = <span class="hljs-keyword">new</span> SQLException(ex);
+            }
+            <span class="hljs-keyword">throw</span> (SQLException) ex;
+        }
+        <span class="hljs-keyword">return</span> rs;
+    }
+
+}
+</code></pre>
+<blockquote>
+<p>也在这打下个疑问，后边解释。<br>
+<strong><code>RootContext.requireGlobalLock()</code>怎么判断当前是否需要全局锁？</strong></p>
+</blockquote>
+<p>先以<code>io.seata.rm.datasource.exec.UpdateExecutor</code>举例，<code>UpdateExecutor</code> extends <code>AbstractDMLBaseExecutor</code> extends <code>BaseTransactionalExecutor</code>。
+观察<code>execute()</code>方法的做了什么</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource.exec;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseTransactionalExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Executor</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+    
+
+    <span class="hljs-keyword">protected</span> StatementProxy&lt;S&gt; statementProxy;
+
+    <span class="hljs-keyword">protected</span> StatementCallback&lt;T, S&gt; statementCallback;
+
+    <span class="hljs-keyword">protected</span> SQLRecognizer sqlRecognizer;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BaseTransactionalExecutor</span><span class="hljs-params">(StatementProxy&lt;S&gt; statementProxy, StatementCallback&lt;T, S&gt; statementCallback,
+        SQLRecognizer sqlRecognizer)</span> </span>{
+        <span class="hljs-keyword">this</span>.statementProxy = statementProxy;
+        <span class="hljs-keyword">this</span>.statementCallback = statementCallback;
+        <span class="hljs-keyword">this</span>.sqlRecognizer = sqlRecognizer;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">execute</span><span class="hljs-params">(Object... args)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        String xid = RootContext.getXID();
+        <span class="hljs-keyword">if</span> (xid != <span class="hljs-keyword">null</span>) {
+            statementProxy.getConnectionProxy().bind(xid);
+        }
+
+        statementProxy.getConnectionProxy().setGlobalLockRequire(RootContext.requireGlobalLock());
+        <span class="hljs-keyword">return</span> doExecute(args);
+    }
+
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractDMLBaseExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseTransactionalExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span>&gt; </span>{
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AbstractDMLBaseExecutor</span><span class="hljs-params">(StatementProxy&lt;S&gt; statementProxy, StatementCallback&lt;T, S&gt; statementCallback,
+                           SQLRecognizer sqlRecognizer)</span> </span>{
+        <span class="hljs-keyword">super</span>(statementProxy, statementCallback, sqlRecognizer);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">doExecute</span><span class="hljs-params">(Object... args)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        AbstractConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
+        <span class="hljs-keyword">if</span> (connectionProxy.getAutoCommit()) {
+            <span class="hljs-keyword">return</span> executeAutoCommitTrue(args);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> executeAutoCommitFalse(args);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> T <span class="hljs-title">executeAutoCommitTrue</span><span class="hljs-params">(Object[] args)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
+        <span class="hljs-keyword">try</span> {
+            connectionProxy.changeAutoCommit(); <span class="hljs-comment">// 注意，你如果没开启事务，seata帮你开启</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> LockRetryPolicy(connectionProxy).execute(() -&gt; {
+                T result = executeAutoCommitFalse(args);
+                connectionProxy.commit(); <span class="hljs-comment">// 帮你开启事务后，通过connectionProxy来提交</span>
+                <span class="hljs-keyword">return</span> result;
+            });
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// when exception occur in finally,this exception will lost, so just print it here</span>
+            LOGGER.error(<span class="hljs-string">"execute executeAutoCommitTrue error:{}"</span>, e.getMessage(), e);
+            <span class="hljs-keyword">if</span> (!LockRetryPolicy.isLockRetryPolicyBranchRollbackOnConflict()) {
+                connectionProxy.getTargetConnection().rollback();
+            }
+            <span class="hljs-keyword">throw</span> e;
+        } <span class="hljs-keyword">finally</span> {
+            connectionProxy.getContext().reset();
+            connectionProxy.setAutoCommit(<span class="hljs-keyword">true</span>);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> T <span class="hljs-title">executeAutoCommitFalse</span><span class="hljs-params">(Object[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-keyword">if</span> (!JdbcConstants.MYSQL.equalsIgnoreCase(getDbType()) &amp;&amp; isMultiPk()) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotSupportYetException(<span class="hljs-string">"multi pk only support mysql!"</span>);
+        }
+        TableRecords beforeImage = beforeImage();
+        T result = statementCallback.execute(statementProxy.getTargetStatement(), args);
+        TableRecords afterImage = afterImage(beforeImage);
+        prepareUndoLog(beforeImage, afterImage);
+        <span class="hljs-keyword">return</span> result;
+    }
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource.exec;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpdateExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDMLBaseExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span>&gt; </span>{
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">UpdateExecutor</span><span class="hljs-params">(StatementProxy&lt;S&gt; statementProxy, StatementCallback&lt;T, S&gt; statementCallback,
+                        SQLRecognizer sqlRecognizer)</span> </span>{
+        <span class="hljs-keyword">super</span>(statementProxy, statementCallback, sqlRecognizer);
+    }
+
+}
+
+</code></pre>
+</li>
+<li>
+<p>如果选了DML类型Executer，可以在上面的executeAutoCommitFalse()中看到，主要做了以下事情：</p>
+<ul>
+<li>
+<p>查询前镜像（select for update，因此此时获得本地锁）</p>
+<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource.exec;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpdateExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDMLBaseExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span>&gt; </span>{
+    
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> ONLY_CARE_UPDATE_COLUMNS = CONFIG.getBoolean(
+            ConfigurationKeys.TRANSACTION_UNDO_ONLY_CARE_UPDATE_COLUMNS, DefaultValues.DEFAULT_ONLY_CARE_UPDATE_COLUMNS); <span class="hljs-comment">// 默认为true</span>
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> TableRecords <span class="hljs-title">beforeImage</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        ArrayList&lt;List&lt;Object&gt;&gt; paramAppenderList = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        TableMeta tmeta = getTableMeta();
+        String selectSQL = buildBeforeImageSQL(tmeta, paramAppenderList);
+        <span class="hljs-comment">// SELECT id, count FROM storage_tbl WHERE id = ? FOR UPDATE</span>
+        <span class="hljs-keyword">return</span> buildTableRecords(tmeta, selectSQL, paramAppenderList);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> String <span class="hljs-title">buildBeforeImageSQL</span><span class="hljs-params">(TableMeta tableMeta, ArrayList&lt;List&lt;Object&gt;&gt; paramAppenderList)</span> </span>{
+        SQLUpdateRecognizer recognizer = (SQLUpdateRecognizer) sqlRecognizer;
+        List&lt;String&gt; updateColumns = recognizer.getUpdateColumns();
+        StringBuilder prefix = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">"SELECT "</span>);
+        StringBuilder suffix = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">" FROM "</span>).append(getFromTableInSQL());
+        String whereCondition = buildWhereCondition(recognizer, paramAppenderList);
+        <span class="hljs-keyword">if</span> (StringUtils.isNotBlank(whereCondition)) {
+            suffix.append(WHERE).append(whereCondition);
+        }
+        String orderBy = recognizer.getOrderBy();
+        <span class="hljs-keyword">if</span> (StringUtils.isNotBlank(orderBy)) {
+            suffix.append(orderBy);
+        }
+        ParametersHolder parametersHolder = statementProxy <span class="hljs-keyword">instanceof</span> ParametersHolder ? (ParametersHolder)statementProxy : <span class="hljs-keyword">null</span>;
+        String limit = recognizer.getLimit(parametersHolder, paramAppenderList);
+        <span class="hljs-keyword">if</span> (StringUtils.isNotBlank(limit)) {
+            suffix.append(limit);
+        }
+        suffix.append(<span class="hljs-string">" FOR UPDATE"</span>);
+        StringJoiner selectSQLJoin = <span class="hljs-keyword">new</span> StringJoiner(<span class="hljs-string">", "</span>, prefix.toString(), suffix.toString());
+        <span class="hljs-keyword">if</span> (ONLY_CARE_UPDATE_COLUMNS) {
+            <span class="hljs-keyword">if</span> (!containsPK(updateColumns)) {<span class="hljs-comment">// 如果本次更新的行不包含主键，那select for update的时候加上主键</span>
+                selectSQLJoin.add(getColumnNamesInSQL(tableMeta.getEscapePkNameList(getDbType())));
+            }
+            <span class="hljs-keyword">for</span> (String columnName : updateColumns) {
+                selectSQLJoin.add(columnName);
+            }
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">for</span> (String columnName : tableMeta.getAllColumns().keySet()) {
+                selectSQLJoin.add(ColumnUtils.addEscape(columnName, getDbType()));
+            }
+        }
+        <span class="hljs-keyword">return</span> selectSQLJoin.toString();
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> TableRecords <span class="hljs-title">buildTableRecords</span><span class="hljs-params">(TableMeta tableMeta, String selectSQL, ArrayList&lt;List&lt;Object&gt;&gt; paramAppenderList)</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        ResultSet rs = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> (PreparedStatement ps = statementProxy.getConnection().prepareStatement(selectSQL)) { <span class="hljs-comment">// 执行select for update，然后就拿到了本地锁</span>
+            <span class="hljs-keyword">if</span> (CollectionUtils.isNotEmpty(paramAppenderList)) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, ts = paramAppenderList.size(); i &lt; ts; i++) {
+                    List&lt;Object&gt; paramAppender = paramAppenderList.get(i);
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>, ds = paramAppender.size(); j &lt; ds; j++) {
+                        ps.setObject(i * ds + j + <span class="hljs-number">1</span>, paramAppender.get(j));
+                    }
+                }
+            }
+            rs = ps.executeQuery();
+            <span class="hljs-keyword">return</span> TableRecords.buildRecords(tableMeta, rs);
+        } <span class="hljs-keyword">finally</span> {
+            IOUtil.close(rs);
+        }
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>执行业务sql</p>
+</li>
+<li>
+<p>查询后镜像</p>
+<pre><code class="language-java">  <span class="hljs-keyword">package</span> io.seata.rm.datasource.exec;
+
+  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpdateExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDMLBaseExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span>&gt; </span>{
+      
+      <span class="hljs-meta">@Override</span>
+      <span class="hljs-function"><span class="hljs-keyword">protected</span> TableRecords <span class="hljs-title">afterImage</span><span class="hljs-params">(TableRecords beforeImage)</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+          TableMeta tmeta = getTableMeta();
+          <span class="hljs-keyword">if</span> (beforeImage == <span class="hljs-keyword">null</span> || beforeImage.size() == <span class="hljs-number">0</span>) {
+              <span class="hljs-keyword">return</span> TableRecords.empty(getTableMeta());
+          }
+          String selectSQL = buildAfterImageSQL(tmeta, beforeImage);
+          <span class="hljs-comment">//SELECT id, count FROM storage_tbl WHERE (id) in ( (?) )</span>
+          ResultSet rs = <span class="hljs-keyword">null</span>;
+          <span class="hljs-keyword">try</span> (PreparedStatement pst = statementProxy.getConnection().prepareStatement(selectSQL)) {
+              SqlGenerateUtils.setParamForPk(beforeImage.pkRows(), getTableMeta().getPrimaryKeyOnlyName(), pst);
+              rs = pst.executeQuery();
+              <span class="hljs-keyword">return</span> TableRecords.buildRecords(tmeta, rs);
+          } <span class="hljs-keyword">finally</span> {
+              IOUtil.close(rs);
+          }
+      }
+  }
+</code></pre>
+</li>
+<li>
+<p>准备undoLog</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseTransactionalExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Executor</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+    
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">prepareUndoLog</span><span class="hljs-params">(TableRecords beforeImage, TableRecords afterImage)</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        <span class="hljs-keyword">if</span> (beforeImage.getRows().isEmpty() &amp;&amp; afterImage.getRows().isEmpty()) {
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">if</span> (SQLType.UPDATE == sqlRecognizer.getSQLType()) {
+            <span class="hljs-keyword">if</span> (beforeImage.getRows().size() != afterImage.getRows().size()) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ShouldNeverHappenException(<span class="hljs-string">"Before image size is not equaled to after image size, probably because you updated the primary keys."</span>);
+            }
+        }
+        ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
+
+        TableRecords lockKeyRecords = sqlRecognizer.getSQLType() == SQLType.DELETE ? beforeImage : afterImage;
+        String lockKeys = buildLockKey(lockKeyRecords);
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">null</span> != lockKeys) {
+            connectionProxy.appendLockKey(lockKeys);
+
+            SQLUndoLog sqlUndoLog = buildUndoItem(beforeImage, afterImage);
+            connectionProxy.appendUndoLog(sqlUndoLog); <span class="hljs-comment">// 把undoLog存到connectionProxy中，具体怎么回事上面有提过</span>
+        }
+    }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>如果你的sql是select for update则会使用<code>SelectForUpdateExecutor</code>（Seata代理了select for update），代理后处理的逻辑是这样的：</p>
+<ul>
+<li>先执行 select for update（获取数据库本地锁）</li>
+<li>如果处于<code>@GlobalTransactional</code> or <code>@GlobalLock</code>，<strong>检查</strong>是否有全局锁</li>
+<li>如果有全局锁，则未开启本地事务下会rollback本地事务，再重新争抢本地锁和查询全局锁，直到全局锁释放</li>
+</ul>
+<pre><code class="language-java">   <span class="hljs-keyword">package</span> io.seata.rm.datasource.exec;
+
+   <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SelectForUpdateExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseTransactionalExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span>&gt; </span>{
+           <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">doExecute</span><span class="hljs-params">(Object... args)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+                Connection conn = statementProxy.getConnection();
+                DatabaseMetaData dbmd = conn.getMetaData();
+                T rs;
+                Savepoint sp = <span class="hljs-keyword">null</span>;
+                <span class="hljs-keyword">boolean</span> originalAutoCommit = conn.getAutoCommit();
+                <span class="hljs-keyword">try</span> {
+                    <span class="hljs-keyword">if</span> (originalAutoCommit) {
+                        <span class="hljs-comment">/*
+                         * In order to hold the local db lock during global lock checking
+                         * set auto commit value to false first if original auto commit was true
+                         */</span>
+                        conn.setAutoCommit(<span class="hljs-keyword">false</span>);
+                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (dbmd.supportsSavepoints()) {
+                        <span class="hljs-comment">/*
+                         * In order to release the local db lock when global lock conflict
+                         * create a save point if original auto commit was false, then use the save point here to release db
+                         * lock during global lock checking if necessary
+                         */</span>
+                        sp = conn.setSavepoint();
+                    } <span class="hljs-keyword">else</span> {
+                        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> SQLException(<span class="hljs-string">"not support savepoint. please check your db version"</span>);
+                    }
+
+                    LockRetryController lockRetryController = <span class="hljs-keyword">new</span> LockRetryController();
+                    ArrayList&lt;List&lt;Object&gt;&gt; paramAppenderList = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+                    String selectPKSQL = buildSelectSQL(paramAppenderList);
+                    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+                        <span class="hljs-keyword">try</span> {
+                            <span class="hljs-comment">// #870</span>
+                            <span class="hljs-comment">// execute return Boolean</span>
+                            <span class="hljs-comment">// executeQuery return ResultSet</span>
+                            rs = statementCallback.execute(statementProxy.getTargetStatement(), args); <span class="hljs-comment">//执行 select for update（获取数据库本地锁）</span>
+
+                            <span class="hljs-comment">// Try to get global lock of those rows selected</span>
+                            TableRecords selectPKRows = buildTableRecords(getTableMeta(), selectPKSQL, paramAppenderList);
+                            String lockKeys = buildLockKey(selectPKRows);
+                            <span class="hljs-keyword">if</span> (StringUtils.isNullOrEmpty(lockKeys)) {
+                                <span class="hljs-keyword">break</span>;
+                            }
+
+                            <span class="hljs-keyword">if</span> (RootContext.inGlobalTransaction() || RootContext.requireGlobalLock()) {
+                                <span class="hljs-comment">// Do the same thing under either @GlobalTransactional or @GlobalLock, </span>
+                                <span class="hljs-comment">// that only check the global lock  here.</span>
+                                statementProxy.getConnectionProxy().checkLock(lockKeys);
+                            } <span class="hljs-keyword">else</span> {
+                                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">"Unknown situation!"</span>);
+                            }
+                            <span class="hljs-keyword">break</span>;
+                        } <span class="hljs-keyword">catch</span> (LockConflictException lce) {
+                            <span class="hljs-keyword">if</span> (sp != <span class="hljs-keyword">null</span>) {
+                                conn.rollback(sp);
+                            } <span class="hljs-keyword">else</span> {
+                                conn.rollback();<span class="hljs-comment">// 回滚，释放本地锁</span>
+                            }
+                            <span class="hljs-comment">// trigger retry</span>
+                            lockRetryController.sleep(lce);
+                        }
+                    }
+                } <span class="hljs-keyword">finally</span> {
+                    <span class="hljs-keyword">if</span> (sp != <span class="hljs-keyword">null</span>) {
+                        <span class="hljs-keyword">try</span> {
+                            <span class="hljs-keyword">if</span> (!JdbcConstants.ORACLE.equalsIgnoreCase(getDbType())) {
+                                conn.releaseSavepoint(sp);
+                            }
+                        } <span class="hljs-keyword">catch</span> (SQLException e) {
+                            LOGGER.error(<span class="hljs-string">"{} release save point error."</span>, getDbType(), e);
+                        }
+                    }
+                    <span class="hljs-keyword">if</span> (originalAutoCommit) {
+                        conn.setAutoCommit(<span class="hljs-keyword">true</span>);
+                    }
+                }
+                <span class="hljs-keyword">return</span> rs;
+            }
+
+
+
+   }
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2><strong><code>ConnectionProxy.commit()</code>的处理逻辑</strong></h2>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProxy</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> LockRetryPolicy LOCK_RETRY_POLICY = <span class="hljs-keyword">new</span> LockRetryPolicy();
+
+    <span class="hljs-keyword">private</span> ConnectionContext context = <span class="hljs-keyword">new</span> ConnectionContext();
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">commit</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        <span class="hljs-keyword">try</span> {
+            LOCK_RETRY_POLICY.execute(() -&gt; {
+                doCommit();
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+            });
+        } <span class="hljs-keyword">catch</span> (SQLException e) {
+            <span class="hljs-keyword">if</span> (targetConnection != <span class="hljs-keyword">null</span> &amp;&amp; !getAutoCommit() &amp;&amp; !getContext().isAutoCommitChanged()) {
+                rollback();
+            }
+            <span class="hljs-keyword">throw</span> e;
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> SQLException(e);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doCommit</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        <span class="hljs-keyword">if</span> (context.inGlobalTransaction()) {
+            processGlobalTransactionCommit();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.isGlobalLockRequire()) {
+            processLocalCommitWithGlobalLocks();
+        } <span class="hljs-keyword">else</span> {
+            targetConnection.commit();
+        }
+    }
+
+}
+</code></pre>
+<blockquote>
+<p>也在这打下个疑问，后边解释。<br>
+<strong><code>ConnectionProxy</code>里的<code>ConnectionContext</code>是如何判断<code>inGlobalTransaction()</code> or <code>isGlobalLockRequire()</code>的呢？</strong></p>
+</blockquote>
+<ul>
+<li>
+<p>处于全局事务中（即，数据持久化方法带有<code>@GlobalTransactional</code>）</p>
+<ul>
+<li>注册分支事务，获取全局锁</li>
+<li>undoLog数据入库</li>
+<li>让数据库commit本次事务</li>
+</ul>
+<pre><code class="language-java">    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProxy</span> </span>{
+
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> LockRetryPolicy LOCK_RETRY_POLICY = <span class="hljs-keyword">new</span> LockRetryPolicy();
+
+        <span class="hljs-keyword">private</span> ConnectionContext context = <span class="hljs-keyword">new</span> ConnectionContext();
+        
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processGlobalTransactionCommit</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+            <span class="hljs-keyword">try</span> {
+                register(); <span class="hljs-comment">// 注册分支，争全局锁</span>
+            } <span class="hljs-keyword">catch</span> (TransactionException e) {
+                recognizeLockKeyConflictException(e, context.buildLockKeys());
+            }
+            <span class="hljs-keyword">try</span> {
+                UndoLogManagerFactory.getUndoLogManager(<span class="hljs-keyword">this</span>.getDbType()).flushUndoLogs(<span class="hljs-keyword">this</span>); <span class="hljs-comment">// undolog入库</span>
+                targetConnection.commit(); <span class="hljs-comment">// 分支事务提交</span>
+            } <span class="hljs-keyword">catch</span> (Throwable ex) {
+                LOGGER.error(<span class="hljs-string">"process connectionProxy commit error: {}"</span>, ex.getMessage(), ex);
+                report(<span class="hljs-keyword">false</span>);
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> SQLException(ex);
+            }
+            <span class="hljs-keyword">if</span> (IS_REPORT_SUCCESS_ENABLE) {
+                report(<span class="hljs-keyword">true</span>);
+            }
+            context.reset();
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">register</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TransactionException </span>{
+            <span class="hljs-keyword">if</span> (!context.hasUndoLog() || !context.hasLockKey()) {
+                <span class="hljs-keyword">return</span>;
+            }
+            Long branchId = DefaultResourceManager.get().branchRegister(BranchType.AT, getDataSourceProxy().getResourceId(),
+                <span class="hljs-keyword">null</span>, context.getXid(), <span class="hljs-keyword">null</span>, context.buildLockKeys());
+            context.setBranchId(branchId);
+        }
+
+
+    }
+    ```
+
+</code></pre>
+</li>
+<li>
+<p>处于<code>@GlobalLock</code>中（即，数据持久化方法带有<code>@GlobalLock</code>）</p>
+<ul>
+<li>向tc查询是否有全局锁存在</li>
+<li>让数据库commit本次事务</li>
+</ul>
+<pre><code class="language-java">   <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProxy</span> </span>{
+
+       <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> LockRetryPolicy LOCK_RETRY_POLICY = <span class="hljs-keyword">new</span> LockRetryPolicy();
+
+       <span class="hljs-keyword">private</span> ConnectionContext context = <span class="hljs-keyword">new</span> ConnectionContext();
+       
+       <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processLocalCommitWithGlobalLocks</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+           checkLock(context.buildLockKeys());
+           <span class="hljs-keyword">try</span> {
+               targetConnection.commit();
+           } <span class="hljs-keyword">catch</span> (Throwable ex) {
+               <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> SQLException(ex);
+           }
+           context.reset();
+       }
+
+       <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkLock</span><span class="hljs-params">(String lockKeys)</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+           <span class="hljs-keyword">if</span> (StringUtils.isBlank(lockKeys)) {
+               <span class="hljs-keyword">return</span>;
+           }
+           <span class="hljs-comment">// Just check lock without requiring lock by now.</span>
+           <span class="hljs-keyword">try</span> {
+               <span class="hljs-keyword">boolean</span> lockable = DefaultResourceManager.get().lockQuery(BranchType.AT,
+                   getDataSourceProxy().getResourceId(), context.getXid(), lockKeys);
+               <span class="hljs-keyword">if</span> (!lockable) {
+                   <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> LockConflictException();
+               }
+           } <span class="hljs-keyword">catch</span> (TransactionException e) {
+               recognizeLockKeyConflictException(e, lockKeys);
+           }
+       }
+
+
+   }
+   ```
+</code></pre>
+</li>
+<li>
+<p>除了以上情况（<code>else</code>分支）</p>
+<ul>
+<li>让数据库commit本次事务</li>
+</ul>
+</li>
+</ul>
+<h2>介绍<code>RootContext</code></h2>
+<p>我们在上面留下了3个“扣儿”，现在到了结合<code>RootContext</code>源码来解答的时候。</p>
+<ol>
+<li>
+<p><strong><code>RootContext.getBranchType()</code>的返回值怎么会是AT？</strong><br>
+该方法的判断逻辑是：只要判断出<strong>当前处于全局事务中</strong>（即，只要有地方调用过<code>RootContext.bind(xid)</code>）, 就会返回默认<code>BranchType.AT</code></p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RootContext</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String KEY_XID = <span class="hljs-string">"TX_XID"</span>;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ContextCore CONTEXT_HOLDER = ContextCoreLoader.load();
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> BranchType DEFAULT_BRANCH_TYPE;
+
+    <span class="hljs-meta">@Nullable</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> BranchType <span class="hljs-title">getBranchType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (inGlobalTransaction()) {
+            BranchType branchType = (BranchType) CONTEXT_HOLDER.get(KEY_BRANCH_TYPE);
+            <span class="hljs-keyword">if</span> (branchType != <span class="hljs-keyword">null</span>) {
+                <span class="hljs-keyword">return</span> branchType;
+            }
+            <span class="hljs-comment">//Returns the default branch type.</span>
+            <span class="hljs-keyword">return</span> DEFAULT_BRANCH_TYPE != <span class="hljs-keyword">null</span> ? DEFAULT_BRANCH_TYPE : BranchType.AT;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">inGlobalTransaction</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> CONTEXT_HOLDER.get(KEY_XID) != <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bind</span><span class="hljs-params">(@Nonnull String xid)</span> </span>{
+        <span class="hljs-keyword">if</span> (StringUtils.isBlank(xid)) {
+            <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(<span class="hljs-string">"xid is blank, switch to unbind operation!"</span>);
+            }
+            unbind();
+        } <span class="hljs-keyword">else</span> {
+            MDC.put(MDC_KEY_XID, xid);
+            <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(<span class="hljs-string">"bind {}"</span>, xid);
+            }
+            CONTEXT_HOLDER.put(KEY_XID, xid);
+        }
+    }
+
+}
+</code></pre>
+</li>
+<li>
+<p><strong><code>RootContext.requireGlobalLock()</code>怎么判断当前是否需要全局锁？</strong><br>
+需要有地方调用<code>RootContext.bindGlobalLockFlag()</code></p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RootContext</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String KEY_GLOBAL_LOCK_FLAG = <span class="hljs-string">"TX_LOCK"</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Boolean VALUE_GLOBAL_LOCK_FLAG = <span class="hljs-keyword">true</span>;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ContextCore CONTEXT_HOLDER = ContextCoreLoader.load();
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">requireGlobalLock</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> CONTEXT_HOLDER.get(KEY_GLOBAL_LOCK_FLAG) != <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bindGlobalLockFlag</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+            LOGGER.debug(<span class="hljs-string">"Local Transaction Global Lock support enabled"</span>);
+        }
+
+        <span class="hljs-comment">//just put something not null</span>
+        CONTEXT_HOLDER.put(KEY_GLOBAL_LOCK_FLAG, VALUE_GLOBAL_LOCK_FLAG);
+    }
+
+}
+</code></pre>
+</li>
+<li>
+<p><strong><code>ConnectionProxy.commit()</code>会根据context的不同状态区分处理，那<code>ConnectionContext</code>是如何判断<code>inGlobalTransaction()</code> or <code>isGlobalLockRequire()</code>的呢？</strong></p>
+<pre><code class="language-java"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProxy</span> </span>{
+
+    <span class="hljs-keyword">private</span> ConnectionContext context = <span class="hljs-keyword">new</span> ConnectionContext();
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doCommit</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        <span class="hljs-keyword">if</span> (context.inGlobalTransaction()) {
+            processGlobalTransactionCommit();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.isGlobalLockRequire()) {
+            processLocalCommitWithGlobalLocks();
+        } <span class="hljs-keyword">else</span> {
+            targetConnection.commit();
+        }
+    }
+
+}
+</code></pre>
+<ul>
+<li>如何判断<code>inGlobalTransaction()</code>？（注意下，这里和上面提到的<code>RootContext</code>不是一个东西）<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionContext</span> </span>{
+
+    <span class="hljs-keyword">private</span> String xid;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setXid</span><span class="hljs-params">(String xid)</span> </span>{
+        <span class="hljs-keyword">this</span>.xid = xid;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">inGlobalTransaction</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> xid != <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bind</span><span class="hljs-params">(String xid)</span> </span>{
+        <span class="hljs-keyword">if</span> (xid == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"xid should not be null"</span>);
+        }
+        <span class="hljs-keyword">if</span> (!inGlobalTransaction()) {
+            setXid(xid);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.xid.equals(xid)) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ShouldNeverHappenException();
+            }
+        }
+    }
+
+}
+</code></pre>
+哪里调用的<code>ConnectionContext.bind(xid)</code>?<pre><code class="language-java"><span class="hljs-keyword">package</span> io.seata.rm.datasource.exec;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseTransactionalExecutor</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">S</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Statement</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Executor</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">execute</span><span class="hljs-params">(Object... args)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        <span class="hljs-comment">// 那么，这里的XID哪来的呢？往后看就知道，是来自开启全局事务的时候获得的，和@GlobalTransactional有关</span>
+        String xid = RootContext.getXID(); 
+        <span class="hljs-keyword">if</span> (xid != <span class="hljs-keyword">null</span>) {
+            statementProxy.getConnectionProxy().bind(xid);
+        }
+
+        <span class="hljs-comment">// 这里就是设置 isGlobalLockRequire的位置，和 @GlobalLock有关</span>
+        statementProxy.getConnectionProxy().setGlobalLockRequire(RootContext.requireGlobalLock());
+        <span class="hljs-keyword">return</span> doExecute(args);
+    }
+
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProxy</span> </span>{
+
+   <span class="hljs-keyword">private</span> ConnectionContext context = <span class="hljs-keyword">new</span> ConnectionContext();
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bind</span><span class="hljs-params">(String xid)</span> </span>{
+        context.bind(xid);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setGlobalLockRequire</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> isLock)</span> </span>{
+        context.setGlobalLockRequire(isLock);
+    }
+
+}
+</code></pre>
+</li>
+<li>如何判断<code>isGlobalLockRequire()</code>？<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionContext</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> isGlobalLockRequire;
+
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isGlobalLockRequire</span><span class="hljs-params">()</span> </span>{
+       <span class="hljs-keyword">return</span> isGlobalLockRequire;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setGlobalLockRequire</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> isGlobalLockRequire)</span> </span>{
+        <span class="hljs-keyword">this</span>.isGlobalLockRequire = isGlobalLockRequire;
+    }
+
+}
+</code></pre>
+</li>
+</ul>
+<p>在看过代码后，我们知道，只要有地方在<code>RootContext</code>中设置了xid，或<code>bindGlobalLockFlag()</code>,就会识别成不同的状态。
+那么哪儿调用的呢？答案就在下方的<code>GlobalTransactionalInterceptor</code>中。</p>
+</li>
+</ol>
+<h2><strong><code>GlobalTransactionalInterceptor</code>处理带有<code>@GlobalTransactional</code>或<code>@GlobalLock</code>的方法</strong></h2>
+<p>带有<code>@GlobalTransactional</code>和<code>@GlobalLock</code>的方法会被代理，交给<code>GlobalTransactionalInterceptor</code>处理</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalTransactionalInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ConfigurationChangeListener</span>, <span class="hljs-title">MethodInterceptor</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">invoke</span><span class="hljs-params">(<span class="hljs-keyword">final</span> MethodInvocation methodInvocation)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        Class&lt;?&gt; targetClass =
+            methodInvocation.getThis() != <span class="hljs-keyword">null</span> ? AopUtils.getTargetClass(methodInvocation.getThis()) : <span class="hljs-keyword">null</span>;
+        Method specificMethod = ClassUtils.getMostSpecificMethod(methodInvocation.getMethod(), targetClass);
+        <span class="hljs-keyword">if</span> (specificMethod != <span class="hljs-keyword">null</span> &amp;&amp; !specificMethod.getDeclaringClass().equals(Object.class)) {
+            <span class="hljs-keyword">final</span> Method method = BridgeMethodResolver.findBridgedMethod(specificMethod);
+            <span class="hljs-keyword">final</span> GlobalTransactional globalTransactionalAnnotation =
+                getAnnotation(method, targetClass, GlobalTransactional.class);
+            <span class="hljs-keyword">final</span> GlobalLock globalLockAnnotation = getAnnotation(method, targetClass, GlobalLock.class);
+            <span class="hljs-keyword">boolean</span> localDisable = disable || (degradeCheck &amp;&amp; degradeNum &gt;= degradeCheckAllowTimes);
+            <span class="hljs-keyword">if</span> (!localDisable) {
+                <span class="hljs-keyword">if</span> (globalTransactionalAnnotation != <span class="hljs-keyword">null</span>) {
+                    <span class="hljs-keyword">return</span> handleGlobalTransaction(methodInvocation, globalTransactionalAnnotation);<span class="hljs-comment">// 处理 @GlobalTransactional</span>
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (globalLockAnnotation != <span class="hljs-keyword">null</span>) {
+                    <span class="hljs-keyword">return</span> handleGlobalLock(methodInvocation, globalLockAnnotation); <span class="hljs-comment">// 处理 @GlobalLock</span>
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> methodInvocation.proceed();
+    }
+
+}
+
+</code></pre>
+<h3><strong>先看处理<code>@GlobalTransactional</code></strong></h3>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalTransactionalInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ConfigurationChangeListener</span>, <span class="hljs-title">MethodInterceptor</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> TransactionalTemplate transactionalTemplate = <span class="hljs-keyword">new</span> TransactionalTemplate();
+
+    <span class="hljs-function">Object <span class="hljs-title">handleGlobalTransaction</span><span class="hljs-params">(<span class="hljs-keyword">final</span> MethodInvocation methodInvocation,
+        <span class="hljs-keyword">final</span> GlobalTransactional globalTrxAnno)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        
+        <span class="hljs-comment">//...</span>
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> transactionalTemplate.execute(...);
+        } <span class="hljs-keyword">catch</span> (TransactionalExecutor.ExecutionException e) {
+          <span class="hljs-comment">// ...</span>
+        } <span class="hljs-keyword">finally</span> {
+            <span class="hljs-comment">//...</span>
+        }
+    }
+}
+
+</code></pre>
+<p>来到了经典的seata事务模板方法，我们要关注开启事务的部分</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TransactionalTemplate</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">execute</span><span class="hljs-params">(TransactionalExecutor business)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        <span class="hljs-comment">// 1. Get transactionInfo</span>
+        <span class="hljs-comment">//...</span>
+        <span class="hljs-comment">// 1.1 Get current transaction, if not null, the tx role is 'GlobalTransactionRole.Participant'.</span>
+        GlobalTransaction tx = GlobalTransactionContext.getCurrent();
+
+        <span class="hljs-comment">// 1.2 Handle the transaction propagation.</span>
+        <span class="hljs-comment">// ...</span>
+
+            <span class="hljs-comment">// 1.3 If null, create new transaction with role 'GlobalTransactionRole.Launcher'.</span>
+            <span class="hljs-keyword">if</span> (tx == <span class="hljs-keyword">null</span>) {
+                tx = GlobalTransactionContext.createNew();
+            }
+
+           <span class="hljs-comment">//...</span>
+
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-comment">// 2. If the tx role is 'GlobalTransactionRole.Launcher', send the request of beginTransaction to TC,</span>
+                <span class="hljs-comment">//    else do nothing. Of course, the hooks will still be triggered.</span>
+                beginTransaction(txInfo, tx);
+
+                Object rs;
+                <span class="hljs-keyword">try</span> {
+                    <span class="hljs-comment">// Do Your Business</span>
+                    rs = business.execute();
+                } <span class="hljs-keyword">catch</span> (Throwable ex) {
+                    <span class="hljs-comment">// 3. The needed business exception to rollback.</span>
+                    completeTransactionAfterThrowing(txInfo, tx, ex);
+                    <span class="hljs-keyword">throw</span> ex;
+                }
+
+                <span class="hljs-comment">// 4. everything is fine, commit.</span>
+                commitTransaction(tx);
+
+                <span class="hljs-keyword">return</span> rs;
+            } <span class="hljs-keyword">finally</span> {
+                <span class="hljs-comment">//5. clear</span>
+                <span class="hljs-comment">//...</span>
+            }
+        } <span class="hljs-keyword">finally</span> {
+            <span class="hljs-comment">// If the transaction is suspended, resume it.</span>
+           <span class="hljs-comment">// ...</span>
+        }
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beginTransaction</span><span class="hljs-params">(TransactionInfo txInfo, GlobalTransaction tx)</span> <span class="hljs-keyword">throws</span> TransactionalExecutor.ExecutionException </span>{
+        <span class="hljs-keyword">try</span> {
+            triggerBeforeBegin();
+            tx.begin(txInfo.getTimeOut(), txInfo.getName());
+            triggerAfterBegin();
+        } <span class="hljs-keyword">catch</span> (TransactionException txe) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> TransactionalExecutor.ExecutionException(tx, txe,
+                TransactionalExecutor.Code.BeginFailure);
+
+        }
+    }
+
+
+}
+
+</code></pre>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DefaultGlobalTransaction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">GlobalTransaction</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">begin</span><span class="hljs-params">(<span class="hljs-keyword">int</span> timeout, String name)</span> <span class="hljs-keyword">throws</span> TransactionException </span>{
+        <span class="hljs-keyword">if</span> (role != GlobalTransactionRole.Launcher) {
+            assertXIDNotNull();
+            <span class="hljs-keyword">if</span> (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(<span class="hljs-string">"Ignore Begin(): just involved in global transaction [{}]"</span>, xid);
+            }
+            <span class="hljs-keyword">return</span>;
+        }
+        assertXIDNull();
+        String currentXid = RootContext.getXID();
+        <span class="hljs-keyword">if</span> (currentXid != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">"Global transaction already exists,"</span> +
+                <span class="hljs-string">" can't begin a new global transaction, currentXid = "</span> + currentXid);
+        }
+        xid = transactionManager.begin(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, name, timeout);
+        status = GlobalStatus.Begin;
+        RootContext.bind(xid); <span class="hljs-comment">// 绑定xid</span>
+        <span class="hljs-keyword">if</span> (LOGGER.isInfoEnabled()) {
+            LOGGER.info(<span class="hljs-string">"Begin new global transaction [{}]"</span>, xid);
+        }
+    }
+}
+</code></pre>
+<p>看到了吗？<code>RootContext.bind(xid);</code></p>
+<h3><strong>接着看处理<code>@GlobalLock</code></strong></h3>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalTransactionalInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ConfigurationChangeListener</span>, <span class="hljs-title">MethodInterceptor</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> GlobalLockTemplate globalLockTemplate = <span class="hljs-keyword">new</span> GlobalLockTemplate();
+
+    <span class="hljs-function">Object <span class="hljs-title">handleGlobalLock</span><span class="hljs-params">(<span class="hljs-keyword">final</span> MethodInvocation methodInvocation,
+        <span class="hljs-keyword">final</span> GlobalLock globalLockAnno)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+
+        <span class="hljs-keyword">return</span> globalLockTemplate.execute(<span class="hljs-keyword">new</span> GlobalLockExecutor() {...});
+    }
+}
+</code></pre>
+<p>也使用了模板方法来处理GlobalLock</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalLockTemplate</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">execute</span><span class="hljs-params">(GlobalLockExecutor executor)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        <span class="hljs-keyword">boolean</span> alreadyInGlobalLock = RootContext.requireGlobalLock();
+        <span class="hljs-keyword">if</span> (!alreadyInGlobalLock) {
+            RootContext.bindGlobalLockFlag();
+        }
+
+        <span class="hljs-comment">// set my config to config holder so that it can be access in further execution</span>
+        <span class="hljs-comment">// for example, LockRetryController can access it with config holder</span>
+        GlobalLockConfig myConfig = executor.getGlobalLockConfig();
+        GlobalLockConfig previousConfig = GlobalLockConfigHolder.setAndReturnPrevious(myConfig);
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> executor.execute();
+        } <span class="hljs-keyword">finally</span> {
+            <span class="hljs-comment">// only unbind when this is the root caller.</span>
+            <span class="hljs-comment">// otherwise, the outer caller would lose global lock flag</span>
+            <span class="hljs-keyword">if</span> (!alreadyInGlobalLock) {
+                RootContext.unbindGlobalLockFlag();
+            }
+
+            <span class="hljs-comment">// if previous config is not null, we need to set it back</span>
+            <span class="hljs-comment">// so that the outer logic can still use their config</span>
+            <span class="hljs-keyword">if</span> (previousConfig != <span class="hljs-keyword">null</span>) {
+                GlobalLockConfigHolder.setAndReturnPrevious(previousConfig);
+            } <span class="hljs-keyword">else</span> {
+                GlobalLockConfigHolder.remove();
+            }
+        }
+    }
+}
+</code></pre>
+<p>看到吗，一进模板方法就<code>RootContext.bindGlobalLockFlag();</code></p>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2021 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
