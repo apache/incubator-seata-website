@@ -377,8 +377,6 @@ public void B(){
 
 除了上述情况，如果引用的是`seata-spring-boot-starter`的话，产生这个错误的原因也可能是因为一个bug，目前在1.5版本进行了修复，具体可以参考[issues4020](https://github.com/seata/seata/issues/4020)，[PR4039](https://github.com/seata/seata/pull/4039)。
 
-------
-
 <h3 id='27'>Q: 27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</h3>
 
 **A：**
