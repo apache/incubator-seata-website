@@ -4,7 +4,7 @@ SkyWalking 是 Seata 组件中重要的APM（应用性能监控）实现.
 
 ## 预备工作
 
-当您将 SkyWalking 整合到您的 Seata 工程前，请确保后台已经启动 SkyWalking 服务，如果您尚且不熟悉 SkyWalking 的基本使用的话，可先行参考 [SkyWalking 快速入门](https://github.com/apache/skywalking/tree/master/docs)。建议使用 SkyWalking `8.4.0` 及以上的版本。
+当您将 SkyWalking 整合到您的 Seata 工程前，请确保后台已经启动 SkyWalking 服务，如果您尚且不熟悉 SkyWalking 的基本使用的话，可先行参考 [SkyWalking 快速入门](https://github.com/apache/skywalking/tree/master/docs)。建议使用 SkyWalking `8.6.0` 及以上的版本。
 
 ## 快速上手
 
