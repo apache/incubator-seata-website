@@ -12,60 +12,50 @@ description: Seata事务隔离
 >
 > （例如，两个事务同时在对同一条记录做update时，只有拿到record lock的事务才能更新成功，另一个事务在record lock未释放前只能等待，直到事务超时）
 
-
+首先请看这样的一段代码，尽管看着“初级”，但持久层框架实际上帮我们做的主要事情也就这样。
 ```java
-class YourBussinessService {
+@Service
+public class StorageService {
 
-    DbServiceA serviceA;
-    DbServiceB serviceB;
+    @Autowired
+    private DataSource dataSource;
 
     @GlobalTransactional
-    public boolean updateAll(DTO dto) {
-        serviceA.update(dto.getA());
-        serviceB.update(dto.getB());
-    }
-
-
-    @GlobalLock
-    @Transactional
-    public boolean updateA(DTO dto) {
-        serviceA.selectForUpdate(dto.getA());
-        serviceA.update(dto.getA());
-    }
-
-    @GlobalLock
-    @Transactional
-    public boolean queryA(DTO dto) {
-        serviceA.selectForUpdate(dto.getA());
+    public void batchUpdate() throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = dataSource.getConnection();
+            connection.setAutoCommit(false);
+            String sql = "update storage_tbl set count = ?" +
+                "    where id = ? and commodity_code = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, 100);
+            preparedStatement.setLong(2, 1);
+            preparedStatement.setString(3, "2001");
+            preparedStatement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            IOutils.close(preparedStatement);
+            IOutils.close(connection);
+        }
     }
 
 }
 ```
-```java
-class DbServiceA {
-    @Transactional
-    public boolean update(A a) {
-    
-    }
-}
+## 从代理数据源说起
 
-```
+使用AT模式，最重要的事情便是代理数据源，那么用`DataSourceProxy`代理数据源有什么作用呢？
 
-```java
-class DbServiceB {
-    @Transactional
-    public boolean update(B b) {
-
-    }
-}
-```
-## **`DataSourceProxy`的作用**
-
-DataSourceProxy帮助我们获得几个重要的代理对象
+DataSourceProxy能帮助我们获得几个重要的代理对象
 
 - 通过`DataSourceProxy.getConnection()`获得`ConnectionProxy`
 
 - 通过`ConnectionProxy.prepareStatement(...)`获得`StatementProxy`
+
+Seata的如何实现事务隔离，就藏在这2个Proxy中，我先概述下实现逻辑。
 
 ### **`StatementProxy.executeXXX()`的处理逻辑**
 
@@ -88,34 +78,54 @@ DataSourceProxy帮助我们获得几个重要的代理对象
     - undoLog数据入库
     - 让数据库commit本次事务
 - 处于`@GlobalLock`中（即，数据持久化方法带有`@GlobalLock`）
-    - 向tc查询是否有全局锁存在
+    - 向tc查询是否有全局锁存在，如存在，则抛出异常
     -  让数据库commit本次事务
 - 除了以上情况（`else`分支）
     - 让数据库commit本次事务
 
-## **@GlobalTransactional的作用**
+### **@GlobalTransactional的作用**
 标识一个全局事务
 
-## **@GlobalLock + select for update的作用**
+### **@GlobalLock + select for update的作用**
 
 如果像`updateA()`方法带有`@GlobalLock + select for update`，Seata在处理时，会先获取数据库本地锁，然后查询该记录是否有全局锁存在，若有，则抛出LockConflictException。
 
-## **脏写如何发生？**
-假如你的`updateA()`是这样的
+## 先举一个脏写的例子，再来看Seata如何防止脏写
+假设你的业务代码是这样的：
+- `updateAll()`用来同时更新A和B表记录，`updateA()` `updateB()`则分别更新A、B表记录
+- `updateAll()`已经加上了`@GlobalTransactional`
+```java
+class YourBussinessService {
+
+    DbServiceA serviceA;
+    DbServiceB serviceB;
+
+    @GlobalTransactional
+    public boolean updateAll(DTO dto) {
+        serviceA.update(dto.getA());
+        serviceB.update(dto.getB());
+    }
+
+    public boolean updateA(DTO dto) {
+        serviceA.update(dto.getA());
+    }
+
+}
+```
 ```java
 class DbServiceA {
     @Transactional
-    public boolean updateA(DTO dto) {
-
-        serviceA.update(dto.getA());
-
+    public boolean update(A a) {
+    
     }
 }
+
 ```
+
 ![dirty-write](/img/seata-isolation/dirty-write.png)
                                                                                        |
 
-## **如何防止脏写？**
+## **怎么用Seata防止脏写？**
 
 ### 办法一：`updateA()`也加上`@GlobalTransactional`，此时Seata会如何保证事务隔离？
 ```java
@@ -157,6 +167,10 @@ class DbServiceA {
 
 - 那如果是`updateA()`先被调用（未完成），`updateAll()`后被调用呢？  
   由于2个业务都是要先获得本地锁，因此同样不会发生脏写
+- 一定有人会问，“这里为什么要加上select for update? 只用@GlobalLock能不能防止脏写？”
+  能。但请再回看下上面的图，select for update能带来这么几个好处：
+  - 锁冲突更“温柔”些。如果只有@GlobalLock，检查到全局锁，则立刻抛出异常，也许再“坚持”那么一下，全局锁就释放了，抛出异常岂不可惜了。
+  - 在`updateA()`中可以通过select for update获得最新的A，接着再做更新。
 
 
 ## **如何防止脏读？**
@@ -193,8 +207,8 @@ public class StorageService {
         } catch (Exception e) {
             throw e;
         } finally {
-            connection.close();
-            preparedStatement.close();
+            IOutils.close(preparedStatement);
+            IOutils.close(connection);
         }
     }
 
