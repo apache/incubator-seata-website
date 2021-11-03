@@ -26,21 +26,20 @@ export default {
           link: 'mailto:dev-seata+subscribe@googlegroups.com'
         },
         {
-          img: '/img/twitter.png',
-          imgHover: '/img/twitter_hover.png',
-          title: '@Seata',
-          link: 'https://twitter.com/seataio',
+          img: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
+          imgHover: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
+          title: 'Seata WeChat Official Account(Recommend)',
         },
         {
-          img: '//img.alicdn.com/tfs/TB1zUYVw4z1gK0jSZSgXXavwpXa-514-512.png',
-          imgHover: '//img.alicdn.com/tfs/TB1zUYVw4z1gK0jSZSgXXavwpXa-514-512.png',
-          title: 'DingTalk①Group(full)',
+          img: '//img.alicdn.com/tfs/TB1nccZi79l0K4jSZFKXXXFjpXa-614-614.jpg',
+          imgHover: '//img.alicdn.com/tfs/TB1nccZi79l0K4jSZFKXXXFjpXa-614-614.jpg',
+          title: 'Wechat group assistant',
         },
-		{
-          img: '/img/dingding_group_two.png',
-          imgHover: '/img/dingding_group_two.png',
-          title: 'DingTalk②Group(allow)',
-        },
+        {
+          img: '//img.alicdn.com/imgextra/i4/O1CN01dlPWt21aVvzWusxiI_!!6000000003336-0-tps-248-228.jpg',
+          imgHover: '//img.alicdn.com/imgextra/i4/O1CN01dlPWt21aVvzWusxiI_!!6000000003336-0-tps-248-228.jpg',
+          title: 'dingTalk③(Recommend)',
+        }
       ],
     },
     contributorGuide: {
@@ -104,7 +103,7 @@ export default {
             {
                 img: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
                 imgHover: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
-                title: 'Seata 官微',
+                title: 'Seata 微信官方公众号(强烈推荐)',
             },
             {
                 img: '//img.alicdn.com/tfs/TB1nccZi79l0K4jSZFKXXXFjpXa-614-614.jpg',
@@ -112,8 +111,8 @@ export default {
                 title: '微信群拉取小助手',
             },
             {
-                img: '//img.alicdn.com/tfs/TB1UrmTj639YK4jSZPcXXXrUFXa-422-422.jpg',
-                imgHover: '//img.alicdn.com/tfs/TB1UrmTj639YK4jSZPcXXXrUFXa-422-422.jpg',
+                img: '//img.alicdn.com/imgextra/i4/O1CN01dlPWt21aVvzWusxiI_!!6000000003336-0-tps-248-228.jpg',
+                imgHover: '//img.alicdn.com/imgextra/i4/O1CN01dlPWt21aVvzWusxiI_!!6000000003336-0-tps-248-228.jpg',
                 title: '钉钉③群(推荐)',
             },
       ],
