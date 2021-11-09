@@ -16,10 +16,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibabba        |
 | Qipeng Li| [wlliqipeng](https://github.com/wlliqipeng)      | Alibabba        |
 | Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibabba        |
-| Jiang Yu   | [jiangyu-gts](https://github.com/jiangyu-gts)     | Alibabba        |
-| Wei Zhang   | [jezhang2014](https://github.com/jezhang2014)     | Alibabba        |
 | Sen Zhang   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
-| Guangshu Wang | [wgs13579](https://github.com/wgs13579)        | Antfin          |
 | Geng Zhang   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
 | Zhiyuan Lei | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
 | Qing Wang   | [jovany-wang](https://github.com/jovany-wang)     | Antfin          |
@@ -29,13 +26,16 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Guoyao Yuan | [github-ygy](https://github.com/github-ygy)      | Tuya            |
 | Xu Zhang   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
 | Shuaipeng Ren | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
-| Donglin Zhai | [tony-zdl](https://github.com/tony-zdl)        | Springs Capital |
-| Xugang Shen | [xuririse](https://github.com/xuririse)        | CNIC            |
 | Deyou Xu | [skyesx](https://github.com/skyesx)          | WeBank          |
 | Jinlei Zhuang | [zjinlei](https://github.com/zjinlei)         | Helios          |
 | Jiawei Zhang | [l81893521](https://github.com/l81893521)       | Locals          |
 | Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | Long Chen   | [long187](https://github.com/long187)         | Antfin          |
+| Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
+| Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
+| Liang Wang | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
+| Huadong Cao | [caohdgege](https://github.com/caohdgege) | BEIKE |
+| Zhongxiang Wang | [lightClouds917](https://github.com/lightClouds917) | TongDun |
 
 ## Seata Developer Roles
 
