@@ -18,50 +18,41 @@
 <p><strong>希望读者在阅读本文前，已阅读过seata官网中对AT模式的介绍，并且对数据库本地锁有所了解</strong></p>
 <p>（例如，两个事务同时在对同一条记录做update时，只有拿到record lock的事务才能更新成功，另一个事务在record lock未释放前只能等待，直到事务超时）</p>
 </blockquote>
-<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourBussinessService</span> </span>{
+<p>首先请看这样的一段代码，尽管看着“初级”，但持久层框架实际上帮我们做的主要事情也就这样。</p>
+<pre><code class="language-java"><span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StorageService</span> </span>{
 
-    DbServiceA serviceA;
-    DbServiceB serviceB;
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> DataSource dataSource;
 
     <span class="hljs-meta">@GlobalTransactional</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateAll</span><span class="hljs-params">(DTO dto)</span> </span>{
-        serviceA.update(dto.getA());
-        serviceB.update(dto.getB());
-    }
-
-
-    <span class="hljs-meta">@GlobalLock</span>
-    <span class="hljs-meta">@Transactional</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateA</span><span class="hljs-params">(DTO dto)</span> </span>{
-        serviceA.selectForUpdate(dto.getA());
-        serviceA.update(dto.getA());
-    }
-
-    <span class="hljs-meta">@GlobalLock</span>
-    <span class="hljs-meta">@Transactional</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">queryA</span><span class="hljs-params">(DTO dto)</span> </span>{
-        serviceA.selectForUpdate(dto.getA());
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">batchUpdate</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>{
+        Connection connection = <span class="hljs-keyword">null</span>;
+        PreparedStatement preparedStatement = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> {
+            connection = dataSource.getConnection();
+            connection.setAutoCommit(<span class="hljs-keyword">false</span>);
+            String sql = <span class="hljs-string">"update storage_tbl set count = ?"</span> +
+                <span class="hljs-string">"    where id = ? and commodity_code = ?"</span>;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>);
+            preparedStatement.setLong(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+            preparedStatement.setString(<span class="hljs-number">3</span>, <span class="hljs-string">"2001"</span>);
+            preparedStatement.executeUpdate();
+            connection.commit();
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-keyword">throw</span> e;
+        } <span class="hljs-keyword">finally</span> {
+            IOutils.close(preparedStatement);
+            IOutils.close(connection);
+        }
     }
 
 }
 </code></pre>
-<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceA</span> </span>{
-    <span class="hljs-meta">@Transactional</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">update</span><span class="hljs-params">(A a)</span> </span>{
-    
-    }
-}
-
-</code></pre>
-<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceB</span> </span>{
-    <span class="hljs-meta">@Transactional</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">update</span><span class="hljs-params">(B b)</span> </span>{
-
-    }
-}
-</code></pre>
-<h2><strong><code>DataSourceProxy</code>的作用</strong></h2>
-<p>DataSourceProxy帮助我们获得几个重要的代理对象</p>
+<h2>从代理数据源说起</h2>
+<p>使用AT模式，最重要的事情便是代理数据源，那么用<code>DataSourceProxy</code>代理数据源有什么作用呢？</p>
+<p>DataSourceProxy能帮助我们获得几个重要的代理对象</p>
 <ul>
 <li>
 <p>通过<code>DataSourceProxy.getConnection()</code>获得<code>ConnectionProxy</code></p>
@@ -70,6 +61,7 @@
 <p>通过<code>ConnectionProxy.prepareStatement(...)</code>获得<code>StatementProxy</code></p>
 </li>
 </ul>
+<p>Seata的如何实现事务隔离，就藏在这2个Proxy中，我先概述下实现逻辑。</p>
 <h3><strong><code>StatementProxy.executeXXX()</code>的处理逻辑</strong></h3>
 <ul>
 <li>
@@ -105,7 +97,7 @@
 </li>
 <li>处于<code>@GlobalLock</code>中（即，数据持久化方法带有<code>@GlobalLock</code>）
 <ul>
-<li>向tc查询是否有全局锁存在</li>
+<li>向tc查询是否有全局锁存在，如存在，则抛出异常</li>
 <li>让数据库commit本次事务</li>
 </ul>
 </li>
@@ -115,24 +107,44 @@
 </ul>
 </li>
 </ul>
-<h2><strong>@GlobalTransactional的作用</strong></h2>
+<h3><strong>@GlobalTransactional的作用</strong></h3>
 <p>标识一个全局事务</p>
-<h2><strong>@GlobalLock + select for update的作用</strong></h2>
+<h3><strong>@GlobalLock + select for update的作用</strong></h3>
 <p>如果像<code>updateA()</code>方法带有<code>@GlobalLock + select for update</code>，Seata在处理时，会先获取数据库本地锁，然后查询该记录是否有全局锁存在，若有，则抛出LockConflictException。</p>
-<h2><strong>脏写如何发生？</strong></h2>
-<p>假如你的<code>updateA()</code>是这样的</p>
+<h2>先举一个脏写的例子，再来看Seata如何防止脏写</h2>
+<p>假设你的业务代码是这样的：</p>
+<ul>
+<li><code>updateAll()</code>用来同时更新A和B表记录，<code>updateA()</code> <code>updateB()</code>则分别更新A、B表记录</li>
+<li><code>updateAll()</code>已经加上了<code>@GlobalTransactional</code></li>
+</ul>
+<pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourBussinessService</span> </span>{
+
+    DbServiceA serviceA;
+    DbServiceB serviceB;
+
+    <span class="hljs-meta">@GlobalTransactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateAll</span><span class="hljs-params">(DTO dto)</span> </span>{
+        serviceA.update(dto.getA());
+        serviceB.update(dto.getB());
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateA</span><span class="hljs-params">(DTO dto)</span> </span>{
+        serviceA.update(dto.getA());
+    }
+
+}
+</code></pre>
 <pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceA</span> </span>{
     <span class="hljs-meta">@Transactional</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">updateA</span><span class="hljs-params">(DTO dto)</span> </span>{
-
-        serviceA.update(dto.getA());
-
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">update</span><span class="hljs-params">(A a)</span> </span>{
+    
     }
 }
+
 </code></pre>
 <p><img src="/img/seata-isolation/dirty-write.png" alt="dirty-write">
 |</p>
-<h2><strong>如何防止脏写？</strong></h2>
+<h2><strong>怎么用Seata防止脏写？</strong></h2>
 <h3>办法一：<code>updateA()</code>也加上<code>@GlobalTransactional</code>，此时Seata会如何保证事务隔离？</h3>
 <pre><code class="language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DbServiceA</span> </span>{
 
@@ -172,6 +184,14 @@
 <p>那如果是<code>updateA()</code>先被调用（未完成），<code>updateAll()</code>后被调用呢？<br>
 由于2个业务都是要先获得本地锁，因此同样不会发生脏写</p>
 </li>
+<li>
+<p>一定有人会问，“这里为什么要加上select for update? 只用@GlobalLock能不能防止脏写？”
+能。但请再回看下上面的图，select for update能带来这么几个好处：</p>
+<ul>
+<li>锁冲突更“温柔”些。如果只有@GlobalLock，检查到全局锁，则立刻抛出异常，也许再“坚持”那么一下，全局锁就释放了，抛出异常岂不可惜了。</li>
+<li>在<code>updateA()</code>中可以通过select for update获得最新的A，接着再做更新。</li>
+</ul>
+</li>
 </ul>
 <h2><strong>如何防止脏读？</strong></h2>
 <h3>场景：   某业务先调用<code>updateAll()</code>，<code>updateAll()</code>未执行完成，另一业务后调用<code>queryA()</code></h3>
@@ -202,8 +222,8 @@
         } <span class="hljs-keyword">catch</span> (Exception e) {
             <span class="hljs-keyword">throw</span> e;
         } <span class="hljs-keyword">finally</span> {
-            connection.close();
-            preparedStatement.close();
+            IOutils.close(preparedStatement);
+            IOutils.close(connection);
         }
     }
 
