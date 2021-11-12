@@ -325,7 +325,7 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 **A:** 
 
-1.首先确保你引入了spring-cloud-alibaba-seata的依赖.
+1.首先确保你引入了`spring-cloud-starter-alibaba-seata`的依赖.
 
 2.如果xid还无法传递,请确认你是否实现了WebMvcConfigurer,如果是,请参考com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors的方法.把SeataHandlerInterceptor加入到你的拦截链路中.
 
@@ -447,7 +447,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 **A:**
 
-Seata需要的JDK版本为JDK8及以上。
+目前Seata支持的JDK版本为JDK8、11。其余版本不确保100%兼容
 
 ****
 
@@ -461,4 +461,21 @@ Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数�
 
 **A:**
 
-获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从@Globaltransational的TM端重新发起。
+获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从`@Globaltransational`的TM端重新发起。
+
+Seata提供了一个“全局锁重试”功能，默认未开启，可以通过下面这个配置来开启。
+```properties
+#遇到全局锁冲突时是否回滚，默认为true
+client.rm.lock.retryPolicyBranchRollbackOnConflict=false
+```
+开启后，默认的全局锁重试逻辑是：线程sleep 10ms，再次争全局锁，最多30次
+```properties
+#你可通过这2个配置来修改锁重试机制
+client.rm.lock.retryInterval=10
+client.rm.lock.retryTimes=30
+```
+另外，你也可以直接在`@GlobalTransactional`上单独配置重试逻辑，优先级比Seata全局配置更高
+```java
+@GlobalTransactional(lockRetryInternal = 100, lockRetryTimes = 30)  // v1.4.2
+@GlobalTransactional(lockRetryInterval = 100, lockRetryTimes = 30)  // v1.5
+```
