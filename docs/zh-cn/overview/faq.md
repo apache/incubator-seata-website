@@ -81,6 +81,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#36" target="_self">36. 怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </a>
 
+<a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -457,6 +459,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数据来，将实体的Long修改为BigInteger或BigDecimal即可解决问题。
 
+***
+
 <h3 id='36'>Q: 36.怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail </h3>
 
 **A:**
@@ -479,3 +483,13 @@ client.rm.lock.retryTimes=30
 @GlobalTransactional(lockRetryInternal = 100, lockRetryTimes = 30)  // v1.4.2
 @GlobalTransactional(lockRetryInterval = 100, lockRetryTimes = 30)  // v1.5
 ```
+***
+<h3 id='37'>Q：37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </h3>
+
+**A:**
+
+这是因为编译了 seata 源码然后覆盖了本地的 seata 依赖包的原因，在编译 seata 源码时使用了 JDK 11，而在 JDK 11 中由于改写了 `flip()` 方法，所以导致不兼容。
+
+解决办法：
+- 编译 seata 源码时确认 JDK 版本为 1.8，以免导致兼容问题
+- 如果已经用 JDK 11 编译了 seata 的源码，请删除本地 maven 仓库下 io.seata 路径下所有包。然后重新编译你的项目，让项目重新拉取中央仓库的 seata 的依赖包
