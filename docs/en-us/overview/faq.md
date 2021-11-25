@@ -458,7 +458,7 @@ There are two solutions. Choose one of them:
 2. Delete the JDK command of CMS in the startup script of Seata
 
 ***
-<h3 id='37'>Q：33. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running？ </h3>
+<h3 id='33'>Q：33. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running？ </h3>
 
 **A:**
 
