@@ -81,6 +81,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#36" target="_self">36. 怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </a>
 
+<a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -325,7 +327,7 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 **A:** 
 
-1.首先确保你引入了spring-cloud-alibaba-seata的依赖.
+1.首先确保你引入了`spring-cloud-starter-alibaba-seata`的依赖.
 
 2.如果xid还无法传递,请确认你是否实现了WebMvcConfigurer,如果是,请参考com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors的方法.把SeataHandlerInterceptor加入到你的拦截链路中.
 
@@ -445,7 +447,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 **A:**
 
-Seata需要的JDK版本为JDK8及以上。
+目前Seata支持的JDK版本为JDK8、11。其余版本不确保100%兼容
 
 ****
 
@@ -455,8 +457,37 @@ Seata需要的JDK版本为JDK8及以上。
 
 Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数据来，将实体的Long修改为BigInteger或BigDecimal即可解决问题。
 
+***
+
 <h3 id='36'>Q: 36.怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail </h3>
 
 **A:**
 
-获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从@Globaltransational的TM端重新发起。
+获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从`@Globaltransational`的TM端重新发起。
+
+Seata提供了一个“全局锁重试”功能，默认未开启，可以通过下面这个配置来开启。
+```properties
+#遇到全局锁冲突时是否回滚，默认为true
+client.rm.lock.retryPolicyBranchRollbackOnConflict=false
+```
+开启后，默认的全局锁重试逻辑是：线程sleep 10ms，再次争全局锁，最多30次
+```properties
+#你可通过这2个配置来修改锁重试机制
+client.rm.lock.retryInterval=10
+client.rm.lock.retryTimes=30
+```
+另外，你也可以直接在`@GlobalTransactional`上单独配置重试逻辑，优先级比Seata全局配置更高
+```java
+@GlobalTransactional(lockRetryInternal = 100, lockRetryTimes = 30)  // v1.4.2
+@GlobalTransactional(lockRetryInterval = 100, lockRetryTimes = 30)  // v1.5
+```
+***
+<h3 id='37'>Q：37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </h3>
+
+**A:**
+
+这是因为编译了 seata 源码然后覆盖了本地的 seata 依赖包的原因，在编译 seata 源码时使用了 JDK 11，而在 JDK 11 中由于改写了 `flip()` 方法，所以导致不兼容。
+
+解决办法：
+- 编译 seata 源码时确认 JDK 版本为 1.8，以免导致兼容问题
+- 如果已经用 JDK 11 编译了 seata 的源码，请删除本地 maven 仓库下 io.seata 路径下所有包。然后重新编译你的项目，让项目重新拉取中央仓库的 seata 的依赖包

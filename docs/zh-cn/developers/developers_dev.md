@@ -16,10 +16,7 @@ description: Seata 维护者名单
 | 申海强 | [sharajava](https://github.com/sharajava)       | Alibabba        |
 | 厉启鹏 | [wlliqipeng](https://github.com/wlliqipeng)      | Alibabba        |
 | 陈连东 | [purple-force](https://github.com/purple-force)    | Alibabba        |
-| 姜宇   | [jiangyu-gts](https://github.com/jiangyu-gts)     | Alibabba        |
-| 张伟   | [jezhang2014](https://github.com/jezhang2014)     | Alibabba        |
 | 张森   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
-| 王光树 | [wgs13579](https://github.com/wgs13579)        | Antfin          |
 | 章耿   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
 | 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
 | 王清   | [jovany-wang](https://github.com/jovany-wang)     | Antfin          |
@@ -29,8 +26,6 @@ description: Seata 维护者名单
 | 袁国尧 | [github-ygy](https://github.com/github-ygy)      | Tuya            |
 | 张旭   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
 | 任帅鹏 | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
-| 翟东林 | [tony-zdl](https://github.com/tony-zdl)        | Springs Capital |
-| 申旭刚 | [xuririse](https://github.com/xuririse)        | CNIC            |
 | 许德佑 | [skyesx](https://github.com/skyesx)          | WeBank          |
 | 庄金雷 | [zjinlei](https://github.com/zjinlei)         | Helios          |
 | 张嘉伟 | [l81893521](https://github.com/l81893521)       | Perfect Diary |

@@ -14,7 +14,7 @@ date: 2019-11-25
 #### 启动seata-server实例
 
 ```bash
-$ docker run --name seata-server -p 8091:8091 seataio/seata-server:latest
+$ docker run --name seata-server -p 8091:8091 seataio/seata-server:1.4.2
 ```
 
 #### 指定seata-server IP和端口 启动
