@@ -19,7 +19,7 @@
 <li>一整套微服务架构项目：projectA</li>
 <li>projectA内有微服务：serviceA、serviceB、serviceC 和 serviceD</li>
 </ul>
-<p>其中，projectA所有微服务的事务分组tx-transaction-group设置为：projectA，projectA正常情况下使用guangzhou的TC集群（主）</p>
+<p>其中，projectA所有微服务的事务分组tx-service-group设置为：projectA，projectA正常情况下使用guangzhou的TC集群（主）</p>
 <p>那么正常情况下，client端的配置如下所示：</p>
 <pre><code>seata.tx-service-group=projectA
 seata.service.vgroup-mapping.projectA=Guangzhou
