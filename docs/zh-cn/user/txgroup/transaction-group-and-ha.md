@@ -12,7 +12,7 @@ description: Seata 事务分组与高可用的最佳实践
 - 一整套微服务架构项目：projectA
 - projectA内有微服务：serviceA、serviceB、serviceC 和 serviceD
 
-其中，projectA所有微服务的事务分组tx-transaction-group设置为：projectA，projectA正常情况下使用guangzhou的TC集群（主）
+其中，projectA所有微服务的事务分组tx-service-group设置为：projectA，projectA正常情况下使用guangzhou的TC集群（主）
 
 那么正常情况下，client端的配置如下所示：
 
