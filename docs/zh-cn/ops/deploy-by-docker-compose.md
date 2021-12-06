@@ -47,6 +47,8 @@ db模式需要在数据库创建对应的表结构，[建表脚本](https://gith
 其他存储模式可参考<a href="#file.example.conf">file.example.conf</a>
 
 ```properties
+# 1.5.0版本后，默认事务分组改成了default_tx_group
+# 参考：service.vgroupMapping.default_tx_group=default
 service.vgroupMapping.my_test_tx_group=default
 # 存储模式
 store.mode=db
@@ -110,6 +112,8 @@ db模式需要在数据库创建对应的表结构，[建表脚本](https://gith
 其他存储模式可参考<a href="#file.example.conf">file.example.conf</a>
 
 ```properties
+# 1.5.0版本后，默认事务分组改成了default_tx_group
+# 参考：service.vgroupMapping.default_tx_group=default
 service.vgroupMapping.my_test_tx_group=default
 # 存储模式
 store.mode=db
@@ -194,6 +198,8 @@ services:
 其他存储模式可参考<a href="#file.example.conf">file.example.conf</a>
 
 ```properties
+# 1.5.0版本后，默认事务分组改成了default_tx_group
+# 参考：service.vgroupMapping.default_tx_group=default
 service.vgroupMapping.my_test_tx_group=default
 # 存储模式
 store.mode=db
