@@ -7,7 +7,7 @@ description: Seata 事务分组。
 # 事务分组专题
 
 ### 事务分组是什么？
-- 事务分组：seata的资源逻辑，可以按微服务的需要对事务进行逻辑上分组，每组取一个名字。可以在应用程序（客户端）中通过属性tx-service-group定义事务分组。
+- 事务分组：seata的资源逻辑，可以按微服务的需要，在应用程序（客户端）对自行定义事务分组，每组取一个名字。
 - 集群：seata-server服务端一个或多个节点组成的集群cluster。 应用程序（客户端）使用时需要指定事务逻辑分组与Seata服务端集群的映射关系。
 ### 事务分组如何找到后端Seata集群？
 1. 首先应用程序（客户端）中配置了事务分组（GlobalTransactionScanner 构造方法的txServiceGroup参数）。若应用程序是SpringBoot则通过seata.tx-service-group 配置
