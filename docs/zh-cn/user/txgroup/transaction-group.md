@@ -97,8 +97,6 @@ txt为参数明细（包含Server和Client），sh为linux脚本，windows可下
 ```
 spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------> 事务分组定义
 seata.service.vgroup-mapping.my_test_tx_group=cluster_beijing  ---------------> 指定事务分组至集群映射（等号右侧的集群名需要与Seata服务端配置的cluster保持一致）
-
-
 ```
 - 读取配置
 > 通过NacosConfiguration远程读取seata配置参数
