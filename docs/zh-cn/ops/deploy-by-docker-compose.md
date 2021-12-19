@@ -14,12 +14,12 @@ date: 2021-12-05
 
 ## 快速开始 
 
-* <a href="#file-file">【无注册中心，file存储】</a>
-* <a href="#file-db">【无注册中心，db存储】</a>
-* <a href="#nacos-db">【nacos注册中心，db存储】</a>
-* <a href="#ha-nacos-db">【高可用部署】</a>
+* <a href="#file-file">无注册中心，file存储</a>
+* <a href="#file-db">无注册中心，db存储</a>
+* <a href="#nacos-db">nacos注册中心，db存储</a>
+* <a href="#ha-nacos-db">高可用部署</a>
 
-### <a id="file-file">【无注册中心，file存储】</a>
+### <a id="file-file">无注册中心，file存储</a>
 
 该模式下，不需要注册中心，也不需要任何第三方存储中心。
 
@@ -37,7 +37,7 @@ services:
       - STORE_MODE=file
 ```
 
-### <a id="file-db">【无注册中心，DB存储】</a>
+### <a id="file-db">无注册中心，DB存储</a>
 
 > db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
 
@@ -58,12 +58,12 @@ store.db.dbType=mysql
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意调整host和port
+# 注意调整host和port，根据生产实际情况调整参数
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
 # 数据库用户名
-store.db.user=root
+store.db.user=
 # 用户名密码
-store.db.password=123456
+store.db.password=
 ```
 
 **（2）准备registry.conf文件**
@@ -101,7 +101,7 @@ services:
     # 需要把file.conf和registry.conf都放到./seata-server/config文件夹中
       - "./seata-server/config:/root/seata-config"
 ```
-### <a id="nacos-db">【nacos注册中心，db存储】</a>
+### <a id="nacos-db">nacos注册中心，db存储</a>
 
 > db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
 
@@ -122,12 +122,12 @@ store.db.dbType=mysql
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意调整host和port
+# 注意调整host和port，根据生产实际情况调整参数
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
 # 数据库用户名
-store.db.user=root
+store.db.user=
 # 用户名密码
-store.db.password=123456
+store.db.password=
 ```
 
 **（2）准备registry.conf文件**
@@ -183,7 +183,7 @@ services:
       - "./seata-server/config:/root/seata-config"
 ```
 
-### <a id="ha-nacos-db">【高可用部署】</a>
+### <a id="ha-nacos-db">高可用部署</a>
 
 > seata高可用依赖于注册中心、数据库，可不依赖配置中心。
 
@@ -206,12 +206,12 @@ store.db.dbType=mysql
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意调整host和port
+# 注意调整host和port，根据生产实际情况调整参数
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
 # 数据库用户名
-store.db.user=root
+store.db.user=
 # 用户名密码
-store.db.password=123456
+store.db.password=
 ```
 
 **（2）准备registry.conf文件**
@@ -249,7 +249,7 @@ config {
 **（3）准备docker-compose.yaml文件**
 
 > 只要保持配置一致，seata服务可在一台机器上部署多实例，也可同时部署在多台不同的主机下面实现服务高可用。
-> [Kubernetes高可用部署](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [高可用部署](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
 
 ```yaml
 version: "3.1"
