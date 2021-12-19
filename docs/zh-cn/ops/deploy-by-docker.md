@@ -38,7 +38,7 @@ $ docker run --name seata-server \
 version: "3"
 services:
   seata-server:
-    image: seataio/seata-server:1.4.2
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
