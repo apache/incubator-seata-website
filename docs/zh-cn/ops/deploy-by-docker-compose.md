@@ -58,7 +58,7 @@ store.db.dbType=mysql
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意调整host和port，根据生产实际情况调整参数
+# 注意根据生产实际情况调整参数host和port
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
 # 数据库用户名
 store.db.user=
@@ -122,7 +122,7 @@ store.db.dbType=mysql
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意调整host和port，根据生产实际情况调整参数
+# 注意根据生产实际情况调整参数host和port
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
 # 数据库用户名
 store.db.user=
@@ -206,7 +206,7 @@ store.db.dbType=mysql
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意调整host和port，根据生产实际情况调整参数
+# 注意根据生产实际情况调整参数host和port
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
 # 数据库用户名
 store.db.user=
