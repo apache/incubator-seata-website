@@ -28,7 +28,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:1.4.2
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -90,7 +90,7 @@ config {
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:1.4.2
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -153,7 +153,6 @@ registry {
   }
 }
 
-#【如果nacos服务是docker运行的话，config.type需要指定为file模式，否则会报错】
 config {
   type = "file"
   
@@ -168,7 +167,7 @@ config {
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:1.4.2
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -238,7 +237,6 @@ registry {
   }
 }
 
-#【如果nacos服务是docker运行的话，config.type需要指定为file模式，否则会报错】
 config {
   type = "file"
   
@@ -251,13 +249,14 @@ config {
 **（3）准备docker-compose.yaml文件**
 
 > 只要保持配置一致，seata服务可在一台机器上部署多实例，也可同时部署在多台不同的主机下面实现服务高可用。
+> [Kubernetes高可用部署](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
 
 ```yaml
 version: "3.1"
 services:
   # seata服务1
   seata-server-1:
-    image: seataio/seata-server:1.4.2
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -273,7 +272,7 @@ services:
       - "./seata-server/config:/root/seata-config"
   # seata服务2
   seata-server-2:
-    image: seataio/seata-server:1.4.2
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8092:8092"
@@ -289,7 +288,7 @@ services:
       - "./seata-server/config:/root/seata-config"
   # seata服务3
   seata-server-3:
-    image: seataio/seata-server:1.4.2
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8093:8093"
