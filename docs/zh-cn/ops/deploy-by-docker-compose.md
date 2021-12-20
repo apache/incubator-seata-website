@@ -46,9 +46,6 @@ services:
 其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
 
 ```properties
-# 1.5.0版本后，默认事务分组改成了default_tx_group
-# 参考：service.vgroupMapping.default_tx_group=default
-service.vgroupMapping.my_test_tx_group=default
 # 存储模式
 store.mode=db
 
@@ -105,14 +102,50 @@ services:
 
 > db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
 
-**（1）准备file.conf配置文件**
+**（1）准备registry.conf文件**
+
+nacos注册中心。
+
+其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
+
+```
+registry {
+  type = "nacos"
+  
+  nacos {
+  # seata服务注册在nacos上的别名，客户端通过该别名调用服务
+    application = "seata-server"
+  # 请根据实际生产环境配置nacos服务的ip和端口
+    serverAddr = "127.0.0.1:8848"
+  # nacos上指定的namespace
+    namespace = ""
+    cluster = "default"
+    username = "nacos"
+    password = "nacos"
+  }
+}
+
+config {
+  type = "nacos"
+  
+  nacos {
+    # 请根据实际生产环境配置nacos服务的ip和端口
+    serverAddr = "127.0.0.1:8848"
+    # nacos上指定的namespace
+    namespace = ""
+    group = "SEATA_GROUP"
+    username = "nacos"
+    password = "nacos"
+    dataId = "seataServer.properties"
+  }
+}
+```
+
+**（2）准备nacos配置中心配置**
 
 其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
 
 ```properties
-# 1.5.0版本后，默认事务分组改成了default_tx_group
-# 参考：service.vgroupMapping.default_tx_group=default
-service.vgroupMapping.my_test_tx_group=default
 # 存储模式
 store.mode=db
 
@@ -130,37 +163,6 @@ store.db.user=
 store.db.password=
 ```
 
-**（2）准备registry.conf文件**
-
-nacos注册中心。
-
-其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
-
-```
-registry {
-  type = "nacos"
-  
-  nacos {
-  # seata服务注册在nacos上的别名，客户端通过该别名调用服务
-    application = "seata-server"
-  # nacos服务的ip和端口
-    serverAddr = "127.0.0.1:8848"
-  # nacos上指定的namespace
-    namespace = ""
-    cluster = "default"
-    username = "nacos"
-    password = "nacos"
-  }
-}
-
-config {
-  type = "file"
-  
-  file {
-    name="file:/root/seata-config/file.conf"
-  }
-}
-```
 
 **（3）准备docker-compose.yaml文件**
 ```yaml
@@ -179,7 +181,7 @@ services:
       - SEATA_IP=127.0.0.1
       - SEATA_CONFIG_NAME=file:/root/seata-config/registry
     volumes:
-    # 需要把file.conf和registry.conf都放到./seata-server/config文件夹中
+    # 因为registry.conf中是nacos配置中心，只需要把registry.conf放到./seata-server/config文件夹中
       - "./seata-server/config:/root/seata-config"
 ```
 
@@ -194,9 +196,6 @@ services:
 其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
 
 ```properties
-# 1.5.0版本后，默认事务分组改成了default_tx_group
-# 参考：service.vgroupMapping.default_tx_group=default
-service.vgroupMapping.my_test_tx_group=default
 # 存储模式
 store.mode=db
 
