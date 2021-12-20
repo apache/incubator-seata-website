@@ -38,7 +38,6 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Zhongxiang Wang | [lightClouds917](https://github.com/lightClouds917) | TongDun |
 | XiaoMin Liu | [dk-lockdown](https://github.com/dk-lockdown) | cestc |
 
-
 ## Seata Developer Roles
 
 Seata developers include three roles: Maintainer, Committer, and Contributor. The standard definitions for each role are as follows.
