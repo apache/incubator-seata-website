@@ -20,11 +20,11 @@ description: Seata 事务分组。
 这里多了一层获取事务分组到映射集群的配置。这样设计后，事务分组可以作为资源的逻辑隔离单位，出现某集群故障时可以快速failover，只切换对应分组，可以把故障缩减到服务级别，但前提也是你有足够server集群。
 
 ## 事务分组使用案例
-seata注册、配置中心分为两大类：
+seata注册、配置中心类型分为两大类：
 - 内置file
-- 第三方注册（配置）中心。如nacos等等，注册中心和配置中心之间没有约束，可各自使用不同类型。
+- 第三方注册（配置）中心。如nacos等等，注册中心和配置中心之间没有约束，可各自使用不同具体选型。
 
-### 第一类：file注册中心和配置中心
+### 第一类：内置file
 #### Server端
 ```
 registry {
@@ -41,6 +41,7 @@ config {
 ```
 - file、db模式启动server，见文章上方节点：启动Server
 #### Client端
+registry.conf
 ```
 registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
@@ -53,12 +54,18 @@ config {
     name = "file.conf"         ---------------> 配置参数存储文件
   }
 }
-seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置
+```
+file.conf
+```
 file.conf: 
     service {
       vgroupMapping.my_test_tx_group = "default"
       default.grouplist = "127.0.0.1:8091"
     }
+```
+application.properties
+```
+seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置
 ```
 - 读取配置
 > 通过FileConfiguration本地加载file.conf的配置参数
@@ -69,26 +76,29 @@ file.conf:
 - 查询TC服务
 > 拼接"service."+clusterName+".grouplist"找到真实TC服务地址127.0.0.1:8091
 
-
+----
 ### 第二类：注册中心和配置中心(以nacos为例)
 #### Server端
 ```
 registry {
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-  type = "nacos"                ---------------> 使用nacos作为注册中心
+  type = "nacos"                  ---------------> 使用nacos作为注册中心
   nacos {
-    serverAddr = "localhost"    ---------------> nacos注册中心所在ip
-    namespace = ""              ---------------> nacos命名空间id，""为nacos保留public空间控件，用户勿配置namespace = "public"
-    cluster = "default"         ---------------> seata-server在nacos的集群名
+    application = "seata-server"  ---------------> 指定注册至nacos注册中心的服务名
+    group = "SEATA_GROUP"         ---------------> 指定注册至nacos注册中心的分组名
+    serverAddr = "localhost"      ---------------> nacos注册中心所在ip
+    namespace = ""                ---------------> nacos命名空间id，""为nacos保留public空间控件，用户勿配置namespace = "public"
+    cluster = "default"           ---------------> 指定注册至nacos注册中心的集群名
   }
 }
 config {
   # file、nacos 、apollo、zk、consul、etcd3
-  type = "nacos"                ---------------> 使用nacos作为配置中心
+  type = "nacos"                  ------------> 使用nacos作为配置中心
   nacos {
-    serverAddr = "localhost"
+    serverAddr = "localhost"      ---------------> nacos配置中心所在ip
     namespace = ""
-    cluster = "default"
+    group = "SEATA_GROUP"         ---------------> nacos配置中心的分组名
+    dataId = "seataServer.properties"  ---------------> nacos配置中心配置ID
   }
 }
 
@@ -123,16 +133,22 @@ config {
 ```
 
 #### Client端(SpringBoot)
+application.properties
 ```
 spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置
 seata.service.vgroup-mapping.my_test_tx_group=cluster_beijing  ---------------> 指定事务分组至集群映射关系（等号右侧的集群名需要与Seata服务端配置的cluster保持一致）
 
-# 设置vgroup-mapping（即服务端的cluster）中各个seata-server服务端节点的IP和端口信息
-# 仅在客户端（微服务）配置的seata.registry.type=file才需要使用，不推荐在正式环境使用file类型
-# seata.registry.type=nacos或其他类型时（微服务客户端和seata-server服务端应同时指定为nacos），则无需此参数
-seata.registry.type=file
-seata.service.grouplist.cluster_beijing=127.0.0.1:8091
+seata.registry.type=nacos      ---------------> 使用nacos作为注册中心
+seata.registry.nacos.server-addr=nacos注册中心所在ip:端口
+seata.registry.nacos.application=seata-server     ---------------> Seata服务名（应与seata-server实际注册的服务名一致）
+seata.registry.nacos.group=SEATA_GROUP            ---------------> Seata分组名（应与seata-server实际注册的分组名一致）
 ```
+>> 另外：若Client不通过Nacos获取seata-server服务信息，而是直接指定seata-server服务端节点的IP和端口信息，则可将以上客户端配置中涉及nacos参数改为以下两个参数：
+>> 
+>> seata.registry.type=file       ----> 不推荐在正式环境使用
+>> 
+>> seata.service.grouplist.cluster_beijing=127.0.0.1:8091    ----> vgroup-mapping（服务端cluster）各个seata-server节点信息
+
 
 
 - 读取配置
