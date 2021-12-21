@@ -36,6 +36,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Liang Wang | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
 | Huadong Cao | [caohdgege](https://github.com/caohdgege) | BEIKE |
 | Zhongxiang Wang | [lightClouds917](https://github.com/lightClouds917) | TongDun |
+| XiaoMin Liu | [dk-lockdown](https://github.com/dk-lockdown) | cestc |
 
 ## Seata Developer Roles
 

@@ -36,6 +36,7 @@ description: Seata 维护者名单
 | 王良 | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
 | 曹华栋 | [caohdgege](https://github.com/caohdgege) | BEIKE |
 | 汪忠祥 | [lightClouds917](https://github.com/lightClouds917) | TongDun |
+| 刘晓敏 | [dk-lockdown](https://github.com/dk-lockdown) | 中国系统 |
 
 ## Seata开发者角色
 
