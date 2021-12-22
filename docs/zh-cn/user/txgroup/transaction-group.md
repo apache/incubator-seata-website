@@ -57,7 +57,6 @@ config {
 ```
 file.conf
 ```
-file.conf: 
     service {
       vgroupMapping.my_test_tx_group = "default"
       default.grouplist = "127.0.0.1:8091"
@@ -139,11 +138,11 @@ spring.cloud.alibaba.seata.tx-service-group=my_test_tx_group ---------------> �
 seata.service.vgroup-mapping.my_test_tx_group=cluster_beijing  ---------------> 指定事务分组至集群映射关系（等号右侧的集群名需要与Seata服务端配置的cluster保持一致）
 
 seata.registry.type=nacos      ---------------> 使用nacos作为注册中心
-seata.registry.nacos.server-addr=nacos注册中心所在ip:端口
+seata.registry.nacos.server-addr=nacos注册中心IP:端口
 seata.registry.nacos.application=seata-server     ---------------> Seata服务名（应与seata-server实际注册的服务名一致）
 seata.registry.nacos.group=SEATA_GROUP            ---------------> Seata分组名（应与seata-server实际注册的分组名一致）
 ```
->> 另外：若Client不通过Nacos获取seata-server服务信息，而是直接指定seata-server服务端节点的IP和端口信息，则可将以上客户端配置中涉及nacos参数改为以下两个参数：
+>> 另外：若Client不通过Nacos获取seata-server服务信息，而是直接指定seata-server服务端节点的IP和端口信息，则可将以上application.properties中涉及nacos几个配置改为如两个配置：
 >> 
 >> seata.registry.type=file       ----> 不推荐在正式环境使用
 >> 
