@@ -43,7 +43,7 @@ services:
 
 **（1）准备file.conf配置文件**
 
-其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
+更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```properties
 # 存储模式
@@ -65,7 +65,9 @@ store.db.password=
 
 **（2）准备registry.conf文件**
 
-其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
+更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+
+更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
 
 直连模式（无注册中心）
 ```
@@ -106,7 +108,9 @@ services:
 
 nacos注册中心。
 
-其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
+更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+
+更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
 
 ```
 registry {
@@ -142,7 +146,7 @@ config {
 
 **（2）准备nacos配置中心配置**
 
-其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
+更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```properties
 # 存储模式
@@ -192,7 +196,7 @@ services:
 
 **（1）准备file.conf配置文件**
 
-其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
+更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```properties
 # 存储模式
@@ -216,7 +220,9 @@ store.db.password=
 
 nacos注册中心。
 
-其他模式可参考<a href="https://github.com/seata/seata/tree/develop/script/config-center">配置中心</a>
+更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+
+更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
 
 ```
 registry {
