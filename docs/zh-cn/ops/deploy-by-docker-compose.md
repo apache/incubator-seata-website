@@ -136,7 +136,6 @@ config {
     group = "SEATA_GROUP"
     username = "nacos"
     password = "nacos"
-    dataId = "seataServer.properties"
   }
 }
 ```
@@ -285,22 +284,8 @@ services:
     volumes:
     # 需要把file.conf和registry.conf都放到./seata-server/config文件夹中
       - "./seata-server/config:/root/seata-config"
-  # seata服务3
-  seata-server-3:
-    image: seataio/seata-server:${latest-release-version}
-    hostname: seata-server
-    ports:
-      - "8093:8093"
-    environment:
-      # 指定seata服务启动端口
-      - SEATA_PORT=8093
-      # 注册到nacos上的ip。客户端将通过该ip访问seata服务。
-      # 注意公网ip和内网ip的差异。
-      - SEATA_IP=127.0.0.1
-      - SEATA_CONFIG_NAME=file:/root/seata-config/registry
-    volumes:
-    # 需要把file.conf和registry.conf都放到./seata-server/config文件夹中
-      - "./seata-server/config:/root/seata-config"
+  
+  # seata服务3......seata服务N
 ```
 
 ## 环境变量
