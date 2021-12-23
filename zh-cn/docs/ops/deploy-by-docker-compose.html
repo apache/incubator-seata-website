@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="docker-compose,ops" />
+	<meta name="description" content="使用 Docker-compose 快速部署 Seata Server" />
+	<!-- 网页标签标题 -->
+	<title>使用 Docker compose 快速部署 Seata Server</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/documentation.css" />
+</head>
+<body>
+	<div id="root"><div class="documentation-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><span><a href="/zh-cn/index.html">首页</a></span></li><li class="menu-item menu-item-normal menu-item-normal-active"><span><a href="/zh-cn/docs/overview/what-is-seata.html">文档</a></span></li><li class="menu-item menu-item-normal"><div class="nav-container"><div class="word"><a>解决方案</a><img class="menu-img" src="https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png"/></div><ul class="sub-nav-container" style="width:220px"><li><a href="https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0" target="_blank">分布式事务解决方案</a></li><li><a href="https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0" target="_blank">微服务解决方案</a></li><li><a href="https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0" target="_blank">高可用解决方案</a></li><li><a href="https://cn.aliyun.com/product/aliware/sae?spm=seata-website.topbar.0.0.0" target="_blank">微服务Serverless解决方案</a></li><li><a href="https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0" target="_blank">PaaS解决方案</a></li><li><a href="https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0" target="_blank">服务网格解决方案</a></li></ul> </div></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/docs/developers/developers_dev.html">开发者</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/blog/index.html">博客</a></span></li><li class="menu-item menu-item-normal"><span><a href="https://github.com/seata/seata/issues/3741">暑期2021</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/community/index.html">社区</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/blog/download.html">下载</a></span></li></ul></div></div></header><div class="bar"><div class="bar-body"><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="front-img"/><span>文档</span><img src="https://img.alicdn.com/tfs/TB1cm8nJwDqK1RjSZSyXXaxEVXa-160-160.png" class="back-img"/></div></div><section class="content-section"><div class="sidemenu"><div class="sidemenu-toggle"><img src="https://img.alicdn.com/tfs/TB1E6apXHGYBuNjy0FoXXciBFXa-200-200.png"/></div><ul><li class="menu-item menu-item-level-1"><span>概述</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/terminology.html" target="_self">术语表</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/overview/faq.html" target="_self">FAQ</a></li></ul></li><li class="menu-item menu-item-level-1"><span>用户文档</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速启动</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/configurations.html" target="_self">参数配置</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>事务分组<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group.html" target="_self">事务分组介绍</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/txgroup/transaction-group-and-ha.html" target="_self">事务分组与高可用</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>配置中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/nacos.html" target="_self">Nacos 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/apollo.html" target="_self">Apollo 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/etcd3.html" target="_self">Etcd3 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/consul.html" target="_self">Consul 配置中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/configuration/zookeeper.html" target="_self">Zookeeper 配置中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>注册中心<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/index.html" target="_self">简介</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/nacos.html" target="_self">Nacos 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/eureka.html" target="_self">Eureka 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/etcd3.html" target="_self">Etcd3 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/consul.html" target="_self">Consul 注册中心</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/registry/zookeeper.html" target="_self">Zookeeper 注册中心</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/api.html" target="_self">API 支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/microservice.html" target="_self">微服务框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/ormframework.html" target="_self">ORM 框架支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/user/datasource.html" target="_self">数据库类型支持</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>SQL参考<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/sql-restrictions.html" target="_self">SQL限制</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/dml.html" target="_self">DML语句</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/sql-decoration.html" target="_self">SQL修饰</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/sqlreference/function.html" target="_self">函数</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>APM<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/apm/skywalking.html" target="_self">SkyWalking</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/apm/prometheus.html" target="_self">Prometheus</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>测试报告<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/performance.html" target="_self">性能测试报告</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>附录<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/appendix/global-transaction-status.html" target="_self">事务状态</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/appendix/isolation.html" target="_self">事务隔离</a></li></ul></li></ul></li><li class="menu-item menu-item-level-1"><span>开发者指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>各事务模式<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/at-mode.html" target="_self">Seata AT 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/tcc-mode.html" target="_self">Seata TCC 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/user/saga.html" target="_self">Seata Saga 模式</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/dev/mode/xa-mode.html" target="_self">Seata XA 模式</a></li></ul></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/dev/seata-mertics.html" target="_self">Metrics设计</a></li></ul></li><li class="menu-item menu-item-level-1"><span>运维指南</span><ul><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><a href="/zh-cn/docs/ops/upgrade.html" target="_self">版本升级指南</a></li><li style="height:36px;overflow:hidden" class="menu-item menu-item-level-2"><span>部署<img style="transform:rotate(-90deg)" class="menu-toggle" src="https://img.alicdn.com/tfs/TB15.Ilw2b2gK0jSZK9XXaEgFXa-26-16.png"/></span><ul><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-guide-beginner.html" target="_self">新人文档</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-server.html" target="_self">直接部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker.html" target="_self">Docker部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-docker-compose.html" target="_self">Docker compose部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-kubernetes.html" target="_self">Kubernetes部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-by-helm.html" target="_self">Helm 部署</a></li><li class="menu-item menu-item-level-3"><a href="/zh-cn/docs/ops/deploy-ha.html" target="_self">高可用部署</a></li></ul></li></ul></li></ul></div><div class="doc-content markdown-body"><h1>使用 docker-compose 部署 Seata Server</h1>
+<h2>注意事项</h2>
+<ul>
+<li>避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到<a href="https://hub.docker.com/r/seataio/seata-server/tags">docker镜像仓库</a>确定要拉取的镜像版本。</li>
+</ul>
+<h2>快速开始</h2>
+<ul>
+<li><a href="#file-file">无注册中心，file存储</a></li>
+<li><a href="#file-db">无注册中心，db存储</a></li>
+<li><a href="#nacos-db">nacos注册中心，db存储</a></li>
+<li><a href="#ha-nacos-db">高可用部署</a></li>
+</ul>
+<h3><a id="file-file">无注册中心，file存储</a></h3>
+<p>该模式下，不需要注册中心，也不需要任何第三方存储中心。</p>
+<p>docker-compose.yaml</p>
+<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3.1"</span>
+<span class="hljs-attr">services:</span>
+<span class="hljs-attr">  seata-server:</span>
+<span class="hljs-attr">    image:</span> <span class="hljs-string">seataio/seata-server:${latest-release-version}</span>
+<span class="hljs-attr">    hostname:</span> <span class="hljs-string">seata-server</span>
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"8091:8091"</span>
+<span class="hljs-attr">    environment:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8091</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">STORE_MODE=file</span>
+</code></pre>
+<h3><a id="file-db">无注册中心，DB存储</a></h3>
+<blockquote>
+<p>db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。</p>
+</blockquote>
+<p><strong>（1）准备file.conf配置文件</strong></p>
+<p>更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a></p>
+<pre><code class="language-properties"><span class="hljs-comment"># 存储模式</span>
+<span class="hljs-meta">store.mode</span>=<span class="hljs-string">db</span>
+
+<span class="hljs-meta">store.db.datasource</span>=<span class="hljs-string">druid</span>
+<span class="hljs-meta">store.db.dbType</span>=<span class="hljs-string">mysql</span>
+<span class="hljs-comment"># 需要根据mysql的版本调整driverClassName</span>
+<span class="hljs-comment"># mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-comment"># mysql8以下版本的driver：com.mysql.jdbc.Driver</span>
+<span class="hljs-meta">store.db.driverClassName</span>=<span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-comment"># 注意根据生产实际情况调整参数host和port</span>
+<span class="hljs-meta">store.db.url</span>=<span class="hljs-string">jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&amp;characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useSSL=false</span>
+<span class="hljs-comment"># 数据库用户名</span>
+<span class="hljs-meta">store.db.user</span>=<span class="hljs-string"></span>
+<span class="hljs-comment"># 用户名密码</span>
+<span class="hljs-meta">store.db.password</span>=<span class="hljs-string"></span>
+</code></pre>
+<p><strong>（2）准备registry.conf文件</strong></p>
+<p>更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a></p>
+<p>更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a></p>
+<p>直连模式（无注册中心）</p>
+<pre><code>registry {
+  type = &quot;file&quot;
+}
+
+config {
+  type = &quot;file&quot;
+  
+  file {
+    name=&quot;file:/root/seata-config/file.conf&quot;
+  }
+}
+</code></pre>
+<p><strong>（3）准备docker-compose.yaml文件</strong></p>
+<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3.1"</span>
+<span class="hljs-attr">services:</span>
+<span class="hljs-attr">  seata-server:</span>
+<span class="hljs-attr">    image:</span> <span class="hljs-string">seataio/seata-server:${latest-release-version}</span>
+<span class="hljs-attr">    hostname:</span> <span class="hljs-string">seata-server</span>
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"8091:8091"</span>
+<span class="hljs-attr">    environment:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8091</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_CONFIG_NAME=file:/root/seata-config/registry</span>
+<span class="hljs-attr">    volumes:</span>
+    <span class="hljs-comment"># 需要把file.conf和registry.conf都放到./seata-server/config文件夹中</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"./seata-server/config:/root/seata-config"</span>
+</code></pre>
+<h3><a id="nacos-db">nacos注册中心，db存储</a></h3>
+<blockquote>
+<p>db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。</p>
+</blockquote>
+<p><strong>（1）准备registry.conf文件</strong></p>
+<p>nacos注册中心。</p>
+<p>更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a></p>
+<p>更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a></p>
+<pre><code>registry {
+  type = &quot;nacos&quot;
+  
+  nacos {
+  # seata服务注册在nacos上的别名，客户端通过该别名调用服务
+    application = &quot;seata-server&quot;
+  # 请根据实际生产环境配置nacos服务的ip和端口
+    serverAddr = &quot;127.0.0.1:8848&quot;
+  # nacos上指定的namespace
+    namespace = &quot;&quot;
+    cluster = &quot;default&quot;
+    username = &quot;nacos&quot;
+    password = &quot;nacos&quot;
+  }
+}
+
+config {
+  type = &quot;nacos&quot;
+  
+  nacos {
+    # 请根据实际生产环境配置nacos服务的ip和端口
+    serverAddr = &quot;127.0.0.1:8848&quot;
+    # nacos上指定的namespace
+    namespace = &quot;&quot;
+    group = &quot;SEATA_GROUP&quot;
+    username = &quot;nacos&quot;
+    password = &quot;nacos&quot;
+  # 从v1.4.2版本开始，已支持从一个Nacos dataId中获取所有配置信息,你只需要额外添加一个dataId配置项
+    dataId: &quot;seataServer.properties&quot;
+  }
+}
+</code></pre>
+<p><strong>（2）准备nacos配置中心配置</strong></p>
+<p>更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a></p>
+<blockquote>
+<p>你需要在nacos新建配置，此处dataId为seataServer.properties</p>
+</blockquote>
+<pre><code class="language-properties"><span class="hljs-comment"># 存储模式</span>
+<span class="hljs-meta">store.mode</span>=<span class="hljs-string">db</span>
+
+<span class="hljs-meta">store.db.datasource</span>=<span class="hljs-string">druid</span>
+<span class="hljs-meta">store.db.dbType</span>=<span class="hljs-string">mysql</span>
+<span class="hljs-comment"># 需要根据mysql的版本调整driverClassName</span>
+<span class="hljs-comment"># mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-comment"># mysql8以下版本的driver：com.mysql.jdbc.Driver</span>
+<span class="hljs-meta">store.db.driverClassName</span>=<span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-comment"># 注意根据生产实际情况调整参数host和port</span>
+<span class="hljs-meta">store.db.url</span>=<span class="hljs-string">jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&amp;characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useSSL=false</span>
+<span class="hljs-comment"># 数据库用户名</span>
+<span class="hljs-meta">store.db.user</span>=<span class="hljs-string"></span>
+<span class="hljs-comment"># 用户名密码</span>
+<span class="hljs-meta">store.db.password</span>=<span class="hljs-string"></span>
+</code></pre>
+<p><strong>（3）准备docker-compose.yaml文件</strong></p>
+<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3.1"</span>
+<span class="hljs-attr">services:</span>
+<span class="hljs-attr">  seata-server:</span>
+<span class="hljs-attr">    image:</span> <span class="hljs-string">seataio/seata-server:${latest-release-version}</span>
+<span class="hljs-attr">    hostname:</span> <span class="hljs-string">seata-server</span>
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"8091:8091"</span>
+<span class="hljs-attr">    environment:</span>
+      <span class="hljs-comment"># 指定seata服务启动端口</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8091</span>
+      <span class="hljs-comment"># 注册到nacos上的ip。客户端将通过该ip访问seata服务。</span>
+      <span class="hljs-comment"># 注意公网ip和内网ip的差异。</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_IP=127.0.0.1</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_CONFIG_NAME=file:/root/seata-config/registry</span>
+<span class="hljs-attr">    volumes:</span>
+    <span class="hljs-comment"># 因为registry.conf中是nacos配置中心，只需要把registry.conf放到./seata-server/config文件夹中</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"./seata-server/config:/root/seata-config"</span>
+</code></pre>
+<h3><a id="ha-nacos-db">高可用部署</a></h3>
+<blockquote>
+<p>seata高可用依赖于注册中心、数据库，可不依赖配置中心。</p>
+</blockquote>
+<blockquote>
+<p>db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。</p>
+</blockquote>
+<p><strong>（1）准备file.conf配置文件</strong></p>
+<p>更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a></p>
+<pre><code class="language-properties"><span class="hljs-comment"># 存储模式</span>
+<span class="hljs-meta">store.mode</span>=<span class="hljs-string">db</span>
+
+<span class="hljs-meta">store.db.datasource</span>=<span class="hljs-string">druid</span>
+<span class="hljs-meta">store.db.dbType</span>=<span class="hljs-string">mysql</span>
+<span class="hljs-comment"># 需要根据mysql的版本调整driverClassName</span>
+<span class="hljs-comment"># mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-comment"># mysql8以下版本的driver：com.mysql.jdbc.Driver</span>
+<span class="hljs-meta">store.db.driverClassName</span>=<span class="hljs-string">com.mysql.cj.jdbc.Driver</span>
+<span class="hljs-comment"># 注意根据生产实际情况调整参数host和port</span>
+<span class="hljs-meta">store.db.url</span>=<span class="hljs-string">jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&amp;characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useSSL=false</span>
+<span class="hljs-comment"># 数据库用户名</span>
+<span class="hljs-meta">store.db.user</span>=<span class="hljs-string"></span>
+<span class="hljs-comment"># 用户名密码</span>
+<span class="hljs-meta">store.db.password</span>=<span class="hljs-string"></span>
+</code></pre>
+<p><strong>（2）准备registry.conf文件</strong></p>
+<p>nacos注册中心。</p>
+<p>更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a></p>
+<p>更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a></p>
+<pre><code>registry {
+  type = &quot;nacos&quot;
+  
+  nacos {
+  # seata服务注册在nacos上的别名，客户端通过该别名调用服务
+    application = &quot;seata-server&quot;
+  # nacos服务的ip和端口
+    serverAddr = &quot;127.0.0.1:8848&quot;
+  # nacos上指定的namespace
+    namespace = &quot;&quot;
+    cluster = &quot;default&quot;
+    username = &quot;nacos&quot;
+    password = &quot;nacos&quot;
+  }
+}
+
+config {
+  type = &quot;file&quot;
+  
+  file {
+    name=&quot;file:/root/seata-config/file.conf&quot;
+  }
+}
+</code></pre>
+<p><strong>（3）准备docker-compose.yaml文件</strong></p>
+<blockquote>
+<p>只要保持配置一致，seata服务可在一台机器上部署多实例，也可同时部署在多台不同的主机下面实现服务高可用。
+<a href="https://seata.io/zh-cn/docs/ops/deploy-ha.html">高可用部署</a></p>
+</blockquote>
+<pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3.1"</span>
+<span class="hljs-attr">services:</span>
+  <span class="hljs-comment"># seata服务1</span>
+<span class="hljs-attr">  seata-server-1:</span>
+<span class="hljs-attr">    image:</span> <span class="hljs-string">seataio/seata-server:${latest-release-version}</span>
+<span class="hljs-attr">    hostname:</span> <span class="hljs-string">seata-server</span>
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"8091:8091"</span>
+<span class="hljs-attr">    environment:</span>
+      <span class="hljs-comment"># 指定seata服务启动端口</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8091</span>
+      <span class="hljs-comment"># 注册到nacos上的ip。客户端将通过该ip访问seata服务。</span>
+      <span class="hljs-comment"># 注意公网ip和内网ip的差异。</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_IP=127.0.0.1</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_CONFIG_NAME=file:/root/seata-config/registry</span>
+<span class="hljs-attr">    volumes:</span>
+    <span class="hljs-comment"># 需要把file.conf和registry.conf都放到./seata-server/config文件夹中</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"./seata-server/config:/root/seata-config"</span>
+  <span class="hljs-comment"># seata服务2</span>
+<span class="hljs-attr">  seata-server-2:</span>
+<span class="hljs-attr">    image:</span> <span class="hljs-string">seataio/seata-server:${latest-release-version}</span>
+<span class="hljs-attr">    hostname:</span> <span class="hljs-string">seata-server</span>
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"8092:8092"</span>
+<span class="hljs-attr">    environment:</span>
+      <span class="hljs-comment"># 指定seata服务启动端口</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_PORT=8092</span>
+      <span class="hljs-comment"># 注册到nacos上的ip。客户端将通过该ip访问seata服务。</span>
+      <span class="hljs-comment"># 注意公网ip和内网ip的差异。</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_IP=127.0.0.1</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">SEATA_CONFIG_NAME=file:/root/seata-config/registry</span>
+<span class="hljs-attr">    volumes:</span>
+    <span class="hljs-comment"># 需要把file.conf和registry.conf都放到./seata-server/config文件夹中</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">"./seata-server/config:/root/seata-config"</span>
+  
+  <span class="hljs-comment"># seata服务3......seata服务N</span>
+</code></pre>
+<h2>环境变量</h2>
+<p>seata-server 支持以下环境变量：</p>
+<ul>
+<li><strong>SEATA_IP</strong></li>
+</ul>
+<blockquote>
+<p>可选, 指定seata-server启动的IP, 该IP用于向注册中心注册时使用, 如eureka等</p>
+</blockquote>
+<ul>
+<li><strong>SEATA_PORT</strong></li>
+</ul>
+<blockquote>
+<p>可选, 指定seata-server启动的端口, 默认为 <code>8091</code></p>
+</blockquote>
+<ul>
+<li><strong>STORE_MODE</strong></li>
+</ul>
+<blockquote>
+<p>可选, 指定seata-server的事务日志存储方式, 支持<code>db</code>, <code>file</code>, <code>redis</code>(Seata-Server 1.3及以上版本支持), 默认是 <code>file</code></p>
+</blockquote>
+<ul>
+<li><strong>SERVER_NODE</strong></li>
+</ul>
+<blockquote>
+<p>可选, 用于指定seata-server节点ID, 如 <code>1</code>,<code>2</code>,<code>3</code>..., 默认为 <code>根据ip生成</code></p>
+</blockquote>
+<ul>
+<li><strong>SEATA_ENV</strong></li>
+</ul>
+<blockquote>
+<p>可选, 指定 seata-server 运行环境, 如 <code>dev</code>, <code>test</code> 等, 服务启动时会使用 <code>registry-dev.conf</code> 这样的配置</p>
+</blockquote>
+<ul>
+<li><strong>SEATA_CONFIG_NAME</strong></li>
+</ul>
+<blockquote>
+<p>可选, 指定配置文件位置, 如 <code>file:/root/registry</code>, 将会加载 <code>/root/registry.conf</code> 作为配置文件，如果需要同时指定 <code>file.conf</code>文件，需要将<code>registry.conf</code>的<code>config.file.name</code>的值改为类似<code>file:/root/file.conf</code>：</p>
+</blockquote>
+</div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2021 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/documentation.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

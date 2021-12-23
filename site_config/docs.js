@@ -329,6 +329,10 @@ export default {
                                 link: '/zh-cn/docs/ops/deploy-by-docker.html',
                             },
                             {
+                                title: 'Docker compose部署',
+                                link: '/zh-cn/docs/ops/deploy-by-docker-compose.html',
+                            },
+                            {
                                 title: 'Kubernetes部署',
                                 link: '/zh-cn/docs/ops/deploy-by-kubernetes.html',
                             },
