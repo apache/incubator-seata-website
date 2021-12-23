@@ -140,6 +140,8 @@ config {
     group = "SEATA_GROUP"
     username = "nacos"
     password = "nacos"
+  # 从v1.4.2版本开始，已支持从一个Nacos dataId中获取所有配置信息,你只需要额外添加一个dataId配置项
+    dataId: "seataServer.properties"
   }
 }
 ```
@@ -147,6 +149,8 @@ config {
 **（2）准备nacos配置中心配置**
 
 更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+
+> 你需要在nacos新建配置，此处dataId为seataServer.properties
 
 ```properties
 # 存储模式
