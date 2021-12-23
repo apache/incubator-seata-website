@@ -107,21 +107,21 @@ config {
 - 配置中心配置项
 
 
-  在Seata Server的安装目录conf下README-zh.md或README.md文件中介绍了Seata需要的常见脚本链接，包括三类：客户端的配置和SQL、SeataServer端部署所需SQL和脚本、配置中心的初始化配置项脚本。
-  其中在script/config-center下有文件和目录如下
+  在Seata Server的安装目录conf下`README-zh.md`或`README.md`文件中介绍了Seata需要的常见脚本URL链接，包括三类：客户端的配置和SQL、SeataServer端部署所需SQL和脚本、配置中心配置项模板和脚本。
+  其中在script/config-center下有文件和目录如下:
      - README.md     使用帮助
-     - config.txt    配置项明细（包含Server和Client）
-     - nacos/        推送至nacos的脚本 
-     - apollo/
-     - consul/
-     - etcd3/
-     - zk/
+     - config.txt    配置项模板（包含Server和Client）
+     - nacos/        推至nacos的python和shell脚本 
+     - apollo/       推至apollo的shell脚本
+     - consul/       推至consul的shell脚本
+     - etcd3/        推至etcd3的shell脚本
+     - zk/           推至zookeeper的shell脚本
   
-  config.txt中的配置项需要根据实际情况选择和修改。
-  然后配置到配置中心：即可参照README.md使用帮助通过脚本推送至配置中心。也将config.txt中的内容人工拷贝至配置中心（例如通过Nacas的Web页面）
+  config.txt模板中的配置项，需要根据实际情况筛选和修改。
+  然后配置到配置中心：即可参照README.md使用帮助通过脚本推送至配置中心。也将config.txt中的内容人工拷贝至配置中心（例如通过nacos配置中心的Web页面）。  配置完毕后需要检查结果是否正确。
 
 - 注册至注册中心
- 启动seata-server注册至nacos，查看nacos控制台服务列表确认是否成功  
+ 启动seata-server注册至nacos注册中心，查看nacos控制台服务列表确认是否成功  
 
 #### Client端
 ```
