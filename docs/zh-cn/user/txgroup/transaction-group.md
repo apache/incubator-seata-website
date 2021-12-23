@@ -69,8 +69,8 @@ seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置（�
 ```
 - 读取配置
  通过FileConfiguration本地加载file.conf的配置参数
-- 获取事务分组
- spring配置，springboot可配置在yml、properties中，服务启动时加载配置，对应的值"my_test_tx_group"即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+"-seata-service-group"  
+- 获取事务分组(服务启动时加载配置)
+ spring/springboot可配置在yml、properties中，对应值"my_test_tx_group"即为事务分组名，若不配置则默认以：spring.application.name值+"-seata-service-group"拼接后的字符串作为分组名
 - 查找TC集群名
  拿到事务分组名"my_test_tx_group"拼接成"service.vgroupMapping.my_test_tx_group"查找TC集群名clusterName为"default"
 - 查询TC服务
@@ -148,7 +148,7 @@ config {
 application.properties
 ```
 seata.tx-service-group=my_test_tx_group ---------------> 事务分组配置（在v1.5之后默认值为default_tx_group）
-seata.service.vgroup-mapping.my_test_tx_group=default  ---------------> 指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacose的cluster保持一致）
+seata.service.vgroup-mapping.my_test_tx_group=default  ---------------> 指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
 seata.registry.type=nacos      ---------------> 使用nacos作为注册中心
 seata.registry.nacos.server-addr=nacos注册中心IP:端口
 seata.registry.nacos.application=seata-server     ---------------> Seata服务名（应与seata-server实际注册的服务名一致）
@@ -164,8 +164,8 @@ seata.registry.nacos.group=SEATA_GROUP            ---------------> Seata分组�
 
 - 读取配置
  通过NacosConfiguration远程读取seata配置参数
-- 获取事务分组
- springboot可配置在yml、properties中，服务启动时加载配置，对应的值"my_test_tx_group"即为一个事务分组名，若不配置，默认获取属性spring.application.name的值+"-seata-service-group"
+- 获取事务分组(服务启动时加载配置)
+ spring/springboot可配置在yml、properties中，对应值"my_test_tx_group"即为事务分组名，若不配置则默认以：spring.application.name值+"-seata-service-group"拼接后的字符串作为分组名
 - 查找TC集群名
  拿到事务分组名"my_test_tx_group"拼接成"service.vgroupMapping.my_test_tx_group"从配置中心查找到TC集群名clusterName为"default"
 - 查找TC服务
