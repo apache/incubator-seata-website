@@ -9,6 +9,9 @@ date: 2019-11-25
 
 # 使用 Docker 部署 Seata Server
 
+## 注意事项 
+- 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
+
 ## 快速开始 
 
 #### 启动seata-server实例
@@ -35,7 +38,7 @@ $ docker run --name seata-server \
 version: "3"
 services:
   seata-server:
-    image: seataio/seata-server
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
