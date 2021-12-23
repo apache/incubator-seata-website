@@ -312,7 +312,7 @@ seata-server 支持以下环境变量：
 
 - **STORE_MODE**
 
-> 可选, 指定seata-server的事务日志存储方式, 支持`db` ,`file`,redis(Seata-Server 1.3及以上版本支持), 默认是 `file`
+> 可选, 指定seata-server的事务日志存储方式, 支持`db`, `file`, `redis`(Seata-Server 1.3及以上版本支持), 默认是 `file`
 
 - **SERVER_NODE**
 
