@@ -13,4 +13,4 @@ Seata 事务目前支持 INSERT、UPDATE、DELETE 三类 DML 语法的部分功�
 - 不支持 SQL 嵌套
 - 不支持多表复杂 SQL
 - 不支持存储过程、触发器
-- 不支持批量更新 SQL
+- 仅在使用 MySQL 作为数据库时支持批量更新 SQL
