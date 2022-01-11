@@ -122,6 +122,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.dataValidation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
 | client.undo.logSerialization        | undo序列化方式 |  默认jackson  |
 | client.undo.logTable                | 自定义undo表名 |  默认undo_log  |
+| client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
 
 
 <details>
