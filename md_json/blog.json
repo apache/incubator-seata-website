@@ -208,6 +208,17 @@
       }
     },
     {
+      "filename": "seata-at-lock.md",
+      "link": "/zh-cn/blog/seata-at-lock.html",
+      "meta": {
+        "title": "详解 Seata AT 模式事务隔离级别与全局锁设计",
+        "author": "张乘辉",
+        "keywords": "Seata、分布式事务、AT模式、Transaction、GlobalLock",
+        "description": "Seata AT 模式的事务隔离是建立在支事务的本地隔离级别基础之上的，在数据库本地隔离级别读已提交或以上的前提下，Seata 设计了由事务协调器维护的全局写排他锁，来保证事务间的写隔离，同时，将全局事务默认定义在读未提交的隔离级别上。",
+        "date": "2022/01/12"
+      }
+    },
+    {
       "filename": "seata-at-mode-design.md",
       "link": "/zh-cn/blog/seata-at-mode-design.html",
       "meta": {
