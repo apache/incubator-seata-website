@@ -13,12 +13,20 @@ Seata 事务目前支持 INSERT、UPDATE、DELETE 三类 DML 语法的部分功�
 - 不支持 SQL 嵌套
 - 不支持多表复杂 SQL
 - 不支持存储过程、触发器
-- 仅在使用 MySQL 作为数据库时支持在同一事务中提交多条 UPDATE 批量更新，如下以 Java 为例
+- 仅在使用 MySQL 作为数据库时支持 batchUpdate ，如下以 Java 为例
 ```
-    @Transactional(rollbackFor = Exception.class)
+    // use JdbcTemplate
     public void batchUpdate() {
-        update(user1);
-        update(user2);
-        update(user3);
+        jdbcTemplate.batchUpdate(
+            "update storage_tbl set count = count -1 where id = 1",
+            "update storage_tbl set count = count -1 where id = 2"
+		);
+    }
+
+    // use Statement
+    public void batchUpdateTwo() {
+        statement.addBatch("update storage_tbl set count = count -1 where id = 1");
+        statement.addBatch("update storage_tbl set count = count -1 where id = 2");
+        statement.executeBatch();
     }
 ```
