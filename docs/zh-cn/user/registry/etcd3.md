@@ -12,7 +12,7 @@ Seata 融合 Etcd3 注册中心的操作步骤非常简单，大致步骤可分�
 
 ### 增加 Maven 依赖
 
-首先，您需要将 `jetcd-core` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，建议使用 Seata `1.4.0+`，`spring-cloud-starter-alibaba-seata`的版本与对应微服务版本对应关系请参考[版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
+首先，您需要将 `jetcd-core` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，建议使用 jetcd-core `0.3.0+`,`spring-cloud-starter-alibaba-seata`的版本与对应微服务版本对应关系请参考[版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
 
 ```xml
 <dependency>
@@ -24,7 +24,7 @@ Seata 融合 Etcd3 注册中心的操作步骤非常简单，大致步骤可分�
 <dependency>
     <groupId>io.etcd</groupId>
     <artifactId>jetcd-core</artifactId>
-    <version>0.6.1及以上</version>
+    <version>0.3.0及以上</version>
 </dependency>
 
 ```
@@ -35,14 +35,14 @@ Seata 融合 Etcd3 注册中心的操作步骤非常简单，大致步骤可分�
 
 ```yaml
 seata:
-  tx-service-group: my_test_tx_group
+  tx-service-group: default_tx_group
   service:
     vgroup-mapping:
       my_test_tx_group: seata-server # 此处配置对应Server端配置registry.eureka.application的值
   registry:
     type: etcd3
     etcd3:
-      server-addr: http://ip:2379
+      server-addr: http://localhost:2379
 ```
 
 ### Server端配置注册中心
@@ -54,7 +54,7 @@ registry {
   type = "etcd3"
  
   etcd3 {
-    serverAddr = "http://ip:2379"
+    serverAddr = "http://localhost:2379"
   }
 }
 ```
