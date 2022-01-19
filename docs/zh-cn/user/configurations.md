@@ -111,7 +111,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.tm.degradeCheckAllowTimes | 升降级达标阈值 | 默认10 |
 | client.tm.degradeCheckPeriod | 服务自检周期 | 默认2000,单位ms.每2秒进行一次服务自检,来决定 |
 | client.rm.reportSuccessEnable   | 是否上报一阶段成功   |true、false，从1.1.0版本开始,默认false.true用于保持分支事务生命周期记录完整，false可提高不少性能 |
-| client.rm.asynCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
+| client.rm.asyncCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
 | client.rm.lock.retryInterval                | 校验或占用全局锁重试间隔 |  默认10，单位毫秒  |
 | client.rm.lock.retryTimes                   | 校验或占用全局锁重试次数 |  默认30  |
 | client.rm.lock.retryPolicyBranchRollbackOnConflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
