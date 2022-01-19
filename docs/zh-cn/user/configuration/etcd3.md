@@ -48,7 +48,7 @@ seata:
 config {
   type = "etcd3"
 
-  nacos {
+  etcd3 {
     serverAddr = "http://localhost:2379"
   }
 }
