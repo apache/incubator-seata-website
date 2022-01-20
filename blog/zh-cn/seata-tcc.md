@@ -1,6 +1,14 @@
 ---
-title: 深度剖析 Seata TCC 模式（一） keywords: Seata、分布式事务、TCC description: Seata 目前支持 AT 模式、XA 模式、TCC 模式和 SAGA
-模式，之前文章更多谈及的是非侵入式的 AT 模式，今天带大家认识一下同样是二阶段提交的 TCC 模式。 author: 张乘辉 date: 2022/01/18
+title: 深度剖析 Seata TCC 模式（一）
+
+author: 张乘辉
+
+keywords: Seata、分布式事务、TCC
+
+description: Seata 目前支持 AT 模式、XA 模式、TCC 模式和 SAGA 模式，之前文章更多谈及的是非侵入式的 AT 模式，今天带大家认识一下同样是二阶段提交的 TCC 模式。
+
+date: 2022/01/18
+
 ---
 
 # 前言
