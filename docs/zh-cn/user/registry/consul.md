@@ -4,25 +4,25 @@ Consul 是 Seata 组件中重要的注册中心实现
 
 本文基于 Seata 1.4.2，把 Seata 注册到 Consul 上，以 file 作为配置中心
 
+Consul 版本建议 1.8+，下文以 Consul 1.11.2 为例
+
 ## 预备工作
 
 
-当您准备将 **Seata** 注册到 `Consul` 之前，请确保已经启动 Consul 服务。如果您尚且不熟悉 Consul 的基本使用的话，
-可先行参考 [Consul 官方文档](https://www.consul.io/docs) 。本文使用 Consul 1.11.2 版本
+当您准备将 **Seata** 注册到 Consul 之前，请确保已经启动 Consul 服务。如果您尚且不熟悉 Consul 的基本使用的话，
+可先行参考 [Consul 官方文档](https://www.consul.io/docs) 
 
-也可以使用以下 docker 命令快速启动一个 Consul 容器 
+如果您只想快速体验，也可以使用以下 docker 命令启动一个 Consul 容器，输入 http://localhost:8500 访问 Consul 控制台
 
 ```shell
 docker run -d --name=consul -p 8500:8500 -p 8600:8600/udp consul:1.11.2 agent -dev -client=0.0.0.0 -ui
 ```
 
-在浏览器中输入 http://localhost:8500 即可访问 Consul
-
 ## 快速上手
 
-Seata 融合 Consul 注册中心的操作步骤非常简单，分为 Server 端和 Client 端
+Seata 融合 Consul 注册中心的非常简单，分 Server 端和 Client 端
 
-Server 端只需要配置”注册中心“
+Server 端只需要配置“注册中心”
 
 Client 端则需要增加 Maven 依赖以及配置
 
@@ -44,23 +44,11 @@ registry {
 }
 ```
 
-双击 /bin/seata-server.bat (Windows) 或 /bin/seata-server.sh (Linux) 即可启动 Seata，服务将运行在本地 8091 端口上
+执行 /bin/seata-server.bat (Windows) 或 /bin/seata-server.sh (Unix) 启动 Seata，服务将运行在本地 8091 端口上
 
-在浏览器中输入 http://localhost:8500 访问 Consul，查看 Seata 是否注册成功
+进入 Consul 控制台，查看 Seata 是否注册成功
 
 ### Client 端增加 Maven 依赖
-当您准备将**您的服务**注册到 `Consul` 之前，请确保已经启动 Consul 服务。如果您尚且不熟悉 Consul 的基本使用的话，
-可先行参考 [Consul 官方文档](https://www.consul.io/docs) 。
-
-本文使用 Consul 1.11.2 版本，Seata 版本 1.4.2
-
-也可以使用以下 docker 命令快速启动一个 Consul 容器
-
-```shell
-docker run -d --name=consul -p 8500:8500 -p 8600:8600/udp consul:1.11.2 agent -dev -client=0.0.0.0 -ui
-```
-
-在浏览器中输入 http://localhost:8500 即可访问 Consul
 
 **以 SpringBoot 项目为例，在项目 pom.xml 中加入**
 
@@ -94,7 +82,7 @@ seata:
       my_test_tx_group: default
 ```
 
-Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务。
+Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务
 
 ```text
 register TM success. client version:1.4.2, server version:1.4.2,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
