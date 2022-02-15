@@ -41,16 +41,17 @@ config operation timeout,cost:5015 ms,op:GET,dataId:store.mode
 config operation timeout,cost:5006 ms,op:GET,dataId:metrics.enabled
 config operation timeout,cost:5001 ms,op:GET,dataId:transport.threadFactory.bossThreadPrefix
 config operation timeout,cost:5009 ms,op:GET,dataId:transport.threadFactory.workerThreadPrefix
-...
+# 此处省略类似的其他信息~
 ```
 
 ### 提交 Key-Value 配置至 Consul
 
-出现以上报错信息是因为 Consul 中缺少对应配置，请从以下方式中选择其中一种方式提交配置到 Consul Key/Value 中
+出现以上报错信息是因为 Consul 中缺少对应配置，请从以下方式中**选择其中一种方式**提交配置到 Consul Key/Value 中
 
 1. 通过 Consul 控制台 ui，Key/Value -> create
 2. 通过 [http 请求](https://www.consul.io/api-docs/kv)
 3. 通过 [Consul 命令行工具](https://www.consul.io/commands/kv)
+4. **推荐：使用官方提供的上传配置脚本**
 
 **tips**: 1.4.2 需要逐个创建 key-value，1.5.0 后支持 key 对应文件
 
@@ -62,15 +63,15 @@ store.mode=file
 store.publicKey=
 store.file.dir=file_store/data
 store.file.maxBranchSessionSize=16384
-#剩下的省略~
+# 剩下的配置项省略~
 ```
 
-**推荐**：以上方式较为繁琐，为此官方提供了
+**推荐使用官方脚本：** 以上方式 1~3 需要逐个添加配置，操作较为繁琐，为此官方提供了
 [脚本](https://github.com/seata/seata/blob/1.4.2/script/config-center/consul/consul-config.sh) 和
 [默认配置](https://github.com/seata/seata/blob/1.4.2/script/config-center/config.txt)
 以快速添加配置
 
-将 config.txt 放在 consul-config.sh **上层目录**， 根据自己的需要微调 config.txt 的配置（主要是 seata.mode 及 seata.file | seata.db | seata.redis
+将 config.txt 放在 consul-config.sh 的**上层目录**， 根据自己的需要微调 config.txt 的配置（主要是 seata.mode 及 seata.file | seata.db | seata.redis
 这几个前缀的配置）
 
 执行如下命令
