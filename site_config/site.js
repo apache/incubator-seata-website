@@ -18,6 +18,11 @@ export default {
                 link: '/en-us/docs/overview/what-is-seata.html',
             },
             {
+                key: 'enterprise',
+                text: 'SEATA IN CLOUD',
+                link: 'https://h5.dingtalk.com/circle/healthCheckin.html?dtaction=os&corpId=ding42dbb24c1f5a084996093958e605f031&f4ffe=77a6c&cbdbhh=qwertyuiop',
+            },
+            {
                 key: 'solution',
                 text: 'SOLUTIONS',
                 link: '',
@@ -59,11 +64,6 @@ export default {
                 key: 'blog',
                 text: 'BLOG',
                 link: '/en-us/blog/index.html',
-            },
-            {
-                key: 'Summer2021',
-                text: 'Summer2021',
-                link: 'https://github.com/seata/seata/issues/3741',
             },
             {
                 key: 'community',
@@ -114,7 +114,7 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2021 Seata',
+        copyright: 'Copyright © 2022 Seata',
     },
     'zh-cn': {
         pageMenu: [
@@ -127,6 +127,11 @@ export default {
                 key: 'docs',
                 text: '文档',
                 link: '/zh-cn/docs/overview/what-is-seata.html',
+            },
+            {
+                key: 'enterprise',
+                text: 'Seata企业版',
+                link: 'https://h5.dingtalk.com/circle/healthCheckin.html?dtaction=os&corpId=ding42dbb24c1f5a084996093958e605f031&f4ffe=77a6c&cbdbhh=qwertyuiop',
             },
             {
                 key: 'solution',
@@ -170,11 +175,6 @@ export default {
                 key: 'blog',
                 text: '博客',
                 link: '/zh-cn/blog/index.html',
-            },
-            {
-                key: 'Summer2021',
-                text: '暑期2021',
-                link: 'https://github.com/seata/seata/issues/3741',
             },
             {
                 key: 'community',
@@ -225,6 +225,6 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2021 Seata',
+        copyright: 'Copyright © 2022 Seata',
     },
 };
