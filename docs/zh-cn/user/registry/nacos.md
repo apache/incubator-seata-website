@@ -66,3 +66,5 @@ registry {
 ```
 
 随后,启动 Seata-Server 后，会发现Server端的服务出现在 Nacos 控制台中的注册中心列表中. Client 配置完成后启动应用就可以正式体验 Seata 服务。
+
+Tips：请确保client与server的注册处于同一个namespace和group，不然会找不到服务。
