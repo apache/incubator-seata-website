@@ -44,12 +44,12 @@ export default {
                 {
                     icon: 'feature-1',
                     title: '微服务框架支持',
-                    content: '目前已支持 Dubbo、Spring Cloud、Sofa-RPC、Motan 和 grpc 等RPC框架，其他框架持续集成中',
+                    content: '目前已支持Dubbo、Spring Cloud、Sofa-RPC、Motan和grpc等RPC框架，其他框架持续集成中',
                 },
                 {
                     icon: 'feature-2',
                     title: 'AT 模式',
-                    content: '提供无侵入自动补偿的事务模式，目前已支持 MySQL、 Oracle 、PostgreSQL和 TiDB的AT模式，H2 开发中',
+                    content: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB和MariaDB的AT模式，H2、DB2、SQLServer、达梦开发中',
                 },
                 {
                     icon: 'feature-3',
@@ -64,7 +64,7 @@ export default {
                 {
                     icon: 'feature-5',
                     title: 'XA 模式',
-                    content: '支持已实现 XA 接口的数据库的 XA 模式',
+                    content: '支持已实现 XA 接口的数据库的 XA 模式，目前已支持MySQL、Oracle、TiDB和MariaDB',
                 },
                 {
                     icon: 'feature-6',
@@ -285,7 +285,7 @@ export default {
                 {
                     icon: 'feature-2',
                     title: 'AT mode',
-                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL and TiDB\'s AT mode, In developing the H2.',
+                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB and MariaDB\'s AT mode, In developing the H2, DB2, SQLServer, DM.',
                 },
                 {
                     icon: 'feature-3',
@@ -300,7 +300,7 @@ export default {
                 {
                     icon: 'feature-5',
                     title: 'XA mode',
-                    content: 'Support for XA schemas for databases that have implemented XA interfaces.',
+                    content: 'Support for XA schemas for databases that have implemented XA interfaces. currently supports MySQL, Oracle, TiDB, MariaDB',
                 },
                 {
                     icon: 'feature-6',
