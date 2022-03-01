@@ -44,12 +44,12 @@ export default {
                 {
                     icon: 'feature-1',
                     title: '微服务框架支持',
-                    content: '目前已支持 Dubbo、Spring Cloud、Sofa-RPC、Motan 和 grpc 等RPC框架，其他框架持续集成中',
+                    content: '目前已支持Dubbo、Spring Cloud、Sofa-RPC、Motan和grpc等RPC框架，其他框架持续集成中',
                 },
                 {
                     icon: 'feature-2',
                     title: 'AT 模式',
-                    content: '提供无侵入自动补偿的事务模式，目前已支持 MySQL、 Oracle 、PostgreSQL和 TiDB的AT模式，H2 开发中',
+                    content: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB和MariaDB的AT模式，H2、DB2、SQLServer、达梦开发中',
                 },
                 {
                     icon: 'feature-3',
@@ -64,7 +64,7 @@ export default {
                 {
                     icon: 'feature-5',
                     title: 'XA 模式',
-                    content: '支持已实现 XA 接口的数据库的 XA 模式',
+                    content: '支持已实现 XA 接口的数据库的 XA 模式，目前已支持MySQL、Oracle、TiDB和MariaDB',
                 },
                 {
                     icon: 'feature-6',
@@ -227,13 +227,6 @@ export default {
                 'https://img.alicdn.com/imgextra/i2/O1CN01i8iiCk29QuAitxiJq_!!6000000008063-0-tps-378-123.jpg' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01LBYXi6288krJ6Axq8_!!6000000007888-2-tps-1206-158.png' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01FN4K3I1Sq4SQVsDxo_!!6000000002297-2-tps-414-95.png' ,
-                'https://img.alicdn.com/imgextra/i2/O1CN0130Bp8H1STd65Fnxn0_!!6000000002248-2-tps-677-172.png',
-                'https://img.alicdn.com/imgextra/i1/O1CN0186ESVW1hhZO7Otx4X_!!6000000004309-2-tps-376-108.png',
-                'https://img.alicdn.com/imgextra/i2/O1CN011hLbRH1fTiAi6Lq5Z_!!6000000004008-0-tps-283-283.jpg',
-                'https://img.alicdn.com/imgextra/i3/O1CN01cJQsV91Fz9LeJEaL1_!!6000000000557-0-tps-339-189.jpg',
-                'https://img.alicdn.com/imgextra/i4/O1CN01KvsEOP21a3CUzDllu_!!6000000007000-2-tps-1920-750.png',
-                'https://img.alicdn.com/imgextra/i1/O1CN01Erdiwd1RrcDt2bqKl_!!6000000002165-0-tps-1080-1080.jpg',
-                'https://img.alicdn.com/imgextra/i4/O1CN01Rc0vU61sSQ3jvR0rw_!!6000000005765-2-tps-1076-228.png',
             ],
         },
     },
@@ -285,7 +278,7 @@ export default {
                 {
                     icon: 'feature-2',
                     title: 'AT mode',
-                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL and TiDB\'s AT mode, In developing the H2.',
+                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB and MariaDB\'s AT mode, In developing the H2, DB2, SQLServer, DM.',
                 },
                 {
                     icon: 'feature-3',
@@ -300,7 +293,7 @@ export default {
                 {
                     icon: 'feature-5',
                     title: 'XA mode',
-                    content: 'Support for XA schemas for databases that have implemented XA interfaces.',
+                    content: 'Support for XA schemas for databases that have implemented XA interfaces. currently supports MySQL, Oracle, TiDB, MariaDB',
                 },
                 {
                     icon: 'feature-6',
@@ -463,13 +456,6 @@ export default {
                 'https://img.alicdn.com/imgextra/i2/O1CN01i8iiCk29QuAitxiJq_!!6000000008063-0-tps-378-123.jpg' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01LBYXi6288krJ6Axq8_!!6000000007888-2-tps-1206-158.png' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01FN4K3I1Sq4SQVsDxo_!!6000000002297-2-tps-414-95.png' ,
-                'https://img.alicdn.com/imgextra/i2/O1CN0130Bp8H1STd65Fnxn0_!!6000000002248-2-tps-677-172.png',
-                'https://img.alicdn.com/imgextra/i1/O1CN0186ESVW1hhZO7Otx4X_!!6000000004309-2-tps-376-108.png',
-                'https://img.alicdn.com/imgextra/i2/O1CN011hLbRH1fTiAi6Lq5Z_!!6000000004008-0-tps-283-283.jpg',
-                'https://img.alicdn.com/imgextra/i3/O1CN01cJQsV91Fz9LeJEaL1_!!6000000000557-0-tps-339-189.jpg',
-                'https://img.alicdn.com/imgextra/i4/O1CN01KvsEOP21a3CUzDllu_!!6000000007000-2-tps-1920-750.png',
-                'https://img.alicdn.com/imgextra/i1/O1CN01Erdiwd1RrcDt2bqKl_!!6000000002165-0-tps-1080-1080.jpg',
-                'https://img.alicdn.com/imgextra/i4/O1CN01Rc0vU61sSQ3jvR0rw_!!6000000005765-2-tps-1076-228.png',
             ],
         },
     },
