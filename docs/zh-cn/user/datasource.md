@@ -17,4 +17,4 @@ Saga模式不依赖数据源。
 
 ## XA模式
 
-XA模式只支持实现了XA协议的数据库。Seata支持MySQL、Oracle、PostgreSQL和MariDB。
+XA模式只支持实现了XA协议的数据库。Seata支持MySQL、Oracle、PostgreSQL和MariaDB。
