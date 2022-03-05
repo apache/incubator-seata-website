@@ -102,7 +102,7 @@ export default {
                         }
                     ]
                 },
-				{
+	      {
                     title: '贡献者活动',
                     children: [
                         {
