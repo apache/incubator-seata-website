@@ -101,6 +101,15 @@ export default {
                             link: '/zh-cn/docs/developers/committer-guide/release-guide_dev.html',
                         }
                     ]
+                },
+				{
+                    title: '贡献者活动',
+                    children: [
+                        {
+                            title: 'Top Contributor',
+                            link: '/zh-cn/docs/developers/contributor-activity/top-contributer_dev.html',
+                        }
+                    ]
                 }
             ],
             barText: '开发者',
