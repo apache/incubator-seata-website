@@ -58,6 +58,8 @@ Metrics核心模块，根据配置组织（加载）1个Registry和N个Exporter�
 #### 如何使用
 ##### 新增配置
 如果需要开启TC的Metrics，需要在其配置中增加配置项：
+
+比如file.conf
 ```text
 ## metrics settings
 metrics {
@@ -67,6 +69,15 @@ metrics {
   exporter-list = "prometheus"
   exporter-prometheus-port = 9898
 }
+```
+或者1.5.0+中使用application.yaml
+```yaml
+seata:
+  metrics:
+    enabled: true
+    registry-type: compact
+    exporter-list: prometheus
+    exporter-prometheus-port: 9898
 ```
 
 
