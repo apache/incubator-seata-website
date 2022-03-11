@@ -17,12 +17,12 @@
 <ol>
 <li>Seata作为一个被集成的数据一致性框架，Metrics模块将尽可能少的使用第三方依赖以降低发生冲突的风险；</li>
 <li>Metrics模块将竭力争取更高的度量性能和更低的资源开销，尽可能降低开启后带来的副作用；</li>
-<li>插件式——Metrics是否激活、数据如何发布，去取决于是否引入了对应的依赖，例如在TC Server中引入<code>seata-metrics-prometheus</code>，则自动启用并将度量数据发布到<a href="https://github.com/prometheus">Prometheus</a>；</li>
+<li>配置式，Metrics是否激活、数据如何发布，取决于对应的配置；开启配置则自动启用并将度量数据发布到<a href="https://github.com/prometheus">Prometheus</a>；</li>
 <li>不使用Spring，使用SPI(Service Provider Interface)加载扩展；</li>
 <li>初始仅发布核心Transaction相关指标，之后结合社区的需求，逐步完善运维方面的所有其他指标。</li>
 </ol>
 <h4>模块说明</h4>
-<p>由1个核心API模块<code>seata-metrics-api</code>和N个对接实现模块如<code>seata-metrics-prometheus</code>构成：</p>
+<p>由2个核心API模块<code>seata-metrics-api</code>和<code>seata-metrics-core</code>，以及N个实现模块例如<code>seata-metrics-registry-compact</code>、<code>seata-metrics-exporter-prometheus</code>构成：</p>
 <ul>
 <li>seata-metrics-api模块</li>
 </ul>
@@ -44,7 +44,15 @@
 <p>它们有的轻而敏捷，有的重而强大，由于也是“实现”，因此不会纳入<code>seata-metrics-api</code>中，避免实现绑定。</p>
 </blockquote>
 <ul>
-<li>seata-metrics-prometheus模块</li>
+<li>seata-metrics-core模块</li>
+</ul>
+<p>Metrics核心模块，根据配置组织（加载）1个Registry和N个Exporter；</p>
+<ul>
+<li>seata-metrics-registry-compact模块</li>
+</ul>
+<p>这是我们提供的默认（内置）的Registry实现，不使用其它Metrics开源库，轻量级的实现了以下四种Meter：</p>
+<ul>
+<li>seata-metrics-exporter-prometheus模块</li>
 </ul>
 <p>这是我们默认提供的Metrics实现，不使用其它Metrics开源实现，并轻量级的实现了以下三个Meter：</p>
 <table>
@@ -85,28 +93,25 @@
 <p>说明：不同的监控系统，采集度量数据的方式不尽相同，例如Zabbix支持用zabbix-agent推送，Prometheus则推荐使用prometheus-server<a href="https://prometheus.io/docs/practices/pushing/">拉取</a>的方式；同样数据交换协议也不同，因此往往需要逐一适配。</p>
 </blockquote>
 <h4>如何使用</h4>
-<h5>引入依赖</h5>
-<p>如果需要开启TC的Metrics，只需要在<code>seata-server</code>的pom中增加：</p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>${project.groupId}<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>seata-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-	<span class="hljs-comment">&lt;!--导入依赖，启用Metrics--&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>${project.groupId}<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>seata-metrics-prometheus<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-lang<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-lang<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.testng<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>testng<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+<h5>新增配置</h5>
+<p>如果需要开启TC的Metrics，需要在其配置中增加配置项：</p>
+<p>比如file.conf</p>
+<pre><code class="language-text">## metrics settings
+metrics {
+  enable = true
+  registry-type = &quot;compact&quot;
+  # multi exporters use comma divided
+  exporter-list = &quot;prometheus&quot;
+  exporter-prometheus-port = 9898
+}
+</code></pre>
+<p>或者1.5.0+中使用application.yaml</p>
+<pre><code class="language-yaml"><span class="hljs-attr">seata:</span>
+<span class="hljs-attr">  metrics:</span>
+<span class="hljs-attr">    enabled:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    registry-type:</span> <span class="hljs-string">compact</span>
+<span class="hljs-attr">    exporter-list:</span> <span class="hljs-string">prometheus</span>
+<span class="hljs-attr">    exporter-prometheus-port:</span> <span class="hljs-number">9898</span>
 </code></pre>
 <p>之后启动TC，即可在<code>http://tc-server-ip:9898/metrics</code>上获取到Metrics的文本格式数据。</p>
 <blockquote>
