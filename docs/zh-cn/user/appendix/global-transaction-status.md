@@ -24,6 +24,8 @@ description: 全局事务状态、分支事务状态
 | 二阶段超时回滚（TimeoutRollbacked）               | 13   | 二阶段超时回滚                                     |
 | 二阶段超时回滚失败（TimeoutRollbackFailed）       | 14   | 二阶段超时回滚失败                                 |
 | 全局事务结束（Finished）                          | 15   | 全局事务结束                                       |
+| 二阶段提交超时（CommitRetryTimeout）               | 16   | 二阶段提交因超过重试时间限制导致失败                                       |
+| 二阶段回滚超时（RollbackRetryTimeout）             | 17   | 二阶段回滚因超过重试时间限制导致失败                                       |
 | 未知状态（UnKnown）                               | 0    | 未知状态                                           |
 
   
