@@ -27,7 +27,7 @@ Seata 社区开源2年来已支持了AT、TCC、Saga 和 XA 事务模式，成�
 
 ### 扫描二维码入群参与活动
 
-邀请你加入钉钉群聊微服务架构开源社区新手任务群，点击进入查看详情https://qr.dingtalk.com/action/joingroup?code=v1,k1,Pt9tq4Tj0v2H+vLKux29cAubhlIdYCZXznmphlsNaKQ=&_dt_no_comment=1&origin=11
+邀请你加入钉钉群聊微服务架构开源社区新手任务群，[点击进入](https://qr.dingtalk.com/action/joingroup?code=v1,k1,Pt9tq4Tj0v2H+vLKux29cAubhlIdYCZXznmphlsNaKQ=&_dt_no_comment=1&origin=11)查看详情
 
 钉钉群号：33774360
 
