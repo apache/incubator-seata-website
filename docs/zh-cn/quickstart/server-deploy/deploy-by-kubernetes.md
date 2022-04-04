@@ -77,7 +77,7 @@ $ kubectl apply -f seata-server.yaml
 
 ### 环境变量
 
-支持的环境变量和 Docker 相同，可以参考 [使用 Docker 部署 Seata Server](./deploy-by-docker.md)
+支持的环境变量和 Docker 相同，可以参考 [使用 Docker 部署 Seata Server](docs/zh-cn/quickstart/server-deploy/deploy-by-docker.md/server-deploy/deploy-by-docker.md)
 
 
 

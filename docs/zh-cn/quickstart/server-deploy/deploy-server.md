@@ -48,8 +48,8 @@ $ sh ./bin/seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 容器部署当前支持三种方式：
 
-- [使用 Docker / Docker Compose 部署 ](./deploy-by-docker.md)
+- [使用 Docker / Docker Compose 部署 ](docs/zh-cn/quickstart/server-deploy/deploy-by-docker.md/server-deploy/deploy-by-docker.md)
 
-- [使用 Kubernetes 部署 ](./deploy-by-kubernetes.md)
+- [使用 Kubernetes 部署 ](docs/zh-cn/quickstart/server-deploy/deploy-by-kubernetes.mdver-deploy/deploy-by-kubernetes.md)
 
-- [使用 Helm 部署](./deploy-by-helm.md)
+- [使用 Helm 部署](docs/zh-cn/quickstart/server-deploy/deploy-by-helm.mdrt/server-deploy/deploy-by-helm.md)
