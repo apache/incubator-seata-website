@@ -1,3 +1,9 @@
+---
+title: Etcd3配置中心
+keywords: Seata,Etcd3,配置中心
+description: Etcd3配置中心
+---
+
 # Etcd3 配置中心
 
 Etcd3 是 Seata 组件中重要的配置中心实现.

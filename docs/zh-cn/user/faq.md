@@ -1,6 +1,6 @@
 ---
 title: Seata常见问题
-keywords: Seata
+keywords: Seata,常见问题,FAQ
 description: Seata 常见问题。
 ---
 

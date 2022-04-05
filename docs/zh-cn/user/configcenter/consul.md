@@ -1,3 +1,9 @@
+---
+title: Consul配置中心
+keywords: Seata,Consul,配置中心
+description: Consul配置中心
+---
+
 # Consul 配置中心
 
 在 [以 Consul 作为注册中心](http://seata.io/zh-cn/docs/user/registry/consul.html) 的基础上，将 Seata 配置放到 Consul 中

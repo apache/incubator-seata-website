@@ -138,7 +138,7 @@ export default {
                             },
                             {
                                 title: 'Seata Saga 模式',
-                                link: 'zh-cn/docs/concept/mode/saga-mode.html',
+                                link: '/zh-cn/docs/concept/mode/saga-mode.html',
                             },
                             {
                                 title: 'Seata XA 模式',
@@ -172,7 +172,7 @@ export default {
                             },
                             {
                                 title: 'Kubernetes部署',
-                                link: 'zh-cn/docs/quickstart/server-deploy/deploy-by-kubernetes.html',
+                                link: '/zh-cn/docs/quickstart/server-deploy/deploy-by-kubernetes.html',
                             },
                             {
                                 title: 'Helm部署',
@@ -313,6 +313,10 @@ export default {
                             {
                                 title: 'Zookeeper 配置中心',
                                 link: '/zh-cn/docs/user/configcenter/zookeeper.html',
+                            },
+                            {
+                                title: 'File 配置中心',
+                                link: '/zh-cn/docs/user/configcenter/file.html',
                             }
                         ],
                     },
@@ -342,6 +346,18 @@ export default {
                             {
                                 title: 'Zookeeper 注册中心',
                                 link: '/zh-cn/docs/user/registry/zookeeper.html',
+                            },
+                            {
+                                title: 'Sofa 注册中心',
+                                link: '/zh-cn/docs/user/registry/sofa.html',
+                            },
+                            {
+                                title: 'Redis 注册中心',
+                                link: '/zh-cn/docs/user/registry/redis.html',
+                            },
+                            {
+                                title: 'File 注册中心',
+                                link: '/zh-cn/docs/user/registry/file.html',
                             }
                         ],
                     },
@@ -350,7 +366,7 @@ export default {
                         link: '/zh-cn/docs/user/api.html',
                     },
 					{
-                        title: 'Open-Api',
+                        title: 'Open-API',
                         link: '/zh-cn/docs/user/open-api.html',
                     },
                     {

@@ -1,6 +1,6 @@
 ---
-title: 运维指南
-keywords: Seata
+title: Prometheus Metrics 配置指南
+keywords: Seata,Prometheus,APM
 description: Seata支持在TC开启Metrics数据采集并输出到Prometheus监控系统中。
 ---
 
@@ -40,6 +40,7 @@ seata_transaction{meter="timer",role="tc",statistic="average",status="committed"
 得到以上类似数据证明mertric开启成功。
 
 >提示：
+>
 >1. 如果某些Transaction状态没有发生，例如rollback，那么对应的Metrics指标也不会存在（输出）。
 
 #### 步骤二：修改Prometheus配置文件并启动Prometheus

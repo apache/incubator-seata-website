@@ -1,6 +1,6 @@
 ---
-title: Seata api
-keywords: Seata
+title: Seata API
+keywords: Seata,API
 description: Seata API 分为两大类：High-Level API 和 Low-Level API。
 ---
 

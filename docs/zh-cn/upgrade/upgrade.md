@@ -1,7 +1,7 @@
 ---
-title: Seata upgrade
-keywords: Seata
-description: Seata upgrade.
+title: Seata版本升级指南
+keywords: 版本升级,Seata版本升级指南
+description: Seata版本升级指南
 ---
 
 # 版本升级指南
