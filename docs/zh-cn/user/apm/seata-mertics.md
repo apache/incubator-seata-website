@@ -63,7 +63,7 @@ Metrics核心模块，根据配置组织（加载）1个Registry和N个Exporter�
 ```text
 ## metrics settings
 metrics {
-  enable = true
+  enabled = true
   registry-type = "compact"
   # multi exporters use comma divided
   exporter-list = "prometheus"
