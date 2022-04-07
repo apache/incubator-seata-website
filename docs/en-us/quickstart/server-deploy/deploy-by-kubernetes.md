@@ -1,5 +1,4 @@
 ---
-hidden: true
 title: Deploy Seata Server By Kubernetes
 keywords: kubernetes,ops
 description: Deploy Seata Server By Kubernetes

@@ -1,5 +1,4 @@
 ---
-hidden: true
 title: Deploy Seata Server By Helm
 keywords: kubernetes,helm,ops
 description: Deploy Seata Server By Helm
