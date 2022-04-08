@@ -13,7 +13,7 @@ Seata 事务目前支持 INSERT、UPDATE、DELETE 三类 DML 语法的部分功�
 - 不支持 SQL 嵌套
 - 不支持多表复杂 SQL
 - 不支持存储过程、触发器
-- 部分数据库不支持批量更新，现测试在使用 MySQL、Mariadb、PostgreSQL9.6+作为数据库时支持批量，批量更新方式如下以 Java 为例
+- 部分数据库不支持批量更新，在使用 MySQL、Mariadb、PostgreSQL9.6+作为数据库时支持批量，批量更新方式如下以 Java 为例
 ```
     // use JdbcTemplate
     public void batchUpdate() {
