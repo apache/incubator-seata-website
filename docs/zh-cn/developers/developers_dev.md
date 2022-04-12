@@ -18,15 +18,15 @@ description: Seata 维护者名单
 | 陈连东 | [purple-force](https://github.com/purple-force)    | Alibaba        |
 | 张森   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
 | 章耿   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
-| 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
+| 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Tencent          |
 | 王清   | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
 | 吴江坷 | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
 | 李钊   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
-| 王欣   | [lovepoem](https://github.com/lovepoem)        | WeiDian         |
-| 袁国尧 | [github-ygy](https://github.com/github-ygy)      | Tuya            |
+| 王欣   | [lovepoem](https://github.com/lovepoem)        | JD         |
+| 袁国尧 | [github-ygy](https://github.com/github-ygy)      | NetEase            |
 | 张旭   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
 | 任帅鹏 | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
-| 许德佑 | [skyesx](https://github.com/skyesx)          | WeBank          |
+| 许德佑 | [skyesx](https://github.com/skyesx)          | Alibaba          |
 | 庄金雷 | [zjinlei](https://github.com/zjinlei)         | Helios          |
 | 张嘉伟 | [l81893521](https://github.com/l81893521)       | Perfect Diary |
 | 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
