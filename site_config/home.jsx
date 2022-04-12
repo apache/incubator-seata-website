@@ -35,7 +35,7 @@ export default {
         },
         introduction: {
             title: 'Seata 是什么？',
-            desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，Seata 对应的内部版本在阿里经济体内部一直扮演着分布式一致性中间件的角色，帮助经济体平稳的度过历年的双11，对各BU业务进行了有力的支撑。经过多年沉淀与积累，商业化产品先后在阿里云、金融云进行售卖。2019.1 为了打造更加完善的技术生态和普惠技术成果，Seata 正式宣布对外开源，未来 Seata 将以社区共建的形式帮助其技术更加可靠与完备。',
+            desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，其内部版本在阿里经济体内部一直扮演着应用架构层数据一致性的中间件角色，帮助经济体平稳的度过历年的双11，对上层业务进行了有力的技术支撑。经过多年沉淀与积累，其商业化产品先后在阿里云、金融云上售卖。2019.1 为了打造更加完善的技术生态和普惠技术成果，Seata 正式宣布对外开源，未来 Seata 将以社区共建的形式帮助用户快速落地分布式事务解决方案。',
             img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
         },
         features: {
@@ -44,12 +44,12 @@ export default {
                 {
                     icon: 'feature-1',
                     title: '微服务框架支持',
-                    content: '目前已支持Dubbo、Spring Cloud、Sofa-RPC、Motan和grpc等RPC框架，其他框架持续集成中',
+                    content: '目前已支持Dubbo、Spring Cloud、Sofa-RPC、Motan 和 gRPC 等RPC框架，其他框架持续集成中',
                 },
                 {
                     icon: 'feature-2',
                     title: 'AT 模式',
-                    content: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB和MariaDB的AT模式，H2、DB2、SQLServer、达梦开发中',
+                    content: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB 和 MariaDB。H2、DB2、SQLServer、达梦开发中',
                 },
                 {
                     icon: 'feature-3',
@@ -69,7 +69,7 @@ export default {
                 {
                     icon: 'feature-6',
                     title: '高可用',
-                    content: '支持基于数据库存储的集群模式，水平扩展能力强',
+                    content: '支持基于数据库和 Redis 存储的存储计算分离集群模式，水平扩展能力强',
                 },
             ],
         },
@@ -271,7 +271,7 @@ export default {
         },
         introduction: {
             title: 'What is Seata?',
-            desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open-source of Seata, the internal version of Seata played a role of distributed consistency Middleware in Ali economy, helping the economy to survive the double 11 of the past years smoothly, and providing strong support for businesses of all departments. After years of precipitation and accumulation, commercial products have been sold in Alibaba cloud and financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will help its technology become more reliable and complete in the form of community building.',
+            desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open source of Seata, its internal version has been playing the role of middleware for data consistency of application architecture layer in Alibaba economy, helping the economy to smoothly go through the Double 11 of the past year and providing strong technical support for the upper business.  After years of development, its commercial products have been sold on Alibaba Cloud and Financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will organize as a community to help users quickly land distributed transaction solutions.',
             img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
         },
         features: {
