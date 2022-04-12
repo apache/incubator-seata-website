@@ -79,7 +79,7 @@ The environment is same with Docker, can reference [Deploy Seata Server By Docke
 
 ### Use specify configuration file
 
-Can specify configuration file by mount files, like mount files under `/root/workspace/seata/seata-config/file` to pod. And need specify environment `SEATA_CONFIG_NAME` also, the value need start with `file:`, like `file:/root/seata-config/registry`
+Can specify configuration file by mount files or use ConfigMap, and then need specify environment `SEATA_CONFIG_NAME`, the value need start with `file:`, like `file:/root/seata-config/registry`
 
 - Deployment
 
@@ -106,10 +106,6 @@ spec:
           image: docker.io/seataio/seata-server:latest
           imagePullPolicy: IfNotPresent
           env:
-            - name: SEATA_PORT
-              value: "8091"
-            - name: STORE_MODE
-              value: file
             - name: SEATA_CONFIG_NAME
               value: file:/root/seata-config/registry
           ports:
@@ -121,6 +117,28 @@ spec:
               mountPath: /root/seata-config
       volumes:
         - name: seata-config
-          hostPath:
-            path: /root/workspace/seata/seata-config/file
+          configMap:
+            name: seata-server-config
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: seata-server-config
+data:
+  registry.conf: |
+    registry {
+        type = "nacos"
+        nacos {
+          application = "seata-server"
+          serverAddr = "192.168.199.2"
+        }
+    }
+    config {
+      type = "nacos"
+      nacos {
+        serverAddr = "192.168.199.2"
+        group = "SEATA_GROUP"
+      }
+    }
 ```

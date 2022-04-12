@@ -4,4 +4,4 @@ keywords: Seata
 description: 配置中心初始化。
 ---
 
-# 配置中心初始化 todo1
+# 配置中心初始化
