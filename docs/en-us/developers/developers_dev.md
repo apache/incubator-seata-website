@@ -12,14 +12,14 @@ This page shows Seata developers and continues to expand. The list is not priori
 
 | name   | github          | company             |
 | ------ | --------------- | --------------- |
-| Min Ji   | [slievrly](https://github.com/slievrly)        | Alibabba        |
-| Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibabba        |
-| Qipeng Li| [wlliqipeng](https://github.com/wlliqipeng)      | Alibabba        |
-| Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibabba        |
+| Min Ji   | [slievrly](https://github.com/slievrly)        | Alibaba        |
+| Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibaba        |
+| Qipeng Li| [wlliqipeng](https://github.com/wlliqipeng)      | Alibaba        |
+| Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibaba        |
 | Sen Zhang   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
 | Geng Zhang   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
 | Zhiyuan Lei | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
-| Qing Wang   | [jovany-wang](https://github.com/jovany-wang)     | Antfin          |
+| Qing Wang   | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
 | Jiangke Wu | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
 | Zhao Li   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
 | Xin Wang   | [lovepoem](https://github.com/lovepoem)        | WeiDian         |
@@ -30,7 +30,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Jinlei Zhuang | [zjinlei](https://github.com/zjinlei)         | Helios          |
 | Jiawei Zhang | [l81893521](https://github.com/l81893521)       | Locals          |
 | Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
-| Long Chen   | [long187](https://github.com/long187)         | Antfin          |
+| Long Chen   | [long187](https://github.com/long187)         | Unknown          |
 | Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
 | Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
 | Liang Wang | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
