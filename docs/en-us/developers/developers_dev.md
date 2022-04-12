@@ -18,15 +18,15 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibaba        |
 | Sen Zhang   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
 | Geng Zhang   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
-| Zhiyuan Lei | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
+| Zhiyuan Lei | [leizhiyuan](https://github.com/leizhiyuan)      | Tencent          |
 | Qing Wang   | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
 | Jiangke Wu | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
 | Zhao Li   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
-| Xin Wang   | [lovepoem](https://github.com/lovepoem)        | WeiDian         |
-| Guoyao Yuan | [github-ygy](https://github.com/github-ygy)      | Tuya            |
+| Xin Wang   | [lovepoem](https://github.com/lovepoem)        | JD         |
+| Guoyao Yuan | [github-ygy](https://github.com/github-ygy)      | NetEase            |
 | Xu Zhang   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
 | Shuaipeng Ren | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
-| Deyou Xu | [skyesx](https://github.com/skyesx)          | WeBank          |
+| Deyou Xu | [skyesx](https://github.com/skyesx)          | Alibaba          |
 | Jinlei Zhuang | [zjinlei](https://github.com/zjinlei)         | Helios          |
 | Jiawei Zhang | [l81893521](https://github.com/l81893521)       | Locals          |
 | Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
