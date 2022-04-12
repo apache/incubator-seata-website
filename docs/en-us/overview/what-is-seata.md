@@ -38,11 +38,11 @@ tx1 starts first, begins a local transaction, acquires the local lock, do the up
 
 next, tx2 begins local transaction, acquires local lock, do the update operation: m = 900 - 100 = 800. Before tx2 can commit local transaction, it must acquire the **global lock**, but the **global lock** may be hold by tx1, so tx2 will do retry. After tx1 does the global commit and releases the **global lock**, tx2 can acquire the **global lock**, then it can commit local transaction and release local lock.
 
-![Write-Isolation: Commit](/img/overview-1.png)
+![Write-Isolation: Commit](https://img.alicdn.com/tfs/TB1zaknwVY7gK0jSZKzXXaikpXa-702-521.png)
 
 See the figure above, tx1 does the global commit in phase 2 and release the **global lock**, tx2 acquires the **global lock** and commits local transaction.
 
-![Write-Isolation: Rollback](/img/overview-2.png)
+![Write-Isolation: Rollback](https://img.alicdn.com/tfs/TB1xW0UwubviK0jSZFNXXaApXXa-718-521.png)
 
 See the figure above, if tx1 wants to do the global rollback, it must acquire local lock to revert the update operation of phase 1.
 
@@ -56,7 +56,7 @@ The isolation level of local database is **read committed** or above, so the def
 
 If it needs the isolation level of the global transaction is **read committed**, currently, Seata implements it via SELECT FOR UPDATE statement.
 
-![Read Isolation: SELECT FOR UPDATE](/img/overview-3.png)
+![Read Isolation: SELECT FOR UPDATE](https://img.alicdn.com/tfs/TB138wuwYj1gK0jSZFuXXcrHpXa-724-521.png)
 
 The **global lock** is be applied during the execution of SELECT FOR UPDATE statement, if the **global lock** is held by other transactions, the transaction will release local lock retry execute the SELECT FOR UPDATE statement. During the whole process, the query is blocked until the **global lock** is acquired, if the lock is acquired, it means the other global transaction has committed, so the isolation level of global transaction is **read committed**.
 
@@ -219,7 +219,7 @@ Review the description in the overview: A distributed global transaction, the wh
 - One-stage prepare behavior
 - Two-phase commit or rollback behavior
 
-![Overview of a global transaction](/img/overview-4.png)
+![Overview of a global transaction](https://img.alicdn.com/tfs/TB14Kguw1H2gK0jSZJnXXaT1FXa-853-482.png)
 
 According to the two-phase behavior mode, we divide branch transactions into **Automatic (Branch) Transaction Mode** and **TCC (Branch) Transaction Mode**.
 
@@ -242,7 +242,7 @@ The so-called TCC mode refers to the support of **customized's** branch transact
 
 The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.
 
-![Saga mode diagram](/img/saga/sagas.png)
+![Saga mode diagram](https://img.alicdn.com/tfs/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
 
 Theoretical basis: Hector & Kenneth Post a comment Sagas （1987）
 
