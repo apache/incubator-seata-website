@@ -69,7 +69,7 @@ export default {
                 {
                     icon: 'feature-6',
                     title: '高可用',
-                    content: '支持基于数据库存储的集群模式，水平扩展能力强',
+                    content: '支持基于数据库和 Redis 存储的存储计算分离集群模式，水平扩展能力强',
                 },
             ],
         },
