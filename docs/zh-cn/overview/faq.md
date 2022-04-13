@@ -83,6 +83,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
 
+<a href="#37" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0`？ </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -496,7 +498,7 @@ client.rm.lock.retryTimes=30
 
 ***
 
-<h3 id='38'>Q：38. 为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0`？</h3>
+<h3 id='38'>Q：38. 为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0` ？</h3>
 
 **A:**
 
