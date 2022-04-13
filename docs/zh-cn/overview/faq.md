@@ -83,6 +83,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
 
+<a href="#37" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0`？ </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -493,3 +495,15 @@ client.rm.lock.retryTimes=30
 解决办法：
 - 编译 seata 源码时确认 JDK 版本为 1.8，以免导致兼容问题
 - 如果已经用 JDK 11 编译了 seata 的源码，请删除本地 maven 仓库下 io.seata 路径下所有包。然后重新编译你的项目，让项目重新拉取中央仓库的 seata 的依赖包
+
+***
+
+<h3 id='38'>Q：38. 为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0` ？</h3>
+
+**A:**
+
+在`serializer/seata-serializer-protobuf/pom.xml`文件中，依赖版本是通过识别操作系统变量定义的：`com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}`。
+在远程仓库中，不存在Apple的M1芯片架构对应的依赖版本。
+
+解决方案：
+将上述依赖改写为固定版本：`com.google.protobuf:protoc:3.3.0:exe:osx-x86_64`，即可到远程仓库下载对应版本依赖。
