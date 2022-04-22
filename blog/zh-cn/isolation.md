@@ -144,7 +144,6 @@ class DbServiceA {
 ```
 - `updateAll()`先被调用（未完成），`updateA()`后被调用
   
-
 ![dirty-write](/img/seata-isolation/prevent-dirty-write-by-GlobalTransaction.png)
 
 
@@ -360,7 +359,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
   ```
   > 先在这打下个疑问，后边解释。  
   > **`RootContext.getBranchType()`的返回值怎么会是AT？**
-
+  
 
 ## **`StatementProxy.execute()`的处理逻辑**
 
@@ -382,17 +381,16 @@ DataSourceProxy帮助我们获得几个重要的代理对象
     - `ExecuteTemplate.execute(...)`方法中，Seata根据不同dbType和sql语句类型使用不同的Executer，调用`io.seata.rm.datasource.exec.Executer`类的`execute(Object... args)`。
         ```java
         package io.seata.rm.datasource.exec;
-        ```
 
 
         public class ExecuteTemplate {
-    
+
             public static <T, S extends Statement> T execute(StatementProxy<S> statementProxy,
                                                      StatementCallback<T, S> statementCallback,
                                                      Object... args) throws SQLException {
                 return execute(null, statementProxy, statementCallback, args);
             }
-    
+
             public static <T, S extends Statement> T execute(List<SQLRecognizer> sqlRecognizers,
                                                  StatementProxy<S> statementProxy,
                                                  StatementCallback<T, S> statementCallback,
@@ -401,7 +399,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     // Just work as original statement
                     return statementCallback.execute(statementProxy.getTargetStatement(), args);
                 }
-    
+
                 String dbType = statementProxy.getConnectionProxy().getDbType();
                 if (CollectionUtils.isEmpty(sqlRecognizers)) {
                     sqlRecognizers = SQLVisitorFactory.get(
@@ -449,7 +447,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                 }
                 return rs;
             }
-    
+
         }
         ```
         >
@@ -458,37 +456,37 @@ DataSourceProxy帮助我们获得几个重要的代理对象
         >
         先以`io.seata.rm.datasource.exec.UpdateExecutor`举例，`UpdateExecutor` extends `AbstractDMLBaseExecutor` extends `BaseTransactionalExecutor`。
         观察`execute()`方法的做了什么
-    
+
         ```java
         package io.seata.rm.datasource.exec;
-    
-        public abstract class BaseTransactionalExecutor<T, S extends Statement> implements Executor<T> {
 
+        public abstract class BaseTransactionalExecutor<T, S extends Statement> implements Executor<T> {
+            
 
             protected StatementProxy<S> statementProxy;
-    
+
             protected StatementCallback<T, S> statementCallback;
-    
+
             protected SQLRecognizer sqlRecognizer;
-    
+
             public BaseTransactionalExecutor(StatementProxy<S> statementProxy, StatementCallback<T, S> statementCallback,
                 SQLRecognizer sqlRecognizer) {
                 this.statementProxy = statementProxy;
                 this.statementCallback = statementCallback;
                 this.sqlRecognizer = sqlRecognizer;
             }
-    
+
             @Override
             public T execute(Object... args) throws Throwable {
                 String xid = RootContext.getXID();
                 if (xid != null) {
                     statementProxy.getConnectionProxy().bind(xid);
                 }
-    
+
                 statementProxy.getConnectionProxy().setGlobalLockRequire(RootContext.requireGlobalLock());
                 return doExecute(args);
             }
-    
+
         }
         ```
         ```java
@@ -498,7 +496,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                                    SQLRecognizer sqlRecognizer) {
                 super(statementProxy, statementCallback, sqlRecognizer);
             }
-    
+
             @Override
             public T doExecute(Object... args) throws Throwable {
                 AbstractConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
@@ -508,7 +506,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     return executeAutoCommitFalse(args);
                 }
             }
-    
+
             protected T executeAutoCommitTrue(Object[] args) throws Throwable {
                 ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
                 try {
@@ -530,7 +528,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     connectionProxy.setAutoCommit(true);
                 }
             }
-    
+
             protected T executeAutoCommitFalse(Object[] args) throws Exception {
                 if (!JdbcConstants.MYSQL.equalsIgnoreCase(getDbType()) && isMultiPk()) {
                     throw new NotSupportYetException("multi pk only support mysql!");
@@ -545,27 +543,27 @@ DataSourceProxy帮助我们获得几个重要的代理对象
         ```
         ```java
         package io.seata.rm.datasource.exec;
-    
+
         public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
             
             public UpdateExecutor(StatementProxy<S> statementProxy, StatementCallback<T, S> statementCallback,
                                 SQLRecognizer sqlRecognizer) {
                 super(statementProxy, statementCallback, sqlRecognizer);
             }
-    
+
         }
-    
+
         ```
     - 如果选了DML类型Executer，可以在上面的executeAutoCommitFalse()中看到，主要做了以下事情：
         - 查询前镜像（select for update，因此此时获得本地锁）
             ```java
             package io.seata.rm.datasource.exec;
-    
+
             public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
                 
                 private static final boolean ONLY_CARE_UPDATE_COLUMNS = CONFIG.getBoolean(
                         ConfigurationKeys.TRANSACTION_UNDO_ONLY_CARE_UPDATE_COLUMNS, DefaultValues.DEFAULT_ONLY_CARE_UPDATE_COLUMNS); // 默认为true
-    
+
                 @Override
                 protected TableRecords beforeImage() throws SQLException {
                     ArrayList<List<Object>> paramAppenderList = new ArrayList<>();
@@ -574,7 +572,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     // SELECT id, count FROM storage_tbl WHERE id = ? FOR UPDATE
                     return buildTableRecords(tmeta, selectSQL, paramAppenderList);
                 }
-    
+
                 private String buildBeforeImageSQL(TableMeta tableMeta, ArrayList<List<Object>> paramAppenderList) {
                     SQLUpdateRecognizer recognizer = (SQLUpdateRecognizer) sqlRecognizer;
                     List<String> updateColumns = recognizer.getUpdateColumns();
@@ -629,14 +627,14 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     }
                 }
             }
-    
+
             ```
-    
+
         - 执行业务sql
         - 查询后镜像
           ```java
             package io.seata.rm.datasource.exec;
-    
+
             public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
                 
                 @Override
@@ -672,19 +670,19 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                         }
                     }
                     ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
-    
+
                     TableRecords lockKeyRecords = sqlRecognizer.getSQLType() == SQLType.DELETE ? beforeImage : afterImage;
                     String lockKeys = buildLockKey(lockKeyRecords);
                     if (null != lockKeys) {
                         connectionProxy.appendLockKey(lockKeys);
-    
+
                         SQLUndoLog sqlUndoLog = buildUndoItem(beforeImage, afterImage);
                         connectionProxy.appendUndoLog(sqlUndoLog); // 把undoLog存到connectionProxy中，具体怎么回事上面有提过
                     }
                 }
             }
             ```
-
+      
 
 
     - 如果你的sql是select for update则会使用`SelectForUpdateExecutor`（Seata代理了select for update），代理后处理的逻辑是这样的：
@@ -693,7 +691,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
         -  如果有全局锁，则未开启本地事务下会rollback本地事务，再重新争抢本地锁和查询全局锁，直到全局锁释放
         ```java
            package io.seata.rm.datasource.exec;
-    
+
            public class SelectForUpdateExecutor<T, S extends Statement> extends BaseTransactionalExecutor<T, S> {
                    @Override
                     public T doExecute(Object... args) throws Throwable {
@@ -719,7 +717,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                             } else {
                                 throw new SQLException("not support savepoint. please check your db version");
                             }
-    
+
                             LockRetryController lockRetryController = new LockRetryController();
                             ArrayList<List<Object>> paramAppenderList = new ArrayList<>();
                             String selectPKSQL = buildSelectSQL(paramAppenderList);
@@ -729,14 +727,14 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                                     // execute return Boolean
                                     // executeQuery return ResultSet
                                     rs = statementCallback.execute(statementProxy.getTargetStatement(), args); //执行 select for update（获取数据库本地锁）
-    
+
                                     // Try to get global lock of those rows selected
                                     TableRecords selectPKRows = buildTableRecords(getTableMeta(), selectPKSQL, paramAppenderList);
                                     String lockKeys = buildLockKey(selectPKRows);
                                     if (StringUtils.isNullOrEmpty(lockKeys)) {
                                         break;
                                     }
-    
+
                                     if (RootContext.inGlobalTransaction() || RootContext.requireGlobalLock()) {
                                         // Do the same thing under either @GlobalTransactional or @GlobalLock, 
                                         // that only check the global lock  here.
@@ -857,7 +855,6 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                     null, context.getXid(), null, context.buildLockKeys());
                 context.setBranchId(branchId);
             }
-    ```
 
 
         }
@@ -898,7 +895,6 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                     recognizeLockKeyConflictException(e, lockKeys);
                 }
             }
-     ```
 
 
         }
