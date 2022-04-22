@@ -1,3 +1,9 @@
+---
+title: Nacos注册中心
+keywords: Seata,Nacos,注册中心
+description: Nacos注册中心
+---
+
 # Nacos 注册中心
 
 Nacos 是 Seata 组件中重要的注册中心实现.

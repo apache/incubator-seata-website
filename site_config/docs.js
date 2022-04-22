@@ -2,99 +2,353 @@ export default {
     'en-us': {
         sidemenu: [
             {
-                title: 'Overview',
+                title: 'What is Seata',
                 children: [
                     {
-                        title: 'What is Seata?',
+                        title: 'Overview',
                         link: '/en-us/docs/overview/what-is-seata.html',
                     },
                     {
-                        title: 'Terminology',
-                        link: '/en-us/docs/overview/terminology.html',
-                    },
-                    {
-                        title: 'FAQ',
-                        link: '/en-us/docs/overview/faq.html',
+                        title: 'RoadMap',
+                        link: '/en-us/docs/overview/roadmap.html',
                     }
                 ],
             },
-
-            {
-                title: 'User Doc',
+			{
+                title: 'Concept & Framework',
                 children: [
                     {
-                        title: 'Quick Start',
-                        link: '/en-us/docs/user/quickstart.html',
+                        title: 'Transaction&Distributed Transaction',
+                        link: '/en-us/docs/concept/transaction-and-distributed-transaction.html',
                     },
-                    {
-                        title: 'API Guide',
-                        link: '/en-us/docs/user/api.html',
-                    },
-                    {
-                        title: 'Microservices Framework Supports',
-                        link: '/en-us/docs/user/microservice.html',
-                    }
-                ],
-            },
-            {
-                title: 'Developer Guide',
-                children: [
                     {
                         title: 'Transaction Mode',
                         children: [
-                            {
-                                title: 'Seata AT mode',
-                                link: '/en-us/docs/dev/mode/at-mode.html',
+							{
+                                title: 'Overview',
+                                link: '/en-us/docs/concept/mode/mode-overview.html',
                             },
                             {
-                                title: 'Seata TCC mode',
-                                link: '/en-us/docs/dev/mode/tcc-mode.html',
+                                title: 'AT Mode',
+                                link: '/en-us/docs/concept/mode/at-mode.html',
                             },
                             {
-                                title: 'Seata Saga mode',
-                                link: '/en-us/docs/dev/mode/saga-mode.html',
+                                title: 'TCC Mode',
+                                link: '/en-us/docs/concept/mode/tcc-mode.html',
+                            },
+                            {
+                                title: 'Saga Mode',
+                                link: '/en-us/docs/concept/mode/saga-mode.html',
+                            },
+                            {
+                                title: 'XA Mode',
+                                link: '/en-us/docs/concept/mode/xa-mode.html',
                             }
                         ],
                     },
                     {
-                        title: 'Metrics design',
-                        link: '/en-us/docs/dev/seata-mertics.html',
+                        title: 'Framework',
+                        link: '/en-us/docs/concept/framework.html',
+                    }
+                ],
+            },
+			{
+                title: 'Quick Start',
+                children: [
+                    {
+                        title: 'Seata-Server Deploy',
+                        children: [
+							{
+                                title: 'Deploy Server',
+                                link: '/en-us/docs/quickstart/server-deploy/deploy-server.html',
+                            },
+                            {
+                                title: 'Docker Deploy',
+                                link: '/en-us/docs/quickstart/server-deploy/deploy-by-docker.html',
+                            },
+                            {
+                                title: 'Docker-compose Deploy',
+                                link: '/en-us/docs/quickstart/server-deploy/deploy-by-docker-compose.html',
+                            },
+                            {
+                                title: 'Kubernetes Deploy',
+                                link: '/en-us/docs/quickstart/server-deploy/deploy-by-kubernetes.html',
+                            },
+                            {
+                                title: 'Helm Deploy',
+                                link: '/en-us/docs/quickstart/server-deploy/deploy-by-helm.html',
+                            }
+                        ],
                     },
+                    {
+                        title: 'At Mode',
+                        children: [
+							{
+                                title: 'Quick Start',
+                                link: '/en-us/docs/quickstart/at/at-quick.html',
+                            },
+                            {
+                                title: 'Advanced',
+                                link: '/en-us/docs/quickstart/at/at-advance.html',
+                            },
+                            {
+                                title: 'Integration',
+                                link: '/en-us/docs/quickstart/at/at-integration.html',
+                            }
+                        ],
+                    },
+                    {
+                        title: 'TCC Mode',
+                        children: [
+							{
+                                title: 'Quick Start',
+                                link: '/en-us/docs/quickstart/tcc/tcc-quick.html',
+                            },
+                            {
+                                title: 'Advanced',
+                                link: '/en-us/docs/quickstart/tcc/tcc-advance.html',
+                            },
+                            {
+                                title: 'Integration',
+                                link: '/en-us/docs/quickstart/tcc/tcc-integration.html',
+                            }
+                        ],
+                    },
+					{
+                        title: 'XA Mode',
+                        children: [
+							{
+                                title: 'Quick Start',
+                                link: '/en-us/docs/quickstart/xa/xa-quick.html',
+                            },
+                            {
+                                title: 'Advanced',
+                                link: '/en-us/docs/quickstart/xa/xa-advance.html',
+                            },
+                            {
+                                title: 'Integration',
+                                link: '/en-us/docs/quickstart/xa/xa-integration.html',
+                            }
+                        ],
+                    },
+					{
+                        title: 'Saga Mode',
+                        children: [
+							{
+                                title: 'Quick Start',
+                                link: '/en-us/docs/quickstart/saga/saga-quick.html',
+                            },
+                            {
+                                title: 'Advanced',
+                                link: '/en-us/docs/quickstart/saga/saga-advance.html',
+                            },
+                            {
+                                title: 'Integration',
+                                link: '/en-us/docs/quickstart/saga/saga-integration.html',
+                            }
+                        ],
+                    },
+					{
+                        title: 'Common Solutions',
+                        children: [
+							{
+                                title: 'ShardingSphere',
+                                link: '/en-us/docs/quickstart/solution/shardingsphere.html',
+                            },
+                            {
+                                title: 'Multiple Datasource',
+                                link: '/en-us/docs/quickstart/solution/multiple-datasource.html',
+                            }
+                        ],
+                    }
                 ],
             },
             {
-                title: 'Ops Guide',
+                title: 'User Doc',
                 children: [
                     {
-                        title: 'Configuration Isolation',
-                        link: '/en-us/docs/ops/multi-configuration-isolation.html',
+                        title: 'FAQ',
+                        link: '/en-us/docs/user/faq.html',
+                    },
+					{
+                        title: 'Parameter Configuration',
+                        link: '/en-us/docs/user/configuration/configurations.html',
                     },
                     {
-                        title: 'Deploy',
+                        title: 'Transaction Group',
                         children: [
                             {
-                                title: 'Deploy Directly',
-                                link: '/en-us/docs/ops/deploy-server.html',
+                                title: 'Overview',
+                                link: '/en-us/docs/user/txgroup/transaction-group.html',
                             },
                             {
-                                title: 'Deploy by Docker',
-                                link: '/en-us/docs/ops/deploy-by-docker.html',
+                                title: 'Best Practice',
+                                link: '/en-us/docs/user/txgroup/transaction-group-best-practice.html',
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Configuration Center',
+                        children: [
+                            {
+                                title: 'Overview',
+                                link: '/en-us/docs/user/configcenter/index.html',
                             },
                             {
-                                title: 'Deploy by Kubernetes',
-                                link: '/en-us/docs/ops/deploy-by-kubernetes.html',
+                                title: 'Nacos',
+                                link: '/en-us/docs/user/configcenter/nacos.html',
                             },
                             {
-                                title: 'Deploy by Helm',
-                                link: '/en-us/docs/ops/deploy-by-helm.html',
+                                title: 'Apollo',
+                                link: '/en-us/docs/user/configcenter/apollo.html',
                             },
                             {
-                                title: 'Deploy in High Available Usage',
-                                link: '/en-us/docs/ops/deploy-ha.html',
+                                title: 'Etcd3',
+                                link: '/en-us/docs/user/configcenter/etcd3.html',
+                            },
+                            {
+                                title: 'Consul',
+                                link: '/en-us/docs/user/configcenter/consul.html',
+                            },
+                            {
+                                title: 'Zookeeper',
+                                link: '/en-us/docs/user/configcenter/zookeeper.html',
+                            },
+                            {
+                                title: 'File',
+                                link: '/en-us/docs/user/configcenter/file.html',
+                            }
+                        ],
+                    },
+                    {
+                        title: 'Registration Center',
+                        children: [
+                            {
+                                title: 'Overview',
+                                link: '/en-us/docs/user/registry/index.html',
+                            },
+                            {
+                                title: 'Nacos',
+                                link: '/en-us/docs/user/registry/nacos.html',
+                            },
+                            {
+                                title: 'Eureka',
+                                link: '/en-us/docs/user/registry/eureka.html',
+                            },
+                            {
+                                title: 'Etcd3',
+                                link: '/en-us/docs/user/registry/etcd3.html',
+                            },
+                            {
+                                title: 'Consul',
+                                link: '/en-us/docs/user/registry/consul.html',
+                            },
+                            {
+                                title: 'Zookeeper',
+                                link: '/en-us/docs/user/registry/zookeeper.html',
+                            },
+                            {
+                                title: 'Sofa',
+                                link: '/en-us/docs/user/registry/sofa.html',
+                            },
+                            {
+                                title: 'Redis',
+                                link: '/en-us/docs/user/registry/redis.html',
+                            },
+                            {
+                                title: 'File',
+                                link: '/en-us/docs/user/registry/file.html',
+                            }
+                        ],
+                    },
+                    {
+                        title: 'API',
+                        link: '/en-us/docs/user/api.html',
+                    },
+					{
+                        title: 'Open-API',
+                        link: '/en-us/docs/user/open-api.html',
+                    },
+                    {
+                        title: 'SQL Reference(AT)',
+                        children: [
+                            {
+                                title: 'Sql Restrictions',
+                                link: '/en-us/docs/user/sqlreference/sql-restrictions.html',
+                            },
+                            {
+                                title: 'DML',
+                                link: '/en-us/docs/user/sqlreference/dml.html',
+                            },
+                            {
+                                title: 'Sql Decoration',
+                                link: '/en-us/docs/user/sqlreference/sql-decoration.html',
+                            },
+                            {
+                                title: 'Function',
+                                link: '/en-us/docs/user/sqlreference/function.html',
                             },
                         ]
+                    },
+                    {
+                        title: 'APM',
+                        children: [
+							{
+								title: 'Metrics',
+								link: '/en-us/docs/user/apm/seata-mertics.html',
+							},
+                            {
+                                title: 'SkyWalking',
+                                link: '/en-us/docs/user/apm/skywalking.html',
+
+                            },
+                            {
+                                title: 'Prometheus',
+                                link: '/en-us/docs/user/apm/prometheus.html',
+
+                            }
+                        ]
+                    },
+					{
+                        title: 'Transaction Status',
+                        link: '/en-us/docs/user/global-transaction-status.html',
+                    },
+					{
+                        title: 'SPI',
+                        link: '/en-us/docs/user/spi.html',
+                    }
+				]
+            },
+            {
+                title: 'Test Report',
+                children: [
+                    {
+                        title: 'AT Mode',
+                        link: '/en-us/docs/test/at-test-report.html',
+                    },
+                    {
+                        title: 'TCC Mode',
+                        link: '/en-us/docs/test/tcc-test-report.html',
+                    },
+					{
+                        title: 'XA Mode',
+                        link: '/en-us/docs/test/xa-test-report.html',
+                    },
+					{
+                        title: 'Saga Mode',
+                        link: '/en-us/docs/test/saga-test-report.html',
+                    }
+                ],
+            },
+            {
+                title: 'Upgrade & Compatibility',
+                children: [
+                    {
+                        title: 'Version Upgrade Guide',
+                        link: '/en-us/docs/upgrade/upgrade.html',
                     }
                 ]
+
             },
         ],
         barText: 'Documentation'
@@ -102,19 +356,164 @@ export default {
     'zh-cn': {
         sidemenu: [
             {
-                title: '概述',
+                title: 'Seata是什么',
                 children: [
                     {
-                        title: 'Seata 是什么？',
+                        title: '简介',
                         link: '/zh-cn/docs/overview/what-is-seata.html',
                     },
                     {
-                        title: '术语表',
-                        link: '/zh-cn/docs/overview/terminology.html',
+                        title: 'RoadMap',
+                        link: '/zh-cn/docs/overview/roadmap.html',
+                    }
+                ],
+            },
+			{
+                title: '概念&架构',
+                children: [
+                    {
+                        title: '事务与分布式事务',
+                        link: '/zh-cn/docs/concept/transaction-and-distributed-transaction.html',
                     },
                     {
-                        title: 'FAQ',
-                        link: '/zh-cn/docs/overview/faq.html',
+                        title: '事务模式',
+                        children: [
+							{
+                                title: '概述',
+                                link: '/zh-cn/docs/concept/mode/mode-overview.html',
+                            },
+                            {
+                                title: 'Seata AT 模式',
+                                link: '/zh-cn/docs/concept/mode/at-mode.html',
+                            },
+                            {
+                                title: 'Seata TCC 模式',
+                                link: '/zh-cn/docs/concept/mode/tcc-mode.html',
+                            },
+                            {
+                                title: 'Seata Saga 模式',
+                                link: '/zh-cn/docs/concept/mode/saga-mode.html',
+                            },
+                            {
+                                title: 'Seata XA 模式',
+                                link: '/zh-cn/docs/concept/mode/xa-mode.html',
+                            }
+                        ],
+                    },
+                    {
+                        title: '架构',
+                        link: '/zh-cn/docs/concept/framework.html',
+                    }
+                ],
+            },
+			{
+                title: '快速开始',
+                children: [
+                    {
+                        title: 'Seata-Server部署',
+                        children: [
+							{
+                                title: '直接部署',
+                                link: '/zh-cn/docs/quickstart/server-deploy/deploy-server.html',
+                            },
+                            {
+                                title: 'Docker部署',
+                                link: '/zh-cn/docs/quickstart/server-deploy/deploy-by-docker.html',
+                            },
+                            {
+                                title: 'Docker-compose部署',
+                                link: '/zh-cn/docs/quickstart/server-deploy/deploy-by-docker-compose.html',
+                            },
+                            {
+                                title: 'Kubernetes部署',
+                                link: '/zh-cn/docs/quickstart/server-deploy/deploy-by-kubernetes.html',
+                            },
+                            {
+                                title: 'Helm部署',
+                                link: '/zh-cn/docs/quickstart/server-deploy/deploy-by-helm.html',
+                            }
+                        ],
+                    },
+                    {
+                        title: 'AT模式集成',
+                        children: [
+							{
+                                title: '快速入门',
+                                link: '/zh-cn/docs/quickstart/at/at-quick.html',
+                            },
+                            {
+                                title: '进阶使用',
+                                link: '/zh-cn/docs/quickstart/at/at-advance.html',
+                            },
+                            {
+                                title: '框架集成',
+                                link: '/zh-cn/docs/quickstart/at/at-integration.html',
+                            }
+                        ],
+                    },
+                    {
+                        title: 'TCC模式集成',
+                        children: [
+							{
+                                title: '快速入门',
+                                link: '/zh-cn/docs/quickstart/tcc/tcc-quick.html',
+                            },
+                            {
+                                title: '进阶使用',
+                                link: '/zh-cn/docs/quickstart/tcc/tcc-advance.html',
+                            },
+                            {
+                                title: '框架集成',
+                                link: '/zh-cn/docs/quickstart/tcc/tcc-integration.html',
+                            }
+                        ],
+                    },
+					{
+                        title: 'XA模式集成',
+                        children: [
+							{
+                                title: '快速入门',
+                                link: '/zh-cn/docs/quickstart/xa/xa-quick.html',
+                            },
+                            {
+                                title: '进阶使用',
+                                link: '/zh-cn/docs/quickstart/xa/xa-advance.html',
+                            },
+                            {
+                                title: '框架集成',
+                                link: '/zh-cn/docs/quickstart/xa/xa-integration.html',
+                            }
+                        ],
+                    },
+					{
+                        title: 'Saga模式集成',
+                        children: [
+							{
+                                title: '快速入门',
+                                link: '/zh-cn/docs/quickstart/saga/saga-quick.html',
+                            },
+                            {
+                                title: '进阶使用',
+                                link: '/zh-cn/docs/quickstart/saga/saga-advance.html',
+                            },
+                            {
+                                title: '框架集成',
+                                link: '/zh-cn/docs/quickstart/saga/saga-integration.html',
+                            }
+                        ],
+                    },
+					{
+                        title: '常见解决方案',
+                        children: [
+							{
+                                title: '分库分表集成ShadingSphere',
+                                link: '/zh-cn/docs/quickstart/solution/shardingsphere.html',
+                            },
+                            {
+                                title: '多数据源',
+                                link: '/zh-cn/docs/quickstart/solution/multiple-datasource.html',
+                            }
+                        ],
                     }
                 ],
             },
@@ -122,12 +521,12 @@ export default {
                 title: '用户文档',
                 children: [
                     {
-                        title: '快速启动',
-                        link: '/zh-cn/docs/user/quickstart.html',
+                        title: 'FAQ',
+                        link: '/zh-cn/docs/user/faq.html',
                     },
-                    {
+					{
                         title: '参数配置',
-                        link: '/zh-cn/docs/user/configurations.html',
+                        link: '/zh-cn/docs/user/configuration/configurations.html',
                     },
                     {
                         title: '事务分组',
@@ -137,8 +536,8 @@ export default {
                                 link: '/zh-cn/docs/user/txgroup/transaction-group.html',
                             },
                             {
-                                title: '事务分组与高可用',
-                                link: '/zh-cn/docs/user/txgroup/transaction-group-and-ha.html',
+                                title: '事务分组最佳实践',
+                                link: '/zh-cn/docs/user/txgroup/transaction-group-best-practice.html',
                             }
                         ]
                     },
@@ -147,27 +546,31 @@ export default {
                         children: [
                             {
                                 title: '简介',
-                                link: '/zh-cn/docs/user/configuration/index.html',
+                                link: '/zh-cn/docs/user/configcenter/index.html',
                             },
                             {
                                 title: 'Nacos 配置中心',
-                                link: '/zh-cn/docs/user/configuration/nacos.html',
+                                link: '/zh-cn/docs/user/configcenter/nacos.html',
                             },
                             {
                                 title: 'Apollo 配置中心',
-                                link: '/zh-cn/docs/user/configuration/apollo.html',
+                                link: '/zh-cn/docs/user/configcenter/apollo.html',
                             },
                             {
                                 title: 'Etcd3 配置中心',
-                                link: '/zh-cn/docs/user/configuration/etcd3.html',
+                                link: '/zh-cn/docs/user/configcenter/etcd3.html',
                             },
                             {
                                 title: 'Consul 配置中心',
-                                link: '/zh-cn/docs/user/configuration/consul.html',
+                                link: '/zh-cn/docs/user/configcenter/consul.html',
                             },
                             {
                                 title: 'Zookeeper 配置中心',
-                                link: '/zh-cn/docs/user/configuration/zookeeper.html',
+                                link: '/zh-cn/docs/user/configcenter/zookeeper.html',
+                            },
+                            {
+                                title: 'File 配置中心',
+                                link: '/zh-cn/docs/user/configcenter/file.html',
                             }
                         ],
                     },
@@ -197,27 +600,31 @@ export default {
                             {
                                 title: 'Zookeeper 注册中心',
                                 link: '/zh-cn/docs/user/registry/zookeeper.html',
+                            },
+                            {
+                                title: 'Sofa 注册中心',
+                                link: '/zh-cn/docs/user/registry/sofa.html',
+                            },
+                            {
+                                title: 'Redis 注册中心',
+                                link: '/zh-cn/docs/user/registry/redis.html',
+                            },
+                            {
+                                title: 'File 注册中心',
+                                link: '/zh-cn/docs/user/registry/file.html',
                             }
                         ],
                     },
                     {
-                        title: 'API 支持',
+                        title: 'API支持',
                         link: '/zh-cn/docs/user/api.html',
                     },
-                    {
-                        title: '微服务框架支持',
-                        link: '/zh-cn/docs/user/microservice.html',
+					{
+                        title: 'Open-API',
+                        link: '/zh-cn/docs/user/open-api.html',
                     },
                     {
-                        title: 'ORM 框架支持',
-                        link: '/zh-cn/docs/user/ormframework.html',
-                    },
-                    {
-                        title: '数据库类型支持',
-                        link: '/zh-cn/docs/user/datasource.html',
-                    },
-                    {
-                        title: 'SQL参考',
+                        title: 'SQL参考(AT)',
                         children: [
                             {
                                 title: 'SQL限制',
@@ -240,6 +647,10 @@ export default {
                     {
                         title: 'APM',
                         children: [
+							{
+								title: 'Metrics设计',
+								link: '/zh-cn/docs/user/apm/seata-mertics.html',
+							},
                             {
                                 title: 'SkyWalking',
                                 link: '/zh-cn/docs/user/apm/skywalking.html',
@@ -249,102 +660,46 @@ export default {
                                 title: 'Prometheus',
                                 link: '/zh-cn/docs/user/apm/prometheus.html',
 
-                            },
-                        ]
-                    },
-                    {
-                        title: '测试报告',
-                        children: [
-                            {
-                                title: '性能测试报告',
-                                link: '/zh-cn/docs/user/performance.html',
-
-                            },
-                        ]
-                    },
-                    {
-                        title: '附录',
-                        children: [
-                            {
-                                title: '事务状态',
-                                link: '/zh-cn/docs/user/appendix/global-transaction-status.html',
-                            },
-                            {
-                                title: '事务隔离',
-                                link: '/zh-cn/docs/user/appendix/isolation.html',
                             }
                         ]
-                    }]
+                    },
+					{
+                        title: '事务状态',
+                        link: '/zh-cn/docs/user/global-transaction-status.html',
+                    },
+					{
+                        title: 'SPI扩展实现',
+                        link: '/zh-cn/docs/user/spi.html',
+                    }
+				]
             },
             {
-                title: '开发者指南',
+                title: '测试报告',
                 children: [
                     {
-                        title: '各事务模式',
-                        children: [
-                            {
-                                title: 'Seata AT 模式',
-                                link: '/zh-cn/docs/dev/mode/at-mode.html',
-                            },
-                            {
-                                title: 'Seata TCC 模式',
-                                link: '/zh-cn/docs/dev/mode/tcc-mode.html',
-                            },
-                            {
-                                title: 'Seata Saga 模式',
-                                link: '/zh-cn/docs/user/saga.html',// zh-cn/docs/dev/mode/saga-mode.html
-                            },
-                            {
-                                title: 'Seata XA 模式',
-                                link: '/zh-cn/docs/dev/mode/xa-mode.html',
-                            }
-                        ],
+                        title: 'AT模式',
+                        link: '/zh-cn/docs/test/at-test-report.html',
                     },
                     {
-                        title: 'Metrics设计',
-                        link: '/zh-cn/docs/dev/seata-mertics.html',
+                        title: 'TCC模式',
+                        link: '/zh-cn/docs/test/tcc-test-report.html',
                     },
+					{
+                        title: 'XA模式',
+                        link: '/zh-cn/docs/test/xa-test-report.html',
+                    },
+					{
+                        title: 'SAGA模式',
+                        link: '/zh-cn/docs/test/saga-test-report.html',
+                    }
                 ],
             },
             {
-                title: '运维指南',
+                title: '升级与兼容性',
                 children: [
                     {
                         title: '版本升级指南',
-                        link: '/zh-cn/docs/ops/upgrade.html',
-                    },
-                    {
-                        title: '部署',
-                        children: [
-                            {
-                                title: '新人文档',
-                                link: '/zh-cn/docs/ops/deploy-guide-beginner.html',
-                            },
-                            {
-                                title: '直接部署',
-                                link: '/zh-cn/docs/ops/deploy-server.html',
-                            },
-                            {
-                                title: 'Docker部署',
-                                link: '/zh-cn/docs/ops/deploy-by-docker.html',
-                            },
-                            {
-                                title: 'Docker compose部署',
-                                link: '/zh-cn/docs/ops/deploy-by-docker-compose.html',
-                            },
-                            {
-                                title: 'Kubernetes部署',
-                                link: '/zh-cn/docs/ops/deploy-by-kubernetes.html',
-                            },
-                            {
-                                title: 'Helm 部署',
-                                link: '/zh-cn/docs/ops/deploy-by-helm.html',
-                            },
-                            {
-                                title: '高可用部署',
-                                link: '/zh-cn/docs/ops/deploy-ha.html',
-                            },
-                        ]
+                        link: '/zh-cn/docs/upgrade/upgrade.html',
                     }
                 ]
 

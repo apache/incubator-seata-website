@@ -1,3 +1,9 @@
+---
+title: Eureka注册中心
+keywords: Seata,Eureka,注册中心
+description: Eureka注册中心
+---
+
 # Eureka 注册中心
 
 Eureka是 Seata 组件中重要的注册中心实现.
