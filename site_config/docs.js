@@ -29,19 +29,19 @@ export default {
                                 link: '/en-us/docs/concept/mode/mode-overview.html',
                             },
                             {
-                                title: 'Seata AT Mode',
+                                title: 'AT Mode',
                                 link: '/en-us/docs/concept/mode/at-mode.html',
                             },
                             {
-                                title: 'Seata TCC Mode',
+                                title: 'TCC Mode',
                                 link: '/en-us/docs/concept/mode/tcc-mode.html',
                             },
                             {
-                                title: 'Seata Saga Mode',
+                                title: 'Saga Mode',
                                 link: '/en-us/docs/concept/mode/saga-mode.html',
                             },
                             {
-                                title: 'Seata XA Mode',
+                                title: 'XA Mode',
                                 link: '/en-us/docs/concept/mode/xa-mode.html',
                             }
                         ],
@@ -323,19 +323,19 @@ export default {
                 title: 'Test Report',
                 children: [
                     {
-                        title: 'AT',
+                        title: 'AT Mode',
                         link: '/en-us/docs/test/at-test-report.html',
                     },
                     {
-                        title: 'TCC',
+                        title: 'TCC Mode',
                         link: '/en-us/docs/test/tcc-test-report.html',
                     },
 					{
-                        title: 'XA',
+                        title: 'XA Mode',
                         link: '/en-us/docs/test/xa-test-report.html',
                     },
 					{
-                        title: 'SAGA',
+                        title: 'Saga Mode',
                         link: '/en-us/docs/test/saga-test-report.html',
                     }
                 ],
