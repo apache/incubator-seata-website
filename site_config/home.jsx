@@ -74,7 +74,7 @@ export default {
                 {
                     icon: 'feature-6',
                     title: '高可用',
-                    content: '支持存储计算分离集群模式，水平扩展能力强的数据库和 Redis 存储模式.Raft模式Preview阶段',
+                    content: '支持计算分离集群模式，水平扩展能力强的数据库和 Redis 存储模式.Raft模式Preview阶段',
                 },
             ],
         },
