@@ -4,7 +4,7 @@ keywords: Seata
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.3.0版本
+# seata参数配置 1.4.2版本
 <a href="./configurations100.html">查看1.0.0版本</a>  
 <a href="./configurations090.html">查看0.9.0.1之前版本</a>
 
@@ -122,6 +122,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.dataValidation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
 | client.undo.logSerialization        | undo序列化方式 |  默认jackson  |
 | client.undo.logTable                | 自定义undo表名 |  默认undo_log  |
+| client.undo.onlyCareUpdateColumns | 只生成被更新列的镜像 | 默认true |
 | client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
 
 

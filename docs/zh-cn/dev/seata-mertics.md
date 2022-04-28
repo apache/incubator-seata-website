@@ -64,10 +64,10 @@ Metrics核心模块，根据配置组织（加载）1个Registry和N个Exporter�
 ## metrics settings
 metrics {
   enabled = true
-  registry-type = "compact"
+  registryType = "compact"
   # multi exporters use comma divided
-  exporter-list = "prometheus"
-  exporter-prometheus-port = 9898
+  exporterList = "prometheus"
+  exporterPrometheusPort = 9898
 }
 ```
 或者1.5.0+中使用application.yaml
@@ -75,11 +75,21 @@ metrics {
 seata:
   metrics:
     enabled: true
-    registry-type: compact
-    exporter-list: prometheus
-    exporter-prometheus-port: 9898
+    registryType: compact
+    exporterList: prometheus
+    exporterPrometheusPort: 9898
 ```
 
+或者使用第三方配置中心如nacos,apollo等
+
+[请参考此处](https://github.com/seata/seata/tree/develop/script/config-center)将seata metrics配置项上传到对应配置中心,也可打开对应配置中心控制台进行手动添加
+
+```properties
+metrics.enabled=true
+metrics.registryType=compact
+metrics.exporterList=prometheus
+metrics.exporterPrometheusPort=9898
+```
 
 之后启动TC，即可在`http://tc-server-ip:9898/metrics`上获取到Metrics的文本格式数据。
 
