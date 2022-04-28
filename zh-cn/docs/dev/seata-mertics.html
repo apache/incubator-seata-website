@@ -99,19 +99,26 @@
 <pre><code class="language-text">## metrics settings
 metrics {
   enabled = true
-  registry-type = &quot;compact&quot;
+  registryType = &quot;compact&quot;
   # multi exporters use comma divided
-  exporter-list = &quot;prometheus&quot;
-  exporter-prometheus-port = 9898
+  exporterList = &quot;prometheus&quot;
+  exporterPrometheusPort = 9898
 }
 </code></pre>
 <p>或者1.5.0+中使用application.yaml</p>
 <pre><code class="language-yaml"><span class="hljs-attr">seata:</span>
 <span class="hljs-attr">  metrics:</span>
 <span class="hljs-attr">    enabled:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">    registry-type:</span> <span class="hljs-string">compact</span>
-<span class="hljs-attr">    exporter-list:</span> <span class="hljs-string">prometheus</span>
-<span class="hljs-attr">    exporter-prometheus-port:</span> <span class="hljs-number">9898</span>
+<span class="hljs-attr">    registryType:</span> <span class="hljs-string">compact</span>
+<span class="hljs-attr">    exporterList:</span> <span class="hljs-string">prometheus</span>
+<span class="hljs-attr">    exporterPrometheusPort:</span> <span class="hljs-number">9898</span>
+</code></pre>
+<p>或者使用第三方配置中心如nacos,apollo等</p>
+<p><a href="https://github.com/seata/seata/tree/develop/script/config-center">请参考此处</a>将seata metrics配置项上传到对应配置中心,也可打开对应配置中心控制台进行手动添加</p>
+<pre><code class="language-properties"><span class="hljs-meta">metrics.enabled</span>=<span class="hljs-string">true</span>
+<span class="hljs-meta">metrics.registryType</span>=<span class="hljs-string">compact</span>
+<span class="hljs-meta">metrics.exporterList</span>=<span class="hljs-string">prometheus</span>
+<span class="hljs-meta">metrics.exporterPrometheusPort</span>=<span class="hljs-string">9898</span>
 </code></pre>
 <p>之后启动TC，即可在<code>http://tc-server-ip:9898/metrics</code>上获取到Metrics的文本格式数据。</p>
 <blockquote>
