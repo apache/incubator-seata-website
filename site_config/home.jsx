@@ -26,6 +26,11 @@ export default {
                     link: 'https://github.com/opentrx/seata-golang',
                     type: 'normal',
                 },
+                {
+                    text: 'Github-Python',
+                    link: 'https://github.com/opentrx/seata-python',
+                    type: 'normal',
+                },
             ],
             versionNote: {
                 text: 'Release Note of 1.4.2',
@@ -59,7 +64,7 @@ export default {
                 {
                     icon: 'feature-4',
                     title: 'SAGA 模式',
-                    content: '为长事务提供有效的解决方案',
+                    content: '为长事务提供有效的解决方案,提供编排式与注解式(开发中)',
                 },
                 {
                     icon: 'feature-5',
@@ -69,7 +74,7 @@ export default {
                 {
                     icon: 'feature-6',
                     title: '高可用',
-                    content: '支持基于数据库和 Redis 存储的存储计算分离集群模式，水平扩展能力强',
+                    content: '支持计算分离集群模式，水平扩展能力强的数据库和 Redis 存储模式.Raft模式Preview阶段',
                 },
             ],
         },
