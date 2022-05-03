@@ -83,7 +83,9 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
 
-<a href="#37" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0`？ </a>
+<a href="#38" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0`？ </a>
+
+<a href="#39" target="_self">39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` </a>
 
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -507,3 +509,63 @@ client.rm.lock.retryTimes=30
 
 解决方案：
 将上述依赖改写为固定版本：`com.google.protobuf:protoc:3.3.0:exe:osx-x86_64`，即可到远程仓库下载对应版本依赖。
+
+***
+
+<h3 id='39'>Q：39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` ？</h3>
+
+**A:**
+
+升级1.5.0及以上版本
+
+**B:**
+
+不要使用mysql driver8.0.x版本
+
+**C:**
+
+引入kryo相关依赖
+
+```java
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>de.javakaffee</groupId>
+                <artifactId>kryo-serializers</artifactId>
+                <version>0.42</version>
+            </dependency>
+```
+
+如果配置中心是file,依赖是seata-all
+
+```java
+client {
+  rm {
+  undo {
+    logSerialization = "kryo"
+    }
+  }
+ }
+```
+
+如果配置中心是file,依赖是seata-spring-boot-starter,使用yml 自行转成yml格式即可
+
+```
+seata.client.undo.logSerialization=kryo
+```
+
+如果是第三方配置中心如nacos
+
+请在seata使用的配置相关group,namespace上添加dataid: client.undo.logSerialization,值为kryo
+
+**D**:
+
+修改数据库表中的datetime类型为timestamp
+
+**E:**
+
+参考此[pr](https://github.com/seata/seata/pull/3738)做法,可以用类覆盖或SPI方式扩展新的解析方式处理
+
