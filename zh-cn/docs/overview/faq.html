@@ -53,7 +53,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <p><a href="#35" target="_self">35. Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</a></p>
 <p><a href="#36" target="_self">36. 怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </a></p>
 <p><a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a></p>
-<p><a href="#37" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖<code>com.google.protobuf:protoc:exe:3.3.0</code>？ </a></p>
+<p><a href="#38" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖<code>com.google.protobuf:protoc:exe:3.3.0</code>？ </a></p>
+<p><a href="#39" target="_self">39. 1.4.2及以下版本回滚时抛出Cannot construct instance of <code>java.time.LocalDateTime</code> </a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -360,6 +361,43 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 在远程仓库中，不存在Apple的M1芯片架构对应的依赖版本。</p>
 <p>解决方案：
 将上述依赖改写为固定版本：<code>com.google.protobuf:protoc:3.3.0:exe:osx-x86_64</code>，即可到远程仓库下载对应版本依赖。</p>
+<hr>
+<h3 id='39'>Q：39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` ？</h3>
+<p><strong>A:</strong></p>
+<p>升级1.5.0及以上版本</p>
+<p><strong>B:</strong></p>
+<p>不要使用mysql driver8.0.x版本</p>
+<p><strong>C:</strong></p>
+<p>引入kryo相关依赖</p>
+<pre><code class="language-java">            &lt;dependency&gt;
+                &lt;groupId&gt;com.esotericsoftware&lt;/groupId&gt;
+                &lt;artifactId&gt;kryo&lt;/artifactId&gt;
+                &lt;version&gt;4.0.2&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;de.javakaffee&lt;/groupId&gt;
+                &lt;artifactId&gt;kryo-serializers&lt;/artifactId&gt;
+                &lt;version&gt;0.42&lt;/version&gt;
+            &lt;/dependency&gt;
+</code></pre>
+<p>如果配置中心是file,依赖是seata-all,请在应用的file.conf文件中添加如下配置</p>
+<pre><code class="language-java">client {
+  rm {
+  undo {
+    logSerialization = <span class="hljs-string">"kryo"</span>
+    }
+  }
+ }
+</code></pre>
+<p>如果配置中心是file,依赖是seata-spring-boot-starter,使用yml 自行转成yml格式即可</p>
+<pre><code>seata.client.undo.logSerialization=kryo
+</code></pre>
+<p>如果是第三方配置中心如nacos</p>
+<p>请在seata使用的配置相关group,namespace上添加dataid: client.undo.logSerialization,值为kryo</p>
+<p><strong>D</strong>:</p>
+<p>修改数据库表中的datetime类型为timestamp</p>
+<p><strong>E:</strong></p>
+<p>参考此<a href="https://github.com/seata/seata/pull/3738">pr</a>做法,可以用类覆盖或SPI方式扩展新的解析方式处理</p>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2022 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
