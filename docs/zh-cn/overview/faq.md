@@ -539,7 +539,7 @@ client.rm.lock.retryTimes=30
             </dependency>
 ```
 
-如果配置中心是file,依赖是seata-all
+如果配置中心是file,依赖是seata-all,请在应用的file.conf文件中添加如下配置
 
 ```java
 client {
