@@ -382,11 +382,9 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 </code></pre>
 <p>如果配置中心是file,依赖是seata-all,请在应用的file.conf文件中添加如下配置</p>
 <pre><code class="language-java">client {
-  rm {
   undo {
     logSerialization = <span class="hljs-string">"kryo"</span>
     }
-  }
  }
 </code></pre>
 <p>如果配置中心是file,依赖是seata-spring-boot-starter,使用yml 自行转成yml格式即可</p>
