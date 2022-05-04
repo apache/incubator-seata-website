@@ -543,11 +543,9 @@ client.rm.lock.retryTimes=30
 
 ```java
 client {
-  rm {
   undo {
     logSerialization = "kryo"
     }
-  }
  }
 ```
 
