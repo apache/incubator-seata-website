@@ -8,12 +8,12 @@ description: Metrics。
 #### 设计思路
 1. Seata作为一个被集成的数据一致性框架，Metrics模块将尽可能少的使用第三方依赖以降低发生冲突的风险；
 2. Metrics模块将竭力争取更高的度量性能和更低的资源开销，尽可能降低开启后带来的副作用；
-3. 插件式——Metrics是否激活、数据如何发布，去取决于是否引入了对应的依赖，例如在TC Server中引入`seata-metrics-prometheus`，则自动启用并将度量数据发布到[Prometheus](https://github.com/prometheus)；
+3. 配置式，Metrics是否激活、数据如何发布，取决于对应的配置；开启配置则自动启用并将度量数据发布到[Prometheus](https://github.com/prometheus)；
 4. 不使用Spring，使用SPI(Service Provider Interface)加载扩展；
 5. 初始仅发布核心Transaction相关指标，之后结合社区的需求，逐步完善运维方面的所有其他指标。
 
 #### 模块说明
-由1个核心API模块`seata-metrics-api`和N个对接实现模块如`seata-metrics-prometheus`构成：
+由2个核心API模块`seata-metrics-api`和`seata-metrics-core`，以及N个实现模块例如`seata-metrics-registry-compact`、`seata-metrics-exporter-prometheus`构成：
 - seata-metrics-api模块
 
 此模块是Metrics的核心，将作为Seata基础架构的一部分被TC、TM和RM引用，它内部**没有任何具体实现代码**，仅包含接口定义，定义的内容包括：
@@ -28,7 +28,15 @@ description: Metrics。
 
 >它们有的轻而敏捷，有的重而强大，由于也是“实现”，因此不会纳入`seata-metrics-api`中，避免实现绑定。
 
-- seata-metrics-prometheus模块
+- seata-metrics-core模块
+
+Metrics核心模块，根据配置组织（加载）1个Registry和N个Exporter；
+
+- seata-metrics-registry-compact模块
+
+这是我们提供的默认（内置）的Registry实现，不使用其它Metrics开源库，轻量级的实现了以下四种Meter：
+
+- seata-metrics-exporter-prometheus模块
 
 这是我们默认提供的Metrics实现，不使用其它Metrics开源实现，并轻量级的实现了以下三个Meter：
 
@@ -48,29 +56,39 @@ description: Metrics。
 >说明：不同的监控系统，采集度量数据的方式不尽相同，例如Zabbix支持用zabbix-agent推送，Prometheus则推荐使用prometheus-server[拉取](https://prometheus.io/docs/practices/pushing/)的方式；同样数据交换协议也不同，因此往往需要逐一适配。
 
 #### 如何使用
-##### 引入依赖
-如果需要开启TC的Metrics，只需要在`seata-server`的pom中增加：
-```xml
-<dependencies>
-	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>seata-core</artifactId>
-	</dependency>
-	<!--导入依赖，启用Metrics-->
-	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>seata-metrics-prometheus</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-lang</groupId>
-		<artifactId>commons-lang</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.testng</groupId>
-		<artifactId>testng</artifactId>
-		<scope>test</scope>
-	</dependency>
-</dependencies>
+##### 新增配置
+如果需要开启TC的Metrics，需要在其配置中增加配置项：
+
+比如file.conf
+```text
+## metrics settings
+metrics {
+  enabled = true
+  registryType = "compact"
+  # multi exporters use comma divided
+  exporterList = "prometheus"
+  exporterPrometheusPort = 9898
+}
+```
+或者1.5.0+中使用application.yaml
+```yaml
+seata:
+  metrics:
+    enabled: true
+    registryType: compact
+    exporterList: prometheus
+    exporterPrometheusPort: 9898
+```
+
+或者使用第三方配置中心如nacos,apollo等
+
+[请参考此处](https://github.com/seata/seata/tree/develop/script/config-center)将seata metrics配置项上传到对应配置中心,也可打开对应配置中心控制台进行手动添加
+
+```properties
+metrics.enabled=true
+metrics.registryType=compact
+metrics.exporterList=prometheus
+metrics.exporterPrometheusPort=9898
 ```
 
 之后启动TC，即可在`http://tc-server-ip:9898/metrics`上获取到Metrics的文本格式数据。

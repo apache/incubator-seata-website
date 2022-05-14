@@ -4,7 +4,7 @@ keywords: Seata
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.3.0版本
+# seata参数配置 1.4.2版本
 <a href="./configurations100.html">查看1.0.0版本</a>  
 <a href="./configurations090.html">查看0.9.0.1之前版本</a>
 
@@ -62,7 +62,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |-------------------------------------------|---------------------------------|----------------------------|
 | server.undo.logSaveDays            | undo保留天数                  |默认7天,log_status=1（附录3）和未正常清理的undo |
 | server.undo.logDeletePeriod        | undo清理线程间隔时间          |默认86400000，单位毫秒    |
-| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试   |
+| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试(注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用) |
 | server.maxRollbackRetryTimeout        | 二阶段回滚重试超时时长           |  同commit  |
 | server.recovery.committingRetryPeriod          | 二阶段提交未完成状态全局事务重试提交线程间隔时间 |默认1000，单位毫秒    |
 | server.recovery.asynCommittingRetryPeriod     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
@@ -73,7 +73,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.db.datasource                       | db模式数据源类型 |dbcp、druid、hikari；无默认值，store.mode=db时必须指定。    |
 | store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。   |
 | store.db.driverClassName                | db模式数据库驱动 |store.mode=db时必须指定    |
-| store.db.url                              | db模式数据库url | store.mode=db时必须指定   |
+| store.db.url                              | db模式数据库url | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7)   |
 | store.db.user                             | db模式数据库账户 |store.mode=db时必须指定    |
 | store.db.password                         | db模式数据库账户密码 |store.mode=db时必须指定    |
 | store.db.minConn                         | db模式数据库初始连接数 |默认1    |
@@ -111,7 +111,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.tm.degradeCheckAllowTimes | 升降级达标阈值 | 默认10 |
 | client.tm.degradeCheckPeriod | 服务自检周期 | 默认2000,单位ms.每2秒进行一次服务自检,来决定 |
 | client.rm.reportSuccessEnable   | 是否上报一阶段成功   |true、false，从1.1.0版本开始,默认false.true用于保持分支事务生命周期记录完整，false可提高不少性能 |
-| client.rm.asynCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
+| client.rm.asyncCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
 | client.rm.lock.retryInterval                | 校验或占用全局锁重试间隔 |  默认10，单位毫秒  |
 | client.rm.lock.retryTimes                   | 校验或占用全局锁重试次数 |  默认30  |
 | client.rm.lock.retryPolicyBranchRollbackOnConflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
@@ -122,6 +122,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.dataValidation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
 | client.undo.logSerialization        | undo序列化方式 |  默认jackson  |
 | client.undo.logTable                | 自定义undo表名 |  默认undo_log  |
+| client.undo.onlyCareUpdateColumns | 只生成被更新列的镜像 | 默认true |
+| client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
 
 
 <details>
@@ -261,3 +263,7 @@ sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/U
 那么每2秒钟会进行一个begin,commit的测试,如果失败,则记录连续失败数,如果成功则清空连续失败数.连续错误由用户接口及自检线程进行累计,直到连续失败次数达到用户的阈值,则关闭Seata分布式事务,避免用户自身业务长时间不可用.
 反之,假如当前分布式事务关闭,那么自检线程继续按照2秒一次的自检,直到连续成功数达到用户设置的阈值,那么Seata分布式事务将恢复使用
 ```
+
+### 附录7:
+    在store.mode=db，由于seata是通过jdbc的executeBatch来批量插入全局锁的，根据MySQL官网的说明，连接参数中的rewriteBatchedStatements为true时，在执行executeBatch，并且操作类型为insert时，jdbc驱动会把对应的SQL优化成`insert into () values (), ()`的形式来提升批量插入的性能。
+    根据实际的测试，该参数设置为true后，对应的批量插入性能为原来的10倍多，因此在数据源为MySQL时，建议把该参数设置为true。

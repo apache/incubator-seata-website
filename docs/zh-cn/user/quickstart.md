@@ -122,7 +122,7 @@ public class OrderServiceImpl implements OrderService {
 
 - 要求：具有InnoDB引擎的MySQL。
 
-**注意:** 实际上，在示例用例中，这3个服务应该有3个数据库。 但是，为了简单起见，我们只能创建一个数据库并配置3个数据源。 
+**注意:** 实际上，在示例用例中，这3个服务应该有3个数据库。 但是，为了简单起见，我们只创建一个数据库并配置3个数据源。 
 
 使用您刚创建的数据库 URL/username/password 修改Spring XML。
 
@@ -197,7 +197,7 @@ CREATE TABLE `account_tbl` (
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]
   Options:
     --host, -h
-      The host to bind.
+      The address is expose to registration center and other service can access seata-server via this ip
       Default: 0.0.0.0
     --port, -p
       The port to listen.

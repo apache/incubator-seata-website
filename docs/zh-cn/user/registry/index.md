@@ -5,7 +5,7 @@
 - Seata支持哪些注册中心?
   1. eureka
   2. consul
-  3. apollo
+  3. nacos
   4. etcd
   5. zookeeper
   6. sofa 

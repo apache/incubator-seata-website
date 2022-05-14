@@ -14,7 +14,7 @@ date: 2019-11-25
 #### Start a seata-server instance
 
 ```bash
-$ docker run --name seata-server -p 8091:8091 seataio/seata-server:latest
+$ docker run --name seata-server -p 8091:8091 seataio/seata-server:1.4.2
 ```
 
 #### Specify server IP and port
