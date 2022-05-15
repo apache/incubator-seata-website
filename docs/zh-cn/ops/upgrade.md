@@ -27,7 +27,7 @@ description: Seata upgrade.
 
 
 1. lock_table 增加 status 字段,升级1.5.0前需要增加该字段,表结构请[点击此处](https://github.com/seata/seata/tree/1.5.0/script/server/db)
-2. tcc增加防悬挂表,如需开启防悬挂,需要提前在rm库中增加[此表](https://github.com/seata/seata/tree/develop/script/client/tcc/db)
+2. tcc增加防悬挂表,如需开启防悬挂,需要提前在rm库中增加[此表](https://github.com/seata/seata/tree/1.5.0/script/client/tcc/db)
 3. redis注册中心内部结构调整,不再向下兼容,如使用redis作为seata的注册中心,请将client与server一并升级
 
 </details>  
