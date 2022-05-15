@@ -6,6 +6,8 @@ description: Seata upgrade.
 
 # 版本升级指南
 
+<a href="#6" target="_self">6. 升级到 seata 1.5.0 有哪些兼容性事项是需要注意的？</a>
+
 <a href="#5" target="_self">5. 升级到 seata 1.4.0 有哪些兼容性事项是需要注意的？</a>
 
 <a href="#4" target="_self">4. 升级到 seata 1.3.0 有哪些兼容性事项是需要注意的？</a>
@@ -15,6 +17,20 @@ description: Seata upgrade.
 <a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>     
 
 
+
+------
+
+<h3 id='6'>6. 升级到 seata 1.5.0 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+
+
+
+1. lock_table 增加 status 字段,升级1.5.0前需要增加该字段,表结构请[点击此处](https://github.com/seata/seata/tree/1.5.0/script/server/db)
+2. tcc增加防悬挂表,如需开启防悬挂,需要提前在rm库中增加[此表](https://github.com/seata/seata/tree/1.5.0/script/client/tcc/db)
+3. redis注册中心内部结构调整,不再向下兼容,如使用redis作为seata的注册中心,请将client与server一并升级
+
+</details>  
 
 ------
 
