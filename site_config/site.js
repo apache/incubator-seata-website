@@ -172,6 +172,11 @@ export default {
                 link: '/zh-cn/docs/developers/developers_dev.html',
             },
             {
+                key: 'summercode2022',
+                text: '开源之夏2022',
+                link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
+            },
+            {
                 key: 'blog',
                 text: '博客',
                 link: '/zh-cn/blog/index.html',
