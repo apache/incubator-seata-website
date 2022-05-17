@@ -41,7 +41,7 @@ public Object testCommit(@RequestParam(name = "id",defaultValue = "1") Integer i
  * @param params  -入参
  * @return String
  */
-@TwoPhaseBusinessAction(name = "insert", commitMethod = "commitTcc", rollbackMethod = "cancel", useTCCFence = true)
+@TwoPhaseBusinessAction(name = "beanName", commitMethod = "commit", rollbackMethod = "rollback", useTCCFence = true)
 public void insert(@BusinessActionContextParameter(paramName = "params") Map<String, String> params) {
     logger.info("此处可以预留资源,或者利用tcc的特点,与AT混用,二阶段时利用一阶段在此处存放的消息,通过二阶段发出,比如redis,mq等操作");
 }
@@ -52,7 +52,7 @@ public void insert(@BusinessActionContextParameter(paramName = "params") Map<Str
  * @param context 上下文
  * @return boolean
  */
-public void commitTcc(BusinessActionContext context) {
+public void commit(BusinessActionContext context) {
     logger.info("预留资源真正处理,或者发出mq消息和redis入库");
 }
 
@@ -62,7 +62,7 @@ public void commitTcc(BusinessActionContext context) {
  * @param context 上下文
  * @return boolean
  */
-public void cancel(BusinessActionContext context) {
+public void rollback(BusinessActionContext context) {
     logger.info("预留资源释放,或清除一阶段准备让二阶段提交时发出的消息缓存");
 }
 ```
