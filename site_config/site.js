@@ -20,7 +20,7 @@ export default {
             {
                 key: 'enterprise',
                 text: 'SEATA IN CLOUD',
-                link: 'https://h5.dingtalk.com/circle/healthCheckin.html?dtaction=os&corpId=ding42dbb24c1f5a084996093958e605f031&f4ffe=77a6c&cbdbhh=qwertyuiop',
+                link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
             },
             {
                 key: 'solution',
@@ -131,7 +131,7 @@ export default {
             {
                 key: 'enterprise',
                 text: 'Seata企业版',
-                link: 'https://h5.dingtalk.com/circle/healthCheckin.html?dtaction=os&corpId=ding42dbb24c1f5a084996093958e605f031&f4ffe=77a6c&cbdbhh=qwertyuiop',
+                link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
             },
             {
                 key: 'solution',
@@ -139,9 +139,9 @@ export default {
                 link: '',
                 imgUrl: 'https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png',
                 children: [{
-                    key: 'gts',
+                    key: 'seata',
                     text: '分布式事务解决方案',
-                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0'
+                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0'
                 }, {
                     key: 'micoservice',
                     text: '微服务解决方案',
