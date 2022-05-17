@@ -83,8 +83,8 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 
 #### 步骤四：修改数据库连接|redis属性配置
 
-启动包: seata-->conf-->application.example.yml中附带额外配置，将其db相关配置复制至application.yml,进行修改store.db或store.redis相关属性。  
-源码:   根目录-->seata-server-->resources-->application.example.yml中附带额外配置，将其db相关配置复制至application.yml,进行修改store.db或store.redis相关属性。  
+启动包: seata-->conf-->application.example.yml中附带额外配置，将其db|redis相关配置复制至application.yml,进行修改store.db或store.redis相关属性。  
+源码:   根目录-->seata-server-->resources-->application.example.yml中附带额外配置，将其db|redis相关配置复制至application.yml,进行修改store.db或store.redis相关属性。  
 
 1.5.0以下版本:
 
@@ -116,7 +116,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 - 依赖seata-all
 - 依赖seata-spring-boot-starter，支持yml、properties配置(.conf可删除)，内部已依赖seata-all
 - 依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递
-#### 步骤二：undo_log建表、配置参数
+#### 步骤二：undo_log建表、配置参数(仅AT模式)
 - <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>
 
 #### 步骤三：数据源代理（不支持自动和手动配置并存）
