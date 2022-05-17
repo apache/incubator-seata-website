@@ -5,7 +5,7 @@ description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务
 ---
 
 # 部署指南
-## Seata新手部署指南(1.4.0版本)
+## Seata新手部署指南
 Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 
 ### 资源目录介绍
@@ -43,7 +43,7 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-                <version>2.2.1.RELEASE</version>
+                <version>最新版本</version>
                 <exclusions>
                     <exclusion>
                         <groupId>io.seata</groupId>
@@ -72,14 +72,32 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
 
 #### 步骤三：修改store.mode
+
+启动包: seata-->conf-->application.yml，修改store.mode="db或者redis"  
+源码:   根目录-->seata-server-->resources-->application.yml，修改store.mode="db或者redis"
+
+1.5.0以下版本:
+
 启动包: seata-->conf-->file.conf，修改store.mode="db或者redis"  
 源码:   根目录-->seata-server-->resources-->file.conf，修改store.mode="db或者redis"
 
 #### 步骤四：修改数据库连接|redis属性配置
+
+启动包: seata-->conf-->application.example.yml中附带额外配置，将其db相关配置复制至application.yml,进行修改store.db或store.redis相关属性。  
+源码:   根目录-->seata-server-->resources-->application.example.yml中附带额外配置，将其db相关配置复制至application.yml,进行修改store.db或store.redis相关属性。  
+
+1.5.0以下版本:
+
 启动包: seata-->conf-->file.conf，修改store.db或store.redis相关属性。  
 源码:   根目录-->seata-server-->resources-->file.conf，修改store.db或store.redis相关属性。
 
 #### 步骤五：启动
+
+- 源码启动: 执行ServerApplication.java的main方法  
+- 命令启动: seata-server.sh -h 127.0.0.1 -p 8091 -m db
+
+1.5.0以下版本
+
 - 源码启动: 执行Server.java的main方法  
 - 命令启动: seata-server.sh -h 127.0.0.1 -p 8091 -m db -n 1 -e test
 ```
@@ -146,7 +164,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
         seata:
           enable-auto-data-source-proxy: false
         ```
-  
+
 #### 步骤四：初始化GlobalTransactionScanner  
 - 手动
 ```  @Bean
@@ -168,3 +186,86 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 参考源码integration文件夹下的各种rpc实现 module
 - 自动
 springCloud用户可以引入spring-cloud-starter-alibaba-seata，内部已经实现xid传递
+
+## 业务使用
+
+### 注解拦截
+
+#### 全局事务
+
+```java
+@GetMapping(value = "testCommit")
+@GlobalTransactional
+public Object testCommit(@RequestParam(name = "id",defaultValue = "1") Integer id,
+    @RequestParam(name = "sum", defaultValue = "1") Integer sum) {
+    Boolean ok = productService.reduceStock(id, sum);
+    if (ok) {
+        LocalDateTime now = LocalDateTime.now();
+        Orders orders = new Orders();
+        orders.setCreateTime(now);
+        orders.setProductId(id);
+        orders.setReplaceTime(now);
+        orders.setSum(sum);
+        orderService.save(orders);
+        return "ok";
+    } else {
+        return "fail";
+    }
+}
+```
+
+#### TCC
+
+```java
+/**
+ * 定义两阶段提交 name = 该tcc的bean名称,全局唯一 commitMethod = commit 为二阶段确认方法 rollbackMethod = rollback 为二阶段取消方法
+ * useTCCFence=true 为开启防悬挂
+ * BusinessActionContextParameter注解 传递参数到二阶段中
+ *
+ * @param params  -入参
+ * @return String
+ */
+@TwoPhaseBusinessAction(name = "beanName", commitMethod = "commit", rollbackMethod = "rollback", useTCCFence = true)
+public void insert(@BusinessActionContextParameter(paramName = "params") Map<String, String> params) {
+    logger.info("此处可以预留资源,或者利用tcc的特点,与AT混用,二阶段时利用一阶段在此处存放的消息,通过二阶段发出,比如redis,mq等操作");
+}
+
+/**
+ * 确认方法、可以另命名，但要保证与commitMethod一致 context可以传递try方法的参数
+ *
+ * @param context 上下文
+ * @return boolean
+ */
+public void commit(BusinessActionContext context) {
+    logger.info("预留资源真正处理,或者发出mq消息和redis入库");
+}
+
+/**
+ * 二阶段取消方法
+ *
+ * @param context 上下文
+ * @return boolean
+ */
+public void rollback(BusinessActionContext context) {
+    logger.info("预留资源释放,或清除一阶段准备让二阶段提交时发出的消息缓存");
+}
+```
+
+### 切点表达式
+
+#### 全局事务
+
+```java
+    @Bean
+    public AspectTransactionalInterceptor aspectTransactionalInterceptor () {
+        return new AspectTransactionalInterceptor();
+    }
+
+    @Bean
+    public Advisor txAdviceAdvisor(AspectTransactionalInterceptor aspectTransactionalInterceptor ) {
+        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+        pointcut.setExpression("配置切点表达式使全局事务拦截器生效");
+        return new DefaultPointcutAdvisor(pointcut, aspectTransactionalInterceptor);
+    }
+```
+
