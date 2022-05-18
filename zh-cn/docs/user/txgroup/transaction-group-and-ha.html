@@ -24,12 +24,12 @@
 <pre><code>seata.tx-service-group=projectA
 seata.service.vgroup-mapping.projectA=Guangzhou
 </code></pre>
-<p><img src="https://gitee.com/tanzjz/pic/raw/master/txgroup-normal.png" alt=""></p>
+<p><img src="/img/txgroup/txgroup-normal.png" alt="异地多机房容灾正常图"></p>
 <p>假如此时guangzhou集群分组整个down掉，或者因为网络原因projectA暂时无法与Guangzhou机房通讯，那么我们将配置中心中的Guangzhou集群分组改为Shanghai，如下：</p>
 <pre><code>seata.service.vgroup-mapping.projectA=Shanghai
 </code></pre>
 <p>并推送到各个微服务，便完成了对整个projectA项目的TC集群动态切换。</p>
-<p><img src="https://gitee.com/tanzjz/pic/raw/master/txgroup-switch-to-sh.png" alt="异地多机房容灾备用集群"></p>
+<p><img src="/img/txgroup/txgroup-switch-to-sh.png" alt="异地多机房容灾备用集群"></p>
 <h2>最佳实践2：单一环境多应用接入</h2>
 <ul>
 <li>假设现在开发环境（或预发/生产）中存在一整套seata集群</li>
@@ -60,7 +60,7 @@ seata.service.vgroup-mapping.projectA=Guangzhou
 seata.service.vgroup-mapping.projectA=project-a-group
 </code></pre>
 <p>完成配置启动后，对应事务分组的TC单独为其应用服务，整体部署图如下：</p>
-<p><img src="https://gitee.com/tanzjz/pic/raw/master/txgroup-multipart-application.png" alt="单环境多应用接入"></p>
+<p><img src="/img/txgroup/txgroup-multiApplication.png" alt="单环境多应用接入"></p>
 <h2>最佳实践3：client的精细化控制</h2>
 <ul>
 <li>假定现在存在seata集群，Guangzhou机房实例运行在性能较高的机器上，Shanghai集群运行在性能较差的机器上</li>
@@ -68,7 +68,7 @@ seata.service.vgroup-mapping.projectA=project-a-group
 <li>其中ServiceD的流量较小，其余微服务流量较大</li>
 </ul>
 <p>那么此时，我们可以将ServiceD微服务引流到Shanghai集群中去，将高性能的服务器让给其余流量较大的微服务（反之亦然，若存在某一个微服务流量特别大，我们也可以单独为此微服务开辟一个更高性能的集群，并将该client的virtual group指向该集群，其最终目的都是保证在流量洪峰时服务的可用）</p>
-<p><img src="https://gitee.com/tanzjz/pic/raw/master/txgroup-client-controll.png" alt="client精细化控制"></p>
+<p><img src="/img/txgroup/txgroup-client-controll.png" alt="client精细化控制"></p>
 <h2>最佳实践4：Seata的预发与生产隔离</h2>
 <ul>
 <li>大多数情况下，预发环境与生产环境会使用同一套数据库。基于这个条件，预发TC集群与生产TC集群必须使用同一个数据库保证全局事务的生效（即生产TC集群与预发TC集群使用同一个lock表，并使用不同的branch_table与global_table的情况）</li>
@@ -114,7 +114,7 @@ seata.service.vgroup-mapping.projectA=project-a-group
 }
 </code></pre>
 <p>其部署图如下所示：</p>
-<p><img src="https://gitee.com/tanzjz/pic/raw/master/txgroup-segregation-of-pre-and-product.png" alt="预发生产隔离"></p>
+<p><img src="/img/txgroup/txgroup-segregation-of-pre-and-product.png" alt="预发生产隔离"></p>
 <p>不仅如此，你还可以将以上四个最佳实践依据你的实际生产情况组合搭配使用。</p>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2022 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
