@@ -7,9 +7,7 @@ author: helloworlde
 date: 2019-11-25
 ---
 
-# 使用 Docker 部署 Seata Server (1.5.0)
-
-<a href="./deploy-by-docker-142.html">查看1.4.2版本</a>  
+# 使用 Docker 部署 Seata Server
 
 ## 注意事项 
 - 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
@@ -73,7 +71,7 @@ $ docker logs -f seata-server
 $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /User/seata/config:/seata-server/resources  \
+        -v /User/seata/config:/root/seata-config  \
         seataio/seata-server
 ```
 
