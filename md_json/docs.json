@@ -358,6 +358,18 @@
       }
     },
     {
+      "filename": "deploy-by-docker-142.md",
+      "link": "/zh-cn/docs/ops/deploy-by-docker-142.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Docker 部署 Seata Server",
+        "keywords": "docker,docker-compose,ops",
+        "description": "使用 Docker 部署 Seata Server",
+        "author": "helloworlde",
+        "date": "2019-11-25"
+      }
+    },
+    {
       "filename": "deploy-by-docker-compose.md",
       "link": "/zh-cn/docs/ops/deploy-by-docker-compose.html",
       "meta": {
