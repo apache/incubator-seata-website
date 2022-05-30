@@ -327,7 +327,7 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 
 ## 4.2 TCC 模式
 
-* 文档：[《Seata 文档 —— TCC 模式》](http://127.0.0.1:8080/zh-cn/docs/dev/mode/tcc-mode.html)
+* 文档：[《Seata 文档 —— TCC 模式》](https://seata.io/zh-cn/docs/dev/mode/tcc-mode.html)
 * 示例：<https://github.com/seata/seata-samples/blob/master/tcc>
 
 ## 4.3 Saga 模式
