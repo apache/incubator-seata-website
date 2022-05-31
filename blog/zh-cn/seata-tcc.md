@@ -67,7 +67,7 @@ public String doTransactionCommit(){
     tccActionOne.prepare(null,"one");
     //服务B事务参与者
     tccActionTwo.prepare(null,"two");
-    }
+}
 ```
 
 以上就是使用 Seata TCC 模式实现一个全局事务的例子，可以看出，TCC 模式同样使用 `@GlobalTransactional` 注解开启全局事务，而服务 A 和服务 B 的 TCC 接口为事务参与者，Seata 会把一个 TCC
@@ -89,7 +89,7 @@ Seata 启动时会对 TCC 接口进行扫描并解析，如果 TCC 接口是一�
 
 ## 资源解析
 
-资源解析即是把 TCC 接口进行解析并注册，前面说过，TCC 接口可以是 PRC，也可以是 JVM 内部调用，在 Seata TCC 模块中中一个 remoting
+资源解析即是把 TCC 接口进行解析并注册，前面说过，TCC 接口可以是 RPC，也可以是 JVM 内部调用，在 Seata TCC 模块有中一个 remoting
 模块，该模块专门用于解析具有 `TwoPhaseBusinessAction` 注解的 TCC 接口资源：
 
 ![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116175059.png)
