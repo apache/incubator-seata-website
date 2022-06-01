@@ -8,11 +8,17 @@ description: Seata 维护者名单
 
 本页面展示了Seata的开发团队。请通过提交PR的方式把自己的信息添加到列表上。注：排名不分先后
 
+## Seata Maintainer列表
+
+| 姓名   | github                                      | 公司    |
+| ------ | ------------------------------------------- | ------- |
+| 季敏   | [slievrly](https://github.com/slievrly)     | Alibaba |
+| 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
+
 ## Seata Committer 列表
 
 | 姓名   | github          | 公司             |
 | ------ | --------------- | --------------- |
-| 季敏   | [slievrly](https://github.com/slievrly)        | Alibaba        |
 | 申海强 | [sharajava](https://github.com/sharajava)       | Alibaba        |
 | 厉启鹏 | [wlliqipeng](https://github.com/wlliqipeng)      | Alibaba        |
 | 陈连东 | [purple-force](https://github.com/purple-force)    | Alibaba        |
@@ -32,7 +38,6 @@ description: Seata 维护者名单
 | 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | 陈龙   | [long187](https://github.com/long187)         | Unknown          |
 | 郭云嵩 | [ggndnn](https://github.com/ggndnn)         | FND          |
-| 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
 | 王良 | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
 | 曹华栋 | [caohdgege](https://github.com/caohdgege) | - |
 | 汪忠祥 | [lightClouds917](https://github.com/lightClouds917) | TongDun |

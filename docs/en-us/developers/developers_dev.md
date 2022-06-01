@@ -8,11 +8,17 @@ description: Seata Team.
 
 This page shows Seata developers and continues to expand. The list is not prioritized.
 
+## Seata Maintainer列表
+
+| 姓名         | github                                      | 公司    |
+| ------------ | ------------------------------------------- | ------- |
+| Min Ji       | [slievrly](https://github.com/slievrly)     | Alibaba |
+| Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
+
 # Seata Committer List
 
 | name   | github          | company             |
 | ------ | --------------- | --------------- |
-| Min Ji   | [slievrly](https://github.com/slievrly)        | Alibaba        |
 | Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibaba        |
 | Qipeng Li| [wlliqipeng](https://github.com/wlliqipeng)      | Alibaba        |
 | Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibaba        |
@@ -32,7 +38,6 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | Long Chen   | [long187](https://github.com/long187)         | Unknown          |
 | Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
-| Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
 | Liang Wang | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
 | Huadong Cao | [caohdgege](https://github.com/caohdgege) | BEIKE |
 | Zhongxiang Wang | [lightClouds917](https://github.com/lightClouds917) | TongDun |
