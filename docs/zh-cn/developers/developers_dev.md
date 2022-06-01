@@ -9,7 +9,6 @@ description: Seata 维护者名单
 本页面展示了Seata的开发团队。请通过提交PR的方式把自己的信息添加到列表上。注：排名不分先后
 
 ## Seata Maintainer 列表
-
 | 姓名   | github                                      | 公司    |
 | ------ | ------------------------------------------- | ------- |
 | 季敏   | [slievrly](https://github.com/slievrly)     | Alibaba |
