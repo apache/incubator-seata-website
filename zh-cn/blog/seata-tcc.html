@@ -53,7 +53,7 @@
     tccActionOne.prepare(<span class="hljs-keyword">null</span>,<span class="hljs-string">"one"</span>);
     <span class="hljs-comment">//服务B事务参与者</span>
     tccActionTwo.prepare(<span class="hljs-keyword">null</span>,<span class="hljs-string">"two"</span>);
-    }
+}
 </code></pre>
 <p>以上就是使用 Seata TCC 模式实现一个全局事务的例子，可以看出，TCC 模式同样使用 <code>@GlobalTransactional</code> 注解开启全局事务，而服务 A 和服务 B 的 TCC 接口为事务参与者，Seata 会把一个 TCC
 接口当成一个 Resource，也叫 TCC Resource。</p>
@@ -66,7 +66,7 @@ RPC，那么调用方就是一个 dubbo:reference，发起方则是一个 dubbo:
 <h1>Seata 如何实现 TCC 模式</h1>
 <p>从上面的 Seata TCC 模型可以看出，TCC 模式在 Seata 中也是遵循 TC、TM、RM 三种角色模型的，如何在这三种角色模型中实现 TCC 模式呢？我将其主要实现归纳为资源解析、资源管理、事务处理。</p>
 <h2>资源解析</h2>
-<p>资源解析即是把 TCC 接口进行解析并注册，前面说过，TCC 接口可以是 PRC，也可以是 JVM 内部调用，在 Seata TCC 模块中中一个 remoting
+<p>资源解析即是把 TCC 接口进行解析并注册，前面说过，TCC 接口可以是 RPC，也可以是 JVM 内部调用，在 Seata TCC 模块有中一个 remoting
 模块，该模块专门用于解析具有 <code>TwoPhaseBusinessAction</code> 注解的 TCC 接口资源：</p>
 <p><img src="https://gitee.com/objcoding/md-picture/raw/master/img/20220116175059.png" alt=""></p>
 <p><code>RemotingParser</code> 接口主要有 <code>isRemoting</code>、<code>isReference</code>、<code>isService</code>、<code>getServiceDesc</code> 等方法，默认的实现为 <code>DefaultRemotingParser</code>，其余各自的
@@ -218,7 +218,7 @@ actionName，actionName 就是 <code>@TwoParseBusinessAction</code> 注解中的
 <p><img src="https://gitee.com/objcoding/md-picture/raw/master/img/20220116203816.png" alt=""></p>
 <p>如上图所示，参与者 A 执行完二阶段之后，由于网络抖动或者宕机问题，会造成 TC 收不到参与者 A 执行二阶段的返回结果，TC 会重复发起调用，直到二阶段执行结果成功。</p>
 <p>Seata 是如何处理幂等问题的呢？</p>
-<p>同样的也是在 TCC 事务控制表中增加一个记录状态的字段 status，该字段有有 3 个值，分别为：</p>
+<p>同样的也是在 TCC 事务控制表中增加一个记录状态的字段 status，该字段有 3 个值，分别为：</p>
 <ol>
 <li>tried：1</li>
 <li>committed：2</li>
