@@ -8,8 +8,7 @@ description: Seata Team.
 
 This page shows Seata developers and continues to expand. The list is not prioritized.
 
-## Seata Maintainer列表
-
+## Seata Maintainer List
 | 姓名         | github                                      | 公司    |
 | ------------ | ------------------------------------------- | ------- |
 | Min Ji       | [slievrly](https://github.com/slievrly)     | Alibaba |
