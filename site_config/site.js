@@ -189,7 +189,7 @@ export default {
                 link: 'https://developer.aliyun.com/topic/middleware/developer/summit',
             },
             {
-                key: 'summercode2022',
+                key: 'SummerCode2022',
                 text: '开源之夏2022',
                 link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
             },
