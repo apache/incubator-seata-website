@@ -21,6 +21,7 @@ export default {
                 key: 'enterprise',
                 text: 'SEATA IN CLOUD',
                 link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+                imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
             },
             {
                 key: 'solution',
@@ -142,7 +143,7 @@ export default {
                 key: 'enterprise',
                 text: 'Seata企业版',
                 link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-                imgUrl: 'https://img.alicdn.com/imgextra/i2/O1CN01cr5bwZ1cg85FUoW5b_!!6000000003629-0-tps-200-199.jpg'
+                imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
             },
             {
                 key: 'solution',
@@ -188,7 +189,7 @@ export default {
                 link: 'https://developer.aliyun.com/topic/middleware/developer/summit',
             },
             {
-                key: 'summercode2022',
+                key: 'SummerCode2022',
                 text: '开源之夏2022',
                 link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
             },
