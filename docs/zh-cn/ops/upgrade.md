@@ -32,7 +32,7 @@ description: Seata upgrade.
  - 增加 distributed_lock 表用于 seata-server 异步任务调度
   升级1.5.0前，请注意表结构变更，表结构详情请[点击此处](https://github.com/seata/seata/tree/1.5.0/script/server/db)
    
-2. TCC事务模式在1.5.0 增加防悬挂功能,如需由 Seata 框架开启防悬挂,需要提前在客户端业务库中增加[此表](https://github.com/seata/seata/tree/1.5. 0/script/client/tcc/db)
+2. TCC事务模式在1.5.0 增加防悬挂功能,如需由 Seata 框架开启防悬挂,需要提前在客户端业务库中增加[此表](https://github.com/seata/seata/tree/1.5.0/script/client/tcc/db)
    
 3. redis注册中心内部结构调整,不再向下兼容,如使用redis作为seata的注册中心,请将客户端依赖的 seata-all(seata-spring-boot-starter) 和 seata-server 一并升级。
 
