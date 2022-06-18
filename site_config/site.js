@@ -62,11 +62,6 @@ export default {
                 link: '/en-us/docs/developers/developers_dev.html',
             },
             {
-                key: 'Conference',
-                text: 'Conference',
-                link: 'https://developer.aliyun.com/topic/middleware/developer/summit',
-            },
-            {
                 key: 'SummerCode2022',
                 text: 'SummerCode2022',
                 link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
@@ -182,11 +177,6 @@ export default {
                 key: 'developers',
                 text: '开发者',
                 link: '/zh-cn/docs/developers/developers_dev.html',
-            },
-            {
-                key: 'middleware',
-                text: '中间件开发者大会',
-                link: 'https://developer.aliyun.com/topic/middleware/developer/summit',
             },
             {
                 key: 'SummerCode2022',
