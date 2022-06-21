@@ -89,6 +89,10 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#40" target="_self">40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？ </a>
 
+<a href="#41" target="_self">41. Oracle使用timestamp字段类型回滚失败？ </a>
+
+<a href="#42" target="_self">42. 抛出异常后事务未回滚？ </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -576,9 +580,30 @@ seata.client.undo.logSerialization=kryo
 **A:**
 
  - 使用 DB 存储模式时，需要注意使用相应seata-server对应版本的建表脚本，建表脚本获取地址：https://github.com/seata/seata/tree/${版本}/script/server/db，例如：获取seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/seata/seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
-   
  - seata-server 依赖的后端的DB，不要开启读写分离。开启读写分离后根据同步模式的不同延迟也有所不同，seata-server 
    为无状态计算节点，所有状态都需要到DB存储中校验，在主从同步延迟较大的情况下会导致读取的状态不准确从而导致事务逻辑处理问题。为了更高的读写性能，DB可将隔离级别设置为读已提交。
-   
+
+
+
+****
+
+<h3 id='41'>Q: 41. Oracle使用timestamp字段类型回滚失败？</h3>
+
+**A:**
+
+ - [seata/seata-plugin at develop · seata/seata (github.com)](https://github.com/seata/seata/tree/develop/seata-plugin) 拉取此plugin代码,本地打包自行引入,也可直接拷贝代码进行spi扩展支持
+
+
+
+
+****
+
+<h3 id='42'>Q: 42. 抛出异常后事务未回滚？</h3>
+
+ - 检查异常是否被捕获,没有抛至tm端,如rm存在全局异常捕获器,rm将异常包装成了一个正常的result响应给了tm,导致seata的事务拦截器无法发现事务出现了异常,此时自行在代码中根据result中的code之类可判断业务出现异常的返回内容进行抛出异常,或者使用[Seata api](https://seata.io/zh-cn/docs/user/api.html) 进行回滚,切记api回滚必须结束调用,假设tm调用了rm1就出现错误,进行了api回滚,那么不应该让这个调用链再走到rm2去,应该直接return结束方法调用
+ - 检查是否rm服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理
+ - 如确认无上述可能,异常明确抛出,请通过相关的xid到tc端和tm和rm检索xid的决议结果和rm注册情况,当rm分支注册时,通过xid可以检索到Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx的日志,如果没有说明分支没有注册,如是AT或XA模式请检查数据源代理或xid传递问题,如分支已注册,那么检查决议结果,如事务提交,tm端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed的日志,如果是回滚那么相关关键字为rollback status: Rollbacked等,如果抛出异常决议缺是commit,那么99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!
+ - 如决议结果是回滚,但是rm没注册,可在rm调用端通过Rootcontext.getXid来判断是否有值,如果无值请参考Q24
+ - 如何判断数据源是否代理,如果是AT模式请在ConnectionProxy#registry打上断点,看是否会进入,XA模式ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!
 
 ****
