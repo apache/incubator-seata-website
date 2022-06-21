@@ -91,6 +91,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#41" target="_self">41. Oracle使用timestamp字段类型回滚失败？ </a>
 
+<a href="#42" target="_self">42. 抛出异常后事务未回滚？ </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
