@@ -490,6 +490,11 @@
       }
     },
     {
+      "filename": "seata-tcc-fence.md",
+      "link": "/zh-cn/blog/seata-tcc-fence.html",
+      "meta": {}
+    },
+    {
       "filename": "seata-tcc.md",
       "link": "/zh-cn/blog/seata-tcc.html",
       "meta": {
