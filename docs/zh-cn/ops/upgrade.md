@@ -34,8 +34,11 @@ description: Seata upgrade.
    
 2. TCC事务模式在1.5.0 增加防悬挂功能,如需由 Seata 框架开启防悬挂,需要提前在客户端业务库中增加[此表](https://github.com/seata/seata/tree/1.5.0/script/client/tcc/db)
    
-3. redis注册中心内部结构调整,不再向下兼容,如使用redis作为seata的注册中心,请将客户端依赖的 seata-all(seata-spring-boot-starter) 和 seata-server 一并升级。
+3. TCC模式一阶段方法进行了优化，不再需要在一阶段的接口入参定义`BusinessActionContext`，若一阶段需要使用到`BusinessActionContext`，可以通过`BusinessActionContextUtil.getContext()`取得
 
+4. redis注册中心内部结构调整,不再向下兼容,如使用redis作为seata的注册中心,请将客户端依赖的 seata-all(seata-spring-boot-starter) 和 seata-server 一并升级。
+
+5. 事务分组配置支持了默认值，为了避免歧义和降低学习成本，默认事务分组的由`my_test_tx_group` 修改为 `default_tx_group`。在1.5.X的版本中会向下进行兼容。
 </details>  
 
 ------
