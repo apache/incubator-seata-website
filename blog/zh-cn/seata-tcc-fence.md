@@ -329,7 +329,7 @@ public static Object prepareFence(String xid, Long branchId, String actionName, 
 
 ## 5 总结
 
-TCC 模式是分布式事务使用最多的模式，但是幂等、悬挂和空回滚一直是 TCC 模式需要考虑的问题，Seata 框架在 1.5.1 版本完美解决了这些问题。
+TCC 模式是分布式事务中非常重要的事务模式，但是幂等、悬挂和空回滚一直是 TCC 模式需要考虑的问题，Seata 框架在 1.5.1 版本完美解决了这些问题。
 
 对 tcc_fence_log 表的操作也需要考虑事务的控制，Seata 使用了代理数据源，使 tcc_fence_log 表操作和 RM 业务操作在同一个本地事务中执行，这样就能保证本地操作和对 tcc_fence_log 的操作同时成功或失败。
 
