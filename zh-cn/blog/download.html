@@ -18,6 +18,86 @@
 <p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a>
 发布说明: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.5.2 (2022-07-12)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.5.2.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.5.2/seata-server-1.5.2.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.5.2</h3>
+<p>Seata 1.5.2 发布。</p>
+<p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
+<p>此版本更新如下：</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4713">#4661</a>] 支持根据xid负载均衡算法</li>
+<li>[<a href="https://github.com/seata/seata/pull/4676">#4676</a>] 支持Nacos作为注册中心时，server通过挂载SLB暴露服务</li>
+<li>[<a href="https://github.com/seata/seata/pull/4642">#4642</a>] 支持client批量请求并行处理</li>
+<li>[<a href="https://github.com/seata/seata/pull/4567">#4567</a>] 支持where条件中find_in_set函数</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4515">#4515</a>] 修复develop分支SeataTCCFenceAutoConfiguration在客户端未使用DB时，启动抛出ClassNotFoundException的问题。</li>
+<li>[<a href="https://github.com/seata/seata/pull/4661">#4661</a>] 修复控制台中使用PostgreSQL出现的SQL异常</li>
+<li>[<a href="https://github.com/seata/seata/pull/4682">#4667</a>] 修复develop分支RedisTransactionStoreManager迭代时更新map的异常</li>
+<li>[<a href="https://github.com/seata/seata/pull/4678">#4678</a>] 修复属性transport.enableRmClientBatchSendRequest没有配置的情况下缓存穿透的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4701">#4701</a>] 修复命令行参数丢失问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4607">#4607</a>] 修复跳过全局锁校验的缺陷</li>
+<li>[<a href="https://github.com/seata/seata/pull/4696">#4696</a>] 修复 oracle 存储模式时的插入问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4726">#4726</a>] 修复批量发送消息时可能的NPE问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4729">#4729</a>] 修复AspectTransactional.rollbackForClassName设置错误</li>
+<li>[<a href="https://github.com/seata/seata/pull/4653">#4653</a>] 修复 INSERT_ON_DUPLICATE 主键为非数值异常</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4650">#4650</a>] 修复安全漏洞</li>
+<li>[<a href="https://github.com/seata/seata/pull/4670">#4670</a>] 优化branchResultMessageExecutor线程池的线程数</li>
+<li>[<a href="https://github.com/seata/seata/pull/4662">#4662</a>] 优化回滚事务监控指标</li>
+<li>[<a href="https://github.com/seata/seata/pull/4693">#4693</a>] 优化控制台导航栏</li>
+<li>[<a href="https://github.com/seata/seata/pull/4700">#4700</a>] 修复 maven-compiler-plugin 和 maven-resources-plugin 执行失败</li>
+<li>[<a href="https://github.com/seata/seata/pull/4711">#4711</a>] 分离部署时 lib 依赖</li>
+<li>[<a href="https://github.com/seata/seata/pull/4720">#4720</a>] 优化pom描述</li>
+<li>[<a href="https://github.com/seata/seata/pull/4728">#4728</a>] 将logback版本依赖升级至1.2.9</li>
+<li>[<a href="https://github.com/seata/seata/pull/4745">#4745</a>] 发行包中支持 mysql8 driver</li>
+<li>[<a href="https://github.com/seata/seata/pull/4626">#4626</a>] 使用 <code>easyj-maven-plugin</code> 插件代替 <code>flatten-maven-plugin</code>插件，以修复<code>shade</code> 插件与 <code>flatten</code> 插件不兼容的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4629">#4629</a>] 更新globalSession状态时检查更改前后的约束关系</li>
+<li>[<a href="https://github.com/seata/seata/pull/4662">#4662</a>] 优化 EnhancedServiceLoader 可读性</li>
+</ul>
+<h3>test：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4544">#4544</a>] 优化TransactionContextFilterTest中jackson包依赖问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4731">#4731</a>] 修复 AsyncWorkerTest 和 LockManagerTest 的单测问题。</li>
+</ul>
+<p>非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。</p>
+<!-- 请确保您的 GitHub ID 在以下列表中 -->
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/pengten">pengten</a></li>
+<li><a href="https://github.com/YSF-A">YSF-A</a></li>
+<li><a href="https://github.com/tuwenlin">tuwenlin</a></li>
+<li><a href="https://github.com/2129zxl">2129zxl</a></li>
+<li><a href="https://github.com/Ifdevil">Ifdevil</a></li>
+<li><a href="https://github.com/wingchi-leung">wingchi-leung</a></li>
+<li><a href="https://github.com/robynron">liurong</a></li>
+<li><a href="https://github.com/opelok-z">opelok-z</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/Smery-lxm">Smery-lxm</a></li>
+<li><a href="https://github.com/lvekee">lvekee</a></li>
+<li><a href="https://github.com/doubleDimple">doubleDimple</a></li>
+<li><a href="https://github.com/wangliang181230">wangliang181230</a></li>
+<li><a href="https://github.com/Bughue">Bughue</a></li>
+<li><a href="https://github.com/AYue-94">AYue-94</a></li>
+<li><a href="https://github.com/lingxiao-wu">lingxiao-wu</a></li>
+<li><a href="https://github.com/caohdgege">caohdgege</a></li>
+</ul>
+<p>同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.5.1 (2022-05-17)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.5.1.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.5.1/seata-server-1.5.1.zip">binary</a></p>
