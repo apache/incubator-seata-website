@@ -179,12 +179,6 @@ logging:
   config: classpath:logback-spring.xml
   file:
     path: ${user.home}/logs/seata
-  extend:
-    logstash-appender:
-      destination: 127.0.0.1:4560
-    kafka-appender:
-      bootstrap-servers: 127.0.0.1:9092
-      topic: logback_to_logstash
 
 console:
   user:
@@ -197,10 +191,9 @@ seata:
     type: nacos
     nacos:
       server-addr: 127.0.0.1:8848
-      namespace:
       group: SEATA_GROUP
-      username:
-      password:
+      username: xxx
+      password: xxx
       ##if use MSE Nacos with auth, mutex with username/password attribute
       #access-key: ""
       #secret-key: ""
@@ -212,10 +205,9 @@ seata:
       application: seata-server
       server-addr: 127.0.0.1:8848
       group: SEATA_GROUP
-      namespace:
       cluster: default
-      username:
-      password:
+      username: xxx
+      password: xxx
       ##if use MSE Nacos with auth, mutex with username/password attribute
       #access-key: ""
       #secret-key: ""
@@ -231,8 +223,6 @@ seata:
       password: xxx
       min-conn: 5
       max-conn: 100
-  #  server:
-  #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
   security:
     secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
     tokenValidityInMilliseconds: 1800000
