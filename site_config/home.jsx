@@ -26,16 +26,21 @@ export default {
                     link: 'https://github.com/opentrx/seata-golang',
                     type: 'normal',
                 },
+                {
+                    text: 'Github-Python',
+                    link: 'https://github.com/opentrx/seata-python',
+                    type: 'normal',
+                },
             ],
             versionNote: {
-                text: 'Release Note of 1.4.2',
-                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
+                text: 'Release Note of 1.5.2',
+                link: 'https://github.com/seata/seata/releases/tag/v1.5.2',
             },
-            releaseDate: 'Released on Apr 26, 2021',
+            releaseDate: 'Released on Jul 12, 2022',
         },
         introduction: {
             title: 'Seata 是什么？',
-            desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，Seata 对应的内部版本在阿里经济体内部一直扮演着分布式一致性中间件的角色，帮助经济体平稳的度过历年的双11，对各BU业务进行了有力的支撑。经过多年沉淀与积累，商业化产品先后在阿里云、金融云进行售卖。2019.1 为了打造更加完善的技术生态和普惠技术成果，Seata 正式宣布对外开源，未来 Seata 将以社区共建的形式帮助其技术更加可靠与完备。',
+            desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，其内部版本在阿里系内部一直扮演着应用架构层数据一致性的中间件角色，帮助经济体平稳的度过历年的双11，对上层业务进行了有力的技术支撑。经过多年沉淀与积累，其商业化产品先后在阿里云、金融云上售卖。2019.1 为了打造更加完善的技术生态和普惠技术成果，Seata 正式宣布对外开源，未来 Seata 将以社区共建的形式帮助用户快速落地分布式事务解决方案。',
             img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
         },
         features: {
@@ -44,12 +49,12 @@ export default {
                 {
                     icon: 'feature-1',
                     title: '微服务框架支持',
-                    content: '目前已支持 Dubbo、Spring Cloud、Sofa-RPC、Motan 和 grpc 等RPC框架，其他框架持续集成中',
+                    content: '目前已支持Dubbo、Spring Cloud、Sofa-RPC、Motan 和 gRPC 等RPC框架，其他框架持续集成中',
                 },
                 {
                     icon: 'feature-2',
                     title: 'AT 模式',
-                    content: '提供无侵入自动补偿的事务模式，目前已支持 MySQL、 Oracle 、PostgreSQL和 TiDB的AT模式，H2 开发中',
+                    content: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB 和 MariaDB。H2、DB2、SQLServer、达梦开发中',
                 },
                 {
                     icon: 'feature-3',
@@ -59,17 +64,17 @@ export default {
                 {
                     icon: 'feature-4',
                     title: 'SAGA 模式',
-                    content: '为长事务提供有效的解决方案',
+                    content: '为长事务提供有效的解决方案,提供编排式与注解式(开发中)',
                 },
                 {
                     icon: 'feature-5',
                     title: 'XA 模式',
-                    content: '支持已实现 XA 接口的数据库的 XA 模式',
+                    content: '支持已实现 XA 接口的数据库的 XA 模式，目前已支持MySQL、Oracle、TiDB和MariaDB',
                 },
                 {
                     icon: 'feature-6',
                     title: '高可用',
-                    content: '支持基于数据库存储的集群模式，水平扩展能力强',
+                    content: '支持计算分离集群模式，水平扩展能力强的数据库和 Redis 存储模式.Raft模式Preview阶段',
                 },
             ],
         },
@@ -79,7 +84,7 @@ export default {
                               href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> 上提供信息来帮助 Seata 做的更好。</span>,
             list: [
                 'https://img.alicdn.com/imgextra/i1/O1CN01TleQq128FAP8POtL5_!!6000000007902-2-tps-241-42.png' ,
-                'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg' ,
+                'https://img.alicdn.com/imgextra/i4/O1CN01IOIk0s1bWgJ05f4HF_!!6000000003473-2-tps-1200-699.png' ,
                 'https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png' ,
                 'https://img.alicdn.com/imgextra/i3/O1CN01Hohqhm1JvGPE4cSD4_!!6000000001090-1-tps-436-84.gif' ,
                 'https://img.alicdn.com/tfs/TB1hvabw9f2gK0jSZFPXXXsopXa-174-100.png' ,
@@ -227,6 +232,13 @@ export default {
                 'https://img.alicdn.com/imgextra/i2/O1CN01i8iiCk29QuAitxiJq_!!6000000008063-0-tps-378-123.jpg' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01LBYXi6288krJ6Axq8_!!6000000007888-2-tps-1206-158.png' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01FN4K3I1Sq4SQVsDxo_!!6000000002297-2-tps-414-95.png' ,
+                'https://img.alicdn.com/imgextra/i2/O1CN0130Bp8H1STd65Fnxn0_!!6000000002248-2-tps-677-172.png',
+                'https://img.alicdn.com/imgextra/i1/O1CN0186ESVW1hhZO7Otx4X_!!6000000004309-2-tps-376-108.png',
+                'https://img.alicdn.com/imgextra/i2/O1CN011hLbRH1fTiAi6Lq5Z_!!6000000004008-0-tps-283-283.jpg',
+                'https://img.alicdn.com/imgextra/i3/O1CN01cJQsV91Fz9LeJEaL1_!!6000000000557-0-tps-339-189.jpg',
+                'https://img.alicdn.com/imgextra/i4/O1CN01KvsEOP21a3CUzDllu_!!6000000007000-2-tps-1920-750.png',
+                'https://img.alicdn.com/imgextra/i1/O1CN01Erdiwd1RrcDt2bqKl_!!6000000002165-0-tps-1080-1080.jpg',
+                'https://img.alicdn.com/imgextra/i4/O1CN01Rc0vU61sSQ3jvR0rw_!!6000000005765-2-tps-1076-228.png',
             ],
         },
     },
@@ -257,14 +269,14 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.4.2',
-                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
+                text: 'Release Note of 1.5.2',
+                link: 'https://github.com/seata/seata/releases/tag/v1.5.2',
             },
-            releaseDate: 'Released on Apr 26, 2021',
+            releaseDate: 'Released on Jul 17, 2022',
         },
         introduction: {
             title: 'What is Seata?',
-            desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open-source of Seata, the internal version of Seata played a role of distributed consistency Middleware in Ali economy, helping the economy to survive the double 11 of the past years smoothly, and providing strong support for businesses of all departments. After years of precipitation and accumulation, commercial products have been sold in Alibaba cloud and financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will help its technology become more reliable and complete in the form of community building.',
+            desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open source of Seata, its internal version has been playing the role of middleware for data consistency of application architecture layer in Alibaba group, helping the economy to smoothly go through the Double 11 of the past year and providing strong technical support for the upper business.  After years of development, its commercial products have been sold on Alibaba Cloud and Financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will organize as a community to help users quickly land distributed transaction solutions.',
             img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
         },
         features: {
@@ -278,7 +290,7 @@ export default {
                 {
                     icon: 'feature-2',
                     title: 'AT mode',
-                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL and TiDB\'s AT mode, In developing the H2.',
+                    content: 'Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB and MariaDB\'s AT mode, In developing the H2, DB2, SQLServer, DM.',
                 },
                 {
                     icon: 'feature-3',
@@ -293,7 +305,7 @@ export default {
                 {
                     icon: 'feature-5',
                     title: 'XA mode',
-                    content: 'Support for XA schemas for databases that have implemented XA interfaces.',
+                    content: 'Support for XA schemas for databases that have implemented XA interfaces. currently supports MySQL, Oracle, TiDB, MariaDB',
                 },
                 {
                     icon: 'feature-6',
@@ -308,7 +320,7 @@ export default {
                               href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> to help improving seata better.</span>,
             list: [
                 'https://img.alicdn.com/imgextra/i1/O1CN01TleQq128FAP8POtL5_!!6000000007902-2-tps-241-42.png' ,
-                'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg' ,
+                'https://img.alicdn.com/imgextra/i4/O1CN01IOIk0s1bWgJ05f4HF_!!6000000003473-2-tps-1200-699.png' ,
                 'https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png' ,
                 'https://img.alicdn.com/imgextra/i3/O1CN01Hohqhm1JvGPE4cSD4_!!6000000001090-1-tps-436-84.gif' ,
                 'https://img.alicdn.com/tfs/TB1hvabw9f2gK0jSZFPXXXsopXa-174-100.png' ,
@@ -456,6 +468,13 @@ export default {
                 'https://img.alicdn.com/imgextra/i2/O1CN01i8iiCk29QuAitxiJq_!!6000000008063-0-tps-378-123.jpg' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01LBYXi6288krJ6Axq8_!!6000000007888-2-tps-1206-158.png' ,
                 'https://img.alicdn.com/imgextra/i2/O1CN01FN4K3I1Sq4SQVsDxo_!!6000000002297-2-tps-414-95.png' ,
+                'https://img.alicdn.com/imgextra/i2/O1CN0130Bp8H1STd65Fnxn0_!!6000000002248-2-tps-677-172.png',
+                'https://img.alicdn.com/imgextra/i1/O1CN0186ESVW1hhZO7Otx4X_!!6000000004309-2-tps-376-108.png',
+                'https://img.alicdn.com/imgextra/i2/O1CN011hLbRH1fTiAi6Lq5Z_!!6000000004008-0-tps-283-283.jpg',
+                'https://img.alicdn.com/imgextra/i3/O1CN01cJQsV91Fz9LeJEaL1_!!6000000000557-0-tps-339-189.jpg',
+                'https://img.alicdn.com/imgextra/i4/O1CN01KvsEOP21a3CUzDllu_!!6000000007000-2-tps-1920-750.png',
+                'https://img.alicdn.com/imgextra/i1/O1CN01Erdiwd1RrcDt2bqKl_!!6000000002165-0-tps-1080-1080.jpg',
+                'https://img.alicdn.com/imgextra/i4/O1CN01Rc0vU61sSQ3jvR0rw_!!6000000005765-2-tps-1076-228.png',
             ],
         },
     },

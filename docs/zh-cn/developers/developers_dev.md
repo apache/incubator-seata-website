@@ -8,34 +8,40 @@ description: Seata 维护者名单
 
 本页面展示了Seata的开发团队。请通过提交PR的方式把自己的信息添加到列表上。注：排名不分先后
 
+## Seata Maintainer 列表
+| 姓名   | github                                      | 公司    |
+| ------ | ------------------------------------------- | ------- |
+| 季敏   | [slievrly](https://github.com/slievrly)     | Alibaba |
+| 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
+
 ## Seata Committer 列表
 
 | 姓名   | github          | 公司             |
 | ------ | --------------- | --------------- |
-| 季敏   | [slievrly](https://github.com/slievrly)        | Alibabba        |
-| 申海强 | [sharajava](https://github.com/sharajava)       | Alibabba        |
-| 厉启鹏 | [wlliqipeng](https://github.com/wlliqipeng)      | Alibabba        |
-| 陈连东 | [purple-force](https://github.com/purple-force)    | Alibabba        |
+| 申海强 | [sharajava](https://github.com/sharajava)       | Alibaba        |
+| 厉启鹏 | [wlliqipeng](https://github.com/wlliqipeng)      | Alibaba        |
+| 陈连东 | [purple-force](https://github.com/purple-force)    | Alibaba        |
 | 张森   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
 | 章耿   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
-| 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Antfin          |
-| 王清   | [jovany-wang](https://github.com/jovany-wang)     | Antfin          |
+| 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Tencent          |
+| 王清   | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
 | 吴江坷 | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
 | 李钊   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
-| 王欣   | [lovepoem](https://github.com/lovepoem)        | WeiDian         |
-| 袁国尧 | [github-ygy](https://github.com/github-ygy)      | Tuya            |
+| 王欣   | [lovepoem](https://github.com/lovepoem)        | JD         |
+| 袁国尧 | [github-ygy](https://github.com/github-ygy)      | NetEase            |
 | 张旭   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
 | 任帅鹏 | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
-| 许德佑 | [skyesx](https://github.com/skyesx)          | WeBank          |
+| 许德佑 | [skyesx](https://github.com/skyesx)          | Alibaba          |
 | 庄金雷 | [zjinlei](https://github.com/zjinlei)         | Helios          |
 | 张嘉伟 | [l81893521](https://github.com/l81893521)       | Perfect Diary |
 | 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
-| 陈龙   | [long187](https://github.com/long187)         | Antfin          |
+| 陈龙   | [long187](https://github.com/long187)         | Unknown          |
 | 郭云嵩 | [ggndnn](https://github.com/ggndnn)         | FND          |
-| 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
 | 王良 | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
-| 曹华栋 | [caohdgege](https://github.com/caohdgege) | BEIKE |
+| 曹华栋 | [caohdgege](https://github.com/caohdgege) | - |
 | 汪忠祥 | [lightClouds917](https://github.com/lightClouds917) | TongDun |
+| 刘晓敏 | [dk-lockdown](https://github.com/dk-lockdown) | 中国系统 |
+| 张乘辉 | [objcoding](https://github.com/objcoding) | Ant Group |
 
 ## Seata开发者角色
 

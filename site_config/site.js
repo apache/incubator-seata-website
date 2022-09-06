@@ -18,6 +18,12 @@ export default {
                 link: '/en-us/docs/overview/what-is-seata.html',
             },
             {
+                key: 'enterprise',
+                text: 'SEATA IN CLOUD',
+                link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+                imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
+            },
+            {
                 key: 'solution',
                 text: 'SOLUTIONS',
                 link: '',
@@ -56,14 +62,14 @@ export default {
                 link: '/en-us/docs/developers/developers_dev.html',
             },
             {
+                key: 'SummerCode2022',
+                text: 'SummerCode2022',
+                link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
+            },
+            {
                 key: 'blog',
                 text: 'BLOG',
                 link: '/en-us/blog/index.html',
-            },
-            {
-                key: 'Summer2021',
-                text: 'Summer2021',
-                link: 'https://github.com/seata/seata/issues/3741',
             },
             {
                 key: 'community',
@@ -114,7 +120,7 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2021 Seata',
+        copyright: 'Copyright © 2022 Seata',
     },
     'zh-cn': {
         pageMenu: [
@@ -129,14 +135,20 @@ export default {
                 link: '/zh-cn/docs/overview/what-is-seata.html',
             },
             {
+                key: 'enterprise',
+                text: 'Seata企业版',
+                link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+                imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
+            },
+            {
                 key: 'solution',
                 text: '解决方案',
                 link: '',
                 imgUrl: 'https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png',
                 children: [{
-                    key: 'gts',
+                    key: 'seata',
                     text: '分布式事务解决方案',
-                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0'
+                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0'
                 }, {
                     key: 'micoservice',
                     text: '微服务解决方案',
@@ -167,14 +179,14 @@ export default {
                 link: '/zh-cn/docs/developers/developers_dev.html',
             },
             {
+                key: 'SummerCode2022',
+                text: '开源之夏2022',
+                link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
+            },
+            {
                 key: 'blog',
                 text: '博客',
                 link: '/zh-cn/blog/index.html',
-            },
-            {
-                key: 'Summer2021',
-                text: '暑期2021',
-                link: 'https://github.com/seata/seata/issues/3741',
             },
             {
                 key: 'community',
@@ -225,6 +237,6 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2021 Seata',
+        copyright: 'Copyright © 2022 Seata',
     },
 };

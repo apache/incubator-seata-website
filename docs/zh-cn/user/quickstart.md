@@ -197,7 +197,7 @@ CREATE TABLE `account_tbl` (
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]
   Options:
     --host, -h
-      The host to bind.
+      The address is expose to registration center and other service can access seata-server via this ip
       Default: 0.0.0.0
     --port, -p
       The port to listen.

@@ -83,6 +83,16 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
 
+<a href="#38" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0`？ </a>
+
+<a href="#39" target="_self">39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` </a>
+
+<a href="#40" target="_self">40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？ </a>
+
+<a href="#41" target="_self">41. Oracle使用timestamp字段类型回滚失败？ </a>
+
+<a href="#42" target="_self">42. 抛出异常后事务未回滚？ </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -493,3 +503,107 @@ client.rm.lock.retryTimes=30
 解决办法：
 - 编译 seata 源码时确认 JDK 版本为 1.8，以免导致兼容问题
 - 如果已经用 JDK 11 编译了 seata 的源码，请删除本地 maven 仓库下 io.seata 路径下所有包。然后重新编译你的项目，让项目重新拉取中央仓库的 seata 的依赖包
+
+***
+
+<h3 id='38'>Q：38. 为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0` ？</h3>
+
+**A:**
+
+在`serializer/seata-serializer-protobuf/pom.xml`文件中，依赖版本是通过识别操作系统变量定义的：`com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}`。
+在远程仓库中，不存在Apple的M1芯片架构对应的依赖版本。
+
+解决方案：
+将上述依赖改写为固定版本：`com.google.protobuf:protoc:3.3.0:exe:osx-x86_64`，即可到远程仓库下载对应版本依赖。
+
+***
+
+<h3 id='39'>Q：39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` ？</h3>
+
+**A:**
+
+升级1.5.0及以上版本
+
+**B:**
+
+不要使用mysql driver8.0.x版本
+
+**C:**
+
+引入kryo相关依赖
+
+```java
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>de.javakaffee</groupId>
+                <artifactId>kryo-serializers</artifactId>
+                <version>0.42</version>
+            </dependency>
+```
+
+如果配置中心是file,依赖是seata-all,请在应用的file.conf文件中添加如下配置
+
+```java
+client {
+  undo {
+    logSerialization = "kryo"
+    }
+ }
+```
+
+如果配置中心是file,依赖是seata-spring-boot-starter,使用yml 自行转成yml格式即可
+
+```
+seata.client.undo.logSerialization=kryo
+```
+
+如果是第三方配置中心如nacos
+
+请在seata使用的配置相关group,namespace上添加dataid: client.undo.logSerialization,值为kryo
+
+**D**:
+
+修改数据库表中的datetime类型为timestamp
+
+**E:**
+
+参考此[pr](https://github.com/seata/seata/pull/3738)做法,可以用类覆盖或SPI方式扩展新的解析方式处理
+
+****
+
+<h3 id='40'>Q: 40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？</h3>
+
+**A:**
+
+ - 使用 DB 存储模式时，需要注意使用相应seata-server对应版本的建表脚本，建表脚本获取地址：https://github.com/seata/seata/tree/${版本}/script/server/db，例如：获取seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/seata/seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
+ - seata-server 依赖的后端的DB，不要开启读写分离。开启读写分离后根据同步模式的不同延迟也有所不同，seata-server 
+   为无状态计算节点，所有状态都需要到DB存储中校验，在主从同步延迟较大的情况下会导致读取的状态不准确从而导致事务逻辑处理问题。为了更高的读写性能，DB可将隔离级别设置为读已提交。
+
+
+
+****
+
+<h3 id='41'>Q: 41. Oracle使用timestamp字段类型回滚失败？</h3>
+
+**A:**
+
+ - [seata/seata-plugin at develop · seata/seata (github.com)](https://github.com/seata/seata/tree/develop/seata-plugin) 拉取此plugin代码,本地打包自行引入,也可直接拷贝代码进行spi扩展支持
+
+
+
+
+****
+
+<h3 id='42'>Q: 42. 抛出异常后事务未回滚？</h3>
+
+ - 检查异常是否被捕获,没有抛至tm端,如rm存在全局异常捕获器,rm将异常包装成了一个正常的result响应给了tm,导致seata的事务拦截器无法发现事务出现了异常,此时自行在代码中根据result中的code之类可判断业务出现异常的返回内容进行抛出异常,或者使用[Seata api](https://seata.io/zh-cn/docs/user/api.html) 进行回滚,切记api回滚必须结束调用,假设tm调用了rm1就出现错误,进行了api回滚,那么不应该让这个调用链再走到rm2去,应该直接return结束方法调用
+ - 检查是否rm服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理
+ - 如确认无上述可能,异常明确抛出,请通过相关的xid到tc端和tm和rm检索xid的决议结果和rm注册情况,当rm分支注册时,通过xid可以检索到Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx的日志,如果没有说明分支没有注册,如是AT或XA模式请检查数据源代理或xid传递问题,如分支已注册,那么检查决议结果,如事务提交,tm端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed的日志,如果是回滚那么相关关键字为rollback status: Rollbacked等,如果抛出异常决议缺是commit,那么99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!
+ - 如决议结果是回滚,但是rm没注册,可在rm调用端通过Rootcontext.getXid来判断是否有值,如果无值请参考Q24
+ - 如何判断数据源是否代理,如果是AT模式请在ConnectionProxy#registry打上断点,看是否会进入,XA模式ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!
+
+****

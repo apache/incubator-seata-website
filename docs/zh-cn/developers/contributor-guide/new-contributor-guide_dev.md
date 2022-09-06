@@ -14,7 +14,7 @@ TBD
 
 ### 报告问题
 
-您始终可以通过Github [Issues](https://Github.com/Seata/Seata/Issues) 向Seata报告问题。
+您始终可以通过Github [Issues](https://github.com/seata/seata/issues) 向Seata报告问题。
 
 如果您正在报告bug，请参阅问题报告[模版](https://github.com/seata/seata/issues/new?template=BUG_REPORT.md)。
 
