@@ -4,13 +4,38 @@ title: 使用 Docker compose 快速部署 Seata Server
 keywords: docker-compose,ops
 description: 使用 Docker-compose 快速部署 Seata Server
 author: zouwei
-date: 2021-12-05
+date: 2022-09-06
 ---
 
 # 使用 docker-compose 部署 Seata Server
 
+## 历史版本部署
+
+[1.5.0以前版本](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose-142.md)
+
+[1.5.0以后版本(含1.5.0)](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose.md)
+
 ## 注意事项 
 - 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
+- Seata Server 1.5.0版本开始，配置文件改为application.yml，所以在使用自定义配置的时候，需要先把原生配置拷贝出来。
+
+## 使用自定义配置文件
+为了获取seata server 1.5.0的配置文件，我们需要先启动一个seata server 1.5.0的服务，然后再从启动的容器实例中把默认的配置文件复制出来，再进行修改。
+
+docker-compose.yaml
+```yaml
+version: "3.1"
+services:
+  seata-server:
+    image: seataio/seata-server:${latest-release-version}
+    ports:
+      - "7091:7091"
+      - "8091:8091"
+```
+接下来通过`docker cp`命令把容器中`/seata-server/resources`位置的资源文件拷贝到宿主机指定位置。
+在宿主机指定位置我们就可以看到对应的`application.yml`配置文件，相关的配置只需要修改这个文件即可。
+
+> `application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
 
 ## 快速开始 
 
@@ -31,6 +56,7 @@ services:
     image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
+      - "7091:7091"
       - "8091:8091"
     environment:
       - SEATA_PORT=8091
@@ -41,109 +67,153 @@ services:
 
 > db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
 
-**（1）准备file.conf配置文件**
+**（1）application.yml配置文件**
+
+`application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+
 
 更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
-```properties
-# 存储模式
-store.mode=db
+```yaml
+server:
+  port: 7091
 
-store.db.datasource=druid
-store.db.dbType=mysql
-# 需要根据mysql的版本调整driverClassName
-# mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
-# mysql8以下版本的driver：com.mysql.jdbc.Driver
-store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意根据生产实际情况调整参数host和port
-store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
-# 数据库用户名
-store.db.user=
-# 用户名密码
-store.db.password=
+spring:
+  application:
+    name: seata-server
+
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: ${user.home}/logs/seata
+  extend:
+    logstash-appender:
+      destination: 127.0.0.1:4560
+    kafka-appender:
+      bootstrap-servers: 127.0.0.1:9092
+      topic: logback_to_logstash
+
+console:
+  user:
+    username: seata
+    password: seata
+
+seata:
+  config:
+    # support: nacos, consul, apollo, zk, etcd3
+    type: file
+  registry:
+    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+    type: file
+  store:
+    # support: file 、 db 、 redis
+    mode: db
+    db:
+      datasource: druid
+      dbType: mysql
+      # 需要根据mysql的版本调整driverClassName
+      # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
+      # mysql8以下版本的driver：com.mysql.jdbc.Driver
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
+      user: 用户名
+      password: 密码
+      
+  #  server:
+  #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
+  security:
+    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
+    tokenValidityInMilliseconds: 1800000
+    ignore:
+      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login
 ```
 
-**（2）准备registry.conf文件**
-
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
-
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
-
-直连模式（无注册中心）
-```
-registry {
-  type = "file"
-}
-
-config {
-  type = "file"
-  
-  file {
-    name="file:/root/seata-config/file.conf"
-  }
-}
-```
-
-**（3）准备docker-compose.yaml文件**
+**（2）准备docker-compose.yaml文件**
 ```yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
-    hostname: seata-server
+    image: seataio/seata-server:1.5.2
     ports:
+      - "7091:7091"
       - "8091:8091"
     environment:
+      - STORE_MODE=db
+      # 以SEATA_IP作为host注册seata server
+      - SEATA_IP=seata_ip
       - SEATA_PORT=8091
-      - SEATA_CONFIG_NAME=file:/root/seata-config/registry
     volumes:
-    # 需要把file.conf和registry.conf都放到./seata-server/config文件夹中
-      - "./seata-server/config:/root/seata-config"
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime"        #设置系统时区
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/timezone"  #设置时区
+      # 假设我们通过docker cp命令把资源文件拷贝到相对路径`./seata-server/resources`中
+      # 如有问题，请阅读上面的[注意事项]以及[使用自定义配置文件]
+      - "./seata-server/resources:/seata-server/resources"
 ```
 ### <a id="nacos-db">nacos注册中心，db存储</a>
 
 > db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
 
-**（1）准备registry.conf文件**
+**（1）application.yml配置文件**
+
+`application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
 
 nacos注册中心。
 
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+```yaml
+server:
+  port: 7091
 
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
+spring:
+  application:
+    name: seata-server
 
-```
-registry {
-  type = "nacos"
-  
-  nacos {
-  # seata服务注册在nacos上的别名，客户端通过该别名调用服务
-    application = "seata-server"
-  # 请根据实际生产环境配置nacos服务的ip和端口
-    serverAddr = "127.0.0.1:8848"
-  # nacos上指定的namespace
-    namespace = ""
-    cluster = "default"
-    username = "nacos"
-    password = "nacos"
-  }
-}
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: ${user.home}/logs/seata
+  extend:
+    logstash-appender:
+      destination: 127.0.0.1:4560
+    kafka-appender:
+      bootstrap-servers: 127.0.0.1:9092
+      topic: logback_to_logstash
 
-config {
-  type = "nacos"
-  
-  nacos {
-    # 请根据实际生产环境配置nacos服务的ip和端口
-    serverAddr = "127.0.0.1:8848"
-    # nacos上指定的namespace
-    namespace = ""
-    group = "SEATA_GROUP"
-    username = "nacos"
-    password = "nacos"
-  # 从v1.4.2版本开始，已支持从一个Nacos dataId中获取所有配置信息,你只需要额外添加一个dataId配置项
-    dataId: "seataServer.properties"
-  }
-}
+console:
+  user:
+    username: seata
+    password: seata
+
+seata:
+  config:
+    # support: nacos, consul, apollo, zk, etcd3
+    type: nacos
+    nacos:
+      server-addr: nacos_ip:nacos_port
+      namespace: seata-server
+      group: SEATA_GROUP
+      usernam: nacos
+      password: nacos
+      data-id: seataServer.properties
+
+  registry:
+    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: nacos_ip:nacos_port
+      group: SEATA_GROUP
+      namespace: seata-server
+      # tc集群名称
+      cluster: default
+      username: nacos
+      password: nacos
+#  server:
+#    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
+  security:
+    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
+    tokenValidityInMilliseconds: 1800000
+    ignore:
+      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login
 ```
 
 **（2）准备nacos配置中心配置**
@@ -153,21 +223,51 @@ config {
 > 你需要在nacos新建配置，此处dataId为seataServer.properties
 
 ```properties
-# 存储模式
 store.mode=db
-
+#-----db-----
 store.db.datasource=druid
 store.db.dbType=mysql
 # 需要根据mysql的版本调整driverClassName
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意根据生产实际情况调整参数host和port
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
-# 数据库用户名
-store.db.user=
-# 用户名密码
-store.db.password=
+store.db.user= 用户名
+store.db.password=密码
+# 数据库初始连接数
+store.db.minConn=1
+# 数据库最大连接数
+store.db.maxConn=20
+# 获取连接时最大等待时间 默认5000，单位毫秒
+store.db.maxWait=5000
+# 全局事务表名 默认global_table
+store.db.globalTable=global_table
+# 分支事务表名 默认branch_table
+store.db.branchTable=branch_table
+# 全局锁表名 默认lock_table
+store.db.lockTable=lock_table
+# 查询全局事务一次的最大条数 默认100
+store.db.queryLimit=100
+
+
+# undo保留天数 默认7天,log_status=1（附录3）和未正常清理的undo
+server.undo.logSaveDays=7
+# undo清理线程间隔时间 默认86400000，单位毫秒
+server.undo.logDeletePeriod=86400000
+# 二阶段提交重试超时时长 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试
+# 公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试
+# 注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用
+server.maxCommitRetryTimeout=-1
+# 二阶段回滚重试超时时长
+server.maxRollbackRetryTimeout=-1
+# 二阶段提交未完成状态全局事务重试提交线程间隔时间 默认1000，单位毫秒
+server.recovery.committingRetryPeriod=1000
+# 二阶段异步提交状态重试提交线程间隔时间 默认1000，单位毫秒
+server.recovery.asynCommittingRetryPeriod=1000
+# 二阶段回滚状态重试回滚线程间隔时间  默认1000，单位毫秒
+server.recovery.rollbackingRetryPeriod=1000
+# 超时状态检测重试线程间隔时间 默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器
+server.recovery.timeoutRetryPeriod=1000
 ```
 
 
@@ -176,82 +276,152 @@ store.db.password=
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
-    hostname: seata-server
+    image: seataio/seata-server:1.5.2
     ports:
+      - "7091:7091"
       - "8091:8091"
     environment:
-      # 指定seata服务启动端口
+      - STORE_MODE=db
+      # 以SEATA_IP作为host注册seata server
+      - SEATA_IP=seata_ip
       - SEATA_PORT=8091
-      # 注册到nacos上的ip。客户端将通过该ip访问seata服务。
-      # 注意公网ip和内网ip的差异。
-      - SEATA_IP=127.0.0.1
-      - SEATA_CONFIG_NAME=file:/root/seata-config/registry
     volumes:
-    # 因为registry.conf中是nacos配置中心，只需要把registry.conf放到./seata-server/config文件夹中
-      - "./seata-server/config:/root/seata-config"
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime"        #设置系统时区
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/timezone"  #设置时区
+      # 假设我们通过docker cp命令把资源文件拷贝到相对路径`./seata-server/resources`中
+      # 如有问题，请阅读上面的[注意事项]以及[使用自定义配置文件]
+      - "./seata-server/resources:/seata-server/resources"
 ```
 
 ### <a id="ha-nacos-db">高可用部署</a>
 
 > seata高可用依赖于注册中心、数据库，可不依赖配置中心。
+> 
+> 请保证多个Seata Server使用同一个注册中心和同一个存储中心，这样才能形成高可用部署
+> 
 
 > db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
 
-**（1）准备file.conf配置文件**
+
+**（1）application.yml配置文件**
+
+`application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+
 
 更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
-```properties
-# 存储模式
-store.mode=db
+```yaml
+server:
+  port: 7091
 
+spring:
+  application:
+    name: seata-server
+
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: ${user.home}/logs/seata
+  extend:
+    logstash-appender:
+      destination: 127.0.0.1:4560
+    kafka-appender:
+      bootstrap-servers: 127.0.0.1:9092
+      topic: logback_to_logstash
+
+console:
+  user:
+    username: seata
+    password: seata
+
+seata:
+  config:
+    # support: nacos, consul, apollo, zk, etcd3
+    type: nacos
+    nacos:
+      server-addr: nacos_ip:nacos_port
+      namespace: seata-server
+      group: SEATA_GROUP
+      usernam: nacos
+      password: nacos
+      data-id: seataServer.properties
+
+  registry:
+    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: nacos_ip:nacos_port
+      group: SEATA_GROUP
+      namespace: seata-server
+      # tc集群名称
+      cluster: default
+      username: nacos
+      password: nacos
+    #  store:
+    # support: file 、 db 、 redis
+  #    mode: file
+  #  server:
+  #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
+  security:
+    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
+    tokenValidityInMilliseconds: 1800000
+    ignore:
+      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login
+```
+
+**（2）准备nacos配置中心配置**
+
+更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+
+> 你需要在nacos新建配置，此处dataId为seataServer.properties
+
+```properties
+store.mode=db
+#-----db-----
 store.db.datasource=druid
 store.db.dbType=mysql
 # 需要根据mysql的版本调整driverClassName
 # mysql8及以上版本对应的driver：com.mysql.cj.jdbc.Driver
 # mysql8以下版本的driver：com.mysql.jdbc.Driver
 store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 注意根据生产实际情况调整参数host和port
 store.db.url=jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
-# 数据库用户名
-store.db.user=
-# 用户名密码
-store.db.password=
-```
+store.db.user= 用户名
+store.db.password=密码
+# 数据库初始连接数
+store.db.minConn=1
+# 数据库最大连接数
+store.db.maxConn=20
+# 获取连接时最大等待时间 默认5000，单位毫秒
+store.db.maxWait=5000
+# 全局事务表名 默认global_table
+store.db.globalTable=global_table
+# 分支事务表名 默认branch_table
+store.db.branchTable=branch_table
+# 全局锁表名 默认lock_table
+store.db.lockTable=lock_table
+# 查询全局事务一次的最大条数 默认100
+store.db.queryLimit=100
 
-**（2）准备registry.conf文件**
 
-nacos注册中心。
-
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
-
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
-
-```
-registry {
-  type = "nacos"
-  
-  nacos {
-  # seata服务注册在nacos上的别名，客户端通过该别名调用服务
-    application = "seata-server"
-  # nacos服务的ip和端口
-    serverAddr = "127.0.0.1:8848"
-  # nacos上指定的namespace
-    namespace = ""
-    cluster = "default"
-    username = "nacos"
-    password = "nacos"
-  }
-}
-
-config {
-  type = "file"
-  
-  file {
-    name="file:/root/seata-config/file.conf"
-  }
-}
+# undo保留天数 默认7天,log_status=1（附录3）和未正常清理的undo
+server.undo.logSaveDays=7
+# undo清理线程间隔时间 默认86400000，单位毫秒
+server.undo.logDeletePeriod=86400000
+# 二阶段提交重试超时时长 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试
+# 公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试
+# 注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用
+server.maxCommitRetryTimeout=-1
+# 二阶段回滚重试超时时长
+server.maxRollbackRetryTimeout=-1
+# 二阶段提交未完成状态全局事务重试提交线程间隔时间 默认1000，单位毫秒
+server.recovery.committingRetryPeriod=1000
+# 二阶段异步提交状态重试提交线程间隔时间 默认1000，单位毫秒
+server.recovery.asynCommittingRetryPeriod=1000
+# 二阶段回滚状态重试回滚线程间隔时间  默认1000，单位毫秒
+server.recovery.rollbackingRetryPeriod=1000
+# 超时状态检测重试线程间隔时间 默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器
+server.recovery.timeoutRetryPeriod=1000
 ```
 
 **（3）准备docker-compose.yaml文件**
@@ -262,39 +432,40 @@ config {
 ```yaml
 version: "3.1"
 services:
-  # seata服务1
   seata-server-1:
     image: seataio/seata-server:${latest-release-version}
-    hostname: seata-server
     ports:
+      - "7091:7091"
       - "8091:8091"
     environment:
-      # 指定seata服务启动端口
+      - STORE_MODE=db
+      # 以SEATA_IP作为host注册seata server
+      - SEATA_IP=seata_ip
       - SEATA_PORT=8091
-      # 注册到nacos上的ip。客户端将通过该ip访问seata服务。
-      # 注意公网ip和内网ip的差异。
-      - SEATA_IP=127.0.0.1
-      - SEATA_CONFIG_NAME=file:/root/seata-config/registry
     volumes:
-    # 需要把file.conf和registry.conf都放到./seata-server/config文件夹中
-      - "./seata-server/config:/root/seata-config"
-  # seata服务2
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime"        #设置系统时区
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/timezone"  #设置时区
+      # 假设我们通过docker cp命令把资源文件拷贝到相对路径`./seata-server/resources`中
+      # 如有问题，请阅读上面的[注意事项]以及[使用自定义配置文件]
+      - "./seata-server/resources:/seata-server/resources"
+
   seata-server-2:
     image: seataio/seata-server:${latest-release-version}
-    hostname: seata-server
     ports:
-      - "8092:8092"
+      - "7092:7091"
+      - "8092:8091"
     environment:
-      # 指定seata服务启动端口
+      - STORE_MODE=db
+      # 以SEATA_IP作为host注册seata server
+      - SEATA_IP=seata_ip
       - SEATA_PORT=8092
-      # 注册到nacos上的ip。客户端将通过该ip访问seata服务。
-      # 注意公网ip和内网ip的差异。
-      - SEATA_IP=127.0.0.1
-      - SEATA_CONFIG_NAME=file:/root/seata-config/registry
     volumes:
-    # 需要把file.conf和registry.conf都放到./seata-server/config文件夹中
-      - "./seata-server/config:/root/seata-config"
-  
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime"        #设置系统时区
+      - "/usr/share/zoneinfo/Asia/Shanghai:/etc/timezone"  #设置时区
+      # 假设我们通过docker cp命令把资源文件拷贝到相对路径`./seata-server/resources`中
+      # 如有问题，请阅读上面的[注意事项]以及[使用自定义配置文件]
+      - "./seata-server/resources:/seata-server/resources"
+
   # seata服务3......seata服务N
 ```
 
