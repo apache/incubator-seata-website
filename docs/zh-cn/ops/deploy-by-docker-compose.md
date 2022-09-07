@@ -9,6 +9,12 @@ date: 2022-09-06
 
 # 使用 docker-compose 部署 Seata Server
 
+## 历史版本部署
+
+[1.5.0以前版本](deploy-by-docker-compose-142.md)
+
+[1.5.0以后版本(含1.5.0)](deploy-by-docker-compose.md)
+
 ## 注意事项 
 - 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
 - Seata Server 1.5.0版本开始，配置文件改为application.yml，所以在使用自定义配置的时候，需要先把原生配置拷贝出来。
