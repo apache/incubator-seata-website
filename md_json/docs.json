@@ -370,6 +370,18 @@
       }
     },
     {
+      "filename": "deploy-by-docker-compose-142.md",
+      "link": "/zh-cn/docs/ops/deploy-by-docker-compose-142.html",
+      "meta": {
+        "hidden": "true",
+        "title": "使用 Docker compose 快速部署 Seata Server",
+        "keywords": "docker-compose,ops",
+        "description": "使用 Docker-compose 快速部署 Seata Server",
+        "author": "zouwei",
+        "date": "2021-12-05"
+      }
+    },
+    {
       "filename": "deploy-by-docker-compose.md",
       "link": "/zh-cn/docs/ops/deploy-by-docker-compose.html",
       "meta": {
@@ -378,7 +390,7 @@
         "keywords": "docker-compose,ops",
         "description": "使用 Docker-compose 快速部署 Seata Server",
         "author": "zouwei",
-        "date": "2021-12-05"
+        "date": "2022-09-06"
       }
     },
     {
