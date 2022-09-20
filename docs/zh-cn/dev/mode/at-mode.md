@@ -97,7 +97,7 @@ select id, name, since from product where name = 'TXC';
 4. 查询后镜像：根据前镜像的结果，通过 **主键** 定位数据。
 
 ```sql
-select id, name, since from product where id = 1`;
+select id, name, since from product where id = 1;
 ```
 得到后镜像：
 
