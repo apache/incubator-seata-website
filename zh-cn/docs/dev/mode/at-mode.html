@@ -115,8 +115,8 @@ tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 10
 <li>执行业务 SQL：更新这条记录的 name 为 'GTS'。</li>
 <li>查询后镜像：根据前镜像的结果，通过 <strong>主键</strong> 定位数据。</li>
 </ol>
-<pre><code class="language-sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>, <span class="hljs-keyword">name</span>, since <span class="hljs-keyword">from</span> product <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span><span class="hljs-string">`;
-</span></code></pre>
+<pre><code class="language-sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">id</span>, <span class="hljs-keyword">name</span>, since <span class="hljs-keyword">from</span> product <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span>;
+</code></pre>
 <p>得到后镜像：</p>
 <table>
 <thead>
