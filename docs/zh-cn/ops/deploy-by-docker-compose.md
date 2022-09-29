@@ -191,7 +191,7 @@ seata:
       server-addr: nacos_ip:nacos_port
       namespace: seata-server
       group: SEATA_GROUP
-      usernam: nacos
+      username: nacos
       password: nacos
       data-id: seataServer.properties
 
