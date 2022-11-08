@@ -51,6 +51,12 @@ header:
     - '**/*.css'
     - '**/*.jsx'
     - '**/*.scss'
+    - 'server'
+    - '**/*.svg'
+    - '*.ejs'
+    - '*.xml'
+    - '*.yml'
+    - '*.map'
 
 
   comment: on-failure
