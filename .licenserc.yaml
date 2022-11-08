@@ -57,6 +57,7 @@ header:
     - '*.xml'
     - '*.yml'
     - '*.map'
+    - 'saga_designer/**'
 
 
   comment: on-failure
