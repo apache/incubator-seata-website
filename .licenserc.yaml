@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 header:
   license:
     spdx-id: Apache-2.0
@@ -38,6 +38,19 @@ header:
     - 'LICENSE'
     - '**/*.md'
     - '.github/**'
+    - '.babelrc'
+    - '.docsite'
+    - '.eslintrc'
+    - '.htaccess'
+    - '.nojekyll'
+    - '404.html'
+    - 'CNAME'
+    - 'img/**'
+    - '**/*.json'
+    - '**/*.js'
+    - '**/*.css'
+    - '**/*.jsx'
+    - '**/*.scss'
 
 
   comment: on-failure
