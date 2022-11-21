@@ -263,8 +263,8 @@ At present, `seata-all` needs to use conf type `conf` files, and `properties` an
 **A:**
 
 ```html
-AT mode: Dubbo, Spring Cloud, Motan, gRPC and sofa-RPC
-TCC mode: Dubbo, Spring Cloud and sofa-RPC
+ Dubbo, Spring Cloud, Motan, gRPC , sofa-RPC , EDAS-HSF and bRPC
+
 ```
 
 ****

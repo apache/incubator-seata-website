@@ -254,8 +254,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 **A:** 
 
 ```
-1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
-2. TCC 模式支持Dubbo、Spring Cloud和sofa-RPC。
+目前支持 Dubbo、Spring Cloud、Motan、gRPC、sofa-RPC、EDAS-HSF 和 bRPC 框架。
 ```
 ********
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
