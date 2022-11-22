@@ -6,7 +6,6 @@ description: Seata 常见问题。
 
 # 常见问题
 
-
 <a href="#1" target="_self">1.Seata 目前可以用于生产环境吗？</a>
 
 <a href="#2" target="_self">2.Seata 目前支持高可用吗？</a>
@@ -33,7 +32,7 @@ description: Seata 常见问题。
 
 <a href="#13" target="_self">13.支持多主键? </a>
 
-<a href="#14" target="_self">14.使用HikariDataSource报错如何解决 ? </a>   
+<a href="#14" target="_self">14.使用HikariDataSource报错如何解决 ? </a>
 
 <a href="#15" target="_self">15.是否可以不使用conf类型配置文件，直接将配置写入application.properties? </a>
 
@@ -44,9 +43,9 @@ description: Seata 常见问题。
 <a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 
- <a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a>
+<a href="#19" target="_self">19. apache-dubbo 2.7.0出现NoSuchMethodError ？</a>
 
- <a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
+<a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
 
 <a href="#21" target="_self">21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 
@@ -57,6 +56,42 @@ description: Seata 常见问题。
 <a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a>
 
 <a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a>
+
+<a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
+
+<a href="#27" target="_self">27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</a>
+
+<a href="#28" target="_self">28. 数据库开启自动更新时间戳导致脏数据无法回滚？</a>
+
+<a href="#29" target="_self">29. 还没到全局事务超时时间就出现了timeoutrollcking?</a>
+
+<a href="#30" target="_self">30. Seata现阶段支持的分库分表解决方案？</a>
+
+<a href="#31" target="_self">31. Seata 使用注册中心注册的地址有什么限制？</a>
+
+<a href="#32" target="_self">32. seata-server cannot be started due to Unrecognized VM option 'CMSParallelRemarkEnabled'
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</a>
+
+<a href="#33" target="_self">33. Seata的SQL支持范围？</a>
+
+<a href="#34" target="_self">34. Seata的JDK版本要求？</a>
+
+<a href="#35" target="_self">35. Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</a>
+
+<a href="#36" target="_self">36. 怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </a>
+
+<a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
+
+<a href="#38" target="_self">38.   为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0`？ </a>
+
+<a href="#39" target="_self">39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` </a>
+
+<a href="#40" target="_self">40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？ </a>
+
+<a href="#41" target="_self">41. Oracle使用timestamp字段类型回滚失败？ </a>
+
+<a href="#42" target="_self">42. 抛出异常后事务未回滚？ </a>
 
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -206,25 +241,26 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 <h3 id='16'>Q: 16.如何自己修改源码后打包seata-server?</h3>
 
 **A:** 
+
 ```xml
 1. 删除 distribution 模块的bin、conf和lib目录。
 2. ./mvnw clean install -DskipTests=true(Mac,Linux) 或 mvnw.cmd clean install -DskipTests=true(Win) -P release-seata。
 3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。
-
+4. seata-1.5之后(最新develop分支)的打包命令：mvn -Prelease-seata -Dmaven.test.skip=true clean install -U
 ```
 ********
 <h3 id='17'>Q: 17.Seata 支持哪些 RPC 框架?</h3>
 
 **A:** 
+
 ```
-1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
-2. TCC 模式支持Dubbo、Spring Cloud和sofa-RPC。
+目前支持 Dubbo、Spring Cloud、Motan、gRPC、sofa-RPC、EDAS-HSF 和 bRPC 框架。
 ```
 ********
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</h3>
-
 **A:** 
+
 ```
 需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。
 
@@ -234,9 +270,11 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 <h3 id='19'>Q: 19. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
 
 **A:** 
+
 由于apache-dubbo 在加载Filter时,会将 alibaba-dubbo 的filter一并加载且 2.7.0 版本com.alibaba.dubbo.rpc.Invoker中   
 ``Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;``  
 误使用了org.apache.dubbo.rpc.Invocation来入参(2.7.1修复),导致出现    
+
 ```java
 java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/dubbo/rpc/Invocation;)Lcom/alibaba/dubbo/rpc/Result;
 ```
@@ -278,9 +316,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 
 **A:** 
 
-@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 
-连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional
-只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
+@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional 只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
 
 ********
 <h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
@@ -300,7 +336,7 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 **A:** 
 
-1.首先确保你引入了spring-cloud-alibaba-seata的依赖.
+1.首先确保你引入了`spring-cloud-starter-alibaba-seata`的依赖.
 
 2.如果xid还无法传递,请确认你是否实现了WebMvcConfigurer,如果是,请参考com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors的方法.把SeataHandlerInterceptor加入到你的拦截链路中.
 
@@ -320,5 +356,253 @@ dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用
 seata:
   enable-auto-data-source-proxy: false
 ```
+********
+
+<h3 id='26'>Q: 26. Could not found global transaction xid = %s, may be has finished.</h3>
+
+**A:**
+
+举例说明：
+
+@GlobalTransactional(timeout=60000)
+public void A（）{
+
+​	call remoting B();//远程调用B服务
+​	local DB operation;
+
+}
+
+public void B(){
+
+}
+
+可能原因：
+
+1. A 执行的总体时间超过了60000ms，导致全局事务发起了全局回滚，此时A或B方法继续执行DB操作，校验全局事务状态，发现全局事务已经回滚。
+
+2. B服务执行超出其设定的readTimeout 返回异常给A并将异常抛出导致全局事务回滚，此时B服务执行DB操作时，校验全局事务状态，发现全局事务已经回滚。
+   
+3. tc集群节点时间不一致。
+
+影响：出现这种情况时，数据会整体回滚至A方法执行前的数据的初态，从数据一致性的视角上看，数据是整体一致的。
+
+除了上述情况，如果引用的是`seata-spring-boot-starter`的话，产生这个错误的原因也可能是因为一个bug，目前在1.5版本进行了修复，具体可以参考[issues4020](https://github.com/seata/seata/issues/4020)，[PR4039](https://github.com/seata/seata/pull/4039)。
+
 ------
 
+<h3 id='27'>Q: 27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</h3>
+
+**A：**
+
+这个错误是由非正常Seata客户端建立连接引起（如通过http访问Seata server的端口，云服务器的端口扫描等）。这种连接没有发送注册信息，被认为是无用连接，该异常可以忽视。
+
+****
+
+<h3 id='28'>Q: 28. 数据库开启自动更新时间戳导致脏数据无法回滚？</h3>
+
+**A:**
+
+由于业务提交，seata记录当前镜像后，数据库又进行了一次时间戳的更新，导致镜像校验不通过。
+
+**解决方案1:**关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如MybatisPlus就能做自动填充。
+
+**解决方案2:**update语句别把没更新的字段也放入更新语句。
+
+****
+
+<h3 id='29'>Q: 29. 还没到全局事务超时时间就出现了timeoutrollcking?</h3>
+
+**A:**
+
+有可能是多tc时区不一致导致的，建议将多个tc时区与db模式数据库时区保持一致统一。
+
+****
+
+<h3 id='30'>Q: 30. Seata现阶段支持的分库分表解决方案？</h3>
+
+**A:**
+
+现阶段只支持ShardingSphere。关于分库分表与Seata兼容的问题，Seata支持某一个分库分表方案是需要分库分表框架团队来提供集成兼容方案，而不是Seata提供。目前Seata正与各分库分表框架团队进行沟通来商讨集成兼容方案。
+
+****
+
+<h3 id='31'>Q: 31.Seata 使用注册中心注册的地址有什么限制？</h3>
+
+**A:**
+
+Seata 注册中心不能注册 0.0.0.0 或 127.0.0.1 的地址，当自动注册为上述地址时可以通过启动参数 -h 或容器环境变量SEATA_IP来指定。当和业务服务处于不同的网络时注册地址可以指定为 NAT_IP或公网IP，但需要保证注册中心的健康检查探活是通畅的。
+
+****
+
+<h3 id='32'>Q: 32.Unrecognized VM option 'CMSParallelRemarkEnabled'
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</h3>
+**A:**
+
+这个是因为使用了高版本的jdk导致。高版本的jdk取消了cms处理器，转而采用了zgc代替他。
+解决方案有两个，选其中之一便可：
+1、降级jdk版本
+2、在seata的启动脚本中删除cms的jdk命令
+
+****
+
+<h3 id='33'>Q: 33.Seata的SQL支持范围？</h3>
+
+**A:**
+
+请参考附录->[SQL参考](http://seata.io/zh-cn/docs/user/sqlreference/sql-restrictions.html)
+
+****
+
+<h3 id='34'>Q: 34.Seata的JDK版本要求？</h3>
+
+**A:**
+
+目前Seata支持的JDK版本为JDK8、11。其余版本不确保100%兼容
+
+****
+
+<h3 id='35'>Q: 35.Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</h3>
+
+**A:**
+
+Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数据来，将实体的Long修改为BigInteger或BigDecimal即可解决问题。
+
+***
+
+<h3 id='36'>Q: 36.怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail </h3>
+
+**A:**
+
+获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从`@Globaltransational`的TM端重新发起。
+
+Seata提供了一个“全局锁重试”功能，默认未开启，可以通过下面这个配置来开启。
+```properties
+#遇到全局锁冲突时是否回滚，默认为true
+client.rm.lock.retryPolicyBranchRollbackOnConflict=false
+```
+开启后，默认的全局锁重试逻辑是：线程sleep 10ms，再次争全局锁，最多30次
+```properties
+#你可通过这2个配置来修改锁重试机制
+client.rm.lock.retryInterval=10
+client.rm.lock.retryTimes=30
+```
+另外，你也可以直接在`@GlobalTransactional`上单独配置重试逻辑，优先级比Seata全局配置更高
+```java
+@GlobalTransactional(lockRetryInternal = 100, lockRetryTimes = 30)  // v1.4.2
+@GlobalTransactional(lockRetryInterval = 100, lockRetryTimes = 30)  // v1.5
+```
+***
+<h3 id='37'>Q：37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </h3>
+
+**A:**
+
+这是因为编译了 seata 源码然后覆盖了本地的 seata 依赖包的原因，在编译 seata 源码时使用了 JDK 11，而在 JDK 11 中由于改写了 `flip()` 方法，所以导致不兼容。
+
+解决办法：
+- 编译 seata 源码时确认 JDK 版本为 1.8，以免导致兼容问题
+- 如果已经用 JDK 11 编译了 seata 的源码，请删除本地 maven 仓库下 io.seata 路径下所有包。然后重新编译你的项目，让项目重新拉取中央仓库的 seata 的依赖包
+
+***
+
+<h3 id='38'>Q：38. 为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0` ？</h3>
+
+**A:**
+
+在`serializer/seata-serializer-protobuf/pom.xml`文件中，依赖版本是通过识别操作系统变量定义的：`com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}`。
+在远程仓库中，不存在Apple的M1芯片架构对应的依赖版本。
+
+解决方案：
+将上述依赖改写为固定版本：`com.google.protobuf:protoc:3.3.0:exe:osx-x86_64`，即可到远程仓库下载对应版本依赖。
+
+***
+
+<h3 id='39'>Q：39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` ？</h3>
+
+**A:**
+
+升级1.5.0及以上版本
+
+**B:**
+
+不要使用mysql driver8.0.x版本
+
+**C:**
+
+引入kryo相关依赖
+
+```java
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>de.javakaffee</groupId>
+                <artifactId>kryo-serializers</artifactId>
+                <version>0.42</version>
+            </dependency>
+```
+
+如果配置中心是file,依赖是seata-all,请在应用的file.conf文件中添加如下配置
+
+```java
+client {
+  undo {
+    logSerialization = "kryo"
+    }
+ }
+```
+
+如果配置中心是file,依赖是seata-spring-boot-starter,使用yml 自行转成yml格式即可
+
+```
+seata.client.undo.logSerialization=kryo
+```
+
+如果是第三方配置中心如nacos
+
+请在seata使用的配置相关group,namespace上添加dataid: client.undo.logSerialization,值为kryo
+
+**D**:
+
+修改数据库表中的datetime类型为timestamp
+
+**E:**
+
+参考此[pr](https://github.com/seata/seata/pull/3738)做法,可以用类覆盖或SPI方式扩展新的解析方式处理
+
+****
+
+<h3 id='40'>Q: 40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？</h3>
+
+**A:**
+
+ - 使用 DB 存储模式时，需要注意使用相应seata-server对应版本的建表脚本，建表脚本获取地址：https://github.com/seata/seata/tree/${版本}/script/server/db，例如：获取seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/seata/seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
+ - seata-server 依赖的后端的DB，不要开启读写分离。开启读写分离后根据同步模式的不同延迟也有所不同，seata-server 
+   为无状态计算节点，所有状态都需要到DB存储中校验，在主从同步延迟较大的情况下会导致读取的状态不准确从而导致事务逻辑处理问题。为了更高的读写性能，DB可将隔离级别设置为读已提交。
+
+
+
+****
+
+<h3 id='41'>Q: 41. Oracle使用timestamp字段类型回滚失败？</h3>
+
+**A:**
+
+ - [seata/seata-plugin at develop · seata/seata (github.com)](https://github.com/seata/seata/tree/develop/seata-plugin) 拉取此plugin代码,本地打包自行引入,也可直接拷贝代码进行spi扩展支持
+
+
+
+
+****
+
+<h3 id='42'>Q: 42. 抛出异常后事务未回滚？</h3>
+
+ - 检查异常是否被捕获,没有抛至tm端,如rm存在全局异常捕获器,rm将异常包装成了一个正常的result响应给了tm,导致seata的事务拦截器无法发现事务出现了异常,此时自行在代码中根据result中的code之类可判断业务出现异常的返回内容进行抛出异常,或者使用[Seata api](https://seata.io/zh-cn/docs/user/api.html) 进行回滚,切记api回滚必须结束调用,假设tm调用了rm1就出现错误,进行了api回滚,那么不应该让这个调用链再走到rm2去,应该直接return结束方法调用
+ - 检查是否rm服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理
+ - 如确认无上述可能,异常明确抛出,请通过相关的xid到tc端和tm和rm检索xid的决议结果和rm注册情况,当rm分支注册时,通过xid可以检索到Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx的日志,如果没有说明分支没有注册,如是AT或XA模式请检查数据源代理或xid传递问题,如分支已注册,那么检查决议结果,如事务提交,tm端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed的日志,如果是回滚那么相关关键字为rollback status: Rollbacked等,如果抛出异常决议缺是commit,那么99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!
+ - 如决议结果是回滚,但是rm没注册,可在rm调用端通过Rootcontext.getXid来判断是否有值,如果无值请参考Q24
+ - 如何判断数据源是否代理,如果是AT模式请在ConnectionProxy#registry打上断点,看是否会进入,XA模式ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!
+
+****

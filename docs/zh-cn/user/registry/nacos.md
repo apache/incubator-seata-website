@@ -12,19 +12,19 @@ Seata 融合 Nacos 注册中心的操作步骤非常简单，大致步骤可分�
 
 ### 增加 Maven 依赖
 
-首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，并且强烈地推荐您使用 Seata `1.4.0`：
+首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，建议使用 Seata `1.4.0+`：
 
-```java
-           <dependency>
-                <groupId>io.seata</groupId>
-                <artifactId>seata-spring-boot-starter</artifactId>
-                <version>最新版</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.nacos</groupId>
-                <artifactId>nacos-client</artifactId>
-                <version>1.3.2</version>
-            </dependency>
+```xml
+<dependency>
+    <groupId>io.seata</groupId>
+    <artifactId>seata-spring-boot-starter</artifactId>
+    <version>最新版</version>
+</dependency>
+<dependency>
+    <groupId>com.alibaba.nacos</groupId>
+    <artifactId>nacos-client</artifactId>
+    <version>1.2.0及以上版本</version>
+</dependency>
 ```
 
 ### Client端配置注册中心
@@ -46,7 +46,7 @@ seata:
 
 ### Server端配置注册中心
 
-在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server/config)
+在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
 
 ```
 registry {
@@ -65,4 +65,6 @@ registry {
 
 ```
 
-随后,重启 Seata-Server 应用后，您同样也能发现Server端的服务提供信息在 Nacos 控制台中.此时重启Client端即可看到注册效果.
+随后,启动 Seata-Server 后，会发现Server端的服务出现在 Nacos 控制台中的注册中心列表中. Client 配置完成后启动应用就可以正式体验 Seata 服务。
+
+Tips：请确保client与server的注册处于同一个namespace和group，不然会找不到服务。

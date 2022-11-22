@@ -154,5 +154,3 @@ data:
       }
     }
 ```
-
-关于 Seata 高可用部署的实践可以参考 [Seata 高可用部署实践](https://seata.io/zh-cn/blog/seata-ha-practice.html)

@@ -7,14 +7,22 @@ author: helloworlde
 date: 2019-11-25
 ---
 
-# 使用 Docker 部署 Seata Server
+# 使用 Docker 部署 Seata Server (1.5.0)
+
+<a href="./deploy-by-docker-142.html">查看1.4.2版本</a>  
+
+## 注意事项 
+- 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
+
+## 注意事项 
+- 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
 
 ## 快速开始 
 
 #### 启动seata-server实例
 
 ```bash
-$ docker run --name seata-server -p 8091:8091 seataio/seata-server:latest
+$ docker run --name seata-server -p 8091:8091 -p 7091:7091 seataio/seata-server:1.5.0
 ```
 
 #### 指定seata-server IP和端口 启动
@@ -22,6 +30,7 @@ $ docker run --name seata-server -p 8091:8091 seataio/seata-server:latest
 ```bash
 $ docker run --name seata-server \
         -p 8091:8091 \
+        -p 7091:7091 \
         -e SEATA_IP=192.168.1.1 \
         -e SEATA_PORT=8091 \
         seataio/seata-server
@@ -35,10 +44,11 @@ $ docker run --name seata-server \
 version: "3"
 services:
   seata-server:
-    image: seataio/seata-server
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
+      - "7091:7091"
     environment:
       - SEATA_PORT=8091
       - STORE_MODE=file
@@ -58,35 +68,30 @@ $ docker logs -f seata-server
 
 ## 使用自定义配置文件
 
-自定义配置文件需要通过挂载文件的方式实现，将宿主机上的 `registry.conf` 和 `file.conf` 挂载到容器中相应的目录
+自定义配置文件需要通过挂载文件的方式实现，将宿主机上的 `application.yml`  挂载到容器中相应的目录
 
-- 指定 registry.conf 
+首先启动一个用户将resources目录文件拷出的临时容器
 
-使用自定义配置文件时必须指定环境变量 `SEATA_CONFIG_NAME`, 并且值需要以`file:`开始, 如: `file:/root/seata-config/registry`
+```
+docker run -d -p 8091:8091 -p 7091:7091  --name seata-serve seataio/seata-server:latest
+docker cp seata-serve:/seata-server/resources /User/seata/config
+```
+
+拷出后可以,可以选择修改application.yml再cp进容器,或者rm临时容器,如下重新创建,并做好映射路径设置
+
+- 指定 application.yml
 
 ```bash
 $ docker run --name seata-server \
         -p 8091:8091 \
-        -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
-        -v /User/seata/config:/root/seata-config  \
+        -p 7091:7091 \
+        -v /User/seata/config:/seata-server/resources  \
         seataio/seata-server
 ```
 
-其中 `-e` 用于配置环境变量， `-v` 用于挂载宿主机的目录
+其中 `-e` 用于配置环境变量， `-v` 用于挂载宿主机的目录,如果是以file存储模式运行,请加上-v /User/seata/sessionStore :/seata-server/sessionStore 将file的数据文件映射到宿主机,以防数据丢失(注:/User/seata/config和/User/seata/sessionStore可自定义宿主机目录,无需照搬)
 
-- 指定 file.conf 
-
-如果需要同时指定 `file.conf` 配置文件，则需要在 `registry.conf` 文件中将 `config` 配置改为以下内容，`name` 的值为容器中对应的路径
-
-```
-config {
-  type = "file"
-
-  file {
-    name = "file:/root/seata-config/file.conf"
-  }
-}
-```
+接下来你可以看到宿主机对应目录下已经有了,logback-spring.xml,application.example.yml,application.yml 如果比较熟悉springboot,那么接下来就很简单了,只需要修改application.yml即可,详细配置可以参考application.example.yml,该文件存放了所有可使用的详细配置
 
 ## 环境变量
 

@@ -12,7 +12,7 @@ description: Seata 事务分组与高可用的最佳实践
 - 一整套微服务架构项目：projectA
 - projectA内有微服务：serviceA、serviceB、serviceC 和 serviceD
 
-其中，projectA所有微服务的事务分组tx-transaction-group设置为：projectA，projectA正常情况下使用guangzhou的TC集群（主）
+其中，projectA所有微服务的事务分组tx-service-group设置为：projectA，projectA正常情况下使用guangzhou的TC集群（主）
 
 那么正常情况下，client端的配置如下所示：
 
@@ -21,7 +21,7 @@ seata.tx-service-group=projectA
 seata.service.vgroup-mapping.projectA=Guangzhou
 ```
 
-![](https://gitee.com/tanzjz/pic/raw/master/txgroup-normal.png)
+![异地多机房容灾正常图](/img/txgroup/txgroup-normal.png)
 
 假如此时guangzhou集群分组整个down掉，或者因为网络原因projectA暂时无法与Guangzhou机房通讯，那么我们将配置中心中的Guangzhou集群分组改为Shanghai，如下：
 
@@ -31,7 +31,7 @@ seata.service.vgroup-mapping.projectA=Shanghai
 
 并推送到各个微服务，便完成了对整个projectA项目的TC集群动态切换。
 
-![异地多机房容灾备用集群](https://gitee.com/tanzjz/pic/raw/master/txgroup-switch-to-sh.png)
+![异地多机房容灾备用集群](/img/txgroup/txgroup-switch-to-sh.png)
 
 ## 最佳实践2：单一环境多应用接入
 
@@ -70,7 +70,7 @@ seata.service.vgroup-mapping.projectA=project-a-group
 
 完成配置启动后，对应事务分组的TC单独为其应用服务，整体部署图如下：
 
-![单环境多应用接入](https://gitee.com/tanzjz/pic/raw/master/txgroup-multipart-application.png)
+![单环境多应用接入](/img/txgroup/txgroup-multiApplication.png)
 
 
 ## 最佳实践3：client的精细化控制
@@ -81,7 +81,7 @@ seata.service.vgroup-mapping.projectA=project-a-group
 
 那么此时，我们可以将ServiceD微服务引流到Shanghai集群中去，将高性能的服务器让给其余流量较大的微服务（反之亦然，若存在某一个微服务流量特别大，我们也可以单独为此微服务开辟一个更高性能的集群，并将该client的virtual group指向该集群，其最终目的都是保证在流量洪峰时服务的可用）
 
-![client精细化控制](https://gitee.com/tanzjz/pic/raw/master/txgroup-client-controll.png)
+![client精细化控制](/img/txgroup/txgroup-client-controll.png)
 
 
 ## 最佳实践4：Seata的预发与生产隔离
@@ -114,7 +114,7 @@ store {
 }
 ```
 
-seata-server的 regiistry.conf 配置如下（以nacos为例）
+seata-server的 registry.conf 配置如下（以nacos为例）
 
 ```
 registry {
@@ -136,6 +136,6 @@ registry {
 
 其部署图如下所示：
 
-![预发生产隔离](https://gitee.com/tanzjz/pic/raw/master/txgroup-segregation-of-pre-and-product.png)
+![预发生产隔离](/img/txgroup/txgroup-segregation-of-pre-and-product.png)
 
 不仅如此，你还可以将以上四个最佳实践依据你的实际生产情况组合搭配使用。

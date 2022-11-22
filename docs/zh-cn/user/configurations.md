@@ -4,7 +4,7 @@ keywords: Seata
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.3.0版本
+# seata参数配置 1.4.2版本
 <a href="./configurations100.html">查看1.0.0版本</a>  
 <a href="./configurations090.html">查看0.9.0.1之前版本</a>
 
@@ -62,7 +62,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |-------------------------------------------|---------------------------------|----------------------------|
 | server.undo.logSaveDays            | undo保留天数                  |默认7天,log_status=1（附录3）和未正常清理的undo |
 | server.undo.logDeletePeriod        | undo清理线程间隔时间          |默认86400000，单位毫秒    |
-| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试   |
+| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试(注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用) |
 | server.maxRollbackRetryTimeout        | 二阶段回滚重试超时时长           |  同commit  |
 | server.recovery.committingRetryPeriod          | 二阶段提交未完成状态全局事务重试提交线程间隔时间 |默认1000，单位毫秒    |
 | server.recovery.asynCommittingRetryPeriod     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
@@ -111,7 +111,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.tm.degradeCheckAllowTimes | 升降级达标阈值 | 默认10 |
 | client.tm.degradeCheckPeriod | 服务自检周期 | 默认2000,单位ms.每2秒进行一次服务自检,来决定 |
 | client.rm.reportSuccessEnable   | 是否上报一阶段成功   |true、false，从1.1.0版本开始,默认false.true用于保持分支事务生命周期记录完整，false可提高不少性能 |
-| client.rm.asynCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
+| client.rm.asyncCommitBufferLimit          | 异步提交缓存队列长度 | 默认10000。 二阶段提交成功，RM异步清理undo队列  |
 | client.rm.lock.retryInterval                | 校验或占用全局锁重试间隔 |  默认10，单位毫秒  |
 | client.rm.lock.retryTimes                   | 校验或占用全局锁重试次数 |  默认30  |
 | client.rm.lock.retryPolicyBranchRollbackOnConflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
@@ -122,6 +122,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.dataValidation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
 | client.undo.logSerialization        | undo序列化方式 |  默认jackson  |
 | client.undo.logTable                | 自定义undo表名 |  默认undo_log  |
+| client.undo.onlyCareUpdateColumns | 只生成被更新列的镜像 | 默认true |
+| client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
 
 
 <details>
