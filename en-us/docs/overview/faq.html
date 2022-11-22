@@ -85,11 +85,11 @@ supported from version 0.6, tc USES db mode to share global transaction session 
 Since seata phase 1 local transactions have been committed, enhanced isolation is needed to prevent other transactions from dirty reads and dirty writes.</p>
 <ol>
 <li>Dirty read Select statement with for update, proxy method with @GlobalLock+@Transactional or @GlobalTransaction</li>
-<li>Dirty write You must use @globaltransaction</li>
+<li>Dirty write You must use @GlobalTransactional</li>
 </ol>
-<pre><code>note：If the interface of the business you are querying does not use the @globaltransactional annotation, which means there is no need for distributed transactions on the method, you can annotate the @globallock+@Transactional annotation on the method and add a for update statement to the query.
-    If your query interface has the @globaltransactional annotation on the outer edge of the transactional link, you can simply add a for update statement to your query. The reason for designing this annotation is that before it is available, distributed transactions need to query the committed data, but the business does not need distributed transactions.
-    Using the GlobalTransactional annotation adds some unnecessary additional RPC overhead such as begin returning xid, commit transaction, etc. GlobalLock simplifies the RPC process for higher performance.
+<pre><code>note：If the interface of the business you are querying does not use the @GlobalTransactional annotation, which means there is no need for distributed transactions on the method, you can annotate the @globallock+@Transactional annotation on the method and add a for update statement to the query.
+    If your query interface has the @GlobalTransactional annotation on the outer edge of the transactional link, you can simply add a for update statement to your query. The reason for designing this annotation is that before it is available, distributed transactions need to query the committed data, but the business does not need distributed transactions.
+    Using the @GlobalTransactional annotation adds some unnecessary additional RPC overhead such as begin returning xid, commit transaction, etc. GlobalLock simplifies the RPC process for higher performance.
 </code></pre>
 <hr>
 <h3 id='5'>Q: 5.When Failed to roll back dirty data, what shall I do ?</h3>
@@ -109,7 +109,7 @@ Since seata phase 1 local transactions have been committed, enhanced isolation i
 <ol>
 <li>The branch transaction is asynchronous. The global transaction is not aware of its progress. The global transaction has entered phase 2 before the asynchronous branch comes to register.</li>
 <li>Service a rpc service b timed out (dubbo, feign, etc. timeout by default for 1 second), a throws an exception to tm, tm informs tc to roll back, but b still receives the request (network delay or rpc framework retry), and then registers at tc Global transaction was found to be rolling back.</li>
-<li>Tc is aware of the global transaction timeout (@globaltransactional (timeoutMills = default 60 seconds)), actively changes the state and notifies each branch transaction to rollback when a new branch transaction is registered.</li>
+<li>Tc is aware of the global transaction timeout (@GlobalTransactional (timeoutMills = default 60 seconds)), actively changes the state and notifies each branch transaction to rollback when a new branch transaction is registered.</li>
 </ol>
 <hr>
 <h3 id='7'>Q: 7.When Nacos is used as the Seata configuration center, the project startup error report cannot find the service. How to check and deal with it ?</h3>
@@ -260,7 +260,7 @@ You can execute this command: <code>./mvnw clean install -DskipTests=true</code>
 <h3 id='22'>Q: 22.What to note for the AT mode and Spring @Transactional annotation hyphenation?</h3>
 <p><strong>A:</strong></p>
 <p><code>@Transactional</code> can be coupled with <code>DataSourceTransactionManager</code> and <code>JTATransactionManager</code> to represent local transactions and XA distributed transactions, respectively. Common to everyone is the combination with local affairs.</p>
-<p>When combined with local transactions<code>@Transactial</code> and <code>@GlobalTransaction</code> are hyphenated,<code>@ Transactial</code> can only be located in the same method hierarchy annotated at <code>@GlobalTransaction</code> or within the inner layer of <code>@GlobalTransaction</code> annotation methods.</p>
+<p>When combined with local transactions<code>@Transactial</code> and <code>@GlobalTransactional</code> are hyphenated,<code>@Transactial</code> can only be located in the same method hierarchy annotated at <code>@GlobalTransaction</code> or within the inner layer of <code>@GlobalTransaction</code> annotation methods.</p>
 <p>Here the concept of distributed transactions is larger than local transactions, annotating <code>@Transactional</code> outside results in a distributed transaction empty submission, a global transaction being submitted when the <code>@Transactional</code> corresponding connection submission is declared or the XID of the global transaction is absent.</p>
 <hr>
 <h3 id='23'>Q: 23.Spring boot 1.5.x appear the Jackson related NoClassDefFoundException?</h3>
