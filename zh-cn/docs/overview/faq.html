@@ -74,6 +74,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <p><a href="#40" target="_self">40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？ </a></p>
 <p><a href="#41" target="_self">41. Oracle使用timestamp字段类型回滚失败？ </a></p>
 <p><a href="#42" target="_self">42. 抛出异常后事务未回滚？ </a></p>
+<p><a href="#43" target="_self">43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client错误？ </a></p>
 <hr>
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -437,6 +438,31 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <li>如决议结果是回滚,但是rm没注册,可在rm调用端通过Rootcontext.getXid来判断是否有值,如果无值请参考Q24</li>
 <li>如何判断数据源是否代理,如果是AT模式请在ConnectionProxy#registry打上断点,看是否会进入,XA模式ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!</li>
 </ul>
+<hr>
+<h3 id='43'>Q: 43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client的问题？</h3>
+<ul>
+<li>通常Zipkin与Seata整合的时候会出现该问题。</li>
+</ul>
+<p>解决办法：</p>
+<ul>
+<li>若不需要对Feign链路追踪，可以通过Spring Cloud Sleuth提供的属性spring.sleuth.feign.enabled=false来使其关闭。</li>
+<li>若需要同时使用，在启动类加入排除@SpringBootApplication(exclude = {SeataFeignClientAutoConfiguration.class})</li>
+</ul>
+<p>再配置Feign的拦截器</p>
+<pre><code class="language-java"><span class="hljs-meta">@Component</span>
+<span class="hljs-meta">@ConditionalOnClass</span>({RequestInterceptor.class, GlobalTransactional.class})
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SetSeataInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RequestInterceptor</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">apply</span><span class="hljs-params">(RequestTemplate template)</span> </span>{
+ 
+        String currentXid = RootContext.getXID();
+        <span class="hljs-keyword">if</span> (!StringUtils.isEmpty(currentXid)) {
+            template.header(RootContext.KEY_XID, currentXid);
+        }
+    }
+}
+</code></pre>
 <hr>
 </div></section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2022 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
