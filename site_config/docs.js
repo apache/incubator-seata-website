@@ -33,7 +33,20 @@ export default {
                     {
                         title: 'Microservices Framework Supports',
                         link: '/en-us/docs/user/microservice.html',
-                    }
+                    },
+                     {
+                        title: 'SQL Reference',
+                        children: [
+                            {
+                                title: 'SQL Restrictions.',
+                                link: '/en-us/docs/user/sqlreference/sql-restrictions.html',
+                            },
+                            {
+                                title: 'DML',
+                                link: '/en-us/docs/user/sqlreference/dml.html',
+                            },
+                        ]
+                    },
                 ],
             },
             {

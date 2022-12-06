@@ -223,6 +223,24 @@
         "keywords": "Seata",
         "description": "Let's begin with a Microservices example."
       }
+    },
+    {
+      "filename": "dml.md",
+      "link": "/en-us/docs/user/sqlreference/dml.html",
+      "meta": {
+        "title": "DML",
+        "keywords": "Seata",
+        "description": "Seata DML"
+      }
+    },
+    {
+      "filename": "sql-restrictions.md",
+      "link": "/en-us/docs/user/sqlreference/sql-restrictions.html",
+      "meta": {
+        "title": "SQL restrictions",
+        "keywords": "Seata",
+        "description": "Seata SQL restrictions"
+      }
     }
   ],
   "zh-cn": [

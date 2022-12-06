@@ -33,20 +33,20 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">类型</th>
+<th style="text-align:left">类型                                   </th>
 <th style="text-align:left">SQL 实例</th>
-<th style="text-align:left">是否支持</th>
+<th style="text-align:left">是否支持                                                     </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">INSERT</td>
-<td style="text-align:left"><code>INSERT INTO tb1_name (col_name,...) VALUES ({expr | FAULT},...),(...),...</code> 或 <code>INSERT INTO tb1_name SET col_name={expr | DEFAULT}, ...</code>或<code>INSERT INTO tb1_name (col_name,...) VALUES ({expr | FAULT},...) ON DUPLICATE KEY UPDATE field1=value1,...;</code></td>
+<td style="text-align:left"><code>INSERT INTO tb1_name (col_name,...) VALUES ({expr \| FAULT},...),(...),...</code>或 <code>INSERT INTO tb1_name SET col_name={expr \| DEFAULT}, ...</code> 或<code>INSERT INTO tb1_name (col_name,...) VALUES ({expr \| FAULT},...) ON DUPLICATE KEY UPDATE field1=value1,...;</code></td>
 <td style="text-align:left">是</td>
 </tr>
 <tr>
 <td style="text-align:left">UPDATE</td>
-<td style="text-align:left"><code>UPDATE tb1_nameSET col_name1=expr1 [, col_name2=expr2 ...][WHERE where_definition]</code></td>
+<td style="text-align:left"><code>UPDATE tb1_name SET col_name1=expr1 [, col_name2=expr2 ...][WHERE where_definition]</code></td>
 <td style="text-align:left">是</td>
 </tr>
 <tr>
@@ -56,18 +56,23 @@
 </tr>
 <tr>
 <td style="text-align:left">SELECT</td>
-<td style="text-align:left"><code>SELECT [ALL | DISTINCT | DISTINCTROW ]select_expr, ... FROM tb1_name[WHERE where_definition]</code></td>
+<td style="text-align:left"><code>SELECT [ALL \| DISTINCT \| DISTINCTROW ]select_expr, ... FROM tb1_name[WHERE where_definition]</code></td>
 <td style="text-align:left">是</td>
 </tr>
 <tr>
 <td style="text-align:left">REPLACE</td>
-<td style="text-align:left"><code>REPLACE [LOW_PRIORITY | DELAYED][INTO] tb1_name [(col_name,...)]VALUES ({expr | DEFAULT},...),(...),...</code>或<code>REPLACE [LOW_PRIORITY | DELAYED][INTO] tb1_nameSET col_name={expr | DEFAULT}, ...</code></td>
+<td style="text-align:left"><code>REPLACE [LOW_PRIORITY \| DELAYED][INTO] tb1_name [(col_name,...)]VALUES ({expr \| DEFAULT},...),(...),...</code>或<code>REPLACE [LOW_PRIORITY \| DELAYED][INTO] tb1_nameSET col_name={expr \| DEFAULT}, ...</code></td>
 <td style="text-align:left">否</td>
 </tr>
 <tr>
 <td style="text-align:left">TRUNCATE</td>
 <td style="text-align:left"><code>TRUNCATE [TABLE] tb1_name</code></td>
 <td style="text-align:left">否</td>
+</tr>
+<tr>
+<td style="text-align:left">UPDATE JOIN</td>
+<td style="text-align:left"><code>UPDATE tb1_name tb1 JOIN tb2_name tb2 ON tb2.col_name=tb1.col_name SET tb1.col_name1=expr1 [, tb1.col_name2=expr2 ...][ [WHERE where_definition]</code></td>
+<td style="text-align:left">是 since 1.6.0</td>
 </tr>
 </tbody>
 </table>
