@@ -93,6 +93,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#42" target="_self">42. 抛出异常后事务未回滚？ </a>
 
+<a href="#43" target="_self">43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client错误？ </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -605,4 +607,30 @@ seata.client.undo.logSerialization=kryo
  - 如决议结果是回滚,但是rm没注册,可在rm调用端通过Rootcontext.getXid来判断是否有值,如果无值请参考Q24
  - 如何判断数据源是否代理,如果是AT模式请在ConnectionProxy#registry打上断点,看是否会进入,XA模式ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!
 
+****
+
+<h3 id='43'>Q: 43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client的问题？</h3>
+
+ - 通常Zipkin与Seata整合的时候会出现该问题。
+
+解决办法：
+- 若不需要对Feign链路追踪，可以通过Spring Cloud Sleuth提供的属性spring.sleuth.feign.enabled=false来使其关闭。
+- 若需要同时使用，在启动类加入排除@SpringBootApplication(exclude = {SeataFeignClientAutoConfiguration.class})
+
+再配置Feign的拦截器
+```java
+@Component
+@ConditionalOnClass({RequestInterceptor.class, GlobalTransactional.class})
+public class SetSeataInterceptor implements RequestInterceptor {
+
+    @Override
+    public void apply(RequestTemplate template) {
+ 
+        String currentXid = RootContext.getXID();
+        if (!StringUtils.isEmpty(currentXid)) {
+            template.header(RootContext.KEY_XID, currentXid);
+        }
+    }
+}
+```
 ****
