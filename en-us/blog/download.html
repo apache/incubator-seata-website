@@ -34,15 +34,158 @@
 <p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a> <br>
 Release Notes: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.6.0 (2022-12-17)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.6.0.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.6.0/seata-server-1.6.0.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.6.0</h3>
+<p>Seata 1.6.0 Released.</p>
+<p>Seata is an easy-to-use, high-performance, open source distributed transaction solution.</p>
+<p>The version is updated as follows:</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4863">#4863</a>] support oracle and postgresql multi primary key</li>
+<li>[<a href="https://github.com/seata/seata/pull/4649">#4649</a>] seata-server support multiple registry</li>
+<li>[<a href="https://github.com/seata/seata/pull/4779">#4779</a>] support Apache Dubbo3</li>
+<li>[<a href="https://github.com/seata/seata/pull/4479">#4479</a>] TCC mode supports tcc annotation marked on both interface and implementation class</li>
+<li>[<a href="https://github.com/seata/seata/pull/4877">#4877</a>] seata client support jdk17</li>
+<li>[<a href="https://github.com/seata/seata/pull/4914">#4914</a>] support mysql update join sql</li>
+<li>[<a href="https://github.com/seata/seata/pull/4542">#4542</a>] support oracle timestamp types</li>
+<li>[<a href="https://github.com/seata/seata/pull/5111">#5111</a>] support Nacos contextPath</li>
+<li>[<a href="https://github.com/seata/seata/pull/4802">#4802</a>] dockerfile support arm64</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4780">#4780</a>] fix can't post TimeoutRollbacked event after a successful timeout rollback</li>
+<li>[<a href="https://github.com/seata/seata/pull/4954">#4954</a>] fix output expression incorrectly throws npe</li>
+<li>[<a href="https://github.com/seata/seata/pull/4817">#4817</a>] fix in high version springboot property not Standard</li>
+<li>[<a href="https://github.com/seata/seata/pull/4838">#4838</a>] fix when use Statement.executeBatch() can not generate undo log</li>
+<li>[<a href="https://github.com/seata/seata/pull/4533">#4533</a>] fix rollback event repeated and some event status not correct</li>
+<li>[<a href="https://github.com/seata/seata/pull/4912">#4912</a>] fix mysql InsertOnDuplicateUpdate column case is different and cannot be matched</li>
+<li>[<a href="https://github.com/seata/seata/pull/4543">#4543</a>] fix support Oracle nclob types</li>
+<li>[<a href="https://github.com/seata/seata/pull/4915">#4915</a>] fix failed to get server recovery properties</li>
+<li>[<a href="https://github.com/seata/seata/pull/4919">#4919</a>] fix XID port  and  address null:0 before coordinator.init</li>
+<li>[<a href="https://github.com/seata/seata/pull/4928">#4928</a>] fix rpcContext.getClientRMHolderMap NPE</li>
+<li>[<a href="https://github.com/seata/seata/pull/4953">#4953</a>] fix InsertOnDuplicateUpdate bypass modify pk</li>
+<li>[<a href="https://github.com/seata/seata/pull/4978">#4978</a>] fix kryo support circular reference</li>
+<li>[<a href="https://github.com/seata/seata/pull/4874">#4874</a>] fix startup failure by using OpenJDK 11</li>
+<li>[<a href="https://github.com/seata/seata/pull/5018">#5018</a>] fix loader path in startup scripts</li>
+<li>[<a href="https://github.com/seata/seata/pull/5004">#5004</a>] fix duplicate image row for update join</li>
+<li>[<a href="https://github.com/seata/seata/pull/5032">#5032</a>] fix mysql InsertOnDuplicateUpdate sql query error caused by placeholder index calculation error</li>
+<li>[<a href="https://github.com/seata/seata/pull/5033">#5033</a>] fix null exception when sql columns is empty for insert on duplicate</li>
+<li>[<a href="https://github.com/seata/seata/pull/5038">#5038</a>] remove @EnableConfigurationProperties({SagaAsyncThreadPoolProperties.class})</li>
+<li>[<a href="https://github.com/seata/seata/pull/5050">#5050</a>] fix global session is not change to Committed in saga mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/5052">#5052</a>] fix update join condition placeholder param error</li>
+<li>[<a href="https://github.com/seata/seata/pull/5031">#5031</a>] fix mysql InsertOnDuplicateUpdate should not use null index value as image sql query condition</li>
+<li>[<a href="https://github.com/seata/seata/pull/5075">#5075</a>] fix InsertOnDuplicateUpdateExecutor could not intercept the sql which has no primary and unique key</li>
+<li>[<a href="https://github.com/seata/seata/pull/5093">#5093</a>] fix access key loss after seata server restart</li>
+<li>[<a href="https://github.com/seata/seata/pull/5092">#5092</a>] fix when seata and jpa are used together, their AutoConfiguration order is incorrect</li>
+<li>[<a href="https://github.com/seata/seata/pull/5109">#5109</a>] fix NPE caused when there is no @GlobalTransactional annotation on the RM side</li>
+<li>[<a href="https://github.com/seata/seata/pull/5098">#5098</a>] Druid disable oracle implicit cache</li>
+<li>[<a href="https://github.com/seata/seata/pull/4860">#4860</a>] fix metrics tags coverage in the seata-server side</li>
+<li>[<a href="https://github.com/seata/seata/pull/5028">#5028</a>] fix insert value null parsed as string in insert on duplicate SQL</li>
+<li>[<a href="https://github.com/seata/seata/pull/5078">#5078</a>] fix could not intercept the sql witch has no primary and unique key</li>
+<li>[<a href="https://github.com/seata/seata/pull/5097">#5097</a>] fix access key loss after server restart</li>
+<li>[<a href="https://github.com/seata/seata/pull/5131">#5131</a>] fix rollback xa connection active state</li>
+<li>[<a href="https://github.com/seata/seata/pull/5134">#5134</a>] fix hikari datasource auto proxy fail</li>
+<li>[<a href="https://github.com/seata/seata/pull/5163">#5163</a>] fix bad service configuration file and compilation failure</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4774">#4774</a>] optimize mysql8 dependencies for seataio/seata-server image</li>
+<li>[<a href="https://github.com/seata/seata/pull/4790">#4790</a>] Add a github action to publish Seata to OSSRH</li>
+<li>[<a href="https://github.com/seata/seata/pull/4765">#4765</a>] mysql 8.0.29 not should be hold for connection</li>
+<li>[<a href="https://github.com/seata/seata/pull/4750">#4750</a>] optimize unBranchLock romove xid</li>
+<li>[<a href="https://github.com/seata/seata/pull/4797">#4797</a>] optimize the github actions</li>
+<li>[<a href="https://github.com/seata/seata/pull/4800">#4800</a>] Add NOTICE as Apache License V2</li>
+<li>[<a href="https://github.com/seata/seata/pull/4681">#4681</a>] optimize the check lock during global transaction</li>
+<li>[<a href="https://github.com/seata/seata/pull/4761">#4761</a>] use hget replace hmget because only one field</li>
+<li>[<a href="https://github.com/seata/seata/pull/4414">#4414</a>] exclude log4j dependencies</li>
+<li>[<a href="https://github.com/seata/seata/pull/4836">#4836</a>] optimize BaseTransactionalExecutor#buildLockKey(TableRecords rowsIncludingPK) method more readable</li>
+<li>[<a href="https://github.com/seata/seata/pull/4865">#4865</a>] fix some security vulnerabilities in GGEditor</li>
+<li>[<a href="https://github.com/seata/seata/pull/4590">#4590</a>] auto degrade enable to dynamic configure</li>
+<li>[<a href="https://github.com/seata/seata/pull/4490">#4490</a>] tccfence log table delete by index</li>
+<li>[<a href="https://github.com/seata/seata/pull/4911">#4911</a>] add license checker workflow</li>
+<li>[<a href="https://github.com/seata/seata/pull/4917">#4917</a>] upgrade package-lock.json fix vulnerabilities</li>
+<li>[<a href="https://github.com/seata/seata/pull/4924">#4924</a>] optimize pom dependencies</li>
+<li>[<a href="https://github.com/seata/seata/pull/4932">#4932</a>] extract the default values for some properties</li>
+<li>[<a href="https://github.com/seata/seata/pull/4925">#4925</a>] optimize java doc warning</li>
+<li>[<a href="https://github.com/seata/seata/pull/4921">#4921</a>] fix some vulnerabilities in console and upgrade skywalking-eyes</li>
+<li>[<a href="https://github.com/seata/seata/pull/4936">#4936</a>] optimize read of storage configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/4946">#4946</a>] pass the sqlexception to client when get lock</li>
+<li>[<a href="https://github.com/seata/seata/pull/4962">#4962</a>] optimize build and fix the base image</li>
+<li>[<a href="https://github.com/seata/seata/pull/4974">#4974</a>] optimize cancel the limit on the number of globalStatus queries in Redis mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/4981">#4981</a>] optimize tcc fence record not exists errMessage</li>
+<li>[<a href="https://github.com/seata/seata/pull/4985">#4985</a>] fix undo_log id repeat</li>
+<li>[<a href="https://github.com/seata/seata/pull/4995">#4995</a>] fix mysql InsertOnDuplicateUpdate duplicate pk condition in after image query sql</li>
+<li>[<a href="https://github.com/seata/seata/pull/5047">#5047</a>] remove useless code</li>
+<li>[<a href="https://github.com/seata/seata/pull/5051">#5051</a>] undo log dirty throw BranchRollbackFailed_Unretriable</li>
+<li>[<a href="https://github.com/seata/seata/pull/5075">#5075</a>] intercept the InsertOnDuplicateUpdate statement which has no primary key and unique index value</li>
+<li>[<a href="https://github.com/seata/seata/pull/5104">#5104</a>] remove the druid dependency in ConnectionProxy</li>
+<li>[<a href="https://github.com/seata/seata/pull/5124">#5124</a>] support oracle on delete tccfence logs</li>
+<li>[<a href="https://github.com/seata/seata/pull/4968">#4468</a>] support kryo 5.3.0</li>
+<li>[<a href="https://github.com/seata/seata/pull/4807">#4807</a>] optimize docker image and oss publish</li>
+<li>[<a href="https://github.com/seata/seata/pull/4445">#4445</a>] optimize transaction timeout judgment</li>
+<li>[<a href="https://github.com/seata/seata/pull/4958">#4958</a>] do not execute triggerAfterCommit() if timeout</li>
+<li>[<a href="https://github.com/seata/seata/pull/4582">#4582</a>] redis mode support sorted set by timeout</li>
+<li>[<a href="https://github.com/seata/seata/pull/4963">#4963</a>] add ARM64 CI workflow</li>
+<li>[<a href="https://github.com/seata/seata/pull/4434">#4434</a>] remove seata-server's CMS parameters</li>
+</ul>
+<h3>test:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4411">#4411</a>] add UT for oracle in AT mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/4794">#4794</a>] try to fix the test <code>DataSourceProxyTest.getResourceIdTest()</code></li>
+<li>[<a href="https://github.com/seata/seata/pull/5101">#5101</a>] fix ClassNotFoundException during the zk unit test</li>
+</ul>
+<p>Thanks to these contributors for their code commits. Please report an unintended omission.</p>
+<!-- Please make sure your Github ID is in the list below -->
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/renliangyu857">renliangyu857</a></li>
+<li><a href="https://github.com/wangliang181230">wangliang181230</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/tuwenlin">tuwenlin</a></li>
+<li><a href="https://github.com/lcmvs">lcmvs</a></li>
+<li><a href="https://github.com/AlexStocks">AlexStocks</a></li>
+<li><a href="https://github.com/liujunlin5168">liujunlin5168</a></li>
+<li><a href="https://github.com/pengten">pengten</a></li>
+<li><a href="https://github.com/liuqiufeng">liuqiufeng</a></li>
+<li><a href="https://github.com/yujianfei1986">yujianfei1986</a></li>
+<li><a href="https://github.com/Bughue">Bughue</a></li>
+<li><a href="https://github.com/AlbumenJ">AlbumenJ</a></li>
+<li><a href="https://github.com/doubleDimple">doubleDimple</a></li>
+<li><a href="https://github.com/jsbxyyx">jsbxyyx</a></li>
+<li><a href="https://github.com/tuwenlin">tuwenlin</a></li>
+<li><a href="https://github.com/JavaLionLi">CrazyLionLi</a></li>
+<li><a href="https://github.com/whxxxxx">whxxxxx</a></li>
+<li><a href="https://github.com/neillee95">neillee95</a></li>
+<li><a href="https://github.com/crazy-sheep">crazy-sheep</a></li>
+<li><a href="https://github.com/zhangzq7">zhangzq7</a></li>
+<li><a href="https://github.com/l81893521">l81893521</a></li>
+<li><a href="https://github.com/zhuyoufeng">zhuyoufeng</a></li>
+<li><a href="https://github.com/xingfudeshi">xingfudeshi</a></li>
+<li><a href="https://github.com/odidev">odidev</a></li>
+<li><a href="https://github.com/miaoxueyu">miaoxueyu</a></li>
+</ul>
+<p>Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.5.2 (2022-07-12)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.5.2.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.5.2/seata-server-1.5.2.zip">binary</a></p>
 <details>
   <summary><mark>Release notes</mark></summary>
 <h3>Seata 1.5.2</h3>
-<p>Seata 1.5.2 发布。</p>
-<p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
-<p>此版本更新如下：</p>
+<p>Seata 1.5.2 Released.</p>
+<p>Seata is an easy-to-use, high-performance, open source distributed transaction solution.</p>
+<p>The version is updated as follows:</p>
 <h3>feature：</h3>
 <ul>
 <li>[<a href="https://github.com/seata/seata/pull/4713">#4661</a>] support xid load balance</li>
