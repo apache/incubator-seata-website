@@ -12,6 +12,8 @@ description: Seata 参数配置 0.9.0版本。
 |---------------|--------------|----|
 | transport.serialization            | client和server通信编解码方式   |seata、protobuf |
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
+| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | 1.6.0版本Sever端支持可同时注册到多个注册中心,以逗号分隔 |
+| config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3、springcloud、custom |
 
 
 ### server端
@@ -28,6 +30,11 @@ description: Seata 参数配置 0.9.0版本。
 | recovery.timeout-retry-period         | 超时状态检测重试线程间隔时间 |默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器    |
 | store.mode         |事务会话信息存储方式 |file本地文件(不支持HA)，db数据库(支持HA)    |
 | store.file.dir         |file模式文件存储文件夹名 |默认sessionStore    |
+| store.file.maxBranchSessionSize | file模式文件存储分支session最大字节数 | 默认16384(16kb),单位byte | 
+| store.file.maxGlobalSessionSize | file模式文件存储全局session最大字节数 | 默认512b，单位byte |
+| store.file.fileWriteBufferCacheSize | file模式文件存储buffer最大缓存大小 | 默认16384(16kb)，单位byte,写入session等数据量大于该值时会抛出异常 |
+| store.file.flushDiskMode | file模式文件存储刷盘策略 | 默认async，可选sync |
+| store.file.sessionReloadReadSize | file模式文件存储Server节点重启后从备份文件中恢复的session或lock key上限个数 | 默认100 |
 | store.db.datasource    |db模式数据源类型 |默认dbcp    |
 | store.db.db-type    |db模式数据库类型 |默认mysql    |
 | store.db.driver-class-name    |db模式数据库驱动 |默认com.mysql.jdbc.Driver    |
