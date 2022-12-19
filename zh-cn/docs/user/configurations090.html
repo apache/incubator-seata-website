@@ -49,6 +49,16 @@
 <td>client和server通信心跳检测开关</td>
 <td>默认true开启</td>
 </tr>
+<tr>
+<td>registry.type</td>
+<td>注册中心类型</td>
+<td>默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom</td>
+</tr>
+<tr>
+<td>config.type</td>
+<td>配置中心类型</td>
+<td>默认file，支持file、nacos 、apollo、zk、consul、etcd3、springcloud、custom</td>
+</tr>
 </tbody>
 </table>
 <h3>server端</h3>
@@ -110,6 +120,31 @@
 <td>store.file.dir</td>
 <td>file模式文件存储文件夹名</td>
 <td>默认sessionStore</td>
+</tr>
+<tr>
+<td>store.file.maxBranchSessionSize</td>
+<td>file模式文件存储分支session最大字节数</td>
+<td>默认16384(16kb),单位byte</td>
+</tr>
+<tr>
+<td>store.file.maxGlobalSessionSize</td>
+<td>file模式文件存储全局session最大字节数</td>
+<td>默认512b，单位byte</td>
+</tr>
+<tr>
+<td>store.file.fileWriteBufferCacheSize</td>
+<td>file模式文件存储buffer最大缓存大小</td>
+<td>默认16384(16kb)，单位byte,写入session等数据量大于该值时会抛出异常</td>
+</tr>
+<tr>
+<td>store.file.flushDiskMode</td>
+<td>file模式文件存储刷盘策略</td>
+<td>默认async，可选sync</td>
+</tr>
+<tr>
+<td>store.file.sessionReloadReadSize</td>
+<td>file模式文件存储Server节点重启后从备份文件中恢复的session或lock key上限个数</td>
+<td>默认100</td>
 </tr>
 <tr>
 <td>store.db.datasource</td>

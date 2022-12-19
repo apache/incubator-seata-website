@@ -207,6 +207,33 @@
       }
     },
     {
+      "filename": "configurations.md",
+      "link": "/en-us/docs/user/configurations.html",
+      "meta": {
+        "Title": "Seata parameter configuration",
+        "keywords": "Seata",
+        "Description": "Seata parameter configuration."
+      }
+    },
+    {
+      "filename": "configurations090.md",
+      "link": "/en-us/docs/user/configurations090.html",
+      "meta": {
+        "Title": "Seata parameter configuration version 0.9.0",
+        "keywords": "Seata",
+        "Description": "The seata parameter configuration version is 0.9.0."
+      }
+    },
+    {
+      "filename": "configurations100.md",
+      "link": "/en-us/docs/user/configurations100.html",
+      "meta": {
+        "Title": "Seata parameter configuration",
+        "keywords": "Seata",
+        "Description": "Seata parameter configuration."
+      }
+    },
+    {
       "filename": "microservice.md",
       "link": "/en-us/docs/user/microservice.html",
       "meta": {
