@@ -23,7 +23,7 @@ description: This article will introduce you how to understand the details of ea
 
 ### Seata 1.6.0
 
-Seata 1.6.0 Released.
+Seata 1.6.0 Released
 
 Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
