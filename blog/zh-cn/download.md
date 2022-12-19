@@ -12,6 +12,160 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 > GitHub: https://github.com/seata/seata 
 > 发布说明: https://github.com/seata/seata/releases
 
+### 1.6.0 (2022-12-17)
+
+[source](https://github.com/seata/seata/archive/v1.6.0.zip) |
+[binary](https://github.com/seata/seata/releases/download/v1.6.0/seata-server-1.6.0.zip)
+
+<details>
+  <summary><mark>Release notes</mark></summary>
+
+
+### Seata 1.6.0
+
+Seata 1.6.0 发布。
+
+Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
+
+此版本更新如下：
+
+### feature：
+- [[#4863](https://github.com/seata/seata/pull/4863)] 支持 oracle 和 postgresql 多主键
+- [[#4649](https://github.com/seata/seata/pull/4649)] seata-server支持多注册中心
+- [[#4779](https://github.com/seata/seata/pull/4779)] 支持 Apache Dubbo3
+- [[#4479](https://github.com/seata/seata/pull/4479)] TCC注解支持添加在接口和实现类上
+- [[#4877](https://github.com/seata/seata/pull/4877)] client sdk 支持jdk17
+- [[#4914](https://github.com/seata/seata/pull/4914)] 支持 mysql 的update join联表更新语法
+- [[#4542](https://github.com/seata/seata/pull/4542)] 支持 oracle timestamp 类型
+- [[#5111](https://github.com/seata/seata/pull/5111)] 支持Nacos contextPath 配置
+- [[#4802](https://github.com/seata/seata/pull/4802)] dockerfile 支持 arm64
+
+
+### bugfix：
+- [[#4780](https://github.com/seata/seata/pull/4780)] 修复超时回滚成功后无法发送TimeoutRollbacked事件
+- [[#4954](https://github.com/seata/seata/pull/4954)] 修复output表达式错误时，保存执行结果空指针异常
+- [[#4817](https://github.com/seata/seata/pull/4817)] 修复高版本springboot配置不标准的问题
+- [[#4838](https://github.com/seata/seata/pull/4838)] 修复使用 Statement.executeBatch() 时无法生成undo log 的问题
+- [[#4533](https://github.com/seata/seata/pull/4533)] 修复handleRetryRollbacking的event重复导致的指标数据不准确
+- [[#4912](https://github.com/seata/seata/pull/4912)] 修复mysql InsertOnDuplicateUpdate 列名大小写不一致无法正确匹配
+- [[#4543](https://github.com/seata/seata/pull/4543)] 修复对 Oracle 数据类型nclob的支持
+- [[#4915](https://github.com/seata/seata/pull/4915)] 修复获取不到ServerRecoveryProperties属性的问题
+- [[#4919](https://github.com/seata/seata/pull/4919)] 修复XID的port和address出现null:0的情况
+- [[#4928](https://github.com/seata/seata/pull/4928)] 修复 rpcContext.getClientRMHolderMap NPE 问题
+- [[#4953](https://github.com/seata/seata/pull/4953)] 修复InsertOnDuplicateUpdate可绕过修改主键的问题
+- [[#4978](https://github.com/seata/seata/pull/4978)] 修复 kryo 支持循环依赖
+- [[#4985](https://github.com/seata/seata/pull/4985)] 修复 undo_log id重复的问题
+- [[#4874](https://github.com/seata/seata/pull/4874)] 修复OpenJDK 11 启动失败
+- [[#5018](https://github.com/seata/seata/pull/5018)] 修复启动脚本中 loader path 使用相对路径导致 server 启动失败问题
+- [[#5004](https://github.com/seata/seata/pull/5004)] 修复mysql update join行数据重复的问题
+- [[#5032](https://github.com/seata/seata/pull/5032)] 修复mysql InsertOnDuplicateUpdate中条件参数填充位置计算错误导致的镜像查询SQL语句异常问题
+- [[#5033](https://github.com/seata/seata/pull/5033)] 修复InsertOnDuplicateUpdate的SQL语句中无插入列字段导致的空指针问题
+- [[#5038](https://github.com/seata/seata/pull/5038)] 修复SagaAsyncThreadPoolProperties冲突问题
+- [[#5050](https://github.com/seata/seata/pull/5050)] 修复Saga模式下全局状态未正确更改成Committed问题
+- [[#5052](https://github.com/seata/seata/pull/5052)] 修复update join条件中占位符参数问题
+- [[#5031](https://github.com/seata/seata/pull/5031)] 修复InsertOnDuplicateUpdate中不应该使用null值索引作为查询条件
+- [[#5075](https://github.com/seata/seata/pull/5075)] 修复InsertOnDuplicateUpdate无法拦截无主键和唯一索引的SQL
+- [[#5093](https://github.com/seata/seata/pull/5093)] 修复seata server重启后accessKey丢失问题
+- [[#5092](https://github.com/seata/seata/pull/5092)] 修复当seata and jpa共同使用时, AutoConfiguration的顺序不正确的问题
+- [[#5109](https://github.com/seata/seata/pull/5109)] 修复当RM侧没有加@GlobalTransactional报NPE的问题
+- [[#5098](https://github.com/seata/seata/pull/5098)] Druid 禁用 oracle implicit cache
+- [[#4860](https://github.com/seata/seata/pull/4860)] 修复metrics tag覆盖问题
+- [[#5028](https://github.com/seata/seata/pull/5028)] 修复 insert on duplicate SQL中 null 值问题
+- [[#5078](https://github.com/seata/seata/pull/5078)] 修复SQL语句中无主键和唯一键拦截问题
+- [[#5097](https://github.com/seata/seata/pull/5097)] 修复当Server重启时 accessKey 丢失问题
+- [[#5131](https://github.com/seata/seata/pull/5131)] 修复XAConn处于active状态时无法回滚的问题
+- [[#5134](https://github.com/seata/seata/pull/5134)] 修复hikariDataSource 自动代理在某些情况下失效的问题
+- [[#5163](https://github.com/seata/seata/pull/5163)] 修复高版本JDK编译失败的问题
+
+### optimize：
+- [[#4681](https://github.com/seata/seata/pull/4681)] 优化竞争锁过程
+- [[#4774](https://github.com/seata/seata/pull/4774)] 优化 seataio/seata-server 镜像中的 mysql8 依赖
+- [[#4750](https://github.com/seata/seata/pull/4750)] 优化AT分支释放全局锁不使用xid
+- [[#4790](https://github.com/seata/seata/pull/4790)] 添加自动发布 OSSRH github action
+- [[#4765](https://github.com/seata/seata/pull/4765)] mysql8.0.29版本及以上XA模式不持connection至二阶段
+- [[#4797](https://github.com/seata/seata/pull/4797)] 优化所有github actions脚本
+- [[#4800](https://github.com/seata/seata/pull/4800)] 添加 NOTICE 文件
+- [[#4761](https://github.com/seata/seata/pull/4761)] 使用 hget 代替 RedisLocker 中的 hmget
+- [[#4414](https://github.com/seata/seata/pull/4414)] 移除log4j依赖
+- [[#4836](https://github.com/seata/seata/pull/4836)] 优化 BaseTransactionalExecutor#buildLockKey(TableRecords rowsIncludingPK) 方法可读性
+- [[#4865](https://github.com/seata/seata/pull/4865)] 修复 Saga 可视化设计器 GGEditor 安全漏洞
+- [[#4590](https://github.com/seata/seata/pull/4590)] 自动降级支持开关支持动态配置
+- [[#4490](https://github.com/seata/seata/pull/4490)] tccfence 记录表优化成按索引删除
+- [[#4911](https://github.com/seata/seata/pull/4911)] 添加 header 和license 检测
+- [[#4917](https://github.com/seata/seata/pull/4917)] 升级 package-lock.json 修复漏洞
+- [[#4924](https://github.com/seata/seata/pull/4924)] 优化 pom 依赖
+- [[#4932](https://github.com/seata/seata/pull/4932)] 抽取部分配置的默认值
+- [[#4925](https://github.com/seata/seata/pull/4925)] 优化 javadoc 注释
+- [[#4921](https://github.com/seata/seata/pull/4921)] 修复控制台模块安全漏洞和升级 skywalking-eyes 版本
+- [[#4936](https://github.com/seata/seata/pull/4936)] 优化存储配置的读取
+- [[#4946](https://github.com/seata/seata/pull/4946)] 将获取锁时遇到的sql异常传递给客户端
+- [[#4962](https://github.com/seata/seata/pull/4962)] 优化构建配置，并修正docker镜像的基础镜像
+- [[#4974](https://github.com/seata/seata/pull/4974)] 取消redis模式下,查询globalStatus数量的限制
+- [[#4981](https://github.com/seata/seata/pull/4981)] 优化当tcc fence记录查不到时的错误提示
+- [[#4995](https://github.com/seata/seata/pull/4995)] 修复mysql InsertOnDuplicateUpdate后置镜像查询SQL中重复的主键查询条件
+- [[#5047](https://github.com/seata/seata/pull/5047)] 移除无用代码
+- [[#5051](https://github.com/seata/seata/pull/5051)] 回滚时undolog产生脏写需要抛出不再重试(BranchRollbackFailed_Unretriable)的异常
+- [[#5075](https://github.com/seata/seata/pull/5075)] 拦截没有主键及唯一索引值的insert on duplicate update语句
+- [[#5104](https://github.com/seata/seata/pull/5104)] ConnectionProxy脱离对druid的依赖
+- [[#5124](https://github.com/seata/seata/pull/5124)] 支持oracle删除TCC fence记录表
+- [[#4468](https://github.com/seata/seata/pull/4968)] 支持kryo 5.3.0
+- [[#4807](https://github.com/seata/seata/pull/4807)] 优化镜像和OSS仓库发布流水线
+- [[#4445](https://github.com/seata/seata/pull/4445)] 优化事务超时判断
+- [[#4958](https://github.com/seata/seata/pull/4958)] 优化超时事务 triggerAfterCommit() 的执行
+- [[#4582](https://github.com/seata/seata/pull/4582)] 优化redis存储模式的事务排序
+- [[#4963](https://github.com/seata/seata/pull/4963)] 增加 ARM64 流水线 CI 测试
+- [[#4434](https://github.com/seata/seata/pull/4434)] 移除 seata-server CMS GC 参数
+
+
+### test：
+- [[#4411](https://github.com/seata/seata/pull/4411)] 测试Oracle数据库AT模式下类型支持
+- [[#4794](https://github.com/seata/seata/pull/4794)] 重构代码，尝试修复单元测试 `DataSourceProxyTest.getResourceIdTest()`
+- [[#5101](https://github.com/seata/seata/pull/5101)] 修复zk注册和配置中心报ClassNotFoundException的问题 `DataSourceProxyTest.getResourceIdTest()`
+
+
+非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
+
+<!-- 请确保您的 GitHub ID 在以下列表中 -->
+- [slievrly](https://github.com/slievrly)
+- [renliangyu857](https://github.com/renliangyu857)
+- [wangliang181230](https://github.com/wangliang181230)
+- [a364176773](https://github.com/a364176773)
+- [tuwenlin](https://github.com/tuwenlin)
+- [lcmvs](https://github.com/lcmvs)
+- [AlexStocks](https://github.com/AlexStocks)
+- [liujunlin5168](https://github.com/liujunlin5168)
+- [pengten](https://github.com/pengten)
+- [YSF-A](https://github.com/YSF-A)
+- [doubleDimple](https://github.com/doubleDimple)
+- [liuqiufeng](https://github.com/liuqiufeng)
+- [yujianfei1986](https://github.com/yujianfei1986)
+- [Bughue](https://github.com/Bughue)
+- [AlbumenJ](https://github.com/AlbumenJ)
+- [jsbxyyx](https://github.com/jsbxyyx)
+- [tuwenlin](https://github.com/tuwenlin)
+- [CrazyLionLi](https://github.com/JavaLionLi)
+- [whxxxxx](https://github.com/whxxxxx)
+- [neillee95](https://github.com/neillee95)
+- [crazy-sheep](https://github.com/crazy-sheep)
+- [zhangzq7](https://github.com/zhangzq7)
+- [l81893521](https://github.com/l81893521)
+- [zhuyoufeng](https://github.com/zhuyoufeng)
+- [xingfudeshi](https://github.com/xingfudeshi)
+- [odidev](https://github.com/odidev)
+- [miaoxueyu](https://github.com/miaoxueyu)
+
+同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
+
+
+#### Link
+
+- **Seata:** https://github.com/seata/seata
+- **Seata-Samples:** https://github.com/seata/seata-samples
+- **Release:** https://github.com/seata/seata/releases
+- **WebSite:** https://seata.io
+
+</details>
+
 ### 1.5.2 (2022-07-12)
 
 [source](https://github.com/seata/seata/archive/v1.5.2.zip) |
