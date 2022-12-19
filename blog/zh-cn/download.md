@@ -23,7 +23,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 
 ### Seata 1.6.0
 
-Seata 1.6.0 发布。
+Seata 1.6.0 发布
 
 Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
 
@@ -131,16 +131,23 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [wangliang181230](https://github.com/wangliang181230)
 - [a364176773](https://github.com/a364176773)
 - [tuwenlin](https://github.com/tuwenlin)
+- [conghuhu](https://github.com/conghuhu)
+- [a1104321118](https://github.com/a1104321118)
+- [duanqiaoyanyu](https://github.com/duanqiaoyanyu)
+- [robynron](https://github.com/robynron)
 - [lcmvs](https://github.com/lcmvs)
+- [github-ganyu](https://github.com/github-ganyu)
+- [1181954449](https://github.com/1181954449)
+- [zw201913](https://github.com/zw201913)
+- [wingchi-leung](https://github.com/wingchi-leung)
 - [AlexStocks](https://github.com/AlexStocks)
 - [liujunlin5168](https://github.com/liujunlin5168)
 - [pengten](https://github.com/pengten)
-- [YSF-A](https://github.com/YSF-A)
-- [doubleDimple](https://github.com/doubleDimple)
 - [liuqiufeng](https://github.com/liuqiufeng)
 - [yujianfei1986](https://github.com/yujianfei1986)
 - [Bughue](https://github.com/Bughue)
 - [AlbumenJ](https://github.com/AlbumenJ)
+- [doubleDimple](https://github.com/doubleDimple)
 - [jsbxyyx](https://github.com/jsbxyyx)
 - [tuwenlin](https://github.com/tuwenlin)
 - [CrazyLionLi](https://github.com/JavaLionLi)
