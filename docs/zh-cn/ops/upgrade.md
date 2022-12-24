@@ -6,7 +6,7 @@ description: Seata upgrade.
 
 # 版本升级指南
 
-<a href="#7" target="_self">7. 升级到 seata 1.6.0 有哪些兼容性事项是需要注意的？</a>
+<a href="#7" target="_self">7. 升级到 seata 1.6.x 有哪些兼容性事项是需要注意的？</a>
 
 <a href="#6" target="_self">6. 升级到 seata 1.5.0 有哪些兼容性事项是需要注意的？</a>
 
@@ -21,10 +21,10 @@ description: Seata upgrade.
 
 ------
 
-<h3 id='7'>7. 升级到 seata 1.6.0 有哪些兼容性事项是需要注意的？</h3>
+<h3 id='7'>7. 升级到 seata 1.6.x 有哪些兼容性事项是需要注意的？</h3>
 <details>
   <summary><mark>注意事项</mark></summary>
-  从1.5.x 版本升级1.6.0 版本，无论 client SDK 还是 seata-server 都是完全平滑兼容的，无需除升级版本外的其他改动。
+  从1.5.x 版本升级1.6.x 版本，无论 client SDK 还是 seata-server 都是完全平滑兼容的，无需除升级版本外的其他改动。
 </details>
 ------
 
