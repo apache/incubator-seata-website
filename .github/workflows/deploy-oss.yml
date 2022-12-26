@@ -22,6 +22,6 @@ jobs:
         with:
           node-version: 12.x
       - run: npm i @serverless-devs/s -g  --registry=https://registry.npmmirror.com
-      - run: s config add --AccountID ${{secrets.ACCOUNT_ID}}  --AccessKeyID ${{secrets.ACCESS_KEYID}}  --AccessKeySecret ${{secrets.ACCESS_KEYSECRET}} -a higress -f
+      - run: s config add --AccountID ${{secrets.ACCOUNT_ID}}  --AccessKeyID ${{secrets.ACCESS_KEYID}}  --AccessKeySecret ${{secrets.ACCESS_KEYSECRET}} -a seata -f
       - name: Deploy
         run: s deploy --use-local -y
