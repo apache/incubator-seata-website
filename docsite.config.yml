@@ -3,33 +3,33 @@ pages:
  home:
   # 首页配置
   zh-cn:
-   title: 'Seata 官网'
-   keywords: 'Seata,官网,首页'
+   title: 'Seata'
+   keywords: '官网,首页'
    description: 'Seata官网'
   # home config
   en-us:
-   title: 'Seata Official Website'
-   keywords: 'Seata,Official,Home'
+   title: 'Seata'
+   keywords: 'Official,Seata'
    description: 'Seata Official Website'
  community:
   # 社区页配置
   zh-cn:
-   title: 'Seata 社区'
+   title: '社区'
    keywords: 'Seata,社区'
    description: 'Seata社区'
   # community page config
   en-us:
-   title: 'Seata Community'
+   title: 'Community'
    keywords: 'Seata,Community'
    description: 'Seata Community'
  blog:
   # 博客列表页配置
   zh-cn:
-   title: 'Seata 博客'
+   title: '博客'
    keywords: 'Seata,博客'
    description: 'Seata 博客'
   en-us:
    # blog list page config
-   title: 'Seata Blog'
+   title: 'Blog'
    keywords: 'Seata,Blog'
    description: 'Seata Blog'
