@@ -2047,6 +2047,17 @@ h1, h2, h3, h4, h5, h6 {
       .home-page .introduction-section .introduction-body img {
         margin: 0; } }
 
+.home-page .msemap-section .msemap-container h3 {
+  font-family: Avenir-Medium;
+  font-weight: 700;
+  font-size: 36px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px; }
+
+.home-page .msemap-section .msemap-container #mse-arc-container {
+  height: 700px !important; }
+
 .home-page .feature-section {
   background: #F9FAFA; }
   .home-page .feature-section .feature-container {
