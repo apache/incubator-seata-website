@@ -62,9 +62,9 @@ export default {
                 link: '/en-us/docs/developers/developers_dev.html',
             },
             {
-                key: 'SummerCode2022',
-                text: 'SummerCode2022',
-                link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
+                key: 'recruitment',
+                text: 'RECRUITMENT',
+                link: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
             },
             {
                 key: 'blog',
@@ -179,9 +179,9 @@ export default {
                 link: '/zh-cn/docs/developers/developers_dev.html',
             },
             {
-                key: 'SummerCode2022',
-                text: '开源之夏2022',
-                link: 'https://mp.weixin.qq.com/s/q6J-swbdWqZebuSiq2JDWg',
+                key: 'recruitment',
+                text: '团队招聘',
+                link: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
             },
             {
                 key: 'blog',
