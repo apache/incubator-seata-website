@@ -3,7 +3,7 @@ name: seata.io deploy
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   Build-Deploy:
@@ -16,7 +16,7 @@ jobs:
           node-version: 10.x
       - name: Build
         run: |
-          npm install && npm run build && mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ schema/ deploy-dist/ && mv .htaccess *.html deploy-dist/
+          npm install && npm run build && mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ schema/ deploy-dist/ && mv .htaccess *.html *.txt *.xml deploy-dist/
       - name: Use Node.js 12.x
         uses: actions/setup-node@v2
         with:
