@@ -141,14 +141,7 @@ class Home extends Language {
         <section className="msemap-section">
           <div className="msemap-container">
             <h3>微服务全景图</h3>
-            {IS_SAFARI ? (
-              <img
-                src={getLink(mseArcUrl)}
-                style={{ width: "100%", height: "100%" }}
-              />
-            ) : (
-              <div id="mse-arc-container"></div>
-            )}
+            <div id="mse-arc-container"></div>
           </div>
         </section>
         <section className="feature-section">
