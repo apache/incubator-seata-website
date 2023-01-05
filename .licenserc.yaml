@@ -41,6 +41,7 @@ header:
     - '*.ejs'
     - '*.xml'
     - '*.yml'
+    - '*.yaml'
     - '*.map'
     - 'saga_designer/**'
 
