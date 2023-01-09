@@ -10,13 +10,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10.x
-      - name: Build
-        run: |
-          npm install && npm run build && mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ schema/ deploy-dist/ && mv .htaccess *.html *.txt *.xml deploy-dist/
       - name: Use Node.js 12.x
         uses: actions/setup-node@v2
         with:
