@@ -51,11 +51,6 @@ class Home extends Language {
     const dataSource = homeConfig[language];
     const { headerType } = this.state;
     const headerLogo = headerType === 'primary' ? '//img.alicdn.com/tfs/TB1qTjWw.T1gK0jSZFhXXaAtVXa-4802-1285.png' : '//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png';
-    const mseArcUrl =
-    "//img.alicdn.com/imgextra/i2/O1CN01mFrO8X1EYIZp0DMnv_!!6000000000363-2-tps-2880-1512.png";
-    const IS_SAFARI =
-    /Safari/.test(navigator.userAgent) &&
-    /Apple Computer/.test(navigator.vendor);
     return (
       <div className="home-page">
         <section className="top-section">
