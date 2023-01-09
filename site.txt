@@ -6,7 +6,9 @@ https://seata.io/zh-cn/docs/user/quickstart.html
 https://seata.io/zh-cn/docs/user/saga.html
 https://seata.io/zh-cn/docs/user/configurations.html
 https://seata.io/zh-cn/docs/user/configurations090.html
-https://seata.io/zh-cn/docs/user/transaction-group.html
+https://seata.io/zh-cn/docs/user/txgroup/transaction-group.html
+https://seata.io/zh-cn/docs/user/txgroup/transaction-group-and-ha.html
+https://seata.io/zh-cn/docs/user/appendix/global-transaction-status.html
 https://seata.io/zh-cn/docs/user/spring.html
 https://seata.io/zh-cn/docs/user/api.html
 https://seata.io/zh-cn/docs/user/microservice.html
