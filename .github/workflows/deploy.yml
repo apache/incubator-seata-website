@@ -3,7 +3,10 @@ name: seata.io deploy
 on:
   push:
     branches:
-    - develop
+      - develop
+  #This schedule only takes effect in the default branch
+  schedule:
+    - cron: '0 */12 * * *'
 
 jobs:
   Build-Deploy:
