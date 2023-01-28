@@ -1,4 +1,4 @@
-name: seata.io deploy
+name: seata.io deploy on oss
 
 on:
   push:
