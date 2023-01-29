@@ -21,3 +21,10 @@ jobs:
       - run: s config add --AccountID ${{secrets.ACCOUNT_ID}}  --AccessKeyID ${{secrets.ACCESS_KEYID}}  --AccessKeySecret ${{secrets.ACCESS_KEYSECRET}} -a seata -f
       - name: Deploy
         run: s deploy --use-local -y
+      - name: Update Cache-Control
+        uses: doggycool/ossutil-github-action@master
+        with:
+          ossArgs: 'set-meta oss://seata-website-cn-hongkong/ Cache-Control:no-cache -rf'
+          accessKey: ${{ secrets.ACCESS_KEYID }}
+          accessSecret: ${{ secrets.ACCESS_KEYSECRET }}
+          endpoint: oss-cn-hongkong.aliyuncs.com
