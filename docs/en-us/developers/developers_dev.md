@@ -16,32 +16,32 @@ This page shows Seata developers and continues to expand. The list is not priori
 
 # Seata Committer List
 
-| name   | github          | company             |
-| ------ | --------------- | --------------- |
-| Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibaba        |
-| Qipeng Li| [wlliqipeng](https://github.com/wlliqipeng)      | Alibaba        |
-| Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibaba        |
-| Sen Zhang   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
-| Geng Zhang   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
-| Zhiyuan Lei | [leizhiyuan](https://github.com/leizhiyuan)      | Tencent          |
-| Qing Wang   | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
-| Jiangke Wu | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
-| Zhao Li   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
-| Xin Wang   | [lovepoem](https://github.com/lovepoem)        | JD         |
-| Guoyao Yuan | [github-ygy](https://github.com/github-ygy)      | NetEase            |
-| Xu Zhang   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
-| Shuaipeng Ren | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
-| Deyou Xu | [skyesx](https://github.com/skyesx)          | Alibaba          |
-| Jinlei Zhuang | [zjinlei](https://github.com/zjinlei)         | Helios          |
-| Jiawei Zhang | [l81893521](https://github.com/l81893521)       | Locals          |
-| Zhengtao Zhong | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
-| Long Chen   | [long187](https://github.com/long187)         | Unknown          |
-| Yunsong Guo | [ggndnn](https://github.com/ggndnn)         | FND          |
-| Liang Wang | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
-| Huadong Cao | [caohdgege](https://github.com/caohdgege) | BEIKE |
+| name            | github          | company             |
+|-----------------| --------------- | --------------- |
+| Haiqiang Shen   | [sharajava](https://github.com/sharajava)       | Alibaba        |
+| Rong Liu        | [robynron](https://github.com/robynron)      | Alibaba        |
+| Liandong Chen   | [purple-force](https://github.com/purple-force)    | Alibaba        |
+| Sen Zhang       | [zhangthen](https://github.com/zhangthen)       | Antfin          |
+| Geng Zhang      | [ujjboy](https://github.com/ujjboy)          | Antfin          |
+| Zhiyuan Lei     | [leizhiyuan](https://github.com/leizhiyuan)      | Tencent          |
+| Qing Wang       | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
+| Jiangke Wu      | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
+| Zhao Li         | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
+| Xin Wang        | [lovepoem](https://github.com/lovepoem)        | JD         |
+| Guoyao Yuan     | [github-ygy](https://github.com/github-ygy)      | NetEase            |
+| Xu Zhang        | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
+| Shuaipeng Ren   | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
+| Deyou Xu        | [skyesx](https://github.com/skyesx)          | Alibaba          |
+| Jinlei Zhuang   | [zjinlei](https://github.com/zjinlei)         | Helios          |
+| Jiawei Zhang    | [l81893521](https://github.com/l81893521)       | Locals          |
+| Zhengtao Zhong  | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
+| Long Chen       | [long187](https://github.com/long187)         | Unknown          |
+| Yunsong Guo     | [ggndnn](https://github.com/ggndnn)         | FND          |
+| Liang Wang      | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
+| Huadong Cao     | [caohdgege](https://github.com/caohdgege) | BEIKE |
 | Zhongxiang Wang | [lightClouds917](https://github.com/lightClouds917) | TongDun |
-| XiaoMin Liu | [dk-lockdown](https://github.com/dk-lockdown) | cestc |
-| Chenghui Zhang | [objcoding](https://github.com/objcoding) | Ant Group |
+| XiaoMin Liu     | [dk-lockdown](https://github.com/dk-lockdown) | cestc |
+| Chenghui Zhang  | [objcoding](https://github.com/objcoding) | Ant Group |
 
 ## Seata Developer Roles
 

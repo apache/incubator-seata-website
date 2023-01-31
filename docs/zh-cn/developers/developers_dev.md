@@ -16,26 +16,26 @@ description: Seata 维护者名单
 
 ## Seata Committer 列表
 
-| 姓名   | github          | 公司             |
-| ------ | --------------- | --------------- |
+| 姓名 | github          | 公司             |
+|--| --------------- | --------------- |
 | 申海强 | [sharajava](https://github.com/sharajava)       | Alibaba        |
-| 厉启鹏 | [wlliqipeng](https://github.com/wlliqipeng)      | Alibaba        |
+| 刘戎 | [robynron](https://github.com/robynron)      | Alibaba        |
 | 陈连东 | [purple-force](https://github.com/purple-force)    | Alibaba        |
-| 张森   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
-| 章耿   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
+| 张森 | [zhangthen](https://github.com/zhangthen)       | Antfin          |
+| 章耿 | [ujjboy](https://github.com/ujjboy)          | Antfin          |
 | 雷志远 | [leizhiyuan](https://github.com/leizhiyuan)      | Tencent          |
-| 王清   | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
+| 王清 | [jovany-wang](https://github.com/jovany-wang)     | Baidu          |
 | 吴江坷 | [xingfudeshi](https://github.com/xingfudeshi)     | Truthai         |
-| 李钊   | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
-| 王欣   | [lovepoem](https://github.com/lovepoem)        | JD         |
+| 李钊 | [CoffeeLatte007](https://github.com/CoffeeLatte007)  | YuanFuDao       |
+| 王欣 | [lovepoem](https://github.com/lovepoem)        | JD         |
 | 袁国尧 | [github-ygy](https://github.com/github-ygy)      | NetEase            |
-| 张旭   | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
+| 张旭 | [zhangxu19830126](https://github.com/zhangxu19830126) | InfiniVision    |
 | 任帅鹏 | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
 | 许德佑 | [skyesx](https://github.com/skyesx)          | Alibaba          |
 | 庄金雷 | [zjinlei](https://github.com/zjinlei)         | Helios          |
 | 张嘉伟 | [l81893521](https://github.com/l81893521)       | Perfect Diary |
 | 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
-| 陈龙   | [long187](https://github.com/long187)         | Unknown          |
+| 陈龙 | [long187](https://github.com/long187)         | Unknown          |
 | 郭云嵩 | [ggndnn](https://github.com/ggndnn)         | FND          |
 | 王良 | [wangliang181230](https://github.com/wangliang181230) | HuiKang |
 | 曹华栋 | [caohdgege](https://github.com/caohdgege) | - |
