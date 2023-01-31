@@ -96,3 +96,5 @@ https://seata.io/en-us/docs/developers/committer-guide/website-guide_dev.html
 https://seata.io/en-us/docs/developers/committer-guide/release-guide_dev.html
 https://seata.io/en-us/community/index.html
 https://seata.io/en-us/blog/download.html
+https://seata.io/zh-cn/blog/seata-1.6.0.html
+https://seata.io/zh-cn/blog/seata-1.5.2.html

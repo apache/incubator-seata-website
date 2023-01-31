@@ -567,5 +567,15 @@
   <lastmod>2021-05-26T05:18:43+00:00</lastmod>
   <priority>0.64</priority>
 </url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-1.6.0.html</loc>
+  <lastmod>2022-12-17T10:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://seata.io/zh-cn/blog/seata-1.5.2.html</loc>
+  <lastmod>2022-07-12T11:18:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
 </urlset>
