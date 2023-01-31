@@ -1,9 +1,8 @@
-
 ---
 title: Seata 1.6.0 重磅发布，大幅提升性能
 author: Seata社区
-date: 2022/12/17
 keywords: seata、分布式事务、1.6.0
+date: 2022/12/17
 ---
 
 ### Seata 1.6.0 重磅发布，大幅提升性能

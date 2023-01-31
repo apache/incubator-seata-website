@@ -173,7 +173,7 @@
             {
                 title: 'Seata 1.6.0 重磅发布，大幅提升性能',
                 author: '@Seata社区',
-                dateStr: 'Dec 17th, 2022',
+                dateStr: 'Dec 17th, 2023',
                 desc: 'Seata 1.6.0 重磅发布，大幅提升性能',
                 link: '/zh-cn/blog/seata-1.6.0.html',
             },
