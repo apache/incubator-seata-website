@@ -107,6 +107,11 @@
       }
     },
     {
+      "filename": "seata-1.6.0.md",
+      "link": "/zh-cn/blog/seata-1.6.0.html",
+      "meta": {}
+    },
+    {
       "filename": "seata-analysis-UUID-generator.md",
       "link": "/zh-cn/blog/seata-analysis-UUID-generator.html",
       "meta": {
