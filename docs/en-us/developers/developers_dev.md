@@ -14,7 +14,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | ------ | --------------- | --------------- |
 | Min Ji   | [slievrly](https://github.com/slievrly)        | Alibaba        |
 | Haiqiang Shen | [sharajava](https://github.com/sharajava)       | Alibaba        |
-| Qipeng Li| [wlliqipeng](https://github.com/wlliqipeng)      | Alibaba        |
+| Rong Liu        | [robynron](https://github.com/robynron)      | Alibaba        |
 | Liandong Chen | [purple-force](https://github.com/purple-force)    | Alibaba        |
 | Sen Zhang   | [zhangthen](https://github.com/zhangthen)       | Antfin          |
 | Geng Zhang   | [ujjboy](https://github.com/ujjboy)          | Antfin          |
