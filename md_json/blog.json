@@ -107,12 +107,24 @@
       }
     },
     {
+      "filename": "seata-1.5.2.md",
+      "link": "/zh-cn/blog/seata-1.5.2.html",
+      "meta": {
+        "title": "Seata 1.5.2 重磅发布，支持xid负载均衡",
+        "author": "Seata社区",
+        "keywords": "seata、分布式事务、1.5.2",
+        "description": "Seata 1.5.2 重磅发布，支持xid负载均衡",
+        "date": "2022/07/12"
+      }
+    },
+    {
       "filename": "seata-1.6.0.md",
       "link": "/zh-cn/blog/seata-1.6.0.html",
       "meta": {
         "title": "Seata 1.6.0 重磅发布，大幅提升性能",
         "author": "Seata社区",
         "keywords": "seata、分布式事务、1.6.0",
+        "description": "Seata 1.6.0 重磅发布，大幅提升性能",
         "date": "2022/12/17"
       }
     },

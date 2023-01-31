@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="seata、分布式事务、1.5.2" />
+	<meta name="description" content="Seata 1.5.2 重磅发布，支持xid负载均衡" />
+	<meta name="aes-config" content="pid=xux-opensource&user_type=101&uid=&username=&dim10=seata"/>
+
+	<!-- 网页标签标题 -->
+	<title>Seata 1.5.2 重磅发布，支持xid负载均衡</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+	<link rel="stylesheet" href="https://g.alicdn.com/mamba/assets/0.0.6/mse-arc-ui.min.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><span><a href="/zh-cn/index.html">首页</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/docs/overview/what-is-seata.html">文档</a></span></li><li class="menu-item menu-item-normal"><span><a href="https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0">Seata企业版</a><img class="menu-img" src="https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png"/></span></li><li class="menu-item menu-item-normal"><div class="nav-container"><div class="word"><a>解决方案</a><img class="menu-img" src="https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png"/></div><ul class="sub-nav-container" style="width:220px"><li><a href="https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0" target="_blank">分布式事务解决方案</a></li><li><a href="https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0" target="_blank">微服务解决方案</a></li><li><a href="https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0" target="_blank">高可用解决方案</a></li><li><a href="https://cn.aliyun.com/product/aliware/sae?spm=seata-website.topbar.0.0.0" target="_blank">微服务Serverless解决方案</a></li><li><a href="https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0" target="_blank">PaaS解决方案</a></li><li><a href="https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0" target="_blank">服务网格解决方案</a></li></ul> </div></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/docs/developers/developers_dev.html">开发者</a></span></li><li class="menu-item menu-item-normal"><span><a href="https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA">团队招聘</a></span></li><li class="menu-item menu-item-normal menu-item-normal-active"><span><a href="/zh-cn/blog/index.html">博客</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/community/index.html">社区</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/blog/download.html">下载</a></span></li></ul></div></div></header><section class="blog-content markdown-body"><h3>Seata 1.5.2 重磅发布，支持xid负载均衡</h3>
+<p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
+<p><strong>seata-server 下载链接：</strong></p>
+<p><a href="https://github.com/seata/seata/archive/v1.5.2.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.5.2/seata-server-1.5.2.zip">binary</a></p>
+<p>此版本更新如下：</p>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4713">#4661</a>] 支持根据xid负载均衡算法</li>
+<li>[<a href="https://github.com/seata/seata/pull/4676">#4676</a>] 支持Nacos作为注册中心时，server通过挂载SLB暴露服务</li>
+<li>[<a href="https://github.com/seata/seata/pull/4642">#4642</a>] 支持client批量请求并行处理</li>
+<li>[<a href="https://github.com/seata/seata/pull/4567">#4567</a>] 支持where条件中find_in_set函数</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4515">#4515</a>] 修复develop分支SeataTCCFenceAutoConfiguration在客户端未使用DB时，启动抛出ClassNotFoundException的问题。</li>
+<li>[<a href="https://github.com/seata/seata/pull/4661">#4661</a>] 修复控制台中使用PostgreSQL出现的SQL异常</li>
+<li>[<a href="https://github.com/seata/seata/pull/4682">#4667</a>] 修复develop分支RedisTransactionStoreManager迭代时更新map的异常</li>
+<li>[<a href="https://github.com/seata/seata/pull/4678">#4678</a>] 修复属性transport.enableRmClientBatchSendRequest没有配置的情况下缓存穿透的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4701">#4701</a>] 修复命令行参数丢失问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4607">#4607</a>] 修复跳过全局锁校验的缺陷</li>
+<li>[<a href="https://github.com/seata/seata/pull/4696">#4696</a>] 修复 oracle 存储模式时的插入问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4726">#4726</a>] 修复批量发送消息时可能的NPE问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4729">#4729</a>] 修复AspectTransactional.rollbackForClassName设置错误</li>
+<li>[<a href="https://github.com/seata/seata/pull/4653">#4653</a>] 修复 INSERT_ON_DUPLICATE 主键为非数值异常</li>
+</ul>
+<h3>optimize：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4650">#4650</a>] 修复安全漏洞</li>
+<li>[<a href="https://github.com/seata/seata/pull/4670">#4670</a>] 优化branchResultMessageExecutor线程池的线程数</li>
+<li>[<a href="https://github.com/seata/seata/pull/4662">#4662</a>] 优化回滚事务监控指标</li>
+<li>[<a href="https://github.com/seata/seata/pull/4693">#4693</a>] 优化控制台导航栏</li>
+<li>[<a href="https://github.com/seata/seata/pull/4700">#4700</a>] 修复 maven-compiler-plugin 和 maven-resources-plugin 执行失败</li>
+<li>[<a href="https://github.com/seata/seata/pull/4711">#4711</a>] 分离部署时 lib 依赖</li>
+<li>[<a href="https://github.com/seata/seata/pull/4720">#4720</a>] 优化pom描述</li>
+<li>[<a href="https://github.com/seata/seata/pull/4728">#4728</a>] 将logback版本依赖升级至1.2.9</li>
+<li>[<a href="https://github.com/seata/seata/pull/4745">#4745</a>] 发行包中支持 mysql8 driver</li>
+<li>[<a href="https://github.com/seata/seata/pull/4626">#4626</a>] 使用 <code>easyj-maven-plugin</code> 插件代替 <code>flatten-maven-plugin</code>插件，以修复<code>shade</code> 插件与 <code>flatten</code> 插件不兼容的问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4629">#4629</a>] 更新globalSession状态时检查更改前后的约束关系</li>
+<li>[<a href="https://github.com/seata/seata/pull/4662">#4662</a>] 优化 EnhancedServiceLoader 可读性</li>
+</ul>
+<h3>test：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/4544">#4544</a>] 优化TransactionContextFilterTest中jackson包依赖问题</li>
+<li>[<a href="https://github.com/seata/seata/pull/4731">#4731</a>] 修复 AsyncWorkerTest 和 LockManagerTest 的单测问题。</li>
+</ul>
+<p>非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。</p>
+<!-- 请确保您的 GitHub ID 在以下列表中 -->
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/pengten">pengten</a></li>
+<li><a href="https://github.com/YSF-A">YSF-A</a></li>
+<li><a href="https://github.com/tuwenlin">tuwenlin</a></li>
+<li><a href="https://github.com/2129zxl">2129zxl</a></li>
+<li><a href="https://github.com/Ifdevil">Ifdevil</a></li>
+<li><a href="https://github.com/wingchi-leung">wingchi-leung</a></li>
+<li><a href="https://github.com/robynron">liurong</a></li>
+<li><a href="https://github.com/opelok-z">opelok-z</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/Smery-lxm">Smery-lxm</a></li>
+<li><a href="https://github.com/lvekee">lvekee</a></li>
+<li><a href="https://github.com/doubleDimple">doubleDimple</a></li>
+<li><a href="https://github.com/wangliang181230">wangliang181230</a></li>
+<li><a href="https://github.com/Bughue">Bughue</a></li>
+<li><a href="https://github.com/AYue-94">AYue-94</a></li>
+<li><a href="https://github.com/lingxiao-wu">lingxiao-wu</a></li>
+<li><a href="https://github.com/caohdgege">caohdgege</a></li>
+</ul>
+<p>同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2022 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script src="//g.alicdn.com/alilog/mlog/aplus_v2.js" id="beacon-aplus" exparams="clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx"></script>
+     <script src="//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script src="https://g.alicdn.com/mamba/assets/0.0.6/mse-arc-ui.min.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+    window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X4LJGF90X2');
+    </script>
+</body>
+</html>
