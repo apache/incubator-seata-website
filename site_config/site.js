@@ -118,6 +118,14 @@ export default {
                     text: 'Community',
                     link: '/en-us/community/index.html',
                 },
+                {
+                    text: 'Simplified Chinese',
+                    link: 'https://seata.io/zh-cn/index.html',
+                },
+                {
+                    text: 'English',
+                    link: 'https://seata.io/en-us/index.html',
+                },
             ],
         },
         copyright: 'Copyright © 2022 Seata',
@@ -234,6 +242,14 @@ export default {
                 {
                     text: '社区',
                     link: '/zh-cn/community/index.html',
+                },
+                {
+                    text: '中文版',
+                    link: 'https://seata.io/zh-cn/index.html',
+                },
+                {
+                    text: '英文版',
+                    link: 'https://seata.io/en-us/index.html',
                 },
             ],
         },
