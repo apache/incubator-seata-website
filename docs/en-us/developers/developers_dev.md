@@ -4,17 +4,17 @@ keywords: Seata, Developers
 description: Seata Team.
 ---
 
-## Seata Team
+## Seata Developers Team
 
 This page shows Seata developers and continues to expand. The list is not prioritized.
 
-## Seata Maintainer List
+### Seata Maintainer List
 | 姓名         | github                                      | 公司    |
 | ------------ | ------------------------------------------- | ------- |
 | Min Ji       | [slievrly](https://github.com/slievrly)     | Alibaba |
 | Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
 
-# Seata Committer List
+### Seata Committer List
 
 | name            | github          | company             |
 |-----------------| --------------- | --------------- |
@@ -70,4 +70,15 @@ Contributor is an individual who contributes to the Seata project. The standard 
 
 *   Submitted a PR that is merged.
 
+## Contributions Guide
+### Contributor Guide
+* [New Contributor Guide](./contributor-guide/new-contributor-guide_dev.html)
+* [Test Coverage Guide](./contributor-guide/test-coverage-guide_dev.html)
+* [Reporting Security Issues](./contributor-guide/reporting-security-issues_dev.html)
+* [Contributing](./guide_dev.html)
+
+### Committer Guide
+* [Label An Issue](./committer-guide/label-an-issue-guide_dev.html)
+* [Website Guide](./committer-guide/website-guide_dev.html)
+* [Release Guide](./committer-guide/release-guide_dev.html)
 
