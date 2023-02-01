@@ -8,13 +8,13 @@ description: Seata 维护者名单
 
 本页面展示了Seata的开发团队。请通过提交PR的方式把自己的信息添加到列表上。注：排名不分先后
 
-## Seata Maintainer 列表
+### Seata Maintainer 列表
 | 姓名   | github                                      | 公司    |
 | ------ | ------------------------------------------- | ------- |
 | 季敏   | [slievrly](https://github.com/slievrly)     | Alibaba |
 | 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
 
-## Seata Committer 列表
+### Seata Committer 列表
 
 | 姓名 | github          | 公司             |
 |--| --------------- | --------------- |
@@ -69,3 +69,18 @@ Committer是具有Seata仓库写权限的个人，包含以下的标准：
 Contributor是对Seata项目有贡献的个人，标准为：
 
 *   提交过PR并被合并；
+
+## 贡献指引
+### 贡献者向导
+* [新贡献者向导](./contributor-guide/new-contributor-guide_dev.html)
+* [测试覆盖率向导](./contributor-guide/test-coverage-guide_dev.html)
+* [如何汇报安全问题](./contributor-guide/reporting-security-issues_dev.html)
+* [参与贡献](./guide_dev.html)
+
+### 提交者向导
+* [给问题打标签](./committer-guide/label-an-issue-guide_dev.html)
+* [网站向导](./committer-guide/website-guide_dev.html)
+* [版本发布向导](./committer-guide/release-guide_dev.html)
+
+### 贡献者活动
+* [Top Contributor活动](./contributor-activity/top-contributer_dev.html)
