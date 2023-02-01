@@ -1,43 +1,43 @@
 User-agent: Googlebot
-Disallow: 
+Disallow:
 User-agent: googlebot-image
-Disallow: 
+Disallow:
 User-agent: googlebot-mobile
-Disallow: 
+Disallow:
 User-agent: MSNBot
-Disallow: 
+Disallow:
 User-agent: Slurp
-Disallow: 
+Disallow:
 User-agent: Teoma
-Disallow: 
+Disallow:
 User-agent: twiceler
-Disallow: 
+Disallow:
 User-agent: Gigabot
-Disallow: 
+Disallow:
 User-agent: Scrubby
-Disallow: 
+Disallow:
 User-agent: Robozilla
-Disallow: 
+Disallow:
 User-agent: Nutch
-Disallow: 
+Disallow:
 User-agent: ia_archiver
-Disallow: 
+Disallow:
 User-agent: baiduspider
-Disallow: 
+Disallow:
 User-agent: naverbot
-Disallow: 
+Disallow:
 User-agent: yeti
-Disallow: 
+Disallow:
 User-agent: yahoo-mmcrawler
-Disallow: 
+Disallow:
 User-agent: psbot
-Disallow: 
+Disallow:
 User-agent: asterias
-Disallow: 
+Disallow:
 User-agent: yahoo-blogs/v3.9
-Disallow: 
+Disallow:
 User-agent: *
-Disallow: 
+Disallow:
 Disallow: /cgi-bin/
 Disallow: /bin/
-Sitemap: https://seata.io/site.txt
+Sitemap: https://seata.io/sitemap.xml
