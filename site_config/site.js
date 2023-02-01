@@ -120,11 +120,11 @@ export default {
                 },
                 {
                     text: 'Simplified Chinese',
-                    link: 'https://seata.io/zh-cn/index.html',
+                    link: '/zh-cn/index.html',
                 },
                 {
                     text: 'English',
-                    link: 'https://seata.io/en-us/index.html',
+                    link: '/en-us/index.html',
                 },
             ],
         },
@@ -245,11 +245,11 @@ export default {
                 },
                 {
                     text: '中文版',
-                    link: 'https://seata.io/zh-cn/index.html',
+                    link: '/zh-cn/index.html',
                 },
                 {
                     text: '英文版',
-                    link: 'https://seata.io/en-us/index.html',
+                    link: '/en-us/index.html',
                 },
             ],
         },
