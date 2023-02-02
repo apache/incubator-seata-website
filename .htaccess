@@ -1,3 +1,4 @@
+DirectoryIndex index.html
 FileETag MTime Size
 <IfModule mod_expires.c>
   ExpiresActive On
