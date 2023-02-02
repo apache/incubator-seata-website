@@ -17,12 +17,12 @@ export default {
                 text: 'DOCS',
                 link: '/en-us/docs/overview/what-is-seata.html',
             },
-            {
-                key: 'enterprise',
-                text: 'SEATA IN CLOUD',
-                link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-                imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
-            },
+            // {
+            //     key: 'enterprise',
+            //     text: 'SEATA IN CLOUD',
+            //     link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+            //     imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
+            // },
             {
                 key: 'solution',
                 text: 'SOLUTIONS',
@@ -30,8 +30,9 @@ export default {
                 imgUrl: 'https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png',
                 children: [{
                     key: 'gts',
-                    text: 'Distributed transaction solution',
-                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0'
+                    text: 'SEATA IN CLOUD',
+                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0',
+                    imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
                 }, {
                     key: 'micoservice',
                     text: 'Microservice solutions',
@@ -80,6 +81,11 @@ export default {
                 key: 'download',
                 text: 'DOWNLOAD',
                 link: '/en-us/blog/download.html',
+            },
+            {
+                key: 'change',
+                text: ' ',
+                link: '/zh-cn/index.html',
             }
         ],
         vision: {
@@ -142,12 +148,12 @@ export default {
                 text: '文档',
                 link: '/zh-cn/docs/overview/what-is-seata.html',
             },
-            {
-                key: 'enterprise',
-                text: 'Seata企业版',
-                link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-                imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
-            },
+            // {
+            //     key: 'enterprise',
+            //     text: 'Seata企业版',
+            //     link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+            //     imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
+            // },
             {
                 key: 'solution',
                 text: '解决方案',
@@ -155,8 +161,9 @@ export default {
                 imgUrl: 'https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png',
                 children: [{
                     key: 'seata',
-                    text: '分布式事务解决方案',
-                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0'
+                    text: 'Seata企业版',
+                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+                    imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
                 }, {
                     key: 'micoservice',
                     text: '微服务解决方案',
@@ -206,6 +213,11 @@ export default {
                 text: '下载',
                 link: '/zh-cn/blog/download.html',
             },
+            {
+                key: 'change',
+                text: ' ',
+                link: '/en-us/index.html',
+            }
         ],
         vision: {
             title: '愿景',
