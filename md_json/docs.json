@@ -607,6 +607,11 @@
       "meta": {}
     },
     {
+      "filename": "zookeeper.md",
+      "link": "/zh-cn/docs/user/configuration/zookeeper.html",
+      "meta": {}
+    },
+    {
       "filename": "configurations.md",
       "link": "/zh-cn/docs/user/configurations.html",
       "meta": {
