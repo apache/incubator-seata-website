@@ -3263,7 +3263,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
-    padding: 20px 6% 0;
+    padding: 20px 0% 0 6%;
     width: calc(100% - 295px); }
 
 @media screen and (max-width: 640px) {
