@@ -42,6 +42,7 @@ description: Seata 维护者名单
 | 汪忠祥 | [lightClouds917](https://github.com/lightClouds917) | TongDun |
 | 刘晓敏 | [dk-lockdown](https://github.com/dk-lockdown) | 中国系统 |
 | 张乘辉 | [objcoding](https://github.com/objcoding) | Ant Group |
+| 任良育 | [renliangyu857](https://github.com/objcoding) | 新网银行 |
 
 ## Seata开发者角色
 
