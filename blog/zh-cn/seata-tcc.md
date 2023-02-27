@@ -317,8 +317,7 @@ Seata 是怎么处理悬挂的呢？
 
 1. suspended：4
 
-当执行二阶段 Cancel 方法时，如果发现 TCC 事务控制表有相关记录，说明二阶段 Cancel 方法优先一阶段 Try 方法执行，因此插入一条 status=4 状态的记录，当一阶段 Try 方法后面执行时，判断 status=4
-，则说明有二阶段 Cancel 已执行，并返回 false 以阻止一阶段 Try 方法执行成功。
+当执行二阶段 Cancel 方法时，如果发现 TCC 事务控制表没有相关记录，说明二阶段 Cancel 方法优先一阶段 Try 方法执行，因此插入一条 status=4 状态的记录，当一阶段 Try 方法后面执行时，判断 status=4 ，则说明有二阶段 Cancel 已执行，并返回 false 以阻止一阶段 Try 方法执行成功。
 
 # 作者简介
 
