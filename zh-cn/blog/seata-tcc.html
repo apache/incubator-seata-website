@@ -240,8 +240,7 @@ actionName，actionName 就是 <code>@TwoParseBusinessAction</code> 注解中的
 <ol>
 <li>suspended：4</li>
 </ol>
-<p>当执行二阶段 Cancel 方法时，如果发现 TCC 事务控制表有相关记录，说明二阶段 Cancel 方法优先一阶段 Try 方法执行，因此插入一条 status=4 状态的记录，当一阶段 Try 方法后面执行时，判断 status=4
-，则说明有二阶段 Cancel 已执行，并返回 false 以阻止一阶段 Try 方法执行成功。</p>
+<p>当执行二阶段 Cancel 方法时，如果发现 TCC 事务控制表没有相关记录，说明二阶段 Cancel 方法优先一阶段 Try 方法执行，因此插入一条 status=4 状态的记录，当一阶段 Try 方法后面执行时，判断 status=4 ，则说明有二阶段 Cancel 已执行，并返回 false 以阻止一阶段 Try 方法执行成功。</p>
 <h1>作者简介</h1>
 <p>张乘辉，目前就职于蚂蚁集团，热爱分享技术，微信公众号「后端进阶」作者，技术博客（<a href="https://objcoding.com/">https://objcoding.com/</a>）博主，Seata Committer，GitHub
 ID：objcoding。</p>
