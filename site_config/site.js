@@ -54,7 +54,11 @@ export default {
                     key: 'mesh',
                     text: 'Service mesh solution',
                     link: 'https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0',
-                }
+                }, {
+                    key: 'sofa',
+                    text: 'SOFA distributed transaction',
+                    link: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
+                    }
                 ]
             },
             {
@@ -185,7 +189,11 @@ export default {
                     key: 'mesh',
                     text: '服务网格解决方案',
                     link: 'https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0',
-                }
+                }, {
+                    key: 'sofa',
+                    text: 'SOFA分布式事务',
+                    link: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
+                    }
                 ]
             },
             {
