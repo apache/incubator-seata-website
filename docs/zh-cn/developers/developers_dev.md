@@ -33,7 +33,7 @@ description: Seata 维护者名单
 | 任帅鹏 | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
 | 许德佑 | [skyesx](https://github.com/skyesx)          | Alibaba          |
 | 庄金雷 | [zjinlei](https://github.com/zjinlei)         | Helios          |
-| 张嘉伟 | [l81893521](https://github.com/l81893521)       | Perfect Diary |
+| 张嘉伟 | [l81893521](https://github.com/l81893521)       | DaShenLin |
 | 钟正涛 | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | 陈龙 | [long187](https://github.com/long187)         | Unknown          |
 | 郭云嵩 | [ggndnn](https://github.com/ggndnn)         | FND          |

@@ -33,7 +33,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | Shuaipeng Ren   | [niaoshuai](https://github.com/niaoshuai)       | HuanQiuYouLu    |
 | Deyou Xu        | [skyesx](https://github.com/skyesx)          | Alibaba          |
 | Jinlei Zhuang   | [zjinlei](https://github.com/zjinlei)         | Helios          |
-| Jiawei Zhang    | [l81893521](https://github.com/l81893521)       | Locals          |
+| Jiawei Zhang    | [l81893521](https://github.com/l81893521)       | DaShenLin          |
 | Zhengtao Zhong  | [jsbxyyx](https://github.com/jsbxyyx)         | Shenzhen arts   |
 | Long Chen       | [long187](https://github.com/long187)         | Unknown          |
 | Yunsong Guo     | [ggndnn](https://github.com/ggndnn)         | FND          |
