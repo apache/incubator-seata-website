@@ -16,7 +16,7 @@ jobs:
           node-version: 12.x
       - name: Copy and Config
         run: |
-          mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ schema/ deploy-dist/ && mv .htaccess *.html *.txt *.xml deploy-dist/
+          mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ schema/ saga_designer/ deploy-dist/ && mv .htaccess *.html *.txt *.xml deploy-dist/
       - run: npm i @serverless-devs/s -g  --registry=https://registry.npmmirror.com
       - run: s config add --AccountID ${{secrets.ACCOUNT_ID}}  --AccessKeyID ${{secrets.ACCESS_KEYID}}  --AccessKeySecret ${{secrets.ACCESS_KEYSECRET}} -a seata -f
       - name: Deploy
