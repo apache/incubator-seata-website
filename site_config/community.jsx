@@ -36,10 +36,15 @@ export default {
           title: 'Wechat group assistant',
         },
         {
-          img: '//img.alicdn.com/imgextra/i1/O1CN01TlIbgM1JSrtYmHNIw_!!6000000001028-0-tps-458-456.jpg',
-          imgHover: '//img.alicdn.com/imgextra/i1/O1CN01TlIbgM1JSrtYmHNIw_!!6000000001028-0-tps-458-456.jpg',
+          img: '//img.alicdn.com/imgextra/i4/O1CN01BQvTuX1O8KHxfi2Ye_!!6000000001660-0-tps-312-304.jpg',
+          imgHover: '//img.alicdn.com/imgextra/i4/O1CN01BQvTuX1O8KHxfi2Ye_!!6000000001660-0-tps-312-304.jpg',
           title: 'dingTalk③(Recommend)',
-        }
+        },
+        {
+          img: '//img.alicdn.com/imgextra/i2/O1CN014QxxzN1GH0sOVYTgf_!!6000000000596-0-tps-300-302.jpg',
+          imgHover: '//img.alicdn.com/imgextra/i2/O1CN014QxxzN1GH0sOVYTgf_!!6000000000596-0-tps-300-302.jpg',
+          title: 'QQ group③',
+        },
       ],
     },
     contributorGuide: {
@@ -111,9 +116,14 @@ export default {
                 title: '微信群拉取小助手',
             },
             {
-                img: '//img.alicdn.com/imgextra/i1/O1CN01TlIbgM1JSrtYmHNIw_!!6000000001028-0-tps-458-456.jpg',
-                imgHover: '//img.alicdn.com/imgextra/i1/O1CN01TlIbgM1JSrtYmHNIw_!!6000000001028-0-tps-458-456.jpg',
+                img: '//img.alicdn.com/imgextra/i4/O1CN01BQvTuX1O8KHxfi2Ye_!!6000000001660-0-tps-312-304.jpg',
+                imgHover: '//img.alicdn.com/imgextra/i4/O1CN01BQvTuX1O8KHxfi2Ye_!!6000000001660-0-tps-312-304.jpg',
                 title: '钉钉③群(推荐)',
+            },
+            {
+              img: '//img.alicdn.com/imgextra/i2/O1CN014QxxzN1GH0sOVYTgf_!!6000000000596-0-tps-300-302.jpg',
+              imgHover: '//img.alicdn.com/imgextra/i2/O1CN014QxxzN1GH0sOVYTgf_!!6000000000596-0-tps-300-302.jpg',
+              title: 'QQ③群',
             },
       ],
     },
