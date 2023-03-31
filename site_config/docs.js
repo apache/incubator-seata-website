@@ -326,11 +326,11 @@ export default {
                             },
                             {
                                 title: '资源管理者(RM)',
-                                link: '/zh-cn/docs/user/rm.html',
+                                link: '/zh-cn/docs/dev/domain/rm.html',
                             },
                             {
                                 title: '事务协调组(TC)',
-                                link: '/zh-cn/docs/dev/mode/tc.html',
+                                link: '/zh-cn/docs/dev/domain/tc.html',
                             }
                         ],
                     },
