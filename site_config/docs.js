@@ -326,7 +326,7 @@ export default {
                             },
                             {
                                 title: '资源管理者(RM)',
-                                link: '/zh-cn/docs/user/rm.html',// zh-cn/docs/dev/mode/saga-mode.html
+                                link: '/zh-cn/docs/user/rm.html',
                             },
                             {
                                 title: '事务协调组(TC)',
