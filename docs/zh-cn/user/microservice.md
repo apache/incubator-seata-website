@@ -3,8 +3,8 @@ title: Seata 微服务框架支持
 keywords: Seata
 description: Seata 微服务框架支持。
 ---
-
-# 事务上下文
+# 微服务框架支持
+## 事务上下文
 
 Seata 的事务上下文由 RootContext 来管理。
 
@@ -32,7 +32,7 @@ String xid = RootContext.getXID();
     }
 ```
 
-# 事务传播
+## 事务传播
 
 Seata 全局事务的传播机制就是指事务上下文的传播，根本上，就是 XID 的应用运行时的传播方式。
 
@@ -91,7 +91,7 @@ RootContext.bind(xid);
 
 只要能做到这点，理论上 Seata 可以支持任意的微服务框架。
 
-# 对 Dubbo 支持的解读
+## 对 Dubbo 支持的解读
 
 下面，我们通过内置的对 Dubbo RPC 支持机制的解读，来说明 Seata 在实现对一个特定微服务框架支持的机制。
 

@@ -8,7 +8,7 @@ All website material  of https://seata.io
 ## Prerequisite
 
 seata.github.io is powered by [docsite](https://github.com/txd-team/docsite).please read [https://docsite.js.org](https://docsite.js.org) 
-If your version of docsite is less than `1.3.3`, please upgrade to `1.3.3`.
+If your version of docsite is less than `1.3.3`, please upgrade to at least `1.3.3`,`1.3.8` is recommended.
 Please also make sure your node version is 8.x, versions higher than 8.x is not supported by docsite yet.
 
 ## Build instruction

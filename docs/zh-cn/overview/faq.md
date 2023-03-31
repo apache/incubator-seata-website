@@ -55,7 +55,7 @@ description: Seata 常见问题。
 
 <a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a>
 
-<a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a>
+<a href="#25" target="_self">25. 使用动态数据源组件的场景方式 ？</a>
 
 <a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
 
@@ -87,6 +87,14 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 <a href="#39" target="_self">39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` </a>
 
+<a href="#40" target="_self">40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？ </a>
+
+<a href="#41" target="_self">41. Oracle使用timestamp字段类型回滚失败？ </a>
+
+<a href="#42" target="_self">42. 抛出异常后事务未回滚？ </a>
+
+<a href="#43" target="_self">43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client错误？ </a>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -113,11 +121,11 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 **A:** 
     因seata一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。
-  1. 脏读 select语句加for update，代理方法增加@GlobalLock+@Transactional或@GlobalTransaction
-  2. 脏写 必须使用@GlobalTransaction  
-        注：如果你查询的业务的接口没有GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock+@Transactional 注解，并且在查询语句上加 for update。
-        如果你查询的接口在事务链路上外层有GlobalTransactional注解，那么你查询的语句只要加for update就行。设计这个注解的原因是在没有这个注解之前，需要查询分布式事务读已提交的数据，但业务本身不需要分布式事务。
-        若使用GlobalTransactional注解就会增加一些没用的额外的rpc开销比如begin 返回xid，提交事务等。GlobalLock简化了rpc过程，使其做到更高的性能。
+  1. 脏读 select语句加for update，代理方法增加@GlobalLock+@Transactional或@GlobalTransactional
+  2. 脏写 必须使用@GlobalTransactional  
+        注：如果你查询的业务的接口没有@GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock+@Transactional 注解，并且在查询语句上加 for update。
+        如果你查询的接口在事务链路上外层有@GlobalTransactional注解，那么你查询的语句只要加for update就行。设计这个注解的原因是在没有这个注解之前，需要查询分布式事务读已提交的数据，但业务本身不需要分布式事务。
+        若使用@GlobalTransactional注解就会增加一些没用的额外的rpc开销比如begin 返回xid，提交事务等。GlobalLock简化了rpc过程，使其做到更高的性能。
 
 ********
 <h3 id='5'>Q: 5.脏数据回滚失败如何处理?</h3>
@@ -212,7 +220,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 <h3 id='13'>Q: 13.支持多主键?</h3>
 
 **A:** 
-暂时只支持mysql，其他类型数据库建议先建一列自增id主键，原复合主键改为唯一键来规避下
+目前支持mysql，oracle，pgsql，mariadb，其他类型数据库建议先建一列自增id主键，原复合主键改为唯一键来规避下
 
 ********
 <h3 id='14'>Q: 14.使用HikariDataSource报错如何解决?</h3>
@@ -248,8 +256,7 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动
 **A:** 
 
 ```
-1. AT 模式支持Dubbo、Spring Cloud、Motan、gRPC 和 sofa-RPC。
-2. TCC 模式支持Dubbo、Spring Cloud和sofa-RPC。
+目前支持 Dubbo、Spring Cloud、Motan、gRPC、sofa-RPC、EDAS-HSF 和 bRPC 框架。
 ```
 ********
 <h3 id='18'>Q: 18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
@@ -311,7 +318,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 
 **A:** 
 
-@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransaction连用，@Transactional 只能位于标注在@GlobalTransaction的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
+@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和XA分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional和@GlobalTransactional连用，@Transactional 只能位于标注在@GlobalTransactional的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的xid不存在。
 
 ********
 <h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
@@ -337,9 +344,9 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 ------
 
-<h3 id='25'>Q: 25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</h3>
+<h3 id='25'>Q: 25. 使用动态数据源后的常见问题 ？</h3>
 
-**A:** 
+**A:**  使用dynamic-datasource-spring-boot-starter组件后undolog无法删除,或使用AbstractRoutingDataSource等动态数据源后无法正常回滚
 
 dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容
 
@@ -350,8 +357,14 @@ dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用
 ```yaml
 seata:
   enable-auto-data-source-proxy: false
+  
 ```
-********
+
+如果是后者,保证以上两项处理后,请不要手动代码AbstractRoutingDataSource等动态数据源,而是将其实际使用的物理datasource进行代理,具体可参考如下例子[seata-samples/DataSourceProxyConfig.java at master · seata/seata-samples (github.com)](https://github.com/seata/seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java)
+
+------
+
+
 
 <h3 id='26'>Q: 26. Could not found global transaction xid = %s, may be has finished.</h3>
 
@@ -471,7 +484,7 @@ Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数�
 
 获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从`@Globaltransational`的TM端重新发起。
 
-Seata提供了一个“全局锁重试”功能，默认未开启，可以通过下面这个配置来开启。
+Seata提供了一个“全局锁重试”功能，1.5之前的版本中默认在结合@Transactional注解或手动开启本地事务下未开启，可以通过下面这个配置来开启(面临回滚时可能全局锁和本地锁互相争抢导致死锁的可能,所以请尽快升级1.5及以上版本)。
 ```properties
 #遇到全局锁冲突时是否回滚，默认为true
 client.rm.lock.retryPolicyBranchRollbackOnConflict=false
@@ -567,3 +580,63 @@ seata.client.undo.logSerialization=kryo
 
 参考此[pr](https://github.com/seata/seata/pull/3738)做法,可以用类覆盖或SPI方式扩展新的解析方式处理
 
+****
+
+<h3 id='40'>Q: 40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？</h3>
+
+**A:**
+
+ - 使用 DB 存储模式时，需要注意使用相应seata-server对应版本的建表脚本，建表脚本获取地址：https://github.com/seata/seata/tree/${版本}/script/server/db，例如：获取seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/seata/seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
+ - seata-server 依赖的后端的DB，不要开启读写分离。开启读写分离后根据同步模式的不同延迟也有所不同，seata-server 
+   为无状态计算节点，所有状态都需要到DB存储中校验，在主从同步延迟较大的情况下会导致读取的状态不准确从而导致事务逻辑处理问题。为了更高的读写性能，DB可将隔离级别设置为读已提交。
+
+
+
+****
+
+<h3 id='41'>Q: 41. Oracle使用timestamp字段类型回滚失败？</h3>
+
+**A:**
+
+ - [seata/seata-plugin at develop · seata/seata (github.com)](https://github.com/seata/seata/tree/develop/seata-plugin) 拉取此plugin代码,本地打包自行引入,也可直接拷贝代码进行spi扩展支持
+
+
+
+
+****
+
+<h3 id='42'>Q: 42. 抛出异常后事务未回滚？</h3>
+
+ - 检查异常是否被捕获,没有抛至tm端,如rm存在全局异常捕获器,rm将异常包装成了一个正常的result响应给了tm,导致seata的事务拦截器无法发现事务出现了异常,此时自行在代码中根据result中的code之类可判断业务出现异常的返回内容进行抛出异常,或者使用[Seata api](https://seata.io/zh-cn/docs/user/api.html) 进行回滚,切记api回滚必须结束调用,假设tm调用了rm1就出现错误,进行了api回滚,那么不应该让这个调用链再走到rm2去,应该直接return结束方法调用
+ - 检查是否rm服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理
+ - 如确认无上述可能,异常明确抛出,请通过相关的xid到tc端和tm和rm检索xid的决议结果和rm注册情况,当rm分支注册时,通过xid可以检索到Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx的日志,如果没有说明分支没有注册,如是AT或XA模式请检查数据源代理或xid传递问题,如分支已注册,那么检查决议结果,如事务提交,tm端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed的日志,如果是回滚那么相关关键字为rollback status: Rollbacked等,如果抛出异常决议缺是commit,那么99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!
+ - 如决议结果是回滚,但是rm没注册,可在rm调用端通过Rootcontext.getXid来判断是否有值,如果无值请参考Q24
+ - 如何判断数据源是否代理,如果是AT模式请在ConnectionProxy#registry打上断点,看是否会进入,XA模式ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!
+
+****
+
+<h3 id='43'>Q: 43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client的问题？</h3>
+
+ - 通常Zipkin与Seata整合的时候会出现该问题。
+
+解决办法：
+- 若不需要对Feign链路追踪，可以通过Spring Cloud Sleuth提供的属性spring.sleuth.feign.enabled=false来使其关闭。
+- 若需要同时使用，在启动类加入排除@SpringBootApplication(exclude = {SeataFeignClientAutoConfiguration.class})
+
+再配置Feign的拦截器
+```java
+@Component
+@ConditionalOnClass({RequestInterceptor.class, GlobalTransactional.class})
+public class SetSeataInterceptor implements RequestInterceptor {
+
+    @Override
+    public void apply(RequestTemplate template) {
+ 
+        String currentXid = RootContext.getXID();
+        if (!StringUtils.isEmpty(currentXid)) {
+            template.header(RootContext.KEY_XID, currentXid);
+        }
+    }
+}
+```
+****

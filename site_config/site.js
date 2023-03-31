@@ -17,11 +17,12 @@ export default {
                 text: 'DOCS',
                 link: '/en-us/docs/overview/what-is-seata.html',
             },
-            {
-                key: 'enterprise',
-                text: 'SEATA IN CLOUD',
-                link: 'https://h5.dingtalk.com/circle/healthCheckin.html?dtaction=os&corpId=ding42dbb24c1f5a084996093958e605f031&f4ffe=77a6c&cbdbhh=qwertyuiop',
-            },
+            // {
+            //     key: 'enterprise',
+            //     text: 'SEATA IN CLOUD',
+            //     link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+            //     imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
+            // },
             {
                 key: 'solution',
                 text: 'SOLUTIONS',
@@ -29,8 +30,9 @@ export default {
                 imgUrl: 'https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png',
                 children: [{
                     key: 'gts',
-                    text: 'Distributed transaction solution',
-                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0'
+                    text: 'SEATA IN CLOUD',
+                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0',
+                    imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
                 }, {
                     key: 'micoservice',
                     text: 'Microservice solutions',
@@ -52,13 +54,22 @@ export default {
                     key: 'mesh',
                     text: 'Service mesh solution',
                     link: 'https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0',
-                }
+                }, {
+                    key: 'sofa',
+                    text: 'SOFA distributed transaction',
+                    link: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
+                    }
                 ]
             },
             {
                 key: 'developers',
                 text: 'DEVELOPERS',
                 link: '/en-us/docs/developers/developers_dev.html',
+            },
+            {
+                key: 'recruitment',
+                text: 'RECRUITMENT',
+                link: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
             },
             {
                 key: 'blog',
@@ -74,6 +85,11 @@ export default {
                 key: 'download',
                 text: 'DOWNLOAD',
                 link: '/en-us/blog/download.html',
+            },
+            {
+                key: 'change',
+                text: ' ',
+                link: '/zh-cn/index.html',
             }
         ],
         vision: {
@@ -112,6 +128,14 @@ export default {
                     text: 'Community',
                     link: '/en-us/community/index.html',
                 },
+                {
+                    text: 'Simplified Chinese',
+                    link: '/zh-cn/index.html',
+                },
+                {
+                    text: 'English',
+                    link: '/en-us/index.html',
+                },
             ],
         },
         copyright: 'Copyright © 2022 Seata',
@@ -128,20 +152,22 @@ export default {
                 text: '文档',
                 link: '/zh-cn/docs/overview/what-is-seata.html',
             },
-            {
-                key: 'enterprise',
-                text: 'Seata企业版',
-                link: 'https://h5.dingtalk.com/circle/healthCheckin.html?dtaction=os&corpId=ding42dbb24c1f5a084996093958e605f031&f4ffe=77a6c&cbdbhh=qwertyuiop',
-            },
+            // {
+            //     key: 'enterprise',
+            //     text: 'Seata企业版',
+            //     link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+            //     imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
+            // },
             {
                 key: 'solution',
                 text: '解决方案',
                 link: '',
                 imgUrl: 'https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png',
                 children: [{
-                    key: 'gts',
-                    text: '分布式事务解决方案',
-                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0'
+                    key: 'seata',
+                    text: 'Seata企业版',
+                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
+                    imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
                 }, {
                     key: 'micoservice',
                     text: '微服务解决方案',
@@ -163,13 +189,22 @@ export default {
                     key: 'mesh',
                     text: '服务网格解决方案',
                     link: 'https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0',
-                }
+                }, {
+                    key: 'sofa',
+                    text: 'SOFA分布式事务',
+                    link: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
+                    }
                 ]
             },
             {
                 key: 'developers',
                 text: '开发者',
                 link: '/zh-cn/docs/developers/developers_dev.html',
+            },
+            {
+                key: 'recruitment',
+                text: '团队招聘',
+                link: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
             },
             {
                 key: 'blog',
@@ -186,6 +221,11 @@ export default {
                 text: '下载',
                 link: '/zh-cn/blog/download.html',
             },
+            {
+                key: 'change',
+                text: ' ',
+                link: '/en-us/index.html',
+            }
         ],
         vision: {
             title: '愿景',
@@ -222,6 +262,14 @@ export default {
                 {
                     text: '社区',
                     link: '/zh-cn/community/index.html',
+                },
+                {
+                    text: '中文版',
+                    link: '/zh-cn/index.html',
+                },
+                {
+                    text: '英文版',
+                    link: '/en-us/index.html',
                 },
             ],
         },

@@ -33,15 +33,18 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.4.2',
-                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
+                text: 'Release Note of 1.6.1',
+                link: 'https://github.com/seata/seata/releases/tag/v1.6.1',
             },
-            releaseDate: 'Released on Apr 26, 2021',
+            releaseDate: 'Released on Dec 21, 2022',
         },
         introduction: {
             title: 'Seata 是什么？',
-            desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，其内部版本在阿里经济体内部一直扮演着应用架构层数据一致性的中间件角色，帮助经济体平稳的度过历年的双11，对上层业务进行了有力的技术支撑。经过多年沉淀与积累，其商业化产品先后在阿里云、金融云上售卖。2019.1 为了打造更加完善的技术生态和普惠技术成果，Seata 正式宣布对外开源，未来 Seata 将以社区共建的形式帮助用户快速落地分布式事务解决方案。',
+            desc: 'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，其内部版本在阿里系内部一直扮演着应用架构层数据一致性的中间件角色，帮助经济体平稳的度过历年的双11，对上层业务进行了有力的技术支撑。经过多年沉淀与积累，其商业化产品先后在阿里云、金融云上售卖。2019.1 为了打造更加完善的技术生态和普惠技术成果，Seata 正式宣布对外开源，未来 Seata 将以社区共建的形式帮助用户快速落地分布式事务解决方案。',
             img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
+        },
+        landscape:{
+            title: '微服务生态全景图',
         },
         features: {
             title: '特色功能',
@@ -84,7 +87,7 @@ export default {
                               href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> 上提供信息来帮助 Seata 做的更好。</span>,
             list: [
                 'https://img.alicdn.com/imgextra/i1/O1CN01TleQq128FAP8POtL5_!!6000000007902-2-tps-241-42.png' ,
-                'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg' ,
+                'https://img.alicdn.com/imgextra/i4/O1CN01IOIk0s1bWgJ05f4HF_!!6000000003473-2-tps-1200-699.png' ,
                 'https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png' ,
                 'https://img.alicdn.com/imgextra/i3/O1CN01Hohqhm1JvGPE4cSD4_!!6000000001090-1-tps-436-84.gif' ,
                 'https://img.alicdn.com/tfs/TB1hvabw9f2gK0jSZFPXXXsopXa-174-100.png' ,
@@ -269,15 +272,18 @@ export default {
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.4.2',
-                link: 'https://github.com/seata/seata/releases/tag/v1.4.2',
+                text: 'Release Note of 1.6.1',
+                link: 'https://github.com/seata/seata/releases/tag/v1.6.1',
             },
-            releaseDate: 'Released on Apr 26, 2021',
+            releaseDate: 'Released on Dec 21, 2022',
         },
         introduction: {
             title: 'What is Seata?',
-            desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open source of Seata, its internal version has been playing the role of middleware for data consistency of application architecture layer in Alibaba economy, helping the economy to smoothly go through the Double 11 of the past year and providing strong technical support for the upper business.  After years of development, its commercial products have been sold on Alibaba Cloud and Financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will organize as a community to help users quickly land distributed transaction solutions.',
+            desc: 'Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open source of Seata, its internal version has been playing the role of middleware for data consistency of application architecture layer in Alibaba group, helping the economy to smoothly go through the Double 11 of the past year and providing strong technical support for the upper business.  After years of development, its commercial products have been sold on Alibaba Cloud and Financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will organize as a community to help users quickly land distributed transaction solutions.',
             img: 'https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png',
+        },
+        landscape:{
+            title: 'microservice ecosystem landscape',
         },
         features: {
             title: 'Feature List',
@@ -320,7 +326,7 @@ export default {
                               href="https://github.com/seata/seata/issues/1246">Wanted: who&#39;s using Seata</a> to help improving seata better.</span>,
             list: [
                 'https://img.alicdn.com/imgextra/i1/O1CN01TleQq128FAP8POtL5_!!6000000007902-2-tps-241-42.png' ,
-                'https://img.alicdn.com/tfs/TB1wuuCoET1gK0jSZFhXXaAtVXa-496-202.jpg' ,
+                'https://img.alicdn.com/imgextra/i4/O1CN01IOIk0s1bWgJ05f4HF_!!6000000003473-2-tps-1200-699.png' ,
                 'https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png' ,
                 'https://img.alicdn.com/imgextra/i3/O1CN01Hohqhm1JvGPE4cSD4_!!6000000001090-1-tps-436-84.gif' ,
                 'https://img.alicdn.com/tfs/TB1hvabw9f2gK0jSZFPXXXsopXa-174-100.png' ,

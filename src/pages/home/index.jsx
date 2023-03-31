@@ -133,6 +133,12 @@ class Home extends Language {
             <img src={getLink(dataSource.introduction.img)} />
           </div>
         </section>
+        <section className="msemap-section">
+          <div className="msemap-container">
+            <h3>{dataSource.landscape.title}</h3>
+            <div id="mse-arc-container"></div>
+          </div>
+        </section>
         <section className="feature-section">
           <div className="feature-container">
             <h3>{dataSource.features.title}</h3>

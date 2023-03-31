@@ -170,6 +170,20 @@
                 desc: '回答读者关于Seata的新版雪花算法的疑虑，并结合实践分析算法的优劣',
                 link: '/zh-cn/blog/seata-snowflake-explain.html',
             },
+            {
+                title: 'Seata 1.5.2 重磅发布，支持xid负载均衡',
+                author: '@Seata社区',
+                dateStr: 'Jul 12th, 2022',
+                desc: 'Seata 1.5.2 重磅发布，支持xid负载均衡',
+                link: '/zh-cn/blog/seata-1.5.2.html',
+            },
+            {
+                title: 'Seata 1.6.0 重磅发布，大幅提升性能',
+                author: '@Seata社区',
+                dateStr: 'Dec 17th, 2023',
+                desc: 'Seata 1.6.0 重磅发布，大幅提升性能',
+                link: '/zh-cn/blog/seata-1.6.0.html',
+            },
         ]
     },
 };
