@@ -55,7 +55,7 @@ description: Seata 常见问题。
 
 <a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a>
 
-<a href="#25" target="_self">25. 使用动态数据源组件的场景方式 ？</a>
+<a href="#25" target="_self">25. 使用动态数据源后的常见问题 ？</a>
 
 <a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
 
