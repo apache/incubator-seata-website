@@ -314,6 +314,27 @@ export default {
                         ],
                     },
                     {
+                        title: '领域模型',
+                        children: [
+                            {
+                                title: '领域模型概述',
+                                link: '/zh-cn/docs/dev/domain/overviewDomainModel.html',
+                            },
+                            {
+                                title: '事务管理者(TM)',
+                                link: '/zh-cn/docs/dev/domain/tm.html',
+                            },
+                            {
+                                title: '资源管理者(RM)',
+                                link: '/zh-cn/docs/user/rm.html',// zh-cn/docs/dev/mode/saga-mode.html
+                            },
+                            {
+                                title: '事务协调组(TC)',
+                                link: '/zh-cn/docs/dev/mode/tc.html',
+                            }
+                        ],
+                    },
+                    {
                         title: 'Metrics设计',
                         link: '/zh-cn/docs/dev/seata-mertics.html',
                     },
