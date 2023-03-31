@@ -55,7 +55,7 @@ description: Seata 常见问题。
 
 <a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a>
 
-<a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a>
+<a href="#25" target="_self">25. 使用动态数据源组件的场景方式 ？</a>
 
 <a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
 
@@ -344,9 +344,9 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 ------
 
-<h3 id='25'>Q: 25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</h3>
+<h3 id='25'>Q: 25. 使用动态数据源后的常见问题 ？</h3>
 
-**A:** 
+**A:**  使用dynamic-datasource-spring-boot-starter组件后undolog无法删除,或使用AbstractRoutingDataSource等动态数据源后无法正常回滚
 
 dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容
 
@@ -357,8 +357,14 @@ dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用
 ```yaml
 seata:
   enable-auto-data-source-proxy: false
+  
 ```
-********
+
+如果是后者,保证以上两项处理后,请不要手动代码AbstractRoutingDataSource等动态数据源,而是将其实际使用的物理datasource进行代理,具体可参考如下例子[seata-samples/DataSourceProxyConfig.java at master · seata/seata-samples (github.com)](https://github.com/seata/seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java)
+
+------
+
+
 
 <h3 id='26'>Q: 26. Could not found global transaction xid = %s, may be has finished.</h3>
 
@@ -478,7 +484,7 @@ Oracle的NUMBER长度超过19之后，用Long的话，setObject会查不出数�
 
 获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从`@Globaltransational`的TM端重新发起。
 
-Seata提供了一个“全局锁重试”功能，默认未开启，可以通过下面这个配置来开启。
+Seata提供了一个“全局锁重试”功能，1.5之前的版本中默认在结合@Transactional注解或手动开启本地事务下未开启，可以通过下面这个配置来开启(面临回滚时可能全局锁和本地锁互相争抢导致死锁的可能,所以请尽快升级1.5及以上版本)。
 ```properties
 #遇到全局锁冲突时是否回滚，默认为true
 client.rm.lock.retryPolicyBranchRollbackOnConflict=false
