@@ -41,7 +41,7 @@
 <p><a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a></p>
 <p><a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a></p>
 <p><a href="#24" target="_self">24. SpringCloud xid无法传递 ？</a></p>
-<p><a href="#25" target="_self">25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</a></p>
+<p><a href="#25" target="_self">25. 使用动态数据源后的常见问题 ？</a></p>
 <p><a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a></p>
 <p><a href="#27" target="_self">27. TC报这个错：An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception是什么原因？</a></p>
 <p><a href="#28" target="_self">28. 数据库开启自动更新时间戳导致脏数据无法回滚？</a></p>
@@ -258,14 +258,16 @@ ps: oracle同理;1.2.0支持mysql驱动多版本隔离，无需再添加驱动</
 <p>1.首先确保你引入了<code>spring-cloud-starter-alibaba-seata</code>的依赖.</p>
 <p>2.如果xid还无法传递,请确认你是否实现了WebMvcConfigurer,如果是,请参考com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors的方法.把SeataHandlerInterceptor加入到你的拦截链路中.</p>
 <hr>
-<h3 id='25'>Q: 25. 使用mybatis-plus 动态数据源组件后undolog无法删除 ？</h3>
-<p><strong>A:</strong></p>
+<h3 id='25'>Q: 25. 使用动态数据源后的常见问题 ？</h3>
+<p><strong>A:</strong>  使用dynamic-datasource-spring-boot-starter组件后undolog无法删除,或使用AbstractRoutingDataSource等动态数据源后无法正常回滚</p>
 <p>dynamic-datasource-spring-boot-starter 组件内部开启seata后会自动使用DataSourceProxy来包装DataSource,所以需要以下方式来保持兼容</p>
 <p>1.如果你引入的是seata-all,请不要使用@EnableAutoDataSourceProxy注解.</p>
 <p>2.如果你引入的是seata-spring-boot-starter 请关闭自动代理</p>
 <pre><code class="language-yaml"><span class="hljs-attr">seata:</span>
 <span class="hljs-attr">  enable-auto-data-source-proxy:</span> <span class="hljs-literal">false</span>
+  
 </code></pre>
+<p>如果是后者,保证以上两项处理后,请不要手动代码AbstractRoutingDataSource等动态数据源,而是将其实际使用的物理datasource进行代理,具体可参考如下例子<a href="https://github.com/seata/seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java">seata-samples/DataSourceProxyConfig.java at master · seata/seata-samples (github.com)</a></p>
 <hr>
 <h3 id='26'>Q: 26. Could not found global transaction xid = %s, may be has finished.</h3>
 <p><strong>A:</strong></p>
@@ -338,7 +340,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <h3 id='36'>Q: 36.怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail </h3>
 <p><strong>A:</strong></p>
 <p>获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从<code>@Globaltransational</code>的TM端重新发起。</p>
-<p>Seata提供了一个“全局锁重试”功能，默认未开启，可以通过下面这个配置来开启。</p>
+<p>Seata提供了一个“全局锁重试”功能，1.5之前的版本中默认在结合@Transactional注解或手动开启本地事务下未开启该，可以通过下面这个配置来开启(面临回滚时可能全局锁和本地锁互相争抢导致死锁的可能)。建议直接升级1.5及以上版本,不要直接改动这个配置项.</p>
 <pre><code class="language-properties"><span class="hljs-comment">#遇到全局锁冲突时是否回滚，默认为true</span>
 <span class="hljs-meta">client.rm.lock.retryPolicyBranchRollbackOnConflict</span>=<span class="hljs-string">false</span>
 </code></pre>
@@ -347,7 +349,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <span class="hljs-meta">client.rm.lock.retryInterval</span>=<span class="hljs-string">10</span>
 <span class="hljs-meta">client.rm.lock.retryTimes</span>=<span class="hljs-string">30</span>
 </code></pre>
-<p>另外，你也可以直接在<code>@GlobalTransactional</code>上单独配置重试逻辑，优先级比Seata全局配置更高</p>
+<p>另外，你也可以直接在<code>@GlobalTransactional</code> 或者 <code>@GlobalLock</code>上单独配置重试逻辑，优先级比Seata全局配置更高</p>
 <pre><code class="language-java"><span class="hljs-meta">@GlobalTransactional</span>(lockRetryInternal = <span class="hljs-number">100</span>, lockRetryTimes = <span class="hljs-number">30</span>)  <span class="hljs-comment">// v1.4.2</span>
 <span class="hljs-meta">@GlobalTransactional</span>(lockRetryInterval = <span class="hljs-number">100</span>, lockRetryTimes = <span class="hljs-number">30</span>)  <span class="hljs-comment">// v1.5</span>
 </code></pre>
