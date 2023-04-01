@@ -272,6 +272,26 @@
   ],
   "zh-cn": [
     {
+      "filename": "overviewDomainModel.md",
+      "link": "/zh-cn/docs/dev/domain/overviewDomainModel.html",
+      "meta": {}
+    },
+    {
+      "filename": "rm.md",
+      "link": "/zh-cn/docs/dev/domain/rm.html",
+      "meta": {}
+    },
+    {
+      "filename": "tc.md",
+      "link": "/zh-cn/docs/dev/domain/tc.html",
+      "meta": {}
+    },
+    {
+      "filename": "tm.md",
+      "link": "/zh-cn/docs/dev/domain/tm.html",
+      "meta": {}
+    },
+    {
       "filename": "at-mode.md",
       "link": "/zh-cn/docs/dev/mode/at-mode.html",
       "meta": {
