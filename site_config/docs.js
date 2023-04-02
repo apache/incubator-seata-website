@@ -329,7 +329,7 @@ export default {
                                 link: '/zh-cn/docs/dev/domain/rm.html',
                             },
                             {
-                                title: '事务协调组(TC)',
+                                title: '事务协调者(TC)',
                                 link: '/zh-cn/docs/dev/domain/tc.html',
                             }
                         ],
