@@ -453,7 +453,7 @@ services:
     image: seataio/seata-server:${latest-release-version}
     ports:
       - "7092:7091"
-      - "8092:8091"
+      - "8092:8092"
     environment:
       - STORE_MODE=db
       # 以SEATA_IP作为host注册seata server
