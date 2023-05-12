@@ -131,7 +131,7 @@ https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&navpage=org
 ![seata2023-3](/img/blog/summer2023-3.png)
 
 **需要在课题期间第一时间获取导师及其他信息,可扫码进入钉钉群交流** ——了解Seata社区各领域项目、结识Seata社区开源导师，以助力后续申请。
-![seata2023-4](/img/blog/summer2023-4.jpg)
+<img src="/img/blog/summer2023-4.jpg" height="290" width="250"/>
 
 ####  参考资料：
 **Seata网站 :**  https://seata.io/
@@ -144,8 +144,8 @@ https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&navpage=org
 
 - 对于**微服务配置注册中心**有兴趣的同学，可以尝试填报[Nacos 开源之夏](https://nacos.io/zh-cn/blog/iscas2023.html)；
 - 对于**微服务框架和RPC框架**有兴趣的同学，可以尝试填报[Spring Cloud Alibaba 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/41d68399-ed48-4d6d-9d4d-3ff4128dc132?lang=zh) 和 [Dubbo 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/a7f6e2ad-4acc-47f8-9471-4e54b9a166a6?lang=zh) ；
-- 对于云原生网关有兴趣的同学，可以尝试填报[Higress 开源之夏](https://higress.io/zh-cn/blog/ospp-2023)；
-- 对于分布式高可用防护有兴趣的同学，可以尝试填报[Sentinel 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/5e879522-bd90-4a8b-bf8b-b11aea48626b?lang=zh)；
-- 对于微服务治理有兴趣的同学，可以尝试填报[OpenSergo 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/aaff4eec-11b1-4375-997d-5eea8f51762b?lang=zh)。
+- 对于**云原生网关**有兴趣的同学，可以尝试填报[Higress 开源之夏](https://higress.io/zh-cn/blog/ospp-2023)；
+- 对于**分布式高可用防护**有兴趣的同学，可以尝试填报 [Sentinel 开源之夏](https://summer-ospp.ac. cn/org/orgdetail/5e879522-bd90-4a8b-bf8b-b11aea48626b?lang=zh) ；
+- 对于**微服务治理**有兴趣的同学，可以尝试填报  [OpenSergo 开源之夏](https://summer-ospp.ac. cn/org/orgdetail/aaff4eec-11b1-4375-997d-5eea8f51762b?lang=zh)。
 
 
