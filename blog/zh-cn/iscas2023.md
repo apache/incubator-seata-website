@@ -21,8 +21,8 @@ keywords: 开源之夏、seata、分布式事务
 **Seata** 是一款开源的分布式事务解决方案，GitHub获得超过23K+ Starts致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，Seata 在阿里内部一直扮演着分布式数据一致性的中间件角色，几乎每笔交易都要使用Seata，历经双11洪荒流量的洗礼，对业务进行了有力的技术支撑。
 
 ### Seata社区开源之夏2023项目课题汇总  
-Seata社区为开源之夏2023组委会推荐6项精选项目课题，您可以访问以下链接进行选报：
-https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lang=zh
+Seata社区为开源之夏2023组委会推荐6项精选项目课题，您可以访问以下链接进行选报：   
+https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lang=zh   
 请及时与各导师沟通并准备项目申请材料，并登录官方注册申报（以下课题顺序不分先后）：
 ![seata2023-2](/img/blog/summer2023-2.png)
 
@@ -39,6 +39,8 @@ https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lan
 
 **项目链接：**
 https://summer-ospp.ac.cn/org/prodetail/230640380?list=org&navpage=org
+<br/>
+<br/>
 
 #### 项目二: 在seata-go中实现saga事务模式
 
@@ -53,6 +55,8 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 **项目链接：**
 https://summer-ospp.ac.cn/org/prodetail/230640382?list=org&navpage=org
+<br/>
+<br/>
 
 #### 项目三: seata saga模式产品化能力提升
 **难度：** 进阶/Advanced
@@ -66,6 +70,8 @@ saga作为分布式事务的解决方案之一，在长事务上应用尤其广�
 
 **项目链接：**
 https://summer-ospp.ac.cn/org/prodetail/230640415?list=org&navpage=org
+<br/>
+<br/>
 
 #### 项目四:  增加控制台事务控制能力
 **难度：** 进阶/Advanced
@@ -79,6 +85,8 @@ https://summer-ospp.ac.cn/org/prodetail/230640415?list=org&navpage=org
 
 **项目链接：**
 https://summer-ospp.ac.cn/org/prodetail/230640423?list=org&navpage=org
+<br/>
+<br/>
 
 #### 项目五:  提高单测覆盖率和建立集成测试
 **难度：** 基础/Basic
@@ -92,6 +100,8 @@ https://summer-ospp.ac.cn/org/prodetail/230640423?list=org&navpage=org
 
 **项目链接：**
 https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&navpage=org
+<br/>
+<br/>
 
 #### 项目六: 实现Seata运维ctl工具
 **难度：** 进阶/Advanced
@@ -102,27 +112,17 @@ https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&navpage=org
 
 **项目简述：** 运维ctl命令在Seata中非常重要，它是Seata的命令行工具，可以帮助我们管理和操作Seata的各种组件。运维ctl命令可以让我们快速地启动、停止和管理Seata服务，定位和解决问题。此外，运维ctl 命令还提供了丰富的指令，可以让我们方便地检查Seata的健康状态、模拟事务和打印导出配置信息等，大大提高了我们的工作效率和运维体验。
 
-
-
-以下是对实现定制ctl运维命令行的一些建议：
-
-
-
-1. 借鉴其他开源项目的实现方式，比如kubectl，helm等，并根据Seata的特点和需求进行定制。
-
-2. 将常用的运维操作直接封装进命令行，减少用户的手动操作。
-
-3. 考虑使用友好的命令和参数名称，将命令行设计得易于理解和记忆。
-
-4. 提供详细的帮助文档和示例，帮助用户快速上手和了解如何使用各种参数和选项。
-
-5. 考虑命令行的跨平台支持，例如支持Windows、Linux和MacOS等操作系统。
-
-
-
+以下是对实现定制ctl运维命令行的一些建议： 
+- 借鉴其他开源项目的实现方式，比如kubectl，helm等，并根据Seata的特点和需求进行定制。
+- 将常用的运维操作直接封装进命令行，减少用户的手动操作。
+- 考虑使用友好的命令和参数名称，将命令行设计得易于理解和记忆。
+- 提供详细的帮助文档和示例，帮助用户快速上手和了解如何使用各种参数和选项。
+- 考虑命令行的跨平台支持，例如支持Windows、Linux和MacOS等操作系统。
 一款好的ctl命令行应该是易用、灵活、可定制、健壮和易维护的。
 
 项目链接：https://summer-ospp.ac.cn/org/prodetail/230640431?list=org&navpage=org
+<br/>
+<br/>
 
 ###  如何参与开源之夏2023并快速选定项目？  
 **欢迎通过上方联系方式，与各导师沟通并准备项目申请材料。**
@@ -131,15 +131,21 @@ https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&navpage=org
 ![seata2023-3](/img/blog/summer2023-3.png)
 
 **需要在课题期间第一时间获取导师及其他信息,可扫码进入钉钉群交流** ——了解Seata社区各领域项目、结识Seata社区开源导师，以助力后续申请。
-![seata2023-4](/img/blog/summer2023-4.png)
+![seata2023-4](/img/blog/summer2023-4.jpg)
 
-####  Seata社区更多联系方式
-Seata网站 :  https://seata.io/
+####  参考资料：
+**Seata网站 :**  https://seata.io/
 
-GitHub : https://github.com/seata
+**Seata GitHub :** https://github.com/seata
 
-邮件列表 : dev-seata@googlegroups.com
+**开源之夏官网：** https://summer-ospp.ac.cn/org/orgdetail/ab188e59-fab8-468f-bc89-bdc2bd8b5e64?lang=zh
 
-社区官方公共联系邮箱 : seata@list.alibaba-inc.com
+如果同学们对微服务其他领域项目感兴趣，也可以尝试申请，例如：
+
+- 对于**微服务配置注册中心**有兴趣的同学，可以尝试填报[Nacos 开源之夏](https://nacos.io/zh-cn/blog/iscas2023.html)；
+- 对于**微服务框架和RPC框架**有兴趣的同学，可以尝试填报[Spring Cloud Alibaba 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/41d68399-ed48-4d6d-9d4d-3ff4128dc132?lang=zh) 和 [Dubbo 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/a7f6e2ad-4acc-47f8-9471-4e54b9a166a6?lang=zh) ；
+- 对于云原生网关有兴趣的同学，可以尝试填报[Higress 开源之夏](https://higress.io/zh-cn/blog/ospp-2023)；
+- 对于分布式高可用防护有兴趣的同学，可以尝试填报[Sentinel 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/5e879522-bd90-4a8b-bf8b-b11aea48626b?lang=zh)；
+- 对于微服务治理有兴趣的同学，可以尝试填报[OpenSergo 开源之夏](https://summer-ospp.ac.cn/org/orgdetail/aaff4eec-11b1-4375-997d-5eea8f51762b?lang=zh)。
 
 
