@@ -85,6 +85,16 @@
       }
     },
     {
+      "filename": "iscas2023.md",
+      "link": "/zh-cn/blog/iscas2023.html",
+      "meta": {
+        "title": "6大课题现已开放挑选 | 欢迎报名 Seata 开源之夏",
+        "author": "Seata社区",
+        "date": "2023/05/12",
+        "keywords": "开源之夏、seata、分布式事务"
+      }
+    },
+    {
       "filename": "manual-transaction-mode.md",
       "link": "/zh-cn/blog/manual-transaction-mode.html",
       "meta": {
