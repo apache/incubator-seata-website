@@ -25,18 +25,20 @@
 <h3>Seata社区介绍</h3>
 <p><strong>Seata</strong> 是一款开源的分布式事务解决方案，GitHub获得超过23K+ Starts致力于在微服务架构下提供高性能和简单易用的分布式事务服务。在 Seata 开源之前，Seata 在阿里内部一直扮演着分布式数据一致性的中间件角色，几乎每笔交易都要使用Seata，历经双11洪荒流量的洗礼，对业务进行了有力的技术支撑。</p>
 <h3>Seata社区开源之夏2023项目课题汇总</h3>
-<p>Seata社区为开源之夏2023组委会推荐6项精选项目课题，您可以访问以下链接进行选报：
-<a href="https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lang=zh">https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lang=zh</a>
+<p>Seata社区为开源之夏2023组委会推荐6项精选项目课题，您可以访问以下链接进行选报：<br>
+<a href="https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lang=zh">https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lang=zh</a><br>
 请及时与各导师沟通并准备项目申请材料，并登录官方注册申报（以下课题顺序不分先后）：
 <img src="/img/blog/summer2023-2.png" alt="seata2023-2"></p>
-<h4>项目一: 实现用于服务发现和注册的namingServer</h4>
+<h4>项目一: 实现用于服务发现和注册的NamingServer</h4>
 <p><strong>难度：</strong> 进阶/Advanced</p>
 <p><strong>项目社区导师：</strong> 陈健斌</p>
 <p><strong>导师联系邮箱：</strong> <a href="mailto:364176773@qq.com">364176773@qq.com</a></p>
 <p><strong>项目简述：</strong><br>
 目前seata的服务暴露及发现主要依赖于第三方注册中心，随着项目的演进发展，带来了额外的学习使用成本，而业内主流具有服务端的中间件大多都开始演进自身的服务自闭环和控制及提供于服务端更高契合度和可靠性的组件或功能如kafka 的KRaft，rocketmq的NameServer，clickhouse的ClickHouse Keeper等.故为了解决如上问题和架构演进要求,seata需要构建自身的nameserver来保证更加稳定可靠。</p>
 <p><strong>项目链接：</strong>
-<a href="https://summer-ospp.ac.cn/org/prodetail/230640380?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640380?list=org&amp;navpage=org</a></p>
+<a href="https://summer-ospp.ac.cn/org/prodetail/230640380?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640380?list=org&amp;navpage=org</a>
+<br/>
+<br/></p>
 <h4>项目二: 在seata-go中实现saga事务模式</h4>
 <p><strong>难度：</strong> 进阶/Advanced</p>
 <p><strong>项目社区导师：</strong> 刘月财</p>
@@ -44,7 +46,9 @@
 <p><strong>项目简述：</strong>
 Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。Seata-go 中当前没有支持saga模式，希望后面参考Java版本的实现能将该功能支持上。</p>
 <p><strong>项目链接：</strong>
-<a href="https://summer-ospp.ac.cn/org/prodetail/230640382?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640382?list=org&amp;navpage=org</a></p>
+<a href="https://summer-ospp.ac.cn/org/prodetail/230640382?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640382?list=org&amp;navpage=org</a>
+<br/>
+<br/></p>
 <h4>项目三: seata saga模式产品化能力提升</h4>
 <p><strong>难度：</strong> 进阶/Advanced</p>
 <p><strong>项目社区导师：</strong> 李宗杰</p>
@@ -52,7 +56,9 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 <p><strong>项目简述：</strong>
 saga作为分布式事务的解决方案之一，在长事务上应用尤其广泛，seata也提供了对应的状态机实现。随着业务的不断发展和接入，对seata提出了更高的要求，我们需要支持流式saga 编排，对当前状态机的实现进行优化和扩展，进一步服务业务。</p>
 <p><strong>项目链接：</strong>
-<a href="https://summer-ospp.ac.cn/org/prodetail/230640415?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640415?list=org&amp;navpage=org</a></p>
+<a href="https://summer-ospp.ac.cn/org/prodetail/230640415?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640415?list=org&amp;navpage=org</a>
+<br/>
+<br/></p>
 <h4>项目四:  增加控制台事务控制能力</h4>
 <p><strong>难度：</strong> 进阶/Advanced</p>
 <p><strong>项目社区导师：</strong> 王良</p>
@@ -60,7 +66,9 @@ saga作为分布式事务的解决方案之一，在长事务上应用尤其广�
 <p><strong>项目简述：</strong>
 在分布式事务中，经常会存在非常多的异常情况，这些异常情况往往会导致系统无法继续运行。而这些异常往往需要人工介入排查原因并排除故障，才能够使系统继续正常运行。虽然seata 提供了控制台查询事务数据，但还未提供任何事务控制能力，帮助排除故障。所以，本课题主要是在seata服务端控制台上，添加事务控制能力。</p>
 <p><strong>项目链接：</strong>
-<a href="https://summer-ospp.ac.cn/org/prodetail/230640423?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640423?list=org&amp;navpage=org</a></p>
+<a href="https://summer-ospp.ac.cn/org/prodetail/230640423?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640423?list=org&amp;navpage=org</a>
+<br/>
+<br/></p>
 <h4>项目五:  提高单测覆盖率和建立集成测试</h4>
 <p><strong>难度：</strong> 基础/Basic</p>
 <p><strong>项目社区导师：</strong> 张嘉伟</p>
@@ -68,43 +76,44 @@ saga作为分布式事务的解决方案之一，在长事务上应用尤其广�
 <p><strong>项目简述：</strong>
 为了进一步提高项目的质量以及稳定性, 需要进一步提升项目单元测试覆盖率以及加入集成测试来模拟生产中不同的场景. 集成测试的目的是为了模拟client与server的交互过程, 而非单一的对某个接口进行测试。</p>
 <p><strong>项目链接：</strong>
-<a href="https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&amp;navpage=org</a></p>
+<a href="https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&amp;navpage=org</a>
+<br/>
+<br/></p>
 <h4>项目六: 实现Seata运维ctl工具</h4>
 <p><strong>难度：</strong> 进阶/Advanced</p>
 <p><strong>项目社区导师：</strong> 季敏</p>
 <p><strong>导师联系邮箱：</strong>  <a href="mailto:jimin.jm@alibaba-inc.com">jimin.jm@alibaba-inc.com</a></p>
 <p><strong>项目简述：</strong> 运维ctl命令在Seata中非常重要，它是Seata的命令行工具，可以帮助我们管理和操作Seata的各种组件。运维ctl命令可以让我们快速地启动、停止和管理Seata服务，定位和解决问题。此外，运维ctl 命令还提供了丰富的指令，可以让我们方便地检查Seata的健康状态、模拟事务和打印导出配置信息等，大大提高了我们的工作效率和运维体验。</p>
 <p>以下是对实现定制ctl运维命令行的一些建议：</p>
-<ol>
-<li>
-<p>借鉴其他开源项目的实现方式，比如kubectl，helm等，并根据Seata的特点和需求进行定制。</p>
-</li>
-<li>
-<p>将常用的运维操作直接封装进命令行，减少用户的手动操作。</p>
-</li>
-<li>
-<p>考虑使用友好的命令和参数名称，将命令行设计得易于理解和记忆。</p>
-</li>
-<li>
-<p>提供详细的帮助文档和示例，帮助用户快速上手和了解如何使用各种参数和选项。</p>
-</li>
-<li>
-<p>考虑命令行的跨平台支持，例如支持Windows、Linux和MacOS等操作系统。</p>
-</li>
-</ol>
-<p>一款好的ctl命令行应该是易用、灵活、可定制、健壮和易维护的。</p>
-<p>项目链接：<a href="https://summer-ospp.ac.cn/org/prodetail/230640431?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640431?list=org&amp;navpage=org</a></p>
+<ul>
+<li>借鉴其他开源项目的实现方式，比如kubectl，helm等，并根据Seata的特点和需求进行定制。</li>
+<li>将常用的运维操作直接封装进命令行，减少用户的手动操作。</li>
+<li>考虑使用友好的命令和参数名称，将命令行设计得易于理解和记忆。</li>
+<li>提供详细的帮助文档和示例，帮助用户快速上手和了解如何使用各种参数和选项。</li>
+<li>考虑命令行的跨平台支持，例如支持Windows、Linux和MacOS等操作系统。
+一款好的ctl命令行应该是易用、灵活、可定制、健壮和易维护的。</li>
+</ul>
+<p>项目链接：<a href="https://summer-ospp.ac.cn/org/prodetail/230640431?list=org&amp;navpage=org">https://summer-ospp.ac.cn/org/prodetail/230640431?list=org&amp;navpage=org</a>
+<br/>
+<br/></p>
 <h3>如何参与开源之夏2023并快速选定项目？</h3>
 <p><strong>欢迎通过上方联系方式，与各导师沟通并准备项目申请材料。</strong></p>
 <p>课题参与期间，学生可以在世界任何地方线上工作，Seata相关项目结项需要在<strong>9月30日</strong>前以 PR 的形式提交到Seata社区仓库中并完成合并，请务必尽早准备。
 <img src="/img/blog/summer2023-3.png" alt="seata2023-3"></p>
 <p><strong>需要在课题期间第一时间获取导师及其他信息,可扫码进入钉钉群交流</strong> ——了解Seata社区各领域项目、结识Seata社区开源导师，以助力后续申请。
-<img src="/img/blog/summer2023-4.png" alt="seata2023-4"></p>
-<h4>Seata社区更多联系方式</h4>
-<p>Seata网站 :  <a href="https://seata.io/">https://seata.io/</a></p>
-<p>GitHub : <a href="https://github.com/seata">https://github.com/seata</a></p>
-<p>邮件列表 : <a href="mailto:dev-seata@googlegroups.com">dev-seata@googlegroups.com</a></p>
-<p>社区官方公共联系邮箱 : <a href="mailto:seata@list.alibaba-inc.com">seata@list.alibaba-inc.com</a></p>
+<img src="/img/blog/summer2023-4.jpg" alt="seata2023-4"></p>
+<h4>参考资料：</h4>
+<p><strong>Seata网站 :</strong>  <a href="https://seata.io/">https://seata.io/</a></p>
+<p><strong>Seata GitHub :</strong> <a href="https://github.com/seata">https://github.com/seata</a></p>
+<p><strong>开源之夏官网：</strong> <a href="https://summer-ospp.ac.cn/org/orgdetail/ab188e59-fab8-468f-bc89-bdc2bd8b5e64?lang=zh">https://summer-ospp.ac.cn/org/orgdetail/ab188e59-fab8-468f-bc89-bdc2bd8b5e64?lang=zh</a></p>
+<p>如果同学们对微服务其他领域项目感兴趣，也可以尝试申请，例如：</p>
+<ul>
+<li>对于<strong>微服务配置注册中心</strong>有兴趣的同学，可以尝试填报<a href="https://nacos.io/zh-cn/blog/iscas2023.html">Nacos 开源之夏</a>；</li>
+<li>对于<strong>微服务框架和RPC框架</strong>有兴趣的同学，可以尝试填报<a href="https://summer-ospp.ac.cn/org/orgdetail/41d68399-ed48-4d6d-9d4d-3ff4128dc132?lang=zh">Spring Cloud Alibaba 开源之夏</a> 和 <a href="https://summer-ospp.ac.cn/org/orgdetail/a7f6e2ad-4acc-47f8-9471-4e54b9a166a6?lang=zh">Dubbo 开源之夏</a> ；</li>
+<li>对于云原生网关有兴趣的同学，可以尝试填报<a href="https://higress.io/zh-cn/blog/ospp-2023">Higress 开源之夏</a>；</li>
+<li>对于分布式高可用防护有兴趣的同学，可以尝试填报<a href="https://summer-ospp.ac.cn/org/orgdetail/5e879522-bd90-4a8b-bf8b-b11aea48626b?lang=zh">Sentinel 开源之夏</a>；</li>
+<li>对于微服务治理有兴趣的同学，可以尝试填报<a href="https://summer-ospp.ac.cn/org/orgdetail/aaff4eec-11b1-4375-997d-5eea8f51762b?lang=zh">OpenSergo 开源之夏</a>。</li>
+</ul>
 </section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd><dd><a href="/zh-cn/index.html" target="_self">中文版</a></dd><dd><a href="/en-us/index.html" target="_self">英文版</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2022 Seata</span></div></div></footer></div></div>
 	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
 	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
