@@ -26,7 +26,7 @@ https://summer-ospp.ac.cn/org/orgdetail/064c15df-705c-483a-8fc8-02831370db14?lan
 请及时与各导师沟通并准备项目申请材料，并登录官方注册申报（以下课题顺序不分先后）：
 ![seata2023-2](/img/blog/summer2023-2.png)
 
-#### 项目一: 实现用于服务发现和注册的namingServer
+#### 项目一: 实现用于服务发现和注册的NamingServer
 
 **难度：** 进阶/Advanced
 
