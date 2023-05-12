@@ -132,7 +132,6 @@ https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&navpage=org
 
 **需要在课题期间第一时间获取导师及其他信息,可扫码进入钉钉群交流** ——了解Seata社区各领域项目、结识Seata社区开源导师，以助力后续申请。
 <br/>
-
 <img src="/img/blog/summer2023-4.jpg" height="290" width="250"/>
 <br/>
 
