@@ -397,6 +397,17 @@
       }
     },
     {
+      "filename": "seata-go-1.2.0.md",
+      "link": "/zh-cn/blog/seata-go-1.2.0.html",
+      "meta": {
+        "title": "生产环境可用的 seata-go 1.2.0 来了！！！",
+        "author": "Seata社区",
+        "keywords": "seata、分布式事务、golang、1.2.0",
+        "description": "生产环境可用的 seata-go 1.2.0 来了！！！",
+        "date": "2023/06/08"
+      }
+    },
+    {
       "filename": "seata-golang-communication-mode.md",
       "link": "/zh-cn/blog/seata-golang-communication-mode.html",
       "meta": {

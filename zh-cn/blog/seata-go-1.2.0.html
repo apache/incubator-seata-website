@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="seata、分布式事务、golang、1.2.0" />
+	<meta name="description" content="生产环境可用的 seata-go 1.2.0 来了！！！" />
+	<meta name="aes-config" content="pid=xux-opensource&user_type=101&uid=&username=&dim10=seata"/>
+
+	<!-- 网页标签标题 -->
+	<title>生产环境可用的 seata-go 1.2.0 来了！！！</title>
+  <link rel="shortcut icon" href="/img/seata_logo_small.jpeg"/>
+	<link rel="stylesheet" href="/build/blogDetail.css" />
+	<link rel="stylesheet" href="https://g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css" />
+</head>
+<body>
+	<div id="root"><div class="blog-detail-page" data-reactroot=""><header class="header-container header-container-normal"><div class="header-body"><a href="/zh-cn/index.html"><img class="logo" src="//img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"/></a><div class="search search-normal"><span class="icon-search"></span></div><span class="language-switch language-switch-normal">En</span><div class="header-menu"><img class="header-menu-toggle" src="https://img.alicdn.com/tfs/TB14eEmw7P2gK0jSZPxXXacQpXa-38-32.png"/><ul><li class="menu-item menu-item-normal"><span><a href="/zh-cn/index.html">首页</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/docs/overview/what-is-seata.html">文档</a></span></li><li class="menu-item menu-item-normal"><div class="nav-container"><div class="word"><a>解决方案</a><img class="menu-img" src="https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png"/></div><ul class="sub-nav-container" style="width:220px"><li><a href="https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0" target="_blank">Seata企业版</a></li><li><a href="https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0" target="_blank">微服务解决方案</a></li><li><a href="https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0" target="_blank">高可用解决方案</a></li><li><a href="https://cn.aliyun.com/product/aliware/sae?spm=seata-website.topbar.0.0.0" target="_blank">微服务Serverless解决方案</a></li><li><a href="https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0" target="_blank">PaaS解决方案</a></li><li><a href="https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0" target="_blank">服务网格解决方案</a></li><li><a href="https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0" target="_blank">SOFA分布式事务</a></li></ul> </div></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/docs/developers/developers_dev.html">开发者</a></span></li><li class="menu-item menu-item-normal"><span><a href="https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA">团队招聘</a></span></li><li class="menu-item menu-item-normal menu-item-normal-active"><span><a href="/zh-cn/blog/index.html">博客</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/community/index.html">社区</a></span></li><li class="menu-item menu-item-normal"><span><a href="/zh-cn/blog/download.html">下载</a></span></li><li class="menu-item menu-item-normal"><span><a href="/en-us/index.html"> </a></span></li></ul></div></div></header><section class="blog-content markdown-body"><h2>生产环境可用的 seata-go 1.2.0 来了！！！</h2>
+<p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
+<h3>发布概览</h3>
+<p>Seata-go 1.2.0 版本支持 XA 模式。XA 协议是由 X/Open 组织提出的分布式事务处理规范，其优点是对业务代码无侵入。当前 Seata-go 的 XA 模式支持 MySQL 数据库。至此，seata-go 已经集齐 AT、TCC、Saga 和 XA 四种事务模式，完成了与 Seata Java 的功能对齐。 XA 模式的主要功能:</p>
+<ul>
+<li>支持了 XA 数据源代理</li>
+<li>支持了 XA 事务模式<br>
+XA 相关的 samples 可以参考示例：<a href="https://github.com/seata/seata-go-samples/tree/main/xa">https://github.com/seata/seata-go-samples/tree/main/xa</a></li>
+</ul>
+<h3>feature：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata-go/pull/467">#467</a>] 实现 XA 模式支持 MySQL</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/534">#534</a>] 支持 session 的负载均衡</li>
+</ul>
+<h3>bugfix：</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata-go/pull/540">#540</a>] 修复初始化 xa 模式的 bug</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/545">#545</a>] 修复 xa 模式获取 db 版本号的 bug</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/548">#548</a>] 修复启动 xa 会失败的 bug</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/556">#556</a>] 修复 xa 数据源的 bug</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/562">#562</a>] 修复提交 xa 全局事务的 bug</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/564">#564</a>] 修复提交 xa 分支事务的 bug</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/566">#566</a>] 修复使用 xa 数据源执行本地事务的 bug</li>
+</ul>
+<h3>optimize:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata-go/pull/523">#523</a>] 优化 CI 流程</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/456">#525</a>] 将 jackson 序列化重命名为 json</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/532">#532</a>] 移除重复的代码</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/536">#536</a>] 优化 go import 代码格式</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/554">#554</a>] 优化 xa 模式的性能</li>
+<li>[<a href="https://github.com/seata/seata-go/pull/561">#561</a>] 优化 xa 模式的日志输出</li>
+</ul>
+<h3>test:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata-go/pull/535">#535</a>] 添加集成测试</li>
+</ul>
+<h3>doc:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata-go/pull/550">#550</a>] 添加 1.2.0 版本的改动日志</li>
+</ul>
+<h3>contributors:</h3>
+<p>Thanks to these contributors for their code commits. Please report an unintended omission.</p>
+<ul>
+<li><a href="https://github.com/georgehao">georgehao</a></li>
+<li><a href="https://github.com/luky116">luky116</a></li>
+<li><a href="https://github.com/jasondeng1997">jasondeng1997</a></li>
+<li><a href="https://github.com/106umao">106umao</a></li>
+<li><a href="https://github.com/wang1309">wang1309</a></li>
+<li><a href="https://github.com/iSuperCoder">iSuperCoder</a></li>
+<li><a href="https://github.com/Charlie17Li">Charlie17Li</a></li>
+<li><a href="https://github.com/Code-Fight">Code-Fight</a></li>
+<li><a href="https://github.com/Kirhaku">Kirhaku</a></li>
+<li><a href="https://github.com/VaderKai">Vaderkai</a></li>
+</ul>
+<p>同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。</p>
+<h4>Link</h4>
+<ul>
+<li><a href="http://github.com/seata/seata">http://github.com/seata/seata</a></li>
+<li><a href="https://github.com/seata/seata-php">https://github.com/seata/seata-php</a></li>
+<li><a href="https://github.com/seata/seata-js">https://github.com/seata/seata-js</a></li>
+<li><a href="https://github.com/seata/seata-go">https://github.com/seata/seata-go</a><br>
+<strong>Samples：</strong></li>
+<li><a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><a href="https://github.com/seata/seata-go-samples">https://github.com/seata/seata-go-samples</a><br>
+<strong>官网：</strong></li>
+<li><a href="https://seata.io/">https://seata.io/</a></li>
+</ul>
+</section><footer class="footer-container"><div class="footer-body"><img src="//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png"/><p class="docsite-power">website powered by docsite</p><div class="cols-container"><div class="col col-12"><h3>愿景</h3><p>Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p></div><div class="col col-6"><dl><dt>文档</dt><dd><a href="/zh-cn/docs/overview/what-is-seata.html" target="_self">Seata 是什么？</a></dd><dd><a href="/zh-cn/docs/user/quickstart.html" target="_self">快速开始</a></dd><dd><a href="https://github.com/seata/seata.github.io/issues/new" target="_self">报告文档问题</a></dd><dd><a href="https://github.com/seata/seata.github.io" target="_self">在Github上编辑此文档</a></dd></dl></div><div class="col col-6"><dl><dt>资源</dt><dd><a href="/zh-cn/blog/index.html" target="_self">博客</a></dd><dd><a href="/zh-cn/community/index.html" target="_self">社区</a></dd><dd><a href="/zh-cn/index.html" target="_self">中文版</a></dd><dd><a href="/en-us/index.html" target="_self">英文版</a></dd></dl></div></div><div class="copyright"><span>Copyright © 2022 Seata</span></div></div></footer></div></div>
+	<script src="https://f.alicdn.com/react/15.4.1/react-with-addons.min.js"></script>
+	<script src="https://f.alicdn.com/react/15.4.1/react-dom.min.js"></script>
+	<script src="//g.alicdn.com/alilog/mlog/aplus_v2.js" id="beacon-aplus" exparams="clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx"></script>
+     <script src="//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2"></script>
+	<script>
+		window.rootPath = '';
+  </script>
+	<script src="/build/blogDetail.js"></script>
+	<script src="https://g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js"></script>
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+    window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X4LJGF90X2');
+    </script>
+</body>
+</html>

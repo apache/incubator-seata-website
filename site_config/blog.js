@@ -166,7 +166,7 @@
             {
                 title: '关于新版雪花算法的答疑',
                 author: '@selfishlover',
-                dateStr: 'June 21th, 2021',
+                dateStr: 'Jun 21th, 2021',
                 desc: '回答读者关于Seata的新版雪花算法的疑虑，并结合实践分析算法的优劣',
                 link: '/zh-cn/blog/seata-snowflake-explain.html',
             },
@@ -180,9 +180,16 @@
             {
                 title: 'Seata 1.6.0 重磅发布，大幅提升性能',
                 author: '@Seata社区',
-                dateStr: 'Dec 17th, 2023',
+                dateStr: 'Dec 17th, 2022',
                 desc: 'Seata 1.6.0 重磅发布，大幅提升性能',
                 link: '/zh-cn/blog/seata-1.6.0.html',
+            },
+            {
+                title: '生产环境可用的 seata-go 1.2.0 来了！！！',
+                author: '@Seata社区',
+                dateStr: 'Jun 08th, 2023',
+                desc: '生产环境可用的 seata-go 1.2.0 来了！！！',
+                link: '/zh-cn/blog/seata-go-1.2.0.html',
             },
         ]
     },
