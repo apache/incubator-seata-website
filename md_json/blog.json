@@ -354,6 +354,17 @@
       }
     },
     {
+      "filename": "seata-connect-data-and-application.md",
+      "link": "/zh-cn/blog/seata-connect-data-and-application.html",
+      "meta": {
+        "title": "Seata：连接数据与应用",
+        "keywords": "Seata、分布式事务、数据一致性、微服务",
+        "description": "本文介绍Seata的过去、现在和未来",
+        "author": "季敏-Seata 开源社区创始人，分布式事务团队负责人",
+        "date": "2023/06/10"
+      }
+    },
+    {
       "filename": "seata-datasource-proxy.md",
       "link": "/zh-cn/blog/seata-datasource-proxy.html",
       "meta": {
