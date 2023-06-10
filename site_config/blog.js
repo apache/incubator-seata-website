@@ -191,6 +191,13 @@
                 desc: '生产环境可用的 seata-go 1.2.0 来了！！！',
                 link: '/zh-cn/blog/seata-go-1.2.0.html',
             },
+            {
+                title: 'Seata：连接数据与应用',
+                author: '@季敏-Seata 开源社区创始人，分布式事务团队负责人',
+                dateStr: 'Jun 11th, 2024',
+                desc: '本文介绍Seata的过去、现在和未来演进',
+                link: '/zh-cn/blog/seata-connect-data-and-application.html',
+            },
         ]
     },
 };
