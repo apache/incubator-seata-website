@@ -87,6 +87,11 @@ export default {
                 link: '/en-us/blog/download.html',
             },
             {
+                key: 'console',
+                text: 'CONSOLE SAMPLE',
+                link: 'http://demo.seata.io',
+            },
+            {
                 key: 'change',
                 text: ' ',
                 link: '/zh-cn/index.html',
@@ -220,6 +225,11 @@ export default {
                 key: 'download',
                 text: '下载',
                 link: '/zh-cn/blog/download.html',
+            },
+            {
+                key: 'console',
+                text: '控制台样例',
+                link: 'http://demo.seata.io',
             },
             {
                 key: 'change',
