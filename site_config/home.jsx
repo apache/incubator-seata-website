@@ -23,20 +23,20 @@ export default {
                 },
                 {
                     text: 'Github-Golang',
-                    link: 'https://github.com/opentrx/seata-golang',
+                    link: 'https://github.com/seata/seata-go',
                     type: 'normal',
                 },
                 {
-                    text: 'Github-Python',
-                    link: 'https://github.com/opentrx/seata-python',
+                    text: 'Docker Image',
+                    link: 'https://hub.docker.com/repository/docker/seataio/seata-server/tags?page=1&ordering=last_updated',
                     type: 'normal',
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.6.1',
-                link: 'https://github.com/seata/seata/releases/tag/v1.6.1',
+                text: 'Release Note of 1.7.0',
+                link: 'https://github.com/seata/seata/releases/tag/v1.7.0',
             },
-            releaseDate: 'Released on Dec 21, 2022',
+            releaseDate: 'Released on Jul 11, 2023',
         },
         introduction: {
             title: 'Seata 是什么？',
@@ -267,15 +267,20 @@ export default {
                 },
                 {
                     text: 'Github-Golang',
-                    link: 'https://github.com/opentrx/seata-golang',
+                    link: 'https://github.com/seata/seata-go',
+                    type: 'normal',
+                },
+                {
+                    text: 'Docker Image',
+                    link: 'https://hub.docker.com/repository/docker/seataio/seata-server/tags?page=1&ordering=last_updated',
                     type: 'normal',
                 },
             ],
             versionNote: {
-                text: 'Release Note of 1.6.1',
-                link: 'https://github.com/seata/seata/releases/tag/v1.6.1',
+                text: 'Release Note of 1.7.0',
+                link: 'https://github.com/seata/seata/releases/tag/v1.7.0',
             },
-            releaseDate: 'Released on Dec 21, 2022',
+            releaseDate: 'Released on Jul 11, 2023',
         },
         introduction: {
             title: 'What is Seata?',
