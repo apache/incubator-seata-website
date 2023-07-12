@@ -21,6 +21,132 @@
 <p>GitHub: <a href="https://github.com/seata/seata">https://github.com/seata/seata</a> <br>
 Release Notes: <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></p>
 </blockquote>
+<h3>1.7.0 (2023-07-11)</h3>
+<p><a href="https://github.com/seata/seata/archive/v1.7.0.zip">source</a> |
+<a href="https://github.com/seata/seata/releases/download/v1.7.0/seata-server-1.7.0.zip">binary</a></p>
+<details>
+  <summary><mark>Release notes</mark></summary>
+<h3>Seata 1.7.0</h3>
+<p>Seata 1.7.0 Released</p>
+<p>Seata is an easy-to-use, high-performance, open source distributed transaction solution.</p>
+<p>The version is updated as follows:</p>
+<h3>feature:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/5476">#5476</a>] first support <code>native-image</code> for <code>seata-client</code></li>
+<li>[<a href="https://github.com/seata/seata/pull/5495">#5495</a>] console integration saga-statemachine-designer</li>
+<li>[<a href="https://github.com/seata/seata/pull/5668">#5668</a>] compatible with file.conf and registry.conf configurations in version 1.4.2 and below</li>
+</ul>
+<h3>bugfix:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/5682">#5682</a>]  fix saga mode replay context lost startParams</li>
+<li>[<a href="https://github.com/seata/seata/pull/5671">#5671</a>] fix saga mode serviceTask inputParams json autoType convert exception</li>
+<li>[<a href="https://github.com/seata/seata/pull/5194">#5194</a>] fix wrong keyword order for oracle when creating a table</li>
+<li>[<a href="https://github.com/seata/seata/pull/5201">#5021</a>] fix JDK Reflection for Spring origin proxy failed in JDK17</li>
+<li>[<a href="https://github.com/seata/seata/pull/5203">#5023</a>] fix <code>seata-core</code> dependency transitive conflict in <code>seata-dubbo</code></li>
+<li>[<a href="https://github.com/seata/seata/pull/5224">#5224</a>] fix oracle initialize script index_name is duplicate</li>
+<li>[<a href="https://github.com/seata/seata/pull/5233">#5233</a>] fix the inconsistent configuration item names related to LoadBalance</li>
+<li>[<a href="https://github.com/seata/seata/pull/5265">#5266</a>] fix server console has queried the released lock</li>
+<li>[<a href="https://github.com/seata/seata/pull/5245">#5245</a>] fix the incomplete dependency of distribution module</li>
+<li>[<a href="https://github.com/seata/seata/pull/5239">#5239</a>] fix <code>getConfig</code> throw <code>ClassCastException</code> when use JDK proxy</li>
+<li>[<a href="https://github.com/seata/seata/pull/5281">#5281</a>] parallel request handle throw IndexOutOfBoundsException</li>
+<li>[<a href="https://github.com/seata/seata/pull/5288">#5288</a>] fix auto-increment of pk columns in Oracle in AT mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/5287">#5287</a>] fix auto-increment of pk columns in PostgreSQL in AT mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/5299">#5299</a>] fix GlobalSession deletion when retry rollback or retry commit timeout</li>
+<li>[<a href="https://github.com/seata/seata/pull/5307">#5307</a>] fix that keywords don't add escaped characters</li>
+<li>[<a href="https://github.com/seata/seata/pull/5311">#5311</a>] remove RollbackRetryTimeout sessions during in file storage recover</li>
+<li>[<a href="https://github.com/seata/seata/pull/4734">#4734</a>] check if table meta cache should be refreshed in AT mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/5316">#5316</a>] fix G1 jvm parameter in jdk8</li>
+<li>[<a href="https://github.com/seata/seata/pull/5321">#5321</a>] fix When the rollback logic on the TC side returns RollbackFailed, the custom FailureHandler is not executed</li>
+<li>[<a href="https://github.com/seata/seata/pull/5332">#5332</a>] fix bugs found in unit tests</li>
+<li>[<a href="https://github.com/seata/seata/pull/5145">#5145</a>] fix global session is always begin in saga mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/5413">#5413</a>] fix bad service configuration file and compilation failure</li>
+<li>[<a href="https://github.com/seata/seata/pull/5415">#5415</a>] fix transaction timeout on client side not execute hook and failureHandler</li>
+<li>[<a href="https://github.com/seata/seata/pull/5447">#5447</a>] fix oracle xa mode cannnot be used By same database</li>
+<li>[<a href="https://github.com/seata/seata/pull/5472">#5472</a>] fix if using <code>@GlobalTransactional</code> in RM, <code>ShouldNeverHappenException</code> will be thrown</li>
+<li>[<a href="https://github.com/seata/seata/pull/5535">#5535</a>] fix the log file path was loaded incorrectly</li>
+<li>[<a href="https://github.com/seata/seata/pull/5538">#5538</a>] fix finished transaction swallows exception when committing</li>
+<li>[<a href="https://github.com/seata/seata/pull/5539">#5539</a>] fix the full table scan issue with 'setDate' condition in Oracle 10g</li>
+<li>[<a href="https://github.com/seata/seata/pull/5540">#5540</a>] fix GlobalStatus=9 can't be cleared in DB storage mode</li>
+<li>[<a href="https://github.com/seata/seata/pull/5552">#5552</a>] fix mariadb rollback failed</li>
+<li>[<a href="https://github.com/seata/seata/pull/5583">#5583</a>] fix grpc interceptor xid unbinding problem</li>
+<li>[<a href="https://github.com/seata/seata/pull/5602">#5602</a>] fix log in participant transaction role</li>
+<li>[<a href="https://github.com/seata/seata/pull/5645">#5645</a>] fix oracle insert undolog failed</li>
+<li>[<a href="https://github.com/seata/seata/pull/5659">#5659</a>] fix the issue of case sensitivity enforcement on the database after adding escape characters to keywords</li>
+<li>[<a href="https://github.com/seata/seata/pull/5663">#5663</a>] fix the timeout is null when the connectionProxyXA connection is reused</li>
+<li>[<a href="https://github.com/seata/seata/pull/5675">#5675</a>] fix compatibility between xxx.grouplist and <a href="http://grouplist.xxx">grouplist.xxx</a> configuration items</li>
+<li>[<a href="https://github.com/seata/seata/pull/5690">#5690</a>] fix console print <code>unauthorized error</code></li>
+<li>[<a href="https://github.com/seata/seata/pull/5711">#5711</a>] fix get configuration item contains underlined error</li>
+</ul>
+<h3>optimize:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/5208">#5208</a>] optimize throwable getCause once more</li>
+<li>[<a href="https://github.com/seata/seata/pull/5212">#5212</a>] optimize log message level</li>
+<li>[<a href="https://github.com/seata/seata/pull/5237">#5237</a>] optimize exception log message print(EnhancedServiceLoader.loadFile#cahtch)</li>
+<li>[<a href="https://github.com/seata/seata/pull/5089">#5089</a>] optimize the check of the delay value of the TCC fence log clean task</li>
+<li>[<a href="https://github.com/seata/seata/pull/5243">#5243</a>] optimize kryo 5.4.0 optimize compatibility with jdk17</li>
+<li>[<a href="https://github.com/seata/seata/pull/5153">#5153</a>] Only AT mode try to get channel with other app</li>
+<li>[<a href="https://github.com/seata/seata/pull/5177">#5177</a>] If <code>server.session.enable-branch-async-remove</code> is true, delete the branch asynchronously and unlock it synchronously.</li>
+<li>[<a href="https://github.com/seata/seata/pull/5273">#5273</a>] optimize the compilation configuration of the <code>protobuf-maven-plugin</code> plug-in to solve the problem of too long command lines in higher versions.</li>
+<li>[<a href="https://github.com/seata/seata/pull/5303">#5303</a>] remove startup script the -Xmn configuration</li>
+<li>[<a href="https://github.com/seata/seata/pull/5325">#5325</a>] add store mode,config type and registry type log info</li>
+<li>[<a href="https://github.com/seata/seata/pull/5315">#5315</a>] optimize the log of SPI</li>
+<li>[<a href="https://github.com/seata/seata/pull/5323">#5323</a>] add time info for global transaction timeout log</li>
+<li>[<a href="https://github.com/seata/seata/pull/5414">#5414</a>] optimize transaction fail handler</li>
+<li>[<a href="https://github.com/seata/seata/pull/5537">#5537</a>] optimize transaction log on client side</li>
+<li>[<a href="https://github.com/seata/seata/pull/5541">#5541</a>] optimize server log output</li>
+<li>[<a href="https://github.com/seata/seata/pull/5548">#5548</a>] update expire gpg key and publish workflow</li>
+<li>[<a href="https://github.com/seata/seata/pull/5638">#5638</a>] optimize: set server's transaction level to READ_COMMITTED</li>
+<li>[<a href="https://github.com/seata/seata/pull/5646">#5646</a>] refactor ColumnUtils and EscapeHandler</li>
+<li>[<a href="https://github.com/seata/seata/pull/5648">#5648</a>] optimize server logs print</li>
+<li>[<a href="https://github.com/seata/seata/pull/5647">#5647</a>] support case-sensitive attributes for table and column metadata</li>
+<li>[<a href="https://github.com/seata/seata/pull/5678">#5678</a>] optimize escape character for case of columnNames</li>
+<li>[<a href="https://github.com/seata/seata/pull/5684">#5684</a>] optimize github actions for CodeQL, skywalking-eyes and checkout</li>
+<li>[<a href="https://github.com/seata/seata/pull/5700">#5700</a>] optimize distributed lock log</li>
+</ul>
+<h3>security:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/5172">#5172</a>] fix some security vulnerabilities</li>
+<li>[<a href="https://github.com/seata/seata/pull/5683">#5683</a>] add Hessian Serializer WhiteDenyList</li>
+<li>[<a href="https://github.com/seata/seata/pull/5696">#5696</a>] fix several node.js security vulnerabilities</li>
+</ul>
+<h3>test:</h3>
+<ul>
+<li>[<a href="https://github.com/seata/seata/pull/5380">#5380</a>] fix UpdateExecutorTest failed</li>
+<li>[<a href="https://github.com/seata/seata/pull/5382">#5382</a>] fix multi spring version test failed</li>
+</ul>
+<p>Thanks to these contributors for their code commits. Please report an unintended omission.</p>
+<!-- Please make sure your Github ID is in the list below -->
+<ul>
+<li><a href="https://github.com/slievrly">slievrly</a></li>
+<li><a href="https://github.com/xssdpgy">xssdpgy</a></li>
+<li><a href="https://github.com/albumenj">albumenj</a></li>
+<li><a href="https://github.com/PeppaO">PeppaO</a></li>
+<li><a href="https://github.com/yuruixin">yuruixin</a></li>
+<li><a href="https://github.com/dmego">dmego</a></li>
+<li><a href="https://github.com/JavaLionLi">CrazyLionLi</a></li>
+<li><a href="https://github.com/xingfudeshi">xingfudeshi</a></li>
+<li><a href="https://github.com/Bughue">Bughue</a></li>
+<li><a href="https://github.com/pengten">pengten</a></li>
+<li><a href="https://github.com/wangliang181230">wangliang181230</a></li>
+<li><a href="https://github.com/GoodBoyCoder">GoodBoyCoder</a></li>
+<li><a href="https://github.com/a364176773">a364176773</a></li>
+<li><a href="https://github.com/isharpever">isharpever</a></li>
+<li><a href="https://github.com/ZhangShiYeChina">ZhangShiYeChina</a></li>
+<li><a href="https://github.com/mxsm">mxsm</a></li>
+<li><a href="https://github.com/l81893521">l81893521</a></li>
+<li><a href="https://github.com/liuqiufeng">liuqiufeng</a></li>
+<li><a href="https://github.com/wt-better">yixia</a></li>
+<li><a href="https://github.com/jumtp">jumtp</a></li>
+</ul>
+<p>Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.</p>
+<h4>Link</h4>
+<ul>
+<li><strong>Seata:</strong> <a href="https://github.com/seata/seata">https://github.com/seata/seata</a></li>
+<li><strong>Seata-Samples:</strong> <a href="https://github.com/seata/seata-samples">https://github.com/seata/seata-samples</a></li>
+<li><strong>Release:</strong> <a href="https://github.com/seata/seata/releases">https://github.com/seata/seata/releases</a></li>
+<li><strong>WebSite:</strong> <a href="https://seata.io">https://seata.io</a></li>
+</ul>
+</details>
 <h3>1.6.1 (2022-12-21)</h3>
 <p><a href="https://github.com/seata/seata/archive/v1.6.1.zip">source</a> |
 <a href="https://github.com/seata/seata/releases/download/v1.6.1/seata-server-1.6.1.zip">binary</a></p>
