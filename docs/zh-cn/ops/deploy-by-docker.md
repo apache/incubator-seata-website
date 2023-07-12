@@ -7,16 +7,15 @@ author: helloworlde
 date: 2019-11-25
 ---
 
-# 使用 Docker 部署 Seata Server (1.5.0)
+# 使用 Docker 部署 Seata Server (1.5.0及以上)
 
 <a href="./deploy-by-docker-142.html">查看1.4.2版本</a>  
 
 ## 注意事项 
 - 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
-
-## 注意事项 
-- 避免直接拉取latest版本镜像，latest版本并不一定是released版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
-
+- 若docker显示的`date`时间不正确，可通过以下方式之一设置。
+  - 加入docker环境变量 TZ=Asia/Shanghai
+  - 挂载宿主机的时区配置 -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone 
 ## 快速开始 
 
 #### 启动seata-server实例
