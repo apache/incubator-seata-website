@@ -31,35 +31,18 @@ export default {
                 children: [{
                     key: 'gts',
                     text: 'SEATA IN CLOUD',
-                    link: 'https://www.aliyun.com/aliware/txc?spm=seata-website.topbar.0.0.0',
-                    imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
-                }, {
-                    key: 'micoservice',
-                    text: 'Microservice solutions',
-                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0'
-                }, {
-                    key: 'msha',
-                    text: 'High-availability solution',
-                    link: 'https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0'
-                }, {
-                    key: 'serverless',
-                    text: 'Serverless solution for miscoservices',
-                    link: 'https://cn.aliyun.com/product/aliware/sae?spm=seata-website.topbar.0.0.0'
-                },
-                {
-                    key: 'appas',
-                    text: 'PaaS solution',
-                    link: 'https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0'
-                }, {
-                    key: 'mesh',
-                    text: 'Service mesh solution',
-                    link: 'https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0',
+                    link: 'https://www.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
                 }, {
                     key: 'sofa',
                     text: 'SOFA distributed transaction',
                     link: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
                     }
                 ]
+            },
+            {
+                key: 'free',
+                text: 'FREE TIER',
+                link: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
             },
             {
                 key: 'developers',
@@ -143,7 +126,7 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2022 Seata',
+        copyright: 'Copyright © 2023 Seata',
     },
     'zh-cn': {
         pageMenu: [
@@ -171,35 +154,18 @@ export default {
                 children: [{
                     key: 'seata',
                     text: 'Seata企业版',
-                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-                    imgUrl: 'https://img.alicdn.com/imgextra/i4/O1CN01iksJGI1TOscjbXlOD_!!6000000002373-2-tps-30-30.png'
-                }, {
-                    key: 'micoservice',
-                    text: '微服务解决方案',
-                    link: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0'
-                }, {
-                    key: 'msha',
-                    text: '高可用解决方案',
-                    link: 'https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0'
-                }, {
-                    key: 'serverless',
-                    text: '微服务Serverless解决方案',
-                    link: 'https://cn.aliyun.com/product/aliware/sae?spm=seata-website.topbar.0.0.0'
-                },
-                {
-                    key: 'appas',
-                    text: 'PaaS解决方案',
-                    link: 'https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0'
-                }, {
-                    key: 'mesh',
-                    text: '服务网格解决方案',
-                    link: 'https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0',
+                    link: 'https://www.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
                 }, {
                     key: 'sofa',
                     text: 'SOFA分布式事务',
                     link: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
-                    }
+                }
                 ]
+            },
+            {
+                key: 'free',
+                text: '免费试用',
+                link: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
             },
             {
                 key: 'developers',
@@ -283,6 +249,6 @@ export default {
                 },
             ],
         },
-        copyright: 'Copyright © 2022 Seata',
+        copyright: 'Copyright © 2023 Seata',
     },
 };
