@@ -1,5 +1,0 @@
-<html>
-  <head>
-    <meta name="go-import" content="seata.io/server git https://github.com/seata/seata-go-server">
-  </head>
-</html>

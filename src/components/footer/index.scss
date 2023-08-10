@@ -1,7 +1,7 @@
-@import '../../variables.scss';
+@import '../../css/variables.scss';
 
 .footer-container {
-  background: #F8F8F8;
+  background: #f8f8f8;
   .footer-body {
     max-width: $contentWidth;
     margin: 0 auto;
@@ -11,7 +11,7 @@
       padding-left: 20px;
       padding-right: 20px;
     }
-    .docsite-power {
+    .docusaurus-power {
       font-size: 14px;
       color: #ccc;
       line-height: 18px;
@@ -89,7 +89,7 @@
       span {
         display: inline-block;
         margin: 0 auto;
-      } 
+      }
     }
   }
 }

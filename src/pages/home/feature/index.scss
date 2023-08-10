@@ -1,0 +1,59 @@
+@import '../../../css/variables.scss';
+.feature-section {
+  background: #f9fafa;
+  .feature-container {
+    box-sizing: border-box;
+    max-width: $contentWidth;
+    margin: 0 auto;
+    position: relative;
+    padding: 80px 40px 40px;
+    h3 {
+      font-family: Avenir-Medium;
+      font-weight: 700;
+      font-size: 36px;
+      color: #333;
+      text-align: center;
+      margin: 0 0 60px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        vertical-align: top;
+        display: inline-block;
+        margin-bottom: 40px;
+        width: 50%;
+        .docsite-icon {
+          vertical-align: top;
+          margin-right: 20px;
+          &::before {
+            vertical-align: top;
+          }
+        }
+        div {
+          display: inline-block;
+          width: 80%;
+          h4 {
+            font-family: Avenir-Medium;
+            font-weight: 700;
+            font-size: 20px;
+            color: #333;
+            margin: 10px 0 20px;
+          }
+          p {
+            font-family: Avenir-Medium;
+            font-size: 14px;
+            line-height: 20px;
+            color: #999;
+          }
+        }
+      }
+      @media screen and (max-width: 768px) {
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "logo.alt": {
+    "message": "Seata Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Home": {
+    "message": "首页",
+    "description": "Navbar item with label Home"
+  },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Developers": {
+    "message": "开发者",
+    "description": "Navbar item with label Developers"
+  },
+  "item.label.Recruitment": {
+    "message": "团队招聘",
+    "description": "Navbar item with label Recruitment"
+  },
+  "item.label.Blog": {
+    "message": "博客",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Community": {
+    "message": "社区",
+    "description": "Navbar item with label Community"
+  },
+  "item.label.Download": {
+    "message": "下载",
+    "description": "Navbar item with label Download"
+  },
+  "item.label.Console sample": {
+    "message": "控制台样例",
+    "description": "Navbar item with label Console sample"
+  },
+  "item.label.Solutions": {
+    "message": "解决方案",
+    "description": "Navbar item with label Solutions"
+  },
+  "item.label.Seata in cloud": {
+    "message": "Seata企业版",
+    "description": "Navbar item with label Seata in cloud"
+  },
+  "item.label.Microservice solutions": {
+    "message": "微服务解决方案",
+    "description": "Navbar item with label Microservice solutions"
+  },
+  "item.label.High-availability solution": {
+    "message": "高可用解决方案",
+    "description": "Navbar item with label High-availability solution"
+  },
+  "item.label.Serverless solution for microservices": {
+    "message": "微服务Serverless解决方案",
+    "description": "Navbar item with label Serverless solution for microservices"
+  },
+  "item.label.PaaS solution": {
+    "message": "PaaS解决方案",
+    "description": "Navbar item with label PaaS solution"
+  },
+  "item.label.Service mesh solution": {
+    "message": "服务网格解决方案",
+    "description": "Navbar item with label Service mesh solution"
+  },
+  "item.label.SOFA distributed transaction": {
+    "message": "SOFA分布式事务",
+    "description": "Navbar item with label SOFA distributed transaction"
+  }
+}

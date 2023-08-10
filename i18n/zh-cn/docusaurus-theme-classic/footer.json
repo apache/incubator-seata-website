@@ -1,0 +1,46 @@
+{
+  "link.title.Vision": {
+    "message": "愿景",
+    "description": "The title of the footer links column with title=Vision in the footer"
+  },
+  "link.title.Documentation": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Documentation in the footer"
+  },
+  "link.title.Resources": {
+    "message": "资源",
+    "description": "The title of the footer links column with title=Resources in the footer"
+  },
+  "link.item.label.Seata is ...": {
+    "message": "Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。",
+    "description": "The label of footer link with label=Seata is ... linking to /"
+  },
+  "link.item.label.What is Seata?": {
+    "message": "Seata是什么？",
+    "description": "The label of footer link with label=What is Seata? linking to /docs/overview/what-is-seata"
+  },
+  "link.item.label.Quick Start": {
+    "message": "快速开始",
+    "description": "The label of footer link with label=Quick Start linking to /docs/user/quickstart"
+  },
+  "link.item.label.Report a doc issue": {
+    "message": "报告文档问题",
+    "description": "The label of footer link with label=Report a doc issue linking to https://github.com/seata/seata.github.io/issues/new"
+  },
+  "link.item.label.Edit This Page on GitHub": {
+    "message": "在GitHub上编辑此文档",
+    "description": "The label of footer link with label=Edit This Page on GitHub linking to https://github.com/seata/seata.github.io"
+  },
+  "link.item.label.Blog": {
+    "message": "博客",
+    "description": "The label of footer link with label=Blog linking to /blog"
+  },
+  "link.item.label.Community": {
+    "message": "社区",
+    "description": "The label of footer link with label=Community linking to /community"
+  },
+  "copyright": {
+    "message": "Copyright © 2023 Seata",
+    "description": "The footer copyright"
+  }
+}

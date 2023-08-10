@@ -1,0 +1,21 @@
+@import '../css/variables.scss';
+@media screen and (max-width: $mobileWidth) {
+  .introduction-section {
+    padding: 0 20px;
+    &::before {
+      left: 20px;
+    }
+    &::after {
+      left: 19px;
+    }
+  }
+  .feature-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .feature-section-body,
+  .users-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
