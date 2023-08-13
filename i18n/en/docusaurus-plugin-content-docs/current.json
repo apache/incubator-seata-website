@@ -1,0 +1,50 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Overview": {
+    "message": "Overview",
+    "description": "The label for category Overview in sidebar docs"
+  },
+  "sidebar.docs.category.User Doc": {
+    "message": "User Doc",
+    "description": "The label for category User Doc in sidebar docs"
+  },
+  "sidebar.docs.category.SQL Reference": {
+    "message": "SQL Reference",
+    "description": "The label for category SQL Reference in sidebar docs"
+  },
+  "sidebar.docs.category.Developer Guide": {
+    "message": "Developer Guide",
+    "description": "The label for category Developer Guide in sidebar docs"
+  },
+  "sidebar.docs.category.Transaction Mode": {
+    "message": "Transaction Mode",
+    "description": "The label for category Transaction Mode in sidebar docs"
+  },
+  "sidebar.docs.category.Ops Guide": {
+    "message": "Ops Guide",
+    "description": "The label for category Ops Guide in sidebar docs"
+  },
+  "sidebar.docs.category.Deploy": {
+    "message": "Deploy",
+    "description": "The label for category Deploy in sidebar docs"
+  },
+  "sidebar.developers.category.Developers List": {
+    "message": "Developers List",
+    "description": "The label for category Developers List in sidebar developers"
+  },
+  "sidebar.developers.category.Contribute Guide": {
+    "message": "Contribute Guide",
+    "description": "The label for category Contribute Guide in sidebar developers"
+  },
+  "sidebar.developers.category.Committer Guide": {
+    "message": "Committer Guide",
+    "description": "The label for category Committer Guide in sidebar developers"
+  },
+  "sidebar.download.category.Download": {
+    "message": "Download",
+    "description": "The label for category Download in sidebar download"
+  }
+}

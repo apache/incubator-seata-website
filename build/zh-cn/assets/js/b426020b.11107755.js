@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkseata_website=self.webpackChunkseata_website||[]).push([[162],{11611:e=>{e.exports=JSON.parse('{"permalink":"/zh-cn/blog/tags/docusaurus","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

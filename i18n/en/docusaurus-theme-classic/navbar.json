@@ -1,0 +1,70 @@
+{
+  "logo.alt": {
+    "message": "Seata Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Home": {
+    "message": "Home",
+    "description": "Navbar item with label Home"
+  },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Developers": {
+    "message": "Developers",
+    "description": "Navbar item with label Developers"
+  },
+  "item.label.Recruitment": {
+    "message": "Recruitment",
+    "description": "Navbar item with label Recruitment"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Download": {
+    "message": "Download",
+    "description": "Navbar item with label Download"
+  },
+  "item.label.Console sample": {
+    "message": "Console sample",
+    "description": "Navbar item with label Console sample"
+  },
+  "item.label.Community": {
+    "message": "Community",
+    "description": "Navbar item with label Community"
+  },
+  "item.label.Solutions": {
+    "message": "Solutions",
+    "description": "Navbar item with label Solutions"
+  },
+  "item.label.Seata in cloud": {
+    "message": "Seata in cloud",
+    "description": "Navbar item with label Seata in cloud"
+  },
+  "item.label.Microservice solutions": {
+    "message": "Microservice solutions",
+    "description": "Navbar item with label Microservice solutions"
+  },
+  "item.label.High-availability solution": {
+    "message": "High-availability solution",
+    "description": "Navbar item with label High-availability solution"
+  },
+  "item.label.Serverless solution for microservices": {
+    "message": "Serverless solution for microservices",
+    "description": "Navbar item with label Serverless solution for microservices"
+  },
+  "item.label.PaaS solution": {
+    "message": "PaaS solution",
+    "description": "Navbar item with label PaaS solution"
+  },
+  "item.label.Service mesh solution": {
+    "message": "Service mesh solution",
+    "description": "Navbar item with label Service mesh solution"
+  },
+  "item.label.SOFA distributed transaction": {
+    "message": "SOFA distributed transaction",
+    "description": "Navbar item with label SOFA distributed transaction"
+  }
+}
