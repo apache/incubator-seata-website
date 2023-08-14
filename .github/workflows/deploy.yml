@@ -3,7 +3,7 @@ name: seata.io deploy
 on:
   push:
     branches:
-      - develop
+      - docusaurus
   #This schedule only takes effect in the default branch
   schedule:
     - cron: '0 */12 * * *'
@@ -14,10 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Use Node.js 10.x
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v1
       with:
-        node-version: 10.x
+        node-version: 18.x
     - name: Build
       run: |
         npm install && npm run build && mkdir deploy-dist && cp -R zh-cn/ en-us/ build/ img/ md_json/ site_config/ schema/ saga_designer/ deploy-dist/ && mv .htaccess *.html *.txt *.xml deploy-dist/
@@ -25,7 +25,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v2.8.0
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: master
+        PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: ./deploy-dist
       with:
         keepFiles: true
