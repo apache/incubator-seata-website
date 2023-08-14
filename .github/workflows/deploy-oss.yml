@@ -3,7 +3,7 @@ name: seata.io deploy on oss
 on:
   push:
     branches:
-      - master
+      - docusaurus
 
 jobs:
   Build-Deploy:
