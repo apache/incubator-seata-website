@@ -66,5 +66,9 @@
   "item.label.SOFA distributed transaction": {
     "message": "SOFA分布式事务",
     "description": "Navbar item with label SOFA distributed transaction"
+  },
+  "item.label.Free trial": {
+    "message": "免费试用",
+    "description": "Navbar item with label Free trial"
   }
 }
