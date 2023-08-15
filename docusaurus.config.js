@@ -118,34 +118,18 @@ const config = {
             position: 'left',
             items: [
               {
-                label: 'Seata in cloud',
-                href: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'Microservice solutions',
-                href: 'https://cn.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'High-availability solution',
-                href: 'https://www.aliyun.com/product/ahas?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'Serverless solution for microservices',
-                href: 'https://cn.aliyun.com/product/aliware/sae?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'PaaS solution',
-                href: 'https://www.aliyun.com/product/edas?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'Service mesh solution',
-                href: 'https://www.aliyun.com/product/servicemesh?spm=seata-website.topbar.0.0.0',
+                label: 'Seata in Cloud',
+                href: 'https://www.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
               },
               {
                 label: 'SOFA distributed transaction',
                 href: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
               },
             ],
+          },
+          {
+            label: 'Free trial',
+            href: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
           },
           {
             label: 'Developers',
