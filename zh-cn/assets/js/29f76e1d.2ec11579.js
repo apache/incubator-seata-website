@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkseata_website=self.webpackChunkseata_website||[]).push([[5251],{50870:e=>{e.exports=JSON.parse('{"label":"hello","permalink":"/zh-cn/blog/tags/hello","allTagsPath":"/zh-cn/blog/tags","count":1}')}}]);
