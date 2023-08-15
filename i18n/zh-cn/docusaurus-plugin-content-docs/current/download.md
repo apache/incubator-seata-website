@@ -20,7 +20,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
 - 1.7.0 定位为Seata重要的稳定性版本，我们对现存的issue进行了深度的跟踪和解决。
 - 对 jdk（8，11，17）、Spring（5.2.x，5.3.x，6.0.
   x）、platform（amd64、arm64）进行了交叉兼容。
-- 对低版本的conf配置进行了兼容适配。
+- 对低版本conf配置进行了兼容适配。
 - 对安全问题进行了深度治理。
 - 发布了针对针对不同需求的docker镜像。https://hub.docker.com/repository/docker/seataio/seata-server/tags?page=1&ordering=last_updated
 
