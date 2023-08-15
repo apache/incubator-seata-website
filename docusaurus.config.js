@@ -10,16 +10,16 @@ const config = {
   favicon: 'img/seata_logo_small.jpeg',
 
   // Set the production url of your site here
-  url: 'http://chai001125.github.io',
+  url: 'https://seata.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'chai001125', // Usually your GitHub org/user name.
-  projectName: 'chai001125.github.io', // Usually your repo name.
-  deploymentBranch: 'gh-pages',
+  organizationName: 'alibaba', // Usually your GitHub org/user name.
+  projectName: 'seata', // Usually your repo name.
+  
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
