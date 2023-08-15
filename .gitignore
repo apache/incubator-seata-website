@@ -4,9 +4,9 @@ node_modules/
 npm-debug.log
 *.orig
 *.iml
-package-lock.json
 /en-us/
 /zh-cn/
 /index.html
 md_json/
 log
+/build/
