@@ -9,7 +9,7 @@ date: 2019-11-25
 
 # 使用 Docker 部署 Seata Server (1.5.0及以上)
 
-<a href="./deploy-by-docker-142.html">查看1.4.2版本</a>
+<a href="./deploy-by-docker-142">查看1.4.2版本</a>
 
 ## 注意事项
 - 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)
