@@ -1,41 +1,77 @@
-# Website
+# Seata Official Website
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+[![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions)
 
-### Installation
+All website material of https://seata.io.
 
+### Quick Start
+
+1. `npm install`
+
+2. `npm run start`
+
+3. Visit
 ```
-$ yarn
+localhost:3000/
 ```
-
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 ### Build
 
+1. `npm run build`
+
+2. `npm run serve`
+
+3. Visit
 ```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
+localhost:3000/
 ```
 
-Not using SSH:
+## Requirements
+Base docusaurus v2.4.1
+Node.js version 16.14+
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
+## Note for i18n
+Please be noted that locale switching function doesn't work if you start the website in development mode using `npm run start -- --locale zh-cn` or `npm run start -- --locale en`. Please run it in production mode using the build-and-serve process to enable the locale switching function.
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## How To Write Documents
+
+### Add a new doc
+ 
+1. Add new .md file under i18n/en/docusaurus-plugin-content-docs/current or i18n/zh-cn/docusaurus-plugin-content-docs/current. Corresponding to Chinese file and English file , and the Chinese and English file names should be consistent.
+2. Update sidebar.js, add a new entry to the blog in either en or zh-cn.
+
+### Add a new article for developers
+
+1. Add new .md file under i18n/en/docusaurus-plugin-content-docs/current/developers or i18n/zh-cn/docusaurus-plugin-content-docs/current/developers, the file name should end up with _dev.md. Note that the suffix _dev is necessary.
+2. Update sidebar.js, add a new entry in either en or zh-cn.
+
+### Add a new blog
+
+1. Add new .md file under i18n/en/docusaurus-plugin-content-blog/current or i18n/zh-cn/docusaurus-plugin-content-blog/current. Corresponding to Chinese file and English file , and the Chinese and English file names should be consistent.
+2. `SEO` config is required.
+
+## SEO
+
+the type is :
+```
+---
+title: title
+keywords: [keywords1,keywords2]
+description: some description
+author: author name
+date: 2018-12-29
+custom_edit_url: https://github.com/seata/seata.github.io/blob/docusaurus/i18n/en/docusaurus-plugin-content-blog/download.md
+---
+```
+**Note:**
+1. `title` can not include `:` 
+2. `keywords` must be a `Array`
+3. `custom_edit_url` is a link to the doc in this repo, required.
+
+## Note for .md file
+1. Do not use un correct html tag like `<img>、<br>`, replace with `<img /> <br />`
+2. If you want show `<xx>`, replace with `&lt;xx&gt;`
+
+## Others
+
++ This is docusaurus docs :[https://docusaurus.io/zh-CN/docs](https://docusaurus.io/zh-CN/docs)

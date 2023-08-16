@@ -102,7 +102,7 @@ const config = {
             label: 'Home',
             to: '/',
             activeBaseRegex: '^/$',
-            position: 'left',
+            position: 'right',
           },
           {
             label: 'Docs',
@@ -110,12 +110,12 @@ const config = {
             docId: 'overview/what-is-seata',
             // type: 'docSidebar',
             // sidebarId: 'tutorialSidebar',
-            position: 'left',
+            position: 'right',
           },
           {
             label: 'Solutions',
             type: 'dropdown',
-            position: 'left',
+            position: 'right',
             items: [
               {
                 label: 'Seata in Cloud',
@@ -135,35 +135,35 @@ const config = {
             label: 'Developers',
             type: 'doc',
             docId: 'developers/developers_dev',
-            position: 'left',
+            position: 'right',
           },
           {
             label: 'Recruitment',
             to: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
-            position: 'left',
+            position: 'right',
             target: '_blank',
           },
           {
             label: 'Blog', 
             to: '/blog', 
-            position: 'left'
+            position: 'right'
           },
           {
             label: 'Community',
             to: '/community',
-            position: 'left',
+            position: 'right',
           },
           {
             label: 'Download', 
             // to: '/blog/download',
             type: 'doc',
             docId: 'download',
-            position: 'left'
+            position: 'right'
           },
           {
             label: 'Console sample',
             to: 'http://demo.seata.io/',
-            position: 'left',
+            position: 'right',
             target: '_blank',
           },
           {

@@ -1,5 +1,5 @@
 ---
-title: Seata Tcc 模式
+title: Seata TCC 模式
 keywords: [Seata]
 description: Seata Tcc 模式。
 ---
