@@ -14,7 +14,7 @@
 <script src="//g.alicdn.com/alilog/mlog/aplus_v2.js" id="beacon-aplus" exparams="clog=o&amp;aplus&amp;sidx=aplusSidx&amp;ckx=aplusCkx"></script>
 <script src="//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js"></script>
 <script src="https://www.googletagmanager.com/gtag/js?id=G-YHS75WKFBR" async></script><link rel="stylesheet" href="/assets/css/styles.0380c488.css">
-<link rel="preload" href="/assets/js/runtime~main.cd25ce92.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.b984d76c.js" as="script">
 <link rel="preload" href="/assets/js/main.b5f6ea4a.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
@@ -37,7 +37,7 @@ seata-spring-boot-starter 默认开启数据源代理，对应数据源自动代
 <!-- -->从spring-cloud-alibaba-seata 在 2.2.0.RELEASE 开始后（含）内部开始依赖seata-spring-boot-starter,2.2.0.RELEASE 内部集成 seata-spring-boot-starter 1.0.0 可以升级为 seata-spring-boot-starter 1.1.0，seata-spring-boot-starter 集成了seata-all，seata-spring-boot-starter 包装了对于properties或yml 配置的autoconfig 功能，在spring-cloud-alibaba-seata 2.2.0.RELEASE 前
 autoconfig 功能由其本身支持，在其后去掉 spring-cloud-alibaba-seata 中关于 seata 本身的autoconfig 由seata-spring-boot-starter 支持，因此低版本spring-cloud-alibaba-seata 只能配合 seata-all使用，高版本spring-cloud-alibaba-seata 只能配合seata-spring-boot-starter 使用，以2.2.0.RELEASE为分界点。</p></li><li><p>TC端采用 db 存储模式时 branch_table 中增加 gmt_create，gmt_modified 字段的精度，用于精确确认回滚的顺序，
 <a href="https://github.com/seata/seata/tree/1.1.0/script/server/db" target="_blank" rel="noopener noreferrer">各数据库脚本参考</a></p></li></ol></div></div></details><hr><h3 class="anchor anchorWithStickyNavbar_LWe7" id="1">1. 0.8、0.9版本如何升级到1.0版本？<a href="#1" class="hash-link" aria-label="Direct link to 1. 0.8、0.9版本如何升级到1.0版本？" title="Direct link to 1. 0.8、0.9版本如何升级到1.0版本？">​</a></h3><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><mark>注意事项</mark></summary><div><div class="collapsibleContent_i85q"><ol><li>（可选）1.0支持yml、properties，需用seata-spring-boot-starter替换掉 seata-all   </li><li>（必选）TC端表lock_table字段branch_id增加普通索引   </li><li>（可选）部分参数命名改动，<a href="https://seata.io/zh-cn/docs/user/configurations100.html" target="_blank" rel="noopener noreferrer">点击查看参数配置</a>   </li><li>（可选） client.report.success.enable可以置为false，提升性能   </li></ol></div></div></details><hr></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/dev/seata-mertics"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Metrics design</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/ops/deploy-server"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Deploy Server</div></a></nav></div></div></div></div></main></div></div></div>
-<script src="/assets/js/runtime~main.cd25ce92.js"></script>
+<script src="/assets/js/runtime~main.b984d76c.js"></script>
 <script src="/assets/js/main.b5f6ea4a.js"></script>
 </body>
 </html>
