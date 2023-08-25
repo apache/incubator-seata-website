@@ -18,7 +18,7 @@ const topData = {
     {
       text: translate({ id: 'homepage.quickstartButton', message: '快速入门' }),
       link: '/docs/user/quickstart',
-      type: 'primary',
+      type: 'normal',
     },
     {
       text: translate({ id: 'homepage.userregistrationButton', message: '用户登记' }),
@@ -116,32 +116,32 @@ const Top = ({ language }: { language?: string }) => {
               <div className="release-date">{topData.releaseDate.text}</div>
             </div>
             <div className="animation">
-            <img className="img1" src="//img.alicdn.com/tfs/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png" />
-            <img className="img2" src="//img.alicdn.com/tfs/TB1iau9JcbpK1RjSZFyXXX_qFXa-914-1156.png" />
-            <div className="outer-circle" />
-            <div className="rotate-circle">
-              <svg viewBox="0 0 404 404" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient
-                    id="linear"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="0%"
-                  >
-                    <stop offset="0%" stopColor="rgba(17, 186, 250, 1)" />
-                    <stop offset="50%" stopColor="rgba(17, 186, 250, 0.1)" />
-                    <stop offset="50%" stopColor="rgba(17, 186, 250, 1)" />
-                    <stop offset="100%" stopColor="rgba(17, 186, 250, 0.1)" />
-                  </linearGradient>
+              <img className="img1" src="//img.alicdn.com/tfs/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png" />
+              <img className="img2" src="//img.alicdn.com/tfs/TB1iau9JcbpK1RjSZFyXXX_qFXa-914-1156.png" />
+              <div className="outer-circle" />
+              <div className="rotate-circle">
+                <svg viewBox="0 0 404 404" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient
+                      id="linear"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="rgba(17, 186, 250, 1)" />
+                      <stop offset="50%" stopColor="rgba(17, 186, 250, 0.1)" />
+                      <stop offset="50%" stopColor="rgba(17, 186, 250, 1)" />
+                      <stop offset="100%" stopColor="rgba(17, 186, 250, 0.1)" />
+                    </linearGradient>
                   </defs>
-                <circle cx="202" cy="202" r="200" fill="rgba(0, 0, 0, 0)" stroke="url(#linear)" strokeWidth="4" />
-              </svg>
+                  <circle cx="202" cy="202" r="200" fill="rgba(0, 0, 0, 0)" stroke="url(#linear)" strokeWidth="4" />
+                </svg>
+              </div>
+              <img className="img3" src="//img.alicdn.com/tfs/TB1EBu.JgHqK1RjSZJnXXbNLpXa-914-1156.png" />
+              <img className="img4" src="//img.alicdn.com/tfs/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png" />
+              <img className="img5" src="//img.alicdn.com/tfs/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png" />
             </div>
-            <img className="img3" src="//img.alicdn.com/tfs/TB1EBu.JgHqK1RjSZJnXXbNLpXa-914-1156.png" />
-            <img className="img4" src="//img.alicdn.com/tfs/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png" />
-            <img className="img5" src="//img.alicdn.com/tfs/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png" />
-          </div>
           </div>
         </section>
       )}

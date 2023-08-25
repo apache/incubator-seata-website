@@ -9,7 +9,7 @@ const data = {
   desc: (
     <span>
       <Translate id="homepage.userDesc1">请在</Translate>{' '}
-      <a rel="noopener noreferrer" target="_blank" href="https://github.com/seata/seata/issues/1246">
+      <a rel="noopener noreferrer" target="_blank" href="https://github.com/seata/seata/issues/1246" style={{ color: '#0054d1' }}>
         Wanted: who&#39;s using Seata
       </a>{' '}
       <Translate id="homepage.userDesc2">上提供信息来帮助 Seata 做的更好。</Translate>
@@ -173,7 +173,8 @@ const data = {
     'https://img.alicdn.com/imgextra/i1/O1CN01Erdiwd1RrcDt2bqKl_!!6000000002165-0-tps-1080-1080.jpg',
     'https://img.alicdn.com/imgextra/i4/O1CN01Rc0vU61sSQ3jvR0rw_!!6000000005765-2-tps-1076-228.png',
     ],
-  title: translate({ id: 'homepage.userTitle', message: '谁在使用 Seata' }),
+  titleBefore: translate({ id: "homepage.userTitleBefore", message: "谁在使用" }),
+  titleAfter: translate({ id: "homepage.userTitleAfter", message: " Seata" }),
 };
 
 const User = () => {
@@ -181,8 +182,11 @@ const User = () => {
     <BrowserOnly>
       {() => (
         <section className="users-section">
-          <h3>{data.title}</h3>
-          <Bone type="dark" />
+          <h3>
+            {data.titleBefore}
+            <span>{data.titleAfter}</span>
+          </h3>
+          {/* <Bone type="dark" /> */}
           <p>{data.desc}</p>
           <div className="users">
             {data.list.map((user, i) => (

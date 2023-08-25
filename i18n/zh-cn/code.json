@@ -286,6 +286,9 @@
     "message": "快速开始"
   },
   "homepage.footerDocListText3": {
+    "message": "报告文档问题"
+  },
+  "homepage.footerDocListText4": {
     "message": "在Github上编辑此文档"
   },
   "homepage.footerResourcesTitle": {
@@ -426,7 +429,10 @@
   "homepage.userDesc2": {
     "message": "上提供信息来帮助 Seata 做的更好。"
   },
-  "homepage.userTitle": {
-    "message": "谁在使用 Seata"
+  "homepage.userTitleBefore": {
+    "message": "谁在使用"
+  },
+  "homepage.userTitleAfter": {
+    "message": " Seata"
   }
 }
