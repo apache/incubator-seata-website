@@ -1,0 +1,33 @@
+{
+  "unversionedId": "ops/deploy-by-kubernetes",
+  "id": "ops/deploy-by-kubernetes",
+  "title": "使用 Kubernetes 部署 Seata Server",
+  "description": "使用 Kubernetes 部署 Seata Server",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/ops/deploy-by-kubernetes.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-by-kubernetes",
+  "permalink": "/zh-cn/docs/ops/deploy-by-kubernetes",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "hidden": true,
+    "title": "使用 Kubernetes 部署 Seata Server",
+    "keywords": [
+      "kubernetes",
+      "ops"
+    ],
+    "description": "使用 Kubernetes 部署 Seata Server",
+    "author": "helloworlde",
+    "date": "2019-12-01T00:00:00.000Z"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "使用 Docker 部署 Seata Server",
+    "permalink": "/zh-cn/docs/ops/deploy-by-docker"
+  },
+  "next": {
+    "title": "使用 Helm 部署 Seata Server",
+    "permalink": "/zh-cn/docs/ops/deploy-by-helm"
+  }
+}

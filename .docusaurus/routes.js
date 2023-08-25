@@ -3,837 +3,802 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '7f3'),
+    path: '/zh-cn/blog',
+    component: ComponentCreator('/zh-cn/blog', '5cb'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '06a'),
+    path: '/zh-cn/blog/archive',
+    component: ComponentCreator('/zh-cn/blog/archive', '95d'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'be9'),
+    path: '/zh-cn/blog/design-more-flexable-application-by-saga',
+    component: ComponentCreator('/zh-cn/blog/design-more-flexable-application-by-saga', '225'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', 'b64'),
+    path: '/zh-cn/blog/how-to-support-spring-cloud',
+    component: ComponentCreator('/zh-cn/blog/how-to-support-spring-cloud', '552'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', 'bd7'),
+    path: '/zh-cn/blog/integrate-seata-tcc-mode-with-spring-cloud',
+    component: ComponentCreator('/zh-cn/blog/integrate-seata-tcc-mode-with-spring-cloud', '35b'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '7d6'),
+    path: '/zh-cn/blog/integrate-seata-with-spring-cloud',
+    component: ComponentCreator('/zh-cn/blog/integrate-seata-with-spring-cloud', '65c'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '6b4'),
+    path: '/zh-cn/blog/iscas2023',
+    component: ComponentCreator('/zh-cn/blog/iscas2023', '3c2'),
     exact: true
   },
   {
-    path: '/blog',
-    component: ComponentCreator('/blog', '875'),
+    path: '/zh-cn/blog/manual-transaction-mode',
+    component: ComponentCreator('/zh-cn/blog/manual-transaction-mode', '772'),
     exact: true
   },
   {
-    path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', '5fc'),
+    path: '/zh-cn/blog/page/2',
+    component: ComponentCreator('/zh-cn/blog/page/2', '221'),
     exact: true
   },
   {
-    path: '/blog/design-more-flexable-application-by-saga',
-    component: ComponentCreator('/blog/design-more-flexable-application-by-saga', 'ffa'),
+    path: '/zh-cn/blog/page/3',
+    component: ComponentCreator('/zh-cn/blog/page/3', '033'),
     exact: true
   },
   {
-    path: '/blog/how-to-support-spring-cloud',
-    component: ComponentCreator('/blog/how-to-support-spring-cloud', 'e4f'),
+    path: '/zh-cn/blog/page/4',
+    component: ComponentCreator('/zh-cn/blog/page/4', '4ba'),
     exact: true
   },
   {
-    path: '/blog/integrate-seata-tcc-mode-with-spring-cloud',
-    component: ComponentCreator('/blog/integrate-seata-tcc-mode-with-spring-cloud', 'abf'),
+    path: '/zh-cn/blog/page/5',
+    component: ComponentCreator('/zh-cn/blog/page/5', '635'),
     exact: true
   },
   {
-    path: '/blog/integrate-seata-with-spring-cloud',
-    component: ComponentCreator('/blog/integrate-seata-with-spring-cloud', '717'),
+    path: '/zh-cn/blog/page/6',
+    component: ComponentCreator('/zh-cn/blog/page/6', '635'),
     exact: true
   },
   {
-    path: '/blog/iscas2023',
-    component: ComponentCreator('/blog/iscas2023', 'ad7'),
+    path: '/zh-cn/blog/quick-start-use-seata-and-dubbo-services',
+    component: ComponentCreator('/zh-cn/blog/quick-start-use-seata-and-dubbo-services', 'afd'),
     exact: true
   },
   {
-    path: '/blog/manual-transaction-mode',
-    component: ComponentCreator('/blog/manual-transaction-mode', '032'),
+    path: '/zh-cn/blog/seata-1.5.2',
+    component: ComponentCreator('/zh-cn/blog/seata-1.5.2', '676'),
     exact: true
   },
   {
-    path: '/blog/page/2',
-    component: ComponentCreator('/blog/page/2', 'fb1'),
+    path: '/zh-cn/blog/seata-1.6.0',
+    component: ComponentCreator('/zh-cn/blog/seata-1.6.0', '1ac'),
     exact: true
   },
   {
-    path: '/blog/page/3',
-    component: ComponentCreator('/blog/page/3', '08b'),
+    path: '/zh-cn/blog/seata-analysis-config-modular',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-config-modular', '3bf'),
     exact: true
   },
   {
-    path: '/blog/page/4',
-    component: ComponentCreator('/blog/page/4', 'eaa'),
+    path: '/zh-cn/blog/seata-analysis-core-modular',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-core-modular', '56b'),
     exact: true
   },
   {
-    path: '/blog/page/5',
-    component: ComponentCreator('/blog/page/5', '3e5'),
+    path: '/zh-cn/blog/seata-analysis-dubbo-transmit-xid',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-dubbo-transmit-xid', 'eaa'),
     exact: true
   },
   {
-    path: '/blog/page/6',
-    component: ComponentCreator('/blog/page/6', '387'),
+    path: '/zh-cn/blog/seata-analysis-go-server',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-go-server', '87b'),
     exact: true
   },
   {
-    path: '/blog/quick-start-use-seata-and-dubbo-services',
-    component: ComponentCreator('/blog/quick-start-use-seata-and-dubbo-services', '018'),
+    path: '/zh-cn/blog/seata-analysis-java-client',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-java-client', '7dc'),
     exact: true
   },
   {
-    path: '/blog/seata-1.5.2',
-    component: ComponentCreator('/blog/seata-1.5.2', '8e9'),
+    path: '/zh-cn/blog/seata-analysis-java-server',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-java-server', '664'),
     exact: true
   },
   {
-    path: '/blog/seata-1.6.0',
-    component: ComponentCreator('/blog/seata-1.6.0', 'd6e'),
+    path: '/zh-cn/blog/seata-analysis-simple',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-simple', 'b92'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-config-modular',
-    component: ComponentCreator('/blog/seata-analysis-config-modular', '1aa'),
+    path: '/zh-cn/blog/seata-analysis-tcc-modular',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-tcc-modular', '97c'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-core-modular',
-    component: ComponentCreator('/blog/seata-analysis-core-modular', 'a0a'),
+    path: '/zh-cn/blog/seata-analysis-UUID-generator',
+    component: ComponentCreator('/zh-cn/blog/seata-analysis-UUID-generator', '3dc'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-dubbo-transmit-xid',
-    component: ComponentCreator('/blog/seata-analysis-dubbo-transmit-xid', 'ecb'),
+    path: '/zh-cn/blog/seata-at-demo-in-mac',
+    component: ComponentCreator('/zh-cn/blog/seata-at-demo-in-mac', 'a03'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-go-server',
-    component: ComponentCreator('/blog/seata-analysis-go-server', 'ce8'),
+    path: '/zh-cn/blog/seata-at-lock',
+    component: ComponentCreator('/zh-cn/blog/seata-at-lock', '8b1'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-java-client',
-    component: ComponentCreator('/blog/seata-analysis-java-client', '9c2'),
+    path: '/zh-cn/blog/seata-at-mode-design',
+    component: ComponentCreator('/zh-cn/blog/seata-at-mode-design', '799'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-java-server',
-    component: ComponentCreator('/blog/seata-analysis-java-server', '31a'),
+    path: '/zh-cn/blog/seata-at-mode-start',
+    component: ComponentCreator('/zh-cn/blog/seata-at-mode-start', 'af4'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-simple',
-    component: ComponentCreator('/blog/seata-analysis-simple', '71a'),
+    path: '/zh-cn/blog/seata-at-mode-start-rm-tm',
+    component: ComponentCreator('/zh-cn/blog/seata-at-mode-start-rm-tm', '235'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-tcc-modular',
-    component: ComponentCreator('/blog/seata-analysis-tcc-modular', 'e00'),
+    path: '/zh-cn/blog/seata-at-tcc-saga',
+    component: ComponentCreator('/zh-cn/blog/seata-at-tcc-saga', 'e0b'),
     exact: true
   },
   {
-    path: '/blog/seata-analysis-UUID-generator',
-    component: ComponentCreator('/blog/seata-analysis-UUID-generator', '51b'),
+    path: '/zh-cn/blog/seata-client-start-analysis-01',
+    component: ComponentCreator('/zh-cn/blog/seata-client-start-analysis-01', 'cd0'),
     exact: true
   },
   {
-    path: '/blog/seata-at-demo-in-mac',
-    component: ComponentCreator('/blog/seata-at-demo-in-mac', '7c3'),
+    path: '/zh-cn/blog/seata-client-start-analysis-02',
+    component: ComponentCreator('/zh-cn/blog/seata-client-start-analysis-02', '7ba'),
     exact: true
   },
   {
-    path: '/blog/seata-at-lock',
-    component: ComponentCreator('/blog/seata-at-lock', '99b'),
+    path: '/zh-cn/blog/seata-community-meetup-hangzhou-ready',
+    component: ComponentCreator('/zh-cn/blog/seata-community-meetup-hangzhou-ready', 'ce6'),
     exact: true
   },
   {
-    path: '/blog/seata-at-mode-design',
-    component: ComponentCreator('/blog/seata-at-mode-design', 'e8d'),
+    path: '/zh-cn/blog/seata-config-center',
+    component: ComponentCreator('/zh-cn/blog/seata-config-center', '6a3'),
     exact: true
   },
   {
-    path: '/blog/seata-at-mode-start',
-    component: ComponentCreator('/blog/seata-at-mode-start', 'f90'),
+    path: '/zh-cn/blog/seata-config-manager',
+    component: ComponentCreator('/zh-cn/blog/seata-config-manager', 'f9a'),
     exact: true
   },
   {
-    path: '/blog/seata-at-mode-start-rm-tm',
-    component: ComponentCreator('/blog/seata-at-mode-start-rm-tm', 'adc'),
+    path: '/zh-cn/blog/seata-connect-data-and-application',
+    component: ComponentCreator('/zh-cn/blog/seata-connect-data-and-application', 'c59'),
     exact: true
   },
   {
-    path: '/blog/seata-at-tcc-saga',
-    component: ComponentCreator('/blog/seata-at-tcc-saga', '3f8'),
+    path: '/zh-cn/blog/seata-datasource-proxy',
+    component: ComponentCreator('/zh-cn/blog/seata-datasource-proxy', 'b95'),
     exact: true
   },
   {
-    path: '/blog/seata-client-start-analysis-01',
-    component: ComponentCreator('/blog/seata-client-start-analysis-01', 'd39'),
+    path: '/zh-cn/blog/seata-dsproxy-deadlock',
+    component: ComponentCreator('/zh-cn/blog/seata-dsproxy-deadlock', 'a2b'),
     exact: true
   },
   {
-    path: '/blog/seata-client-start-analysis-02',
-    component: ComponentCreator('/blog/seata-client-start-analysis-02', 'f94'),
+    path: '/zh-cn/blog/seata-dynamic-config-and-dynamic-disable',
+    component: ComponentCreator('/zh-cn/blog/seata-dynamic-config-and-dynamic-disable', 'd6b'),
     exact: true
   },
   {
-    path: '/blog/seata-community-meetup-hangzhou-ready',
-    component: ComponentCreator('/blog/seata-community-meetup-hangzhou-ready', '08e'),
+    path: '/zh-cn/blog/seata-feature-undo-log-compress',
+    component: ComponentCreator('/zh-cn/blog/seata-feature-undo-log-compress', 'df8'),
     exact: true
   },
   {
-    path: '/blog/seata-config-center',
-    component: ComponentCreator('/blog/seata-config-center', '43c'),
+    path: '/zh-cn/blog/seata-go-1.2.0',
+    component: ComponentCreator('/zh-cn/blog/seata-go-1.2.0', 'ff1'),
     exact: true
   },
   {
-    path: '/blog/seata-config-manager',
-    component: ComponentCreator('/blog/seata-config-manager', '536'),
+    path: '/zh-cn/blog/seata-golang-communication-mode',
+    component: ComponentCreator('/zh-cn/blog/seata-golang-communication-mode', 'db2'),
     exact: true
   },
   {
-    path: '/blog/seata-connect-data-and-application',
-    component: ComponentCreator('/blog/seata-connect-data-and-application', 'b13'),
+    path: '/zh-cn/blog/seata-ha-practice',
+    component: ComponentCreator('/zh-cn/blog/seata-ha-practice', '93d'),
     exact: true
   },
   {
-    path: '/blog/seata-datasource-proxy',
-    component: ComponentCreator('/blog/seata-datasource-proxy', '9c5'),
+    path: '/zh-cn/blog/seata-meetup-hangzhou',
+    component: ComponentCreator('/zh-cn/blog/seata-meetup-hangzhou', '600'),
     exact: true
   },
   {
-    path: '/blog/seata-dsproxy-deadlock',
-    component: ComponentCreator('/blog/seata-dsproxy-deadlock', 'f7f'),
+    path: '/zh-cn/blog/seata-mybatisplus-analysis',
+    component: ComponentCreator('/zh-cn/blog/seata-mybatisplus-analysis', 'b39'),
     exact: true
   },
   {
-    path: '/blog/seata-dynamic-config-and-dynamic-disable',
-    component: ComponentCreator('/blog/seata-dynamic-config-and-dynamic-disable', 'ffd'),
+    path: '/zh-cn/blog/seata-nacos-analysis',
+    component: ComponentCreator('/zh-cn/blog/seata-nacos-analysis', '714'),
     exact: true
   },
   {
-    path: '/blog/seata-feature-undo-log-compress',
-    component: ComponentCreator('/blog/seata-feature-undo-log-compress', '350'),
+    path: '/zh-cn/blog/seata-nacos-docker',
+    component: ComponentCreator('/zh-cn/blog/seata-nacos-docker', '393'),
     exact: true
   },
   {
-    path: '/blog/seata-go-1.2.0',
-    component: ComponentCreator('/blog/seata-go-1.2.0', 'afe'),
+    path: '/zh-cn/blog/seata-observable-practice',
+    component: ComponentCreator('/zh-cn/blog/seata-observable-practice', '0b9'),
     exact: true
   },
   {
-    path: '/blog/seata-golang-communication-mode',
-    component: ComponentCreator('/blog/seata-golang-communication-mode', '699'),
+    path: '/zh-cn/blog/seata-quick-start',
+    component: ComponentCreator('/zh-cn/blog/seata-quick-start', '1a6'),
     exact: true
   },
   {
-    path: '/blog/seata-ha-practice',
-    component: ComponentCreator('/blog/seata-ha-practice', 'c03'),
+    path: '/zh-cn/blog/seata-rpc-refactor',
+    component: ComponentCreator('/zh-cn/blog/seata-rpc-refactor', '060'),
     exact: true
   },
   {
-    path: '/blog/seata-meetup-hangzhou',
-    component: ComponentCreator('/blog/seata-meetup-hangzhou', '823'),
+    path: '/zh-cn/blog/seata-snowflake-explain',
+    component: ComponentCreator('/zh-cn/blog/seata-snowflake-explain', 'd2e'),
     exact: true
   },
   {
-    path: '/blog/seata-mybatisplus-analysis',
-    component: ComponentCreator('/blog/seata-mybatisplus-analysis', '264'),
+    path: '/zh-cn/blog/seata-sourcecode-client-bootstrap',
+    component: ComponentCreator('/zh-cn/blog/seata-sourcecode-client-bootstrap', '43a'),
     exact: true
   },
   {
-    path: '/blog/seata-nacos-analysis',
-    component: ComponentCreator('/blog/seata-nacos-analysis', '3d6'),
+    path: '/zh-cn/blog/seata-sourcecode-server-bootstrap',
+    component: ComponentCreator('/zh-cn/blog/seata-sourcecode-server-bootstrap', '9d7'),
     exact: true
   },
   {
-    path: '/blog/seata-nacos-docker',
-    component: ComponentCreator('/blog/seata-nacos-docker', '80c'),
+    path: '/zh-cn/blog/seata-spring-boot-aop-aspectj',
+    component: ComponentCreator('/zh-cn/blog/seata-spring-boot-aop-aspectj', 'ed4'),
     exact: true
   },
   {
-    path: '/blog/seata-observable-practice',
-    component: ComponentCreator('/blog/seata-observable-practice', '36a'),
+    path: '/zh-cn/blog/seata-tcc',
+    component: ComponentCreator('/zh-cn/blog/seata-tcc', '199'),
     exact: true
   },
   {
-    path: '/blog/seata-quick-start',
-    component: ComponentCreator('/blog/seata-quick-start', '14f'),
+    path: '/zh-cn/blog/seata-tcc-fence',
+    component: ComponentCreator('/zh-cn/blog/seata-tcc-fence', '6b3'),
     exact: true
   },
   {
-    path: '/blog/seata-rpc-refactor',
-    component: ComponentCreator('/blog/seata-rpc-refactor', '5bc'),
+    path: '/zh-cn/blog/seata-xa-introduce',
+    component: ComponentCreator('/zh-cn/blog/seata-xa-introduce', '26b'),
     exact: true
   },
   {
-    path: '/blog/seata-snowflake-explain',
-    component: ComponentCreator('/blog/seata-snowflake-explain', '303'),
+    path: '/zh-cn/blog/springboot-dubbo-mybatisplus-seata',
+    component: ComponentCreator('/zh-cn/blog/springboot-dubbo-mybatisplus-seata', 'aed'),
     exact: true
   },
   {
-    path: '/blog/seata-sourcecode-client-bootstrap',
-    component: ComponentCreator('/blog/seata-sourcecode-client-bootstrap', 'e26'),
+    path: '/zh-cn/blog/tags',
+    component: ComponentCreator('/zh-cn/blog/tags', 'ef2'),
     exact: true
   },
   {
-    path: '/blog/seata-sourcecode-server-bootstrap',
-    component: ComponentCreator('/blog/seata-sourcecode-server-bootstrap', 'f52'),
+    path: '/zh-cn/blog/tags/docusaurus',
+    component: ComponentCreator('/zh-cn/blog/tags/docusaurus', '6ad'),
     exact: true
   },
   {
-    path: '/blog/seata-spring-boot-aop-aspectj',
-    component: ComponentCreator('/blog/seata-spring-boot-aop-aspectj', 'b1b'),
+    path: '/zh-cn/blog/tags/facebook',
+    component: ComponentCreator('/zh-cn/blog/tags/facebook', '7b7'),
     exact: true
   },
   {
-    path: '/blog/seata-tcc',
-    component: ComponentCreator('/blog/seata-tcc', '746'),
+    path: '/zh-cn/blog/tags/hello',
+    component: ComponentCreator('/zh-cn/blog/tags/hello', '24c'),
     exact: true
   },
   {
-    path: '/blog/seata-tcc-fence',
-    component: ComponentCreator('/blog/seata-tcc-fence', '683'),
+    path: '/zh-cn/blog/tags/seata',
+    component: ComponentCreator('/zh-cn/blog/tags/seata', '644'),
     exact: true
   },
   {
-    path: '/blog/seata-xa-introduce',
-    component: ComponentCreator('/blog/seata-xa-introduce', '4e0'),
+    path: '/zh-cn/blog/tcc-mode-applicable-scenario-analysis',
+    component: ComponentCreator('/zh-cn/blog/tcc-mode-applicable-scenario-analysis', 'f74'),
     exact: true
   },
   {
-    path: '/blog/springboot-dubbo-mybatisplus-seata',
-    component: ComponentCreator('/blog/springboot-dubbo-mybatisplus-seata', 'ada'),
+    path: '/zh-cn/blog/tcc-mode-design-principle',
+    component: ComponentCreator('/zh-cn/blog/tcc-mode-design-principle', 'ab8'),
     exact: true
   },
   {
-    path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '286'),
+    path: '/zh-cn/blog/welcome',
+    component: ComponentCreator('/zh-cn/blog/welcome', 'afd'),
     exact: true
   },
   {
-    path: '/blog/tags/docusaurus',
-    component: ComponentCreator('/blog/tags/docusaurus', '382'),
+    path: '/zh-cn/community/',
+    component: ComponentCreator('/zh-cn/community/', 'dee'),
     exact: true
   },
   {
-    path: '/blog/tags/facebook',
-    component: ComponentCreator('/blog/tags/facebook', 'c5e'),
+    path: '/zh-cn/community/contactItem',
+    component: ComponentCreator('/zh-cn/community/contactItem', 'f00'),
     exact: true
   },
   {
-    path: '/blog/tags/hello',
-    component: ComponentCreator('/blog/tags/hello', '08c'),
+    path: '/zh-cn/community/contributorItem',
+    component: ComponentCreator('/zh-cn/community/contributorItem', '949'),
     exact: true
   },
   {
-    path: '/blog/tags/seata',
-    component: ComponentCreator('/blog/tags/seata', '961'),
+    path: '/zh-cn/community/eventCard',
+    component: ComponentCreator('/zh-cn/community/eventCard', 'b3d'),
     exact: true
   },
   {
-    path: '/blog/tcc-mode-applicable-scenario-analysis',
-    component: ComponentCreator('/blog/tcc-mode-applicable-scenario-analysis', '508'),
+    path: '/zh-cn/home/feature/',
+    component: ComponentCreator('/zh-cn/home/feature/', 'a53'),
     exact: true
   },
   {
-    path: '/blog/tcc-mode-design-principle',
-    component: ComponentCreator('/blog/tcc-mode-design-principle', '921'),
+    path: '/zh-cn/home/introduction/',
+    component: ComponentCreator('/zh-cn/home/introduction/', '2e0'),
     exact: true
   },
   {
-    path: '/blog/welcome',
-    component: ComponentCreator('/blog/welcome', '7b6'),
+    path: '/zh-cn/home/msemap/',
+    component: ComponentCreator('/zh-cn/home/msemap/', '0fb'),
     exact: true
   },
   {
-    path: '/community/',
-    component: ComponentCreator('/community/', '240'),
+    path: '/zh-cn/home/top/',
+    component: ComponentCreator('/zh-cn/home/top/', 'c21'),
     exact: true
   },
   {
-    path: '/community/contactItem',
-    component: ComponentCreator('/community/contactItem', 'd47'),
+    path: '/zh-cn/home/users/',
+    component: ComponentCreator('/zh-cn/home/users/', '030'),
     exact: true
   },
   {
-    path: '/community/contributorItem',
-    component: ComponentCreator('/community/contributorItem', '694'),
+    path: '/zh-cn/markdown-page',
+    component: ComponentCreator('/zh-cn/markdown-page', 'ddb'),
     exact: true
   },
   {
-    path: '/community/eventCard',
-    component: ComponentCreator('/community/eventCard', 'a8f'),
-    exact: true
-  },
-  {
-    path: '/home/feature/',
-    component: ComponentCreator('/home/feature/', 'fa3'),
-    exact: true
-  },
-  {
-    path: '/home/introduction/',
-    component: ComponentCreator('/home/introduction/', '033'),
-    exact: true
-  },
-  {
-    path: '/home/msemap/',
-    component: ComponentCreator('/home/msemap/', '0c7'),
-    exact: true
-  },
-  {
-    path: '/home/top/',
-    component: ComponentCreator('/home/top/', '2e1'),
-    exact: true
-  },
-  {
-    path: '/home/users/',
-    component: ComponentCreator('/home/users/', '777'),
-    exact: true
-  },
-  {
-    path: '/markdown-page',
-    component: ComponentCreator('/markdown-page', '95d'),
-    exact: true
-  },
-  {
-    path: '/docs',
-    component: ComponentCreator('/docs', '4b4'),
+    path: '/zh-cn/docs',
+    component: ComponentCreator('/zh-cn/docs', 'a9b'),
     routes: [
       {
-        path: '/docs/dev/domain/overviewDomainModel',
-        component: ComponentCreator('/docs/dev/domain/overviewDomainModel', 'd08'),
+        path: '/zh-cn/docs/dev/domain/overviewDomainModel',
+        component: ComponentCreator('/zh-cn/docs/dev/domain/overviewDomainModel', 'cd4'),
         exact: true
       },
       {
-        path: '/docs/dev/domain/rm',
-        component: ComponentCreator('/docs/dev/domain/rm', '191'),
+        path: '/zh-cn/docs/dev/domain/rm',
+        component: ComponentCreator('/zh-cn/docs/dev/domain/rm', 'e41'),
         exact: true
       },
       {
-        path: '/docs/dev/domain/tc',
-        component: ComponentCreator('/docs/dev/domain/tc', '7e0'),
+        path: '/zh-cn/docs/dev/domain/tc',
+        component: ComponentCreator('/zh-cn/docs/dev/domain/tc', '74a'),
         exact: true
       },
       {
-        path: '/docs/dev/domain/tm',
-        component: ComponentCreator('/docs/dev/domain/tm', '759'),
+        path: '/zh-cn/docs/dev/domain/tm',
+        component: ComponentCreator('/zh-cn/docs/dev/domain/tm', '1c1'),
         exact: true
       },
       {
-        path: '/docs/dev/mode/at-mode',
-        component: ComponentCreator('/docs/dev/mode/at-mode', 'd7b'),
+        path: '/zh-cn/docs/dev/mode/at-mode',
+        component: ComponentCreator('/zh-cn/docs/dev/mode/at-mode', '01d'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/dev/mode/saga-mode',
-        component: ComponentCreator('/docs/dev/mode/saga-mode', '74e'),
+        path: '/zh-cn/docs/dev/mode/saga-mode',
+        component: ComponentCreator('/zh-cn/docs/dev/mode/saga-mode', '01b'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/dev/mode/tcc-mode',
-        component: ComponentCreator('/docs/dev/mode/tcc-mode', 'e96'),
+        path: '/zh-cn/docs/dev/mode/tcc-mode',
+        component: ComponentCreator('/zh-cn/docs/dev/mode/tcc-mode', '932'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/dev/mode/xa-mode',
-        component: ComponentCreator('/docs/dev/mode/xa-mode', '371'),
+        path: '/zh-cn/docs/dev/mode/xa-mode',
+        component: ComponentCreator('/zh-cn/docs/dev/mode/xa-mode', '7b9'),
         exact: true
       },
       {
-        path: '/docs/dev/seata-mertics',
-        component: ComponentCreator('/docs/dev/seata-mertics', '893'),
+        path: '/zh-cn/docs/dev/seata-mertics',
+        component: ComponentCreator('/zh-cn/docs/dev/seata-mertics', '87d'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/developers/committer-guide/label-an-issue-guide_dev',
-        component: ComponentCreator('/docs/developers/committer-guide/label-an-issue-guide_dev', '5ef'),
+        path: '/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev', '75c'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/developers/committer-guide/release-guide_dev',
-        component: ComponentCreator('/docs/developers/committer-guide/release-guide_dev', '856'),
+        path: '/zh-cn/docs/developers/committer-guide/release-guide_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/committer-guide/release-guide_dev', '09b'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/developers/committer-guide/website-guide_dev',
-        component: ComponentCreator('/docs/developers/committer-guide/website-guide_dev', 'fc6'),
+        path: '/zh-cn/docs/developers/committer-guide/website-guide_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/committer-guide/website-guide_dev', '881'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/developers/contributor-activity/top-contributer_dev',
-        component: ComponentCreator('/docs/developers/contributor-activity/top-contributer_dev', 'cbe'),
+        path: '/zh-cn/docs/developers/contributor-activity/top-contributer_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/contributor-activity/top-contributer_dev', '551'),
         exact: true
       },
       {
-        path: '/docs/developers/contributor-guide/new-contributor-guide_dev',
-        component: ComponentCreator('/docs/developers/contributor-guide/new-contributor-guide_dev', '941'),
+        path: '/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev', '9e4'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/developers/contributor-guide/reporting-security-issues_dev',
-        component: ComponentCreator('/docs/developers/contributor-guide/reporting-security-issues_dev', '639'),
+        path: '/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev', 'd37'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/developers/contributor-guide/test-coverage-guide_dev',
-        component: ComponentCreator('/docs/developers/contributor-guide/test-coverage-guide_dev', '62d'),
+        path: '/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev', '005'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/developers/developers_dev',
-        component: ComponentCreator('/docs/developers/developers_dev', '85e'),
+        path: '/zh-cn/docs/developers/developers_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/developers_dev', '73d'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/developers/guide_dev',
-        component: ComponentCreator('/docs/developers/guide_dev', '485'),
+        path: '/zh-cn/docs/developers/guide_dev',
+        component: ComponentCreator('/zh-cn/docs/developers/guide_dev', '42a'),
         exact: true,
         sidebar: "developers"
       },
       {
-        path: '/docs/download',
-        component: ComponentCreator('/docs/download', '0fe'),
+        path: '/zh-cn/docs/download',
+        component: ComponentCreator('/zh-cn/docs/download', '345'),
         exact: true,
         sidebar: "download"
       },
       {
-        path: '/docs/intro',
-        component: ComponentCreator('/docs/intro', 'e84'),
+        path: '/zh-cn/docs/intro',
+        component: ComponentCreator('/zh-cn/docs/intro', 'b64'),
         exact: true
       },
       {
-        path: '/docs/ops/config-center',
-        component: ComponentCreator('/docs/ops/config-center', '7a5'),
+        path: '/zh-cn/docs/ops/config-center',
+        component: ComponentCreator('/zh-cn/docs/ops/config-center', '6c9'),
         exact: true
       },
       {
-        path: '/docs/ops/deploy-by-docker',
-        component: ComponentCreator('/docs/ops/deploy-by-docker', '702'),
+        path: '/zh-cn/docs/ops/deploy-by-docker',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-by-docker', 'cb0'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/ops/deploy-by-docker-142',
-        component: ComponentCreator('/docs/ops/deploy-by-docker-142', '5df'),
+        path: '/zh-cn/docs/ops/deploy-by-docker-142',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-by-docker-142', '379'),
         exact: true
       },
       {
-        path: '/docs/ops/deploy-by-docker-compose',
-        component: ComponentCreator('/docs/ops/deploy-by-docker-compose', 'c81'),
+        path: '/zh-cn/docs/ops/deploy-by-docker-compose',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-by-docker-compose', '4fe'),
         exact: true
       },
       {
-        path: '/docs/ops/deploy-by-docker-compose-142',
-        component: ComponentCreator('/docs/ops/deploy-by-docker-compose-142', '41b'),
+        path: '/zh-cn/docs/ops/deploy-by-docker-compose-142',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-by-docker-compose-142', 'd39'),
         exact: true
       },
       {
-        path: '/docs/ops/deploy-by-helm',
-        component: ComponentCreator('/docs/ops/deploy-by-helm', '49a'),
+        path: '/zh-cn/docs/ops/deploy-by-helm',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-by-helm', 'd6a'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/ops/deploy-by-kubernetes',
-        component: ComponentCreator('/docs/ops/deploy-by-kubernetes', '891'),
+        path: '/zh-cn/docs/ops/deploy-by-kubernetes',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-by-kubernetes', 'd2c'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/ops/deploy-guide-beginner',
-        component: ComponentCreator('/docs/ops/deploy-guide-beginner', '999'),
+        path: '/zh-cn/docs/ops/deploy-guide-beginner',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-guide-beginner', '49c'),
         exact: true
       },
       {
-        path: '/docs/ops/deploy-ha',
-        component: ComponentCreator('/docs/ops/deploy-ha', 'a05'),
+        path: '/zh-cn/docs/ops/deploy-ha',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-ha', '074'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/ops/deploy-server',
-        component: ComponentCreator('/docs/ops/deploy-server', 'd4f'),
+        path: '/zh-cn/docs/ops/deploy-server',
+        component: ComponentCreator('/zh-cn/docs/ops/deploy-server', 'f96'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/ops/upgrade',
-        component: ComponentCreator('/docs/ops/upgrade', '709'),
+        path: '/zh-cn/docs/ops/upgrade',
+        component: ComponentCreator('/zh-cn/docs/ops/upgrade', '5e5'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/overview/faq',
-        component: ComponentCreator('/docs/overview/faq', 'df7'),
+        path: '/zh-cn/docs/overview/faq',
+        component: ComponentCreator('/zh-cn/docs/overview/faq', 'e6b'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/overview/terminology',
-        component: ComponentCreator('/docs/overview/terminology', 'd9f'),
+        path: '/zh-cn/docs/overview/terminology',
+        component: ComponentCreator('/zh-cn/docs/overview/terminology', '98f'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/overview/what-is-seata',
-        component: ComponentCreator('/docs/overview/what-is-seata', 'c32'),
+        path: '/zh-cn/docs/overview/what-is-seata',
+        component: ComponentCreator('/zh-cn/docs/overview/what-is-seata', 'f9c'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/tutorial-basics/congratulations',
-        component: ComponentCreator('/docs/tutorial-basics/congratulations', '7ef'),
+        path: '/zh-cn/docs/tutorial-basics/congratulations',
+        component: ComponentCreator('/zh-cn/docs/tutorial-basics/congratulations', 'e74'),
         exact: true
       },
       {
-        path: '/docs/tutorial-basics/create-a-blog-post',
-        component: ComponentCreator('/docs/tutorial-basics/create-a-blog-post', '2c8'),
+        path: '/zh-cn/docs/tutorial-basics/create-a-blog-post',
+        component: ComponentCreator('/zh-cn/docs/tutorial-basics/create-a-blog-post', '79b'),
         exact: true
       },
       {
-        path: '/docs/tutorial-basics/create-a-document',
-        component: ComponentCreator('/docs/tutorial-basics/create-a-document', 'f0d'),
+        path: '/zh-cn/docs/tutorial-basics/create-a-document',
+        component: ComponentCreator('/zh-cn/docs/tutorial-basics/create-a-document', '8fd'),
         exact: true
       },
       {
-        path: '/docs/tutorial-basics/create-a-page',
-        component: ComponentCreator('/docs/tutorial-basics/create-a-page', 'ca5'),
+        path: '/zh-cn/docs/tutorial-basics/create-a-page',
+        component: ComponentCreator('/zh-cn/docs/tutorial-basics/create-a-page', '17c'),
         exact: true
       },
       {
-        path: '/docs/tutorial-basics/deploy-your-site',
-        component: ComponentCreator('/docs/tutorial-basics/deploy-your-site', '508'),
+        path: '/zh-cn/docs/tutorial-basics/deploy-your-site',
+        component: ComponentCreator('/zh-cn/docs/tutorial-basics/deploy-your-site', 'c3d'),
         exact: true
       },
       {
-        path: '/docs/tutorial-basics/markdown-features',
-        component: ComponentCreator('/docs/tutorial-basics/markdown-features', 'f90'),
+        path: '/zh-cn/docs/tutorial-basics/markdown-features',
+        component: ComponentCreator('/zh-cn/docs/tutorial-basics/markdown-features', '21a'),
         exact: true
       },
       {
-        path: '/docs/tutorial-extras/manage-docs-versions',
-        component: ComponentCreator('/docs/tutorial-extras/manage-docs-versions', 'd64'),
+        path: '/zh-cn/docs/tutorial-extras/manage-docs-versions',
+        component: ComponentCreator('/zh-cn/docs/tutorial-extras/manage-docs-versions', 'a97'),
         exact: true
       },
       {
-        path: '/docs/tutorial-extras/translate-your-site',
-        component: ComponentCreator('/docs/tutorial-extras/translate-your-site', '16a'),
+        path: '/zh-cn/docs/tutorial-extras/translate-your-site',
+        component: ComponentCreator('/zh-cn/docs/tutorial-extras/translate-your-site', 'c20'),
         exact: true
       },
       {
-        path: '/docs/user/api',
-        component: ComponentCreator('/docs/user/api', '172'),
+        path: '/zh-cn/docs/user/api',
+        component: ComponentCreator('/zh-cn/docs/user/api', 'db6'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/user/apm/prometheus',
-        component: ComponentCreator('/docs/user/apm/prometheus', 'b18'),
+        path: '/zh-cn/docs/user/apm/prometheus',
+        component: ComponentCreator('/zh-cn/docs/user/apm/prometheus', 'b35'),
         exact: true
       },
       {
-        path: '/docs/user/apm/skywalking',
-        component: ComponentCreator('/docs/user/apm/skywalking', 'e99'),
+        path: '/zh-cn/docs/user/apm/skywalking',
+        component: ComponentCreator('/zh-cn/docs/user/apm/skywalking', '179'),
         exact: true
       },
       {
-        path: '/docs/user/appendix/global-transaction-status',
-        component: ComponentCreator('/docs/user/appendix/global-transaction-status', '485'),
+        path: '/zh-cn/docs/user/appendix/global-transaction-status',
+        component: ComponentCreator('/zh-cn/docs/user/appendix/global-transaction-status', 'f48'),
         exact: true
       },
       {
-        path: '/docs/user/appendix/isolation',
-        component: ComponentCreator('/docs/user/appendix/isolation', '347'),
+        path: '/zh-cn/docs/user/appendix/isolation',
+        component: ComponentCreator('/zh-cn/docs/user/appendix/isolation', '666'),
         exact: true
       },
       {
-        path: '/docs/user/configuration/',
-        component: ComponentCreator('/docs/user/configuration/', 'c6b'),
+        path: '/zh-cn/docs/user/configuration/',
+        component: ComponentCreator('/zh-cn/docs/user/configuration/', 'c1c'),
         exact: true
       },
       {
-        path: '/docs/user/configuration/apollo',
-        component: ComponentCreator('/docs/user/configuration/apollo', 'dd4'),
+        path: '/zh-cn/docs/user/configuration/apollo',
+        component: ComponentCreator('/zh-cn/docs/user/configuration/apollo', 'fc0'),
         exact: true
       },
       {
-        path: '/docs/user/configuration/consul',
-        component: ComponentCreator('/docs/user/configuration/consul', '4a4'),
+        path: '/zh-cn/docs/user/configuration/consul',
+        component: ComponentCreator('/zh-cn/docs/user/configuration/consul', '75d'),
         exact: true
       },
       {
-        path: '/docs/user/configuration/etcd3',
-        component: ComponentCreator('/docs/user/configuration/etcd3', 'fce'),
+        path: '/zh-cn/docs/user/configuration/etcd3',
+        component: ComponentCreator('/zh-cn/docs/user/configuration/etcd3', '558'),
         exact: true
       },
       {
-        path: '/docs/user/configuration/nacos',
-        component: ComponentCreator('/docs/user/configuration/nacos', 'b2a'),
+        path: '/zh-cn/docs/user/configuration/nacos',
+        component: ComponentCreator('/zh-cn/docs/user/configuration/nacos', 'e34'),
         exact: true
       },
       {
-        path: '/docs/user/configuration/zookeeper',
-        component: ComponentCreator('/docs/user/configuration/zookeeper', '537'),
+        path: '/zh-cn/docs/user/configuration/zookeeper',
+        component: ComponentCreator('/zh-cn/docs/user/configuration/zookeeper', '84d'),
         exact: true
       },
       {
-        path: '/docs/user/configurations',
-        component: ComponentCreator('/docs/user/configurations', '469'),
+        path: '/zh-cn/docs/user/configurations',
+        component: ComponentCreator('/zh-cn/docs/user/configurations', '1f2'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/user/configurations090',
-        component: ComponentCreator('/docs/user/configurations090', '164'),
+        path: '/zh-cn/docs/user/configurations090',
+        component: ComponentCreator('/zh-cn/docs/user/configurations090', '15f'),
         exact: true
       },
       {
-        path: '/docs/user/configurations100',
-        component: ComponentCreator('/docs/user/configurations100', '49f'),
+        path: '/zh-cn/docs/user/configurations100',
+        component: ComponentCreator('/zh-cn/docs/user/configurations100', '749'),
         exact: true
       },
       {
-        path: '/docs/user/datasource',
-        component: ComponentCreator('/docs/user/datasource', '67e'),
+        path: '/zh-cn/docs/user/datasource',
+        component: ComponentCreator('/zh-cn/docs/user/datasource', '162'),
         exact: true
       },
       {
-        path: '/docs/user/microservice',
-        component: ComponentCreator('/docs/user/microservice', '6d2'),
+        path: '/zh-cn/docs/user/microservice',
+        component: ComponentCreator('/zh-cn/docs/user/microservice', '3a1'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/user/ormframework',
-        component: ComponentCreator('/docs/user/ormframework', '98d'),
+        path: '/zh-cn/docs/user/ormframework',
+        component: ComponentCreator('/zh-cn/docs/user/ormframework', '20b'),
         exact: true
       },
       {
-        path: '/docs/user/performance',
-        component: ComponentCreator('/docs/user/performance', '17a'),
+        path: '/zh-cn/docs/user/performance',
+        component: ComponentCreator('/zh-cn/docs/user/performance', '523'),
         exact: true
       },
       {
-        path: '/docs/user/quickstart',
-        component: ComponentCreator('/docs/user/quickstart', '67e'),
+        path: '/zh-cn/docs/user/quickstart',
+        component: ComponentCreator('/zh-cn/docs/user/quickstart', '2ab'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/user/registry/',
-        component: ComponentCreator('/docs/user/registry/', '5d0'),
+        path: '/zh-cn/docs/user/registry/',
+        component: ComponentCreator('/zh-cn/docs/user/registry/', 'a0c'),
         exact: true
       },
       {
-        path: '/docs/user/registry/consul',
-        component: ComponentCreator('/docs/user/registry/consul', '5de'),
+        path: '/zh-cn/docs/user/registry/consul',
+        component: ComponentCreator('/zh-cn/docs/user/registry/consul', '823'),
         exact: true
       },
       {
-        path: '/docs/user/registry/etcd3',
-        component: ComponentCreator('/docs/user/registry/etcd3', '475'),
+        path: '/zh-cn/docs/user/registry/etcd3',
+        component: ComponentCreator('/zh-cn/docs/user/registry/etcd3', 'b58'),
         exact: true
       },
       {
-        path: '/docs/user/registry/eureka',
-        component: ComponentCreator('/docs/user/registry/eureka', '7c9'),
+        path: '/zh-cn/docs/user/registry/eureka',
+        component: ComponentCreator('/zh-cn/docs/user/registry/eureka', '63a'),
         exact: true
       },
       {
-        path: '/docs/user/registry/nacos',
-        component: ComponentCreator('/docs/user/registry/nacos', '173'),
+        path: '/zh-cn/docs/user/registry/nacos',
+        component: ComponentCreator('/zh-cn/docs/user/registry/nacos', 'e44'),
         exact: true
       },
       {
-        path: '/docs/user/registry/zookeeper',
-        component: ComponentCreator('/docs/user/registry/zookeeper', '796'),
+        path: '/zh-cn/docs/user/registry/zookeeper',
+        component: ComponentCreator('/zh-cn/docs/user/registry/zookeeper', '0f8'),
         exact: true
       },
       {
-        path: '/docs/user/saga',
-        component: ComponentCreator('/docs/user/saga', '708'),
+        path: '/zh-cn/docs/user/saga',
+        component: ComponentCreator('/zh-cn/docs/user/saga', '4ab'),
         exact: true
       },
       {
-        path: '/docs/user/spring',
-        component: ComponentCreator('/docs/user/spring', 'c25'),
+        path: '/zh-cn/docs/user/spring',
+        component: ComponentCreator('/zh-cn/docs/user/spring', '584'),
         exact: true
       },
       {
-        path: '/docs/user/sqlreference/dml',
-        component: ComponentCreator('/docs/user/sqlreference/dml', '49b'),
+        path: '/zh-cn/docs/user/sqlreference/dml',
+        component: ComponentCreator('/zh-cn/docs/user/sqlreference/dml', '004'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/user/sqlreference/function',
-        component: ComponentCreator('/docs/user/sqlreference/function', '775'),
+        path: '/zh-cn/docs/user/sqlreference/function',
+        component: ComponentCreator('/zh-cn/docs/user/sqlreference/function', '493'),
         exact: true
       },
       {
-        path: '/docs/user/sqlreference/sql-decoration',
-        component: ComponentCreator('/docs/user/sqlreference/sql-decoration', 'e3e'),
+        path: '/zh-cn/docs/user/sqlreference/sql-decoration',
+        component: ComponentCreator('/zh-cn/docs/user/sqlreference/sql-decoration', '725'),
         exact: true
       },
       {
-        path: '/docs/user/sqlreference/sql-restrictions',
-        component: ComponentCreator('/docs/user/sqlreference/sql-restrictions', 'c95'),
+        path: '/zh-cn/docs/user/sqlreference/sql-restrictions',
+        component: ComponentCreator('/zh-cn/docs/user/sqlreference/sql-restrictions', '2a3'),
         exact: true,
         sidebar: "docs"
       },
       {
-        path: '/docs/user/txgroup/transaction-group',
-        component: ComponentCreator('/docs/user/txgroup/transaction-group', 'd4d'),
+        path: '/zh-cn/docs/user/txgroup/transaction-group',
+        component: ComponentCreator('/zh-cn/docs/user/txgroup/transaction-group', '27d'),
         exact: true
       },
       {
-        path: '/docs/user/txgroup/transaction-group-and-ha',
-        component: ComponentCreator('/docs/user/txgroup/transaction-group-and-ha', 'c2b'),
+        path: '/zh-cn/docs/user/txgroup/transaction-group-and-ha',
+        component: ComponentCreator('/zh-cn/docs/user/txgroup/transaction-group-and-ha', 'ce6'),
         exact: true
       }
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', 'd1f'),
+    path: '/zh-cn/',
+    component: ComponentCreator('/zh-cn/', '2fc'),
     exact: true
   },
   {

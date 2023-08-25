@@ -1,0 +1,14 @@
+{
+  "unversionedId": "user/performance",
+  "id": "user/performance",
+  "title": "performance",
+  "description": "欢迎认领补充此文档。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/performance.md",
+  "sourceDirName": "user",
+  "slug": "/user/performance",
+  "permalink": "/zh-cn/docs/user/performance",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

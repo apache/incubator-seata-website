@@ -1,0 +1,14 @@
+{
+  "unversionedId": "user/apm/skywalking",
+  "id": "user/apm/skywalking",
+  "title": "SkyWalking APM（应用性能监控）",
+  "description": "SkyWalking 是 Seata 组件中重要的APM（应用性能监控）实现.",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/apm/skywalking.md",
+  "sourceDirName": "user/apm",
+  "slug": "/user/apm/skywalking",
+  "permalink": "/zh-cn/docs/user/apm/skywalking",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

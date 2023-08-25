@@ -1,1168 +1,1125 @@
 {
-  "/__docusaurus/debug-7f3": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
+  "/zh-cn/blog-5cb": {
+    "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-0-ec-d75"
-    }
-  },
-  "/__docusaurus/debug/config-06a": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-0-ec-d75"
-    }
-  },
-  "/__docusaurus/debug/content-be9": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-0-ec-d75"
+      "plugin": "17e1ed9c"
     },
-    "allContent": "allContent---docusaurus-debug-content-246-9aa"
-  },
-  "/__docusaurus/debug/globalData-b64": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-0-ec-d75"
-    }
-  },
-  "/__docusaurus/debug/metadata-bd7": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-0-ec-d75"
-    }
-  },
-  "/__docusaurus/debug/registry-7d6": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-0-ec-d75"
-    }
-  },
-  "/__docusaurus/debug/routes-6b4": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-0-ec-d75"
-    }
-  },
-  "/blog-875": {
-    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
-    "__context": {
-      "plugin": "plugin---blog-17-e-03f"
-    },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blogbc-5-d6f"
+        "content": "2b17033b"
       },
       {
-        "content": "content---blogb-39-234"
+        "content": "d468b21d"
       },
       {
-        "content": "content---blogcc-3-f41"
+        "content": "f9d29538"
       },
       {
-        "content": "content---blogde-3-7a0"
+        "content": "62a1ea35"
       },
       {
-        "content": "content---blog-03-c-c60"
+        "content": "7a0f6fa3"
       },
       {
-        "content": "content---bloge-9-d-d41"
+        "content": "2e1551fc"
       },
       {
-        "content": "content---bloge-03-590"
+        "content": "666c1404"
       },
       {
-        "content": "content---blog-7-e-0-f70"
+        "content": "e92424c7"
       },
       {
-        "content": "content---blog-3-a-1-2df"
+        "content": "1edb76bd"
       },
       {
-        "content": "content---blog-766-e3c"
+        "content": "7661071f"
       }
     ],
-    "metadata": "metadata---blogb-2-b-df1"
+    "metadata": "b91266d6"
   },
-  "/blog/archive-5fc": {
-    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+  "/zh-cn/blog/archive-95d": {
+    "__comp": "9e4087bc",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "archive": "archive---blog-archiveb-2-f-393"
+    "archive": "465ed234"
   },
-  "/blog/design-more-flexable-application-by-saga-ffa": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/design-more-flexable-application-by-saga-225": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-design-more-flexable-application-by-sagab-27-cda"
+    "sidebar": "814f3328",
+    "content": "7d1f4e6c"
   },
-  "/blog/how-to-support-spring-cloud-e4f": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/how-to-support-spring-cloud-552": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-how-to-support-spring-cloudec-5-cb1"
+    "sidebar": "814f3328",
+    "content": "35df578c"
   },
-  "/blog/integrate-seata-tcc-mode-with-spring-cloud-abf": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/integrate-seata-tcc-mode-with-spring-cloud-35b": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-integrate-seata-tcc-mode-with-spring-cloud-7-b-4-86d"
+    "sidebar": "814f3328",
+    "content": "b4cb0875"
   },
-  "/blog/integrate-seata-with-spring-cloud-717": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/integrate-seata-with-spring-cloud-65c": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-integrate-seata-with-spring-cloud-3-c-4-363"
+    "sidebar": "814f3328",
+    "content": "d82b655e"
   },
-  "/blog/iscas2023-ad7": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/iscas2023-3c2": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-iscas-2023787-eb6"
+    "sidebar": "814f3328",
+    "content": "f3fdc7df"
   },
-  "/blog/manual-transaction-mode-032": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/manual-transaction-mode-772": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-manual-transaction-mode-4-da-463"
+    "sidebar": "814f3328",
+    "content": "3bb6017e"
   },
-  "/blog/page/2-fb1": {
-    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+  "/zh-cn/blog/page/2-221": {
+    "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-page-20-ab-fd8"
+        "content": "00366076"
       },
       {
-        "content": "content---blog-page-2-fee-014"
+        "content": "4d1ef549"
       },
       {
-        "content": "content---blog-page-25-e-1-885"
+        "content": "173db0e5"
       },
       {
-        "content": "content---blog-page-22-be-f46"
+        "content": "a959a429"
       },
       {
-        "content": "content---blog-page-20-ad-0b1"
+        "content": "b7666c89"
       },
       {
-        "content": "content---blog-page-2-d-58-3a7"
+        "content": "d745de4a"
       },
       {
-        "content": "content---blog-page-2985-17d"
+        "content": "73bf0e6a"
       },
       {
-        "content": "content---blog-page-2651-943"
+        "content": "8f0c1985"
       },
       {
-        "content": "content---blog-page-2-cb-2-6eb"
+        "content": "cad5d7fd"
       },
       {
-        "content": "content---blog-page-21-f-6-801"
+        "content": "7c5a8ad2"
       }
     ],
-    "metadata": "metadata---blog-page-28-eb-625"
+    "metadata": "17fbb55d"
   },
-  "/blog/page/3-08b": {
-    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+  "/zh-cn/blog/page/3-033": {
+    "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-page-344-c-d06"
+        "content": "b0bc0d89"
       },
       {
-        "content": "content---blog-page-3336-a8a"
+        "content": "a63507c2"
       },
       {
-        "content": "content---blog-page-3-cb-5-48d"
+        "content": "8e14dfb2"
       },
       {
-        "content": "content---blog-page-3-e-85-a39"
+        "content": "eb7d94e5"
       },
       {
-        "content": "content---blog-page-3536-99b"
+        "content": "3d0b8c3c"
       },
       {
-        "content": "content---blog-page-3-d-4-a-bda"
+        "content": "49d927de"
       },
       {
-        "content": "content---blog-page-3-a-92-3ea"
+        "content": "0705fbda"
       },
       {
-        "content": "content---blog-page-3-ac-2-647"
+        "content": "01f008c8"
       },
       {
-        "content": "content---blog-page-39-d-9-980"
+        "content": "bc1adc41"
       },
       {
-        "content": "content---blog-page-3-b-06-3a4"
+        "content": "709f7742"
       }
     ],
-    "metadata": "metadata---blog-page-3929-7ba"
+    "metadata": "b73dc115"
   },
-  "/blog/page/4-eaa": {
-    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+  "/zh-cn/blog/page/4-4ba": {
+    "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-page-4-ff-7-472"
+        "content": "f9a8c60a"
       },
       {
-        "content": "content---blog-page-4-aff-d49"
+        "content": "3b10105c"
       },
       {
-        "content": "content---blog-page-47-f-4-578"
+        "content": "dcde624f"
       },
       {
-        "content": "content---blog-page-4-d-58-d28"
+        "content": "13a937c0"
       },
       {
-        "content": "content---blog-page-4-e-80-258"
+        "content": "ed0ccc55"
       },
       {
-        "content": "content---blog-page-491-b-1e1"
+        "content": "30563faa"
       },
       {
-        "content": "content---blog-page-417-b-579"
+        "content": "4a801685"
       },
       {
-        "content": "content---blog-page-4998-353"
+        "content": "00818694"
       },
       {
-        "content": "content---blog-page-49-d-8-45b"
+        "content": "2e308128"
       },
       {
-        "content": "content---blog-page-4-e-44-6ff"
+        "content": "3d1e2ff2"
       }
     ],
-    "metadata": "metadata---blog-page-47-d-9-260"
+    "metadata": "2f917717"
   },
-  "/blog/page/5-3e5": {
-    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+  "/zh-cn/blog/page/5-635": {
+    "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-page-5-ef-0-cb8"
+        "content": "d810a19a"
       },
       {
-        "content": "content---blog-page-5-f-6-d-7ba"
+        "content": "53ecb56e"
       },
       {
-        "content": "content---blog-page-5353-9e1"
+        "content": "7d1b5a43"
       },
       {
-        "content": "content---blog-page-5522-9ef"
+        "content": "2c3aa662"
       },
       {
-        "content": "content---blog-page-5-a-35-530"
+        "content": "1cb6e439"
       },
       {
-        "content": "content---blog-page-5964-1ea"
+        "content": "80553c32"
       },
       {
-        "content": "content---blog-page-5-f-09-707"
+        "content": "5b5a9357"
       },
       {
-        "content": "content---blog-page-53-e-2-733"
+        "content": "4694e5b5"
       },
       {
-        "content": "content---blog-page-53-e-0-9eb"
+        "content": "dc3468a0"
       },
       {
-        "content": "content---blog-page-5-a-3-a-243"
+        "content": "c2f8b0c2"
       }
     ],
-    "metadata": "metadata---blog-page-511-c-57d"
+    "metadata": "81cde232"
   },
-  "/blog/page/6-387": {
-    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+  "/zh-cn/blog/page/6-635": {
+    "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-page-6336-902"
+        "content": "cea1a82f"
       },
       {
-        "content": "content---blog-page-630-b-ad8"
+        "content": "d69943d7"
       },
       {
-        "content": "content---blog-page-611-c-e15"
+        "content": "9b5d7bab"
       },
       {
-        "content": "content---blog-page-6-b-90-af1"
+        "content": "3e24cd50"
       },
       {
-        "content": "content---blog-page-6-eac-3ae"
+        "content": "b7ce3f08"
       }
     ],
-    "metadata": "metadata---blog-page-644-a-168"
+    "metadata": "dc05b4b1"
   },
-  "/blog/quick-start-use-seata-and-dubbo-services-018": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/quick-start-use-seata-and-dubbo-services-afd": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-quick-start-use-seata-and-dubbo-services-651-964"
+    "sidebar": "814f3328",
+    "content": "b50bd570"
   },
-  "/blog/seata-1.5.2-8e9": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-1.5.2-676": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-1-5-2029-5c4"
+    "sidebar": "814f3328",
+    "content": "678111ea"
   },
-  "/blog/seata-1.6.0-d6e": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-1.6.0-1ac": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-1-6-02-b-6-c86"
+    "sidebar": "814f3328",
+    "content": "1cf5f710"
   },
-  "/blog/seata-analysis-config-modular-1aa": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-config-modular-3bf": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-config-modular-777-651"
+    "sidebar": "814f3328",
+    "content": "7862ca66"
   },
-  "/blog/seata-analysis-core-modular-a0a": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-core-modular-56b": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-core-modular-4-e-7-cb2"
+    "sidebar": "814f3328",
+    "content": "d2b666fa"
   },
-  "/blog/seata-analysis-dubbo-transmit-xid-ecb": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-dubbo-transmit-xid-eaa": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-dubbo-transmit-xid-4-c-8-d89"
+    "sidebar": "814f3328",
+    "content": "0adf0dd7"
   },
-  "/blog/seata-analysis-go-server-ce8": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-go-server-87b": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-go-server-777-cad"
+    "sidebar": "814f3328",
+    "content": "25aefe8a"
   },
-  "/blog/seata-analysis-java-client-9c2": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-java-client-7dc": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-java-client-9-eb-b37"
+    "sidebar": "814f3328",
+    "content": "651d90d6"
   },
-  "/blog/seata-analysis-java-server-31a": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-java-server-664": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-java-serverb-20-c36"
+    "sidebar": "814f3328",
+    "content": "0bebbbb1"
   },
-  "/blog/seata-analysis-simple-71a": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-simple-b92": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-simpleb-2-f-e9d"
+    "sidebar": "814f3328",
+    "content": "b412f9d4"
   },
-  "/blog/seata-analysis-tcc-modular-e00": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-tcc-modular-97c": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-tcc-modulare-9-b-7a9"
+    "sidebar": "814f3328",
+    "content": "5fead04d"
   },
-  "/blog/seata-analysis-UUID-generator-51b": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-analysis-UUID-generator-3dc": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-analysis-uuid-generatora-26-6f3"
+    "sidebar": "814f3328",
+    "content": "d0c6736b"
   },
-  "/blog/seata-at-demo-in-mac-7c3": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-at-demo-in-mac-a03": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-at-demo-in-mac-334-b10"
+    "sidebar": "814f3328",
+    "content": "951ce295"
   },
-  "/blog/seata-at-lock-99b": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-at-lock-8b1": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-at-lock-67-b-292"
+    "sidebar": "814f3328",
+    "content": "39e56d21"
   },
-  "/blog/seata-at-mode-design-e8d": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-at-mode-design-799": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-at-mode-design-822-634"
+    "sidebar": "814f3328",
+    "content": "146a192b"
   },
-  "/blog/seata-at-mode-start-f90": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-at-mode-start-af4": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-at-mode-start-955-9f9"
+    "sidebar": "814f3328",
+    "content": "88f57898"
   },
-  "/blog/seata-at-mode-start-rm-tm-adc": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-at-mode-start-rm-tm-235": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-at-mode-start-rm-tm-189-2d3"
+    "sidebar": "814f3328",
+    "content": "c1a12dae"
   },
-  "/blog/seata-at-tcc-saga-3f8": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-at-tcc-saga-e0b": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-at-tcc-saga-50-f-191"
+    "sidebar": "814f3328",
+    "content": "447267be"
   },
-  "/blog/seata-client-start-analysis-01-d39": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-client-start-analysis-01-cd0": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-client-start-analysis-0181-b-641"
+    "sidebar": "814f3328",
+    "content": "b069d743"
   },
-  "/blog/seata-client-start-analysis-02-f94": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-client-start-analysis-02-7ba": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-client-start-analysis-020-d-0-385"
+    "sidebar": "814f3328",
+    "content": "58da3c60"
   },
-  "/blog/seata-community-meetup-hangzhou-ready-08e": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-community-meetup-hangzhou-ready-ce6": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-community-meetup-hangzhou-readyd-71-c0b"
+    "sidebar": "814f3328",
+    "content": "fe0d17fc"
   },
-  "/blog/seata-config-center-43c": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-config-center-6a3": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-config-centerc-2-a-49c"
+    "sidebar": "814f3328",
+    "content": "43b616f0"
   },
-  "/blog/seata-config-manager-536": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-config-manager-f9a": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-config-managerd-0-b-8cd"
+    "sidebar": "814f3328",
+    "content": "8c792409"
   },
-  "/blog/seata-connect-data-and-application-b13": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-connect-data-and-application-c59": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-connect-data-and-applicationd-41-2fb"
+    "sidebar": "814f3328",
+    "content": "7d509a5a"
   },
-  "/blog/seata-datasource-proxy-9c5": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-datasource-proxy-b95": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-datasource-proxyd-2-e-411"
+    "sidebar": "814f3328",
+    "content": "b592ad1a"
   },
-  "/blog/seata-dsproxy-deadlock-f7f": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-dsproxy-deadlock-a2b": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-dsproxy-deadlocke-4-f-849"
+    "sidebar": "814f3328",
+    "content": "b68da662"
   },
-  "/blog/seata-dynamic-config-and-dynamic-disable-ffd": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-dynamic-config-and-dynamic-disable-d6b": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-dynamic-config-and-dynamic-disablea-53-dc3"
+    "sidebar": "814f3328",
+    "content": "881459b6"
   },
-  "/blog/seata-feature-undo-log-compress-350": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-feature-undo-log-compress-df8": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-feature-undo-log-compress-5-cf-07f"
+    "sidebar": "814f3328",
+    "content": "15705c67"
   },
-  "/blog/seata-go-1.2.0-afe": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-go-1.2.0-ff1": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-go-1-2-0-b-5-c-117"
+    "sidebar": "814f3328",
+    "content": "d19393f5"
   },
-  "/blog/seata-golang-communication-mode-699": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-golang-communication-mode-db2": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-golang-communication-mode-3-a-3-70b"
+    "sidebar": "814f3328",
+    "content": "727b1454"
   },
-  "/blog/seata-ha-practice-c03": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-ha-practice-93d": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-ha-practice-115-1ce"
+    "sidebar": "814f3328",
+    "content": "0cba87a9"
   },
-  "/blog/seata-meetup-hangzhou-823": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-meetup-hangzhou-600": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-meetup-hangzhoue-07-4e4"
+    "sidebar": "814f3328",
+    "content": "fe846a54"
   },
-  "/blog/seata-mybatisplus-analysis-264": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-mybatisplus-analysis-b39": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-mybatisplus-analysis-203-ca6"
+    "sidebar": "814f3328",
+    "content": "a64eb204"
   },
-  "/blog/seata-nacos-analysis-3d6": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-nacos-analysis-714": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-nacos-analysise-56-518"
+    "sidebar": "814f3328",
+    "content": "eb81b44b"
   },
-  "/blog/seata-nacos-docker-80c": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-nacos-docker-393": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-nacos-docker-730-a82"
+    "sidebar": "814f3328",
+    "content": "731d430a"
   },
-  "/blog/seata-observable-practice-36a": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-observable-practice-0b9": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-observable-practicefed-935"
+    "sidebar": "814f3328",
+    "content": "d47abb28"
   },
-  "/blog/seata-quick-start-14f": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-quick-start-1a6": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-quick-startf-5-b-13b"
+    "sidebar": "814f3328",
+    "content": "93967bec"
   },
-  "/blog/seata-rpc-refactor-5bc": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-rpc-refactor-060": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-rpc-refactor-56-e-960"
+    "sidebar": "814f3328",
+    "content": "684f251e"
   },
-  "/blog/seata-snowflake-explain-303": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-snowflake-explain-d2e": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-snowflake-explain-415-b15"
+    "sidebar": "814f3328",
+    "content": "88e56992"
   },
-  "/blog/seata-sourcecode-client-bootstrap-e26": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-sourcecode-client-bootstrap-43a": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-sourcecode-client-bootstrapf-35-b81"
+    "sidebar": "814f3328",
+    "content": "795d83c5"
   },
-  "/blog/seata-sourcecode-server-bootstrap-f52": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-sourcecode-server-bootstrap-9d7": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-sourcecode-server-bootstrapddf-096"
+    "sidebar": "814f3328",
+    "content": "f3c88a13"
   },
-  "/blog/seata-spring-boot-aop-aspectj-b1b": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-spring-boot-aop-aspectj-ed4": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-spring-boot-aop-aspectj-74-f-2a9"
+    "sidebar": "814f3328",
+    "content": "695cc880"
   },
-  "/blog/seata-tcc-746": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-tcc-199": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-tcc-597-da1"
+    "sidebar": "814f3328",
+    "content": "0446fd8e"
   },
-  "/blog/seata-tcc-fence-683": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-tcc-fence-6b3": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-tcc-fenceb-0-f-00d"
+    "sidebar": "814f3328",
+    "content": "39f8fb5b"
   },
-  "/blog/seata-xa-introduce-4e0": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/seata-xa-introduce-26b": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-seata-xa-introduce-075-fda"
+    "sidebar": "814f3328",
+    "content": "7ef12ff9"
   },
-  "/blog/springboot-dubbo-mybatisplus-seata-ada": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/springboot-dubbo-mybatisplus-seata-aed": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-springboot-dubbo-mybatisplus-seata-612-ee7"
+    "sidebar": "814f3328",
+    "content": "512e1c29"
   },
-  "/blog/tags-286": {
-    "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
+  "/zh-cn/blog/tags-ef2": {
+    "__comp": "01a85c17",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "tags": "tags---blog-tagsa-70-da2"
+    "sidebar": "814f3328",
+    "tags": "2d1601b3"
   },
-  "/blog/tags/docusaurus-382": {
-    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+  "/zh-cn/blog/tags/docusaurus-6ad": {
+    "__comp": "6875c492",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-766-e3c"
+        "content": "7661071f"
       }
     ],
-    "tag": "tag---blog-tags-docusaurusa-80-728",
-    "listMetadata": "listMetadata---blog-tags-docusaurus-608-c09"
+    "tag": "6690a683",
+    "listMetadata": "b426020b"
   },
-  "/blog/tags/facebook-c5e": {
-    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+  "/zh-cn/blog/tags/facebook-7b7": {
+    "__comp": "6875c492",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-766-e3c"
+        "content": "7661071f"
       }
     ],
-    "tag": "tag---blog-tags-facebook-031-c52",
-    "listMetadata": "listMetadata---blog-tags-facebook-096-d31"
+    "tag": "3de88b84",
+    "listMetadata": "2b197115"
   },
-  "/blog/tags/hello-08c": {
-    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+  "/zh-cn/blog/tags/hello-24c": {
+    "__comp": "6875c492",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-766-e3c"
+        "content": "7661071f"
       }
     ],
-    "tag": "tag---blog-tags-hello-30-a-bed",
-    "listMetadata": "listMetadata---blog-tags-hello-664-70a"
+    "tag": "29f76e1d",
+    "listMetadata": "594f56d2"
   },
-  "/blog/tags/seata-961": {
-    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+  "/zh-cn/blog/tags/seata-644": {
+    "__comp": "6875c492",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "814f3328",
     "items": [
       {
-        "content": "content---blog-page-20-ad-0b1"
+        "content": "b7666c89"
       },
       {
-        "content": "content---blog-page-2-d-58-3a7"
+        "content": "d745de4a"
       }
     ],
-    "tag": "tag---blog-tags-seata-144-992",
-    "listMetadata": "listMetadata---blog-tags-seata-154-230"
+    "tag": "9f0984a0",
+    "listMetadata": "d8240c9c"
   },
-  "/blog/tcc-mode-applicable-scenario-analysis-508": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/tcc-mode-applicable-scenario-analysis-f74": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-tcc-mode-applicable-scenario-analysis-071-1b3"
+    "sidebar": "814f3328",
+    "content": "3029bb96"
   },
-  "/blog/tcc-mode-design-principle-921": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/tcc-mode-design-principle-ab8": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-tcc-mode-design-principle-793-1fc"
+    "sidebar": "814f3328",
+    "content": "b1107294"
   },
-  "/blog/welcome-7b6": {
-    "__comp": "__comp---theme-blog-post-pageccc-cab",
+  "/zh-cn/blog/welcome-afd": {
+    "__comp": "ccc49370",
     "__context": {
-      "plugin": "plugin---blog-17-e-03f"
+      "plugin": "17e1ed9c"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-welcomed-9-f-ffb"
+    "sidebar": "814f3328",
+    "content": "d9f32620"
   },
-  "/community/-240": {
-    "__comp": "__comp---site-src-pages-community-index-tsx-265-89e",
+  "/zh-cn/community/-dee": {
+    "__comp": "265f8c6c",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/community/contactItem-d47": {
-    "__comp": "__comp---site-src-pages-community-contact-item-tsxbeb-e76",
+  "/zh-cn/community/contactItem-f00": {
+    "__comp": "beb5e9ee",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/community/contributorItem-694": {
-    "__comp": "__comp---site-src-pages-community-contributor-item-tsx-789-e21",
+  "/zh-cn/community/contributorItem-949": {
+    "__comp": "7893cef3",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/community/eventCard-a8f": {
-    "__comp": "__comp---site-src-pages-community-event-card-tsx-914-27c",
+  "/zh-cn/community/eventCard-b3d": {
+    "__comp": "914e0e0b",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/home/feature/-fa3": {
-    "__comp": "__comp---site-src-pages-home-feature-index-tsx-3-d-8-6d5",
+  "/zh-cn/home/feature/-a53": {
+    "__comp": "3d8abcf7",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/home/introduction/-033": {
-    "__comp": "__comp---site-src-pages-home-introduction-index-tsxc-55-db5",
+  "/zh-cn/home/introduction/-2e0": {
+    "__comp": "c557ece2",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/home/msemap/-0c7": {
-    "__comp": "__comp---site-src-pages-home-msemap-index-tsxaf-4-c32",
+  "/zh-cn/home/msemap/-0fb": {
+    "__comp": "af45db24",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/home/top/-2e1": {
-    "__comp": "__comp---site-src-pages-home-top-index-tsxc-88-0e0",
+  "/zh-cn/home/top/-c21": {
+    "__comp": "c8858931",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/home/users/-777": {
-    "__comp": "__comp---site-src-pages-home-users-index-tsx-2-d-2-d16",
+  "/zh-cn/home/users/-030": {
+    "__comp": "2d27d23c",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   },
-  "/markdown-page-95d": {
-    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+  "/zh-cn/markdown-page-ddb": {
+    "__comp": "1f391b9e",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "content": "content---markdown-page-393-028"
+    "content": "393be207"
   },
-  "/docs-4b4": {
-    "__comp": "__comp---theme-doc-page-1-be-9be",
+  "/zh-cn/docs-a9b": {
+    "__comp": "1be78505",
     "__context": {
-      "plugin": "plugin---docsf-7-f-1b9"
+      "plugin": "f7f7ac40"
     },
-    "versionMetadata": "versionMetadata---docs-935-398"
-  },
-  "/docs/dev/domain/overviewDomainModel-d08": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-domain-overview-domain-model-7-bf-372"
-  },
-  "/docs/dev/domain/rm-191": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-domain-rm-405-053"
-  },
-  "/docs/dev/domain/tc-7e0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-domain-tc-48-d-ecc"
-  },
-  "/docs/dev/domain/tm-759": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-domain-tm-9-a-5-bdc"
-  },
-  "/docs/dev/mode/at-mode-d7b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-mode-at-modef-0-c-d9a"
-  },
-  "/docs/dev/mode/saga-mode-74e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-mode-saga-mode-329-9e1"
-  },
-  "/docs/dev/mode/tcc-mode-e96": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-mode-tcc-mode-2-f-7-c50"
-  },
-  "/docs/dev/mode/xa-mode-371": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-mode-xa-modebbe-d75"
-  },
-  "/docs/dev/seata-mertics-893": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-seata-mertics-663-019"
-  },
-  "/docs/developers/committer-guide/label-an-issue-guide_dev-5ef": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-committer-guide-label-an-issue-guide-dev-871-66b"
-  },
-  "/docs/developers/committer-guide/release-guide_dev-856": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-committer-guide-release-guide-dev-758-38b"
-  },
-  "/docs/developers/committer-guide/website-guide_dev-fc6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-committer-guide-website-guide-devfbb-aae"
-  },
-  "/docs/developers/contributor-activity/top-contributer_dev-cbe": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-contributor-activity-top-contributer-dev-83-f-54e"
-  },
-  "/docs/developers/contributor-guide/new-contributor-guide_dev-941": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-contributor-guide-new-contributor-guide-dev-229-154"
-  },
-  "/docs/developers/contributor-guide/reporting-security-issues_dev-639": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-contributor-guide-reporting-security-issues-dev-758-9d0"
-  },
-  "/docs/developers/contributor-guide/test-coverage-guide_dev-62d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-contributor-guide-test-coverage-guide-dev-233-fee"
-  },
-  "/docs/developers/developers_dev-85e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-developers-dev-58-b-222"
-  },
-  "/docs/developers/guide_dev-485": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-developers-guide-devfaa-f50"
-  },
-  "/docs/download-0fe": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-downloadc-86-b9c"
-  },
-  "/docs/intro-e84": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-intro-0-e-3-be1"
-  },
-  "/docs/ops/config-center-7a5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-config-centerb-9-a-3eb"
-  },
-  "/docs/ops/deploy-by-docker-702": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-by-docker-45-f-e0a"
-  },
-  "/docs/ops/deploy-by-docker-142-5df": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-by-docker-14238-a-7b0"
-  },
-  "/docs/ops/deploy-by-docker-compose-c81": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-by-docker-compose-984-970"
-  },
-  "/docs/ops/deploy-by-docker-compose-142-41b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-by-docker-compose-1422-b-2-193"
-  },
-  "/docs/ops/deploy-by-helm-49a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-by-helmdc-5-cc4"
-  },
-  "/docs/ops/deploy-by-kubernetes-891": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-by-kubernetesa-8-d-e59"
-  },
-  "/docs/ops/deploy-guide-beginner-999": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-guide-beginnerfd-2-e6a"
-  },
-  "/docs/ops/deploy-ha-a05": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-ha-51-f-93e"
-  },
-  "/docs/ops/deploy-server-d4f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-deploy-server-047-00a"
-  },
-  "/docs/ops/upgrade-709": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-ops-upgradebca-435"
-  },
-  "/docs/overview/faq-df7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-overview-faq-0-f-7-b60"
-  },
-  "/docs/overview/terminology-d9f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-overview-terminologyefb-8b0"
-  },
-  "/docs/overview/what-is-seata-c32": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-overview-what-is-seata-1-c-6-3a2"
-  },
-  "/docs/tutorial-basics/congratulations-7ef": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-basics-congratulations-822-958"
-  },
-  "/docs/tutorial-basics/create-a-blog-post-2c8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-basics-create-a-blog-post-533-e85"
-  },
-  "/docs/tutorial-basics/create-a-document-f0d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-basics-create-a-document-1-e-4-078"
-  },
-  "/docs/tutorial-basics/create-a-page-ca5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-basics-create-a-page-5-c-8-e19"
-  },
-  "/docs/tutorial-basics/deploy-your-site-508": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-basics-deploy-your-sitef-55-a3f"
-  },
-  "/docs/tutorial-basics/markdown-features-f90": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-basics-markdown-features-18-c-a79"
-  },
-  "/docs/tutorial-extras/manage-docs-versions-d64": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-extras-manage-docs-versionsdff-6d4"
-  },
-  "/docs/tutorial-extras/translate-your-site-16a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tutorial-extras-translate-your-sitee-44-ddf"
-  },
-  "/docs/user/api-172": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-apid-8-c-e65"
-  },
-  "/docs/user/apm/prometheus-b18": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-apm-prometheus-4-d-9-472"
-  },
-  "/docs/user/apm/skywalking-e99": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-apm-skywalking-968-a56"
-  },
-  "/docs/user/appendix/global-transaction-status-485": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-appendix-global-transaction-status-321-67a"
-  },
-  "/docs/user/appendix/isolation-347": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-appendix-isolationa-3-d-09d"
-  },
-  "/docs/user/configuration/-c6b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configuration-b-19-c92"
-  },
-  "/docs/user/configuration/apollo-dd4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configuration-apollo-3-d-9-339"
-  },
-  "/docs/user/configuration/consul-4a4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configuration-consul-555-736"
-  },
-  "/docs/user/configuration/etcd3-fce": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configuration-etcd-3-da-3-fa2"
+    "versionMetadata": "935f2afb"
+  },
+  "/zh-cn/docs/dev/domain/overviewDomainModel-cd4": {
+    "__comp": "17896441",
+    "content": "d017258e"
+  },
+  "/zh-cn/docs/dev/domain/rm-e41": {
+    "__comp": "17896441",
+    "content": "789c1252"
+  },
+  "/zh-cn/docs/dev/domain/tc-74a": {
+    "__comp": "17896441",
+    "content": "94d3ac78"
+  },
+  "/zh-cn/docs/dev/domain/tm-1c1": {
+    "__comp": "17896441",
+    "content": "85b7b99f"
+  },
+  "/zh-cn/docs/dev/mode/at-mode-01d": {
+    "__comp": "17896441",
+    "content": "ba20af6f"
+  },
+  "/zh-cn/docs/dev/mode/saga-mode-01b": {
+    "__comp": "17896441",
+    "content": "4c1df76f"
+  },
+  "/zh-cn/docs/dev/mode/tcc-mode-932": {
+    "__comp": "17896441",
+    "content": "da2702be"
+  },
+  "/zh-cn/docs/dev/mode/xa-mode-7b9": {
+    "__comp": "17896441",
+    "content": "75e43f3c"
+  },
+  "/zh-cn/docs/dev/seata-mertics-87d": {
+    "__comp": "17896441",
+    "content": "fce7f12f"
+  },
+  "/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev-75c": {
+    "__comp": "17896441",
+    "content": "a5313a33"
+  },
+  "/zh-cn/docs/developers/committer-guide/release-guide_dev-09b": {
+    "__comp": "17896441",
+    "content": "138fb8a5"
+  },
+  "/zh-cn/docs/developers/committer-guide/website-guide_dev-881": {
+    "__comp": "17896441",
+    "content": "61d40d5e"
+  },
+  "/zh-cn/docs/developers/contributor-activity/top-contributer_dev-551": {
+    "__comp": "17896441",
+    "content": "edf0724c"
+  },
+  "/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev-9e4": {
+    "__comp": "17896441",
+    "content": "5c8ef13b"
+  },
+  "/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev-d37": {
+    "__comp": "17896441",
+    "content": "a71ccc39"
+  },
+  "/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev-005": {
+    "__comp": "17896441",
+    "content": "f30c7392"
+  },
+  "/zh-cn/docs/developers/developers_dev-73d": {
+    "__comp": "17896441",
+    "content": "453b346d"
+  },
+  "/zh-cn/docs/developers/guide_dev-42a": {
+    "__comp": "17896441",
+    "content": "2b991187"
+  },
+  "/zh-cn/docs/download-345": {
+    "__comp": "17896441",
+    "content": "a1225c8b"
+  },
+  "/zh-cn/docs/intro-b64": {
+    "__comp": "17896441",
+    "content": "0e384e19"
+  },
+  "/zh-cn/docs/ops/config-center-6c9": {
+    "__comp": "17896441",
+    "content": "960958ed"
+  },
+  "/zh-cn/docs/ops/deploy-by-docker-cb0": {
+    "__comp": "17896441",
+    "content": "5fead714"
+  },
+  "/zh-cn/docs/ops/deploy-by-docker-142-379": {
+    "__comp": "17896441",
+    "content": "2d0e2b35"
+  },
+  "/zh-cn/docs/ops/deploy-by-docker-compose-4fe": {
+    "__comp": "17896441",
+    "content": "16b1ceda"
+  },
+  "/zh-cn/docs/ops/deploy-by-docker-compose-142-d39": {
+    "__comp": "17896441",
+    "content": "fa2d22b6"
+  },
+  "/zh-cn/docs/ops/deploy-by-helm-d6a": {
+    "__comp": "17896441",
+    "content": "6efcbf76"
+  },
+  "/zh-cn/docs/ops/deploy-by-kubernetes-d2c": {
+    "__comp": "17896441",
+    "content": "d761fe89"
+  },
+  "/zh-cn/docs/ops/deploy-guide-beginner-49c": {
+    "__comp": "17896441",
+    "content": "5572b1a9"
+  },
+  "/zh-cn/docs/ops/deploy-ha-074": {
+    "__comp": "17896441",
+    "content": "e51e6699"
+  },
+  "/zh-cn/docs/ops/deploy-server-f96": {
+    "__comp": "17896441",
+    "content": "5ed3a12c"
+  },
+  "/zh-cn/docs/ops/upgrade-5e5": {
+    "__comp": "17896441",
+    "content": "f9768388"
+  },
+  "/zh-cn/docs/overview/faq-e6b": {
+    "__comp": "17896441",
+    "content": "0cf6241b"
+  },
+  "/zh-cn/docs/overview/terminology-98f": {
+    "__comp": "17896441",
+    "content": "21aabe8b"
+  },
+  "/zh-cn/docs/overview/what-is-seata-f9c": {
+    "__comp": "17896441",
+    "content": "b153dacb"
+  },
+  "/zh-cn/docs/tutorial-basics/congratulations-e74": {
+    "__comp": "17896441",
+    "content": "822bd8ab"
+  },
+  "/zh-cn/docs/tutorial-basics/create-a-blog-post-79b": {
+    "__comp": "17896441",
+    "content": "533a09ca"
+  },
+  "/zh-cn/docs/tutorial-basics/create-a-document-8fd": {
+    "__comp": "17896441",
+    "content": "1e4232ab"
+  },
+  "/zh-cn/docs/tutorial-basics/create-a-page-17c": {
+    "__comp": "17896441",
+    "content": "5c868d36"
+  },
+  "/zh-cn/docs/tutorial-basics/deploy-your-site-c3d": {
+    "__comp": "17896441",
+    "content": "f55d3e7a"
+  },
+  "/zh-cn/docs/tutorial-basics/markdown-features-21a": {
+    "__comp": "17896441",
+    "content": "18c41134"
+  },
+  "/zh-cn/docs/tutorial-extras/manage-docs-versions-a97": {
+    "__comp": "17896441",
+    "content": "dff1c289"
+  },
+  "/zh-cn/docs/tutorial-extras/translate-your-site-c20": {
+    "__comp": "17896441",
+    "content": "e44a2883"
+  },
+  "/zh-cn/docs/user/api-db6": {
+    "__comp": "17896441",
+    "content": "0b8b71a1"
+  },
+  "/zh-cn/docs/user/apm/prometheus-b35": {
+    "__comp": "17896441",
+    "content": "0d9604f4"
+  },
+  "/zh-cn/docs/user/apm/skywalking-179": {
+    "__comp": "17896441",
+    "content": "e9208f64"
+  },
+  "/zh-cn/docs/user/appendix/global-transaction-status-f48": {
+    "__comp": "17896441",
+    "content": "d7b9fe18"
+  },
+  "/zh-cn/docs/user/appendix/isolation-666": {
+    "__comp": "17896441",
+    "content": "4734fcd7"
+  },
+  "/zh-cn/docs/user/configuration/-c1c": {
+    "__comp": "17896441",
+    "content": "74a10d41"
+  },
+  "/zh-cn/docs/user/configuration/apollo-fc0": {
+    "__comp": "17896441",
+    "content": "63bf5dd4"
+  },
+  "/zh-cn/docs/user/configuration/consul-75d": {
+    "__comp": "17896441",
+    "content": "7652f1cc"
+  },
+  "/zh-cn/docs/user/configuration/etcd3-558": {
+    "__comp": "17896441",
+    "content": "56e32aea"
   },
-  "/docs/user/configuration/nacos-b2a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configuration-nacose-2-f-61d"
+  "/zh-cn/docs/user/configuration/nacos-e34": {
+    "__comp": "17896441",
+    "content": "b01d5c5e"
   },
-  "/docs/user/configuration/zookeeper-537": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configuration-zookeeper-07-c-e08"
+  "/zh-cn/docs/user/configuration/zookeeper-84d": {
+    "__comp": "17896441",
+    "content": "7269682c"
   },
-  "/docs/user/configurations-469": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configurations-640-054"
+  "/zh-cn/docs/user/configurations-1f2": {
+    "__comp": "17896441",
+    "content": "dc6bf673"
   },
-  "/docs/user/configurations090-164": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configurations-090983-ecd"
+  "/zh-cn/docs/user/configurations090-15f": {
+    "__comp": "17896441",
+    "content": "d0d9ebdb"
   },
-  "/docs/user/configurations100-49f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-configurations-1000-b-4-46e"
+  "/zh-cn/docs/user/configurations100-749": {
+    "__comp": "17896441",
+    "content": "3efdbac7"
   },
-  "/docs/user/datasource-67e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-datasourcede-7-021"
+  "/zh-cn/docs/user/datasource-162": {
+    "__comp": "17896441",
+    "content": "7c5cfe7f"
   },
-  "/docs/user/microservice-6d2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-microservicedb-1-497"
+  "/zh-cn/docs/user/microservice-3a1": {
+    "__comp": "17896441",
+    "content": "a5d46cfa"
   },
-  "/docs/user/ormframework-98d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-ormframework-647-e88"
+  "/zh-cn/docs/user/ormframework-20b": {
+    "__comp": "17896441",
+    "content": "c7964a05"
   },
-  "/docs/user/performance-17a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-performancecc-1-215"
+  "/zh-cn/docs/user/performance-523": {
+    "__comp": "17896441",
+    "content": "6acea44d"
   },
-  "/docs/user/quickstart-67e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-quickstartcca-af6"
+  "/zh-cn/docs/user/quickstart-2ab": {
+    "__comp": "17896441",
+    "content": "964c4d56"
   },
-  "/docs/user/registry/-5d0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-registry-21-b-278"
+  "/zh-cn/docs/user/registry/-a0c": {
+    "__comp": "17896441",
+    "content": "89c3ee22"
   },
-  "/docs/user/registry/consul-5de": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-registry-consula-82-912"
+  "/zh-cn/docs/user/registry/consul-823": {
+    "__comp": "17896441",
+    "content": "a95e71dc"
   },
-  "/docs/user/registry/etcd3-475": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-registry-etcd-31-cd-b17"
+  "/zh-cn/docs/user/registry/etcd3-b58": {
+    "__comp": "17896441",
+    "content": "0e23ab02"
   },
-  "/docs/user/registry/eureka-7c9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-registry-eureka-679-013"
+  "/zh-cn/docs/user/registry/eureka-63a": {
+    "__comp": "17896441",
+    "content": "467b2dc3"
   },
-  "/docs/user/registry/nacos-173": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-registry-nacosdd-7-28c"
+  "/zh-cn/docs/user/registry/nacos-e44": {
+    "__comp": "17896441",
+    "content": "706f82a7"
   },
-  "/docs/user/registry/zookeeper-796": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-registry-zookeeper-9-b-4-7c8"
+  "/zh-cn/docs/user/registry/zookeeper-0f8": {
+    "__comp": "17896441",
+    "content": "0a845ff8"
   },
-  "/docs/user/saga-708": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-saga-8-be-86f"
+  "/zh-cn/docs/user/saga-4ab": {
+    "__comp": "17896441",
+    "content": "e3bbf089"
   },
-  "/docs/user/spring-c25": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-springb-2-d-945"
+  "/zh-cn/docs/user/spring-584": {
+    "__comp": "17896441",
+    "content": "cc789e83"
   },
-  "/docs/user/sqlreference/dml-49b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-sqlreference-dml-232-dd9"
+  "/zh-cn/docs/user/sqlreference/dml-004": {
+    "__comp": "17896441",
+    "content": "57f58ccb"
   },
-  "/docs/user/sqlreference/function-775": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-sqlreference-function-1-f-4-240"
+  "/zh-cn/docs/user/sqlreference/function-493": {
+    "__comp": "17896441",
+    "content": "69cac8e5"
   },
-  "/docs/user/sqlreference/sql-decoration-e3e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-sqlreference-sql-decoration-58-c-51e"
+  "/zh-cn/docs/user/sqlreference/sql-decoration-725": {
+    "__comp": "17896441",
+    "content": "e245c698"
   },
-  "/docs/user/sqlreference/sql-restrictions-c95": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-sqlreference-sql-restrictions-1-d-4-777"
+  "/zh-cn/docs/user/sqlreference/sql-restrictions-2a3": {
+    "__comp": "17896441",
+    "content": "42a924e0"
   },
-  "/docs/user/txgroup/transaction-group-d4d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-txgroup-transaction-group-534-d5d"
+  "/zh-cn/docs/user/txgroup/transaction-group-27d": {
+    "__comp": "17896441",
+    "content": "ea8dcc79"
   },
-  "/docs/user/txgroup/transaction-group-and-ha-c2b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-txgroup-transaction-group-and-ha-4-ae-6e5"
+  "/zh-cn/docs/user/txgroup/transaction-group-and-ha-ce6": {
+    "__comp": "17896441",
+    "content": "f5402e05"
   },
-  "/-d1f": {
-    "__comp": "__comp---site-src-pages-index-tsx-1-df-d3e",
+  "/zh-cn/-2fc": {
+    "__comp": "1df93b7f",
     "__context": {
-      "plugin": "plugin---community-341-72d"
+      "plugin": "34172602"
     },
-    "config": "config---community-5-e-9-aa5"
+    "config": "5e9f5e1a"
   }
 }

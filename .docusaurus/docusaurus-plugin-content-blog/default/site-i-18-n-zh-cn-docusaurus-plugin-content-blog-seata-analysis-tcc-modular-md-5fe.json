@@ -1,0 +1,32 @@
+{
+  "permalink": "/zh-cn/blog/seata-analysis-tcc-modular",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-analysis-tcc-modular.md",
+  "title": "Seata tcc 模块源码分析",
+  "description": "一  .导读",
+  "date": "2019-12-25T00:00:00.000Z",
+  "formattedDate": "2019年12月25日",
+  "tags": [],
+  "readingTime": 10.08,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "赵润泽"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata tcc 模块源码分析",
+    "author": "赵润泽",
+    "keywords": [
+      "Seata、分布式事务"
+    ],
+    "date": "2019/12/25"
+  },
+  "prevItem": {
+    "title": "Seata Community Meetup·杭州站",
+    "permalink": "/zh-cn/blog/seata-meetup-hangzhou"
+  },
+  "nextItem": {
+    "title": "Seata core 模块源码分析",
+    "permalink": "/zh-cn/blog/seata-analysis-core-modular"
+  }
+}

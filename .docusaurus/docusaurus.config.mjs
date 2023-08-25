@@ -7,7 +7,7 @@ export default {
   "title": "Seata",
   "favicon": "img/seata_logo_small.jpeg",
   "url": "https://seata.io",
-  "baseUrl": "/",
+  "baseUrl": "/zh-cn/",
   "organizationName": "alibaba",
   "projectName": "seata",
   "onBrokenLinks": "throw",
@@ -96,19 +96,19 @@ export default {
       },
       "items": [
         {
-          "label": "Home",
+          "label": "首页",
           "to": "/",
           "activeBaseRegex": "^/$",
           "position": "right"
         },
         {
-          "label": "Docs",
+          "label": "文档",
           "type": "doc",
           "docId": "overview/what-is-seata",
           "position": "right"
         },
         {
-          "label": "Solutions",
+          "label": "解决方案",
           "type": "dropdown",
           "position": "right",
           "items": [
@@ -117,47 +117,47 @@ export default {
               "href": "https://www.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0"
             },
             {
-              "label": "SOFA distributed transaction",
+              "label": "SOFA分布式事务",
               "href": "https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0"
             }
           ]
         },
         {
-          "label": "Free trial",
+          "label": "免费试用",
           "href": "https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0",
           "position": "right",
           "target": "_blank"
         },
         {
-          "label": "Developers",
+          "label": "开发者",
           "type": "doc",
           "docId": "developers/developers_dev",
           "position": "right"
         },
         {
-          "label": "Recruitment",
+          "label": "团队招聘",
           "to": "https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA",
           "position": "right",
           "target": "_blank"
         },
         {
-          "label": "Blog",
+          "label": "博客",
           "to": "/blog",
           "position": "right"
         },
         {
-          "label": "Community",
+          "label": "社区",
           "to": "/community",
           "position": "right"
         },
         {
-          "label": "Download",
+          "label": "下载",
           "type": "doc",
           "docId": "download",
           "position": "right"
         },
         {
-          "label": "Console sample",
+          "label": "控制台样例",
           "to": "http://demo.seata.io/",
           "position": "right",
           "target": "_blank"

@@ -1,0 +1,14 @@
+{
+  "unversionedId": "user/configuration/apollo",
+  "id": "user/configuration/apollo",
+  "title": "Apollo 配置中心",
+  "description": "预备工作",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/configuration/apollo.md",
+  "sourceDirName": "user/configuration",
+  "slug": "/user/configuration/apollo",
+  "permalink": "/zh-cn/docs/user/configuration/apollo",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

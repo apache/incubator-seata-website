@@ -1,0 +1,33 @@
+{
+  "permalink": "/zh-cn/blog/seata-at-mode-start-rm-tm",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-at-mode-start-rm-tm.md",
+  "title": "Seata 客户端需要同时启动 RM 和 TM 吗？",
+  "description": "关于 Seata 后续优化的一个讨论点",
+  "date": "2019-11-28T00:00:00.000Z",
+  "formattedDate": "2019年11月28日",
+  "tags": [],
+  "readingTime": 3.325,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "张乘辉"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata 客户端需要同时启动 RM 和 TM 吗？",
+    "author": "张乘辉",
+    "keywords": [
+      "Seata、分布式事务、AT模式、RM、TM"
+    ],
+    "description": "关于 Seata 后续优化的一个讨论点",
+    "date": "2019/11/28"
+  },
+  "prevItem": {
+    "title": "SpringBoot+Dubbo+MybatisPlus整合seata分布式事务",
+    "permalink": "/zh-cn/blog/springboot-dubbo-mybatisplus-seata"
+  },
+  "nextItem": {
+    "title": "Seata AT 模式启动源码分析",
+    "permalink": "/zh-cn/blog/seata-at-mode-start"
+  }
+}

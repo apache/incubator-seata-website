@@ -1,0 +1,14 @@
+{
+  "unversionedId": "user/configuration/etcd3",
+  "id": "user/configuration/etcd3",
+  "title": "Etcd3 配置中心",
+  "description": "Etcd3 是 Seata 组件中重要的配置中心实现.",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/configuration/etcd3.md",
+  "sourceDirName": "user/configuration",
+  "slug": "/user/configuration/etcd3",
+  "permalink": "/zh-cn/docs/user/configuration/etcd3",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

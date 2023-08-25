@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate } from '@docusaurus/Translate';
-import { getLink } from '../../utils';
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+
 import './index.scss';
 
 const data = {
@@ -57,6 +58,9 @@ type Props = {
 
 const Footer = (props: Props) => {
   const { logo } = props;
+  const { i18n } = useDocusaurusContext();
+  const curLang = i18n.currentLocale;
+
   return (
     <footer className="footer-container">
       <div className="footer-body">
@@ -64,19 +68,26 @@ const Footer = (props: Props) => {
         <br />
         <br />
         {/* <p className="docusaurus-power">website powered by docusaurus</p> */}
-        <div className="cols-container">
+        <div className="cols-container"> 
           <div className="col col-12">
             <h3>{data.vision.title}</h3>
-            <p>{data.vision.content}</p>
+            <p>{data.vision.contentFist}</p>
           </div>
           <div className="col col-6">
             <dl>
               <dt>{data.documentation.title}</dt>
               {data.documentation.list.map((d, i) => (
                 <dd key={i}>
-                  <a href={getLink(d.link)} target={d.target || '_self'}>
-                    {d.text}
-                  </a>
+                  {d.link?.substr(0, 4) === "http" && (
+                    <a href={d.link} target={d.target || "_self"}>
+                      {d.text}
+                    </a>
+                  )}
+                  {d.link?.substr(0, 4) !== "http" && (
+                    <a href={`/${curLang}${d.link}`} target={d.target || "_self"}>
+                      {d.text}
+                    </a>
+                  )}
                 </dd>
               ))}
             </dl>
@@ -86,7 +97,7 @@ const Footer = (props: Props) => {
               <dt>{data.resources.title}</dt>
               {data.resources.list.map((d, i) => (
                 <dd key={i}>
-                  <a href={getLink(d.link)} target={d.target || '_self'}>
+                  <a href={`/${curLang}${d.link}`} target={d.target || "_self"}>
                     {d.text}
                   </a>
                 </dd>

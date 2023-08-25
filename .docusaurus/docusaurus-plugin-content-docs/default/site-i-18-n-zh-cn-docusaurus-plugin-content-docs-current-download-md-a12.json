@@ -1,0 +1,23 @@
+{
+  "unversionedId": "download",
+  "id": "download",
+  "title": "下载中心",
+  "description": "本文将向你介绍如何点击了解各版本详情和升级注意事项。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/download.md",
+  "sourceDirName": ".",
+  "slug": "/download",
+  "permalink": "/zh-cn/docs/download",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "下载中心",
+    "keywords": [
+      "Seata",
+      "Downloads",
+      "Version"
+    ],
+    "description": "本文将向你介绍如何点击了解各版本详情和升级注意事项。"
+  },
+  "sidebar": "download"
+}

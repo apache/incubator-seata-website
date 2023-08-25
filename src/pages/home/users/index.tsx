@@ -9,7 +9,7 @@ const data = {
   desc: (
     <span>
       <Translate id="homepage.userDesc1">请在</Translate>{' '}
-      <a rel="noopener noreferrer" target="_blank" href="https://github.com/seata/seata/issues/1246" style={{ color: "#0054d1" }}>
+      <a rel="noopener noreferrer" target="_blank" href="https://github.com/seata/seata/issues/1246" style={{ color: '#0054d1' }}>
         Wanted: who&#39;s using Seata
       </a>{' '}
       <Translate id="homepage.userDesc2">上提供信息来帮助 Seata 做的更好。</Translate>

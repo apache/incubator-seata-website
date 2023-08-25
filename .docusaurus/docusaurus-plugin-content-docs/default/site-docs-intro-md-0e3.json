@@ -6,7 +6,7 @@
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
   "slug": "/intro",
-  "permalink": "/docs/intro",
+  "permalink": "/zh-cn/docs/intro",
   "draft": false,
   "tags": [],
   "version": "current",

@@ -1,0 +1,14 @@
+{
+  "unversionedId": "dev/domain/tc",
+  "id": "dev/domain/tc",
+  "title": "tc",
+  "description": "欢迎认领补充此文档",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/dev/domain/tc.md",
+  "sourceDirName": "dev/domain",
+  "slug": "/dev/domain/tc",
+  "permalink": "/zh-cn/docs/dev/domain/tc",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

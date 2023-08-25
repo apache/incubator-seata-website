@@ -1,0 +1,14 @@
+{
+  "unversionedId": "user/registry/zookeeper",
+  "id": "user/registry/zookeeper",
+  "title": "zookeeper",
+  "description": "欢迎认领补充此文档。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/registry/zookeeper.md",
+  "sourceDirName": "user/registry",
+  "slug": "/user/registry/zookeeper",
+  "permalink": "/zh-cn/docs/user/registry/zookeeper",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

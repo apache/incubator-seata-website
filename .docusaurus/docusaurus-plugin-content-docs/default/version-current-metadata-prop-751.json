@@ -11,25 +11,25 @@
     "docs": [
       {
         "type": "category",
-        "label": "Overview",
+        "label": "概述",
         "collapsible": false,
         "items": [
           {
             "type": "link",
-            "label": "What Is Seata",
-            "href": "/docs/overview/what-is-seata",
+            "label": "Seata 是什么",
+            "href": "/zh-cn/docs/overview/what-is-seata",
             "docId": "overview/what-is-seata"
           },
           {
             "type": "link",
-            "label": "Seata Terminology",
-            "href": "/docs/overview/terminology",
+            "label": "Seata术语",
+            "href": "/zh-cn/docs/overview/terminology",
             "docId": "overview/terminology"
           },
           {
             "type": "link",
-            "label": "Seata FAQ",
-            "href": "/docs/overview/faq",
+            "label": "Seata常见问题",
+            "href": "/zh-cn/docs/overview/faq",
             "docId": "overview/faq"
           }
         ],
@@ -37,47 +37,47 @@
       },
       {
         "type": "category",
-        "label": "User Doc",
+        "label": "用户指南",
         "collapsible": false,
         "items": [
           {
             "type": "link",
-            "label": "Quick Start",
-            "href": "/docs/user/quickstart",
+            "label": "Seata 快速开始",
+            "href": "/zh-cn/docs/user/quickstart",
             "docId": "user/quickstart"
           },
           {
             "type": "link",
-            "label": "The seata parameter configuration version 1.6.0",
-            "href": "/docs/user/configurations",
+            "label": "Seata 参数配置",
+            "href": "/zh-cn/docs/user/configurations",
             "docId": "user/configurations"
           },
           {
             "type": "link",
-            "label": "Api Guide",
-            "href": "/docs/user/api",
+            "label": "Seata API",
+            "href": "/zh-cn/docs/user/api",
             "docId": "user/api"
           },
           {
             "type": "link",
-            "label": "Microservice Framework Guide",
-            "href": "/docs/user/microservice",
+            "label": "Seata 微服务框架支持",
+            "href": "/zh-cn/docs/user/microservice",
             "docId": "user/microservice"
           },
           {
             "type": "category",
-            "label": "SQL Reference",
+            "label": "SQL参考",
             "items": [
               {
                 "type": "link",
-                "label": "SQL restrictions",
-                "href": "/docs/user/sqlreference/sql-restrictions",
+                "label": "SQL限制",
+                "href": "/zh-cn/docs/user/sqlreference/sql-restrictions",
                 "docId": "user/sqlreference/sql-restrictions"
               },
               {
                 "type": "link",
-                "label": "DML",
-                "href": "/docs/user/sqlreference/dml",
+                "label": "DML语句",
+                "href": "/zh-cn/docs/user/sqlreference/dml",
                 "docId": "user/sqlreference/dml"
               }
             ],
@@ -89,29 +89,29 @@
       },
       {
         "type": "category",
-        "label": "Developer Guide",
+        "label": "开发者指南",
         "collapsible": false,
         "items": [
           {
             "type": "category",
-            "label": "Transaction Mode",
+            "label": "各事务模式",
             "items": [
               {
                 "type": "link",
-                "label": "Seata AT Mode",
-                "href": "/docs/dev/mode/at-mode",
+                "label": "Seata AT 模式",
+                "href": "/zh-cn/docs/dev/mode/at-mode",
                 "docId": "dev/mode/at-mode"
               },
               {
                 "type": "link",
-                "label": "Seata TCC Mode",
-                "href": "/docs/dev/mode/tcc-mode",
+                "label": "Seata TCC 模式",
+                "href": "/zh-cn/docs/dev/mode/tcc-mode",
                 "docId": "dev/mode/tcc-mode"
               },
               {
                 "type": "link",
-                "label": "Seata Saga Mode",
-                "href": "/docs/dev/mode/saga-mode",
+                "label": "Seata SAGA 模式",
+                "href": "/zh-cn/docs/dev/mode/saga-mode",
                 "docId": "dev/mode/saga-mode"
               }
             ],
@@ -120,8 +120,8 @@
           },
           {
             "type": "link",
-            "label": "Metrics design",
-            "href": "/docs/dev/seata-mertics",
+            "label": "Metrics 设计",
+            "href": "/zh-cn/docs/dev/seata-mertics",
             "docId": "dev/seata-mertics"
           }
         ],
@@ -129,47 +129,47 @@
       },
       {
         "type": "category",
-        "label": "Ops Guide",
+        "label": "运维指南",
         "collapsible": false,
         "items": [
           {
             "type": "link",
             "label": "版本升级指南",
-            "href": "/docs/ops/upgrade",
+            "href": "/zh-cn/docs/ops/upgrade",
             "docId": "ops/upgrade"
           },
           {
             "type": "category",
-            "label": "Deploy",
+            "label": "部署",
             "items": [
               {
                 "type": "link",
-                "label": "Deploy Server",
-                "href": "/docs/ops/deploy-server",
+                "label": "部署 Server",
+                "href": "/zh-cn/docs/ops/deploy-server",
                 "docId": "ops/deploy-server"
               },
               {
                 "type": "link",
-                "label": "Deploy Seata Server By Docker",
-                "href": "/docs/ops/deploy-by-docker",
+                "label": "使用 Docker 部署 Seata Server",
+                "href": "/zh-cn/docs/ops/deploy-by-docker",
                 "docId": "ops/deploy-by-docker"
               },
               {
                 "type": "link",
-                "label": "Deploy Seata Server By Kubernetes",
-                "href": "/docs/ops/deploy-by-kubernetes",
+                "label": "使用 Kubernetes 部署 Seata Server",
+                "href": "/zh-cn/docs/ops/deploy-by-kubernetes",
                 "docId": "ops/deploy-by-kubernetes"
               },
               {
                 "type": "link",
-                "label": "Deploy Seata Server By Helm",
-                "href": "/docs/ops/deploy-by-helm",
+                "label": "使用 Helm 部署 Seata Server",
+                "href": "/zh-cn/docs/ops/deploy-by-helm",
                 "docId": "ops/deploy-by-helm"
               },
               {
                 "type": "link",
-                "label": "High Available Usage Deployment",
-                "href": "/docs/ops/deploy-ha",
+                "label": "Seata 高可用部署",
+                "href": "/zh-cn/docs/ops/deploy-ha",
                 "docId": "ops/deploy-ha"
               }
             ],
@@ -183,13 +183,13 @@
     "developers": [
       {
         "type": "category",
-        "label": "Developers List",
+        "label": "开发者列表",
         "collapsible": false,
         "items": [
           {
             "type": "link",
-            "label": "Developers",
-            "href": "/docs/developers/developers_dev",
+            "label": "Seata 维护者",
+            "href": "/zh-cn/docs/developers/developers_dev",
             "docId": "developers/developers_dev"
           }
         ],
@@ -197,31 +197,31 @@
       },
       {
         "type": "category",
-        "label": "Contribute Guide",
+        "label": "贡献者向导",
         "collapsible": false,
         "items": [
           {
             "type": "link",
-            "label": "New contributor guide",
-            "href": "/docs/developers/contributor-guide/new-contributor-guide_dev",
+            "label": "新贡献者向导",
+            "href": "/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev",
             "docId": "developers/contributor-guide/new-contributor-guide_dev"
           },
           {
             "type": "link",
-            "label": "Test coverage guide",
-            "href": "/docs/developers/contributor-guide/test-coverage-guide_dev",
+            "label": "测试覆盖率向导",
+            "href": "/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev",
             "docId": "developers/contributor-guide/test-coverage-guide_dev"
           },
           {
             "type": "link",
-            "label": "New contributor guide",
-            "href": "/docs/developers/contributor-guide/reporting-security-issues_dev",
+            "label": "报告安全问题",
+            "href": "/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev",
             "docId": "developers/contributor-guide/reporting-security-issues_dev"
           },
           {
             "type": "link",
-            "label": "Contributing to Seata",
-            "href": "/docs/developers/guide_dev",
+            "label": "为Seata贡献",
+            "href": "/zh-cn/docs/developers/guide_dev",
             "docId": "developers/guide_dev"
           }
         ],
@@ -229,25 +229,25 @@
       },
       {
         "type": "category",
-        "label": "Committer Guide",
+        "label": "提交者向导",
         "collapsible": false,
         "items": [
           {
             "type": "link",
-            "label": "Label an Issue",
-            "href": "/docs/developers/committer-guide/label-an-issue-guide_dev",
+            "label": "给问题打标签",
+            "href": "/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev",
             "docId": "developers/committer-guide/label-an-issue-guide_dev"
           },
           {
             "type": "link",
-            "label": "Website Guide",
-            "href": "/docs/developers/committer-guide/website-guide_dev",
+            "label": "网站向导",
+            "href": "/zh-cn/docs/developers/committer-guide/website-guide_dev",
             "docId": "developers/committer-guide/website-guide_dev"
           },
           {
             "type": "link",
-            "label": "release-guide_dev",
-            "href": "/docs/developers/committer-guide/release-guide_dev",
+            "label": "Seata版本向导",
+            "href": "/zh-cn/docs/developers/committer-guide/release-guide_dev",
             "docId": "developers/committer-guide/release-guide_dev"
           }
         ],
@@ -257,13 +257,13 @@
     "download": [
       {
         "type": "category",
-        "label": "Download",
+        "label": "下载",
         "collapsible": false,
         "items": [
           {
             "type": "link",
-            "label": "Downloads",
-            "href": "/docs/download",
+            "label": "下载中心",
+            "href": "/zh-cn/docs/download",
             "docId": "download"
           }
         ],
@@ -294,20 +294,20 @@
     },
     "dev/mode/at-mode": {
       "id": "dev/mode/at-mode",
-      "title": "Seata AT Mode",
-      "description": "Seata AT mode.",
+      "title": "Seata AT 模式",
+      "description": "Seata AT 模式。",
       "sidebar": "docs"
     },
     "dev/mode/saga-mode": {
       "id": "dev/mode/saga-mode",
-      "title": "Seata Saga Mode",
-      "description": "The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.",
+      "title": "Seata SAGA 模式",
+      "description": "Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。",
       "sidebar": "docs"
     },
     "dev/mode/tcc-mode": {
       "id": "dev/mode/tcc-mode",
-      "title": "Seata TCC Mode",
-      "description": "Seata TCC mode.",
+      "title": "Seata TCC 模式",
+      "description": "Seata Tcc 模式。",
       "sidebar": "docs"
     },
     "dev/mode/xa-mode": {
@@ -317,26 +317,26 @@
     },
     "dev/seata-mertics": {
       "id": "dev/seata-mertics",
-      "title": "Metrics design",
-      "description": "Seata Metrics.",
+      "title": "Metrics 设计",
+      "description": "Metrics。",
       "sidebar": "docs"
     },
     "developers/committer-guide/label-an-issue-guide_dev": {
       "id": "developers/committer-guide/label-an-issue-guide_dev",
-      "title": "Label an Issue",
-      "description": "Label an Issue.",
+      "title": "给问题打标签",
+      "description": "如果您正在处理一个问题，请记得给这个问题标记一个或者多个您认为有意义的标签。有了标签，其他开发人员就会很轻松地识别出问题，以便对其进行分类并跟踪进度。",
       "sidebar": "developers"
     },
     "developers/committer-guide/release-guide_dev": {
       "id": "developers/committer-guide/release-guide_dev",
-      "title": "release-guide_dev",
-      "description": "TBD",
+      "title": "Seata版本向导",
+      "description": "Seata版本向导。",
       "sidebar": "developers"
     },
     "developers/committer-guide/website-guide_dev": {
       "id": "developers/committer-guide/website-guide_dev",
-      "title": "Website Guide",
-      "description": "Website Guide.",
+      "title": "网站向导",
+      "description": "Seata 网站向导。",
       "sidebar": "developers"
     },
     "developers/contributor-activity/top-contributer_dev": {
@@ -346,38 +346,38 @@
     },
     "developers/contributor-guide/new-contributor-guide_dev": {
       "id": "developers/contributor-guide/new-contributor-guide_dev",
-      "title": "New contributor guide",
-      "description": "This is a guide for new comers who wants to contribute to Seata.",
+      "title": "新贡献者向导",
+      "description": "这篇向导旨在给正在准备向Seata提交贡献的新手提供指导。",
       "sidebar": "developers"
     },
     "developers/contributor-guide/reporting-security-issues_dev": {
       "id": "developers/contributor-guide/reporting-security-issues_dev",
-      "title": "New contributor guide",
-      "description": "This is a guide for new comers who wants to contribute to Seata.",
+      "title": "报告安全问题",
+      "description": "Seata在消除其软件项目中的安全性问题方面采取严格的立场，对与其功能和特性有关的问题非常敏感并很快提出。",
       "sidebar": "developers"
     },
     "developers/contributor-guide/test-coverage-guide_dev": {
       "id": "developers/contributor-guide/test-coverage-guide_dev",
-      "title": "Test coverage guide",
-      "description": "Test coverage guide.",
+      "title": "测试覆盖率向导",
+      "description": "测试覆盖率向导。",
       "sidebar": "developers"
     },
     "developers/developers_dev": {
       "id": "developers/developers_dev",
-      "title": "Developers",
-      "description": "Seata Team.",
+      "title": "Seata 维护者",
+      "description": "Seata 维护者名单",
       "sidebar": "developers"
     },
     "developers/guide_dev": {
       "id": "developers/guide_dev",
-      "title": "Contributing to Seata",
-      "description": "It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you.",
+      "title": "为Seata贡献",
+      "description": "如果您有兴趣攻克Seata，欢迎您。首先，我们非常鼓励这种意愿。这是为您提供帮助的列表。",
       "sidebar": "developers"
     },
     "download": {
       "id": "download",
-      "title": "Downloads",
-      "description": "This article will introduce you how to understand the details of each version and upgrade matters needing attention.",
+      "title": "下载中心",
+      "description": "本文将向你介绍如何点击了解各版本详情和升级注意事项。",
       "sidebar": "download"
     },
     "intro": {
@@ -392,8 +392,8 @@
     },
     "ops/deploy-by-docker": {
       "id": "ops/deploy-by-docker",
-      "title": "Deploy Seata Server By Docker",
-      "description": "Deploy Seata Server By Docker",
+      "title": "使用 Docker 部署 Seata Server",
+      "description": "使用 Docker 部署 Seata Server",
       "sidebar": "docs"
     },
     "ops/deploy-by-docker-142": {
@@ -413,14 +413,14 @@
     },
     "ops/deploy-by-helm": {
       "id": "ops/deploy-by-helm",
-      "title": "Deploy Seata Server By Helm",
-      "description": "Deploy Seata Server By Helm",
+      "title": "使用 Helm 部署 Seata Server",
+      "description": "使用 Helm 部署 Seata Server",
       "sidebar": "docs"
     },
     "ops/deploy-by-kubernetes": {
       "id": "ops/deploy-by-kubernetes",
-      "title": "Deploy Seata Server By Kubernetes",
-      "description": "Deploy Seata Server By Kubernetes",
+      "title": "使用 Kubernetes 部署 Seata Server",
+      "description": "使用 Kubernetes 部署 Seata Server",
       "sidebar": "docs"
     },
     "ops/deploy-guide-beginner": {
@@ -430,14 +430,14 @@
     },
     "ops/deploy-ha": {
       "id": "ops/deploy-ha",
-      "title": "High Available Usage Deployment",
-      "description": "High Available Usage Deployment",
+      "title": "Seata 高可用部署",
+      "description": "Seata 高可用部署",
       "sidebar": "docs"
     },
     "ops/deploy-server": {
       "id": "ops/deploy-server",
-      "title": "Deploy Server",
-      "description": "The server can deploy by multiple metho - Directly, Docker, Docker-Compose, Kubernetes, Helm.",
+      "title": "部署 Server",
+      "description": "Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Compose, 使用 Kubernetes,  使用 Helm。",
       "sidebar": "docs"
     },
     "ops/upgrade": {
@@ -448,20 +448,20 @@
     },
     "overview/faq": {
       "id": "overview/faq",
-      "title": "Seata FAQ",
-      "description": "Seata FAQ.",
+      "title": "Seata常见问题",
+      "description": "Seata 常见问题。",
       "sidebar": "docs"
     },
     "overview/terminology": {
       "id": "overview/terminology",
-      "title": "Seata Terminology",
-      "description": "Seata Terminology.",
+      "title": "Seata术语",
+      "description": "Seata术语。",
       "sidebar": "docs"
     },
     "overview/what-is-seata": {
       "id": "overview/what-is-seata",
-      "title": "What Is Seata",
-      "description": "Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users.",
+      "title": "Seata 是什么",
+      "description": "Seata 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。Seata 将为用户提供了 AT、TCC、SAGA 和 XA 事务模式，为用户打造一站式的分布式解决方案。",
       "sidebar": "docs"
     },
     "tutorial-basics/congratulations": {
@@ -506,8 +506,8 @@
     },
     "user/api": {
       "id": "user/api",
-      "title": "Api Guide",
-      "description": "Api Guide.",
+      "title": "Seata API",
+      "description": "Seata API 分为两大类：High-Level API 和 Low-Level API。",
       "sidebar": "docs"
     },
     "user/apm/prometheus": {
@@ -562,19 +562,19 @@
     },
     "user/configurations": {
       "id": "user/configurations",
-      "title": "The seata parameter configuration version 1.6.0",
-      "description": "View version 1.0.0",
+      "title": "Seata 参数配置",
+      "description": "Seata 参数配置。",
       "sidebar": "docs"
     },
     "user/configurations090": {
       "id": "user/configurations090",
-      "title": "configurations090",
-      "description": "Public sector"
+      "title": "Seata 参数配置 0.9.0版本",
+      "description": "Seata 参数配置 0.9.0版本。"
     },
     "user/configurations100": {
       "id": "user/configurations100",
-      "title": "configurations100",
-      "description": "View versions before 0.9.0.1"
+      "title": "Seata 参数配置",
+      "description": "Seata 参数配置。"
     },
     "user/datasource": {
       "id": "user/datasource",
@@ -583,8 +583,8 @@
     },
     "user/microservice": {
       "id": "user/microservice",
-      "title": "Microservice Framework Guide",
-      "description": "Microservice Framework Guide.",
+      "title": "Seata 微服务框架支持",
+      "description": "Seata 微服务框架支持。",
       "sidebar": "docs"
     },
     "user/ormframework": {
@@ -599,8 +599,8 @@
     },
     "user/quickstart": {
       "id": "user/quickstart",
-      "title": "Quick Start",
-      "description": "Let's begin with a Microservices example.",
+      "title": "Seata 快速开始",
+      "description": "Seata 快速开始。",
       "sidebar": "docs"
     },
     "user/registry/consul": {
@@ -645,8 +645,8 @@
     },
     "user/sqlreference/dml": {
       "id": "user/sqlreference/dml",
-      "title": "DML",
-      "description": "Seata DML",
+      "title": "DML语句",
+      "description": "Seata DML语句",
       "sidebar": "docs"
     },
     "user/sqlreference/function": {
@@ -661,8 +661,8 @@
     },
     "user/sqlreference/sql-restrictions": {
       "id": "user/sqlreference/sql-restrictions",
-      "title": "SQL restrictions",
-      "description": "Seata SQL restrictions",
+      "title": "SQL限制",
+      "description": "Seata SQL限制",
       "sidebar": "docs"
     },
     "user/txgroup/transaction-group": {

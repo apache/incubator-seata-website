@@ -1,0 +1,20 @@
+{
+  "unversionedId": "user/appendix/global-transaction-status",
+  "id": "user/appendix/global-transaction-status",
+  "title": "事务状态",
+  "description": "全局事务状态、分支事务状态",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/appendix/global-transaction-status.md",
+  "sourceDirName": "user/appendix",
+  "slug": "/user/appendix/global-transaction-status",
+  "permalink": "/zh-cn/docs/user/appendix/global-transaction-status",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "事务状态",
+    "keywords": [
+      "事务状态"
+    ],
+    "description": "全局事务状态、分支事务状态"
+  }
+}

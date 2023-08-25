@@ -1,0 +1,33 @@
+{
+  "permalink": "/zh-cn/blog/seata-tcc",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-tcc.md",
+  "title": "深度剖析 Seata TCC 模式（一）",
+  "description": "Seata 目前支持 AT 模式、XA 模式、TCC 模式和 SAGA 模式，之前文章更多谈及的是非侵入式的 AT 模式，今天带大家认识一下同样是二阶段提交的 TCC 模式。",
+  "date": "2022-01-18T00:00:00.000Z",
+  "formattedDate": "2022年1月18日",
+  "tags": [],
+  "readingTime": 14.805,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "张乘辉"
+    }
+  ],
+  "frontMatter": {
+    "title": "深度剖析 Seata TCC 模式（一）",
+    "author": "张乘辉",
+    "keywords": [
+      "Seata、分布式事务、TCC"
+    ],
+    "description": "Seata 目前支持 AT 模式、XA 模式、TCC 模式和 SAGA 模式，之前文章更多谈及的是非侵入式的 AT 模式，今天带大家认识一下同样是二阶段提交的 TCC 模式。",
+    "date": "2022/01/18"
+  },
+  "prevItem": {
+    "title": "阿里 Seata 新版本终于解决了 TCC 模式的幂等、悬挂和空回滚问题",
+    "permalink": "/zh-cn/blog/seata-tcc-fence"
+  },
+  "nextItem": {
+    "title": "详解 Seata AT 模式事务隔离级别与全局锁设计",
+    "permalink": "/zh-cn/blog/seata-at-lock"
+  }
+}

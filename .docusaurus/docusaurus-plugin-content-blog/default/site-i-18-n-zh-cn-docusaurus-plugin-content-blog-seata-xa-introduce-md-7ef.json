@@ -1,0 +1,36 @@
+{
+  "permalink": "/zh-cn/blog/seata-xa-introduce",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-xa-introduce.md",
+  "title": "分布式事务如何实现？深入解读 Seata 的 XA 模式",
+  "description": "深入解读 Seata 的 XA 模式",
+  "date": "2020-04-28T00:00:00.000Z",
+  "formattedDate": "2020年4月28日",
+  "tags": [],
+  "readingTime": 20.815,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "煊檍"
+    }
+  ],
+  "frontMatter": {
+    "title": "分布式事务如何实现？深入解读 Seata 的 XA 模式",
+    "keywords": [
+      "Seata",
+      "分布式事务",
+      "XA",
+      "AT"
+    ],
+    "description": "深入解读 Seata 的 XA 模式",
+    "author": "煊檍",
+    "date": "2020/04/28"
+  },
+  "prevItem": {
+    "title": "分布式事务Seata源码-Server端启动流程",
+    "permalink": "/zh-cn/blog/seata-sourcecode-server-bootstrap"
+  },
+  "nextItem": {
+    "title": "Seata 极简入门",
+    "permalink": "/zh-cn/blog/seata-quick-start"
+  }
+}

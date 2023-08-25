@@ -1,0 +1,32 @@
+{
+  "permalink": "/zh-cn/blog/tcc-mode-applicable-scenario-analysis",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/tcc-mode-applicable-scenario-analysis.md",
+  "title": "TCC适用模型与适用场景分析",
+  "description": "Fescar 0.4.0 版本发布了 TCC 模式，由蚂蚁金服团队贡献，欢迎大家试用，文末也提供了项目后续的 Roadmap，欢迎关注。",
+  "date": "2019-03-27T00:00:00.000Z",
+  "formattedDate": "2019年3月27日",
+  "tags": [],
+  "readingTime": 16.635,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "zhangthen"
+    }
+  ],
+  "frontMatter": {
+    "title": "TCC适用模型与适用场景分析",
+    "author": "zhangthen",
+    "date": "2019/03/27",
+    "keywords": [
+      "seata、分布式事务、TCC、roadmap"
+    ]
+  },
+  "prevItem": {
+    "title": "深度剖析一站式分布式事务方案Seata-Server",
+    "permalink": "/zh-cn/blog/seata-analysis-java-server"
+  },
+  "nextItem": {
+    "title": "TCC 理论及设计实现指南介绍",
+    "permalink": "/zh-cn/blog/tcc-mode-design-principle"
+  }
+}

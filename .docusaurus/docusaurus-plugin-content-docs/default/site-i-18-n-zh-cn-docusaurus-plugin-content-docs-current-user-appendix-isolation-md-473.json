@@ -1,0 +1,20 @@
+{
+  "unversionedId": "user/appendix/isolation",
+  "id": "user/appendix/isolation",
+  "title": "Seata事务隔离",
+  "description": "Seata事务隔离",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/appendix/isolation.md",
+  "sourceDirName": "user/appendix",
+  "slug": "/user/appendix/isolation",
+  "permalink": "/zh-cn/docs/user/appendix/isolation",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata事务隔离",
+    "keywords": [
+      "Seata事务隔离"
+    ],
+    "description": "Seata事务隔离"
+  }
+}
