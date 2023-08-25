@@ -71,7 +71,7 @@ const Footer = (props: Props) => {
         <div className="cols-container"> 
           <div className="col col-12">
             <h3>{data.vision.title}</h3>
-            <p>{data.vision.contentFist}</p>
+            <p>{data.vision.content}</p>
           </div>
           <div className="col col-6">
             <dl>
