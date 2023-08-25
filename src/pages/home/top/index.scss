@@ -133,7 +133,7 @@
       height: 156px;
       left: calc(50% - 175px);
       top: 0;
-      animation: updown 2s ease-in-out infinite alternate;
+      animation: 2s ease-in-out 0s infinite alternate forwards updown;
     }
     .img2 {
       width: 457px;
@@ -156,14 +156,14 @@
       height: 39px;
       left: 0;
       bottom: 88px;
-      animation: updown 2s ease-in-out infinite alternate;
+      animation: 2s ease-in-out 0s infinite alternate forwards updown;
     }
     .img5 {
       width: 93px;
       height: 39px;
       right: 0;
       bottom: 129px;
-      animation: updown 2s ease-in-out infinite alternate;
+      animation: 2s ease-in-out 0s infinite alternate forwards updown;
     }
     .outer-circle {
       opacity: 0.1;
@@ -185,10 +185,26 @@
       height: 404px;
       transform: rotateX(66deg);
       svg {
-        animation: rotate-circle 1.2s linear infinite;
+        animation: 1.2s linear 0s infinite normal none running rotate-circle;
       }
     }
   }
+
+  /* 新建动画的关键帧 */
+  @keyframes updown {
+    0% {
+      transform: translateY(10px);
+  }
+    0% {
+        transform: translateY(-10px);
+    }
+  }
+  @keyframes rotate-circle {
+    100% {
+      transform: rotate(360deg);
+  }
+  }
+
   @media screen and (max-width: 768px) {
     .vertical-middle {
       text-align: center;

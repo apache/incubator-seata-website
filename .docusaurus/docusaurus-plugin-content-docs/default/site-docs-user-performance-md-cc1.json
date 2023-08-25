@@ -1,0 +1,14 @@
+{
+  "unversionedId": "user/performance",
+  "id": "user/performance",
+  "title": "performance",
+  "description": "欢迎认领补充此文档。",
+  "source": "@site/docs/user/performance.md",
+  "sourceDirName": "user",
+  "slug": "/user/performance",
+  "permalink": "/docs/user/performance",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

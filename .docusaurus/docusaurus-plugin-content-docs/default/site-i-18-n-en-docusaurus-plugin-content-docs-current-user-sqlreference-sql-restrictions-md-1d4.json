@@ -1,0 +1,29 @@
+{
+  "unversionedId": "user/sqlreference/sql-restrictions",
+  "id": "user/sqlreference/sql-restrictions",
+  "title": "SQL restrictions",
+  "description": "Seata SQL restrictions",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/user/sqlreference/sql-restrictions.md",
+  "sourceDirName": "user/sqlreference",
+  "slug": "/user/sqlreference/sql-restrictions",
+  "permalink": "/docs/user/sqlreference/sql-restrictions",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "SQL restrictions",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata SQL restrictions"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Microservice Framework Guide",
+    "permalink": "/docs/user/microservice"
+  },
+  "next": {
+    "title": "DML",
+    "permalink": "/docs/user/sqlreference/dml"
+  }
+}

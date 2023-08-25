@@ -1,0 +1,32 @@
+{
+  "permalink": "/blog/iscas2023",
+  "source": "@site/blog/iscas2023.md",
+  "title": "6大课题现已开放挑选 | 欢迎报名 Seata 开源之夏",
+  "description": "欢迎大家报名Seata 开源之夏2023课题",
+  "date": "2023-05-12T00:00:00.000Z",
+  "formattedDate": "May 12, 2023",
+  "tags": [],
+  "readingTime": 10.575,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "Seata社区"
+    }
+  ],
+  "frontMatter": {
+    "title": "6大课题现已开放挑选 | 欢迎报名 Seata 开源之夏",
+    "author": "Seata社区",
+    "date": "2023/05/12",
+    "keywords": [
+      "开源之夏、seata、分布式事务"
+    ]
+  },
+  "prevItem": {
+    "title": "生产环境可用的 seata-go 1.2.0 来了！！！",
+    "permalink": "/blog/seata-go-1.2.0"
+  },
+  "nextItem": {
+    "title": "Seata 1.6.0 重磅发布，大幅提升性能",
+    "permalink": "/blog/seata-1.6.0"
+  }
+}

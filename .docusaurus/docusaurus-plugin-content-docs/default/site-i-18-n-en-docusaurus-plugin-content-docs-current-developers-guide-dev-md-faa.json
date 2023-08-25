@@ -1,0 +1,29 @@
+{
+  "unversionedId": "developers/guide_dev",
+  "id": "developers/guide_dev",
+  "title": "Contributing to Seata",
+  "description": "It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/guide_dev.md",
+  "sourceDirName": "developers",
+  "slug": "/developers/guide_dev",
+  "permalink": "/docs/developers/guide_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Contributing to Seata",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you."
+  },
+  "sidebar": "developers",
+  "previous": {
+    "title": "New contributor guide",
+    "permalink": "/docs/developers/contributor-guide/reporting-security-issues_dev"
+  },
+  "next": {
+    "title": "Label an Issue",
+    "permalink": "/docs/developers/committer-guide/label-an-issue-guide_dev"
+  }
+}

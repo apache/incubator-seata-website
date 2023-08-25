@@ -1,0 +1,679 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "category",
+        "label": "Overview",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "What Is Seata",
+            "href": "/docs/overview/what-is-seata",
+            "docId": "overview/what-is-seata"
+          },
+          {
+            "type": "link",
+            "label": "Seata Terminology",
+            "href": "/docs/overview/terminology",
+            "docId": "overview/terminology"
+          },
+          {
+            "type": "link",
+            "label": "Seata FAQ",
+            "href": "/docs/overview/faq",
+            "docId": "overview/faq"
+          }
+        ],
+        "collapsed": false
+      },
+      {
+        "type": "category",
+        "label": "User Doc",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Quick Start",
+            "href": "/docs/user/quickstart",
+            "docId": "user/quickstart"
+          },
+          {
+            "type": "link",
+            "label": "The seata parameter configuration version 1.6.0",
+            "href": "/docs/user/configurations",
+            "docId": "user/configurations"
+          },
+          {
+            "type": "link",
+            "label": "Api Guide",
+            "href": "/docs/user/api",
+            "docId": "user/api"
+          },
+          {
+            "type": "link",
+            "label": "Microservice Framework Guide",
+            "href": "/docs/user/microservice",
+            "docId": "user/microservice"
+          },
+          {
+            "type": "category",
+            "label": "SQL Reference",
+            "items": [
+              {
+                "type": "link",
+                "label": "SQL restrictions",
+                "href": "/docs/user/sqlreference/sql-restrictions",
+                "docId": "user/sqlreference/sql-restrictions"
+              },
+              {
+                "type": "link",
+                "label": "DML",
+                "href": "/docs/user/sqlreference/dml",
+                "docId": "user/sqlreference/dml"
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": false
+      },
+      {
+        "type": "category",
+        "label": "Developer Guide",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "category",
+            "label": "Transaction Mode",
+            "items": [
+              {
+                "type": "link",
+                "label": "Seata AT Mode",
+                "href": "/docs/dev/mode/at-mode",
+                "docId": "dev/mode/at-mode"
+              },
+              {
+                "type": "link",
+                "label": "Seata TCC Mode",
+                "href": "/docs/dev/mode/tcc-mode",
+                "docId": "dev/mode/tcc-mode"
+              },
+              {
+                "type": "link",
+                "label": "Seata Saga Mode",
+                "href": "/docs/dev/mode/saga-mode",
+                "docId": "dev/mode/saga-mode"
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "link",
+            "label": "Metrics design",
+            "href": "/docs/dev/seata-mertics",
+            "docId": "dev/seata-mertics"
+          }
+        ],
+        "collapsed": false
+      },
+      {
+        "type": "category",
+        "label": "Ops Guide",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "版本升级指南",
+            "href": "/docs/ops/upgrade",
+            "docId": "ops/upgrade"
+          },
+          {
+            "type": "category",
+            "label": "Deploy",
+            "items": [
+              {
+                "type": "link",
+                "label": "Deploy Server",
+                "href": "/docs/ops/deploy-server",
+                "docId": "ops/deploy-server"
+              },
+              {
+                "type": "link",
+                "label": "Deploy Seata Server By Docker",
+                "href": "/docs/ops/deploy-by-docker",
+                "docId": "ops/deploy-by-docker"
+              },
+              {
+                "type": "link",
+                "label": "Deploy Seata Server By Kubernetes",
+                "href": "/docs/ops/deploy-by-kubernetes",
+                "docId": "ops/deploy-by-kubernetes"
+              },
+              {
+                "type": "link",
+                "label": "Deploy Seata Server By Helm",
+                "href": "/docs/ops/deploy-by-helm",
+                "docId": "ops/deploy-by-helm"
+              },
+              {
+                "type": "link",
+                "label": "High Available Usage Deployment",
+                "href": "/docs/ops/deploy-ha",
+                "docId": "ops/deploy-ha"
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": false
+      }
+    ],
+    "developers": [
+      {
+        "type": "category",
+        "label": "Developers List",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Developers",
+            "href": "/docs/developers/developers_dev",
+            "docId": "developers/developers_dev"
+          }
+        ],
+        "collapsed": false
+      },
+      {
+        "type": "category",
+        "label": "Contribute Guide",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "New contributor guide",
+            "href": "/docs/developers/contributor-guide/new-contributor-guide_dev",
+            "docId": "developers/contributor-guide/new-contributor-guide_dev"
+          },
+          {
+            "type": "link",
+            "label": "Test coverage guide",
+            "href": "/docs/developers/contributor-guide/test-coverage-guide_dev",
+            "docId": "developers/contributor-guide/test-coverage-guide_dev"
+          },
+          {
+            "type": "link",
+            "label": "New contributor guide",
+            "href": "/docs/developers/contributor-guide/reporting-security-issues_dev",
+            "docId": "developers/contributor-guide/reporting-security-issues_dev"
+          },
+          {
+            "type": "link",
+            "label": "Contributing to Seata",
+            "href": "/docs/developers/guide_dev",
+            "docId": "developers/guide_dev"
+          }
+        ],
+        "collapsed": false
+      },
+      {
+        "type": "category",
+        "label": "Committer Guide",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Label an Issue",
+            "href": "/docs/developers/committer-guide/label-an-issue-guide_dev",
+            "docId": "developers/committer-guide/label-an-issue-guide_dev"
+          },
+          {
+            "type": "link",
+            "label": "Website Guide",
+            "href": "/docs/developers/committer-guide/website-guide_dev",
+            "docId": "developers/committer-guide/website-guide_dev"
+          },
+          {
+            "type": "link",
+            "label": "release-guide_dev",
+            "href": "/docs/developers/committer-guide/release-guide_dev",
+            "docId": "developers/committer-guide/release-guide_dev"
+          }
+        ],
+        "collapsed": false
+      }
+    ],
+    "download": [
+      {
+        "type": "category",
+        "label": "Download",
+        "collapsible": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Downloads",
+            "href": "/docs/download",
+            "docId": "download"
+          }
+        ],
+        "collapsed": false
+      }
+    ]
+  },
+  "docs": {
+    "dev/domain/overviewDomainModel": {
+      "id": "dev/domain/overviewDomainModel",
+      "title": "领域模型概述",
+      "description": "本文为您介绍 Seata(Simpe Extensible Autonomous Transcaction Architecture) 的领域模型。"
+    },
+    "dev/domain/rm": {
+      "id": "dev/domain/rm",
+      "title": "rm",
+      "description": "欢迎认领补充此文档"
+    },
+    "dev/domain/tc": {
+      "id": "dev/domain/tc",
+      "title": "tc",
+      "description": "欢迎认领补充此文档"
+    },
+    "dev/domain/tm": {
+      "id": "dev/domain/tm",
+      "title": "tm",
+      "description": "欢迎认领补充此文档"
+    },
+    "dev/mode/at-mode": {
+      "id": "dev/mode/at-mode",
+      "title": "Seata AT Mode",
+      "description": "Seata AT mode.",
+      "sidebar": "docs"
+    },
+    "dev/mode/saga-mode": {
+      "id": "dev/mode/saga-mode",
+      "title": "Seata Saga Mode",
+      "description": "The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.",
+      "sidebar": "docs"
+    },
+    "dev/mode/tcc-mode": {
+      "id": "dev/mode/tcc-mode",
+      "title": "Seata TCC Mode",
+      "description": "Seata TCC mode.",
+      "sidebar": "docs"
+    },
+    "dev/mode/xa-mode": {
+      "id": "dev/mode/xa-mode",
+      "title": "Seata XA 模式",
+      "description": "Seata XA 模式。"
+    },
+    "dev/seata-mertics": {
+      "id": "dev/seata-mertics",
+      "title": "Metrics design",
+      "description": "Seata Metrics.",
+      "sidebar": "docs"
+    },
+    "developers/committer-guide/label-an-issue-guide_dev": {
+      "id": "developers/committer-guide/label-an-issue-guide_dev",
+      "title": "Label an Issue",
+      "description": "Label an Issue.",
+      "sidebar": "developers"
+    },
+    "developers/committer-guide/release-guide_dev": {
+      "id": "developers/committer-guide/release-guide_dev",
+      "title": "release-guide_dev",
+      "description": "TBD",
+      "sidebar": "developers"
+    },
+    "developers/committer-guide/website-guide_dev": {
+      "id": "developers/committer-guide/website-guide_dev",
+      "title": "Website Guide",
+      "description": "Website Guide.",
+      "sidebar": "developers"
+    },
+    "developers/contributor-activity/top-contributer_dev": {
+      "id": "developers/contributor-activity/top-contributer_dev",
+      "title": "top-contributer_dev",
+      "description": "Top Contributor"
+    },
+    "developers/contributor-guide/new-contributor-guide_dev": {
+      "id": "developers/contributor-guide/new-contributor-guide_dev",
+      "title": "New contributor guide",
+      "description": "This is a guide for new comers who wants to contribute to Seata.",
+      "sidebar": "developers"
+    },
+    "developers/contributor-guide/reporting-security-issues_dev": {
+      "id": "developers/contributor-guide/reporting-security-issues_dev",
+      "title": "New contributor guide",
+      "description": "This is a guide for new comers who wants to contribute to Seata.",
+      "sidebar": "developers"
+    },
+    "developers/contributor-guide/test-coverage-guide_dev": {
+      "id": "developers/contributor-guide/test-coverage-guide_dev",
+      "title": "Test coverage guide",
+      "description": "Test coverage guide.",
+      "sidebar": "developers"
+    },
+    "developers/developers_dev": {
+      "id": "developers/developers_dev",
+      "title": "Developers",
+      "description": "Seata Team.",
+      "sidebar": "developers"
+    },
+    "developers/guide_dev": {
+      "id": "developers/guide_dev",
+      "title": "Contributing to Seata",
+      "description": "It is warmly welcomed if you have interest to hack on Seata. First, we encourage this kind of willing very much. And here is a list of contributing guide for you.",
+      "sidebar": "developers"
+    },
+    "download": {
+      "id": "download",
+      "title": "Downloads",
+      "description": "This article will introduce you how to understand the details of each version and upgrade matters needing attention.",
+      "sidebar": "download"
+    },
+    "intro": {
+      "id": "intro",
+      "title": "Tutorial Intro",
+      "description": "Let's discover Docusaurus in less than 5 minutes."
+    },
+    "ops/config-center": {
+      "id": "ops/config-center",
+      "title": "配置中心初始化",
+      "description": "配置中心初始化。"
+    },
+    "ops/deploy-by-docker": {
+      "id": "ops/deploy-by-docker",
+      "title": "Deploy Seata Server By Docker",
+      "description": "Deploy Seata Server By Docker",
+      "sidebar": "docs"
+    },
+    "ops/deploy-by-docker-142": {
+      "id": "ops/deploy-by-docker-142",
+      "title": "使用 Docker 部署 Seata Server",
+      "description": "使用 Docker 部署 Seata Server"
+    },
+    "ops/deploy-by-docker-compose": {
+      "id": "ops/deploy-by-docker-compose",
+      "title": "使用 Docker compose 快速部署 Seata Server",
+      "description": "使用 Docker-compose 快速部署 Seata Server"
+    },
+    "ops/deploy-by-docker-compose-142": {
+      "id": "ops/deploy-by-docker-compose-142",
+      "title": "使用 Docker compose 快速部署 Seata Server",
+      "description": "使用 Docker-compose 快速部署 Seata Server"
+    },
+    "ops/deploy-by-helm": {
+      "id": "ops/deploy-by-helm",
+      "title": "Deploy Seata Server By Helm",
+      "description": "Deploy Seata Server By Helm",
+      "sidebar": "docs"
+    },
+    "ops/deploy-by-kubernetes": {
+      "id": "ops/deploy-by-kubernetes",
+      "title": "Deploy Seata Server By Kubernetes",
+      "description": "Deploy Seata Server By Kubernetes",
+      "sidebar": "docs"
+    },
+    "ops/deploy-guide-beginner": {
+      "id": "ops/deploy-guide-beginner",
+      "title": "Seata部署指南",
+      "description": "Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。"
+    },
+    "ops/deploy-ha": {
+      "id": "ops/deploy-ha",
+      "title": "High Available Usage Deployment",
+      "description": "High Available Usage Deployment",
+      "sidebar": "docs"
+    },
+    "ops/deploy-server": {
+      "id": "ops/deploy-server",
+      "title": "Deploy Server",
+      "description": "The server can deploy by multiple metho - Directly, Docker, Docker-Compose, Kubernetes, Helm.",
+      "sidebar": "docs"
+    },
+    "ops/upgrade": {
+      "id": "ops/upgrade",
+      "title": "版本升级指南",
+      "description": "Seata upgrade.",
+      "sidebar": "docs"
+    },
+    "overview/faq": {
+      "id": "overview/faq",
+      "title": "Seata FAQ",
+      "description": "Seata FAQ.",
+      "sidebar": "docs"
+    },
+    "overview/terminology": {
+      "id": "overview/terminology",
+      "title": "Seata Terminology",
+      "description": "Seata Terminology.",
+      "sidebar": "docs"
+    },
+    "overview/what-is-seata": {
+      "id": "overview/what-is-seata",
+      "title": "What Is Seata",
+      "description": "Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users.",
+      "sidebar": "docs"
+    },
+    "tutorial-basics/congratulations": {
+      "id": "tutorial-basics/congratulations",
+      "title": "Congratulations!",
+      "description": "You have just learned the basics of Docusaurus and made some changes to the initial template."
+    },
+    "tutorial-basics/create-a-blog-post": {
+      "id": "tutorial-basics/create-a-blog-post",
+      "title": "Create a Blog Post",
+      "description": "Docusaurus creates a page for each blog post, but also a blog index page, a tag system, an RSS feed..."
+    },
+    "tutorial-basics/create-a-document": {
+      "id": "tutorial-basics/create-a-document",
+      "title": "Create a Document",
+      "description": "Documents are groups of pages connected through:"
+    },
+    "tutorial-basics/create-a-page": {
+      "id": "tutorial-basics/create-a-page",
+      "title": "Create a Page",
+      "description": "Add Markdown or React files to src/pages to create a standalone page:"
+    },
+    "tutorial-basics/deploy-your-site": {
+      "id": "tutorial-basics/deploy-your-site",
+      "title": "Deploy your site",
+      "description": "Docusaurus is a static-site-generator (also called Jamstack)."
+    },
+    "tutorial-basics/markdown-features": {
+      "id": "tutorial-basics/markdown-features",
+      "title": "Markdown Features",
+      "description": "Docusaurus supports Markdown and a few additional features."
+    },
+    "tutorial-extras/manage-docs-versions": {
+      "id": "tutorial-extras/manage-docs-versions",
+      "title": "Manage Docs Versions",
+      "description": "Docusaurus can manage multiple versions of your docs."
+    },
+    "tutorial-extras/translate-your-site": {
+      "id": "tutorial-extras/translate-your-site",
+      "title": "Translate your site",
+      "description": "Let's translate docs/intro.md to French."
+    },
+    "user/api": {
+      "id": "user/api",
+      "title": "Api Guide",
+      "description": "Api Guide.",
+      "sidebar": "docs"
+    },
+    "user/apm/prometheus": {
+      "id": "user/apm/prometheus",
+      "title": "运维指南",
+      "description": "Seata支持在TC开启Metrics数据采集并输出到Prometheus监控系统中。"
+    },
+    "user/apm/skywalking": {
+      "id": "user/apm/skywalking",
+      "title": "SkyWalking APM（应用性能监控）",
+      "description": "SkyWalking 是 Seata 组件中重要的APM（应用性能监控）实现."
+    },
+    "user/appendix/global-transaction-status": {
+      "id": "user/appendix/global-transaction-status",
+      "title": "事务状态",
+      "description": "全局事务状态、分支事务状态"
+    },
+    "user/appendix/isolation": {
+      "id": "user/appendix/isolation",
+      "title": "Seata事务隔离",
+      "description": "Seata事务隔离"
+    },
+    "user/configuration/apollo": {
+      "id": "user/configuration/apollo",
+      "title": "Apollo 配置中心",
+      "description": "预备工作"
+    },
+    "user/configuration/consul": {
+      "id": "user/configuration/consul",
+      "title": "Consul 配置中心",
+      "description": "在 以 Consul 作为注册中心 的基础上，将 Seata 配置放到 Consul 中"
+    },
+    "user/configuration/etcd3": {
+      "id": "user/configuration/etcd3",
+      "title": "Etcd3 配置中心",
+      "description": "Etcd3 是 Seata 组件中重要的配置中心实现."
+    },
+    "user/configuration/index": {
+      "id": "user/configuration/index",
+      "title": "配置中心",
+      "description": "- 什么是配置中心?配置中心可以说是一个\"大货仓\",内部放置着各种配置文件,你可以通过自己所需进行获取配置加载到对应的客户端.比如Seata Client端(TM,RM),Seata Server(TC),会去读取全局事务开关,事务会话存储模式等信息."
+    },
+    "user/configuration/nacos": {
+      "id": "user/configuration/nacos",
+      "title": "Nacos 配置中心",
+      "description": "Nacos 是 Seata 组件中重要的配置中心实现."
+    },
+    "user/configuration/zookeeper": {
+      "id": "user/configuration/zookeeper",
+      "title": "zookeeper",
+      "description": "欢迎认领补充此文档"
+    },
+    "user/configurations": {
+      "id": "user/configurations",
+      "title": "The seata parameter configuration version 1.6.0",
+      "description": "View version 1.0.0",
+      "sidebar": "docs"
+    },
+    "user/configurations090": {
+      "id": "user/configurations090",
+      "title": "configurations090",
+      "description": "Public sector"
+    },
+    "user/configurations100": {
+      "id": "user/configurations100",
+      "title": "configurations100",
+      "description": "View versions before 0.9.0.1"
+    },
+    "user/datasource": {
+      "id": "user/datasource",
+      "title": "Seata 数据源支持",
+      "description": "Seata 数据源支持。"
+    },
+    "user/microservice": {
+      "id": "user/microservice",
+      "title": "Microservice Framework Guide",
+      "description": "Microservice Framework Guide.",
+      "sidebar": "docs"
+    },
+    "user/ormframework": {
+      "id": "user/ormframework",
+      "title": "Seata ORM框架支持",
+      "description": "Seata ORM框架支持。"
+    },
+    "user/performance": {
+      "id": "user/performance",
+      "title": "performance",
+      "description": "欢迎认领补充此文档。"
+    },
+    "user/quickstart": {
+      "id": "user/quickstart",
+      "title": "Quick Start",
+      "description": "Let's begin with a Microservices example.",
+      "sidebar": "docs"
+    },
+    "user/registry/consul": {
+      "id": "user/registry/consul",
+      "title": "Consul 注册中心",
+      "description": "Consul 是 Seata 组件中重要的注册中心实现"
+    },
+    "user/registry/etcd3": {
+      "id": "user/registry/etcd3",
+      "title": "Etcd3 注册中心",
+      "description": "Etcd3是 Seata 组件中重要的注册中心实现."
+    },
+    "user/registry/eureka": {
+      "id": "user/registry/eureka",
+      "title": "Eureka 注册中心",
+      "description": "Eureka是 Seata 组件中重要的注册中心实现."
+    },
+    "user/registry/index": {
+      "id": "user/registry/index",
+      "title": "注册中心",
+      "description": "- 什么是注册中心?注册中心可以说是微服务架构中的”通讯录“，它记录了服务和服务地址的映射关系。在分布式架构中，服务会注册到这里，当服务需要调用其它服务时，就到这里找到服务的地址，进行调用.比如Seata Client端(TM,RM),发现Seata Server(TC)集群的地址,彼此通信."
+    },
+    "user/registry/nacos": {
+      "id": "user/registry/nacos",
+      "title": "Nacos 注册中心",
+      "description": "Nacos 是 Seata 组件中重要的注册中心实现."
+    },
+    "user/registry/zookeeper": {
+      "id": "user/registry/zookeeper",
+      "title": "zookeeper",
+      "description": "欢迎认领补充此文档。"
+    },
+    "user/saga": {
+      "id": "user/saga",
+      "title": "Seata Saga 模式",
+      "description": "Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。"
+    },
+    "user/spring": {
+      "id": "user/spring",
+      "title": "Seata Spring支持",
+      "description": "Seata Spring支持。"
+    },
+    "user/sqlreference/dml": {
+      "id": "user/sqlreference/dml",
+      "title": "DML",
+      "description": "Seata DML",
+      "sidebar": "docs"
+    },
+    "user/sqlreference/function": {
+      "id": "user/sqlreference/function",
+      "title": "函数",
+      "description": "Seata 函数"
+    },
+    "user/sqlreference/sql-decoration": {
+      "id": "user/sqlreference/sql-decoration",
+      "title": "DML语句",
+      "description": "Seata DML语句"
+    },
+    "user/sqlreference/sql-restrictions": {
+      "id": "user/sqlreference/sql-restrictions",
+      "title": "SQL restrictions",
+      "description": "Seata SQL restrictions",
+      "sidebar": "docs"
+    },
+    "user/txgroup/transaction-group": {
+      "id": "user/txgroup/transaction-group",
+      "title": "Seata 事务分组",
+      "description": "Seata 事务分组。"
+    },
+    "user/txgroup/transaction-group-and-ha": {
+      "id": "user/txgroup/transaction-group-and-ha",
+      "title": "事务分组与高可用",
+      "description": "Seata 事务分组与高可用的最佳实践"
+    }
+  }
+}

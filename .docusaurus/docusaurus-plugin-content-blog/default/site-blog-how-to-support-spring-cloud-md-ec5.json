@@ -1,0 +1,32 @@
+{
+  "permalink": "/blog/how-to-support-spring-cloud",
+  "source": "@site/blog/how-to-support-spring-cloud.md",
+  "title": "Fescar 与 Spring Cloud 集成源码深度剖析",
+  "description": "Fescar 简介",
+  "date": "2019-04-15T00:00:00.000Z",
+  "formattedDate": "April 15, 2019",
+  "tags": [],
+  "readingTime": 20.04,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "郭树抗 季敏"
+    }
+  ],
+  "frontMatter": {
+    "title": "Fescar 与 Spring Cloud 集成源码深度剖析",
+    "author": "郭树抗 季敏",
+    "date": "2019/04/15",
+    "keywords": [
+      "fescar、seata、分布式事务"
+    ]
+  },
+  "prevItem": {
+    "title": "Seata分布式Go Server正式开源-TaaS设计简介",
+    "permalink": "/blog/seata-analysis-go-server"
+  },
+  "nextItem": {
+    "title": "Seata（Fescar）分布式事务 整合 Spring Cloud",
+    "permalink": "/blog/integrate-seata-with-spring-cloud"
+  }
+}

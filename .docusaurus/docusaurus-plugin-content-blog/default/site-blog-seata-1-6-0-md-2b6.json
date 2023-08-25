@@ -1,0 +1,33 @@
+{
+  "permalink": "/blog/seata-1.6.0",
+  "source": "@site/blog/seata-1.6.0.md",
+  "title": "Seata 1.6.0 重磅发布，大幅提升性能",
+  "description": "Seata 1.6.0 重磅发布，大幅提升性能",
+  "date": "2022-12-17T00:00:00.000Z",
+  "formattedDate": "December 17, 2022",
+  "tags": [],
+  "readingTime": 6.575,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "Seata社区"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata 1.6.0 重磅发布，大幅提升性能",
+    "author": "Seata社区",
+    "keywords": [
+      "seata、分布式事务、1.6.0"
+    ],
+    "description": "Seata 1.6.0 重磅发布，大幅提升性能",
+    "date": "2022/12/17"
+  },
+  "prevItem": {
+    "title": "6大课题现已开放挑选 | 欢迎报名 Seata 开源之夏",
+    "permalink": "/blog/iscas2023"
+  },
+  "nextItem": {
+    "title": "Seata 1.5.2 重磅发布，支持xid负载均衡",
+    "permalink": "/blog/seata-1.5.2"
+  }
+}

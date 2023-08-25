@@ -1,0 +1,20 @@
+{
+  "unversionedId": "ops/deploy-guide-beginner",
+  "id": "ops/deploy-guide-beginner",
+  "title": "Seata部署指南",
+  "description": "Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。",
+  "source": "@site/docs/ops/deploy-guide-beginner.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-guide-beginner",
+  "permalink": "/docs/ops/deploy-guide-beginner",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata部署指南",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。"
+  }
+}

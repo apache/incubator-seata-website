@@ -1,0 +1,32 @@
+{
+  "unversionedId": "ops/deploy-by-docker",
+  "id": "ops/deploy-by-docker",
+  "title": "Deploy Seata Server By Docker",
+  "description": "Deploy Seata Server By Docker",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/ops/deploy-by-docker.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-by-docker",
+  "permalink": "/docs/ops/deploy-by-docker",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "hidden": true,
+    "title": "Deploy Seata Server By Docker",
+    "keywords": [
+      "docker"
+    ],
+    "description": "Deploy Seata Server By Docker",
+    "author": "helloworlde",
+    "date": "2019-11-25T00:00:00.000Z"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Deploy Server",
+    "permalink": "/docs/ops/deploy-server"
+  },
+  "next": {
+    "title": "Deploy Seata Server By Kubernetes",
+    "permalink": "/docs/ops/deploy-by-kubernetes"
+  }
+}

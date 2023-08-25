@@ -1,0 +1,20 @@
+{
+  "unversionedId": "ops/config-center",
+  "id": "ops/config-center",
+  "title": "配置中心初始化",
+  "description": "配置中心初始化。",
+  "source": "@site/docs/ops/config-center.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/config-center",
+  "permalink": "/docs/ops/config-center",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "配置中心初始化",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "配置中心初始化。"
+  }
+}

@@ -130,6 +130,8 @@ const config = {
           {
             label: 'Free trial',
             href: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
+            position: 'right',
+            target: '_blank',
           },
           {
             label: 'Developers',
@@ -171,60 +173,6 @@ const config = {
             position: 'right',
           },
         ],
-      },
-      footer: {
-        style: 'light',
-        links: [
-          {
-            title: 'Vision',
-            items: [
-              {
-                label: 'Seata is ...',
-                to: '/',
-              },
-            ],
-          },
-          {
-            title: 'Documentation',
-            items: [
-              {
-                label: 'What is Seata?',
-                to: '/docs/overview/what-is-seata',
-              },
-              {
-                label: 'Quick Start',
-                to: '/docs/user/quickstart',
-              },
-              {
-                label: 'Report a doc issue',
-                href: 'https://github.com/seata/seata.github.io/issues/new',
-              },
-              {
-                label: 'Edit This Page on GitHub',
-                href: 'https://github.com/seata/seata.github.io',
-              },
-            ],
-          },
-          {
-            title: 'Resources',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'Community',
-                to: '/community',
-              },
-            ],
-          },
-        ],
-        logo: {
-          src: '//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png',
-          width: 120,
-          height: 36,
-        },
-        copyright: `Copyright © ${new Date().getFullYear()} Seata`,
       },
       docs: {
         sidebar: {

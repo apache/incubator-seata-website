@@ -1,0 +1,30 @@
+{
+  "unversionedId": "dev/mode/at-mode",
+  "id": "dev/mode/at-mode",
+  "title": "Seata AT Mode",
+  "description": "Seata AT mode.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/dev/mode/at-mode.md",
+  "sourceDirName": "dev/mode",
+  "slug": "/dev/mode/at-mode",
+  "permalink": "/docs/dev/mode/at-mode",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata AT Mode",
+    "keywords": [
+      "Seata",
+      "AT mode"
+    ],
+    "description": "Seata AT mode."
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "DML",
+    "permalink": "/docs/user/sqlreference/dml"
+  },
+  "next": {
+    "title": "Seata TCC Mode",
+    "permalink": "/docs/dev/mode/tcc-mode"
+  }
+}

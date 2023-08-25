@@ -286,6 +286,9 @@
     "message": "Quick Start"
   },
   "homepage.footerDocListText3": {
+    "message": "Report a doc issue"
+  },
+  "homepage.footerDocListText4": {
     "message": "Edit This Page on GitHub"
   },
   "homepage.footerResourcesTitle": {
@@ -418,12 +421,15 @@
     "message": "microservice ecosystem landscape"
   },
   "homepage.userDesc1": {
-    "message": "Please visit"
+    "message": "Please provide information on"
   },
   "homepage.userDesc2": {
-    "message": "to help improving seata better."
+    "message": "to help improving Seata better."
   },
-  "homepage.userTitle": {
-    "message": "Who is using Seata"
+  "homepage.userTitleBefore": {
+    "message": "Who is using"
+  },
+  "homepage.userTitleAfter": {
+    "message": " Seata"
   }
 }

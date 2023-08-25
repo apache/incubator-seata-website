@@ -1,0 +1,20 @@
+{
+  "unversionedId": "user/sqlreference/sql-decoration",
+  "id": "user/sqlreference/sql-decoration",
+  "title": "DML语句",
+  "description": "Seata DML语句",
+  "source": "@site/docs/user/sqlreference/sql-decoration.md",
+  "sourceDirName": "user/sqlreference",
+  "slug": "/user/sqlreference/sql-decoration",
+  "permalink": "/docs/user/sqlreference/sql-decoration",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "DML语句",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata DML语句"
+  }
+}

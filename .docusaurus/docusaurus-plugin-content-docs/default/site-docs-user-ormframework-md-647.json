@@ -1,0 +1,20 @@
+{
+  "unversionedId": "user/ormframework",
+  "id": "user/ormframework",
+  "title": "Seata ORM框架支持",
+  "description": "Seata ORM框架支持。",
+  "source": "@site/docs/user/ormframework.md",
+  "sourceDirName": "user",
+  "slug": "/user/ormframework",
+  "permalink": "/docs/user/ormframework",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata ORM框架支持",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata ORM框架支持。"
+  }
+}

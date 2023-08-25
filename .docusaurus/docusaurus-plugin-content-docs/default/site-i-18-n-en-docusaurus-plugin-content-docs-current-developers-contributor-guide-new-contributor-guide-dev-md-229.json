@@ -1,0 +1,30 @@
+{
+  "unversionedId": "developers/contributor-guide/new-contributor-guide_dev",
+  "id": "developers/contributor-guide/new-contributor-guide_dev",
+  "title": "New contributor guide",
+  "description": "This is a guide for new comers who wants to contribute to Seata.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/contributor-guide/new-contributor-guide_dev.md",
+  "sourceDirName": "developers/contributor-guide",
+  "slug": "/developers/contributor-guide/new-contributor-guide_dev",
+  "permalink": "/docs/developers/contributor-guide/new-contributor-guide_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "New contributor guide",
+    "keywords": [
+      "Seata",
+      "contributor"
+    ],
+    "description": "This is a guide for new comers who wants to contribute to Seata."
+  },
+  "sidebar": "developers",
+  "previous": {
+    "title": "Developers",
+    "permalink": "/docs/developers/developers_dev"
+  },
+  "next": {
+    "title": "Test coverage guide",
+    "permalink": "/docs/developers/contributor-guide/test-coverage-guide_dev"
+  }
+}

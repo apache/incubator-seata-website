@@ -1,0 +1,20 @@
+{
+  "unversionedId": "user/datasource",
+  "id": "user/datasource",
+  "title": "Seata 数据源支持",
+  "description": "Seata 数据源支持。",
+  "source": "@site/docs/user/datasource.md",
+  "sourceDirName": "user",
+  "slug": "/user/datasource",
+  "permalink": "/docs/user/datasource",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata 数据源支持",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata 数据源支持。"
+  }
+}

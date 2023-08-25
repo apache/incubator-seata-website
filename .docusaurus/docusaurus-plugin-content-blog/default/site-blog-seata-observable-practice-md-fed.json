@@ -1,0 +1,29 @@
+{
+  "permalink": "/blog/seata-observable-practice",
+  "source": "@site/blog/seata-observable-practice.md",
+  "title": "Seata的可观测实践",
+  "description": "本文介绍Seata在可观测领域的探索和实践",
+  "date": "2023-06-25T00:00:00.000Z",
+  "formattedDate": "June 25, 2023",
+  "tags": [],
+  "readingTime": 11.375,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "刘戎-Seata"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata的可观测实践",
+    "keywords": [
+      "Seata、分布式事务、数据一致性、微服务、可观测"
+    ],
+    "description": "本文介绍Seata在可观测领域的探索和实践",
+    "author": "刘戎-Seata",
+    "date": "2023/06/25"
+  },
+  "nextItem": {
+    "title": "Seata：连接数据与应用",
+    "permalink": "/blog/seata-connect-data-and-application"
+  }
+}

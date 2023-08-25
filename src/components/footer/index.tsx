@@ -24,12 +24,12 @@ const data = {
       {
         text: translate({ id: 'homepage.footerDocListText3', message: '报告文档问题' }),
         link: 'https://github.com/seata/seata.github.io/issues/new',
-        target: '',
+        target: "_blank",
       },
       {
-        text: translate({ id: 'homepage.footerDocListText3', message: '在Github上编辑此文档' }),
+        text: translate({ id: 'homepage.footerDocListText4', message: '在Github上编辑此文档' }),
         link: 'https://github.com/seata/seata.github.io',
-        target: '',
+        target: "_blank",
       },
     ],
   },
@@ -60,8 +60,10 @@ const Footer = (props: Props) => {
   return (
     <footer className="footer-container">
       <div className="footer-body">
-        <img src={getLink(logo)} />
-        <p className="docusaurus-power">website powered by docusaurus</p>
+        <img style={{ marginTop: "4px", maxWidth: "120px", height: "auto"}} src={logo} />
+        <br />
+        <br />
+        {/* <p className="docusaurus-power">website powered by docusaurus</p> */}
         <div className="cols-container">
           <div className="col col-12">
             <h3>{data.vision.title}</h3>

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "ops/deploy-server",
+  "id": "ops/deploy-server",
+  "title": "Deploy Server",
+  "description": "The server can deploy by multiple metho - Directly, Docker, Docker-Compose, Kubernetes, Helm.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/ops/deploy-server.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-server",
+  "permalink": "/docs/ops/deploy-server",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Deploy Server",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "The server can deploy by multiple metho - Directly, Docker, Docker-Compose, Kubernetes, Helm."
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "版本升级指南",
+    "permalink": "/docs/ops/upgrade"
+  },
+  "next": {
+    "title": "Deploy Seata Server By Docker",
+    "permalink": "/docs/ops/deploy-by-docker"
+  }
+}

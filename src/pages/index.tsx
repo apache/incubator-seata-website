@@ -7,7 +7,7 @@ import MseMap from './home/msemap';
 import Feature from './home/feature';
 import User from './home/users';
 // import Community from './home/community';
-// import { Footer } from '../components';
+import { Footer } from '../components';
 import './index.scss';
 
 export default function Home(): React.Element {
@@ -47,7 +47,7 @@ export default function Home(): React.Element {
         <Feature />
         <User />
         {/* <Community /> */}
-        {/* <Footer logo={'//img.alicdn.com/imgextra/i2/O1CN01oNTGgE1lfW7oEPIzP_!!6000000004846-2-tps-960-290.png'} /> */}
+        <Footer logo={'//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png'} />
       </div>
     </Layout>
   );

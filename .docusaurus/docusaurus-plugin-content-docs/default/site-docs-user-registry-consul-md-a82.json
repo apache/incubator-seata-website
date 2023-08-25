@@ -1,0 +1,14 @@
+{
+  "unversionedId": "user/registry/consul",
+  "id": "user/registry/consul",
+  "title": "Consul 注册中心",
+  "description": "Consul 是 Seata 组件中重要的注册中心实现",
+  "source": "@site/docs/user/registry/consul.md",
+  "sourceDirName": "user/registry",
+  "slug": "/user/registry/consul",
+  "permalink": "/docs/user/registry/consul",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}
