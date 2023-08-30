@@ -1,5 +1,5 @@
 ---
-title: Seata Terminology
+title: Terminology
 keywords: [Seata]
 description: Seata Terminology.
 ---

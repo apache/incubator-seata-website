@@ -1,0 +1,33 @@
+{
+  "unversionedId": "ops/deploy-by-kubernetes",
+  "id": "ops/deploy-by-kubernetes",
+  "title": "Deploy Seata Server By Kubernetes",
+  "description": "Deploy Seata Server By Kubernetes",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/ops/deploy-by-kubernetes.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-by-kubernetes",
+  "permalink": "/docs/ops/deploy-by-kubernetes",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "hidden": true,
+    "title": "Deploy Seata Server By Kubernetes",
+    "keywords": [
+      "kubernetes",
+      "ops"
+    ],
+    "description": "Deploy Seata Server By Kubernetes",
+    "author": "helloworlde",
+    "date": "2022-07-23T00:00:00.000Z"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "deploy-by-docker-compose",
+    "permalink": "/docs/ops/deploy-by-docker-compose"
+  },
+  "next": {
+    "title": "Deploy Seata Server By Helm",
+    "permalink": "/docs/ops/deploy-by-helm"
+  }
+}

@@ -1,5 +1,5 @@
 ---
-title: Seata事务隔离  
+title: 事务隔离  
 keywords: [Seata事务隔离]  
 description: Seata事务隔离
 ---

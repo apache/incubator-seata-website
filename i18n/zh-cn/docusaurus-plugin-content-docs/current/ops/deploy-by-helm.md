@@ -1,6 +1,6 @@
 ---
 hidden: true
-title: 使用 Helm 部署 Seata Server
+title: Helm部署
 keywords: [kubernetes,helm,ops]
 description: 使用 Helm 部署 Seata Server
 author: helloworlde

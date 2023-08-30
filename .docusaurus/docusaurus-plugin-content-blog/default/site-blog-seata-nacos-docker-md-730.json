@@ -1,0 +1,35 @@
+{
+  "permalink": "/blog/seata-nacos-docker",
+  "source": "@site/blog/seata-nacos-docker.md",
+  "title": "Docker部署Seata与Nacos整合",
+  "description": "本文讲述如何使用Seata整合Nacos配置的Docker部署",
+  "date": "2019-12-03T00:00:00.000Z",
+  "formattedDate": "December 3, 2019",
+  "tags": [],
+  "readingTime": 11.645,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "FUNKYE"
+    }
+  ],
+  "frontMatter": {
+    "title": "Docker部署Seata与Nacos整合",
+    "keywords": [
+      "Seata",
+      "Nacos",
+      "分布式事务"
+    ],
+    "description": "本文讲述如何使用Seata整合Nacos配置的Docker部署",
+    "author": "FUNKYE",
+    "date": "2019/12/03"
+  },
+  "prevItem": {
+    "title": "Seata 配置中心实现原理",
+    "permalink": "/blog/seata-config-center"
+  },
+  "nextItem": {
+    "title": "Seata分布式事务启用Nacos做配置中心",
+    "permalink": "/blog/seata-nacos-analysis"
+  }
+}

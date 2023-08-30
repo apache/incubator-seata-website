@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/sqlreference/function",
+  "id": "user/sqlreference/function",
+  "title": "function",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/sqlreference/function.md",
+  "sourceDirName": "user/sqlreference",
+  "slug": "/user/sqlreference/function",
+  "permalink": "/docs/user/sqlreference/function",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "sql-decoration",
+    "permalink": "/docs/user/sqlreference/sql-decoration"
+  },
+  "next": {
+    "title": "skywalking",
+    "permalink": "/docs/user/apm/skywalking"
+  }
+}

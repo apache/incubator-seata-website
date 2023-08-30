@@ -1,0 +1,36 @@
+{
+  "permalink": "/blog/seata-at-demo-in-mac",
+  "source": "@site/blog/seata-at-demo-in-mac.md",
+  "title": "Mac下的Seata Demo环境搭建（AT模式）",
+  "description": "前言",
+  "date": "2020-07-20T00:00:00.000Z",
+  "formattedDate": "July 20, 2020",
+  "tags": [],
+  "readingTime": 8.785,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "portman xu"
+    }
+  ],
+  "frontMatter": {
+    "title": "Mac下的Seata Demo环境搭建（AT模式）",
+    "author": "portman xu",
+    "date": "2020/07/20",
+    "keywords": [
+      "seata",
+      "分布式事务",
+      "demo",
+      "mac",
+      "at"
+    ]
+  },
+  "prevItem": {
+    "title": "分布式事务Seata源码-Client端启动流程",
+    "permalink": "/blog/seata-sourcecode-client-bootstrap"
+  },
+  "nextItem": {
+    "title": "Seata RPC 模块的重构之路",
+    "permalink": "/blog/seata-rpc-refactor"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "dev/mode/xa-mode",
+  "id": "dev/mode/xa-mode",
+  "title": "xa-mode",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/dev/mode/xa-mode.md",
+  "sourceDirName": "dev/mode",
+  "slug": "/dev/mode/xa-mode",
+  "permalink": "/docs/dev/mode/xa-mode",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "Seata Saga Mode",
+    "permalink": "/docs/dev/mode/saga-mode"
+  },
+  "next": {
+    "title": "overviewDomainModel",
+    "permalink": "/docs/dev/domain/overviewDomainModel"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/txgroup/transaction-group",
+  "id": "user/txgroup/transaction-group",
+  "title": "transaction-group",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/txgroup/transaction-group.md",
+  "sourceDirName": "user/txgroup",
+  "slug": "/user/txgroup/transaction-group",
+  "permalink": "/docs/user/txgroup/transaction-group",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "The seata parameter configuration version 1.6.0",
+    "permalink": "/docs/user/configurations"
+  },
+  "next": {
+    "title": "transaction-group-and-ha",
+    "permalink": "/docs/user/txgroup/transaction-group-and-ha"
+  }
+}

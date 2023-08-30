@@ -1,5 +1,5 @@
 ---
-title: Seata部署指南
+title: 新人文档
 keywords: [Seata]
 description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 ---

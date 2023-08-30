@@ -1,0 +1,29 @@
+{
+  "unversionedId": "user/sqlreference/sql-decoration",
+  "id": "user/sqlreference/sql-decoration",
+  "title": "SQL修饰",
+  "description": "Seata SQL修饰",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/sqlreference/sql-decoration.md",
+  "sourceDirName": "user/sqlreference",
+  "slug": "/user/sqlreference/sql-decoration",
+  "permalink": "/zh-cn/docs/user/sqlreference/sql-decoration",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "SQL修饰",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata SQL修饰"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "DML语句",
+    "permalink": "/zh-cn/docs/user/sqlreference/dml"
+  },
+  "next": {
+    "title": "函数",
+    "permalink": "/zh-cn/docs/user/sqlreference/function"
+  }
+}

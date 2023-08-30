@@ -1,0 +1,40 @@
+{
+  "permalink": "/zh-cn/blog/seata-client-start-analysis-02",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-client-start-analysis-02.md",
+  "title": "Seata应用侧启动过程剖析——注册中心与配置中心模块",
+  "description": "“刚上手Seata，对其各个模块了解还不够深入？",
+  "date": "2021-03-04T01:35:01.000Z",
+  "formattedDate": "2021年3月4日",
+  "tags": [
+    {
+      "label": "Seata",
+      "permalink": "/zh-cn/blog/tags/seata"
+    }
+  ],
+  "readingTime": 18.175,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "booogu"
+    }
+  ],
+  "frontMatter": {
+    "layout": "post",
+    "comments": true,
+    "title": "Seata应用侧启动过程剖析——注册中心与配置中心模块",
+    "date": "2021-03-04T01:35:01.000Z",
+    "author": "booogu",
+    "catalog": true,
+    "tags": [
+      "Seata"
+    ]
+  },
+  "prevItem": {
+    "title": "ConcurrentHashMap导致的Seata死锁问题",
+    "permalink": "/zh-cn/blog/seata-dsproxy-deadlock"
+  },
+  "nextItem": {
+    "title": "Seata应用侧启动过程剖析——RM & TM如何与TC建立连接",
+    "permalink": "/zh-cn/blog/seata-client-start-analysis-01"
+  }
+}

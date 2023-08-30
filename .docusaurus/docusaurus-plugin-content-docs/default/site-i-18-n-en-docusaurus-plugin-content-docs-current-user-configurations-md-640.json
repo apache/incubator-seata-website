@@ -1,0 +1,29 @@
+{
+  "unversionedId": "user/configurations",
+  "id": "user/configurations",
+  "title": "The seata parameter configuration version 1.6.0",
+  "description": "View version 1.0.0",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/user/configurations.md",
+  "sourceDirName": "user",
+  "slug": "/user/configurations",
+  "permalink": "/docs/user/configurations",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "Title": "Seata parameter configuration",
+    "keywords": [
+      "Seata"
+    ],
+    "Description": "Seata parameter configuration."
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Quick Start",
+    "permalink": "/docs/user/quickstart"
+  },
+  "next": {
+    "title": "transaction-group",
+    "permalink": "/docs/user/txgroup/transaction-group"
+  }
+}

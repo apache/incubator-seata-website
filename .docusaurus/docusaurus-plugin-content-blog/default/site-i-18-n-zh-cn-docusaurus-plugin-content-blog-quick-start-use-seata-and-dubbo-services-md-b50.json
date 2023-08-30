@@ -1,0 +1,35 @@
+{
+  "permalink": "/zh-cn/blog/quick-start-use-seata-and-dubbo-services",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/quick-start-use-seata-and-dubbo-services.md",
+  "title": "如何使用Seata保证Dubbo微服务间的一致性",
+  "description": "本文主要介绍如何使用Seata保证Dubbo微服务间的一致性",
+  "date": "2019-03-07T00:00:00.000Z",
+  "formattedDate": "2019年3月7日",
+  "tags": [],
+  "readingTime": 3.345,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "slievrly"
+    }
+  ],
+  "frontMatter": {
+    "title": "如何使用Seata保证Dubbo微服务间的一致性",
+    "keywords": [
+      "Dubbo",
+      "Seata",
+      "一致性"
+    ],
+    "description": "本文主要介绍如何使用Seata保证Dubbo微服务间的一致性",
+    "author": "slievrly",
+    "date": "2019-03-07T00:00:00.000Z"
+  },
+  "prevItem": {
+    "title": "TCC 理论及设计实现指南介绍",
+    "permalink": "/zh-cn/blog/tcc-mode-design-principle"
+  },
+  "nextItem": {
+    "title": "Fescar分布式事务原理解析探秘",
+    "permalink": "/zh-cn/blog/seata-analysis-simple"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "permalink": "/blog/seata-dsproxy-deadlock",
+  "source": "@site/blog/seata-dsproxy-deadlock.md",
+  "title": "ConcurrentHashMap导致的Seata死锁问题",
+  "description": "本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁",
+  "date": "2021-03-13T00:00:00.000Z",
+  "formattedDate": "March 13, 2021",
+  "tags": [],
+  "readingTime": 15.61,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "罗小勇"
+    }
+  ],
+  "frontMatter": {
+    "title": "ConcurrentHashMap导致的Seata死锁问题",
+    "keywords": [
+      "Seata、动态数据源、DataSource、ConcurrentHashMap、computeIfAbsent"
+    ],
+    "description": "本文主要介绍了一个线上问题，因ConcurrentHashMap的Bug而导致的Seata动态数据源代理死锁",
+    "author": "罗小勇",
+    "date": "2021/03/13"
+  },
+  "prevItem": {
+    "title": "Seata新特性支持 -- undo_log压缩",
+    "permalink": "/blog/seata-feature-undo-log-compress"
+  },
+  "nextItem": {
+    "title": "Seata应用侧启动过程剖析——注册中心与配置中心模块",
+    "permalink": "/blog/seata-client-start-analysis-02"
+  }
+}

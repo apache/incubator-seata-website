@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/appendix/global-transaction-status",
+  "id": "user/appendix/global-transaction-status",
+  "title": "global-transaction-status",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/appendix/global-transaction-status.md",
+  "sourceDirName": "user/appendix",
+  "slug": "/user/appendix/global-transaction-status",
+  "permalink": "/docs/user/appendix/global-transaction-status",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "performance",
+    "permalink": "/docs/user/performance"
+  },
+  "next": {
+    "title": "isolation",
+    "permalink": "/docs/user/appendix/isolation"
+  }
+}

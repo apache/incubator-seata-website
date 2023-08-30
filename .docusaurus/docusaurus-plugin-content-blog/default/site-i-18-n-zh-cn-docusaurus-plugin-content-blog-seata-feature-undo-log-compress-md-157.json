@@ -1,0 +1,34 @@
+{
+  "permalink": "/zh-cn/blog/seata-feature-undo-log-compress",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-feature-undo-log-compress.md",
+  "title": "Seata新特性支持 -- undo_log压缩",
+  "description": "现状 & 痛点",
+  "date": "2021-05-07T00:00:00.000Z",
+  "formattedDate": "2021年5月7日",
+  "tags": [],
+  "readingTime": 5.78,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "chd"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata新特性支持 -- undo_log压缩",
+    "author": "chd",
+    "keywords": [
+      "Seata",
+      "undo_log",
+      "compress"
+    ],
+    "date": "2021/05/07"
+  },
+  "prevItem": {
+    "title": "Seata基于改良版雪花算法的分布式UUID生成器分析",
+    "permalink": "/zh-cn/blog/seata-analysis-UUID-generator"
+  },
+  "nextItem": {
+    "title": "ConcurrentHashMap导致的Seata死锁问题",
+    "permalink": "/zh-cn/blog/seata-dsproxy-deadlock"
+  }
+}

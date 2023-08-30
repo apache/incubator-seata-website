@@ -1,0 +1,29 @@
+{
+  "unversionedId": "dev/seata-mertics",
+  "id": "dev/seata-mertics",
+  "title": "Metrics 设计",
+  "description": "Metrics。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/dev/seata-mertics.md",
+  "sourceDirName": "dev",
+  "slug": "/dev/seata-mertics",
+  "permalink": "/zh-cn/docs/dev/seata-mertics",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Metrics 设计",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Metrics。"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "事务协调者(TC)",
+    "permalink": "/zh-cn/docs/dev/domain/tc"
+  },
+  "next": {
+    "title": "版本升级指南",
+    "permalink": "/zh-cn/docs/ops/upgrade"
+  }
+}

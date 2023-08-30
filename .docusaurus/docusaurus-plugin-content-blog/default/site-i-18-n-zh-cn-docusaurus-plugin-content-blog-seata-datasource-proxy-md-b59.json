@@ -1,0 +1,33 @@
+{
+  "permalink": "/zh-cn/blog/seata-datasource-proxy",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-datasource-proxy.md",
+  "title": "Seata数据源代理解析",
+  "description": "本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题",
+  "date": "2020-10-16T00:00:00.000Z",
+  "formattedDate": "2020年10月16日",
+  "tags": [],
+  "readingTime": 36.27,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "罗小勇"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata数据源代理解析",
+    "keywords": [
+      "Seata、数据源、数据源代理、多数据源"
+    ],
+    "description": "本文主要介绍Seata数据源代理实现原理及使用时可能会遇到的问题",
+    "author": "罗小勇",
+    "date": "2020/10/16"
+  },
+  "prevItem": {
+    "title": "seata-golang 通信模型详解",
+    "permalink": "/zh-cn/blog/seata-golang-communication-mode"
+  },
+  "nextItem": {
+    "title": "分布式事务Seata源码-Client端启动流程",
+    "permalink": "/zh-cn/blog/seata-sourcecode-client-bootstrap"
+  }
+}

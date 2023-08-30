@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/configuration/nacos",
+  "id": "user/configuration/nacos",
+  "title": "Nacos 配置中心",
+  "description": "Nacos 是 Seata 组件中重要的配置中心实现.",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/configuration/nacos.md",
+  "sourceDirName": "user/configuration",
+  "slug": "/user/configuration/nacos",
+  "permalink": "/zh-cn/docs/user/configuration/nacos",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "简介",
+    "permalink": "/zh-cn/docs/user/configuration/"
+  },
+  "next": {
+    "title": "Apollo 配置中心",
+    "permalink": "/zh-cn/docs/user/configuration/apollo"
+  }
+}

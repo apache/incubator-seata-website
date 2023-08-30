@@ -1,0 +1,37 @@
+{
+  "permalink": "/blog/integrate-seata-tcc-mode-with-spring-cloud",
+  "source": "@site/blog/integrate-seata-tcc-mode-with-spring-cloud.md",
+  "title": "Spring Cloud集成Seata分布式事务-TCC模式",
+  "description": "本文主要介绍Spring Cloud集成Seata分布式事务TCC模式",
+  "date": "2021-01-23T00:00:00.000Z",
+  "formattedDate": "January 23, 2021",
+  "tags": [],
+  "readingTime": 7.31,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "弓行（谭志坚）"
+    }
+  ],
+  "frontMatter": {
+    "title": "Spring Cloud集成Seata分布式事务-TCC模式",
+    "keywords": [
+      "TCC",
+      "Seata",
+      "Spring Cloud",
+      "分布式",
+      "事务"
+    ],
+    "description": "本文主要介绍Spring Cloud集成Seata分布式事务TCC模式",
+    "author": "弓行（谭志坚）",
+    "date": "2021-01-23T00:00:00.000Z"
+  },
+  "prevItem": {
+    "title": "Seata应用侧启动过程剖析——RM & TM如何与TC建立连接",
+    "permalink": "/blog/seata-client-start-analysis-01"
+  },
+  "nextItem": {
+    "title": "Seata配置管理原理解析",
+    "permalink": "/blog/seata-config-manager"
+  }
+}

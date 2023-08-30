@@ -1,0 +1,33 @@
+{
+  "permalink": "/zh-cn/blog/seata-connect-data-and-application",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-connect-data-and-application.md",
+  "title": "Seata：连接数据与应用",
+  "description": "本文介绍Seata的过去、现在和未来演进",
+  "date": "2023-06-10T00:00:00.000Z",
+  "formattedDate": "2023年6月10日",
+  "tags": [],
+  "readingTime": 22.88,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "季敏-Seata 开源社区创始人，分布式事务团队负责人"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata：连接数据与应用",
+    "keywords": [
+      "Seata、分布式事务、数据一致性、微服务"
+    ],
+    "description": "本文介绍Seata的过去、现在和未来演进",
+    "author": "季敏-Seata 开源社区创始人，分布式事务团队负责人",
+    "date": "2023/06/10"
+  },
+  "prevItem": {
+    "title": "Seata的可观测实践",
+    "permalink": "/zh-cn/blog/seata-observable-practice"
+  },
+  "nextItem": {
+    "title": "生产环境可用的 seata-go 1.2.0 来了！！！",
+    "permalink": "/zh-cn/blog/seata-go-1.2.0"
+  }
+}

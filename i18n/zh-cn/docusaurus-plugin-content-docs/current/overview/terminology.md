@@ -1,5 +1,5 @@
 ---
-title: Seata术语
+title: Seata术语表
 keywords: [Seata]
 description: Seata术语。
 ---

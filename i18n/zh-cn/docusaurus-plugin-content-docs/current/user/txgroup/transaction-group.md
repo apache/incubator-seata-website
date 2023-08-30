@@ -1,5 +1,5 @@
 ---
-title: Seata 事务分组
+title: 事务分组介绍
 keywords: [Seata]
 description: Seata 事务分组。
 ---

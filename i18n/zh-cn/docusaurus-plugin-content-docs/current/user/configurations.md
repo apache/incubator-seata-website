@@ -1,5 +1,5 @@
 ---
-title: Seata 参数配置
+title: 参数配置
 keywords: [Seata]
 description: Seata 参数配置。
 ---

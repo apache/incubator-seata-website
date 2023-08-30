@@ -1,0 +1,14 @@
+{
+  "unversionedId": "ops/config-center",
+  "id": "ops/config-center",
+  "title": "config-center",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/ops/config-center.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/config-center",
+  "permalink": "/docs/ops/config-center",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

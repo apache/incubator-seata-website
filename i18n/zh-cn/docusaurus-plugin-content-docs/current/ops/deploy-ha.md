@@ -1,6 +1,6 @@
 ---
 hidden: true
-title: Seata 高可用部署
+title: 高可用部署
 keywords: [kubernetes,ops]
 description: Seata 高可用部署
 author: helloworlde

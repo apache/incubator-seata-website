@@ -1,0 +1,23 @@
+{
+  "unversionedId": "dev/domain/overviewDomainModel",
+  "id": "dev/domain/overviewDomainModel",
+  "title": "overviewDomainModel",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/dev/domain/overviewDomainModel.md",
+  "sourceDirName": "dev/domain",
+  "slug": "/dev/domain/overviewDomainModel",
+  "permalink": "/docs/dev/domain/overviewDomainModel",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "xa-mode",
+    "permalink": "/docs/dev/mode/xa-mode"
+  },
+  "next": {
+    "title": "tm",
+    "permalink": "/docs/dev/domain/tm"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/performance",
+  "id": "user/performance",
+  "title": "performance",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/performance.md",
+  "sourceDirName": "user",
+  "slug": "/user/performance",
+  "permalink": "/docs/user/performance",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "prometheus",
+    "permalink": "/docs/user/apm/prometheus"
+  },
+  "next": {
+    "title": "global-transaction-status",
+    "permalink": "/docs/user/appendix/global-transaction-status"
+  }
+}

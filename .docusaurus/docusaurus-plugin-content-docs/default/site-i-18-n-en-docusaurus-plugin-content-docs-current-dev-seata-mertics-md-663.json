@@ -1,0 +1,30 @@
+{
+  "unversionedId": "dev/seata-mertics",
+  "id": "dev/seata-mertics",
+  "title": "Metrics design",
+  "description": "Seata Metrics.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/dev/seata-mertics.md",
+  "sourceDirName": "dev",
+  "slug": "/dev/seata-mertics",
+  "permalink": "/docs/dev/seata-mertics",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Metrics design",
+    "keywords": [
+      "Seata",
+      "Metrics"
+    ],
+    "description": "Seata Metrics."
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "tc",
+    "permalink": "/docs/dev/domain/tc"
+  },
+  "next": {
+    "title": "upgrade",
+    "permalink": "/docs/ops/upgrade"
+  }
+}
