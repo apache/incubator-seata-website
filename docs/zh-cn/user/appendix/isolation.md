@@ -224,7 +224,7 @@ public class StorageService {
   - `ConnectionProxy`的作用（返回`StatementProxy`）
   - `StatementProxy.execute()`的处理逻辑
     - `io.seata.rm.datasource.exec.UpdateExecutor`的执行逻辑（查前镜像、执行sql、查后镜像、准备undoLog）
-    -  `SelectForUpdateExecutor`的执行逻辑（挣本地锁，查全局锁。有全局锁，回滚，再争...）
+    -  `SelectForUpdateExecutor`的执行逻辑（争本地锁，查全局锁。有全局锁，回滚，再争...）
   - `ConnectionProxy.commit()`的处理逻辑（注册分支事务（争全局锁），写入undoLog，数据库提交）
 - 介绍RootContext
 - `GlobalTransactionalInterceptor`的不同代理逻辑
