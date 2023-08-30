@@ -1,6 +1,6 @@
 ---
 hidden: true
-title: 使用 Docker 部署 Seata Server
+title: Docker部署
 keywords: [docker,docker-compose,ops]
 description: 使用 Docker 部署 Seata Server
 author: helloworlde

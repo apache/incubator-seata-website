@@ -1,6 +1,6 @@
 ---
 hidden: true
-title: 使用 Docker compose 快速部署 Seata Server
+title: Docker compose部署
 keywords: [docker-compose,ops]
 description: 使用 Docker-compose 快速部署 Seata Server
 author: zouwei

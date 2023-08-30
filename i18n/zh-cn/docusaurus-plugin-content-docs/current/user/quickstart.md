@@ -1,5 +1,5 @@
 ---
-title: Seata 快速开始
+title: 快速启动
 keywords: [Seata]
 description: Seata 快速开始。
 ---

@@ -1,7 +1,7 @@
 ---
-title: DML语句
+title: SQL修饰
 keywords: [Seata]
-description: Seata DML语句
+description: Seata SQL修饰
 ---
 
 # SQL修饰

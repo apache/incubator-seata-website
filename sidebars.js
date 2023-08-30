@@ -27,12 +27,44 @@ const sidebars = {
       items: [
         'user/quickstart',
         'user/configurations',
+        {
+          type: 'category',
+          label: 'Transactions Grouping',
+          items: ['user/txgroup/transaction-group', 'user/txgroup/transaction-group-and-ha'],
+        },
+        {
+          type: 'category',
+          label: 'Configuration Center',
+          items: ['user/configuration/index', 'user/configuration/nacos', 'user/configuration/apollo', 'user/configuration/etcd3', 'user/configuration/consul', 'user/configuration/zookeeper'],
+        },
+        {
+          type: 'category',
+          label: 'Registration Authority',
+          items: ['user/registry/index', 'user/registry/nacos', 'user/registry/eureka', 'user/registry/etcd3', 'user/registry/consul', 'user/registry/zookeeper'],
+        },
         'user/api',
         'user/microservice',
+        'user/ormframework',
+        'user/datasource',
         {
           type: 'category',
           label: 'SQL Reference',
-          items: ['user/sqlreference/sql-restrictions', 'user/sqlreference/dml'],
+          items: ['user/sqlreference/sql-restrictions', 'user/sqlreference/dml', 'user/sqlreference/sql-decoration', 'user/sqlreference/function'],
+        },
+        {
+          type: 'category',
+          label: 'APM',
+          items: ['user/apm/skywalking', 'user/apm/prometheus'],
+        },
+        {
+          type: 'category',
+          label: 'Testing Report',
+          items: ['user/performance'],
+        },
+        {
+          type: 'category',
+          label: 'Appendix',
+          items: ['user/appendix/global-transaction-status', 'user/appendix/isolation'],
         },
       ],
     },
@@ -44,7 +76,12 @@ const sidebars = {
         {
           type: 'category',
           label: 'Transaction Mode',
-          items: ['dev/mode/at-mode', 'dev/mode/tcc-mode', 'dev/mode/saga-mode'],
+          items: ['dev/mode/at-mode', 'dev/mode/tcc-mode', 'dev/mode/saga-mode', 'dev/mode/xa-mode'],
+        },
+        {
+          type: 'category',
+          label: 'Domain Model',
+          items: ['dev/domain/overviewDomainModel', 'dev/domain/tm', 'dev/domain/rm', 'dev/domain/tc'],
         },
         'dev/seata-mertics',
       ],
@@ -58,7 +95,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Deploy',
-          items: ['ops/deploy-server', 'ops/deploy-by-docker', 'ops/deploy-by-kubernetes', 'ops/deploy-by-helm', 'ops/deploy-ha'],
+          items: ['ops/deploy-guide-beginner', 'ops/deploy-server', 'ops/deploy-by-docker', 'ops/deploy-by-docker-compose', 'ops/deploy-by-kubernetes', 'ops/deploy-by-helm', 'ops/deploy-ha'],
         },
       ],
     },

@@ -1,5 +1,5 @@
 ---
-title: 运维指南
+title: Prometheus
 keywords: [Seata]
 description: Seata支持在TC开启Metrics数据采集并输出到Prometheus监控系统中。
 ---

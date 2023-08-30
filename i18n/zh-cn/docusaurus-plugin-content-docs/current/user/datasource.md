@@ -1,5 +1,5 @@
 ---
-title: Seata 数据源支持
+title: 数据库类型支持
 keywords: [Seata]
 description: Seata 数据源支持。
 ---

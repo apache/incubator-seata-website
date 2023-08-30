@@ -1,6 +1,6 @@
 ---
 hidden: true
-title: 使用 Kubernetes 部署 Seata Server
+title: Kubernetes部署
 keywords: [kubernetes,ops]
 description: 使用 Kubernetes 部署 Seata Server
 author: helloworlde

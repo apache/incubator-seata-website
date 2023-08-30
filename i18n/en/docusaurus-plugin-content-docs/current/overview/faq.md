@@ -1,5 +1,5 @@
 ---
-title: Seata FAQ
+title: FAQ
 keywords: [Seata]
 description: Seata FAQ.
 ---

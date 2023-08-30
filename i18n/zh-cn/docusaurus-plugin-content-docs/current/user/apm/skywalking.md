@@ -1,4 +1,4 @@
-# SkyWalking APM（应用性能监控）
+# SkyWalking
 
 SkyWalking 是 Seata 组件中重要的APM（应用性能监控）实现.
 

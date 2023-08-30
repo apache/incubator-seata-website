@@ -1,5 +1,5 @@
 ---
-title: Seata ORM框架支持
+title: ORM框架支持
 keywords: [Seata]
 description: Seata ORM框架支持。
 ---
