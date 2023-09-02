@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/configuration/zookeeper",
+  "id": "user/configuration/zookeeper",
+  "title": "zookeeper",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/configuration/zookeeper.md",
+  "sourceDirName": "user/configuration",
+  "slug": "/user/configuration/zookeeper",
+  "permalink": "/docs/user/configuration/zookeeper",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "consul",
+    "permalink": "/docs/user/configuration/consul"
+  },
+  "next": {
+    "title": "index",
+    "permalink": "/docs/user/registry/"
+  }
+}

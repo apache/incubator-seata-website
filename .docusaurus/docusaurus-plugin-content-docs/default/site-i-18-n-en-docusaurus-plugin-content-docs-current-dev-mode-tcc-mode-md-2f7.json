@@ -1,0 +1,30 @@
+{
+  "unversionedId": "dev/mode/tcc-mode",
+  "id": "dev/mode/tcc-mode",
+  "title": "Seata TCC Mode",
+  "description": "Seata TCC mode.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/dev/mode/tcc-mode.md",
+  "sourceDirName": "dev/mode",
+  "slug": "/dev/mode/tcc-mode",
+  "permalink": "/docs/dev/mode/tcc-mode",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata TCC Mode",
+    "keywords": [
+      "Seata",
+      "TCC Mode"
+    ],
+    "description": "Seata TCC mode."
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Seata AT Mode",
+    "permalink": "/docs/dev/mode/at-mode"
+  },
+  "next": {
+    "title": "Seata Saga Mode",
+    "permalink": "/docs/dev/mode/saga-mode"
+  }
+}

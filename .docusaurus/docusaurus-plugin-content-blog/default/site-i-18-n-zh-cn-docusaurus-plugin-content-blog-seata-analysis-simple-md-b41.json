@@ -1,0 +1,32 @@
+{
+  "permalink": "/zh-cn/blog/seata-analysis-simple",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-analysis-simple.md",
+  "title": "Fescar分布式事务原理解析探秘",
+  "description": "fescar发布已有时日，分布式事务一直是业界备受关注的领域，fescar发布一个月左右便受到了近5000个star足以说明其热度。当然，在fescar出来之前，",
+  "date": "2019-02-18T00:00:00.000Z",
+  "formattedDate": "2019年2月18日",
+  "tags": [],
+  "readingTime": 22.81,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "陈凯玲"
+    }
+  ],
+  "frontMatter": {
+    "title": "Fescar分布式事务原理解析探秘",
+    "author": "陈凯玲",
+    "keywords": [
+      "Fescar、分布式事务"
+    ],
+    "date": "2019/02/18"
+  },
+  "prevItem": {
+    "title": "如何使用Seata保证Dubbo微服务间的一致性",
+    "permalink": "/zh-cn/blog/quick-start-use-seata-and-dubbo-services"
+  },
+  "nextItem": {
+    "title": "MT 模式",
+    "permalink": "/zh-cn/blog/manual-transaction-mode"
+  }
+}

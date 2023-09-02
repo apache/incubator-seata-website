@@ -1,0 +1,36 @@
+{
+  "permalink": "/zh-cn/blog/seata-analysis-dubbo-transmit-xid",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-analysis-dubbo-transmit-xid.md",
+  "title": "源码分析Seata-XID传递 Dubbo篇",
+  "description": "本文讲述通过源码解析Seata-Dubbo传递XID",
+  "date": "2020-01-01T00:00:00.000Z",
+  "formattedDate": "2020年1月1日",
+  "tags": [],
+  "readingTime": 3.39,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "FUNKYE"
+    }
+  ],
+  "frontMatter": {
+    "title": "源码分析Seata-XID传递 Dubbo篇",
+    "keywords": [
+      "Seata",
+      "Dubbo",
+      "分布式事务",
+      "spring"
+    ],
+    "description": "本文讲述通过源码解析Seata-Dubbo传递XID",
+    "author": "FUNKYE",
+    "date": "2020/01/01"
+  },
+  "prevItem": {
+    "title": "Seata config 模块源码分析",
+    "permalink": "/zh-cn/blog/seata-analysis-config-modular"
+  },
+  "nextItem": {
+    "title": "Seata Community Meetup·杭州站",
+    "permalink": "/zh-cn/blog/seata-meetup-hangzhou"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/txgroup/transaction-group-and-ha",
+  "id": "user/txgroup/transaction-group-and-ha",
+  "title": "transaction-group-and-ha",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/txgroup/transaction-group-and-ha.md",
+  "sourceDirName": "user/txgroup",
+  "slug": "/user/txgroup/transaction-group-and-ha",
+  "permalink": "/docs/user/txgroup/transaction-group-and-ha",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "transaction-group",
+    "permalink": "/docs/user/txgroup/transaction-group"
+  },
+  "next": {
+    "title": "index",
+    "permalink": "/docs/user/configuration/"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "unversionedId": "developers/developers_dev",
+  "id": "developers/developers_dev",
+  "title": "Developers",
+  "description": "Seata Team.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/developers_dev.md",
+  "sourceDirName": "developers",
+  "slug": "/developers/developers_dev",
+  "permalink": "/docs/developers/developers_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Developers",
+    "keywords": [
+      "Seata",
+      "Developers"
+    ],
+    "description": "Seata Team."
+  },
+  "sidebar": "developers",
+  "next": {
+    "title": "New contributor guide",
+    "permalink": "/docs/developers/contributor-guide/new-contributor-guide_dev"
+  }
+}

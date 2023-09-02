@@ -1,0 +1,35 @@
+{
+  "permalink": "/blog/seata-mybatisplus-analysis",
+  "source": "@site/blog/seata-mybatisplus-analysis.md",
+  "title": "透过源码解决SeataAT模式整合Mybatis-Plus失去MP特性的问题",
+  "description": "本文讲述如何透过源码解决Seata整合Mybatis-Plus失去MP特性的问题",
+  "date": "2019-11-30T00:00:00.000Z",
+  "formattedDate": "November 30, 2019",
+  "tags": [],
+  "readingTime": 10.225,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "FUNKYE"
+    }
+  ],
+  "frontMatter": {
+    "title": "透过源码解决SeataAT模式整合Mybatis-Plus失去MP特性的问题",
+    "keywords": [
+      "Seata",
+      "Mybatis-Plus",
+      "分布式事务"
+    ],
+    "description": "本文讲述如何透过源码解决Seata整合Mybatis-Plus失去MP特性的问题",
+    "author": "FUNKYE",
+    "date": "2019/11/30"
+  },
+  "prevItem": {
+    "title": "Seata分布式事务启用Nacos做配置中心",
+    "permalink": "/blog/seata-nacos-analysis"
+  },
+  "nextItem": {
+    "title": "SpringBoot+Dubbo+MybatisPlus整合seata分布式事务",
+    "permalink": "/blog/springboot-dubbo-mybatisplus-seata"
+  }
+}

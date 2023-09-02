@@ -1,0 +1,32 @@
+{
+  "permalink": "/zh-cn/blog/seata-analysis-core-modular",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-analysis-core-modular.md",
+  "title": "Seata core 模块源码分析",
+  "description": "一  . 导读",
+  "date": "2019-12-23T00:00:00.000Z",
+  "formattedDate": "2019年12月23日",
+  "tags": [],
+  "readingTime": 8.63,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "赵润泽"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata core 模块源码分析",
+    "author": "赵润泽",
+    "keywords": [
+      "Seata、分布式事务"
+    ],
+    "date": "2019/12/23"
+  },
+  "prevItem": {
+    "title": "Seata tcc 模块源码分析",
+    "permalink": "/zh-cn/blog/seata-analysis-tcc-modular"
+  },
+  "nextItem": {
+    "title": "通过AOP动态创建/关闭Seata分布式事务",
+    "permalink": "/zh-cn/blog/seata-spring-boot-aop-aspectj"
+  }
+}

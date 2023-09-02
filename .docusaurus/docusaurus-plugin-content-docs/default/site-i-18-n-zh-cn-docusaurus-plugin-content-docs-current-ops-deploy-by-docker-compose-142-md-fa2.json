@@ -1,0 +1,24 @@
+{
+  "unversionedId": "ops/deploy-by-docker-compose-142",
+  "id": "ops/deploy-by-docker-compose-142",
+  "title": "使用 Docker compose 快速部署 Seata Server",
+  "description": "使用 Docker-compose 快速部署 Seata Server",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/ops/deploy-by-docker-compose-142.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-by-docker-compose-142",
+  "permalink": "/zh-cn/docs/ops/deploy-by-docker-compose-142",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "hidden": true,
+    "title": "使用 Docker compose 快速部署 Seata Server",
+    "keywords": [
+      "docker-compose",
+      "ops"
+    ],
+    "description": "使用 Docker-compose 快速部署 Seata Server",
+    "author": "zouwei",
+    "date": "2021-12-05T00:00:00.000Z"
+  }
+}

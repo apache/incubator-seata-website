@@ -1,0 +1,34 @@
+{
+  "unversionedId": "ops/deploy-by-helm",
+  "id": "ops/deploy-by-helm",
+  "title": "Helm部署",
+  "description": "使用 Helm 部署 Seata Server",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/ops/deploy-by-helm.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-by-helm",
+  "permalink": "/zh-cn/docs/ops/deploy-by-helm",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "hidden": true,
+    "title": "Helm部署",
+    "keywords": [
+      "kubernetes",
+      "helm",
+      "ops"
+    ],
+    "description": "使用 Helm 部署 Seata Server",
+    "author": "helloworlde",
+    "date": "2019-12-01T00:00:00.000Z"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Kubernetes部署",
+    "permalink": "/zh-cn/docs/ops/deploy-by-kubernetes"
+  },
+  "next": {
+    "title": "高可用部署",
+    "permalink": "/zh-cn/docs/ops/deploy-ha"
+  }
+}

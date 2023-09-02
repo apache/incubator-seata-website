@@ -1,0 +1,37 @@
+{
+  "permalink": "/blog/seata-golang-communication-mode",
+  "source": "@site/blog/seata-golang-communication-mode.md",
+  "title": "seata-golang 通信模型详解",
+  "description": "本文详细讲述 seata-golang 底层 rpc 通信的实现原理",
+  "date": "2021-01-04T00:00:00.000Z",
+  "formattedDate": "January 4, 2021",
+  "tags": [],
+  "readingTime": 18.72,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "刘晓敏"
+    }
+  ],
+  "frontMatter": {
+    "title": "seata-golang 通信模型详解",
+    "keywords": [
+      "seata",
+      "seata-golang",
+      "seata-go",
+      "getty",
+      "分布式事务"
+    ],
+    "description": "本文详细讲述 seata-golang 底层 rpc 通信的实现原理",
+    "author": "刘晓敏",
+    "date": "2021/01/04"
+  },
+  "prevItem": {
+    "title": "Seata配置管理原理解析",
+    "permalink": "/blog/seata-config-manager"
+  },
+  "nextItem": {
+    "title": "Seata数据源代理解析",
+    "permalink": "/blog/seata-datasource-proxy"
+  }
+}

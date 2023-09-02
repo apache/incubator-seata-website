@@ -1,0 +1,25 @@
+{
+  "unversionedId": "overview/what-is-seata",
+  "id": "overview/what-is-seata",
+  "title": "What Is Seata?",
+  "description": "Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/overview/what-is-seata.md",
+  "sourceDirName": "overview",
+  "slug": "/overview/what-is-seata",
+  "permalink": "/docs/overview/what-is-seata",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "What Is Seata?",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users."
+  },
+  "sidebar": "docs",
+  "next": {
+    "title": "Terminology",
+    "permalink": "/docs/overview/terminology"
+  }
+}

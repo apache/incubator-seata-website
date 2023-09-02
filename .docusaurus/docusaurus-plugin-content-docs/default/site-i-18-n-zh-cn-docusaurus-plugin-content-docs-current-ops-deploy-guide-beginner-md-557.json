@@ -1,0 +1,29 @@
+{
+  "unversionedId": "ops/deploy-guide-beginner",
+  "id": "ops/deploy-guide-beginner",
+  "title": "新人文档",
+  "description": "Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/ops/deploy-guide-beginner.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-guide-beginner",
+  "permalink": "/zh-cn/docs/ops/deploy-guide-beginner",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "新人文档",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "版本升级指南",
+    "permalink": "/zh-cn/docs/ops/upgrade"
+  },
+  "next": {
+    "title": "直接部署",
+    "permalink": "/zh-cn/docs/ops/deploy-server"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/configuration/consul",
+  "id": "user/configuration/consul",
+  "title": "Consul 配置中心",
+  "description": "在 以 Consul 作为注册中心 的基础上，将 Seata 配置放到 Consul 中",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/configuration/consul.md",
+  "sourceDirName": "user/configuration",
+  "slug": "/user/configuration/consul",
+  "permalink": "/zh-cn/docs/user/configuration/consul",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "Etcd3 配置中心",
+    "permalink": "/zh-cn/docs/user/configuration/etcd3"
+  },
+  "next": {
+    "title": "Zookeeper 配置中心",
+    "permalink": "/zh-cn/docs/user/configuration/zookeeper"
+  }
+}

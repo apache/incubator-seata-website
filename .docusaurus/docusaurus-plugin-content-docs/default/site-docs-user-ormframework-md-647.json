@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/ormframework",
+  "id": "user/ormframework",
+  "title": "ormframework",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/ormframework.md",
+  "sourceDirName": "user",
+  "slug": "/user/ormframework",
+  "permalink": "/docs/user/ormframework",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "Microservice Framework Guide",
+    "permalink": "/docs/user/microservice"
+  },
+  "next": {
+    "title": "datasource",
+    "permalink": "/docs/user/datasource"
+  }
+}

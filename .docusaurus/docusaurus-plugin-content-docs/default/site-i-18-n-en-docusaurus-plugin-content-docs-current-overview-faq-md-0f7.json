@@ -1,0 +1,29 @@
+{
+  "unversionedId": "overview/faq",
+  "id": "overview/faq",
+  "title": "FAQ",
+  "description": "Seata FAQ.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/overview/faq.md",
+  "sourceDirName": "overview",
+  "slug": "/overview/faq",
+  "permalink": "/docs/overview/faq",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "FAQ",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata FAQ."
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Terminology",
+    "permalink": "/docs/overview/terminology"
+  },
+  "next": {
+    "title": "Quick Start",
+    "permalink": "/docs/user/quickstart"
+  }
+}

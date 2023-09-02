@@ -1,0 +1,33 @@
+{
+  "permalink": "/zh-cn/blog/seata-at-mode-start",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-blog/seata-at-mode-start.md",
+  "title": "Seata AT 模式启动源码分析",
+  "description": "Seata 源码分析系列",
+  "date": "2019-11-27T00:00:00.000Z",
+  "formattedDate": "2019年11月27日",
+  "tags": [],
+  "readingTime": 13.8,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "张乘辉"
+    }
+  ],
+  "frontMatter": {
+    "title": "Seata AT 模式启动源码分析",
+    "author": "张乘辉",
+    "keywords": [
+      "Seata、分布式事务、AT模式"
+    ],
+    "description": "Seata 源码分析系列",
+    "date": "2019/11/27"
+  },
+  "prevItem": {
+    "title": "Seata 客户端需要同时启动 RM 和 TM 吗？",
+    "permalink": "/zh-cn/blog/seata-at-mode-start-rm-tm"
+  },
+  "nextItem": {
+    "title": "基于 Seata Saga 设计更有弹性的金融应用",
+    "permalink": "/zh-cn/blog/design-more-flexable-application-by-saga"
+  }
+}

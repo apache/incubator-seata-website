@@ -1,0 +1,35 @@
+{
+  "permalink": "/blog/quick-start-use-seata-and-dubbo-services",
+  "source": "@site/i18n/en/docusaurus-plugin-content-blog/quick-start-use-seata-and-dubbo-services.md",
+  "title": "How to use Seata to ensure consistency between Dubbo Microservices",
+  "description": "This article will introduce you how to use Seata to ensure consistency between Dubbo Microservices.",
+  "date": "2019-03-07T00:00:00.000Z",
+  "formattedDate": "March 7, 2019",
+  "tags": [],
+  "readingTime": 2.84,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "slievrly"
+    }
+  ],
+  "frontMatter": {
+    "title": "How to use Seata to ensure consistency between Dubbo Microservices",
+    "keywords": [
+      "Dubbo",
+      "Seata",
+      "Consistency"
+    ],
+    "description": "This article will introduce you how to use Seata to ensure consistency between Dubbo Microservices.",
+    "author": "slievrly",
+    "date": "2019-03-07T00:00:00.000Z"
+  },
+  "prevItem": {
+    "title": "TCC 理论及设计实现指南介绍",
+    "permalink": "/blog/tcc-mode-design-principle"
+  },
+  "nextItem": {
+    "title": "Fescar分布式事务原理解析探秘",
+    "permalink": "/blog/seata-analysis-simple"
+  }
+}

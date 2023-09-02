@@ -1,0 +1,29 @@
+{
+  "unversionedId": "ops/deploy-ha",
+  "id": "ops/deploy-ha",
+  "title": "高可用部署",
+  "description": "Seata 高可用部署",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/ops/deploy-ha.md",
+  "sourceDirName": "ops",
+  "slug": "/ops/deploy-ha",
+  "permalink": "/zh-cn/docs/ops/deploy-ha",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "hidden": true,
+    "title": "高可用部署",
+    "keywords": [
+      "kubernetes",
+      "ops"
+    ],
+    "description": "Seata 高可用部署",
+    "author": "helloworlde",
+    "date": "2020-04-10T00:00:00.000Z"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Helm部署",
+    "permalink": "/zh-cn/docs/ops/deploy-by-helm"
+  }
+}

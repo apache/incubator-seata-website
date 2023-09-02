@@ -79,9 +79,9 @@ const Top = ({ language }: { language?: string }) => {
         <section className="top-section">
           <div className="top-body">
             <div className="vertical-middle">
-              {/* <div className="product-name">
+              <div className="product-name">
                 <h2>{topData.brandName}</h2>
-              </div> */}
+              </div>
               <p className="product-desc">{topData.briefIntroduction}</p>
               <div className="button-area">
                 {topData.buttons.map((b) => (

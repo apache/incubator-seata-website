@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/configuration/consul",
+  "id": "user/configuration/consul",
+  "title": "consul",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/user/configuration/consul.md",
+  "sourceDirName": "user/configuration",
+  "slug": "/user/configuration/consul",
+  "permalink": "/docs/user/configuration/consul",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "etcd3",
+    "permalink": "/docs/user/configuration/etcd3"
+  },
+  "next": {
+    "title": "zookeeper",
+    "permalink": "/docs/user/configuration/zookeeper"
+  }
+}

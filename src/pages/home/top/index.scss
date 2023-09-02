@@ -1,9 +1,8 @@
 @import '../../../css/variables.scss';
 @import '../../../css/reset.scss';
 .top-section {
-  height: 100vh;
-  // background-color: $brandColor;
-  background-color: #eaf3fd;
+  height: 720px;
+  background-color: $brandColor;
   .top-body {
     position: relative;
     overflow: hidden;
@@ -27,7 +26,7 @@
       font-family: Avenir-Medium;
       font-weight: 700;
       font-size: 46px;
-      color: #444;
+      color: #FFF;
       word-break: break-word;
       margin: 0;
     }
@@ -35,7 +34,7 @@
   .product-desc {
     font-family: Avenir-Medium;
     font-size: 24px;
-    color: #444;
+    color: #FFF;
     margin: 12px auto 0;
     max-width: 730px;
   }
@@ -67,9 +66,9 @@
         height: 24px;
         line-height: 24px;
         padding-left: 10px;
-        color: #333;
+        color: #fff;
         font-size: 0;
-        background: #a5d0fc;
+        background: rgba(255, 255, 255, 0.2);
         img {
           width: 16px;
           height: 16px;
@@ -103,8 +102,8 @@
       display: inline-block;
       font-family: Avenir-Heavy;
       font-size: 14px;
-      color: #333;
-      background: #a5d0fc;
+      color: #FFF;
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 2px;
       line-height: 24px;
       padding: 0 6px;
@@ -117,7 +116,7 @@
   .release-date {
     font-family: Avenir-Medium;
     font-size: 12px;
-    color: #333;
+    color: #fff;
   }
   .animation {
     width: 546px;

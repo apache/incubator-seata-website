@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/registry/zookeeper",
+  "id": "user/registry/zookeeper",
+  "title": "Zookeeper 注册中心",
+  "description": "欢迎认领补充此文档。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/registry/zookeeper.md",
+  "sourceDirName": "user/registry",
+  "slug": "/user/registry/zookeeper",
+  "permalink": "/zh-cn/docs/user/registry/zookeeper",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "Consul 注册中心",
+    "permalink": "/zh-cn/docs/user/registry/consul"
+  },
+  "next": {
+    "title": "API 支持",
+    "permalink": "/zh-cn/docs/user/api"
+  }
+}

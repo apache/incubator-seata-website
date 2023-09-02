@@ -1,0 +1,19 @@
+{
+  "unversionedId": "developers/committer-guide/release-guide_dev",
+  "id": "developers/committer-guide/release-guide_dev",
+  "title": "release-guide_dev",
+  "description": "TBD",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/committer-guide/release-guide_dev.md",
+  "sourceDirName": "developers/committer-guide",
+  "slug": "/developers/committer-guide/release-guide_dev",
+  "permalink": "/docs/developers/committer-guide/release-guide_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "developers",
+  "previous": {
+    "title": "Website Guide",
+    "permalink": "/docs/developers/committer-guide/website-guide_dev"
+  }
+}

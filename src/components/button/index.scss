@@ -15,15 +15,18 @@
   text-decoration: none;
 
   &-primary {
-    border: 2px solid #5381fd;
-    color: #5381fd;
+    border: 2px solid #FFF;
+    color: $brandColor;
+    background: #FFF;
   }
   &-normal {
-    border: 2px solid #333;
-    color: #333;
+    border: 2px solid #FFF;
+    opacity: 0.6;
+    color: #FFF;
   }
   &-normal:hover {
-    border: 2px solid #0054d1;
-    color: #0054d1;
+    border: 2px solid #FFF;
+    opacity: 1;
+    color: #FFF;
   }
 }

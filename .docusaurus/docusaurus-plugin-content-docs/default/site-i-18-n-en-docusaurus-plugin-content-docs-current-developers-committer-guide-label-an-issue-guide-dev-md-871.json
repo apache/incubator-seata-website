@@ -1,0 +1,29 @@
+{
+  "unversionedId": "developers/committer-guide/label-an-issue-guide_dev",
+  "id": "developers/committer-guide/label-an-issue-guide_dev",
+  "title": "Label an Issue",
+  "description": "Label an Issue.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/committer-guide/label-an-issue-guide_dev.md",
+  "sourceDirName": "developers/committer-guide",
+  "slug": "/developers/committer-guide/label-an-issue-guide_dev",
+  "permalink": "/docs/developers/committer-guide/label-an-issue-guide_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Label an Issue",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Label an Issue."
+  },
+  "sidebar": "developers",
+  "previous": {
+    "title": "Contributing to Seata",
+    "permalink": "/docs/developers/guide_dev"
+  },
+  "next": {
+    "title": "Website Guide",
+    "permalink": "/docs/developers/committer-guide/website-guide_dev"
+  }
+}

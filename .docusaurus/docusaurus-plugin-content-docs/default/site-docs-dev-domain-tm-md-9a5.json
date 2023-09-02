@@ -1,0 +1,23 @@
+{
+  "unversionedId": "dev/domain/tm",
+  "id": "dev/domain/tm",
+  "title": "tm",
+  "description": "Placeholder. DO NOT DELETE.",
+  "source": "@site/docs/dev/domain/tm.md",
+  "sourceDirName": "dev/domain",
+  "slug": "/dev/domain/tm",
+  "permalink": "/docs/dev/domain/tm",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "overviewDomainModel",
+    "permalink": "/docs/dev/domain/overviewDomainModel"
+  },
+  "next": {
+    "title": "rm",
+    "permalink": "/docs/dev/domain/rm"
+  }
+}

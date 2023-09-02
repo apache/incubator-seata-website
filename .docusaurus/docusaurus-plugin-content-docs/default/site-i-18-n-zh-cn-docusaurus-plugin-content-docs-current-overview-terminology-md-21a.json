@@ -1,0 +1,29 @@
+{
+  "unversionedId": "overview/terminology",
+  "id": "overview/terminology",
+  "title": "Seata术语表",
+  "description": "Seata术语。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/overview/terminology.md",
+  "sourceDirName": "overview",
+  "slug": "/overview/terminology",
+  "permalink": "/zh-cn/docs/overview/terminology",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata术语表",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata术语。"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Seata 是什么？",
+    "permalink": "/zh-cn/docs/overview/what-is-seata"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/zh-cn/docs/overview/faq"
+  }
+}

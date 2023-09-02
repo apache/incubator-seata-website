@@ -1,0 +1,29 @@
+{
+  "unversionedId": "developers/contributor-guide/test-coverage-guide_dev",
+  "id": "developers/contributor-guide/test-coverage-guide_dev",
+  "title": "测试覆盖率向导",
+  "description": "测试覆盖率向导。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/developers/contributor-guide/test-coverage-guide_dev.md",
+  "sourceDirName": "developers/contributor-guide",
+  "slug": "/developers/contributor-guide/test-coverage-guide_dev",
+  "permalink": "/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "测试覆盖率向导",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "测试覆盖率向导。"
+  },
+  "sidebar": "developers",
+  "previous": {
+    "title": "新贡献者向导",
+    "permalink": "/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev"
+  },
+  "next": {
+    "title": "报告安全问题",
+    "permalink": "/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev"
+  }
+}

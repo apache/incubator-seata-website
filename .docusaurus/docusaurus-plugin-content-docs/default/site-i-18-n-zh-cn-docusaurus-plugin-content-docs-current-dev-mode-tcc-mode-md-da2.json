@@ -1,0 +1,29 @@
+{
+  "unversionedId": "dev/mode/tcc-mode",
+  "id": "dev/mode/tcc-mode",
+  "title": "Seata TCC 模式",
+  "description": "Seata Tcc 模式。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/dev/mode/tcc-mode.md",
+  "sourceDirName": "dev/mode",
+  "slug": "/dev/mode/tcc-mode",
+  "permalink": "/zh-cn/docs/dev/mode/tcc-mode",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Seata TCC 模式",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata Tcc 模式。"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Seata AT 模式",
+    "permalink": "/zh-cn/docs/dev/mode/at-mode"
+  },
+  "next": {
+    "title": "Seata SAGA 模式",
+    "permalink": "/zh-cn/docs/dev/mode/saga-mode"
+  }
+}

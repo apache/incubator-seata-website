@@ -1,0 +1,29 @@
+{
+  "unversionedId": "developers/committer-guide/website-guide_dev",
+  "id": "developers/committer-guide/website-guide_dev",
+  "title": "网站向导",
+  "description": "Seata 网站向导。",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/developers/committer-guide/website-guide_dev.md",
+  "sourceDirName": "developers/committer-guide",
+  "slug": "/developers/committer-guide/website-guide_dev",
+  "permalink": "/zh-cn/docs/developers/committer-guide/website-guide_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "网站向导",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Seata 网站向导。"
+  },
+  "sidebar": "developers",
+  "previous": {
+    "title": "给问题打标签",
+    "permalink": "/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev"
+  },
+  "next": {
+    "title": "Seata版本向导",
+    "permalink": "/zh-cn/docs/developers/committer-guide/release-guide_dev"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "user/registry/etcd3",
+  "id": "user/registry/etcd3",
+  "title": "Etcd3 注册中心",
+  "description": "Etcd3是 Seata 组件中重要的注册中心实现.",
+  "source": "@site/i18n/zh-cn/docusaurus-plugin-content-docs/current/user/registry/etcd3.md",
+  "sourceDirName": "user/registry",
+  "slug": "/user/registry/etcd3",
+  "permalink": "/zh-cn/docs/user/registry/etcd3",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docs",
+  "previous": {
+    "title": "Eureka 注册中心",
+    "permalink": "/zh-cn/docs/user/registry/eureka"
+  },
+  "next": {
+    "title": "Consul 注册中心",
+    "permalink": "/zh-cn/docs/user/registry/consul"
+  }
+}

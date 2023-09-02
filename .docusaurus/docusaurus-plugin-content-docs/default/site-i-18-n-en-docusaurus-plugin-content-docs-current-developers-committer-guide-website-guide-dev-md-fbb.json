@@ -1,0 +1,29 @@
+{
+  "unversionedId": "developers/committer-guide/website-guide_dev",
+  "id": "developers/committer-guide/website-guide_dev",
+  "title": "Website Guide",
+  "description": "Website Guide.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/committer-guide/website-guide_dev.md",
+  "sourceDirName": "developers/committer-guide",
+  "slug": "/developers/committer-guide/website-guide_dev",
+  "permalink": "/docs/developers/committer-guide/website-guide_dev",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Website Guide",
+    "keywords": [
+      "Seata"
+    ],
+    "description": "Website Guide."
+  },
+  "sidebar": "developers",
+  "previous": {
+    "title": "Label an Issue",
+    "permalink": "/docs/developers/committer-guide/label-an-issue-guide_dev"
+  },
+  "next": {
+    "title": "release-guide_dev",
+    "permalink": "/docs/developers/committer-guide/release-guide_dev"
+  }
+}
