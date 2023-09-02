@@ -246,7 +246,7 @@
 <li><code>StatementProxy.execute()</code>的处理逻辑
 <ul>
 <li><code>io.seata.rm.datasource.exec.UpdateExecutor</code>的执行逻辑（查前镜像、执行sql、查后镜像、准备undoLog）</li>
-<li><code>SelectForUpdateExecutor</code>的执行逻辑（挣本地锁，查全局锁。有全局锁，回滚，再争...）</li>
+<li><code>SelectForUpdateExecutor</code>的执行逻辑（争本地锁，查全局锁。有全局锁，回滚，再争...）</li>
 </ul>
 </li>
 <li><code>ConnectionProxy.commit()</code>的处理逻辑（注册分支事务（争全局锁），写入undoLog，数据库提交）</li>
