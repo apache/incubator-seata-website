@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkseata_website=self.webpackChunkseata_website||[]).push([[8434],{97088:e=>{e.exports=JSON.parse('{"label":"facebook","permalink":"/en/blog/tags/facebook","allTagsPath":"/en/blog/tags","count":1}')}}]);
