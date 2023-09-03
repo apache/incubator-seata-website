@@ -26,9 +26,10 @@ const config = {
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
+  clientModules: [require.resolve('./src/myClientModule.ts'), require.resolve('./src/custom-js.ts')],
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'zh-cn'],
+    defaultLocale: 'default',
+    locales: ['en', 'zh-cn', 'default'],
     localeConfigs: {
       'en': {
         label: 'En',
