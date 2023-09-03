@@ -35,8 +35,8 @@ const data = {
       desc: translate({ id: 'community.contactsDesc', message: '有问题需要反馈？请通过一下方式联系我们。' }),
       list: [
         {
-          img: '/img/community/mailinglist.png',
-          imgHover: '/img/community/mailinglist_hover.png',
+          img: 'img/community/mailinglist.png',
+          imgHover: 'img/community/mailinglist_hover.png',
           title: translate({ id: 'community.contactsListTitle1', message: '邮件列表' }),
           link: 'mailto:dev-seata+subscribe@googlegroups.com',
         },
@@ -67,7 +67,7 @@ const data = {
       desc: translate({ id: 'community.contributeDesc', message: '欢迎为 Seata 做贡献！' }),
       list: [
         {
-          img: '/img/community/mailinglist.png',
+          img: 'img/community/mailinglist.png',
           title: translate({ id: 'community.contributeListTitle1', message: '邮件列表' }),
           content: (
             <span>
@@ -78,7 +78,7 @@ const data = {
           ),
         },
         {
-          img: '/img/community/issue.png',
+          img: 'img/community/issue.png',
           title: translate({ id: 'community.contributeListTitle2', message: '报告问题' }),
           content: (
             <span>
@@ -90,7 +90,7 @@ const data = {
           ),
         },
         {
-          img: '/img/community/documents.png',
+          img: 'img/community/documents.png',
           title: translate({ id: 'community.contributeListTitle3', message: '改进文档' }),
           content: (
             <span>
@@ -102,7 +102,7 @@ const data = {
           ),
         },
         {
-          img: '/img/community/pullrequest.png',
+          img: 'img/community/pullrequest.png',
           title: translate({ id: 'community.contributeListContent4_1', message: '提交 PR' }),
           content: (
             <span>
