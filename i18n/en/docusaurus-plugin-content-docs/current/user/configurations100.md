@@ -10,13 +10,12 @@ Description: Seata parameter configuration.
 
 
 
-#The seata parameter configuration version 1.0.0
+# The seata parameter configuration version 1.0.0
 
 <a href="./configurations090">View versions before 0.9.0.1</a>
 
 
-
-###Change record
+### Change record
 
 ```
 
@@ -26,7 +25,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 
 ```
 
-##Attention attribute (see all attributes for detailed description)
+## Attention attribute (see all attributes for detailed description)
 
 | server side         | client side|
 |---------------|----|
@@ -40,106 +39,64 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 
 
 
-##All attributes
+## All attributes
 
-###Public sector
+### Public sector
 
 | key | desc | remark|
-
 |---------------|--------------|----|
-
 | transport.serialization | client and server communication codec method | seata (ByteBuf), protobuf, kryo, mission, default seata|
-
 | transport.compressor | compression method of communication data between client and server | none, gzip, default: none|
-
 | transport.heartbeat | the heartbeat detection switch for communication between client and server | True is enabled by default|
-
 | registry.type | registry type | default file, supporting file, nacos, eureka, redis, zk, consumer, etcd3, sofa, and custom|
-
 | config.type | configuration center type | Default file, supporting file, nacos, apollo, zk, consult, etcd3, and custom|
 
-###Server side
+### Server side
 
 | key| desc | remark|
-
 |-------------------------------------------|---------------------------------|----------------------------|
-
 | server.undo.log.save.days | undo retention days | 7 days by default, log_ Status=1 (Appendix 3) and undo not normally cleaned|
-
 | server.undo.log.delete.period | undo Cleanup thread interval | 86400000 by default, in milliseconds|
-
 | server.max.commit.retry.timeout | Timeout duration of two-phase commit retry | Unit: ms, s, m, h, d, corresponding to ms, s, min, h, d, and the default is ms. The default value of - 1 means unlimited retries. Formula: timeout>=now globalTransactionBeginTime, true means no retry if timeout occurs|
-
 | server.max.rollback.retry.timeout | Timeout duration of two-phase rollback retry | Same as commit|
-
 | server.recovery.committing-retry-period | Phase2 commit unfinished status Global transaction retry commit thread interval | 1000 by default, in milliseconds|
-
 | server.recovery.async-committing-retry-period | Phase2 asynchronous submission status Retry submission thread interval | 1000 by default, in milliseconds|
-
 | server.recovery.rollback-retry-period | Phase2 rollback status retry rollbacking thread interval | 1000 by default, in milliseconds|
-
 | server.recovery.timeout-retry-period | Timeout status detection Retry thread interval | 1000 by default, in milliseconds. If timeout is detected, put the global transaction into the rollback session manager|
-
 | store.mode | Transaction session information storage mode | file Local file (HA is not supported), db database (HA is supported)|
-
 | store.file.dir | file mode file storage folder name | default sessionStore|
-
 | store.db.datasource | db mode data source type | default dbcp|
-
 | store.db.db-type | db mode database type | default mysql|
-
 | store.db.driver-class-name | db mode database driver | default com.mysql.jdbc Driver |
-
 | store.db.url | db mode database url | default jdbc: mysql://127.0.0.1:3306/seata |
-
 | store.db.user | db mode database account | default MySQL|
-
 | store.db.password | db mode database account password | default MySQL|
-
 | store.db.min-conn | The number of initial connections to the database in db mode | 1 by default|
-
 | store.db.max-conn | maximum number of connections to database in db mode | 3 by default|
-
 | store.db.global.table | db mode global transaction table name | default global_ table |
-
 | store.db.branch.table | db mode branch transaction table name | default branch_ table |
-
 | store.db.lock-table | db mode global lock table name | default lock_ table |
-
 | store.db.query-limit | The maximum number of global transactions queried in db mode | 100 by default|
-
 | metrics.enabled | whether to enable Metrics | False is off by default. In the false state, all Metrics related components will not be initialized to minimize the performance loss|
-
 | metrics.registry-type | indicator registrar type | The indicator registrar type used by Metrics is a built-in compact (simple) implementation by default. Meters in this implementation only use limited memory counts, and the performance is high enough to meet most scenarios; Currently, only one indicator registrar can be set|
-
 | metrics.exporter-list | indicator result Measurement data outputter list | default prometheus. Multiple outputters are separated by English commas, such as "prometheus, jmx". Currently, only the prometheus outputters are connected|
-
 | metrics.exporter-prometheus-port | prometheus exporter client port number | 9898 by default|
 
 ### client端
 
 | key| desc    | remark|
-|-------------------------------------------|----------------------------|----------------------------|
+|----------------------------------|----------------------------|----------------------------|
 | seata.enabled   | whether to enable spring boot automatic assembly   |true、false，default true（appendix 4） |
 | client.report.success.enable                     |whether to report success in the first phase | true, false, default true is used to keep the branch transaction lifecycle records complete, false can improve performance|
-| transport.enable-client-batch-send-request       
-| client.log.exceptionRate                         |whether to batch merge and send the client transaction message requests | The default is true and false|
-| service.vgroup_mapping.my_test_tx_group          
-| service.default.grouplist                        |log exception output probability | 100 by default, currently used for exception stack output when undo rollback fails, 1% probability output, rollback failure is basically dirty data, and the output stack does not need to occupy hard disk space|
-| service.disableGlobalTransaction                 
-| service.enableDegrade                            |transaction Group (Appendix 1) | my_ test_ tx_ Group refers to grouping, and the configuration item value is TC cluster name|
-| client.rm.async.commit.buffer.limit              
-| client.rm.lock.retry.internal                    |TC Service List (Appendix 2) | Only used when the registry is file|
-| client.rm.lock.retry.times                       
-| client.rm.lock.retry.policy.branch-rollback-on-co|global transaction switch | False by default. false is on, true is off|
-| client.rm.report.retry.count                     
-| client.rm.table.meta.check.enable                |degradation switch (to be implemented) | False by default. The business side automatically downgrades according to the number of consecutive errors and does not go through the seata transaction|
-| client.tm.commit.retry.count                     
-| client.tm.rollback.retry.count                   |asynchronous commit cache queue length | 10000 by default. Phase II commit succeeded. RM asynchronously cleans the undo queue|
-| client.undo.data.validation                      
-| client.undo.log.serialization                    |check or occupy the global lock retry interval | 10 by default, in milliseconds|
-| client.undo.log.table                            
-| client.support.spring.datasource.autoproxy       |number of retries to verify or occupy the global lock | 30 by default|
+| transport.enable-client-batch-send-request       | client.log.exceptionRate                         |whether to batch merge and send the client transaction message requests | The default is true and false|
+| service.vgroup_mapping.my_test_tx_group          | service.default.grouplist                        |log exception output probability | 100 by default, currently used for exception stack output when undo rollback fails, 1% probability output, rollback failure is basically dirty data, and the output stack does not need to occupy hard disk space|
+| service.disableGlobalTransaction                 | service.enableDegrade                            |transaction Group (Appendix 1) | my_ test_ tx_ Group refers to grouping, and the configuration item value is TC cluster name|
+| client.rm.async.commit.buffer.limit              | client.rm.lock.retry.internal                    |TC Service List (Appendix 2) | Only used when the registry is file|
+| client.rm.lock.retry.times                       | client.rm.lock.retry.policy.branch-rollback-on-co|global transaction switch | False by default. false is on, true is off|
+| client.rm.report.retry.count                     | client.rm.table.meta.check.enable                |degradation switch (to be implemented) | False by default. The business side automatically downgrades according to the number of consecutive errors and does not go through the seata transaction|
+| client.tm.commit.retry.count                     | client.tm.rollback.retry.count                   |asynchronous commit cache queue length | 10000 by default. Phase II commit succeeded. RM asynchronously cleans the undo queue|
+| client.undo.data.validation                      | client.undo.log.serialization                    |check or occupy the global lock retry interval | 10 by default, in milliseconds|
+| client.undo.log.table                            | client.support.spring.datasource.autoproxy       |number of retries to verify or occupy the global lock | 30 by default|
 
 
 ### Not in used
@@ -233,7 +190,7 @@ Parameter description:
 
 -z: zk path
 
-###Appendix 1:
+### Appendix 1:
 
 Description of transaction grouping.
 
@@ -251,7 +208,7 @@ There is an additional layer to obtain the configuration of transaction groups t
 
 
 
-###Appendix 2:
+### Appendix 2:
 
 About the grouplist question.
 
@@ -269,7 +226,7 @@ Not recommended. For example, question 1, when registering It is used when type=
 
 
 
-###Appendix 3:
+### Appendix 3:
 
 log_ Status=1 is defensive. It means that a global rollback request is received, but it is uncertain whether the local transaction of a transaction branch has been executed. At this time, a piece of data with the same branch ID is inserted in advance, and the inserted false data is successful. If the local transaction continues to execute, the master key conflict will be automatically rolled back.
 
@@ -277,7 +234,7 @@ If the insertion is unsuccessful, it indicates that the local transaction has be
 
 
 
-###Appendix 4:
+### Appendix 4:
 
 Whether to enable spring boot automatic assembly. If it is enabled, the integration of seata and spring boot will be automatically configured, including the automatic proxy of data source and initialization of GlobalTransactionScanner.
 
