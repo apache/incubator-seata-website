@@ -46,11 +46,11 @@ const topData = {
     },
   ],
   versionNote: {
-    text: 'Release Note of 1.7.0',
+    text: 'Release Note of 1.7.1',
     link: 'https://github.com/seata/seata/releases/tag/v1.7.0',
   },
   releaseDate: {
-    text: 'Released on Jul 11, 2023',
+    text: 'Released on Sep 5, 2023',
   },
 };
 
