@@ -17,8 +17,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'alibaba', // Usually your GitHub org/user name.
-  projectName: 'seata', // Usually your repo name.
+  organizationName: 'seata', // Usually your GitHub org/user name.
+  projectName: 'seata.github.io', // Usually your repo name.
   
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -44,15 +44,7 @@ const config = {
   scripts: [
     { src: '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js' },
     {
-      src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
-      id: 'beacon-aplus',
-      exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
-    },
-    {
-      src: '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
-    },
-    {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-YHS75WKFBR',
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
       async: true,
     },
   ],
@@ -61,7 +53,39 @@ const config = {
       href: '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css',
     },
   ],
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: ['docusaurus-plugin-sass',
+    ['docusaurus-plugin-includes',
+    {
+      injectedHtmlTags: {
+        headTags: [
+          {
+            tagName: 'meta',
+            attributes: {
+              name: 'aes-config',
+              content: 'pid=xux-opensource&user_type=101&uid=&username=&dim10=seata',
+            },
+          },
+        ],
+        preBodyTags: [
+          {
+            tagName: 'script',
+            attributes: {
+              src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
+              id: 'beacon-aplus',
+              exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
+            },
+          },
+          {
+            tagName: 'script',
+            attributes: {
+              src: '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
+            },
+          },
+        ],
+      }
+    },
+    ]
+  ],
   presets: [
     [
       'classic',
