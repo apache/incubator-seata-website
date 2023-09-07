@@ -1,930 +1,983 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
     <url>
-        <loc>https://seata.io/zh-cn/</loc>
-        <lastmod>2023-08-09T01:01:21+00:00</lastmod>
+        <loc>https://seata.io/</loc>
+        <lastmod>2023-09-07T01:28:20+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0000</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/index.html</loc>
-        <lastmod>2023-08-09T01:01:21+00:00</lastmod>
+        <loc>https://seata.io/en/</loc>
+        <lastmod>2023-09-07T01:27:11+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8000</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/overview/what-is-seata.html</loc>
-        <lastmod>2023-08-09T01:01:14+00:00</lastmod>
+        <loc>https://seata.io/zh-cn/</loc>
+        <lastmod>2023-09-07T01:35:28+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8000</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/developers/developers_dev.html</loc>
-        <lastmod>2023-08-09T01:01:12+00:00</lastmod>
+        <loc>https://seata.io/blog/rss.xml</loc>
+        <lastmod>2023-09-07T00:58:32+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8000</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/blog/index.html</loc>
-        <lastmod>2023-08-09T01:01:01+00:00</lastmod>
+        <loc>https://seata.io/blog/atom.xml</loc>
+        <lastmod>2023-09-07T00:58:29+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8000</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/community/index.html</loc>
-        <lastmod>2023-08-09T01:01:09+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/download.html</loc>
-        <lastmod>2023-08-09T01:01:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/user/quickstart.html</loc>
-        <lastmod>2023-08-09T01:01:18+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/overview/terminology.html</loc>
-        <lastmod>2023-08-09T01:01:14+00:00</lastmod>
+        <loc>https://seata.io/en/blog/rss.xml</loc>
+        <lastmod>2023-09-07T01:23:41+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6400</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/overview/faq.html</loc>
-        <lastmod>2023-08-09T01:01:14+00:00</lastmod>
+        <loc>https://seata.io/en/blog/atom.xml</loc>
+        <lastmod>2023-09-07T01:23:38+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6400</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/configurations.html</loc>
-        <lastmod>2023-08-09T01:01:17+00:00</lastmod>
+        <loc>https://seata.io/zh-cn/blog/rss.xml</loc>
+        <lastmod>2023-09-07T01:31:57+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6400</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/txgroup/transaction-group.html</loc>
-        <lastmod>2023-08-09T01:01:20+00:00</lastmod>
+        <loc>https://seata.io/zh-cn/blog/atom.xml</loc>
+        <lastmod>2023-09-07T01:31:54+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6400</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/txgroup/transaction-group-and-ha.html</loc>
-        <lastmod>2023-08-09T01:01:20+00:00</lastmod>
+        <loc>https://seata.io/community/</loc>
+        <lastmod>2023-09-07T01:18:40+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6400</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/configuration/index.html</loc>
-        <lastmod>2023-08-09T01:01:16+00:00</lastmod>
+        <loc>https://seata.io/en/community/</loc>
+        <lastmod>2023-09-07T01:23:52+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/configuration/nacos.html</loc>
-        <lastmod>2023-08-09T01:01:16+00:00</lastmod>
+        <loc>https://seata.io/zh-cn/community/</loc>
+        <lastmod>2023-09-07T01:32:08+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/configuration/apollo.html</loc>
-        <lastmod>2023-08-09T01:01:16+00:00</lastmod>
+        <loc>https://seata.io/docs/user/configuration/</loc>
+        <lastmod>2023-09-07T01:19:04+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/configuration/etcd3.html</loc>
-        <lastmod>2023-08-09T01:01:16+00:00</lastmod>
+        <loc>https://seata.io/docs/user/registry/</loc>
+        <lastmod>2023-09-07T01:19:07+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/configuration/consul.html</loc>
-        <lastmod>2023-08-09T01:01:16+00:00</lastmod>
+        <loc>https://seata.io/docs/next/user/configuration/</loc>
+        <lastmod>2023-09-07T01:18:54+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/configuration/zookeeper.html</loc>
-        <lastmod>2023-08-09T01:01:17+00:00</lastmod>
+        <loc>https://seata.io/docs/next/user/registry/</loc>
+        <lastmod>2023-09-07T01:18:57+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/registry/index.html</loc>
-        <lastmod>2023-08-09T01:01:19+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.6/user/configuration/</loc>
+        <lastmod>2023-09-07T01:20:44+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/registry/nacos.html</loc>
-        <lastmod>2023-08-09T01:01:19+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.6/user/registry/</loc>
+        <lastmod>2023-09-07T01:20:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/registry/eureka.html</loc>
-        <lastmod>2023-08-09T01:01:18+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.5/user/configuration/</loc>
+        <lastmod>2023-09-07T01:20:30+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/registry/etcd3.html</loc>
-        <lastmod>2023-08-09T01:01:18+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.5/user/registry/</loc>
+        <lastmod>2023-09-07T01:20:33+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/registry/consul.html</loc>
-        <lastmod>2023-08-09T01:01:18+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.4/user/configuration/</loc>
+        <lastmod>2023-09-07T01:20:16+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/registry/zookeeper.html</loc>
-        <lastmod>2023-08-09T01:01:19+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.4/user/registry/</loc>
+        <lastmod>2023-09-07T01:20:19+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/api.html</loc>
-        <lastmod>2023-08-09T01:01:14+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.3/user/configuration/</loc>
+        <lastmod>2023-09-07T01:20:01+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/microservice.html</loc>
-        <lastmod>2023-08-09T01:01:18+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.3/user/registry/</loc>
+        <lastmod>2023-09-07T01:20:04+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/ormframework.html</loc>
-        <lastmod>2023-08-09T01:01:18+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.2/user/configuration/</loc>
+        <lastmod>2023-09-07T01:19:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/datasource.html</loc>
-        <lastmod>2023-08-09T01:01:17+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.2/user/registry/</loc>
+        <lastmod>2023-09-07T01:19:50+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/sqlreference/sql-restrictions.html</loc>
-        <lastmod>2023-08-09T01:01:20+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.1/user/configuration/</loc>
+        <lastmod>2023-09-07T01:19:32+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/sqlreference/dml.html</loc>
-        <lastmod>2023-08-09T01:01:19+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.1/user/registry/</loc>
+        <lastmod>2023-09-07T01:19:35+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/sqlreference/sql-decoration.html</loc>
-        <lastmod>2023-08-09T01:01:20+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.0/user/configuration/</loc>
+        <lastmod>2023-09-07T01:19:18+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/sqlreference/function.html</loc>
-        <lastmod>2023-08-09T01:01:20+00:00</lastmod>
+        <loc>https://seata.io/docs/v1.0/user/registry/</loc>
+        <lastmod>2023-09-07T01:19:21+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.5120</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/user/configuration/</loc>
+        <lastmod>2023-09-07T01:24:16+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/user/registry/</loc>
+        <lastmod>2023-09-07T01:24:19+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/next/user/configuration/</loc>
+        <lastmod>2023-09-07T01:24:06+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/next/user/registry/</loc>
+        <lastmod>2023-09-07T01:24:09+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.6/user/configuration/</loc>
+        <lastmod>2023-09-07T01:25:56+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.6/user/registry/</loc>
+        <lastmod>2023-09-07T01:25:59+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.5/user/configuration/</loc>
+        <lastmod>2023-09-07T01:25:42+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.5/user/registry/</loc>
+        <lastmod>2023-09-07T01:25:45+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.4/user/configuration/</loc>
+        <lastmod>2023-09-07T01:25:27+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.4/user/registry/</loc>
+        <lastmod>2023-09-07T01:25:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.3/user/configuration/</loc>
+        <lastmod>2023-09-07T01:25:13+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.3/user/registry/</loc>
+        <lastmod>2023-09-07T01:25:16+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.2/user/configuration/</loc>
+        <lastmod>2023-09-07T01:24:59+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.2/user/registry/</loc>
+        <lastmod>2023-09-07T01:25:02+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.1/user/configuration/</loc>
+        <lastmod>2023-09-07T01:24:45+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.1/user/registry/</loc>
+        <lastmod>2023-09-07T01:24:48+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.0/user/configuration/</loc>
+        <lastmod>2023-09-07T01:24:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/en/docs/v1.0/user/registry/</loc>
+        <lastmod>2023-09-07T01:24:34+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configuration/</loc>
+        <lastmod>2023-09-07T01:32:32+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/registry/</loc>
+        <lastmod>2023-09-07T01:32:35+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/next/user/configuration/</loc>
+        <lastmod>2023-09-07T01:32:22+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/next/user/registry/</loc>
+        <lastmod>2023-09-07T01:32:25+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.6/user/configuration/</loc>
+        <lastmod>2023-09-07T01:34:13+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.6/user/registry/</loc>
+        <lastmod>2023-09-07T01:34:16+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.5/user/configuration/</loc>
+        <lastmod>2023-09-07T01:33:58+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.5/user/registry/</loc>
+        <lastmod>2023-09-07T01:34:02+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.4/user/configuration/</loc>
+        <lastmod>2023-09-07T01:33:44+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.4/user/registry/</loc>
+        <lastmod>2023-09-07T01:33:47+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.3/user/configuration/</loc>
+        <lastmod>2023-09-07T01:33:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.3/user/registry/</loc>
+        <lastmod>2023-09-07T01:33:33+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.2/user/configuration/</loc>
+        <lastmod>2023-09-07T01:33:15+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.2/user/registry/</loc>
+        <lastmod>2023-09-07T01:33:18+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.1/user/configuration/</loc>
+        <lastmod>2023-09-07T01:33:01+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.1/user/registry/</loc>
+        <lastmod>2023-09-07T01:33:04+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.0/user/configuration/</loc>
+        <lastmod>2023-09-07T01:32:47+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/v1.0/user/registry/</loc>
+        <lastmod>2023-09-07T01:32:50+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4096</priority>
     </url>
     <url>
         <loc>https://seata.io/zh-cn/docs/user/apm/skywalking.html</loc>
-        <lastmod>2023-08-09T01:01:15+00:00</lastmod>
+        <lastmod>2023-09-06T12:48:42+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.4096</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/apm/prometheus.html</loc>
-        <lastmod>2023-08-09T01:01:15+00:00</lastmod>
+        <loc>https://seata.io/zh-cn/docs/overview/what-is-seata.html</loc>
+        <lastmod>2023-09-06T12:48:41+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.3277</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/performance.html</loc>
-        <lastmod>2023-08-09T01:01:18+00:00</lastmod>
+        <loc>https://seata.io/zh-cn/docs/developers/developers_dev.html</loc>
+        <lastmod>2023-09-06T12:48:31+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.3277</priority>
     </url>
     <url>
-        <loc>https://seata.io/zh-cn/docs/user/appendix/global-transaction-status.html</loc>
-        <lastmod>2023-08-09T01:01:15+00:00</lastmod>
+        <loc>https://seata.io/zh-cn/blog/download.html</loc>
+        <lastmod>2023-09-06T12:48:13+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/user/appendix/isolation.html</loc>
-        <lastmod>2023-08-09T01:01:15+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/mode/at-mode.html</loc>
-        <lastmod>2023-08-09T01:01:10+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/mode/tcc-mode.html</loc>
-        <lastmod>2023-08-09T01:01:10+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/user/saga.html</loc>
-        <lastmod>2023-08-09T01:01:19+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/mode/xa-mode.html</loc>
-        <lastmod>2023-08-09T01:01:10+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/domain/overviewDomainModel.html</loc>
-        <lastmod>2023-08-09T01:01:09+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/domain/tm.html</loc>
-        <lastmod>2023-08-09T01:01:10+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/domain/rm.html</loc>
-        <lastmod>2023-08-09T01:01:09+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/domain/tc.html</loc>
-        <lastmod>2023-08-09T01:01:10+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/seata-mertics.html</loc>
-        <lastmod>2023-08-09T01:01:10+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/upgrade.html</loc>
-        <lastmod>2023-08-09T01:01:14+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html</loc>
-        <lastmod>2023-08-09T01:01:13+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-server.html</loc>
-        <lastmod>2023-08-09T01:01:14+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker.html</loc>
-        <lastmod>2023-08-09T01:01:13+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose.html</loc>
-        <lastmod>2023-08-09T01:01:13+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-kubernetes.html</loc>
-        <lastmod>2023-08-09T01:01:13+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-helm.html</loc>
-        <lastmod>2023-08-09T01:01:13+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-ha.html</loc>
-        <lastmod>2023-08-09T01:01:13+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:01:11+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:01:12+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev.html</loc>
-        <lastmod>2023-08-09T01:01:11+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/guide_dev.html</loc>
-        <lastmod>2023-08-09T01:01:12+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:01:11+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/committer-guide/website-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:01:11+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/committer-guide/release-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:01:11+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/developers/contributor-activity/top-contributer_dev.html</loc>
-        <lastmod>2023-08-09T01:01:11+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-observable-practice.html</loc>
-        <lastmod>2023-08-09T01:01:07+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-connect-data-and-application.html</loc>
-        <lastmod>2023-08-09T01:01:05+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-go-1.2.0.html</loc>
-        <lastmod>2023-08-09T01:01:06+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/iscas2023.html</loc>
-        <lastmod>2023-08-09T01:01:01+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-1.6.0.html</loc>
-        <lastmod>2023-08-09T01:01:02+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-1.5.2.html</loc>
-        <lastmod>2023-08-09T01:01:02+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-tcc-fence.html</loc>
-        <lastmod>2023-08-09T01:01:08+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-tcc.html</loc>
-        <lastmod>2023-08-09T01:01:08+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-at-lock.html</loc>
-        <lastmod>2023-08-09T01:01:04+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-snowflake-explain.html</loc>
-        <lastmod>2023-08-09T01:01:08+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-UUID-generator.html</loc>
-        <lastmod>2023-08-09T01:01:02+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-feature-undo-log-compress.html</loc>
-        <lastmod>2023-08-09T01:01:06+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-dsproxy-deadlock.html</loc>
-        <lastmod>2023-08-09T01:01:05+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-client-start-analysis-02.html</loc>
-        <lastmod>2023-08-09T01:01:04+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-client-start-analysis-01.html</loc>
-        <lastmod>2023-08-09T01:01:04+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/integrate-seata-tcc-mode-with-spring-cloud.html</loc>
-        <lastmod>2023-08-09T01:01:01+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-config-manager.html</loc>
-        <lastmod>2023-08-09T01:01:05+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-golang-communication-mode.html</loc>
-        <lastmod>2023-08-09T01:01:06+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-datasource-proxy.html</loc>
-        <lastmod>2023-08-09T01:01:05+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-sourcecode-client-bootstrap.html</loc>
-        <lastmod>2023-08-09T01:01:08+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-at-demo-in-mac.html</loc>
-        <lastmod>2023-08-09T01:01:03+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-rpc-refactor.html</loc>
-        <lastmod>2023-08-09T01:01:07+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-sourcecode-server-bootstrap.html</loc>
-        <lastmod>2023-08-09T01:01:08+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-xa-introduce.html</loc>
-        <lastmod>2023-08-09T01:01:09+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-quick-start.html</loc>
-        <lastmod>2023-08-09T01:01:07+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-config-modular.html</loc>
-        <lastmod>2023-08-09T01:01:02+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-dubbo-transmit-xid.html</loc>
-        <lastmod>2023-08-09T01:01:02+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-tcc-modular.html</loc>
-        <lastmod>2023-08-09T01:01:03+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-spring-boot-aop-aspectj.html</loc>
-        <lastmod>2023-08-09T01:01:08+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-core-modular.html</loc>
-        <lastmod>2023-08-09T01:01:02+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-dynamic-config-and-dynamic-disable.html</loc>
-        <lastmod>2023-08-09T01:01:05+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-config-center.html</loc>
-        <lastmod>2023-08-09T01:01:05+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-nacos-docker.html</loc>
-        <lastmod>2023-08-09T01:01:07+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-nacos-analysis.html</loc>
-        <lastmod>2023-08-09T01:01:07+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-mybatisplus-analysis.html</loc>
-        <lastmod>2023-08-09T01:01:07+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html</loc>
-        <lastmod>2023-08-09T01:01:09+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-at-mode-start-rm-tm.html</loc>
-        <lastmod>2023-08-09T01:01:04+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-at-mode-start.html</loc>
-        <lastmod>2023-08-09T01:01:04+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-meetup-hangzhou.html</loc>
-        <lastmod>2023-08-09T01:01:06+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-community-meetup-hangzhou-ready.html</loc>
-        <lastmod>2023-08-09T01:01:05+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/design-more-flexable-application-by-saga.html</loc>
-        <lastmod>2023-08-09T01:01:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-at-tcc-saga.html</loc>
-        <lastmod>2023-08-09T01:01:04+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-at-mode-design.html</loc>
-        <lastmod>2023-08-09T01:01:04+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-go-server.html</loc>
-        <lastmod>2023-08-09T01:01:02+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/integrate-seata-with-spring-cloud.html</loc>
-        <lastmod>2023-08-09T01:01:01+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/how-to-support-spring-cloud.html</loc>
-        <lastmod>2023-08-09T01:01:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-java-server.html</loc>
-        <lastmod>2023-08-09T01:01:03+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/tcc-mode-applicable-scenario-analysis.html</loc>
-        <lastmod>2023-08-09T01:01:09+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/tcc-mode-design-principle.html</loc>
-        <lastmod>2023-08-09T01:01:09+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/quick-start-use-seata-and-dubbo-services.html</loc>
-        <lastmod>2023-08-09T01:01:01+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/seata-analysis-simple.html</loc>
-        <lastmod>2023-08-09T01:01:03+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/blog/manual-transaction-mode.html</loc>
-        <lastmod>2023-08-09T01:01:01+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/user/configurations100.html</loc>
-        <lastmod>2023-08-09T01:01:17+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5120</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/user/configurations090.html</loc>
-        <lastmod>2023-08-09T01:01:17+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5120</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker-142.html</loc>
-        <lastmod>2023-08-09T01:01:12+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5120</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose-142.html</loc>
-        <lastmod>2023-08-09T01:01:12+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5120</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/zh-cn/docs/dev/mode/saga-mode.html</loc>
-        <lastmod>2023-08-09T01:01:10+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5120</priority>
-    </url>
-    <url>
-        <loc>https://seata.io/en-us/</loc>
-        <lastmod>2023-08-09T01:00:34+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0000</priority>
+        <priority>0.3277</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/index.html</loc>
-        <lastmod>2023-08-09T01:00:34+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:49+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/overview/terminology.html</loc>
+        <lastmod>2023-09-06T12:48:40+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/overview/faq.html</loc>
+        <lastmod>2023-09-06T12:48:40+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/quickstart.html</loc>
+        <lastmod>2023-09-06T12:48:47+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configurations.html</loc>
+        <lastmod>2023-09-06T12:48:45+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/txgroup/transaction-group.html</loc>
+        <lastmod>2023-09-06T12:48:50+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/txgroup/transaction-group-and-ha.html</loc>
+        <lastmod>2023-09-06T12:48:50+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configuration/nacos.html</loc>
+        <lastmod>2023-09-06T12:48:44+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configuration/apollo.html</loc>
+        <lastmod>2023-09-06T12:48:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configuration/etcd3.html</loc>
+        <lastmod>2023-09-06T12:48:44+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configuration/consul.html</loc>
+        <lastmod>2023-09-06T12:48:44+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configuration/zookeeper.html</loc>
+        <lastmod>2023-09-06T12:48:45+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/registry/nacos.html</loc>
+        <lastmod>2023-09-06T12:48:48+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/registry/eureka.html</loc>
+        <lastmod>2023-09-06T12:48:47+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/registry/etcd3.html</loc>
+        <lastmod>2023-09-06T12:48:47+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/registry/consul.html</loc>
+        <lastmod>2023-09-06T12:48:47+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/registry/zookeeper.html</loc>
+        <lastmod>2023-09-06T12:48:48+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/api.html</loc>
+        <lastmod>2023-09-06T12:48:42+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/microservice.html</loc>
+        <lastmod>2023-09-06T12:48:46+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/ormframework.html</loc>
+        <lastmod>2023-09-06T12:48:46+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/datasource.html</loc>
+        <lastmod>2023-09-06T12:48:46+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/sqlreference/sql-restrictions.html</loc>
+        <lastmod>2023-09-06T12:48:49+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/sqlreference/dml.html</loc>
+        <lastmod>2023-09-06T12:48:49+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/sqlreference/sql-decoration.html</loc>
+        <lastmod>2023-09-06T12:48:49+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/sqlreference/function.html</loc>
+        <lastmod>2023-09-06T12:48:49+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/apm/prometheus.html</loc>
+        <lastmod>2023-09-06T12:48:42+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/performance.html</loc>
+        <lastmod>2023-09-06T12:48:46+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/appendix/global-transaction-status.html</loc>
+        <lastmod>2023-09-06T12:48:42+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/appendix/isolation.html</loc>
+        <lastmod>2023-09-06T12:48:43+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/mode/at-mode.html</loc>
+        <lastmod>2023-09-06T12:48:29+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/mode/tcc-mode.html</loc>
+        <lastmod>2023-09-06T12:48:29+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/saga.html</loc>
+        <lastmod>2023-09-06T12:48:48+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/mode/xa-mode.html</loc>
+        <lastmod>2023-09-06T12:48:29+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/domain/overviewDomainModel.html</loc>
+        <lastmod>2023-09-06T12:48:28+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/domain/tm.html</loc>
+        <lastmod>2023-09-06T12:48:28+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/domain/rm.html</loc>
+        <lastmod>2023-09-06T12:48:28+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/domain/tc.html</loc>
+        <lastmod>2023-09-06T12:48:28+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/seata-mertics.html</loc>
+        <lastmod>2023-09-06T12:48:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/upgrade.html</loc>
+        <lastmod>2023-09-06T12:48:40+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html</loc>
+        <lastmod>2023-09-06T12:48:39+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-server.html</loc>
+        <lastmod>2023-09-06T12:48:40+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker.html</loc>
+        <lastmod>2023-09-06T12:48:38+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose.html</loc>
+        <lastmod>2023-09-06T12:48:38+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-kubernetes.html</loc>
+        <lastmod>2023-09-06T12:48:39+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-helm.html</loc>
+        <lastmod>2023-09-06T12:48:39+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-ha.html</loc>
+        <lastmod>2023-09-06T12:48:39+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.3277</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configurations100.html</loc>
+        <lastmod>2023-09-06T12:48:45+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/dev/mode/saga-mode.html</loc>
+        <lastmod>2023-09-06T12:48:29+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/contributor-guide/new-contributor-guide_dev.html</loc>
+        <lastmod>2023-09-06T12:48:31+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/contributor-guide/test-coverage-guide_dev.html</loc>
+        <lastmod>2023-09-06T12:48:31+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/contributor-guide/reporting-security-issues_dev.html</loc>
+        <lastmod>2023-09-06T12:48:31+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/guide_dev.html</loc>
+        <lastmod>2023-09-06T12:48:32+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/committer-guide/label-an-issue-guide_dev.html</loc>
+        <lastmod>2023-09-06T12:48:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/committer-guide/website-guide_dev.html</loc>
+        <lastmod>2023-09-06T12:48:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/committer-guide/release-guide_dev.html</loc>
+        <lastmod>2023-09-06T12:48:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/developers/contributor-activity/top-contributer_dev.html</loc>
+        <lastmod>2023-09-06T12:48:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/overview/what-is-seata.html</loc>
-        <lastmod>2023-08-09T01:00:33+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:48+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
+        <priority>0.2621</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/developers_dev.html</loc>
-        <lastmod>2023-08-09T01:00:31+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:46+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
+        <priority>0.2621</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/blog/index.html</loc>
-        <lastmod>2023-08-09T01:00:29+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:44+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
+        <priority>0.2621</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/community/index.html</loc>
-        <lastmod>2023-08-09T01:00:29+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:44+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
+        <priority>0.2621</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/blog/download.html</loc>
-        <lastmod>2023-08-09T01:00:29+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:44+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
+        <priority>0.2621</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/user/quickstart.html</loc>
-        <lastmod>2023-08-09T01:00:34+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:49+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8000</priority>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/user/configurations090.html</loc>
+        <lastmod>2023-09-06T12:48:45+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/saga_designer/index.html</loc>
+        <lastmod>2023-09-06T12:45:33+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/saga_designer/vedio.html</loc>
+        <lastmod>2023-09-06T12:45:33+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker-142.html</loc>
+        <lastmod>2023-09-06T12:48:38+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
+    </url>
+    <url>
+        <loc>https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose-142.html</loc>
+        <lastmod>2023-09-06T12:48:38+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.2621</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/overview/terminology.html</loc>
-        <lastmod>2023-08-09T01:00:32+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:48+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/overview/faq.html</loc>
-        <lastmod>2023-08-09T01:00:32+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/user/api.html</loc>
-        <lastmod>2023-08-09T01:00:33+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:48+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/user/microservice.html</loc>
-        <lastmod>2023-08-09T01:00:33+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:49+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/user/sqlreference/sql-restrictions.html</loc>
-        <lastmod>2023-08-09T01:00:34+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:49+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/user/sqlreference/dml.html</loc>
-        <lastmod>2023-08-09T01:00:34+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:49+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/dev/mode/at-mode.html</loc>
-        <lastmod>2023-08-09T01:00:29+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:44+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/dev/mode/tcc-mode.html</loc>
-        <lastmod>2023-08-09T01:00:30+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:45+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/dev/mode/saga-mode.html</loc>
-        <lastmod>2023-08-09T01:00:29+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:45+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/dev/seata-mertics.html</loc>
-        <lastmod>2023-08-09T01:00:30+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:45+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/ops/multi-configuration-isolation.html</loc>
-        <lastmod>2023-08-09T01:00:32+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/ops/deploy-server.html</loc>
-        <lastmod>2023-08-09T01:00:32+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/ops/deploy-by-docker.html</loc>
-        <lastmod>2023-08-09T01:00:31+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:46+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/ops/deploy-by-kubernetes.html</loc>
-        <lastmod>2023-08-09T01:00:32+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/ops/deploy-by-helm.html</loc>
-        <lastmod>2023-08-09T01:00:31+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/ops/deploy-ha.html</loc>
-        <lastmod>2023-08-09T01:00:32+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:47+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/contributor-guide/new-contributor-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:00:30+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:45+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/contributor-guide/test-coverage-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:00:31+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:46+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/contributor-guide/reporting-security-issues_dev.html</loc>
-        <lastmod>2023-08-09T01:00:31+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:46+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/guide_dev.html</loc>
-        <lastmod>2023-08-09T01:00:31+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:46+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/committer-guide/label-an-issue-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:00:30+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:45+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/committer-guide/website-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:00:30+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:45+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/docs/developers/committer-guide/release-guide_dev.html</loc>
-        <lastmod>2023-08-09T01:00:30+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:45+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/blog/quick-start-use-seata-and-dubbo-services.html</loc>
-        <lastmod>2023-08-09T01:00:29+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:44+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
     <url>
         <loc>https://seata.io/en-us/blog/manual-transaction-mode.html</loc>
-        <lastmod>2023-08-09T01:00:29+00:00</lastmod>
+        <lastmod>2023-09-06T12:40:44+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.6400</priority>
+        <priority>0.2097</priority>
     </url>
-
-
+    <url>
+        <loc>https://seata.io/zh-cn/blog/seata-ha-practice.html</loc>
+        <lastmod>2023-09-06T12:48:22+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.1678</priority>
+    </url>
 </urlset>
