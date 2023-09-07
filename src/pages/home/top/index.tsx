@@ -56,9 +56,9 @@ const Top = ({ language }: { language?: string }) => {
     forkCount: '',
   });
   const [releaseNote, setReleaseNote] = React.useState({
-    version: '',
-    url: '',
-    date: '',
+    version: 'v1.7.1',
+    url: 'https://github.com/seata/seata/releases/tag/v1.7.1',
+    date: '2023/9/5',
   });
 
   React.useEffect(() => {
