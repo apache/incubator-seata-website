@@ -8,7 +8,7 @@ description: Metrics。
 #### 设计思路
 1. Seata作为一个被集成的数据一致性框架，Metrics模块将尽可能少的使用第三方依赖以降低发生冲突的风险；
 2. Metrics模块将竭力争取更高的度量性能和更低的资源开销，尽可能降低开启后带来的副作用；
-3. 配置式，Metrics是否激活、数据如何发布，取决于对应的配置；开启配置则自动启用并将度量数据发布到[Prometheus](https://github.com/prometheus)；
+3. 配置时，Metrics是否激活、数据如何发布，取决于对应的配置；开启配置则自动启用并将度量数据发布到[Prometheus](https://github.com/prometheus)；
 4. 不使用Spring，使用SPI(Service Provider Interface)加载扩展；
 5. 初始仅发布核心Transaction相关指标，之后结合社区的需求，逐步完善运维方面的所有其他指标。
 
@@ -82,7 +82,7 @@ seata:
 
 或者使用第三方配置中心如nacos,apollo等
 
-[请参考此处](https://github.com/seata/seata/tree/develop/script/config-center)将seata metrics配置项上传到对应配置中心,也可打开对应配置中心控制台进行手动添加
+[请参考此处](https://github.com/seata/seata/tree/develop/script/config-center)，将seata metrics配置项上传到对应配置中心,也可打开对应配置中心控制台进行手动添加。
 
 ```properties
 metrics.enabled=true
@@ -93,7 +93,7 @@ metrics.exporterPrometheusPort=9898
 
 之后启动TC，即可在`http://tc-server-ip:9898/metrics`上获取到Metrics的文本格式数据。
 
->提示：默认使用`9898`端口，Prometheus已登记的端口列表[在此](https://github.com/prometheus/prometheus/wiki/Default-port-allocations)，如果想更换端口，可通过`metrics.exporter.prometheus.port`配置修改。
+>提示：默认使用`9898`端口，Prometheus已登记的端口列表[在此查看](https://github.com/prometheus/prometheus/wiki/Default-port-allocations)，如果想更换端口，可通过`metrics.exporter.prometheus.port`来修改配置。
 
 ##### 下载并启动Prometheus
 下载完毕后，修改Prometheus的配置文件`prometheus.yml`，在`scrape_configs`中增加一项抓取Seata的度量数据：
