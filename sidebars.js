@@ -92,6 +92,7 @@ const sidebars = {
       collapsible: false,
       items: [
         'ops/upgrade',
+        'ops/multi-configuration-isolation',
         {
           type: 'category',
           label: 'Deploy',
