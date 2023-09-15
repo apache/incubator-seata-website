@@ -14,8 +14,8 @@
 <link rel="stylesheet" href="//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css">
 <script src="//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js"></script>
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2" async></script><link rel="stylesheet" href="/zh-cn/assets/css/styles.48c600c8.css">
-<link rel="preload" href="/zh-cn/assets/js/runtime~main.dffc2ac0.js" as="script">
-<link rel="preload" href="/zh-cn/assets/js/main.144447a8.js" as="script">
+<link rel="preload" href="/zh-cn/assets/js/runtime~main.d9ba0b54.js" as="script">
+<link rel="preload" href="/zh-cn/assets/js/main.b633d4b6.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script>
@@ -34,7 +34,7 @@ ProcessorTable 中，处理逻辑的可扩展性得到了极大的提升。</p><
 timeout 是否大于 0 决定；</li><li>统一请求名称风格。</li></ol><p>最终，Seata RPC 的请求方法终于看起来更加优雅且有层次感了。</p><p>同步请求：</p><p><img loading="lazy" src="https://gitee.com/objcoding/md-picture/raw/master/img/20200513103838.png" class="img_ev3q"></p><p>异步请求：</p><p><img loading="lazy" src="https://gitee.com/objcoding/md-picture/raw/master/img/20200513103904.png" class="img_ev3q"></p><h1>其它</h1><ol><li>类目录调整：RPC 模块目录中还有一个 netty 目录，也可以从目录结构中发现 Seata 的初衷是兼容多个 RPC 框架，目前只实现了 netty，但发现 netty 模块中有些类并不 ”netty“，且 RPC
 跟目录的类也并不通用，因此需要将相关类的位置进行调整；</li><li>某些类重新命名，比如 netty 相关类包含 「netty」；</li></ol><p>最终 RPC 模块看起来是这样的：</p><p><img loading="lazy" src="https://gitee.com/objcoding/md-picture/raw/master/img/20200711213204.png" class="img_ev3q"></p><h1>作者简介</h1><p>张乘辉，目前就职于蚂蚁集团，热爱分享技术，微信公众号「后端进阶」作者，技术博客（<a href="https://objcoding.com/" target="_blank" rel="noopener noreferrer">https://objcoding.com/</a>）博主，Seata Contributor，GitHub
 ID：objcoding。</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh-cn/blog/seata-at-demo-in-mac"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">Mac下的Seata Demo环境搭建（AT模式）</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/blog/seata-sourcecode-server-bootstrap"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">分布式事务Seata源码-Server端启动流程</div></a></nav></main></div></div></div></div>
-<script src="/zh-cn/assets/js/runtime~main.dffc2ac0.js"></script>
-<script src="/zh-cn/assets/js/main.144447a8.js"></script>
+<script src="/zh-cn/assets/js/runtime~main.d9ba0b54.js"></script>
+<script src="/zh-cn/assets/js/main.b633d4b6.js"></script>
 </body>
 </html>
