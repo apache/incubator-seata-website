@@ -66,7 +66,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 
 #### 步骤一：启动包
 - <a href="https://github.com/seata/seata/releases" target="_blank">点击下载</a>
-- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community/index.html" target="_blank">2群</a>, 3群: 32033786），qq群（群号: 254657148,2群: 216012363）群文件共享下载
+- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community" target="_blank">2群</a>, 3群: 32033786），qq群（群号: 254657148,2群: 216012363）群文件共享下载
 
 #### 步骤二：建表(仅db)
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
@@ -96,7 +96,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 - 源码启动: 执行ServerApplication.java的main方法  
 - 命令启动: seata-server.sh -h 127.0.0.1 -p 8091 -m db
 
-1.5.0以下版本
+1.5.0以下版本:
 
 - 源码启动: 执行Server.java的main方法  
 - 命令启动: seata-server.sh -h 127.0.0.1 -p 8091 -m db -n 1 -e test
@@ -104,7 +104,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
     -h: 注册到注册中心的ip
     -p: Server rpc 监听端口
     -m: 全局事务会话信息存储模式，file、db、redis，优先读取启动参数 (Seata-Server 1.3及以上版本支持redis)
-    -n: Server node，多个Server时，需区分各自节点，用于生成不同区间的transactionId，以免冲突
+    -n: Server node，当有多个Server时，需区分各自节点，用于生成不同区间的transactionId，以免冲突
     -e: 多环境配置参考 http://seata.io/en-us/docs/ops/multi-configuration-isolation.html
 ```
 - <a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html" target="_blank">点击查看docker部署</a>
@@ -116,6 +116,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 - 依赖seata-all
 - 依赖seata-spring-boot-starter，支持yml、properties配置(.conf可删除)，内部已依赖seata-all
 - 依赖spring-cloud-alibaba-seata，内部集成了seata，并实现了xid传递
+
 #### 步骤二：undo_log建表、配置参数(仅AT模式)
 - <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>
 
@@ -181,6 +182,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
        }
 ```
 - 自动，引入seata-spring-boot-starter、spring-cloud-starter-alibaba-seata等jar
+
 #### 步骤五：实现xid跨服务传递
 - 手动
 参考源码integration文件夹下的各种rpc实现 module
