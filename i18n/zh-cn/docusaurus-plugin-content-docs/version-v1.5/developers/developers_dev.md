@@ -12,7 +12,7 @@ description: Seata 维护者名单
 | 姓名   | github                                      | 公司    |
 | ------ | ------------------------------------------- | ------- |
 | 季敏   | [slievrly](https://github.com/slievrly)     | Alibaba |
-| 陈健斌 | [a364176773](https://github.com/a364176773) | TongDun |
+| 陈健斌 | [funky-eyes](https://github.com/funky-eyes) | TongDun |
 
 ### Seata Committer 列表
 

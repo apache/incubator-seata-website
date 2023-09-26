@@ -21,7 +21,7 @@ description: Seata Community Meetup·杭州站,于12月21号在杭州市梦想�
 
 ### 分享嘉宾
 
-- 季敏(清铭) 《Seata 的过去、现在和未来》 [slides](https://github.com/a364176773/awesome-seata/blob/master/slides/meetup/201912%40hangzhou/%E5%AD%A3%E6%95%8F%EF%BC%88%E6%B8%85%E9%93%AD%EF%BC%89%E3%80%8ASeata%20%E7%9A%84%E8%BF%87%E5%8E%BB%E3%80%81%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%9C%AA%E6%9D%A5%E3%80%8B.pdf)
+- 季敏(清铭) 《Seata 的过去、现在和未来》 [slides](https://github.com/funky-eyes/awesome-seata/blob/master/slides/meetup/201912%40hangzhou/%E5%AD%A3%E6%95%8F%EF%BC%88%E6%B8%85%E9%93%AD%EF%BC%89%E3%80%8ASeata%20%E7%9A%84%E8%BF%87%E5%8E%BB%E3%80%81%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%9C%AA%E6%9D%A5%E3%80%8B.pdf)
 
   ![](https://img.alicdn.com/tfs/TB1BALWw4z1gK0jSZSgXXavwpXa-6720-4480.jpg)
 

@@ -132,7 +132,7 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
   非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。  
 
   - [slievrly](https://github.com/slievrly) 
-  - [a364176773](https://github.com/a364176773) 
+  - [funky-eyes](https://github.com/funky-eyes) 
   - [wangliang181230](https://github.com/wangliang181230) 
   - [jsbxyyx](https://github.com/jsbxyyx) 
   - [l81893521](https://github.com/l81893521) 

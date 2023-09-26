@@ -127,7 +127,7 @@ description: This article will introduce you how to understand the details of ea
   
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
-  - [a364176773](https://github.com/a364176773) 
+  - [funky-eyes](https://github.com/funky-eyes) 
   - [wangliang181230](https://github.com/wangliang181230) 
   - [jsbxyyx](https://github.com/jsbxyyx) 
   - [l81893521](https://github.com/l81893521) 

@@ -182,7 +182,7 @@ description: This article will introduce you how to understand the details of ea
    - [ruqinhu](https://github.com/ruqinhu)
    - [yuhuangbin](https://github.com/yuhuangbin)
    - [anrror](https://github.com/anrror)
-   - [a364176773](https://github.com/a364176773)
+   - [funky-eyes](https://github.com/funky-eyes)
    - [caohdgege](https://github.com/caohdgege)
    - [contextshuffling](https://github.com/contextshuffling)
    - [echooymxq](https://github.com/echooymxq)

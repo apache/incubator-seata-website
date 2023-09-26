@@ -61,7 +61,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [dmego](https://github.com/dmego)
 - [xingfudeshi](https://github.com/xingfudeshi)
 - [hadoop835](https://github.com/hadoop835)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [DroidEye2ONGU](https://github.com/DroidEye2ONGU)
 
 同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
@@ -193,7 +193,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [pengten](https://github.com/pengten)
 - [wangliang181230](https://github.com/wangliang181230)
 - [GoodBoyCoder](https://github.com/GoodBoyCoder)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [isharpever](https://github.com/isharpever)
 - [ZhangShiYeChina](https://github.com/ZhangShiYeChina)
 - [mxsm](https://github.com/mxsm)

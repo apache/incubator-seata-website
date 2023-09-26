@@ -118,7 +118,7 @@ description: This article will introduce you how to understand the details of ea
   - [ph3636](https://github.com/ph3636)   
   - [koonchen](https://github.com/koonchen)   
   - [leizhiyuan](https://github.com/leizhiyuan)   
-  - [a364176773](https://github.com/a364176773)   
+  - [funky-eyes](https://github.com/funky-eyes)   
   - [caioguedes](https://github.com/caioguedes)   
   - [helloworlde](https://github.com/helloworlde)   
   - [wxbty](https://github.com/wxbty)    
