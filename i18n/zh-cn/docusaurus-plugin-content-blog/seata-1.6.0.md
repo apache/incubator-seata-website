@@ -117,7 +117,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [slievrly](https://github.com/slievrly)
 - [renliangyu857](https://github.com/renliangyu857)
 - [wangliang181230](https://github.com/wangliang181230)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [tuwenlin](https://github.com/tuwenlin)
 - [conghuhu](https://github.com/conghuhu)
 - [a1104321118](https://github.com/a1104321118)

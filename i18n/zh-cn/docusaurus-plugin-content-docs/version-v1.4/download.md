@@ -140,7 +140,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 
 - [slievrly](https://github.com/slievrly)
 - [caohdgege](https://github.com/caohdgege)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [wangliang181230](https://github.com/wangliang181230)
 - [xingfudeshi](https://github.com/xingfudeshi)
 - [jsbxyyx](https://github.com/jsbxyyx)
@@ -250,7 +250,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [long187](https://github.com/long187)
 - [81519434](https://github.com/81519434)
 - [anselleeyy](https://github.com/anselleeyy)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [selfishlover](https://github.com/selfishlover)
 - [suichen](https://github.com/suichen)
 - [h-zhi](https://github.com/h-zhi)
@@ -379,7 +379,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 
   - [slievrly](https://github.com/slievrly) 
   - [wangliang181230](https://github.com/wangliang181230) 
-  - [a364176773](https://github.com/a364176773) 
+  - [funky-eyes](https://github.com/funky-eyes) 
   - [jsbxyyx](https://github.com/jsbxyyx)
   - [l81893521](https://github.com/l81893521)
   - [lightClouds917](https://github.com/lightClouds917)

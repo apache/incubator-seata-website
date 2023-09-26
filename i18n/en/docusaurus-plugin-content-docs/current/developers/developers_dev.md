@@ -12,7 +12,7 @@ This page shows Seata developers and continues to expand. The list is not priori
 | name         | github                                      | company    |
 | ------------ | ------------------------------------------- | ------- |
 | Min Ji       | [slievrly](https://github.com/slievrly)     | Alibaba |
-| Jianbin Chen | [a364176773](https://github.com/a364176773) | TongDun |
+| Jianbin Chen | [funky-eyes](https://github.com/funky-eyes) | TongDun |
 
 ### Seata Committer List
 
