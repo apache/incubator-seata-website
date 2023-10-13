@@ -3,7 +3,7 @@ title: Seata：连接数据与应用
 keywords: [Seata、分布式事务、数据一致性、微服务]   
 description: 本文介绍Seata的过去、现在和未来演进   
 author: 季敏-Seata 开源社区创始人，分布式事务团队负责人   
-date: 2023/06/10    
+date: 2023/06/30    
 ---
 
 本文主要介绍分布式事务从内部到商业化和开源的演进历程，Seata社区当前进展和未来规划。
