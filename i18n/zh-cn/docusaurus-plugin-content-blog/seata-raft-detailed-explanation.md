@@ -16,13 +16,13 @@ date: 2023/10/13
 
 Seata 是一款开源的分布式事务解决方案，star高达24000+，社区活跃度极高，致力于在微服务架构下提供高性能和简单易用的分布式事务服务.
 
-目前Seata的分布式事务数据存储模式有file，db，redis，而本篇文章将Seata-Server Raft模式的架构，部署使用，压测对比，及为什么Seata需要Raft,并带你领略从调研对比,设计,到具体实现,再到知识沉淀的过程.
+目前Seata的分布式事务数据存储模式有file，db，redis，而本篇文章将Seata-Server Raft模式的架构，部署使用，压测对比，及为什么Seata需要Raft,并领略从调研对比,设计,到具体实现,再到知识沉淀的过程.
 
 分享人：陈健斌（funkye） github id: [funky-eyes](https://github.com/funky-eyes)
 
 # 2. 架构介绍
 ## 2.1 Raft 模式是什么？
-首先我们要明白什么是raft分布式一致性算法,这里直接摘抄sofa-jraft官网的相关介绍:
+首先要明白什么是raft分布式一致性算法,这里直接摘抄sofa-jraft官网的相关介绍:
 
 ```
 RAFT 是一种新型易于理解的分布式一致性复制协议，由斯坦福大学的 Diego Ongaro 和 John Ousterhout 提出，作为 RAMCloud 项目中的中心协调组件。Raft 是一种 Leader-Based 的 Multi-Paxos 变种，相比 Paxos、Zab、View Stamped Replication 等协议提供了更完整更清晰的协议描述，并提供了清晰的节点增删描述。 Raft 作为复制状态机，是分布式系统中最核心最基础的组件，提供命令在多个节点之间有序复制和执行，当多个节点初始状态一致的时候，保证节点之间状态一致。
@@ -30,9 +30,9 @@ RAFT 是一种新型易于理解的分布式一致性复制协议，由斯坦福
 简而言之Seata的Raft模式就是基于Sofa-Jraft组件实现可保证Seata-Server自身的数据一致性和服务高可用.
 ```
 ## 2.2 为什么需要raft模式
-看完上述的Seata-Raft模式是什么的定义后,是否就有疑问,难道现在Seata-Server就无法保证一致性和高可用了吗?那么我们下面从一致性和高可用来看看目前Seata-Server是如何做的.
+看完上述的Seata-Raft模式是什么的定义后,是否就有疑问,难道现在Seata-Server就无法保证一致性和高可用了吗?那么下面从一致性和高可用来看看目前Seata-Server是如何做的.
 ### 2.2.1
-在目前Seata的设计中,Server端的作用就是用来保证事务的二阶段被正确的执行,所以他是基于正确的事务数据进行一个正确的协调，那么我们应该知道被正确的执行的前提条件是什么?
+在目前Seata的设计中,Server端的作用就是用来保证事务的二阶段被正确的执行,所以他是基于正确的事务数据进行一个正确的协调，那么应该知道被正确的执行的前提条件是什么?
 
 没错,就是事务记录的正确存储,要确保事务记录不丢失,在状态不错误下,二阶段驱动所有的Seata-RM时一定是正确的行为,而Seata目前对事务状态和记录是如何存储的?
 
@@ -50,22 +50,24 @@ RAFT 是一种新型易于理解的分布式一致性复制协议，由斯坦福
 
 看起来好像加几台机器,部署即可,但是背后存在了一个问题,如何让多个TC像一个整体一样,即便其中一个宕机后,另一个TC能接手宕机时TC的数据完美善后呢?答案其实很简单,在计算与存储分离的情况下,只要把数据丢到存储中间件,任意一个TC通过这个公共的存储区域读取即可得到所有TC操作的事务信息,也就保证了高可用的能力.
 
-但是我们也提到了一个前提条件,也就是计算与存储分离下,那么计算与存储一体化设计下为什么不行呢?
+但是也提到了一个前提条件,也就是计算与存储分离下,那么计算与存储一体化设计下为什么不行呢?
 
-这就要说说我们的File实现了,file在一致性那块的描述已经说了,他只是将数据存储在本地磁盘和TC内存中,这个数据写操作是没有任何同步,也就代表了目前的File模式无法高可用,仅支持单机部署,作为初级的快速入门的简单使用,这也让高性能的file(基于内存)基本被告别生产环境的使用.
+这就要说说的File实现了,file在一致性那块的描述已经说了,他只是将数据存储在本地磁盘和TC内存中,这个数据写操作是没有任何同步,也就代表了目前的File模式无法高可用,仅支持单机部署,作为初级的快速入门的简单使用,这也让高性能的file(基于内存)基本被告别生产环境的使用.
 ## 2.3 Seata-Raft是如何设计的呢？
 ### 2.3.1 设计原理
 Seata-Raft模式的设计思路是来自于当前无法高可用的file模式的包装,将其的所有增删改操作利用raft算法进行同步,这也就保证了多个TC使用file模式时,数据是一致的,且摒弃了file模式的异步刷盘操作,改为通过raftlog+snapshot恢复数据
 ![流程图](https://blog.funkye.icu/img/blog/Dingtalk_20230105203431.jpg)
-设计示意如上图,client端在启动时,会通过配置中心读取当前client的事务分组对应的集群拿到，比如是default,以及相关的raft集群其中一个节点的ip(当然你不嫌麻烦的话可以把整个集群的节点都写上,参考zookeeper那样),通过将获取元数据的request发向Seata-Server的ip:httpport(我们称之为Seata-Server的control端口)节点后,tc将会把该default raft集群下的元数据返回,即leader&follower&learner,随后将进行watch非leader的任意成员节点
+设计示意如上图,client端在启动时,会通过配置中心读取当前client的事务分组对应的集群拿到，比如是default,以及相关的raft集群其中一个节点的ip(当然不嫌麻烦的话可以把整个集群的节点都写上,参考zookeeper那样),通过将获取元数据的request发向Seata-Server的ip:httpport(称之为Seata-Server的control端口)节点后,tc将会把该default raft集群下的元数据返回,即leader&follower&learner,随后将进行watch非leader的任意成员节点
 假设tm begin一个事务,那么由于本地的metadata指向了tc1的地址,那么他只会与tc1进行交互,而tc1在增加一个全局事务信息时,会通过raft协议,也就是图上标注的步骤1,发送日志,步骤2follower应答日志接收情况,当超过半数节点,如tc2接受成功并相应,那么tc1上的状态机(fsm)将执行添加全局事务动作(详细下面会说到).
 如果tc1宕机了,或者重选举了会发生什么呢?由于第一次启动拉取到了metadata,client便会执行watch follower节点的watch接口(因为只有非leader才可能成为leader,watch leader是无意义的,且集群发生重选举或增删节点,每个tc节点都会感知)
 ![watch](https://blog.funkye.icu/img/blog/Dingtalk_20230105204423.jpg)
 ![watch2](https://blog.funkye.icu/img/blog/Dingtalk_20230105211035.jpg)
+
 当tc1宕机后,tc2选举成为leader,而tm通过tc3或者tc2(只要是follower)的watch成功更新本地的metadata信息,后续的事务将请求至tc2,而tc1的数据本身就被同步到了tc2和tc3,数据一致性没影响,只不过在选举发生的一瞬间,且如果事务恰好处于决议发送request至旧leader时,该事务会被主动回滚(因为rpc的节点已经宕机或者重选举了,目前没做该rpc重试,tm侧默认有5次,但由于选举大约需要1s-2s时间,大概率处于这个阶段的begin状态未决议的事务会回滚,因为这部分begin状态的事务大概率无法决议成功，优先回滚释放锁，避免影响其他业务正确性)
 ### 2.3.2 故障恢复
 既然讲到了一个正常的事务流程及原理，那么当tc发生故障时，数据又是如何恢复的呢？
 ![故障恢复](https://blog.funkye.icu/img/blog/Dingtalk_20230106231817.jpg)
+
 如上图所示，首先每个Seata-Server中的请求最终会走到ServerOnRequestProcessor进行处理，再将请求转移到具体的协调者类DefaultCoordinator(Raft实现时是在RaftCoordinator中，继承DefaultCoordinator)中，再转向到具体的业务代码中如DefaultCore进行对应的事务begin，commit，rollback等处理。
 而在发生故障重启的时候，首先就是如图所示的第一步，先从snapshot中查看是否有最新的数据快照（基于内存的快照），如果有，那么会直接加载到内存中，再按照快照之后的raftlog进行回放这段时间的行为，再这个时候可以理解每一次Seata-Server对事务数据的增删改，都会是一个raftlog，将这个行为同步（过半提交）到其他的follower/learner中，所以只要从头(或者从快照时间点后)就可以跟上leader的数据内容，那么数据就是一至的。
 ### 2.3.3 业务处理同步过程
@@ -131,10 +133,10 @@ seata:
       vgroup-mapping:
          default_tx_group: default
 ```
-如我现在使用的事务分组为`default_tx_group`，那么我对应的seata集群/分组就是default，这个是有对应关系的，后续再server部署环节上会介绍
+如现在使用的事务分组为`default_tx_group`，那么对应的seata集群/分组就是default，这个是有对应关系的，后续再server部署环节上会介绍
 至此client的改动已经完成了
 ### 3.2 server
-对于server的改动可能会多一些，要熟悉一些调优参数和配置，当然你也可以选择默认值不做任何修改
+对于server的改动可能会多一些，要熟悉一些调优参数和配置，当然也可以选择默认值不做任何修改
 ```
 seata:
   server:
@@ -164,7 +166,7 @@ seata:
     file:
       dir: sessionStore # 该路径为raftlog及事务相关日志的存储位置，默认是相对路径，最好设置一个固定的位置
 ```
-在3个或者大于3个节点的seata-server中配置完以上参数后，直接启动便可以看到类似以下的日志输出,就代表你的集群已经正常启动了
+在3个或者大于3个节点的seata-server中配置完以上参数后，直接启动便可以看到类似以下的日志输出,就代表集群已经正常启动了
 ```
 2023-10-13 17:20:06.392  WARN --- [Rpc-netty-server-worker-10-thread-1] [com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory] [ensurePipeline] []: JRaft SET bolt.rpc.dispatch-msg-list-in-default-executor to be false for replicator pipeline optimistic.
 2023-10-13 17:20:06.439  INFO --- [default/PeerPair[10.58.16.231:9091 -> 10.58.12.217:9091]-AppendEntriesThread0] [com.alipay.sofa.jraft.storage.impl.LocalRaftMetaStorage] [save] []: Save raft meta, path=sessionStore/raft/9091/default/raft_meta, term=4, votedFor=0.0.0.0:0, cost time=25 ms
@@ -193,7 +195,7 @@ peers: "10.58.16.231:9091"
 接口为`/metadata/v1/changeCluster?raftClusterStr=新的集群列表` 
 
 ## 4.压测对比
-压测对比我们分为两种场景,并且为了避免数据热点冲突与线程调优等情况,我们将Client侧的数据初始化100W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,压测工具为[locust](https://locust.io/),Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
+压测对比分为两种场景,并且为了避免数据热点冲突与线程调优等情况,将Client侧的数据初始化100W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,压测工具为[locust](https://locust.io/),Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
 TC: 2c4g*3  Client: 4c*8G*1  数据库为阿里云rds 
 - `@Globaltransactional`注解的性能
 - 随机数据进行10分钟的扣库存对比
@@ -202,10 +204,10 @@ TC: 2c4g*3  Client: 4c*8G*1  数据库为阿里云rds
 ### 4.2 2.0 raft模式
 
 ## 5.总结
-在Seata未来的发展中,性能是至关重要了,我们要对二阶段协议带来的性能下降做尽可能的优化,如存储方面,资源利用率方面,通信方面.这也就代表了我们需要将更多可掌握的拿捏在手,file模式就是一个自实现的事务存储模式,基于此,我们可在自己能力范畴中,以及社区的力量加强对其的优化,把存储性能掌握在自己手中,而外部存储的方案当然也是有好处的,但是对其调优能力因人而异,维护seata组件的相关同学既要维护server端的相关优化指标,也要关注数据库的相关指标,导致有关注点分散,性能问题不好定位的情况.raft模式的到来,代表了类似于redis模式的基于内存的写操作的性能提升,足够的可操控空间,除去了外部的磁盘&网络io开销,达到一个自主可控的阶段.
+在Seata未来的发展中,性能是至关重要了,要对二阶段协议带来的性能下降做尽可能的优化,如存储方面,资源利用率方面,通信方面.这也就代表了需要将更多可掌握的拿捏在手,file模式就是一个自实现的事务存储模式,基于此,可在自己能力范畴中,以及社区的力量加强对其的优化,把存储性能掌握在自己手中,而外部存储的方案当然也是有好处的,但是对其调优能力因人而异,维护seata组件的相关同学既要维护server端的相关优化指标,也要关注数据库的相关指标,导致有关注点分散,性能问题不好定位的情况.raft模式的到来,代表了类似于redis模式的基于内存的写操作的性能提升,足够的可操控空间,除去了外部的磁盘&网络io开销,达到一个自主可控的阶段.
 
 并针对业界发展趋势,如clickhouse和kafka都开始抛弃zk,转为自研的如clickkeeper和KRaft,将元数据等信息交由自身保证存储,减少第三方依赖减少运维成本和学习成本,这也是非常成熟和可借鉴效仿的特性.
 
-当然现阶段可能raft模式还不太成熟,未必有上述描述的那般美好,但更因为理论如此,我们应该让事实如此,在此我们欢迎任何对Seata有兴趣的同学加入社区,共同维护,共同进步,一起为Seata分布式事务添砖加瓦!
+当然现阶段可能raft模式还不太成熟,未必有上述描述的那般美好,但更因为理论如此,应该让事实如此,在此欢迎任何对Seata有兴趣的同学加入社区,共同维护,共同进步,一起为Seata分布式事务添砖加瓦!
 
 
