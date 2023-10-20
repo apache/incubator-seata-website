@@ -212,8 +212,8 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
 
 #### 空压 64C
-![raft64](http://tiebapic.baidu.com/tieba/pic/item/ca1349540923dd54e0d7345c9709b3de9c82485a.jpg?tbpicau=2023-10-22-05_261dfddf65a994fd84e06f6bf2951817)
-![raft64-2](http://tiebapic.baidu.com/tieba/pic/item/ac6eddc451da81cbd47f10f91466d0160924316d.jpg?tbpicau=2023-10-22-05_a6e55b6e903426d3f67ae0bf06d53bad)
+![raft64](http://tiebapic.baidu.com/tieba/pic/item/d1a20cf431adcbeff04cec32eaaf2edda3cc9f8e.jpg?tbpicau=2023-10-22-05_6e5dc7e547dbacee1a9236a4014362c7)
+![raft64-2](http://tiebapic.baidu.com/tieba/pic/item/91529822720e0cf38481dccf4c46f21fbe09aa94.jpg?tbpicau=2023-10-22-05_dfea5e155226bc16d91d9096a44681c2)
 
 #### 随机扣库存 32C
 ![raft32c](http://tiebapic.baidu.com/tieba/pic/item/1b4c510fd9f9d72a03f78329922a2834349bbb77.jpg?tbpicau=2023-10-22-05_b2f30ccd3b5bea9a1bcb3f454444fe8e)
