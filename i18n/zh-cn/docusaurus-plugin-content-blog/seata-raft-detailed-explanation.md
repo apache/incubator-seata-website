@@ -213,7 +213,7 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ![raft64-2](http://tiebapic.baidu.com/tieba/pic/item/ac6eddc451da81cbd47f10f91466d0160924316d.jpg?tbpicau=2023-10-22-05_a6e55b6e903426d3f67ae0bf06d53bad)
 
 #### 随机扣库存 32C
-![raft32c](http://tiebapic.baidu.com/tieba/pic/item/caef76094b36acafa49d05c83ad98d1001e99c81.jpg?tbpicau=2023-10-22-05_ba6c99ee81b7ad9d872e987a9f25da18)
+![raft32c](http://tiebapic.baidu.com/tieba/pic/item/1b4c510fd9f9d72a03f78329922a2834349bbb77.jpg?tbpicau=2023-10-22-05_b2f30ccd3b5bea9a1bcb3f454444fe8e)
 ![raft32c-2](http://tiebapic.baidu.com/tieba/pic/item/09fa513d269759ee7a3bf3fff4fb43166d22df9f.jpg?tbpicau=2023-10-22-05_2dbafae92a68a1df3b0704a7a465a333)
 
 ### 4.3 分析对比
