@@ -195,7 +195,7 @@ peers: "10.58.16.231:9091"
 接口为`/metadata/v1/changeCluster?raftClusterStr=新的集群列表` 
 
 ## 4.压测对比
-压测对比分为两种场景,并且为了避免数据热点冲突与线程调优等情况,将Client侧的数据初始化100W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,在gc方面全部采用分代ZGC进行,压测工具为阿里云PTS，Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
+压测对比分为两种场景,并且为了避免数据热点冲突与线程调优等情况,将Client侧的数据初始化300W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,在gc方面全部采用分代ZGC进行,压测工具为阿里云PTS，Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
 TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 - 64并发压测只增加`@Globaltransactional`注解接口的性能
 - 随机300W数据进行32并发10分钟的扣库存
