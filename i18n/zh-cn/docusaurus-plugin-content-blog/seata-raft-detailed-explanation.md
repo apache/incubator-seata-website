@@ -209,8 +209,12 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
 
 #### 空压 64C
+![raft64](http://tiebapic.baidu.com/tieba/pic/item/ca1349540923dd54e0d7345c9709b3de9c82485a.jpg?tbpicau=2023-10-22-05_261dfddf65a994fd84e06f6bf2951817)
+![raft64-2](http://tiebapic.baidu.com/tieba/pic/item/ac6eddc451da81cbd47f10f91466d0160924316d.jpg?tbpicau=2023-10-22-05_a6e55b6e903426d3f67ae0bf06d53bad)
+
 #### 随机扣库存 32C
 ![raft32c](http://tiebapic.baidu.com/tieba/pic/item/caef76094b36acafa49d05c83ad98d1001e99c81.jpg?tbpicau=2023-10-22-05_ba6c99ee81b7ad9d872e987a9f25da18)
+![raft32c-2](http://tiebapic.baidu.com/tieba/pic/item/09fa513d269759ee7a3bf3fff4fb43166d22df9f.jpg?tbpicau=2023-10-22-05_2dbafae92a68a1df3b0704a7a465a333)
 
 ### 4.3 分析对比
 
