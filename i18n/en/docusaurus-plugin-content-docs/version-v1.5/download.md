@@ -79,7 +79,7 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [wingchi-leung](https://github.com/wingchi-leung)
 - [liurong](https://github.com/robynron)
 - [opelok-z](https://github.com/opelok-z)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [2129zxl](https://github.com/2129zxl)
 - [Smery-lxm](https://github.com/Smery-lxm)
 - [doubleDimple](https://github.com/doubleDimple)
@@ -345,7 +345,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 Thanks to these contributors for their code commits. Please report an unintended omission.
 - [slievrly](https://github.com/slievrly)
 - [wangliang181230](https://github.com/wangliang181230)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [lvekee](https://github.com/lvekee)
 - [caohdgege](https://github.com/caohdgege)
 - [lightClouds917](https://github.com/lightClouds917)

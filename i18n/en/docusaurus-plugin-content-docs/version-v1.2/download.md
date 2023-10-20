@@ -115,7 +115,7 @@ description: This article will introduce you how to understand the details of ea
   
   Thanks to these contributors for their code commits. Please report an unintended omission.  
   - [slievrly](https://github.com/slievrly) 
-  - [a364176773](https://github.com/a364176773) 
+  - [funky-eyes](https://github.com/funky-eyes) 
   - [ph3636](https://github.com/ph3636) 
   - [lightClouds917](https://github.com/lightClouds917) 
   - [l81893521](https://github.com/l81893521) 

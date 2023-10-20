@@ -60,7 +60,7 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [dmego](https://github.com/dmego)
 - [xingfudeshi](https://github.com/xingfudeshi)
 - [hadoop835](https://github.com/hadoop835)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [DroidEye2ONGU](https://github.com/DroidEye2ONGU)
 
 
@@ -188,7 +188,7 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [pengten](https://github.com/pengten)
 - [wangliang181230](https://github.com/wangliang181230)
 - [GoodBoyCoder](https://github.com/GoodBoyCoder)
-- [a364176773](https://github.com/a364176773)
+- [funky-eyes](https://github.com/funky-eyes)
 - [isharpever](https://github.com/isharpever)
 - [ZhangShiYeChina](https://github.com/ZhangShiYeChina)
 - [mxsm](https://github.com/mxsm)
