@@ -202,8 +202,11 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ### 4.1 1.7.1 db模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg)
 #### 空压 64C
-
+![db64](http://tiebapic.baidu.com/tieba/pic/item/574e9258d109b3de2583765c8abf6c81800a4cc2.jpg?tbpicau=2023-10-22-05_15b6a982c2ea01824239f1a0e62ccfe6)
+![db64-2](http://tiebapic.baidu.com/tieba/pic/item/6609c93d70cf3bc74c2a5fd89700baa1cd112ad8.jpg?tbpicau=2023-10-22-05_16e8895e27b5b10d2adb57126976217e)
 #### 随机扣库存 32C
+![db32](http://tiebapic.baidu.com/tieba/pic/item/86d6277f9e2f07080316b834af24b899a901f2f7.jpg?tbpicau=2023-10-22-05_e0a1a0089d6e2e5dc80aa557f00b4829)
+![db32-2](http://tiebapic.baidu.com/tieba/pic/item/7dd98d1001e93901ae0d1f0a3dec54e736d196f3.jpg?tbpicau=2023-10-22-05_ac6845ba369a13b8487be87a998511f7)
 
 ### 4.2 2.0 raft模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
