@@ -31,48 +31,66 @@ RAFT 是一种新型易于理解的分布式一致性复制协议，由斯坦福
 ```
 ## 2.2 为什么需要raft模式
 看完上述的Seata-Raft模式是什么的定义后,是否就有疑问,难道现在Seata-Server就无法保证一致性和高可用了吗?那么下面从一致性和高可用来看看目前Seata-Server是如何做的.
-### 2.2.1
-在目前Seata的设计中,Server端的作用就是用来保证事务的二阶段被正确的执行,所以他是基于正确的事务数据进行一个正确的协调，那么应该知道被正确的执行的前提条件是什么?
+### 2.2.1 现有存储模式
+在当前的 Seata 设计中，Server 端的作用是保证事务的二阶段被正确执行。然而，这取决于事务记录的正确存储。为确保事务记录不丢失，需要在保持状态正确的前提下，驱动所有的 Seata-RM 执行正确的二阶段行为。那么，Seata 目前是如何存储事务状态和记录的呢？
 
-没错,就是事务记录的正确存储,要确保事务记录不丢失,在状态不错误下,二阶段驱动所有的Seata-RM时一定是正确的行为,而Seata目前对事务状态和记录是如何存储的?
-
-首先要介绍Seata支持事务存储模式有: file, db, redis 三种模式,根据一致性的排名来db(事务保证)>file(默认异步刷盘)>redis(aof,rdb)
+首先介绍一下 Seata 支持的三种事务存储模式：file、db 和 redis。根据一致性的排名，db 模式下的事务记录可以得到最好的保证，其次是 file 模式的异步刷盘，最后是 redis 模式下的 aof 和 rdb
 
 顾名思义:
 
-- file就是Seata自实现的事务存储,默认以异步形式进行存储事务信息到本地磁盘上,为了兼顾性能,默认是async,且事务信息存储在内存中,保证内存和磁盘上的一致性,在Seata-Server(以下简称TC)意外宕机时,会在启动时从磁盘读取事务信息并存储到内存中,以便恢复事务上下文继续运转.
-- db是Seata抽象出的AbstractTransactionStoreManager另一个实现,背后由数据库如pgsql,mysql,oracle来实现事务存储,这个比较好理解,就是对数据库的增删改查,一致性由数据库的本地事务保证,数据也由数据库的保证落盘.
-- redis同上,背后就是利用jedis+lua脚本(部分如竞争锁时，2.x上增删改将全部使用lua脚本)来进行事务的增删改查,数据也是由存储方保证,与db一样在seata中处于计算和存储分离架构设计.
+- file 模式是 Seata 自实现的事务存储方式，它以顺序写的形式将事务信息存储到本地磁盘上。为了兼顾性能，默认采用异步方式，并将事务信息存储在内存中，确保内存和磁盘上的数据一致性。当 Seata-Server（TC）意外宕机时，在重新启动时会从磁盘读取事务信息并恢复到内存中，以便继续运行事务上下文。
+- db 是 Seata 的抽象事务存储管理器（AbstractTransactionStoreManager）的另一种实现方式。它依赖于数据库，如 PostgreSQL、MySQL、Oracle 等，在数据库中进行事务信息的增删改查操作。一致性由数据库的本地事务保证，数据也由数据库负责持久化到磁盘。
+- redis 和 db 类似，也是一种事务存储方式。它利用 Jedis 和 Lua 脚本来进行事务的增删改查操作，部分操作（如竞争锁）在 Seata 2.x 版本中全部采用了 Lua 脚本。数据的存储与 db 类似，依赖于存储方（Redis）来保证数据的一致性。与 db 类似，redis 在 Seata 中采用了计算和存储分离的架构设计.
 
-### 2.2.2
+### 2.2.2 高可用
 
-高可用其实简单点理解,就是对集群的容灾,是否在TC宕机后,服务能正常运行,常见的方式就是Provider集群部署(可以说TC就是Seata-Client端的一个Provider),再通过注册中心实时感知TC的上线下,及时的切换到可用的TC.
+高可用简单理解就是集群能够在主节点宕机后继续正常运行，常见的方式是通过部署多个提供相同服务的节点，并通过注册中心实时感知主节点的上下线情况，以便及时切换到可用的节点。
 
-看起来好像加几台机器,部署即可,但是背后存在了一个问题,如何让多个TC像一个整体一样,即便其中一个宕机后,另一个TC能接手宕机时TC的数据完美善后呢?答案其实很简单,在计算与存储分离的情况下,只要把数据丢到存储中间件,任意一个TC通过这个公共的存储区域读取即可得到所有TC操作的事务信息,也就保证了高可用的能力.
+看起来似乎只需要加几台机器进行部署，但实际上背后存在一个问题，即如何确保多个节点像一个整体一样运作。如果其中一个节点宕机，另一个节点能够完美接替宕机节点的工作，包括处理宕机节点的数据。解决这个问题的答案其实很简单，在计算与存储分离的架构下，只需将数据存储在共享的存储中间件中，任何一个节点都可以通过访问该公共存储区域获取所有节点操作的事务信息，从而实现高可用的能力。
 
-但是也提到了一个前提条件,也就是计算与存储分离下,那么计算与存储一体化设计下为什么不行呢?
-
-这就要说说的File实现了,file在一致性那块的描述已经说了,他只是将数据存储在本地磁盘和TC内存中,这个数据写操作是没有任何同步,也就代表了目前的File模式无法高可用,仅支持单机部署,作为初级的快速入门的简单使用,这也让高性能的file(基于内存)基本被告别生产环境的使用.
+然而，前提条件是计算与存储必须分离。为什么计算与存储一体化设计不可行呢？这就要说到 File 模式的实现了。如之前描述的，File 模式将数据存储在本地磁盘和节点内存中，数据写操作没有任何同步，这意味着目前的 File 模式无法实现高可用，仅支持单机部署。作为初级的快速入门和简单使用而言，File 模式适用性较低，高性能的基于内存的 File 模式也基本上不再被生产环境使用。
 ## 2.3 Seata-Raft是如何设计的呢？
 ### 2.3.1 设计原理
-Seata-Raft模式的设计思路是来自于当前无法高可用的file模式的包装,将其的所有增删改操作利用raft算法进行同步,这也就保证了多个TC使用file模式时,数据是一致的,且摒弃了file模式的异步刷盘操作,改为通过raftlog+snapshot恢复数据
+Seata-Raft模式的设计思路是通过封装无法高可用的file模式，利用Raft算法实现多个TC之间数据的同步。该模式保证了使用file模式时多个TC的数据一致性，同时将异步刷盘操作改为使用Raft日志和快照进行数据恢复。
 ![流程图](https://blog.funkye.icu/img/blog/Dingtalk_20230105203431.jpg)
-设计示意如上图,client端在启动时,会通过配置中心读取当前client的事务分组对应的集群拿到，比如是default,以及相关的raft集群其中一个节点的ip(当然不嫌麻烦的话可以把整个集群的节点都写上,参考zookeeper那样),通过将获取元数据的request发向Seata-Server的ip:httpport(称之为Seata-Server的control端口)节点后,tc将会把该default raft集群下的元数据返回,即leader&follower&learner,随后将进行watch非leader的任意成员节点
-假设tm begin一个事务,那么由于本地的metadata指向了tc1的地址,那么他只会与tc1进行交互,而tc1在增加一个全局事务信息时,会通过raft协议,也就是图上标注的步骤1,发送日志,步骤2follower应答日志接收情况,当超过半数节点,如tc2接受成功并相应,那么tc1上的状态机(fsm)将执行添加全局事务动作(详细下面会说到).
-如果tc1宕机了,或者重选举了会发生什么呢?由于第一次启动拉取到了metadata,client便会执行watch follower节点的watch接口(因为只有非leader才可能成为leader,watch leader是无意义的,且集群发生重选举或增删节点,每个tc节点都会感知)
+
+在Seata-Raft模式中，client端在启动时会从配置中心获取当前client的事务分组（例如default）以及相关Raft集群节点的IP地址。通过向Seata-Server的控制端口发送请求，client可以获取到default分组对应的Raft集群的元数据，包括leader、follower和learner成员节点。然后，client会监视（watch）非leader节点的任意成员节点。
+
+假设TM开始一个事务，并且本地的metadata中的leader节点指向了TC1的地址，那么TM只会与TC1进行交互。当TC1添加一个全局事务信息时，通过Raft协议，即图中标注为步骤1的日志发送，TC1会将日志发送给其他节点，步骤2是follower节点响应日志接收情况。当超过半数的节点（如TC2）接受并响应成功时，TC1上的状态机（FSM）将执行添加全局事务的动作。
+
 ![watch](https://blog.funkye.icu/img/blog/Dingtalk_20230105204423.jpg)
 ![watch2](https://blog.funkye.icu/img/blog/Dingtalk_20230105211035.jpg)
 
-当tc1宕机后,tc2选举成为leader,而tm通过tc3或者tc2(只要是follower)的watch成功更新本地的metadata信息,后续的事务将请求至tc2,而tc1的数据本身就被同步到了tc2和tc3,数据一致性没影响,只不过在选举发生的一瞬间,且如果事务恰好处于决议发送request至旧leader时,该事务会被主动回滚(因为rpc的节点已经宕机或者重选举了,目前没做该rpc重试,tm侧默认有5次,但由于选举大约需要1s-2s时间,大概率处于这个阶段的begin状态未决议的事务会回滚,因为这部分begin状态的事务大概率无法决议成功，优先回滚释放锁，避免影响其他业务正确性)
+如果TC1宕机或发生重选举，会发生什么呢？由于首次启动时已经获取到了元数据，client会执行watch follower节点的接口来更新本地的metadata信息。因此，后续的事务请求将发送到新的leader（例如TC2）。同时，TC1的数据已经被同步到了TC2和TC3，因此数据一致性不会受到影响。只在选举发生的瞬间，如果某个事务正好发送给了旧的leader，该事务会被主动回滚，以确保数据的正确性。
+
+需要注意的是，在该模式下，如果事务处于决议发送请求或一阶段流程还未走完的时刻，并且恰好在选举时发生，这些事务会被主动回滚。因为RPC节点已经宕机或发生了重选举，当前没有实现RPC重试。TM侧默认有5次重试机制，但由于选举需要大约1s-2s的时间，这些处于begin状态的事务可能无法成功决议，因此会优先回滚，释放锁，以避免影响其他业务的正确性。
 ### 2.3.2 故障恢复
-既然讲到了一个正常的事务流程及原理，那么当tc发生故障时，数据又是如何恢复的呢？
+在Seata中，当TC发生故障时，数据恢复的过程如下：
+
 ![故障恢复](https://blog.funkye.icu/img/blog/Dingtalk_20230106231817.jpg)
 
-如上图所示，首先每个Seata-Server中的请求最终会走到ServerOnRequestProcessor进行处理，再将请求转移到具体的协调者类DefaultCoordinator(Raft实现时是在RaftCoordinator中，继承DefaultCoordinator)中，再转向到具体的业务代码中如DefaultCore进行对应的事务begin，commit，rollback等处理。
-而在发生故障重启的时候，首先就是如图所示的第一步，先从snapshot中查看是否有最新的数据快照（基于内存的快照），如果有，那么会直接加载到内存中，再按照快照之后的raftlog进行回放这段时间的行为，再这个时候可以理解每一次Seata-Server对事务数据的增删改，都会是一个raftlog，将这个行为同步（过半提交）到其他的follower/learner中，所以只要从头(或者从快照时间点后)就可以跟上leader的数据内容，那么数据就是一至的。
+如上图所示
+- 检查是否存在最新的数据快照：首先，系统会检查是否存在最新的数据快照文件。数据快照是基于内存的数据状态的一次全量拷贝，如果有最新的数据快照，则系统将直接加载该快照到内存中。
+
+- 根据快照后的Raft日志进行回放：如果存在最新的快照或者没有快照文件，系统将根据之前记录的Raft日志进行数据回放。每个Seata-Server中的请求最终会经过ServerOnRequestProcessor进行处理，然后转移到具体的协调者类(DefaultCoordinator或RaftCoordinator)中，再转向具体的业务代码(DefaultCore)进行相应的事务处理（如begin、commit、rollback等）。
+
+- 当日志回放完成后，便会由leader发起日志的同步，并继续执行相关事务的增删改动作。
+
+通过以上步骤，Seata能够实现在故障发生后的数据恢复。首先尝试加载最新的快照，如果有的话可以减少回放的时间；然后根据Raft日志进行回放，保证数据操作的一致性；最后通过日志同步机制，确保数据在多节点之间的一致性。
 ### 2.3.3 业务处理同步过程
 ![流程](https://blog.funkye.icu/img/blog/Dingtalk_20230106230931.jpg)
-看过了watch和queryMetadata的同学相信会有一个疑问,就是如果client侧获取最新metadata时,恰好有业务线程在begin或者commit或者registry的动作会发生什么?它们所请求的leader很可能在这一刻已经不存在或者不是leader了,那么前者比较简单rpc就会失败,后者在tc侧做了一个当前是否是leader的检测,如果不是leader将拒绝该请求,如果是leader但在中途失败,那么会由于当前已经不是leader,createTask提交到状态机的动作会失败,那么client侧也会接收到响应异常,而该旧leader的提交任务也会失败,也避免了事务信息不一致的问题,总结下来就是client提交失败，必然回滚，server提交任务失败，必然这个状态没有被提交，也是回滚，client侧数据自然也是一致的
+对于client侧获取最新metadata时恰好有业务线程在执行begin、commit或registry等操作的情况，Seata采取了以下处理方式：
+
+- client侧：
+
+    - 如果客户端正在执行begin、commit或registry等操作，并且此时需要获取最新metadata，由于此时的leader可能已经不存在或不是当前leader，因此客户端的RPC请求可能会失败。
+    - 如果请求失败，客户端会收到异常响应，此时客户端需要根据请求的结果进行回滚操作。
+- TC侧对旧leader的检测：
+
+    - 在TC侧，如果此时客户端的请求到达旧的leader节点，TC会进行当前是否是leader的检测，如果不是leader，则会拒绝该请求。
+    - 如果是leader但在中途失败，比如在提交任务到状态机的过程中失败，由于当前已经不是leader，创建任务（createTask）的动作会失败。这样，客户端也会接收到响应异常。
+    - 旧leader的提交任务也会失败，确保了事务信息的一致性。
+通过上述处理方式，当客户端获取最新metadata时恰好遇到业务操作的情况，Seata能够保证数据的一致性和事务的正确性。如果客户端的RPC请求失败，将触发回滚操作；而在TC侧，对旧leader的检测和任务提交的失败可以防止事务信息不一致的问题。这样，客户端的数据也能保持一致性。
 ### 2.4 设计上问题的探讨
 1.为什么要同步file模式的数据
 
@@ -193,6 +211,7 @@ peers: "10.58.16.231:9091"
 ### 3.3 faq
 - 当`seata.raft.server-addr`配置好后，必须通过server的openapi进行集群的扩缩容，直接改动该配置进行重启是不会生效的
 接口为`/metadata/v1/changeCluster?raftClusterStr=新的集群列表` 
+- 如果要在相同ip的机器上部署raft集群，那么只需要将对应的Seata-Server进程的http端口或netty端口改变即可（如果没有指定netty端口，netty端口为http端口+1000偏移量，如http端口为7091，netty端口就为8091，raft端口为netty端口+1000偏移量，可得出为9091）
 
 ## 4.压测对比
 压测对比分为两种场景,并且为了避免数据热点冲突与线程调优等情况,将Client侧的数据初始化300W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,在gc方面全部采用分代ZGC进行,压测工具为阿里云PTS，Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
@@ -202,37 +221,31 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ### 4.1 1.7.1 db模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg)
 #### 空压 64C
-![db64](http://tiebapic.baidu.com/tieba/pic/item/574e9258d109b3de2583765c8abf6c81800a4cc2.jpg?tbpicau=2023-10-22-05_15b6a982c2ea01824239f1a0e62ccfe6)
 ![db64-2](http://tiebapic.baidu.com/tieba/pic/item/6609c93d70cf3bc74c2a5fd89700baa1cd112ad8.jpg?tbpicau=2023-10-22-05_16e8895e27b5b10d2adb57126976217e)
 #### 随机扣库存 32C
-![db32](http://tiebapic.baidu.com/tieba/pic/item/86d6277f9e2f07080316b834af24b899a901f2f7.jpg?tbpicau=2023-10-22-05_e0a1a0089d6e2e5dc80aa557f00b4829)
 ![db32-2](http://tiebapic.baidu.com/tieba/pic/item/7dd98d1001e93901ae0d1f0a3dec54e736d196f3.jpg?tbpicau=2023-10-22-05_ac6845ba369a13b8487be87a998511f7)
 
 ### 4.2 2.0 raft模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
 
 #### 空压 64C
-![raft64](http://tiebapic.baidu.com/tieba/pic/item/d1a20cf431adcbeff04cec32eaaf2edda3cc9f8e.jpg?tbpicau=2023-10-22-05_6e5dc7e547dbacee1a9236a4014362c7)
 ![raft64-2](http://tiebapic.baidu.com/tieba/pic/item/91529822720e0cf38481dccf4c46f21fbe09aa94.jpg?tbpicau=2023-10-22-05_dfea5e155226bc16d91d9096a44681c2)
 
 #### 随机扣库存 32C
-![raft32c](http://tiebapic.baidu.com/tieba/pic/item/1b4c510fd9f9d72a03f78329922a2834349bbb77.jpg?tbpicau=2023-10-22-05_b2f30ccd3b5bea9a1bcb3f454444fe8e)
 ![raft32c-2](http://tiebapic.baidu.com/tieba/pic/item/09fa513d269759ee7a3bf3fff4fb43166d22df9f.jpg?tbpicau=2023-10-22-05_2dbafae92a68a1df3b0704a7a465a333)
 
 ### 4.3 压测结果对比
 32并发对300W商品随机扣库存场景
-| 类型      | 变化 | 更优的存储类型|
-| ----------- | ----------- | ----------- |
-| request count      |   42%↑    |Raft |
-| qps max  | 21%↑        | Raft|
-| qps avg   | 42%↑         |Raft |
+|     tps avg  | tps max | count| error| 存储类型|
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1709      |   2019    |1228803 | 0 | raft|
+| 1201      |   1668    |864105 | 0 | db|
 
 64并发空压`@Globaltransactional`接口（压测峰值上限为8000）
-| 类型      | 变化 | 更优的存储类型|
-| ----------- | ----------- | ----------- |
-| request count      |   20%↑    |Raft |
-| qps max  | 30%↑        | Raft|
-| qps avg   | 20%↑         |Raft |
+|     tps avg  | tps max | count| error| 存储类型|
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 5704      |   8062    |4101236 | 0 | raft|
+| 4743   |   6172    |3410240 | 0 | db|
 
 
 
