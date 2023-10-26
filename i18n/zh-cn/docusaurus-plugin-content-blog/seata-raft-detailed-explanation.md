@@ -194,7 +194,7 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ![raft64-2](https://gitee.com/itCjb/gallery/raw/master/raft64c.jpg)
 
 #### 随机扣库存 32C
-![raft32c-2](https://gitee.com/itCjb/gallery/raw/master/raft64c.jpg))
+![raft32c-2](https://gitee.com/itCjb/gallery/raw/master/raft64c.jpg)
 
 ### 4.3 压测结果对比
 32并发对300W商品随机扣库存场景
