@@ -183,18 +183,18 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ### 4.1 1.7.1 db模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg)
 #### 空压 64C
-![db64-2](http://tiebapic.baidu.com/tieba/pic/item/6609c93d70cf3bc74c2a5fd89700baa1cd112ad8.jpg?tbpicau=2023-10-22-05_16e8895e27b5b10d2adb57126976217e)
+![db64-2](https://gitee.com/itCjb/gallery/blob/master/db64c.jpg)
 #### 随机扣库存 32C
-![db32-2](http://tiebapic.baidu.com/tieba/pic/item/7dd98d1001e93901ae0d1f0a3dec54e736d196f3.jpg?tbpicau=2023-10-22-05_ac6845ba369a13b8487be87a998511f7)
+![db32-2](https://gitee.com/itCjb/gallery/blob/master/db32c.jpg)
 
 ### 4.2 2.0 raft模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
 
 #### 空压 64C
-![raft64-2](https://picx.zhimg.com/80/v2-fb2c00012306ba9b12a5efdcdfb7c844_1440w.jpeg)
+![raft64-2](https://gitee.com/itCjb/gallery/blob/master/raft64c.jpg)
 
 #### 随机扣库存 32C
-![raft32c-2](http://tiebapic.baidu.com/tieba/pic/item/09fa513d269759ee7a3bf3fff4fb43166d22df9f.jpg?tbpicau=2023-10-22-05_2dbafae92a68a1df3b0704a7a465a333)
+![raft32c-2](https://gitee.com/itCjb/gallery/blob/master/raft32c.jpg)
 
 ### 4.3 压测结果对比
 32并发对300W商品随机扣库存场景
