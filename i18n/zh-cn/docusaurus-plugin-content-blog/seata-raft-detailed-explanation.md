@@ -183,18 +183,18 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ### 4.1 1.7.1 db模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg)
 #### 空压 64C
-![db64-2](https://gitee.com/itCjb/gallery/blob/master/db64c.jpg)
+![db64-2](https://gitee.com/itCjb/gallery/raw/master/db64c.jpg)
 #### 随机扣库存 32C
-![db32-2](https://gitee.com/itCjb/gallery/blob/master/db32c.jpg)
+![db32-2](https://gitee.com/itCjb/gallery/raw/master/db32c.jpg)
 
 ### 4.2 2.0 raft模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
 
 #### 空压 64C
-![raft64-2](https://gitee.com/itCjb/gallery/blob/master/raft64c.jpg)
+![raft64-2](https://gitee.com/itCjb/gallery/raw/master/raft64c.jpg)
 
 #### 随机扣库存 32C
-![raft32c-2](https://gitee.com/itCjb/gallery/blob/master/raft32c.jpg)
+![raft32c-2](https://gitee.com/itCjb/gallery/raw/master/raft64c.jpg))
 
 ### 4.3 压测结果对比
 32并发对300W商品随机扣库存场景
