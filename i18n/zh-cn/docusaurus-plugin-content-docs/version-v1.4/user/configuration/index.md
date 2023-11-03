@@ -1,3 +1,9 @@
+---
+title: 简介
+keywords: [Seata, configuration center]
+description: 配置中心简介。
+---
+
 # 简介
 
 - 什么是配置中心?配置中心可以说是一个"大货仓",内部放置着各种配置文件,你可以通过自己所需进行获取配置加载到对应的客户端.比如Seata Client端(TM,RM),Seata Server(TC),会去读取全局事务开关,事务会话存储模式等信息.

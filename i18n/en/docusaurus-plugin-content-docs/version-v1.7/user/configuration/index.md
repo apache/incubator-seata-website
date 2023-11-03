@@ -1,3 +1,9 @@
+---
+title: Introduction
+keywords: [Seata, configuration center]
+description: Configuration Center Introduction.
+---
+
 # Introduction
 
 - What is a configuration center? The configuration center can be described as a "large warehouse" that contains various configuration files. You can obtain and load the required configurations into the corresponding clients. For example, Seata client (TM, RM) and Seata server (TC) will read global transaction switches, transaction session storage modes, and other information.

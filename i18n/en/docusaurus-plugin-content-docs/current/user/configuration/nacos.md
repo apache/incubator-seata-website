@@ -1,3 +1,9 @@
+---
+title: Nacos Configuration Center
+keywords: [Seata, Nacos]
+description: Nacos Configuration Center.
+---
+
 # Nacos Configuration Center
 
 Nacos is an important configuration center implementation in the Seata component.

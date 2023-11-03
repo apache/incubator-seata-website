@@ -1,3 +1,9 @@
+---
+title: Consul Configuration Center
+keywords: [Seata, Consul]
+description: Consul Configuration Center.
+---
+
 # Consul Configuration Center
 
 Based on [Using Consul as a Registry](http://seata.io/en-us/docs/user/registry/consul.html), put Seata configuration into Consul.
