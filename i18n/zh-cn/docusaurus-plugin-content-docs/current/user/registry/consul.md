@@ -1,3 +1,9 @@
+---
+title: Consul 注册中心
+keywords: [Seata, Consul]
+description: Consul 注册中心。
+---
+
 # Consul 注册中心
 
 Consul 是 Seata 组件中重要的注册中心实现

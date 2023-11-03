@@ -1,3 +1,9 @@
+---
+title: Etcd3 Configuration Center
+keywords: [Seata, Etcd3]
+description: Etcd3 Configuration Center.
+---
+
 # Etcd3 Configuration Center
 
 Etcd3 is an important configuration center implementation in the Seata component.
