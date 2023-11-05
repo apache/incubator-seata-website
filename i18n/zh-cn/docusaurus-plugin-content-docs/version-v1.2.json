@@ -1,7 +1,7 @@
 {
   "version.label": {
     "message": "v1.2",
-    "description": "The label for version current"
+    "description": "The label for version 1.2"
   },
   "sidebar.docs.category.Overview": {
     "message": "概述",
