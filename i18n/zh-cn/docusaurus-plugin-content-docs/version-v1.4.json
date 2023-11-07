@@ -28,7 +28,7 @@
     "description": "The label for category SQL Reference in sidebar docs"
   },
   "sidebar.docs.category.APM": {
-    "message": "APM",
+    "message": "应用性能监控",
     "description": "The label for category APM in sidebar docs"
   },
   "sidebar.docs.category.Testing Report": {
