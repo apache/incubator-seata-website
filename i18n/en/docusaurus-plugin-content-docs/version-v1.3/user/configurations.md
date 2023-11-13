@@ -1,11 +1,10 @@
 ---
-title: Seata parameter configuration
+title: Seata Parameter Configuration
 keywords: [Seata]
 description: Seata parameter configuration.
 ---
 
-
-# The seata parameter configuration version 1.6.0
+# The Seata Parameter Configuration Version 1.6.0
 
 
 ### Change record
