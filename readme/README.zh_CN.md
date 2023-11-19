@@ -1,4 +1,4 @@
-# Seata官方网页
+# Seata官方网站
 
 [![CI 状态](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions ）
 
