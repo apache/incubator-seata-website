@@ -22,7 +22,7 @@ const data = {
         link: '/zh-cn/blog/seata-meetup-hangzhou.html',
       },
       {
-        img: 'img/blog/20191218210552.png',
+        img: '/img/blog/20191218210552.png',
         title: 'Seata Community Meetup·杭州站',
         content: 'Seata Community Meetup·杭州站,将于12月21号在杭州市梦想小镇浙江青年众创空间正式召开',
         dateStr: 'Dec 18nd，2019',
