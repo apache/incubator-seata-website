@@ -4,7 +4,7 @@ keywords: [Seata]
 description: Seata parameter configuration.
 ---
 
-# The Seata Parameter Configuration Version 1.6.0
+# The Seata Parameter Configuration
 
 
 ### Change record
@@ -69,6 +69,10 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.redis. port | |
 | store.redis. database | |
 | store.redis. password | |
+| #The following configurations are required for "store.mode=raft"| |
+| server.raft.group| |
+| server.raft.server-addr| |
+| server.raft.snapshot-interval| |
 
 
 
@@ -93,7 +97,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |transport.threadFactory. bossThreadSize | Netty communication model Boss group threads | Default 1|
 |transport.threadFactory. workerThreadSize | Netty communication model Worker group threads | The number of threads can be configured or the number of threads in a specific thread working mode can be selected. There are four default working modes of threads: Auto (2 * CPU cores+1), Pin (CPU cores, applicable to computing intensive tasks), BusyPin (CPU cores+1, applicable to computing intensive and memory limited scenarios) Default (2 * CPU cores, applicable to IO intensive tasks), the default value is Default mode|
 |transport. shutdown. wait | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default|
-|transport. serialization | Client and server communication codec method | data (ByteBuf), protobuf, kryo, session, fst, default data|
+|transport.serialization | Client and server communication codec method | seata (ByteBuf), protobuf, kryo, hessian, default seata|
 |transport.compressor | Compression method of communication data between client and server | none, gzip, zip, sevenz, bzip2, lz4, deflater, zstd, default none | Before 1.2.0: gzip<br/>1.2.0: zip, sevenz, bzip2<br/>1.3.0: lz4<br/>1.4.1: deflater <br/> 1.5.1: zstd|
 |transport. heartbeat | The heartbeat detection switch for client server communication | The default value is true|
 |Registry.type | Registry type | Default file, supports file, nacos, redis, eureka, zk, consumer, etcd3, sofa, and custom | 1.6.0 Server supports simultaneous registration to multiple registries, separating registry names with commas|
@@ -119,9 +123,22 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.session.branchAsyncQueueSize | Branch transaction session asynchronously deletes the thread pool queue size | 5000 by default | new in 1.5.1 version|
 | server.session.enableBranchAsyncRemove | Asynchronous deletion switch of branch transaction session | Default false | new in 1.5.1 version|
 | server.enableParallelRequestHandle | Parallel processing switch for batch request messages | Default false | new in 1.5.2 version|
+| server.raft.group | In the Raft storage mode, the transaction group corresponding to the group and client should be matched with the value. For example, service.vgroup-mapping.default_tx_group=default.| New in 2.0.0 version |
+| server.raft.server-addr | The Raft cluster list is as follows: 192.168.0.111:9091, 192.168.0.112:9091, 192.168.0.113:9091 |  | New in 2.0.0 version |
+| server.raft.snapshot-interval | How often to take a memory snapshot? The state machine is paused every time a snapshot is taken, but this can improve recovery speed when stopping | 默认600秒 | New in 2.0.0 version |
+| server.raft.apply-batch | Accumulate batches of tasks and submit them to the leader. | 32 | New in 2.0.0 version |
+| server.raft.max-append-bufferSize | Maximum size of the Raft log storage buffer | 262144 | New in 2.0.0 version |
+| server.raft.max-replicator-inflight-msgs | The maximum number of in-flight requests when pipeline requests are enabled | 256 | New in 2.0.0 version |
+| server.raft.disruptor-buffer-size | The size of the internal disruptor buffer may need to be increased appropriately in scenarios with high write throughput | 16384 | New in 2.0.0 version |
+| server.raft.election-timeout-ms | How long does it take to start a new election when there is no leader heartbeat for a long time | 1000 | New in 2.0.0 version |
+| server.raft.reporter-enabled | Raft monitor enable | false | New in 2.0.0 version |
+| server.raft.reporter-initial-delay |  Monitor output interval | 60 | New in 2.0.0 version |
+| server.raft.serialization | raft log serialization type | jackson | New in 2.0.0 version |
+| server.raft.compressor | The compression methods supported for Raft log and snapshot are gzip, zstd, and lz4 | none | New in 2.0.0 version |
+| server.raft.sync | Synchronous flushing of Raft log to disk | true |  New in 2.0.0 version |
 | store.mode | Transaction session information storage mode | file Local file (HA is not supported), db database, redis (HA is supported) | The 1.5.1 version uses lock and session for separate storage|
-| store.lock.mode | Transaction lock information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value | New in 1.5.1 version, and session and lock can be stored separately|
-| store.session.mode | Transaction echo information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value | New in 1.5.1 version, and session and lock can be stored separately|
+| store.lock.mode | Transaction lock information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value. It is not allowed to specify separately in Raft mode | New in 1.5.1 version, and session and lock can be stored separately|
+| store.session.mode | Transaction echo information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value. It is not allowed to specify separately in Raft mode | New in 1.5.1 version, and session and lock can be stored separately|
 | store.publicKey | Public key for storing and decrypting passwords in db or Redis | | supported in version 1.4.2|
 | store.file.dir | file mode file storage folder name | default sessionStore|
 | store.file.maxBranchSessionSize | File mode file storage branch session maximum bytes | 16384 (16kb) by default, in bytes|

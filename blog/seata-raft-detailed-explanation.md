@@ -121,7 +121,7 @@ seata:
 seata:
   server:
     raft:
-      group: default #此值代表该raft集群的group，client的事务分支对应的值要与之对应
+      group: default #此值代表该raft集群的group，client的事务分组对应的值要与之对应
       server-addr: 192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 # 3台节点的ip和端口，端口为该节点的netty端口+1000，默认netty端口为8091
       snapshot-interval: 600 # 600秒做一次数据的快照，以便raftlog的快速滚动，但是每次做快照如果内存中事务数据过多会导致每600秒产生一次业务rt的抖动，但是对于故障恢复比较友好，重启节点较快，可以调整为30分钟，1小时都行，具体按业务来，可以自行压测看看是否有抖动，在rt抖动和故障恢复中自行找个平衡点
       apply-batch: 32 # 最多批量32次动作做一次提交raftlog
@@ -173,7 +173,9 @@ peers: "10.58.16.231:9091"
 ### 3.3 faq
 - 当`seata.raft.server-addr`配置好后，必须通过server的openapi进行集群的扩缩容，直接改动该配置进行重启是不会生效的
 接口为`/metadata/v1/changeCluster?raftClusterStr=新的集群列表` 
-- 如果要在相同ip的机器上部署raft集群，那么只需要将对应的Seata-Server进程的http端口或netty端口改变即可（如果没有指定netty端口，netty端口为http端口+1000偏移量，如http端口为7091，netty端口就为8091，raft端口为netty端口+1000偏移量，可得出为9091）
+- 如果`server-addr:`中的地址都为本机，那么需要根据本机上不同的server的netty端口增加1000的偏移量，如`server.port: 7092`那么netty端口为8092，raft选举和通信端口便为9092，需要增加启动参数`-Dserver.raftPort=9092`.
+Linux下可以通过`export JAVA_OPT="-Dserver.raftPort=9092"`等方式指定。
+
 
 ## 4.压测对比
 压测对比分为两种场景,并且为了避免数据热点冲突与线程调优等情况,将Client侧的数据初始化300W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,在gc方面全部采用分代ZGC进行,压测工具为阿里云PTS，Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
@@ -183,18 +185,18 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 ### 4.1 1.7.1 db模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg)
 #### 空提交 64C
-![db64-2](https://gitee.com/itCjb/gallery/raw/master/db64c.jpg)
+![db64-2](https://img.alicdn.com/imgextra/i2/O1CN01pE1Anf1nRtgcnlx9t_!!6000000005087-0-tps-622-852.jpg)
 #### 随机扣库存 32C
-![db32-2](https://gitee.com/itCjb/gallery/raw/master/db32c.jpg)
+![db32-2](https://img.alicdn.com/imgextra/i2/O1CN016hZkJC20OJax9ce31_!!6000000006839-0-tps-624-852.jpg)
 
 ### 4.2 2.0 raft模式
 ![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
 
 #### 空提交 64C
-![raft64-2](https://gitee.com/itCjb/gallery/raw/master/raft64c.jpg)
+![raft64-2](https://img.alicdn.com/imgextra/i1/O1CN01rs1ykr1dhnH8qnXj3_!!6000000003768-0-tps-631-851.jpg)
 
 #### 随机扣库存 32C
-![raft32c-2](https://gitee.com/itCjb/gallery/raw/master/raft32c.jpg)
+![raft32c-2](https://img.alicdn.com/imgextra/i4/O1CN015OwA2k20enquV7Yfu_!!6000000006875-0-tps-624-856.jpg)
 
 ### 4.3 压测结果对比
 32并发对300W商品随机扣库存场景
@@ -205,6 +207,7 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 | 1201      |   1668    |864105 |19.86ms | 0 | DB |
 
 64并发空压`@Globaltransactional`接口（压测峰值上限为8000）
+
 |     tps avg  | tps max | count| rt | error| 存储类型|
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 5704(20%↑) | 8062(30%↑) |4101236(20%↑) |7.79ms(23.8%↓) | 0 | Raft|

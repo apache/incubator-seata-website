@@ -23,7 +23,7 @@ const data = {
       content: [
         translate({
           id: 'homepage.featureListContent2',
-          message: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB、MariaDB、DaMeng和PolarDB-X 2.0，SQLServer',
+          message: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB、MariaDB、DaMeng、PolarDB-X 2.0、SQLServer。DB2开发中',
         }),
       ],
     },

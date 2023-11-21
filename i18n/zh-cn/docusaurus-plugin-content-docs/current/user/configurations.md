@@ -4,7 +4,7 @@ keywords: [Seata]
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.6.0版本
+# 
 <a href="./configurations100">查看1.0.0版本</a>  
 <br/>
 
@@ -49,6 +49,10 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.redis.port | |
 | store.redis.database | |
 | store.redis.password | |
+| #store.mode=raft 需要以下配置| |
+| server.raft.group| |
+| server.raft.server-addr| |
+| server.raft.snapshot-interval| |
 
 
 
@@ -69,7 +73,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | transport.threadFactory.bossThreadSize | Netty通信模型Boss group线程数 | 默认1 |
 | transport.threadFactory.workerThreadSize | Netty通信模型Worker group线程数 | 可配置线程数或选择特定线程工作模式下的线程数，线程的默认工作模式有4种:Auto(2\*CPU核数 + 1)、Pin(CPU核数，适用于计算密集型任务)、BusyPin(CPU核数 + 1，适用于计算密集型且内存比较有限的场景）、Default(2\*CPU核数，适用于IO密集型任务）,默认值为Default模式 |
 | transport.shutdown.wait | 服务端Netty线程池关闭前等待服务下线时间 | 默认3秒 |
-| transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hession、fst，默认seata | 
+| transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hessian，默认seata | 
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip、zip、sevenz、bzip2、lz4、deflater、zstd，默认none | 1.2.0之前：gzip <br /> 1.2.0:zip、sevenz、bzip2 <br /> 1.3.0:lz4 <br /> 1.4.1:deflater <br /> 1.5.1:zstd|
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
 | registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | 1.6.0版本Sever端支持可同时注册到多个注册中心,以逗号分隔注册中心名 |
@@ -93,9 +97,22 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.session.branchAsyncQueueSize | 分支事务Session异步删除线程池队列大小 | 默认5000 | 1.5.1版本新增 |
 | server.session.enableBranchAsyncRemove | 分支事务Session异步删除开关 | 默认false | 1.5.1版本新增 |
 | server.enableParallelRequestHandle | 对于批量请求消息的并行处理开关 | 默认false | 1.5.2版本新增 |
-| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库，redis(支持HA)    | 1.5.1版本改用lock和session分离存储 |
-| store.lock.mode | 事务锁信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值 | 1.5.1版本新增，session和lock可分离存储 |
-| store.session.mode | 事务回话信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值 | 1.5.1版本新增，session和lock可分离存储 |
+| server.raft.group | raft存储模式下的group，client的事务分组对应的值要与之对应，如service.vgroup-mapping.default_tx_group=default | default | 2.0.0版本新增 |
+| server.raft.server-addr | raft集群列表如192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 |  | 2.0.0版本新增 |
+| server.raft.snapshot-interval | 间隔多久做一次内存快照，每做一次快照将暂停状态机，但是能提高停机恢复速度 | 默认600秒 | 2.0.0版本新增 |
+| server.raft.apply-batch | 任务累积批次后提交至leader | 默认32 | 2.0.0版本新增 |
+| server.raft.max-append-bufferSize | raft日志存储缓冲区最大大小 | 默认256K | 2.0.0版本新增 |
+| server.raft.max-replicator-inflight-msgs | 在启用 pipeline 请求情况下，最大 in-flight 请求数 | 默认256 | 2.0.0版本新增 |
+| server.raft.disruptor-buffer-size | 内部 disruptor buffer 大小，如果是写入吞吐量较高场景，需要适当调高该值， | 默认 16384 | 2.0.0版本新增 |
+| server.raft.election-timeout-ms | 超过多久没有leader的心跳开始重选举 | 默认1000毫秒 | 2.0.0版本新增 |
+| server.raft.reporter-enabled | raft自身的监控是否开启 | 默认false | 2.0.0版本新增 |
+| server.raft.reporter-initial-delay | 监控输出间隔 | 默认60秒 | 2.0.0版本新增 |
+| server.raft.serialization | 序列化方式，目前仅支持jackson | 默认jackson | 2.0.0版本新增 |
+| server.raft.compressor | raftlog和snapshot的压缩方式，支持gzip, zstd, lz4 | none | 2.0.0版本新增 |
+| server.raft.sync | raftlog同步刷盘 | true | 2.0.0版本新增 |
+| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库，redis(支持HA)，raft    | 1.5.1版本改用lock和session分离存储，2.0.0开始支持raft模式 |
+| store.lock.mode | 事务锁信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值，raft模式不允许指定 | 1.5.1版本新增，session和lock可分离存储 |
+| store.session.mode | 事务回话信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值。raft模式不允许单独指定 | 1.5.1版本新增，session和lock可分离存储 |
 | store.publicKey | db或redis存储密码解密公钥 | | 1.4.2版本支持 |
 | store.file.dir                            | file模式文件存储文件夹名 |默认sessionStore    |
 | store.file.maxBranchSessionSize | file模式文件存储分支session最大字节数 | 默认16384(16kb),单位byte | 
