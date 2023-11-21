@@ -42,6 +42,11 @@ const sidebars = {
           label: 'Registration Authority',
           items: ['user/registry/index', 'user/registry/nacos', 'user/registry/eureka', 'user/registry/etcd3', 'user/registry/consul', 'user/registry/zookeeper'],
         },
+        {
+          type: 'category',
+          label: 'Transaction Mode',
+          items: ['user/mode/at', 'user/mode/tcc', 'user/mode/saga', 'user/mode/xa'],
+        },
         'user/api',
         'user/microservice',
         'user/ormframework',
