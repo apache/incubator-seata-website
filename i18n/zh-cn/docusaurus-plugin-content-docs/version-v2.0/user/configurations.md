@@ -172,7 +172,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.compress.type | undo log压缩算法 | 默认zip,可选NONE(不压缩)、GZIP、ZIP、SEVENZ、BZIP2、LZ4、DEFLATER、ZSTD | 1.4.1版本新增 |
 | client.undo.compress.threshold | undo log压缩阈值 | 默认值64k，压缩开关开启且undo log大小超过阈值时才进行压缩 | 1.4.1版本新增 |
 | client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
-
+| seata.client.rm.applicationDataLimitCheck | 客户端应用数据是否开启限制             | 默认false               |
+| seata.client.rm.applicationDataLimit | 客户端应用数据上报限制             | 默认64000       |
 
 <details>
   <summary><mark>参数同步到配置中心使用demo</mark></summary>
