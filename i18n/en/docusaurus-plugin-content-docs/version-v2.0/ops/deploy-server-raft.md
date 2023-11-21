@@ -1,5 +1,5 @@
 ---
-title: Deploying Raft
+title: Deploying Raft Cluster
 keywords: [Seata]
 description: Server-Raft mode deploy
 ---
