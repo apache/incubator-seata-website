@@ -43,9 +43,11 @@ const sidebars = {
           items: ['user/registry/index', 'user/registry/nacos', 'user/registry/eureka', 'user/registry/etcd3', 'user/registry/consul', 'user/registry/zookeeper'],
         },
         'user/api',
+        'user/saga',
         'user/microservice',
         'user/ormframework',
         'user/datasource',
+        'user/spring',
         {
           type: 'category',
           label: 'SQL Reference',
