@@ -1,3 +1,9 @@
+---
+title: 简介
+keywords: [Seata, registry center]
+description: 注册中心简介。
+---
+
 # 简介
 
 - 什么是注册中心?注册中心可以说是微服务架构中的”通讯录“，它记录了服务和服务地址的映射关系。在分布式架构中，服务会注册到这里，当服务需要调用其它服务时，就到这里找到服务的地址，进行调用.比如Seata Client端(TM,RM),发现Seata Server(TC)集群的地址,彼此通信.

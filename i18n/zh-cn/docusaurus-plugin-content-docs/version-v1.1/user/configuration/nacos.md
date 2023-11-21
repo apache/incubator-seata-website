@@ -1,3 +1,9 @@
+---
+title: Nacos 配置中心
+keywords: [Seata, Nacos]
+description: Nacos 配置中心。
+---
+
 # Nacos 配置中心
 
 Nacos 是 Seata 组件中重要的配置中心实现.

@@ -1,3 +1,9 @@
+---
+title: Apollo 配置中心
+keywords: [Seata, Apollo]
+description: Apollo 配置中心。
+---
+
 # Apollo 配置中心
 
 ## 预备工作

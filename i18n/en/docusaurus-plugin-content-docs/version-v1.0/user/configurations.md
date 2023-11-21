@@ -1,6 +1,6 @@
 ---
 
-Title: Seata parameter configuration
+Title: Seata Parameter Configuration
 
 keywords: [Seata]
 
@@ -10,7 +10,7 @@ Description: Seata parameter configuration.
 
 
 
-# The seata parameter configuration version 1.6.0
+# The Seata Parameter Configuration Version 1.6.0
 
 
 ### Change record
