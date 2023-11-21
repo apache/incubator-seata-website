@@ -1,5 +1,5 @@
 ---
-title: 部署raft
+title: 部署Raft集群
 keywords: [Seata]
 description: Server-Raft mode 部署。
 ---
