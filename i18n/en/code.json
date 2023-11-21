@@ -388,7 +388,7 @@
     "message": "AT mode"
   },
   "homepage.featureListContent2": {
-    "message": "Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB, MariaDB, DaMeng and PolarDB-X 2.0. SQLServer is currently under development."
+    "message": "Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB, MariaDB, DaMeng and PolarDB-X 2.0, SQLServer."
   },
   "homepage.featureListTitle3": {
     "message": "TCC mode"
