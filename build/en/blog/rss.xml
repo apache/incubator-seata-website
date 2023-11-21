@@ -4,7 +4,7 @@
         <title>Seata Blog</title>
         <link>https://seata.io/en/blog</link>
         <description>Seata Blog</description>
-        <lastBuildDate>Tue, 21 Nov 2023 07:51:54 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 21 Nov 2023 13:30:24 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[design-more-flexable-application-by-saga]]></title>
             <link>https://seata.io/en/blog/design-more-flexable-application-by-saga</link>
             <guid>https://seata.io/en/blog/design-more-flexable-application-by-saga</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -20,7 +20,7 @@
             <title><![CDATA[how-to-support-spring-cloud]]></title>
             <link>https://seata.io/en/blog/how-to-support-spring-cloud</link>
             <guid>https://seata.io/en/blog/how-to-support-spring-cloud</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -28,7 +28,7 @@
             <title><![CDATA[integrate-seata-tcc-mode-with-spring-cloud]]></title>
             <link>https://seata.io/en/blog/integrate-seata-tcc-mode-with-spring-cloud</link>
             <guid>https://seata.io/en/blog/integrate-seata-tcc-mode-with-spring-cloud</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -36,7 +36,7 @@
             <title><![CDATA[integrate-seata-with-spring-cloud]]></title>
             <link>https://seata.io/en/blog/integrate-seata-with-spring-cloud</link>
             <guid>https://seata.io/en/blog/integrate-seata-with-spring-cloud</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -44,7 +44,7 @@
             <title><![CDATA[iscas2023]]></title>
             <link>https://seata.io/en/blog/iscas2023</link>
             <guid>https://seata.io/en/blog/iscas2023</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -52,7 +52,7 @@
             <title><![CDATA[seata-1.5.2]]></title>
             <link>https://seata.io/en/blog/seata-1.5.2</link>
             <guid>https://seata.io/en/blog/seata-1.5.2</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -60,7 +60,7 @@
             <title><![CDATA[seata-1.6.0]]></title>
             <link>https://seata.io/en/blog/seata-1.6.0</link>
             <guid>https://seata.io/en/blog/seata-1.6.0</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -68,7 +68,7 @@
             <title><![CDATA[seata-analysis-UUID-generator]]></title>
             <link>https://seata.io/en/blog/seata-analysis-UUID-generator</link>
             <guid>https://seata.io/en/blog/seata-analysis-UUID-generator</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -76,7 +76,7 @@
             <title><![CDATA[seata-analysis-config-modular]]></title>
             <link>https://seata.io/en/blog/seata-analysis-config-modular</link>
             <guid>https://seata.io/en/blog/seata-analysis-config-modular</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -84,7 +84,7 @@
             <title><![CDATA[seata-analysis-core-modular]]></title>
             <link>https://seata.io/en/blog/seata-analysis-core-modular</link>
             <guid>https://seata.io/en/blog/seata-analysis-core-modular</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -92,7 +92,7 @@
             <title><![CDATA[seata-analysis-dubbo-transmit-xid]]></title>
             <link>https://seata.io/en/blog/seata-analysis-dubbo-transmit-xid</link>
             <guid>https://seata.io/en/blog/seata-analysis-dubbo-transmit-xid</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -100,7 +100,7 @@
             <title><![CDATA[seata-analysis-go-server]]></title>
             <link>https://seata.io/en/blog/seata-analysis-go-server</link>
             <guid>https://seata.io/en/blog/seata-analysis-go-server</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -108,7 +108,7 @@
             <title><![CDATA[seata-analysis-java-client]]></title>
             <link>https://seata.io/en/blog/seata-analysis-java-client</link>
             <guid>https://seata.io/en/blog/seata-analysis-java-client</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -116,7 +116,7 @@
             <title><![CDATA[seata-analysis-java-server]]></title>
             <link>https://seata.io/en/blog/seata-analysis-java-server</link>
             <guid>https://seata.io/en/blog/seata-analysis-java-server</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -124,7 +124,7 @@
             <title><![CDATA[seata-analysis-simple]]></title>
             <link>https://seata.io/en/blog/seata-analysis-simple</link>
             <guid>https://seata.io/en/blog/seata-analysis-simple</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -132,7 +132,7 @@
             <title><![CDATA[seata-analysis-tcc-modular]]></title>
             <link>https://seata.io/en/blog/seata-analysis-tcc-modular</link>
             <guid>https://seata.io/en/blog/seata-analysis-tcc-modular</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -140,7 +140,7 @@
             <title><![CDATA[seata-at-demo-in-mac]]></title>
             <link>https://seata.io/en/blog/seata-at-demo-in-mac</link>
             <guid>https://seata.io/en/blog/seata-at-demo-in-mac</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -148,7 +148,7 @@
             <title><![CDATA[seata-at-lock]]></title>
             <link>https://seata.io/en/blog/seata-at-lock</link>
             <guid>https://seata.io/en/blog/seata-at-lock</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -156,7 +156,7 @@
             <title><![CDATA[seata-at-mode-design]]></title>
             <link>https://seata.io/en/blog/seata-at-mode-design</link>
             <guid>https://seata.io/en/blog/seata-at-mode-design</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -164,7 +164,7 @@
             <title><![CDATA[seata-at-mode-start-rm-tm]]></title>
             <link>https://seata.io/en/blog/seata-at-mode-start-rm-tm</link>
             <guid>https://seata.io/en/blog/seata-at-mode-start-rm-tm</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -172,7 +172,7 @@
             <title><![CDATA[seata-at-mode-start]]></title>
             <link>https://seata.io/en/blog/seata-at-mode-start</link>
             <guid>https://seata.io/en/blog/seata-at-mode-start</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -180,7 +180,7 @@
             <title><![CDATA[seata-at-tcc-saga]]></title>
             <link>https://seata.io/en/blog/seata-at-tcc-saga</link>
             <guid>https://seata.io/en/blog/seata-at-tcc-saga</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -188,7 +188,7 @@
             <title><![CDATA[seata-client-start-analysis-01]]></title>
             <link>https://seata.io/en/blog/seata-client-start-analysis-01</link>
             <guid>https://seata.io/en/blog/seata-client-start-analysis-01</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -196,7 +196,7 @@
             <title><![CDATA[seata-client-start-analysis-02]]></title>
             <link>https://seata.io/en/blog/seata-client-start-analysis-02</link>
             <guid>https://seata.io/en/blog/seata-client-start-analysis-02</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -204,7 +204,7 @@
             <title><![CDATA[seata-community-meetup-hangzhou-ready]]></title>
             <link>https://seata.io/en/blog/seata-community-meetup-hangzhou-ready</link>
             <guid>https://seata.io/en/blog/seata-community-meetup-hangzhou-ready</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -212,7 +212,7 @@
             <title><![CDATA[seata-config-center]]></title>
             <link>https://seata.io/en/blog/seata-config-center</link>
             <guid>https://seata.io/en/blog/seata-config-center</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -220,7 +220,7 @@
             <title><![CDATA[seata-config-manager]]></title>
             <link>https://seata.io/en/blog/seata-config-manager</link>
             <guid>https://seata.io/en/blog/seata-config-manager</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -228,7 +228,7 @@
             <title><![CDATA[seata-connect-data-and-application]]></title>
             <link>https://seata.io/en/blog/seata-connect-data-and-application</link>
             <guid>https://seata.io/en/blog/seata-connect-data-and-application</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -236,7 +236,7 @@
             <title><![CDATA[seata-datasource-proxy]]></title>
             <link>https://seata.io/en/blog/seata-datasource-proxy</link>
             <guid>https://seata.io/en/blog/seata-datasource-proxy</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -244,7 +244,7 @@
             <title><![CDATA[seata-dsproxy-deadlock]]></title>
             <link>https://seata.io/en/blog/seata-dsproxy-deadlock</link>
             <guid>https://seata.io/en/blog/seata-dsproxy-deadlock</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -252,7 +252,7 @@
             <title><![CDATA[seata-dynamic-config-and-dynamic-disable]]></title>
             <link>https://seata.io/en/blog/seata-dynamic-config-and-dynamic-disable</link>
             <guid>https://seata.io/en/blog/seata-dynamic-config-and-dynamic-disable</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -260,7 +260,7 @@
             <title><![CDATA[seata-feature-undo-log-compress]]></title>
             <link>https://seata.io/en/blog/seata-feature-undo-log-compress</link>
             <guid>https://seata.io/en/blog/seata-feature-undo-log-compress</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -268,7 +268,7 @@
             <title><![CDATA[seata-go-1.2.0]]></title>
             <link>https://seata.io/en/blog/seata-go-1.2.0</link>
             <guid>https://seata.io/en/blog/seata-go-1.2.0</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -276,7 +276,7 @@
             <title><![CDATA[seata-golang-communication-mode]]></title>
             <link>https://seata.io/en/blog/seata-golang-communication-mode</link>
             <guid>https://seata.io/en/blog/seata-golang-communication-mode</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -284,7 +284,7 @@
             <title><![CDATA[seata-ha-practice]]></title>
             <link>https://seata.io/en/blog/seata-ha-practice</link>
             <guid>https://seata.io/en/blog/seata-ha-practice</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -292,7 +292,7 @@
             <title><![CDATA[seata-meetup-hangzhou]]></title>
             <link>https://seata.io/en/blog/seata-meetup-hangzhou</link>
             <guid>https://seata.io/en/blog/seata-meetup-hangzhou</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -300,7 +300,7 @@
             <title><![CDATA[seata-mybatisplus-analysis]]></title>
             <link>https://seata.io/en/blog/seata-mybatisplus-analysis</link>
             <guid>https://seata.io/en/blog/seata-mybatisplus-analysis</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -308,7 +308,7 @@
             <title><![CDATA[seata-nacos-analysis]]></title>
             <link>https://seata.io/en/blog/seata-nacos-analysis</link>
             <guid>https://seata.io/en/blog/seata-nacos-analysis</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -316,7 +316,7 @@
             <title><![CDATA[seata-nacos-docker]]></title>
             <link>https://seata.io/en/blog/seata-nacos-docker</link>
             <guid>https://seata.io/en/blog/seata-nacos-docker</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -324,7 +324,7 @@
             <title><![CDATA[seata-observable-practice]]></title>
             <link>https://seata.io/en/blog/seata-observable-practice</link>
             <guid>https://seata.io/en/blog/seata-observable-practice</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -332,7 +332,7 @@
             <title><![CDATA[seata-quick-start]]></title>
             <link>https://seata.io/en/blog/seata-quick-start</link>
             <guid>https://seata.io/en/blog/seata-quick-start</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -340,7 +340,7 @@
             <title><![CDATA[seata-rpc-refactor]]></title>
             <link>https://seata.io/en/blog/seata-rpc-refactor</link>
             <guid>https://seata.io/en/blog/seata-rpc-refactor</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -348,7 +348,7 @@
             <title><![CDATA[seata-snowflake-explain]]></title>
             <link>https://seata.io/en/blog/seata-snowflake-explain</link>
             <guid>https://seata.io/en/blog/seata-snowflake-explain</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -356,7 +356,7 @@
             <title><![CDATA[seata-sourcecode-client-bootstrap]]></title>
             <link>https://seata.io/en/blog/seata-sourcecode-client-bootstrap</link>
             <guid>https://seata.io/en/blog/seata-sourcecode-client-bootstrap</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -364,7 +364,7 @@
             <title><![CDATA[seata-sourcecode-server-bootstrap]]></title>
             <link>https://seata.io/en/blog/seata-sourcecode-server-bootstrap</link>
             <guid>https://seata.io/en/blog/seata-sourcecode-server-bootstrap</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -372,7 +372,7 @@
             <title><![CDATA[seata-spring-boot-aop-aspectj]]></title>
             <link>https://seata.io/en/blog/seata-spring-boot-aop-aspectj</link>
             <guid>https://seata.io/en/blog/seata-spring-boot-aop-aspectj</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -380,7 +380,7 @@
             <title><![CDATA[seata-tcc-fence]]></title>
             <link>https://seata.io/en/blog/seata-tcc-fence</link>
             <guid>https://seata.io/en/blog/seata-tcc-fence</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -388,7 +388,7 @@
             <title><![CDATA[seata-tcc]]></title>
             <link>https://seata.io/en/blog/seata-tcc</link>
             <guid>https://seata.io/en/blog/seata-tcc</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -396,7 +396,7 @@
             <title><![CDATA[seata-xa-introduce]]></title>
             <link>https://seata.io/en/blog/seata-xa-introduce</link>
             <guid>https://seata.io/en/blog/seata-xa-introduce</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -404,7 +404,7 @@
             <title><![CDATA[springboot-dubbo-mybatisplus-seata]]></title>
             <link>https://seata.io/en/blog/springboot-dubbo-mybatisplus-seata</link>
             <guid>https://seata.io/en/blog/springboot-dubbo-mybatisplus-seata</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -412,7 +412,7 @@
             <title><![CDATA[tcc-mode-applicable-scenario-analysis]]></title>
             <link>https://seata.io/en/blog/tcc-mode-applicable-scenario-analysis</link>
             <guid>https://seata.io/en/blog/tcc-mode-applicable-scenario-analysis</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -420,7 +420,7 @@
             <title><![CDATA[tcc-mode-design-principle]]></title>
             <link>https://seata.io/en/blog/tcc-mode-design-principle</link>
             <guid>https://seata.io/en/blog/tcc-mode-design-principle</guid>
-            <pubDate>Tue, 21 Nov 2023 07:51:54 GMT</pubDate>
+            <pubDate>Tue, 21 Nov 2023 13:30:24 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -435,13 +435,10 @@
 <img loading="lazy" src="https://blog.funkye.icu/img/blog/Dingtalk_20230105211035.jpg" alt="watch2" class="img_ev3q"></p><p>如果TC1宕机或发生重选举，会发生什么呢？由于首次启动时已经获取到了元数据，client会执行watch follower节点的接口来更新本地的metadata信息。因此，后续的事务请求将发送到新的leader（例如TC2）。同时，TC1的数据已经被同步到了TC2和TC3，因此数据一致性不会受到影响。只在选举发生的瞬间，如果某个事务正好发送给了旧的leader，该事务会被主动回滚，以确保数据的正确性。</p><p>需要注意的是，在该模式下，如果事务处于决议发送请求或一阶段流程还未走完的时刻，并且恰好在选举时发生，这些事务会被主动回滚。因为RPC节点已经宕机或发生了重选举，当前没有实现RPC重试。TM侧默认有5次重试机制，但由于选举需要大约1s-2s的时间，这些处于begin状态的事务可能无法成功决议，因此会优先回滚，释放锁，以避免影响其他业务的正确性。</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="232-故障恢复">2.3.2 故障恢复<a href="#232-故障恢复" class="hash-link" aria-label="Direct link to 2.3.2 故障恢复" title="Direct link to 2.3.2 故障恢复">​</a></h3><p>在Seata中，当TC发生故障时，数据恢复的过程如下：</p><p><img loading="lazy" src="https://blog.funkye.icu/img/blog/Dingtalk_20230106231817.jpg" alt="故障恢复" class="img_ev3q"></p><p>如上图所示</p><ul><li><p>检查是否存在最新的数据快照：首先，系统会检查是否存在最新的数据快照文件。数据快照是基于内存的数据状态的一次全量拷贝，如果有最新的数据快照，则系统将直接加载该快照到内存中。</p></li><li><p>根据快照后的Raft日志进行回放：如果存在最新的快照或者没有快照文件，系统将根据之前记录的Raft日志进行数据回放。每个Seata-Server中的请求最终会经过ServerOnRequestProcessor进行处理，然后转移到具体的协调者类(DefaultCoordinator或RaftCoordinator)中，再转向具体的业务代码(DefaultCore)进行相应的事务处理（如begin、commit、rollback等）。</p></li><li><p>当日志回放完成后，便会由leader发起日志的同步，并继续执行相关事务的增删改动作。</p></li></ul><p>通过以上步骤，Seata能够实现在故障发生后的数据恢复。首先尝试加载最新的快照，如果有的话可以减少回放的时间；然后根据Raft日志进行回放，保证数据操作的一致性；最后通过日志同步机制，确保数据在多节点之间的一致性。</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="233-业务处理同步过程">2.3.3 业务处理同步过程<a href="#233-业务处理同步过程" class="hash-link" aria-label="Direct link to 2.3.3 业务处理同步过程" title="Direct link to 2.3.3 业务处理同步过程">​</a></h3><p><img loading="lazy" src="https://blog.funkye.icu/img/blog/Dingtalk_20230106230931.jpg" alt="流程" class="img_ev3q">
 对于client侧获取最新metadata时恰好有业务线程在执行begin、commit或registry等操作的情况，Seata采取了以下处理方式：</p><ul><li><p>client侧：</p><ul><li>如果客户端正在执行begin、commit或registry等操作，并且此时需要获取最新metadata，由于此时的leader可能已经不存在或不是当前leader，因此客户端的RPC请求可能会失败。</li><li>如果请求失败，客户端会收到异常响应，此时客户端需要根据请求的结果进行回滚操作。</li></ul></li><li><p>TC侧对旧leader的检测：</p><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">- 在TC侧，如果此时客户端的请求到达旧的leader节点，TC会进行当前是否是leader的检测，如果不是leader，则会拒绝该请求。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 如果是leader但在中途失败，比如在提交任务到状态机的过程中失败，由于当前已经不是leader，创建任务（createTask）的动作会失败。这样，客户端也会接收到响应异常。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 旧leader的提交任务也会失败，确保了事务信息的一致性。</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>通过上述处理方式，当客户端获取最新metadata时恰好遇到业务操作的情况，Seata能够保证数据的一致性和事务的正确性。如果客户端的RPC请求失败，将触发回滚操作；而在TC侧，对旧leader的检测和任务提交的失败可以防止事务信息不一致的问题。这样，客户端的数据也能保持一致性。</p></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="3使用部署">3.使用部署<a href="#3使用部署" class="hash-link" aria-label="Direct link to 3.使用部署" title="Direct link to 3.使用部署">​</a></h2><p>在使用和部署上，社区秉持着最小侵入，最小改动的原则，所以整体的部署上手应该是非常简单的，接下来分开client与server两端的部署改动点进行介绍</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="31-client">3.1 client<a href="#31-client" class="hash-link" aria-label="Direct link to 3.1 client" title="Direct link to 3.1 client">​</a></h3><p>首先，使用注册配置中心较多的同学应该知道Seata的配置项中有一个<code>seata.registry.type</code>的配置项，支持了nacos，zk，etcd，redis等等，而在2.0以后增加了一个raft的配置项</p><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">   registry:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      type: raft</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      raft:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         server-addr: 192.168.0.111:7091, 192.168.0.112:7091, 192.168.0.113:7091</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>将<code>registry.type</code> 改为raft，并配置raft相关元数据的获取地址，该地址统一为seata-server的ip+http端口
 然后必不可少的就是传统的事务分组的配置</p><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">seata:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   tx-service-group: default_tx_group</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   service:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      vgroup-mapping:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         default_tx_group: default</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>如现在使用的事务分组为<code>default_tx_group</code>，那么对应的seata集群/分组就是default，这个是有对应关系的，后续再server部署环节上会介绍
-至此client的改动已经完成了</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="32-server">3.2 server<a href="#32-server" class="hash-link" aria-label="Direct link to 3.2 server" title="Direct link to 3.2 server">​</a></h3><p>对于server的改动可能会多一些，要熟悉一些调优参数和配置，当然也可以选择默认值不做任何修改</p><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">seata:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  server:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    raft:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      group: default #此值代表该raft集群的group，client的事务分支对应的值要与之对应</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      server-addr: 192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 # 3台节点的ip和端口，端口为该节点的netty端口+1000，默认netty端口为8091</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      snapshot-interval: 600 # 600秒做一次数据的快照，以便raftlog的快速滚动，但是每次做快照如果内存中事务数据过多会导致每600秒产生一次业务rt的抖动，但是对于故障恢复比较友好，重启节点较快，可以调整为30分钟，1小时都行，具体按业务来，可以自行压测看看是否有抖动，在rt抖动和故障恢复中自行找个平衡点</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      apply-batch: 32 # 最多批量32次动作做一次提交raftlog</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      max-append-bufferSize: 262144 #日志存储缓冲区最大大小，默认256K</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      max-replicator-inflight-msgs: 256 #在启用 pipeline 请求情况下，最大 in-flight 请求数，默认256</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      disruptor-buffer-size: 16384 #内部 disruptor buffer 大小，如果是写入吞吐量较高场景，需要适当调高该值，默认 16384</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      election-timeout-ms: 1000 #超过多久没有leader的心跳开始重选举</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      reporter-enabled: false # raft自身的监控是否开启</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      reporter-initial-delay: 60 # 监控的区间间隔</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      serialization: jackson # 序列化方式，不要改动</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      compressor: none # raftlog的压缩方式，如gzip，zstd等</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      sync: true # raft日志的刷盘方式，默认是同步刷盘</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  config:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    # support: nacos, consul, apollo, zk, etcd3</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    type: file # 该配置可以选择不同的配置中心</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  registry:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    # support: nacos, eureka, redis, zk, consul, etcd3, sofa</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    type: file # raft模式下不允许使用非file的其他注册中心</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  store:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    # support: file 、 db 、 redis 、 raft</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    mode: raft # 使用raft存储模式</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    file:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      dir: sessionStore # 该路径为raftlog及事务相关日志的存储位置，默认是相对路径，最好设置一个固定的位置</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>在3个或者大于3个节点的seata-server中配置完以上参数后，直接启动便可以看到类似以下的日志输出,就代表集群已经正常启动了</p><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.392  WARN --- [Rpc-netty-server-worker-10-thread-1] [com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory] [ensurePipeline] []: JRaft SET bolt.rpc.dispatch-msg-list-in-default-executor to be false for replicator pipeline optimistic.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.439  INFO --- [default/PeerPair[10.58.16.231:9091 -&gt; 10.58.12.217:9091]-AppendEntriesThread0] [com.alipay.sofa.jraft.storage.impl.LocalRaftMetaStorage] [save] []: Save raft meta, path=sessionStore/raft/9091/default/raft_meta, term=4, votedFor=0.0.0.0:0, cost time=25 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.441  WARN --- [default/PeerPair[10.58.16.231:9091 -&gt; 10.58.12.217:9091]-AppendEntriesThread0] [com.alipay.sofa.jraft.core.NodeImpl] [handleAppendEntriesRequest] []: Node &lt;default/10.58.16.231:9091&gt; reject term_unmatched AppendEntriesRequest from 10.58.12.217:9091, term=4, prevLogIndex=4, prevLogTerm=4, localPrevLogTerm=0, lastLogIndex=0, entriesSize=0.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.442  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.RaftStateMachine] [onStartFollowing] []: groupId: default, onStartFollowing: LeaderChangeContext [leaderId=10.58.12.217:9091, term=4, status=Status[ENEWLEADER&lt;10011&gt;: Raft node receives message from new leader with higher term.]].</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.449  WARN --- [default/PeerPair[10.58.16.231:9091 -&gt; 10.58.12.217:9091]-AppendEntriesThread0] [com.alipay.sofa.jraft.core.NodeImpl] [handleAppendEntriesRequest] []: Node &lt;default/10.58.16.231:9091&gt; reject term_unmatched AppendEntriesRequest from 10.58.12.217:9091, term=4, prevLogIndex=4, prevLogTerm=4, localPrevLogTerm=0, lastLogIndex=0, entriesSize=0.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.459  INFO --- [Bolt-default-executor-4-thread-1] [com.alipay.sofa.jraft.core.NodeImpl] [handleInstallSnapshot] []: Node &lt;default/10.58.16.231:9091&gt; received InstallSnapshotRequest from 10.58.12.217:9091, lastIncludedLogIndex=4, lastIncludedLogTerm=4, lastLogId=LogId [index=0, term=0].</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.489  INFO --- [Bolt-conn-event-executor-13-thread-1] [com.alipay.sofa.jraft.rpc.impl.core.ClientServiceConnectionEventProcessor] [onEvent] []: Peer 10.58.12.217:9091 is connected</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.519  INFO --- [JRaft-Group-Default-Executor-0] [com.alipay.sofa.jraft.util.Recyclers] [&lt;clinit&gt;] []: -Djraft.recyclers.maxCapacityPerThread: 4096.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.574  INFO --- [JRaft-Group-Default-Executor-0] [com.alipay.sofa.jraft.storage.snapshot.local.LocalSnapshotStorage] [destroySnapshot] []: Deleting snapshot sessionStore/raft/9091/default/snapshot/snapshot_4.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.574  INFO --- [JRaft-Group-Default-Executor-0] [com.alipay.sofa.jraft.storage.snapshot.local.LocalSnapshotStorage] [close] []: Renaming sessionStore/raft/9091/default/snapshot/temp to sessionStore/raft/9091/default/snapshot/snapshot_4.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.689  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.snapshot.session.SessionSnapshotFile] [load] []: on snapshot load start index: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.694  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.snapshot.session.SessionSnapshotFile] [load] []: on snapshot load end index: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.694  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.RaftStateMachine] [onSnapshotLoad] []: groupId: default, onSnapshotLoad cost: 110 ms.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.694  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.RaftStateMachine] [onConfigurationCommitted] []: groupId: default, onConfigurationCommitted: 10.58.12.165:9091,10.58.12.217:9091,10.58.16.231:9091.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.705  INFO --- [JRaft-FSMCaller-Disruptor-0] [com.alipay.sofa.jraft.storage.snapshot.SnapshotExecutorImpl] [onSnapshotLoadDone] []: Node &lt;default/10.58.16.231:9091&gt; onSnapshotLoadDone, last_included_index: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">last_included_term: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">peers: "10.58.12.165:9091"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">peers: "10.58.12.217:9091"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">peers: "10.58.16.231:9091"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.722  INFO --- [JRaft-Group-Default-Executor-1] [com.alipay.sofa.jraft.storage.impl.RocksDBLogStorage] [lambda$truncatePrefixInBackground$2] []: Truncated prefix logs in data path: sessionStore/raft/9091/default/log from log index 1 to 5, cost 0 ms.</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="33-faq">3.3 faq<a href="#33-faq" class="hash-link" aria-label="Direct link to 3.3 faq" title="Direct link to 3.3 faq">​</a></h3><ul><li>当<code>seata.raft.server-addr</code>配置好后，必须通过server的openapi进行集群的扩缩容，直接改动该配置进行重启是不会生效的
-接口为<code>/metadata/v1/changeCluster?raftClusterStr=新的集群列表</code> </li><li>如果要在相同ip的机器上部署raft集群，那么只需要将对应的Seata-Server进程的http端口或netty端口改变即可（如果没有指定netty端口，netty端口为http端口+1000偏移量，如http端口为7091，netty端口就为8091，raft端口为netty端口+1000偏移量，可得出为9091）</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="4压测对比">4.压测对比<a href="#4压测对比" class="hash-link" aria-label="Direct link to 4.压测对比" title="Direct link to 4.压测对比">​</a></h2><p>压测对比分为两种场景,并且为了避免数据热点冲突与线程调优等情况,将Client侧的数据初始化300W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,在gc方面全部采用分代ZGC进行,压测工具为阿里云PTS，Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
-TC: 4c8g<em>3  Client: 4c</em>8G*1  数据库为阿里云rds 4c16g</p><ul><li>64并发压测只增加<code>@Globaltransactional</code>注解接口空提交的性能</li><li>随机300W数据进行32并发10分钟的扣库存</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="41-171-db模式">4.1 1.7.1 db模式<a href="#41-171-db模式" class="hash-link" aria-label="Direct link to 4.1 1.7.1 db模式" title="Direct link to 4.1 1.7.1 db模式">​</a></h3><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg" alt="raft压测模型" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="空提交-64c">空提交 64C<a href="#空提交-64c" class="hash-link" aria-label="Direct link to 空提交 64C" title="Direct link to 空提交 64C">​</a></h4><p><img loading="lazy" src="https://gitee.com/itCjb/gallery/raw/master/db64c.jpg" alt="db64-2" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="随机扣库存-32c">随机扣库存 32C<a href="#随机扣库存-32c" class="hash-link" aria-label="Direct link to 随机扣库存 32C" title="Direct link to 随机扣库存 32C">​</a></h4><p><img loading="lazy" src="https://gitee.com/itCjb/gallery/raw/master/db32c.jpg" alt="db32-2" class="img_ev3q"></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="42-20-raft模式">4.2 2.0 raft模式<a href="#42-20-raft模式" class="hash-link" aria-label="Direct link to 4.2 2.0 raft模式" title="Direct link to 4.2 2.0 raft模式">​</a></h3><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg" alt="raft压测模型" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="空提交-64c-1">空提交 64C<a href="#空提交-64c-1" class="hash-link" aria-label="Direct link to 空提交 64C" title="Direct link to 空提交 64C">​</a></h4><p><img loading="lazy" src="https://gitee.com/itCjb/gallery/raw/master/raft64c.jpg" alt="raft64-2" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="随机扣库存-32c-1">随机扣库存 32C<a href="#随机扣库存-32c-1" class="hash-link" aria-label="Direct link to 随机扣库存 32C" title="Direct link to 随机扣库存 32C">​</a></h4><p><img loading="lazy" src="https://gitee.com/itCjb/gallery/raw/master/raft32c.jpg" alt="raft32c-2" class="img_ev3q"></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="43-压测结果对比">4.3 压测结果对比<a href="#43-压测结果对比" class="hash-link" aria-label="Direct link to 4.3 压测结果对比" title="Direct link to 4.3 压测结果对比">​</a></h3><p>32并发对300W商品随机扣库存场景</p><table><thead><tr><th>tps avg</th><th>tps max</th><th>count</th><th>rt</th><th>error</th><th>存储类型</th></tr></thead><tbody><tr><td>1709(42%↑)</td><td>2019(21%↑)</td><td>1228803(42%↑)</td><td>13.86ms(43%↓)</td><td>0</td><td>Raft</td></tr><tr><td>1201</td><td>1668</td><td>864105</td><td>19.86ms</td><td>0</td><td>DB</td></tr></tbody></table><p>64并发空压<code>@Globaltransactional</code>接口（压测峰值上限为8000）
-|     tps avg  | tps max | count| rt | error| 存储类型|
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 5704(20%↑) | 8062(30%↑) |4101236(20%↑) |7.79ms(23.8%↓) | 0 | Raft|
-| 4743   |   6172    |3410240 |9.65ms | 0 | DB |</p><p>除了以上数据上的直观对比,通过对压测的曲线图来观察,raft模式下tps与rt更加平稳,抖动更少,性能与吞吐量上更佳.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="5总结">5.总结<a href="#5总结" class="hash-link" aria-label="Direct link to 5.总结" title="Direct link to 5.总结">​</a></h2><p>在Seata未来的发展中,性能，入门门槛，部署运维成本都是我们需要关注和不断优化的方向，在raft模式退出后有以下几个特点</p><ol><li>如存储方面，存算分离后Seata对其优化的上限被拔高，自主可控</li><li>部署成本更低，无需额外的注册中心，存储中间件</li><li>入门的门槛更低，无需学习其他的一些如注册中心的知识，一站式直接使用Seata Raft 即可上手</li></ol><p>针对业界发展趋势，一些开源项目如ClickHouse和Kafka已经开始放弃使用ZooKeeper，并转而采用自研的解决方案，比如ClickKeeper和KRaft。这些方案将元数据等信息交由自身保证存储，以减少对第三方依赖的需求，从而降低运维成本和学习成本。这些特性是非常成熟和可借鉴的。</p><p>当然，目前来看，基于Raft模式的解决方案可能还不够成熟，可能无法完全达到上述描述的那样美好。然而，正是因为存在这样的理论基础，社区更应该朝着这个方向努力，让实践逐步接近理论的要求。在这里，欢迎所有对Seata感兴趣的同学加入社区，共同为Seata添砖加瓦！</p>]]></content:encoded>
+至此client的改动已经完成了</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="32-server">3.2 server<a href="#32-server" class="hash-link" aria-label="Direct link to 3.2 server" title="Direct link to 3.2 server">​</a></h3><p>对于server的改动可能会多一些，要熟悉一些调优参数和配置，当然也可以选择默认值不做任何修改</p><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">seata:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  server:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    raft:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      group: default #此值代表该raft集群的group，client的事务分组对应的值要与之对应</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      server-addr: 192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 # 3台节点的ip和端口，端口为该节点的netty端口+1000，默认netty端口为8091</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      snapshot-interval: 600 # 600秒做一次数据的快照，以便raftlog的快速滚动，但是每次做快照如果内存中事务数据过多会导致每600秒产生一次业务rt的抖动，但是对于故障恢复比较友好，重启节点较快，可以调整为30分钟，1小时都行，具体按业务来，可以自行压测看看是否有抖动，在rt抖动和故障恢复中自行找个平衡点</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      apply-batch: 32 # 最多批量32次动作做一次提交raftlog</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      max-append-bufferSize: 262144 #日志存储缓冲区最大大小，默认256K</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      max-replicator-inflight-msgs: 256 #在启用 pipeline 请求情况下，最大 in-flight 请求数，默认256</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      disruptor-buffer-size: 16384 #内部 disruptor buffer 大小，如果是写入吞吐量较高场景，需要适当调高该值，默认 16384</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      election-timeout-ms: 1000 #超过多久没有leader的心跳开始重选举</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      reporter-enabled: false # raft自身的监控是否开启</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      reporter-initial-delay: 60 # 监控的区间间隔</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      serialization: jackson # 序列化方式，不要改动</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      compressor: none # raftlog的压缩方式，如gzip，zstd等</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      sync: true # raft日志的刷盘方式，默认是同步刷盘</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  config:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    # support: nacos, consul, apollo, zk, etcd3</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    type: file # 该配置可以选择不同的配置中心</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  registry:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    # support: nacos, eureka, redis, zk, consul, etcd3, sofa</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    type: file # raft模式下不允许使用非file的其他注册中心</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  store:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    # support: file 、 db 、 redis 、 raft</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    mode: raft # 使用raft存储模式</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    file:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      dir: sessionStore # 该路径为raftlog及事务相关日志的存储位置，默认是相对路径，最好设置一个固定的位置</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>在3个或者大于3个节点的seata-server中配置完以上参数后，直接启动便可以看到类似以下的日志输出,就代表集群已经正常启动了</p><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.392  WARN --- [Rpc-netty-server-worker-10-thread-1] [com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory] [ensurePipeline] []: JRaft SET bolt.rpc.dispatch-msg-list-in-default-executor to be false for replicator pipeline optimistic.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.439  INFO --- [default/PeerPair[10.58.16.231:9091 -&gt; 10.58.12.217:9091]-AppendEntriesThread0] [com.alipay.sofa.jraft.storage.impl.LocalRaftMetaStorage] [save] []: Save raft meta, path=sessionStore/raft/9091/default/raft_meta, term=4, votedFor=0.0.0.0:0, cost time=25 ms</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.441  WARN --- [default/PeerPair[10.58.16.231:9091 -&gt; 10.58.12.217:9091]-AppendEntriesThread0] [com.alipay.sofa.jraft.core.NodeImpl] [handleAppendEntriesRequest] []: Node &lt;default/10.58.16.231:9091&gt; reject term_unmatched AppendEntriesRequest from 10.58.12.217:9091, term=4, prevLogIndex=4, prevLogTerm=4, localPrevLogTerm=0, lastLogIndex=0, entriesSize=0.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.442  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.RaftStateMachine] [onStartFollowing] []: groupId: default, onStartFollowing: LeaderChangeContext [leaderId=10.58.12.217:9091, term=4, status=Status[ENEWLEADER&lt;10011&gt;: Raft node receives message from new leader with higher term.]].</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.449  WARN --- [default/PeerPair[10.58.16.231:9091 -&gt; 10.58.12.217:9091]-AppendEntriesThread0] [com.alipay.sofa.jraft.core.NodeImpl] [handleAppendEntriesRequest] []: Node &lt;default/10.58.16.231:9091&gt; reject term_unmatched AppendEntriesRequest from 10.58.12.217:9091, term=4, prevLogIndex=4, prevLogTerm=4, localPrevLogTerm=0, lastLogIndex=0, entriesSize=0.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.459  INFO --- [Bolt-default-executor-4-thread-1] [com.alipay.sofa.jraft.core.NodeImpl] [handleInstallSnapshot] []: Node &lt;default/10.58.16.231:9091&gt; received InstallSnapshotRequest from 10.58.12.217:9091, lastIncludedLogIndex=4, lastIncludedLogTerm=4, lastLogId=LogId [index=0, term=0].</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.489  INFO --- [Bolt-conn-event-executor-13-thread-1] [com.alipay.sofa.jraft.rpc.impl.core.ClientServiceConnectionEventProcessor] [onEvent] []: Peer 10.58.12.217:9091 is connected</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.519  INFO --- [JRaft-Group-Default-Executor-0] [com.alipay.sofa.jraft.util.Recyclers] [&lt;clinit&gt;] []: -Djraft.recyclers.maxCapacityPerThread: 4096.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.574  INFO --- [JRaft-Group-Default-Executor-0] [com.alipay.sofa.jraft.storage.snapshot.local.LocalSnapshotStorage] [destroySnapshot] []: Deleting snapshot sessionStore/raft/9091/default/snapshot/snapshot_4.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.574  INFO --- [JRaft-Group-Default-Executor-0] [com.alipay.sofa.jraft.storage.snapshot.local.LocalSnapshotStorage] [close] []: Renaming sessionStore/raft/9091/default/snapshot/temp to sessionStore/raft/9091/default/snapshot/snapshot_4.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.689  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.snapshot.session.SessionSnapshotFile] [load] []: on snapshot load start index: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.694  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.snapshot.session.SessionSnapshotFile] [load] []: on snapshot load end index: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.694  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.RaftStateMachine] [onSnapshotLoad] []: groupId: default, onSnapshotLoad cost: 110 ms.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.694  INFO --- [JRaft-FSMCaller-Disruptor-0] [io.seata.server.cluster.raft.RaftStateMachine] [onConfigurationCommitted] []: groupId: default, onConfigurationCommitted: 10.58.12.165:9091,10.58.12.217:9091,10.58.16.231:9091.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.705  INFO --- [JRaft-FSMCaller-Disruptor-0] [com.alipay.sofa.jraft.storage.snapshot.SnapshotExecutorImpl] [onSnapshotLoadDone] []: Node &lt;default/10.58.16.231:9091&gt; onSnapshotLoadDone, last_included_index: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">last_included_term: 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">peers: "10.58.12.165:9091"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">peers: "10.58.12.217:9091"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">peers: "10.58.16.231:9091"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2023-10-13 17:20:06.722  INFO --- [JRaft-Group-Default-Executor-1] [com.alipay.sofa.jraft.storage.impl.RocksDBLogStorage] [lambda$truncatePrefixInBackground$2] []: Truncated prefix logs in data path: sessionStore/raft/9091/default/log from log index 1 to 5, cost 0 ms.</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="33-faq">3.3 faq<a href="#33-faq" class="hash-link" aria-label="Direct link to 3.3 faq" title="Direct link to 3.3 faq">​</a></h3><ul><li>当<code>seata.raft.server-addr</code>配置好后，必须通过server的openapi进行集群的扩缩容，直接改动该配置进行重启是不会生效的
+接口为<code>/metadata/v1/changeCluster?raftClusterStr=新的集群列表</code> </li><li>如果<code>server-addr:</code>中的地址都为本机，那么需要根据本机上不同的server的netty端口增加1000的偏移量，如<code>server.port: 7092</code>那么netty端口为8092，raft选举和通信端口便为9092，需要增加启动参数<code>-Dserver.raftPort=9092</code>.
+Linux下可以通过<code>export JAVA_OPT="-Dserver.raftPort=9092"</code>等方式指定。</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="4压测对比">4.压测对比<a href="#4压测对比" class="hash-link" aria-label="Direct link to 4.压测对比" title="Direct link to 4.压测对比">​</a></h2><p>压测对比分为两种场景,并且为了避免数据热点冲突与线程调优等情况,将Client侧的数据初始化300W条商品,并直接使用jdk21虚拟线程+spring boot3+seata AT来测试,在gc方面全部采用分代ZGC进行,压测工具为阿里云PTS，Server侧统一使用jdk21(目前还未适配虚拟线程) 服务器配置如下
+TC: 4c8g<em>3  Client: 4c</em>8G*1  数据库为阿里云rds 4c16g</p><ul><li>64并发压测只增加<code>@Globaltransactional</code>注解接口空提交的性能</li><li>随机300W数据进行32并发10分钟的扣库存</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="41-171-db模式">4.1 1.7.1 db模式<a href="#41-171-db模式" class="hash-link" aria-label="Direct link to 4.1 1.7.1 db模式" title="Direct link to 4.1 1.7.1 db模式">​</a></h3><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg" alt="raft压测模型" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="空提交-64c">空提交 64C<a href="#空提交-64c" class="hash-link" aria-label="Direct link to 空提交 64C" title="Direct link to 空提交 64C">​</a></h4><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i2/O1CN01pE1Anf1nRtgcnlx9t_!!6000000005087-0-tps-622-852.jpg" alt="db64-2" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="随机扣库存-32c">随机扣库存 32C<a href="#随机扣库存-32c" class="hash-link" aria-label="Direct link to 随机扣库存 32C" title="Direct link to 随机扣库存 32C">​</a></h4><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i2/O1CN016hZkJC20OJax9ce31_!!6000000006839-0-tps-624-852.jpg" alt="db32-2" class="img_ev3q"></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="42-20-raft模式">4.2 2.0 raft模式<a href="#42-20-raft模式" class="hash-link" aria-label="Direct link to 4.2 2.0 raft模式" title="Direct link to 4.2 2.0 raft模式">​</a></h3><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg" alt="raft压测模型" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="空提交-64c-1">空提交 64C<a href="#空提交-64c-1" class="hash-link" aria-label="Direct link to 空提交 64C" title="Direct link to 空提交 64C">​</a></h4><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i1/O1CN01rs1ykr1dhnH8qnXj3_!!6000000003768-0-tps-631-851.jpg" alt="raft64-2" class="img_ev3q"></p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="随机扣库存-32c-1">随机扣库存 32C<a href="#随机扣库存-32c-1" class="hash-link" aria-label="Direct link to 随机扣库存 32C" title="Direct link to 随机扣库存 32C">​</a></h4><p><img loading="lazy" src="https://img.alicdn.com/imgextra/i4/O1CN015OwA2k20enquV7Yfu_!!6000000006875-0-tps-624-856.jpg" alt="raft32c-2" class="img_ev3q"></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="43-压测结果对比">4.3 压测结果对比<a href="#43-压测结果对比" class="hash-link" aria-label="Direct link to 4.3 压测结果对比" title="Direct link to 4.3 压测结果对比">​</a></h3><p>32并发对300W商品随机扣库存场景</p><table><thead><tr><th>tps avg</th><th>tps max</th><th>count</th><th>rt</th><th>error</th><th>存储类型</th></tr></thead><tbody><tr><td>1709(42%↑)</td><td>2019(21%↑)</td><td>1228803(42%↑)</td><td>13.86ms(43%↓)</td><td>0</td><td>Raft</td></tr><tr><td>1201</td><td>1668</td><td>864105</td><td>19.86ms</td><td>0</td><td>DB</td></tr></tbody></table><p>64并发空压<code>@Globaltransactional</code>接口（压测峰值上限为8000）</p><table><thead><tr><th>tps avg</th><th>tps max</th><th>count</th><th>rt</th><th>error</th><th>存储类型</th></tr></thead><tbody><tr><td>5704(20%↑)</td><td>8062(30%↑)</td><td>4101236(20%↑)</td><td>7.79ms(23.8%↓)</td><td>0</td><td>Raft</td></tr><tr><td>4743</td><td>6172</td><td>3410240</td><td>9.65ms</td><td>0</td><td>DB</td></tr></tbody></table><p>除了以上数据上的直观对比,通过对压测的曲线图来观察,raft模式下tps与rt更加平稳,抖动更少,性能与吞吐量上更佳.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="5总结">5.总结<a href="#5总结" class="hash-link" aria-label="Direct link to 5.总结" title="Direct link to 5.总结">​</a></h2><p>在Seata未来的发展中,性能，入门门槛，部署运维成本都是我们需要关注和不断优化的方向，在raft模式退出后有以下几个特点</p><ol><li>如存储方面，存算分离后Seata对其优化的上限被拔高，自主可控</li><li>部署成本更低，无需额外的注册中心，存储中间件</li><li>入门的门槛更低，无需学习其他的一些如注册中心的知识，一站式直接使用Seata Raft 即可上手</li></ol><p>针对业界发展趋势，一些开源项目如ClickHouse和Kafka已经开始放弃使用ZooKeeper，并转而采用自研的解决方案，比如ClickKeeper和KRaft。这些方案将元数据等信息交由自身保证存储，以减少对第三方依赖的需求，从而降低运维成本和学习成本。这些特性是非常成熟和可借鉴的。</p><p>当然，目前来看，基于Raft模式的解决方案可能还不够成熟，可能无法完全达到上述描述的那样美好。然而，正是因为存在这样的理论基础，社区更应该朝着这个方向努力，让实践逐步接近理论的要求。在这里，欢迎所有对Seata感兴趣的同学加入社区，共同为Seata添砖加瓦！</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[How to use Seata to ensure consistency between Dubbo Microservices]]></title>
