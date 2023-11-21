@@ -4,7 +4,7 @@ keywords: [Seata]
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.6.0版本
+# 
 <a href="./configurations100">查看1.0.0版本</a>  
 <br/>
 

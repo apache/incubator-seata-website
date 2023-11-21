@@ -4,7 +4,7 @@ keywords: [Seata]
 description: Seata 参数配置。
 ---
 
-# seata参数配置 1.6.0版本
+# 
 
 ### 变更记录
 ```

@@ -10,7 +10,7 @@ Description: Seata parameter configuration.
 
 
 
-# The Seata Parameter Configuration Version 1.6.0
+# The Seata Parameter Configuration
 
 
 ### Change record
