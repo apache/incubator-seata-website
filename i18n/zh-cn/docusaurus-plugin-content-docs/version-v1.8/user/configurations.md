@@ -69,7 +69,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | transport.threadFactory.bossThreadSize | Netty通信模型Boss group线程数 | 默认1 |
 | transport.threadFactory.workerThreadSize | Netty通信模型Worker group线程数 | 可配置线程数或选择特定线程工作模式下的线程数，线程的默认工作模式有4种:Auto(2\*CPU核数 + 1)、Pin(CPU核数，适用于计算密集型任务)、BusyPin(CPU核数 + 1，适用于计算密集型且内存比较有限的场景）、Default(2\*CPU核数，适用于IO密集型任务）,默认值为Default模式 |
 | transport.shutdown.wait | 服务端Netty线程池关闭前等待服务下线时间 | 默认3秒 |
-| transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hession、fst，默认seata | 
+| transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hessian、fst，默认seata | 
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip、zip、sevenz、bzip2、lz4、deflater、zstd，默认none | 1.2.0之前：gzip <br /> 1.2.0:zip、sevenz、bzip2 <br /> 1.3.0:lz4 <br /> 1.4.1:deflater <br /> 1.5.1:zstd|
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
 | registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | 1.6.0版本Sever端支持可同时注册到多个注册中心,以逗号分隔注册中心名 |
