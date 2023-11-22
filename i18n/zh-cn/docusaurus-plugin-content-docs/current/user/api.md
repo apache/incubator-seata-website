@@ -260,20 +260,23 @@ RootContext.bind(unbindXid);
 
 # 4. TCC API
 
-下面是TCC的一段使用示例。
-
+TCC接口定义
 ```java
 @LocalTCC
-public interface TccActionOne {
+public interface NormalTccAction {
 
     /**
      * Prepare boolean.
      *
-     * @param id the business id
+     * @param a             the a
+     * @param b             the b
+     * @param tccParam      the tcc param
      * @return the boolean
      */
-    @TwoPhaseBusinessAction(name = "TccActionOne", commitMethod = "commit", rollbackMethod = "rollback")
-    public boolean prepare(@BusinessActionContextParameter(paramName = "id") Long id);
+    @TwoPhaseBusinessAction(name = "tccActionForTest", commitMethod = "commit", rollbackMethod = "rollback", commitArgsClasses = {BusinessActionContext.class, TccParam.class}, rollbackArgsClasses = {BusinessActionContext.class, TccParam.class})
+    String prepare(@BusinessActionContextParameter("a") int a,
+                    @BusinessActionContextParameter(paramName = "b", index = 0) List b,
+                    @BusinessActionContextParameter(isParamInProperty = true) TccParam tccParam);
 
     /**
      * Commit boolean.
@@ -281,7 +284,8 @@ public interface TccActionOne {
      * @param actionContext the action context
      * @return the boolean
      */
-    public boolean commit(BusinessActionContext actionContext);
+    boolean commit(BusinessActionContext actionContext,
+                   @BusinessActionContextParameter("tccParam") TccParam param);
 
     /**
      * Rollback boolean.
@@ -289,9 +293,67 @@ public interface TccActionOne {
      * @param actionContext the action context
      * @return the boolean
      */
-    public boolean rollback(BusinessActionContext actionContext);
+    boolean rollback(BusinessActionContext actionContext, @BusinessActionContextParameter("tccParam") TccParam param);
 }
 ```
+
+TCC接口定义实现
+```java
+public class NormalTccActionImpl implements NormalTccAction {
+
+    @Override
+    public String prepare(int a, List b, TccParam tccParam) {
+        return "a";
+    }
+
+    @Override
+    public boolean commit(BusinessActionContext actionContext, TccParam param) {
+        return false;
+    }
+
+    @Override
+    public boolean rollback(BusinessActionContext actionContext, TccParam param) {
+        return false;
+    }
+
+    public boolean otherMethod(){
+        return true;
+    }
+
+}
+```
+
+TCC API 使用方式
+```java
+    @Test
+    public void testTcc() {
+
+        // 实例化一个未代理的普通TCC接口实现类
+        NormalTccActionImpl tccAction = new NormalTccActionImpl();
+
+        // 通过代理工具ProxyUtil，创建一个代理的TCC接口类
+        NormalTccAction tccActionProxy = ProxyUtil.createProxy(tccAction);
+
+        // 准备一些TCC接口的参数
+        TccParam tccParam = new TccParam(1, "abc@163.com");
+        List<String> listB = Arrays.asList("b");
+
+        // TCC一阶段提交
+        String result = tccActionProxy.prepare(0, listB, tccParam);
+
+        // 验证
+        Assertions.assertEquals("a", result);
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals("tccActionForTest", branchReference.get());
+
+    }
+```
+简述说明
+- 1，首先定义TCC接口，prepare（@TwoPhaseBusinessAction修饰），confirm，rollback。
+- 2，实现接口，可以通过BusinessActionContext来传递参数。
+- 3，用ProxyUtil.createProxy(T target)创建TCC代理对象。(io.seata.integration.tx.api.util.ProxyUtil)
+- 4，用代理类一阶段提交。
+
 
 ## 4.1 TCC注解描述
 
