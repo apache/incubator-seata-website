@@ -329,7 +329,7 @@ TCC API 使用方式
     public void testTcc() {
 
         // 实例化一个未代理的普通TCC接口实现类
-        NormalTccActionImpl tccAction = new NormalTccActionImpl();
+        NormalTccAction tccAction = new NormalTccActionImpl();
 
         // 通过代理工具ProxyUtil，创建一个代理的TCC接口类
         NormalTccAction tccActionProxy = ProxyUtil.createProxy(tccAction);
