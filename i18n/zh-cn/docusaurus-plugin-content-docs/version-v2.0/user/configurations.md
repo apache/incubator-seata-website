@@ -97,6 +97,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.session.branchAsyncQueueSize | 分支事务Session异步删除线程池队列大小 | 默认5000 | 1.5.1版本新增 |
 | server.session.enableBranchAsyncRemove | 分支事务Session异步删除开关 | 默认false | 1.5.1版本新增 |
 | server.enableParallelRequestHandle | 对于批量请求消息的并行处理开关 | 默认false | 1.5.2版本新增 |
+| server.enableParallelHandleBranch | 二阶段并行下发开关 | 默认false | 2.0.0版本新增 |
 | server.raft.group | raft存储模式下的group，client的事务分组对应的值要与之对应，如service.vgroup-mapping.default_tx_group=default | default | 2.0.0版本新增 |
 | server.raft.server-addr | raft集群列表如192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 |  | 2.0.0版本新增 |
 | server.raft.snapshot-interval | 间隔多久做一次内存快照，每做一次快照将暂停状态机，但是能提高停机恢复速度 | 默认600秒 | 2.0.0版本新增 |
