@@ -97,6 +97,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.session.branchAsyncQueueSize | 分支事务Session异步删除线程池队列大小 | 默认5000 | 1.5.1版本新增 |
 | server.session.enableBranchAsyncRemove | 分支事务Session异步删除开关 | 默认false | 1.5.1版本新增 |
 | server.enableParallelRequestHandle | 对于批量请求消息的并行处理开关 | 默认false | 1.5.2版本新增 |
+| server.enableParallelHandleBranch | 二阶段并行下发开关 | 默认false | 2.0.0版本新增 |
 | server.raft.group | raft存储模式下的group，client的事务分组对应的值要与之对应，如service.vgroup-mapping.default_tx_group=default | default | 2.0.0版本新增 |
 | server.raft.server-addr | raft集群列表如192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 |  | 2.0.0版本新增 |
 | server.raft.snapshot-interval | 间隔多久做一次内存快照，每做一次快照将暂停状态机，但是能提高停机恢复速度 | 默认600秒 | 2.0.0版本新增 |
@@ -110,7 +111,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.raft.serialization | 序列化方式，目前仅支持jackson | 默认jackson | 2.0.0版本新增 |
 | server.raft.compressor | raftlog和snapshot的压缩方式，支持gzip, zstd, lz4 | none | 2.0.0版本新增 |
 | server.raft.sync | raftlog同步刷盘 | true | 2.0.0版本新增 |
-| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库，redis(支持HA)，raft    | 1.5.1版本改用lock和session分离存储，2.0.0开始支持raft模式 |
+| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库、redis、raft 支持HA    | 1.5.1版本改用lock和session分离存储，2.0.0开始支持raft模式 |
 | store.lock.mode | 事务锁信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值，raft模式不允许指定 | 1.5.1版本新增，session和lock可分离存储 |
 | store.session.mode | 事务回话信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值。raft模式不允许单独指定 | 1.5.1版本新增，session和lock可分离存储 |
 | store.publicKey | db或redis存储密码解密公钥 | | 1.4.2版本支持 |
