@@ -26,7 +26,7 @@ const config = {
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  clientModules: [require.resolve('./src/myClientModule.ts'), require.resolve('./src/custom-js.ts')],
+  clientModules: [require.resolve('./src/myClientModule.ts')],
   i18n: {
     defaultLocale: 'default',
     locales: ['en', 'zh-cn', 'default'],
@@ -67,6 +67,13 @@ const config = {
           },
         ],
         preBodyTags: [
+          {
+            tagName: 'script',
+            attributes: {
+              type: 'text/javascript',
+              src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
+            },
+          },
           {
             tagName: 'script',
             attributes: {

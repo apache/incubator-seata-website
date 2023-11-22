@@ -1,5 +1,5 @@
 ---
-title: SQL restrictions
+title: SQL Restrictions
 keywords: [Seata]
 description: Seata SQL restrictions
 ---
