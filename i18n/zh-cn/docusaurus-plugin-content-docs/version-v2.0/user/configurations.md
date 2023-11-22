@@ -110,7 +110,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.raft.serialization | 序列化方式，目前仅支持jackson | 默认jackson | 2.0.0版本新增 |
 | server.raft.compressor | raftlog和snapshot的压缩方式，支持gzip, zstd, lz4 | none | 2.0.0版本新增 |
 | server.raft.sync | raftlog同步刷盘 | true | 2.0.0版本新增 |
-| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库，redis(支持HA)，raft    | 1.5.1版本改用lock和session分离存储，2.0.0开始支持raft模式 |
+| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库、redis、raft 支持HA    | 1.5.1版本改用lock和session分离存储，2.0.0开始支持raft模式 |
 | store.lock.mode | 事务锁信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值，raft模式不允许指定 | 1.5.1版本新增，session和lock可分离存储 |
 | store.session.mode | 事务回话信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值。raft模式不允许单独指定 | 1.5.1版本新增，session和lock可分离存储 |
 | store.publicKey | db或redis存储密码解密公钥 | | 1.4.2版本支持 |
