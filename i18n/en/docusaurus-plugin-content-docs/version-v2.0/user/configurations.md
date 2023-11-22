@@ -69,6 +69,10 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.redis. port | |
 | store.redis. database | |
 | store.redis. password | |
+| #The following configurations are required for "store.mode=raft"| |
+| server.raft.group| |
+| server.raft.server-addr| |
+| server.raft.snapshot-interval| |
 
 
 
@@ -134,21 +138,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.raft.compressor | The compression methods supported for Raft log and snapshot are gzip, zstd, and lz4 | none | New in 2.0.0 version |
 | server.raft.sync | Synchronous flushing of Raft log to disk | true |  New in 2.0.0 version |
 | store.mode | Transaction session information storage mode | file Local file (HA is not supported), db database, redis, raft (HA is supported) | The 1.5.1 version uses lock and session for separate storage|
-| store.lock.mode | Transaction lock information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value | New in 1.5.1 version, and session and lock can be stored separately|
-| server.raft.group | In the Raft storage mode, the transaction group corresponding to the group and client should be matched with the value. For example, service.vgroup-mapping.default_tx_group=default.| New in 2.0.0 version |
-| server.raft.server-addr | The Raft cluster list is as follows: 192.168.0.111:9091, 192.168.0.112:9091, 192.168.0.113:9091 |  | New in 2.0.0 version |
-| server.raft.snapshot-interval | How often to take a memory snapshot? The state machine is paused every time a snapshot is taken, but this can improve recovery speed when stopping | 默认600秒 | New in 2.0.0 version |
-| server.raft.apply-batch | Accumulate batches of tasks and submit them to the leader. | 32 | New in 2.0.0 version |
-| server.raft.max-append-bufferSize | Maximum size of the Raft log storage buffer | 262144 | New in 2.0.0 version |
-| server.raft.max-replicator-inflight-msgs | The maximum number of in-flight requests when pipeline requests are enabled | 256 | New in 2.0.0 version |
-| server.raft.disruptor-buffer-size | The size of the internal disruptor buffer may need to be increased appropriately in scenarios with high write throughput | 16384 | New in 2.0.0 version |
-| server.raft.election-timeout-ms | How long does it take to start a new election when there is no leader heartbeat for a long time | 1000 | New in 2.0.0 version |
-| server.raft.reporter-enabled | Raft monitor enable | false | New in 2.0.0 version |
-| server.raft.reporter-initial-delay |  Monitor output interval | 60 | New in 2.0.0 version |
-| server.raft.serialization | raft log serialization type | jackson | New in 2.0.0 version |
-| server.raft.compressor | The compression methods supported for Raft log and snapshot are gzip, zstd, and lz4 | none | New in 2.0.0 version |
-| server.raft.sync | Synchronous flushing of Raft log to disk | true |  New in 2.0.0 version |
-| store.session.mode | Transaction echo information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value | New in 1.5.1 version, and session and lock can be stored separately|
+| store.lock.mode | Transaction lock information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value. It is not allowed to specify separately in Raft mode | New in 1.5.1 version, and session and lock can be stored separately|
+| store.session.mode | Transaction echo information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value. It is not allowed to specify separately in Raft mode | New in 1.5.1 version, and session and lock can be stored separately|
 | store.publicKey | Public key for storing and decrypting passwords in db or Redis | | supported in version 1.4.2|
 | store.file.dir | file mode file storage folder name | default sessionStore|
 | store.file.maxBranchSessionSize | File mode file storage branch session maximum bytes | 16384 (16kb) by default, in bytes|
