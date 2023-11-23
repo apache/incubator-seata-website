@@ -96,7 +96,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Deploy',
-          items: ['ops/deploy-guide-beginner', 'ops/deploy-server', 'ops/deploy-by-docker', 'ops/deploy-by-docker-compose', 'ops/deploy-by-kubernetes', 'ops/deploy-by-helm', 'ops/deploy-ha'],
+          items: ['ops/deploy-guide-beginner', 'ops/deploy-server', 'ops/deploy-server-raft', 'ops/deploy-by-docker', 'ops/deploy-by-docker-compose', 'ops/deploy-by-kubernetes', 'ops/deploy-by-helm', 'ops/deploy-ha'],
         },
       ],
     },

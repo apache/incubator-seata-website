@@ -388,7 +388,7 @@
     "message": "AT mode"
   },
   "homepage.featureListContent2": {
-    "message": "Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB and MariaDB's AT mode, In developing the H2, DB2, SQLServer, DM."
+    "message": "Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB, MariaDB, DaMeng, PolarDB-X 2.0, SQLServer. DB2 is currently under development."
   },
   "homepage.featureListTitle3": {
     "message": "TCC mode"
@@ -406,13 +406,13 @@
     "message": "XA mode"
   },
   "homepage.featureListContent5": {
-    "message": "Support for XA schemas for databases that have implemented XA interfaces. currently supports MySQL, Oracle, TiDB, MariaDB"
+    "message": "Support for XA schemas for databases that have implemented XA interfaces. currently supports MySQL, Oracle and MariaDB"
   },
   "homepage.featureListTitle6": {
     "message": "High availability"
   },
   "homepage.featureListContent6": {
-    "message": "Support cluster mode based on database storage, strong horizontal scalability."
+    "message": "Supports cluster mode with separate storage and computing, where computing nodes can be horizontally scaled, and storage supports both databases and Redis. The Raft cluster mode has entered the beta testing phase."
   },
   "homepage.featureTitle": {
     "message": "Feature List"

@@ -23,7 +23,7 @@ const data = {
       content: [
         translate({
           id: 'homepage.featureListContent2',
-          message: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB 和 MariaDB。H2、DB2、SQLServer、达梦开发中',
+          message: '提供无侵入自动补偿的事务模式，目前已支持MySQL、Oracle、PostgreSQL、TiDB、MariaDB、DaMeng、PolarDB-X 2.0、SQLServer。DB2开发中',
         }),
       ],
     },
@@ -41,7 +41,7 @@ const data = {
       title: translate({ id: 'homepage.featureListTitle4', message: 'SAGA 模式' }),
       content: translate({
         id: 'homepage.featureListContent4',
-        message: '为长事务提供有效的解决方案,提供编排式与注解式(开发中)',
+        message: '为长事务提供有效的解决方案,提供编排式和注解式(开发中)',
       }),
     },
     {
@@ -50,7 +50,7 @@ const data = {
       content: translate({
         id: 'homepage.featureListContent5',
         message:
-          '支持已实现 XA 接口的数据库的 XA 模式，目前已支持MySQL、Oracle、TiDB和MariaDB',
+          '支持已实现 XA 接口的数据库的 XA 模式，目前已支持MySQL、Oracle和MariaDB',
       }),
     },
     {
@@ -58,7 +58,7 @@ const data = {
       title: translate({ id: 'homepage.featureListTitle6', message: '高可用' }),
       content: translate({
         id: 'homepage.featureListContent6',
-        message: '支持计算分离集群模式，水平扩展能力强的数据库和 Redis 存储模式.Raft模式Preview阶段',
+        message: '支持存算分离的集群模式，计算节点可水平扩展，存储支持数据库和 Redis。Raft集群模式进入beta验证阶段',
       }),
     },
   ],
