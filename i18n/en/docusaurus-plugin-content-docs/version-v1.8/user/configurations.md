@@ -4,7 +4,7 @@ keywords: [Seata]
 description: Seata parameter configuration.
 ---
 
-# The Seata Parameter Configuration Version 1.6.0
+# The Seata Parameter Configuration
 
 
 ### Change record
@@ -93,7 +93,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |transport.threadFactory. bossThreadSize | Netty communication model Boss group threads | Default 1|
 |transport.threadFactory. workerThreadSize | Netty communication model Worker group threads | The number of threads can be configured or the number of threads in a specific thread working mode can be selected. There are four default working modes of threads: Auto (2 * CPU cores+1), Pin (CPU cores, applicable to computing intensive tasks), BusyPin (CPU cores+1, applicable to computing intensive and memory limited scenarios) Default (2 * CPU cores, applicable to IO intensive tasks), the default value is Default mode|
 |transport. shutdown. wait | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default|
-|transport. serialization | Client and server communication codec method | data (ByteBuf), protobuf, kryo, session, fst, default data|
+|transport.serialization | Client and server communication codec method | seata (ByteBuf), protobuf, kryo, hessian, default seata|
 |transport.compressor | Compression method of communication data between client and server | none, gzip, zip, sevenz, bzip2, lz4, deflater, zstd, default none | Before 1.2.0: gzip<br/>1.2.0: zip, sevenz, bzip2<br/>1.3.0: lz4<br/>1.4.1: deflater <br/> 1.5.1: zstd|
 |transport. heartbeat | The heartbeat detection switch for client server communication | The default value is true|
 |Registry.type | Registry type | Default file, supports file, nacos, redis, eureka, zk, consumer, etcd3, sofa, and custom | 1.6.0 Server supports simultaneous registration to multiple registries, separating registry names with commas|

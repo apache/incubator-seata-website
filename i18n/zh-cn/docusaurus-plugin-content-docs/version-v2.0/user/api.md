@@ -259,6 +259,148 @@ RootContext.bind(unbindXid);
 
 
 
+# 4. TCC API
+
+TCC接口定义
+```java
+@LocalTCC
+public interface NormalTccAction {
+
+    /**
+     * Prepare boolean.
+     *
+     * @param a             the a
+     * @param b             the b
+     * @param tccParam      the tcc param
+     * @return the boolean
+     */
+    @TwoPhaseBusinessAction(name = "tccActionForTest", commitMethod = "commit", rollbackMethod = "rollback", commitArgsClasses = {BusinessActionContext.class, TccParam.class}, rollbackArgsClasses = {BusinessActionContext.class, TccParam.class})
+    String prepare(@BusinessActionContextParameter("a") int a,
+                    @BusinessActionContextParameter(paramName = "b", index = 0) List b,
+                    @BusinessActionContextParameter(isParamInProperty = true) TccParam tccParam);
+
+    /**
+     * Commit boolean.
+     *
+     * @param actionContext the action context
+     * @return the boolean
+     */
+    boolean commit(BusinessActionContext actionContext,
+                   @BusinessActionContextParameter("tccParam") TccParam param);
+
+    /**
+     * Rollback boolean.
+     *
+     * @param actionContext the action context
+     * @return the boolean
+     */
+    boolean rollback(BusinessActionContext actionContext, @BusinessActionContextParameter("tccParam") TccParam param);
+}
+```
+
+TCC接口定义实现
+```java
+public class NormalTccActionImpl implements NormalTccAction {
+
+    @Override
+    public String prepare(int a, List b, TccParam tccParam) {
+        return "a";
+    }
+
+    @Override
+    public boolean commit(BusinessActionContext actionContext, TccParam param) {
+        return false;
+    }
+
+    @Override
+    public boolean rollback(BusinessActionContext actionContext, TccParam param) {
+        return false;
+    }
+
+    public boolean otherMethod(){
+        return true;
+    }
+
+}
+```
+
+TCC API 使用方式
+```java
+    @Test
+    public void testTcc() {
+
+        // 实例化一个未代理的普通TCC接口实现类
+        NormalTccAction tccAction = new NormalTccActionImpl();
+
+        // 通过代理工具ProxyUtil，创建一个代理的TCC接口类
+        NormalTccAction tccActionProxy = ProxyUtil.createProxy(tccAction);
+
+        // 准备一些TCC接口的参数
+        TccParam tccParam = new TccParam(1, "abc@163.com");
+        List<String> listB = Arrays.asList("b");
+
+        // TCC一阶段提交
+        String result = tccActionProxy.prepare(0, listB, tccParam);
+
+        // 验证
+        Assertions.assertEquals("a", result);
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals("tccActionForTest", branchReference.get());
+
+    }
+```
+简述说明
+- 1，首先定义TCC接口，prepare（@TwoPhaseBusinessAction修饰），confirm，rollback。
+- 2，实现接口，可以通过BusinessActionContext来传递参数。
+- 3，用ProxyUtil.createProxy(T target)创建TCC代理对象。(io.seata.integration.tx.api.util.ProxyUtil)
+- 4，用代理类一阶段提交。
+
+
+## 4.1 TCC注解描述
+
+TCC有两个核心注解，分别是TwoPhaseBusinessAction和LocalTCC。
+
+### 4.1.1 @TwoPhaseBusinessAction
+
+@TwoPhaseBusinessAction表示了当前方法使用TCC模式管理事务提交。
+
+- name属性，给当前事务注册了一个全局唯一的的TCC bean name。
+  如代码示例中，name = "TccActionOne"
+
+TCC模式的三个执行阶段分别是：
+
+- Try 阶段，预定操作资源（Prepare）
+  这一阶段所以执行的方法便是被@TwoPhaseBusinessAction所修饰的方法。如示例代码中的prepare方法。
+
+- Confirm 阶段，执行主要业务逻辑（Commit）
+  这一阶段使用commitMethod属性所指向的方法，来执行Confirm的工作。
+
+- Cancel 阶段，事务回滚（Rollback）
+  这一阶段使用rollbackMethod属性所指向的方法，来执行Rollback的工作。
+
+### 4.1.2 @LocalTCC
+@LocalTCC注解用来表示实现了二阶段提交的本地的TCC接口。如果使用Dubbo作为RPC通信组件则无须用此注解。
+
+
+## 4.2 重要参数描述
+
+
+## 4.2.1 BusinessActionContext
+可以使用此入参在TCC模式下，在事务上下文中，传递查询参数。如下属性：
+- xid 全局事务id
+- branchId 分支事务id
+- actionName 分支资源id，（resource id）
+- actionContext 业务传递参数Map，可以通过@BusinessActionContextParameter来标注需要传递的参数。
+
+
+## 4.2.2 @BusinessActionContextParameter
+用此注解标注需要在事务上下文中传递的参数。被此注解修饰的参数，会被设置在BusinessActionContext中，
+可以在commit和rollback阶段中，可以通过BusinessActionContext的getActionContext方法获取传递的业务参数值。
+如下：
+```java
+context.getActionContext("id").toString();
+```
+
 
 
 
