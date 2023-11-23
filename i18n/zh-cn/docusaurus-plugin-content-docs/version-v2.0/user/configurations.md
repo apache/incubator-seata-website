@@ -122,9 +122,9 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.file.flushDiskMode | file模式文件存储刷盘策略 | 默认async，可选sync |
 | store.file.sessionReloadReadSize | file模式文件存储Server节点重启后从备份文件中恢复的session或lock key上限个数 | 默认100 |
 | store.db.datasource                       | db模式数据源类型 |dbcp、druid、hikari；无默认值，store.mode=db时必须指定    |
-| store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。 |
+| store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。   |
 | store.db.driverClassName                | db模式数据库驱动 |store.mode=db时必须指定    |
-| store.db.url                              | db模式数据库url | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7) |
+| store.db.url                              | db模式数据库url | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7)   |
 | store.db.user                             | db模式数据库账户 |store.mode=db时必须指定    |
 | store.db.password                         | db模式数据库账户密码 |store.mode=db时必须指定    |
 | store.db.minConn                         | db模式数据库初始连接数 |默认1    |
