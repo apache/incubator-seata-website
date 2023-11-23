@@ -104,9 +104,9 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.file.flushDiskMode | file模式文件存储刷盘策略 | 默认async，可选sync |
 | store.file.sessionReloadReadSize | file模式文件存储Server节点重启后从备份文件中恢复的session或lock key上限个数 | 默认100 |
 | store.db.datasource                       | db模式数据源类型 |dbcp、druid、hikari；无默认值，store.mode=db时必须指定    |
-| store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。   |
+| store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。 |
 | store.db.driverClassName                | db模式数据库驱动 |store.mode=db时必须指定    |
-| store.db.url                              | db模式数据库url | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7)   |
+| store.db.url                              | db模式数据库url | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7) |
 | store.db.user                             | db模式数据库账户 |store.mode=db时必须指定    |
 | store.db.password                         | db模式数据库账户密码 |store.mode=db时必须指定    |
 | store.db.minConn                         | db模式数据库初始连接数 |默认1    |
@@ -133,6 +133,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | metrics.registryType                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
 | metrics.exporterList                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
 | metrics.exporterPrometheusPort          | prometheus输出器Client端口号   |默认9898 |
+| server.applicationDataLimitCheck     |是否开启应用数据大小检查 | 默认false |
+| server.applicationDataLimit | 应用数据大小限制 | 默认64000  |
 
 ### client端
 
@@ -172,8 +174,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.compress.type | undo log压缩算法 | 默认zip,可选NONE(不压缩)、GZIP、ZIP、SEVENZ、BZIP2、LZ4、DEFLATER、ZSTD | 1.4.1版本新增 |
 | client.undo.compress.threshold | undo log压缩阈值 | 默认值64k，压缩开关开启且undo log大小超过阈值时才进行压缩 | 1.4.1版本新增 |
 | client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
-| seata.client.rm.applicationDataLimitCheck | 客户端应用数据是否开启限制             | 默认false               |
-| seata.client.rm.applicationDataLimit | 客户端应用数据上报限制             | 默认64000       |
+| client.rm.applicationDataLimitCheck | 客户端应用数据是否开启限制             | 默认false               |
+| client.rm.applicationDataLimit | 客户端应用数据上报限制             | 默认64000       |
 
 <details>
   <summary><mark>参数同步到配置中心使用demo</mark></summary>

@@ -159,6 +159,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | metrics.registryType | Indicator registrar type | The indicator registrar type used by Metrics is a built-in compact (simple) implementation by default. Meters in this implementation only use a limited memory count, and the performance is high enough to meet most scenarios; Currently, only one indicator registrar can be set|
 | metrics.exporterList | Index result Measurement data outputter list | default prometheus. Multiple outputters are separated by English commas, such as "prometheus, jmx". Currently, only the prometheus outputters are connected|
 | metrics.exporterPrometheusPort | prometheus exporter client port number | 9898 by default|
+| server.applicationDataLimitCheck     |  enable checking of received client data | Default false |
+| server.applicationDataLimit | limit of receiving client application data  | Default 64000   |
 
 ### Client side
 
@@ -200,6 +202,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.compress.type | undo log compression algorithm | Default zip. Options include NONE, GZIP, ZIP, SEVENZ, BZIP2, LZ4, DEFLATER, and ZSTD | New in 1.4.1|
 | client.undo.compress.threshold | undo log compression threshold | The default value is 64k. Compression occurs when the compression switch is on and the undo log size exceeds the threshold value | New in 1.4.1|
 | client.rm.sqlParserType | sql resolution type | default druid, optional antlr|
+| client.rm.applicationDataLimitCheck |    enable checking of client data          | Default false               |
+| client.rm.applicationDataLimit | limit of client application data             | Default 64000       |
 
 
 <details>
