@@ -151,6 +151,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | metrics.registryType                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
 | metrics.exporterList                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
 | metrics.exporterPrometheusPort          | prometheus输出器Client端口号   |默认9898 |
+| server.applicationDataLimitCheck     |是否开启应用数据大小检查 | 默认false |
+| server.applicationDataLimit | 应用数据大小限制 | 默认64000  |
 
 ### client端
 
@@ -190,6 +192,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.compress.type | undo log压缩算法 | 默认zip,可选NONE(不压缩)、GZIP、ZIP、SEVENZ、BZIP2、LZ4、DEFLATER、ZSTD | 1.4.1版本新增 |
 | client.undo.compress.threshold | undo log压缩阈值 | 默认值64k，压缩开关开启且undo log大小超过阈值时才进行压缩 | 1.4.1版本新增 |
 | client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
+| client.rm.applicationDataLimitCheck | 客户端应用数据是否开启限制             | 默认false               |
+| client.rm.applicationDataLimit | 客户端应用数据上报限制             | 默认64000       |
 
 
 <details>
