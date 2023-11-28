@@ -110,6 +110,7 @@ Add the following configuration to `application.yml`. For other configuration op
 ```
 seata:
   registry:
+    type: zk
     zk:
       server-addr: 127.0.0.1:2181
       session-timeout: 6000

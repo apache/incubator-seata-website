@@ -123,6 +123,7 @@ registry {
 ```yaml
 seata:
   registry:
+    type: zk
     zk:
       server-addr: 127.0.0.1:2181
   # 事务分组配置，1.4.2 默认名称为 my_test_tx_group ，1.5版本将改为 default_tx_group

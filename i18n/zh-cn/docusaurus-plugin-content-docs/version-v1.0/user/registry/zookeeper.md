@@ -121,6 +121,7 @@ registry {
 ```yaml
 seata:
   registry:
+    type: zk
     zk:
       # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
       cluster: default

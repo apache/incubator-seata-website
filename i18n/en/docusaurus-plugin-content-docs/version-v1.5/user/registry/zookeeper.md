@@ -28,6 +28,7 @@ Modify the corresponding configuration in `/conf/registry.conf`. For other confi
 ```yaml
 seata:
   registry:
+    type: zk
     zk:
       cluster: default
       server-addr: 127.0.0.1:2181
@@ -106,6 +107,7 @@ Add the following configuration to `application.yml`. For other configuration op
 ```yaml
 seata:
   registry:
+    type: zk
     zk:
       server-addr: 127.0.0.1:2181
       session-timeout: 6000

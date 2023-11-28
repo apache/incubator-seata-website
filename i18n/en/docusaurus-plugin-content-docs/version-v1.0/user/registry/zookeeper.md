@@ -42,7 +42,7 @@ registry {
 Execute `/bin/seata-server.bat` (Windows) or `/bin/seata-server.sh` (Unix) to start Seata. The service will run on the local port 8091. Open the ZooKeeper command-line client and enter `ls /registry/zk/default`, check if the node address is listed, indicating successful registration (as shown below).
 
 ```
-code[zk: localhost:2181(CONNECTED) 1] ls /registry/zk/default
+[zk: localhost:2181(CONNECTED) 1] ls /registry/zk/default
 [127.0.0.1:8091]
 ```
 
@@ -108,6 +108,7 @@ Add the following configuration to `application.yml`. For other configuration op
 ```
 seata:
   registry:
+    type: zk
     zk:
       cluster： default
       server-addr: 127.0.0.1:2181

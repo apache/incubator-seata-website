@@ -108,6 +108,7 @@ Add the following configuration to `application.yml`. For other configuration op
 ```
 seata:
   registry:
+    type: zk
     zk:
       cluster: default
       server-addr: 127.0.0.1:2181

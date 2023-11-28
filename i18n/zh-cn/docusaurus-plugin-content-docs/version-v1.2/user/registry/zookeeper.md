@@ -123,6 +123,7 @@ registry {
 ```yaml
 seata:
   registry:
+    type: zk
     zk:
       server-addr: 127.0.0.1:2181
   # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group

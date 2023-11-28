@@ -33,6 +33,7 @@ Seata 融合 ZooKeeper 注册中心的操作步骤非常简单，大致步骤可
 ```yaml
 seata:
   registry:
+    type: zk
     zk:
       cluster: default
       server-addr: 127.0.0.1:2181
@@ -119,6 +120,7 @@ seata:
 ```yaml
 seata:
   registry:
+    type: zk
     zk:
       server-addr: 127.0.0.1:2181
   # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
