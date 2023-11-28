@@ -7,7 +7,7 @@ description: Zookeeper Registry Center.
 
 ZooKeeper serves as a critical registry center implementation within the Seata component.
 
-This document is based on Seata 1.4.2, demonstrating how to register Seata with ZooKeeper using a file as the configuration center.
+This document is based on Seata 2.0.0, demonstrating how to register Seata with ZooKeeper using a file as the configuration center.
 
 It is recommended to use ZooKeeper version 3.4.13 or above. The following example uses ZooKeeper version 3.4.14.
 
@@ -21,30 +21,26 @@ Integrating Seata with ZooKeeper involves simple steps, roughly categorized as "
 
 ### Server-side Registry Center Configuration
 
-Download [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) and extract the files.
+Download [Seata 2.0.0 release](https://github.com/seata/seata/releases/tag/v2.0.0) and extract the files.
 
 Modify the corresponding configuration in `/conf/registry.conf`. For other configuration options, refer to the [Seata configuration reference](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf).
 
-```
-coderegistry {
-  type = "zk"
-
-  zk {
-    # Cluster name registered on ZooKeeper, default is "default"
-    cluster = "default"
-    serverAddr = "127.0.0.1:2181"
-    sessionTimeout = 6000
-    connectTimeout = 2000
-    username = ""
-    password = ""
-  }
-}
+```yaml
+seata:
+  registry:
+    zk:
+      cluster: default
+      server-addr: 127.0.0.1:2181
+      session-timeout: 6000
+      connect-timeout: 2000
+      username: ""
+      password: ""
 ```
 
 Execute `/bin/seata-server.bat` (Windows) or `/bin/seata-server.sh` (Unix) to start Seata. The service will run on the local port 8091. Open the ZooKeeper command-line client and enter `ls /registry/zk/default`, check if the node address is listed, indicating successful registration (as shown below).
 
 ```
-code[zk: localhost:2181(CONNECTED) 1] ls /registry/zk/default
+[zk: localhost:2181(CONNECTED) 1] ls /registry/zk/default
 [127.0.0.1:8091]
 ```
 
@@ -107,26 +103,26 @@ It is recommended to use the latest version of Seata. Refer to the [version comp
 
 Add the following configuration to `application.yml`. For other configuration options, refer to the [Seata Spring configuration reference](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml).
 
-```
-yamlCopy codeseata:
+```yaml
+seata:
   registry:
     zk:
       server-addr: 127.0.0.1:2181
-  session-timeout: 6000
-  connect-timeout: 2000
-  username:
-  password:
-  tx-service-group: my_test_tx_group
+      session-timeout: 6000
+      connect-timeout: 2000
+      username:
+      password:
+  tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: default
+      default_tx_group: default
 ```
 
 After configuring the client, start the application and wait for a moment. Once the following logs appear, the Seata service is operational.
 
 ```
-textCopy coderegister TM success. client version:1.4.2, server version:1.4.2,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-register RM success. client version:1.4.2, server version:1.4.2,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.
+textCopy coderegister TM success. client version:2.0.0, server version:2.0.0,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
+register RM success. client version:2.0.0, server version:2.0.0,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:2.0.0,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:2.0.0,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.
 ```

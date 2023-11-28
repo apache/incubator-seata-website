@@ -8,7 +8,7 @@ description: Zookeeper 注册中心。
 
 ZooKeeper是 Seata 组件中重要的注册中心实现
 
-本文基于 Seata 1.4.2，把 Seata 注册到 ZooKeeper 上，以 file 作为配置中心
+本文以ZooKeeper作为注册中心，以 file 作为配置中心
 
 ZooKeeper版本建议 3.4.13及以上，下文以 ZooKeeper 3.4.14版本为例
 
@@ -26,9 +26,9 @@ Seata 融合 ZooKeeper 注册中心的操作步骤非常简单，大致步骤可
 
 ### Server端配置注册中心
 
-下载 [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) 并解压
+下载 [Seata 1.0.0 release](https://github.com/seata/seata/releases/tag/v1.0.0) 并解压
 
-在 /conf/registry.conf 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf)
+在 /conf/registry.conf 中修改对应注册中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf)
 
 ```
 registry {
@@ -40,8 +40,6 @@ registry {
     serverAddr = "127.0.0.1:2181"
     sessionTimeout = 6000
     connectTimeout = 2000
-    username = ""
-    password = ""
   }
 }
 ```
@@ -124,27 +122,20 @@ registry {
 seata:
   registry:
     zk:
+      # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
+      cluster: default
       server-addr: 127.0.0.1:2181
-  # 事务分组配置，1.4.2 默认名称为 my_test_tx_group ，1.5版本将改为 default_tx_group
-  # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
       session-timeout: 6000
       connect-timeout: 2000
-      username:
-      password:
-  tx-service-group: my_test_tx_group
-  service:
-    # 事务分组与集群映射关系
-    vgroup-mapping:
-      my_test_tx_group: default
 ```
 
 Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务
 
 ```text
-register TM success. client version:1.4.2, server version:1.4.2,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-register RM success. client version:1.4.2, server version:1.4.2,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
+register TM success. client version:1.0.0, server version:1.0.0,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
+register RM success. client version:1.0.0, server version:1.0.0,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:1.0.0,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:1.0.0,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
 ```
 
 
