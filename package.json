@@ -19,6 +19,7 @@
     "@docusaurus/theme-search-algolia": "^2.4.1",
     "@mdx-js/react": "^1.6.22",
     "@types/react-dom": "^18.2.7",
+    "axios": "^1.6.0",
     "classnames": "^2.3.2",
     "clsx": "^1.2.1",
     "docusaurus-plugin-includes": "^1.1.4",
