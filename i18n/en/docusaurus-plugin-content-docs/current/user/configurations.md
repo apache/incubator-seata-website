@@ -137,6 +137,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.raft.serialization | raft log serialization type | jackson | New in 2.0.0 version |
 | server.raft.compressor | The compression methods supported for Raft log and snapshot are gzip, zstd, and lz4 | none | New in 2.0.0 version |
 | server.raft.sync | Synchronous flushing of Raft log to disk | true |  New in 2.0.0 version |
+| server.applicationDataLimitCheck     |  enable checking of received client data | Default false |
+| server.applicationDataLimit | limit of receiving client application data  | Default 64000   |
 | store.mode | Transaction session information storage mode | file Local file (HA is not supported), db database, redis, raft (HA is supported) | The 1.5.1 version uses lock and session for separate storage|
 | store.lock.mode | Transaction lock information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value. It is not allowed to specify separately in Raft mode | New in 1.5.1 version, and session and lock can be stored separately|
 | store.session.mode | Transaction echo information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value. It is not allowed to specify separately in Raft mode | New in 1.5.1 version, and session and lock can be stored separately|
@@ -177,8 +179,6 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | metrics.registryType | Indicator registrar type | The indicator registrar type used by Metrics is a built-in compact (simple) implementation by default. Meters in this implementation only use a limited memory count, and the performance is high enough to meet most scenarios; Currently, only one indicator registrar can be set|
 | metrics.exporterList | Index result Measurement data outputter list | default prometheus. Multiple outputters are separated by English commas, such as "prometheus, jmx". Currently, only the prometheus outputters are connected|
 | metrics.exporterPrometheusPort | prometheus exporter client port number | 9898 by default|
-| server.applicationDataLimitCheck     |  enable checking of received client data | Default false |
-| server.applicationDataLimit | limit of receiving client application data  | Default 64000   |
 
 ### Client side
 
@@ -208,6 +208,9 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.rm.sagaBranchRegisterEnable | whether to enable saga branch registration | In Saga mode, the branch state is stored in the local database of the state machine and can be submitted or rolled back through the state machine. To improve performance, you can consider not registering Saga branches with the TC, but you need to consider the availability of the state machine. The default is false|
 | client.rm.sagaJsonParser | data serialization method in saga mode | Fastjson by default, jackson by choice | New in 1.5.1|
 | client.rm.tccActionInterceptorOrder | tcc interceptor order | default Ordered HIGHEST_ PRECEDENCE+1000 ensures that the interceptor is executed before the local transaction interceptor. You can also customize the execution order of the interceptor for tcc and business development | New in 1.5.1|
+| client.rm.sqlParserType | sql resolution type | default druid, optional antlr|
+| client.rm.applicationDataLimitCheck |    enable checking of client data          | Default false               |
+| client.rm.applicationDataLimit | limit of client application data             | Default 64000       |
 | client.tm.commitRetryCount | the number of TC retries for reporting the results of the first phase global submission | 1 by default, it is recommended to be greater than 1|
 | client.tm.rollbackRetryCount | the number of TC retries reported for the global rollback results in the first phase | 1 by default, it is recommended to be greater than 1|
 | client.tm.defaultGlobalTransactionTimeout | global transaction timeout | The default is 60 seconds. After TM detects a branch transaction timeout or TC detects that TM has not made a two-phase report timeout, it initiates a rollback of the branch transaction | New in 1.4.0|
@@ -219,9 +222,6 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.compress.enable | undo log compression switch | default true | New in 1.4.1|
 | client.undo.compress.type | undo log compression algorithm | Default zip. Options include NONE, GZIP, ZIP, SEVENZ, BZIP2, LZ4, DEFLATER, and ZSTD | New in 1.4.1|
 | client.undo.compress.threshold | undo log compression threshold | The default value is 64k. Compression occurs when the compression switch is on and the undo log size exceeds the threshold value | New in 1.4.1|
-| client.rm.sqlParserType | sql resolution type | default druid, optional antlr|
-| client.rm.applicationDataLimitCheck |    enable checking of client data          | Default false               |
-| client.rm.applicationDataLimit | limit of client application data             | Default 64000       |
 
 
 <details>
