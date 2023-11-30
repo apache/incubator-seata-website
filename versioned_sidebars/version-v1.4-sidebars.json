@@ -19,6 +19,16 @@
         "user/configurations",
         {
           "type": "category",
+          "label": "Transaction Mode",
+          "items": [
+            "user/mode/at",
+            "user/mode/tcc",
+            "user/mode/saga",
+            "user/mode/xa"
+          ]
+        },
+        {
+          "type": "category",
           "label": "Transactions Grouping",
           "items": [
             "user/txgroup/transaction-group",
