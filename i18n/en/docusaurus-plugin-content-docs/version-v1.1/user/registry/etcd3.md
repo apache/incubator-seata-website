@@ -41,14 +41,11 @@ Add the corresponding configuration to [**application.yml**](https://github.com/
 
 ```yaml
 seata:
-  tx-service-group: default_tx_group
-  service:
-    vgroup-mapping:
-      my_test_tx_group: seata-server # Configure the value corresponding to registry.eureka.application in the server-side configuration here
   registry:
     type: etcd3
     etcd3:
-      server-addr: http://localhost:2379
+      cluster: default
+      serverAddr: http://localhost:2379
 ```
 
 ### Configuring the Registry Center on the Server Side
@@ -58,8 +55,8 @@ Add the corresponding configuration to [registry.conf](https://github.com/seata/
 ```
 registry {
   type = "etcd3"
- 
   etcd3 {
+    cluster = "default"
     serverAddr = "http://localhost:2379"
   }
 }

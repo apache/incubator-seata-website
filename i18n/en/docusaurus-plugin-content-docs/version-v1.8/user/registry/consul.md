@@ -8,7 +8,7 @@ description: Consul Registry Center.
 
 Consul is an important registry implementation in the Seata component.
 
-This article is based on Seata 1.4.2 and registers Seata to Consul with file as the configuration center.
+This article is based on Seata 1.8.0 and registers Seata to Consul with file as the configuration center.
 
 Consul version recommended is 1.8+. The following text uses Consul 1.11.2 as an example.
 
@@ -32,21 +32,18 @@ The Client-side needs to add Maven dependencies and configure them.
 
 ### Server-side configuration of registry
 
-Download [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) and extract it.
+Download [Seata 1.8.0 release](https://github.com/seata/seata/releases/tag/v1.8.0) and extract it.
 
 Modify the corresponding configuration center in /conf/registry.conf, and refer to the rest of the [configuration](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf).
 
-```
-registry {
-  type = "consul"
-
-  consul {
-    # The cluster name registered to Consul, default is default
-    cluster = "default"
-    serverAddr = "127.0.0.1:8500"
-    aclToken = ""
-  }
-}
+```yaml
+seata:
+  registry:
+    type: consul
+    consul:
+      cluster: default
+      server-addr: 127.0.0.1:8500
+      acl-token:
 ```
 
 Execute /bin/seata-server.bat (Windows) or /bin/seata-server.sh (Unix) to start Seata. The service will run on port 8091 locally.
@@ -78,20 +75,22 @@ seata:
   registry:
     consul:
       server-addr: 127.0.0.1:8500
-  # Transaction group configuration, default name is my_test_tx_group in version 1.4.2, will be changed to default_tx_group in version 1.5
+  # Transaction group configuration, default name is my_test_tx_group in version 1.8.0, will be changed to default_tx_group in version 1.5
   # For more information about transaction groups, please refer to http://seata.io/en/docs/user/txgroup/transaction-group.html
-  tx-service-group: my_test_tx_group
+  tx-service-group: default_tx_group
   service:
     # Mapping between transaction group and cluster
     vgroup-mapping:
-      my_test_tx_group: default
+      default_tx_group: default
 ```
+
+
 
 After completing the client configuration, start the application and wait for a moment. When the following log appears, you can officially experience the Seata service.
 
 ```text
-register TM success. client version:1.4.2, server version:1.4.2,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-register RM success. client version:1.4.2, server version:1.4.2,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
+register TM success. client version:1.8.0, server version:1.8.0,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
+register RM success. client version:1.8.0, server version:1.8.0,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:1.8.0,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:1.8.0,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
 ```

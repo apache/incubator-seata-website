@@ -44,7 +44,7 @@ seata:
   tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: seata-server # 此处配置对应Server端配置registry.eureka.application的值
+      default_tx_group: seata-server # 此处配置对应Server端配置registry.etcd3.application的值
   registry:
     type: etcd3
     etcd3:
@@ -55,14 +55,13 @@ seata:
 
 在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
 
-```
-registry {
-  type = "etcd3"
- 
-  etcd3 {
-    serverAddr = "http://localhost:2379"
-  }
-}
+```yaml
+seata:
+  registry:
+    type: etcd3
+    etcd3:
+      cluster: default
+      server-addr: http://localhost:2379
 ```
 
 配置完成后启动应用就可以正式体验 Seata 服务。

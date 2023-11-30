@@ -41,10 +41,10 @@ Seata 融合 Etcd3 注册中心的操作步骤非常简单，大致步骤可分�
 
 ```yaml
 seata:
-  tx-service-group: default_tx_group
+  tx-service-group: my_test_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: seata-server # 此处配置对应Server端配置registry.eureka.application的值
+      my_test_tx_group: default # 此处配置对应Server端配置registry.etcd3.cluster的值
   registry:
     type: etcd3
     etcd3:
@@ -60,6 +60,7 @@ registry {
   type = "etcd3"
  
   etcd3 {
+    cluster = "default"
     serverAddr = "http://localhost:2379"
   }
 }

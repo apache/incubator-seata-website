@@ -24,7 +24,6 @@ Seata 融合 Etcd3 注册中心的操作步骤非常简单，大致步骤可分�
 <dependency>
     <groupId>io.seata</groupId>
     <artifactId>seata-spring-boot-starter</artifactId>
-    <version>最新版</version>
 </dependency>
         <!-- Etcd3 客户端依赖 -->
 <dependency>
@@ -41,14 +40,11 @@ Seata 融合 Etcd3 注册中心的操作步骤非常简单，大致步骤可分�
 
 ```yaml
 seata:
-  tx-service-group: default_tx_group
-  service:
-    vgroup-mapping:
-      my_test_tx_group: seata-server # 此处配置对应Server端配置registry.eureka.application的值
   registry:
     type: etcd3
     etcd3:
-      server-addr: http://localhost:2379
+      cluster: default
+      serverAddr: http://localhost:2379
 ```
 
 ### Server端配置注册中心
@@ -58,8 +54,8 @@ seata:
 ```
 registry {
   type = "etcd3"
- 
   etcd3 {
+    cluster = "default"
     serverAddr = "http://localhost:2379"
   }
 }

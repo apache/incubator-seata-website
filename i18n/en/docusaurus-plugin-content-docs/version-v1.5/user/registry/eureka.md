@@ -53,10 +53,10 @@ Add the corresponding configuration to [**application.yml**](https://github.com/
 
 ```yaml
 seata:
-  tx-service-group: my_test_tx_group
+  tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: seata-server # Configure the corresponding value of registry.eureka.application on the Server side here
+      default_tx_group: seata-server # Configure the corresponding value of registry.eureka.application on the Server side here
   registry:
     type: eureka
     eureka:
@@ -68,16 +68,14 @@ seata:
 
 Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to the [configuration](https://github.com/seata/seata/tree/develop/script/server) for the rest.
 
-```
-registry {
-  type = "eureka"
- 
-  eureka {
-    serviceUrl = "http://localhost:8761/eureka"
-    application = "seata-server"
-    weight = "1"
-  }
-}
+```yaml
+seata:
+  registry:
+    type: eureka
+    eureka:
+      service-url: http://localhost:8761/eureka
+      application: seata-server
+      weight: 1
 ```
 
 After that, when Seata-Server is started, the Server-side service will appear in the registry center list in the Eureka console. After configuring the Client, you can start the application to experience the Seata service.

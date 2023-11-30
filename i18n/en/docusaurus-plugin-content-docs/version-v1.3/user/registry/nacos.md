@@ -39,15 +39,18 @@ Add the corresponding configuration to [**application.yml**](https://github.com/
 
 ```yaml
 seata:
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
   registry:
     type: nacos
     nacos:
-      application: seata-server
-      server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      namespace:
+      serverAddr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: ""
+      password: ""
 ```
 
 ### Configuring the Registry on the Server Side
@@ -59,11 +62,10 @@ registry {
   type = "nacos"
 
   nacos {
-    application = "seata-server"
     serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
     namespace = ""
     cluster = "default"
+    group = "SEATA_GROUP"
     username = ""
     password = ""
   }

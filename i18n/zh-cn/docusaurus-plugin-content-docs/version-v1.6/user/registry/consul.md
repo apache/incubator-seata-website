@@ -8,7 +8,7 @@ description: Consul 注册中心。
 
 Consul 是 Seata 组件中重要的注册中心实现
 
-本文基于 Seata 1.4.2，把 Seata 注册到 Consul 上，以 file 作为配置中心
+本文基于 Seata 1.6.0，把 Seata 注册到 Consul 上，以 file 作为配置中心
 
 Consul 版本建议 1.8+，下文以 Consul 1.11.2 为例
 
@@ -33,21 +33,18 @@ Server 端只需要配置“注册中心”
 Client 端则需要增加 Maven 依赖以及配置
 
 ### Server端配置注册中心
-下载 [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) 并解压
+下载 [Seata 1.6.0 release](https://github.com/seata/seata/releases/tag/v1.6.0) 并解压
 
 在 /conf/registry.conf 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf)
 
-```
-registry {
-  type = "consul"
-
-  consul {
-    # 注册到 Consul 上的集群名称，默认是 default
-    cluster = "default"
-    serverAddr = "127.0.0.1:8500"
-    aclToken = ""
-  }
-}
+```yaml
+seata:
+  registry:
+    type: consul
+    consul:
+      cluster: default
+      server-addr: 127.0.0.1:8500
+      acl-token:
 ```
 
 执行 /bin/seata-server.bat (Windows) 或 /bin/seata-server.sh (Unix) 启动 Seata，服务将运行在本地 8091 端口上
@@ -77,22 +74,22 @@ registry {
 ```yaml
 seata:
   registry:
+    type: consul
     consul:
       server-addr: 127.0.0.1:8500
-  # 事务分组配置，1.4.2 默认名称为 my_test_tx_group ，1.5版本将改为 default_tx_group
   # 有关事务分组，请参考 http://seata.io/zh-cn/docs/user/txgroup/transaction-group.html
-  tx-service-group: my_test_tx_group
+  tx-service-group: default_tx_group
   service:
     # 事务分组与集群映射关系
     vgroup-mapping:
-      my_test_tx_group: default
+      default_tx_group: default
 ```
 
 Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务
 
 ```text
-register TM success. client version:1.4.2, server version:1.4.2,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-register RM success. client version:1.4.2, server version:1.4.2,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.4.2,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
+register TM success. client version:1.6.0, server version:1.6.0,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
+register RM success. client version:1.6.0, server version:1.6.0,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:1.6.0,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
+register success, cost 94 ms, version:1.6.0,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
 ```

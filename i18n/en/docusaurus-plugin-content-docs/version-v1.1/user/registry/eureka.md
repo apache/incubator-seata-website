@@ -53,15 +53,12 @@ Add the corresponding configuration to [**application.yml**](https://github.com/
 
 ```yaml
 seata:
-  tx-service-group: my_test_tx_group
-  service:
-    vgroup-mapping:
-      my_test_tx_group: seata-server # Configure the corresponding value of registry.eureka.application on the Server side here
   registry:
     type: eureka
     eureka:
-      service-url: http://localhost:8761/eureka
+      application: default
       weight: 1
+      service-url: http://localhost:8761/eureka
 ```
 
 ### Server-side configuration of the registry center
@@ -74,7 +71,7 @@ registry {
  
   eureka {
     serviceUrl = "http://localhost:8761/eureka"
-    application = "seata-server"
+    application = "default"
     weight = "1"
   }
 }

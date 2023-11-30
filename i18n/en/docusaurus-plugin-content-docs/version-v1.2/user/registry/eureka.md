@@ -64,6 +64,7 @@ seata:
       weight: 1
 ```
 
+
 ### Server-side configuration of the registry center
 
 Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to the [configuration](https://github.com/seata/seata/tree/develop/script/server) for the rest.

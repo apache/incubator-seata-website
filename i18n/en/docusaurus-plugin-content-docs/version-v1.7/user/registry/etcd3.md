@@ -44,7 +44,7 @@ seata:
   tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: seata-server # Configure the value corresponding to registry.eureka.application in the server-side configuration here
+      default_tx_group: seata-server # Configure the value corresponding to registry.eureka.application in the server-side configuration here
   registry:
     type: etcd3
     etcd3:
@@ -55,14 +55,13 @@ seata:
 
 Add the corresponding configuration to [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/develop/script/server) for other configurations.
 
-```
-registry {
-  type = "etcd3"
- 
-  etcd3 {
-    serverAddr = "http://localhost:2379"
-  }
-}
+```yaml
+seata:
+  registry:
+    type: etcd3
+    etcd3:
+      cluster: default
+      server-addr: http://localhost:2379
 ```
 
 After the configuration is completed, start the application to experience the Seata service.

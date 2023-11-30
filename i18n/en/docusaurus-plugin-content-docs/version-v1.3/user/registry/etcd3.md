@@ -44,7 +44,7 @@ seata:
   tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: seata-server # Configure the value corresponding to registry.eureka.application in the server-side configuration here
+      my_test_tx_group: default
   registry:
     type: etcd3
     etcd3:
@@ -61,6 +61,7 @@ registry {
  
   etcd3 {
     serverAddr = "http://localhost:2379"
+    cluster = "default"
   }
 }
 ```

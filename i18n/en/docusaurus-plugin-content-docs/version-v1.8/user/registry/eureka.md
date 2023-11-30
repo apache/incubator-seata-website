@@ -28,22 +28,22 @@ First, you need to add the Maven dependency of `spring-cloud-starter-netflix-eur
     <version>latest version</version>
 </dependency>
 <dependency>
-    <groupId>com.alibaba.cloud</groupId>
-    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-    <version>2.1.2.RELEASE and above</version>
-    <exclusions>
-        <exclusion>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
-        </exclusion>
-    </exclusions>
+<groupId>com.alibaba.cloud</groupId>
+<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+<version>2.1.2.RELEASE and above</version>
+<exclusions>
+    <exclusion>
+        <groupId>io.seata</groupId>
+        <artifactId>seata-spring-boot-starter</artifactId>
+    </exclusion>
+</exclusions>
 </dependency>
 
-<!-- eureka client dependency -->
+        <!-- eureka client dependency -->
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    <version>2.0.0.RELEASE and above</version>
+<groupId>org.springframework.cloud</groupId>
+<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+<version>2.0.0.RELEASE and above</version>
 </dependency>
 ```
 
@@ -53,10 +53,10 @@ Add the corresponding configuration to [**application.yml**](https://github.com/
 
 ```yaml
 seata:
-  tx-service-group: my_test_tx_group
+  tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: seata-server # Configure the corresponding value of registry.eureka.application on the Server side here
+      default_tx_group: seata-server # Configure the corresponding value of registry.eureka.application on the Server side here
   registry:
     type: eureka
     eureka:
@@ -68,16 +68,14 @@ seata:
 
 Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to the [configuration](https://github.com/seata/seata/tree/develop/script/server) for the rest.
 
-```
-registry {
-  type = "eureka"
- 
-  eureka {
-    serviceUrl = "http://localhost:8761/eureka"
-    application = "seata-server"
-    weight = "1"
-  }
-}
+```yaml
+seata:
+  registry:
+    type: eureka
+    eureka:
+      service-url: http://localhost:8761/eureka
+      application: seata-server
+      weight: 1
 ```
 
 After that, when Seata-Server is started, the Server-side service will appear in the registry center list in the Eureka console. After configuring the Client, you can start the application to experience the Seata service.

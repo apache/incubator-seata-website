@@ -27,9 +27,9 @@ First, you need to add the Maven dependency for `nacos-client` to your project's
     <version>latest version</version>
 </dependency>
 <dependency>
-    <groupId>com.alibaba.nacos</groupId>
-    <artifactId>nacos-client</artifactId>
-    <version>1.2.0 or above</version>
+<groupId>com.alibaba.nacos</groupId>
+<artifactId>nacos-client</artifactId>
+<version>1.2.0 or above</version>
 </dependency>
 ```
 
@@ -42,33 +42,38 @@ seata:
   registry:
     type: nacos
     nacos:
-      application: seata-server
-      server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
       namespace: ""
-      username: "nacos"
-      password: "nacos"
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: ""
+      password: ""
+      ##if use MSE Nacos with auth, mutex with username/password attribute
+      #access-key: ""
+      #secret-key: ""
+      data-id: seata.properties
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+
 ```
 
 ### Configuring the Registry on the Server Side
 
 Add the corresponding configuration to [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/server):
 
-```
-registry {
-  type = "nacos"
-
-  nacos {
-    application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
-    namespace = ""
-    cluster = "default"
-    username = ""
-    password = ""
-  }
-}
-
+```yaml
+seata:
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      namespace:
+      cluster: default
+      username:
+      password:
 ```
 
 After that, when you start the Seata-Server, you will see the server's service appearing in the registry list on the Nacos console. Once the client is configured, you can start the application to experience the Seata service.
