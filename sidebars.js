@@ -29,6 +29,11 @@ const sidebars = {
         'user/configurations',
         {
           type: 'category',
+          label: 'Transaction Mode',
+          items: ['user/mode/at', 'user/mode/tcc', 'user/mode/saga', 'user/mode/xa'],
+        },
+        {
+          type: 'category',
           label: 'Transactions Grouping',
           items: ['user/txgroup/transaction-group', 'user/txgroup/transaction-group-and-ha'],
         },
@@ -41,11 +46,6 @@ const sidebars = {
           type: 'category',
           label: 'Registration Authority',
           items: ['user/registry/index', 'user/registry/nacos', 'user/registry/eureka', 'user/registry/etcd3', 'user/registry/consul', 'user/registry/zookeeper'],
-        },
-        {
-          type: 'category',
-          label: 'Transaction Mode',
-          items: ['user/mode/at', 'user/mode/tcc', 'user/mode/saga', 'user/mode/xa'],
         },
         'user/api',
         'user/microservice',
