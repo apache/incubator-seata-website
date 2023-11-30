@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: |
           npm install && npm run build
-          mkdir sitemaps && node sitemaps.js --apiKey ${{secrets.ALGOLIA_APIKEY}}
+          mkdir sitemaps && node sitemap.js --apiKey ${{secrets.ALGOLIA_APIKEY}}
           mkdir deploy-dist && cp -R build/* deploy-dist/
           mv sitemaps .htaccess *.txt *.xml deploy-dist/
       - name: Use Node.js 12.x
