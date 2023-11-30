@@ -8,7 +8,7 @@ description: Seata TCC 模式用户文档
 
 ## 概述
 
-TCC 模式是 Seata 支持的一种由业务方细粒度控制的侵入式分布式事务解决方案，是继 AT 模式后第二种支持的事务模式，最早由蚂蚁金服贡献。其分布式事务模型直接作用于服务层，不与具体的服务框架耦合，与底层 RPC 协议和存储介质均无关，可以灵活选择业务资源的锁定粒度，减少资源锁持有时间，可扩展性好，可以说是为独立部署的 SOA 服务而设计的。
+TCC 模式是 Seata 支持的一种由业务方细粒度控制的侵入式分布式事务解决方案，是继 AT 模式后第二种支持的事务模式，最早由蚂蚁金服贡献。其分布式事务模型直接作用于服务层，不依赖底层数据库，可以灵活选择业务资源的锁定粒度，减少资源锁持有时间，可扩展性好，可以说是为独立部署的 SOA 服务而设计的。
 
 ![Overview of a global transaction](/img/seata_tcc-1.png)
 
@@ -16,7 +16,7 @@ TCC 模式是 Seata 支持的一种由业务方细粒度控制的侵入式分布
 
 ### 优势
 
-TCC 不与服务框架耦合，完全不依赖底层数据库，能够实现跨数据库、跨应用资源管理，可以提供给业务方更细粒度的控制。
+TCC 完全不依赖底层数据库，能够实现跨数据库、跨应用资源管理，可以提供给业务方更细粒度的控制。
 
 ### 缺点
 
@@ -57,8 +57,6 @@ Seata 会把一个 TCC 接口当成一个 Resource，也叫 TCC Resource。在�
 - Confirm 阶段，执行主要业务逻辑（Commit） 这一阶段使用 `commitMethod` 属性所指向的方法，来执行Confirm 的工作。
 - Cancel 阶段，事务回滚（Rollback） 这一阶段使用 `rollbackMethod` 属性所指向的方法，来执行 Cancel 的工作。
 
-
-
 其次，可以在 TCC 模式下使用 `BusinessActionContext` 在事务上下文中传递查询参数。如下属性：
 
 - `xid` 全局事务id
@@ -79,6 +77,7 @@ public String doTransactionCommit(){
 注意，如果 TCC 参与者是本地 bean（非远程RPC服务），本地 TCC bean 还需要在接口定义中添加 @LocalTCC 注解，比如,
 
 ```java
+@LocalTCC
 public interface TccActionTwo {
     @TwoPhaseBusinessAction(name = "TccActionTwo", commitMethod = "commit", rollbackMethod = "rollback")
     public boolean prepare(BusinessActionContext actionContext, @BusinessActionContextParameter(paramName = "a") String a);
