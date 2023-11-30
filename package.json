@@ -29,7 +29,9 @@
     "sass": "^1.63.6"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.4.1"
+    "@docusaurus/module-type-aliases": "2.4.1",
+    "algolia-sitemap": "^2.2.1",
+    "minimist": "^1.2.8"
   },
   "browserslist": {
     "production": [
