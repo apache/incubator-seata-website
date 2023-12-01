@@ -14,6 +14,8 @@ jobs:
       - name: Build
         run: |
           npm install && npm run build
-          mkdir sitemaps && export ALGOLIA_APIKEY=${{secrets.ALGOLIA_APIKEY}} && node sitemap.js
+          mkdir sitemaps && node sitemap.js
           mkdir deploy-dist && cp -R build/* deploy-dist/
           mv sitemaps .htaccess *.txt *.xml deploy-dist/
+        env:
+          ALGOLIA_APIKEY: ${{secrets.ALGOLIA_APIKEY}}
