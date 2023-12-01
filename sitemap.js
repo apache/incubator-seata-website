@@ -1,19 +1,13 @@
 const sitemap = require('algolia-sitemap');
-const parseArgs = require('minimist');
 
-// parse --apiKey param
-const argv = parseArgs(process.argv.slice(2),{
-  string:['apiKey']
-})
-
-if(!argv.apiKey){
-  throw new Error('no apiKey configured');
+if(!process.env.ALGOLIA_APIKEY){
+  throw new Error('no algolia apiKey configured');
 }
 
 // You need an API key with `browse` permission
 const algoliaConfig = {
   appId: 'ICHFIJRDZF',
-  apiKey: argv.apiKey,
+  apiKey: process.env.ALGOLIA_APIKEY,
   indexName: 'seata',
 };
 
