@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: 19.5.x
       - name: Build
-        # keep the sitemap filename consistent with older versions.
         # The new generated sitemap for the index form,
         # in order to ensure consistency with the old version,
         # here directly to the details of the sitemap (sitemap.0.xml) renamed as a whole sitemap,
