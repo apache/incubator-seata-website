@@ -40,4 +40,4 @@ User-agent: *
 Disallow:
 Disallow: /cgi-bin/
 Disallow: /bin/
-Sitemap: https://seata.io/sitemaps/sitemap-index.xml
+Sitemap: https://seata.io/sitemap.xml
