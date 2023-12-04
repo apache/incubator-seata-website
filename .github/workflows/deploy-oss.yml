@@ -22,7 +22,7 @@ jobs:
           npm install && npm run build
           mkdir sitemaps && node sitemap.js
           mkdir deploy-dist && cp -R build/* deploy-dist/
-          mv sitemaps .htaccess *.txt *.xml deploy-dist/
+          mv sitemaps .htaccess *.txt deploy-dist/
         env:
           ALGOLIA_APIKEY: ${{secrets.ALGOLIA_APIKEY}}
       - name: Use Node.js 12.x
