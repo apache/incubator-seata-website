@@ -109,6 +109,8 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
+        // disable default sitemap generation
+        sitemap: false
       }),
     ],
   ],
