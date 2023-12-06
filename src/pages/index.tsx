@@ -11,8 +11,6 @@ import { Footer } from '../components';
 import './index.scss';
 
 export default function Home(): React.Element {
-  const { siteConfig, i18n } = useDocusaurusContext();
-  const curLang = i18n.currentLocale;
   const el = React.useRef<HTMLDivElement>(null);
 
   //   const setEleBg = (ele: HTMLDivElement, isTransparent: boolean) => {

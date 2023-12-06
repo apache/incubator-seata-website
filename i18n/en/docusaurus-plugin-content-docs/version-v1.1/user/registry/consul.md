@@ -16,7 +16,7 @@ Consul version recommended is 1.8+. The following text uses Consul 1.11.2 as an 
 
 Before you register **Seata** to Consul, make sure that the Consul service is already running. If you are not familiar with the basic usage of Consul, you can refer to the [Consul official documentation](https://www.consul.io/docs) first.
 
-If you just want to experience it quickly, you can also use the following docker command to start a Consul container and access the Consul console at http://localhost:8500.
+If you just want to experience it quickly, you can also use the following docker command to start a Consul container and access the Consul console at <http://localhost:8500>0>.
 
 ```shell
 docker run -d --name=consul -p 8500:8500 -p 8600:8600/udp consul:1.11.2 agent -dev -client=0.0.0.0 -ui
@@ -79,7 +79,7 @@ seata:
     consul:
       server-addr: 127.0.0.1:8500
   # Transaction group configuration, default name is my_test_tx_group in version 1.4.2, will be changed to default_tx_group in version 1.5
-  # For more information about transaction groups, please refer to http://seata.io/en/docs/user/txgroup/transaction-group.html
+  # For more information about transaction groups, please refer to https://seata.io/docs/user/txgroup/transaction-group
   tx-service-group: my_test_tx_group
   service:
     # Mapping between transaction group and cluster

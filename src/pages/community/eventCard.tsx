@@ -27,7 +27,7 @@ const EventCard = (props: Props) => {
             <p>{event.content}</p>
             <a href={event.link}>
               {event.dateStr}
-              <img className='arrow' src={`/img/arrow_right.png`} />
+              <img className='arrow' src={`/img/system/arrow_right.png`} />
             </a>
           </div>
         </div>
