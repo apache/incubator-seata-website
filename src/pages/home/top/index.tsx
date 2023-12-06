@@ -15,7 +15,7 @@ const topData = {
   buttons: [
     {
       text: translate({ id: 'homepage.quickstartButton', message: '快速入门' }),
-      link: '/docs/user/quickstart',
+      link: 'docs/user/quickstart',
       type: 'normal',
     },
     {
