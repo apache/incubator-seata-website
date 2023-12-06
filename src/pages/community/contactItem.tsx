@@ -1,5 +1,4 @@
 import React from 'react';
-import { getLink } from '../../utils';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 type Props = {
@@ -44,14 +43,14 @@ class ContactItem extends React.Component<Props, State> {
       <BrowserOnly>
         {() => (
           <a
-            className="contact-item"
-            href={getLink(contact.link)}
-            rel="noopener noreferrer"
-            target="_blank"
+            className='contact-item'
+            href={contact.link}
+            rel='noopener noreferrer'
+            target='_blank'
             onMouseOver={this.onMouseOver}
             onMouseOut={this.onMouseOut}
           >
-            <img src={getLink(img)} />
+            <img src={img} />
             <div>{contact.title}</div>
           </a>
         )}
@@ -61,3 +60,4 @@ class ContactItem extends React.Component<Props, State> {
 }
 
 export default ContactItem;
+// todo 待确认

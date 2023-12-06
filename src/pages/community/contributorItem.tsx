@@ -1,5 +1,4 @@
 import React from 'react';
-import { getLink } from '../../utils';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 export type ContributorData = {
@@ -18,8 +17,8 @@ const ContributorItem = (props: Props) => {
   return (
     <BrowserOnly>
       {() => (
-        <div className="contributor-item">
-          <img src={getLink(img)} />
+        <div className='contributor-item'>
+          <img src={img} />
           <div>{title}</div>
           <p>{content}</p>
         </div>
