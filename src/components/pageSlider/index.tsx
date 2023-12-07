@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { throttle, getLink } from '../../utils';
+import { throttle } from '../../utils';
 
 import './index.scss';
 
@@ -58,11 +58,13 @@ class pageSlider extends React.Component<Props, State> {
     const splitNum = Math.ceil(len / pageSize);
     /* eslint-disable no-plusplus*/
     for (let i = 0; i < splitNum; i++) {
-      splitGroup.push(Array.from(children).slice(i * pageSize, (i + 1) * pageSize));
+      splitGroup.push(
+        Array.from(children).slice(i * pageSize, (i + 1) * pageSize)
+      );
     }
     return (
       <div
-        className="slider-list"
+        className='slider-list'
         style={{
           transform: `translateX(-${page * pageWidth}px)`,
           transition: 'transform 500ms ease',
@@ -70,12 +72,13 @@ class pageSlider extends React.Component<Props, State> {
         }}
       >
         {splitGroup.map((group, i) => {
-          return (<div className="slider-page" style={{ width: pageWidth }} key={i}>
-          {group.map((child, j) => (
-            <div className="slider-item" key={j}>
-              {child}
-            </div>
-          ))}
+          return (
+            <div className='slider-page' style={{ width: pageWidth }} key={i}>
+              {group.map((child, j) => (
+                <div className='slider-item' key={j}>
+                  {child}
+                </div>
+              ))}
             </div>
           );
         })}
@@ -90,13 +93,13 @@ class pageSlider extends React.Component<Props, State> {
     // 分成的屏数
     const splitNum = Math.ceil(len / pageSize);
     return (
-      <div className="slider-control">
+      <div className='slider-control'>
         <img
           className={classnames({
             'slider-control-prev': true,
             'slider-control-prev-hidden': page === 0,
           })}
-          src={getLink('/img/system/prev.png')}
+          src='/img/system/prev.png'
           onClick={this.changePage.bind(this, page - 1)}
         />
         <img
@@ -104,7 +107,7 @@ class pageSlider extends React.Component<Props, State> {
             'slider-control-next': true,
             'slider-control-next-hidden': page === splitNum - 1,
           })}
-          src={getLink('/img/system/next.png')}
+          src='/img/system/next.png'
           onClick={this.changePage.bind(this, page + 1)}
         />
       </div>
@@ -114,7 +117,7 @@ class pageSlider extends React.Component<Props, State> {
   render() {
     return (
       <div
-        className="page-slider"
+        className='page-slider'
         ref={(node) => {
           this.container = node;
         }}

@@ -1,8 +1,6 @@
 import React from 'react';
 import { translate } from '@docusaurus/Translate';
 import { Button, ButtonType } from '../../../components';
-import { getLink } from '../../../utils';
-
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 import './index.scss';
@@ -17,7 +15,7 @@ const topData = {
   buttons: [
     {
       text: translate({ id: 'homepage.quickstartButton', message: '快速入门' }),
-      link: '/docs/user/quickstart',
+      link: 'docs/user/quickstart',
       type: 'normal',
     },
     {
@@ -50,7 +48,7 @@ const topData = {
   ],
 };
 
-const Top = ({ language }: { language?: string }) => {
+const Top = () => {
   const [repo, setRepo] = React.useState({
     starCount: '',
     forkCount: '',
@@ -98,7 +96,6 @@ const Top = ({ language }: { language?: string }) => {
                     key={b.text}
                     link={b.link}
                     target={b.target}
-                    language={language}
                   >
                     {b.text}
                   </Button>

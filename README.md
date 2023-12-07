@@ -12,9 +12,9 @@ All website material of https://seata.io, which uses a open source framework: Do
 
 1. `npm install`
 
-2. `npm run start -- --locale en` for starting Seata's **English** webpage in your local machine.
+2. `npm run start` for starting Seata's **English** webpage in your local machine.
 
-    `npm run start -- --locale zh-cn` for starting Seata's **Chinese Simplified** webpage in your local machine.
+    `npm run start-zh-cn` for starting Seata's **Chinese Simplified** webpage in your local machine.
 
 3. Visit
 ```
@@ -37,7 +37,7 @@ Base docusaurus **2.4.1**
 Node.js version **19.5.0**
 
 ## Note for i18n
-Please be noted that **locale switching function doesn't work** if you start the website in development mode using `npm run start -- --locale zh-cn` or `npm run start -- --locale en`. Please run it in production mode using the build-and-serve process to enable the locale switching function.
+Please be noted that **locale switching function doesn't work** if you start the website in development mode using `npm run start-zh-cn` or `npm run start`. Please run it in production mode using the build-and-serve process to enable the locale switching function.
 
 ## Overview of the Website Structure
 We use the **Docusaurus internationalization (i18n)** to support both English(en) and Chinese Simplified(zh-cn) Seata Website. Besides, we apply **Docusaurus Versioning** to get versioned docs.
