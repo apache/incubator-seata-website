@@ -16,7 +16,7 @@ Consul version recommended is 1.8+. The following text uses Consul 1.11.2 as an 
 
 Before you register **Seata** to Consul, make sure that the Consul service is already running. If you are not familiar with the basic usage of Consul, you can refer to the [Consul official documentation](https://www.consul.io/docs) first.
 
-If you just want to experience it quickly, you can also use the following docker command to start a Consul container and access the Consul console at <http://localhost:8500>0>.
+If you just want to experience it quickly, you can also use the following docker command to start a Consul container and access the Consul console at http://localhost:8500.
 
 ```shell
 docker run -d --name=consul -p 8500:8500 -p 8600:8600/udp consul:1.11.2 agent -dev -client=0.0.0.0 -ui
