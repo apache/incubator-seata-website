@@ -109,12 +109,6 @@ const sidebars = {
   developers: [
     {
       type: 'category',
-      label: 'Developers List',
-      collapsible: false,
-      items: ['developers/developers_dev'],
-    },
-    {
-      type: 'category',
       label: 'Contribute Guide',
       collapsible: false,
       items: [

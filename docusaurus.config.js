@@ -176,7 +176,7 @@ const config = {
           {
             label: 'Developers',
             type: 'doc',
-            docId: 'developers/developers_dev',
+            docId: 'developers/contributor-guide/new-contributor-guide_dev',
             position: 'right',
           },
           {
