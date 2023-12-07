@@ -138,14 +138,6 @@ const config = {
             activeBaseRegex: '^/$',
             position: 'right',
           },
-          // {
-          //   label: 'Docs',
-          //   type: 'doc',
-          //   docId: 'overview/what-is-seata',
-          //   // type: 'docSidebar',
-          //   // sidebarId: 'tutorialSidebar',
-          //   position: 'right',
-          // },
           {
             type: "docsVersionDropdown",
             label: "Docs",
@@ -153,37 +145,10 @@ const config = {
             position: "right",
           },
           {
-            label: 'Solutions',
-            type: 'dropdown',
-            position: 'right',
-            items: [
-              {
-                label: 'Seata in Cloud',
-                href: 'https://www.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'SOFA distributed transaction',
-                href: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
-              },
-            ],
-          },
-          {
-            label: 'Free trial',
-            href: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
-            position: 'right',
-            target: '_blank',
-          },
-          {
             label: 'Developers',
             type: 'doc',
             docId: 'developers/contributor-guide/new-contributor-guide_dev',
             position: 'right',
-          },
-          {
-            label: 'Recruitment',
-            to: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
-            position: 'right',
-            target: '_blank',
           },
           {
             label: 'Blog', 
