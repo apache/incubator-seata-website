@@ -167,24 +167,24 @@ const config = {
               },
             ],
           },
-          {
-            label: 'Free trial',
-            href: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
-            position: 'right',
-            target: '_blank',
-          },
+          // {
+          //   label: 'Free trial',
+          //   href: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
+          //   position: 'right',
+          //   target: '_blank',
+          // },
           {
             label: 'Developers',
             type: 'doc',
             docId: 'developers/contributor-guide/new-contributor-guide_dev',
             position: 'right',
           },
-          {
-            label: 'Recruitment',
-            to: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
-            position: 'right',
-            target: '_blank',
-          },
+          // {
+          //   label: 'Recruitment',
+          //   to: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
+          //   position: 'right',
+          //   target: '_blank',
+          // },
           {
             label: 'Blog', 
             to: '/blog', 
