@@ -1,7 +1,7 @@
 ---
 title: Downloads
-keywords: [Seata, Downloads, Version]
-description: release version download
+keywords: [Seata, Downloads, Version, 1.8.x]
+description: 1.8.x release version download
 ---
 
 

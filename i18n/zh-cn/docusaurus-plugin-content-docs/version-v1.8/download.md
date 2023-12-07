@@ -1,7 +1,7 @@
 ---
 title: 下载中心
-keywords: [Seata, Downloads, Version]
-description: 版本下载。
+keywords: [Seata, Downloads, Version, 1.8.x]
+description: 1.8.x 版本下载。
 ---
 
 
