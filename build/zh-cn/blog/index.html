@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css">
 <script src="//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js"></script>
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2" async></script><link rel="stylesheet" href="/zh-cn/assets/css/styles.4de6876d.css">
-<link rel="preload" href="/zh-cn/assets/js/runtime~main.e0b0047a.js" as="script">
+<link rel="preload" href="/zh-cn/assets/js/runtime~main.977a287f.js" as="script">
 <link rel="preload" href="/zh-cn/assets/js/main.f47fdc95.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
@@ -113,7 +113,7 @@ actionName，actionName 就是 <code>@TwoParseBusinessAction</code> 注解中的
 方法预留的资源永远无法提交和释放了。</p><p>那么悬挂是如何产生的呢？</p><p><img loading="lazy" src="https://gitee.com/objcoding/md-picture/raw/master/img/20220116205241.png" class="img_ev3q"></p><p>如上图所示，在执行参与者 A 的一阶段 Try 方法时，出现网路拥堵，由于 Seata 全局事务有超时限制，执行 Try 方法超时后，TM 决议全局回滚，回滚完成后如果此时 RPC 请求才到达参与者 A，执行 Try
 方法进行资源预留，从而造成悬挂。</p><p>Seata 是怎么处理悬挂的呢？</p><p>在 TCC 事务控制表记录状态的字段 status 中增加一个状态：</p><ol><li>suspended：4</li></ol><p>当执行二阶段 Cancel 方法时，如果发现 TCC 事务控制表没有相关记录，说明二阶段 Cancel 方法优先一阶段 Try 方法执行，因此插入一条 status=4 状态的记录，当一阶段 Try 方法后面执行时，判断 status=4 ，则说明有二阶段 Cancel 已执行，并返回 false 以阻止一阶段 Try 方法执行成功。</p><h1>作者简介</h1><p>张乘辉，目前就职于蚂蚁集团，热爱分享技术，微信公众号「后端进阶」作者，技术博客（<a href="https://objcoding.com/" target="_blank" rel="noopener noreferrer">https://objcoding.com/</a>）博主，Seata Committer，GitHub
 ID：objcoding。</p></div></article><nav class="pagination-nav" aria-label="博文列表分页导航"><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/blog/page/2"><div class="pagination-nav__label">较旧的博文</div></a></nav></main></div></div></div></div>
-<script src="/zh-cn/assets/js/runtime~main.e0b0047a.js"></script>
+<script src="/zh-cn/assets/js/runtime~main.977a287f.js"></script>
 <script src="/zh-cn/assets/js/main.f47fdc95.js"></script>
 </body>
 </html>
