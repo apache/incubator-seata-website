@@ -274,7 +274,7 @@
     "message": "Vision"
   },
   "homepage.footerVersionContent": {
-    "message": "Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
+    "message": "Apache Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
   },
   "homepage.footerDocTitle": {
     "message": "Documentation"
