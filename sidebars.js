@@ -18,7 +18,7 @@ const sidebars = {
       type: 'category',
       label: 'Overview',
       collapsible: false,
-      items: ['overview/what-is-seata', 'overview/terminology', 'overview/faq'],
+      items: ['overview/what-is-seata', 'overview/history', 'overview/terminology', 'overview/faq'],
     },
     {
       type: 'category',
@@ -27,6 +27,11 @@ const sidebars = {
       items: [
         'user/quickstart',
         'user/configurations',
+        {
+          type: 'category',
+          label: 'Transaction Mode',
+          items: ['user/mode/at', 'user/mode/tcc', 'user/mode/saga', 'user/mode/xa'],
+        },
         {
           type: 'category',
           label: 'Transactions Grouping',
@@ -102,12 +107,6 @@ const sidebars = {
     },
   ],
   developers: [
-    {
-      type: 'category',
-      label: 'Developers List',
-      collapsible: false,
-      items: ['developers/developers_dev'],
-    },
     {
       type: 'category',
       label: 'Contribute Guide',

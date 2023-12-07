@@ -256,4 +256,4 @@ Theoretical basis: Hector & Kenneth Post a comment Sagas （1987）
 * Compensation services are easy to implement
 
 ## Disadvantages:
-* Isolation is not guaranteed see [User Documentation](../user/saga)
+* Isolation is not guaranteed see [User Documentation](../user/mode/saga.md)
