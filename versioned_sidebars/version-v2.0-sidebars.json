@@ -6,6 +6,7 @@
       "collapsible": false,
       "items": [
         "overview/what-is-seata",
+        "overview/history",
         "overview/terminology",
         "overview/faq"
       ]
