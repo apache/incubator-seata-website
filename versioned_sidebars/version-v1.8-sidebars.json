@@ -6,6 +6,7 @@
       "collapsible": false,
       "items": [
         "overview/what-is-seata",
+        "overview/history",
         "overview/terminology",
         "overview/faq"
       ]
@@ -150,14 +151,6 @@
     }
   ],
   "developers": [
-    {
-      "type": "category",
-      "label": "Developers List",
-      "collapsible": false,
-      "items": [
-        "developers/developers_dev"
-      ]
-    },
     {
       "type": "category",
       "label": "Contribute Guide",

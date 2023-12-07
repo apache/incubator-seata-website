@@ -18,7 +18,7 @@ const sidebars = {
       type: 'category',
       label: 'Overview',
       collapsible: false,
-      items: ['overview/what-is-seata', 'overview/terminology', 'overview/faq'],
+      items: ['overview/what-is-seata', 'overview/history', 'overview/terminology', 'overview/faq'],
     },
     {
       type: 'category',
@@ -107,12 +107,6 @@ const sidebars = {
     },
   ],
   developers: [
-    {
-      type: 'category',
-      label: 'Developers List',
-      collapsible: false,
-      items: ['developers/developers_dev'],
-    },
     {
       type: 'category',
       label: 'Contribute Guide',
