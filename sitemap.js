@@ -1,4 +1,6 @@
 const sitemap = require('algolia-sitemap');
+const fs = require('fs');
+const os = require('os');
 
 if(!process.env.ALGOLIA_APIKEY){
   throw new Error('no algolia apiKey configured');
@@ -18,6 +20,14 @@ const homeUrls = ['https://seata.io/','https://seata.io/en/','https://seata.io/z
 // Turn a record into a sitemap entry
 function hitToParams({ url }) {
   const priority = homeUrls.includes(url) ? 1 : 0.5;
+  fs.appendFile(
+    'sitemaps/site.txt', 
+    url + os.EOL, 
+    err => {
+      if(err){
+        console.log(err)
+      }
+    });
   return { 
     loc: url,
     lastmod,

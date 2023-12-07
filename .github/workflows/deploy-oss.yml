@@ -30,8 +30,11 @@ jobs:
           mkdir deploy-dist && cp -R build/* deploy-dist/
           mv .htaccess *.txt deploy-dist/
           mv sitemaps/sitemap.0.xml deploy-dist/sitemap.xml
+          mv sitemaps/site.txt deploy-dist/site.txt
         env:
           ALGOLIA_APIKEY: ${{secrets.ALGOLIA_APIKEY}}
+      - name: baidu link submit
+        run: curl -H 'Content-Type:text/plain' --data-binary @deploy-dist/site.txt "http://data.zz.baidu.com/urls?site=https://seata.io&token=${{secrets.BAIDU_LINK_SUBMIT_TOKEN}}"
       - name: Use Node.js 12.x
         uses: actions/setup-node@v2
         with:
