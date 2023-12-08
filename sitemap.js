@@ -32,20 +32,22 @@ function hitToParams({ url_without_anchor }) {
   };
 }
 
-const call = new Promise(async (resolve) => {
-  await sitemap({
-    algoliaConfig,
-    hitToParams,
-    // The URL of the sitemaps directory
-    sitemapLoc: 'https://seata.io/sitemaps',
-    // The directory with all sitemaps (default: `sitemaps`)
-    outputFolder: 'sitemaps',
-    // ...
+const call = () => {
+  return new Promise(async (resolve) => {
+    await sitemap({
+      algoliaConfig,
+      hitToParams,
+      // The URL of the sitemaps directory
+      sitemapLoc: 'https://seata.io/sitemaps',
+      // The directory with all sitemaps (default: `sitemaps`)
+      outputFolder: 'sitemaps',
+      // ...
+    });
+    resolve();
   });
-  resolve();
-});
+};
 
-call.then(() => {
+call().then(() => {
   // generate site.txt
   urls.forEach((url) => {
     fs.appendFile('sitemaps/site.txt', url + '\n', (err) => {
