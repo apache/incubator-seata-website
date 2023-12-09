@@ -1,8 +1,5 @@
 import React from 'react';
-
 import { translate } from '@docusaurus/Translate';
-
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import './index.scss';
 
 const data = {
@@ -19,19 +16,15 @@ const data = {
 
 const Introduction = () => {
   return (
-    <BrowserOnly>
-      {() => (
-        <section className='introduction-section'>
-          <div className='introduction-body'>
-            <div className='introduction'>
-              <h3>{data.title}</h3>
-              <p>{data.desc}</p>
-            </div>
-            <img src={data.img} />
-          </div>
-        </section>
-      )}
-    </BrowserOnly>
+    <section className='introduction-section'>
+      <div className='introduction-body'>
+        <div className='introduction'>
+          <h3>{data.title}</h3>
+          <p>{data.desc}</p>
+        </div>
+        <img src={data.img} />
+      </div>
+    </section>
   );
 };
 
