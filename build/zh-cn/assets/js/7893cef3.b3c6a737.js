@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkseata_website=self.webpackChunkseata_website||[]).push([[40136],{79946:(e,t,n)=>{n.r(t),n.d(t,{default:()=>c});var a=n(67294);const c=e=>{const{contributor:t}=e,{img:n,title:c,content:r}=t||{};return a.createElement("div",{className:"contributor-item"},a.createElement("img",{src:n}),a.createElement("div",null,c),a.createElement("p",null,r))}}}]);
