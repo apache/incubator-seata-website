@@ -107,23 +107,27 @@ const submit = (data) => {
   });
 };
 
-getOldSiteData().then((oldData) => {
-  getNewData().then(async (newData) => {
-    const addedData = computeAddedData(oldData, newData);
-    // baidu limits up to 2,000 entries at a time
-    while (addedData.length > 2000) {
-      // delete and intercept
-      const data = addedData.splice(0, 2000);
-      const result = await submit(data);
-      console.log(result);
-      if (result.remain < addedData.length) {
-        throw new Error('baidu link submit over quota');
+try {
+  getOldSiteData().then((oldData) => {
+    getNewData().then(async (newData) => {
+      const addedData = computeAddedData(oldData, newData);
+      // baidu limits up to 2,000 entries at a time
+      while (addedData.length > 2000) {
+        // delete and intercept
+        const data = addedData.splice(0, 2000);
+        const result = await submit(data);
+        console.log(result);
+        if (result.remain < addedData.length) {
+          throw new Error('baidu link submit over quota');
+        }
       }
-    }
-    // submission of the remaining data of less than 2,000 entries
-    if (addedData.length > 0) {
-      const result = await submit(addedData);
-      console.log(result);
-    }
+      // submission of the remaining data of less than 2,000 entries
+      if (addedData.length > 0) {
+        const result = await submit(addedData);
+        console.log(result);
+      }
+    });
   });
-});
+} catch (err) {
+  console.log(err);
+}
