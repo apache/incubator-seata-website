@@ -57,18 +57,18 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 
 |Server side | client side|
 |---------------|------------|
-| registry. type |registry.type|
-| config. type |config.type|
-| #store. Mode=db requires the following configuration | service.vgroupMapping.my_ test_ tx_ group|
-| store.db. driverClassName | service.default. grouplist |
-| store.db. url |service. disableGlobalTransaction |
-| store.db. user | |
-| store.db. password | |
-| #store. Mode=Redis requires the following configurations ||
-| store.redis. host | |
-| store.redis. port | |
-| store.redis. database | |
-| store.redis. password | |
+| registry.type |registry.type|
+| config.type |config.type|
+| #store.mode=db requires the following configuration | service.vgroupMapping.my_ test_ tx_ group|
+| store.db.driverClassName | service.default. grouplist |
+| store.db.url |service. disableGlobalTransaction |
+| store.db.user | |
+| store.db.password | |
+| #store.mode=Redis requires the following configurations ||
+| store.redis.host | |
+| store.redis.port | |
+| store.redis.database | |
+| store.redis.password | |
 | #The following configurations are required for "store.mode=raft"| |
 | server.raft.group| |
 | server.raft.server-addr| |
@@ -87,19 +87,19 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | key | desc | remark| change record |
 |---------------|--------------|----|----------------------------|
 |transport.type | Socket communication mode | TCP, UNIX_ DOMAIN_ SOCKET, default TCP|
-|transport. server | socket channel type | NIO, NATIVE (select KQueue or Epoll according to the operating system type and socket communication mode. Note that Windows only supports NIO, and NATIVE mode will throw an exception)|
-|transport. enableTmClientBatchSendRequest | TM Batch Send Request Message Switch | Default false | new in 1.5.1 version|
-|transport. enableRmClientBatchSendRequest | RM Batch Send Request Message Switch | Default true | new in 1.5.1 version|
-|transport. enableTcServerBatchSendResponse | TC Batch Send Reply Message Switch | Default false | new in 1.5.1 version|
+|transport.server | socket channel type | NIO, NATIVE (select KQueue or Epoll according to the operating system type and socket communication mode. Note that Windows only supports NIO, and NATIVE mode will throw an exception)|
+|transport.enableTmClientBatchSendRequest | TM Batch Send Request Message Switch | Default false | new in 1.5.1 version|
+|transport.enableRmClientBatchSendRequest | RM Batch Send Request Message Switch | Default true | new in 1.5.1 version|
+|transport.enableTcServerBatchSendResponse | TC Batch Send Reply Message Switch | Default false | new in 1.5.1 version|
 |transport.rpcRmRequestTimeout | RM sending request timeout | 30 seconds by default | new in 1.5.1 version|
 |transport.rpcTmRequestTimeout | TM sending request timeout | 30 seconds by default | new in 1.5.1 version|
 |transport.rpcTcRequestTimeout | TC sending request timeout | 30 seconds by default | new in 1.5.1 version|
 |transport.threadFactory. bossThreadSize | Netty communication model Boss group threads | Default 1|
 |transport.threadFactory. workerThreadSize | Netty communication model Worker group threads | The number of threads can be configured or the number of threads in a specific thread working mode can be selected. There are four default working modes of threads: Auto (2 * CPU cores+1), Pin (CPU cores, applicable to computing intensive tasks), BusyPin (CPU cores+1, applicable to computing intensive and memory limited scenarios) Default (2 * CPU cores, applicable to IO intensive tasks), the default value is Default mode|
-|transport. shutdown. wait | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default|
+|transport.shutdown. wait | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default|
 |transport.serialization | Client and server communication codec method | seata (ByteBuf), protobuf, kryo, hessian, default seata|
 |transport.compressor | Compression method of communication data between client and server | none, gzip, zip, sevenz, bzip2, lz4, deflater, zstd, default none | Before 1.2.0: gzip<br/>1.2.0: zip, sevenz, bzip2<br/>1.3.0: lz4<br/>1.4.1: deflater <br/> 1.5.1: zstd|
-|transport. heartbeat | The heartbeat detection switch for client server communication | The default value is true|
+|transport.heartbeat | The heartbeat detection switch for client server communication | The default value is true|
 |Registry.type | Registry type | Default file, supports file, nacos, redis, eureka, zk, consumer, etcd3, sofa, and custom | 1.6.0 Server supports simultaneous registration to multiple registries, separating registry names with commas|
 |Config.type | Configuration center type | default file, supporting file, nacos, apollo, zk, consult, etcd3, springcloud, custom|
 
@@ -343,11 +343,11 @@ About the grouplist question.
 
 1. When will the default.grouplist in file.conf be used?
 
-It is used when registry. type=file. It is not read in other times.
+It is used when registry.type=file. It is not read in other times.
 
 2. Can multiple value lists be configured for default.grouplist?
 
-Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store. mode=db to share data between TC clusters through db
+Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store.mode=db to share data between TC clusters through db
 
 3. Is default.grouplist recommended?
 

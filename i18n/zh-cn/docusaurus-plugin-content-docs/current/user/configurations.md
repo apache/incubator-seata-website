@@ -68,6 +68,8 @@ description: Seata 参数配置。
 | server.session.enableBranchAsyncRemove | 分支事务Session异步删除开关 | 默认false | 1.5.1版本新增 |
 | server.enableParallelRequestHandle | 对于批量请求消息的并行处理开关 | 默认true | 1.5.2版本新增 |
 | server.enableParallelHandleBranch | 二阶段并行下发开关 | 默认false | 2.0.0版本新增 |
+| server.applicationDataLimitCheck     |是否开启应用数据大小检查 | 默认false |
+| server.applicationDataLimit | 应用数据大小限制 | 默认64000  |
 | server.raft.group | raft存储模式下的group，client的事务分组对应的值要与之对应，如service.vgroup-mapping.default_tx_group=default | default | 2.0.0版本新增 |
 | server.raft.server-addr | raft集群列表如192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 |        | 2.0.0版本新增 |
 | server.raft.snapshot-interval | 间隔多久做一次内存快照，每做一次快照将暂停状态机，但是能提高停机恢复速度 | 默认600秒 | 2.0.0版本新增 |
@@ -148,6 +150,8 @@ description: Seata 参数配置。
 | client.rm.sagaBranchRegisterEnable | 是否开启saga分支注册 | Saga模式中分支状态存储在状态机本地数据库中，可通过状态机进行提交或回滚，为提高性能可考虑不用向TC注册Saga分支，但需考虑状态机的可用性，默认false |
 | client.rm.sagaJsonParser | saga模式中数据序列化方式 | 默认fastjson,可选jackson | 1.5.1版本新增 |
 | client.rm.tccActionInterceptorOrder | tcc拦截器顺序 | 默认Ordered.HIGHEST_PRECEDENCE + 1000，保证拦截器在本地事务拦截器之前执行，也可自定义tcc和业务开发的拦截器执行顺序 | 1.5.1版本新增 |
+| client.rm.applicationDataLimitCheck | 客户端应用数据是否开启限制             | 默认false               |
+| client.rm.applicationDataLimit | 客户端应用数据上报限制             | 默认64000       |
 | client.tm.commitRetryCount              | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.rollbackRetryCount            | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.defaultGlobalTransactionTimeout | 全局事务超时时间 | 默认60秒，TM检测到分支事务超时或TC检测到TM未做二阶段上报超时后，发起对分支事务的回滚 | 1.4.0版本新增 |

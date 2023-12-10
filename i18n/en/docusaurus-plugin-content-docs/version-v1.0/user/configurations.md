@@ -12,69 +12,19 @@ Description: Seata parameter configuration.
 
 # The Seata Parameter Configuration
 
-
-### Change record
-
-```
-
-20201216(1.6.0):
-
-The change records of configuration items from 1.4.0 to 1.6.0 are no longer maintained in a centralized manner. Please check the changes of relevant versions separately according to the configuration items
-
-20200716(1.3.0):
-
-1. Added the relevant configuration of store.redis
-
-2. The nacos registry configuration group item has been added, and the values of the Server and Client must be consistent
-
-3. Add the client.rm.sagaBranchRegisterEnable configuration item, which is false by default
-
-20200421(1.2.0):
-
-1. Add the registry.nacos.application attribute. The default value is seata server. The values on the server and client sides must be consistent
-
-20200220(1.1.0):
-
-1. The formats in the file.conf and registry.conf configuration files are uniformly converted to the hump format
-
-2. Unify the default values of all configuration files (file.conf, registry.conf, seata spring boot starter)
-
-3. Optimize the configuration of transaction grouping and TC cluster in seata spring boot starter
-
-4. Remove client.support.spring.datasource.autoproxy and add @ EnableAutoDataSourceProxy
-
-5. Add server.rollbackRetryTimeoutUnlockEnable configuration item, which is false by default
-
-6. Add the transport.shutdown.wait configuration item. The default is 3 seconds
-
-The annotation is used to enable the automatic proxy of the data source, and the proxy implementation method can be selected (see Appendix 5 for details)
-
-20191221:
-
-1. Add seata.enabled, client.report.success.enable
-
-transport.enable-client-batch-send-request、client.log.exceptionRate
-
-```
-
 ## Attention attribute (see all attributes for detailed description)
 
 
 
 |Server side | client side|
 |---------------|------------|
-| registry. type |registry.type|
-| config. type |config.type|
-| #store. Mode=db requires the following configuration | service.vgroupMapping.my_ test_ tx_ group|
-| store.db. driverClassName | service.default. grouplist |
-| store.db. url |service. disableGlobalTransaction |
-| store.db. user | |
-| store.db. password | |
-| #store. Mode=Redis requires the following configurations ||
-| store.redis. host | |
-| store.redis. port | |
-| store.redis. database | |
-| store.redis. password | |
+| registry.type |registry.type|
+| config.type |config.type|
+| #store.mode=db requires the following configuration | service.vgroupMapping.my_ test_ tx_ group|
+| store.db.driverClassName | service.default. grouplist |
+| store.db.url |service. disableGlobalTransaction |
+| store.db.user | |
+| store.db.password | |
 
 
 
@@ -89,20 +39,14 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | key | desc | remark| change record |
 |---------------|--------------|----|----------------------------|
 |transport.type | Socket communication mode | TCP, UNIX_ DOMAIN_ SOCKET, default TCP|
-|transport. server | socket channel type | NIO, NATIVE (select KQueue or Epoll according to the operating system type and socket communication mode. Note that Windows only supports NIO, and NATIVE mode will throw an exception)|
-|transport. enableTmClientBatchSendRequest | TM Batch Send Request Message Switch | Default false | new in 1.5.1 version|
-|transport. enableRmClientBatchSendRequest | RM Batch Send Request Message Switch | Default true | new in 1.5.1 version|
-|transport. enableTcServerBatchSendResponse | TC Batch Send Reply Message Switch | Default false | new in 1.5.1 version|
-|transport.rpcRmRequestTimeout | RM sending request timeout | 30 seconds by default | new in 1.5.1 version|
-|transport.rpcTmRequestTimeout | TM sending request timeout | 30 seconds by default | new in 1.5.1 version|
-|transport.rpcTcRequestTimeout | TC sending request timeout | 30 seconds by default | new in 1.5.1 version|
+|transport.server | socket channel type | NIO, NATIVE (select KQueue or Epoll according to the operating system type and socket communication mode. Note that Windows only supports NIO, and NATIVE mode will throw an exception)|
 |transport.threadFactory. bossThreadSize | Netty communication model Boss group threads | Default 1|
 |transport.threadFactory. workerThreadSize | Netty communication model Worker group threads | The number of threads can be configured or the number of threads in a specific thread working mode can be selected. There are four default working modes of threads: Auto (2 * CPU cores+1), Pin (CPU cores, applicable to computing intensive tasks), BusyPin (CPU cores+1, applicable to computing intensive and memory limited scenarios) Default (2 * CPU cores, applicable to IO intensive tasks), the default value is Default mode|
-|transport. shutdown. wait | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default|
+|transport.shutdown. wait | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default|
 |transport.serialization | Client and server communication codec method | seata (ByteBuf), protobuf, kryo, hessian, fst, default seata|
-|transport.compressor | Compression method of communication data between client and server | none, gzip, zip, sevenz, bzip2, lz4, deflater, zstd, default none | Before 1.2.0: gzip<br/>1.2.0: zip, sevenz, bzip2<br/>1.3.0: lz4<br/>1.4.1: deflater <br/> 1.5.1: zstd|
-|transport. heartbeat | The heartbeat detection switch for client server communication | The default value is true|
-|Registry.type | Registry type | Default file, supports file, nacos, redis, eureka, zk, consumer, etcd3, sofa, and custom | 1.6.0 Server supports simultaneous registration to multiple registries, separating registry names with commas|
+|transport.compressor | Compression method of communication data between client and server | none, gzip, default none | |
+|transport.heartbeat | The heartbeat detection switch for client server communication | The default value is true|
+|Registry.type | Registry type | Default file, supports file, nacos, redis, eureka, zk, consumer, etcd3, sofa, and custom ||
 |Config.type | Configuration center type | default file, supporting file, nacos, apollo, zk, consult, etcd3, springcloud, custom|
 
 ### Server side
@@ -120,15 +64,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.recovery.rollbackRetryPeriod | Phase2 rollback status Retry rollback thread interval | 1000 by default, in milliseconds|
 | server.recovery.timeoutRetryPeriod | Timeout status detection retry thread interval | 1000 by default, in milliseconds. If timeout is detected, put the global transaction into the rollback session manager|
 | server.rollbackRetryTimeoutUnlockEnable | Whether to release the lock after the two-phase rollback timeout | False by default|
-| server.distributedLockExpireTime | Server side transaction management global lock timeout | 10000 by default, in milliseconds | new in 1.5.1 version|
-| server.server.xaerNotaRetryTimeout | Retry timeout to prevent XA branch transactions from hanging | 60000 by default, in milliseconds | new in 1.5.1 version|
-| server.session.branchAsyncQueueSize | Branch transaction session asynchronously deletes the thread pool queue size | 5000 by default | new in 1.5.1 version|
-| server.session.enableBranchAsyncRemove | Asynchronous deletion switch of branch transaction session | Default false | new in 1.5.1 version|
-| server.enableParallelRequestHandle | Parallel processing switch for batch request messages | Default false | new in 1.5.2 version|
-| store.mode | Transaction session information storage mode | file Local file (HA is not supported), db database, redis (HA is supported) | The 1.5.1 version uses lock and session for separate storage|
-| store.lock.mode | Transaction lock information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value | New in 1.5.1 version, and session and lock can be stored separately|
-| store.session.mode | Transaction echo information storage method | file Local file (HA is not supported), db database, Redis (HA is supported); When the configuration is empty, take the store Mode configuration item value | New in 1.5.1 version, and session and lock can be stored separately|
-| store.publicKey | Public key for storing and decrypting passwords in db or Redis | | supported in version 1.4.2|
+| store.mode | Transaction session information storage mode | file Local file (HA is not supported), db database(HA is supported) ||
 | store.file.dir | file mode file storage folder name | default sessionStore|
 | store.file.maxBranchSessionSize | File mode file storage branch session maximum bytes | 16384 (16kb) by default, in bytes|
 | store.file.maxGlobalSessionSize | File mode file stores the maximum number of global session bytes | 512b by default, in bytes|
@@ -148,19 +84,6 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.db.branchTable | db mode branch transaction table name | default branch_ table |
 | store.db.LockTable | db mode global lock table name | default lock_ table |
 | store.db.queryLimit | the maximum number of global transactions queried in db mode at one time | 100 by default|
-| store.db.distributedLockTable | db mode Sever side transaction management global lock storage table name | default distributed_ Lock. Under multiple server clusters, only one server is guaranteed to handle the submission or rollback at the same time | New in 1.5.1|
-| store.redis.mode | redis mode | default single, optional sentinel | New sentinel mode in 1.4.2|
-| store.redis.single.host | The Redis host in stand-alone mode is compatible with versions earlier than 1.4.2. If this configuration is empty, select store.redis Host as a configuration item | New in 1.4.2|
-| store.redis.single.port | The port of Redis in stand-alone mode is compatible with versions earlier than 1.4.2. If this configuration is empty, select store.redis Port as a configuration item | New in 1.4.2|
-| store.redis.sentinel.masterName | Redis master database name in sentinel mode | | New in 1.4.2|
-| store.redis.sentinel.sentinelHosts | sentinel hosts in sentinel mode | Multiple hosts are separated by commas | New in 1.4.2|
-| store.redis.host | redis mode IP | Default 127.0.0.1 | Version 1.4.2 deprecated|
-| store.redis.port | redis mode port | 6379 by default | Version 1.4.2 is deprecated|
-| store.redis.maxConn | maximum connections in Redis mode | 10 by default|
-| store.redis.minConn | minimum connections in Redis mode | 1 by default|
-| store.redis.database | redis mode default library | default 0|
-| store.redis.password | redis mode password (optional) | null by default|
-| store.redis.queryLimit | The maximum number of Redis queries at a time | 100 by default|
 | metrics.enabled | Whether to enable Metrics | False is off by default. In the false state, all Metrics related components will not be initialized to minimize the performance loss|
 | metrics.registryType | Indicator registrar type | The indicator registrar type used by Metrics is a built-in compact (simple) implementation by default. Meters in this implementation only use a limited memory count, and the performance is high enough to meet most scenarios; Currently, only one indicator registrar can be set|
 | metrics.exporterList | Index result Measurement data outputter list | default prometheus. Multiple outputters are separated by English commas, such as "prometheus, jmx". Currently, only the prometheus outputters are connected|
@@ -188,24 +111,15 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.rm.lock.retryInterval | retry interval for verifying or occupying the global lock | 10 by default, in milliseconds|
 | client.rm.lock.retryTimes | number of retries to verify or occupy the global lock | 30 by default|
 | client.rm.lock.retryPolicyBranchRollbackOnConflict | the lock policy when a branch transaction conflicts with other global rollback transactions | The default is true. Release the local lock first to allow rollback to succeed|
-| client.rm.reportRetryCount | the number of TC retries for reporting the results in the first phase | 5 by default | New in 1.4.1|
-| client.rm.tableMetaCheckEnable | automatically refresh the table structure in the cache | Default false | New in 1.5.1|
 | client.rm.tableMetaCheckerInterval | interval between scheduled refreshing of table structures in cache | 60 seconds by default|
 | client.rm.sagaBranchRegisterEnable | whether to enable saga branch registration | In Saga mode, the branch state is stored in the local database of the state machine and can be submitted or rolled back through the state machine. To improve performance, you can consider not registering Saga branches with the TC, but you need to consider the availability of the state machine. The default is false|
-| client.rm.sagaJsonParser | data serialization method in saga mode | Fastjson by default, jackson by choice | New in 1.5.1|
-| client.rm.tccActionInterceptorOrder | tcc interceptor order | default Ordered HIGHEST_ PRECEDENCE+1000 ensures that the interceptor is executed before the local transaction interceptor. You can also customize the execution order of the interceptor for tcc and business development | New in 1.5.1|
 | client.tm.commitRetryCount | the number of TC retries for reporting the results of the first phase global submission | 1 by default, it is recommended to be greater than 1|
 | client.tm.rollbackRetryCount | the number of TC retries reported for the global rollback results in the first phase | 1 by default, it is recommended to be greater than 1|
-| client.tm.defaultGlobalTransactionTimeout | global transaction timeout | The default is 60 seconds. After TM detects a branch transaction timeout or TC detects that TM has not made a two-phase report timeout, it initiates a rollback of the branch transaction | New in 1.4.0|
-| client.tm.interceptorOrder | TM global transaction interceptor order | Ordered by default HIGHEST_ PRECEDENCE+1000 ensures that the interceptor is executed before the local transaction interceptor. You can also customize the execution order of the interceptor for global transactions and business development | New in 1.5.1|
 | client.undo.dataValidation | Phase2 rollback image verification | By default, true is enabled and false is disabled|
 | client.undo.logSerialization | undo serialization method | default jackson|
 | client.undo.logTable | user defined undo table name | Default undo_ log |
 | client.undo.onlyCareUpdateColumns | only images of updated columns are generated | Default true|
-| client.undo.compress.enable | undo log compression switch | default true | New in 1.4.1|
-| client.undo.compress.type | undo log compression algorithm | Default zip. Options include NONE, GZIP, ZIP, SEVENZ, BZIP2, LZ4, DEFLATER, and ZSTD | New in 1.4.1|
-| client.undo.compress.threshold | undo log compression threshold | The default value is 64k. Compression occurs when the compression switch is on and the undo log size exceeds the threshold value | New in 1.4.1|
-| client.rm.sqlParserType | sql resolution type | default druid, optional antlr|
+| client.rm.sqlParserType | sql resolution type | default druid|
 
 
 <details>
@@ -327,11 +241,11 @@ About the grouplist question.
 
 1. When will the default.grouplist in file.conf be used?
 
-It is used when registry. type=file. It is not read in other times.
+It is used when registry.type=file. It is not read in other times.
 
 2. Can multiple value lists be configured for default.grouplist?
 
-Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store. mode=db to share data between TC clusters through db
+Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store.mode=db to share data between TC clusters through db
 
 3. Is default.grouplist recommended?
 

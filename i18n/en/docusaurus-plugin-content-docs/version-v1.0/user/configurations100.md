@@ -209,11 +209,11 @@ About the grouplist question.
 
 1. When will the default.grouplist in file.conf be used?
 
-It is used when registry. type=file. It is not read in other times.
+It is used when registry.type=file. It is not read in other times.
 
 2. Can multiple value lists be configured for default.grouplist?
 
-Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store. mode=db to share data between TC clusters through db
+Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store.mode=db to share data between TC clusters through db
 
 3. Is default.grouplist recommended?
 

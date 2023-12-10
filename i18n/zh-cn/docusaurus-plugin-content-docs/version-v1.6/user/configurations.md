@@ -39,7 +39,6 @@ description: Seata 参数配置。
 | transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hessian、fst，默认seata | 
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip、zip、sevenz、bzip2、lz4、deflater、zstd，默认none | 1.2.0之前：gzip <br /> 1.2.0:zip、sevenz、bzip2 <br /> 1.3.0:lz4 <br /> 1.4.1:deflater <br /> 1.5.1:zstd|
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
-| transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
 | registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | 1.6.0版本Sever端支持可同时注册到多个注册中心,以逗号分隔注册中心名 |
 | config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3、springcloud、custom |
 
