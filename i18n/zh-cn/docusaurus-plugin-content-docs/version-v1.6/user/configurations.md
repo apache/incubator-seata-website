@@ -6,28 +6,6 @@ description: Seata 参数配置。
 
 # seata参数配置
 
-### 变更记录
-```
-20201216(1.6.0):
-1.4.0到1.6.0版本配置项的变更记录不再集中维护，请根据配置项单独查看相关版本变更情况
-20200716(1.3.0):
-1.增加了store.redis相关配置
-2.增加了nacos注册中心配置group项,Server和Client端的值需一致
-3.新增client.rm.sagaBranchRegisterEnable配置项，默认false
-20200421(1.2.0): 
-1.增加registry.nacos.application属性，默认seata-server，Server和Client端的值需一致
-20200220(1.1.0): 
-1.file.conf和registry.conf两个配置文件中的格式统一转换为驼峰格式.
-2.统一所有配置文件的默认值(file.conf、registry.conf、seata-spring-boot-starter)
-3.优化seata-spring-boot-starter中对于事务分组和TC集群的配置
-4.移除client.support.spring.datasource.autoproxy,增加@EnableAutoDataSourceProxy
-5.新增server.rollbackRetryTimeoutUnlockEnable配置项，默认false
-6.新增transport.shutdown.wait配置项，默认3秒
-注解用于开启数据源自动代理,同时可选择代理实现方式(具体请查阅附录5)
-20191221: 
-1.增加seata.enabled、client.report.success.enable、
-transport.enable-client-batch-send-request、client.log.exceptionRate
-```
 ## 关注属性(详细描述见全属性)
 
 | server端         | client端|
@@ -55,84 +33,85 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 |---------------|--------------|----|----------------------------|
 | transport.type | socket通信方式 | TCP、UNIX_DOMAIN_SOCKET，默认TCP |
 | transport.server | socket通道类型 | NIO、NATIVE(根据操作系统类型和socket通信方式选择KQueue或Epoll，注意Windows只支持NIO，选择这种方式会抛出异常）|
-| transport.enableTmClientBatchSendRequest | TM批量发送请求消息开关 | 默认false | 1.5.1版本新增 |
-| transport.enableRmClientBatchSendRequest | RM批量发送请求消息开关 | 默认true | 1.5.1版本新增 |
-| transport.enableTcServerBatchSendResponse | TC批量发送回复消息开关 | 默认false | 1.5.1版本新增 |
-| transport.rpcRmRequestTimeout | RM发送请求超时时间 | 默认30秒 | 1.5.1版本新增 |
-| transport.rpcTmRequestTimeout | TM发送请求超时时间 | 默认30秒 | 1.5.1版本新增 |
-| transport.rpcTcRequestTimeout | TC发送请求超时时间 | 默认30秒 | 1.5.1 版本新增 |
 | transport.threadFactory.bossThreadSize | Netty通信模型Boss group线程数 | 默认1 |
 | transport.threadFactory.workerThreadSize | Netty通信模型Worker group线程数 | 可配置线程数或选择特定线程工作模式下的线程数，线程的默认工作模式有4种:Auto(2\*CPU核数 + 1)、Pin(CPU核数，适用于计算密集型任务)、BusyPin(CPU核数 + 1，适用于计算密集型且内存比较有限的场景）、Default(2\*CPU核数，适用于IO密集型任务）,默认值为Default模式 |
 | transport.shutdown.wait | 服务端Netty线程池关闭前等待服务下线时间 | 默认3秒 |
 | transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hessian、fst，默认seata | 
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip、zip、sevenz、bzip2、lz4、deflater、zstd，默认none | 1.2.0之前：gzip <br /> 1.2.0:zip、sevenz、bzip2 <br /> 1.3.0:lz4 <br /> 1.4.1:deflater <br /> 1.5.1:zstd|
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
+| transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
 | registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | 1.6.0版本Sever端支持可同时注册到多个注册中心,以逗号分隔注册中心名 |
 | config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3、springcloud、custom |
 
 ### server端
 
-| key| desc         | remark| change record |
-|-------------------------------------------|---------------------------------|----------------------------|----------------|
-| server.undo.logSaveDays            | undo保留天数                  |默认7天,log_status=1（附录3）和未正常清理的undo |
-| server.undo.logDeletePeriod        | undo清理线程间隔时间          |默认86400000，单位毫秒    |
-| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长          | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试(注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用) |
-| server.maxRollbackRetryTimeout        | 二阶段回滚重试超时时长           |  同commit  |
-| server.recovery.committingRetryPeriod          | 二阶段提交未完成状态全局事务重试提交线程间隔时间 |默认1000，单位毫秒    |
-| server.recovery.asynCommittingRetryPeriod     | 二阶段异步提交状态重试提交线程间隔时间       |默认1000，单位毫秒    |
-| server.recovery.rollbackingRetryPeriod         | 二阶段回滚状态重试回滚线程间隔时间      |默认1000，单位毫秒    |
-| server.recovery.timeoutRetryPeriod             | 超时状态检测重试线程间隔时间        |默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器    |
-| server.rollbackRetryTimeoutUnlockEnable | 二阶段回滚超时后是否释放锁 | 默认false |
-| server.distributedLockExpireTime | Sever端事务管理全局锁超时时间 | 默认10000，单位毫秒 | 1.5.1版本新增 |
-| server.server.xaerNotaRetryTimeout | 防止XA分支事务悬挂的重试超时时间 | 默认60000，单位毫秒 | 1.5.1版本新增 |
-| server.session.branchAsyncQueueSize | 分支事务Session异步删除线程池队列大小 | 默认5000 | 1.5.1版本新增 |
-| server.session.enableBranchAsyncRemove | 分支事务Session异步删除开关 | 默认false | 1.5.1版本新增 |
-| server.enableParallelRequestHandle | 对于批量请求消息的并行处理开关 | 默认false | 1.5.2版本新增 |
-| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库，redis(支持HA)    | 1.5.1版本改用lock和session分离存储 |
-| store.lock.mode | 事务锁信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值 | 1.5.1版本新增，session和lock可分离存储 |
-| store.session.mode | 事务回话信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值 | 1.5.1版本新增，session和lock可分离存储 |
-| store.publicKey | db或redis存储密码解密公钥 | | 1.4.2版本支持 |
-| store.file.dir                            | file模式文件存储文件夹名 |默认sessionStore    |
-| store.file.maxBranchSessionSize | file模式文件存储分支session最大字节数 | 默认16384(16kb),单位byte | 
-| store.file.maxGlobalSessionSize | file模式文件存储全局session最大字节数 | 默认512b，单位byte |
-| store.file.fileWriteBufferCacheSize | file模式文件存储buffer最大缓存大小 | 默认16384(16kb)，单位byte,写入session等数据量大于该值时会抛出异常 |
-| store.file.flushDiskMode | file模式文件存储刷盘策略 | 默认async，可选sync |
-| store.file.sessionReloadReadSize | file模式文件存储Server节点重启后从备份文件中恢复的session或lock key上限个数 | 默认100 |
-| store.db.datasource                       | db模式数据源类型 |dbcp、druid、hikari；无默认值，store.mode=db时必须指定    |
-| store.db.dbType                          | db模式数据库类型 |mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。   |
-| store.db.driverClassName                | db模式数据库驱动 |store.mode=db时必须指定    |
-| store.db.url                              | db模式数据库url | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7)   |
-| store.db.user                             | db模式数据库账户 |store.mode=db时必须指定    |
-| store.db.password                         | db模式数据库账户密码 |store.mode=db时必须指定    |
-| store.db.minConn                         | db模式数据库初始连接数 |默认1    |
-| store.db.maxConn                         | db模式数据库最大连接数|默认20    |
-| store.db.maxWait                         | db模式获取连接时最大等待时间 |默认5000，单位毫秒    |
-| store.db.globalTable                     | db模式全局事务表名 |默认global_table    |
-| store.db.branchTable                     | db模式分支事务表名 |默认branch_table    |
-| store.db.lockTable                       | db模式全局锁表名 |默认lock_table    |
-| store.db.queryLimit                      | db模式查询全局事务一次的最大条数 |默认100    |
-| store.db.distributedLockTable | db模式Sever端事务管理全局锁存储表名 | 默认distributed_lock，多Sever集群下保证同时只有一个Sever处理提交或回滚 | 1.5.1版本新增|
-| store.redis.mode | redis模式 | 默认single,可选sentinel| 1.4.2版本新增sentinel模式 | 
-| store.redis.single.host | 单机模式下redis的host,兼容1.4.2之前的版本，该配置为空时选取store.redis.host作为配置项 | 1.4.2版本新增 |
-| store.redis.single.port | 单机模式下redis的port,兼容1.4.2之前的版本，该配置为空时选取store.redis.port作为配置项 | 1.4.2版本新增 |
-| store.redis.sentinel.masterName | sentinel模式下redis的主库名称| | 1.4.2版本新增 |
-| store.redis.sentinel.sentinelHosts | sentinel模式下sentinel的hosts|多hosts以逗号分隔| 1.4.2版本新增 |
-| store.redis.host | redis模式ip |默认127.0.0.1 | 1.4.2版本弃用 |
-| store.redis.port | redis模式端口 |默认6379 | 1.4.2版本弃用 |
-| store.redis.maxConn | redis模式最大连接数 |默认10 |
-| store.redis.minConn | redis模式最小连接数 |默认1 |
-| store.redis.database | redis模式默认库 |默认0 |
-| store.redis.password | redis模式密码(无可不填) |默认null |
-| store.redis.queryLimit | redis模式一次查询最大条数 |默认100 |
-| metrics.enabled                           | 是否启用Metrics  |默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低|
-| metrics.registryType                     | 指标注册器类型    |Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
-| metrics.exporterList                     | 指标结果Measurement数据输出器列表   |默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
-| metrics.exporterPrometheusPort          | prometheus输出器Client端口号   |默认9898 |
+| key| desc                                                     | remark                                                                                                                                             | change record                             |
+|-------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| transport.enableTcServerBatchSendResponse | TC批量发送回复消息开关                                             | 默认false  | 1.5.1版本新增,建议为true,可解决client批量消息时的线头阻塞问题   |
+| transport.rpcTcRequestTimeout | TC二阶段下发请求超时时间                                            | 默认30秒 | 1.5.1 版本新增 |
+| server.undo.logSaveDays            | undo保留天数                                                 | 默认7天,log_status=1（附录3）和未正常清理的undo                                                                                                                  |
+| server.undo.logDeletePeriod        | undo清理线程间隔时间                                             | 默认86400000，单位毫秒                                                                                                                                    |
+| server.maxCommitRetryTimeout          | 二阶段提交重试超时时长                                              | 单位ms,s,m,h,d,对应毫秒,秒,分,小时,天,默认毫秒。默认值-1表示无限重试。公式: timeout>=now-globalTransactionBeginTime,true表示超时则不再重试(注: 达到超时时间后将不会做任何重试,有数据不一致风险,除非业务自行可校准数据,否者慎用) |
+| server.maxRollbackRetryTimeout        | 二阶段回滚重试超时时长                                              | 同commit                                                                                                                                            |
+| server.recovery.committingRetryPeriod          | 二阶段提交未完成状态全局事务重试提交线程间隔时间                                 | 默认1000，单位毫秒                                                                                                                                        |
+| server.recovery.asynCommittingRetryPeriod     | 二阶段异步提交状态重试提交线程间隔时间                                      | 默认1000，单位毫秒                                                                                                                                        |
+| server.recovery.rollbackingRetryPeriod         | 二阶段回滚状态重试回滚线程间隔时间                                        | 默认1000，单位毫秒                                                                                                                                        |
+| server.recovery.timeoutRetryPeriod             | 超时状态检测重试线程间隔时间                                           | 默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器                                                                                                                    |
+| server.rollbackRetryTimeoutUnlockEnable | 二阶段回滚超时后是否释放锁                                            | 默认false                                                                                                                                            |
+| server.distributedLockExpireTime | Sever端事务管理全局锁超时时间                                        | 默认10000，单位毫秒                                                                                                                                       | 1.5.1版本新增                                 |
+| server.server.xaerNotaRetryTimeout | 防止XA分支事务悬挂的重试超时时间                                        | 默认60000，单位毫秒                                                                                                                                       | 1.5.1版本新增                                 |
+| server.session.branchAsyncQueueSize | 分支事务Session异步删除线程池队列大小                                   | 默认5000                                                                                                                                             | 1.5.1版本新增                                 |
+| server.session.enableBranchAsyncRemove | 分支事务Session异步删除开关                                        | 默认false                                                                                                                                            | 1.5.1版本新增                                 |
+| server.enableParallelRequestHandle | 对于批量请求消息的并行处理开关                                          | 默认true | 1.6.1默认为true,建议为false,1.6.1中存在并行处理时数组越界异常 |
+| store.mode                                | 事务会话信息存储方式                                               | file本地文件(不支持HA)，db数据库，redis(支持HA)                                                                                                                  | 1.5.1版本改用lock和session分离存储                 |
+| store.lock.mode | 事务锁信息存储方式                                                | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值                                                                                            | 1.5.1版本新增，session和lock可分离存储               |
+| store.session.mode | 事务回话信息存储方式                                               | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值                                                                                            | 1.5.1版本新增，session和lock可分离存储               |
+| store.publicKey | db或redis存储密码解密公钥                                         |                                                                                                                                                    | 1.4.2版本支持                                 |
+| store.file.dir                            | file模式文件存储文件夹名                                           | 默认sessionStore                                                                                                                                     |
+| store.file.maxBranchSessionSize | file模式文件存储分支session最大字节数                                 | 默认16384(16kb),单位byte                                                                                                                               | 
+| store.file.maxGlobalSessionSize | file模式文件存储全局session最大字节数                                 | 默认512b，单位byte                                                                                                                                      |
+| store.file.fileWriteBufferCacheSize | file模式文件存储buffer最大缓存大小                                   | 默认16384(16kb)，单位byte,写入session等数据量大于该值时会抛出异常                                                                                                       |
+| store.file.flushDiskMode | file模式文件存储刷盘策略                                           | 默认async，可选sync                                                                                                                                     |
+| store.file.sessionReloadReadSize | file模式文件存储Server节点重启后从备份文件中恢复的session或lock key上限个数       | 默认100                                                                                                                                              |
+| store.db.datasource                       | db模式数据源类型                                                | dbcp、druid、hikari；无默认值，store.mode=db时必须指定                                                                                                          |
+| store.db.dbType                          | db模式数据库类型                                                | mysql、oracle、db2、sqlserver、sybaee、h2、sqlite、access、postgresql、oceanbase；无默认值，store.mode=db时必须指定。                                                   |
+| store.db.driverClassName                | db模式数据库驱动                                                | store.mode=db时必须指定                                                                                                                                 |
+| store.db.url                              | db模式数据库url                                               | store.mode=db时必须指定，在使用mysql作为数据源时，建议在连接参数中加上`rewriteBatchedStatements=true`(详细原因请阅读附录7)                                                            |
+| store.db.user                             | db模式数据库账户                                                | store.mode=db时必须指定                                                                                                                                 |
+| store.db.password                         | db模式数据库账户密码                                              | store.mode=db时必须指定                                                                                                                                 |
+| store.db.minConn                         | db模式数据库初始连接数                                             | 默认1                                                                                                                                                |
+| store.db.maxConn                         | db模式数据库最大连接数                                             | 默认20                                                                                                                                               |
+| store.db.maxWait                         | db模式获取连接时最大等待时间                                          | 默认5000，单位毫秒                                                                                                                                        |
+| store.db.globalTable                     | db模式全局事务表名                                               | 默认global_table                                                                                                                                     |
+| store.db.branchTable                     | db模式分支事务表名                                               | 默认branch_table                                                                                                                                     |
+| store.db.lockTable                       | db模式全局锁表名                                                | 默认lock_table                                                                                                                                       |
+| store.db.queryLimit                      | db模式查询全局事务一次的最大条数                                        | 默认100                                                                                                                                              |
+| store.db.distributedLockTable | db模式Sever端事务管理全局锁存储表名                                    | 默认distributed_lock，多Sever集群下保证同时只有一个Sever处理提交或回滚                                                                                                   | 1.5.1版本新增                                 |
+| store.redis.mode | redis模式                                                  | 默认single,可选sentinel                                                                                                                                | 1.4.2版本新增sentinel模式                       | 
+| store.redis.single.host | 单机模式下redis的host,兼容1.4.2之前的版本，该配置为空时选取store.redis.host作为配置项 | 1.4.2版本新增                                                                                                                                          |
+| store.redis.single.port | 单机模式下redis的port,兼容1.4.2之前的版本，该配置为空时选取store.redis.port作为配置项 | 1.4.2版本新增                                                                                                                                          |
+| store.redis.sentinel.masterName | sentinel模式下redis的主库名称                                    |                                                                                                                                                    | 1.4.2版本新增                                 |
+| store.redis.sentinel.sentinelHosts | sentinel模式下sentinel的hosts                                | 多hosts以逗号分隔                                                                                                                                        | 1.4.2版本新增                                 |
+| store.redis.host | redis模式ip                                                | 默认127.0.0.1                                                                                                                                        | 1.4.2版本弃用                                 |
+| store.redis.port | redis模式端口                                                | 默认6379                                                                                                                                             | 1.4.2版本弃用                                 |
+| store.redis.maxConn | redis模式最大连接数                                             | 默认10                                                                                                                                               |
+| store.redis.minConn | redis模式最小连接数                                             | 默认1                                                                                                                                                |
+| store.redis.database | redis模式默认库                                               | 默认0                                                                                                                                                |
+| store.redis.password | redis模式密码(无可不填)                                          | 默认null                                                                                                                                             |
+| store.redis.queryLimit | redis模式一次查询最大条数                                          | 默认100                                                                                                                                              |
+| metrics.enabled                           | 是否启用Metrics                                              | 默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低                                                                                                |
+| metrics.registryType                     | 指标注册器类型                                                  | Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现                                                            |
+| metrics.exporterList                     | 指标结果Measurement数据输出器列表                                   | 默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器                                                                               |
+| metrics.exporterPrometheusPort          | prometheus输出器Client端口号                                   | 默认9898                                                                                                                                             |
 
 ### client端
 
 | key| desc    | remark| change record |
 |-------------------------------------------|----------------------------|----------------------------|----------------|
+| transport.enableTmClientBatchSendRequest | TM批量发送请求消息开关 | 默认false | 1.5.1版本新增 |
+| transport.enableRmClientBatchSendRequest | RM批量发送请求消息开关 | 默认true | 1.5.1版本新增 |
+| transport.rpcRmRequestTimeout | RM发送请求超时时间 | 默认30秒 | 1.5.1版本新增 |
+| transport.rpcTmRequestTimeout | TM发送请求超时时间 | 默认30秒 | 1.5.1版本新增 |
 | seata.enabled   | 是否开启spring-boot自动装配   |true、false,(SSBS)专有配置，默认true（附录4） |
 | seata.enableAutoDataSourceProxy=true | 是否开启数据源自动代理 | true、false,seata-spring-boot-starter(SSBS)专有配置,SSBS默认会开启数据源自动代理,可通过该配置项关闭.|
 | seata.useJdkProxy=false |  是否使用JDK代理作为数据源自动代理的实现方式| true、false,(SSBS)专有配置,默认false,采用CGLIB作为数据源自动代理的实现方式 |
