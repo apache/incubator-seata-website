@@ -71,7 +71,8 @@ const computeAddedData = (oldData, newData) => {
 const submit = (data) => {
   return new Promise((resolve, reject) => {
     var options = {
-      host: 'http://data.zz.baidu.com',
+      host: 'data.zz.baidu.com',
+      port: 80,
       path:
         '/urls?site=https://seata.io&token=' +
         process.env.BAIDU_LINK_SUBMIT_TOKEN,
