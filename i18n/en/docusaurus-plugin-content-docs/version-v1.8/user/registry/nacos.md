@@ -42,6 +42,7 @@ seata:
   registry:
     type: nacos
     nacos:
+      application: seata-server
       namespace: ""
       server-addr: 127.0.0.1:8848
       group: SEATA_GROUP
