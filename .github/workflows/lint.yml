@@ -1,0 +1,16 @@
+name: Doc Lint
+
+on: [pull_request]
+
+jobs:
+  markdownlint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12.x'
+      - run: npm install -g markdownlint-cli@0.38.0
+      - run: markdownlint '**/*.md' --ignore node_modules
