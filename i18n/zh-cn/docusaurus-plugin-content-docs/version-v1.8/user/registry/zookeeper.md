@@ -28,7 +28,7 @@ Seata 融合 ZooKeeper 注册中心的操作步骤非常简单，大致步骤可
 
 下载 [Seata 1.8.0 release](https://github.com/seata/seata/releases/tag/v1.8.0) 并解压
 
-在 /conf/registry.conf 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf)
+在 `/conf/application.yaml` 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
 
 ```yaml
 seata:

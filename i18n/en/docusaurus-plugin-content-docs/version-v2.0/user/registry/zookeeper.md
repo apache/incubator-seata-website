@@ -23,7 +23,7 @@ Integrating Seata with ZooKeeper involves simple steps, roughly categorized as "
 
 Download [Seata 2.0.0 release](https://github.com/seata/seata/releases/tag/v2.0.0) and extract the files.
 
-Modify the corresponding configuration in `/conf/registry.conf`. For other configuration options, refer to the [Seata configuration reference](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf).
+Modify the corresponding configuration in `/conf/application.yaml`. For other configuration options, refer to the [Seata configuration reference](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml).
 
 ```yaml
 seata:

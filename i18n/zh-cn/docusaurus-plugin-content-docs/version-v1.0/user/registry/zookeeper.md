@@ -130,7 +130,7 @@ seata:
       connect-timeout: 2000
 ```
 
-Client 配置完成后启动应用并稍待片刻，即可正式体验 Seata 服务
+Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务
 
 
 
