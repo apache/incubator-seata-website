@@ -12,9 +12,9 @@
 
 1. `npm install`
 
-2. `npm run start -- --locale en` 用于在本地上启动 Seata 的 **英文** 网站。
+2. `npm run start` 用于在本地上启动 Seata 的 **英文** 网站。
 
-    `npm run start -- --locale zh-cn` 用于在本地上启动 Seata 的 **中文** 网站。
+    `npm run start-zh-cn` 用于在本地上启动 Seata 的 **中文** 网站。
 
 3. Visit
 ```
@@ -37,7 +37,7 @@ Base docusaurus **2.4.1**
 Node.js version **19.5.0**
 
 ## 国际化（i18n）注意事项
-请注意，如果您使用 `npm run start -- --locale zh-cn` 或 `npm run start -- --locale en` 以开发模式启动网站，**语言切换功能将不起作用**。请使用构建过程在生产模式下运行网站，以启用语言切换功能。
+请注意，如果您使用 `npm run start-zh-cn` 或 `npm run start` 以开发模式启动网站，**语言切换功能将不起作用**。请使用构建过程在生产模式下运行网站，以启用语言切换功能。
 
 ## 网站文件结构概览
 我们使用 **Docusaurus 国际化 (i18n)** 来支持英语 (en) 和简体中文 (zh-cn) 两种语言的 Seata 网站。此外，我们还使用 **Docusaurus 多版本**，对文档划分了版本。

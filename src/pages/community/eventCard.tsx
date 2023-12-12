@@ -1,5 +1,4 @@
 import React from 'react';
-import { getLink } from '../../utils';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 type CardEvent = {
@@ -19,16 +18,16 @@ const EventCard = (props: Props) => {
   return (
     <BrowserOnly>
       {() => (
-        <div className="event-card">
-          <a href={getLink(event.link)}>
-            <img src={`${event.img}`} />
+        <div className='event-card'>
+          <a href={event.link}>
+            <img src={event.img} />
           </a>
-          <div className="event-introduction">
+          <div className='event-introduction'>
             <h4>{event.title}</h4>
             <p>{event.content}</p>
-            <a href={getLink(event.link)}>
+            <a href={event.link}>
               {event.dateStr}
-              <img className="arrow" src={`/img/arrow_right.png`} />
+              <img className='arrow' src={`/img/system/arrow_right.png`} />
             </a>
           </div>
         </div>

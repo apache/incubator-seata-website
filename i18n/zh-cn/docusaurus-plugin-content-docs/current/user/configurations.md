@@ -111,6 +111,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.raft.serialization | 序列化方式，目前仅支持jackson | 默认jackson | 2.0.0版本新增 |
 | server.raft.compressor | raftlog和snapshot的压缩方式，支持gzip, zstd, lz4 | none | 2.0.0版本新增 |
 | server.raft.sync | raftlog同步刷盘 | true | 2.0.0版本新增 |
+| server.applicationDataLimitCheck     |是否开启应用数据大小检查 | 默认false |
+| server.applicationDataLimit | 应用数据大小限制 | 默认64000  |
 | store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库、redis、raft 支持HA    | 1.5.1版本改用lock和session分离存储，2.0.0开始支持raft模式 |
 | store.lock.mode | 事务锁信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值，raft模式不允许指定 | 1.5.1版本新增，session和lock可分离存储 |
 | store.session.mode | 事务回话信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值。raft模式不允许单独指定 | 1.5.1版本新增，session和lock可分离存储 |
@@ -178,6 +180,9 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.rm.sagaBranchRegisterEnable | 是否开启saga分支注册 | Saga模式中分支状态存储在状态机本地数据库中，可通过状态机进行提交或回滚，为提高性能可考虑不用向TC注册Saga分支，但需考虑状态机的可用性，默认false |
 | client.rm.sagaJsonParser | saga模式中数据序列化方式 | 默认fastjson,可选jackson | 1.5.1版本新增 |
 | client.rm.tccActionInterceptorOrder | tcc拦截器顺序 | 默认Ordered.HIGHEST_PRECEDENCE + 1000，保证拦截器在本地事务拦截器之前执行，也可自定义tcc和业务开发的拦截器执行顺序 | 1.5.1版本新增 |
+| client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
+| client.rm.applicationDataLimitCheck | 客户端应用数据是否开启限制             | 默认false               |
+| client.rm.applicationDataLimit | 客户端应用数据上报限制             | 默认64000       |
 | client.tm.commitRetryCount              | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.rollbackRetryCount            | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.defaultGlobalTransactionTimeout | 全局事务超时时间 | 默认60秒，TM检测到分支事务超时或TC检测到TM未做二阶段上报超时后，发起对分支事务的回滚 | 1.4.0版本新增 |
@@ -189,7 +194,6 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.undo.compress.enable | undo log压缩开关 | 默认true | 1.4.1版本新增 | 
 | client.undo.compress.type | undo log压缩算法 | 默认zip,可选NONE(不压缩)、GZIP、ZIP、SEVENZ、BZIP2、LZ4、DEFLATER、ZSTD | 1.4.1版本新增 |
 | client.undo.compress.threshold | undo log压缩阈值 | 默认值64k，压缩开关开启且undo log大小超过阈值时才进行压缩 | 1.4.1版本新增 |
-| client.rm.sqlParserType                | sql解析类型 |  默认druid,可选antlr  |
 
 
 <details>

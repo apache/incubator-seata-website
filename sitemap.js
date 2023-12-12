@@ -1,6 +1,7 @@
 const sitemap = require('algolia-sitemap');
+const fs = require('fs');
 
-if(!process.env.ALGOLIA_APIKEY){
+if (!process.env.ALGOLIA_APIKEY) {
   throw new Error('no algolia apiKey configured');
 }
 
@@ -13,25 +14,46 @@ const algoliaConfig = {
 
 const lastmod = new Date().toISOString();
 const changefreq = 'daily';
-const homeUrls = ['https://seata.io/','https://seata.io/en/','https://seata.io/zh-cn/'];
+const homeUrls = ['https://seata.io/', 'https://seata.io/zh-cn/'];
+const urls = new Set();
 
 // Turn a record into a sitemap entry
-function hitToParams({ url }) {
-  const priority = homeUrls.includes(url) ? 1 : 0.5;
-  return { 
-    loc: url,
+function hitToParams({ url_without_anchor }) {
+  if (urls.has(url_without_anchor)) {
+    return;
+  }
+  urls.add(url_without_anchor);
+  const priority = homeUrls.includes(url_without_anchor) ? 1 : 0.5;
+  return {
+    loc: url_without_anchor,
     lastmod,
     changefreq,
-    priority
-   };
+    priority,
+  };
 }
 
-sitemap({
-  algoliaConfig,
-  hitToParams,
-  // The URL of the sitemaps directory
-  sitemapLoc: 'https://seata.io/sitemaps',
-  // The directory with all sitemaps (default: `sitemaps`)
-  outputFolder: 'sitemaps',
-  // ... 
+const call = () => {
+  return new Promise(async (resolve) => {
+    await sitemap({
+      algoliaConfig,
+      hitToParams,
+      // The URL of the sitemaps directory
+      sitemapLoc: 'https://seata.io/sitemaps',
+      // The directory with all sitemaps (default: `sitemaps`)
+      outputFolder: 'sitemaps',
+      // ...
+    });
+    resolve();
+  });
+};
+
+call().then(() => {
+  // generate site.txt
+  urls.forEach((url) => {
+    fs.appendFile('sitemaps/site.txt', url + '\n', (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  });
 });
