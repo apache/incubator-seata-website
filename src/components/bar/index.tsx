@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import { getLink } from '../../utils';
 import './index.scss';
 
 type Props = {
@@ -14,10 +13,10 @@ const Bar = (props: Props) => {
   });
   return (
     <div className={cls}>
-      <div className="bar-body">
-        <img src={getLink(img)} className="front-img" />
+      <div className='bar-body'>
+        <img src={img} className='front-img' />
         <span>{text}</span>
-        <img src={getLink(img)} className="back-img" />
+        <img src={img} className='back-img' />
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ description: Seata upgrade.
 <h3 id='8'>8. What compatibility matters need to be paid attention to when upgrading to seata 2.0? </h3>
 <details>
    <summary><mark>Notes</mark></summary>
-   Upgrading from version 1.8.0 to version 2.0, whether it's the client SDK or the Seata server, as long as any serialization method other than FST is used, the upgrade can be smooth without requiring any changes other than the version upgrade.
+   If you upgrade from 1.8.x to 2.0.x, if you configure the Undolog or communication codec to FST, you need to change the serialization mode to something other than FST on the client before you can upgrade it on the server.
 </details>
 
 ------
