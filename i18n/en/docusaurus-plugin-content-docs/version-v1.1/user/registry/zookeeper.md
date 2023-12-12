@@ -118,11 +118,4 @@ seata:
       password:
 ```
 
-After configuring the client, start the application and wait for a moment. Once the following logs appear, the Seata service is operational.
-
-```
-register TM success. client version:1.1.0, server version:1.1.0,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-register RM success. client version:1.1.0, server version:1.1.0,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.1.0,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.1.0,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.
-```
+After configuring the client, start the application and wait for a moment, the Seata service will be operational soon.

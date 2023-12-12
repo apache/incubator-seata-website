@@ -8,7 +8,7 @@ description: Zookeeper 注册中心。
 
 ZooKeeper是 Seata 组件中重要的注册中心实现
 
-本文基于 Seata 1.2.0，把 Seata 注册到 ZooKeeper 上，以 file 作为配置中心
+本文以ZooKeeper作为注册中心，以 file 作为配置中心
 
 ZooKeeper版本建议 3.4.13及以上，下文以 ZooKeeper 3.4.14版本为例
 
@@ -138,14 +138,9 @@ seata:
       my_test_tx_group: default
 ```
 
-Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务
+Client 配置完成后启动应用并稍待片刻，即可正式体验 Seata 服务
 
-```text
-register TM success. client version:1.2.0, server version:1.2.0,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-register RM success. client version:1.2.0, server version:1.2.0,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.2.0,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.2.0,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-```
+
 
 
 

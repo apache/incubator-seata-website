@@ -132,14 +132,7 @@ seata:
       password:
 ```
 
-Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务
-
-```text
-register TM success. client version:1.1.0, server version:1.1.0,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-register RM success. client version:1.1.0, server version:1.1.0,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.1.0,role:RMROLE,channel:[id: 0x408192d3, L:/127.0.0.1:8237 - R:/127.0.0.1:8091]
-register success, cost 94 ms, version:1.1.0,role:TMROLE,channel:[id: 0xa4675e28, L:/127.0.0.1:8238 - R:/127.0.0.1:8091]
-```
+Client 配置完成后启动应用并稍待片刻，即可正式体验 Seata 服务
 
 
 
