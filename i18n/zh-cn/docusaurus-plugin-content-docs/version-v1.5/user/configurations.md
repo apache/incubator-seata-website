@@ -6,28 +6,6 @@ description: Seata 参数配置。
 
 # seata参数配置
 
-### 变更记录
-```
-20201216(1.6.0):
-1.4.0到1.6.0版本配置项的变更记录不再集中维护，请根据配置项单独查看相关版本变更情况
-20200716(1.3.0):
-1.增加了store.redis相关配置
-2.增加了nacos注册中心配置group项,Server和Client端的值需一致
-3.新增client.rm.sagaBranchRegisterEnable配置项，默认false
-20200421(1.2.0): 
-1.增加registry.nacos.application属性，默认seata-server，Server和Client端的值需一致
-20200220(1.1.0): 
-1.file.conf和registry.conf两个配置文件中的格式统一转换为驼峰格式.
-2.统一所有配置文件的默认值(file.conf、registry.conf、seata-spring-boot-starter)
-3.优化seata-spring-boot-starter中对于事务分组和TC集群的配置
-4.移除client.support.spring.datasource.autoproxy,增加@EnableAutoDataSourceProxy
-5.新增server.rollbackRetryTimeoutUnlockEnable配置项，默认false
-6.新增transport.shutdown.wait配置项，默认3秒
-注解用于开启数据源自动代理,同时可选择代理实现方式(具体请查阅附录5)
-20191221: 
-1.增加seata.enabled、client.report.success.enable、
-transport.enable-client-batch-send-request、client.log.exceptionRate
-```
 ## 关注属性(详细描述见全属性)
 
 | server端         | client端|
@@ -52,7 +30,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 ### 公共部分
 
 | key         | desc         | remark| change record |
-|---------------|--------------|----|----------------------------|
+|---------------|--------------|----|---------------------------|
 | transport.type | socket通信方式 | TCP、UNIX_DOMAIN_SOCKET，默认TCP |
 | transport.server | socket通道类型 | NIO、NATIVE(根据操作系统类型和socket通信方式选择KQueue或Epoll，注意Windows只支持NIO，选择这种方式会抛出异常）|
 | transport.enableTmClientBatchSendRequest | TM批量发送请求消息开关 | 默认false | 1.5.1版本新增 |
@@ -67,7 +45,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hessian、fst，默认seata | 
 | transport.compressor            | client和server通信数据压缩方式   |none、gzip、zip、sevenz、bzip2、lz4、deflater、zstd，默认none | 1.2.0之前：gzip <br /> 1.2.0:zip、sevenz、bzip2 <br /> 1.3.0:lz4 <br /> 1.4.1:deflater <br /> 1.5.1:zstd|
 | transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
-| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | 1.6.0版本Sever端支持可同时注册到多个注册中心,以逗号分隔注册中心名 |
+| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | |
 | config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3、springcloud、custom |
 
 ### server端

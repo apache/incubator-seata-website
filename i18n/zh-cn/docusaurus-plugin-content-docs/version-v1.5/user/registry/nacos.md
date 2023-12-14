@@ -27,9 +27,9 @@ Seata 融合 Nacos 注册中心的操作步骤非常简单，大致步骤可分�
     <version>最新版</version>
 </dependency>
 <dependency>
-    <groupId>com.alibaba.nacos</groupId>
-    <artifactId>nacos-client</artifactId>
-    <version>1.2.0及以上版本</version>
+<groupId>com.alibaba.nacos</groupId>
+<artifactId>nacos-client</artifactId>
+<version>1.2.0及以上版本</version>
 </dependency>
 ```
 
@@ -46,29 +46,32 @@ seata:
       server-addr: 127.0.0.1:8848
       group : "SEATA_GROUP"
       namespace: ""
-      username: "nacos"
-      password: "nacos"
+      username: ""
+      password: ""
+      context-path: ""
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+
 ```
 
 ### Server端配置注册中心
 
 在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
 
-```
-registry {
-  type = "nacos"
-
-  nacos {
-    application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
-    namespace = ""
-    cluster = "default"
-    username = ""
-    password = ""
-  }
-}
-
+```yaml
+seata:
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      namespace:
+      cluster: default
+      username:
+      password:
 ```
 
 随后,启动 Seata-Server 后，会发现Server端的服务出现在 Nacos 控制台中的注册中心列表中. Client 配置完成后启动应用就可以正式体验 Seata 服务。

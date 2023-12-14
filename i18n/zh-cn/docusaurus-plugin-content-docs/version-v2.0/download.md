@@ -39,6 +39,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5529](https://github.com/seata/seata/pull/5529)] docker镜像支持注入JVM参数到容器
 - [[#3887](https://github.com/seata/seata/pull/3887)] 增加AT模式的SQLServer数据库支持
 - [[#4033](https://github.com/seata/seata/pull/4033)] 增加ServerDB存储模式的SQLServer支持
+- [[#5600](https://github.com/seata/seata/pull/5600)] skywalking插件支持根据XID追踪事务
+- [[#5357](https://github.com/seata/seata/pull/5357)] seata console集成saga设计器
 - [[#5717](https://github.com/seata/seata/pull/5717)] 兼容1.4.2及以下版本的file.conf/registry.conf配置
 - [[#5842](https://github.com/seata/seata/pull/5842)] 构建docker 镜像时添加相关git信息,方便定位代码关系
 - [[#5902](https://github.com/seata/seata/pull/5902)] 支持IPv6网络环境
@@ -49,14 +51,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 
 ### bugfix：
 - [[#5677](https://github.com/seata/seata/pull/5677)]  修复saga模式下serviceTask入参autoType转化失败问题
-- [[#5194](https://github.com/seata/seata/pull/5194)] 修复使用Oracle作为服务端DB存储时的建表失败问题
-- [[#5021](https://github.com/seata/seata/pull/5201)] 修复 JDK17 下获取 Spring 原始代理对象失败的问题
-- [[#5023](https://github.com/seata/seata/pull/5203)] 修复 `seata-core` 模块传递依赖冲突
-- [[#5224](https://github.com/seata/seata/pull/5224)] 修复 oracle初始化脚本索引名重复的问题
-- [[#5233](https://github.com/seata/seata/pull/5233)] 修复LoadBalance相关配置不一致的问题
-- [[#5245](https://github.com/seata/seata/pull/5245)] 修复不完整的distribution模块依赖
-- [[#5239](https://github.com/seata/seata/pull/5239)] 修复当使用JDK代理时，`getConfig` 方法获取部分配置时抛出 `ClassCastException` 异常的问题
-- [[#5266](https://github.com/seata/seata/pull/5265)] 修复控制台全局锁查询接口查到了已释放的锁
+- [[#5277](https://github.com/seata/seata/pull/5277)] 修复控制台全局锁查询接口查到了已释放的锁
 - [[#5282](https://github.com/seata/seata/pull/5282)] 修复并行rm请求处理时数组索引越界问题
 - [[#5294](https://github.com/seata/seata/pull/5294)] 修复AT模式下pgsql/oracle的主键列自增的问题
 - [[#5298](https://github.com/seata/seata/pull/5298)] 事务提交或回滚超时不移除global session
@@ -68,12 +63,15 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5347](https://github.com/seata/seata/pull/5347)] 修复控制台打印 `unauthorized error` 问题
 - [[#5355](https://github.com/seata/seata/pull/5355)] 修复自定义context-path时的问题
 - [[#5362](https://github.com/seata/seata/pull/5362)] 修复当TC端回滚返回RollbackFailed时，自定义FailureHandler的方法未执行
-- [[#5372](https://github.com/seata/seata/pull/5372)] 修复客户侧事务提交前超时未执行hook和failureHandler的问题
-- [[#4734](https://github.com/seata/seata/pull/4734)] 修复AT模式下新增字段产生的字段找不到
+- [[#5373](https://github.com/seata/seata/pull/5373)] 修复客户侧事务提交前超时未执行hook和failureHandler的问题
+- [[#5395](https://github.com/seata/seata/pull/5395)] 修复AT模式下新增字段产生的字段找不到
 - [[#5426](https://github.com/seata/seata/pull/5426)] 修复不能获取GlobalTransactional注解问题
+- [[#5464](https://github.com/seata/seata/pull/5464)] 修复saga模式全局事务状态始终为Begin的问题
 - [[#5478](https://github.com/seata/seata/pull/5478)] 修复提交事务时事务已完成不抛出异常问题
-- [[#5491](https://github.com/seata/seata/pull/5491)] 修复日志中不打印方法名的问题
+- [[#5490](https://github.com/seata/seata/pull/5490)] 修复日志中不打印方法名的问题
 - [[#5449](https://github.com/seata/seata/pull/5449)] 修复Oracle XA模式 start 重入问题
+- [[#5462](https://github.com/seata/seata/pull/5462)] 在RM中使用`@GlobalTransactional`时,如果RM执行失败会抛出`ShouldNeverHappenException`
+- [[#5498](https://github.com/seata/seata/pull/5498)] 修复 Oracle 10g 中“setDate”条件的全表扫描问题
 - [[#5531](https://github.com/seata/seata/pull/5531)] 修复读取logback文件路径错误的问题
 - [[#5523](https://github.com/seata/seata/pull/5523)] 修复 GlobalStatus=9 在DB存储模式无法清除的问题
 - [[#5558](https://github.com/seata/seata/pull/5558)] 修复mariadb回滚失败的问题
@@ -82,8 +80,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5577](https://github.com/seata/seata/pull/5577)] 修复 grpc拦截器解绑xid失败问题
 - [[#5594](https://github.com/seata/seata/pull/5594)] 修复participant情况下的重复日志
 - [[#5604](https://github.com/seata/seata/pull/5604)] 修复在DB模式下 `asyncCommit` 和 `queueToRetryCommit` 两个方法总是失败的问题
+- [[#5658](https://github.com/seata/seata/pull/5658)] 修复大写和小写列名称的转义字符
 - [[#5661](https://github.com/seata/seata/pull/5661)] 修复connectionProxyXA连接复用时timeout为null
-- [[#5678](https://github.com/seata/seata/pull/5675)] 修复 xxx.grouplist 和 grouplist.xxx 配置项兼容问题
+- [[#5679](https://github.com/seata/seata/pull/5679)] 修复 xxx.grouplist 和 grouplist.xxx 配置项兼容问题
 - [[#5715](https://github.com/seata/seata/pull/5715)] 修复取中划线配置项错误问题
 - [[#5748](https://github.com/seata/seata/pull/5748)] 修复在某些情况下，业务sql中主键字段名大小写与表元数据中的不一致，导致回滚失败
 - [[#5745](https://github.com/seata/seata/pull/5745)] 修复不满足 sofa-rpc 中 setAttachment 方法的参数前缀要求问题
@@ -99,24 +98,17 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5977](https://github.com/seata/seata/pull/5977)] 修复当raft server关闭时,rpc server未关闭的问题
 - [[#5954](https://github.com/seata/seata/pull/5954)] 修复保存的分支会话状态与实际的分支会话状态不一致的问题
 - [[#5990](https://github.com/seata/seata/pull/5990)] 修复redis sentinel master node 宕机时，lua脚本未同步的问题
-- [[#5887](https://github.com/seata/seata/pull/5887)] 修复全局事务钩子重复执行
+- [[#5997](https://github.com/seata/seata/pull/5997)] 修复全局事务钩子重复执行
 - [[#6018](https://github.com/seata/seata/pull/6018)] 修复错误的 metric 上报
 - [[#6024](https://github.com/seata/seata/pull/6024)] 修复控制台点击事务信息页面中的"查看全局锁"按钮之后白屏的问题
 - [[#6015](https://github.com/seata/seata/pull/6015)] 修复在spring环境下无法集成dubbo
 - [[#6049](https://github.com/seata/seata/pull/6049)] 修复客户端在raft注册中心类型下，网络中断时，watch线程未暂停一秒等待重试的问题
 - [[#6050](https://github.com/seata/seata/pull/6050)] 修改 RaftServer#destroy 为等待所有关闭流程结束
-
+- [[#6033](https://github.com/seata/seata/pull/6033)] 修复HSFRemotingParser中isReference判断逻辑，去掉关于FactoryBean的无用判断
 
 ### optimize：
-- [[#6033](https://github.com/seata/seata/pull/6033)] 优化HSFRemotingParser中isReference判断逻辑，去掉关于FactoryBean的无用判断
 - [[#5966](https://github.com/seata/seata/pull/5966)] Saga 表达式解耦并统一格式
 - [[#5928](https://github.com/seata/seata/pull/5928)] 增加Saga模式状态机语义验证阶段
-- [[#5208](https://github.com/seata/seata/pull/5208)] 优化多次重复获取Throwable#getCause问题
-- [[#5212](https://github.com/seata/seata/pull/5212)] 优化不合理的日志信息级别
-- [[#5237](https://github.com/seata/seata/pull/5237)] 优化异常日志打印(EnhancedServiceLoader.loadFile#cahtch)
-- [[#5243](https://github.com/seata/seata/pull/5243)] 升级 kryo 5.4.0 优化对jdk17的兼容性
-- [[#5153](https://github.com/seata/seata/pull/5153)] 只允许AT去尝试跨RM获取channel
-- [[#5177](https://github.com/seata/seata/pull/5177)] 如果 `server.session.enable-branch-async-remove` 为真，异步删除分支，同步解锁。
 - [[#4858](https://github.com/seata/seata/pull/4858)] 重构优化 SessionManager 用法
 - [[#4881](https://github.com/seata/seata/pull/4881)] 重新划分 SessionManager和SessionLifecycleListener 用法
 - [[#5273](https://github.com/seata/seata/pull/5273)] 优化`protobuf-maven-plugin`插件的编译配置，解决高版本的命令行过长问题
@@ -124,16 +116,16 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5302](https://github.com/seata/seata/pull/5302)] 移除启动脚本的-Xmn参数
 - [[#4880](https://github.com/seata/seata/pull/4880)] 优化提交和回滚遇到异常时的日志输出
 - [[#5322](https://github.com/seata/seata/pull/5322)] 优化SPI加载日志
-- [[#5323](https://github.com/seata/seata/pull/5323)] 为全局事务超时日志添加时间信息
+- [[#5326](https://github.com/seata/seata/pull/5326)] 为全局事务超时日志添加时间信息
 - [[#5328](https://github.com/seata/seata/pull/5333)] 为全局事务和事务存储的Redis模式，增加对应的lua实现
 - [[#5341](https://github.com/seata/seata/pull/5341)] 优化 gRPC TCC模式
 - [[#5342](https://github.com/seata/seata/pull/5342)] 优化 TCC fence log 清理定时任务的 delay 参数值检查
-- [[#5325](https://github.com/seata/seata/pull/5325)] 添加配置中心、注册中心类型以及存储模式日志信息
+- [[#5344](https://github.com/seata/seata/pull/5344)] 添加配置中心、注册中心类型以及存储模式日志信息
 - [[#5351](https://github.com/seata/seata/pull/5351)] 优化 TCC 模式下的 RPC filter
 - [[#5354](https://github.com/seata/seata/pull/5354)] 重构 RPC 集成模块
 - [[#5370](https://github.com/seata/seata/pull/5370)] 优化事务失败处理 handler
+- [[#5431](https://github.com/seata/seata/pull/5431)] 优化github工作流
 - [[#5461](https://github.com/seata/seata/pull/5461)] 优化 license workflow
-- [[#5464](https://github.com/seata/seata/pull/5464)] 修复saga模式全局事务状态始终为Begin的问题
 - [[#5456](https://github.com/seata/seata/pull/5456)] 重构 ColumnUtils 和 EscapeHandler
 - [[#5438](https://github.com/seata/seata/pull/5438)] 优化code style检测属性
 - [[#5471](https://github.com/seata/seata/pull/5471)] 优化客户侧事务日志
@@ -146,9 +138,11 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5549](https://github.com/seata/seata/pull/5549)] 优化 gpg key 和 发布流水线
 - [[#5576](https://github.com/seata/seata/pull/5576)] 仅当 useTCCFence 设置为 true 时，才开启 Fence 表清理任务
 - [[#5623](https://github.com/seata/seata/pull/5623)] 优化异步提交线程和重试线程之间可能存在的冲突
+- [[#5563](https://github.com/seata/seata/pull/5563)] 优化channel通道可用性日志输出
 - [[#5553](https://github.com/seata/seata/pull/5553)] 支持表和列元数据大小写敏感设置
 - [[#5644](https://github.com/seata/seata/pull/5644)] 优化Server日志输出
 - [[#5680](https://github.com/seata/seata/pull/5680)] 优化大小写转义符
+- [[#5686](https://github.com/seata/seata/pull/5686)] 优化license check actions
 - [[#5714](https://github.com/seata/seata/pull/5714)] 优化分布式锁竞争日志
 - [[#5723](https://github.com/seata/seata/pull/5723)] 优化docker镜像的默认时区
 - [[#5779](https://github.com/seata/seata/pull/5779)] 删除无用的输出日志并统一日志输出路径
@@ -168,6 +162,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5917](https://github.com/seata/seata/pull/5917)] 升级 native-lib-loader 版本
 - [[#5926](https://github.com/seata/seata/pull/5926)] 优化一些与 Apollo 相关的脚本
 - [[#5938](https://github.com/seata/seata/pull/5938)] 支持 jmx 监控配置
+- [[#5944](https://github.com/seata/seata/pull/5944)] 修复构建操作警告
 - [[#5951](https://github.com/seata/seata/pull/5951)] 删除在 jdk17 中不支持的配置项
 - [[#5959](https://github.com/seata/seata/pull/5959)] 修正代码风格问题及去除无用的类引用
 - [[#6002](https://github.com/seata/seata/pull/6002)] 移除fst序列化模块
@@ -189,7 +184,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5308](https://github.com/seata/seata/pull/5308)] 添加单元测试用例 [FileLoader, ObjectHolder, StringUtils]
 - [[#5309](https://github.com/seata/seata/pull/5309)] 添加单元测试用例 [ArrayUtils, ConfigTools, MapUtil]
 - [[#5335](https://github.com/seata/seata/pull/5335)] 添加单元测试用例 [EnhancedServiceLoader,ExtensionDefinition,SizeUtilTest,ReflectionUtil,LowerCaseLinkHashMap,FileLoader,ObjectHolder]
-- [[#5366](https://github.com/seata/seata/pull/5366)] 修复 UpdateExecutorTest 单测失败问题
+- [[#5367](https://github.com/seata/seata/pull/5367)] 修复 UpdateExecutorTest 单测失败问题
 - [[#5383](https://github.com/seata/seata/pull/5383)] 修复多Spring版本测试失败
 - [[#5391](https://github.com/seata/seata/pull/5391)] 添加 config 模块的单元测试用例
 - [[#5428](https://github.com/seata/seata/pull/5428)] 修复 FileTransactionStoreManagerTest 单测失败问题
@@ -203,7 +198,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#6001](https://github.com/seata/seata/pull/6001)] 添加 RaftMsgExecute 模块 branch 包下的单元测试用例
 - [[#5996](https://github.com/seata/seata/pull/5996)] 添加 RaftMsgExecute 模块 global 包下的单元测试用例
 - [[#6003](https://github.com/seata/seata/pull/6003)] 添加 RaftMsgExecute 模块 lock 包下的单元测试用例
+- [[#6005](https://github.com/seata/seata/pull/6005)] 修复 saga 异步测试未定义的行为
 - [[#6009](https://github.com/seata/seata/pull/6009)] 添加RaftServerFactory的单元测试用例
+- [[#6052](https://github.com/seata/seata/pull/6052)] 给ut升级 springboot 和服务器的 spring 版本
 
 
 ### Contributors:
@@ -243,7 +240,9 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [ptyin](https://github.com/ptyin)
 - [jsbxyyx](https://github.com/jsbxyyx)
 - [xxxcrel](https://github.com/xxxcrel)
-
+- [fengzhenhai168](https://github.com/fengzhenhai168)
+- [tobehardest](https://github.com/tobehardest)
+- [leezongjie](https://github.com/leezongjie)
 
 
 同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
