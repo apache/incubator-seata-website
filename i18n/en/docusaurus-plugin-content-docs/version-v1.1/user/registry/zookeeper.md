@@ -103,9 +103,9 @@ It is recommended to use the latest version of Seata. Refer to the [version comp
 
 ### Client-side Configuration
 
-Add the following configuration to `application.yml`. For other configuration options, refer to the [Seata Spring configuration reference](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml).
-
-```
+If you are using the `io.seata:seata-spring-boot-starter` dependency, you need to add the following ZooKeeper configuration in the application.yml file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/blob/1.1.0/script/client/spring/application.yml)
+:
+```yaml
 seata:
   registry:
     type: zk
@@ -116,6 +116,17 @@ seata:
       connect-timeout: 2000
       username:
       password:
+```
+Alternatively, if you are using the `io.seata:seata-all` dependency, add the ZooKeeper configuration in the registry.conf file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/tree/1.1.0/script/client/conf):
+```
+  zk {
+    cluster = "default"
+    serverAddr = "127.0.0.1:2181"
+    session.timeout = 6000
+    connect.timeout = 2000
+    username = ""
+    password = ""
+  }
 ```
 
 After configuring the client, start the application and wait for a moment, the Seata service will be operational soon.

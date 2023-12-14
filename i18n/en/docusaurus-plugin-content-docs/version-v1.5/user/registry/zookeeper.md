@@ -45,65 +45,12 @@ Execute `/bin/seata-server.bat` (Windows) or `/bin/seata-server.sh` (Unix) to st
 [127.0.0.1:8091]
 ```
 
-### Client-side Maven Dependency
 
-**For a Spring Boot project, add the following dependencies to your `pom.xml` file.**
-
-It is recommended to use the latest version of Seata. Refer to the [version compatibility](https://github.com/alibaba/spring-cloud-alibaba/wiki/版本说明) between `spring-cloud-starter-alibaba-seata` and the corresponding microservices version.
-
-```xml
-<!-- Seata -->
-<dependency>
-    <groupId>io.seata</groupId>
-    <artifactId>seata-spring-boot-starter</artifactId>
-    <version>${seata.version}</version>
-</dependency>
-<dependency>
-    <groupId>com.alibaba.cloud</groupId>
-    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-    <version>${alibaba.cloud.version}</version>
-    <exclusions>
-        <exclusion>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-
-<!-- ZooKeeper client dependency -->
-<dependency>
-    <groupId>com.101tec</groupId>
-    <artifactId>zkclient</artifactId>
-    <version>0.11</version>
-    <exclusions>
-        <exclusion>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-
-<dependency>
-    <groupId>org.apache.zookeeper</groupId>
-    <artifactId>zookeeper</artifactId>
-    <version>3.5.9</version>
-    <exclusions>
-        <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </exclusion>
-        <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-```
 
 ### Client-side Configuration
 
-Add the following configuration to `application.yml`. For other configuration options, refer to the [Seata Spring configuration reference](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml).
-
+If you are using the `io.seata:seata-spring-boot-starter` dependency, you need to add the following ZooKeeper configuration in the application.yml file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/blob/1.5.0/script/client/spring/application.yml)
+:
 ```yaml
 seata:
   registry:
@@ -118,6 +65,16 @@ seata:
   service:
     vgroup-mapping:
       default_tx_group: default
+```
+Alternatively, if you are using the `io.seata:seata-all` dependency, add the ZooKeeper configuration in the registry.conf file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/tree/1.5.0/script/client/conf):
+```
+  zk {
+    serverAddr = "127.0.0.1:2181"
+    sessionTimeout = 6000
+    connectTimeout = 2000
+    username = ""
+    password = ""
+  }
 ```
 
 After configuring the client, start the application and wait for a moment, the Seata service will be operational soon.

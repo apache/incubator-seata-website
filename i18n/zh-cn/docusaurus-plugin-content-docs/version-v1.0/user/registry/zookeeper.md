@@ -54,81 +54,35 @@ registry {
 
 
 
-
-### Client 端增加 Maven 依赖
-
-
-
-建议使用新版Seata ，`spring-cloud-starter-alibaba-seata`的版本与对应微服务版本对应关系请参考[版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/版本说明)
-
-**以 SpringBoot 项目为例，在项目 pom.xml 中加入**
-
-```xml
-<!-- seata -->
-<dependency>
-    <groupId>io.seata</groupId>
-    <artifactId>seata-spring-boot-starter</artifactId>
-    <version>${seata.version}</version>
-</dependency>
-<dependency>
-    <groupId>com.alibaba.cloud</groupId>
-    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-    <version>${alibaba.cloud.version}</version>
-    <exclusions>
-        <exclusion>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-
-<!-- ZooKeeper客户端依赖 -->
-<dependency>
-    <groupId>com.101tec</groupId>
-    <artifactId>zkclient</artifactId>
-    <version>0.11</version>
-    <exclusions>
-        <exclusion>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-
-
-<dependency>
-    <groupId>org.apache.zookeeper</groupId>
-    <artifactId>zookeeper</artifactId>
-    <version>3.5.9</version>
-    <exclusions>
-        <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </exclusion>
-        <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-
-```
-
 ### Client端配置
 
-在 application.yml 中加入对应的注册中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml)
+
+如果使用`io.seata:seata-spring-boot-starter`依赖，需要在 application.yml 中加入如下zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/blob/1.0.0/script/client/spring/application.yml)
 
 ```yaml
 seata:
   registry:
     type: zk
     zk:
-      # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
       cluster: default
       server-addr: 127.0.0.1:2181
+      # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
       session-timeout: 6000
       connect-timeout: 2000
 ```
+
+或者使用`io.seata:seata-all`依赖，则在registry.conf文件中加入zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/tree/1.0.0/script/client/conf)
+
+```
+  zk {
+    cluster = "default"
+    serverAddr = "127.0.0.1:2181"
+    session.timeout = 6000
+    connect.timeout = 2000
+  }
+```
+
+
 
 Client 配置完成后启动应用并稍待片刻，出现以下后日志就可以正式体验 Seata 服务
 
