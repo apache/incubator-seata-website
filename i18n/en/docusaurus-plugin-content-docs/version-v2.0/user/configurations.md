@@ -6,69 +6,24 @@ description: Seata parameter configuration.
 
 # The Seata Parameter Configuration
 
-
-### Change record
-
-```
-
-20201216(1.6.0):
-
-The change records of configuration items from 1.4.0 to 1.6.0 are no longer maintained in a centralized manner. Please check the changes of relevant versions separately according to the configuration items
-
-20200716(1.3.0):
-
-1. Added the relevant configuration of store.redis
-
-2. The nacos registry configuration group item has been added, and the values of the Server and Client must be consistent
-
-3. Add the client.rm.sagaBranchRegisterEnable configuration item, which is false by default
-
-20200421(1.2.0):
-
-1. Add the registry.nacos.application attribute. The default value is seata server. The values on the server and client sides must be consistent
-
-20200220(1.1.0):
-
-1. The formats in the file.conf and registry.conf configuration files are uniformly converted to the hump format
-
-2. Unify the default values of all configuration files (file.conf, registry.conf, seata spring boot starter)
-
-3. Optimize the configuration of transaction grouping and TC cluster in seata spring boot starter
-
-4. Remove client.support.spring.datasource.autoproxy and add @ EnableAutoDataSourceProxy
-
-5. Add server.rollbackRetryTimeoutUnlockEnable configuration item, which is false by default
-
-6. Add the transport.shutdown.wait configuration item. The default is 3 seconds
-
-The annotation is used to enable the automatic proxy of the data source, and the proxy implementation method can be selected (see Appendix 5 for details)
-
-20191221:
-
-1. Add seata.enabled, client.report.success.enable
-
-transport.enable-client-batch-send-request、client.log.exceptionRate
-
-```
-
 ## Attention attribute (see all attributes for detailed description)
 
 
 
 |Server side | client side|
 |---------------|------------|
-| registry. type |registry.type|
-| config. type |config.type|
-| #store. Mode=db requires the following configuration | service.vgroupMapping.my_ test_ tx_ group|
-| store.db. driverClassName | service.default. grouplist |
-| store.db. url |service. disableGlobalTransaction |
-| store.db. user | |
-| store.db. password | |
-| #store. Mode=Redis requires the following configurations ||
-| store.redis. host | |
-| store.redis. port | |
-| store.redis. database | |
-| store.redis. password | |
+| registry.type |registry.type|
+| config.type |config.type|
+| #store.mode=db requires the following configuration | service.vgroupMapping.my_ test_ tx_ group|
+| store.db.driverClassName | service.default. grouplist |
+| store.db.url |service. disableGlobalTransaction |
+| store.db.user | |
+| store.db.password | |
+| #store.mode=Redis requires the following configurations ||
+| store.redis.host | |
+| store.redis.port | |
+| store.redis.database | |
+| store.redis.password | |
 | #The following configurations are required for "store.mode=raft"| |
 | server.raft.group| |
 | server.raft.server-addr| |
@@ -339,11 +294,11 @@ About the grouplist question.
 
 1. When will the default.grouplist in file.conf be used?
 
-It is used when registry. type=file. It is not read in other times.
+It is used when registry.type=file. It is not read in other times.
 
 2. Can multiple value lists be configured for default.grouplist?
 
-Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store. mode=db to share data between TC clusters through db
+Multiple can be configured, which means cluster, but when store When mode=file, an error will be reported. The reason is that the file storage mode does not provide synchronization of local files, so you need to use store.mode=db to share data between TC clusters through db
 
 3. Is default.grouplist recommended?
 
