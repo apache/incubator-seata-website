@@ -39,6 +39,8 @@ The version is updated as follows:
 - [[#5529](https://github.com/seata/seata/pull/5529)] docker image supports JVM parameter injection
 - [[#3887](https://github.com/seata/seata/pull/3887)] add SQL Server database support in AT mode
 - [[#4033](https://github.com/seata/seata/pull/4033)] add SQLServer support for Server DB storage mode
+- [[#5600](https://github.com/seata/seata/pull/5600)] feature: support trace the transaction link according to the XID
+- [[#5357](https://github.com/seata/seata/pull/5357)] feature: console integration saga-statemachine-designer
 - [[#5717](https://github.com/seata/seata/pull/5717)] compatible with file.conf and registry.conf configurations in version 1.4.2 and below
 - [[#5842](https://github.com/seata/seata/pull/5842)] adding metainfo to docker image
 - [[#5902](https://github.com/seata/seata/pull/5902)] support IPv6
@@ -49,14 +51,7 @@ The version is updated as follows:
 
 ### bugfix：
 - [[#5677](https://github.com/seata/seata/pull/5677)] fix saga mode serviceTask inputParams json autoType convert exception
-- [[#5194](https://github.com/seata/seata/pull/5194)] fix wrong keyword order for oracle when creating a table
-- [[#5021](https://github.com/seata/seata/pull/5201)] fix JDK Reflection for Spring origin proxy failed in JDK17
-- [[#5023](https://github.com/seata/seata/pull/5203)] fix `seata-core` dependency transitive conflict in `seata-dubbo`
-- [[#5224](https://github.com/seata/seata/pull/5224)] fix oracle initialize script index_name is duplicate
-- [[#5233](https://github.com/seata/seata/pull/5233)] fix the inconsistent configuration item names related to LoadBalance
-- [[#5245](https://github.com/seata/seata/pull/5245)] fix the incomplete dependency of distribution module
-- [[#5239](https://github.com/seata/seata/pull/5239)] fix `getConfig` throw `ClassCastException` when use JDK proxy
-- [[#5266](https://github.com/seata/seata/pull/5265)] fix server console has queried the released lock
+- [[#5277](https://github.com/seata/seata/pull/5277)] fix server console has queried the released lock
 - [[#5282](https://github.com/seata/seata/pull/5282)] parallel request handle throw IndexOutOfBoundsException
 - [[#5294](https://github.com/seata/seata/pull/5294)] fix auto-increment of pk columns in PostgreSQL/Oracle in AT mode
 - [[#5298](https://github.com/seata/seata/pull/5298)] don't remove GlobalSession when retry rollback or retry commit timeout
@@ -68,13 +63,15 @@ The version is updated as follows:
 - [[#5347](https://github.com/seata/seata/pull/5347)] Fix console print `unauthorized error`
 - [[#5355](https://github.com/seata/seata/pull/5355)] fix bug when customizing context-path
 - [[#5362](https://github.com/seata/seata/pull/5362)] fix When the rollback logic on the TC side returns RollbackFailed, the custom FailureHandler is not executed
-- [[#5372](https://github.com/seata/seata/pull/5372)] fix transaction timeout on client side not execute hook and failureHandler
-- [[#4734](https://github.com/seata/seata/pull/4734)] check if table meta cache should be refreshed in AT mode
+- [[#5373](https://github.com/seata/seata/pull/5373)] fix transaction timeout on client side not execute hook and failureHandler
+- [[#5395](https://github.com/seata/seata/pull/5395)] check if table meta cache should be refreshed in AT mode
 - [[#5426](https://github.com/seata/seata/pull/5426)] fix the GlobalTransactional annotation npe issue.
 - [[#5464](https://github.com/seata/seata/pull/5464)] fix global session is always begin in saga mode
 - [[#5478](https://github.com/seata/seata/pull/5478)] fix finished transaction swallows exception when committing
-- [[#5491](https://github.com/seata/seata/pull/5491)] fix method name not print in logs
+- [[#5490](https://github.com/seata/seata/pull/5490)] fix method name not print in logs
 - [[#5449](https://github.com/seata/seata/pull/5449)] fix Oracle XA transaction reentrant issues
+- [[#5462](https://github.com/seata/seata/pull/5462)] fix if using `@GlobalTransactional` in RM, `ShouldNeverHappenException` will be thrown
+- [[#5498](https://github.com/seata/seata/pull/5498)] bugfix: fix the full table scan issue with 'setDate' condition in Oracle 10g
 - [[#5531](https://github.com/seata/seata/pull/5531)] fix the log file path was loaded incorrectly
 - [[#5523](https://github.com/seata/seata/pull/5523)] fix GlobalStatus=9 can't be cleared in DB storage mode
 - [[#5558](https://github.com/seata/seata/pull/5558)] fix mariadb rollback failed
@@ -83,8 +80,9 @@ The version is updated as follows:
 - [[#5577](https://github.com/seata/seata/pull/5577)] fix grpc interceptor xid unbinding problem
 - [[#5594](https://github.com/seata/seata/pull/5594)] fix log in participant transaction role
 - [[#5604](https://github.com/seata/seata/pull/5604)] fix the `asyncCommit` and `queueToRetryCommit` always failed in db mode
+- [[#5658](https://github.com/seata/seata/pull/5658)] bugfix: fix escaped characters for upper and lower case column names
 - [[#5661](https://github.com/seata/seata/pull/5661)] bugfix: the timeout is null when the connectionProxyXA connection is reused
-- [[#5678](https://github.com/seata/seata/pull/5675)] bugfix: fix compatibility between xxx.grouplist and grouplist.xxx configuration items
+- [[#5679](https://github.com/seata/seata/pull/5679)] bugfix: fix compatibility between xxx.grouplist and grouplist.xxx configuration items
 - [[#5715](https://github.com/seata/seata/pull/5715)] fix get configuration item contains underlined error
 - [[#5748](https://github.com/seata/seata/pull/5748)] case of the pk col-name in the business sql is inconsistent with the case in the table metadata, resulting in a rollback failure
 - [[#5745](https://github.com/seata/seata/pull/5745)] fix the problem that the parameter prefix requirement of the setAttachment method in sofa-rpc is not met
@@ -100,23 +98,17 @@ The version is updated as follows:
 - [[#5977](https://github.com/seata/seata/pull/5977)] fix that rpcserver is not closed when raftServer is closed
 - [[#5954](https://github.com/seata/seata/pull/5954)] fix the issue of saved branch session status does not match the actual branch session status
 - [[#5990](https://github.com/seata/seata/pull/5990)] fix the issue that the Lua script is not synchronized when the redis sentinel master node is down
-- [[#5887](https://github.com/seata/seata/pull/5887)] fix global transaction hook repeat execute
+- [[#5997](https://github.com/seata/seata/pull/5997)] fix global transaction hook repeat execute
 - [[#6018](https://github.com/seata/seata/pull/6018)] fix incorrect metric report
 - [[#6024](https://github.com/seata/seata/pull/6024)] fix the white screen after click the "View Global Lock" button on the transaction info page in the console
 - [[#6015](https://github.com/seata/seata/pull/6015)] fix can't integrate dubbo with spring
 - [[#6049](https://github.com/seata/seata/pull/6049)] fix registry type for raft under the network interruption did not carry out the sleep 1s
-- [[#6050](https://github.com/seata/seata/pull/6050)] change RaftServer#destroy to wait all shutdown procedures done
+- [[#6050](https://github.com/seata/seata/pull/6050)] change RaftServer#destroy to wait all shutdown procedures
+- [[#6033](https://github.com/seata/seata/pull/6033)] fix the isReference judgment logic in HSFRemotingParser, remove unnecessary judgment about FactoryBean
 
 ### optimize：
-- [[#6033](https://github.com/seata/seata/pull/6033)] optimize the isReference judgment logic in HSFRemotingParser, remove unnecessary judgment about FactoryBean
 - [[#5966](https://github.com/seata/seata/pull/5966)] decouple saga expression handling and remove evaluator package
 - [[#5928](https://github.com/seata/seata/pull/5928)] add Saga statelang semantic validation
-- [[#5208](https://github.com/seata/seata/pull/5208)] optimize throwable getCause once more
-- [[#5212](https://github.com/seata/seata/pull/5212)] optimize log message level
-- [[#5237](https://github.com/seata/seata/pull/5237)] optimize exception log message print(EnhancedServiceLoader.loadFile#cahtch)
-- [[#5243](https://github.com/seata/seata/pull/5243)] optimize kryo 5.4.0 optimize compatibility with jdk17
-- [[#5153](https://github.com/seata/seata/pull/5153)] Only AT mode try to get channel with other app
-- [[#5177](https://github.com/seata/seata/pull/5177)] If `server.session.enable-branch-async-remove` is true, delete the branch asynchronously and unlock it synchronously.
 - [[#4858](https://github.com/seata/seata/pull/4858)] reorganize the usage of task session manager
 - [[#4881](https://github.com/seata/seata/pull/4881)] reorganize the usage of Sessionmanager and listener
 - [[#5273](https://github.com/seata/seata/pull/5273)] Optimize the compilation configuration of the `protobuf-maven-plugin` plug-in to solve the problem of too long command lines in higher versions.
@@ -124,14 +116,15 @@ The version is updated as follows:
 - [[#5302](https://github.com/seata/seata/pull/5302)] remove startup script the -Xmn configuration
 - [[#4880](https://github.com/seata/seata/pull/4880)] optimize logs when commit/rollback catch an exception
 - [[#5322](https://github.com/seata/seata/pull/5322)] optimize the log of SPI
-- [[#5323](https://github.com/seata/seata/pull/5323)] add time info for global transaction timeout log
+- [[#5326](https://github.com/seata/seata/pull/5326)] add time info for global transaction timeout log
 - [[#5328](https://github.com/seata/seata/pull/5333)] add corresponding lua implementation for Redis mode of global transaction and transaction storage
 - [[#5341](https://github.com/seata/seata/pull/5341)] optimize gRPC Interceptor for TCC mode
 - [[#5342](https://github.com/seata/seata/pull/5342)] optimize the check of the delay value of the TCC fence log clean task
-- [[#5325](https://github.com/seata/seata/pull/5325)] add store mode,config type and registry type log info
+- [[#5344](https://github.com/seata/seata/pull/5344)] add store mode,config type and registry type log info
 - [[#5351](https://github.com/seata/seata/pull/5351)] optimize RPC filter for TCC mode
 - [[#5354](https://github.com/seata/seata/pull/5354)] reconstruct the RPC integration module
 - [[#5370](https://github.com/seata/seata/pull/5370)] optimize transaction fail handler
+- [[#5431](https://github.com/seata/seata/pull/5431)] optimize github workflow
 - [[#5461](https://github.com/seata/seata/pull/5461)] optimize license workflow
 - [[#5456](https://github.com/seata/seata/pull/5456)] refactor ColumnUtils and EscapeHandler
 - [[#5438](https://github.com/seata/seata/pull/5438)] optimize code style properties
@@ -146,8 +139,10 @@ The version is updated as follows:
 - [[#5576](https://github.com/seata/seata/pull/5576)] The common fence clean task is only initiated when useTCCFence is set to true
 - [[#5623](https://github.com/seata/seata/pull/5623)] optimize possible conflict between asyncCommitting thread and retryCommitting thread
 - [[#5553](https://github.com/seata/seata/pull/5553)] support case-sensitive attributes for table and column metadata
+- [[#5563](https://github.com/seata/seata/pull/5563)] optimize: optimize channel availability thread log output
 - [[#5644](https://github.com/seata/seata/pull/5644)] optimize server logs print
 - [[#5680](https://github.com/seata/seata/pull/5680)] optimize escape character for case of columnNames
+- [[#5686](https://github.com/seata/seata/pull/5686)] optimize: optimize license check actions
 - [[#5714](https://github.com/seata/seata/pull/5714)] optimize distributed lock log
 - [[#5723](https://github.com/seata/seata/pull/5723)] optimize docker default timezone
 - [[#5779](https://github.com/seata/seata/pull/5779)] remove unnecessary log outputs and unify the log output path.
@@ -167,6 +162,7 @@ The version is updated as follows:
 - [[#5917](https://github.com/seata/seata/pull/5917)] upgrade native-lib-loader version
 - [[#5926](https://github.com/seata/seata/pull/5926)] optimize some scripts related to Apollo
 - [[#5938](https://github.com/seata/seata/pull/5938)] support jmx port in seata
+- [[#5944](https://github.com/seata/seata/pull/5944)] optimize: fix build action warning
 - [[#5951](https://github.com/seata/seata/pull/5951)] remove un support config in jdk17
 - [[#5959](https://github.com/seata/seata/pull/5959)] modify code style and remove unused import
 - [[#6002](https://github.com/seata/seata/pull/6002)] remove fst serialization
@@ -188,7 +184,7 @@ The version is updated as follows:
 - [[#5308](https://github.com/seata/seata/pull/5308)] add unit test [FileLoader, ObjectHolder, StringUtils]
 - [[#5309](https://github.com/seata/seata/pull/5309)] add unit test [ArrayUtils, ConfigTools, MapUtil]
 - [[#5335](https://github.com/seata/seata/pull/5335)] add unit test [EnhancedServiceLoader,ExtensionDefinition,SizeUtilTest,ReflectionUtil,LowerCaseLinkHashMap,FileLoader,ObjectHolder]
-- [[#5366](https://github.com/seata/seata/pull/5366)] fix UpdateExecutorTest failed
+- [[#5367](https://github.com/seata/seata/pull/5367)] fix UpdateExecutorTest failed
 - [[#5383](https://github.com/seata/seata/pull/5383)] fix multi spring version test failed
 - [[#5391](https://github.com/seata/seata/pull/5391)] add unit test for config module
 - [[#5428](https://github.com/seata/seata/pull/5428)] fix FileTransactionStoreManagerTest failed
@@ -202,7 +198,9 @@ The version is updated as follows:
 - [[#6001](https://github.com/seata/seata/pull/6001)] add test cases for RaftMsgExecute under branch package
 - [[#5996](https://github.com/seata/seata/pull/5996)] add test cases for RaftMsgExecute under global package
 - [[#6003](https://github.com/seata/seata/pull/6003)] add test cases for RaftMsgExecute under lock package
+- [[#6005](https://github.com/seata/seata/pull/6005)] fix saga async tests undefined behavior
 - [[#6009](https://github.com/seata/seata/pull/6009)] add test cases for RaftServerFactory
+- [[#6052](https://github.com/seata/seata/pull/6052)] upgrade springboot and spring version for server for test
 
 
 ### Contributors:
@@ -238,9 +236,13 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [iquanzhan](https://github.com/iquanzhan)
 - [leizhiyuan](https://github.com/leizhiyuan)
 - [Aruato](https://github.com/Aruato)
+- [ggbocoder](https://github.com/ggbocoder)
 - [ptyin](https://github.com/ptyin)
 - [jsbxyyx](https://github.com/jsbxyyx)
 - [xxxcrel](https://github.com/xxxcrel)
+- [fengzhenhai168](https://github.com/fengzhenhai168)
+- [tobehardest](https://github.com/tobehardest)
+- [leezongjie](https://github.com/leezongjie)
 
 
 Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
