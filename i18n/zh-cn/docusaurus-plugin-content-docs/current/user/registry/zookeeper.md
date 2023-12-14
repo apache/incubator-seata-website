@@ -20,15 +20,15 @@ ZooKeeper版本建议 3.4.13及以上，下文以 ZooKeeper 3.4.14版本为例
 
 ## 快速上手
 
-Seata 融合 ZooKeeper 注册中心的操作步骤非常简单，大致步骤可分为“Server端配置”以及“Client端配置“。
+Seata 融合 ZooKeeper 注册中心的操作步骤非常简单，大致步骤可分为"Server端配置"以及"Client端配置"。
 
 
 
-### Server端配置注册中心
+### Server端配置
 
 下载 [Seata 2.0.0 release](https://github.com/seata/seata/releases/tag/v2.0.0) 并解压
 
-在 `/conf/application.yaml` 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/2.x/server/src/main/resources/application.example.yml)
+在 `/conf/application.yaml` 中修改对应注册中心，其余[配置参考](https://github.com/seata/seata/blob/2.x/server/src/main/resources/application.example.yml)
 
 ```yaml
 seata:
