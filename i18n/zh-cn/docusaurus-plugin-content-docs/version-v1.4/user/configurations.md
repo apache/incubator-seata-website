@@ -6,28 +6,6 @@ description: Seata 参数配置。
 
 # seata参数配置
 
-### 变更记录
-```
-20201216(1.6.0):
-1.4.0到1.6.0版本配置项的变更记录不再集中维护，请根据配置项单独查看相关版本变更情况
-20200716(1.3.0):
-1.增加了store.redis相关配置
-2.增加了nacos注册中心配置group项,Server和Client端的值需一致
-3.新增client.rm.sagaBranchRegisterEnable配置项，默认false
-20200421(1.2.0): 
-1.增加registry.nacos.application属性，默认seata-server，Server和Client端的值需一致
-20200220(1.1.0): 
-1.file.conf和registry.conf两个配置文件中的格式统一转换为驼峰格式.
-2.统一所有配置文件的默认值(file.conf、registry.conf、seata-spring-boot-starter)
-3.优化seata-spring-boot-starter中对于事务分组和TC集群的配置
-4.移除client.support.spring.datasource.autoproxy,增加@EnableAutoDataSourceProxy
-5.新增server.rollbackRetryTimeoutUnlockEnable配置项，默认false
-6.新增transport.shutdown.wait配置项，默认3秒
-注解用于开启数据源自动代理,同时可选择代理实现方式(具体请查阅附录5)
-20191221: 
-1.增加seata.enabled、client.report.success.enable、
-transport.enable-client-batch-send-request、client.log.exceptionRate
-```
 ## 关注属性(详细描述见全属性)
 
 | server端         | client端|
@@ -51,24 +29,18 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 
 ### 公共部分
 
-| key         | desc         | remark| change record |
-|---------------|--------------|----|----------------------------|
-| transport.type | socket通信方式 | TCP、UNIX_DOMAIN_SOCKET，默认TCP |
-| transport.server | socket通道类型 | NIO、NATIVE(根据操作系统类型和socket通信方式选择KQueue或Epoll，注意Windows只支持NIO，选择这种方式会抛出异常）|
-| transport.enableTmClientBatchSendRequest | TM批量发送请求消息开关 | 默认false | 1.5.1版本新增 |
-| transport.enableRmClientBatchSendRequest | RM批量发送请求消息开关 | 默认true | 1.5.1版本新增 |
-| transport.enableTcServerBatchSendResponse | TC批量发送回复消息开关 | 默认false | 1.5.1版本新增 |
-| transport.rpcRmRequestTimeout | RM发送请求超时时间 | 默认30秒 | 1.5.1版本新增 |
-| transport.rpcTmRequestTimeout | TM发送请求超时时间 | 默认30秒 | 1.5.1版本新增 |
-| transport.rpcTcRequestTimeout | TC发送请求超时时间 | 默认30秒 | 1.5.1 版本新增 |
-| transport.threadFactory.bossThreadSize | Netty通信模型Boss group线程数 | 默认1 |
+| key         | desc         | remark                                                                                       | change record |
+|---------------|--------------|----------------------------------------------------------------------------------------------|----------------------------|
+| transport.type | socket通信方式 | TCP、UNIX_DOMAIN_SOCKET，默认TCP                                                                 |
+| transport.server | socket通道类型 | NIO、NATIVE(根据操作系统类型和socket通信方式选择KQueue或Epoll，注意Windows只支持NIO，选择这种方式会抛出异常）                    |
+| transport.threadFactory.bossThreadSize | Netty通信模型Boss group线程数 | 默认1                                                                                          |
 | transport.threadFactory.workerThreadSize | Netty通信模型Worker group线程数 | 可配置线程数或选择特定线程工作模式下的线程数，线程的默认工作模式有4种:Auto(2\*CPU核数 + 1)、Pin(CPU核数，适用于计算密集型任务)、BusyPin(CPU核数 + 1，适用于计算密集型且内存比较有限的场景）、Default(2\*CPU核数，适用于IO密集型任务）,默认值为Default模式 |
-| transport.shutdown.wait | 服务端Netty线程池关闭前等待服务下线时间 | 默认3秒 |
-| transport.serialization            | client和server通信编解码方式   |seata(ByteBuf)、protobuf、kryo、hessian、fst，默认seata | 
-| transport.compressor            | client和server通信数据压缩方式   |none、gzip、zip、sevenz、bzip2、lz4、deflater、zstd，默认none | 1.2.0之前：gzip <br /> 1.2.0:zip、sevenz、bzip2 <br /> 1.3.0:lz4 <br /> 1.4.1:deflater <br /> 1.5.1:zstd|
-| transport.heartbeat            | client和server通信心跳检测开关   |默认true开启 |
-| registry.type            | 注册中心类型                  |默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom | 1.6.0版本Sever端支持可同时注册到多个注册中心,以逗号分隔注册中心名 |
-| config.type            | 配置中心类型                  |默认file，支持file、nacos 、apollo、zk、consul、etcd3、springcloud、custom |
+| transport.shutdown.wait | 服务端Netty线程池关闭前等待服务下线时间 | 默认3秒                                                                                         |
+| transport.serialization            | client和server通信编解码方式   | seata(ByteBuf)、protobuf、kryo、hessian、fst，默认seata                                             | 
+| transport.compressor            | client和server通信数据压缩方式   | none、gzip、zip、sevenz、bzip2、lz4、deflater(1.4.1)，默认none     | |
+| transport.heartbeat            | client和server通信心跳检测开关   | 默认true开启                                                                                     |
+| registry.type            | 注册中心类型                  | 默认file，支持file 、nacos 、redis、eureka、zk、consul、etcd3、sofa、custom      | |
+| config.type            | 配置中心类型                  | 默认file，支持file、nacos 、apollo、zk、consul、etcd3、springcloud、custom    |
 
 ### server端
 
@@ -83,14 +55,7 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | server.recovery.rollbackingRetryPeriod         | 二阶段回滚状态重试回滚线程间隔时间      |默认1000，单位毫秒    |
 | server.recovery.timeoutRetryPeriod             | 超时状态检测重试线程间隔时间        |默认1000，单位毫秒，检测出超时将全局事务置入回滚会话管理器    |
 | server.rollbackRetryTimeoutUnlockEnable | 二阶段回滚超时后是否释放锁 | 默认false |
-| server.distributedLockExpireTime | Sever端事务管理全局锁超时时间 | 默认10000，单位毫秒 | 1.5.1版本新增 |
-| server.server.xaerNotaRetryTimeout | 防止XA分支事务悬挂的重试超时时间 | 默认60000，单位毫秒 | 1.5.1版本新增 |
-| server.session.branchAsyncQueueSize | 分支事务Session异步删除线程池队列大小 | 默认5000 | 1.5.1版本新增 |
-| server.session.enableBranchAsyncRemove | 分支事务Session异步删除开关 | 默认false | 1.5.1版本新增 |
-| server.enableParallelRequestHandle | 对于批量请求消息的并行处理开关 | 默认false | 1.5.2版本新增 |
-| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库，redis(支持HA)    | 1.5.1版本改用lock和session分离存储 |
-| store.lock.mode | 事务锁信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值 | 1.5.1版本新增，session和lock可分离存储 |
-| store.session.mode | 事务回话信息存储方式 | file本地文件(不支持HA)，db数据库，redis(支持HA)；配置为空时，取store.mode配置项值 | 1.5.1版本新增，session和lock可分离存储 |
+| store.mode                                | 事务会话信息存储方式 |file本地文件(不支持HA)，db数据库，redis(支持HA)    |  |
 | store.publicKey | db或redis存储密码解密公钥 | | 1.4.2版本支持 |
 | store.file.dir                            | file模式文件存储文件夹名 |默认sessionStore    |
 | store.file.maxBranchSessionSize | file模式文件存储分支session最大字节数 | 默认16384(16kb),单位byte | 
@@ -111,7 +76,6 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | store.db.branchTable                     | db模式分支事务表名 |默认branch_table    |
 | store.db.lockTable                       | db模式全局锁表名 |默认lock_table    |
 | store.db.queryLimit                      | db模式查询全局事务一次的最大条数 |默认100    |
-| store.db.distributedLockTable | db模式Sever端事务管理全局锁存储表名 | 默认distributed_lock，多Sever集群下保证同时只有一个Sever处理提交或回滚 | 1.5.1版本新增|
 | store.redis.mode | redis模式 | 默认single,可选sentinel| 1.4.2版本新增sentinel模式 | 
 | store.redis.single.host | 单机模式下redis的host,兼容1.4.2之前的版本，该配置为空时选取store.redis.host作为配置项 | 1.4.2版本新增 |
 | store.redis.single.port | 单机模式下redis的port,兼容1.4.2之前的版本，该配置为空时选取store.redis.port作为配置项 | 1.4.2版本新增 |
@@ -150,15 +114,11 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | client.rm.lock.retryTimes                   | 校验或占用全局锁重试次数 |  默认30  |
 | client.rm.lock.retryPolicyBranchRollbackOnConflict    | 分支事务与其它全局回滚事务冲突时锁策略 |  默认true，优先释放本地锁让回滚成功  |
 | client.rm.reportRetryCount                 | 一阶段结果上报TC重试次数 |  默认5次  | 1.4.1版本新增 |
-| client.rm.tableMetaCheckEnable            | 自动刷新缓存中的表结构 |  默认false  | 1.5.1版本新增 | 
 | client.rm.tableMetaCheckerInterval | 定时刷新缓存中表结构间隔时间 | 默认60秒 |
 | client.rm.sagaBranchRegisterEnable | 是否开启saga分支注册 | Saga模式中分支状态存储在状态机本地数据库中，可通过状态机进行提交或回滚，为提高性能可考虑不用向TC注册Saga分支，但需考虑状态机的可用性，默认false |
-| client.rm.sagaJsonParser | saga模式中数据序列化方式 | 默认fastjson,可选jackson | 1.5.1版本新增 |
-| client.rm.tccActionInterceptorOrder | tcc拦截器顺序 | 默认Ordered.HIGHEST_PRECEDENCE + 1000，保证拦截器在本地事务拦截器之前执行，也可自定义tcc和业务开发的拦截器执行顺序 | 1.5.1版本新增 |
 | client.tm.commitRetryCount              | 一阶段全局提交结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.rollbackRetryCount            | 一阶段全局回滚结果上报TC重试次数 |  默认1次，建议大于1  |
 | client.tm.defaultGlobalTransactionTimeout | 全局事务超时时间 | 默认60秒，TM检测到分支事务超时或TC检测到TM未做二阶段上报超时后，发起对分支事务的回滚 | 1.4.0版本新增 |
-| client.tm.interceptorOrder | TM全局事务拦截器顺序 | 默认Ordered.HIGHEST_PRECEDENCE + 1000，保证拦截器在本地事务拦截器之前执行，也可自定义全局事务和业务开发的拦截器执行顺序 | 1.5.1版本新增 |
 | client.undo.dataValidation          | 二阶段回滚镜像校验 |  默认true开启，false关闭 |
 | client.undo.logSerialization        | undo序列化方式 |  默认jackson  |
 | client.undo.logTable                | 自定义undo表名 |  默认undo_log  |

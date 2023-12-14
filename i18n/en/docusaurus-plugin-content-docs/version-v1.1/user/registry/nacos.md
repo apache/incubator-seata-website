@@ -18,7 +18,7 @@ The steps to integrate Nacos registry into Seata are very simple and can be roug
 
 ### Adding Maven Dependencies
 
-First, you need to add the Maven dependency for `nacos-client` to your project's `pom.xml` file. It is recommended to use Seata `1.4.0+`:
+First, you need to add the Maven dependency for `nacos-client` to your project's `pom.xml` file:
 
 ```xml
 <dependency>
@@ -42,12 +42,9 @@ seata:
   registry:
     type: nacos
     nacos:
-      application: seata-server
-      server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      cluster: default
+      server-addr: localhost
+      namespace:
 ```
 
 ### Configuring the Registry on the Server Side
@@ -59,13 +56,9 @@ registry {
   type = "nacos"
 
   nacos {
-    application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
+    serverAddr = "localhost"
     namespace = ""
     cluster = "default"
-    username = ""
-    password = ""
   }
 }
 
