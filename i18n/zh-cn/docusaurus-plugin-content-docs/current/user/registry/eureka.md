@@ -61,7 +61,6 @@ seata:
     type: eureka
     eureka:
       service-url: http://localhost:8761/eureka
-      weight: 1
 ```
 
 ### Server端配置注册中心

@@ -56,7 +56,6 @@ seata:
   registry:
     type: eureka
     eureka:
-      weight: 1
       service-url: http://localhost:8761/eureka
 ```
 
