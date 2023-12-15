@@ -28,22 +28,22 @@ Seata 融合 Eureka注册中心的操作步骤非常简单，大致步骤可分�
     <version>最新版</version>
 </dependency>
 <dependency>
-<groupId>com.alibaba.cloud</groupId>
-<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-<version>2.1.2.RELEASE及以上版本</version>
-<exclusions>
-    <exclusion>
-        <groupId>io.seata</groupId>
-        <artifactId>seata-spring-boot-starter</artifactId>
-    </exclusion>
-</exclusions>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+    <version>2.1.2.RELEASE及以上版本</version>
+    <exclusions>
+        <exclusion>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+        </exclusion>
+    </exclusions>
 </dependency>
 
         <!-- eureka 客户端依赖 -->
 <dependency>
-<groupId>org.springframework.cloud</groupId>
-<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-<version>2.0.0.RELEASE及以上版本</version>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    <version>2.0.0.RELEASE及以上版本</version>
 </dependency>
 ```
 
