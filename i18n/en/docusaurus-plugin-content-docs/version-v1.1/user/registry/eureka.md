@@ -56,7 +56,7 @@ seata:
   registry:
     type: eureka
     eureka:
-      application: default
+      application: seata-server
       weight: 1
       service-url: http://localhost:8761/eureka
 ```
@@ -71,7 +71,7 @@ registry {
  
   eureka {
     serviceUrl = "http://localhost:8761/eureka"
-    application = "default"
+    application = "seata-server"
     weight = "1"
   }
 }

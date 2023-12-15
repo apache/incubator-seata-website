@@ -56,7 +56,7 @@ seata:
   tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      default_tx_group: default # 此处配置对应Server端配置registry.eureka.application的值
+      default_tx_group: seata-server # 此处配置对应Server端配置registry.eureka.application的值
   registry:
     type: eureka
     eureka:
@@ -74,7 +74,7 @@ seata:
     type: eureka
     etcd3:
       service-url: http://localhost:8761/eureka
-      application: default
+      application: seata-server
       weight: 1
 ```
 
