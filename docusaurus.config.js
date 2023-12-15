@@ -26,10 +26,10 @@ const config = {
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  clientModules: [require.resolve('./src/myClientModule.ts'), require.resolve('./src/custom-js.ts')],
+  // clientModules: [require.resolve('./src/myClientModule.ts')],
   i18n: {
-    defaultLocale: 'default',
-    locales: ['en', 'zh-cn', 'default'],
+    defaultLocale: 'en',
+    locales: ['en', 'zh-cn'],
     localeConfigs: {
       'en': {
         label: 'En',
@@ -70,6 +70,13 @@ const config = {
           {
             tagName: 'script',
             attributes: {
+              type: 'text/javascript',
+              src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
+            },
+          },
+          {
+            tagName: 'script',
+            attributes: {
               src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
               id: 'beacon-aplus',
               exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
@@ -102,6 +109,8 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
+        // disable default sitemap generation
+        sitemap: false
       }),
     ],
   ],
@@ -129,14 +138,6 @@ const config = {
             activeBaseRegex: '^/$',
             position: 'right',
           },
-          // {
-          //   label: 'Docs',
-          //   type: 'doc',
-          //   docId: 'overview/what-is-seata',
-          //   // type: 'docSidebar',
-          //   // sidebarId: 'tutorialSidebar',
-          //   position: 'right',
-          // },
           {
             type: "docsVersionDropdown",
             label: "Docs",
@@ -144,37 +145,10 @@ const config = {
             position: "right",
           },
           {
-            label: 'Solutions',
-            type: 'dropdown',
-            position: 'right',
-            items: [
-              {
-                label: 'Seata in Cloud',
-                href: 'https://www.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'SOFA distributed transaction',
-                href: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
-              },
-            ],
-          },
-          {
-            label: 'Free trial',
-            href: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
-            position: 'right',
-            target: '_blank',
-          },
-          {
             label: 'Developers',
             type: 'doc',
-            docId: 'developers/developers_dev',
+            docId: 'developers/contributor-guide/new-contributor-guide_dev',
             position: 'right',
-          },
-          {
-            label: 'Recruitment',
-            to: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
-            position: 'right',
-            target: '_blank',
           },
           {
             label: 'Blog', 

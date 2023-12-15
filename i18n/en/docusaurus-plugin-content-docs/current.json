@@ -1,6 +1,6 @@
 {
   "version.label": {
-    "message": "User Documentation",
+    "message": "Next Version",
     "description": "The label for version current"
   },
   "sidebar.docs.category.Overview": {
@@ -20,7 +20,7 @@
     "description": "The label for category Configuration Center in sidebar docs"
   },
   "sidebar.docs.category.Registration Authority": {
-    "message": "Registration Authority",
+    "message": "Registry Center",
     "description": "The label for category Registration Authority in sidebar docs"
   },
   "sidebar.docs.category.SQL Reference": {

@@ -274,7 +274,7 @@
     "message": "Vision"
   },
   "homepage.footerVersionContent": {
-    "message": "Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
+    "message": "Apache Seata (incubating) is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
   },
   "homepage.footerDocTitle": {
     "message": "Documentation"
@@ -378,6 +378,9 @@
   "homepage.introDesc": {
     "message": "Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open source of Seata, its internal version has been playing the role of middleware for data consistency of application architecture layer in Alibaba group, helping the economy to smoothly go through the Double 11 of the past year and providing strong technical support for the upper business. After years of development, its commercial products have been sold on Alibaba Cloud and Financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will organize as a community to help users quickly land distributed transaction solutions."
   },
+  "homepage.introImg": {
+    "message": "https://img.alicdn.com/tfs/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png"
+  },
   "homepage.featureListTitle1": {
     "message": "Microservices Framework Support"
   },
@@ -388,7 +391,7 @@
     "message": "AT mode"
   },
   "homepage.featureListContent2": {
-    "message": "Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB and MariaDB's AT mode, In developing the H2, DB2, SQLServer, DM."
+    "message": "Provides non-intrusive automatic compensation transaction mode, currently supports MySQL, Oracle, PostgreSQL, TiDB, MariaDB, DaMeng, PolarDB-X 2.0, SQLServer. DB2 is currently under development."
   },
   "homepage.featureListTitle3": {
     "message": "TCC mode"
@@ -406,13 +409,13 @@
     "message": "XA mode"
   },
   "homepage.featureListContent5": {
-    "message": "Support for XA schemas for databases that have implemented XA interfaces. currently supports MySQL, Oracle, TiDB, MariaDB"
+    "message": "Support for XA schemas for databases that have implemented XA interfaces. currently supports MySQL, Oracle and MariaDB"
   },
   "homepage.featureListTitle6": {
     "message": "High availability"
   },
   "homepage.featureListContent6": {
-    "message": "Support cluster mode based on database storage, strong horizontal scalability."
+    "message": "Supports cluster mode with separate storage and computing, where computing nodes can be horizontally scaled, and storage supports both databases and Redis. The Raft cluster mode has entered the beta testing phase."
   },
   "homepage.featureTitle": {
     "message": "Feature List"

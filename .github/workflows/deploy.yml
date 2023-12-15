@@ -1,4 +1,4 @@
-name: seata.io deploy
+name: seata.io deploy on github
 
 on:
   push:
@@ -12,20 +12,20 @@ jobs:
   Build-Deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18.x
-    - name: Build
-      run: |
+      - name: Use Node.js 19.5.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 19.5.x
+      - name: Build
+        run: |
           npm install && npm run build && mkdir -p deploy-dist && cp -R build/* deploy-dist/ && mv build .htaccess deploy-dist/
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.8.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./deploy-dist
-      with:
-        keepFiles: true
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2.8.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./deploy-dist
+        with:
+          keepFiles: true

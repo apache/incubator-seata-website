@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # Version Upgrade Guide
 
+<a href="#8" target="_self">8. What compatibility matters need to be paid attention to when upgrading to seata 2.0? </a>
+<br/>
+
 <a href="#7" target="_self">7. What compatibility matters need to be paid attention to when upgrading to seata 1.6.x? </a>
 <br/>
 
@@ -27,6 +30,14 @@ description: Seata upgrade.
 <a href="#1" target="_self">1. How to upgrade versions 0.8 and 0.9 to version 1.0? </a>
 <br/>
 
+
+------
+
+<h3 id='8'>8. What compatibility matters need to be paid attention to when upgrading to seata 2.0? </h3>
+<details>
+   <summary><mark>Notes</mark></summary>
+   If you upgrade from 1.8.x to 2.0.x, if you configure the Undolog or communication codec to FST, you need to change the serialization mode to something other than FST on the client before you can upgrade it on the server.
+</details>
 
 ------
 

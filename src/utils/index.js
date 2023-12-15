@@ -20,13 +20,6 @@ export const getScrollTop = () => {
   return scrollTop;
 };
 
-export const getLink = (link, language) => {
-  if (`${link}`.length > 1 && /^\/[^/]/.test(`${link}`)) {
-    return `${window.rootPath || ''}${language === 'default' ? '/zh-cn' : `/${language}`}${link}`;
-  }
-  return link;
-};
-
 export const parseJSONStr = (str) => {
   try {
     return JSON.parse(str);
