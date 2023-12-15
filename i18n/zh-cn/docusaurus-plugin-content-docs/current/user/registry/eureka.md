@@ -72,7 +72,7 @@ seata:
 seata:
   registry:
     type: eureka
-    etcd3:
+    eureka:
       service-url: http://localhost:8761/eureka
       application: seata-server
       weight: 1
