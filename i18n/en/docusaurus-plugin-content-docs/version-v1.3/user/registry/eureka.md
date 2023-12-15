@@ -28,28 +28,28 @@ First, you need to add the Maven dependency of `spring-cloud-starter-netflix-eur
     <version>latest version</version>
 </dependency>
 <dependency>
-    <groupId>com.alibaba.cloud</groupId>
-    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-    <version>2.1.2.RELEASE and above</version>
-    <exclusions>
-        <exclusion>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
-        </exclusion>
-    </exclusions>
+<groupId>com.alibaba.cloud</groupId>
+<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+<version>2.1.2.RELEASE and above</version>
+<exclusions>
+    <exclusion>
+        <groupId>io.seata</groupId>
+        <artifactId>seata-spring-boot-starter</artifactId>
+    </exclusion>
+</exclusions>
 </dependency>
 
-<!-- eureka client dependency -->
+        <!-- eureka client dependency -->
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    <version>2.0.0.RELEASE and above</version>
+<groupId>org.springframework.cloud</groupId>
+<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+<version>2.0.0.RELEASE and above</version>
 </dependency>
 ```
 
 ### Configuring the Registry on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/develop/script/client) for other configurations.
+Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/1.3.0/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/1.3.0/script/client) for other configurations.
 
 ```yaml
 seata:
@@ -66,7 +66,7 @@ seata:
 
 ### Server-side configuration of the registry center
 
-Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to the [configuration](https://github.com/seata/seata/tree/develop/script/server) for the rest.
+Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/1.3.0/server/src/main/resources/registry.conf), and refer to the [configuration](https://github.com/seata/seata/tree/1.3.0/script/server) for the rest.
 
 ```
 registry {

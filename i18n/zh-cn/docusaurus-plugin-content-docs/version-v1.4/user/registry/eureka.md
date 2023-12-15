@@ -28,28 +28,28 @@ Seata 融合 Eureka注册中心的操作步骤非常简单，大致步骤可分�
     <version>最新版</version>
 </dependency>
 <dependency>
-    <groupId>com.alibaba.cloud</groupId>
-    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-    <version>2.1.2.RELEASE及以上版本</version>
-    <exclusions>
-        <exclusion>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
-        </exclusion>
-    </exclusions>
+<groupId>com.alibaba.cloud</groupId>
+<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+<version>2.1.2.RELEASE及以上版本</version>
+<exclusions>
+    <exclusion>
+        <groupId>io.seata</groupId>
+        <artifactId>seata-spring-boot-starter</artifactId>
+    </exclusion>
+</exclusions>
 </dependency>
 
-<!-- eureka 客户端依赖 -->
+        <!-- eureka 客户端依赖 -->
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    <version>2.0.0.RELEASE及以上版本</version>
+<groupId>org.springframework.cloud</groupId>
+<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+<version>2.0.0.RELEASE及以上版本</version>
 </dependency>
 ```
 
 ### Client端配置注册中心
 
-在 [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/client)
+在 `application.yml` 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/1.4.2/script/client)
 
 ```yaml
 seata:
@@ -66,7 +66,7 @@ seata:
 
 ### Server端配置注册中心
 
-在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
+在 `conf/registry.conf` 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/blob/1.4.2/server/src/main/resources/file.conf.example)
 
 ```
 registry {
