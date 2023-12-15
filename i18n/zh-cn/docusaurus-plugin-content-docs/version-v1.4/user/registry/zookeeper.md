@@ -79,7 +79,12 @@ seata:
       my_test_tx_group: default
 ```
 
-或者使用`io.seata:seata-all`依赖，则在registry.conf文件中加入zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/tree/1.4.2/script/client/conf)
+或者使用`io.seata:seata-all`依赖，则需要在`file.conf`中加入事务分组与集群映射关系：
+```
+  vgroupMapping.my_test_tx_group = "default"
+```
+
+并在`registry.conf`文件中加入zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/tree/1.4.2/script/client/conf)
 
 ```
   zk {

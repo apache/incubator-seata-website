@@ -56,17 +56,16 @@ seata:
   registry:
     type: zk
     zk:
-      cluster: default
       server-addr: 127.0.0.1:2181
       session-timeout: 6000
       connect-timeout: 2000
       username:
       password:
+
 ```
 Alternatively, if you are using the `io.seata:seata-all` dependency, add the ZooKeeper configuration in the registry.conf file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/tree/1.1.0/script/client/conf):
 ```
   zk {
-    cluster = "default"
     serverAddr = "127.0.0.1:2181"
     session.timeout = 6000
     connect.timeout = 2000

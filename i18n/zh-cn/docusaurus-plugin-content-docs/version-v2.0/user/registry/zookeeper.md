@@ -62,7 +62,6 @@ seata:
     type: zk
     zk:
       server-addr: 127.0.0.1:2181
-  # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
       session-timeout: 6000
       connect-timeout: 2000
       username:
@@ -74,7 +73,12 @@ seata:
       default_tx_group: default
 ```
 
-或者使用`io.seata:seata-all`依赖，则在registry.conf文件中加入zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/tree/2.0.0/script/client/conf)
+或者使用`io.seata:seata-all`依赖，则需要在`file.conf`中加入事务分组与集群映射关系：
+```
+  vgroupMapping.default_tx_group = "default"
+```
+
+并在`registry.conf`文件中加入zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/tree/2.0.0/script/client/conf)
 
 ```
   zk {
@@ -85,6 +89,8 @@ seata:
     password = ""
   }
 ```
+
+
 
 Client 配置完成后启动应用并稍待片刻，即可正式体验 Seata 服务
 

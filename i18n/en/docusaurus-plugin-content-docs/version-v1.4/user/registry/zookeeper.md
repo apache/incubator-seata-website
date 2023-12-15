@@ -69,15 +69,21 @@ seata:
     vgroup-mapping:
       my_test_tx_group: default
 ```
-Alternatively, if you are using the `io.seata:seata-all` dependency, add the ZooKeeper configuration in the registry.conf file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/tree/1.4.2/script/client/conf):
+Alternatively, if you are using the `io.seata:seata-all` dependency, you need to add transaction group and cluster mapping in the file.conf as follows:
+
 ```
-  zk {
+vgroupMapping.my_test_tx_group = "default"
+```
+Additionally, include ZooKeeper configuration in the `registry.conf` file. For other configurations, please refer to the [configuration reference](https://github.com/seata/seata/tree/1.4.2/script/client/conf):
+
+```
+zk {
     serverAddr = "127.0.0.1:2181"
     sessionTimeout = 6000
     connectTimeout = 2000
     username = ""
     password = ""
-  }
+}
 ```
 
 After configuring the client, start the application and wait for a moment, the Seata service will be operational soon.
