@@ -18,13 +18,12 @@ Seata 融合 Nacos 注册中心的操作步骤非常简单，大致步骤可分�
 
 ### 增加 Maven 依赖
 
-首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，建议使用 Seata `1.4.0+`：
+首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中：
 
 ```xml
 <dependency>
     <groupId>io.seata</groupId>
     <artifactId>seata-spring-boot-starter</artifactId>
-    <version>最新版</version>
 </dependency>
 <dependency>
     <groupId>com.alibaba.nacos</groupId>
@@ -42,12 +41,9 @@ seata:
   registry:
     type: nacos
     nacos:
-      application: seata-server
-      server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      cluster: default
+      server-addr: localhost
+      namespace:
 ```
 
 ### Server端配置注册中心
@@ -59,13 +55,9 @@ registry {
   type = "nacos"
 
   nacos {
-    application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
+    serverAddr = "localhost"
     namespace = ""
     cluster = "default"
-    username = ""
-    password = ""
   }
 }
 
