@@ -39,7 +39,7 @@ First, you need to add the Maven dependency of `spring-cloud-starter-netflix-eur
     </exclusions>
 </dependency>
 
-<!-- eureka client dependency -->
+        <!-- eureka client dependency -->
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -49,35 +49,32 @@ First, you need to add the Maven dependency of `spring-cloud-starter-netflix-eur
 
 ### Configuring the Registry on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/develop/script/client) for other configurations.
+Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/1.8.0/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/1.8.0/script/client) for other configurations.
 
 ```yaml
 seata:
-  tx-service-group: my_test_tx_group
+  tx-service-group: default_tx_group
   service:
     vgroup-mapping:
-      my_test_tx_group: seata-server # Configure the corresponding value of registry.eureka.application on the Server side here
+      default_tx_group: seata-server # Configure the corresponding value of registry.eureka.application on the Server side here
   registry:
     type: eureka
     eureka:
       service-url: http://localhost:8761/eureka
-      weight: 1
 ```
 
 ### Server-side configuration of the registry center
 
-Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to the [configuration](https://github.com/seata/seata/tree/develop/script/server) for the rest.
+Add the corresponding configuration center in [conf/application.yml](https://github.com/seata/seata/blob/1.8.0/server/src/main/resources/application.yml), and refer to the [configuration](https://github.com/seata/seata/blob/1.8.0/server/src/main/resources/application.example.yml) for the rest.
 
-```
-registry {
-  type = "eureka"
- 
-  eureka {
-    serviceUrl = "http://localhost:8761/eureka"
-    application = "seata-server"
-    weight = "1"
-  }
-}
+```yaml
+seata:
+  registry:
+    type: eureka
+    eureka:
+      service-url: http://localhost:8761/eureka
+      application: seata-server
+      weight: 1
 ```
 
 After that, when Seata-Server is started, the Server-side service will appear in the registry center list in the Eureka console. After configuring the Client, you can start the application to experience the Seata service.

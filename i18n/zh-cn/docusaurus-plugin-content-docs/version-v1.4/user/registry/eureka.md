@@ -39,7 +39,7 @@ Seata 融合 Eureka注册中心的操作步骤非常简单，大致步骤可分�
     </exclusions>
 </dependency>
 
-<!-- eureka 客户端依赖 -->
+        <!-- eureka 客户端依赖 -->
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -49,7 +49,7 @@ Seata 融合 Eureka注册中心的操作步骤非常简单，大致步骤可分�
 
 ### Client端配置注册中心
 
-在 [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/client)
+在 `application.yml` 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/1.4.2/script/client)
 
 ```yaml
 seata:
@@ -61,12 +61,11 @@ seata:
     type: eureka
     eureka:
       service-url: http://localhost:8761/eureka
-      weight: 1
 ```
 
 ### Server端配置注册中心
 
-在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
+在 `conf/registry.conf` 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/blob/1.4.2/server/src/main/resources/file.conf.example)
 
 ```
 registry {
