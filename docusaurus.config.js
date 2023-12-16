@@ -42,15 +42,9 @@ const config = {
     },
   },
   scripts: [
-    { src: '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js' },
     {
       src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
       async: true,
-    },
-  ],
-  stylesheets: [
-    {
-      href: '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css',
     },
   ],
   plugins: [
