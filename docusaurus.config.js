@@ -115,7 +115,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      metadata: [{ name: 'keywords', content: 'Seata' }],
+      metadata: [
+        {
+          name: 'keywords',
+          content:
+            'Seata,Seata官网,Seata official site,分布式事务,distributed transactions',
+        },
+      ],
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         defaultMode: 'light',
