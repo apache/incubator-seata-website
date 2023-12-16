@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 import { translate } from '@docusaurus/Translate';
 import './index.scss';
 
-// import '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css';
-// import '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js';
-
 const data = {
   title: translate({ id: 'homepage.msemapTitle', message: '微服务全景图' }),
 };
