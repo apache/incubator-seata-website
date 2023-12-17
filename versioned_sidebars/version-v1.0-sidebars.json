@@ -20,11 +20,7 @@
         {
           "type": "category",
           "label": "Transaction Mode",
-          "items": [
-            "user/mode/at",
-            "user/mode/tcc",
-            "user/mode/saga"
-          ]
+          "items": ["user/mode/at", "user/mode/tcc", "user/mode/saga"]
         },
         {
           "type": "category",
@@ -75,17 +71,12 @@
         {
           "type": "category",
           "label": "APM",
-          "items": [
-            "user/apm/skywalking",
-            "user/apm/prometheus"
-          ]
+          "items": ["user/apm/skywalking", "user/apm/prometheus"]
         },
         {
           "type": "category",
           "label": "Testing Report",
-          "items": [
-            "user/performance"
-          ]
+          "items": ["user/performance"]
         },
         {
           "type": "category",
@@ -171,14 +162,12 @@
       ]
     }
   ],
-  "download": [
+  "release-notes": [
     {
       "type": "category",
-      "label": "Download",
+      "label": "release-notes",
       "collapsible": false,
-      "items": [
-        "download"
-      ]
+      "items": ["release-notes"]
     }
   ]
 }
