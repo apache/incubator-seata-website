@@ -1,0 +1,10 @@
+{
+  "sidebar.download.category.download": {
+    "message": "下载",
+    "description": "The label for category Download in sidebar download"
+  },
+  "sidebar.release-history.category.release-history": {
+    "message": "版本历史",
+    "description": "The label for category Release History in sidebar Release History"
+  }
+}

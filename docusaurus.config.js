@@ -53,10 +53,10 @@ const config = {
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
       ({
-        id: 'download',
-        path: 'download',
-        routeBasePath: '/download',
-        sidebarPath: require.resolve('./sidebarsDownload.js'),
+        id: 'unversioned',
+        path: 'unversioned',
+        routeBasePath: '/unversioned',
+        sidebarPath: require.resolve('./sidebarsUnversioned.js'),
       }),
     ],
     [
@@ -175,7 +175,7 @@ const config = {
           },
           {
             label: 'Download',
-            to: '/download/seata-server',
+            to: '/unversioned/download/seata-server',
             position: 'right',
           },
           {

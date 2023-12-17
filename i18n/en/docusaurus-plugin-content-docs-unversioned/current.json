@@ -1,0 +1,10 @@
+{
+  "sidebar.download.category.download": {
+    "message": "Download",
+    "description": "The label for category download in sidebar download"
+  },
+  "sidebar.release-history.category.release-history": {
+    "message": "Release History",
+    "description": "The label for category Release History in sidebar Release History"
+  }
+}
