@@ -72,7 +72,7 @@
     "description": "The label for category Committer Guide in sidebar developers"
   },
   "sidebar.release-notes.category.release-notes": {
-    "message": "发行说明",
+    "message": "发布说明",
     "description": "The label for category Release Notes in sidebar Release Notes"
   }
 }
