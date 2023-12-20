@@ -1,7 +1,7 @@
 ---
-title: Downloads
-keywords: [Seata, Downloads, Version, 2.0.x]
-description: 2.0.x release version download.
+title: Release Notes
+keywords: [Seata, Release Notes, 2.0.x]
+description: 2.0.x Release Notes
 ---
 
 
@@ -9,9 +9,9 @@ description: 2.0.x release version download.
 
 # Seata
 
-> GitHub: https://github.com/seata/seata
+> GitHub: <https://github.com/seata/seata>
 >
-> Release Notes: https://github.com/seata/seata/releases
+> Release Notes: <https://github.com/seata/seata/releases>
 
 ### 2.0.0 (2023-11-24)
 
@@ -21,7 +21,6 @@ description: 2.0.x release version download.
 <details>
   <summary><mark>Release notes</mark></summary>
 
-
 ### Seata 2.0.0
 
 Seata 2.0.0 Released
@@ -30,7 +29,8 @@ Seata is an easy-to-use, high-performance, open source distributed transaction s
 
 The version is updated as follows:
 
-### feature：
+### feature
+
 - [[#5165](https://github.com/seata/seata/pull/5165)] optimize TCC structure, supporting API access. add integration layer module(seata-integration-tx-api) for transaction process definition and proxy enhancement.
 - [[#5352](https://github.com/seata/seata/pull/5352)] add jackson json parser and gson json parser for tcc business action context
 - [[#5377](https://github.com/seata/seata/pull/5377)] make AbstractHttpExecutor.class support http put
@@ -49,7 +49,8 @@ The version is updated as follows:
 - [[#5946](https://github.com/seata/seata/pull/5946)] add sqlserver's adaptation to the console paging interface
 - [[#5226](https://github.com/seata/seata/pull/5226)] support raft cluster and store mode
 
-### bugfix：
+### bugfix
+
 - [[#5677](https://github.com/seata/seata/pull/5677)] fix saga mode serviceTask inputParams json autoType convert exception
 - [[#5277](https://github.com/seata/seata/pull/5277)] fix server console has queried the released lock
 - [[#5282](https://github.com/seata/seata/pull/5282)] parallel request handle throw IndexOutOfBoundsException
@@ -106,7 +107,8 @@ The version is updated as follows:
 - [[#6050](https://github.com/seata/seata/pull/6050)] change RaftServer#destroy to wait all shutdown procedures
 - [[#6033](https://github.com/seata/seata/pull/6033)] fix the isReference judgment logic in HSFRemotingParser, remove unnecessary judgment about FactoryBean
 
-### optimize：
+### optimize
+
 - [[#5966](https://github.com/seata/seata/pull/5966)] decouple saga expression handling and remove evaluator package
 - [[#5928](https://github.com/seata/seata/pull/5928)] add Saga statelang semantic validation
 - [[#4858](https://github.com/seata/seata/pull/4858)] reorganize the usage of task session manager
@@ -168,8 +170,8 @@ The version is updated as follows:
 - [[#6002](https://github.com/seata/seata/pull/6002)] remove fst serialization
 - [[#6045](https://github.com/seata/seata/pull/6045)] optimize derivative product check base on mysql
 
+### security
 
-### security:
 - [[#5642](https://github.com/seata/seata/pull/5642)] add Hessian Serializer WhiteDenyList
 - [[#5694](https://github.com/seata/seata/pull/5694)] fix several node.js security vulnerabilities
 - [[#5801](https://github.com/seata/seata/pull/5801)] fix some dependencies vulnerability
@@ -180,7 +182,8 @@ The version is updated as follows:
 - [[#5987](https://github.com/seata/seata/pull/5987)] upgrade some dependencies version
 - [[#6013](https://github.com/seata/seata/pull/6013)] upgrade seata-server spring version
 
-### test:
+### test
+
 - [[#5308](https://github.com/seata/seata/pull/5308)] add unit test [FileLoader, ObjectHolder, StringUtils]
 - [[#5309](https://github.com/seata/seata/pull/5309)] add unit test [ArrayUtils, ConfigTools, MapUtil]
 - [[#5335](https://github.com/seata/seata/pull/5335)] add unit test [EnhancedServiceLoader,ExtensionDefinition,SizeUtilTest,ReflectionUtil,LowerCaseLinkHashMap,FileLoader,ObjectHolder]
@@ -202,8 +205,7 @@ The version is updated as follows:
 - [[#6009](https://github.com/seata/seata/pull/6009)] add test cases for RaftServerFactory
 - [[#6052](https://github.com/seata/seata/pull/6052)] upgrade springboot and spring version for server for test
 
-
-### Contributors:
+### Contributors
 
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
@@ -244,14 +246,13 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [tobehardest](https://github.com/tobehardest)
 - [leezongjie](https://github.com/leezongjie)
 
-
 Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
 #### Link
 
-- **Seata:** https://github.com/seata/seata
-- **Seata-Samples:** https://github.com/seata/seata-samples
-- **Release:** https://github.com/seata/seata/releases
-- **WebSite:** https://seata.io
+- **Seata:** <https://github.com/seata/seata>
+- **Seata-Samples:** <https://github.com/seata/seata-samples>
+- **Release:** <https://github.com/seata/seata/releases>
+- **WebSite:** <https://seata.io>
 
 </details>
