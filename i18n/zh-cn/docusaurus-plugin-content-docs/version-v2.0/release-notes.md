@@ -1,26 +1,24 @@
 ---
-title: 下载中心
-keywords: [Seata, Downloads, Version, 2.0.x]
-description: 2.0.x 版本下载
+title: 发布说明
+keywords: [Seata, 发布说明, 2.0.x]
+description: 2.0.x 发布说明
 ---
 
-# 下载中心
+# 发布说明
 
 ## Seata
 
-> GitHub: https://github.com/seata/seata 
-> 
-> 发布说明: https://github.com/seata/seata/releases
+> GitHub: <https://github.com/seata/seata>
+>
+> 发布说明: <https://github.com/seata/seata/releases>
 
 ### 2.0.0 (2023-11-24，推荐版本)
 
 [source](https://github.com/seata/seata/archive/v2.0.0.zip) |
 [binary](https://github.com/seata/seata/releases/download/v2.0.0/seata-server-2.0.0.zip)
 
-
 <details>
   <summary><mark>Release notes</mark></summary>
-
 
 ### Seata 2.0.0
 
@@ -30,7 +28,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 
 此版本更新如下：
 
-### feature：
+### feature
+
 - [[#5165](https://github.com/seata/seata/pull/5165)] TCC结构拆分，支持API方式接入。增加集成层模块（seata-integration-tx-api），对事务流程定义以及代理部分增强。
 - [[#5352](https://github.com/seata/seata/pull/5352)] 在TCC Business Action Context中集成jackson和gson序列化功能
 - [[#5377](https://github.com/seata/seata/pull/5377)] 使AbstractHttpExecutor类支持PUT方式的请求
@@ -49,7 +48,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5946](https://github.com/seata/seata/pull/5946)] 增加sqlserver对控制台分页接口的适配
 - [[#5226](https://github.com/seata/seata/pull/5226)] 支持Raft集群部署和事务存储模式
 
-### bugfix：
+### bugfix
+
 - [[#5677](https://github.com/seata/seata/pull/5677)]  修复saga模式下serviceTask入参autoType转化失败问题
 - [[#5277](https://github.com/seata/seata/pull/5277)] 修复控制台全局锁查询接口查到了已释放的锁
 - [[#5282](https://github.com/seata/seata/pull/5282)] 修复并行rm请求处理时数组索引越界问题
@@ -106,7 +106,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#6050](https://github.com/seata/seata/pull/6050)] 修改 RaftServer#destroy 为等待所有关闭流程结束
 - [[#6033](https://github.com/seata/seata/pull/6033)] 修复HSFRemotingParser中isReference判断逻辑，去掉关于FactoryBean的无用判断
 
-### optimize：
+### optimize
+
 - [[#5966](https://github.com/seata/seata/pull/5966)] Saga 表达式解耦并统一格式
 - [[#5928](https://github.com/seata/seata/pull/5928)] 增加Saga模式状态机语义验证阶段
 - [[#4858](https://github.com/seata/seata/pull/4858)] 重构优化 SessionManager 用法
@@ -168,8 +169,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#6002](https://github.com/seata/seata/pull/6002)] 移除fst序列化模块
 - [[#6045](https://github.com/seata/seata/pull/6045)] 优化MySQL衍生数据库判断逻辑
 
+### security
 
-### security:
 - [[#5642](https://github.com/seata/seata/pull/5642)] 增加Hessian 序列化黑白名单
 - [[#5694](https://github.com/seata/seata/pull/5694)] 修复若干Node.js依赖安全漏洞
 - [[#5801](https://github.com/seata/seata/pull/5801)] 修复Java依赖安全漏洞
@@ -180,7 +181,8 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#5987](https://github.com/seata/seata/pull/5987)] 升级依赖版本
 - [[#6013](https://github.com/seata/seata/pull/6013)] 升级seata-server依赖的spring版本
 
-### test：
+### test
+
 - [[#5308](https://github.com/seata/seata/pull/5308)] 添加单元测试用例 [FileLoader, ObjectHolder, StringUtils]
 - [[#5309](https://github.com/seata/seata/pull/5309)] 添加单元测试用例 [ArrayUtils, ConfigTools, MapUtil]
 - [[#5335](https://github.com/seata/seata/pull/5335)] 添加单元测试用例 [EnhancedServiceLoader,ExtensionDefinition,SizeUtilTest,ReflectionUtil,LowerCaseLinkHashMap,FileLoader,ObjectHolder]
@@ -202,8 +204,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [[#6009](https://github.com/seata/seata/pull/6009)] 添加RaftServerFactory的单元测试用例
 - [[#6052](https://github.com/seata/seata/pull/6052)] 给ut升级 springboot 和服务器的 spring 版本
 
-
-### Contributors:
+### Contributors
 
 非常感谢以下 contributors 的代码贡献。若有无意遗漏，请报告。
 
@@ -244,14 +245,13 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [tobehardest](https://github.com/tobehardest)
 - [leezongjie](https://github.com/leezongjie)
 
-
 同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
 
 #### 常用链接
 
-- **Seata:** https://github.com/seata/seata
-- **Seata-Samples:** https://github.com/seata/seata-samples
-- **Release:** https://github.com/seata/seata/releases
-- **WebSite:** https://seata.io
+- **Seata:** <https://github.com/seata/seata>
+- **Seata-Samples:** <https://github.com/seata/seata-samples>
+- **Release:** <https://github.com/seata/seata/releases>
+- **WebSite:** <https://seata.io>
 
 </details>
