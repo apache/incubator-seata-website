@@ -1,14 +1,15 @@
 ---
-title: Java-SDK
-keywords: [Seata, Downloads, Version]
-description: release version download
+title: Seata Java-SDK下载
+keywords: [Seata, Java-SDK, 下载]
+description: Seata Java-SDK发布版本下载
 ---
 
 
-# Java-SDK
+# Seata Java-SDK下载
 
-# Seata
+:::tip
 
-> GitHub: <https://github.com/seata/seata>
->
-> Release Notes: <https://github.com/seata/seata/releases>
+2.0.0版本已发布，欢迎使用。
+
+:::tip
+

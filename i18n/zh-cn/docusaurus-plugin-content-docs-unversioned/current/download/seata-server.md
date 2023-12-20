@@ -38,7 +38,7 @@ description: Seata-Server发布版本下载
 | 1.7.1  | [1.7.1.zip](https://github.com/seata/seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x 发布说明](/docs/v1.7/release-notes/) | [1.7.x 快速开始](/docs/v1.7/user/quickstart/) |
 
 1. Seata版本维护策略，请参考[版本维护文档](https://seata.io)，请您尽快升级低版本至当前维护版本。版本升级请参考[升级指南](/docs/ops/upgrade)
-2. 更多历史版本下载，请参考[历史版本](../release-history/seata-server)
+2. 更多历史版本下载，请参考[版本历史](../release-history/seata-server)
 
 ## 快照版
 

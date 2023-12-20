@@ -1,11 +1,11 @@
 ---
-title: Seata-Server历史版本
-keywords: [Seata, Seata-Server, 历史版本]
-description: Seata-Server历史版本
+title: Seata-Server版本历史
+keywords: [Seata, Seata-Server, 版本历史]
+description: Seata-Server版本历史
 ---
 
 
-# Seata-Server历史版本
+# Seata-Server版本历史
 
 :::tip
 
@@ -29,4 +29,3 @@ Seata团队维护着最近的3个稳定版本。如：最后一个版本为2.0.0
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------- | ------------------------------------------- | --------------------------------------------- |
 | 1.8.0  | [1.8.0.zip](https://github.com/seata/seata/releases/download/v1.8.0/seata-server-1.8.0.zip) | [seataio/seata-server:1.8.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.8.0) | f5de162a4577f5f96828cba75d912240 | [1.8.x 发布说明](/docs/v1.8/release-notes/) | [1.8.x 快速开始](/docs/v1.8/user/quickstart/) |
 | 1.7.1  | [1.7.1.zip](https://github.com/seata/seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x 发布说明](/docs/v1.7/release-notes/) | [1.7.x 快速开始](/docs/v1.7/user/quickstart/) |
-
