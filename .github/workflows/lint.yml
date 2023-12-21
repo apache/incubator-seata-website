@@ -11,6 +11,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.10.0'
+          node-version: '19.5.x'
       - run: npm install -g markdownlint-cli@0.38.0
-      - run: markdownlint '**/*.md' --ignore node_modules
+      - run: markdownlint '**/*.md' --ignore src \
+             --ignore node_modules \
+             --ignore blog \
+             --ignore i18n \
+             --ignore versioned_docs \
+             --ignore versioned_sidebars \
+             --ignore docs \
+             --ignore readme

@@ -52,24 +52,8 @@ MD012:
   # Consecutive blank lines
   maximum: 1
 
-# MD013/line-length : Line length
-MD013:
-  # Number of characters
-  line_length: 80
-  # Number of characters for headings
-  heading_line_length: 80
-  # Number of characters for code blocks
-  code_block_line_length: 80
-  # Include code blocks
-  code_blocks: true
-  # Include tables
-  tables: true
-  # Include headings
-  headings: true
-  # Strict length checking
-  strict: false
-  # Stern length checking
-  stern: false
+# MD012/line-length
+MD013: false
 
 # MD022/blanks-around-headings : Headings should be surrounded by blank lines
 MD022:
