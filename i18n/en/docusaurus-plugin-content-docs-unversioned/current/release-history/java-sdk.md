@@ -1,15 +1,15 @@
 ---
-title: Seata Java-SDK版本历史
-keywords: [Seata, Java-SDK, 版本历史]
-description: Seata Java-SDK版本历史
+title: Seata Java-SDK Release History
+keywords: [Seata, Java-SDK, Release History]
+description: Seata Java-SDK Release History
 ---
 
 
-# Seata Java-SDK版本历史
+# Seata Java-SDK Release History
 
 :::tip
 
-Seata团队维护着最近的3个稳定版本。如：最后一个版本为2.0.0，Seata团队将会维护以下稳定版本：
+The Seata team maintains the last 3 stable releases. For example, the last version was 2.0.0, and the Seata team will maintain the following stable versions:
 
 - 2.0.0
 - 1.8.0

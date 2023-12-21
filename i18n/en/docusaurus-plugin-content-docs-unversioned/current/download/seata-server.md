@@ -9,7 +9,7 @@ description: Seata-Server release version download
 
 :::tip
 
-version 2.0.0 has been released and is available for use. 
+Version 2.0.0 has been released and is available for use. 
 
 :::tip
 
@@ -21,13 +21,13 @@ The following system requirements are the minimum requirements for deploying Sea
 
 :::note
 
-| 项目 | 配置描述                                         |
-| ---- | ------------------------------------------------ |
-| CPU  | 1核1GHz及以上，支持64位的CPU                     |
-| 内存 | 2G及以上                                         |
-| 硬盘 | 部署无要求，需要根据日志、存储模式等配置具体调整 |
-| 系统 | 64位的Linux、Mac OS X、Windows                   |
-| JDK  | JDK 8 或更高版本                                 |
+| Items  | Configuration Descriptions                                   |
+| ------ | ------------------------------------------------------------ |
+| CPU    | 1 core 1GHz and above, supports 64-bit CPUs                  |
+| RAM    | 2G and above                                                 |
+| Disk   | Deployment of no requirements,requires specific adjustments based on logging, storage mode, and other configurations |
+| System | 64-bit Linux, Mac OS X, Windows                              |
+| JDK    | JDK 8 or higher                                              |
 
 ## Stable Version
 
@@ -37,8 +37,8 @@ The following system requirements are the minimum requirements for deploying Sea
 | 1.8.0   | [1.8.0.zip](https://github.com/seata/seata/releases/download/v1.8.0/seata-server-1.8.0.zip) | [seataio/seata-server:1.8.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.8.0) | f5de162a4577f5f96828cba75d912240 | [1.8.x Release Notes](/docs/v1.8/release-notes/) | [1.8.x Quick Start](/docs/v1.8/user/quickstart/) |
 | 1.7.1   | [1.7.1.zip](https://github.com/seata/seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x Release Notes](/docs/v1.7/release-notes/) | [1.7.x Quick Start](/docs/v1.7/user/quickstart/) |
 
-1. Seata版本维护策略，请参考[版本维护文档](https://seata.io)，请您尽快升级低版本至当前维护版本。版本升级请参考[升级指南](/docs/ops/upgrade)
-2. 更多历史版本下载，请参考[版本历史](../release-history/seata-server)
+1. Seata version maintenance policy, please refer to the [version maintenance document](https://seata.io), please upgrade the lower version to the current maintenance version as soon as possible. For version upgrade, please refer to the [upgrade guide](/docs/ops/upgrade)
+2. For more release history downloads, please refer to [Release History](../release-history/seata-server)
 
 ## Snapshot Version
 
