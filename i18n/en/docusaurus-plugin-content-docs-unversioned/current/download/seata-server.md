@@ -9,7 +9,7 @@ description: Seata-Server release version download
 
 :::tip
 
-Version 2.0.0 has been released and is available for use. 
+Version 2.0.0 has been released and is available for use.
 
 :::tip
 
@@ -17,7 +17,7 @@ Version 2.0.0 has been released and is available for use.
 
 :::note
 
-The following system requirements are the minimum requirements for deploying Seata-Server; if your appliance does not meet these requirements, you may not be able to deploy Seata-Server on your appliance. 
+The following system requirements are the minimum requirements for deploying Seata-Server; if your appliance does not meet these requirements, you may not be able to deploy Seata-Server on your appliance.
 
 :::note
 
@@ -38,7 +38,7 @@ The following system requirements are the minimum requirements for deploying Sea
 | 1.7.1   | [1.7.1.zip](https://github.com/seata/seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x Release Notes](/docs/v1.7/release-notes/) | [1.7.x Quick Start](/docs/v1.7/user/quickstart/) |
 
 1. Seata version maintenance policy, please refer to the [version maintenance document](https://seata.io), please upgrade the lower version to the current maintenance version as soon as possible. For version upgrade, please refer to the [upgrade guide](/docs/ops/upgrade)
-2. For more release history downloads, please refer to [Release History](../release-history/seata-server)
+2. For more release history downloads, please refer to [Release History](/unversioned/release-history/seata-server)
 
 ## Snapshot Version
 
