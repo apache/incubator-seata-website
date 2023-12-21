@@ -176,6 +176,7 @@ custom_edit_url: https://github.com/seata/seata.github.io/blob/docusaurus/i18n/e
 
 1. Do not use un correct html tag like `<img>、<br>`, replace with `<img /> <br />`
 2. If you want show `<xx>`, replace with `&lt;xx&gt;`
+3. Use `npm run lint` to check the style.
 
 ## Others
 
