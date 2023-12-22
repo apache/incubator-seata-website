@@ -18,4 +18,3 @@ notifications:
 
 publish:
   whoami: asf-site
-  hostname: seata.apache.org
