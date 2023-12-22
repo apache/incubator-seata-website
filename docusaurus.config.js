@@ -50,6 +50,16 @@ const config = {
   plugins: [
     'docusaurus-plugin-sass',
     [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'unversioned',
+        path: 'unversioned',
+        routeBasePath: '/unversioned',
+        sidebarPath: require.resolve('./sidebarsUnversioned.js'),
+      }),
+    ],
+    [
       'docusaurus-plugin-includes',
       {
         injectedHtmlTags: {
@@ -165,9 +175,7 @@ const config = {
           },
           {
             label: 'Download',
-            // to: '/blog/download',
-            type: 'doc',
-            docId: 'download',
+            to: '/unversioned/download/seata-server',
             position: 'right',
           },
           {
