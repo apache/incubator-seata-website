@@ -13,7 +13,7 @@
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata">
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2" async></script><link rel="stylesheet" href="/zh-cn/assets/css/styles.4de6876d.css">
 <link rel="preload" href="/zh-cn/assets/js/runtime~main.9584936c.js" as="script">
-<link rel="preload" href="/zh-cn/assets/js/main.d79bffce.js" as="script">
+<link rel="preload" href="/zh-cn/assets/js/main.cb8df725.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script>
@@ -40,6 +40,6 @@
 <img loading="lazy" alt="终态" src="/zh-cn/assets/images/page5-24bcb08065fcf74b8e6a55b3c54e81b2.png" width="789" height="298" class="img_ev3q"><br>
 <!-- -->到达终态后，后续的ID只会在该ID所属的子序列上进行顺序增长，而不会造成页分裂。该状态下的顺序增长与auto_increment的顺序增长的区别是，前者有1024个增长位点(各个子序列的尾部)，后者只有尾部一个。</p><p>到这里，我们可以回答开头所提出的问题了：新算法从全局来看的确不是全局递增的，但该算法是<strong>收敛</strong>的，达到稳态后，新算法同样能达成像全局顺序递增一样的效果。</p><hr><h2 class="anchor anchorWithStickyNavbar_LWe7" id="扩展思考">扩展思考<a href="#扩展思考" class="hash-link" aria-label="扩展思考的直接链接" title="扩展思考的直接链接">​</a></h2><p>以上只提到了序列不停增长的情况，而实践生产中，不光有新数据的插入，也有旧数据的删除。而数据的删除有可能会导致页合并(innodb若发现相邻2个数据页的空间利用率都不到50%，就会把它俩合并)，这对新算法的影响如何呢？</p><p>经过上面的流程，我们可以发现，新算法的本质是利用前期的页分裂，把不同的子序列逐渐分离开来，让算法不断收敛到稳态。而页合并则恰好相反，它有可能会把不同的子序列又合并回同一个数据页里，妨碍算法的收敛。尤其是在收敛的前期，频繁的页合并甚至可以让算法永远无法收敛(你刚分离出来我就又把它们合并回去，一夜回到解放前~)！但在收敛之后，只有在各个子序列的尾节点进行的页合并，才有可能破坏稳态(一个子序列的尾节点和下一个子序列的头节点进行合并)。而在子序列其余节点上的页合并，不影响稳态，因为子序列仍然是有序的，只不过长度变短了而已。</p><p>以seata的服务端为例，服务端那3张表的数据的生命周期都是比较短的，一个全局事务结束之后，它们就会被清除了，这对于新算法是不友好的，没有给时间它进行收敛。不过已经有延迟删除的PR在review中，搭配这个PR，效果会好很多。比如定期每周清理一次，前期就有足够的时间给算法进行收敛，其余的大部分时间，数据库就能从中受益了。到期清理时，最坏的结果也不过是表被清空，算法从头再来。</p><p>如果您希望把新算法应用到业务系统当中，请务必确保算法有时间进行收敛。比如用户表之类的，数据本就打算长期保存的，算法可以自然收敛。或者也做了延迟删除的机制，给算法足够的时间进行收敛。</p><p>如果您有更好的意见和建议，也欢迎跟seata社区联系！</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh-cn/blog/seata-at-lock"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">详解 Seata AT 模式事务隔离级别与全局锁设计</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/blog/seata-analysis-UUID-generator"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">Seata基于改良版雪花算法的分布式UUID生成器分析</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#扩展思考" class="table-of-contents__link toc-highlight">扩展思考</a></li></ul></div></div></div></div></div></div>
 <script src="/zh-cn/assets/js/runtime~main.9584936c.js"></script>
-<script src="/zh-cn/assets/js/main.d79bffce.js"></script>
+<script src="/zh-cn/assets/js/main.cb8df725.js"></script>
 </body>
 </html>
