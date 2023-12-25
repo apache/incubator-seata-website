@@ -128,6 +128,7 @@ description: Seata parameter configuration.
 | store.redis.database | redis mode default library | default 0|
 | store.redis.password | redis mode password (optional) | null by default|
 | store.redis.queryLimit | The maximum number of Redis queries at a time | 100 by default|
+| store.redis.type | Redis operation type: lua, pippline | pippline|
 | metrics.enabled | Whether to enable Metrics | False is off by default. In the false state, all Metrics related components will not be initialized to minimize the performance loss|
 | metrics.registryType | Indicator registrar type | The indicator registrar type used by Metrics is a built-in compact (simple) implementation by default. Meters in this implementation only use a limited memory count, and the performance is high enough to meet most scenarios; Currently, only one indicator registrar can be set|
 | metrics.exporterList | Index result Measurement data outputter list | default prometheus. Multiple outputters are separated by English commas, such as "prometheus, jmx". Currently, only the prometheus outputters are connected|

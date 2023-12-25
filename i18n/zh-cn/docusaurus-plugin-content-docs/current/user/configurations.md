@@ -119,6 +119,7 @@ description: Seata 参数配置。
 | store.redis.database | redis模式默认库 | 默认0    |
 | store.redis.password | redis模式密码(无可不填) | 默认null |
 | store.redis.queryLimit | redis模式一次查询最大条数 | 默认100  |
+| store.redis.type | redis模式主要使用的方式: lua, pippline | pippline|
 | metrics.enabled                           | 是否启用Metrics  | 默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低 |
 | metrics.registryType                     | 指标注册器类型    | Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
 | metrics.exporterList                     | 指标结果Measurement数据输出器列表   | 默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
