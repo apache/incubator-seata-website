@@ -39,12 +39,10 @@ In the @SpringBootApplication annotation, exclude com.alibaba.cloud.seata.Global
             <dependency>
                  <groupId>io.seata</groupId>
                  <artifactId>seata-spring-boot-starter</artifactId>
-                 <version>最新版</version>
              </dependency>
              <dependency>
                  <groupId>com.alibaba.cloud</groupId>
                  <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-                 <version>最新版本</version>
                  <exclusions>
                      <exclusion>
                          <groupId>io.seata</groupId>
@@ -58,13 +56,11 @@ In the @SpringBootApplication annotation, exclude com.alibaba.cloud.seata.Global
 
 ### Start Server
 
-There are currently three server-side storage modes (store.mode): file, db, and redis (raft and mongodb will be introduced later). The file mode does not need to be changed and can be started directly. The following specifically explains the db and redis startup steps.
+There are currently three server-side storage modes (store.mode): file, db. The file mode does not need to be changed and can be started directly. The following specifically explains the db startup steps.
 
 Note: The file mode is a stand-alone mode. The global transaction session information is read and written in the memory and the local file root.data is persisted. So the performance is quite well;
 
 The db mode is a high-availability mode. Global transaction session information is shared through db, but the corresponding performance is poor;
-
-The redis mode is supported by Seata-Server 1.3 and above. It has high performance and risks losing transaction information. Please configure the redis persistence configuration suitable for the current scenario in advance.
 
 #### Step 1: Startup package
 - <a href="https://github.com/seata/seata/releases" target="_blank">Click to download</a>.
@@ -75,30 +71,15 @@ Global transaction session information consists of three pieces of content, that
 
 #### Step 3: Modify store.mode
 
-Startup package: seata-->conf-->application.yml, modify store.mode="db" or "redis"
-Source code: root directory-->seata-server-->resources-->application.yml, modify store.mode="db" or "redis"
+Startup package: seata-->conf-->file.conf, modify store.mode="db"
+Source code: root directory-->seata-server-->resources-->file.conf, modify store.mode="db"
 
-For versions below 1.5.0:
+#### Step 4: Modify database connection attribute configuration
 
-Startup package: seata-->conf-->file.conf, modify store.mode="db" or "redis"
-Source code: root directory-->seata-server-->resources-->file.conf, modify store.mode="db" or "redis"
-
-#### Step 4: Modify database connection|redis attribute configuration
-
-Startup package: seata-->conf-->application.example.yml comes with additional configuration, copy its db|redis related configuration to application.yml, and modify store.db or store.redis related properties.
-Source code: Root directory-->seata-server-->resources-->application.example.yml comes with additional configuration, copy its db|redis related configuration to application.yml, and modify store.db or store.redis related Attributes.
-
-For versions below 1.5.0:
-
-Startup package: seata-->conf-->file.conf, modify store.db or store.redis related properties.
-Source code: Root directory-->seata-server-->resources-->file.conf, modify store.db or store.redis related properties.
+Startup package: seata-->conf-->file.conf, modify store.db related properties.
+Source code: Root directory-->seata-server-->resources-->file.conf, modify store.db related properties.
 
 #### Step 5: Start
-
-- Source code startup: execute the main method in ServerApplication.java
-- Command to start: seata-server.sh -h 127.0.0.1 -p 8091 -m db
-
-For versions below 1.5.0:
 
 - Source code startup: execute the main method in Server.java
 - Command to start: seata-server.sh -h 127.0.0.1 -p 8091 -m db -n 1 -e test
@@ -106,7 +87,7 @@ For versions below 1.5.0:
 ```
     -h: IP registered to the registration center
     -p: Server rpc listening port
-    -m: Global transaction session information storage mode, file, db, redis. Read startup parameters first (Seata-Server 1.3 and above supports redis)
+    -m: Global transaction session information storage mode, file, db. Read startup parameters first
     -n: Server node. When there are multiple servers, each node needs to be distinguished to generate transactionIds in different intervals to avoid conflicts.
     -e: Multi-environment configuration please refers to http://seata.io/en-us/docs/ops/multi-configuration-isolation.html.
 ```
@@ -192,86 +173,3 @@ You can introduce seata-spring-boot-starter, spring-cloud-starter-alibaba-seata 
 Refer to the various rpc implementation modules under the source code integration folder.
 - Automatic <br/>
 SpringCloud users can introduce spring-cloud-starter-alibaba-seata, and xid transfer has been implemented internally.
-
-## Business use
-
-### Annotation interception
-
-#### Global affairs
-
-```java
-@GetMapping(value = "testCommit")
-@GlobalTransactional
-public Object testCommit(@RequestParam(name = "id",defaultValue = "1") Integer id,
-    @RequestParam(name = "sum", defaultValue = "1") Integer sum) {
-    Boolean ok = productService.reduceStock(id, sum);
-    if (ok) {
-        LocalDateTime now = LocalDateTime.now();
-        Orders orders = new Orders();
-        orders.setCreateTime(now);
-        orders.setProductId(id);
-        orders.setReplaceTime(now);
-        orders.setSum(sum);
-        orderService.save(orders);
-        return "ok";
-    } else {
-        return "fail";
-    }
-}
-```
-
-#### TCC
-
-```java
-/**
- * Define two-phase commit: name = bean name of the tcc (globally unique), commitMethod = commit (the two-phase confirmation method) and rollbackMethod = rollback (the two-phase cancellation method)
- * useTCCFence=true (enable anti-hanging)
- * BusinessActionContextParameter annotation passes parameters to the second stage
- *
- * @param params - input parameters
- * @return String
- */
-@TwoPhaseBusinessAction(name = "beanName", commitMethod = "commit", rollbackMethod = "rollback", useTCCFence = true)
-public void insert(@BusinessActionContextParameter(paramName = "params") Map<String, String> params) {
-    logger.info("此处可以预留资源,或者利用tcc的特点,与AT混用,二阶段时利用一阶段在此处存放的消息,通过二阶段发出,比如redis,mq等操作");
-}
-
-
-/**
- * The confirmation method can be named differently, but it must be consistent with commitMethod. The context can pass the parameters of the try method.
- *
- * @param context context
- * @return boolean
- */
-public void commit(BusinessActionContext context) {
-    logger.info("预留资源真正处理,或者发出mq消息和redis入库");
-}
-
-/**
- * Two-stage cancellation method
- *
- * @param context context
- * @return boolean
- */
-public void rollback(BusinessActionContext context) {
-    logger.info("预留资源释放,或清除一阶段准备让二阶段提交时发出的消息缓存");
-}
-```
-
-### Pointcut expression
-
-#### Global affairs
-
-```java
-    @Bean
-    public AspectTransactionalInterceptor aspectTransactionalInterceptor () {
-        return new AspectTransactionalInterceptor();
-    }
-
-    @Bean
-    public Advisor txAdviceAdvisor(AspectTransactionalInterceptor aspectTransactionalInterceptor ) {
-        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression("Configure pointcut expression to enable global transaction interceptor");
-        return new DefaultPointcutAdvisor(pointcut, aspectTransactionalInterceptor);
-    }
-```

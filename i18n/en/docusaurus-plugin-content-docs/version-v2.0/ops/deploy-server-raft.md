@@ -58,6 +58,9 @@ On Windows
 ```cmd
 bin\seata-server.bat
 ```
+4. Volume expansion and contraction
+Assuming the original cluster list is "192.168.0.111:7091, 192.168.0.112:7091, 192.168.0.113:7091", whether it is scaling or shrinking, only need to modify this string and submit it to the volume expansion and contraction interface of a member, such as scaling "curl -X POST -i http://192.168.0.111:7091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111: 7091, 192.168.0.112:7091, 192.168.0.113:7091, 192.168.0.114:7091" ', if it is scaling, only need to remove the nodes in the cluster connection string that need to be offline, and call the volume expansion and contraction interface.
+Note: The seata.server.raft.server-addr configuration is invalid as long as the cluster is built. Please perform volume expansion and contraction through the API. The subsequent console will also integrate volume expansion and contraction and cluster management functions.
 
 ## Client
 
