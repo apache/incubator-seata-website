@@ -38,12 +38,10 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
            <dependency>
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
-                <version>最新版</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-                <version>最新版本</version>
                 <exclusions>
                     <exclusion>
                         <groupId>io.seata</groupId>
