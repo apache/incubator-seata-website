@@ -45,6 +45,7 @@ seata:
 ```
 If the addresses in server-addr: are all on the local machine, then you need to add an offset of 1000 to the Netty port for different servers on this machine. For example, if `server.port: 7092`, the Netty port would be `8092`, and the Raft election and communication port would be `9092`. You need to add the startup parameter `-Dserver.raftPort=9092`.
 On Linux, you can specify the export `JAVA_OPT="-Dserver.raftPort=9092"` command to set the desired value.。
+
 3. Startup
 
 On Linux/Mac
@@ -60,6 +61,7 @@ bin\seata-server.bat
 ```
 
 4. Volume expansion and contraction
+
 Assuming the original cluster list is "192.168.0.111:7091, 192.168.0.112:7091, 192.168.0.113:7091", whether it is scaling or shrinking, only need to modify this string and submit it to the volume expansion and contraction interface of a member, such as scaling "curl -X POST -i http://192.168.0.111:7091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111: 7091, 192.168.0.112:7091, 192.168.0.113:7091, 192.168.0.114:7091" ', if it is scaling, only need to remove the nodes in the cluster connection string that need to be offline, and call the volume expansion and contraction interface.
 Note: The seata.server.raft.server-addr configuration is invalid as long as the cluster is built. Please perform volume expansion and contraction through the API. The subsequent console will also integrate volume expansion and contraction and cluster management functions.
 
