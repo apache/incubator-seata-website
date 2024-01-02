@@ -12,4 +12,5 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.5.x'
+      - run: npm i
       - run: npm run lint
