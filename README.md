@@ -1,8 +1,8 @@
 # Seata Official Website
 
-[![CI Status](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions)
+[![CI Status](https://github.com/apache/incubator-seata-website/workflows/CI/badge.svg)](https://github.com/apache/incubator-seata-website/actions)
 
-All website material of [https://seata.io](https://seata.io), which uses a open source framework: Docusaurus.
+All website material of [https://seata.apache.org](https://seata.apache.org), which uses a open source framework: Docusaurus.
 
 ## README.md
 
@@ -162,7 +162,7 @@ keywords: [keywords1,keywords2]
 description: some description
 author: author name
 date: 2018-12-29
-custom_edit_url: https://github.com/seata/seata.github.io/blob/docusaurus/i18n/en/docusaurus-plugin-content-blog/download.md
+custom_edit_url: https://github.com/apache/incubator-seata-website/blob/docusaurus/i18n/en/docusaurus-plugin-content-blog/quick-start-use-seata-and-dubbo-services.md
 ---
 ```
 
