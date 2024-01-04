@@ -39,11 +39,9 @@ jobs:
         env:
           BAIDU_LINK_SUBMIT_TOKEN: ${{secrets.BAIDU_LINK_SUBMIT_TOKEN}}
         run: node baiduLinkSubmit.js
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: 12.x
-      - run: npm i @serverless-devs/s -g  --registry=https://registry.npmmirror.com
-      - run: s config add --AccountID ${{secrets.ACCOUNT_ID}}  --AccessKeyID ${{secrets.ACCESS_KEYID}}  --AccessKeySecret ${{secrets.ACCESS_KEYSECRET}} -a seata -f
-      - name: Deploy
+      - name: Install serverless-devs
+        run: npm i @serverless-devs/s -g  --registry=https://registry.npmmirror.com
+      - name: Config serverless-devs
+        run: s config add --AccountID ${{secrets.ACCOUNT_ID}}  --AccessKeyID ${{secrets.ACCESS_KEYID}} --AccessKeySecret ${{secrets.ACCESS_KEYSECRET}} -a seata -f
+      - name: Deploy on OSS
         run: s deploy --use-local -y
