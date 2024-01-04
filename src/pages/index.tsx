@@ -53,11 +53,7 @@ export default function Home(): React.Element {
         <Feature />
         <User />
         {/* <Community /> */}
-        <Footer
-          logo={
-            '//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png'
-          }
-        />
+        <Footer/>
       </div>
     </Layout>
   );

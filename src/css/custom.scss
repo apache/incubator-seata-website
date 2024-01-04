@@ -334,3 +334,13 @@ div[class^="tableOfContents"] {
 button[class*="tocCollapsibleButton"] {
   color: var(--ifm-color-content-secondary);
 }
+
+.fs-12 {
+  font-size: 12px;
+}
+.center-div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
