@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://seata.io/blog</id>
     <title>Seata Blog</title>
-    <updated>2024-01-04T10:03:33.000Z</updated>
+    <updated>2024-01-04T10:10:55.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://seata.io/blog"/>
     <subtitle>Seata Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[design-more-flexable-application-by-saga]]></title>
         <id>https://seata.io/blog/design-more-flexable-application-by-saga</id>
         <link href="https://seata.io/blog/design-more-flexable-application-by-saga"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -19,7 +19,7 @@
         <title type="html"><![CDATA[explore-seata-journey]]></title>
         <id>https://seata.io/blog/explore-seata-journey</id>
         <link href="https://seata.io/blog/explore-seata-journey"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -27,7 +27,7 @@
         <title type="html"><![CDATA[how-to-support-spring-cloud]]></title>
         <id>https://seata.io/blog/how-to-support-spring-cloud</id>
         <link href="https://seata.io/blog/how-to-support-spring-cloud"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -35,7 +35,7 @@
         <title type="html"><![CDATA[integrate-seata-tcc-mode-with-spring-cloud]]></title>
         <id>https://seata.io/blog/integrate-seata-tcc-mode-with-spring-cloud</id>
         <link href="https://seata.io/blog/integrate-seata-tcc-mode-with-spring-cloud"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -43,7 +43,7 @@
         <title type="html"><![CDATA[integrate-seata-with-spring-cloud]]></title>
         <id>https://seata.io/blog/integrate-seata-with-spring-cloud</id>
         <link href="https://seata.io/blog/integrate-seata-with-spring-cloud"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -51,7 +51,7 @@
         <title type="html"><![CDATA[iscas2023]]></title>
         <id>https://seata.io/blog/iscas2023</id>
         <link href="https://seata.io/blog/iscas2023"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -59,7 +59,7 @@
         <title type="html"><![CDATA[seata-1.5.2]]></title>
         <id>https://seata.io/blog/seata-1.5.2</id>
         <link href="https://seata.io/blog/seata-1.5.2"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -67,7 +67,7 @@
         <title type="html"><![CDATA[seata-1.6.0]]></title>
         <id>https://seata.io/blog/seata-1.6.0</id>
         <link href="https://seata.io/blog/seata-1.6.0"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -75,7 +75,7 @@
         <title type="html"><![CDATA[seata-analysis-UUID-generator]]></title>
         <id>https://seata.io/blog/seata-analysis-UUID-generator</id>
         <link href="https://seata.io/blog/seata-analysis-UUID-generator"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -83,7 +83,7 @@
         <title type="html"><![CDATA[seata-analysis-config-modular]]></title>
         <id>https://seata.io/blog/seata-analysis-config-modular</id>
         <link href="https://seata.io/blog/seata-analysis-config-modular"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -91,7 +91,7 @@
         <title type="html"><![CDATA[seata-analysis-core-modular]]></title>
         <id>https://seata.io/blog/seata-analysis-core-modular</id>
         <link href="https://seata.io/blog/seata-analysis-core-modular"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -99,7 +99,7 @@
         <title type="html"><![CDATA[seata-analysis-dubbo-transmit-xid]]></title>
         <id>https://seata.io/blog/seata-analysis-dubbo-transmit-xid</id>
         <link href="https://seata.io/blog/seata-analysis-dubbo-transmit-xid"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -107,7 +107,7 @@
         <title type="html"><![CDATA[seata-analysis-go-server]]></title>
         <id>https://seata.io/blog/seata-analysis-go-server</id>
         <link href="https://seata.io/blog/seata-analysis-go-server"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -115,7 +115,7 @@
         <title type="html"><![CDATA[seata-analysis-java-client]]></title>
         <id>https://seata.io/blog/seata-analysis-java-client</id>
         <link href="https://seata.io/blog/seata-analysis-java-client"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -123,7 +123,7 @@
         <title type="html"><![CDATA[seata-analysis-java-server]]></title>
         <id>https://seata.io/blog/seata-analysis-java-server</id>
         <link href="https://seata.io/blog/seata-analysis-java-server"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -131,7 +131,7 @@
         <title type="html"><![CDATA[seata-analysis-simple]]></title>
         <id>https://seata.io/blog/seata-analysis-simple</id>
         <link href="https://seata.io/blog/seata-analysis-simple"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -139,7 +139,7 @@
         <title type="html"><![CDATA[seata-analysis-tcc-modular]]></title>
         <id>https://seata.io/blog/seata-analysis-tcc-modular</id>
         <link href="https://seata.io/blog/seata-analysis-tcc-modular"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -147,7 +147,7 @@
         <title type="html"><![CDATA[seata-at-demo-in-mac]]></title>
         <id>https://seata.io/blog/seata-at-demo-in-mac</id>
         <link href="https://seata.io/blog/seata-at-demo-in-mac"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -155,7 +155,7 @@
         <title type="html"><![CDATA[seata-at-lock]]></title>
         <id>https://seata.io/blog/seata-at-lock</id>
         <link href="https://seata.io/blog/seata-at-lock"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -163,7 +163,7 @@
         <title type="html"><![CDATA[seata-at-mode-design]]></title>
         <id>https://seata.io/blog/seata-at-mode-design</id>
         <link href="https://seata.io/blog/seata-at-mode-design"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -171,7 +171,7 @@
         <title type="html"><![CDATA[seata-at-mode-start-rm-tm]]></title>
         <id>https://seata.io/blog/seata-at-mode-start-rm-tm</id>
         <link href="https://seata.io/blog/seata-at-mode-start-rm-tm"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -179,7 +179,7 @@
         <title type="html"><![CDATA[seata-at-mode-start]]></title>
         <id>https://seata.io/blog/seata-at-mode-start</id>
         <link href="https://seata.io/blog/seata-at-mode-start"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -187,7 +187,7 @@
         <title type="html"><![CDATA[seata-at-tcc-saga]]></title>
         <id>https://seata.io/blog/seata-at-tcc-saga</id>
         <link href="https://seata.io/blog/seata-at-tcc-saga"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -195,7 +195,7 @@
         <title type="html"><![CDATA[seata-client-start-analysis-01]]></title>
         <id>https://seata.io/blog/seata-client-start-analysis-01</id>
         <link href="https://seata.io/blog/seata-client-start-analysis-01"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -203,7 +203,7 @@
         <title type="html"><![CDATA[seata-client-start-analysis-02]]></title>
         <id>https://seata.io/blog/seata-client-start-analysis-02</id>
         <link href="https://seata.io/blog/seata-client-start-analysis-02"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -211,7 +211,7 @@
         <title type="html"><![CDATA[seata-community-meetup-hangzhou-ready]]></title>
         <id>https://seata.io/blog/seata-community-meetup-hangzhou-ready</id>
         <link href="https://seata.io/blog/seata-community-meetup-hangzhou-ready"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -219,7 +219,7 @@
         <title type="html"><![CDATA[seata-config-center]]></title>
         <id>https://seata.io/blog/seata-config-center</id>
         <link href="https://seata.io/blog/seata-config-center"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -227,7 +227,7 @@
         <title type="html"><![CDATA[seata-config-manager]]></title>
         <id>https://seata.io/blog/seata-config-manager</id>
         <link href="https://seata.io/blog/seata-config-manager"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -235,7 +235,7 @@
         <title type="html"><![CDATA[seata-connect-data-and-application]]></title>
         <id>https://seata.io/blog/seata-connect-data-and-application</id>
         <link href="https://seata.io/blog/seata-connect-data-and-application"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -243,7 +243,7 @@
         <title type="html"><![CDATA[seata-datasource-proxy]]></title>
         <id>https://seata.io/blog/seata-datasource-proxy</id>
         <link href="https://seata.io/blog/seata-datasource-proxy"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -251,7 +251,7 @@
         <title type="html"><![CDATA[seata-dsproxy-deadlock]]></title>
         <id>https://seata.io/blog/seata-dsproxy-deadlock</id>
         <link href="https://seata.io/blog/seata-dsproxy-deadlock"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -259,7 +259,7 @@
         <title type="html"><![CDATA[seata-dynamic-config-and-dynamic-disable]]></title>
         <id>https://seata.io/blog/seata-dynamic-config-and-dynamic-disable</id>
         <link href="https://seata.io/blog/seata-dynamic-config-and-dynamic-disable"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -267,7 +267,7 @@
         <title type="html"><![CDATA[seata-feature-undo-log-compress]]></title>
         <id>https://seata.io/blog/seata-feature-undo-log-compress</id>
         <link href="https://seata.io/blog/seata-feature-undo-log-compress"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -275,7 +275,7 @@
         <title type="html"><![CDATA[seata-go-1.2.0]]></title>
         <id>https://seata.io/blog/seata-go-1.2.0</id>
         <link href="https://seata.io/blog/seata-go-1.2.0"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -283,7 +283,7 @@
         <title type="html"><![CDATA[seata-golang-communication-mode]]></title>
         <id>https://seata.io/blog/seata-golang-communication-mode</id>
         <link href="https://seata.io/blog/seata-golang-communication-mode"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -291,7 +291,7 @@
         <title type="html"><![CDATA[seata-ha-practice]]></title>
         <id>https://seata.io/blog/seata-ha-practice</id>
         <link href="https://seata.io/blog/seata-ha-practice"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -299,7 +299,7 @@
         <title type="html"><![CDATA[seata-meetup-hangzhou]]></title>
         <id>https://seata.io/blog/seata-meetup-hangzhou</id>
         <link href="https://seata.io/blog/seata-meetup-hangzhou"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -307,7 +307,7 @@
         <title type="html"><![CDATA[seata-mybatisplus-analysis]]></title>
         <id>https://seata.io/blog/seata-mybatisplus-analysis</id>
         <link href="https://seata.io/blog/seata-mybatisplus-analysis"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -315,7 +315,7 @@
         <title type="html"><![CDATA[seata-nacos-analysis]]></title>
         <id>https://seata.io/blog/seata-nacos-analysis</id>
         <link href="https://seata.io/blog/seata-nacos-analysis"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -323,7 +323,7 @@
         <title type="html"><![CDATA[seata-nacos-docker]]></title>
         <id>https://seata.io/blog/seata-nacos-docker</id>
         <link href="https://seata.io/blog/seata-nacos-docker"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -331,7 +331,7 @@
         <title type="html"><![CDATA[seata-observable-practice]]></title>
         <id>https://seata.io/blog/seata-observable-practice</id>
         <link href="https://seata.io/blog/seata-observable-practice"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -339,7 +339,7 @@
         <title type="html"><![CDATA[seata-quick-start]]></title>
         <id>https://seata.io/blog/seata-quick-start</id>
         <link href="https://seata.io/blog/seata-quick-start"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -347,7 +347,7 @@
         <title type="html"><![CDATA[seata-raft-detailed-explanation]]></title>
         <id>https://seata.io/blog/seata-raft-detailed-explanation</id>
         <link href="https://seata.io/blog/seata-raft-detailed-explanation"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -355,7 +355,7 @@
         <title type="html"><![CDATA[seata-rpc-refactor]]></title>
         <id>https://seata.io/blog/seata-rpc-refactor</id>
         <link href="https://seata.io/blog/seata-rpc-refactor"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -363,7 +363,7 @@
         <title type="html"><![CDATA[seata-snowflake-explain]]></title>
         <id>https://seata.io/blog/seata-snowflake-explain</id>
         <link href="https://seata.io/blog/seata-snowflake-explain"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -371,7 +371,7 @@
         <title type="html"><![CDATA[seata-sourcecode-client-bootstrap]]></title>
         <id>https://seata.io/blog/seata-sourcecode-client-bootstrap</id>
         <link href="https://seata.io/blog/seata-sourcecode-client-bootstrap"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -379,7 +379,7 @@
         <title type="html"><![CDATA[seata-sourcecode-server-bootstrap]]></title>
         <id>https://seata.io/blog/seata-sourcecode-server-bootstrap</id>
         <link href="https://seata.io/blog/seata-sourcecode-server-bootstrap"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -387,7 +387,7 @@
         <title type="html"><![CDATA[seata-spring-boot-aop-aspectj]]></title>
         <id>https://seata.io/blog/seata-spring-boot-aop-aspectj</id>
         <link href="https://seata.io/blog/seata-spring-boot-aop-aspectj"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -395,7 +395,7 @@
         <title type="html"><![CDATA[seata-tcc-fence]]></title>
         <id>https://seata.io/blog/seata-tcc-fence</id>
         <link href="https://seata.io/blog/seata-tcc-fence"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -403,7 +403,7 @@
         <title type="html"><![CDATA[seata-tcc]]></title>
         <id>https://seata.io/blog/seata-tcc</id>
         <link href="https://seata.io/blog/seata-tcc"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -411,7 +411,7 @@
         <title type="html"><![CDATA[seata-xa-introduce]]></title>
         <id>https://seata.io/blog/seata-xa-introduce</id>
         <link href="https://seata.io/blog/seata-xa-introduce"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -419,7 +419,7 @@
         <title type="html"><![CDATA[springboot-dubbo-mybatisplus-seata]]></title>
         <id>https://seata.io/blog/springboot-dubbo-mybatisplus-seata</id>
         <link href="https://seata.io/blog/springboot-dubbo-mybatisplus-seata"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -427,7 +427,7 @@
         <title type="html"><![CDATA[tcc-mode-applicable-scenario-analysis]]></title>
         <id>https://seata.io/blog/tcc-mode-applicable-scenario-analysis</id>
         <link href="https://seata.io/blog/tcc-mode-applicable-scenario-analysis"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -435,7 +435,7 @@
         <title type="html"><![CDATA[tcc-mode-design-principle]]></title>
         <id>https://seata.io/blog/tcc-mode-design-principle</id>
         <link href="https://seata.io/blog/tcc-mode-design-principle"/>
-        <updated>2024-01-04T10:03:33.000Z</updated>
+        <updated>2024-01-04T10:10:55.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
