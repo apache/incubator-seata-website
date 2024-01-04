@@ -9,6 +9,7 @@ import User from './home/users';
 // import Community from './home/community';
 import { Footer } from '../components';
 import './index.scss';
+import { translate } from '@docusaurus/Translate';
 
 export default function Home(): React.Element {
   const el = React.useRef<HTMLDivElement>(null);
@@ -37,7 +38,14 @@ export default function Home(): React.Element {
   //   }, []);
 
   return (
-    <Layout title={'Seata'} description='Seata official site'>
+    <Layout
+      title={'Seata'}
+      description={translate({
+        id: 'homepage.briefIntroduction',
+        message:
+          'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
+      })}
+    >
       <div ref={el} className='home-page'>
         <Top />
         <Introduction />
