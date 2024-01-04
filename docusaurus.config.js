@@ -185,6 +185,48 @@ const config = {
             target: '_blank',
           },
           {
+            label: 'ASF',
+            type: 'dropdown',
+            position: 'right',
+            items: [
+              {
+                label: 'Foundation',
+                href: 'https://www.apache.org',
+                target: '_blank'
+              },
+              {
+                label: 'License',
+                href: 'https://www.apache.org/licenses',
+                target: '_blank'
+              },
+              {
+                label: 'Events',
+                href: 'https://www.apache.org/events/current-event.html',
+                target: '_blank'
+              },
+              {
+                label: 'Sponsorship',
+                href: 'https://www.apache.org/foundation/sponsorship.html',
+                target: '_blank'
+              },
+              {
+                label: 'Privacy',
+                href: 'https://privacy.apache.org/policies/privacy-policy-public.html',
+                target: '_blank'
+              },
+              {
+                label: 'Security',
+                href: 'https://www.apache.org/security',
+                target: '_blank'
+              },
+              {
+                label: 'Thanks',
+                href: 'https://www.apache.org/foundation/thanks.html',
+                target: '_blank'
+              },
+            ],
+          },
+          {
             type: 'localeDropdown',
             position: 'right',
           },
