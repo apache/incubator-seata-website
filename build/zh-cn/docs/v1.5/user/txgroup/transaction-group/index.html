@@ -11,9 +11,9 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata">
-<script src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2" async></script><link rel="stylesheet" href="/zh-cn/assets/css/styles.9e42a735.css">
-<link rel="preload" href="/zh-cn/assets/js/runtime~main.ff8e6477.js" as="script">
-<link rel="preload" href="/zh-cn/assets/js/main.c903ca68.js" as="script">
+<script src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2" async></script><link rel="stylesheet" href="/zh-cn/assets/css/styles.f29a659c.css">
+<link rel="preload" href="/zh-cn/assets/js/runtime~main.9a8b1bab.js" as="script">
+<link rel="preload" href="/zh-cn/assets/js/main.862a0621.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script>
@@ -35,8 +35,20 @@ spring/springboot可配置在yml、properties中，对应值&quot;my_test_tx_gro
 通过NacosConfiguration远程读取seata配置参数</li><li>获取事务分组(服务启动时加载配置)
 spring/springboot可配置在yml、properties中，对应值&quot;my_test_tx_group&quot;即为事务分组名，若不配置则默认以：spring.application.name值+&quot;-seata-service-group&quot;拼接后的字符串作为分组名</li><li>查找TC集群名
 拿到事务分组名&quot;my_test_tx_group&quot;拼接成&quot;service.vgroupMapping.my_test_tx_group&quot;从配置中心查找到TC集群名clusterName为&quot;default&quot;</li><li>查找TC服务
-根据serverAddr和namespace以及clusterName在注册中心找到真实TC服务列表</li></ul><p>注：serverAddr和namespace与Server端一致，clusterName与Server端cluster一致</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh-cn/docs/v1.5/user/mode/xa"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Seata XA 模式</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/docs/v1.5/user/txgroup/transaction-group-and-ha"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">事务分组与高可用</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#事务分组是什么" class="table-of-contents__link toc-highlight">事务分组是什么？</a></li><li><a href="#事务分组如何找到后端seata集群" class="table-of-contents__link toc-highlight">事务分组如何找到后端Seata集群？</a></li><li><a href="#为什么这么设计不直接取服务名" class="table-of-contents__link toc-highlight">为什么这么设计，不直接取服务名？</a></li><li><a href="#事务分组使用案例" class="table-of-contents__link toc-highlight">事务分组使用案例</a><ul><li><a href="#第一类内置file" class="table-of-contents__link toc-highlight">第一类：内置File</a></li><li><a href="#第二类注册中心和配置中心以nacos为例" class="table-of-contents__link toc-highlight">第二类：注册中心和配置中心(以nacos为例)</a></li></ul></li></ul></div></div></div></div></main></div></div></div>
-<script src="/zh-cn/assets/js/runtime~main.ff8e6477.js"></script>
-<script src="/zh-cn/assets/js/main.c903ca68.js"></script>
+根据serverAddr和namespace以及clusterName在注册中心找到真实TC服务列表</li></ul><p>注：serverAddr和namespace与Server端一致，clusterName与Server端cluster一致</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh-cn/docs/v1.5/user/mode/xa"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Seata XA 模式</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/docs/v1.5/user/txgroup/transaction-group-and-ha"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">事务分组与高可用</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#事务分组是什么" class="table-of-contents__link toc-highlight">事务分组是什么？</a></li><li><a href="#事务分组如何找到后端seata集群" class="table-of-contents__link toc-highlight">事务分组如何找到后端Seata集群？</a></li><li><a href="#为什么这么设计不直接取服务名" class="table-of-contents__link toc-highlight">为什么这么设计，不直接取服务名？</a></li><li><a href="#事务分组使用案例" class="table-of-contents__link toc-highlight">事务分组使用案例</a><ul><li><a href="#第一类内置file" class="table-of-contents__link toc-highlight">第一类：内置File</a></li><li><a href="#第二类注册中心和配置中心以nacos为例" class="table-of-contents__link toc-highlight">第二类：注册中心和配置中心(以nacos为例)</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://incubator.apache.org/" target="_blank" rel="noopener noreferrer" class="footerLogoLink_BH7S"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="themedImage_ToTc themedImage--light_HNdA footer__logo"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="themedImage_ToTc themedImage--dark_i4oU footer__logo"></a></div><div class="footer__copyright">
+                  <div class="fs-12">
+                    <div class="center-div">
+                      <span>Apache Seata is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</span>
+                    </div>
+                    <br>
+                    <div class="center-div">
+                      <span>Copyright © 2023-2024, The Apache Software Foundation Apache Seata, Seata, Apache, Apache Incubator, the Apache feather, the Apache Incubator logo and the Apache Seata project logo are either registered trademarks or trademarks of the Apache Software Foundation.</span>
+                      <br>
+                    </div>
+                    <br>
+                  </div>
+                  </div></div></div></footer></div>
+<script src="/zh-cn/assets/js/runtime~main.9a8b1bab.js"></script>
+<script src="/zh-cn/assets/js/main.862a0621.js"></script>
 </body>
 </html>
