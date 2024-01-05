@@ -1,5 +1,5 @@
 ---
-title: Seata: Bridging Data and Applications
+title: Seata:Bridging Data and Applications
 keywords: [Seata, Distributed Transactions, Data Consistency, Microservices]
 description: This article introduces the past, present, and future evolution of Seata.
 author: Ji Min - Founder of the Seata Open Source Community, Leader of the Distributed Transactions Team
