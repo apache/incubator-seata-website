@@ -66,7 +66,7 @@ const config = {
         routeBasePath: '/unversioned',
         sidebarPath: require.resolve('./sidebarsUnversioned.js'),
         editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
-        editCurrentVersion: false,
+        editCurrentVersion: true,
         editLocalizedFiles: true
       }),
     ],
