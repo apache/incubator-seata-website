@@ -147,7 +147,7 @@ const data = {
               message: '改进',
             })}
             &nbsp;
-            <a href='https://github.com/seata/seata.github.io' target='_blank'>
+            <a href='https://github.com/apache/incubator-seata-website' target='_blank'>
               {translate({
                 id: 'community.contributeListContent3_2',
                 message: '文档',

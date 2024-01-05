@@ -1,6 +1,6 @@
 # Seata官方网站
 
-[![CI 状态](https://github.com/seata/seata.github.io/workflows/CI/badge.svg)](https://github.com/seata/seata.github.io/actions ）
+[![CI 状态](https://github.com/apache/incubator-seata-website/workflows/CI/badge.svg)](https://github.com/apache/incubator-seata-website/actions ）
 
 此仓库包含 https://seata.io 的所有网站材料，使用的开源框架是 Docusaurus。
 
@@ -150,7 +150,7 @@ keywords: [keywords1,keywords2]
 description: some description
 author: author name
 date: 2018-12-29
-custom_edit_url: https://github.com/seata/seata.github.io/blob/docusaurus/i18n/en/docusaurus-plugin-content-blog/download.md
+custom_edit_url: https://github.com/apache/incubator-seata-website/blob/docusaurus/i18n/en/docusaurus-plugin-content-blog/download.md
 ---
 ```
 **注意：**
