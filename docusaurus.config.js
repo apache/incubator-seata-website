@@ -65,6 +65,9 @@ const config = {
         path: 'unversioned',
         routeBasePath: '/unversioned',
         sidebarPath: require.resolve('./sidebarsUnversioned.js'),
+        editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+        editCurrentVersion: false,
+        editLocalizedFiles: true
       }),
     ],
     [
@@ -115,11 +118,16 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editCurrentVersion: false,
+          editLocalizedFiles: true
         },
         blog: {
           showReadingTime: true,
           blogSidebarTitle: '全部博文',
           blogSidebarCount: 'ALL',
+          editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editLocalizedFiles: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
