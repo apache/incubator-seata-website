@@ -3,7 +3,15 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
+const asfDict = [
+  {target: 'https://www.apache.org', text: 'Foundation'},
+  {target: 'https://www.apache.org/licenses', text: 'License'},
+  {target: 'https://www.apache.org/events/current-event.html', text: 'Events'},
+  {target: 'https://www.apache.org/foundation/sponsorship.html', text: 'Sponsorship'},
+  {target: 'https://privacy.apache.org/policies/privacy-policy-public.html', text: 'Privacy'},
+  {target: 'https://www.apache.org/security', text: 'Security'},
+  {target: 'https://www.apache.org/foundation/thanks.html', text: 'Thanks'},
+];
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Seata',
@@ -188,43 +196,10 @@ const config = {
             label: 'ASF',
             type: 'dropdown',
             position: 'right',
-            items: [
-              {
-                label: 'Foundation',
-                href: 'https://www.apache.org',
-                target: '_blank'
-              },
-              {
-                label: 'License',
-                href: 'https://www.apache.org/licenses',
-                target: '_blank'
-              },
-              {
-                label: 'Events',
-                href: 'https://www.apache.org/events/current-event.html',
-                target: '_blank'
-              },
-              {
-                label: 'Sponsorship',
-                href: 'https://www.apache.org/foundation/sponsorship.html',
-                target: '_blank'
-              },
-              {
-                label: 'Privacy',
-                href: 'https://privacy.apache.org/policies/privacy-policy-public.html',
-                target: '_blank'
-              },
-              {
-                label: 'Security',
-                href: 'https://www.apache.org/security',
-                target: '_blank'
-              },
-              {
-                label: 'Thanks',
-                href: 'https://www.apache.org/foundation/thanks.html',
-                target: '_blank'
-              },
-            ],
+            items: asfDict.map(link => ({
+              label: link.text,
+              to: link.target,
+            })),
           },
           {
             type: 'localeDropdown',
