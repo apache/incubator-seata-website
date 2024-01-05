@@ -38,7 +38,7 @@ const data = {
           id: 'homepage.footerDocListText3',
           message: '报告文档问题',
         }),
-        link: 'https://github.com/seata/seata.github.io/issues/new',
+        link: 'https://github.com/apache/incubator-seata-website/issues/new',
         target: '_blank',
       },
       {
@@ -46,7 +46,7 @@ const data = {
           id: 'homepage.footerDocListText4',
           message: '在Github上编辑此文档',
         }),
-        link: 'https://github.com/seata/seata.github.io',
+        link: 'https://github.com/apache/incubator-seata-website',
         target: '_blank',
       },
     ],
