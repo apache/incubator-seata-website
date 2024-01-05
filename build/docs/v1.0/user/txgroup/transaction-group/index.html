@@ -12,8 +12,8 @@
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata">
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2" async></script><link rel="stylesheet" href="/assets/css/styles.aeed1bb0.css">
-<link rel="preload" href="/assets/js/runtime~main.5a3469e1.js" as="script">
-<link rel="preload" href="/assets/js/main.6e1c380e.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.b0c3049c.js" as="script">
+<link rel="preload" href="/assets/js/main.31be7263.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script>
@@ -35,7 +35,7 @@ You can read seata configuration parameters remotely through NacosConfiguration<
 For spring/springboot, it can be configured in yml or properties. The corresponding value &quot;my_test_tx_group&quot; is the transaction group name. If not configured, the default value is the concatenation of spring.application.name value + &quot;-seata-service-group&quot; as the group name.</li><li>Find TC cluster name
 Concatenate the transaction group name &quot;my_test_tx_group&quot; to &quot;service.vgroupMapping.my_test_tx_group&quot; and find the TC cluster name &quot;default&quot; from the configuration center.</li><li>Find TC service
 Find the real TC service list in the registry center based on serverAddr, namespace, and clusterName.</li></ul><p>Note: serverAddr and namespace should be consistent with the Server-side, and clusterName should be consistent with the Server-side cluster.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/v1.0/user/mode/saga"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Seata Saga Mode</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/v1.0/user/txgroup/transaction-group-and-ha"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Transaction Group and High Availability</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-is-a-transaction-group" class="table-of-contents__link toc-highlight">What is a transaction group?</a></li><li><a href="#how-to-find-the-backend-seata-cluster-for-the-transaction-group" class="table-of-contents__link toc-highlight">How to find the backend Seata cluster for the transaction group?</a></li><li><a href="#why-is-it-designed-this-way-instead-of-directly-using-the-service-name" class="table-of-contents__link toc-highlight">Why is it designed this way instead of directly using the service name?</a></li><li><a href="#transaction-group-usage-case" class="table-of-contents__link toc-highlight">Transaction Group Usage Case</a><ul><li><a href="#category-1-built-in-file" class="table-of-contents__link toc-highlight">Category 1: Built-in File</a></li><li><a href="#type-2-registry-center-and-configuration-center-using-nacos-as-an-example" class="table-of-contents__link toc-highlight">Type 2: Registry Center and Configuration Center (Using Nacos as an Example)</a></li></ul></li></ul></div></div></div></div></main></div></div></div>
-<script src="/assets/js/runtime~main.5a3469e1.js"></script>
-<script src="/assets/js/main.6e1c380e.js"></script>
+<script src="/assets/js/runtime~main.b0c3049c.js"></script>
+<script src="/assets/js/main.31be7263.js"></script>
 </body>
 </html>
