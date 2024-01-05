@@ -53,7 +53,7 @@ export default function Home(): React.Element {
         <Feature />
         <User />
         {/* <Community /> */}
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     </Layout>
   );

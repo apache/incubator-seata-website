@@ -212,6 +212,27 @@ const config = {
           autoCollapseCategories: true,
         },
       },
+      footer:{
+        logo:{
+          alt: 'Apache Incubator Logo',
+          src: 'img/apache/incubator.svg',
+          href:'https://incubator.apache.org/',
+          target: '_blank'
+        },
+        copyright: `
+                  <div class="fs-12">
+                    <div class="center-div">
+                      <span>Apache Seata is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</span>
+                    </div>
+                    <br/>
+                    <div class="center-div">
+                      <span>Copyright © 2023-2024, The Apache Software Foundation Apache Seata, Seata, Apache, Apache Incubator, the Apache feather, the Apache Incubator logo and the Apache Seata project logo are either registered trademarks or trademarks of the Apache Software Foundation.</span>
+                      <br />
+                    </div>
+                    <br/>
+                  </div>
+                  `
+      },
       prism: {
         theme: lightCodeTheme,
       },
