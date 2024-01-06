@@ -195,7 +195,7 @@ For MySQL example:
 | log_created   | datetime      |
 | log_modified  | datetime      |
 | ext           | varchar(100)  |
-
+> validate that `branch_id` is free of comma.
 ```sql
 CREATE TABLE `undo_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'increment id',
