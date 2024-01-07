@@ -13,6 +13,8 @@ description: Seata-Server发布版本下载
 
 :::tip
 
+Apache Seata (Incubating) 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。
+
 ## 系统要求
 
 :::note
