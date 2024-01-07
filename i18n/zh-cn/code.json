@@ -426,16 +426,16 @@
   "homepage.msemapTitle": {
     "message": "微服务全景图"
   },
-  "homepage.userDesc1": {
+  "users.userDesc1": {
     "message": "请在"
   },
-  "homepage.userDesc2": {
+  "users.userDesc2": {
     "message": "上提供信息来帮助 Seata 做的更好。"
   },
-  "homepage.userTitleBefore": {
+  "users.userTitleBefore": {
     "message": "谁在使用"
   },
-  "homepage.userTitleAfter": {
-    "message": " Seata"
+  "users.userTitleAfter": {
+    "message": " Apache Seata (Incubating)"
   }
 }

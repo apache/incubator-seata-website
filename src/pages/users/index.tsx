@@ -1,13 +1,14 @@
 import React from 'react';
 import Translate, { translate } from '@docusaurus/Translate';
-import { Bone } from '../../../components';
+import { Bone } from '../../components';
 
 import './index.scss';
+import Layout from '@theme/Layout';
 
 const data = {
   desc: (
     <span>
-      <Translate id='homepage.userDesc1'>请在</Translate>{' '}
+      <Translate id='users.userDesc1'>请在</Translate>{' '}
       <a
         rel='noopener noreferrer'
         target='_blank'
@@ -16,7 +17,7 @@ const data = {
       >
         Wanted: who&#39;s using Seata
       </a>{' '}
-      <Translate id='homepage.userDesc2'>
+      <Translate id='users.userDesc2'>
         上提供信息来帮助 Seata 做的更好。
       </Translate>
     </span>
@@ -180,29 +181,41 @@ const data = {
     'https://img.alicdn.com/imgextra/i4/O1CN01Rc0vU61sSQ3jvR0rw_!!6000000005765-2-tps-1076-228.png',
   ],
   titleBefore: translate({
-    id: 'homepage.userTitleBefore',
-    message: '谁在使用',
+    id: 'users.userTitleBefore',
   }),
-  titleAfter: translate({ id: 'homepage.userTitleAfter', message: ' Seata' }),
+  titleAfter: translate({ id: 'users.userTitleAfter' }),
 };
 
 const User = () => {
   return (
-    <section className='users-section'>
-      <h3>
-        {data.titleBefore}
-        <span>{data.titleAfter}</span>
-      </h3>
-      {/* <Bone type="dark" /> */}
-      <p>{data.desc}</p>
-      <div className='users'>
-        {data.list.map((user, i) => (
-          <div className='user-item' key={i}>
-            <img src={user} />
-          </div>
-        ))}
-      </div>
-    </section>
+    <Layout title={data.titleBefore} description={data.titleBefore}>
+      <section className='users-section'>
+        <h3>
+          {data.titleBefore}
+          <span>{data.titleAfter}</span>
+        </h3>
+        {/* <Bone type="dark" /> */}
+        <p>{data.desc}</p>
+        <div className='users'>
+          {data.list.map((user, i) => (
+            <div className='user-item' key={i}>
+              <img src={user} />
+            </div>
+          ))}
+        </div>
+        <div className='appear'>
+          <h3>Want to appear on this page?</h3>
+          <p>
+            Submit a{' '}
+            <a href='https://github.com/apache/incubator-seata-website/edit/docusaurus/src/pages/users/index.tsx'>
+              pull request
+            </a>{' '}
+            or send a quick description of your organization and usage to the{' '}
+            <a href='/community'>mailing list</a> and we'll add you.
+          </p>
+        </div>
+      </section>
+    </Layout>
   );
 };
 

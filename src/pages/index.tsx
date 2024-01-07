@@ -5,7 +5,6 @@ import Top from './home/top';
 import Introduction from './home/introduction';
 import MseMap from './home/msemap';
 import Feature from './home/feature';
-import User from './home/users';
 // import Community from './home/community';
 import { Footer } from '../components';
 import './index.scss';
@@ -51,7 +50,6 @@ export default function Home(): React.Element {
         <Introduction />
         <MseMap />
         <Feature />
-        <User />
         {/* <Community /> */}
         {/* <Footer/> */}
       </div>

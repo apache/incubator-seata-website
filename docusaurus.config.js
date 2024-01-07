@@ -4,13 +4,22 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const asfDict = [
-  {target: 'https://www.apache.org', text: 'Foundation'},
-  {target: 'https://www.apache.org/licenses', text: 'License'},
-  {target: 'https://www.apache.org/events/current-event.html', text: 'Events'},
-  {target: 'https://www.apache.org/foundation/sponsorship.html', text: 'Sponsorship'},
-  {target: 'https://privacy.apache.org/policies/privacy-policy-public.html', text: 'Privacy'},
-  {target: 'https://www.apache.org/security', text: 'Security'},
-  {target: 'https://www.apache.org/foundation/thanks.html', text: 'Thanks'},
+  { target: 'https://www.apache.org', text: 'Foundation' },
+  { target: 'https://www.apache.org/licenses', text: 'License' },
+  {
+    target: 'https://www.apache.org/events/current-event.html',
+    text: 'Events',
+  },
+  {
+    target: 'https://www.apache.org/foundation/sponsorship.html',
+    text: 'Sponsorship',
+  },
+  {
+    target: 'https://privacy.apache.org/policies/privacy-policy-public.html',
+    text: 'Privacy',
+  },
+  { target: 'https://www.apache.org/security', text: 'Security' },
+  { target: 'https://www.apache.org/foundation/thanks.html', text: 'Thanks' },
 ];
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -65,9 +74,10 @@ const config = {
         path: 'unversioned',
         routeBasePath: '/unversioned',
         sidebarPath: require.resolve('./sidebarsUnversioned.js'),
-        editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+        editUrl:
+          'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
         editCurrentVersion: true,
-        editLocalizedFiles: true
+        editLocalizedFiles: true,
       }),
     ],
     [
@@ -118,16 +128,18 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editUrl:
+            'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
           editCurrentVersion: false,
-          editLocalizedFiles: true
+          editLocalizedFiles: true,
         },
         blog: {
           showReadingTime: true,
           blogSidebarTitle: '全部博文',
           blogSidebarCount: 'ALL',
-          editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
-          editLocalizedFiles: true
+          editUrl:
+            'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editLocalizedFiles: true,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
@@ -185,6 +197,11 @@ const config = {
             position: 'right',
           },
           {
+            label: 'Users',
+            to: '/users',
+            position: 'right',
+          },
+          {
             label: 'Community',
             to: '/community',
             position: 'right',
@@ -204,7 +221,7 @@ const config = {
             label: 'ASF',
             type: 'dropdown',
             position: 'right',
-            items: asfDict.map(link => ({
+            items: asfDict.map((link) => ({
               label: link.text,
               to: link.target,
             })),
@@ -220,12 +237,12 @@ const config = {
           autoCollapseCategories: true,
         },
       },
-      footer:{
-        logo:{
+      footer: {
+        logo: {
           alt: 'Apache Incubator Logo',
           src: 'img/apache/incubator.svg',
-          href:'https://incubator.apache.org/',
-          target: '_blank'
+          href: 'https://incubator.apache.org/',
+          target: '_blank',
         },
         copyright: `
                   <div class="fs-12">
@@ -239,7 +256,7 @@ const config = {
                     </div>
                     <br/>
                   </div>
-                  `
+                  `,
       },
       prism: {
         theme: lightCodeTheme,
