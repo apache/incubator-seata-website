@@ -1,0 +1,35 @@
+node_modules
+blog
+docs
+src
+unversioned
+versioned_docs
+versioned_sidebars
+
+# old zh-cn docs
+i18n/zh-cn/docusaurus-plugin-content-blog
+i18n/zh-cn/docusaurus-plugin-content-docs-unversioned
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.0
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.1
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.2
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.3
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.4
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.5
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.6
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.7
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v1.8
+i18n/zh-cn/docusaurus-plugin-content-docs/version-v2.0
+i18n/zh-cn/docusaurus-plugin-content-docs/current
+
+# old en docs
+i18n/en/docusaurus-plugin-content-docs/version-v1.0
+i18n/en/docusaurus-plugin-content-docs/version-v1.1
+i18n/en/docusaurus-plugin-content-docs/version-v1.2
+i18n/en/docusaurus-plugin-content-docs/version-v1.3
+i18n/en/docusaurus-plugin-content-docs/version-v1.4
+i18n/en/docusaurus-plugin-content-docs/version-v1.5
+i18n/en/docusaurus-plugin-content-docs/version-v1.6
+i18n/en/docusaurus-plugin-content-docs/version-v1.7
+i18n/en/docusaurus-plugin-content-docs/version-v1.8
+i18n/en/docusaurus-plugin-content-docs/version-v2.0
+i18n/en/docusaurus-plugin-content-docs/current

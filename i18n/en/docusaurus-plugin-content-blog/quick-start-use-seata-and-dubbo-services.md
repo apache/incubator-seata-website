@@ -5,7 +5,7 @@ description: This article will introduce you how to use Seata to ensure consiste
 author: slievrly
 date: 2019-03-07
 ---
-# How to use Seata to ensure consistency between Dubbo Microservices
+
 ## Use case
 
 A business logic for user purchasing commodities. The whole business logic is powered by 3 microservices:
@@ -16,8 +16,7 @@ A business logic for user purchasing commodities. The whole business logic is po
 
 ### Architecture
 
-![Architecture](/img/blog/seata/seata-1.png) 
-
+![Architecture](/img/blog/seata/seata-1.png)
 
 ### StorageService
 
@@ -117,9 +116,9 @@ public class OrderServiceImpl implements OrderService {
 
 ## Distributed Transaction Solution with Seata
 
-![undefined](/img/blog/seata/seata-2.png) 
+![undefined](/img/blog/seata/seata-2.png)
 
-We just need an annotation `@GlobalTransactional` on business method: 
+We just need an annotation `@GlobalTransactional` on business method:
 
 ```java
 
@@ -135,7 +134,7 @@ We just need an annotation `@GlobalTransactional` on business method:
 
 - Requirement: MySQL with InnoDB engine.
 
-**Note:** In fact, there should be 3 database for the 3 services in the example use case. However, we can just create one database and configure 3 data sources for simple. 
+**Note:** In fact, there should be 3 database for the 3 services in the example use case. However, we can just create one database and configure 3 data sources for simple.
 
 Modify Spring XML with the database URL/username/password you just created.
 
@@ -148,6 +147,7 @@ dubbo-storage-service.xml
     <property name="username" value="xxx" />
     <property name="password" value="xxx" />
 ```
+
 ### Step 2: Create UNDO_LOG table for Seata
 
 `UNDO_LOG` table is required by Seata AT mode.
@@ -200,6 +200,7 @@ CREATE TABLE `account_tbl` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+
 ### Step 4: Start Seata-Server
 
 - Download server [package](https://github.com/seata/seata/releases), unzip it.
@@ -221,5 +222,7 @@ sh seata-server.sh 8091 /home/admin/seata/data/
 - Run BusinessService for test ([DubboBusinessTester](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboBusinessTester.java)).
 
 ### Related projects
-* seata:          https://github.com/seata/seata/
-* seata-samples : https://github.com/seata/seata-samples  
+
+- seata:          [https://github.com/seata/seata/](https://github.com/seata/seata/)
+
+- seata-samples : [https://github.com/seata/seata-samples](https://github.com/seata/seata-samples)

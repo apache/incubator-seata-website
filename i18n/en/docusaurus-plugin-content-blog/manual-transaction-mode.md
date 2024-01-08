@@ -6,7 +6,7 @@ author: kmmshmily
 date: 2019-02-13
 ---
 
-# Manual Transaction Mode
+## Manual Transaction Mode
 
 Review the description in the overview: a distributed global transaction, the whole is a model of **the two-phase commit**. A global transaction consists of several branch transactions that meet the model requirements of **the two-phase commit**, which requires each branch transaction to have its own:
 
@@ -30,4 +30,3 @@ Accordingly, the MT mode does not rely on transaction support for the underlying
 - Two phase rollback behavior:Call the rollback logic of **custom** .
 
 The so-called MT mode refers to the support of the branch transaction of **custom** into the management of global transactions.
-

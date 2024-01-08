@@ -13,7 +13,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "lint": "markdownlint '**/*.md' --ignore src --ignore node_modules --ignore blog --ignore i18n --ignore versioned_docs --ignore versioned_sidebars --ignore docs --ignore readme --ignore unversioned"
+    "lint": "markdownlint '**/*.md'"
   },
   "dependencies": {
     "@docusaurus/core": "2.4.1",

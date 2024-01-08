@@ -4,9 +4,6 @@ keywords: [Seata, Seata-Server, Download]
 description: Seata-Server release version download
 ---
 
-
-# Seata-Server Download
-
 :::tip
 
 Version 2.0.0 has been released and is available for use.
