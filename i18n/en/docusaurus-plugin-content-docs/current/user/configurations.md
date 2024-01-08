@@ -191,6 +191,8 @@ transport.enable-client-batch-send-request、client.log.exceptionRate
 | seata.enableAutoDataSourceProxy=true | whether to enable automatic proxy of data source | True, false, data spring boot starter (SSBS) is a special configuration. SSBS will enable automatic proxy of data source by default and can be closed through this configuration item|
 | seata.useJdkProxy=false | whether to use JDK proxy as the implementation method of data source automatic proxy | true, false, (SSBS) proprietary configuration, false by default, CGLIB as the implementation method of data source automatic proxy|
 | transport.enableClientBatchSendRequest | whether to batch merge and send client transaction message requests | The default is true and false|
+| transport.enableTmClientChannelCheckFailFast | TM client channel check fail fast | The default is true. true is check, false is not check|
+| transport.enableRmClientChannelCheckFailFast | RM client channel check fail fast | The default is true. true is check, false is not check|
 | client.log.exceptionRate | log exception output probability | 100 by default, currently used for exception stack output in case of undo rollback failure, 1% probability output, rollback failure is basically dirty data, no need to output stack to occupy hard disk space|
 | service.vgroupMapping.my_test_tx_Group | transaction group (Appendix 1) | my_ test_ tx_ Group refers to grouping, and the configuration item value is TC cluster name|
 | service.default.grouplist | TC service list (Appendix 2) | Only used when the registry is file|
