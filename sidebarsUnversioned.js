@@ -7,7 +7,7 @@ const sidebarsUnversioned = {
       type: 'category',
       label: 'download',
       collapsible: false,
-      items: ['download/seata-server', 'download/java-sdk'],
+      items: ['download/seata-server'],
     },
   ],
   'release-history': [
@@ -15,7 +15,7 @@ const sidebarsUnversioned = {
       type: 'category',
       label: 'release-history',
       collapsible: false,
-      items: ['release-history/seata-server', 'release-history/java-sdk'],
+      items: ['release-history/seata-server'],
     },
   ],
 };

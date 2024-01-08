@@ -162,7 +162,7 @@ keywords: [keywords1,keywords2]
 description: some description
 author: author name
 date: 2018-12-29
-custom_edit_url: https://github.com/seata/seata.github.io/blob/docusaurus/i18n/en/docusaurus-plugin-content-blog/download.md
+custom_edit_url: https://github.com/apache/incubator-seata-website/blob/docusaurus/i18n/en/docusaurus-plugin-content-blog/download.md
 ---
 ```
 

@@ -25,11 +25,11 @@
   },
   "link.item.label.Report a doc issue": {
     "message": "报告文档问题",
-    "description": "The label of footer link with label=Report a doc issue linking to https://github.com/seata/seata.github.io/issues/new"
+    "description": "The label of footer link with label=Report a doc issue linking to https://github.com/apache/incubator-seata-website/issues/new"
   },
   "link.item.label.Edit This Page on GitHub": {
     "message": "在GitHub上编辑此文档",
-    "description": "The label of footer link with label=Edit This Page on GitHub linking to https://github.com/seata/seata.github.io"
+    "description": "The label of footer link with label=Edit This Page on GitHub linking to https://github.com/apache/incubator-seata-website"
   },
   "link.item.label.Blog": {
     "message": "博客",
@@ -38,9 +38,5 @@
   "link.item.label.Community": {
     "message": "社区",
     "description": "The label of footer link with label=Community linking to /community"
-  },
-  "copyright": {
-    "message": "Copyright © 2023 Seata",
-    "description": "The footer copyright"
   }
 }

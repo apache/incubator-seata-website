@@ -10,6 +10,8 @@ Version 2.0.0 has been released and is available for use.
 
 :::tip
 
+Apache Seata (Incubating) is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.
+
 ## System Requirements
 
 :::note
