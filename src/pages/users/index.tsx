@@ -208,13 +208,17 @@ const User = () => {
             <Translate id='users.wantToAppear' />
           </h3>
           <p>
-            <Translate id='users.submit' />{' '}
-            <a href='https://github.com/apache/incubator-seata-website/edit/docusaurus/src/pages/users/index.tsx'>
-              pull request
+            <Translate id='users.appearDesc1' />{' '}
+            <a
+              rel='noopener noreferrer'
+              target='_blank'
+              href='https://github.com/apache/incubator-seata/issues/1246'
+            >
+              Wanted: who&#39;s using Seata
             </a>{' '}
-            <Translate id='users.quickDesc' />{' '}
-            <a href='mailto:dev@seata.apache.org'>mailing list</a>
-            <Translate id='users.addYou' />
+            <Translate id='users.appearDesc2' />{' '}
+            <a href='mailto:dev@seata.apache.org'>mailing list</a>{' '}
+            <Translate id='users.appearDesc3' />
           </p>
         </div>
       </section>

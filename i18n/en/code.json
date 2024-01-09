@@ -438,13 +438,13 @@
   "users.wantToAppear": {
     "message": "Want to appear on this page?"
   },
-  "users.submit": {
-    "message": "Submit a"
+  "users.appearDesc1": {
+    "message": "Please provide information on"
   },
-  "users.quickDesc": {
+  "users.appearDesc2": {
     "message": "or send a quick description of your organization and usage to the"
   },
-  "users.addYou": {
-    "message": " and we'll add you."
+  "users.appearDesc3": {
+    "message": "and we'll add you."
   }
 }

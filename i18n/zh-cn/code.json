@@ -441,13 +441,13 @@
   "users.wantToAppear": {
     "message": "希望出现在此页？"
   },
-  "users.submit": {
-    "message": "提交一个"
+  "users.appearDesc1": {
+    "message": "请在"
   },
-  "users.quickDesc": {
-    "message": "或发送有关贵组织和使用情况的简要说明到"
+  "users.appearDesc2": {
+    "message": "上提供信息或向"
   },
-  "users.addYou": {
-    "message": "，我们将添加您到此页。"
+  "users.appearDesc3": {
+    "message": "发送有关贵组织和使用情况的简要说明，我们将添加您到此页。"
   }
 }
