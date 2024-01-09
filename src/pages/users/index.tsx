@@ -204,15 +204,17 @@ const User = () => {
           ))}
         </div>
         <div className='appear'>
-          <h3>Want to appear on this page?</h3>
+          <h3>
+            <Translate id='users.wantToAppear' />
+          </h3>
           <p>
-            Submit a{' '}
+            <Translate id='users.submit' />{' '}
             <a href='https://github.com/apache/incubator-seata-website/edit/docusaurus/src/pages/users/index.tsx'>
               pull request
             </a>{' '}
-            or send a quick description of your organization and usage to the{' '}
-            <a href='mailto:dev@seata.apache.org'>mailing list</a> and we'll add
-            you.
+            <Translate id='users.quickDesc' />{' '}
+            <a href='mailto:dev@seata.apache.org'>mailing list</a>
+            <Translate id='users.addYou' />
           </p>
         </div>
       </section>

@@ -436,6 +436,18 @@
     "message": "谁在使用"
   },
   "users.userTitleAfter": {
-    "message": " Apache Seata (Incubating)"
+    "message": " Apache Seata™"
+  },
+  "users.wantToAppear": {
+    "message": "希望出现在此页？"
+  },
+  "users.submit": {
+    "message": "提交一个"
+  },
+  "users.quickDesc": {
+    "message": "或发送有关贵组织和使用情况的简要说明到"
+  },
+  "users.addYou": {
+    "message": "，我们将添加您到此页。"
   }
 }

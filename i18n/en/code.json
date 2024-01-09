@@ -433,6 +433,18 @@
     "message": "Who is using"
   },
   "users.userTitleAfter": {
-    "message": " Apache Seata (Incubating)"
+    "message": " Apache Seata™"
+  },
+  "users.wantToAppear": {
+    "message": "Want to appear on this page?"
+  },
+  "users.submit": {
+    "message": "Submit a"
+  },
+  "users.quickDesc": {
+    "message": "or send a quick description of your organization and usage to the"
+  },
+  "users.addYou": {
+    "message": " and we'll add you."
   }
 }
