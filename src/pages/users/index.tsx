@@ -211,7 +211,8 @@ const User = () => {
               pull request
             </a>{' '}
             or send a quick description of your organization and usage to the{' '}
-            <a href='/community'>mailing list</a> and we'll add you.
+            <a href='mailto:dev@seata.apache.org'>mailing list</a> and we'll add
+            you.
           </p>
         </div>
       </section>
