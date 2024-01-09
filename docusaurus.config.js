@@ -3,7 +3,15 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
+const asfDict = [
+  {target: 'https://www.apache.org', text: 'Foundation'},
+  {target: 'https://www.apache.org/licenses', text: 'License'},
+  {target: 'https://www.apache.org/events/current-event.html', text: 'Events'},
+  {target: 'https://www.apache.org/foundation/sponsorship.html', text: 'Sponsorship'},
+  {target: 'https://privacy.apache.org/policies/privacy-policy-public.html', text: 'Privacy'},
+  {target: 'https://www.apache.org/security', text: 'Security'},
+  {target: 'https://www.apache.org/foundation/thanks.html', text: 'Thanks'},
+];
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Seata',
@@ -18,7 +26,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'seata', // Usually your GitHub org/user name.
-  projectName: 'seata.github.io', // Usually your repo name.
+  projectName: 'incubator-seata-website', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -57,6 +65,9 @@ const config = {
         path: 'unversioned',
         routeBasePath: '/unversioned',
         sidebarPath: require.resolve('./sidebarsUnversioned.js'),
+        editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+        editCurrentVersion: true,
+        editLocalizedFiles: true
       }),
     ],
     [
@@ -107,11 +118,16 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editCurrentVersion: false,
+          editLocalizedFiles: true
         },
         blog: {
           showReadingTime: true,
           blogSidebarTitle: '全部博文',
           blogSidebarCount: 'ALL',
+          editUrl: 'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editLocalizedFiles: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
@@ -185,6 +201,15 @@ const config = {
             target: '_blank',
           },
           {
+            label: 'ASF',
+            type: 'dropdown',
+            position: 'right',
+            items: asfDict.map(link => ({
+              label: link.text,
+              to: link.target,
+            })),
+          },
+          {
             type: 'localeDropdown',
             position: 'right',
           },
@@ -194,6 +219,27 @@ const config = {
         sidebar: {
           autoCollapseCategories: true,
         },
+      },
+      footer:{
+        logo:{
+          alt: 'Apache Incubator Logo',
+          src: 'img/apache/incubator.svg',
+          href:'https://incubator.apache.org/',
+          target: '_blank'
+        },
+        copyright: `
+                  <div class="fs-12">
+                    <div class="center-div">
+                      <span>Apache Seata is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</span>
+                    </div>
+                    <br/>
+                    <div class="center-div">
+                      <span>Copyright © 2023-2024, The Apache Software Foundation Apache Seata, Seata, Apache, Apache Incubator, the Apache feather, the Apache Incubator logo and the Apache Seata project logo are either registered trademarks or trademarks of the Apache Software Foundation.</span>
+                      <br />
+                    </div>
+                    <br/>
+                  </div>
+                  `
       },
       prism: {
         theme: lightCodeTheme,

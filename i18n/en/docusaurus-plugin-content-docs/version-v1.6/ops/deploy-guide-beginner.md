@@ -39,12 +39,10 @@ In the @SpringBootApplication annotation, exclude com.alibaba.cloud.seata.Global
             <dependency>
                  <groupId>io.seata</groupId>
                  <artifactId>seata-spring-boot-starter</artifactId>
-                 <version>最新版</version>
              </dependency>
              <dependency>
                  <groupId>com.alibaba.cloud</groupId>
                  <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-                 <version>最新版本</version>
                  <exclusions>
                      <exclusion>
                          <groupId>io.seata</groupId>
@@ -58,7 +56,7 @@ In the @SpringBootApplication annotation, exclude com.alibaba.cloud.seata.Global
 
 ### Start Server
 
-There are currently three server-side storage modes (store.mode): file, db, and redis (raft and mongodb will be introduced later). The file mode does not need to be changed and can be started directly. The following specifically explains the db and redis startup steps.
+There are currently three server-side storage modes (store.mode): file, db, and redis. The file mode does not need to be changed and can be started directly. The following specifically explains the db and redis startup steps.
 
 Note: The file mode is a stand-alone mode. The global transaction session information is read and written in the memory and the local file root.data is persisted. So the performance is quite well;
 
@@ -68,7 +66,7 @@ The redis mode is supported by Seata-Server 1.3 and above. It has high performan
 
 #### Step 1: Startup package
 - <a href="https://github.com/seata/seata/releases" target="_blank">Click to download</a>.
-- Official DingTalk group (Group Number: 23171167, 1st group is already full, including 5,000 people, <a href="http://seata.io/zh-cn/community" target="_blank">2nd group</a>, group 3: 32033786), QQ group (Group Number: 254657148, group 2: 216012363). Please download packages in the group sharing file.
+- Official DingTalk group (Group Number: 23171167, 1st group is already full, including 5,000 people, <a href="http://seata.io/zh-cn/community" target="_blank">2nd group</a>, group 3: 32033786，group 4: 60170003910), QQ group (Group Number: 254657148, group 2: 216012363). Please download packages in the group sharing file.
 
 #### Step 2: Create table (db only)
 Global transaction session information consists of three pieces of content, that is global transaction-->branch transaction-->global lock, corresponding to the tables global_table, branch_table, and lock_table.
@@ -78,30 +76,15 @@ Global transaction session information consists of three pieces of content, that
 Startup package: seata-->conf-->application.yml, modify store.mode="db" or "redis"
 Source code: root directory-->seata-server-->resources-->application.yml, modify store.mode="db" or "redis"
 
-For versions below 1.5.0:
-
-Startup package: seata-->conf-->file.conf, modify store.mode="db" or "redis"
-Source code: root directory-->seata-server-->resources-->file.conf, modify store.mode="db" or "redis"
-
 #### Step 4: Modify database connection|redis attribute configuration
 
 Startup package: seata-->conf-->application.example.yml comes with additional configuration, copy its db|redis related configuration to application.yml, and modify store.db or store.redis related properties.
 Source code: Root directory-->seata-server-->resources-->application.example.yml comes with additional configuration, copy its db|redis related configuration to application.yml, and modify store.db or store.redis related Attributes.
 
-For versions below 1.5.0:
-
-Startup package: seata-->conf-->file.conf, modify store.db or store.redis related properties.
-Source code: Root directory-->seata-server-->resources-->file.conf, modify store.db or store.redis related properties.
-
 #### Step 5: Start
 
 - Source code startup: execute the main method in ServerApplication.java
 - Command to start: seata-server.sh -h 127.0.0.1 -p 8091 -m db
-
-For versions below 1.5.0:
-
-- Source code startup: execute the main method in Server.java
-- Command to start: seata-server.sh -h 127.0.0.1 -p 8091 -m db -n 1 -e test
 
 ```
     -h: IP registered to the registration center

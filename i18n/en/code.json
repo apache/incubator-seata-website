@@ -364,7 +364,7 @@
     "message": "Create a brilliant "
   },
   "homepage.briefIntroduction": {
-    "message": "Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
+    "message": "Apache Seata (Incubating) is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
   },
   "homepage.quickstartButton": {
     "message": "Get Started"

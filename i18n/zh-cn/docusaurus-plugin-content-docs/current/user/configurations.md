@@ -119,6 +119,7 @@ description: Seata 参数配置。
 | store.redis.database | redis模式默认库 | 默认0    |
 | store.redis.password | redis模式密码(无可不填) | 默认null |
 | store.redis.queryLimit | redis模式一次查询最大条数 | 默认100  |
+| store.redis.type | redis模式主要使用的方式: lua, pippline | pippline|
 | metrics.enabled                           | 是否启用Metrics  | 默认false关闭，在False状态下，所有与Metrics相关的组件将不会被初始化，使得性能损耗最低 |
 | metrics.registryType                     | 指标注册器类型    | Metrics使用的指标注册器类型，默认为内置的compact（简易）实现，这个实现中的Meter仅使用有限内存计数，性能高足够满足大多数场景；目前只能设置一个指标注册器实现 |
 | metrics.exporterList                     | 指标结果Measurement数据输出器列表   | 默认prometheus，多个输出器使用英文逗号分割，例如"prometheus,jmx"，目前仅实现了对接prometheus的输出器 |
@@ -132,6 +133,8 @@ description: Seata 参数配置。
 | seata.enableAutoDataSourceProxy=true | 是否开启数据源自动代理 | true、false,seata-spring-boot-starter(SSBS)专有配置,SSBS默认会开启数据源自动代理,可通过该配置项关闭.|
 | seata.useJdkProxy=false |  是否使用JDK代理作为数据源自动代理的实现方式| true、false,(SSBS)专有配置,默认false,采用CGLIB作为数据源自动代理的实现方式 |
 | transport.enableClientBatchSendRequest            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
+| transport.enableTmClientChannelCheckFailFast            | 客户端TM快速失败检查   |默认true，false不检测 |
+| transport.enableRmClientChannelCheckFailFast            | 客户端RM快速失败检查   |默认true，false不检测 |
 | client.log.exceptionRate                | 日志异常输出概率 |  默认100，目前用于undo回滚失败时异常堆栈输出，百分之一的概率输出，回滚失败基本是脏数据，无需输出堆栈占用硬盘空间  |
 | service.vgroupMapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | TC服务列表（附录2） |  仅注册中心为file时使用  |

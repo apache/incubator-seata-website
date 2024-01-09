@@ -42,8 +42,6 @@ export default function Home(): React.Element {
       title={'Seata'}
       description={translate({
         id: 'homepage.briefIntroduction',
-        message:
-          'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
       })}
     >
       <div ref={el} className='home-page'>
@@ -53,11 +51,7 @@ export default function Home(): React.Element {
         <Feature />
         <User />
         {/* <Community /> */}
-        <Footer
-          logo={
-            '//img.alicdn.com/tfs/TB1dGrSwVT7gK0jSZFpXXaTkpXa-4802-1285.png'
-          }
-        />
+        {/* <Footer/> */}
       </div>
     </Layout>
   );

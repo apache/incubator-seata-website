@@ -3,6 +3,8 @@ import { translate } from '@docusaurus/Translate';
 
 import './index.scss';
 
+const ApacheSvg = require('@site/static/img/apache/incubator.svg').default;
+
 const data = {
   vision: {
     title: translate({ id: 'homepage.footerVersionTitle', message: '愿景' }),
@@ -36,7 +38,7 @@ const data = {
           id: 'homepage.footerDocListText3',
           message: '报告文档问题',
         }),
-        link: 'https://github.com/seata/seata.github.io/issues/new',
+        link: 'https://github.com/apache/incubator-seata-website/issues/new',
         target: '_blank',
       },
       {
@@ -44,7 +46,7 @@ const data = {
           id: 'homepage.footerDocListText4',
           message: '在Github上编辑此文档',
         }),
-        link: 'https://github.com/seata/seata.github.io',
+        link: 'https://github.com/apache/incubator-seata-website',
         target: '_blank',
       },
     ],
@@ -77,58 +79,29 @@ type Props = {
   logo: string;
 };
 
-const Footer = (props: Props) => {
-  const { logo } = props;
+const Footer = () => {
 
   return (
     <footer className='footer-container'>
-      <div className='footer-body'>
-        <img
-          style={{ marginTop: '4px', maxWidth: '120px', height: 'auto' }}
-          src={logo}
-        />
-        <br />
-        <br />
-        {/* <p className="docusaurus-power">website powered by docusaurus</p> */}
-        <div className='cols-container'>
-          <div className='col col-12'>
-            <h3>{data.vision.title}</h3>
-            <p>{data.vision.content}</p>
+      <div className='footer-body '>
+        <div>
+          <div className="center-div">
+            <a href="https://incubator.apache.org/" target="_blank">
+              <ApacheSvg role="img" />
+            </a>
           </div>
-          <div className='col col-6'>
-            <dl>
-              <dt>{data.documentation.title}</dt>
-              {data.documentation.list.map((d, i) => (
-                <dd key={i}>
-                  {d.link?.substr(0, 4) === 'http' && (
-                    <a href={d.link} target={d.target || '_self'}>
-                      {d.text}
-                    </a>
-                  )}
-                  {d.link?.substr(0, 4) !== 'http' && (
-                    <a href={d.link} target={d.target || '_self'}>
-                      {d.text}
-                    </a>
-                  )}
-                </dd>
-              ))}
-            </dl>
+          <br/>
+          <div className="fs-12">
+            <div className="center-div">
+              <span>Apache Seata is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</span>
+            </div>
+            <br/>
+            <div className="center-div">
+              <span>Copyright © 2023-2024, The Apache Software Foundation Apache Seata, Seata, Apache, Apache Incubator, the Apache feather, the Apache Incubator logo and the Apache Seata project logo are either registered trademarks or trademarks of the Apache Software Foundation.</span>
+              <br />
+            </div>
+            <br/>
           </div>
-          <div className='col col-6'>
-            <dl>
-              <dt>{data.resources.title}</dt>
-              {data.resources.list.map((d, i) => (
-                <dd key={i}>
-                  <a href={d.link} target={d.target || '_self'}>
-                    {d.text}
-                  </a>
-                </dd>
-              ))}
-            </dl>
-          </div>
-        </div>
-        <div className='copyright'>
-          <span>{data.copyright}</span>
         </div>
       </div>
     </footer>
