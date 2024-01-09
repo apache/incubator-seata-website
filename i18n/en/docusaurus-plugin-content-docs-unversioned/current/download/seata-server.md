@@ -4,9 +4,6 @@ keywords: [Seata, Seata-Server, Download]
 description: Seata-Server release version download
 ---
 
-
-# Seata-Server Download
-
 :::tip
 
 Version 2.0.0 has been released, featuring support for Raft clusters; AT transaction mode newly supports Dameng, SQLServer, and PolarDB-X 2.0 databases; IPV6 is supported; a unified API is available; transaction two-phase commit processing is parallelized. You are welcome to download and try it out.

@@ -65,6 +65,12 @@ MD022:
 # MD023/heading-start-left : Headings must start at the beginning of the line
 MD023: true
 
+# MD024/no-duplicate-heading : Multiple headings with the same content
+MD024: false
+
+# MD029/ol-prefix : Ordered list item prefix
+MD029: false
+
 # MD030/list-marker-space : Spaces after list markers
 MD030:
   # Spaces for single-line unordered list items
