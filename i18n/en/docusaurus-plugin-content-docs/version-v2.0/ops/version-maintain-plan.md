@@ -4,7 +4,7 @@ keywords: [Seata, Maintenance, Multiple Versions]
 description: Seata Version Maintenance Plan.
 ---
 
-# Seata Version Maintenance Plan
+# Apache Seata(incubating) Version Maintenance Plan
 
 ------
 

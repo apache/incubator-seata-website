@@ -4,7 +4,7 @@ keywords: [Seata,维护,多版本]
 description: Seata版本维护计划.
 ---
 
-# Seata版本维护计划
+# Apache Seata(incubating)版本维护计划
 
 ------
 
