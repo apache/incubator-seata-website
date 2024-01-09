@@ -12,7 +12,7 @@ const data = {
       <a
         rel='noopener noreferrer'
         target='_blank'
-        href='https://github.com/seata/seata/issues/1246'
+        href='https://github.com/apache/incubator-seata/issues/1246'
         style={{ color: '#0054d1' }}
       >
         Wanted: who&#39;s using Seata
