@@ -108,7 +108,8 @@ Error: A fatal exception has occurred. Program will exit.?</a>
 <a href="#33" target="_self">33. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running ? </a>
 <br/>
 
-
+<a href="#34" target="_self">34. Why does the error "pk contains illegal character!" occur? </a>
+<br/>
 ********
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
 
@@ -500,3 +501,8 @@ This is because the seata source code was compiled and then the local seata depe
 Solution:
 - Make sure that the JDK version is 1.8 when compiling seata source code to avoid compatibility issues
 - If you have compiled the source code of seata with JDK 11, please delete all packages under the io.seata path in the local maven repository. Then recompile your project and let the project re-pull the seata dependency package of the central warehouse
+
+***
+<h3 id='34'>Q: 34. Why does the error "pk contains illegal character!" occur?</h3>
+
+- Check if the primary key contains a comma.
