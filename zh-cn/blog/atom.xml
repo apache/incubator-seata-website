@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://seata.io/zh-cn/blog</id>
-    <title>Seata Blog</title>
+    <title>Apache Seata™ Blog</title>
     <updated>2023-11-27T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://seata.io/zh-cn/blog"/>
-    <subtitle>Seata Blog</subtitle>
+    <subtitle>Apache Seata™ Blog</subtitle>
     <icon>https://seata.io/zh-cn/img/seata_logo_small.jpeg</icon>
     <entry>
         <title type="html"><![CDATA[探索 Seata 项目开源开发之旅]]></title>
