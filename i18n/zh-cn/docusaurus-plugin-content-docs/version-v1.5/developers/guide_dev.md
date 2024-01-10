@@ -19,7 +19,7 @@ description: 如果您有兴趣攻克Seata，欢迎您。首先，我们非常�
 
 ## 报告安全问题
 
-安全问题应该始终得到认真对待。按照我们通常的原则，我们不鼓励任何人散布安全问题。如果您发现Seata的安全问题，请不要公开讨论，甚至不要公开问题。相反，我们建议您向我们发送一封私人电子邮件至 [dev-seata@googlegroups.com](mailto:dev-seata@googlegroups.com)进行举报。
+安全问题应该始终得到认真对待。按照我们通常的原则，我们不鼓励任何人散布安全问题。如果您发现Seata的安全问题，请不要公开讨论，甚至不要公开问题。相反，我们建议您向我们发送一封私人电子邮件至 [private@seata.apache.org](mailto:private@seata.apache.org)进行举报。
 
 ## 报告一般问题
 

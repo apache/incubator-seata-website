@@ -19,7 +19,7 @@ It is warmly welcomed if you have interest to hack on Seata. First, we encourage
 
 ## Reporting security issues
 
-Security issues are always treated seriously. As our usual principle, we discourage anyone to spread security issues. If you find a security issue of Seata, please do not discuss it in public and even do not open a public issue. Instead we encourage you to send us a private email to  [dev-seata@googlegroups.com](mailto:dev-seata@googlegroups.com) to report this.
+Security issues are always treated seriously. As our usual principle, we discourage anyone to spread security issues. If you find a security issue of Seata, please do not discuss it in public and even do not open a public issue. Instead we encourage you to send us a private email to  [private@seata.apache.org](mailto:private@seata.apache.org) to report this.
 
 ## Reporting general issues
 
