@@ -193,7 +193,7 @@ UNDO_LOG Table：不同数据库在类型上会略有差别。
 | log_status    | tinyint      |
 | log_created   | datetime     |
 | log_modified  | datetime     |
-> 请确保branche_id中不包含逗号
+
 ```sql
 -- 注意此处0.7.0+ 增加字段 context
 CREATE TABLE `undo_log` (
