@@ -39,7 +39,6 @@ export default function Home(): React.Element {
 
   return (
     <Layout
-      title={'Seata'}
       description={translate({
         id: 'homepage.briefIntroduction',
       })}
