@@ -16,30 +16,9 @@ const topData = {
       type: 'normal',
     },
     {
-      text: translate({
-        id: 'homepage.userregistrationButton',
-        message: '用户登记',
-      }),
-      link: 'https://github.com/seata/seata/issues/1246',
-      type: 'normal',
-      target: '_blank',
-    },
-    {
-      text: 'GitHub-Java',
+      text: 'GitHub',
       link: 'https://github.com/seata/seata',
-      type: 'normal',
-      target: '_blank',
-    },
-    {
-      text: 'GitHub-Golang',
-      link: 'https://github.com/seata/seata-go',
-      type: 'normal',
-      target: '_blank',
-    },
-    {
-      text: 'Docker Image',
-      link: 'https://hub.docker.com/repository/docker/seataio/seata-server/tags?page=1&ordering=last_updated',
-      type: 'normal',
+      type: 'primary',
       target: '_blank',
     },
   ],
