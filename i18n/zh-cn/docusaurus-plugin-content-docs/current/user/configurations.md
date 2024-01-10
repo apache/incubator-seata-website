@@ -133,6 +133,8 @@ description: Seata 参数配置。
 | seata.enableAutoDataSourceProxy=true | 是否开启数据源自动代理 | true、false,seata-spring-boot-starter(SSBS)专有配置,SSBS默认会开启数据源自动代理,可通过该配置项关闭.|
 | seata.useJdkProxy=false |  是否使用JDK代理作为数据源自动代理的实现方式| true、false,(SSBS)专有配置,默认false,采用CGLIB作为数据源自动代理的实现方式 |
 | transport.enableClientBatchSendRequest            | 客户端事务消息请求是否批量合并发送   |默认true，false单条发送 |
+| transport.enableTmClientChannelCheckFailFast            | 客户端TM快速失败检查   |默认true，false不检测 |
+| transport.enableRmClientChannelCheckFailFast            | 客户端RM快速失败检查   |默认true，false不检测 |
 | client.log.exceptionRate                | 日志异常输出概率 |  默认100，目前用于undo回滚失败时异常堆栈输出，百分之一的概率输出，回滚失败基本是脏数据，无需输出堆栈占用硬盘空间  |
 | service.vgroupMapping.my_test_tx_group   | 事务群组（附录1）   |my_test_tx_group为分组，配置项值为TC集群名 |
 | service.default.grouplist                 | TC服务列表（附录2） |  仅注册中心为file时使用  |
