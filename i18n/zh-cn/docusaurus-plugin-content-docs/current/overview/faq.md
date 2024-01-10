@@ -138,6 +138,9 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <a href="#43" target="_self">43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client错误？ </a>
 <br/>
 
+<a href="#44" target="_self">44. 为什么会出现"xxx contains illegal character!"的错误？ </a>
+<br/>
+
 ********
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
@@ -683,3 +686,9 @@ public class SetSeataInterceptor implements RequestInterceptor {
 }
 ```
 ****
+
+<h3 id='44'>Q: 44. 为什么会出现"pk contains illegal character!"的错误？</h3>
+
+- 检查主键中是否包含逗号。
+****
+
