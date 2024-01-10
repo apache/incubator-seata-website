@@ -48,7 +48,7 @@ Seata 融合 Eureka注册中心的操作步骤非常简单，大致步骤可分�
 
 ### Client端配置注册中心
 
-在 `application.yaml` 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/1.1.0/script/client)
+在 `application.yaml` 中加入对应的配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/1.1.0/script/client)
 
 ```yaml
 seata:
@@ -60,7 +60,7 @@ seata:
 
 ### Server端配置注册中心
 
-在 `conf/registry.conf` 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/blob/1.1.0/server/src/main/resources/file.conf.example)
+在 `conf/registry.conf` 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/blob/1.1.0/server/src/main/resources/file.conf.example)
 
 ```
 registry {

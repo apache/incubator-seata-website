@@ -89,7 +89,7 @@ seata:
 
 Or You can also use a third-party configuration center such as nacos, apollo, etc.
 
-[Please refer to here](https://github.com/seata/seata/tree/develop/script/config-center) to upload the seata metrics configuration items to the corresponding configuration center, or open the corresponding configuration center console for manually adding.
+[Please refer to here](https://github.com/apache/incubator-seata/tree/develop/script/config-center) to upload the seata metrics configuration items to the corresponding configuration center, or open the corresponding configuration center console for manually adding.
 
 ```properties
 metrics.enabled=true

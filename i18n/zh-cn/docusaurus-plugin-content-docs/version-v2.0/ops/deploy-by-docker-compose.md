@@ -35,7 +35,7 @@ services:
 接下来通过`docker cp`命令把容器中`/seata-server/resources`位置的资源文件拷贝到宿主机指定位置。
 在宿主机指定位置我们就可以看到对应的`application.yml`配置文件，相关的配置只需要修改这个文件即可。
 
-> `application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+> `application.yml`配置可参考[application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
 ## 快速开始 
 
@@ -65,14 +65,14 @@ services:
 
 ### <a id="file-db">无注册中心，DB存储</a>
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）application.yml配置文件**
 
-`application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+`application.yml`配置可参考[application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```yaml
 server:
@@ -151,11 +151,11 @@ services:
 ```
 ### <a id="nacos-db">nacos注册中心，db存储</a>
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）application.yml配置文件**
 
-`application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+`application.yml`配置可参考[application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
 nacos注册中心。
 
@@ -218,7 +218,7 @@ seata:
 
 **（2）准备nacos配置中心配置**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 > 你需要在nacos新建配置，此处dataId为seataServer.properties
 
@@ -300,15 +300,15 @@ services:
 > 请保证多个Seata Server使用同一个注册中心和同一个存储中心，这样才能形成高可用部署
 > 
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 
 **（1）application.yml配置文件**
 
-`application.yml`配置可参考[application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+`application.yml`配置可参考[application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```yaml
 server:
@@ -372,7 +372,7 @@ seata:
 
 **（2）准备nacos配置中心配置**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 > 你需要在nacos新建配置，此处dataId为seataServer.properties
 

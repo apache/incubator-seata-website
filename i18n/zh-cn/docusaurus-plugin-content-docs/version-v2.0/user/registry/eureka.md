@@ -49,7 +49,7 @@ Seata 融合 Eureka注册中心的操作步骤非常简单，大致步骤可分�
 
 ### Client端配置注册中心
 
-在 [**application.yml**](https://github.com/seata/seata/blob/2.0.0/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/2.0.0/script/client)
+在 [**application.yml**](https://github.com/apache/incubator-seata/blob/2.0.0/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/2.0.0/script/client)
 
 ```yaml
 seata:
@@ -65,7 +65,7 @@ seata:
 
 ### Server端配置注册中心
 
-在 [conf/application.yml](https://github.com/seata/seata/blob/2.0.0/server/src/main/resources/application.yml) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/2.0.0/script/server)
+在 [conf/application.yml](https://github.com/apache/incubator-seata/blob/2.0.0/server/src/main/resources/application.yml) 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/2.0.0/script/server)
 
 ```yaml
 seata:

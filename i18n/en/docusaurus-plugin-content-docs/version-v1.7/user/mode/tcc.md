@@ -84,4 +84,4 @@ public interface TccActionTwo {
 
 ## Getting Started
 
-Follow the [seata-samples/tcc](https://github.com/seata/seata-samples/tree/master/tcc) section for several examples to experiment with. You can start [local-tcc-example](https://github.com/seata/seata-samples/tree/master/tcc/local-tcc-sample) to view an example of local bean usage or [dubbo-tcc-example](https://github.com/seata/seata-samples/tree/master/tcc/local-tcc-sample) for a remote TCC example.
+Follow the [seata-samples/tcc](https://github.com/apache/incubator-seata-samples/tree/master/tcc) section for several examples to experiment with. You can start [local-tcc-example](https://github.com/apache/incubator-seata-samples/tree/master/tcc/local-tcc-sample) to view an example of local bean usage or [dubbo-tcc-example](https://github.com/apache/incubator-seata-samples/tree/master/tcc/local-tcc-sample) for a remote TCC example.

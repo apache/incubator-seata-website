@@ -23,11 +23,11 @@ Security issues are always treated seriously. As our usual principle, we discour
 
 ## Reporting general issues
 
-To be honest, we regard every user of Seata as a very kind contributor. After experiencing Seata, you may have some feedback for the project. Then feel free to open an issue via [NEW ISSUE](https://github.com/seata/seata/issues/new/choose).
+To be honest, we regard every user of Seata as a very kind contributor. After experiencing Seata, you may have some feedback for the project. Then feel free to open an issue via [NEW ISSUE](https://github.com/apache/incubator-seata/issues/new/choose).
 
 Since we collaborate project Seata in a distributed way, we appreciate **WELL-WRITTEN**, **DETAILED**, **EXPLICIT** issue reports. To make the communication more efficient, we wish everyone could search if your issue is an existing one in the searching list. If you find it existing, please add your details in comments under the existing issue instead of opening a brand new one.
 
-To make the issue details as standard as possible, we setup an [ISSUE TEMPLATE](https://github.com/seata/seata/blob/develop/.github/ISSUE_TEMPLATE) for issue reporters. Please **BE SURE** to follow the instructions to fill fields in template.
+To make the issue details as standard as possible, we setup an [ISSUE TEMPLATE](https://github.com/apache/incubator-seata/blob/develop/.github/ISSUE_TEMPLATE) for issue reporters. Please **BE SURE** to follow the instructions to fill fields in template.
 
 There are a lot of cases when you could open an issue:
 
@@ -74,14 +74,14 @@ Since you are ready to improve Seata with a PR, we suggest you could take a look
 
 To put forward a PR, we assume you have registered a GitHub ID. Then you could finish the preparation in the following steps:
 
-1. **FORK** Seata to your repository. To make this work, you just need to click the button Fork in right-left of [seata/seata](https://github.com/seata/seata) main page. Then you will end up with your repository in `https://github.com/<your-username>/seata`, in which `your-username` is your GitHub username.
+1. **FORK** Seata to your repository. To make this work, you just need to click the button Fork in right-left of [apache/incubator-seata](https://github.com/apache/incubator-seata) main page. Then you will end up with your repository in `https://github.com/<your-username>/incubator-seata`, in which `your-username` is your GitHub username.
 
 1. **CLONE** your own repository to develop locally. Use `git clone git@github.com:<your-username>/seata.git` to clone repository to your local machine. Then you can create new branches to finish the change you wish to make.
 
-1. **Set Remote** upstream to be `git@github.com:seata/seata.git` using the following two commands:
+1. **Set Remote** upstream to be `git@github.com:apache/incubator-seata.git` using the following two commands:
 
 ```
-git remote add upstream git@github.com:seata/seata.git
+git remote add upstream git@github.com:apache/incubator-seata.git
 git remote set-url --push upstream no-pushing
 ```
 
@@ -91,7 +91,7 @@ With this remote setting, you can check your git remote configuration like this:
 $ git remote -v
 origin     git@github.com:<your-username>/seata.git (fetch)
 origin     git@github.com:<your-username>/seata.git (push)
-upstream   git@github.com:seata/seata.git (fetch)
+upstream   git@github.com:apache/incubator-seata.git (fetch)
 upstream   no-pushing (push)
 ```
 
@@ -99,7 +99,7 @@ Adding this, we can easily synchronize local branches with upstream branches.
 
 ### Branch Definition
 
-Right now we assume every contribution via pull request is for [branch develop](https://github.com/seata/seata/tree/develop) in Seata. Before contributing, be aware of branch definition would help a lot.
+Right now we assume every contribution via pull request is for [branch develop](https://github.com/apache/incubator-seata/tree/develop) in Seata. Before contributing, be aware of branch definition would help a lot.
 
 As a contributor, keep in mind again that every contribution via pull request is for branch develop. While in project Seata, there are several other branches, we generally call them release branches(such as 0.6.0,0.6.1), feature branches, hotfix branches and master branch.
 
@@ -154,7 +154,7 @@ No matter commit message, or commit content, we do take more emphasis on code re
 
 ### PR Description
 
-PR is the only way to make change to Seata project files. To help reviewers better get your purpose, PR description could not be too detailed. We encourage contributors to follow the [PR template](https://github.com/seata/seata/blob/develop/.github/PULL_REQUEST_TEMPLATE.md) to finish the pull request.
+PR is the only way to make change to Seata project files. To help reviewers better get your purpose, PR description could not be too detailed. We encourage contributors to follow the [PR template](https://github.com/apache/incubator-seata/blob/develop/.github/PULL_REQUEST_TEMPLATE.md) to finish the pull request.
 
 ## Test case contribution
 

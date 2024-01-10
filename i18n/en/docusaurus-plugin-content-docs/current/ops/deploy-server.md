@@ -10,7 +10,7 @@ The server can deploy by multiple method: Directly, Docker, Docker-Compose, Kube
 
 ## Directly 
 
-1. Download the server application from [RELEASE](https://github.com/seata/seata/releases) and unzip. 
+1. Download the server application from [RELEASE](https://github.com/apache/incubator-seata/releases) and unzip. 
 
 2. Startup
 

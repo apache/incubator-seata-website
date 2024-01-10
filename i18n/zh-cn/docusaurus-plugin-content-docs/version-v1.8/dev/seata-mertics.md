@@ -82,7 +82,7 @@ seata:
 
 或者使用第三方配置中心如nacos,apollo等
 
-[请参考此处](https://github.com/seata/seata/tree/develop/script/config-center)，将seata metrics配置项上传到对应配置中心,也可打开对应配置中心控制台进行手动添加。
+[请参考此处](https://github.com/apache/incubator-seata/tree/develop/script/config-center)，将seata metrics配置项上传到对应配置中心,也可打开对应配置中心控制台进行手动添加。
 
 ```properties
 metrics.enabled=true

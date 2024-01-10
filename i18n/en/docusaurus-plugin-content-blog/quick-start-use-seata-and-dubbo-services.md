@@ -202,7 +202,7 @@ CREATE TABLE `account_tbl` (
 ```
 ### Step 4: Start Seata-Server
 
-- Download server [package](https://github.com/seata/seata/releases), unzip it.
+- Download server [package](https://github.com/apache/incubator-seata/releases), unzip it.
 - Start Seata-Server
 
 ```shell
@@ -215,11 +215,11 @@ sh seata-server.sh 8091 /home/admin/seata/data/
 
 ### Step 5: Run example
 
-- Start AccountService ([DubboAccountServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboAccountServiceStarter.java)).
-- Start StorageService ([DubboStorageServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboStorageServiceStarter.java)).
-- Start OrderService ([DubboOrderServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboOrderServiceStarter.java)).
-- Run BusinessService for test ([DubboBusinessTester](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboBusinessTester.java)).
+- Start AccountService ([DubboAccountServiceStarter](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboAccountServiceStarter.java)).
+- Start StorageService ([DubboStorageServiceStarter](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboStorageServiceStarter.java)).
+- Start OrderService ([DubboOrderServiceStarter](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboOrderServiceStarter.java)).
+- Run BusinessService for test ([DubboBusinessTester](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboBusinessTester.java)).
 
 ### Related projects
-* seata:          https://github.com/seata/seata/
-* seata-samples : https://github.com/seata/seata-samples  
+* seata:          https://github.com/apache/incubator-seata/
+* seata-samples : https://github.com/apache/incubator-seata-samples  

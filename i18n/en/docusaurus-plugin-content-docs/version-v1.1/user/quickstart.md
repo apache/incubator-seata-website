@@ -192,7 +192,7 @@ CREATE TABLE `account_tbl` (
 ```
 ### Step 4: Start Server
 
-- Download server package from <https://github.com/seata/seata/releases>, unzip it.
+- Download server package from <https://github.com/apache/incubator-seata/releases>, unzip it.
 
 ```shell
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]
@@ -215,7 +215,7 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 ### Step 5: Run example
 
-Go to samples repo: [seata-samples](https://github.com/seata/seata-samples)
+Go to samples repo: [seata-samples](https://github.com/apache/incubator-seata-samples)
 
 - Start DubboAccountServiceStarter
 - Start DubboStorageServiceStarter

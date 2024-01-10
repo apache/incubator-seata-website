@@ -25,7 +25,7 @@ description: Test coverage guide.
   * TDD（optional）：When you start a new issue, you can try to write test case at first 
 ### 3.The specified value of the test coverage
   * In the stage, the test coverage specified value of delta changed codes is ：>=80%. The higher, the better.
-  * We can see the coverage report in this page: https://codecov.io/gh/seata/seata
+  * We can see the coverage report in this page: https://codecov.io/gh/apache/incubator-seata
 ### 4.Project agreement
   * The unit test cases of the Seata project are distributed in each sub module of the project, and the test assertion class ends with Test.
 

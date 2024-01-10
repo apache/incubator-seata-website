@@ -36,7 +36,7 @@ Seata 融合 Etcd3 注册中心的操作步骤非常简单，大致步骤可分�
 
 ### Client端配置中心
 
-在 [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/client)
+在 [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/client)
 
 ```yaml
 seata:
@@ -48,7 +48,7 @@ seata:
 
 ### Server端配置中心
 
-在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
+在 [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/server)
 
 ```
 config {
@@ -65,10 +65,10 @@ config {
 
 #### 通过脚本上传配置到Etcd3
 
-参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的etcd3脚本,将信息提交到Etcd3服务端,如果有需要更改,可直接通过控制台更改.
+参考https://github.com/apache/incubator-seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的etcd3脚本,将信息提交到Etcd3服务端,如果有需要更改,可直接通过控制台更改.
 
 eg: sh ${SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
 
-详细解析参考 [Readme文档](https://github.com/seata/seata/blob/develop/script/config-center/README.md)
+详细解析参考 [Readme文档](https://github.com/apache/incubator-seata/blob/develop/script/config-center/README.md)
 
 随后,启动 Seata-Server 和 Client（业务侧）应用，如果在导入配置至Etcd3前，已启动Seata-Server 和Client（业务侧）应用需要进行重启。
