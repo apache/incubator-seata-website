@@ -10,8 +10,8 @@ description: 这篇向导旨在给正在准备向Seata提交贡献的新手提�
 
 ### 邮件列表描述
 
-订阅: dev-subscribe@seata.apache.org
-取消订阅: dev-unsubscribe@seata.apache.org
+- 订阅: dev-subscribe@seata.apache.org
+- 取消订阅: dev-unsubscribe@seata.apache.org
 
 ### 报告问题
 
