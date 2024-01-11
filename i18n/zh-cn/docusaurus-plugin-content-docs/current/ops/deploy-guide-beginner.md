@@ -9,7 +9,7 @@ description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务
 Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
 
 ### 资源目录介绍
-#### <a href="https://github.com/seata/seata/tree/master/script" target="_blank">点击查看(或根据版本分支选择对应的资源目录)</a>
+#### <a href="https://github.com/apache/incubator-seata/tree/master/script" target="_blank">点击查看(或根据版本分支选择对应的资源目录)</a>
 - client
 > 存放client端sql脚本 (包含 undo_log表) ，参数配置
 - config-center
@@ -65,7 +65,7 @@ db模式为高可用模式，全局事务会话信息通过db共享，相应性�
 redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息丢失风险,请提前配置合适当前场景的redis持久化配置.
 
 #### 步骤一：启动包
-- <a href="https://github.com/seata/seata/releases" target="_blank">点击下载</a>
+- <a href="https://github.com/apache/incubator-seata/releases" target="_blank">点击下载</a>
 - 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community" target="_blank">2群</a>, 3群: 32033786，4群：60170003910），qq群（群号: 254657148,2群: 216012363）群文件共享下载
 
 #### 步骤二：建表(仅db)

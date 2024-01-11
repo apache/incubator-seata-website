@@ -25,7 +25,7 @@ description: 测试覆盖率向导。
   * TDD（可选）：当你开始写一个新的功能时，你可以试着先写测试用例。 
 ### 3.测试覆盖率设定值
   * 在现阶段，Delta更改代码的测试覆盖设定值为：>＝80%，越高越好。
-  * 我们可以在这个页面中看到测试报告: https://codecov.io/gh/seata/seata
+  * 我们可以在这个页面中看到测试报告: https://codecov.io/gh/apache/incubator-seata
 ### 4.项目约定
   * Seata 项目的单元测试用例分布在项目每个子模块中，测试断言类以Test结尾。
 

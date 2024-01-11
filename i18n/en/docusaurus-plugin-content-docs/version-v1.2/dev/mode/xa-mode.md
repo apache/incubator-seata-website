@@ -92,7 +92,7 @@ This optimization direction requires changes to the BranchId generation mechanis
 
 From a programming model perspective, XA mode is identical to AT mode.
 
-You can refer to Seata's official sample: [seata-xa](https://github.com/seata/seata-samples/tree/master/seata-xa)
+You can refer to Seata's official sample: [seata-xa](https://github.com/apache/incubator-seata-samples/tree/master/seata-xa)
 
 In the sample, the upper-level programming model is the same as the AT mode. You only need to modify the data source proxy to switch between XA mode and AT mode:
 

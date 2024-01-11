@@ -26,9 +26,9 @@ Seata 融合 ZooKeeper 注册中心的操作步骤非常简单，大致步骤可
 
 ### Server端配置注册中心
 
-下载 [Seata 1.5.0 release](https://github.com/seata/seata/releases/tag/v1.5.0) 并解压
+下载 [Seata 1.5.0 release](https://github.com/apache/incubator-seata/releases/tag/v1.5.0) 并解压
 
-在 `/conf/application.yaml` 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+在 `/conf/application.yaml` 中修改对应配置中心，其余[配置参考](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
 ```yaml
 seata:
@@ -54,7 +54,7 @@ seata:
 
 ### Client端配置
 
-如果使用`io.seata:seata-spring-boot-starter`依赖，需要在 application.yml 中加入如下zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/blob/1.5.0/script/client/spring/application.yml)
+如果使用`io.seata:seata-spring-boot-starter`依赖，需要在 application.yml 中加入如下zookeeper的配置项，其余[配置参考](https://github.com/apache/incubator-seata/blob/1.5.0/script/client/spring/application.yml)
 
 ```yaml
 seata:
@@ -79,7 +79,7 @@ seata:
   vgroupMapping.default_tx_group = "default"
 ```
 
-并在`registry.conf`文件中加入zookeeper的配置项，其余[配置参考](https://github.com/seata/seata/tree/1.5.0/script/client/conf)
+并在`registry.conf`文件中加入zookeeper的配置项，其余[配置参考](https://github.com/apache/incubator-seata/tree/1.5.0/script/client/conf)
 
 ```
   zk {

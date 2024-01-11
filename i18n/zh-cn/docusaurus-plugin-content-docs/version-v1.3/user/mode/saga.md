@@ -47,11 +47,11 @@ Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流�
 
 ![demo业务流程图](/img/saga/demo_business_process.png?raw=true)
 
-先下载seata-samples工程：https://github.com/seata/seata-samples.git
+先下载seata-samples工程：https://github.com/apache/incubator-seata-samples.git
 
 > 注意SEATA版本需要0.9.0以上
 
-在dubbo-saga-sample中一个分布式事务内会有2个Saga事务参与者，分别是: [InventoryAction](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/InventoryAction.java) 和 [BalanceAction](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/BalanceAction.java) ;分布式事务提交则两者均提交，分布式事务回滚则两者均回滚；
+在dubbo-saga-sample中一个分布式事务内会有2个Saga事务参与者，分别是: [InventoryAction](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/InventoryAction.java) 和 [BalanceAction](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/BalanceAction.java) ;分布式事务提交则两者均提交，分布式事务回滚则两者均回滚；
 
 这2个Saga参与者均是 dubbo 服务，两个参与都有一个reduce方法，表示库存扣减或余额扣减，还有一个compensateReduce方法，表示补偿扣减操作。
 
@@ -217,32 +217,32 @@ public interface InventoryAction {
 
 更多详细的状态语言解释请看[State language referance](#State-language-referance)章节
 
-更多详细的状态语言使用示例见[https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine)
+更多详细的状态语言使用示例见[https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine)
 
 
 ### Demo 运行指南
 
 #### step 1 启动 SEATA Server
 
-运行 [SeataServerStarter](https://github.com/seata/seata-samples/blob/master/saga/sofarpc-saga-sample/src/test/java/io/seata/samples/saga/SeataServerStarter.java) ，启动 Seata Server；
+运行 [SeataServerStarter](https://github.com/apache/incubator-seata-samples/blob/master/saga/sofarpc-saga-sample/src/test/java/io/seata/samples/saga/SeataServerStarter.java) ，启动 Seata Server；
 
 #### step 2 启动 dubbo provider Demo
 
-运行 [DubboSagaProviderStarter](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/test/java/io/seata/samples/saga/starter/DubboSagaProviderStarter.java) ，启动 dubbo provider；
+运行 [DubboSagaProviderStarter](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/test/java/io/seata/samples/saga/starter/DubboSagaProviderStarter.java) ，启动 dubbo provider；
 
 #### step 3 启动 Saga Demo
 
-运行 [DubboSagaTransactionStarter](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/starter/DubboSagaTransactionStarter.java) , 启动 demo工程；
+运行 [DubboSagaTransactionStarter](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/starter/DubboSagaTransactionStarter.java) , 启动 demo工程；
 
 
-> Demo中的数据库使用的是H2内存数据库, 生产上建议使用与业务相同的库, 目前支持Oracle, Mysql, DB2. 建表语句在 [https://github.com/seata/seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql](https://github.com/seata/seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql)
+> Demo中的数据库使用的是H2内存数据库, 生产上建议使用与业务相同的库, 目前支持Oracle, Mysql, DB2. 建表语句在 [https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql](https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql)
 
 > Demo中还有调用本地服务和调用SOFA RPC服务的示例
 
 ## 状态机设计器
 
 Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代码和运行指南请参考：
-[https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer)
+[https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer)
 
 状态机设计器截图:
 ![状态机设计器](/img/saga/seata-saga-statemachine-designer.png?raw=true)
@@ -939,7 +939,7 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 ***
 **问:** Saga 模式是不是基于 AT 来加强的长事务处理呢？
 
-**答:** 没有基于 AT，客户端完全是两套，Server 端是复用的。你也可以看 Saga 的单元测试，那里有很多示例：[https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine)
+**答:** 没有基于 AT，客户端完全是两套，Server 端是复用的。你也可以看 Saga 的单元测试，那里有很多示例：[https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine)
 ***
 **问:** 开发者文档中状态机引擎原理图里的EventQueue只是开启分布式事务的系统来进行事件驱动，调用其它系统服务像调用本地一样。系统之间还是RPC调用是吧。而不是系统之前也是纯事件驱动的？（"系统之间也是纯事件驱动的" 指 RPC 也是非阻塞的）
 

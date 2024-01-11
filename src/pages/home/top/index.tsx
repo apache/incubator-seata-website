@@ -17,7 +17,7 @@ const topData = {
     },
     {
       text: 'GitHub',
-      link: 'https://github.com/seata/seata',
+      link: 'https://github.com/apache/incubator-seata',
       type: 'primary',
       target: '_blank',
     },
@@ -31,12 +31,12 @@ const Top = () => {
   });
   const [releaseNote, setReleaseNote] = React.useState({
     version: 'v1.7.1',
-    url: 'https://github.com/seata/seata/releases/tag/v1.7.1',
+    url: 'https://github.com/apache/incubator-seata/releases/tag/v1.7.1',
     date: '2023/9/5',
   });
 
   React.useEffect(() => {
-    fetch('//api.github.com/repos/seata/seata')
+    fetch('//api.github.com/repos/apache/incubator-seata')
       .then((res) => res.json())
       .then((data) => {
         setRepo({
@@ -44,7 +44,7 @@ const Top = () => {
           forkCount: `${data.forks_count}`,
         });
       });
-    fetch('https://api.github.com/repos/seata/seata/releases/latest')
+    fetch('https://api.github.com/repos/apache/incubator-seata/releases/latest')
       .then((res) => res.json())
       .then((data) => {
         setReleaseNote({
@@ -77,7 +77,7 @@ const Top = () => {
           </div>
           <div className='github-buttons'>
             <a
-              href='https://github.com/seata/seata'
+              href='https://github.com/apache/incubator-seata'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -89,7 +89,7 @@ const Top = () => {
               </div>
             </a>
             <a
-              href='https://github.com/seata/seata/fork'
+              href='https://github.com/apache/incubator-seata/fork'
               target='_blank'
               rel='noopener noreferrer'
             >

@@ -122,7 +122,10 @@ const data = {
               message: '提交',
             })}
             &nbsp;
-            <a href='https://github.com/seata/seata/issues/new' target='_blank'>
+            <a
+              href='https://github.com/apache/incubator-seata/issues/new'
+              target='_blank'
+            >
               {translate({
                 id: 'community.contributeListContent2_2',
                 message: '新问题',
@@ -169,7 +172,10 @@ const data = {
               message: '创建一个',
             })}
             &nbsp;
-            <a href='https://github.com/seata/seata/pulls' target='_blank'>
+            <a
+              href='https://github.com/apache/incubator-seata/pulls'
+              target='_blank'
+            >
               PR
             </a>
           </span>

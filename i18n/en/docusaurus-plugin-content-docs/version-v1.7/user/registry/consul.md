@@ -32,9 +32,9 @@ The Client-side needs to add Maven dependencies and configure them.
 
 ### Server-side configuration of registry
 
-Download [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) and extract it.
+Download [Seata 1.4.2 release](https://github.com/apache/incubator-seata/releases/tag/v1.4.2) and extract it.
 
-Modify the corresponding configuration center in /conf/registry.conf, and refer to the rest of the [configuration](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf).
+Modify the corresponding configuration center in /conf/registry.conf, and refer to the rest of the [configuration](https://github.com/apache/incubator-seata/blob/develop/script/client/conf/registry.conf).
 
 ```
 registry {
@@ -71,7 +71,7 @@ Go to the Consul console to check if Seata is registered successfully.
 
 ### Client-side configuration
 
-Add the corresponding registry to application.yml, and refer to the rest of the [configuration](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml).
+Add the corresponding registry to application.yml, and refer to the rest of the [configuration](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml).
 
 ```yaml
 seata:

@@ -56,5 +56,5 @@ public class DataSourceProxy {
 
 ## 快速开始
 
-请跟随 [seata-samples/xa](https://github.com/seata/seata-samples/tree/master/tcc) 中的示例进行实验。
+请跟随 [seata-samples/xa](https://github.com/apache/incubator-seata-samples/tree/master/tcc) 中的示例进行实验。
 

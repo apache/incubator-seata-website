@@ -10,7 +10,7 @@ Seata-Raft mode is a transaction storage mode that integrates storage and comput
 Note: Since this mode does not support integration with third-party registry centers, only one TC cluster is allowed for the entire chain, which means that the TC cluster corresponding to the client's transaction group must remain consistent. In the future, the Seata community will launch a self-contained NamingServer that is compatible with the Seata-Raft mode and supports multi-raft.
 
 ## Server
-1. Download the server application from [RELEASE](https://github.com/seata/seata/releases) and unzip. 
+1. Download the server application from [RELEASE](https://github.com/apache/incubator-seata/releases) and unzip. 
 
 2. Change config
 Add the following parameters under seata: in the application.yml file in the conf.

@@ -33,9 +33,9 @@ Server 端只需要配置“注册中心”
 Client 端则需要增加 Maven 依赖以及配置
 
 ### Server端配置注册中心
-下载 [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) 并解压
+下载 [Seata 1.4.2 release](https://github.com/apache/incubator-seata/releases/tag/v1.4.2) 并解压
 
-在 /conf/registry.conf 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf)
+在 /conf/registry.conf 中修改对应配置中心，其余[配置参考](https://github.com/apache/incubator-seata/blob/develop/script/client/conf/registry.conf)
 
 ```
 registry {
@@ -72,7 +72,7 @@ registry {
 
 ### Client端配置
 
-在 application.yml 中加入对应的注册中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml)
+在 application.yml 中加入对应的注册中心，其余[配置参考](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml)
 
 ```yaml
 seata:

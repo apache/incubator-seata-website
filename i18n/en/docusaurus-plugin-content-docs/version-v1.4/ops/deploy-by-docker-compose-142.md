@@ -45,11 +45,11 @@ services:
 
 ### <a id="file-db">No Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode
@@ -110,7 +110,7 @@ services:
 
 ### <a id="nacos-db">Nacos Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare file: registry.conf**
 
@@ -156,7 +156,7 @@ config {
 
 **(2) Prepare nacos configuration center configuration**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More storage modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More storage modes</a>.
 
 > You need to create a new configuration in nacos, where the dataId is seataServer.properties
 
@@ -204,11 +204,11 @@ services:
 
 > Seata high availability usage deployment relies on the registration center and database, but does not depend on the configuration center.
 
-> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode

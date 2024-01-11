@@ -13,7 +13,7 @@ date: 2020/04/19
 
 # 1. 概述
 
-[Seata](https://github.com/seata/seata) 是**阿里**开源的一款开源的**分布式事务**解决方案，致力于提供高性能和简单易用的分布式事务服务。
+[Seata](https://github.com/apache/incubator-seata) 是**阿里**开源的一款开源的**分布式事务**解决方案，致力于提供高性能和简单易用的分布式事务服务。
 
 ## 1.1 四种事务模式
 
@@ -25,7 +25,7 @@ Seata 目标打造**一站式**的分布事务的解决方案，最终会提供�
 
 目前使用的**流行度**情况是：AT > TCC > Saga。因此，我们在学习 Seata 的时候，可以花更多精力在 **AT 模式**上，最好搞懂背后的实现原理，毕竟分布式事务涉及到数据的正确性，出问题需要快速排查定位并解决。
 
-> 友情提示：具体的流行度，胖友可以选择看看 [Wanted: who's using Seata](https://github.com/seata/seata/issues/1246) 每个公司登记的使用方式。
+> 友情提示：具体的流行度，胖友可以选择看看 [Wanted: who's using Seata](https://github.com/apache/incubator-seata/issues/1246) 每个公司登记的使用方式。
 
 ## 1.2 三种角色
 
@@ -56,19 +56,19 @@ Seata 目标打造**一站式**的分布事务的解决方案，最终会提供�
 
 Seata 目前提供了对主流的**微服务框架**的支持：
 * Dubbo
-    > 通过 [`seata-dubbo`](https://github.com/seata/seata/blob/develop/integration/dubbo/) 集成
+    > 通过 [`seata-dubbo`](https://github.com/apache/incubator-seata/blob/develop/integration/dubbo/) 集成
 
 * SOFA-RPC
-    > 通过 [`seata-sofa-rpc`](https://github.com/seata/seata/blob/develop/integration/sofa-rpc/) 集成
+    > 通过 [`seata-sofa-rpc`](https://github.com/apache/incubator-seata/blob/develop/integration/sofa-rpc/) 集成
 
 * Motan
-    > 通过 [`seata-motan`](https://github.com/seata/seata/blob/develop/integration/motan/) 集成
+    > 通过 [`seata-motan`](https://github.com/apache/incubator-seata/blob/develop/integration/motan/) 集成
 
 * gRPC
-    > 通过 [`seata-grpc`](https://github.com/seata/seata/blob/develop/integration/gprc/) 集成
+    > 通过 [`seata-grpc`](https://github.com/apache/incubator-seata/blob/develop/integration/gprc/) 集成
 
 * Apache HttpClient
-    > 通过 [`seata-http`](https://github.com/seata/seata/blob/develop/integration/http/) 集成
+    > 通过 [`seata-http`](https://github.com/apache/incubator-seata/blob/develop/integration/http/) 集成
 
 * Spring Cloud OpenFeign
     > 通过 [`spring-cloud-starter-alibaba-seata`](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-starters/spring-cloud-starter-alibaba-seata/src/main/java/com/alibaba/cloud/seata/) 的 [`feign`](https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-starters/spring-cloud-starter-alibaba-seata/src/main/java/com/alibaba/cloud/seata/feign/) 模块
@@ -86,7 +86,7 @@ Seata 目前提供了对主流的**微服务框架**的支持：
 
 ## 1.4 案例情况
 
-从 [Wanted: who's using Seata](https://github.com/seata/seata/issues/1246) 的登记情况，Seata 已经在国内很多团队开始落地，其中不乏有滴滴、韵达等大型公司。可汇总如下图：
+从 [Wanted: who's using Seata](https://github.com/apache/incubator-seata/issues/1246) 的登记情况，Seata 已经在国内很多团队开始落地，其中不乏有滴滴、韵达等大型公司。可汇总如下图：
                                                                                                                
 ![汇总图](http://www.iocoder.cn/images/Seata/2017-01-01/03.png)
 
@@ -109,7 +109,7 @@ Seata 目前提供了对主流的**微服务框架**的支持：
 
 ## 2.1 下载 Seata 软件包
 
-打开 [Seata 下载页面](https://github.com/seata/seata/releases)，选择想要的 Seata 版本。这里，我们选择 [v1.1.0](https://github.com/seata/seata/releases/tag/v1.1.0) 最新版本。
+打开 [Seata 下载页面](https://github.com/apache/incubator-seata/releases)，选择想要的 Seata 版本。这里，我们选择 [v1.1.0](https://github.com/apache/incubator-seata/releases/tag/v1.1.0) 最新版本。
 
 ```Bash
 # 创建目录
@@ -117,7 +117,7 @@ $ mkdir -p /Users/yunai/Seata
 $ cd /Users/yunai/Seata
 
 # 下载
-$ wget https://github.com/seata/seata/releases/download/v1.1.0/seata-server-1.1.0.tar.gz
+$ wget https://github.com/apache/incubator-seata/releases/download/v1.1.0/seata-server-1.1.0.tar.gz
 
 # 解压
 $ tar -zxvf seata-server-1.1.0.tar.gz
@@ -160,7 +160,7 @@ total 0
 
 同时，每个 Seata TC Server 可以注册自己到注册中心上，方便应用从注册中心获得到他们。最终我们部署 集群 TC Server 如下图所示：![集群 TC Server](http://www.iocoder.cn/images/Seata/2017-01-01/21.png)
 
-Seata TC Server 对主流的注册中心都提供了集成，具体可见 [discovery](https://github.com/seata/seata/tree/develop/discovery) 目录。考虑到国内使用 Nacos 作为注册中心越来越流行，这里我们就采用它。
+Seata TC Server 对主流的注册中心都提供了集成，具体可见 [discovery](https://github.com/apache/incubator-seata/tree/develop/discovery) 目录。考虑到国内使用 Nacos 作为注册中心越来越流行，这里我们就采用它。
 
 > 友情提示：如果对 Nacos 不了解的胖友，可以参考[《Nacos 安装部署》](http://www.iocoder.cn/Nacos/install/?self)文章。
 
@@ -168,7 +168,7 @@ Seata TC Server 对主流的注册中心都提供了集成，具体可见 [disco
 
 ## 3.1 下载 Seata 软件包
 
-打开 [Seata 下载页面](https://github.com/seata/seata/releases)，选择想要的 Seata 版本。这里，我们选择 [v1.1.0](https://github.com/seata/seata/releases/tag/v1.1.0) 最新版本。
+打开 [Seata 下载页面](https://github.com/apache/incubator-seata/releases)，选择想要的 Seata 版本。这里，我们选择 [v1.1.0](https://github.com/apache/incubator-seata/releases/tag/v1.1.0) 最新版本。
 
 ```Bash
 # 创建目录
@@ -176,7 +176,7 @@ $ mkdir -p /Users/yunai/Seata
 $ cd /Users/yunai/Seata
 
 # 下载
-$ wget https://github.com/seata/seata/releases/download/v1.1.0/seata-server-1.1.0.tar.gz
+$ wget https://github.com/apache/incubator-seata/releases/download/v1.1.0/seata-server-1.1.0.tar.gz
 
 # 解压
 $ tar -zxvf seata-server-1.1.0.tar.gz
@@ -192,7 +192,7 @@ $ ls -ls
 
 ## 3.2 初始化数据库
 
-① 使用 [`mysql.sql`](https://github.com/seata/seata/blob/develop/script/server/db/mysql.sql) 脚本，初始化 Seata TC Server 的 db 数据库。脚本内容如下：
+① 使用 [`mysql.sql`](https://github.com/apache/incubator-seata/blob/develop/script/server/db/mysql.sql) 脚本，初始化 Seata TC Server 的 db 数据库。脚本内容如下：
 
 ```SQL
 -- -------------------------------- The script used when storeMode is 'db' --------------------------------
@@ -328,12 +328,12 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 ## 4.2 TCC 模式
 
 * 文档：[《Seata 文档 —— TCC 模式》](https://seata.io/zh-cn/docs/dev/mode/tcc-mode.html)
-* 示例：<https://github.com/seata/seata-samples/blob/master/tcc>
+* 示例：<https://github.com/apache/incubator-seata-samples/blob/master/tcc>
 
 ## 4.3 Saga 模式
 
 * 文档：[《Seata 文档 —— Saga 模式》](https://seata.io/zh-cn/docs/dev/mode/saga-mode.html)
-* 示例：<https://github.com/seata/seata-samples/tree/master/saga>
+* 示例：<https://github.com/apache/incubator-seata-samples/tree/master/saga>
 
 ## 4.4 XA 模式
 
