@@ -211,12 +211,12 @@ const config = {
             to: '/unversioned/download/seata-server',
             position: 'right',
           },
-          {
-            label: 'Console sample',
-            to: 'http://demo.seata.io/',
-            position: 'right',
-            target: '_blank',
-          },
+          // {
+          //   label: 'Console sample',
+          //   to: 'http://demo.seata.io/',
+          //   position: 'right',
+          //   target: '_blank',
+          // },
           {
             label: 'ASF',
             type: 'dropdown',
