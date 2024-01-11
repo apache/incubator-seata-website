@@ -49,7 +49,7 @@ First, you need to add the Maven dependency of `spring-cloud-starter-netflix-eur
 
 ### Configuring the Registry on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/1.1.0/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/1.1.0/script/client) for other configurations.
+Add the corresponding configuration to [**application.yml**](https://github.com/apache/incubator-seata/blob/1.1.0/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/apache/incubator-seata/tree/1.1.0/script/client) for other configurations.
 
 ```yaml
 seata:
@@ -61,7 +61,7 @@ seata:
 
 ### Server-side configuration of the registry center
 
-Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/1.1.0/server/src/main/resources/registry.conf), and refer to the [configuration](https://github.com/seata/seata/tree/1.1.0/script/server) for the rest.
+Add the corresponding configuration center in [registry.conf](https://github.com/apache/incubator-seata/blob/1.1.0/server/src/main/resources/registry.conf), and refer to the [configuration](https://github.com/apache/incubator-seata/tree/1.1.0/script/server) for the rest.
 
 ```
 registry {

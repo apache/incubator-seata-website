@@ -55,4 +55,4 @@ public class DataSourceProxy {
 
 ## Getting Started
 
-Follow the examples in [seata-samples/xa](https://github.com/seata/seata-samples/tree/master/tcc) for experimentation.
+Follow the examples in [seata-samples/xa](https://github.com/apache/incubator-seata-samples/tree/master/tcc) for experimentation.

@@ -18,9 +18,9 @@ description: Seata upgrade.
  - global_table 调整索引从 idx_gmt_modified_status 调整为 idx_status_gmt_modified
  - lock_table 增加 status 字段,增加 idx_status，idx_xid_and_branch_id 索引
  - 增加 distributed_lock 表用于 seata-server 异步任务调度
-  升级1.5.0前，请注意表结构变更，表结构详情请[点击此处](https://github.com/seata/seata/tree/1.5.0/script/server/db)
+  升级1.5.0前，请注意表结构变更，表结构详情请[点击此处](https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db)
    
-2. TCC事务模式在1.5.0 增加防悬挂功能,如需由 Seata 框架开启防悬挂,需要提前在客户端业务库中增加[此表](https://github.com/seata/seata/tree/1.5.0/script/client/tcc/db)
+2. TCC事务模式在1.5.0 增加防悬挂功能,如需由 Seata 框架开启防悬挂,需要提前在客户端业务库中增加[此表](https://github.com/apache/incubator-seata/tree/1.5.0/script/client/tcc/db)
    
 3. TCC模式一阶段方法进行了优化，不再需要在一阶段的接口入参定义`BusinessActionContext`，若一阶段需要使用到`BusinessActionContext`，可以通过`BusinessActionContextUtil.getContext()`取得
 

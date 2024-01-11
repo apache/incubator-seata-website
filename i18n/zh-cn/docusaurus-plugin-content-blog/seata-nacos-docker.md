@@ -433,7 +433,7 @@ docker logs -f seata
 
 eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
 
-具体参数释义参考：[配置导入说明](https://github.com/seata/seata/blob/1.4.2/script/config-center/README.md)
+具体参数释义参考：[配置导入说明](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/README.md)
 
 
 ​	7.登录nacos控制中心查看

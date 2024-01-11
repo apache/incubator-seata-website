@@ -37,7 +37,7 @@ First, you need to add the Maven dependency of `jetcd-core` to your project's `p
 
 ### Configuring the Registry Center on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/develop/script/client) for other configurations.
+Add the corresponding configuration to [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml), and refer to the [Configuration Reference](https://github.com/apache/incubator-seata/tree/develop/script/client) for other configurations.
 
 ```yaml
 seata:
@@ -53,7 +53,7 @@ seata:
 
 ### Configuring the Registry Center on the Server Side
 
-Add the corresponding configuration to [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to the [Configuration Reference](https://github.com/seata/seata/tree/develop/script/server) for other configurations.
+Add the corresponding configuration to [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf), and refer to the [Configuration Reference](https://github.com/apache/incubator-seata/tree/develop/script/server) for other configurations.
 
 ```
 registry {

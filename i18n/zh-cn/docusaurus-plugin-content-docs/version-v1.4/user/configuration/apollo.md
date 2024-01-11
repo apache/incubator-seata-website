@@ -33,7 +33,7 @@ Seata 融合 Apollo 配置中心的操作步骤非常简单，大致步骤可分
 
 ### Client端配置中心
 
-在 [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/client)
+在 [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/client)
 
 ```yaml
 seata:
@@ -48,7 +48,7 @@ seata:
 
 ### Server端配置中心
 
-在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
+在 [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/server)
 
 ```
 config {
@@ -66,10 +66,10 @@ config {
 
 ### 上传配置至 Apollo 配置中心
 
-参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的 Apollo 脚本,将信息提交到Apollo 控制台, 如果有需要更改,可直接通过控制台更改.
+参考https://github.com/apache/incubator-seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的 Apollo 脚本,将信息提交到Apollo 控制台, 如果有需要更改,可直接通过控制台更改.
 
 eg: sh ${SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
 
-详细解析参考 [Readme文档](https://github.com/seata/seata/blob/develop/script/config-center/README.md)
+详细解析参考 [Readme文档](https://github.com/apache/incubator-seata/blob/develop/script/config-center/README.md)
 
 随后,启动 Seata-Server 和 Client（业务侧）应用，如果在导入配置至 Apollo 前，已启动Seata-Server 和Client（业务侧）应用需要进行重启。

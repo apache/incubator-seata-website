@@ -35,7 +35,7 @@ First, you need to add the Maven dependency for `nacos-client` to your project's
 
 ### Configuring the Registry on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/client):
+Add the corresponding configuration to [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/apache/incubator-seata/tree/develop/script/client):
 
 ```yaml
 seata:
@@ -61,7 +61,7 @@ seata:
 
 ### Configuring the Registry on the Server Side
 
-Add the corresponding configuration to `conf/application.yaml`, and refer to other [configuration options](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml):
+Add the corresponding configuration to `conf/application.yaml`, and refer to other [configuration options](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml):
 
 ```yaml
 seata:

@@ -35,7 +35,7 @@ Seata 融合 Nacos 配置中心的操作步骤非常简单，大致步骤可分�
 
 ### Client端配置中心
 
-在 [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/client)
+在 [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/client)
 
 ```yaml
 seata:
@@ -51,7 +51,7 @@ seata:
 
 ### Server端配置中心
 
-在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
+在 [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/server)
 
 ```
 config {
@@ -73,7 +73,7 @@ config {
 #### 通过dataId配置
 1. 从v1.4.2版本开始，已支持从一个Nacos dataId中获取所有配置信息,你只需要额外添加一个dataId配置项。
 
-2. 首先你需要在nacos新建配置，此处dataId为seataServer.properties,配置内容参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并按需修改保存
+2. 首先你需要在nacos新建配置，此处dataId为seataServer.properties,配置内容参考https://github.com/apache/incubator-seata/tree/develop/script/config-center 的config.txt并按需修改保存
 
 3. 在client参考如下配置进行修改,
 
@@ -93,10 +93,10 @@ seata:
 
 #### 通过脚本上传配置到Nacos
 
-参考https://github.com/seata/seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的nacos脚本,将信息提交到nacos控制台,如果有需要更改,可直接通过控制台更改.
+参考https://github.com/apache/incubator-seata/tree/develop/script/config-center 的config.txt并修改,之后运行仓库中提供的nacos脚本,将信息提交到nacos控制台,如果有需要更改,可直接通过控制台更改.
 
 eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
 
-详细解析参考 [Readme文档](https://github.com/seata/seata/blob/develop/script/config-center/README.md)
+详细解析参考 [Readme文档](https://github.com/apache/incubator-seata/blob/develop/script/config-center/README.md)
 
 随后,启动 Seata-Server 和 Client（业务侧）应用，如果在导入配置至Nacos前，已启动Seata-Server 和Client（业务侧）应用需要进行重启。

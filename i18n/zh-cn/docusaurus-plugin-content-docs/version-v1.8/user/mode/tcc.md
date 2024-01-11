@@ -88,4 +88,4 @@ public interface TccActionTwo {
 
 ## 快速开始
 
-请跟随 [seata-samples/tcc](https://github.com/seata/seata-samples/tree/master/tcc) 中若干种示例进行实验，可以启动 [local-tcc-example](https://github.com/seata/seata-samples/tree/master/tcc/local-tcc-sample) 查看本地 bean 的示例，或者 [dubbo-tcc-example](https://github.com/seata/seata-samples/tree/master/tcc/local-tcc-sample) 查看远程 TCC 示例。
+请跟随 [seata-samples/tcc](https://github.com/apache/incubator-seata-samples/tree/master/tcc) 中若干种示例进行实验，可以启动 [local-tcc-example](https://github.com/apache/incubator-seata-samples/tree/master/tcc/local-tcc-sample) 查看本地 bean 的示例，或者 [dubbo-tcc-example](https://github.com/apache/incubator-seata-samples/tree/master/tcc/local-tcc-sample) 查看远程 TCC 示例。

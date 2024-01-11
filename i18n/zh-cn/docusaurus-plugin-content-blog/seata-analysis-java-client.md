@@ -6,7 +6,7 @@ keywords: [fescar、seata、分布式事务]
 ---
 
 ## 前言
-在分布式系统中，分布式事务是一个必须要解决的问题，目前使用较多的是最终一致性方案。自年初阿里开源了Fescar（四月初更名为Seata）后，该项目受到了极大的关注度，目前已接近8000Star。[Seata](https://github.com/seata/seata)以高性能和零侵入的方式为目标解决微服务领域的分布式事务难题，目前正处于快速迭代中，近期小目标是生产可用的Mysql版本。关于Seata的总体介绍，可以查看[官方WIKI](https://github.com/seata/seata/wiki/%E6%A6%82%E8%A7%88)获得更多更全面的内容介绍。
+在分布式系统中，分布式事务是一个必须要解决的问题，目前使用较多的是最终一致性方案。自年初阿里开源了Fescar（四月初更名为Seata）后，该项目受到了极大的关注度，目前已接近8000Star。[Seata](https://github.com/apache/incubator-seata)以高性能和零侵入的方式为目标解决微服务领域的分布式事务难题，目前正处于快速迭代中，近期小目标是生产可用的Mysql版本。关于Seata的总体介绍，可以查看[官方WIKI](https://github.com/apache/incubator-seata/wiki/%E6%A6%82%E8%A7%88)获得更多更全面的内容介绍。
 
 本文主要基于spring cloud+spring jpa+spring cloud alibaba fescar+mysql+seata的结构，搭建一个分布式系统的demo，通过seata的debug日志和源代码，从client端（RM、TM）的角度分析说明其工作流程及原理。
 
@@ -60,7 +60,7 @@ Fescar官方已支持全版本的dubbo协议，而对于spring cloud（spring-bo
 正常流程下2、3、4步的数据正常更新全局commit，异常流程下的数据则由于第4步的异常报错全局回滚。
 
 ## 配置文件
-fescar的配置入口文件是[registry.conf](https://github.com/seata/seata/blob/develop/config/src/main/resources/registry.conf),查看代码[ConfigurationFactory](https://github.com/seata/seata/blob/develop/config/src/main/java/com/alibaba/fescar/config/ConfigurationFactory.java)得知目前还不能指定该配置文件，所以配置文件名称只能为registry.conf
+fescar的配置入口文件是[registry.conf](https://github.com/apache/incubator-seata/blob/develop/config/src/main/resources/registry.conf),查看代码[ConfigurationFactory](https://github.com/apache/incubator-seata/blob/develop/config/src/main/java/com/alibaba/fescar/config/ConfigurationFactory.java)得知目前还不能指定该配置文件，所以配置文件名称只能为registry.conf
 
 ```java
 private static final String REGISTRY_CONF = "registry.conf";
@@ -70,7 +70,7 @@ public static final Configuration FILE_INSTANCE = new FileConfiguration(REGISTRY
 在`registry`中可以指定具体配置的形式，默认使用file类型，在file.conf中有3部分配置内容
 
  1. transport
-     transport部分的配置对应[NettyServerConfig](https://github.com/seata/seata/blob/develop/core/src/main/java/com/alibaba/fescar/core/rpc/netty/NettyServerConfig.java)类，用于定义Netty相关的参数，TM、RM与fescar-server之间使用Netty进行通信
+     transport部分的配置对应[NettyServerConfig](https://github.com/apache/incubator-seata/blob/develop/core/src/main/java/com/alibaba/fescar/core/rpc/netty/NettyServerConfig.java)类，用于定义Netty相关的参数，TM、RM与fescar-server之间使用Netty进行通信
  2. service
 
 ```js
@@ -135,7 +135,7 @@ CREATE TABLE `undo_log` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 ```
 ## 启动Server
-前往[https://github.com/seata/seata/releases](https://github.com/seata/seata/releases) 下载与Client版本对应的fescar-server,避免由于版本的不同导致的协议不一致问题
+前往[https://github.com/apache/incubator-seata/releases](https://github.com/apache/incubator-seata/releases) 下载与Client版本对应的fescar-server,避免由于版本的不同导致的协议不一致问题
 进入解压之后的 bin 目录，执行
 
 ```shell
@@ -202,7 +202,7 @@ public class FescarProperties {
     }
 }
 ```
-获取applicationId和txServiceGroup后，创建[GlobalTransactionScanner](https://github.com/seata/seata/blob/develop/spring/src/main/java/com/alibaba/fescar/spring/annotation/GlobalTransactionScanner.java)对象，主要看类中initClient方法
+获取applicationId和txServiceGroup后，创建[GlobalTransactionScanner](https://github.com/apache/incubator-seata/blob/develop/spring/src/main/java/com/alibaba/fescar/spring/annotation/GlobalTransactionScanner.java)对象，主要看类中initClient方法
 
 ```java
 private void initClient() {
@@ -260,7 +260,7 @@ public class BusinessService {
     }
 }
 ```
-方法调用后将会创建一个全局事务，首先关注`@GlobalTransactional`注解的作用，在[GlobalTransactionalInterceptor](https://github.com/seata/seata/blob/develop/spring/src/main/java/com/alibaba/fescar/spring/annotation/GlobalTransactionalInterceptor.java)中被拦截处理
+方法调用后将会创建一个全局事务，首先关注`@GlobalTransactional`注解的作用，在[GlobalTransactionalInterceptor](https://github.com/apache/incubator-seata/blob/develop/spring/src/main/java/com/alibaba/fescar/spring/annotation/GlobalTransactionalInterceptor.java)中被拦截处理
 
 ```java
 /**
@@ -286,7 +286,7 @@ public Object invoke(final MethodInvocation methodInvocation) throws Throwable {
     }
 }
 ```
-`handleGlobalTransaction`方法中对[TransactionalTemplate](https://github.com/seata/seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/api/TransactionalTemplate.java)的execute进行了调用，从类名可以看到这是一个标准的模版方法，它定义了TM对全局事务处理的标准步骤，注释已经比较清楚了
+`handleGlobalTransaction`方法中对[TransactionalTemplate](https://github.com/apache/incubator-seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/api/TransactionalTemplate.java)的execute进行了调用，从类名可以看到这是一个标准的模版方法，它定义了TM对全局事务处理的标准步骤，注释已经比较清楚了
 
 ```java
 public Object execute(TransactionalExecutor business) throws TransactionalExecutor.ExecutionException {
@@ -339,7 +339,7 @@ public Object execute(TransactionalExecutor business) throws TransactionalExecut
     }
 }
 ```
-通过[DefaultGlobalTransaction](https://github.com/seata/seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/api/DefaultGlobalTransaction.java)的begin方法开启全局事务
+通过[DefaultGlobalTransaction](https://github.com/apache/incubator-seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/api/DefaultGlobalTransaction.java)的begin方法开启全局事务
 
 ```java
 public void begin(int timeout, String name) throws TransactionException {
@@ -368,7 +368,7 @@ public void begin(int timeout, String name) throws TransactionException {
 方法开头处`if (role != GlobalTransactionRole.Launcher)`对role的判断有关键的作用，表明当前是全局事务的发起者（Launcher）还是参与者（Participant）。如果在分布式事务的下游系统方法中也加上`@GlobalTransactional`注解，那么它的角色就是Participant，会忽略后面的begin直接return，而判断是Launcher还是Participant是根据当前上下文是否已存在XID来判断，没有XID的就是Launcher，已经存在XID的就是Participant.
 由此可见，全局事务的创建只能由Launcher执行，而一次分布式事务中也只有一个Launcher存在。
 
-[DefaultTransactionManager](https://github.com/seata/seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/DefaultTransactionManager.java)负责TM与TC通讯，发送begin、commit、rollback指令
+[DefaultTransactionManager](https://github.com/apache/incubator-seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/DefaultTransactionManager.java)负责TM与TC通讯，发送begin、commit、rollback指令
 
 ```java
 @Override
@@ -409,7 +409,7 @@ public void deduct(String commodityCode, int count){
     storageDAO.save(storage);
 }
 ```
-storage的接口和service方法并未出现fescar相关的代码和注解，体现了fescar的无侵入。那它是如何加入到这次全局事务中的呢？答案在[ConnectionProxy](https://github.com/seata/seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/ConnectionProxy.java)中，这也是前面说为什么必须要使用`DataSourceProxy`的原因，通过DataSourceProxy才能在业务代码的本地事务提交时，fescar通过该切入点，向TC注册分支事务并发送RM的处理结果。
+storage的接口和service方法并未出现fescar相关的代码和注解，体现了fescar的无侵入。那它是如何加入到这次全局事务中的呢？答案在[ConnectionProxy](https://github.com/apache/incubator-seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/ConnectionProxy.java)中，这也是前面说为什么必须要使用`DataSourceProxy`的原因，通过DataSourceProxy才能在业务代码的本地事务提交时，fescar通过该切入点，向TC注册分支事务并发送RM的处理结果。
 
 由于业务代码本身的事务提交被`ConnectionProxy`代理实现，所以在提交本地事务时，实际执行的是ConnectionProxy的commit方法
 
@@ -521,7 +521,7 @@ Hibernate: update storage_tbl set count=? where id=?
 2. 执行commit动作
 3. 将commit结果发送给TC，branchStatus为PhaseTwo_Committed
 
-具体看下二阶段commit的执行过程，在[AbstractRMHandler](https://github.com/seata/seata/blob/develop/rm/src/main/java/com/alibaba/fescar/rm/AbstractRMHandler.java)类的doBranchCommit方法
+具体看下二阶段commit的执行过程，在[AbstractRMHandler](https://github.com/apache/incubator-seata/blob/develop/rm/src/main/java/com/alibaba/fescar/rm/AbstractRMHandler.java)类的doBranchCommit方法
 
 ```java
 /**
@@ -539,7 +539,7 @@ protected void doBranchCommit(BranchCommitRequest request, BranchCommitResponse 
     LOGGER.info("Branch commit result: " + status);
 }
 ```
-最终会将branchCommit的请求调用到[AsyncWorker](https://github.com/seata/seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/AsyncWorker.java)的branchCommit方法。AsyncWorker的处理方式是fescar架构的一个关键部分，因为大部分事务都是会正常提交的，所以在PhaseOne阶段就已经结束了，这样就可以将锁最快的释放。PhaseTwo阶段接收commit的指令后，异步处理即可。将PhaseTwo的时间消耗排除在一次分布式事务之外。
+最终会将branchCommit的请求调用到[AsyncWorker](https://github.com/apache/incubator-seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/AsyncWorker.java)的branchCommit方法。AsyncWorker的处理方式是fescar架构的一个关键部分，因为大部分事务都是会正常提交的，所以在PhaseOne阶段就已经结束了，这样就可以将锁最快的释放。PhaseTwo阶段接收commit的指令后，异步处理即可。将PhaseTwo的时间消耗排除在一次分布式事务之外。
 
 ```java
 private static final List<Phase2Context> ASYNC_COMMIT_BUFFER = Collections.synchronizedList( new ArrayList<Phase2Context>());
@@ -636,8 +636,8 @@ private void doBranchCommits() {
 所以对于commit动作的处理，RM只需删除xid、branchId对应的undo_log即可。
 ## 事务回滚
 对于rollback场景的触发有两种情况
- 1. 分支事务处理异常，即[ConnectionProxy](https://github.com/seata/seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/ConnectionProxy.java)中`report(false)`的情况
- 2. TM捕获到下游系统上抛的异常，即发起全局事务标有`@GlobalTransactional`注解的方法捕获到的异常。在前面[TransactionalTemplate](https://github.com/seata/seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/api/TransactionalTemplate.java)类的execute模版方法中，对business.execute()的调用进行了catch，catch后会调用rollback，由TM通知TC对应XID需要回滚事务
+ 1. 分支事务处理异常，即[ConnectionProxy](https://github.com/apache/incubator-seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/ConnectionProxy.java)中`report(false)`的情况
+ 2. TM捕获到下游系统上抛的异常，即发起全局事务标有`@GlobalTransactional`注解的方法捕获到的异常。在前面[TransactionalTemplate](https://github.com/apache/incubator-seata/blob/develop/tm/src/main/java/com/alibaba/fescar/tm/api/TransactionalTemplate.java)类的execute模版方法中，对business.execute()的调用进行了catch，catch后会调用rollback，由TM通知TC对应XID需要回滚事务
 
 ```java
  public void rollback() throws TransactionException {
@@ -661,7 +661,7 @@ private void doBranchCommits() {
     }
 }
 ```
-TC汇总后向参与者发送rollback指令，RM在[AbstractRMHandler](https://github.com/seata/seata/blob/develop/rm/src/main/java/com/alibaba/fescar/rm/AbstractRMHandler.java)类的doBranchRollback方法中接收这个rollback的通知
+TC汇总后向参与者发送rollback指令，RM在[AbstractRMHandler](https://github.com/apache/incubator-seata/blob/develop/rm/src/main/java/com/alibaba/fescar/rm/AbstractRMHandler.java)类的doBranchRollback方法中接收这个rollback的通知
 
 ```java
 protected void doBranchRollback(BranchRollbackRequest request, BranchRollbackResponse response) throws TransactionException {
@@ -696,7 +696,7 @@ public BranchStatus branchRollback(BranchType branchType, String xid, long branc
     return BranchStatus.PhaseTwo_Rollbacked;
 }
 ```
-最终会执行[UndoLogManager](https://github.com/seata/seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/undo/UndoLogManager.java)类的undo方法，因为是纯jdbc操作代码比较长就不贴出来了，可以通过连接到github查看源码，说一下undo的具体流程
+最终会执行[UndoLogManager](https://github.com/apache/incubator-seata/blob/develop/rm-datasource/src/main/java/com/alibaba/fescar/rm/datasource/undo/UndoLogManager.java)类的undo方法，因为是纯jdbc操作代码比较长就不贴出来了，可以通过连接到github查看源码，说一下undo的具体流程
 
  1. 根据xid和branchId查找PhaseOne阶段提交的undo_log
  2. 如果找到了就根据undo_log中记录的数据生成回放sql并执行，即还原PhaseOne阶段修改的数据

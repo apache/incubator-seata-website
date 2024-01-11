@@ -21,9 +21,9 @@ Integrating Seata with ZooKeeper involves simple steps, roughly categorized as "
 
 ### Server-side Registry Center Configuration
 
-Download [Seata 1.0.0 release](https://github.com/seata/seata/releases/tag/v1.0.0) and extract the files.
+Download [Seata 1.0.0 release](https://github.com/apache/incubator-seata/releases/tag/v1.0.0) and extract the files.
 
-Modify the corresponding configuration in `/conf/registry.conf`. For other configuration options, refer to the [Seata configuration reference](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf).
+Modify the corresponding configuration in `/conf/registry.conf`. For other configuration options, refer to the [Seata configuration reference](https://github.com/apache/incubator-seata/blob/develop/script/client/conf/registry.conf).
 
 ```
 registry {
@@ -49,7 +49,7 @@ Execute `/bin/seata-server.bat` (Windows) or `/bin/seata-server.sh` (Unix) to st
 
 ### Client-side Configuration
 
-If you are using the `io.seata:seata-spring-boot-starter` dependency, you need to add the following ZooKeeper configuration in the application.yml file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/blob/1.0.0/script/client/spring/application.yml)
+If you are using the `io.seata:seata-spring-boot-starter` dependency, you need to add the following ZooKeeper configuration in the application.yml file. For additional configurations, please refer to the [configuration reference](https://github.com/apache/incubator-seata/blob/1.0.0/script/client/spring/application.yml)
 :
 ```yaml
 seata:
@@ -60,7 +60,7 @@ seata:
       session-timeout: 6000
       connect-timeout: 2000
 ```
-Alternatively, if you are using the `io.seata:seata-all` dependency, add the ZooKeeper configuration in the registry.conf file. For additional configurations, please refer to the [configuration reference](https://github.com/seata/seata/tree/1.0.0/script/client/conf):
+Alternatively, if you are using the `io.seata:seata-all` dependency, add the ZooKeeper configuration in the registry.conf file. For additional configurations, please refer to the [configuration reference](https://github.com/apache/incubator-seata/tree/1.0.0/script/client/conf):
 ```
   zk {
     serverAddr = "127.0.0.1:2181"

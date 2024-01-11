@@ -45,7 +45,7 @@ const data = {
           id: 'community.contactsListTitle1',
           message: '邮件列表',
         }),
-        link: 'mailto:dev-seata+subscribe@googlegroups.com',
+        link: 'mailto:dev@seata.apache.org',
       },
       {
         img: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
@@ -100,10 +100,7 @@ const data = {
         }),
         content: (
           <span>
-            <a
-              href='mailto:dev-seata+subscribe@googlegroups.com'
-              target='_blank'
-            >
+            <a href='mailto:dev-subscribe@seata.apache.org' target='_blank'>
               {translate({
                 id: 'community.contributeListContent1',
                 message: '加入我们的邮件列表',
@@ -125,7 +122,10 @@ const data = {
               message: '提交',
             })}
             &nbsp;
-            <a href='https://github.com/seata/seata/issues/new' target='_blank'>
+            <a
+              href='https://github.com/apache/incubator-seata/issues/new'
+              target='_blank'
+            >
               {translate({
                 id: 'community.contributeListContent2_2',
                 message: '新问题',
@@ -147,7 +147,10 @@ const data = {
               message: '改进',
             })}
             &nbsp;
-            <a href='https://github.com/apache/incubator-seata-website' target='_blank'>
+            <a
+              href='https://github.com/apache/incubator-seata-website'
+              target='_blank'
+            >
               {translate({
                 id: 'community.contributeListContent3_2',
                 message: '文档',
@@ -169,7 +172,10 @@ const data = {
               message: '创建一个',
             })}
             &nbsp;
-            <a href='https://github.com/seata/seata/pulls' target='_blank'>
+            <a
+              href='https://github.com/apache/incubator-seata/pulls'
+              target='_blank'
+            >
               PR
             </a>
           </span>

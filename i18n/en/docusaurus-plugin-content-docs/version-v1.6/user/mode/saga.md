@@ -46,11 +46,11 @@ The business process diagram is shown below:
 
 ![Demo Business Process Diagram](/img/saga/demo_business_process.png?raw=true)
 
-First, download the seata-samples project: https://github.com/seata/seata-samples.git
+First, download the seata-samples project: https://github.com/apache/incubator-seata-samples.git
 
 > Note: The SEATA version needs to be 0.9.0 or above.
 
-In the dubbo-saga-sample, a distributed transaction will involve 2 Saga transaction participants: [InventoryAction](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/InventoryAction.java) and [BalanceAction](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/BalanceAction.java). If the distributed transaction commits, both participants commit; if it rolls back, both participants roll back.
+In the dubbo-saga-sample, a distributed transaction will involve 2 Saga transaction participants: [InventoryAction](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/InventoryAction.java) and [BalanceAction](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/action/BalanceAction.java). If the distributed transaction commits, both participants commit; if it rolls back, both participants roll back.
 
 These two Saga participants are Dubbo services. Both participants have a reduce method, which represents inventory reduction or balance reduction, and a compensateReduce method for compensating the reduction operation.
 
@@ -216,31 +216,31 @@ The provided text introduces the concept of "State Machine" and its attributes i
 
 For a more detailed explanation of state language, please see the [State language reference](#State-language-referance) section.
 
-For more detailed examples of state language usage, see [https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine).
+For more detailed examples of state language usage, see [https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine).
 
 
 ### Demo Running Guide
 
 #### Step 1: Start the SEATA Server
 
-Run [SeataServerStarter](https://github.com/seata/seata-samples/blob/master/saga/sofarpc-saga-sample/src/test/java/io/seata/samples/saga/SeataServerStarter.java) to start the Seata Server.
+Run [SeataServerStarter](https://github.com/apache/incubator-seata-samples/blob/master/saga/sofarpc-saga-sample/src/test/java/io/seata/samples/saga/SeataServerStarter.java) to start the Seata Server.
 
 #### Step 2: Start the Dubbo Provider Demo
 
-Run [DubboSagaProviderStarter](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/test/java/io/seata/samples/saga/starter/DubboSagaProviderStarter.java) to start the Dubbo provider.
+Run [DubboSagaProviderStarter](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/test/java/io/seata/samples/saga/starter/DubboSagaProviderStarter.java) to start the Dubbo provider.
 
 #### Step 3: Start the Saga Demo
 
-Run [DubboSagaTransactionStarter](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/starter/DubboSagaTransactionStarter.java) to start the demo project.
+Run [DubboSagaTransactionStarter](https://github.com/apache/incubator-seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/starter/DubboSagaTransactionStarter.java) to start the demo project.
 
-> The demo uses the H2 in-memory database. For production, it is recommended to use the same type of database as your business. Currently, it supports Oracle, MySQL, and DB2. The SQL scripts for table creation can be found at [https://github.com/seata/seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql](https://github.com/seata/seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql).
+> The demo uses the H2 in-memory database. For production, it is recommended to use the same type of database as your business. Currently, it supports Oracle, MySQL, and DB2. The SQL scripts for table creation can be found at [https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql](https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-engine-store/src/main/resources/sql).
 
 > The demo also includes examples of calling local services and SOFA RPC services.
 
 ## State Machine Designer
 
 Seata Saga provides a visual state machine designer for user convenience. For code and running guide, please refer to:
-[https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/seata/seata/tree/develop/saga/seata-saga-statemachine-designer)
+[https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer)
 
 Screenshot of the state machine designer:
 ![State Machine Designer](/img/saga/seata-saga-statemachine-designer.png?raw=true)
@@ -934,7 +934,7 @@ Example State Diagram:
 
 **Q:** Is Saga mode an enhancement of long transaction processing based on AT mode?
 
-**A:** No, it's not based on AT. The client sides are completely separate, though the server side is reused. You can see many examples in Saga's unit tests: [https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine)
+**A:** No, it's not based on AT. The client sides are completely separate, though the server side is reused. You can see many examples in Saga's unit tests: [https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/apache/incubator-seata/tree/develop/test/src/test/java/io/seata/saga/engine)
 
 **Q:** In the developer documentation, the state machine engine's principle diagram shows an EventQueue that is used only for initiating distributed transactions and calling other system services as if calling local services. Are the systems still using RPC calls? And is it not purely event-driven between systems? (By "purely event-driven between systems," I mean even RPC is non-blocking.)
 

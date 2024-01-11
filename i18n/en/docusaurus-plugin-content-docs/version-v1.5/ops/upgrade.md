@@ -18,9 +18,9 @@ description: Seata upgrade.
   - The `global_table` adjustment index is adjusted from `idx_gmt_modified_status` to `idx_status_gmt_modified`.
   - `lock_table` adds `status` field, and adds `idx_status`, `idx_xid_and_branch_id` index.
   - Add `distributed_lock` table for seata-server asynchronous task scheduling.
-   Before upgrading to 1.5.0, please pay attention to the table structure changes. For details on the table structure, please [click here](https://github.com/seata/seata/tree/1.5.0/script/server/db).
+   Before upgrading to 1.5.0, please pay attention to the table structure changes. For details on the table structure, please [click here](https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db).
    
-2. TCC transaction mode adds anti-hanging function in 1.5.0. If you need to enable anti-hanging by Seata framework, you need to add [this table](https://github.com/seata/seata/tree/1.5.0/script/client/tcc/db) to the client business library in advance. 
+2. TCC transaction mode adds anti-hanging function in 1.5.0. If you need to enable anti-hanging by Seata framework, you need to add [this table](https://github.com/apache/incubator-seata/tree/1.5.0/script/client/tcc/db) to the client business library in advance. 
    
 3. The first-stage method of TCC mode has been optimized. It is no longer necessary to define `BusinessActionContext` as an interface parameter in the first stage. If `BusinessActionContext` needs to be used in the first stage, it can be obtained through `BusinessActionContextUtil.getContext()`.
 

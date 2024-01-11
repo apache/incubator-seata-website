@@ -59,9 +59,9 @@ description: Seata upgrade.
  - global_table 调整索引从 idx_gmt_modified_status 调整为 idx_status_gmt_modified
  - lock_table 增加 status 字段,增加 idx_status，idx_xid_and_branch_id 索引
  - 增加 distributed_lock 表用于 seata-server 异步任务调度
-  升级1.5.0前，请注意表结构变更，表结构详情请[点击此处](https://github.com/seata/seata/tree/1.5.0/script/server/db)
+  升级1.5.0前，请注意表结构变更，表结构详情请[点击此处](https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db)
    
-2. TCC事务模式在1.5.0 增加防悬挂功能,如需由 Seata 框架开启防悬挂,需要提前在客户端业务库中增加[此表](https://github.com/seata/seata/tree/1.5.0/script/client/tcc/db)
+2. TCC事务模式在1.5.0 增加防悬挂功能,如需由 Seata 框架开启防悬挂,需要提前在客户端业务库中增加[此表](https://github.com/apache/incubator-seata/tree/1.5.0/script/client/tcc/db)
    
 3. TCC模式一阶段方法进行了优化，不再需要在一阶段的接口入参定义`BusinessActionContext`，若一阶段需要使用到`BusinessActionContext`，可以通过`BusinessActionContextUtil.getContext()`取得
 
@@ -112,9 +112,9 @@ description: Seata upgrade.
   <summary><mark>注意事项</mark></summary>
 
 1. 需要注意配置项的兼容性，1.1.0 版本对于配置项的风格进行了统一。
-若程序中依赖的是 seata-all，对应于 *.conf 文件，conf文件中配置项的命名风格统一为 点号+驼峰式组合，[1.1.0 配置项说明](https://seata.io/zh-cn/docs/user/configurations.html)， [1.1.0 配置参考](https://github.com/seata/seata/tree/1.1.0/script/client/conf); 
+若程序中依赖的是 seata-all，对应于 *.conf 文件，conf文件中配置项的命名风格统一为 点号+驼峰式组合，[1.1.0 配置项说明](https://seata.io/zh-cn/docs/user/configurations.html)， [1.1.0 配置参考](https://github.com/apache/incubator-seata/tree/1.1.0/script/client/conf); 
 若程序中依赖的是seata-spring-boot-starter，对应于 *.properties 或 *.yml。propertie、 yml文件命名风格统一为 点号+中划线组合 
-[1.1.0 配置参考](https://github.com/seata/seata/tree/1.1.0/script/client/spring) 需要特别注意的是1.0.0 版本配置项 seata.service
+[1.1.0 配置参考](https://github.com/apache/incubator-seata/tree/1.1.0/script/client/spring) 需要特别注意的是1.0.0 版本配置项 seata.service
 .vgroup-mapping=default 1.1.0 更改为: seata.service.vgroup-mapping
 .my_test_tx_group=default,其中my_test_tx_group代表程序所使用的事务分组； 1.0.0 版本配置项seata.service.grouplist=127.0.0.1:8091， 1.1.0 
 更改为：seata.service.grouplist.default=127.0.0.1:8091 其中 default 代表 seata注册服务名。
@@ -131,7 +131,7 @@ spring-cloud-alibaba-seata 在 2.2.0.RELEASE 版本前 依赖的是seata-all 若
 autoconfig 功能由其本身支持，在其后去掉 spring-cloud-alibaba-seata 中关于 seata 本身的autoconfig 由seata-spring-boot-starter 支持，因此低版本spring-cloud-alibaba-seata 只能配合 seata-all使用，高版本spring-cloud-alibaba-seata 只能配合seata-spring-boot-starter 使用，以2.2.0.RELEASE为分界点。
 
 4. TC端采用 db 存储模式时 branch_table 中增加 gmt_create，gmt_modified 字段的精度，用于精确确认回滚的顺序，
-[各数据库脚本参考](https://github.com/seata/seata/tree/1.1.0/script/server/db)
+[各数据库脚本参考](https://github.com/apache/incubator-seata/tree/1.1.0/script/server/db)
 
 </details>
 

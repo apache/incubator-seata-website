@@ -5,11 +5,9 @@ import { Button, ButtonType } from '../../../components';
 import './index.scss';
 
 const topData = {
-  brandName: 'Seata',
+  brandName: 'Apache Seata™',
   briefIntroduction: translate({
     id: 'homepage.briefIntroduction',
-    message:
-      'Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。',
   }),
   buttons: [
     {
@@ -18,30 +16,9 @@ const topData = {
       type: 'normal',
     },
     {
-      text: translate({
-        id: 'homepage.userregistrationButton',
-        message: '用户登记',
-      }),
-      link: 'https://github.com/seata/seata/issues/1246',
-      type: 'normal',
-      target: '_blank',
-    },
-    {
-      text: 'GitHub-Java',
-      link: 'https://github.com/seata/seata',
-      type: 'normal',
-      target: '_blank',
-    },
-    {
-      text: 'GitHub-Golang',
-      link: 'https://github.com/seata/seata-go',
-      type: 'normal',
-      target: '_blank',
-    },
-    {
-      text: 'Docker Image',
-      link: 'https://hub.docker.com/repository/docker/seataio/seata-server/tags?page=1&ordering=last_updated',
-      type: 'normal',
+      text: 'GitHub',
+      link: 'https://github.com/apache/incubator-seata',
+      type: 'primary',
       target: '_blank',
     },
   ],
@@ -54,12 +31,12 @@ const Top = () => {
   });
   const [releaseNote, setReleaseNote] = React.useState({
     version: 'v1.7.1',
-    url: 'https://github.com/seata/seata/releases/tag/v1.7.1',
+    url: 'https://github.com/apache/incubator-seata/releases/tag/v1.7.1',
     date: '2023/9/5',
   });
 
   React.useEffect(() => {
-    fetch('//api.github.com/repos/seata/seata')
+    fetch('//api.github.com/repos/apache/incubator-seata')
       .then((res) => res.json())
       .then((data) => {
         setRepo({
@@ -67,7 +44,7 @@ const Top = () => {
           forkCount: `${data.forks_count}`,
         });
       });
-    fetch('https://api.github.com/repos/seata/seata/releases/latest')
+    fetch('https://api.github.com/repos/apache/incubator-seata/releases/latest')
       .then((res) => res.json())
       .then((data) => {
         setReleaseNote({
@@ -100,7 +77,7 @@ const Top = () => {
           </div>
           <div className='github-buttons'>
             <a
-              href='https://github.com/seata/seata'
+              href='https://github.com/apache/incubator-seata'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -112,7 +89,7 @@ const Top = () => {
               </div>
             </a>
             <a
-              href='https://github.com/seata/seata/fork'
+              href='https://github.com/apache/incubator-seata/fork'
               target='_blank'
               rel='noopener noreferrer'
             >

@@ -108,12 +108,13 @@ Error: A fatal exception has occurred. Program will exit.?</a>
 <a href="#33" target="_self">33. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running ? </a>
 <br/>
 
-
+<a href="#34" target="_self">34. Why does the error "pk contains illegal character!" occur? </a>
+<br/>
 ********
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
 
 **A:** 
-Since version 0.4.2,it is supported in production environment,Users who are using seata are welcome to complete this issue together:[who's using Seata](https://github.com/seata/seata/issues/1246)
+Since version 0.4.2,it is supported in production environment,Users who are using seata are welcome to complete this issue together:[who's using Seata](https://github.com/apache/incubator-seata/issues/1246)
 
 ********
 <h3 id='2'>Q: 2.Dose Seata support high availability ?</h3>
@@ -235,7 +236,7 @@ plan2.Delete the id field of the undo_log table
 <h3 id='11'>Q: 11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</h3>
 
 **A:** 
-You can execute this command: `./mvnw clean install -DskipTests=true` (Mac,Linux) or `mvnw.cmd clean install -DskipTests=true`, (Win)[reference issues/2438](https://github.com/seata/seata/issues/2438),These codes have been removed in version 0.8.1.
+You can execute this command: `./mvnw clean install -DskipTests=true` (Mac,Linux) or `mvnw.cmd clean install -DskipTests=true`, (Win)[reference issues/2438](https://github.com/apache/incubator-seata/issues/2438),These codes have been removed in version 0.8.1.
 
 ********
 
@@ -500,3 +501,8 @@ This is because the seata source code was compiled and then the local seata depe
 Solution:
 - Make sure that the JDK version is 1.8 when compiling seata source code to avoid compatibility issues
 - If you have compiled the source code of seata with JDK 11, please delete all packages under the io.seata path in the local maven repository. Then recompile your project and let the project re-pull the seata dependency package of the central warehouse
+
+***
+<h3 id='34'>Q: 34. Why does the error "pk contains illegal character!" occur?</h3>
+
+- Check if the primary key contains a comma.

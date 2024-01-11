@@ -31,7 +31,7 @@ Java代码行数大约是 97K
 
 本文讲的Demo代码是seata-samples项目下的seata-samples-dubbo模块，地址如下：
 
-https://github.com/seata/seata-samples/tree/master/dubbo
+https://github.com/apache/incubator-seata-samples/tree/master/dubbo
 
 ## 解决的核心问题
 
@@ -64,7 +64,7 @@ AT模式解决这个问题的思路其实很简单，一句话概括就是：
 从github上clone最新的代码
 
 ```sh
-git clone git@github.com:seata/seata-samples.git
+git clone git@github.com:apache/incubator-seata-samples.git
 ```
 
 阅读Demo代码结构
@@ -203,7 +203,7 @@ y/LaunchAgents/homebrew.mxcl.zookeeper.plist
 
 ### 启动TC事务协调器
 
-在这个[链接](https://github.com/seata/seata/releases)里页面中，下载对应版本的seata-server程序，我本地下载的是1.2.0版本
+在这个[链接](https://github.com/apache/incubator-seata/releases)里页面中，下载对应版本的seata-server程序，我本地下载的是1.2.0版本
 
 1. 进入文件所在目录并解压文件
 2. 进入seata目录

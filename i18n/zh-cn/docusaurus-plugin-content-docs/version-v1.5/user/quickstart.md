@@ -191,7 +191,7 @@ CREATE TABLE `account_tbl` (
 ```
 ### 步骤 4: 启动服务
 
-- 从 <https://github.com/seata/seata/releases>,下载服务器软件包，将其解压缩。
+- 从 <https://github.com/apache/incubator-seata/releases>,下载服务器软件包，将其解压缩。
 
 ```shell
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]
@@ -214,7 +214,7 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 ### 步骤 5: 运行示例
 
-示例仓库: [seata-samples](https://github.com/seata/seata-samples)
+示例仓库: [seata-samples](https://github.com/apache/incubator-seata-samples)
 
 - 启动 DubboAccountServiceStarter
 - 启动 DubboStorageServiceStarter

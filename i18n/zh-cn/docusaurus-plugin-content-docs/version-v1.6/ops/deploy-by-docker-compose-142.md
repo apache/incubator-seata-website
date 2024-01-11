@@ -45,11 +45,11 @@ services:
 
 ### <a id="file-db">无注册中心，DB存储</a>
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）准备file.conf配置文件**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```properties
 # 存储模式
@@ -108,7 +108,7 @@ services:
 ```
 ### <a id="nacos-db">nacos注册中心，db存储</a>
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）准备registry.conf文件**
 
@@ -154,7 +154,7 @@ config {
 
 **（2）准备nacos配置中心配置**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 > 你需要在nacos新建配置，此处dataId为seataServer.properties
 
@@ -202,11 +202,11 @@ services:
 
 > seata高可用依赖于注册中心、数据库，可不依赖配置中心。
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）准备file.conf配置文件**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```properties
 # 存储模式

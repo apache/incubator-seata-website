@@ -9,7 +9,7 @@ description: Seata has three roles TC, TM and RM. TC (Server side) is deployed a
 Seata has three roles: TC, TM and RM. TC (Server side) is deployed as a separate server, while TM and RM (Client side) are integrated by the business system.
 
 ### Resource Directory Introduction
-#### <a href="https://github.com/seata/seata/tree/master/script" target="_blank">Click to view</a>. You can also select the corresponding resource directory according to the version branch.
+#### <a href="https://github.com/apache/incubator-seata/tree/master/script" target="_blank">Click to view</a>. You can also select the corresponding resource directory according to the version branch.
 
 -client
 > Store client-side sql script (including undo_log table) and parameter configuration.
@@ -65,7 +65,7 @@ The db mode is a high-availability mode. Global transaction session information 
 The redis mode is supported by Seata-Server 1.3 and above. It has high performance and risks losing transaction information. Please configure the redis persistence configuration suitable for the current scenario in advance.
 
 #### Step 1: Startup package
-- <a href="https://github.com/seata/seata/releases" target="_blank">Click to download</a>.
+- <a href="https://github.com/apache/incubator-seata/releases" target="_blank">Click to download</a>.
 - Official DingTalk group (Group Number: 23171167, 1st group is already full, including 5,000 people, <a href="http://seata.io/zh-cn/community" target="_blank">2nd group</a>, group 3: 32033786，group 4: 60170003910), QQ group (Group Number: 254657148, group 2: 216012363). Please download packages in the group sharing file.
 
 #### Step 2: Create table (db only)

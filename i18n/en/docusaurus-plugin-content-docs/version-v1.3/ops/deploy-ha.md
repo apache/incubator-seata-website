@@ -59,7 +59,7 @@ store.db.password=123456
 
 - Create table `global_table`, `branch_table`, `lock_table` in database
 
-Please reference script on [/script/server/db/](https://github.com/seata/seata/tree/develop/script/server/db)
+Please reference script on [/script/server/db/](https://github.com/apache/incubator-seata/tree/develop/script/server/db)
 
 Now, startup multiple seata-server, and then the server is support high available usage.
 

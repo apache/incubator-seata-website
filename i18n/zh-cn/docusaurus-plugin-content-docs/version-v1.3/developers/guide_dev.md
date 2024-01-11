@@ -19,15 +19,15 @@ description: 如果您有兴趣攻克Seata，欢迎您。首先，我们非常�
 
 ## 报告安全问题
 
-安全问题应该始终得到认真对待。按照我们通常的原则，我们不鼓励任何人散布安全问题。如果您发现Seata的安全问题，请不要公开讨论，甚至不要公开问题。相反，我们建议您向我们发送一封私人电子邮件至 [dev-seata@googlegroups.com](mailto:dev-seata@googlegroups.com)进行举报。
+安全问题应该始终得到认真对待。按照我们通常的原则，我们不鼓励任何人散布安全问题。如果您发现Seata的安全问题，请不要公开讨论，甚至不要公开问题。相反，我们建议您向我们发送一封私人电子邮件至 [private@seata.apache.org](mailto:private@seata.apache.org)进行举报。
 
 ## 报告一般问题
 
-坦白地说，我们认为Seata的每位用户都是非常友好的贡献者。体验Seata之后，您可能会对项目有一些反馈。然后随时通过[NEW ISSUE](https://github.com/seata/seata/issues/new/choose)打开[问题](https://github.com/seata/seata/issues/new/choose)。
+坦白地说，我们认为Seata的每位用户都是非常友好的贡献者。体验Seata之后，您可能会对项目有一些反馈。然后随时通过[NEW ISSUE](https://github.com/apache/incubator-seata/issues/new/choose)打开[问题](https://github.com/apache/incubator-seata/issues/new/choose)。
 
 因为我们在一个分布式的方式合作项目Seata，我们对此表示赞赏**编写良好**，**详细**，**明确**的问题报告。为了提高沟通效率，我们希望每个人都可以搜索您的问题是否在搜索列表中。如果发现它存在，请在现有问题下的评论中添加您的详细信息，而不要打开一个全新的issue。
 
-为了使问题详细信息尽可能地标准，我们为问题报告者设置了“ [问题模板](https://github.com/seata/seata/blob/develop/.github/ISSUE_TEMPLATE) ”。请**务必**按照说明填写模板中的字段。
+为了使问题详细信息尽可能地标准，我们为问题报告者设置了“ [问题模板](https://github.com/apache/incubator-seata/blob/develop/.github/ISSUE_TEMPLATE) ”。请**务必**按照说明填写模板中的字段。
 
 在很多情况下，您可以打开一个问题：
 
@@ -65,23 +65,23 @@ description: 如果您有兴趣攻克Seata，欢迎您。首先，我们非常�
 
 由于您已准备好通过PR改善Seata，因此建议您在此处查看PR规则。
 
-*   [工作准备](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#workspace-preparation)
-*   [分支定义](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#branch-definition)
-*   [提交规则](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#commit-rules)
-*   [PR说明](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#pr-description)
+*   [工作准备](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#workspace-preparation)
+*   [分支定义](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#branch-definition)
+*   [提交规则](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#commit-rules)
+*   [PR说明](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#pr-description)
 
 ### 工作准备
 
 要提出PR，我们假设您已经注册了GitHub ID。然后，您可以按照以下步骤完成准备工作：
 
-1.  **FORK** Seata分支到您的存储库。要使此工作有效，您只需要单击[seata / seata](https://github.com/seata/seata)主页右边的按钮Fork 。然后，您将在`https://github.com/<your-username>/seata`中`your-username`找到您的存储库，这是您的GitHub用户名。
+1.  **FORK** Seata分支到您的存储库。要使此工作有效，您只需要单击[apache/incubator-seata](https://github.com/apache/incubator-seata)主页右边的按钮Fork 。然后，您将在`https://github.com/<your-username>/incubator-seata`中`your-username`找到您的存储库，这是您的GitHub用户名。
 
 2.  **CLONE**您自己的存储库以在本地进行开发。用于`git clone git@github.com:<your-username>/seata.git`将存储库克隆到本地计算机。然后，您可以创建新分支来完成您希望进行的更改。
 
-3.  **Set Remote**上游设置为`git@github.com:seata/seata.git`使用以下两个命令：
+3.  **Set Remote**上游设置为`git@github.com:apache/incubator-seata.git`使用以下两个命令：
 
 ```
-git remote add upstream git@github.com:seata/seata.git
+git remote add upstream git@github.com:apache/incubator-seata.git
 git remote set-url --push upstream no-pushing
 
 ```
@@ -92,7 +92,7 @@ git remote set-url --push upstream no-pushing
 $ git remote -v
 origin     git@github.com:<your-username>/seata.git (fetch)
 origin     git@github.com:<your-username>/seata.git (push)
-upstream   git@github.com:seata/seata.git (fetch)
+upstream   git@github.com:apache/incubator-seata.git (fetch)
 upstream   no-pushing (push)
 
 ```
@@ -101,7 +101,7 @@ upstream   no-pushing (push)
 
 ### 分支定义
 
-现在，我们假设通过拉取请求所做的所有贡献都是针对Seata中的[分支发展](https://github.com/seata/seata/tree/develop)。在做出贡献之前，了解分支定义会有所帮助。
+现在，我们假设通过拉取请求所做的所有贡献都是针对Seata中的[分支发展](https://github.com/apache/incubator-seata/tree/develop)。在做出贡献之前，了解分支定义会有所帮助。
 
 作为贡献者，请再次记住，通过拉取请求进行的每个贡献都是为了分支发展。在Seata项目中，还有其他几个分支，我们通常称它们为发布分支（例如0.6.0、0.6.1），功能分支，修补程序分支和主分支。
 
@@ -117,8 +117,8 @@ upstream   no-pushing (push)
 
 实际上，在Seata中，我们在提交时要认真对待两个规则：
 
-*   [提交讯息](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#commit-message)
-*   [提交内容](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#commit-content)
+*   [提交讯息](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#commit-message)
+*   [提交内容](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#commit-content)
 
 #### 提交讯息
 
@@ -147,13 +147,13 @@ upstream   no-pushing (push)
 *   每次提交均完整且可审查。
 *   提交时检查git config（`user.name`，`user.email`）以确保它与您的github ID相关联。
 
-另外，在代码更改部分，我们建议所有贡献者都应阅读[Seata](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#code-style)的[代码样式](https://github.com/seata/seata/blob/develop/CONTRIBUTING.md#code-style)。
+另外，在代码更改部分，我们建议所有贡献者都应阅读[Seata](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#code-style)的[代码样式](https://github.com/apache/incubator-seata/blob/develop/CONTRIBUTING.md#code-style)。
 
 无论提交消息还是提交内容，我们都更加注重代码审查。
 
 ### PR 说明
 
-PR是更改Seata项目文件的唯一方法。为了帮助审稿人更好地实现目标，PR 说明不能太详细。我们鼓励贡献者遵循[PR模板](https://github.com/seata/seata/blob/develop/.github/PULL_REQUEST_TEMPLATE.md)完成请求请求。
+PR是更改Seata项目文件的唯一方法。为了帮助审稿人更好地实现目标，PR 说明不能太详细。我们鼓励贡献者遵循[PR模板](https://github.com/apache/incubator-seata/blob/develop/.github/PULL_REQUEST_TEMPLATE.md)完成请求请求。
 
 ## 测试用例贡献
 

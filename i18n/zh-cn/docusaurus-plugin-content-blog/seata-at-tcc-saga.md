@@ -76,7 +76,7 @@ Saga 理论出自 Hector & Kenneth 1987发表的论文 Sagas。<br />
 
 Seata（Simple Extensible Autonomous Transaction Architecture，简单可扩展自治事务框架）是 2019 年 1 月份蚂蚁金服和阿里巴巴共同开源的分布式事务解决方案。Seata 开源半年左右，目前已经有超过 1.1 万 star，社区非常活跃。我们热忱欢迎大家参与到 Seata 社区建设中，一同将 Seata 打造成开源分布式事务标杆产品。
 
-Seata：[https://](https://github.com/seata/seata)[github.com/seata/seata](https://github.com/seata/seata)<br />
+Seata：[https://](https://github.com/apache/incubator-seata)[github.com/apache/incubator-seata](https://github.com/apache/incubator-seata)<br />
 <br />![image.png](/img/saga/sofameetup3_img/7.png)
 
 <a name="zyy0l"></a>

@@ -35,7 +35,7 @@ First, you need to add the Maven dependency of `nacos-client` to your project's 
 
 ### Client-side Configuration Center
 
-Add the corresponding configuration center in [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), other [configuration references](https://github.com/seata/seata/tree/develop/script/client) are available.
+Add the corresponding configuration center in [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml), other [configuration references](https://github.com/apache/incubator-seata/tree/develop/script/client) are available.
 
 ```yaml
 seata:
@@ -51,7 +51,7 @@ seata:
 
 ### Server-side Configuration Center
 
-Add the corresponding configuration center in [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), other [configuration references](https://github.com/seata/seata/tree/develop/script/server) are available.
+Add the corresponding configuration center in [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf), other [configuration references](https://github.com/apache/incubator-seata/tree/develop/script/server) are available.
 
 ```
 config {
@@ -73,7 +73,7 @@ config {
 #### Configuration through dataId
 1. Starting from version 1.4.2, it is supported to obtain all configuration information from a Nacos dataId. You just need to add an additional dataId configuration item.
 
-2. First, you need to create a new configuration in Nacos. The dataId here is seataServer.properties, and the configuration content refers to https://github.com/seata/seata/tree/develop/script/config-center/config.txt and modify it as needed.
+2. First, you need to create a new configuration in Nacos. The dataId here is seataServer.properties, and the configuration content refers to https://github.com/apache/incubator-seata/tree/develop/script/config-center/config.txt and modify it as needed.
 
 3. In the client, modify the configuration as follows:
 
@@ -92,11 +92,11 @@ seata:
 
 #### Upload Configuration to Nacos Using Script
 
-Refer to https://github.com/seata/seata/tree/develop/script/config-center/config.txt and make modifications. Then run the provided Nacos script in the repository to submit the information to the Nacos console. If any changes are needed, they can be directly made through the console.
+Refer to https://github.com/apache/incubator-seata/tree/develop/script/config-center/config.txt and make modifications. Then run the provided Nacos script in the repository to submit the information to the Nacos console. If any changes are needed, they can be directly made through the console.
 
 Example: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
 
-For detailed instructions, refer to the [Readme document](https://github.com/seata/seata/blob/develop/script/config-center/README.md)
+For detailed instructions, refer to the [Readme document](https://github.com/apache/incubator-seata/blob/develop/script/config-center/README.md)
 
 Afterwards, start the Seata-Server and Client (business side) applications. If the Seata-Server and Client (business side) applications were already started before importing the configuration to Nacos, they need to be restarted.
 

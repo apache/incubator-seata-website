@@ -203,7 +203,7 @@ CREATE TABLE `account_tbl` (
 ```
 ### Step 4: 启动 Seata-Server 服务
 
-- 下载Server [package](https://github.com/seata/seata/releases), 并解压。
+- 下载Server [package](https://github.com/apache/incubator-seata/releases), 并解压。
 - 运行bin目录下的启动脚本。
 
 ```shell
@@ -216,11 +216,11 @@ sh seata-server.sh 8091 /home/admin/seata/data/
 
 ### Step 5: 运行例子
 
-- 启动账户服务 ([DubboAccountServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboAccountServiceStarter.java))。
-- 启动库存服务 ([DubboStorageServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboStorageServiceStarter.java))。
-- 启动订单服务 ([DubboOrderServiceStarter](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboOrderServiceStarter.java))。
-- 运行BusinessService入口 ([DubboBusinessTester](https://github.com/seata/seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboBusinessTester.java))。
+- 启动账户服务 ([DubboAccountServiceStarter](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboAccountServiceStarter.java))。
+- 启动库存服务 ([DubboStorageServiceStarter](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboStorageServiceStarter.java))。
+- 启动订单服务 ([DubboOrderServiceStarter](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboOrderServiceStarter.java))。
+- 运行BusinessService入口 ([DubboBusinessTester](https://github.com/apache/incubator-seata-samples/blob/master/dubbo/src/main/java/com/seata/seata/samples/dubbo/starter/DubboBusinessTester.java))。
 
 ### 相关项目
-* seata:          https://github.com/seata/seata/
-* seata-samples : https://github.com/seata/seata-samples  
+* seata:          https://github.com/apache/incubator-seata/
+* seata-samples : https://github.com/apache/incubator-seata-samples  

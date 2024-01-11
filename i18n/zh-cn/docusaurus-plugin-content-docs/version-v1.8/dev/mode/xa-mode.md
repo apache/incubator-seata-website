@@ -92,7 +92,7 @@ XA start 需要 Xid 参数。
 
 从编程模型上，XA 模式与 AT 模式保持完全一致。
 
-可以参考 Seata 官网的样例：[seata-xa](https://github.com/seata/seata-samples/tree/master/seata-xa)
+可以参考 Seata 官网的样例：[seata-xa](https://github.com/apache/incubator-seata-samples/tree/master/seata-xa)
 
 样例场景是 Seata 经典的，涉及库存、订单、账户 3 个微服务的商品订购业务。
 

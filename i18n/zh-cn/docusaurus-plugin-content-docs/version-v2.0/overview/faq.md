@@ -142,7 +142,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
 
 **A:** 
-0.4.2版本之后就可以上生产环境，欢迎已经在使用的企业参与此issue:[who's using Seata](https://github.com/seata/seata/issues/1246)
+0.4.2版本之后就可以上生产环境，欢迎已经在使用的企业参与此issue:[who's using Seata](https://github.com/apache/incubator-seata/issues/1246)
 
 ********
 <h3 id='2'>Q: 2.Seata 目前支持高可用吗？</h3>
@@ -252,7 +252,7 @@ undolog序列化配置为jackson时，jackson版本需要为2.9.9+
 <h3 id='11'>Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
 
 **A:** 
-本地执行下: `./mvnw clean install -DskipTests=true` (Mac,Linux) 或 `mvnw.cmd clean install -DskipTests=true` (Win), [参考issues/2438](https://github.com/seata/seata/issues/2438),相关代码在0.8.1已经移除。
+本地执行下: `./mvnw clean install -DskipTests=true` (Mac,Linux) 或 `mvnw.cmd clean install -DskipTests=true` (Win), [参考issues/2438](https://github.com/apache/incubator-seata/issues/2438),相关代码在0.8.1已经移除。
 
 ********
 <h3 id='12'>Q: 12.TC如何使用mysql8?</h3>
@@ -403,7 +403,7 @@ seata:
   
 ```
 
-如果是后者,保证以上两项处理后,请不要手动代码AbstractRoutingDataSource等动态数据源,而是将其实际使用的物理datasource进行代理,具体可参考如下例子[seata-samples/DataSourceProxyConfig.java at master · seata/seata-samples (github.com)](https://github.com/seata/seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java)
+如果是后者,保证以上两项处理后,请不要手动代码AbstractRoutingDataSource等动态数据源,而是将其实际使用的物理datasource进行代理,具体可参考如下例子[seata-samples/DataSourceProxyConfig.java at master · apache/incubator-seata-samples (github.com)](https://github.com/apache/incubator-seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java)
 
 ------
 
@@ -437,7 +437,7 @@ public void B(){
 
 影响：出现这种情况时，数据会整体回滚至A方法执行前的数据的初态，从数据一致性的视角上看，数据是整体一致的。
 
-除了上述情况，如果引用的是`seata-spring-boot-starter`的话，产生这个错误的原因也可能是因为一个bug，目前在1.5版本进行了修复，具体可以参考[issues4020](https://github.com/seata/seata/issues/4020)，[PR4039](https://github.com/seata/seata/pull/4039)。
+除了上述情况，如果引用的是`seata-spring-boot-starter`的话，产生这个错误的原因也可能是因为一个bug，目前在1.5版本进行了修复，具体可以参考[issues4020](https://github.com/apache/incubator-seata/issues/4020)，[PR4039](https://github.com/apache/incubator-seata/pull/4039)。
 
 ------
 
@@ -621,7 +621,7 @@ seata.client.undo.logSerialization=kryo
 
 **E:**
 
-参考此[pr](https://github.com/seata/seata/pull/3738)做法,可以用类覆盖或SPI方式扩展新的解析方式处理
+参考此[pr](https://github.com/apache/incubator-seata/pull/3738)做法,可以用类覆盖或SPI方式扩展新的解析方式处理
 
 ****
 
@@ -629,7 +629,7 @@ seata.client.undo.logSerialization=kryo
 
 **A:**
 
- - 使用 DB 存储模式时，需要注意使用相应seata-server对应版本的建表脚本，建表脚本获取地址：https://github.com/seata/seata/tree/${版本}/script/server/db，例如：获取seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/seata/seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
+ - 使用 DB 存储模式时，需要注意使用相应seata-server对应版本的建表脚本，建表脚本获取地址：https://github.com/apache/incubator-seata/tree/${版本}/script/server/db，例如：获取seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
  - seata-server 依赖的后端的DB，不要开启读写分离。开启读写分离后根据同步模式的不同延迟也有所不同，seata-server 
    为无状态计算节点，所有状态都需要到DB存储中校验，在主从同步延迟较大的情况下会导致读取的状态不准确从而导致事务逻辑处理问题。为了更高的读写性能，DB可将隔离级别设置为读已提交。
 
@@ -641,7 +641,7 @@ seata.client.undo.logSerialization=kryo
 
 **A:**
 
- - [seata/seata-plugin at develop · seata/seata (github.com)](https://github.com/seata/seata/tree/develop/seata-plugin) 拉取此plugin代码,本地打包自行引入,也可直接拷贝代码进行spi扩展支持
+ - [seata/seata-plugin at develop · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/tree/develop/seata-plugin) 拉取此plugin代码,本地打包自行引入,也可直接拷贝代码进行spi扩展支持
 
 
 
