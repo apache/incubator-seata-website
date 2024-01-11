@@ -37,7 +37,7 @@ The following system requirements are the minimum required to deploy Seata-Serve
 | 1.8.0   | [1.8.0.zip](https://github.com/apache/incubator-seata/releases/download/v1.8.0/seata-server-1.8.0.zip) | [seataio/seata-server:1.8.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.8.0) | f5de162a4577f5f96828cba75d912240 | [1.8.x Release Notes](/docs/v1.8/release-notes/) | [1.8.x Quick Start](/docs/v1.8/user/quickstart/) |
 | 1.7.1   | [1.7.1.zip](https://github.com/apache/incubator-seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x Release Notes](/docs/v1.7/release-notes/) | [1.7.x Quick Start](/docs/v1.7/user/quickstart/) |
 
-1. Seata version maintenance policy, please refer to the [version maintenance document](https://seata.apache.org/), please upgrade the lower version to the current maintenance version as soon as possible. For version upgrade, please refer to the [upgrade guide](/docs/ops/upgrade)
+1. Seata version maintenance policy, please refer to the [version maintenance document](/docs/ops/version-maintain-plan), please upgrade the lower version to the current maintenance version as soon as possible. For version upgrade, please refer to the [upgrade guide](/docs/ops/upgrade)
 2. For more release history downloads, please refer to [Release History](/unversioned/release-history/seata-server)
 
 ## Snapshot Version
