@@ -197,6 +197,11 @@ const config = {
             position: 'right',
           },
           {
+            label: 'Users',
+            to: '/users',
+            position: 'right',
+          },
+          {
             label: 'Community',
             to: '/community',
             position: 'right',

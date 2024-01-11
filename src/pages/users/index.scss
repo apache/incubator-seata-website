@@ -1,4 +1,4 @@
-@import '../../../css/variables.scss';
+@import '../../css/variables.scss';
 
 .users-section {
   box-sizing: border-box;
@@ -29,11 +29,11 @@
     font-size: 14px;
     color: #666;
     text-align: center;
-    margin: 0 0 40px;
+    margin: 0 auto;
 
     a {
       color: #1e6bb8;
-      text-decoration: none;
+      text-decoration: underline;
     }
   }
 
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     justify-content: center;
     max-width: $contentWidth;
-    margin: 0 auto;
+    margin: 40px auto 0;
 
     .user-item {
       display: flex;
@@ -61,5 +61,11 @@
         object-fit: contain;
       }
     }
+  }
+  .appear{
+    width: 100%;
+    background-color: #f5f6f7;
+    margin: 40px auto 0;
+    padding: 40px 0;
   }
 }
