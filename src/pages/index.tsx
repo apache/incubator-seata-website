@@ -3,7 +3,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Top from './home/top';
 import Introduction from './home/introduction';
-import MseMap from './home/msemap';
 import Feature from './home/feature';
 // import Community from './home/community';
 import { Footer } from '../components';
@@ -45,7 +44,6 @@ export default function Home(): React.Element {
       <div ref={el} className='home-page'>
         <Top />
         <Introduction />
-        <MseMap />
         <Feature />
         {/* <Community /> */}
         {/* <Footer/> */}
