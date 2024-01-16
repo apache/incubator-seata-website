@@ -13,8 +13,8 @@ const Solution = () => {
   return (
     <Layout title={data.title} description={data.title}>
       <Head>
-        <script src={useBaseUrl('/js/mse-arc-ui.min.js')} />
-        <link rel='stylesheet' href={useBaseUrl('/css/mse-arc-ui.min.css')} />
+        <script src={useBaseUrl('/js/solution-ui.min.js')} />
+        <link rel='stylesheet' href={useBaseUrl('/css/solution-ui.min.css')} />
       </Head>
       <section className='solution-section'>
         <div className='solution-container'>
