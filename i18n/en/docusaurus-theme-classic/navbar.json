@@ -31,6 +31,10 @@
     "message": "Download",
     "description": "Navbar item with label Download"
   },
+  "item.label.Solution": {
+    "message": "Solution",
+    "description": "Navbar item with label Solution"
+  },
   "item.label.Console sample": {
     "message": "Console sample",
     "description": "Navbar item with label Console sample"

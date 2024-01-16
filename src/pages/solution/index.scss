@@ -1,6 +1,6 @@
-@import '../../../css/variables.scss';
-.msemap-section {
-  .msemap-container {
+@import '../../css/variables.scss';
+.solution-section {
+  .solution-container {
     h3 {
       font-family: Avenir-Medium;
       font-weight: 700;
@@ -8,6 +8,7 @@
       color: #333;
       text-align: center;
       margin-bottom: 20px;
+      margin-top: 40px;
     }
   }
 }
