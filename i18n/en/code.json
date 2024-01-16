@@ -274,7 +274,7 @@
     "message": "Vision"
   },
   "homepage.footerVersionContent": {
-    "message": "Apache Seata™ is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
+    "message": "Apache Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
   },
   "homepage.footerDocTitle": {
     "message": "Documentation"
@@ -364,7 +364,7 @@
     "message": "Create a brilliant "
   },
   "homepage.briefIntroduction": {
-    "message": "Apache Seata™ is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
+    "message": "Apache Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
   },
   "homepage.quickstartButton": {
     "message": "Get Started"
@@ -433,7 +433,7 @@
     "message": "Who is using"
   },
   "users.userTitleAfter": {
-    "message": " Apache Seata™"
+    "message": " Apache Seata"
   },
   "users.wantToAppear": {
     "message": "Want to appear on this page?"
