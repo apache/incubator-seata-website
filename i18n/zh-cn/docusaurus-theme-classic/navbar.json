@@ -35,6 +35,10 @@
     "message": "下载",
     "description": "Navbar item with label Download"
   },
+  "item.label.Solution": {
+    "message": "解决方案",
+    "description": "Navbar item with label Solution"
+  },
   "item.label.Console sample": {
     "message": "控制台样例",
     "description": "Navbar item with label Console sample"

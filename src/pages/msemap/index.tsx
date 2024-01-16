@@ -2,40 +2,20 @@ import React, { useEffect } from 'react';
 import { translate } from '@docusaurus/Translate';
 import './index.scss';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const data = {
   title: translate({ id: 'homepage.msemapTitle', message: '微服务全景图' }),
 };
 
 const MseMap = () => {
-  useEffect(() => {
-    if (
-      !document.querySelector(
-        '#mse-arc-ui-css-ed9f813d-76a2-464b-acd6-8a5c3d2649e1'
-      )
-    ) {
-      const mseCss = document.createElement('link');
-      // make sure the id is unique
-      mseCss.id = 'mse-arc-ui-css-ed9f813d-76a2-464b-acd6-8a5c3d2649e1';
-      mseCss.rel = 'stylesheet';
-      mseCss.href = '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css';
-      document.head.appendChild(mseCss);
-    }
-    if (
-      !document.querySelector(
-        '#mse-arc-ui-js-b6fe54d7-b7c4-45f8-82f8-252d03b5a981'
-      )
-    ) {
-      const mseScript = document.createElement('script');
-      // make sure the id is unique
-      mseScript.id = 'mse-arc-ui-js-b6fe54d7-b7c4-45f8-82f8-252d03b5a981';
-      mseScript.src = '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js';
-      document.head.appendChild(mseScript);
-    }
-  }, []);
-
   return (
     <Layout title={data.title} description={data.title}>
+      <Head>
+        <script src={useBaseUrl('/js/mse-arc-ui.min.js')} />
+        <link rel='stylesheet' href={useBaseUrl('/css/mse-arc-ui.min.css')} />
+      </Head>
       <section className='msemap-section'>
         <div className='msemap-container'>
           <h3>{data.title}</h3>

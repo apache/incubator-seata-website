@@ -212,6 +212,11 @@ const config = {
             position: 'right',
           },
           {
+            label: 'Solution',
+            to: '/msemap',
+            position: 'right',
+          },
+          {
             label: 'Console sample',
             to: 'http://demo.seata.io/',
             position: 'right',
