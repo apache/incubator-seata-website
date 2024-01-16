@@ -213,7 +213,7 @@ const config = {
           },
           {
             label: 'Solution',
-            to: '/msemap',
+            to: '/solution',
             position: 'right',
           },
           // {
