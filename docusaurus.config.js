@@ -23,7 +23,7 @@ const asfDict = [
 ];
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Apache Seata™',
+  title: 'Apache Seata',
   favicon: 'img/seata_logo_small.jpeg',
 
   // Set the production url of your site here

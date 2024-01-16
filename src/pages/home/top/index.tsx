@@ -5,7 +5,7 @@ import { Button, ButtonType } from '../../../components';
 import './index.scss';
 
 const topData = {
-  brandName: 'Apache Seata™',
+  brandName: 'Apache Seata',
   briefIntroduction: translate({
     id: 'homepage.briefIntroduction',
   }),
