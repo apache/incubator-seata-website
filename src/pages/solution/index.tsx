@@ -6,7 +6,7 @@ import Head from '@docusaurus/Head';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const data = {
-  title: translate({ id: 'homepage.solutionTitle'}),
+  title: translate({ id: 'homepage.solutionTitle' }),
 };
 
 const Solution = () => {
@@ -19,7 +19,7 @@ const Solution = () => {
       <section className='solution-section'>
         <div className='solution-container'>
           <h3>{data.title}</h3>
-          <div id='mse-arc-container'></div>
+          <div id='solution-container'></div>
         </div>
       </section>
     </Layout>
