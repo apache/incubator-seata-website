@@ -178,8 +178,7 @@ const sidebars = {
       collapsible: false,
       items: [
         'developers/committer-guide/label-an-issue-guide_dev',
-        'developers/committer-guide/website-guide_dev',
-        'developers/committer-guide/release-guide_dev',
+        'developers/committer-guide/website-guide_dev'
       ],
     },
   ],

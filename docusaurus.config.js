@@ -216,12 +216,12 @@ const config = {
             to: '/msemap',
             position: 'right',
           },
-          {
-            label: 'Console sample',
-            to: 'http://demo.seata.io/',
-            position: 'right',
-            target: '_blank',
-          },
+          // {
+          //   label: 'Console sample',
+          //   to: 'http://demo.seata.io/',
+          //   position: 'right',
+          //   target: '_blank',
+          // },
           {
             label: 'ASF',
             type: 'dropdown',

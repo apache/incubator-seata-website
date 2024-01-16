@@ -10,8 +10,8 @@ This is a guide for new comers who wants to contribute to Seata.
 
 ### Subscribe to the mailing list
 
-subscribe: dev-subscribe@seata.apache.org
-unsubscribe: dev-unsubscribe@seata.apache.org
+- subscribe: dev-subscribe@seata.apache.org
+- unsubscribe: dev-unsubscribe@seata.apache.org
 
 ### Reporting issue
 
