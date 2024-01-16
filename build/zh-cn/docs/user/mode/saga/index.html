@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.4.1">
-<title data-rh="true">Seata Saga 模式 | Apache Seata™</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://seata.io/zh-cn/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://seata.io/zh-cn/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://seata.io/zh-cn/docs/user/mode/saga"><meta data-rh="true" name="docusaurus_locale" content="zh-cn"><meta data-rh="true" name="docsearch:language" content="zh-cn"><meta data-rh="true" name="docusaurus_version" content="v2.0"><meta data-rh="true" name="docusaurus_tag" content="docs-default-v2.0"><meta data-rh="true" name="docsearch:version" content="v2.0"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-v2.0"><meta data-rh="true" property="og:title" content="Seata Saga 模式 | Apache Seata™"><meta data-rh="true" name="description" content="Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。"><meta data-rh="true" property="og:description" content="Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。"><meta data-rh="true" name="keywords" content="Seata,Saga"><link data-rh="true" rel="icon" href="/zh-cn/img/seata_logo_small.jpeg"><link data-rh="true" rel="canonical" href="https://seata.io/zh-cn/docs/user/mode/saga"><link data-rh="true" rel="alternate" href="https://seata.io/docs/user/mode/saga" hreflang="en-US"><link data-rh="true" rel="alternate" href="https://seata.io/zh-cn/docs/user/mode/saga" hreflang="zh-CN"><link data-rh="true" rel="alternate" href="https://seata.io/docs/user/mode/saga" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://ICHFIJRDZF-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/zh-cn/blog/rss.xml" title="Apache Seata™ RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/zh-cn/blog/atom.xml" title="Apache Seata™ Atom Feed">
+<title data-rh="true">Seata Saga 模式 | Apache Seata</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://seata.io/zh-cn/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://seata.io/zh-cn/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://seata.io/zh-cn/docs/user/mode/saga"><meta data-rh="true" name="docusaurus_locale" content="zh-cn"><meta data-rh="true" name="docsearch:language" content="zh-cn"><meta data-rh="true" name="docusaurus_version" content="v2.0"><meta data-rh="true" name="docusaurus_tag" content="docs-default-v2.0"><meta data-rh="true" name="docsearch:version" content="v2.0"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-v2.0"><meta data-rh="true" property="og:title" content="Seata Saga 模式 | Apache Seata"><meta data-rh="true" name="description" content="Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。"><meta data-rh="true" property="og:description" content="Saga模式是SEATA提供的长事务解决方案，在Saga模式中，业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者，一阶段正向服务和二阶段补偿服务都由业务开发实现。"><meta data-rh="true" name="keywords" content="Seata,Saga"><link data-rh="true" rel="icon" href="/zh-cn/img/seata_logo_small.jpeg"><link data-rh="true" rel="canonical" href="https://seata.io/zh-cn/docs/user/mode/saga"><link data-rh="true" rel="alternate" href="https://seata.io/docs/user/mode/saga" hreflang="en-US"><link data-rh="true" rel="alternate" href="https://seata.io/zh-cn/docs/user/mode/saga" hreflang="zh-CN"><link data-rh="true" rel="alternate" href="https://seata.io/docs/user/mode/saga" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://ICHFIJRDZF-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/zh-cn/blog/rss.xml" title="Apache Seata RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/zh-cn/blog/atom.xml" title="Apache Seata Atom Feed">
 
 
-<link rel="search" type="application/opensearchdescription+xml" title="Apache Seata™" href="/zh-cn/opensearch.xml">
+<link rel="search" type="application/opensearchdescription+xml" title="Apache Seata" href="/zh-cn/opensearch.xml">
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata">
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2" async></script><link rel="stylesheet" href="/zh-cn/assets/css/styles.18cd5e6f.css">
-<link rel="preload" href="/zh-cn/assets/js/runtime~main.2858ebab.js" as="script">
-<link rel="preload" href="/zh-cn/assets/js/main.b7c32354.js" as="script">
+<link rel="preload" href="/zh-cn/assets/js/runtime~main.d6fc8569.js" as="script">
+<link rel="preload" href="/zh-cn/assets/js/main.311c3aa2.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script>
@@ -44,7 +44,7 @@ CompensateState: 子状态机的补偿state, 可以不配置, 系统会自动创
                     <br>
                   </div>
                   </div></div></div></footer></div>
-<script src="/zh-cn/assets/js/runtime~main.2858ebab.js"></script>
-<script src="/zh-cn/assets/js/main.b7c32354.js"></script>
+<script src="/zh-cn/assets/js/runtime~main.d6fc8569.js"></script>
+<script src="/zh-cn/assets/js/main.311c3aa2.js"></script>
 </body>
 </html>
