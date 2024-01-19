@@ -72,24 +72,24 @@ Taking the inventory service as an example, the RM inventory service interface c
 public interface StorageService {
 
     /**
-     * 扣减库存
-     * @param xid 全局xid
-     * @param productId 产品id
-     * @param count 数量
+     * decrease
+     * @param xid 
+     * @param productId 
+     * @param count 
      * @return
      */
     @TwoPhaseBusinessAction(name = "storageApi", commitMethod = "commit", rollbackMethod = "rollback", useTCCFence = true)
     boolean decrease(String xid, Long productId, Integer count);
 
     /**
-     * 提交事务
+     * commit
      * @param actionContext
      * @return
      */
     boolean commit(BusinessActionContext actionContext);
 
     /**
-     * 回滚事务
+     * rollback
      * @param actionContext
      * @return
      */
@@ -131,10 +131,8 @@ Let's take a look at how this is addressed in the new version. The following cod
 public BranchStatus branchCommit(BranchType branchType, String xid, long branchId, String resourceId,
 								 String applicationData) throws TransactionException {
 	TCCResource tccResource = (TCCResource)tccResourceCache.get(resourceId);
-	//省略判断
 	Object targetTCCBean = tccResource.getTargetBean();
 	Method commitMethod = tccResource.getCommitMethod();
-	//省略判断
 	try {
 		//BusinessActionContext
 		BusinessActionContext businessActionContext = getBusinessActionContext(xid, branchId, resourceId,
@@ -142,7 +140,7 @@ public BranchStatus branchCommit(BranchType branchType, String xid, long branchI
 		Object[] args = this.getTwoPhaseCommitArgs(tccResource, businessActionContext);
 		Object ret;
 		boolean result;
-		//注解 useTCCFence 属性是否设置为 true
+		//whether the useTCCFence property is set to true
 		if (Boolean.TRUE.equals(businessActionContext.getActionContext(Constants.USE_TCC_FENCE))) {
 			try {
 				result = TCCFenceHandler.commitFence(commitMethod, targetTCCBean, xid, branchId, args);
@@ -150,12 +148,10 @@ public BranchStatus branchCommit(BranchType branchType, String xid, long branchI
 				throw e.getCause();
 			}
 		} else {
-			//省略逻辑
 		}
 		LOGGER.info("TCC resource commit result : {}, xid: {}, branchId: {}, resourceId: {}", result, xid, branchId, resourceId);
 		return result ? BranchStatus.PhaseTwo_Committed : BranchStatus.PhaseTwo_CommitFailed_Retryable;
 	} catch (Throwable t) {
-		//省略
 		return BranchStatus.PhaseTwo_CommitFailed_Retryable;
 	}
 }
@@ -206,7 +202,7 @@ In the scenario shown in the following diagram, the account service consists of 
 Seata's solution is to insert a record into the `tcc_fence_log` table during the try phase, with the `status` field set to `STATUS_TRIED`. During the rollback phase, it checks if the record exists, and if it doesn't, the rollback operation is not executed. The code is as follows:
 
 ```Java
-//TCCFenceHandler 类
+//TCCFenceHandler 
 public static Object prepareFence(String xid, Long branchId, String actionName, Callback<Object> targetCallback) {
 	return transactionTemplate.execute(status -> {
 		try {
@@ -220,9 +216,7 @@ public static Object prepareFence(String xid, Long branchId, String actionName, 
 						FrameworkErrorCode.InsertRecordError);
 			}
 		} catch (TCCFenceException e) {
-			//省略
 		} catch (Throwable t) {
-			//省略
 		}
 	});
 }
@@ -230,7 +224,7 @@ public static Object prepareFence(String xid, Long branchId, String actionName, 
 The processing logic in the Rollback phase is as follows:
 
 ```Java
-//TCCFenceHandler 类
+//TCCFenceHandler 
 public static boolean rollbackFence(Method rollbackMethod, Object targetTCCBean,
 									String xid, Long branchId, Object[] args, String actionName) {
 	return transactionTemplate.execute(status -> {
@@ -239,7 +233,7 @@ public static boolean rollbackFence(Method rollbackMethod, Object targetTCCBean,
 			TCCFenceDO tccFenceDO = TCC_FENCE_DAO.queryTCCFenceDO(conn, xid, branchId);
 			// non_rollback
 			if (tccFenceDO == null) {
-				//不执行回滚逻辑
+				//The rollback logic is not executed
 				return true;
 			} else {
 				if (TCCFenceConstant.STATUS_ROLLBACKED == tccFenceDO.getStatus() || TCCFenceConstant.STATUS_SUSPENDED == tccFenceDO.getStatus()) {
@@ -285,29 +279,24 @@ public static boolean rollbackFence(Method rollbackMethod, Object targetTCCBean,
 			TCCFenceDO tccFenceDO = TCC_FENCE_DAO.queryTCCFenceDO(conn, xid, branchId);
 			// non_rollback
 			if (tccFenceDO == null) {
-			    //插入防悬挂记录
 				boolean result = insertTCCFenceLog(conn, xid, branchId, actionName, TCCFenceConstant.STATUS_SUSPENDED);
-				//省略逻辑
 				return true;
 			} else {
-				//省略逻辑
 			}
 			return updateStatusAndInvokeTargetMethod(conn, rollbackMethod, targetTCCBean, xid, branchId, TCCFenceConstant.STATUS_ROLLBACKED, status, args);
 		} catch (Throwable t) {
-			//省略逻辑
 		}
 	});
 }
 ```
 When executing the try phase method, a record for the current xid is first inserted into the tcc_fence_log table, which causes a primary key conflict. The code is as follows:
 ```Java
-//TCCFenceHandler 类
+//TCCFenceHandler 
 public static Object prepareFence(String xid, Long branchId, String actionName, Callback<Object> targetCallback) {
 	return transactionTemplate.execute(status -> {
 		try {
 			Connection conn = DataSourceUtils.getConnection(dataSource);
 			boolean result = insertTCCFenceLog(conn, xid, branchId, actionName, TCCFenceConstant.STATUS_TRIED);
-			//省略逻辑
 		} catch (TCCFenceException e) {
 			if (e.getErrcode() == FrameworkErrorCode.DuplicateKeyException) {
 				LOGGER.error("Branch transaction has already rollbacked before,prepare fence failed. xid= {},branchId = {}", xid, branchId);
@@ -316,7 +305,6 @@ public static Object prepareFence(String xid, Long branchId, String actionName, 
 			status.setRollbackOnly();
 			throw new SkipCallbackWrapperException(e);
 		} catch (Throwable t) {
-			//省略
 		}
 	});
 }
