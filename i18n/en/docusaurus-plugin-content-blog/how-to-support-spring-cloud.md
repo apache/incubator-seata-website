@@ -1,5 +1,5 @@
 ---
-title: Fescar Integration with Spring Cloud: In-Depth Analysis of Source Code
+title: Fescar Integration with Spring Cloud In-Depth Analysis of Source Code
 author: shukang.guo min.ji
 date: 2019/04/15
 keywords: fescar、seata、Distributed transaction
