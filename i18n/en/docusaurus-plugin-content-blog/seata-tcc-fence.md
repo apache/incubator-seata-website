@@ -10,7 +10,6 @@ description: Seata version 1.5.1 from Alibaba has finally resolved the issues of
 date: 2022/06/25
 ---
 
-Translator: zhongxiang.wang（lightClouds917）
 
 Today, let's talk about how the new version (1.5.1) of Alibaba's Seata resolves the issues of idempotence, dangling, and empty rollback in TCC mode.
 
