@@ -11,7 +11,6 @@ Seata, short for Simple Extensible Autonomous Transaction Architecture, is an al
 
 Author: Yiyuan (Chen Long), Core Developer of Distributed Transactions at Ant Financial, Seata Committer.
 
-Translator: zhongxiang.wang（lightClouds917）
 
 <a name="uTwja"></a>
 
