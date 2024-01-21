@@ -7,7 +7,6 @@ date: 2021-01-23
 
 ---
 
-
 # Integration of Spring Cloud with Seata for Distributed Transaction - TCC Mode
 
 This article will introduce how to integrate Seata (1.4.0) with Spring Cloud and Feign using the TCC mode. In practice, Seata's AT mode can meet about 80% of our distributed transaction needs. However, when dealing with operations on databases and middleware (such as Redis) that do not support transactions, or when using databases that are not currently supported by the AT mode (currently AT supports MySQL, Oracle, and PostgreSQL), cross-company service invocations, cross-language application invocations, or the need for manual control of the entire two-phase commit process, we need to combine the TCC mode. Moreover, the TCC mode also supports mixed usage with the AT mode.
