@@ -7,7 +7,6 @@ date: 2021-01-23
 
 ---
 
-Translator: zhongxiang.wang（lightClouds917）
 
 # Integration of Spring Cloud with Seata for Distributed Transaction - TCC Mode
 
