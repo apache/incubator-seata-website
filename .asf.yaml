@@ -8,7 +8,13 @@ github:
   dependabot_alerts:  true
   dependabot_updates: false
   protected_branches:
-    docusaurus: {}
+    docusaurus:
+      required_conversation_resolution: true
+      required_status_checks:
+        strict: true
+      required_pull_request_reviews:
+        dismiss_stale_reviews: false
+        required_approving_review_count: 1
     develop: {}
 notifications:
   commits: notifications@seata.apache.org
