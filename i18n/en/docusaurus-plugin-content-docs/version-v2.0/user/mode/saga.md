@@ -239,8 +239,10 @@ Run [DubboSagaTransactionStarter](https://github.com/apache/incubator-seata-samp
 
 ## State Machine Designer
 
+<a href="/saga-designer/" target="_blank">Try it online</a>
+
 Seata Saga provides a visual state machine designer for user convenience. For code and running guide, please refer to:
-[https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer)
+[https://github.com/apache/incubator-seata/tree/refactor_designer/saga/seata-saga-statemachine-designer](https://github.com/apache/incubator-seata/tree/refactor_designer/saga/seata-saga-statemachine-designer)
 
 Screenshot of the state machine designer:
 ![State Machine Designer](/img/saga/seata-saga-statemachine-designer.png?raw=true)

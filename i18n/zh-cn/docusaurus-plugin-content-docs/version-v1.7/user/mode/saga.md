@@ -241,8 +241,10 @@ public interface InventoryAction {
 
 ## 状态机设计器
 
+<a href="/saga-designer/" target="_blank">在线访问</a>
+
 Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代码和运行指南请参考：
-[https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer](https://github.com/apache/incubator-seata/tree/develop/saga/seata-saga-statemachine-designer)
+[https://github.com/apache/incubator-seata/tree/refactor_designer/saga/seata-saga-statemachine-designer](https://github.com/apache/incubator-seata/tree/refactor_designer/saga/seata-saga-statemachine-designer)
 
 状态机设计器截图:
 ![状态机设计器](/img/saga/seata-saga-statemachine-designer.png?raw=true)
