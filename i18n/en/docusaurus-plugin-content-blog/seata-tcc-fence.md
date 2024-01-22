@@ -55,7 +55,7 @@ In the TCC mode, there are three roles:
 
 The diagram below is from the Seata official website:
 
-![fence-different-db](/img/blog/fence-different-db.png)
+![fence-fiffrent-db](/img/blog/fence-fiffrent-db.png)
 
 When TM starts a global transaction, RM needs to send a registration message to TC, and TC saves the state of the branch transaction. When TM requests a commit or rollback, TC needs to send commit or rollback messages to RM. In this way, in a distributed transaction with two branch transactions, there are four RPCs between TC and RM.
 
