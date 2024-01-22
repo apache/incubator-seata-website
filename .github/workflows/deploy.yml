@@ -21,6 +21,24 @@ jobs:
       - name: Build
         run: |
           npm install && npm run build && mkdir -p deploy-dist && cp -R build/* deploy-dist/ && mv build .htaccess .asf.yaml deploy-dist/
+      - name:
+          generate sitemap.xml and site.txt
+          # The new generated sitemap for the index form,
+          # in order to ensure consistency with the old version,
+          # here directly to the details of the sitemap (sitemap.0.xml) renamed as a whole sitemap,
+          # if the number of articles increases in the future,
+          # the details of the sitemap will be split into multiple files (sitemap.0.xml,sitemap.1.xml),
+          # you may need to modify.
+        env:
+          ALGOLIA_APIKEY: ${{secrets.ALGOLIA_APIKEY}}
+        run: |
+          mkdir sitemaps && node sitemap.js
+          cp sitemaps/sitemap.0.xml deploy-dist/sitemap.xml
+          cp sitemaps/site.txt deploy-dist/site.txt
+      - name: baidu link submit
+        env:
+          BAIDU_LINK_SUBMIT_TOKEN: ${{secrets.BAIDU_LINK_SUBMIT_TOKEN}}
+        run: node baiduLinkSubmit.js
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.8.0
         env:

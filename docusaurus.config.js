@@ -27,7 +27,7 @@ const config = {
   favicon: 'img/seata_logo_small.jpeg',
 
   // Set the production url of your site here
-  url: 'https://seata.io',
+  url: 'https://seata.apache.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
