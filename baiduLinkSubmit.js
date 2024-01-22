@@ -13,7 +13,7 @@ if (!process.env.BAIDU_LINK_SUBMIT_TOKEN) {
 const getOldSiteData = () => {
   return new Promise((resolve, reject) => {
     https
-      .get('https://seata.io/site.txt', (res) => {
+      .get('https://seata.apache.org/site.txt', (res) => {
         res.setEncoding('utf-8');
         if (res.statusCode === 200) {
           res.on('data', (data) => {
@@ -74,7 +74,7 @@ const submit = (data) => {
       host: 'data.zz.baidu.com',
       port: 80,
       path:
-        '/urls?site=https://seata.io&token=' +
+        '/urls?site=https://seata.apache.org&token=' +
         process.env.BAIDU_LINK_SUBMIT_TOKEN,
       method: 'POST',
       headers: {
