@@ -4,8 +4,8 @@
   <ShortName>Apache Seata</ShortName>
   <Description>Search Apache Seata</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://seata.io/img/seata_logo_small.jpeg</Image>
-  <Url type="text/html" method="get" template="https://seata.io/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://seata.io/opensearch.xml" />
-  <moz:SearchForm>https://seata.io/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://seata.apache.org/img/seata_logo_small.jpeg</Image>
+  <Url type="text/html" method="get" template="https://seata.apache.org/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://seata.apache.org/opensearch.xml" />
+  <moz:SearchForm>https://seata.apache.org/</moz:SearchForm>
 </OpenSearchDescription>
