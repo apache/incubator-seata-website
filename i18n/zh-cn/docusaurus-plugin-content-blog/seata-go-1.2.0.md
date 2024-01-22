@@ -12,8 +12,6 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 
 ### 发布概览
 
-
-
 Seata-go 1.2.0版本支持 XA 模式。XA 协议是由 X/Open 组织提出的分布式事务处理规范，其优点是对业务代码无侵入。当前 Seata-go 的 XA 模式支持 MySQL 数据库。至此，seata-go 已经集齐 AT、TCC、Saga 和 XA 四种事务模式，完成了与 Seata Java 的功能对齐。 XA 模式的主要功能:
 
 - 支持了 XA 数据源代理<https://github.com/apache/incubator-seata-go-samples/tree/main/xa>
@@ -23,7 +21,7 @@ XA 相关的 sampes 可以参考示例：<https://github.com/apache/incubator-se
 ### feature
 
 - [[#467](https://github.com/apache/incubator-seata-go/pull/467)] 实现 XA 模式支持 MySQL
-- [[#534](ttps://github.com/apache/incubator-seata-go/pull/534)] 支持 session 的负载均衡
+- [[#534](https://github.com/apache/incubator-seata-go/pull/534)] 支持 session 的负载均衡
 
 ### bugfix
 
@@ -33,23 +31,23 @@ XA 相关的 sampes 可以参考示例：<https://github.com/apache/incubator-se
 - [[#556](https://github.com/apache/incubator-seata-go/pull/556)] 修复 xa 数据源的 bug
 - [[#562](https://github.com/apache/incubator-seata-go/pull/562)] 修复提交 xa 全局事务的 bug
 - [[#564](https://github.com/apache/incubator-seata-go/pull/564)] 修复提交 xa 分支事务的 bug
-- [[#566](htps://github.com/apache/incubator-seata-go/pull/566)] 修复使用 xa 数据源执行本地事务的 bug
+- [[#566](https://github.com/apache/incubator-seata-go/pull/566)] 修复使用 xa 数据源执行本地事务的 bug
 
 ### optimize
 
 - [[#523](https://github.com/apache/incubator-seata-go/pull/523)] 优化 CI 流程
-- [[#525](https://github.com/apache/incubator-seata-go/pull/456)] 将 jackson 序列化重命名为 json
+- [[#525](https://github.com/apache/incubator-seata-go/pull/525)] 将 jackson 序列化重命名为 json
 - [[#532](https://github.com/apache/incubator-seata-go/pull/532)] 移除重复的代码
 - [[#536](https://github.com/apache/incubator-seata-go/pull/536)] 优化 go import 代码格式
 - [[#554](https://github.com/apache/incubator-seata-go/pull/554)] 优化 xa 模式的性能
-- [[#561(https://github.com/apache/incubator-seata-go/pull/561)] 优化 xa 模式的日志输出
+- [[#561](https://github.com/apache/incubator-seata-go/pull/561)] 优化 xa 模式的日志输出
 
 ### test
 
-- [[#53](https://github.com/apache/incubator-seata-go/pull/535)] 添加集成测试
-
+- [[#535](https://github.com/apache/incubator-seata-go/pull/535)] 添加集成测试
 
 ### doc
+
 - [[#550](https:/github.com/apache/incubator-seata-go/pull/550)] 添加 1.2.0 版本的改动日志
 
 ### contributors
@@ -67,15 +65,12 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [Kirhaku](https://github.com/Kirhaku)
 - [Vaderkai](https://github.com/VaderKai)
 
-
 #### Link
-<http://github.com/apache/incubator-seata>
-- <https://github.com/seata/seata-php>r-seata>
-- <https://github.com/seata/seata-js>hp>
+
+- <https://github.com/apache/incubator-seata>
 - <https://github.com/apache/incubator-seata-go>
 - <https://github.com/apache/incubator-seata-go>
-  <https://github.com/apache/incubator-seata-samples>
+- <https://github.com/apache/incubator-seata-samples>
 - <https://github.com/apache/incubator-seata-go-samples>
-- <https:ithub.com/apache/incubator-seata-go-samples>
-  <https://seata.io/>
-- <https://seata.io/>
+- <https://github.com/apache/incubator-seata-go-samples>
+- <https://seata.apache.org/>
