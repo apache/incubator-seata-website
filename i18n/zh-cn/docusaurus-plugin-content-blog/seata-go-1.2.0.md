@@ -69,8 +69,6 @@ Thanks to these contributors for their code commits. Please report an unintended
 
 - <https://github.com/apache/incubator-seata>
 - <https://github.com/apache/incubator-seata-go>
-- <https://github.com/apache/incubator-seata-go>
 - <https://github.com/apache/incubator-seata-samples>
-- <https://github.com/apache/incubator-seata-go-samples>
 - <https://github.com/apache/incubator-seata-go-samples>
 - <https://seata.apache.org/>
