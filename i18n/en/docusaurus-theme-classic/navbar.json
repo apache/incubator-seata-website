@@ -39,6 +39,18 @@
     "message": "Console sample",
     "description": "Navbar item with label Console sample"
   },
+  "item.label.Demos": {
+    "message": "Demos",
+    "description": "Navbar item with label Demos"
+  },
+  "item.label.Saga Designer": {
+    "message": "Saga Designer",
+    "description": "Navbar item with label Saga Designer"
+  },
+  "item.label.Saga Designer (Legacy)": {
+    "message": "Saga Designer (Legacy)",
+    "description": "Navbar item with label Saga Designer (Legacy)"
+  },
   "item.label.Community": {
     "message": "Community",
     "description": "Navbar item with label Community"
