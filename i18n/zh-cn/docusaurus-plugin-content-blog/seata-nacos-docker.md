@@ -14,9 +14,9 @@ date: 2019/12/03
 
 # 前言
 
-直连方式的Seata配置[博客](http://seata.io/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html)
+直连方式的Seata配置[博客](/blog/springboot-dubbo-mybatisplus-seata/)
 
-Seata整合Nacos配置[博客](http://seata.io/zh-cn/blog/seata-nacos-analysis.html)
+Seata整合Nacos配置[博客](/blog/seata-nacos-analysis/)
 
 我们接着前几篇篇的基础上去配置nacos做配置中心跟dubbo注册中心.
 
@@ -394,7 +394,7 @@ metrics.exporterList=prometheus
 metrics.exporterPrometheusPort=9898
 ```
 
-详细参数配置请点[此处](http://seata.io/zh-cn/docs/user/configurations.html)
+详细参数配置请点[此处](/docs/user/configurations/)
 
 ​	4.registry.conf编辑为如下内容
 
@@ -571,6 +571,6 @@ CREATE TABLE IF NOT EXISTS `undo_log`
 
 [dubbo官网](http://dubbo.apache.org/en-us/)
 
-[seata官网](http://seata.io/zh-cn/)
+[seata官网](https://seata.apache.org/zh-cn/)
 
 [docker官网](https://www.docker.com/)
