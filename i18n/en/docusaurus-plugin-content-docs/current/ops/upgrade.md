@@ -113,7 +113,7 @@ description: Seata upgrade.
    <summary><mark>Notes</mark></summary>
 
 1. Pay attention to the compatibility of configuration items. Version 1.1.0 has unified the styles of configuration items.
-If the program relies on seata-all, corresponding to the *.conf file, the naming style of the configuration items in the conf file is unified with a dot + camel case combination, [1.1.0 Configuration Item Description](https://seata.io/zh-cn/docs/user/configurations.html), [1.1.0 Configuration Reference](https://github.com/apache/incubator-seata/tree/1.1.0/script/client/conf);
+If the program relies on seata-all, corresponding to the *.conf file, the naming style of the configuration items in the conf file is unified with a dot + camel case combination, [1.1.0 Configuration Item Description](/docs/user/configurations), [1.1.0 Configuration Reference](https://github.com/apache/incubator-seata/tree/1.1.0/script/client/conf);
 If the program depends on seata-spring-boot-starter, corresponding to *.properties or *.yml, the naming style of property and yml files is unified to the combination of dot + underscore.
 [1.1.0 Configuration Reference](https://github.com/apache/incubator-seata/tree/1.1.0/script/client/spring) What needs special attention is the 1.0.0 version configuration item seata.service
 .vgroup-mapping=default 1.1.0 changed to: seata.service.vgroup-mapping
@@ -144,7 +144,7 @@ The autoconfig function is supported by itself. Afterwards, the autoconfig about
 
    1. (Optional) 1.0 supports yml and properties, and seata-all needs to be replaced with seata-spring-boot-starter
    2. (Required) Add a common index to the branch_id field of the TC side table lock_table
-   3. (Optional) Some parameter naming changes, <a href="https://seata.io/zh-cn/docs/user/configurations100.html" target="_blank">Click here to check the parameter configuration</a>.
+   3. (Optional) Some parameter naming changes, <a href="/docs/user/configurations100" target="_blank">Click here to check the parameter configuration</a>.
    4. client.report.success.enable can be set as false to improve performance.
       
 
