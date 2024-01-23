@@ -5,7 +5,7 @@ description: Server-Raft mode 部署。
 ---
 
 # 部署 Server-Raft
-Seata-Raft模式为存算一体的高性能易扩展，入门门槛低，运维成本低等特定的事务存储模式。更加详细的了解架构和使用，[请点击此处](https://seata.io/zh-cn/blog/seata-raft-detailed-explanation)
+Seata-Raft模式为存算一体的高性能易扩展，入门门槛低，运维成本低等特定的事务存储模式。更加详细的了解架构和使用，[请点击此处](/blog/seata-raft-detailed-explanation/)
 注：由于此模式不支持与第三方注册中心搭配，故全链路只允许存在一个tc集群，也就是客户端的事务分组对应的tc集群要保持一致。后续Seata社区将会推出自闭环的NamingServer，将于Seata-Raft模式对接，支持multi-raft。
 
 ## Server

@@ -253,7 +253,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -330,7 +330,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -394,7 +394,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -536,7 +536,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -587,7 +587,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -747,7 +747,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -836,7 +836,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -1142,7 +1142,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -1314,7 +1314,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -1388,7 +1388,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -1531,7 +1531,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>  
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -1689,7 +1689,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>  
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -1832,7 +1832,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - **Seata:** <https://github.com/apache/incubator-seata>  
 - **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
 - **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.io>
+- **WebSite:** <https://seata.apache.org>
 
 </details>
 
@@ -1957,7 +1957,7 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 **Seata**: <https://github.com/apache/incubator-seata>
 **Seata-Samples**: <https://github.com/apache/incubator-seata-samples>
 **Release**: <https://github.com/apache/incubator-seata/releases>
-**Seata 官网**: <https://seata.io/zh-cn/>
+**Seata 官网**: <https://seata.apache.org/zh-cn/>
 </details>
 
 ### 1.0.0 (2019-12-21)

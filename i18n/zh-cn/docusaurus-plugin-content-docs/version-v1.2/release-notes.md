@@ -149,6 +149,6 @@ description: 本文将向你介绍如何点击了解各版本详情和升级注�
    - **Seata:** https://github.com/apache/incubator-seata  
    - **Seata-Samples:** https://github.com/apache/incubator-seata-samples   
    - **Release:** https://github.com/apache/incubator-seata/releases
-   - **WebSite:** https://seata.io
+   - **WebSite:** https://seata.apache.org
 
 </details>

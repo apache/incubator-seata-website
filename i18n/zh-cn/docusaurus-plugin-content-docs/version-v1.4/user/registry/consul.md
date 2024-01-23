@@ -80,7 +80,7 @@ seata:
     consul:
       server-addr: 127.0.0.1:8500
   # 事务分组配置，1.4.2 默认名称为 my_test_tx_group ，1.5版本将改为 default_tx_group
-  # 有关事务分组，请参考 http://seata.io/zh-cn/docs/user/txgroup/transaction-group.html
+  # 有关事务分组，请参考 https://seata.apache.org/zh-cn/docs/user/txgroup/transaction-group/
   tx-service-group: my_test_tx_group
   service:
     # 事务分组与集群映射关系

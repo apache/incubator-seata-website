@@ -88,7 +88,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
     -p: Server rpc 监听端口
     -m: 全局事务会话信息存储模式，file、db、redis，优先读取启动参数 (Seata-Server 1.3及以上版本支持redis)
     -n: Server node，当有多个Server时，需区分各自节点，用于生成不同区间的transactionId，以免冲突
-    -e: 多环境配置参考 https://seata.io/zh-cn/docs/v1.4/ops/multi-configuration-isolation
+    -e: 多环境配置参考 https://seata.apache.org/zh-cn/docs/v1.4/ops/multi-configuration-isolation
 ```
 - <a href="/docs/ops/deploy-by-docker/" target="_blank">点击查看docker部署</a>
 

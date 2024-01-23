@@ -57,7 +57,7 @@ Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，T
 
 ### 启动Server
 
-Server端存储模式（store.mode）现有file、db、redis、raft，file模式无需改动，直接启动即可,raft部署方式请访问[专门部署文档](https://seata.io/zh-cn/docs/ops/deploy-server-raft)，下面专门讲下db和redis启动步骤。  
+Server端存储模式（store.mode）现有file、db、redis、raft，file模式无需改动，直接启动即可,raft部署方式请访问[专门部署文档](/docs/ops/deploy-server-raft/)，下面专门讲下db和redis启动步骤。  
 注： file模式为单机模式，全局事务会话信息内存中读写并异步(默认)持久化本地文件root.data，性能较高;  
 
 db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些;
