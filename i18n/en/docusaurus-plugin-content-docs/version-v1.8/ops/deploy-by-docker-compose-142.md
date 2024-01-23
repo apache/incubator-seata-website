@@ -11,9 +11,9 @@ date: 2021-12-05
 
 ## Version Deployment History 
 
-[Version before 1.5.0](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose-142.html)
+[Version before 1.5.0](/docs/ops/deploy-by-docker-compose-142/)
 
-[Version 1.5.0 and above](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose.html)
+[Version 1.5.0 and above](/docs/ops/deploy-by-docker-compose/)
 
 ## Precautions 
 - Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/seataio/seata-server/tags) to determine the image version to be pulled.

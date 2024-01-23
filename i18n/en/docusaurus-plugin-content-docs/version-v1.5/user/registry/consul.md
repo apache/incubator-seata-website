@@ -79,7 +79,7 @@ seata:
     consul:
       server-addr: 127.0.0.1:8500
   # Transaction group configuration, default name is my_test_tx_group in version 1.4.2, will be changed to default_tx_group in version 1.5
-  # For more information about transaction groups, please refer to https://seata.io/docs/user/txgroup/transaction-group
+  # For more information about transaction groups, please refer to https://seata.apache.org/docs/user/txgroup/transaction-group/
   tx-service-group: my_test_tx_group
   service:
     # Mapping between transaction group and cluster
