@@ -223,6 +223,23 @@ const config = {
           //   target: '_blank',
           // },
           {
+            label: 'Demos',
+            type: 'dropdown',
+            position: 'right',
+            items: [
+              {
+                label: 'Saga Designer',
+                href: '/saga-designer',
+                target: '_blank',
+              },
+              {
+                label: 'Saga Designer (Legacy)',
+                href: '/saga-designer-legacy',
+                target: '_blank',
+              },
+            ],
+          },
+          {
             label: 'ASF',
             type: 'dropdown',
             position: 'right',
