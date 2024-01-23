@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://seata.apache.org/blog</id>
     <title>Apache Seata Blog</title>
-    <updated>2024-01-22T13:38:40.000Z</updated>
+    <updated>2024-01-23T10:07:29.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://seata.apache.org/blog"/>
     <subtitle>Apache Seata Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[integrate-seata-with-spring-cloud]]></title>
         <id>https://seata.apache.org/blog/integrate-seata-with-spring-cloud</id>
         <link href="https://seata.apache.org/blog/integrate-seata-with-spring-cloud"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -19,7 +19,7 @@
         <title type="html"><![CDATA[iscas2023]]></title>
         <id>https://seata.apache.org/blog/iscas2023</id>
         <link href="https://seata.apache.org/blog/iscas2023"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -27,7 +27,7 @@
         <title type="html"><![CDATA[seata-1.5.2]]></title>
         <id>https://seata.apache.org/blog/seata-1.5.2</id>
         <link href="https://seata.apache.org/blog/seata-1.5.2"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -35,7 +35,7 @@
         <title type="html"><![CDATA[seata-1.6.0]]></title>
         <id>https://seata.apache.org/blog/seata-1.6.0</id>
         <link href="https://seata.apache.org/blog/seata-1.6.0"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -43,7 +43,7 @@
         <title type="html"><![CDATA[seata-analysis-config-modular]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-config-modular</id>
         <link href="https://seata.apache.org/blog/seata-analysis-config-modular"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -51,7 +51,7 @@
         <title type="html"><![CDATA[seata-analysis-core-modular]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-core-modular</id>
         <link href="https://seata.apache.org/blog/seata-analysis-core-modular"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -59,7 +59,7 @@
         <title type="html"><![CDATA[seata-analysis-dubbo-transmit-xid]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-dubbo-transmit-xid</id>
         <link href="https://seata.apache.org/blog/seata-analysis-dubbo-transmit-xid"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -67,7 +67,7 @@
         <title type="html"><![CDATA[seata-analysis-go-server]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-go-server</id>
         <link href="https://seata.apache.org/blog/seata-analysis-go-server"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -75,7 +75,7 @@
         <title type="html"><![CDATA[seata-analysis-java-client]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-java-client</id>
         <link href="https://seata.apache.org/blog/seata-analysis-java-client"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -83,7 +83,7 @@
         <title type="html"><![CDATA[seata-analysis-java-server]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-java-server</id>
         <link href="https://seata.apache.org/blog/seata-analysis-java-server"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -91,7 +91,7 @@
         <title type="html"><![CDATA[seata-analysis-simple]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-simple</id>
         <link href="https://seata.apache.org/blog/seata-analysis-simple"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -99,7 +99,7 @@
         <title type="html"><![CDATA[seata-analysis-tcc-modular]]></title>
         <id>https://seata.apache.org/blog/seata-analysis-tcc-modular</id>
         <link href="https://seata.apache.org/blog/seata-analysis-tcc-modular"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -107,7 +107,7 @@
         <title type="html"><![CDATA[seata-at-demo-in-mac]]></title>
         <id>https://seata.apache.org/blog/seata-at-demo-in-mac</id>
         <link href="https://seata.apache.org/blog/seata-at-demo-in-mac"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -115,7 +115,7 @@
         <title type="html"><![CDATA[seata-at-lock]]></title>
         <id>https://seata.apache.org/blog/seata-at-lock</id>
         <link href="https://seata.apache.org/blog/seata-at-lock"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -123,7 +123,7 @@
         <title type="html"><![CDATA[seata-at-mode-design]]></title>
         <id>https://seata.apache.org/blog/seata-at-mode-design</id>
         <link href="https://seata.apache.org/blog/seata-at-mode-design"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -131,7 +131,7 @@
         <title type="html"><![CDATA[seata-at-mode-start-rm-tm]]></title>
         <id>https://seata.apache.org/blog/seata-at-mode-start-rm-tm</id>
         <link href="https://seata.apache.org/blog/seata-at-mode-start-rm-tm"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -139,7 +139,7 @@
         <title type="html"><![CDATA[seata-at-mode-start]]></title>
         <id>https://seata.apache.org/blog/seata-at-mode-start</id>
         <link href="https://seata.apache.org/blog/seata-at-mode-start"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -147,7 +147,7 @@
         <title type="html"><![CDATA[seata-at-tcc-saga]]></title>
         <id>https://seata.apache.org/blog/seata-at-tcc-saga</id>
         <link href="https://seata.apache.org/blog/seata-at-tcc-saga"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -155,7 +155,7 @@
         <title type="html"><![CDATA[seata-client-start-analysis-01]]></title>
         <id>https://seata.apache.org/blog/seata-client-start-analysis-01</id>
         <link href="https://seata.apache.org/blog/seata-client-start-analysis-01"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -163,7 +163,7 @@
         <title type="html"><![CDATA[seata-client-start-analysis-02]]></title>
         <id>https://seata.apache.org/blog/seata-client-start-analysis-02</id>
         <link href="https://seata.apache.org/blog/seata-client-start-analysis-02"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -171,7 +171,7 @@
         <title type="html"><![CDATA[seata-community-meetup-hangzhou-ready]]></title>
         <id>https://seata.apache.org/blog/seata-community-meetup-hangzhou-ready</id>
         <link href="https://seata.apache.org/blog/seata-community-meetup-hangzhou-ready"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -179,7 +179,7 @@
         <title type="html"><![CDATA[seata-config-center]]></title>
         <id>https://seata.apache.org/blog/seata-config-center</id>
         <link href="https://seata.apache.org/blog/seata-config-center"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -187,7 +187,7 @@
         <title type="html"><![CDATA[seata-config-manager]]></title>
         <id>https://seata.apache.org/blog/seata-config-manager</id>
         <link href="https://seata.apache.org/blog/seata-config-manager"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -195,7 +195,7 @@
         <title type="html"><![CDATA[seata-datasource-proxy]]></title>
         <id>https://seata.apache.org/blog/seata-datasource-proxy</id>
         <link href="https://seata.apache.org/blog/seata-datasource-proxy"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -203,7 +203,7 @@
         <title type="html"><![CDATA[seata-dsproxy-deadlock]]></title>
         <id>https://seata.apache.org/blog/seata-dsproxy-deadlock</id>
         <link href="https://seata.apache.org/blog/seata-dsproxy-deadlock"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -211,7 +211,7 @@
         <title type="html"><![CDATA[seata-dynamic-config-and-dynamic-disable]]></title>
         <id>https://seata.apache.org/blog/seata-dynamic-config-and-dynamic-disable</id>
         <link href="https://seata.apache.org/blog/seata-dynamic-config-and-dynamic-disable"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -219,7 +219,7 @@
         <title type="html"><![CDATA[seata-go-1.2.0]]></title>
         <id>https://seata.apache.org/blog/seata-go-1.2.0</id>
         <link href="https://seata.apache.org/blog/seata-go-1.2.0"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -227,7 +227,7 @@
         <title type="html"><![CDATA[seata-golang-communication-mode]]></title>
         <id>https://seata.apache.org/blog/seata-golang-communication-mode</id>
         <link href="https://seata.apache.org/blog/seata-golang-communication-mode"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -235,7 +235,7 @@
         <title type="html"><![CDATA[seata-ha-practice]]></title>
         <id>https://seata.apache.org/blog/seata-ha-practice</id>
         <link href="https://seata.apache.org/blog/seata-ha-practice"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -243,7 +243,7 @@
         <title type="html"><![CDATA[seata-meetup-hangzhou]]></title>
         <id>https://seata.apache.org/blog/seata-meetup-hangzhou</id>
         <link href="https://seata.apache.org/blog/seata-meetup-hangzhou"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -251,7 +251,7 @@
         <title type="html"><![CDATA[seata-mybatisplus-analysis]]></title>
         <id>https://seata.apache.org/blog/seata-mybatisplus-analysis</id>
         <link href="https://seata.apache.org/blog/seata-mybatisplus-analysis"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -259,7 +259,7 @@
         <title type="html"><![CDATA[seata-nacos-analysis]]></title>
         <id>https://seata.apache.org/blog/seata-nacos-analysis</id>
         <link href="https://seata.apache.org/blog/seata-nacos-analysis"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -267,7 +267,7 @@
         <title type="html"><![CDATA[seata-nacos-docker]]></title>
         <id>https://seata.apache.org/blog/seata-nacos-docker</id>
         <link href="https://seata.apache.org/blog/seata-nacos-docker"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -275,7 +275,7 @@
         <title type="html"><![CDATA[seata-observable-practice]]></title>
         <id>https://seata.apache.org/blog/seata-observable-practice</id>
         <link href="https://seata.apache.org/blog/seata-observable-practice"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -283,7 +283,7 @@
         <title type="html"><![CDATA[seata-quick-start]]></title>
         <id>https://seata.apache.org/blog/seata-quick-start</id>
         <link href="https://seata.apache.org/blog/seata-quick-start"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -291,7 +291,7 @@
         <title type="html"><![CDATA[seata-raft-detailed-explanation]]></title>
         <id>https://seata.apache.org/blog/seata-raft-detailed-explanation</id>
         <link href="https://seata.apache.org/blog/seata-raft-detailed-explanation"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -299,7 +299,7 @@
         <title type="html"><![CDATA[seata-rpc-refactor]]></title>
         <id>https://seata.apache.org/blog/seata-rpc-refactor</id>
         <link href="https://seata.apache.org/blog/seata-rpc-refactor"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -307,7 +307,7 @@
         <title type="html"><![CDATA[seata-sourcecode-client-bootstrap]]></title>
         <id>https://seata.apache.org/blog/seata-sourcecode-client-bootstrap</id>
         <link href="https://seata.apache.org/blog/seata-sourcecode-client-bootstrap"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -315,7 +315,7 @@
         <title type="html"><![CDATA[seata-sourcecode-server-bootstrap]]></title>
         <id>https://seata.apache.org/blog/seata-sourcecode-server-bootstrap</id>
         <link href="https://seata.apache.org/blog/seata-sourcecode-server-bootstrap"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -323,7 +323,7 @@
         <title type="html"><![CDATA[seata-spring-boot-aop-aspectj]]></title>
         <id>https://seata.apache.org/blog/seata-spring-boot-aop-aspectj</id>
         <link href="https://seata.apache.org/blog/seata-spring-boot-aop-aspectj"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -331,7 +331,7 @@
         <title type="html"><![CDATA[seata-tcc]]></title>
         <id>https://seata.apache.org/blog/seata-tcc</id>
         <link href="https://seata.apache.org/blog/seata-tcc"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -339,7 +339,7 @@
         <title type="html"><![CDATA[seata-xa-introduce]]></title>
         <id>https://seata.apache.org/blog/seata-xa-introduce</id>
         <link href="https://seata.apache.org/blog/seata-xa-introduce"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -347,7 +347,7 @@
         <title type="html"><![CDATA[springboot-dubbo-mybatisplus-seata]]></title>
         <id>https://seata.apache.org/blog/springboot-dubbo-mybatisplus-seata</id>
         <link href="https://seata.apache.org/blog/springboot-dubbo-mybatisplus-seata"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -355,7 +355,7 @@
         <title type="html"><![CDATA[tcc-mode-applicable-scenario-analysis]]></title>
         <id>https://seata.apache.org/blog/tcc-mode-applicable-scenario-analysis</id>
         <link href="https://seata.apache.org/blog/tcc-mode-applicable-scenario-analysis"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -363,7 +363,7 @@
         <title type="html"><![CDATA[tcc-mode-design-principle]]></title>
         <id>https://seata.apache.org/blog/tcc-mode-design-principle</id>
         <link href="https://seata.apache.org/blog/tcc-mode-design-principle"/>
-        <updated>2024-01-22T13:38:40.000Z</updated>
+        <updated>2024-01-23T10:07:29.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -480,7 +480,7 @@ Page splits are unfriendly to I/O, requiring the creation of new data pages, cop
 The second phase, commit: It immediately completes successfully and automatically asynchronously cleans up the rollback logs.
 The second phase, rollback: It automatically generates compensation operations through the rollback logs to complete data rollback.</p><p>On the other hand, TCC mode does not rely on transaction support from underlying data resources:</p><p>The first phase, prepare: It calls a custom-defined prepare logic.
 The second phase, commit: It calls a custom-defined commit logic.
-The second phase, rollback: It calls a custom-defined rollback logic.</p><p>TCC mode refers to the ability to include custom-defined branch transactions in the management of global transactions.</p><p>In summary, Seata's TCC mode is a manual implementation of the AT mode that allows you to define the processing logic for the two phases without relying on the undo_log used in the AT mode.</p><h1>二、prepare</h1><ul><li>regist center <a href="https://nacos.io/zh-cn/" target="_blank" rel="noopener noreferrer" title="nacos">nacos</a> </li><li><a href="http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html" target="_blank" rel="noopener noreferrer" title="seata服务端(TC）">seata server(TC）</a></li></ul><h1>三、Building TM and TCC-RM</h1><p>This chapter focuses on the implementation of TCC using Spring Cloud + Feign. For the project setup, please refer to the source code (this project provides demos for both AT mode and TCC mode).</p><p><a href="https://github.com/tanzzj/springcloud-seata-feign" target="_blank" rel="noopener noreferrer" title="服务端搭建文档">DEMO</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="31-build-seata-server">3.1 build seata server<a href="#31-build-seata-server" class="hash-link" aria-label="Direct link to 3.1 build seata server" title="Direct link to 3.1 build seata server">​</a></h2><p><a href="http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html" target="_blank" rel="noopener noreferrer" title="服务端搭建文档">build server doc</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="32-build-tm">3.2 build TM<a href="#32-build-tm" class="hash-link" aria-label="Direct link to 3.2 build TM" title="Direct link to 3.2 build TM">​</a></h2><p><a href="https://github.com/tanzzj/springcloud-seata-feign/tree/master/service-tm" target="_blank" rel="noopener noreferrer">service-tm</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="33-build-rm-tcc">3.3 build RM-TCC<a href="#33-build-rm-tcc" class="hash-link" aria-label="Direct link to 3.3 build RM-TCC" title="Direct link to 3.3 build RM-TCC">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="331-defining-tcc-interface">3.3.1 Defining TCC Interface<a href="#331-defining-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.1 Defining TCC Interface" title="Direct link to 3.3.1 Defining TCC Interface">​</a></h3><p>Since we are using Spring Cloud + Feign, which relies on HTTP for communication, we can use @LocalTCC here. It is important to note that @LocalTCC must be annotated on the interface. This interface can be a regular business interface as long as it implements the corresponding methods for the two-phase commit in TCC. The TCC-related annotations are as follows:</p><ul><li>@LocalTCC: Used for TCC in the Spring Cloud + Feign mode.</li><li>@TwoPhaseBusinessAction: Annotates the try method. The name attribute represents the bean name of the current TCC method, which can be the method name (globally unique). The commitMethod attribute points to the commit method, and the rollbackMethod attribute points to the transaction rollback method. After specifying these three methods, Seata will automatically invoke the commit or rollback method based on the success or failure of the global transaction.</li><li>@BusinessActionContextParameter: Annotates the parameters to be passed to the second phase (commitMethod/rollbackMethod) methods.</li><li>BusinessActionContext: Represents the TCC transaction context.</li></ul><p>Here is an example:</p><div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">/**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * Here we define the TCC interface.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * It must be defined on the interface.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * We are using Spring Cloud for remote invocation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * Therefore, we can use LocalTCC here.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@LocalTCC</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public interface TccService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Define the two-phase commit.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * name = The bean name of this TCC, globally unique.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * commitMethod = The method for the second phase confirmation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * rollbackMethod = The method for the second phase cancellation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Use the BusinessActionContextParameter annotation to pass parameters to the second phase.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param params  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return String</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @TwoPhaseBusinessAction(name = "insert", commitMethod = "commitTcc", rollbackMethod = "cancel")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    String insert(</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            @BusinessActionContextParameter(paramName = "params") Map&lt;String, String&gt; params</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    );</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *  The confirmation method can be named differently, but it must be consistent with the commitMethod.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *  The context can be used to pass the parameters from the try method.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    boolean commitTcc(BusinessActionContext context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * two phase cancel</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    boolean cancel(BusinessActionContext context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="332-business-implementation-of-tcc-interface">3.3.2 Business Implementation of TCC Interface<a href="#332-business-implementation-of-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.2 Business Implementation of TCC Interface" title="Direct link to 3.3.2 Business Implementation of TCC Interface">​</a></h3><p>To keep the code concise, we will combine the routing layer with the business layer for explanation here. However, in actual projects, this may not be the case.</p><ul><li>Using @Transactional in the try method allows for direct rollback of operations in relational databases through Spring transactions. The rollback of operations in non-relational databases or other middleware can be handled in the rollbackMethod.</li><li>By using context.getActionContext("params"), you can retrieve the parameters defined in the try phase and perform business rollback operations on these parameters in the second phase.</li><li>Note 1: It is not advisable to catch exceptions here (similarly, handle exceptions with aspects), as doing so would cause TCC to recognize the operation as successful, and the second phase would directly execute the commitMethod.</li><li>Note 2: In TCC mode, it is the responsibility of the developer to ensure idempotence and transaction suspension prevention.</li></ul><div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Slf4j</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@RestController</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class TccServiceImpl implements  TccService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Autowired</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    TccDAO tccDAO;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * tcc t（try）method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Choose the actual business execution logic or resource reservation logic based on the actual business scenario.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param params - name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return String</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @PostMapping("/tcc-insert")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public String insert(@RequestBody Map&lt;String, String&gt; params) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        log.info("xid = " + RootContext.getXID());</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo Perform actual operations or operations on MQ, Redis, etc.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        tccDAO.insert(params);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //Remove the following annotations to throw an exception</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //throw new RuntimeException("服务tcc测试回滚");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return "success";</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * TCC service confirm method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * If resource reservation is used in the first phase, the reserved resources should be committed during the second phase confirmation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public boolean commitTcc(BusinessActionContext context) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        log.info("xid = " + context.getXid() + "提交成功");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo If resource reservation is used in the first phase, resources should be committed here.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return true;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * tcc  cancel method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public boolean cancel(BusinessActionContext context) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo Here, write the rollback operations for middleware or non-relational databases.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println("please manually rollback this data:" + context.getActionContext("params"));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return true;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="333-starting-a-global-transaction-in-tm-and-invoking-rm-tcc-interface">3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface<a href="#333-starting-a-global-transaction-in-tm-and-invoking-rm-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface" title="Direct link to 3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface">​</a></h3><p>Please refer to the project source code in section 3.2.</p><p>With this, the integration of TCC mode with Spring Cloud is complete.</p>]]></content>
+The second phase, rollback: It calls a custom-defined rollback logic.</p><p>TCC mode refers to the ability to include custom-defined branch transactions in the management of global transactions.</p><p>In summary, Seata's TCC mode is a manual implementation of the AT mode that allows you to define the processing logic for the two phases without relying on the undo_log used in the AT mode.</p><h1>二、prepare</h1><ul><li>regist center <a href="https://nacos.io/zh-cn/" target="_blank" rel="noopener noreferrer" title="nacos">nacos</a> </li><li><a title="seata服务端(TC）" href="/docs/ops/deploy-guide-beginner/">seata server(TC）</a></li></ul><h1>三、Building TM and TCC-RM</h1><p>This chapter focuses on the implementation of TCC using Spring Cloud + Feign. For the project setup, please refer to the source code (this project provides demos for both AT mode and TCC mode).</p><p><a href="https://github.com/tanzzj/springcloud-seata-feign" target="_blank" rel="noopener noreferrer" title="服务端搭建文档">DEMO</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="31-build-seata-server">3.1 build seata server<a href="#31-build-seata-server" class="hash-link" aria-label="Direct link to 3.1 build seata server" title="Direct link to 3.1 build seata server">​</a></h2><p><a title="服务端搭建文档" href="/docs/ops/deploy-guide-beginner/">build server doc</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="32-build-tm">3.2 build TM<a href="#32-build-tm" class="hash-link" aria-label="Direct link to 3.2 build TM" title="Direct link to 3.2 build TM">​</a></h2><p><a href="https://github.com/tanzzj/springcloud-seata-feign/tree/master/service-tm" target="_blank" rel="noopener noreferrer">service-tm</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="33-build-rm-tcc">3.3 build RM-TCC<a href="#33-build-rm-tcc" class="hash-link" aria-label="Direct link to 3.3 build RM-TCC" title="Direct link to 3.3 build RM-TCC">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="331-defining-tcc-interface">3.3.1 Defining TCC Interface<a href="#331-defining-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.1 Defining TCC Interface" title="Direct link to 3.3.1 Defining TCC Interface">​</a></h3><p>Since we are using Spring Cloud + Feign, which relies on HTTP for communication, we can use @LocalTCC here. It is important to note that @LocalTCC must be annotated on the interface. This interface can be a regular business interface as long as it implements the corresponding methods for the two-phase commit in TCC. The TCC-related annotations are as follows:</p><ul><li>@LocalTCC: Used for TCC in the Spring Cloud + Feign mode.</li><li>@TwoPhaseBusinessAction: Annotates the try method. The name attribute represents the bean name of the current TCC method, which can be the method name (globally unique). The commitMethod attribute points to the commit method, and the rollbackMethod attribute points to the transaction rollback method. After specifying these three methods, Seata will automatically invoke the commit or rollback method based on the success or failure of the global transaction.</li><li>@BusinessActionContextParameter: Annotates the parameters to be passed to the second phase (commitMethod/rollbackMethod) methods.</li><li>BusinessActionContext: Represents the TCC transaction context.</li></ul><p>Here is an example:</p><div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">/**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * Here we define the TCC interface.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * It must be defined on the interface.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * We are using Spring Cloud for remote invocation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * Therefore, we can use LocalTCC here.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@LocalTCC</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public interface TccService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Define the two-phase commit.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * name = The bean name of this TCC, globally unique.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * commitMethod = The method for the second phase confirmation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * rollbackMethod = The method for the second phase cancellation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Use the BusinessActionContextParameter annotation to pass parameters to the second phase.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param params  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return String</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @TwoPhaseBusinessAction(name = "insert", commitMethod = "commitTcc", rollbackMethod = "cancel")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    String insert(</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            @BusinessActionContextParameter(paramName = "params") Map&lt;String, String&gt; params</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    );</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *  The confirmation method can be named differently, but it must be consistent with the commitMethod.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *  The context can be used to pass the parameters from the try method.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    boolean commitTcc(BusinessActionContext context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * two phase cancel</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    boolean cancel(BusinessActionContext context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="332-business-implementation-of-tcc-interface">3.3.2 Business Implementation of TCC Interface<a href="#332-business-implementation-of-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.2 Business Implementation of TCC Interface" title="Direct link to 3.3.2 Business Implementation of TCC Interface">​</a></h3><p>To keep the code concise, we will combine the routing layer with the business layer for explanation here. However, in actual projects, this may not be the case.</p><ul><li>Using @Transactional in the try method allows for direct rollback of operations in relational databases through Spring transactions. The rollback of operations in non-relational databases or other middleware can be handled in the rollbackMethod.</li><li>By using context.getActionContext("params"), you can retrieve the parameters defined in the try phase and perform business rollback operations on these parameters in the second phase.</li><li>Note 1: It is not advisable to catch exceptions here (similarly, handle exceptions with aspects), as doing so would cause TCC to recognize the operation as successful, and the second phase would directly execute the commitMethod.</li><li>Note 2: In TCC mode, it is the responsibility of the developer to ensure idempotence and transaction suspension prevention.</li></ul><div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Slf4j</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@RestController</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class TccServiceImpl implements  TccService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Autowired</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    TccDAO tccDAO;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * tcc t（try）method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Choose the actual business execution logic or resource reservation logic based on the actual business scenario.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param params - name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return String</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @PostMapping("/tcc-insert")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public String insert(@RequestBody Map&lt;String, String&gt; params) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        log.info("xid = " + RootContext.getXID());</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo Perform actual operations or operations on MQ, Redis, etc.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        tccDAO.insert(params);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //Remove the following annotations to throw an exception</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //throw new RuntimeException("服务tcc测试回滚");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return "success";</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * TCC service confirm method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * If resource reservation is used in the first phase, the reserved resources should be committed during the second phase confirmation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public boolean commitTcc(BusinessActionContext context) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        log.info("xid = " + context.getXid() + "提交成功");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo If resource reservation is used in the first phase, resources should be committed here.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return true;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * tcc  cancel method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public boolean cancel(BusinessActionContext context) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo Here, write the rollback operations for middleware or non-relational databases.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println("please manually rollback this data:" + context.getActionContext("params"));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return true;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="333-starting-a-global-transaction-in-tm-and-invoking-rm-tcc-interface">3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface<a href="#333-starting-a-global-transaction-in-tm-and-invoking-rm-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface" title="Direct link to 3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface">​</a></h3><p>Please refer to the project source code in section 3.2.</p><p>With this, the integration of TCC mode with Spring Cloud is complete.</p>]]></content>
         <author>
             <name>gongxing(zhijian.tan)</name>
         </author>
