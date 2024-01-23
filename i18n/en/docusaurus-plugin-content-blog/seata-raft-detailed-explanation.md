@@ -19,7 +19,7 @@ Seata is an open-source distributed transaction solution with over 24000 stars a
 
 Currently, Seata's distributed transaction data storage modes include file, db, and redis. This article focuses on the architecture, deployment and usage, benchmark comparison of Seata-Server Raft mode. It explores why Seata needs Raft and provides insights into the process from research and comparison to design, implementation, and knowledge accumulation.
 
-Presenter: Chen Jianbin (funkye) github id: [funky-eyes](https://github.com/funky-eyes)
+Presenter: Jianbin  Chen(funkye) github id: [funky-eyes](https://github.com/funky-eyes)
 
 # 2. Architecture Introduction
 
