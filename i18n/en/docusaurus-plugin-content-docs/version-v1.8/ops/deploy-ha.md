@@ -146,4 +146,4 @@ data:
     }
 ```
 
-You can reference [seata-ha-deploy-practice](https://seata.io/zh-cn/blog/seata-ha-practice.html) for more detail about practice of HA deploy.
+You can reference [seata-ha-deploy-practice](/blog/seata-ha-practice) for more detail about practice of HA deploy.

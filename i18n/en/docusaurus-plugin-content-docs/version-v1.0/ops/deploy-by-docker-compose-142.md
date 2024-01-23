@@ -71,9 +71,9 @@ store.db.password=
 
 **(2) Prepare file: registry.conf**
 
-For more registration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/registry/index.html">Registration Center</a>
+For more registration center support, please refer to <a href="/docs/user/registry/">Registration Center</a>
 
-For more configuration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/configuration/index.html">Configuration Center</a>
+For more configuration center support, please refer to <a href="/docs/user/configuration/">Configuration Center</a>
 
 Direct connection mode (no registration center)
 
@@ -116,9 +116,9 @@ services:
 
 Nacos Registration Center.
 
-For more registration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/registry/index.html">Registration Center</a>
+For more registration center support, please refer to <a href="/docs/user/registry/">Registration Center</a>
 
-For more configuration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/configuration/index.html">Configuration Center</a>
+For more configuration center support, please refer to <a href="/docs/user/configuration/">Configuration Center</a>
 
 ```
 registry {
@@ -232,9 +232,9 @@ store.db.password=
 
 Nacos registration center.
 
-For more registration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/registry/index.html">Registration Center</a>
+For more registration center support, please refer to <a href="/docs/user/registry/">Registration Center</a>
 
-For more configuration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/configuration/index.html">Configuration Center</a>
+For more configuration center support, please refer to <a href="/docs/user/configuration/">Configuration Center</a>
 
 ```
 registry {
@@ -265,7 +265,7 @@ config {
 **(3) Prepare file: docker-compose.yaml**
 
 > As long as the configuration is consistent, the seata service can be deployed on multiple instances on one machine or on multiple different hosts at the same time to achieve high service availability. <br />
-> [High Availability Usage Deployment](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [High Availability Usage Deployment](/docs/ops/deploy-ha/)
 
 ```yaml
 version: "3.1"

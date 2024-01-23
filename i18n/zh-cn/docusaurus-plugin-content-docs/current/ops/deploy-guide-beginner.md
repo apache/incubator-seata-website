@@ -66,7 +66,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 
 #### 步骤一：启动包
 - <a href="https://github.com/apache/incubator-seata/releases" target="_blank">点击下载</a>
-- 官方钉钉群（群号：23171167，1群5000人已满，<a href="http://seata.io/zh-cn/community" target="_blank">2群</a>, 3群: 32033786，4群：60170003910），qq群（群号: 254657148,2群: 216012363）群文件共享下载
+- 官方钉钉群（群号：23171167，1群5000人已满，<a href="/community" target="_blank">2群</a>, 3群: 32033786，4群：60170003910），qq群（群号: 254657148,2群: 216012363）群文件共享下载
 
 #### 步骤二：建表(仅db)
 全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
@@ -96,7 +96,7 @@ redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息
 - 依赖spring-cloud-starter-alibaba-seata，内部集成了seata，并实现了xid传递
 
 #### 步骤二：undo_log建表、配置参数(仅AT模式)
-- <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">查看参数配置介绍</a>
+- <a href="/docs/user/configurations/" target="_blank">查看参数配置介绍</a>
 
 #### 步骤三：数据源代理（不支持自动和手动配置并存）
 

@@ -427,7 +427,7 @@ server.recovery.timeoutRetryPeriod=1000
 **（3）准备docker-compose.yaml文件**
 
 > 只要保持配置一致，seata服务可在一台机器上部署多实例，也可同时部署在多台不同的主机下面实现服务高可用。
-> [高可用部署](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [高可用部署](/docs/ops/deploy-ha/)
 
 ```yaml
 version: "3.1"

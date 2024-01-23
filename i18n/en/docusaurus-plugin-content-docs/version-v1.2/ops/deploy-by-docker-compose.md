@@ -420,7 +420,7 @@ server.recovery.timeoutRetryPeriod=1000
 **（3）Prepare file: docker-compose.yaml**
 
 > As long as the configuration is consistent, the seata service can be deployed on multiple instances on one machine or on multiple different hosts at the same time to achieve high service availability. <br />
-> [High Availability Usage Deployment](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [High Availability Usage Deployment](/docs/ops/deploy-ha/)
 
 ```yaml
 version: "3.1"

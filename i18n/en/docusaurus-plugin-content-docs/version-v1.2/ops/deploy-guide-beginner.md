@@ -64,7 +64,7 @@ The db mode is a high-availability mode. Global transaction session information 
 
 #### Step 1: Startup package
 - <a href="https://github.com/apache/incubator-seata/releases" target="_blank">Click to download</a>.
-- Official DingTalk group (Group Number: 23171167, 1st group is already full, including 5,000 people, <a href="http://seata.io/zh-cn/community" target="_blank">2nd group</a>, group 3: 32033786), QQ group (Group Number: 254657148, group 2: 216012363). Please download packages in the group sharing file.
+- Official DingTalk group (Group Number: 23171167, 1st group is already full, including 5,000 people, <a href="/community" target="_blank">2nd group</a>, group 3: 32033786), QQ group (Group Number: 254657148, group 2: 216012363). Please download packages in the group sharing file.
 
 #### Step 2: Create table (db only)
 Global transaction session information consists of three pieces of content, that is global transaction-->branch transaction-->global lock, corresponding to the tables global_table, branch_table, and lock_table.
@@ -89,10 +89,10 @@ Source code: Root directory-->seata-server-->resources-->file.conf, modify store
     -p: Server rpc listening port
     -m: Global transaction session information storage mode, file, db. Read startup parameters first
     -n: Server node. When there are multiple servers, each node needs to be distinguished to generate transactionIds in different intervals to avoid conflicts.
-    -e: Multi-environment configuration please refers to http://seata.io/en-us/docs/ops/multi-configuration-isolation.html.
+    -e: Multi-environment configuration please refers to https://seata.apache.org/docs/ops/multi-configuration-isolation/.
 ```
 
-- <a href="https://seata.io/zh-cn/docs/ops/deploy-by-docker.html" target="_blank">Click to view docker deployment</a>
+- <a href="/docs/ops/deploy-by-docker/" target="_blank">Click to view docker deployment</a>
 
 Note: It is recommended to allocate 2G of heap memory and 1G of off-heap memory.
 
@@ -103,7 +103,7 @@ Note: It is recommended to allocate 2G of heap memory and 1G of off-heap memory.
 - Depends on spring-cloud-alibaba-seata, integrates seata internally, and implements xid transfer.
 
 #### Step 2: Create undo_log table and configure parameters (AT mode only)
-- <a href="https://seata.io/zh-cn/docs/user/configurations.html" target="_blank">View parameter configuration introduction</a>.
+- <a href="/docs/user/configurations/" target="_blank">View parameter configuration introduction</a>.
 
 #### Step 3: Data source proxy (coexistence of automatic and manual configuration is not supported)
 
