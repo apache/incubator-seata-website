@@ -70,7 +70,7 @@ seata:
   tx-service-group: default_tx_group
   service:
     # 事务分组与集群映射关系
-    # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
+    # 有关事务分组，请参考 https://seata.apache.org/zh-cn/docs/user/txgroup/transaction-group
     vgroup-mapping:
       default_tx_group: default
 ```

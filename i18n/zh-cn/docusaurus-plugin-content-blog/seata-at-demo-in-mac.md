@@ -49,7 +49,7 @@ AT模式的Demo例子给出了一个典型的分布式事务场景：
 
 这里就是分布式事务的场景。
 
-![设计图](http://seata.io/img/architecture.png)
+![设计图](/img/architecture.png)
 
 ## 解决方案
 
@@ -339,8 +339,8 @@ Exception in thread "main" java.lang.RuntimeException: portman's foooooobar erro
 
 ## 参考文献
 
-- [Seata 是什么?](http://seata.io/zh-cn/docs/overview/what-is-seata.html)
-- [快速开始](http://seata.io/zh-cn/docs/user/quickstart.html)
+- [Seata 是什么?](/docs/overview/what-is-seata)
+- [快速开始](/docs/user/quickstart)
 
 ## 作者信息
 

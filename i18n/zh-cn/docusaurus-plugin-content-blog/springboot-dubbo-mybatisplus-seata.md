@@ -23,7 +23,7 @@ date: 2019/11/29
 
 1.首先安装mysql,eclipse之类常用的工具,这不展开了. 
 
-2.访问seata下载中心[地址](http://seata.io/zh-cn/blog/download.html)我们使用的0.9.0版本
+2.访问seata下载中心[地址](/unversioned/download/seata-server)我们使用的0.9.0版本
 
 3.下载并解压seata-server
 

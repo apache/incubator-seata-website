@@ -6,7 +6,7 @@ description: Consul 配置中心。
 
 # Consul 配置中心
 
-在 [以 Consul 作为注册中心](http://seata.io/zh-cn/docs/user/registry/consul.html) 的基础上，将 Seata 配置放到 Consul 中
+在 [以 Consul 作为注册中心](/docs/user/registry/consul/) 的基础上，将 Seata 配置放到 Consul 中
 
 本文基于 Seata 1.4.2，Consul 版本建议 1.8+，下文以 Consul 1.11.2 为例
 

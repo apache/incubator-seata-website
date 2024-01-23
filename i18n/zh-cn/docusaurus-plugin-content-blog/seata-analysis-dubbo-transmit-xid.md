@@ -164,4 +164,4 @@ public @interface Activate {
 
 # 总结
 
-更多源码阅读请访问[Seata官网](http://seata.io/zh-cn/index.html)
+更多源码阅读请访问[Seata官网](https://seata.apache.org/)

@@ -704,13 +704,13 @@ var (
 #### 参考资料
 
 
-seata 官方：[https://seata.io](https://seata.io)
+seata 官方：[https://seata.apache.org](https://seata.apache.org)
 
 
 java 版 seata：[https://github.com/apache/incubator-seata](https://github.com/apache/incubator-seata)
 
 
-seata-golang 项目地址：[https://github.com/opentrx/seata-golang](https://github.com/transaction-wg/seata-golang)
+seata-golang 项目地址：[https://github.com/apache/incubator-seata-go](https://github.com/apache/incubator-seata-go)
 
 
 seata-golang go 夜读 b站分享：[https://www.bilibili.com/video/BV1oz411e72T](https://www.bilibili.com/video/BV1oz411e72T)

@@ -101,7 +101,7 @@ ELK |
 - SkyWalking拦截指定的RPC消息，并注入tracing相关的span信息；
 - 以RPC消息的发出&接收为临界点，定义了span的生命周期范围。
 
-基于上述的方式，Seata实现了事务全链路的tracing，具体接入可参考[为[Seata应用 | Seata-server]接入Skywalking](https://seata.io/zh-cn/docs/user/apm/skywalking.html)。
+基于上述的方式，Seata实现了事务全链路的tracing，具体接入可参考[为[Seata应用 | Seata-server]接入Skywalking](/docs/user/apm/skywalking/)。
 #### tracing效果
 
 - 基于的demo场景：

@@ -49,7 +49,7 @@ Seata作为一款中间件级的底层组件，是很谨慎引入第三方框架
     }
 ```
 
-关于事务分组的详细概念介绍，大家可以参考官方文档[事务分组介绍](https://seata.io/zh-cn/docs/user/txgroup/transaction-group.html)。这里简单介绍一下:
+关于事务分组的详细概念介绍，大家可以参考官方文档[事务分组介绍](/docs/user/txgroup/transaction-group/)。这里简单介绍一下:
 - 每个Seata应用侧的RM、TM，都具有一个**事务分组**名
 - 每个Seata协调器侧的TC，都具有一个**集群名**和**地址**
 应用侧连接协调器侧时，经历如下两步：

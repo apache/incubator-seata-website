@@ -14,7 +14,7 @@ date: 2019/12/02
 
 # 前言
 
-上次发布了直连方式的seata配置,详细可以看这篇[博客](http://seata.io/zh-cn/blog/springboot-dubbo-mybatisplus-seata.html)
+上次发布了直连方式的seata配置,详细可以看这篇[博客](/blog/springboot-dubbo-mybatisplus-seata)
 
 我们接着上一篇的基础上去配置nacos做配置中心跟dubbo注册中心.
 
@@ -432,4 +432,4 @@ config {
 
 [dubbo官网](http://dubbo.apache.org/en-us/)
 
-[seata官网](http://seata.io/zh-cn/)
+[seata官网](http://seata.apache.org/zh-cn/)

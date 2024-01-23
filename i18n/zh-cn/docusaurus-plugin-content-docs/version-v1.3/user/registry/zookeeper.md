@@ -66,7 +66,7 @@ seata:
     zk:
       server-addr: 127.0.0.1:2181
       # 事务分组配置，1.4.2 默认名称为 my_test_tx_group ，1.5版本将改为 default_tx_group
-      # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
+      # 有关事务分组，请参考 https://seata.apache.org/zh-cn/docs/user/txgroup/transaction-group
       session-timeout: 6000
       connect-timeout: 2000
       username:
