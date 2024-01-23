@@ -68,7 +68,7 @@ seata:
       session-timeout: 6000
       connect-timeout: 2000
   # 配置`事务分组 -> 集群`的映射关系
-  # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
+  # 有关事务分组，请参考 https://seata.apache.org/zh-cn/docs/user/txgroup/transaction-group
 ```
 
 或者使用`io.seata:seata-all`依赖，则需要在`file.conf`中加入事务分组与集群映射关系， 并在`registry.conf`文件中加入zookeeper的配置项，其余[配置参考](https://github.com/apache/incubator-seata/tree/1.0.0/script/client/conf)

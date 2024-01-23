@@ -71,7 +71,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - **Seata:** https://github.com/apache/incubator-seata
 - **Seata-Samples:** https://github.com/apache/incubator-seata-samples
 - **Release:** https://github.com/apache/incubator-seata/releases
-- **WebSite:** https://seata.io
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -205,6 +205,6 @@ Also, we receive many valuable issues, questions and advices from our community.
 - **Seata:** https://github.com/apache/incubator-seata
 - **Seata-Samples:** https://github.com/apache/incubator-seata-samples
 - **Release:** https://github.com/apache/incubator-seata/releases
-- **WebSite:** https://seata.io
+- **WebSite:** https://seata.apache.org
 
 </details>
