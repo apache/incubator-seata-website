@@ -1,14 +1,9 @@
 ---
 title: In-Depth Analysis of Seata TCC Mode (1)
-
 author: Zhang Chenghui
-
 keywords: [Seata、distributed transaction、TCC]
-
 description: Seata currently supports AT mode, XA mode, TCC mode, and SAGA mode. Previous articles have talked more about non-intrusive AT mode. Today, we will introduce TCC mode, which is also a two-phase commit.
-
 date: 2022/01/18
-
 ---
 
 # Preface
@@ -25,7 +20,7 @@ TCC is a two-phase commit protocol in distributed transactions. Its full name is
 
 TCC is an intrusive distributed transaction solution. All three operations need to be implemented by the business system itself, which has a significant impact on the business system. The design is relatively complex, but the advantage is that TCC does not rely on the database. It can manage resources across databases and applications, and can implement an atomic operation for different data access through intrusive coding, better solving the distributed transaction problems in various complex business scenarios.
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116160157.png)
+<img src="/img/blog/20220116160157.png" alt="img" style={{ zoom:'50%' }} />
 
 # Seata TCC mode
 
@@ -73,8 +68,7 @@ The example above demonstrates the implementation of a global transaction using 
 
 TCC interfaces can be RPC or internal JVM calls, meaning that a TCC interface has both a sender and a caller identity. In the example above, the TCC interface is the sender in Service A and Service B, and the caller in the business system. If the TCC interface is a Dubbo RPC, the caller is a dubbo:reference and the sender is a dubbo:service.
 
-<!-- ![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116161933.png) -->
-<img src="https://gitee.com/objcoding/md-picture/raw/master/img/20220116161933.png" />
+<img src="/img/blog/20220116161933.png" alt="img" style={{ zoom:'50%' }} />
 
 When Seata starts, it scans and parses the TCC interfaces. If a TCC interface is a sender, Seata registers the TCC Resource with the TC during startup, and each TCC Resource has a resource ID. If a TCC interface is a caller, Seata proxies the caller and intercepts the TCC interface calls. Similar to the AT mode, the proxy intercepts the call to the Try method, registers a branch transaction with the TC, and then executes the original RPC call.
 
@@ -88,7 +82,7 @@ From the above Seata TCC model, it can be seen that the TCC mode in Seata also f
 
 Resource parsing is the process of parsing and registering TCC interfaces. As mentioned earlier, TCC interfaces can be RPC or internal JVM calls. In the Seata TCC module, there is a remoting module that is specifically used to parse TCC interfaces with the `TwoPhaseBusinessAction` annotation:
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116175059.png)
+<img src="/img/blog/20220116175059.png" alt="img" style={{ zoom:'50%' }} />
 
 The `RemotingParser` interface mainly has methods such as `isRemoting`, `isReference`, `isService`, `getServiceDesc`, etc. The default implementation is `DefaultRemotingParser`, and the parsing of various RPC protocols is executed in `DefaultRemotingParser`. Seata has already implemented parsing of Dubbo, HSF, SofaRpc, and LocalTCC RPC protocols while also providing SPI extensibility for additional RPC protocol parsing classes.
 
@@ -217,8 +211,7 @@ The method `io.seata.spring.util.TCCBeanParserUtils#isTccAutoProxy` not only par
 
 io.seata.spring.annotation.GlobalTransactionScanner#wrapIfNecessary
 
-
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116192544.png)
+<img src="/img/blog/20220116192544.png" alt="img" style={{ zoom:'50%' }} />
 
 As shown in the figure, when `GlobalTransactionalScanner` scans the TCC interface caller (Reference), it will proxy and intercept it with `TccActionInterceptor`, which implements `MethodInterceptor`.
 
@@ -260,7 +253,7 @@ An empty rollback refers to a situation in a distributed transaction where the T
 
 How does an empty rollback occur?
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116201900.png)
+<img src="/img/blog/20220116201900.png" alt="img" style={{ zoom:'50%' }} />
 
 As shown in the above figure, after the global transaction is opened, participant A will execute the first-phase RPC method after completing branch registration. If the machine where participant A is located crashes or there is a network anomaly at this time, the RPC call will fail, meaning that participant A's first-phase method did not execute successfully. However, the global transaction has already been opened, so Seata must progress to the final state. When the global transaction is rolled back, participant A's Cancel method will be called, resulting in an empty rollback.
 
@@ -274,7 +267,7 @@ Idempotent operation refers to TC repeating the two-phase commit, so the Confirm
 
 So how does idempotent operation arise?
 
-![image](https://gitee.com/objcoding/md-picture/raw/master/img/20220116203816.png)
+<img src="/img/blog/20220116203816.png" alt="img" style={{ zoom:'50%' }} />
 
 As shown in the above figure, after participant A completes the two phases, network jitter or machine failure may cause TC not to receive the return result of participant A's execution of the two phases. TC will continue to make repeated calls until the two-phase execution result is successful.
 
@@ -294,7 +287,7 @@ Suspension refers to the two-phase Cancel method being executed before the phase
 
 So how does suspension arise?
 
-![image](https://gitee.com/objcoding/md-picture/raw/master/img/20220116205241.png)
+<img src="/img/blog/20220116205241.png" alt="img" style={{ zoom:'50%' }} />
 
 As shown in the above figure, when participant A's phase Try method is executed, network congestion occurs, and due to Seata's global transaction timeout limit, after the Try method times out, TM resolves to roll back the global transaction. After the rollback is completed, if the RPC request arrives at participant A at this time and the Try method is executed to reserve resources, it will cause suspension.
 
