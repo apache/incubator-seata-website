@@ -1,7 +1,7 @@
 ---
-title: Seata配置管理原理解析
-keywords: [Seata、配置中心、配置管理、Spring配置]
-description: 本文主要介绍Seata配置管理的核心实现以及和Spring配置的交互过程
-author: 罗小勇
+title: Analysis of Seata Configuration Management Principles
+keywords: [Seata, configuration center, configuration management, Spring configuration]
+description: This article primarily introduces the core implementation of Seata configuration management and the interaction process with Spring configuration.
+author: xiaoyong.luo
 date: 2021/01/10
 ---
