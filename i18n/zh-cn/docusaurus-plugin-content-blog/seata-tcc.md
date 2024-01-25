@@ -1,14 +1,9 @@
 ---
 title: 深度剖析 Seata TCC 模式（一）
-
 author: 张乘辉
-
 keywords: [Seata、分布式事务、TCC]
-
 description: Seata 目前支持 AT 模式、XA 模式、TCC 模式和 SAGA 模式，之前文章更多谈及的是非侵入式的 AT 模式，今天带大家认识一下同样是二阶段提交的 TCC 模式。
-
 date: 2022/01/18
-
 ---
 
 # 前言
@@ -26,7 +21,7 @@ TCC 是分布式事务中的二阶段提交协议，它的全称为 Try-Confirm-
 TCC 是一种侵入式的分布式事务解决方案，以上三个操作都需要业务系统自行实现，对业务系统有着非常大的入侵性，设计相对复杂，但优点是 TCC
 完全不依赖数据库，能够实现跨数据库、跨应用资源管理，对这些不同数据访问通过侵入式的编码方式实现一个原子操作，更好地解决了在各种复杂业务场景下的分布式事务问题。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116160157.png)
+<img src="/img/blog/20220116160157.png" alt="img" style={{ zoom:'50%' }} />
 
 # Seata TCC 模式
 
@@ -76,7 +71,7 @@ public String doTransactionCommit(){
 TCC 接口可以是 RPC，也可以是 JVM 内部调用，意味着一个 TCC 接口，会有发起方和调用方两个身份，以上例子，TCC 接口在服务 A 和服务 B 中是发起方，在业务所在系统中是调用方。如果该 TCC 接口为 Dubbo
 RPC，那么调用方就是一个 dubbo:reference，发起方则是一个 dubbo:service。
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116161933.png)
+<img src="/img/blog/20220116161933.png" alt="img" style={{ zoom:'50%' }} />
 
 Seata 启动时会对 TCC 接口进行扫描并解析，如果 TCC 接口是一个发布方，则在 Seata 启动时会向 TC 注册 TCC Resource，每个 TCC Resource 都有一个资源 ID；如果 TCC
 接口时一个调用方，Seata 代理调用方，与 AT 模式一样，代理会拦截 TCC 接口的调用，即每次调用 Try 方法，会向 TC 注册一个分支事务，接着才执行原来的 RPC 调用。
@@ -92,7 +87,7 @@ Seata 启动时会对 TCC 接口进行扫描并解析，如果 TCC 接口是一�
 资源解析即是把 TCC 接口进行解析并注册，前面说过，TCC 接口可以是 RPC，也可以是 JVM 内部调用，在 Seata TCC 模块有中一个 remoting
 模块，该模块专门用于解析具有 `TwoPhaseBusinessAction` 注解的 TCC 接口资源：
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116175059.png)
+<img src="/img/blog/20220116175059.png" alt="img" style={{ zoom:'50%' }} />
 
 `RemotingParser` 接口主要有 `isRemoting`、`isReference`、`isService`、`getServiceDesc` 等方法，默认的实现为 `DefaultRemotingParser`，其余各自的
 RPC 协议解析类都在 `DefaultRemotingParser` 中执行，Seata 目前已经实现了对 Dubbo、HSF、SofaRpc、LocalTCC 的 RPC 协议的解析，同时具备 SPI 可扩展性，未来欢迎大家为
@@ -227,7 +222,7 @@ public BranchStatus branchCommit(BranchType branchType,String xid,long branchId,
 
 io.seata.spring.annotation.GlobalTransactionScanner#wrapIfNecessary
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116192544.png)
+<img src="/img/blog/20220116192544.png" alt="img" style={{ zoom:'50%' }} />
 
 如图，当 `GlobalTransactionalScanner` 扫描到 TCC 接口调用方（Reference）时，会使 `TccActionInterceptor` 对其进行代理拦截处理，`TccActionInterceptor`
 实现 `MethodInterceptor`。
@@ -270,7 +265,7 @@ public Object proceed(Method method,Object[]arguments,String xid,TwoPhaseBusines
 
 那么空回滚是如何产生的呢？
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116201900.png)
+<img src="/img/blog/20220116201900.png" alt="img" style={{ zoom:'50%' }} />
 
 如上图所示，全局事务开启后，参与者 A 分支注册完成之后会执行参与者一阶段 RPC 方法，如果此时参与者 A 所在的机器发生宕机，网络异常，都会造成 RPC 调用失败，即参与者 A 一阶段方法未成功执行，但是此时全局事务已经开启，Seata
 必须要推进到终态，在全局事务回滚时会调用参与者 A 的 Cancel 方法，从而造成空回滚。
@@ -285,7 +280,7 @@ Seata 的做法是新增一个 TCC 事务控制表，包含事务的 XID 和 Bra
 
 那么幂等问题是如何产生的呢？
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116203816.png)
+<img src="/img/blog/20220116203816.png" alt="img" style={{ zoom:'50%' }} />
 
 如上图所示，参与者 A 执行完二阶段之后，由于网络抖动或者宕机问题，会造成 TC 收不到参与者 A 执行二阶段的返回结果，TC 会重复发起调用，直到二阶段执行结果成功。
 
@@ -306,7 +301,7 @@ Seata 是如何处理幂等问题的呢？
 
 那么悬挂是如何产生的呢？
 
-![](https://gitee.com/objcoding/md-picture/raw/master/img/20220116205241.png)
+<img src="/img/blog/20220116205241.png" alt="img" style={{ zoom:'50%' }} />
 
 如上图所示，在执行参与者 A 的一阶段 Try 方法时，出现网路拥堵，由于 Seata 全局事务有超时限制，执行 Try 方法超时后，TM 决议全局回滚，回滚完成后如果此时 RPC 请求才到达参与者 A，执行 Try
 方法进行资源预留，从而造成悬挂。
