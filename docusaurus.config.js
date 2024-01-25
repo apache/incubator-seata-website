@@ -27,7 +27,7 @@ const config = {
   favicon: 'img/seata_logo_small.jpeg',
 
   // Set the production url of your site here
-  url: 'https://seata.io',
+  url: 'https://seata.apache.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -222,6 +222,23 @@ const config = {
           //   position: 'right',
           //   target: '_blank',
           // },
+          {
+            label: 'Demos',
+            type: 'dropdown',
+            position: 'right',
+            items: [
+              {
+                label: 'Saga Designer',
+                href: '/saga-designer',
+                target: '_blank',
+              },
+              {
+                label: 'Saga Designer (Legacy)',
+                href: '/saga-designer-legacy',
+                target: '_blank',
+              },
+            ],
+          },
           {
             label: 'ASF',
             type: 'dropdown',

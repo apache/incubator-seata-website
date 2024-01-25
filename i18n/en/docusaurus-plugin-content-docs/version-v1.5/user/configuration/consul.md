@@ -6,7 +6,7 @@ description: Consul Configuration Center.
 
 # Consul Configuration Center
 
-Based on [Using Consul as a Registry](http://seata.io/en-us/docs/user/registry/consul.html), put Seata configuration into Consul.
+Based on [Using Consul as a Registry](/docs/user/registry/consul), put Seata configuration into Consul.
 
 This article is based on Seata 1.4.2, and Consul version 1.8+ is recommended. Consul 1.11.2 is used as an example in the following text.
 

@@ -18,9 +18,9 @@ date: 2020/04/19
 ## 1.1 四种事务模式
 
 Seata 目标打造**一站式**的分布事务的解决方案，最终会提供四种事务模式：
-* AT 模式：参见[《Seata AT 模式》](https://seata.io/zh-cn/docs/dev/mode/at-mode.html)文档
-* TCC 模式：参见[《Seata TCC 模式》](https://seata.io/zh-cn/docs/dev/mode/tcc-mode.html)文档
-* Saga 模式：参见[《SEATA Saga 模式》](https://seata.io/zh-cn/docs/dev/mode/saga-mode.html)文档
+* AT 模式：参见[《Seata AT 模式》](/docs/dev/mode/at-mode/)文档
+* TCC 模式：参见[《Seata TCC 模式》](/docs/dev/mode/tcc-mode/)文档
+* Saga 模式：参见[《SEATA Saga 模式》](/docs/dev/mode/saga-mode/)文档
 * XA 模式：正在开发中...
 
 目前使用的**流行度**情况是：AT > TCC > Saga。因此，我们在学习 Seata 的时候，可以花更多精力在 **AT 模式**上，最好搞懂背后的实现原理，毕竟分布式事务涉及到数据的正确性，出问题需要快速排查定位并解决。
@@ -327,12 +327,12 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 
 ## 4.2 TCC 模式
 
-* 文档：[《Seata 文档 —— TCC 模式》](https://seata.io/zh-cn/docs/dev/mode/tcc-mode.html)
+* 文档：[《Seata 文档 —— TCC 模式》](/docs/dev/mode/tcc-mode/)
 * 示例：<https://github.com/apache/incubator-seata-samples/blob/master/tcc>
 
 ## 4.3 Saga 模式
 
-* 文档：[《Seata 文档 —— Saga 模式》](https://seata.io/zh-cn/docs/dev/mode/saga-mode.html)
+* 文档：[《Seata 文档 —— Saga 模式》](/docs/dev/mode/saga-mode/)
 * 示例：<https://github.com/apache/incubator-seata-samples/tree/master/saga>
 
 ## 4.4 XA 模式

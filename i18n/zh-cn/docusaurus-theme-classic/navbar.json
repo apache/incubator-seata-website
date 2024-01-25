@@ -43,6 +43,18 @@
     "message": "控制台样例",
     "description": "Navbar item with label Console sample"
   },
+  "item.label.Demos": {
+    "message": "样例",
+    "description": "Navbar item with label Demos"
+  },
+  "item.label.Saga Designer": {
+    "message": "Saga 设计器",
+    "description": "Navbar item with label Saga Designer"
+  },
+  "item.label.Saga Designer (Legacy)": {
+    "message": "Saga 设计器（旧版）",
+    "description": "Navbar item with label Saga Designer (Legacy)"
+  },
   "item.label.Solutions": {
     "message": "解决方案",
     "description": "Navbar item with label Solutions"

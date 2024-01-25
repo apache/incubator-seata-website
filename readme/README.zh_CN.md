@@ -2,7 +2,7 @@
 
 [![CI 状态](https://github.com/apache/incubator-seata-website/workflows/CI/badge.svg)](https://github.com/apache/incubator-seata-website/actions ）
 
-此仓库包含 https://seata.io 的所有网站材料，使用的开源框架是 Docusaurus。
+此仓库包含 https://seata.apache.org 的所有网站材料，使用的开源框架是 Docusaurus。
 
 # README.md同时有以下语言的版本
 - en [English](../README.md)

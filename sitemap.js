@@ -14,7 +14,10 @@ const algoliaConfig = {
 
 const lastmod = new Date().toISOString();
 const changefreq = 'daily';
-const homeUrls = ['https://seata.io/', 'https://seata.io/zh-cn/'];
+const homeUrls = [
+  'https://seata.apache.org/',
+  'https://seata.apache.org/zh-cn/',
+];
 const urls = new Set();
 
 // Turn a record into a sitemap entry
@@ -38,7 +41,7 @@ const call = () => {
       algoliaConfig,
       hitToParams,
       // The URL of the sitemaps directory
-      sitemapLoc: 'https://seata.io/sitemaps',
+      sitemapLoc: 'https://seata.apache.org/sitemaps',
       // The directory with all sitemaps (default: `sitemaps`)
       outputFolder: 'sitemaps',
       // ...

@@ -65,9 +65,9 @@ store.db.password=
 
 **（2）准备registry.conf文件**
 
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+更多注册中心支持可参考<a href="/docs/user/registry/">注册中心</a>
 
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
+更多配置中心支持可参考<a href="/docs/user/configuration/">配置中心</a>
 
 直连模式（无注册中心）
 ```
@@ -108,9 +108,9 @@ services:
 
 nacos注册中心。
 
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+更多注册中心支持可参考<a href="/docs/user/registry/">注册中心</a>
 
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
+更多配置中心支持可参考<a href="/docs/user/configuration/">配置中心</a>
 
 ```
 registry {
@@ -224,9 +224,9 @@ store.db.password=
 
 nacos注册中心。
 
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+更多注册中心支持可参考<a href="/docs/user/registry/">注册中心</a>
 
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
+更多配置中心支持可参考<a href="/docs/user/configuration/">配置中心</a>
 
 ```
 registry {
@@ -257,7 +257,7 @@ config {
 **（3）准备docker-compose.yaml文件**
 
 > 只要保持配置一致，seata服务可在一台机器上部署多实例，也可同时部署在多台不同的主机下面实现服务高可用。
-> [高可用部署](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [高可用部署](/docs/ops/deploy-ha/)
 
 ```yaml
 version: "3.1"

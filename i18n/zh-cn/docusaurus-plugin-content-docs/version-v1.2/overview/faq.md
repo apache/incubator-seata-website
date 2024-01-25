@@ -501,7 +501,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 **A:**
 
-请参考附录->[SQL参考](http://seata.io/zh-cn/docs/user/sqlreference/sql-restrictions.html)
+请参考附录->[SQL参考](/docs/user/sqlreference/sql-restrictions/)
 
 ****
 
@@ -650,7 +650,7 @@ seata.client.undo.logSerialization=kryo
 
 <h3 id='42'>Q: 42. 抛出异常后事务未回滚？</h3>
 
- - 检查异常是否被捕获,没有抛至tm端,如rm存在全局异常捕获器,rm将异常包装成了一个正常的result响应给了tm,导致seata的事务拦截器无法发现事务出现了异常,此时自行在代码中根据result中的code之类可判断业务出现异常的返回内容进行抛出异常,或者使用[Seata api](https://seata.io/zh-cn/docs/user/api.html) 进行回滚,切记api回滚必须结束调用,假设tm调用了rm1就出现错误,进行了api回滚,那么不应该让这个调用链再走到rm2去,应该直接return结束方法调用
+ - 检查异常是否被捕获,没有抛至tm端,如rm存在全局异常捕获器,rm将异常包装成了一个正常的result响应给了tm,导致seata的事务拦截器无法发现事务出现了异常,此时自行在代码中根据result中的code之类可判断业务出现异常的返回内容进行抛出异常,或者使用[Seata api](/docs/user/api/) 进行回滚,切记api回滚必须结束调用,假设tm调用了rm1就出现错误,进行了api回滚,那么不应该让这个调用链再走到rm2去,应该直接return结束方法调用
  - 检查是否rm服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理
  - 如确认无上述可能,异常明确抛出,请通过相关的xid到tc端和tm和rm检索xid的决议结果和rm注册情况,当rm分支注册时,通过xid可以检索到Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx的日志,如果没有说明分支没有注册,如是AT或XA模式请检查数据源代理或xid传递问题,如分支已注册,那么检查决议结果,如事务提交,tm端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed的日志,如果是回滚那么相关关键字为rollback status: Rollbacked等,如果抛出异常决议缺是commit,那么99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!
  - 如决议结果是回滚,但是rm没注册,可在rm调用端通过Rootcontext.getXid来判断是否有值,如果无值请参考Q24

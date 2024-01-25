@@ -11,9 +11,9 @@ date: 2022-09-06
 
 ## 历史版本部署
 
-[1.5.0以前版本](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose-142.html)
+[1.5.0以前版本](/docs/ops/deploy-by-docker-compose-142/)
 
-[1.5.0以后版本(含1.5.0)](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose.html)
+[1.5.0以后版本(含1.5.0)](/docs/ops/deploy-by-docker-compose/)
 
 ## 注意事项 
 - 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
@@ -427,7 +427,7 @@ server.recovery.timeoutRetryPeriod=1000
 **（3）准备docker-compose.yaml文件**
 
 > 只要保持配置一致，seata服务可在一台机器上部署多实例，也可同时部署在多台不同的主机下面实现服务高可用。
-> [高可用部署](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [高可用部署](/docs/ops/deploy-ha/)
 
 ```yaml
 version: "3.1"

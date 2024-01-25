@@ -68,7 +68,7 @@ seata:
       username:
       password:
   # 配置`事务分组 -> 集群`的映射关系
-  # 有关事务分组，请参考 https://seata.io/zh-cn/docs/user/txgroup/transaction-group
+  # 有关事务分组，请参考 https://seata.apache.org/zh-cn/docs/user/txgroup/transaction-group
 ```
 
 

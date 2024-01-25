@@ -35,7 +35,7 @@ In summary, Seata's TCC mode is a manual implementation of the AT mode that allo
 # 二、prepare
 
 - regist center [nacos](https://nacos.io/zh-cn/ "nacos") 
-- [seata server(TC）](http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html "seata服务端(TC）")
+- [seata server(TC）](/docs/ops/deploy-guide-beginner/ "seata服务端(TC）")
 
 
 # 三、Building TM and TCC-RM
@@ -46,7 +46,7 @@ This chapter focuses on the implementation of TCC using Spring Cloud + Feign. Fo
 
 ## 3.1 build seata server 
 
-[build server doc](http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html "服务端搭建文档")
+[build server doc](/docs/ops/deploy-guide-beginner/ "服务端搭建文档")
 
 ## 3.2 build TM
 

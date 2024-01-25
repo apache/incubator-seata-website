@@ -36,7 +36,7 @@ AT 模式基于**支持本地 ACID 事务** 的 **关系型数据库**（目前�
 # 二、前提准备
 
 - 注册中心 [nacos](https://nacos.io/zh-cn/ "nacos") 
-- [seata服务端(TC）](http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html "seata服务端(TC）")
+- [seata服务端(TC）](/docs/ops/deploy-guide-beginner/ "seata服务端(TC）")
 
 
 # 三、TM与TCC-RM的搭建
@@ -47,7 +47,7 @@ AT 模式基于**支持本地 ACID 事务** 的 **关系型数据库**（目前�
 
 ## 3.1 seata服务端的搭建
 
-[服务端搭建文档](http://seata.io/zh-cn/docs/ops/deploy-guide-beginner.html "服务端搭建文档")
+[服务端搭建文档](/docs/ops/deploy-guide-beginner/ "服务端搭建文档")
 
 ## 3.2 TM的搭建
 

@@ -48,14 +48,14 @@ Seata 中用于2pc方式的事务模式统一协调事务的实体(SAGA除外),�
 
   Seata 中当事务管理器创建事务时指定的Timeout时间到达后还未决议时,TC会主动将已超时的事务进行超时回滚,其超时行为等同上述Rollback行为.
 
-以上为TC涉及事务处理的三种情况,其三种状态会扩展出更多的事务状态,[具体可点击此处查看](https://seata.io/zh-cn/docs/user/appendix/global-transaction-status).
+以上为TC涉及事务处理的三种情况,其三种状态会扩展出更多的事务状态,[具体可点击此处查看](/docs/user/appendix/global-transaction-status/).
 
 **高可用**
 
-[事务分组](https://seata.io/zh-cn/docs/user/txgroup/transaction-group)(tx-service-group)：
+[事务分组](/docs/user/txgroup/transaction-group/)(tx-service-group)：
 
 seata的资源逻辑，可以按微服务的需要，在应用程序（客户端）对自行定义事务分组，每组取一个名字。
 
-[服务发现](https://seata.io/zh-cn/docs/user/registry/index.html)：
+[服务发现](/docs/user/registry/)：
 
 Seata 中服务发现支持eureka,nacos,consul,etcd,zookeeper,sofa,redis,file(文件指定)

@@ -33,7 +33,7 @@ EnhancedServiceLoader.load(ExtConfigurationProvider.class).provide(configuration
 
 client 和 server 获取配置参数，是通过 ConfigurationFactory#getInstance() 获取配置类实例，再使用配置类实例获取配置参数，配置的 key 这些常量的定义，主要在 core 模块下 config 文件中。
 
-一些重要的环境配置属性的意义，[官网都有介绍](https://seata.io/zh-cn/docs/user/configurations.html)。
+一些重要的环境配置属性的意义，[官网都有介绍](/docs/user/configurations/)。
 
 在实例化的时候通过 ConfigurationFactory 获取后注入构造函数中的，需要重启才能生效，而在使用时通过 ConfigurationFactory 实时获取的，配置改了就可以生效。
 
