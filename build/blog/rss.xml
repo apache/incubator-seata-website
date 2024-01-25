@@ -4,7 +4,7 @@
         <title>Apache Seata Blog</title>
         <link>https://seata.apache.org/blog</link>
         <description>Apache Seata Blog</description>
-        <lastBuildDate>Tue, 23 Jan 2024 11:36:01 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 25 Jan 2024 01:48:23 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[integrate-seata-with-spring-cloud]]></title>
             <link>https://seata.apache.org/blog/integrate-seata-with-spring-cloud</link>
             <guid>https://seata.apache.org/blog/integrate-seata-with-spring-cloud</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -20,7 +20,7 @@
             <title><![CDATA[iscas2023]]></title>
             <link>https://seata.apache.org/blog/iscas2023</link>
             <guid>https://seata.apache.org/blog/iscas2023</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -28,7 +28,7 @@
             <title><![CDATA[seata-1.5.2]]></title>
             <link>https://seata.apache.org/blog/seata-1.5.2</link>
             <guid>https://seata.apache.org/blog/seata-1.5.2</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -36,7 +36,7 @@
             <title><![CDATA[seata-1.6.0]]></title>
             <link>https://seata.apache.org/blog/seata-1.6.0</link>
             <guid>https://seata.apache.org/blog/seata-1.6.0</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -44,7 +44,7 @@
             <title><![CDATA[seata-analysis-config-modular]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-config-modular</link>
             <guid>https://seata.apache.org/blog/seata-analysis-config-modular</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -52,7 +52,7 @@
             <title><![CDATA[seata-analysis-core-modular]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-core-modular</link>
             <guid>https://seata.apache.org/blog/seata-analysis-core-modular</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -60,7 +60,7 @@
             <title><![CDATA[seata-analysis-dubbo-transmit-xid]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-dubbo-transmit-xid</link>
             <guid>https://seata.apache.org/blog/seata-analysis-dubbo-transmit-xid</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -68,7 +68,7 @@
             <title><![CDATA[seata-analysis-go-server]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-go-server</link>
             <guid>https://seata.apache.org/blog/seata-analysis-go-server</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -76,7 +76,7 @@
             <title><![CDATA[seata-analysis-java-client]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-java-client</link>
             <guid>https://seata.apache.org/blog/seata-analysis-java-client</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -84,7 +84,7 @@
             <title><![CDATA[seata-analysis-java-server]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-java-server</link>
             <guid>https://seata.apache.org/blog/seata-analysis-java-server</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -92,7 +92,7 @@
             <title><![CDATA[seata-analysis-simple]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-simple</link>
             <guid>https://seata.apache.org/blog/seata-analysis-simple</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -100,7 +100,7 @@
             <title><![CDATA[seata-analysis-tcc-modular]]></title>
             <link>https://seata.apache.org/blog/seata-analysis-tcc-modular</link>
             <guid>https://seata.apache.org/blog/seata-analysis-tcc-modular</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -108,7 +108,7 @@
             <title><![CDATA[seata-at-demo-in-mac]]></title>
             <link>https://seata.apache.org/blog/seata-at-demo-in-mac</link>
             <guid>https://seata.apache.org/blog/seata-at-demo-in-mac</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -116,7 +116,7 @@
             <title><![CDATA[seata-at-lock]]></title>
             <link>https://seata.apache.org/blog/seata-at-lock</link>
             <guid>https://seata.apache.org/blog/seata-at-lock</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -124,7 +124,7 @@
             <title><![CDATA[seata-at-mode-design]]></title>
             <link>https://seata.apache.org/blog/seata-at-mode-design</link>
             <guid>https://seata.apache.org/blog/seata-at-mode-design</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -132,7 +132,7 @@
             <title><![CDATA[seata-at-mode-start-rm-tm]]></title>
             <link>https://seata.apache.org/blog/seata-at-mode-start-rm-tm</link>
             <guid>https://seata.apache.org/blog/seata-at-mode-start-rm-tm</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -140,7 +140,7 @@
             <title><![CDATA[seata-at-mode-start]]></title>
             <link>https://seata.apache.org/blog/seata-at-mode-start</link>
             <guid>https://seata.apache.org/blog/seata-at-mode-start</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -148,7 +148,7 @@
             <title><![CDATA[seata-at-tcc-saga]]></title>
             <link>https://seata.apache.org/blog/seata-at-tcc-saga</link>
             <guid>https://seata.apache.org/blog/seata-at-tcc-saga</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -156,7 +156,7 @@
             <title><![CDATA[seata-client-start-analysis-01]]></title>
             <link>https://seata.apache.org/blog/seata-client-start-analysis-01</link>
             <guid>https://seata.apache.org/blog/seata-client-start-analysis-01</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -164,7 +164,7 @@
             <title><![CDATA[seata-client-start-analysis-02]]></title>
             <link>https://seata.apache.org/blog/seata-client-start-analysis-02</link>
             <guid>https://seata.apache.org/blog/seata-client-start-analysis-02</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -172,7 +172,7 @@
             <title><![CDATA[seata-community-meetup-hangzhou-ready]]></title>
             <link>https://seata.apache.org/blog/seata-community-meetup-hangzhou-ready</link>
             <guid>https://seata.apache.org/blog/seata-community-meetup-hangzhou-ready</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -180,7 +180,7 @@
             <title><![CDATA[seata-config-center]]></title>
             <link>https://seata.apache.org/blog/seata-config-center</link>
             <guid>https://seata.apache.org/blog/seata-config-center</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -188,7 +188,7 @@
             <title><![CDATA[seata-config-manager]]></title>
             <link>https://seata.apache.org/blog/seata-config-manager</link>
             <guid>https://seata.apache.org/blog/seata-config-manager</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -196,7 +196,7 @@
             <title><![CDATA[seata-datasource-proxy]]></title>
             <link>https://seata.apache.org/blog/seata-datasource-proxy</link>
             <guid>https://seata.apache.org/blog/seata-datasource-proxy</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -204,7 +204,7 @@
             <title><![CDATA[seata-dsproxy-deadlock]]></title>
             <link>https://seata.apache.org/blog/seata-dsproxy-deadlock</link>
             <guid>https://seata.apache.org/blog/seata-dsproxy-deadlock</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -212,7 +212,7 @@
             <title><![CDATA[seata-dynamic-config-and-dynamic-disable]]></title>
             <link>https://seata.apache.org/blog/seata-dynamic-config-and-dynamic-disable</link>
             <guid>https://seata.apache.org/blog/seata-dynamic-config-and-dynamic-disable</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -220,7 +220,7 @@
             <title><![CDATA[seata-go-1.2.0]]></title>
             <link>https://seata.apache.org/blog/seata-go-1.2.0</link>
             <guid>https://seata.apache.org/blog/seata-go-1.2.0</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -228,7 +228,7 @@
             <title><![CDATA[seata-golang-communication-mode]]></title>
             <link>https://seata.apache.org/blog/seata-golang-communication-mode</link>
             <guid>https://seata.apache.org/blog/seata-golang-communication-mode</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -236,7 +236,7 @@
             <title><![CDATA[seata-ha-practice]]></title>
             <link>https://seata.apache.org/blog/seata-ha-practice</link>
             <guid>https://seata.apache.org/blog/seata-ha-practice</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -244,7 +244,7 @@
             <title><![CDATA[seata-meetup-hangzhou]]></title>
             <link>https://seata.apache.org/blog/seata-meetup-hangzhou</link>
             <guid>https://seata.apache.org/blog/seata-meetup-hangzhou</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -252,7 +252,7 @@
             <title><![CDATA[seata-mybatisplus-analysis]]></title>
             <link>https://seata.apache.org/blog/seata-mybatisplus-analysis</link>
             <guid>https://seata.apache.org/blog/seata-mybatisplus-analysis</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -260,7 +260,7 @@
             <title><![CDATA[seata-nacos-analysis]]></title>
             <link>https://seata.apache.org/blog/seata-nacos-analysis</link>
             <guid>https://seata.apache.org/blog/seata-nacos-analysis</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -268,7 +268,7 @@
             <title><![CDATA[seata-nacos-docker]]></title>
             <link>https://seata.apache.org/blog/seata-nacos-docker</link>
             <guid>https://seata.apache.org/blog/seata-nacos-docker</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -276,7 +276,7 @@
             <title><![CDATA[seata-observable-practice]]></title>
             <link>https://seata.apache.org/blog/seata-observable-practice</link>
             <guid>https://seata.apache.org/blog/seata-observable-practice</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -284,7 +284,7 @@
             <title><![CDATA[seata-quick-start]]></title>
             <link>https://seata.apache.org/blog/seata-quick-start</link>
             <guid>https://seata.apache.org/blog/seata-quick-start</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -292,7 +292,7 @@
             <title><![CDATA[seata-raft-detailed-explanation]]></title>
             <link>https://seata.apache.org/blog/seata-raft-detailed-explanation</link>
             <guid>https://seata.apache.org/blog/seata-raft-detailed-explanation</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -300,7 +300,7 @@
             <title><![CDATA[seata-rpc-refactor]]></title>
             <link>https://seata.apache.org/blog/seata-rpc-refactor</link>
             <guid>https://seata.apache.org/blog/seata-rpc-refactor</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -308,7 +308,7 @@
             <title><![CDATA[seata-sourcecode-client-bootstrap]]></title>
             <link>https://seata.apache.org/blog/seata-sourcecode-client-bootstrap</link>
             <guid>https://seata.apache.org/blog/seata-sourcecode-client-bootstrap</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -316,7 +316,7 @@
             <title><![CDATA[seata-sourcecode-server-bootstrap]]></title>
             <link>https://seata.apache.org/blog/seata-sourcecode-server-bootstrap</link>
             <guid>https://seata.apache.org/blog/seata-sourcecode-server-bootstrap</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -324,7 +324,7 @@
             <title><![CDATA[seata-spring-boot-aop-aspectj]]></title>
             <link>https://seata.apache.org/blog/seata-spring-boot-aop-aspectj</link>
             <guid>https://seata.apache.org/blog/seata-spring-boot-aop-aspectj</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -332,15 +332,7 @@
             <title><![CDATA[seata-tcc]]></title>
             <link>https://seata.apache.org/blog/seata-tcc</link>
             <guid>https://seata.apache.org/blog/seata-tcc</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
-            <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
-            <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[seata-xa-introduce]]></title>
-            <link>https://seata.apache.org/blog/seata-xa-introduce</link>
-            <guid>https://seata.apache.org/blog/seata-xa-introduce</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -348,7 +340,7 @@
             <title><![CDATA[springboot-dubbo-mybatisplus-seata]]></title>
             <link>https://seata.apache.org/blog/springboot-dubbo-mybatisplus-seata</link>
             <guid>https://seata.apache.org/blog/springboot-dubbo-mybatisplus-seata</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -356,7 +348,7 @@
             <title><![CDATA[tcc-mode-applicable-scenario-analysis]]></title>
             <link>https://seata.apache.org/blog/tcc-mode-applicable-scenario-analysis</link>
             <guid>https://seata.apache.org/blog/tcc-mode-applicable-scenario-analysis</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -364,7 +356,7 @@
             <title><![CDATA[tcc-mode-design-principle]]></title>
             <link>https://seata.apache.org/blog/tcc-mode-design-principle</link>
             <guid>https://seata.apache.org/blog/tcc-mode-design-principle</guid>
-            <pubDate>Tue, 23 Jan 2024 11:36:01 GMT</pubDate>
+            <pubDate>Thu, 25 Jan 2024 01:48:23 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
@@ -464,6 +456,14 @@ The second phase, commit: It immediately completes successfully and automaticall
 The second phase, rollback: It automatically generates compensation operations through the rollback logs to complete data rollback.</p><p>On the other hand, TCC mode does not rely on transaction support from underlying data resources:</p><p>The first phase, prepare: It calls a custom-defined prepare logic.
 The second phase, commit: It calls a custom-defined commit logic.
 The second phase, rollback: It calls a custom-defined rollback logic.</p><p>TCC mode refers to the ability to include custom-defined branch transactions in the management of global transactions.</p><p>In summary, Seata's TCC mode is a manual implementation of the AT mode that allows you to define the processing logic for the two phases without relying on the undo_log used in the AT mode.</p><h1>二、prepare</h1><ul><li>regist center <a href="https://nacos.io/zh-cn/" target="_blank" rel="noopener noreferrer" title="nacos">nacos</a> </li><li><a title="seata服务端(TC）" href="/docs/ops/deploy-guide-beginner/">seata server(TC）</a></li></ul><h1>三、Building TM and TCC-RM</h1><p>This chapter focuses on the implementation of TCC using Spring Cloud + Feign. For the project setup, please refer to the source code (this project provides demos for both AT mode and TCC mode).</p><p><a href="https://github.com/tanzzj/springcloud-seata-feign" target="_blank" rel="noopener noreferrer" title="服务端搭建文档">DEMO</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="31-build-seata-server">3.1 build seata server<a href="#31-build-seata-server" class="hash-link" aria-label="Direct link to 3.1 build seata server" title="Direct link to 3.1 build seata server">​</a></h2><p><a title="服务端搭建文档" href="/docs/ops/deploy-guide-beginner/">build server doc</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="32-build-tm">3.2 build TM<a href="#32-build-tm" class="hash-link" aria-label="Direct link to 3.2 build TM" title="Direct link to 3.2 build TM">​</a></h2><p><a href="https://github.com/tanzzj/springcloud-seata-feign/tree/master/service-tm" target="_blank" rel="noopener noreferrer">service-tm</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="33-build-rm-tcc">3.3 build RM-TCC<a href="#33-build-rm-tcc" class="hash-link" aria-label="Direct link to 3.3 build RM-TCC" title="Direct link to 3.3 build RM-TCC">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="331-defining-tcc-interface">3.3.1 Defining TCC Interface<a href="#331-defining-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.1 Defining TCC Interface" title="Direct link to 3.3.1 Defining TCC Interface">​</a></h3><p>Since we are using Spring Cloud + Feign, which relies on HTTP for communication, we can use @LocalTCC here. It is important to note that @LocalTCC must be annotated on the interface. This interface can be a regular business interface as long as it implements the corresponding methods for the two-phase commit in TCC. The TCC-related annotations are as follows:</p><ul><li>@LocalTCC: Used for TCC in the Spring Cloud + Feign mode.</li><li>@TwoPhaseBusinessAction: Annotates the try method. The name attribute represents the bean name of the current TCC method, which can be the method name (globally unique). The commitMethod attribute points to the commit method, and the rollbackMethod attribute points to the transaction rollback method. After specifying these three methods, Seata will automatically invoke the commit or rollback method based on the success or failure of the global transaction.</li><li>@BusinessActionContextParameter: Annotates the parameters to be passed to the second phase (commitMethod/rollbackMethod) methods.</li><li>BusinessActionContext: Represents the TCC transaction context.</li></ul><p>Here is an example:</p><div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">/**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * Here we define the TCC interface.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * It must be defined on the interface.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * We are using Spring Cloud for remote invocation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * Therefore, we can use LocalTCC here.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@LocalTCC</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public interface TccService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Define the two-phase commit.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * name = The bean name of this TCC, globally unique.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * commitMethod = The method for the second phase confirmation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * rollbackMethod = The method for the second phase cancellation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Use the BusinessActionContextParameter annotation to pass parameters to the second phase.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param params  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return String</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @TwoPhaseBusinessAction(name = "insert", commitMethod = "commitTcc", rollbackMethod = "cancel")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    String insert(</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            @BusinessActionContextParameter(paramName = "params") Map&lt;String, String&gt; params</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    );</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *  The confirmation method can be named differently, but it must be consistent with the commitMethod.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *  The context can be used to pass the parameters from the try method.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    boolean commitTcc(BusinessActionContext context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * two phase cancel</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    boolean cancel(BusinessActionContext context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="332-business-implementation-of-tcc-interface">3.3.2 Business Implementation of TCC Interface<a href="#332-business-implementation-of-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.2 Business Implementation of TCC Interface" title="Direct link to 3.3.2 Business Implementation of TCC Interface">​</a></h3><p>To keep the code concise, we will combine the routing layer with the business layer for explanation here. However, in actual projects, this may not be the case.</p><ul><li>Using @Transactional in the try method allows for direct rollback of operations in relational databases through Spring transactions. The rollback of operations in non-relational databases or other middleware can be handled in the rollbackMethod.</li><li>By using context.getActionContext("params"), you can retrieve the parameters defined in the try phase and perform business rollback operations on these parameters in the second phase.</li><li>Note 1: It is not advisable to catch exceptions here (similarly, handle exceptions with aspects), as doing so would cause TCC to recognize the operation as successful, and the second phase would directly execute the commitMethod.</li><li>Note 2: In TCC mode, it is the responsibility of the developer to ensure idempotence and transaction suspension prevention.</li></ul><div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Slf4j</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@RestController</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class TccServiceImpl implements  TccService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Autowired</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    TccDAO tccDAO;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * tcc t（try）method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * Choose the actual business execution logic or resource reservation logic based on the actual business scenario.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param params - name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return String</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @PostMapping("/tcc-insert")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public String insert(@RequestBody Map&lt;String, String&gt; params) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        log.info("xid = " + RootContext.getXID());</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo Perform actual operations or operations on MQ, Redis, etc.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        tccDAO.insert(params);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //Remove the following annotations to throw an exception</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //throw new RuntimeException("服务tcc测试回滚");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return "success";</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * TCC service confirm method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * If resource reservation is used in the first phase, the reserved resources should be committed during the second phase confirmation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public boolean commitTcc(BusinessActionContext context) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        log.info("xid = " + context.getXid() + "提交成功");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo If resource reservation is used in the first phase, resources should be committed here.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return true;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /**</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * tcc  cancel method</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     *</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @param context </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * @return boolean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public boolean cancel(BusinessActionContext context) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        //todo Here, write the rollback operations for middleware or non-relational databases.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println("please manually rollback this data:" + context.getActionContext("params"));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return true;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="333-starting-a-global-transaction-in-tm-and-invoking-rm-tcc-interface">3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface<a href="#333-starting-a-global-transaction-in-tm-and-invoking-rm-tcc-interface" class="hash-link" aria-label="Direct link to 3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface" title="Direct link to 3.3.3 Starting a Global Transaction in TM and Invoking RM-TCC Interface">​</a></h3><p>Please refer to the project source code in section 3.2.</p><p>With this, the integration of TCC mode with Spring Cloud is complete.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[How is distributed transaction realized? In-depth interpretation of Seata's XA mode]]></title>
+            <link>https://seata.apache.org/blog/seata-xa-introduce</link>
+            <guid>https://seata.apache.org/blog/seata-xa-introduce</guid>
+            <pubDate>Tue, 28 Apr 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[In-depth interpretation of Seata's XA mode]]></description>
+            <content:encoded><![CDATA[<p>Author profile: Xuan Yi, GitHub ID: sharajava, responsible for the GTS development team of Alibaba Middleware, initiator of the SEATA open source project, worked for many years at Oracle Beijing R&amp;D Center, and was engaged in WebLogic core development. He has long been focused on middleware, especially technical practices in the field of distributed transactions.</p><p>The 1.2.0 version of Seata has released a new transaction mode: XA mode, which supports the XA protocol.</p><p>Here, we will interpret this new feature in depth from three aspects:</p><ul><li>What: What is XA mode?</li><li>Why: Why support XA?</li><li>How: How is XA mode implemented and how to use it?</li></ul><h1>1. What is XA mode?</h1><p>There are two basic preliminary concepts here:</p><ol><li>What is XA?</li><li>What is the so-called transaction mode defined by Seata?</li></ol><p>Based on these two points, understanding XA mode becomes quite natural.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="11-what-is-xa">1.1 What is XA?<a href="#11-what-is-xa" class="hash-link" aria-label="Direct link to 1.1 What is XA?" title="Direct link to 1.1 What is XA?">​</a></h2><p>The XA specification is a standard for distributed transaction processing (DTP) defined by the X/Open organization.</p><p>The XA specification describes the interface between the global transaction manager(TM) and the local resource manager(RM). The purpose of the XA specification is to allow multiple resources (such as databases, application servers, message queues, etc.) to access the same transaction, thus maintaining ACID properties across applications.</p><p>The XA specification uses the Two-Phase Commit (2PC) to ensure that all resources are committed or rolled back at the same time for any specific transaction.</p><p>The XA specification was proposed in the early 1990s. Currently, almost all mainstream databases support the XA specification.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="12-what-is-seatas-transaction-mode">1.2 What is Seata's transaction mode?<a href="#12-what-is-seatas-transaction-mode" class="hash-link" aria-label="Direct link to 1.2 What is Seata's transaction mode?" title="Direct link to 1.2 What is Seata's transaction mode?">​</a></h2><p>Seata defines the framework for global transactions.</p><p>A global transaction is defined as the overall coordination of several branch transactions:</p><ol><li>The Transaction Manager (TM) requests the Transaction Coordinator (TC) to initiate (Begin), commit (Commit), or rollback (Rollback) the global transaction.</li><li>The TM binds the XID representing the global transaction to the branch transaction.</li><li>The Resource Manager (RM) registers with the TC, associating the branch transaction with the global transaction represented by XID.</li><li>The RM reports the execution result of the branch transaction to the TC. (optional)</li><li>The TC sends a branch commit or branch rollback command to the RM.</li></ol><img loading="lazy" src="https://img.alicdn.com/tfs/TB19qmhOrY1gK0jSZTEXXXDQVXa-1330-924.png" alt="seata-mod" style="zoom:50%" class="img_ev3q"><p>Seata's global transaction processing process is divided into two phases:</p><ul><li>Execution phase: Execute branch transactions and ensure that the execution results are <em>rollbackable</em> and <em>durable</em>.</li><li>Completion phase: Based on the resolution of the execution phase, the application sends a request for global commit or rollback to the TC through the TM, and the TC commands the RM to drive the branch transaction to commit or rollback.</li></ul><p>Seata's so-called transaction mode refers to the behavior mode of branch transactions running under the Seata global transaction framework. More precisely, it should be called the branch transaction mode.</p><p>The difference between different transaction modes lies in the different ways branch transactions achieve the goals of the two phases of the global transaction.  That is, answering the following two questions:</p><ul><li>Execution phase: How to execute and ensure that the execution results are <em>rollbackable</em> and <em>durable</em>.</li><li>Completion phase: After receiving the command from the TC, how to submit or rollback the branch transaction?</li></ul><p>Taking our Seata AT mode and TCC mode as examples:</p><p>AT mode</p><img loading="lazy" src="https://img.alicdn.com/tfs/TB1NTuzOBr0gK0jSZFnXXbRRXXa-1330-924.png" alt="at-mod" style="zoom:50%" class="img_ev3q"><ul><li><p>Execution phase:</p><ul><li>Rollbackable: Record rollback logs according to the SQL parsing result</li><li>Durable: Rollback logs and business SQL are committed to the database in the same local transaction</li></ul></li><li><p>Completion phase:</p><ul><li>Branch commit: Asynchronously delete rollback log records</li><li>Branch rollback: Compensate and update according to the rollback log</li></ul></li></ul><p>TCC mode</p><img loading="lazy" src="https://img.alicdn.com/tfs/TB1m59pOEY1gK0jSZFCXXcwqXXa-1330-924.png" alt="tcc-mod" style="zoom:50%" class="img_ev3q"><ul><li><p>Execution Phase:</p><ul><li>Call the Try method defined by the business (guaranteed <em>rollback</em> and <em>persistence</em> entirely by the business layer)</li></ul></li><li><p>Completion Phase:</p><ul><li>Branch Commit: Call the Confirm method defined for each transaction branch</li><li>Branch Rollback: Call the Cancel method defined for each transaction branch</li></ul></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="13-what-is-xa-mode-in-seata">1.3 What is XA mode in Seata?<a href="#13-what-is-xa-mode-in-seata" class="hash-link" aria-label="Direct link to 1.3 What is XA mode in Seata?" title="Direct link to 1.3 What is XA mode in Seata?">​</a></h2><p>XA mode:</p><p>Within the distributed transaction framework defined by Seata, it is a transaction mode that uses XA protocol mechanisms to manage branch transactions with the support of transaction resources (databases, message services, etc.) for the XA protocol.</p><img loading="lazy" src="https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" alt="xa-mod" style="zoom:50%" class="img_ev3q"><ul><li><p>Execution Phase:</p><ul><li>Rollback: Business SQL operations are performed in an XA branch, and the support of resources for the XA protocol ensures <em>rollback</em></li><li>Persistence: After the XA branch is completed, XA prepare is executed, and similarly, the support of resources for the XA protocol ensures <em>persistence</em> (i.e., any unexpected occurrences will not cause situations where rollback is not possible)</li></ul></li><li><p>Completion Phase:</p><ul><li>Branch Commit: Perform commit for XA branch</li><li>Branch Rollback: Perform rollback for XA branch</li></ul></li></ul><h1>2. Why support XA?</h1><p>Why add XA mode in Seata? What is the significance of supporting XA?</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="21-problems-with-compensatory-transaction-mode">2.1 Problems with Compensatory Transaction Mode<a href="#21-problems-with-compensatory-transaction-mode" class="hash-link" aria-label="Direct link to 2.1 Problems with Compensatory Transaction Mode" title="Direct link to 2.1 Problems with Compensatory Transaction Mode">​</a></h2><p>Essentially, the 3 major transaction modes that Seata already supports: AT, TCC, and Saga, are all compensatory in nature.</p><p>Compensatory transaction processing mechanisms are built on top of transaction resources (either in the middleware layer or in the application layer), and the transaction resources themselves are unaware of distributed transactions.</p><img loading="lazy" src="https://img.alicdn.com/tfs/TB1z.qyOET1gK0jSZFrXXcNCXXa-602-460.png" alt="img" style="zoom:50%" class="img_ev3q"><p>The fundamental problem with transaction resources being unaware of distributed transactions is the inability to achieve true <em>global consistency</em>.</p><p>For example, in a compensatory transaction processing process, a stock record is reduced from 100 to 50. At this point, the warehouse administrator connects to the database and sees the current quantity as 50. Later, the transaction is rolled back due to an unexpected occurrence, and the stock is compensated back to 100. Clearly, the warehouse administrator's query finding 50 is <em>dirty data</em>.</p><p>It can be seen that because compensatory distributed transaction mechanisms do not require the mechanism of transaction resources (such as a database), they cannot guarantee data consistency from a global perspective outside the transaction framework.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="22-value-of-xa">2.2 Value of XA<a href="#22-value-of-xa" class="hash-link" aria-label="Direct link to 2.2 Value of XA" title="Direct link to 2.2 Value of XA">​</a></h2><p>Unlike compensatory transaction modes, the XA protocol requires transaction resources to provide support for standards and protocols.</p><img loading="lazy" src="https://img.alicdn.com/tfs/TB1vs9kOvb2gK0jSZK9XXaEgFXa-602-486.png" alt="nct" style="zoom:50%" class="img_ev3q"><p>Because transaction resources are aware of and participate in the distributed transaction processing process, they (such as databases) can guarantee effective isolation of data from any perspective and satisfy global data consistency.</p><p>For example, in the scenario of stock updates mentioned in the previous section, during the XA transaction processing process, the intermediate state of the database holding 50 is guaranteed by the database itself and will not be <em>seen</em> in the warehouse administrator's query statistics. (Of course, the isolation level needs to be READ_COMMITTED or higher.)</p><p>In addition to the fundamental value of <em>global consistency</em>, supporting XA also has the following benefits:</p><ol><li>Non-invasive business: Like AT, XA mode will be non-invasive for businesses, without bringing additional burden to application design and development.</li><li>Wide support for databases: XA protocol is widely supported by mainstream relational databases and can be used without additional adaptation.</li><li>Easy multi-language support: Because it does not involve SQL parsing, the XA mode has lower requirements for Seata's RM, making it easier for different language development SDKs compared to the AT mode.</li><li>Migration of traditional XA-based applications: Traditional applications based on the XA protocol can be smoothly migrated to the Seata platform using the XA mode.</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="23-widely-questioned-issues-of-xa">2.3 Widely Questioned Issues of XA<a href="#23-widely-questioned-issues-of-xa" class="hash-link" aria-label="Direct link to 2.3 Widely Questioned Issues of XA" title="Direct link to 2.3 Widely Questioned Issues of XA">​</a></h2><p>There is no distributed transaction mechanism that can perfectly adapt to all scenarios and meet all requirements.</p><p>The XA specification was proposed as early as the early 1990s to solve the problems in the field of distributed transaction processing.</p><p>Now, whether it's the AT mode, TCC mode, or the Saga mode, the essence of these modes' proposals stems from the inability of the XA specification to meet certain scenario requirements.</p><p>The distributed transaction processing mechanism defined by the XA specification has some widely questioned issues. What is our thinking regarding these issues?</p><ol><li><strong>Data Locking</strong>: Data is locked throughout the entire transaction processing until it is finished, and reads and writes are constrained according to the definition of isolation levels.</li></ol><blockquote><p>Thinking:</p><p>Data locking is the cost to obtain higher isolation and global consistency.</p><p>In compensatory transaction processing mechanisms, the completion of branch (local) transactions is done during the execution stage, and data is not locked at the resource level. However, this is done at the cost of sacrificing isolation.</p><p>Additionally, the AT mode uses <em>global locks</em> to ensure basic <em>write isolation</em>, effectively locking data, but the lock is managed centrally on the TC side, with high unlock efficiency and no blocking issues.</p></blockquote><ol start="2"><li><strong>Protocol Blocking</strong>: After XA prepare, the branch transaction enters a blocking stage and must wait for XA commit or XA rollback.</li></ol><blockquote><p>Thinking:</p><p>The blocking mechanism of the protocol itself is not the problem. The key issue is the combination of protocol blocking and data locking.</p><p>If a resource participating in the global transaction is "offline" (does not receive commands to end branch transactions), the data it locks will remain locked. This may even lead to deadlocks.</p><p>This is the core pain point of the XA protocol and is the key problem that Seata aims to solve by introducing the XA mode.</p><p>The basic idea is twofold: avoiding "loss of connection" and adding a "self-release" mechanism. (This involves a lot of technical details, which will not be discussed at the moment. They will be specifically discussed in the subsequent evolution of the XA mode.)</p></blockquote><ol start="3"><li><strong>Poor Performance</strong>: Performance loss mainly comes from two aspects: on one hand, the transaction coordination process increases the RT of individual transactions; on the other hand, concurrent transaction data lock conflicts reduce throughput.</li></ol><blockquote><p>Thinking:</p><p>Compared to running scenarios without distributed transaction support, performance will certainly decline, there is no doubt about that.</p><p>Essentially, the transaction mechanism (whether local or distributed) sacrifices some performance to achieve a simple programming model.</p><p>Compared to the AT mode, which is also <em>non-invasive for businesses</em>:</p><p>Firstly, because XA mode also runs under Seata's defined distributed transaction framework, it does not generate additional transaction coordination communication overhead.</p><p>Secondly, in concurrent transactions, if data has hotspots and lock conflicts occur, this situation also exists in the AT mode (which defaults to using a global lock).</p><p>Therefore, in the two main aspects affecting performance, the XA mode does not have a significantly obvious disadvantage compared to the AT mode.</p><p>The performance advantage of the AT mode mainly lies in: centralized management of global data locks, where the release of locks does not require RM involvement and is very fast; in addition, the asynchronous completion of the global commit stage.</p></blockquote><h1>3. How Does XA Mode Work and How to Use It?</h1><h2 class="anchor anchorWithStickyNavbar_LWe7" id="31-design-of-xa-mode">3.1 Design of XA Mode<a href="#31-design-of-xa-mode" class="hash-link" aria-label="Direct link to 3.1 Design of XA Mode" title="Direct link to 3.1 Design of XA Mode">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="311-design-objectives">3.1.1 Design Objectives<a href="#311-design-objectives" class="hash-link" aria-label="Direct link to 3.1.1 Design Objectives" title="Direct link to 3.1.1 Design Objectives">​</a></h3><p>The basic design objectives of XA mode mainly focus on two main aspects:</p><ol><li>From the perspective of <em>scenarios</em>, it meets the requirement of <em>global consistency</em>.</li><li>From the perspective of <em>applications</em>, it maintains the non-invasive nature consistent with the AT mode.</li><li>From the perspective of <em>mechanisms</em>, it adapts to the characteristics of distributed microservice architecture.</li></ol><p>Overall idea:</p><ol><li>Same as the AT mode: Construct branch transactions from local transactions in the application program.</li><li>Through data source proxy, wrap the interaction mechanism of the XA protocol at the framework level outside the scope of local transactions in the application program, making the XA programming model transparent.</li><li>Split the 2PC of XA and perform XA prepare at the end of the execution stage of branch transactions, seamlessly integrating the XA protocol into Seata's transaction framework, reducing one round of RPC interaction.</li></ol><h3 class="anchor anchorWithStickyNavbar_LWe7" id="312-core-design">3.1.2 Core Design<a href="#312-core-design" class="hash-link" aria-label="Direct link to 3.1.2 Core Design" title="Direct link to 3.1.2 Core Design">​</a></h3><h4 class="anchor anchorWithStickyNavbar_LWe7" id="1-overall-operating-mechanism">1. Overall Operating Mechanism<a href="#1-overall-operating-mechanism" class="hash-link" aria-label="Direct link to 1. Overall Operating Mechanism" title="Direct link to 1. Overall Operating Mechanism">​</a></h4><p>XA mode runs within the transaction framework defined by Seata:</p><img loading="lazy" src="https://img.alicdn.com/tfs/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style="zoom:50%" class="img_ev3q"><ul><li><p>Execution phase (Execute):</p><ul><li>XA start/XA end/XA prepare + SQL + Branch registration</li></ul></li><li><p>Completion phase (Finish):</p><ul><li>XA commit/XA rollback</li></ul></li></ul><h4 class="anchor anchorWithStickyNavbar_LWe7" id="2-data-source-proxy">2. Data Source Proxy<a href="#2-data-source-proxy" class="hash-link" aria-label="Direct link to 2. Data Source Proxy" title="Direct link to 2. Data Source Proxy">​</a></h4><p>XA mode requires XAConnection.</p><p>There are two ways to obtain XAConnection:</p><ul><li>Method 1: Requires developers to configure XADataSource</li><li>Method 2: Creation based on the developer's normal DataSource</li></ul><p>The first method adds cognitive burden to developers, as they need to learn and use XA data sources specifically for XA mode, which contradicts the design goal of transparent XA programming model.</p><p>The second method is more user-friendly, similar to the AT mode, where developers do not need to worry about any XA-related issues and can maintain a local programming model.</p><p>We prioritize the implementation of the second method: the data source proxy creates the corresponding XAConnection based on the normal JDBC connection obtained from the normal data source.</p><p>Comparison with the data source proxy mechanism of the AT mode:</p><img loading="lazy" src="/img/xa/pics/ds1.png" alt="img" style="zoom:50%" class="img_ev3q"><p>However, the second method has limitations: it cannot guarantee compatibility correctness.</p><p>In fact, this method is what database drivers should do. Different vendors and different versions of database driver implementation mechanisms are vendor-specific, and we can only guarantee correctness on fully tested driver versions, as differences in the driver versions used by developers can lead to the failure of the mechanism.</p><p>This is particularly evident in Oracle. See Druid issue: <a href="https://github.com/alibaba/druid/issues/3707" target="_blank" rel="noopener noreferrer">https://github.com/alibaba/druid/issues/3707</a></p><p>Taking everything into account, the data source proxy design for XA mode needs to support the first method: proxy based on XA data source.</p><p>Comparison with the data source proxy mechanism of the AT mode:</p><img loading="lazy" src="/img/xa/pics/ds2.png" alt="img" style="zoom:50%" class="img_ev3q"><h4 class="anchor anchorWithStickyNavbar_LWe7" id="3-branch-registration">3. Branch Registration<a href="#3-branch-registration" class="hash-link" aria-label="Direct link to 3. Branch Registration" title="Direct link to 3. Branch Registration">​</a></h4><p>XA start requires the Xid parameter.</p><p>This Xid needs to be associated with the XID and BranchId of the Seata global transaction, so that the TC can drive the XA branch to commit or rollback.</p><p>Currently, the BranchId in Seata is generated uniformly by the TC during the branch registration process, so the timing of the XA mode branch registration needs to be before XA start.</p><p>A possible optimization in the future:</p><p>Delay branch registration as much as possible. Similar to the AT mode, register the branch before the local transaction commit to avoid meaningless branch registration in case of branch execution failure.</p><p>This optimization direction requires a change in the BranchId generation mechanism to cooperate. BranchId will not be generated through the branch registration process, but will be generated and then used to register the branch.</p><h4 class="anchor anchorWithStickyNavbar_LWe7" id="4-summary">4. Summary<a href="#4-summary" class="hash-link" aria-label="Direct link to 4. Summary" title="Direct link to 4. Summary">​</a></h4><p>Here, only a few important core designs of the XA mode are explained to illustrate its basic operation mechanism.</p><p>In addition, important aspects such as <em>connection maintenance</em> and <em>exception handling</em> are also important and can be further understood from the project code.</p><p>More information and exchange will be written and shared with everyone in the future.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="313-evolution-plan">3.1.3 Evolution Plan<a href="#313-evolution-plan" class="hash-link" aria-label="Direct link to 3.1.3 Evolution Plan" title="Direct link to 3.1.3 Evolution Plan">​</a></h3><p>The overall evolution plan of the XA mode is as follows:</p><ol><li>Step 1 (already completed): The first version (1.2.0) runs the prototype mechanism of the XA mode. Ensure only addition, no modification, and no new issues introduced to other modes.</li><li>Step 2 (planned to be completed in May): Necessary integration and refactoring with the AT mode.</li><li>Step 3 (planned to be completed in July): Refine the exception handling mechanism and polish for production readiness.</li><li>Step 4 (planned to be completed in August): Performance optimization.</li><li>Step 5 (planned to be completed in 2020): Integrate with Seata project's ongoing design for cloud-native Transaction Mesh to create cloud-native capabilities.</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="32-usage-of-xa-mode">3.2 Usage of XA Mode<a href="#32-usage-of-xa-mode" class="hash-link" aria-label="Direct link to 3.2 Usage of XA Mode" title="Direct link to 3.2 Usage of XA Mode">​</a></h2><p>From a programming model perspective, XA mode is exactly the same as the AT mode.</p><p>You can refer to the Seata official website sample: <a href="https://github.com/seata/seata-xa" target="_blank" rel="noopener noreferrer">seata-xa</a></p><p>The example scenario is the classic Seata example, involving the product ordering business of three microservices: inventory, orders, and accounts.</p><p>In the example, the upper programming model is the same as the AT mode. By simply modifying the data source proxy, you can switch between XA mode and AT mode.</p><div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Bean("dataSource")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public DataSource dataSource(DruidDataSource druidDataSource) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // DataSourceProxy for AT mode</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // return new DataSourceProxy(druidDataSource);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // DataSourceProxyXA for XA mode</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    return new DataSourceProxyXA(druidDataSource);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h1>4. Summary</h1><p>At the current stage of technological development, there is no distributed transaction processing mechanism that can perfectly meet all scenarios' requirements.</p><p>Consistency, reliability, ease of use, performance, and many other aspects of system design constraints require different transaction processing mechanisms to meet them.</p><p>The core value of the Seata project is to build a standardized platform that comprehensively addresses the distributed transaction problem.</p><p>Based on Seata, the upper application architecture can flexibly choose the appropriate distributed transaction solution according to the actual scenario's needs.</p><img loading="lazy" src="https://img.alicdn.com/tfs/TB1lTSoOqL7gK0jSZFBXXXZZpXa-1028-528.png" alt="img" style="zoom:50%" class="img_ev3q"><p>The addition of XA mode fills the gap in Seata in the global consistency scenario, forming a landscape of four major transaction modes: AT, TCC, Saga, and XA, which can basically meet all scenarios' demands for distributed transaction processing.</p><p>Of course, both XA mode and the Seata project itself are not yet perfect, and there are many areas that need improvement and enhancement. We warmly welcome everyone to participate in the project's development and contribute to building a standardized distributed transaction platform together.</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Designing More Flexible Financial Applications with Seata Saga]]></title>
