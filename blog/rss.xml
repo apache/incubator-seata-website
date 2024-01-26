@@ -4,7 +4,7 @@
         <title>Apache Seata Blog</title>
         <link>https://seata.apache.org/blog</link>
         <description>Apache Seata Blog</description>
-        <lastBuildDate>Fri, 26 Jan 2024 07:12:56 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 26 Jan 2024 07:14:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[seata-meetup-hangzhou]]></title>
             <link>https://seata.apache.org/blog/seata-meetup-hangzhou</link>
             <guid>https://seata.apache.org/blog/seata-meetup-hangzhou</guid>
-            <pubDate>Fri, 26 Jan 2024 07:12:56 GMT</pubDate>
+            <pubDate>Fri, 26 Jan 2024 07:14:46 GMT</pubDate>
             <description><![CDATA[Placeholder. DO NOT DELETE.]]></description>
             <content:encoded><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content:encoded>
         </item>
