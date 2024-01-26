@@ -12,11 +12,11 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 
 ### 发布概览
 
-Seata-go 1.2.0版本支持 XA 模式。XA 协议是由 X/Open 组织提出的分布式事务处理规范，其优点是对业务代码无侵入。当前 Seata-go 的 XA 模式支持 MySQL 数据库。至此，seata-go 已经集齐 AT、TCC、Saga 和 XA 四种事务模式，完成了与 Seata Java 的功能对齐。 XA 模式的主要功能:
+Seata-go 1.2.0 版本支持 XA 模式。XA 协议是由 X/Open 组织提出的分布式事务处理规范，其优点是对业务代码无侵入。当前 Seata-go 的 XA 模式支持 MySQL 数据库。至此，seata-go 已经集齐 AT、TCC、Saga 和 XA 四种事务模式，完成了与 Seata Java 的功能对齐。 XA 模式的主要功能:
 
 - 支持了 XA 数据源代理<https://github.com/apache/incubator-seata-go-samples/tree/main/xa>
 - 支持了 XA 事务模式  
-XA 相关的 sampes 可以参考示例：<https://github.com/apache/incubator-seata-go-samples/tree/main/xa>
+  XA 相关的 sampes 可以参考示例：<https://github.com/apache/incubator-seata-go-samples/tree/main/xa>
 
 ### feature
 
@@ -48,7 +48,7 @@ XA 相关的 sampes 可以参考示例：<https://github.com/apache/incubator-se
 
 ### doc
 
-- [[#550](https:/github.com/apache/incubator-seata-go/pull/550)] 添加 1.2.0 版本的改动日志
+- [[#550](https://github.com/apache/incubator-seata-go/pull/550)] 添加 1.2.0 版本的改动日志
 
 ### contributors
 

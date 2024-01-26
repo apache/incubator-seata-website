@@ -60,7 +60,8 @@ const config = {
   },
   scripts: [
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+      // src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+      // src: useBaseUrl('/js/gtag.js'),
       async: true,
     },
   ],
