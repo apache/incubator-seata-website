@@ -39,8 +39,8 @@
     "message": "Console sample",
     "description": "Navbar item with label Console sample"
   },
-  "item.label.Demos": {
-    "message": "Demos",
+  "item.label.Designer": {
+    "message": "Designer",
     "description": "Navbar item with label Demos"
   },
   "item.label.Saga Designer": {
