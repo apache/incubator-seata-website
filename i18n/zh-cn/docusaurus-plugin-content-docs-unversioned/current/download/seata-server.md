@@ -43,11 +43,11 @@ hide_table_of_contents: true
 <section class="full_width_table_section">
 ```
 
-| 版本号 | 二进制下载                                                                                             | Docker 镜像                                                                                        | CheckSum                         | 发布说明                                    | 参考文档                                      |
-| ------ | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------- | --------------------------------------------- |
-| 2.0.0  | [2.0.0.zip](https://github.com/apache/incubator-seata/releases/download/v2.0.0/seata-server-2.0.0.zip) | [seataio/seata-server:2.0.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=2.0.0) | 5c5c6a98649f37ed7894743b21bc8777 | [2.0.x 发布说明](/docs/release-notes/)      | [2.0.x 快速开始](/docs/user/quickstart/)      |
-| 1.8.0  | [1.8.0.zip](https://github.com/apache/incubator-seata/releases/download/v1.8.0/seata-server-1.8.0.zip) | [seataio/seata-server:1.8.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.8.0) | f5de162a4577f5f96828cba75d912240 | [1.8.x 发布说明](/docs/v1.8/release-notes/) | [1.8.x 快速开始](/docs/v1.8/user/quickstart/) |
-| 1.7.1  | [1.7.1.zip](https://github.com/apache/incubator-seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x 发布说明](/docs/v1.7/release-notes/) | [1.7.x 快速开始](/docs/v1.7/user/quickstart/) |
+| 版本号 | 二进制下载                                                                                             | Docker 镜像                                                                                        | CheckSum                         | 发布说明                                    | 参考文档                                      | 是否 ASF 版本 |
+| ------ | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------- | --------------------------------------------- |-----------|
+| 2.0.0  | [2.0.0.zip](https://github.com/apache/incubator-seata/releases/download/v2.0.0/seata-server-2.0.0.zip) | [seataio/seata-server:2.0.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=2.0.0) | 5c5c6a98649f37ed7894743b21bc8777 | [2.0.x 发布说明](/docs/release-notes/)      | [2.0.x 快速开始](/docs/user/quickstart/)      | 否         |
+| 1.8.0  | [1.8.0.zip](https://github.com/apache/incubator-seata/releases/download/v1.8.0/seata-server-1.8.0.zip) | [seataio/seata-server:1.8.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.8.0) | f5de162a4577f5f96828cba75d912240 | [1.8.x 发布说明](/docs/v1.8/release-notes/) | [1.8.x 快速开始](/docs/v1.8/user/quickstart/) | 否         |
+| 1.7.1  | [1.7.1.zip](https://github.com/apache/incubator-seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x 发布说明](/docs/v1.7/release-notes/) | [1.7.x 快速开始](/docs/v1.7/user/quickstart/) | 否         |
 
 1. Seata 版本维护策略，请参考[版本维护文档](/docs/ops/version-maintain-plan)，请您尽快升级低版本至当前维护版本。版本升级请参考[升级指南](/docs/ops/upgrade)
 2. 更多历史版本下载，请参考[版本历史](/unversioned/release-history/seata-server)
@@ -62,8 +62,8 @@ hide_table_of_contents: true
 <section class="full_width_table_section">
 ```
 
-| 版本号 | 二进制下载 | docker 镜像 | checksum | 发布说明 | 版本文档 |
-| ------ | ---------- | ----------- | -------- | -------- | -------- |
+| 版本号 | 二进制下载 | docker 镜像 | checksum | 发布说明 | 版本文档 | 是否 ASF 版本 |
+| ------ | ---------- | ----------- | -------- | -------- | -------- | -------- |
 
 ```mdx-code-block
 </section>
