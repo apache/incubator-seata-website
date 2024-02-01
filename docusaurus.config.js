@@ -223,7 +223,7 @@ const config = {
           //   target: '_blank',
           // },
           {
-            label: 'Demos',
+            label: 'Designer',
             type: 'dropdown',
             position: 'right',
             items: [

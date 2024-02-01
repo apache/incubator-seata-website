@@ -5,7 +5,7 @@ import { Button, ButtonType } from '../../../components';
 import './index.scss';
 
 const topData = {
-  brandName: 'Apache Seata',
+  brandName: 'Apache Seata(incubating)',
   briefIntroduction: translate({
     id: 'homepage.briefIntroduction',
   }),
@@ -30,9 +30,9 @@ const Top = () => {
     forkCount: '',
   });
   const [releaseNote, setReleaseNote] = React.useState({
-    version: 'v1.7.1',
-    url: 'https://github.com/apache/incubator-seata/releases/tag/v1.7.1',
-    date: '2023/9/5',
+    version: 'v2.0.0',
+    url: 'https://github.com/apache/incubator-seata/releases/tag/v2.0.0',
+    date: '2023/11/24',
   });
 
   React.useEffect(() => {
