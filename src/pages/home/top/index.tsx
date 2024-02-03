@@ -5,7 +5,7 @@ import { Button, ButtonType } from '../../../components';
 import './index.scss';
 
 const topData = {
-  brandName: 'Apache Seata',
+  brandName: 'Apache Seata(incubating)',
   briefIntroduction: translate({
     id: 'homepage.briefIntroduction',
   }),
@@ -30,9 +30,9 @@ const Top = () => {
     forkCount: '',
   });
   const [releaseNote, setReleaseNote] = React.useState({
-    version: 'v1.7.1',
-    url: 'https://github.com/apache/incubator-seata/releases/tag/v1.7.1',
-    date: '2023/9/5',
+    version: 'v2.0.0',
+    url: 'https://github.com/apache/incubator-seata/releases/tag/v2.0.0',
+    date: '2023/11/24',
   });
 
   React.useEffect(() => {
@@ -82,7 +82,7 @@ const Top = () => {
               rel='noopener noreferrer'
             >
               <div className='star'>
-                <img src='https://img.alicdn.com/tfs/TB1FlB1JwHqK1RjSZFPXXcwapXa-32-32.png' />
+                <img src='/img/index/TB1FlB1JwHqK1RjSZFPXXcwapXa-32-32.png' />
                 <span className='type'>Star</span>
                 <span className='line' />
                 <span className='count'>{repo.starCount}</span>
@@ -94,7 +94,7 @@ const Top = () => {
               rel='noopener noreferrer'
             >
               <div className='fork'>
-                <img src='https://img.alicdn.com/tfs/TB1zbxSJwDqK1RjSZSyXXaxEVXa-32-32.png' />
+                <img src='/img/index/TB1zbxSJwDqK1RjSZSyXXaxEVXa-32-32.png' />
                 <span className='type'>Fork</span>
                 <span className='line' />
                 <span className='count'>{repo.forkCount}</span>
@@ -111,11 +111,11 @@ const Top = () => {
         <div className='animation'>
           <img
             className='img1'
-            src='//img.alicdn.com/tfs/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png'
+            src='/img/index/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png'
           />
           <img
             className='img2'
-            src='//img.alicdn.com/tfs/TB1iau9JcbpK1RjSZFyXXX_qFXa-914-1156.png'
+            src='/img/index/TB1iau9JcbpK1RjSZFyXXX_qFXa-914-1156.png'
           />
           <div className='outer-circle' />
           <div className='rotate-circle'>
@@ -140,15 +140,15 @@ const Top = () => {
           </div>
           <img
             className='img3'
-            src='//img.alicdn.com/tfs/TB1EBu.JgHqK1RjSZJnXXbNLpXa-914-1156.png'
+            src='/img/index/TB1EBu.JgHqK1RjSZJnXXbNLpXa-914-1156.png'
           />
           <img
             className='img4'
-            src='//img.alicdn.com/tfs/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
+            src='/img/index/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
           />
           <img
             className='img5'
-            src='//img.alicdn.com/tfs/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
+            src='/img/index/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
           />
         </div>
       </div>

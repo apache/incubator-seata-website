@@ -350,3 +350,11 @@ button[class*="tocCollapsibleButton"] {
     opacity: 1;
   }
 }
+
+.full_width_table_section {
+  table {
+    display: table;
+    width: 100%;
+    table-layout: auto;
+  }
+}
