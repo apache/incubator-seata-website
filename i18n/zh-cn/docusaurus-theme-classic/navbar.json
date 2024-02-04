@@ -43,8 +43,8 @@
     "message": "控制台样例",
     "description": "Navbar item with label Console sample"
   },
-  "item.label.Demos": {
-    "message": "样例",
+  "item.label.Designer": {
+    "message": "设计器",
     "description": "Navbar item with label Demos"
   },
   "item.label.Saga Designer": {
