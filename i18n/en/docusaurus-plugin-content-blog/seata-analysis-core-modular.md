@@ -100,7 +100,8 @@ public void onMessage(RpcMessage request, String serverAddress, ClientMessageSen
 
 Within the message class, the TransactionMessageHandler is responsible for handling messages of different types. Eventually, based on the different transaction types (AT, TCC, SAGE), specific handling classes, as mentioned in the second part, exceptionHandleTemplate(), are invoked.
 
-mergeSendExecutorService: This is a thread pool with only one thread responsible for merging and sending messages from different addresses. In the sendAsyncRequest() method, messages are offered to the queue LinkedBlockingQueue<> of the thread pool. The thread is then responsible for polling and processing messages.
+mergeSendExecutorService: This is a thread pool with only one thread responsible for merging and sending messages from different addresses. In the sendAsyncRequest() method, messages are offered to the queue LinkedBlockingQueue of the thread pool. The thread is then responsible for polling and processing messages.
+
 
 channelRead(): Handles server-side HeartbeatMessage.PONG heartbeat messages. Additionally, it processes MergeResultMessage, which are response messages for asynchronous messages. It retrieves the corresponding MessageFuture based on the msgId and sets the result of the asynchronous message.
 
