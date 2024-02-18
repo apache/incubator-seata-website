@@ -86,7 +86,7 @@ from("direct:creditReservation")
   .option("CreditId", body()) // mark the current body as needed in the compensating action
   .compensation("direct:creditRefund")
     .bean(creditService, "reserveCredit")
-    .log("Credit $\{header.amount} reserved. Custom Id used is $\{body}");
+    .log("Credit ${header.amount} reserved. Custom Id used is ${body}");
 
 // called only if the saga is cancelled
 from("direct:creditRefund")
