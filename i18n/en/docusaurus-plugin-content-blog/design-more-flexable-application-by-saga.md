@@ -71,10 +71,9 @@ The implementation of Saga does not lock data. Instead, it defines "compensating
 
 Here is an example of Java DSL:
 
-````java
+```java
 // Java DSL example goes here
 
-```java
 // action
 from("direct:reserveCredit")
   .bean(idService, "generateCustomId") // generate a custom Id and set it in the body
@@ -94,7 +93,7 @@ from("direct:creditRefund")
   .transform(header("CreditId")) // retrieve the CreditId option from headers
   .bean(creditService, "refundCredit")
   .log("Credit for Custom Id ${body} refunded");
-````
+```
 
 XML DSL sample:
 
