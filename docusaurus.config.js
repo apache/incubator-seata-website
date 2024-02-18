@@ -60,7 +60,8 @@ const config = {
   },
   scripts: [
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+      // src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+      src: '/js/gtag.js',
       async: true,
     },
   ],
@@ -99,13 +100,15 @@ const config = {
               tagName: 'script',
               attributes: {
                 type: 'text/javascript',
-                src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
+                // src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
+                src: '/js/hm.js',
               },
             },
             {
               tagName: 'script',
               attributes: {
-                src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
+                // src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
+                src: '/js/aplus_v2.js',
                 id: 'beacon-aplus',
                 exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
               },
@@ -113,7 +116,8 @@ const config = {
             {
               tagName: 'script',
               attributes: {
-                src: '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
+                // src: '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
+                src: '/js/tracker.js',
               },
             },
           ],
