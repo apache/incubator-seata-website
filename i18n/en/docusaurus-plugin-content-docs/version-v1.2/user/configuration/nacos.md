@@ -43,10 +43,10 @@ seata:
     type: nacos
     nacos:
       server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      group: 'SEATA_GROUP'
+      namespace: ''
+      username: 'nacos'
+      password: 'nacos'
 ```
 
 ### Server-side Configuration Center
@@ -71,6 +71,7 @@ config {
 ### Upload Configuration to Nacos Configuration Center
 
 #### Configuration through dataId
+
 1. Starting from version 1.4.2, it is supported to obtain all configuration information from a Nacos dataId. You just need to add an additional dataId configuration item.
 
 2. First, you need to create a new configuration in Nacos. The dataId here is seataServer.properties, and the configuration content refers to https://github.com/apache/incubator-seata/tree/develop/script/config-center/config.txt and modify it as needed.
@@ -83,18 +84,18 @@ seata:
     type: nacos
     nacos:
       server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      dataId: "seataServer.properties"
-      username: "nacos"
-      password: "nacos"
+      group: 'SEATA_GROUP'
+      namespace: ''
+      dataId: 'seataServer.properties'
+      username: 'nacos'
+      password: 'nacos'
 ```
 
 #### Upload Configuration to Nacos Using Script
 
 Refer to https://github.com/apache/incubator-seata/tree/develop/script/config-center/config.txt and make modifications. Then run the provided Nacos script in the repository to submit the information to the Nacos console. If any changes are needed, they can be directly made through the console.
 
-Example: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
+Example: sh $\{SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
 
 For detailed instructions, refer to the [Readme document](https://github.com/apache/incubator-seata/blob/develop/script/config-center/README.md)
 

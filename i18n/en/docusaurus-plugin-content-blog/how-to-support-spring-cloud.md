@@ -7,7 +7,7 @@ keywords: [fescar, seata, Distributed, transaction]
 
 # Fescar Integration with Spring Cloud: In-Depth Analysis of Source Code
 
-### Fescar 
+### Fescar
 
 Common distributed transaction approaches include XA based on 2PC (e.g., Atomikos), TCC (e.g., ByteTCC) focusing on the business layer, and transactional messaging (e.g., RocketMQ Half Message). XA is a protocol for distributed transactions that requires support from local databases. However, the resource locking at the database level can lead to poor performance. On the other hand, TCC, introduced by Alibaba as a preacher, requires a significant amount of business code to ensure transactional consistency, resulting in higher development and maintenance costs.
 
@@ -31,7 +31,6 @@ The RM manages the underlying database through proxying the JDBC data source. It
 
 This covers the general flow and model division of Fescar. Now, let's proceed with the analysis of Fescar's transaction propagation mechanism.
 
-
 ### Fescar Transaction Propagation Mechanism
 
 The transaction propagation in Fescar includes both nested transaction calls within an application and transaction propagation across different services. So, how does Fescar propagate transactions in a microservices call chain? Fescar provides a transaction API that allows users to manually bind a transaction's XID and join it to the global transaction. Therefore, depending on the specific service framework mechanism, we can propagate the XID in the call chain to achieve transaction propagation.
@@ -43,11 +42,12 @@ The RPC request process consists of two parts: the caller and the callee. We nee
 This section of the source code is entirely from spring-cloud-alibaba-fescar. The source code analysis mainly includes three parts: AutoConfiguration, the microservice provider, and the microservice consumer. Regarding the microservice consumer, it can be further divided into two specific approaches: RestTemplate and Feign. For the Feign request approach, it is further categorized into usage patterns that integrate with Hystrix and Sentine.
 
 #### Fescar AutoConfiguration
+
 For the AutoConfiguration analysis, this section will only cover the parts related to the startup of Fescar. The analysis of other parts will be interspersed in the 'Microservice Provider' and 'Microservice Consumer' sections.
 
 The startup of Fescar requires the configuration of GlobalTransactionScanner. The GlobalTransactionScanner is responsible for initializing Fescar's RM client, TM client, and automatically proxying classes annotated with the GlobalTransactional annotation. The startup of the GlobalTransactionScanner bean is loaded and injected through GlobalTransactionAutoConfiguration, which also injects FescarProperties.
 
-FescarProperties contains important properties of Fescar, such as txServiceGroup. The value of this property can be read from the application.properties file using the key 'spring.cloud.alibaba.fescar.txServiceGroup', with a default value of '${spring.application.name}-fescar-service-group'. txServiceGroup represents the logical transaction group name in Fescar. This group name is obtained from the configuration center (currently supporting file and Apollo) to retrieve the TC cluster name corresponding to the logical transaction group name. The TC cluster's service name is then constructed based on the cluster name. The RM client, TM client, and TC interact through RPC by using the registry center (currently supporting Nacos, Redis, ZooKeeper, and Eureka) and the service name to find available TC service nodes.
+FescarProperties contains important properties of Fescar, such as txServiceGroup. The value of this property can be read from the application.properties file using the key 'spring.cloud.alibaba.fescar.txServiceGroup', with a default value of '$\{spring.application.name}-fescar-service-group'. txServiceGroup represents the logical transaction group name in Fescar. This group name is obtained from the configuration center (currently supporting file and Apollo) to retrieve the TC cluster name corresponding to the logical transaction group name. The TC cluster's service name is then constructed based on the cluster name. The RM client, TM client, and TC interact through RPC by using the registry center (currently supporting Nacos, Redis, ZooKeeper, and Eureka) and the service name to find available TC service nodes.
 
 #### Microservice Provider
 
@@ -150,20 +150,17 @@ public class FescarHandlerInterceptor implements HandlerInterceptor {
 
 ```
 
-
-
 The preHandle method is called before the request is executed. The xid parameter represents the unique identifier of the global transaction already bound to the current transaction context, while rpcXid represents the global transaction identifier that needs to be bound to the request and is passed through the HTTP header. In the preHandle method, it checks if there is no XID in the current transaction context and if rpcXid is not empty. If so, it binds rpcXid to the current transaction context.
 
 The afterCompletion method is called after the request is completed and is used to perform resource cleanup actions. Fescar uses the RootContext.unbind() method to unbind the XID involved in the transaction context. The logic in the if statement is for code robustness. If rpcXid and unbindXid are not equal, it rebinds unbindXid.
 
 For Spring Cloud, the default RPC method is HTTP. Therefore, for the provider, there is no need to differentiate the request interception method. It only needs to extract the XID from the header and bind it to its own transaction context. However, for the consumer, due to the variety of request components, including circuit breakers and isolation mechanisms, different situations need to be distinguished and handled. We will analyze this in more detail later.
 
-
 #### Microservice Consumer
 
 Fescar categorizes the request methods into RestTemplate, Feign, Feign+Hystrix, and Feign+Sentinel. Different components are automatically configured through Spring Boot's Auto Configuration. The specific configuration classes can be found in the spring.factories file, and we will also discuss the relevant configuration classes later in this document.
 
-#####  RestTemplate
+##### RestTemplate
 
 Let's take a look at how Fescar passes XID if the consumer is using RestTemplate for requests.
 
@@ -297,7 +294,6 @@ SentinelFeign.builder().retryer(Retryer.NEVER_RETRY)
 Feign.builder().client(new FescarFeignClient(beanFactory));
 ```
 
-
 FescarFeignClient is an enhancement of the original Feign client proxy.
 
 ```java
@@ -349,7 +345,6 @@ public class FescarFeignClient implements Client {
 	}
 
 ```
-
 
 In the above process, we can see that FescarFeignClient modifies the original Request. It first retrieves the XID from the current transaction context and, if the XID is not empty, adds it to the request's header.
 
@@ -430,6 +425,7 @@ For Feign Clients, the FeignClientFactoryBean retrieves an instance of FeignCont
 				this.type, this.name, url));
 	}
 ```
+
 The above code determines whether to make a direct call to the specified URL or use load balancing based on whether the URL parameter is specified in the annotation. The targeter.target method creates the object through dynamic proxy. The general process is as follows: the parsed Feign methods are stored in a map, and then passed as a parameter to generate the InvocationHandler, which in turn generates the dynamic proxy object.
 
 The presence of FescarContextBeanPostProcessor ensures that even if developers customize operations on FeignClient, the enhancement of global transactions required by Fescar can still be achieved.
@@ -548,9 +544,7 @@ public class FescarHystrixAutoConfiguration {
 
 - spring-cloud-openfeign: https://github.com/spring-cloud/spring-cloud-openfeign
 
- ### author
+### author
 
-  kangshu.guo，Community nickname ywind, formerly employed at Huawei Terminal Cloud, currently a Java engineer at Sohu Intelligent Media Center. Mainly responsible for development related to Sohu accounts. Has a strong interest in distributed transactions, distributed systems, and microservices architecture.
-  min.ji(qinming)，Community nickname slievrly, Fescar project leader, core developer of Alibaba middleware TXC/GTS. Engaged in core research and development work in distributed middleware for a long time. Has extensive technical expertise in the field of distributed transactions.
-
-
+kangshu.guo，Community nickname ywind, formerly employed at Huawei Terminal Cloud, currently a Java engineer at Sohu Intelligent Media Center. Mainly responsible for development related to Sohu accounts. Has a strong interest in distributed transactions, distributed systems, and microservices architecture.
+min.ji(qinming)，Community nickname slievrly, Fescar project leader, core developer of Alibaba middleware TXC/GTS. Engaged in core research and development work in distributed middleware for a long time. Has extensive technical expertise in the field of distributed transactions.

@@ -18,8 +18,7 @@ A business logic for user purchasing commodities. The whole business logic is po
 
 ### Architecture
 
-![Architecture](/img/architecture.png) 
-
+![Architecture](/img/architecture.png)
 
 ### StorageService
 
@@ -107,7 +106,7 @@ public class OrderServiceImpl implements OrderService {
 
 ![](/img/solution.png)
 
-We just need an annotation `@GlobalTransactional` on business method: 
+We just need an annotation `@GlobalTransactional` on business method:
 
 ```java
 
@@ -123,7 +122,7 @@ We just need an annotation `@GlobalTransactional` on business method:
 
 - Requirement: MySQL with InnoDB engine.
 
-**Note:** In fact, there should be 3 database for the 3 services in the example use case. However, we can just create one database and configure 3 data sources for simple. 
+**Note:** In fact, there should be 3 database for the 3 services in the example use case. However, we can just create one database and configure 3 data sources for simple.
 
 Modify Spring XML with the database URL/username/password you just created.
 
@@ -136,6 +135,7 @@ dubbo-storage-service.xml
         <property name="username" value="xxx" />
         <property name="password" value="xxx" />
 ```
+
 ### Step 2: Create UNDO_LOG table
 
 `UNDO_LOG` table is required by SEATA AT mode.
@@ -190,9 +190,10 @@ CREATE TABLE `account_tbl` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+
 ### Step 4: Start Server
 
-- Download server package from <https://github.com/apache/incubator-seata/releases>, unzip it.
+- Download server package from https://github.com/apache/incubator-seata/releases, unzip it.
 
 ```shell
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]

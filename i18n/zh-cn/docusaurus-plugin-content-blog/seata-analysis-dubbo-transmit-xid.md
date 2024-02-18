@@ -1,18 +1,18 @@
 ---
 title: 源码分析Seata-XID传递 Dubbo篇
-keywords: [Seata,Dubbo,分布式事务,spring]
+keywords: [Seata, Dubbo, 分布式事务, spring]
 description: 本文讲述通过源码解析Seata-Dubbo传递XID
 author: FUNKYE
 date: 2020/01/01
 ---
 
-# 源码分析Seata-XID传递 Dubbo篇
+# 源码分析 Seata-XID 传递 Dubbo 篇
 
 本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
 
 # 前言
 
-​	1.首先来看下包结构,在seata-dubbo和seata-dubbo-alibaba下有统一由TransactionPropagationFilter这个类,分别对应apache-dubbo跟alibaba-dubbo.
+​ 1.首先来看下包结构,在 seata-dubbo 和 seata-dubbo-alibaba 下有统一由 TransactionPropagationFilter 这个类,分别对应 apache-dubbo 跟 alibaba-dubbo.
 
 ![20200101203229](/img/blog/20200101203229.png)
 
@@ -104,13 +104,13 @@ public class TransactionPropagationFilter implements Filter {
 }
 ```
 
-​	1.根据源码,我们可以推出相应的逻辑处理
+​ 1.根据源码,我们可以推出相应的逻辑处理
 
 ![20200101213336](/img/blog/20200101213336.png)
 
 ## 要点知识
 
-​	1.Dubbo @Activate注解:
+​ 1.Dubbo @Activate 注解:
 
 ```java
 @Documented
@@ -154,9 +154,9 @@ public @interface Activate {
 }
 ```
 
-可以分析得知,Seata的dubbo过滤器上的注解@Activate(group = {Constants.PROVIDER, Constants.CONSUMER}, order = 100),表示dubbo的服务提供方跟消费方都会触发到这个过滤器,所以我们的Seata发起者会产生一个XID的传递,上述流程图跟代码已经很清晰的表示了.
+可以分析得知,Seata 的 dubbo 过滤器上的注解@Activate(group = \{Constants.PROVIDER, Constants.CONSUMER}, order = 100),表示 dubbo 的服务提供方跟消费方都会触发到这个过滤器,所以我们的 Seata 发起者会产生一个 XID 的传递,上述流程图跟代码已经很清晰的表示了.
 
-​	2.Dubbo隐式传参可以通过 `RpcContext` 上的 `setAttachment` 和 `getAttachment` 在服务消费方和提供方之间进行参数的隐式传递。
+​ 2.Dubbo 隐式传参可以通过 `RpcContext` 上的 `setAttachment` 和 `getAttachment` 在服务消费方和提供方之间进行参数的隐式传递。
 
 获取:RpcContext.getContext().getAttachment(RootContext.KEY_XID);
 
@@ -164,4 +164,4 @@ public @interface Activate {
 
 # 总结
 
-更多源码阅读请访问[Seata官网](https://seata.apache.org/)
+更多源码阅读请访问[Seata 官网](https://seata.apache.org/)

@@ -4,7 +4,6 @@ keywords: [Seata, Release Notes]
 description: This article will introduce you how to understand the details of each version and upgrade matters needing attention.
 ---
 
-
 # Downloads
 
 # Seata
@@ -13,7 +12,6 @@ description: This article will introduce you how to understand the details of ea
 >
 > Release Notes: https://github.com/apache/incubator-seata/releases
 
-
 ### 1.6.1 (2022-12-21)
 
 [source](https://github.com/apache/incubator-seata/archive/v1.6.1.zip) |
@@ -21,7 +19,6 @@ description: This article will introduce you how to understand the details of ea
 
 <details>
   <summary><mark>Release notes</mark></summary>
-
 
 ### Seata 1.6.1
 
@@ -32,12 +29,15 @@ Seata is an easy-to-use, high-performance, open source distributed transaction s
 The version is updated as follows:
 
 ### feature:
+
 - [[#5115](https://github.com/apache/incubator-seata/pull/5115)] support for `spring-boot:3.x`
 
 ### bugfix:
+
 - [[#5179](https://github.com/apache/incubator-seata/pull/5179)] fix ClassNotFoundException when server starts using Eureka
 
 ### optimize:
+
 - [[#5120](https://github.com/apache/incubator-seata/pull/5120)] unify the format of configuration items in yml files
 - [[#5180](https://github.com/apache/incubator-seata/pull/5180)] GlobalTransactionScanner,SeataAutoDataSourceProxyCreator declare @bean methods as static
 - [[#5182](https://github.com/apache/incubator-seata/pull/5182)] fix some security vulnerabilities in GGEditor
@@ -46,6 +46,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [wangliang181230](https://github.com/wangliang181230)
 - [xingfudeshi](https://github.com/xingfudeshi)
@@ -71,7 +72,6 @@ Also, we receive many valuable issues, questions and advices from our community.
 <details>
   <summary><mark>Release notes</mark></summary>
 
-
 ### Seata 1.6.0
 
 Seata 1.6.0 Released
@@ -81,6 +81,7 @@ Seata is an easy-to-use, high-performance, open source distributed transaction s
 The version is updated as follows:
 
 ### feature：
+
 - [[#4863](https://github.com/apache/incubator-seata/pull/4863)] support oracle and postgresql multi primary key
 - [[#4649](https://github.com/apache/incubator-seata/pull/4649)] seata-server support multiple registry
 - [[#4779](https://github.com/apache/incubator-seata/pull/4779)] support Apache Dubbo3
@@ -91,8 +92,8 @@ The version is updated as follows:
 - [[#5111](https://github.com/apache/incubator-seata/pull/5111)] support Nacos contextPath
 - [[#4802](https://github.com/apache/incubator-seata/pull/4802)] dockerfile support arm64
 
-
 ### bugfix：
+
 - [[#4780](https://github.com/apache/incubator-seata/pull/4780)] fix can't post TimeoutRollbacked event after a successful timeout rollback
 - [[#4954](https://github.com/apache/incubator-seata/pull/4954)] fix output expression incorrectly throws npe
 - [[#4817](https://github.com/apache/incubator-seata/pull/4817)] fix in high version springboot property not Standard
@@ -101,7 +102,7 @@ The version is updated as follows:
 - [[#4912](https://github.com/apache/incubator-seata/pull/4912)] fix mysql InsertOnDuplicateUpdate column case is different and cannot be matched
 - [[#4543](https://github.com/apache/incubator-seata/pull/4543)] fix support Oracle nclob types
 - [[#4915](https://github.com/apache/incubator-seata/pull/4915)] fix failed to get server recovery properties
-- [[#4919](https://github.com/apache/incubator-seata/pull/4919)] fix XID port  and  address null:0 before coordinator.init
+- [[#4919](https://github.com/apache/incubator-seata/pull/4919)] fix XID port and address null:0 before coordinator.init
 - [[#4928](https://github.com/apache/incubator-seata/pull/4928)] fix rpcContext.getClientRMHolderMap NPE
 - [[#4953](https://github.com/apache/incubator-seata/pull/4953)] fix InsertOnDuplicateUpdate bypass modify pk
 - [[#4978](https://github.com/apache/incubator-seata/pull/4978)] fix kryo support circular reference
@@ -110,7 +111,7 @@ The version is updated as follows:
 - [[#5004](https://github.com/apache/incubator-seata/pull/5004)] fix duplicate image row for update join
 - [[#5032](https://github.com/apache/incubator-seata/pull/5032)] fix mysql InsertOnDuplicateUpdate sql query error caused by placeholder index calculation error
 - [[#5033](https://github.com/apache/incubator-seata/pull/5033)] fix null exception when sql columns is empty for insert on duplicate
-- [[#5038](https://github.com/apache/incubator-seata/pull/5038)] remove @EnableConfigurationProperties({SagaAsyncThreadPoolProperties.class})
+- [[#5038](https://github.com/apache/incubator-seata/pull/5038)] remove @EnableConfigurationProperties(\{SagaAsyncThreadPoolProperties.class})
 - [[#5050](https://github.com/apache/incubator-seata/pull/5050)] fix global session is not change to Committed in saga mode
 - [[#5052](https://github.com/apache/incubator-seata/pull/5052)] fix update join condition placeholder param error
 - [[#5031](https://github.com/apache/incubator-seata/pull/5031)] fix mysql InsertOnDuplicateUpdate should not use null index value as image sql query condition
@@ -128,6 +129,7 @@ The version is updated as follows:
 - [[#5163](https://github.com/apache/incubator-seata/pull/5163)] fix bad service configuration file and compilation failure
 
 ### optimize：
+
 - [[#4774](https://github.com/apache/incubator-seata/pull/4774)] optimize mysql8 dependencies for seataio/seata-server image
 - [[#4790](https://github.com/apache/incubator-seata/pull/4790)] Add a github action to publish Seata to OSSRH
 - [[#4765](https://github.com/apache/incubator-seata/pull/4765)] mysql 8.0.29 not should be hold for connection
@@ -168,6 +170,7 @@ The version is updated as follows:
 - [[#4434](https://github.com/apache/incubator-seata/pull/4434)] remove seata-server's CMS parameters
 
 ### test:
+
 - [[#4411](https://github.com/apache/incubator-seata/pull/4411)] add UT for oracle in AT mode
 - [[#4794](https://github.com/apache/incubator-seata/pull/4794)] try to fix the test `DataSourceProxyTest.getResourceIdTest()`
 - [[#5101](https://github.com/apache/incubator-seata/pull/5101)] fix ClassNotFoundException during the zk unit test
@@ -175,6 +178,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [renliangyu857](https://github.com/renliangyu857)
 - [wangliang181230](https://github.com/wangliang181230)
@@ -209,7 +213,6 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [xingfudeshi](https://github.com/xingfudeshi)
 - [odidev](https://github.com/odidev)
 - [miaoxueyu](https://github.com/miaoxueyu)
-
 
 Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 

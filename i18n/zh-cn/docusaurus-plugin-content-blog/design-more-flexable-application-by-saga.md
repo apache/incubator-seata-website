@@ -1,10 +1,11 @@
 ---
 title: 基于 Seata Saga 设计更有弹性的金融应用
-keywords: [Saga,Seata,一致性,金融,弹性,分布式,事务]
+keywords: [Saga, Seata, 一致性, 金融, 弹性, 分布式, 事务]
 description: 本文从金融分布式应用开发的一些痛点出发，结合理论和实践对社区和行业的解决方案进行了分析，并讲解了如何基于Seata saga设计更有弹性的金融应用
 author: long187
 date: 2019-11-04
 ---
+
 # 基于 Seata Saga 设计更有弹性的金融应用
 
 Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套一站式分布式事务解决方案，提供了 AT、TCC、Saga 和 XA 事务模式，本文详解其中的 Saga 模式。<br />项目地址：[https://github.com/apache/incubator-seata](https://github.com/apache/incubator-seata)
@@ -12,6 +13,7 @@ Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套
 本文作者：屹远（陈龙），蚂蚁金服分布式事务核心研发，Seata Committer。
 
 <a name="uTwja"></a>
+
 # 金融分布式应用开发的痛点
 
 分布式系统有一个比较明显的问题就是，一个业务流程需要组合一组服务。这样的事情在微服务下就更为明显了，因为这需要业务上的一致性的保证。也就是说，如果一个步骤失败了，那么要么回滚到以前的服务调用，要么不断重试保证所有的步骤都成功。---《左耳听风-弹力设计之“补偿事务”》
@@ -48,25 +50,26 @@ Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套
 
 对于事务我们都知道 ACID，也很熟悉 CAP 理论最多只能满足其中两个，所以，为了提高性能，出现了 ACID 的一个变种 BASE。ACID 强调的是一致性（CAP 中的 C），而 BASE 强调的是可用性（CAP 中的 A）。我们知道，在很多情况下，我们是无法做到强一致性的 ACID 的。特别是我们需要跨多个系统的时候，而且这些系统还不是由一个公司所提供的。BASE 的系统倾向于设计出更加有弹力的系统，在短时间内，就算是有数据不同步的风险，我们也应该允许新的交易可以发生，而后面我们在业务上将可能出现问题的事务通过补偿的方式处理掉，以保证最终的一致性。
 
-所以我们在实际开发中会进行取舍，对于更多的金融核心以上的业务系统可以采用补偿事务，补偿事务处理方面在30年前就提出了 Saga 理论，随着微服务的发展，近些年才逐步受到大家的关注。目前业界比较也公认 Saga 是作为长事务的解决方案。
-> [https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf](https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf)[1]
-> [http://microservices.io/patterns/data/saga.html](http://microservices.io/patterns/data/saga.html)[2]
+所以我们在实际开发中会进行取舍，对于更多的金融核心以上的业务系统可以采用补偿事务，补偿事务处理方面在 30 年前就提出了  Saga 理论，随着微服务的发展，近些年才逐步受到大家的关注。目前业界比较也公认 Saga 是作为长事务的解决方案。
 
+> [https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf](https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf)[1] > [http://microservices.io/patterns/data/saga.html](http://microservices.io/patterns/data/saga.html)[2]
 
 <a name="k8kbY"></a>
 
 # 社区和业界的方案
 
 <a name="Oc5Er"></a>
+
 ## Apache Camel Saga
 
-Camel 是实现 EIP（Enterprise Integration Patterns）企业集成模式的一款开源产品，它基于事件驱动的架构，有着良好的性能和吞吐量，它在2.21版本新增加了 Saga EIP。
+Camel 是实现 EIP（Enterprise Integration Patterns）企业集成模式的一款开源产品，它基于事件驱动的架构，有着良好的性能和吞吐量，它在 2.21 版本新增加了 Saga EIP。
 
-Saga EIP 提供了一种方式可以通过 camel route 定义一系列有关联关系的 Action，这些 Action 要么都执行成功，要么都回滚，Saga 可以协调任何通讯协议的分布式服务或本地服务，并达到全局的最终一致性。Saga 不要求整个处理在短时间内完成，因为它不占用任何数据库锁，它可以支持需要长时间处理的请求，从几秒到几天，Camel 的 Saga EIP 是基于 [Microprofile 的 LRA](https://github.com/eclipse/microprofile-sandbox/tree/master/proposals/0009-LRA)[3]（Long Running Action），同样也是支持协调任何通讯协议任何语言实现的分布式服务。
+Saga EIP 提供了一种方式可以通过 camel route 定义一系列有关联关系的 Action，这些 Action 要么都执行成功，要么都回滚，Saga 可以协调任何通讯协议的分布式服务或本地服务，并达到全局的最终一致性。Saga 不要求整个处理在短时间内完成，因为它不占用任何数据库锁，它可以支持需要长时间处理的请求，从几秒到几天，Camel 的 Saga EIP 是基于  [Microprofile 的 LRA](https://github.com/eclipse/microprofile-sandbox/tree/master/proposals/0009-LRA)[3]（Long Running Action），同样也是支持协调任何通讯协议任何语言实现的分布式服务。
 
 Saga 的实现不会对数据进行加锁，而是在给操作定义它的“补偿操作”，当正常流程执行出错的时候触发那些已经执行过的操作的“补偿操作”，将流程回滚掉。“补偿操作”可以在 Camel route 上用 Java 或 XML DSL（Definition Specific Language）来定义。
 
 下面是一个 Java DSL 示例：
+
 ```java
 // action
 from("direct:reserveCredit")
@@ -90,6 +93,7 @@ from("direct:creditRefund")
 ```
 
 XML DSL 示例：
+
 ```xml
 <route>
   <from uri="direct:start"/>
@@ -112,7 +116,7 @@ XML DSL 示例：
 
 ## Eventuate Tram Saga
 
-[Eventuate Tram Saga](https://github.com/eventuate-tram/eventuate-tram-sagas)[4] 框架是使用 JDBC / JPA 的 Java 微服务的一个 Saga 框架。它也和 Camel Saga 一样采用了 Java DSL 来定义补偿操作：
+[Eventuate Tram Saga](https://github.com/eventuate-tram/eventuate-tram-sagas)[4]  框架是使用 JDBC / JPA 的 Java 微服务的一个 Saga 框架。它也和 Camel Saga 一样采用了  Java DSL 来定义补偿操作：
 
 ```java
 public class CreateOrderSaga implements SimpleSaga<CreateOrderSagaData> {
@@ -148,13 +152,13 @@ public class CreateOrderSaga implements SimpleSaga<CreateOrderSagaData> {
 
 ## Apache ServiceComb Saga
 
-[ServiceComb Saga](https://github.com/apache/incubator-servicecomb-saga)[5] 也是一个微服务应用的数据最终一致性解决方案。相对于 [TCC](http://design.inf.usi.ch/sites/default/files/biblio/rest-tcc.pdf) 而言，在 try 阶段，Saga 会直接提交事务，后续 rollback 阶段则通过反向的补偿操作来完成。与前面两种不同是它是采用 Java 注解+拦截器的方式来进行“补偿”服务的定义。<br />
+[ServiceComb Saga](https://github.com/apache/incubator-servicecomb-saga)[5]  也是一个微服务应用的数据最终一致性解决方案。相对于  [TCC](http://design.inf.usi.ch/sites/default/files/biblio/rest-tcc.pdf)  而言，在 try 阶段，Saga 会直接提交事务，后续 rollback 阶段则通过反向的补偿操作来完成。与前面两种不同是它是采用 Java 注解+拦截器的方式来进行“补偿”服务的定义。<br />
 
 <a name="ouwrmp"></a>
 
 #### 架构：
 
-Saga 是由 **alpha** 和 **omega **组成，其中：
+Saga 是由  **alpha**  和  **omega **组成，其中：
 
 - alpha 充当协调者的角色，主要负责对事务进行管理和协调；<br />
 - omega 是微服务中内嵌的一个 agent，负责对网络请求进行拦截并向 alpha 上报事务事件；<br />
@@ -165,6 +169,7 @@ Saga 是由 **alpha** 和 **omega **组成，其中：
 <a name="ggflbq"></a>
 
 #### 使用示例：
+
 ```java
 public class ServiceA extends AbsService implements IServiceA {
 
@@ -232,10 +237,9 @@ public class ServiceA extends AbsService implements IServiceA {
 | 状态机+DSL       | <br />- 可以用可视化工具来定义业务流程，标准化，可读性高，可实现服务编排的功能<br />- 提高业务分析人员与程序开发人员的沟通效率<br />- 业务状态管理：流程本质就是一个状态机，可以很好的反映业务状态的流转<br />- 提高异常处理灵活性：可以实现宕机恢复后的“向前重试”或“向后补偿”<br />- 天然可以使用 Actor 模型或 SEDA 架构等异步处理引擎来执行，提高整体吞吐量<br /> | <br />- 业务流程实际是由 JAVA 程序与 DSL 配置组成，程序与配置分离，开发起来比较繁琐<br />- 如果是改造现有业务，对业务侵入性高<br />- 引擎实现成本高<br />                     |
 | 拦截器+java 注解 | <br />- 程序与注解是在一起的，开发简单，学习成本低<br />- 方便接入现有业务<br />- 基于动态代理拦截器，框架实现成本低<br />                                                                                                                                                                                                                                          | <br />- 框架无法提供 Actor 模型或 SEDA 架构等异步处理模式来提高系统吞吐量<br />- 框架无法提供业务状态管理<br />- 难以实现宕机恢复后的“向前重试”，因为无法恢复线程上下文<br /> |
 
-
 <a name="EKm6f"></a>
 
-# 
+#
 
 <a name="tw6CG"></a>
 
@@ -248,10 +252,9 @@ Seata Saga 采用了状态机+DSL 方案来实现，原因有以下几个：
 - 状态机+DSL 方案在实际生产中应用更广泛；
 - 可以使用 Actor 模型或 SEDA 架构等异步处理引擎来执行，提高整体吞吐量；
 - 通常在核心系统以上层的业务系统会伴随有“服务编排”的需求，而服务编排又有事务最终一致性要求，两者很难分割开，状态机+DSL 方案可以同时满足这两个需求；
-- 由于 Saga 模式在理论上是不保证隔离性的，在极端情况下可能由于脏写无法完成回滚操作，比如举一个极端的例子, 分布式事务内先给用户 A 充值，然后给用户 B 扣减余额，如果在给A用户充值成功，在事务提交以前，A 用户把线消费掉了，如果事务发生回滚，这时则没有办法进行补偿了，有些业务场景可以允许让业务最终成功，在回滚不了的情况下可以继续重试完成后面的流程，状态机+DSL的方案可以实现“向前”恢复上下文继续执行的能力, 让业务最终执行成功，达到最终一致性的目的。
+- 由于 Saga 模式在理论上是不保证隔离性的，在极端情况下可能由于脏写无法完成回滚操作，比如举一个极端的例子, 分布式事务内先给用户 A 充值，然后给用户 B 扣减余额，如果在给 A 用户充值成功，在事务提交以前，A 用户把线消费掉了，如果事务发生回滚，这时则没有办法进行补偿了，有些业务场景可以允许让业务最终成功，在回滚不了的情况下可以继续重试完成后面的流程，状态机+DSL 的方案可以实现“向前”恢复上下文继续执行的能力, 让业务最终执行成功，达到最终一致性的目的。
 
 > 在不保证隔离性的情况下：业务流程设计时要遵循“宁可长款, 不可短款”的原则，长款意思是客户少了线机构多了钱，以机构信誉可以给客户退款，反之则是短款，少的线可能追不回来了。所以在业务流程设计上一定是先扣款。
-
 
 <a name="4yL9U"></a>
 
@@ -260,11 +263,12 @@ Seata Saga 采用了状态机+DSL 方案来实现，原因有以下几个：
 1. 通过状态图来定义服务调用的流程并生成 json 状态语言定义文件；
 2. 状态图中一个节点可以是调用一个服务，节点可以配置它的补偿节点；
 3. 状态图 json 由状态机引擎驱动执行，当出现异常时状态引擎反向执行已成功节点对应的补偿节点将事务回滚；
-> 注意: 异常发生时是否进行补偿也可由用户自定义决定
+
+   > 注意: 异常发生时是否进行补偿也可由用户自定义决定
 
 4. 可以实现服务编排需求，支持单项选择、并发、异步、子状态机、参数转换、参数映射、服务执行状态判断、异常捕获等功能；
 
-假设有一个业务流程要调两个服务，先调库存扣减（InventoryService），再调余额扣减（BalanceService），保证在一个分布式内要么同时成功，要么同时回滚。两个参与者服务都有一个 reduce 方法，表示库存扣减或余额扣减，还有一个 compensateReduce 方法，表示补偿扣减操作。以 InventoryService 为例看一下它的接口定义：
+假设有一个业务流程要调两个服务，先调库存扣减（InventoryService），再调余额扣减（BalanceService），保证在一个分布式内要么同时成功，要么同时回滚。两个参与者服务都有一个 reduce 方法，表示库存扣减或余额扣减，还有一个 compensateReduce 方法，表示补偿扣减操作。以  InventoryService 为例看一下它的接口定义：
 
 ```java
 public interface InventoryService {
@@ -295,103 +299,94 @@ public interface InventoryService {
 
 ```json
 {
-    "Name": "reduceInventoryAndBalance",
-    "Comment": "reduce inventory then reduce balance in a transaction",
-    "StartState": "ReduceInventory",
-    "Version": "0.0.1",
-    "States": {
-        "ReduceInventory": {
-            "Type": "ServiceTask",
-            "ServiceName": "inventoryAction",
-            "ServiceMethod": "reduce",
-            "CompensateState": "CompensateReduceInventory",
-            "Next": "ChoiceState",
-            "Input": [
-                "$.[businessKey]",
-                "$.[count]"
-            ],
-            "Output": {
-                "reduceInventoryResult": "$.#root"
-            },
-            "Status": {
-                "#root == true": "SU",
-                "#root == false": "FA",
-                "$Exception{java.lang.Throwable}": "UN"
-            }
-        },
-        "ChoiceState":{
-            "Type": "Choice",
-            "Choices":[
-                {
-                    "Expression":"[reduceInventoryResult] == true",
-                    "Next":"ReduceBalance"
-                }
-            ],
-            "Default":"Fail"
-        },
-        "ReduceBalance": {
-            "Type": "ServiceTask",
-            "ServiceName": "balanceAction",
-            "ServiceMethod": "reduce",
-            "CompensateState": "CompensateReduceBalance",
-            "Input": [
-                "$.[businessKey]",
-                "$.[amount]",
-                {
-                    "throwException" : "$.[mockReduceBalanceFail]"
-                }
-            ],
-            "Output": {
-                "compensateReduceBalanceResult": "$.#root"
-            },
-            "Status": {
-                "#root == true": "SU",
-                "#root == false": "FA",
-                "$Exception{java.lang.Throwable}": "UN"
-            },
-            "Catch": [
-                {
-                    "Exceptions": [
-                        "java.lang.Throwable"
-                    ],
-                    "Next": "CompensationTrigger"
-                }
-            ],
-            "Next": "Succeed"
-        },
-        "CompensateReduceInventory": {
-            "Type": "ServiceTask",
-            "ServiceName": "inventoryAction",
-            "ServiceMethod": "compensateReduce",
-            "Input": [
-                "$.[businessKey]"
-            ]
-        },
-        "CompensateReduceBalance": {
-            "Type": "ServiceTask",
-            "ServiceName": "balanceAction",
-            "ServiceMethod": "compensateReduce",
-            "Input": [
-                "$.[businessKey]"
-            ]
-        },
-        "CompensationTrigger": {
-            "Type": "CompensationTrigger",
-            "Next": "Fail"
-        },
-        "Succeed": {
-            "Type":"Succeed"
-        },
-        "Fail": {
-            "Type":"Fail",
-            "ErrorCode": "PURCHASE_FAILED",
-            "Message": "purchase failed"
+  "Name": "reduceInventoryAndBalance",
+  "Comment": "reduce inventory then reduce balance in a transaction",
+  "StartState": "ReduceInventory",
+  "Version": "0.0.1",
+  "States": {
+    "ReduceInventory": {
+      "Type": "ServiceTask",
+      "ServiceName": "inventoryAction",
+      "ServiceMethod": "reduce",
+      "CompensateState": "CompensateReduceInventory",
+      "Next": "ChoiceState",
+      "Input": ["$.[businessKey]", "$.[count]"],
+      "Output": {
+        "reduceInventoryResult": "$.#root"
+      },
+      "Status": {
+        "#root == true": "SU",
+        "#root == false": "FA",
+        "$Exception{java.lang.Throwable}": "UN"
+      }
+    },
+    "ChoiceState": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Expression": "[reduceInventoryResult] == true",
+          "Next": "ReduceBalance"
         }
+      ],
+      "Default": "Fail"
+    },
+    "ReduceBalance": {
+      "Type": "ServiceTask",
+      "ServiceName": "balanceAction",
+      "ServiceMethod": "reduce",
+      "CompensateState": "CompensateReduceBalance",
+      "Input": [
+        "$.[businessKey]",
+        "$.[amount]",
+        {
+          "throwException": "$.[mockReduceBalanceFail]"
+        }
+      ],
+      "Output": {
+        "compensateReduceBalanceResult": "$.#root"
+      },
+      "Status": {
+        "#root == true": "SU",
+        "#root == false": "FA",
+        "$Exception{java.lang.Throwable}": "UN"
+      },
+      "Catch": [
+        {
+          "Exceptions": ["java.lang.Throwable"],
+          "Next": "CompensationTrigger"
+        }
+      ],
+      "Next": "Succeed"
+    },
+    "CompensateReduceInventory": {
+      "Type": "ServiceTask",
+      "ServiceName": "inventoryAction",
+      "ServiceMethod": "compensateReduce",
+      "Input": ["$.[businessKey]"]
+    },
+    "CompensateReduceBalance": {
+      "Type": "ServiceTask",
+      "ServiceName": "balanceAction",
+      "ServiceMethod": "compensateReduce",
+      "Input": ["$.[businessKey]"]
+    },
+    "CompensationTrigger": {
+      "Type": "CompensationTrigger",
+      "Next": "Fail"
+    },
+    "Succeed": {
+      "Type": "Succeed"
+    },
+    "Fail": {
+      "Type": "Fail",
+      "ErrorCode": "PURCHASE_FAILED",
+      "Message": "purchase failed"
     }
+  }
 }
 ```
 
-状态语言在一定程度上参考了 [AWS Step Functions](https://docs.aws.amazon.com/zh_cn/step-functions/latest/dg/tutorial-creating-lambda-state-machine.html)[7]。
+状态语言在一定程度上参考了  [AWS Step Functions](https://docs.aws.amazon.com/zh_cn/step-functions/latest/dg/tutorial-creating-lambda-state-machine.html)[7]。
 
 <a name="2de9b28a"></a>
 
@@ -414,12 +409,12 @@ public interface InventoryService {
   - Succeed: 状态机正常结束；
   - Fail: 状态机异常结束；
   - SubStateMachine: 调用子状态机；
-- ServiceName: 服务名称，通常是服务的beanId；
+- ServiceName: 服务名称，通常是服务的 beanId；
 - ServiceMethod: 服务方法名称；
 - CompensateState: 该"状态"的补偿"状态"；
-- Input: 调用服务的输入参数列表，是一个数组，对应于服务方法的参数列表， $.表示使用表达式从状态机上下文中取参数，表达使用的 [SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html)[8]， 如果是常量直接写值即可；
+- Input: 调用服务的输入参数列表，是一个数组，对应于服务方法的参数列表， $.表示使用表达式从状态机上下文中取参数，表达使用的  [SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html)[8]， 如果是常量直接写值即可；
 - Output: 将服务返回的参数赋值到状态机上下文中，是一个 map 结构，key 为放入到状态机上文时的 key（状态机上下文也是一个 map），value 中 $. 是表示 SpringEL 表达式，表示从服务的返回参数中取值，#root 表示服务的整个返回参数；
-- Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知，我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个 map 结构，key 是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是 SpringEL 表达式判断服务返回参数，带 $Exception{开头表示判断异常类型，value 是当这个条件表达式成立时则将服务执行状态映射成这个值；
+- Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知，我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个 map 结构，key 是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是 SpringEL 表达式判断服务返回参数，带 $Exception\{开头表示判断异常类型，value 是当这个条件表达式成立时则将服务执行状态映射成这个值；
 - Catch: 捕获到异常后的路由；
 - Next: 服务执行完成后下一个执行的"状态"；
 - Choices: Choice 类型的"状态"里, 可选的分支列表, 分支中的 Expression 为 SpringEL 表达式，Next 为当表达式成立时执行的下一个"状态"；
@@ -450,12 +445,13 @@ public interface InventoryService {
 状态机引擎的设计主要分成三层, 上层依赖下层，从下往上分别是：
 
 - Eventing 层：
+
   - 实现事件驱动架构, 可以压入事件, 并由消费端消费事件, 本层不关心事件是什么消费端执行什么，由上层实现；
 
 - ProcessController 层：
-  - 由于上层的 Eventing 驱动一个“空”流程执行的执行，"state"的行为和路由都未实现，由上层实现；
-> 基于以上两层理论上可以自定义扩展任何"流程"引擎。这两层的设计是参考了内部金融网络平台的设计。
 
+  - 由于上层的 Eventing 驱动一个“空”流程执行的执行，"state"的行为和路由都未实现，由上层实现；
+    > 基于以上两层理论上可以自定义扩展任何"流程"引擎。这两层的设计是参考了内部金融网络平台的设计。
 
 - StateMachineEngine 层：
   - 实现状态机引擎每种 state 的行为和路由逻辑；
@@ -466,8 +462,8 @@ public interface InventoryService {
 ### Saga 模式下服务设计的实践经验
 
 下面是实践中总结的在 Saga 模式下微服务设计的一些经验，当然这是推荐做法，并不是说一定要 100% 遵循，没有遵循也有“绕过”方案。
-> 好消息：Seata Saga 模式对微服务的接口参数没有任务要求，这使得 Saga 模式可用于集成遗留系统或外部机构的服务。
 
+> 好消息：Seata Saga 模式对微服务的接口参数没有任务要求，这使得 Saga 模式可用于集成遗留系统或外部机构的服务。
 
 <a name="d64c5051"></a>
 

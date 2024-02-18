@@ -1,158 +1,137 @@
 ---
-
 Title: Seata Parameter Configuration
 
 keywords: [Seata]
 
 Description: Seata parameter configuration.
-
 ---
-
-
 
 # The Seata Parameter Configuration
 
 ## Attention attribute (see all attributes for detailed description)
 
-
-
-|Server side | client side|
-|---------------|------------|
-| registry.type |registry.type|
-| config.type |config.type|
-| #store.mode=db requires the following configuration | service.vgroupMapping.my_ test_ tx_ group|
-| store.db.driverClassName | service.default. grouplist |
-| store.db.url |service. disableGlobalTransaction |
-| store.db.user | |
-| store.db.password | |
-
-
+| Server side                                         | client side                                |
+| --------------------------------------------------- | ------------------------------------------ |
+| registry.type                                       | registry.type                              |
+| config.type                                         | config.type                                |
+| #store.mode=db requires the following configuration | service.vgroupMapping.my* test* tx\_ group |
+| store.db.driverClassName                            | service.default. grouplist                 |
+| store.db.url                                        | service. disableGlobalTransaction          |
+| store.db.user                                       |                                            |
+| store.db.password                                   |                                            |
 
 ## All attributes
 
-
-
 ### Public sector
 
-
-
-| key | desc | remark| change record |
-|---------------|--------------|----|----------------------------|
-|transport.type | Socket communication mode | TCP, UNIX_ DOMAIN_ SOCKET, default TCP|
-|transport.server | socket channel type | NIO, NATIVE (select KQueue or Epoll according to the operating system type and socket communication mode. Note that Windows only supports NIO, and NATIVE mode will throw an exception)|
-|transport.threadFactory. bossThreadSize | Netty communication model Boss group threads | Default 1|
-|transport.threadFactory. workerThreadSize | Netty communication model Worker group threads | The number of threads can be configured or the number of threads in a specific thread working mode can be selected. There are four default working modes of threads: Auto (2 * CPU cores+1), Pin (CPU cores, applicable to computing intensive tasks), BusyPin (CPU cores+1, applicable to computing intensive and memory limited scenarios) Default (2 * CPU cores, applicable to IO intensive tasks), the default value is Default mode|
-|transport.shutdown. wait | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default|
-|transport.serialization | Client and server communication codec method | seata (ByteBuf), protobuf, kryo, hessian, fst, default seata|
-|transport.compressor | Compression method of communication data between client and server | none, gzip, default none | |
-|transport.heartbeat | The heartbeat detection switch for client server communication | The default value is true|
-|Registry.type | Registry type | Default file, supports file, nacos, redis, eureka, zk, consumer, etcd3, sofa, and custom ||
-|Config.type | Configuration center type | default file, supporting file, nacos, apollo, zk, consult, etcd3, springcloud, custom|
+| key                                       | desc                                                                                  | remark                                                                                                                                                                                                                                                                                                                                                                                                                                    | change record |
+| ----------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| transport.type                            | Socket communication mode                                                             | TCP, UNIX* DOMAIN* SOCKET, default TCP                                                                                                                                                                                                                                                                                                                                                                                                    |
+| transport.server                          | socket channel type                                                                   | NIO, NATIVE (select KQueue or Epoll according to the operating system type and socket communication mode. Note that Windows only supports NIO, and NATIVE mode will throw an exception)                                                                                                                                                                                                                                                   |
+| transport.threadFactory. bossThreadSize   | Netty communication model Boss group threads                                          | Default 1                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| transport.threadFactory. workerThreadSize | Netty communication model Worker group threads                                        | The number of threads can be configured or the number of threads in a specific thread working mode can be selected. There are four default working modes of threads: Auto (2 _ CPU cores+1), Pin (CPU cores, applicable to computing intensive tasks), BusyPin (CPU cores+1, applicable to computing intensive and memory limited scenarios) Default (2 _ CPU cores, applicable to IO intensive tasks), the default value is Default mode |
+| transport.shutdown. wait                  | Time to wait for service offline before the Netty thread pool on the server is closed | 3 seconds by default                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| transport.serialization                   | Client and server communication codec method                                          | seata (ByteBuf), protobuf, kryo, hessian, fst, default seata                                                                                                                                                                                                                                                                                                                                                                              |
+| transport.compressor                      | Compression method of communication data between client and server                    | none, gzip, default none                                                                                                                                                                                                                                                                                                                                                                                                                  |               |
+| transport.heartbeat                       | The heartbeat detection switch for client server communication                        | The default value is true                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Registry.type                             | Registry type                                                                         | Default file, supports file, nacos, redis, eureka, zk, consumer, etcd3, sofa, and custom                                                                                                                                                                                                                                                                                                                                                  |               |
+| Config.type                               | Configuration center type                                                             | default file, supporting file, nacos, apollo, zk, consult, etcd3, springcloud, custom                                                                                                                                                                                                                                                                                                                                                     |
 
 ### Server side
 
-
-
-| key| desc | remark| change record |
-|-------------------------------------------|---------------------------------|----------------------------|----------------|
-| server.undo.logSaveDays | undo retention days | 7 days by default, log_ Status=1 (Appendix 3) and undo not normally cleaned|
-| server.undo.logDeletePeriod | undo Cleanup Thread Interval | 86,400,000 by default, in milliseconds|
-| server.maxCommitRetryTimeout | Timeout duration of two-phase commit retry | Unit: ms, s, m, h, d, corresponding to ms, s, min, h, day, default ms. The default value of - 1 means unlimited retries. Formula: timeout>=now globalTransactionBeginTime, true means no more retries after timeout (Note: no retries will be made after the timeout is reached, and there is a risk of data inconsistency, unless the business can calibrate the data itself, otherwise use with caution)|
-| server.maxRollbackRetryTimeout | Phase2 rollback retry timeout duration | Same as commit|
-| server.recovery.committingRetryPeriod | Phase2 commit unfinished status Global transaction retry commit thread interval | 1000 by default, in milliseconds|
-| server.recovery.asyncCommittingRetryPeriod | Phase2 asynchronous submission status Retry submission thread interval | 1000 by default, in milliseconds|
-| server.recovery.rollbackRetryPeriod | Phase2 rollback status Retry rollback thread interval | 1000 by default, in milliseconds|
-| server.recovery.timeoutRetryPeriod | Timeout status detection retry thread interval | 1000 by default, in milliseconds. If timeout is detected, put the global transaction into the rollback session manager|
-| server.rollbackRetryTimeoutUnlockEnable | Whether to release the lock after the two-phase rollback timeout | False by default|
-| store.mode | Transaction session information storage mode | file Local file (HA is not supported), db database(HA is supported) ||
-| store.file.dir | file mode file storage folder name | default sessionStore|
-| store.file.maxBranchSessionSize | File mode file storage branch session maximum bytes | 16384 (16kb) by default, in bytes|
-| store.file.maxGlobalSessionSize | File mode file stores the maximum number of global session bytes | 512b by default, in bytes|
-| store.file.fileWriteBufferCacheSize | File mode file storage buffer maximum cache size | 16384 (16kb) by default, in bytes. When the amount of data such as session written is greater than this value, an exception will be thrown|
-| store.file.flushDiskMode | file mode file storage flushing policy | default async, optional sync|
-| store.file.sessionReloadReadSize | File mode File storage The maximum number of session or lock keys recovered from the backup file after the server node restarts | 100 by default|
-| store.db.datasource | db mode data source type | dbcp, druid, hikari; No default value, store Must be specified when mode=db|
-| store.db.dbType | db mode database type | mysql, oracle, db2, sqlserver, sybaee, h2, sqlite, access, postgresql, oceanbase; No default value, store Mode=db must be specified|
-| store.db.driverClassName | db mode database driver | store Must be specified when mode=db|
-| store.db.url | db mode database url | store When mode=db, it must be specified. When using MySQL as the data source, it is recommended to add 'rewriteBatchedStatements=true' to the connection parameters (see Appendix 7 for detailed reasons)|
-| store.db.user | db mode database account | store Must be specified when mode=db|
-| store.db.password | db mode database account password | store Must be specified when mode=db|
-| store.db.minConn | initial connections of db mode database | 1 by default|
-| store.db.maxConn | maximum number of connections to database in db mode | 20 by default|
-| store.db.maxWait | the maximum waiting time for db mode to obtain a connection | 5000 by default, in milliseconds|
-| store.db.globalTable | db mode global transaction table name | default global_ table |
-| store.db.branchTable | db mode branch transaction table name | default branch_ table |
-| store.db.LockTable | db mode global lock table name | default lock_ table |
-| store.db.queryLimit | the maximum number of global transactions queried in db mode at one time | 100 by default|
-| metrics.enabled | Whether to enable Metrics | False is off by default. In the false state, all Metrics related components will not be initialized to minimize the performance loss|
-| metrics.registryType | Indicator registrar type | The indicator registrar type used by Metrics is a built-in compact (simple) implementation by default. Meters in this implementation only use a limited memory count, and the performance is high enough to meet most scenarios; Currently, only one indicator registrar can be set|
-| metrics.exporterList | Index result Measurement data outputter list | default prometheus. Multiple outputters are separated by English commas, such as "prometheus, jmx". Currently, only the prometheus outputters are connected|
-| metrics.exporterPrometheusPort | prometheus exporter client port number | 9898 by default|
+| key                                        | desc                                                                                                                            | remark                                                                                                                                                                                                                                                                                                                                                                                                     | change record |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| server.undo.logSaveDays                    | undo retention days                                                                                                             | 7 days by default, log\_ Status=1 (Appendix 3) and undo not normally cleaned                                                                                                                                                                                                                                                                                                                               |
+| server.undo.logDeletePeriod                | undo Cleanup Thread Interval                                                                                                    | 86,400,000 by default, in milliseconds                                                                                                                                                                                                                                                                                                                                                                     |
+| server.maxCommitRetryTimeout               | Timeout duration of two-phase commit retry                                                                                      | Unit: ms, s, m, h, d, corresponding to ms, s, min, h, day, default ms. The default value of - 1 means unlimited retries. Formula: timeout>=now globalTransactionBeginTime, true means no more retries after timeout (Note: no retries will be made after the timeout is reached, and there is a risk of data inconsistency, unless the business can calibrate the data itself, otherwise use with caution) |
+| server.maxRollbackRetryTimeout             | Phase2 rollback retry timeout duration                                                                                          | Same as commit                                                                                                                                                                                                                                                                                                                                                                                             |
+| server.recovery.committingRetryPeriod      | Phase2 commit unfinished status Global transaction retry commit thread interval                                                 | 1000 by default, in milliseconds                                                                                                                                                                                                                                                                                                                                                                           |
+| server.recovery.asyncCommittingRetryPeriod | Phase2 asynchronous submission status Retry submission thread interval                                                          | 1000 by default, in milliseconds                                                                                                                                                                                                                                                                                                                                                                           |
+| server.recovery.rollbackRetryPeriod        | Phase2 rollback status Retry rollback thread interval                                                                           | 1000 by default, in milliseconds                                                                                                                                                                                                                                                                                                                                                                           |
+| server.recovery.timeoutRetryPeriod         | Timeout status detection retry thread interval                                                                                  | 1000 by default, in milliseconds. If timeout is detected, put the global transaction into the rollback session manager                                                                                                                                                                                                                                                                                     |
+| server.rollbackRetryTimeoutUnlockEnable    | Whether to release the lock after the two-phase rollback timeout                                                                | False by default                                                                                                                                                                                                                                                                                                                                                                                           |
+| store.mode                                 | Transaction session information storage mode                                                                                    | file Local file (HA is not supported), db database(HA is supported)                                                                                                                                                                                                                                                                                                                                        |               |
+| store.file.dir                             | file mode file storage folder name                                                                                              | default sessionStore                                                                                                                                                                                                                                                                                                                                                                                       |
+| store.file.maxBranchSessionSize            | File mode file storage branch session maximum bytes                                                                             | 16384 (16kb) by default, in bytes                                                                                                                                                                                                                                                                                                                                                                          |
+| store.file.maxGlobalSessionSize            | File mode file stores the maximum number of global session bytes                                                                | 512b by default, in bytes                                                                                                                                                                                                                                                                                                                                                                                  |
+| store.file.fileWriteBufferCacheSize        | File mode file storage buffer maximum cache size                                                                                | 16384 (16kb) by default, in bytes. When the amount of data such as session written is greater than this value, an exception will be thrown                                                                                                                                                                                                                                                                 |
+| store.file.flushDiskMode                   | file mode file storage flushing policy                                                                                          | default async, optional sync                                                                                                                                                                                                                                                                                                                                                                               |
+| store.file.sessionReloadReadSize           | File mode File storage The maximum number of session or lock keys recovered from the backup file after the server node restarts | 100 by default                                                                                                                                                                                                                                                                                                                                                                                             |
+| store.db.datasource                        | db mode data source type                                                                                                        | dbcp, druid, hikari; No default value, store Must be specified when mode=db                                                                                                                                                                                                                                                                                                                                |
+| store.db.dbType                            | db mode database type                                                                                                           | mysql, oracle, db2, sqlserver, sybaee, h2, sqlite, access, postgresql, oceanbase; No default value, store Mode=db must be specified                                                                                                                                                                                                                                                                        |
+| store.db.driverClassName                   | db mode database driver                                                                                                         | store Must be specified when mode=db                                                                                                                                                                                                                                                                                                                                                                       |
+| store.db.url                               | db mode database url                                                                                                            | store When mode=db, it must be specified. When using MySQL as the data source, it is recommended to add 'rewriteBatchedStatements=true' to the connection parameters (see Appendix 7 for detailed reasons)                                                                                                                                                                                                 |
+| store.db.user                              | db mode database account                                                                                                        | store Must be specified when mode=db                                                                                                                                                                                                                                                                                                                                                                       |
+| store.db.password                          | db mode database account password                                                                                               | store Must be specified when mode=db                                                                                                                                                                                                                                                                                                                                                                       |
+| store.db.minConn                           | initial connections of db mode database                                                                                         | 1 by default                                                                                                                                                                                                                                                                                                                                                                                               |
+| store.db.maxConn                           | maximum number of connections to database in db mode                                                                            | 20 by default                                                                                                                                                                                                                                                                                                                                                                                              |
+| store.db.maxWait                           | the maximum waiting time for db mode to obtain a connection                                                                     | 5000 by default, in milliseconds                                                                                                                                                                                                                                                                                                                                                                           |
+| store.db.globalTable                       | db mode global transaction table name                                                                                           | default global\_ table                                                                                                                                                                                                                                                                                                                                                                                     |
+| store.db.branchTable                       | db mode branch transaction table name                                                                                           | default branch\_ table                                                                                                                                                                                                                                                                                                                                                                                     |
+| store.db.LockTable                         | db mode global lock table name                                                                                                  | default lock\_ table                                                                                                                                                                                                                                                                                                                                                                                       |
+| store.db.queryLimit                        | the maximum number of global transactions queried in db mode at one time                                                        | 100 by default                                                                                                                                                                                                                                                                                                                                                                                             |
+| metrics.enabled                            | Whether to enable Metrics                                                                                                       | False is off by default. In the false state, all Metrics related components will not be initialized to minimize the performance loss                                                                                                                                                                                                                                                                       |
+| metrics.registryType                       | Indicator registrar type                                                                                                        | The indicator registrar type used by Metrics is a built-in compact (simple) implementation by default. Meters in this implementation only use a limited memory count, and the performance is high enough to meet most scenarios; Currently, only one indicator registrar can be set                                                                                                                        |
+| metrics.exporterList                       | Index result Measurement data outputter list                                                                                    | default prometheus. Multiple outputters are separated by English commas, such as "prometheus, jmx". Currently, only the prometheus outputters are connected                                                                                                                                                                                                                                                |
+| metrics.exporterPrometheusPort             | prometheus exporter client port number                                                                                          | 9898 by default                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ### Client side
 
-
-
-| key| desc | remark| change record |
-|-------------------------------------------|----------------------------|----------------------------|----------------|
-| seata.enabled | whether to enable spring boot automatic assembly | true, false, (SSBS) special configuration, default true (Appendix 4)|
-| seata.enableAutoDataSourceProxy=true | whether to enable automatic proxy of data source | True, false, data spring boot starter (SSBS) is a special configuration. SSBS will enable automatic proxy of data source by default and can be closed through this configuration item|
-| seata.useJdkProxy=false | whether to use JDK proxy as the implementation method of data source automatic proxy | true, false, (SSBS) proprietary configuration, false by default, CGLIB as the implementation method of data source automatic proxy|
-| transport.enableClientBatchSendRequest | whether to batch merge and send client transaction message requests | The default is true and false|
-| client.log.exceptionRate | log exception output probability | 100 by default, currently used for exception stack output in case of undo rollback failure, 1% probability output, rollback failure is basically dirty data, no need to output stack to occupy hard disk space|
-| service.vgroupMapping.my_test_tx_Group | transaction group (Appendix 1) | my_ test_ tx_ Group refers to grouping, and the configuration item value is TC cluster name|
-| service.default.grouplist | TC service list (Appendix 2) | Only used when the registry is file|
-| service.disableGlobalTransaction | global transaction switch | False by default. false is on, true is off|
-| client.tm.downgradeCheck | demote switch | False by default. The business side automatically downgrades the seata transaction based on the number of consecutive errors (see Appendix 6 for details)|
-| client.tm.gradeCheckAllowTimes | threshold value for reaching the standard of promotion and demotion | 10 by default|
-| client.tm.downgradeCheckPeriod | service self check cycle | 2000 by default, in ms Conduct a service self check every 2 seconds to decide|
-| client.rm.reportSuccessEnable | whether to report phase I success | True, false, starting from version 1.1.0. The default is false true is used to keep the life cycle records of branch transactions complete. false can improve performance|
-| client.rm.asyncCommitBufferLimit | asynchronous commit cache queue length | 10000 by default. Phase II commit succeeded. RM asynchronously cleans the undo queue|
-| client.rm.lock.retryInterval | retry interval for verifying or occupying the global lock | 10 by default, in milliseconds|
-| client.rm.lock.retryTimes | number of retries to verify or occupy the global lock | 30 by default|
-| client.rm.lock.retryPolicyBranchRollbackOnConflict | the lock policy when a branch transaction conflicts with other global rollback transactions | The default is true. Release the local lock first to allow rollback to succeed|
-| client.rm.tableMetaCheckerInterval | interval between scheduled refreshing of table structures in cache | 60 seconds by default|
-| client.rm.sagaBranchRegisterEnable | whether to enable saga branch registration | In Saga mode, the branch state is stored in the local database of the state machine and can be submitted or rolled back through the state machine. To improve performance, you can consider not registering Saga branches with the TC, but you need to consider the availability of the state machine. The default is false|
-| client.tm.commitRetryCount | the number of TC retries for reporting the results of the first phase global submission | 1 by default, it is recommended to be greater than 1|
-| client.tm.rollbackRetryCount | the number of TC retries reported for the global rollback results in the first phase | 1 by default, it is recommended to be greater than 1|
-| client.undo.dataValidation | Phase2 rollback image verification | By default, true is enabled and false is disabled|
-| client.undo.logSerialization | undo serialization method | default jackson|
-| client.undo.logTable | user defined undo table name | Default undo_ log |
-| client.undo.onlyCareUpdateColumns | only images of updated columns are generated | Default true|
-| client.rm.sqlParserType | sql resolution type | default druid|
-
+| key                                                | desc                                                                                        | remark                                                                                                                                                                                                                                                                                                                      | change record |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| seata.enabled                                      | whether to enable spring boot automatic assembly                                            | true, false, (SSBS) special configuration, default true (Appendix 4)                                                                                                                                                                                                                                                        |
+| seata.enableAutoDataSourceProxy=true               | whether to enable automatic proxy of data source                                            | True, false, data spring boot starter (SSBS) is a special configuration. SSBS will enable automatic proxy of data source by default and can be closed through this configuration item                                                                                                                                       |
+| seata.useJdkProxy=false                            | whether to use JDK proxy as the implementation method of data source automatic proxy        | true, false, (SSBS) proprietary configuration, false by default, CGLIB as the implementation method of data source automatic proxy                                                                                                                                                                                          |
+| transport.enableClientBatchSendRequest             | whether to batch merge and send client transaction message requests                         | The default is true and false                                                                                                                                                                                                                                                                                               |
+| client.log.exceptionRate                           | log exception output probability                                                            | 100 by default, currently used for exception stack output in case of undo rollback failure, 1% probability output, rollback failure is basically dirty data, no need to output stack to occupy hard disk space                                                                                                              |
+| service.vgroupMapping.my_test_tx_Group             | transaction group (Appendix 1)                                                              | my* test* tx\_ Group refers to grouping, and the configuration item value is TC cluster name                                                                                                                                                                                                                                |
+| service.default.grouplist                          | TC service list (Appendix 2)                                                                | Only used when the registry is file                                                                                                                                                                                                                                                                                         |
+| service.disableGlobalTransaction                   | global transaction switch                                                                   | False by default. false is on, true is off                                                                                                                                                                                                                                                                                  |
+| client.tm.downgradeCheck                           | demote switch                                                                               | False by default. The business side automatically downgrades the seata transaction based on the number of consecutive errors (see Appendix 6 for details)                                                                                                                                                                   |
+| client.tm.gradeCheckAllowTimes                     | threshold value for reaching the standard of promotion and demotion                         | 10 by default                                                                                                                                                                                                                                                                                                               |
+| client.tm.downgradeCheckPeriod                     | service self check cycle                                                                    | 2000 by default, in ms Conduct a service self check every 2 seconds to decide                                                                                                                                                                                                                                               |
+| client.rm.reportSuccessEnable                      | whether to report phase I success                                                           | True, false, starting from version 1.1.0. The default is false true is used to keep the life cycle records of branch transactions complete. false can improve performance                                                                                                                                                   |
+| client.rm.asyncCommitBufferLimit                   | asynchronous commit cache queue length                                                      | 10000 by default. Phase II commit succeeded. RM asynchronously cleans the undo queue                                                                                                                                                                                                                                        |
+| client.rm.lock.retryInterval                       | retry interval for verifying or occupying the global lock                                   | 10 by default, in milliseconds                                                                                                                                                                                                                                                                                              |
+| client.rm.lock.retryTimes                          | number of retries to verify or occupy the global lock                                       | 30 by default                                                                                                                                                                                                                                                                                                               |
+| client.rm.lock.retryPolicyBranchRollbackOnConflict | the lock policy when a branch transaction conflicts with other global rollback transactions | The default is true. Release the local lock first to allow rollback to succeed                                                                                                                                                                                                                                              |
+| client.rm.tableMetaCheckerInterval                 | interval between scheduled refreshing of table structures in cache                          | 60 seconds by default                                                                                                                                                                                                                                                                                                       |
+| client.rm.sagaBranchRegisterEnable                 | whether to enable saga branch registration                                                  | In Saga mode, the branch state is stored in the local database of the state machine and can be submitted or rolled back through the state machine. To improve performance, you can consider not registering Saga branches with the TC, but you need to consider the availability of the state machine. The default is false |
+| client.tm.commitRetryCount                         | the number of TC retries for reporting the results of the first phase global submission     | 1 by default, it is recommended to be greater than 1                                                                                                                                                                                                                                                                        |
+| client.tm.rollbackRetryCount                       | the number of TC retries reported for the global rollback results in the first phase        | 1 by default, it is recommended to be greater than 1                                                                                                                                                                                                                                                                        |
+| client.undo.dataValidation                         | Phase2 rollback image verification                                                          | By default, true is enabled and false is disabled                                                                                                                                                                                                                                                                           |
+| client.undo.logSerialization                       | undo serialization method                                                                   | default jackson                                                                                                                                                                                                                                                                                                             |
+| client.undo.logTable                               | user defined undo table name                                                                | Default undo\_ log                                                                                                                                                                                                                                                                                                          |
+| client.undo.onlyCareUpdateColumns                  | only images of updated columns are generated                                                | Default true                                                                                                                                                                                                                                                                                                                |
+| client.rm.sqlParserType                            | sql resolution type                                                                         | default druid                                                                                                                                                                                                                                                                                                               |
 
 <details>
   <summary><mark>synchronize parameters to the configuration center for use demo</mark></summary>
 
 #### Nacos
+
 shell:
+
 ```bash
-sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca
+sh $\{SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca
 ```
 
 Parameter description:
 
-
-
 -h: Host, the default is localhost
-
-
 
 -p: Port, default 8848
 
-
-
--g: Configure grouping. The default value is' SEATA_ GROUP'
-
-
+-g: Configure grouping. The default value is' SEATA\_ GROUP'
 
 -t: Tenant information, corresponding to the namespace ID field of Nacos, the default value is null ''
 
 #### Apollo
+
 ```bash
-sh ${SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
+sh $\{SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
 ```
+
 Parameter description:
 
 -h: Host, the default is localhost
@@ -171,16 +150,18 @@ Parameter description:
 
 -r: Publisher, domain account. Note: If the namespace. lock. switch in Apollo ConfigDB. ServerConfig is set to true (false by default), the environment does not allow the publisher and editor to be the same person. So if the editor is zhangsan, the publisher can no longer be zhangsan.
 
--t: The Apollo administrator creates a third-party application at http://{portal_address}/open/manage.html. Before creating it, it is better to query whether the AppId has been created. After successful creation, a token will be generated
+-t: The Apollo administrator creates a third-party application at http://\{portal_address}/open/manage.html. Before creating it, it is better to query whether the AppId has been created. After successful creation, a token will be generated
 
 For details of the above parameters, see:
 
 https://github.com/ctripcorp/apollo/wiki/Apollo%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0
 
 #### Consul
+
 ```bash
-sh ${SEATAPATH}/script/config-center/consul/consul-config.sh -h localhost -p 8500
+sh $\{SEATAPATH}/script/config-center/consul/consul-config.sh -h localhost -p 8500
 ```
+
 Parameter description:
 
 -h: host, the default is localhost
@@ -188,8 +169,9 @@ Parameter description:
 -p: port, the default value is 8500
 
 #### Etcd3
+
 ```bash
-sh ${SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
+sh $\{SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
 ```
 
 Parameter description:
@@ -199,14 +181,17 @@ Parameter description:
 -p: Port, the default value is 2379
 
 python:
+
 ```bash
-python ${SEATAPATH}/script/config-center/nacos/nacos-config.py localhost:8848
+python $\{SEATAPATH}/script/config-center/nacos/nacos-config.py localhost:8848
 ```
 
 #### ZK
+
 ```bash
-sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/Users/zhangchenghui/zookeeper-3.4.14"
+sh $\{SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/Users/zhangchenghui/zookeeper-3.4.14"
 ```
+
 Parameter description:
 
 -h: host, the default is localhost
@@ -223,7 +208,7 @@ Description of transaction grouping.
 
 1. What is a transaction group?
 
-Transaction grouping is the resource logic of seata, similar to service instance. My in file.conf_ test_ tx_ A group is a transaction group.
+Transaction grouping is the resource logic of seata, similar to service instance. My in file.conf* test* tx\_ A group is a transaction group.
 
 2. How to find the back-end cluster through transaction grouping?
 
@@ -257,7 +242,7 @@ Due to the syntax requirements of the spring boot configuration file itself, the
 
 ### Appendix 3:
 
-log_ Status=1 is defensive. It is a global rollback request received, but it is uncertain whether the local transaction of a transaction branch has been executed. At this time, a piece of data with the same branch ID is inserted in advance, and the inserted false data is successful. If the local transaction continues to execute, the only index conflict will be reported for automatic rollback.
+log\_ Status=1 is defensive. It is a global rollback request received, but it is uncertain whether the local transaction of a transaction branch has been executed. At this time, a piece of data with the same branch ID is inserted in advance, and the inserted false data is successful. If the local transaction continues to execute, the only index conflict will be reported for automatic rollback.
 
 If the insertion is unsuccessful, it indicates that the local transaction has been completed, and the undo data is taken out for reverse rollback.
 
@@ -273,8 +258,8 @@ The following annotations have been added to seata 1.1.0 to enable the automatic
 
 @EnableAutoDataSourceProxy
 
-| attribute| desc | remark|
-|-------------------------------------------|----------------------------|----------------------------|
+| attribute | desc | remark |
+| --------- | ---- | ------ |
 
 |UseJdkProxy | Whether to use JDK proxy as the implementation method of data source automatic proxy | false, true, false by default, CGLIB as the implementation method of data source automatic proxy|
 

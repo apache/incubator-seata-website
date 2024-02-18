@@ -702,7 +702,7 @@ seata.client.undo.logSerialization=kryo
 解决办法：
 
 - 若不需要对 Feign 链路追踪，可以通过 Spring Cloud Sleuth 提供的属性 spring.sleuth.feign.enabled=false 来使其关闭。
-- 若需要同时使用，在启动类加入排除@SpringBootApplication(exclude = {SeataFeignClientAutoConfiguration.class})
+- 若需要同时使用，在启动类加入排除@SpringBootApplication(exclude = \{SeataFeignClientAutoConfiguration.class})
 
 再配置 Feign 的拦截器
 

@@ -168,7 +168,7 @@ description: Seata 参数配置。
 shell:
 
 ```bash
-sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca
+sh $\{SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca
 ```
 
 参数说明：
@@ -184,7 +184,7 @@ sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 
 #### Apollo
 
 ```bash
-sh ${SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
+sh $\{SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
 ```
 
 参数说明：
@@ -214,7 +214,7 @@ https://github.com/ctripcorp/apollo/wiki/Apollo%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F
 #### Consul
 
 ```bash
-sh ${SEATAPATH}/script/config-center/consul/consul-config.sh -h localhost -p 8500
+sh $\{SEATAPATH}/script/config-center/consul/consul-config.sh -h localhost -p 8500
 ```
 
 参数说明：
@@ -226,7 +226,7 @@ sh ${SEATAPATH}/script/config-center/consul/consul-config.sh -h localhost -p 850
 #### Etcd3
 
 ```bash
-sh ${SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
+sh $\{SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
 ```
 
 参数说明：
@@ -238,13 +238,13 @@ sh ${SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
 python:
 
 ```bash
-python ${SEATAPATH}/script/config-center/nacos/nacos-config.py localhost:8848
+python $\{SEATAPATH}/script/config-center/nacos/nacos-config.py localhost:8848
 ```
 
 #### ZK
 
 ```bash
-sh ${SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/Users/zhangchenghui/zookeeper-3.4.14"
+sh $\{SEATAPATH}/script/config-center/zk/zk-config.sh -h localhost -p 2181 -z "/Users/zhangchenghui/zookeeper-3.4.14"
 ```
 
 参数说明：
