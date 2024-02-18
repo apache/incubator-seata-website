@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # Version Upgrade Guide
 
+<a href="#9" target="_self">9. What compatibility matters need to be paid attention to when upgrading to seata 2.1? </a>
+<br/>
+
 <a href="#8" target="_self">8. What compatibility matters need to be paid attention to when upgrading to seata 2.0? </a>
 <br/>
 
