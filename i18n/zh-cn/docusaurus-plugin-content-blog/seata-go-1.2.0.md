@@ -48,7 +48,7 @@ Seata-go 1.2.0 版本支持 XA 模式。XA 协议是由 X/Open 组织提出的�
 
 ### doc
 
-- [[#550](https:/github.com/apache/incubator-seata-go/pull/550)] 添加 1.2.0 版本的改动日志
+- [[#550](https://github.com/apache/incubator-seata-go/pull/550)] 添加 1.2.0 版本的改动日志
 
 ### contributors
 
