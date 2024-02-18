@@ -59,12 +59,6 @@ const config = {
       },
     },
   },
-  scripts: [
-    {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
-      async: true,
-    },
-  ],
   headTags: [
     {
       tagName: 'meta',
@@ -73,26 +67,25 @@ const config = {
         content: 'pid=xux-opensource&user_type=101&uid=&username=&dim10=seata',
       },
     },
+  ],
+  scripts: [
     {
-      tagName: 'script',
-      attributes: {
-        type: 'text/javascript',
-        src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
-      },
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+      async: true,
     },
     {
-      tagName: 'script',
-      attributes: {
-        src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
-        id: 'beacon-aplus',
-        exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
-      },
+      src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
+      async: true,
     },
     {
-      tagName: 'script',
-      attributes: {
-        src: '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
-      },
+      src: 'https://g.alicdn.com/alilog/mlog/aplus_v2.js',
+      id: 'beacon-aplus',
+      exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
+      defer: true,
+    },
+    {
+      src: 'https://g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
+      defer: true,
     },
   ],
   plugins: [
@@ -286,4 +279,4 @@ const config = {
     }),
 };
 
-module.exports = config;
+export default config;
