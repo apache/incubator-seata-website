@@ -3,10 +3,10 @@ name: seata website deploy on github
 on:
   push:
     branches:
-      - docusaurus
+      - docusaurus_v3
   #This schedule only takes effect in the default branch
-  schedule:
-    - cron: '0 */12 * * *'
+  #schedule:
+  #- cron: '0 */12 * * *'
 
 jobs:
   Build-Deploy:
