@@ -4,14 +4,13 @@ keywords: [Seata, Release Notes, 2.0.x]
 description: 2.0.x Release Notes
 ---
 
-
 # Downloads
 
 # Seata
 
-> GitHub: <https://github.com/apache/incubator-seata>
+> GitHub: https://github.com/apache/incubator-seata
 >
-> Release Notes: <https://github.com/apache/incubator-seata/releases>
+> Release Notes: https://github.com/apache/incubator-seata/releases
 
 ### 2.0.0 (2023-11-24)
 
@@ -250,9 +249,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>

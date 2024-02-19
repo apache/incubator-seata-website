@@ -4,7 +4,9 @@ author: 赵润泽
 keywords: [Seata、分布式事务]
 date: 2020/1/11
 ---
+
 ## 一 . 导读
+
 根据[大佬](https://www.iteye.com/blog/javatar-949527)定义的分类，配置可以有三种：环境配置、描述配置、扩展配置。
 
 环境配置：像一些组件启动时的参数等，通常是离散的简单值，多是 key-value 型数据。
@@ -15,9 +17,9 @@ date: 2020/1/11
 
 ## 二. 环境配置
 
-seata server 在加载的时候，会使用 resources/registry.conf 来确定配置中心和注册中心的类型。而 seata client 在 1.0 版本后，不仅能使用 conf 文件进行配置的加载，也可以在 springboot 的 yml 配置文件中，使用 seata.config.{type} 来进行配置中心的选择，注册中心与之类似。通过 yml 加载配置的源码在 io.seata.spring.boot.autoconfigure.properties.registry 包下。
+seata server 在加载的时候，会使用 resources/registry.conf 来确定配置中心和注册中心的类型。而 seata client 在 1.0 版本后，不仅能使用 conf 文件进行配置的加载，也可以在 springboot 的 yml 配置文件中，使用 seata.config.\{type} 来进行配置中心的选择，注册中心与之类似。通过 yml 加载配置的源码在 io.seata.spring.boot.autoconfigure.properties.registry 包下。
 
-如果 seata 客户端的使用者既在resources下放了 conf 配置文件又在 yml 文件中配置，那么会优先使用 yml 中配置的。代码：
+如果 seata 客户端的使用者既在 resources 下放了 conf 配置文件又在 yml 文件中配置，那么会优先使用 yml 中配置的。代码：
 
 ```java
 CURRENT_FILE_INSTANCE = null == extConfiguration ? configuration : extConfiguration;
@@ -58,7 +60,8 @@ ConfigurationFactory.getInstance().addConfigListener(ConfigurationKeys.DISABLE_G
 
 降级的意思是，当服务某一项功能不可用的时候，通过动态配置的属性，把某一项功能给关了，这样就可以避免一直尝试失败的处理。interceptor#invoke() 只有当这个 disable 属性为 true 时，才会执行 seata 事务相关业务。
 
-## 三. 描述配置 
+## 三. 描述配置
+
 一般性框架描述性配置通常信息比较多，甚至有层次关系，用 xml 配置比较方便，因为树结构描述性更强。而现在的习惯都在提倡去繁琐的约束性配置，采用约定的方式。
 
 seata AT 模式是通过代理数据源的方式来进行事务处理，对业务方入侵较小，只需让 seata 在启动时，识别哪些业务方需要开启全局事务，所以用注解就可以实现描述性配置。
@@ -67,6 +70,7 @@ seata AT 模式是通过代理数据源的方式来进行事务处理，对业�
 @GlobalTransactional(timeoutMills = 300000, name = "busi-doBiz")
 public String doBiz(String msg) {}
 ```
+
 如果是 tcc 模式，事务参与方还需使用注解标识：
 
 ```java
@@ -77,6 +81,7 @@ public boolean rollback(BusinessActionContext actionContext);
 ```
 
 ## 四 .扩展配置
+
 扩展配置，通常对产品的聚合要求比较高，因为产品需要发现第三方实现，将其加入产品内部。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200110213751452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODA0NzM3,size_16,color_FFFFFF,t_70)
@@ -93,12 +98,13 @@ private static Configuration buildConfiguration() {
 
 如果在 ConfigType 中没有定义 test 这种配置中心类型，那么会抛异常。所以单纯的修改配置文件而不改变源码是无法使用 ConfigType 中定义的配置中心提供类以外的配置中心提供类。
 
-目前1.0版本在 ConfigType 中定义的配置中心类型有：File,ZK,Nacos,Apollo,Consul,Etcd3,SpringCloudConfig,Custom。如果用户想使用自定义的配置中心类型，可以使用 Custom 这种类型。
+目前 1.0 版本在 ConfigType 中定义的配置中心类型有：File,ZK,Nacos,Apollo,Consul,Etcd3,SpringCloudConfig,Custom。如果用户想使用自定义的配置中心类型，可以使用 Custom 这种类型。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200110215249152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODA0NzM3,size_16,color_FFFFFF,t_70)
-这里可以使用不优雅的方式，即提供一个指定名称 ZK 但是级别 order=3 更高的实现类（ZK默认order=1），就可以让 ConfigurationFactory 使用 TestConfigurationProvider 作为配置中心提供类。
+这里可以使用不优雅的方式，即提供一个指定名称 ZK 但是级别 order=3 更高的实现类（ZK 默认 order=1），就可以让 ConfigurationFactory 使用 TestConfigurationProvider 作为配置中心提供类。
 
 通过上面的步骤，就可以让 seata 使用我们自己提供的代码。seata 中 codec、compressor、discovery、integration 等模块，都是使用 spi 机制加载功能类，符合微内核 + 插件化，平等对待第三方的设计思想。
 
-## 五  . seata源码分析系列地址
+## 五 . seata 源码分析系列地址
+
 作者：赵润泽，[系列地址](https://blog.csdn.net/qq_37804737/category_9530078.html)。

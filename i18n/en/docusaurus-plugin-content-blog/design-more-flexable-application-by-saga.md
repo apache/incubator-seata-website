@@ -1,16 +1,17 @@
 ---
 title: Designing More Flexible Financial Applications with Seata Saga
-keywords: [Saga, Seata, Consistency, Financial, Flexibility, Distributed, Transaction]
+keywords:
+  [Saga, Seata, Consistency, Financial, Flexibility, Distributed, Transaction]
 description: This article delves into the pain points of developing distributed financial applications, analyzing solutions from both theoretical and practical perspectives. It explains how to design more flexible financial applications using Seata Saga.
 author: long187
 date: 2019-11-04
 ---
+
 # Designing More Flexible Financial Applications with Seata Saga
 
 Seata, short for Simple Extensible Autonomous Transaction Architecture, is an all-in-one distributed transaction solution. It provides AT, TCC, Saga, and XA transaction modes. This article provides a detailed explanation of the Saga mode within Seata, with the project hosted on [GitHub](https://github.com/apache/incubator-seata).
 
 Author: Yiyuan (Chen Long), Core Developer of Distributed Transactions at Ant Financial, Seata Committer.
-
 
 <a name="uTwja"></a>
 
@@ -24,20 +25,19 @@ During the development of financial distributed applications, we encounter sever
 
 - **Difficulty Ensuring Business Consistency**<br />
 
-    In many of the systems we encounter (e.g., in channel layers, product layers, and integration layers), ensuring eventual business consistency often involves adopting a "compensation" approach. Without a coordinator to support this, the development difficulty is significant. Each step requires handling "rollback" operations in catch blocks, resulting in a code structure resembling an "arrow," with poor readability and maintainability. Alternatively, retrying exceptional operations, if unsuccessful, might lead to asynchronous retries or even manual intervention. These challenges impose a significant burden on developers, reducing development efficiency and increasing the likelihood of errors.
+  In many of the systems we encounter (e.g., in channel layers, product layers, and integration layers), ensuring eventual business consistency often involves adopting a "compensation" approach. Without a coordinator to support this, the development difficulty is significant. Each step requires handling "rollback" operations in catch blocks, resulting in a code structure resembling an "arrow," with poor readability and maintainability. Alternatively, retrying exceptional operations, if unsuccessful, might lead to asynchronous retries or even manual intervention. These challenges impose a significant burden on developers, reducing development efficiency and increasing the likelihood of errors.
 
 - **Difficulty Managing Business State**<br />
 
-    With numerous business entities and their corresponding states, developers often update the entity's state in the database after completing a business activity. Lack of a state machine to manage the entire state transition process results in a lack of intuitiveness, increases the likelihood of errors, and causes the business to enter an incorrect state.
+  With numerous business entities and their corresponding states, developers often update the entity's state in the database after completing a business activity. Lack of a state machine to manage the entire state transition process results in a lack of intuitiveness, increases the likelihood of errors, and causes the business to enter an incorrect state.
 
 - **Difficulty Ensuring Idempotence**<br />
 
-    Idempotence of services is a fundamental requirement in a distributed environment. Ensuring the idempotence of services often requires developers to design each service individually, using unique keys in databases or distributed caches. There is no unified solution, creating a significant burden on developers and increasing the chances of oversight, leading to financial losses.
+  Idempotence of services is a fundamental requirement in a distributed environment. Ensuring the idempotence of services often requires developers to design each service individually, using unique keys in databases or distributed caches. There is no unified solution, creating a significant burden on developers and increasing the chances of oversight, leading to financial losses.
 
 - **Challenges in Business Monitoring and Operations; Lack of Unified Error Guardian Capability**<br />
 
-    Monitoring the execution of business operations is usually done by logging, and monitoring platforms are based on log analysis. While this is generally sufficient, in the case of business errors, these monitors lack immediate access to the business context and require additional database queries. Additionally, the reliance on developers for log printing makes it prone to omissions. For compensatory transactions, there is often a need for "error guardian triggering compensation" and "worker-triggered compensation" operations. The lack of a unified error guardian and processing standard requires developers to implement these individually, resulting in a heavy development burden.
-
+  Monitoring the execution of business operations is usually done by logging, and monitoring platforms are based on log analysis. While this is generally sufficient, in the case of business errors, these monitors lack immediate access to the business context and require additional database queries. Additionally, the reliance on developers for log printing makes it prone to omissions. For compensatory transactions, there is often a need for "error guardian triggering compensation" and "worker-triggered compensation" operations. The lack of a unified error guardian and processing standard requires developers to implement these individually, resulting in a heavy development burden.
 
 <a name="hvEU6"></a>
 
@@ -53,15 +53,14 @@ When it comes to transactions, we are familiar with ACID, and we are also acquai
 
 Therefore, in practical development, we make trade-offs. For many business systems above the financial core, compensatory transactions can be adopted. The concept of compensatory transactions has been proposed for about 30 years, with the Saga theory emerging as a solution for long transactions. With the recent rise of microservices, Saga has gradually gained attention in recent years. Currently, the industry generally recognizes Saga as a solution for handling long transactions.
 
-> [https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf](https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf)[1]
-> [http://microservices.io/patterns/data/saga.html](http://microservices.io/patterns/data/saga.html)[2]
-
+> [https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf](https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf)[1] > [http://microservices.io/patterns/data/saga.html](http://microservices.io/patterns/data/saga.html)[2]
 
 <a name="k8kbY"></a>
 
 # Community and Industry Solutions
 
 <a name="Oc5Er"></a>
+
 ## Apache Camel Saga
 
 Camel is an open-source product that implements Enterprise Integration Patterns (EIP). It is based on an event-driven architecture and offers good performance and throughput. In version 2.21, Camel introduced the Saga EIP.
@@ -75,7 +74,6 @@ Here is an example of Java DSL:
 ```java
 // Java DSL example goes here
 
-```java
 // action
 from("direct:reserveCredit")
   .bean(idService, "generateCustomId") // generate a custom Id and set it in the body
@@ -98,6 +96,7 @@ from("direct:creditRefund")
 ```
 
 XML DSL sample:
+
 ```xml
 <route>
   <from uri="direct:start"/>
@@ -121,7 +120,6 @@ XML DSL sample:
 ## Eventuate Tram Saga
 
 [Eventuate Tram Saga](https://github.com/eventuate-tram/eventuate-tram-sagas)[4] The framework is a Saga framework for Java microservices using JDBC/JPA. Similar to Camel Saga, it also adopts Java DSL to define compensating operations:
-
 
 ```java
 public class CreateOrderSaga implements SimpleSaga<CreateOrderSagaData> {
@@ -173,6 +171,7 @@ The diagram below illustrates the relationship between alpha, omega, and microse
 <a name="ggflbq"></a>
 
 #### sample：
+
 ```java
 public class ServiceA extends AbsService implements IServiceA {
 
@@ -234,10 +233,10 @@ Ant Financial extensively uses the TCC mode for distributed transactions, mainly
 
 Generally, there are two common solutions in the community and industry: one is based on a state machine or a process engine that orchestrates processes and defines compensation through DSL; the other is based on Java annotations and interceptors to implement compensation. What are the advantages and disadvantages of these two approaches?
 
-| Approach             | Pros                                                                                                                                                                                                                                                                                                  | Cons                                                                                                                                                                            |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| State Machine + DSL  | <br />- Business processes can be defined using visual tools, standardized, readable, and can achieve service orchestration functionality<br />- Improves communication efficiency between business analysts and developers<br />- Business state management: Processes are essentially state machines, reflecting the flow of business states<br />- Enhances flexibility in exception handling: Can implement "forward retry" or "backward compensation" after recovery from a crash<br />- Naturally supports asynchronous processing engines such as Actor model or SEDA architecture, improving overall throughput<br /> | <br />- Business processes are composed of JAVA programs and DSL configurations, making development relatively cumbersome<br />- High intrusiveness into existing business if it is a transformation<br />- High implementation cost of the engine<br />          |
-| Interceptor + Java Annotation | <br />- Programs and annotations are integrated, simple development, low learning curve<br />- Easy integration into existing businesses<br />- Low framework implementation cost                                                                                                                                                                              | <br />- The framework cannot provide asynchronous processing modes such as the Actor model or SEDA architecture to improve system throughput<br />- The framework cannot provide business state management<br />- Difficult to achieve "forward retry" after crash recovery due to the inability to restore thread context<br />          |
+| Approach                      | Pros                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Cons                                                                                                                                                                                                                                                                                                                             |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| State Machine + DSL           | <br />- Business processes can be defined using visual tools, standardized, readable, and can achieve service orchestration functionality<br />- Improves communication efficiency between business analysts and developers<br />- Business state management: Processes are essentially state machines, reflecting the flow of business states<br />- Enhances flexibility in exception handling: Can implement "forward retry" or "backward compensation" after recovery from a crash<br />- Naturally supports asynchronous processing engines such as Actor model or SEDA architecture, improving overall throughput<br /> | <br />- Business processes are composed of JAVA programs and DSL configurations, making development relatively cumbersome<br />- High intrusiveness into existing business if it is a transformation<br />- High implementation cost of the engine<br />                                                                         |
+| Interceptor + Java Annotation | <br />- Programs and annotations are integrated, simple development, low learning curve<br />- Easy integration into existing businesses<br />- Low framework implementation cost                                                                                                                                                                                                                                                                                                                                                                                                                                             | <br />- The framework cannot provide asynchronous processing modes such as the Actor model or SEDA architecture to improve system throughput<br />- The framework cannot provide business state management<br />- Difficult to achieve "forward retry" after crash recovery due to the inability to restore thread context<br /> |
 
 ## Seata Saga Approach
 
@@ -250,14 +249,15 @@ Seata Saga adopts the state machine + DSL approach for the following reasons:
 - Typically, business systems above the core system have "service orchestration" requirements, and service orchestration has transactional eventual consistency requirements. These two are challenging to separate. The state machine + DSL approach can simultaneously meet these two requirements.
 - Because Saga mode theoretically does not guarantee isolation, in extreme cases, it may not complete the rollback operation due to dirty writing. For example, in a distributed transaction, if you recharge user A first and then deduct the balance from user B, if A user consumes the balance before the transaction is committed, and the transaction is rolled back, there is no way to compensate. Some business scenarios may allow the business to eventually succeed, and in cases where rollback is impossible, it can continue to retry the subsequent process. The state machine + DSL approach can achieve the ability to "forward" recover context and continue execution, making the business eventually successful and achieving eventual consistency.
 
-> In cases where isolation is not guaranteed: When designing business processes, follow the principle of "prefer long款, not short款." Long款 means fewer funds for customers and more funds for institutions. Institutions can refund customers based on their credibility. Conversely, short款 means less funding for institutions, and the funds may not be recovered. Therefore, in business process design, deduction should be done first.
+> In cases where isolation is not guaranteed: When designing business processes, follow the principle of "prefer long 款, not short 款." Long 款 means fewer funds for customers and more funds for institutions. Institutions can refund customers based on their credibility. Conversely, short 款 means less funding for institutions, and the funds may not be recovered. Therefore, in business process design, deduction should be done first.
 
 ### State Definition Language (Seata State Language)
 
 1. Define the service call process through a state diagram and generate a JSON state language definition file.
 2. In the state diagram, a node can be a service call, and the node can configure its compensating node.
 3. The JSON state diagram is driven by the state machine engine. When an exception occurs, the state engine executes the compensating node corresponding to the successfully executed node to roll back the transaction.
-> Note: Whether to compensate when an exception occurs can also be user-defined.
+
+   > Note: Whether to compensate when an exception occurs can also be user-defined.
 
 4. It can meet service orchestration requirements, supporting one-way selection, concurrency, asynchronous, sub-state machine, parameter conversion, parameter mapping, service execution status judgment, exception capture, and other functions.
 
@@ -290,102 +290,92 @@ public interface InventoryService {
 ![Example State Diagram](/img/saga/demo_statelang.png?raw=true)
 <br />Corresponding JSON
 
-
 ```json
 {
-    "Name": "reduceInventoryAndBalance",
-    "Comment": "reduce inventory then reduce balance in a transaction",
-    "StartState": "ReduceInventory",
-    "Version": "0.0.1",
-    "States": {
-        "ReduceInventory": {
-            "Type": "ServiceTask",
-            "ServiceName": "inventoryAction",
-            "ServiceMethod": "reduce",
-            "CompensateState": "CompensateReduceInventory",
-            "Next": "ChoiceState",
-            "Input": [
-                "$.[businessKey]",
-                "$.[count]"
-            ],
-            "Output": {
-                "reduceInventoryResult": "$.#root"
-            },
-            "Status": {
-                "#root == true": "SU",
-                "#root == false": "FA",
-                "$Exception{java.lang.Throwable}": "UN"
-            }
-        },
-        "ChoiceState":{
-            "Type": "Choice",
-            "Choices":[
-                {
-                    "Expression":"[reduceInventoryResult] == true",
-                    "Next":"ReduceBalance"
-                }
-            ],
-            "Default":"Fail"
-        },
-        "ReduceBalance": {
-            "Type": "ServiceTask",
-            "ServiceName": "balanceAction",
-            "ServiceMethod": "reduce",
-            "CompensateState": "CompensateReduceBalance",
-            "Input": [
-                "$.[businessKey]",
-                "$.[amount]",
-                {
-                    "throwException" : "$.[mockReduceBalanceFail]"
-                }
-            ],
-            "Output": {
-                "compensateReduceBalanceResult": "$.#root"
-            },
-            "Status": {
-                "#root == true": "SU",
-                "#root == false": "FA",
-                "$Exception{java.lang.Throwable}": "UN"
-            },
-            "Catch": [
-                {
-                    "Exceptions": [
-                        "java.lang.Throwable"
-                    ],
-                    "Next": "CompensationTrigger"
-                }
-            ],
-            "Next": "Succeed"
-        },
-        "CompensateReduceInventory": {
-            "Type": "ServiceTask",
-            "ServiceName": "inventoryAction",
-            "ServiceMethod": "compensateReduce",
-            "Input": [
-                "$.[businessKey]"
-            ]
-        },
-        "CompensateReduceBalance": {
-            "Type": "ServiceTask",
-            "ServiceName": "balanceAction",
-            "ServiceMethod": "compensateReduce",
-            "Input": [
-                "$.[businessKey]"
-            ]
-        },
-        "CompensationTrigger": {
-            "Type": "CompensationTrigger",
-            "Next": "Fail"
-        },
-        "Succeed": {
-            "Type":"Succeed"
-        },
-        "Fail": {
-            "Type":"Fail",
-            "ErrorCode": "PURCHASE_FAILED",
-            "Message": "purchase failed"
+  "Name": "reduceInventoryAndBalance",
+  "Comment": "reduce inventory then reduce balance in a transaction",
+  "StartState": "ReduceInventory",
+  "Version": "0.0.1",
+  "States": {
+    "ReduceInventory": {
+      "Type": "ServiceTask",
+      "ServiceName": "inventoryAction",
+      "ServiceMethod": "reduce",
+      "CompensateState": "CompensateReduceInventory",
+      "Next": "ChoiceState",
+      "Input": ["$.[businessKey]", "$.[count]"],
+      "Output": {
+        "reduceInventoryResult": "$.#root"
+      },
+      "Status": {
+        "#root == true": "SU",
+        "#root == false": "FA",
+        "$Exception{java.lang.Throwable}": "UN"
+      }
+    },
+    "ChoiceState": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Expression": "[reduceInventoryResult] == true",
+          "Next": "ReduceBalance"
         }
+      ],
+      "Default": "Fail"
+    },
+    "ReduceBalance": {
+      "Type": "ServiceTask",
+      "ServiceName": "balanceAction",
+      "ServiceMethod": "reduce",
+      "CompensateState": "CompensateReduceBalance",
+      "Input": [
+        "$.[businessKey]",
+        "$.[amount]",
+        {
+          "throwException": "$.[mockReduceBalanceFail]"
+        }
+      ],
+      "Output": {
+        "compensateReduceBalanceResult": "$.#root"
+      },
+      "Status": {
+        "#root == true": "SU",
+        "#root == false": "FA",
+        "$Exception{java.lang.Throwable}": "UN"
+      },
+      "Catch": [
+        {
+          "Exceptions": ["java.lang.Throwable"],
+          "Next": "CompensationTrigger"
+        }
+      ],
+      "Next": "Succeed"
+    },
+    "CompensateReduceInventory": {
+      "Type": "ServiceTask",
+      "ServiceName": "inventoryAction",
+      "ServiceMethod": "compensateReduce",
+      "Input": ["$.[businessKey]"]
+    },
+    "CompensateReduceBalance": {
+      "Type": "ServiceTask",
+      "ServiceName": "balanceAction",
+      "ServiceMethod": "compensateReduce",
+      "Input": ["$.[businessKey]"]
+    },
+    "CompensationTrigger": {
+      "Type": "CompensationTrigger",
+      "Next": "Fail"
+    },
+    "Succeed": {
+      "Type": "Succeed"
+    },
+    "Fail": {
+      "Type": "Fail",
+      "ErrorCode": "PURCHASE_FAILED",
+      "Message": "purchase failed"
     }
+  }
 }
 ```
 
@@ -417,7 +407,7 @@ public interface InventoryService {
 - CompensateState: Compensatory "state" for this state;
 - Input: List of input parameters for the service call, an array corresponding to the parameter list of the service method, $. represents using an expression to retrieve parameters from the state machine context. The expression uses [SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html)[8], and if it is a constant, write the value directly;
 - Output: Assigns the parameters returned by the service to the state machine context, a map structure, where the key is the key when placing it in the state machine context (the state machine context is also a map), and the value uses $. as a SpringEL expression, indicating the value is taken from the return parameters of the service, #root represents the entire return parameters of the service;
-- Status: Mapping of the service execution status, the framework defines three statuses, SU success, FA failure, UN unknown. We need to map the execution status of the service into these three statuses, helping the framework judge the overall consistency of the transaction. It is a map structure, where the key is a condition expression, usually based on the return value of the service or the exception thrown for judgment. The default is a SpringEL expression to judge the return parameters of the service. Those starting with $Exception{ indicate judging the exception type, and the value is mapped to this value when this condition expression is true;
+- Status: Mapping of the service execution status, the framework defines three statuses, SU success, FA failure, UN unknown. We need to map the execution status of the service into these three statuses, helping the framework judge the overall consistency of the transaction. It is a map structure, where the key is a condition expression, usually based on the return value of the service or the exception thrown for judgment. The default is a SpringEL expression to judge the return parameters of the service. Those starting with $Exception\{ indicate judging the exception type, and the value is mapped to this value when this condition expression is true;
 - Catch: Route after catching an exception;
 - Next: The next "state" to execute after the service is completed;
 - Choices: List of optional branches in the Choice type "state," where Expression is a SpringEL expression, and Next is the next "state" to execute when the expression is true;
@@ -439,7 +429,6 @@ For more detailed explanations of the state language, please refer to [Seata Sag
 - After a "state" is executed, the end event of the "state instance" is recorded in the local database, and Seata Server is called to report the status of the branch transaction;
 - When the entire state machine is executed, the completion event of the "state machine instance" is recorded in the local database, and Seata Server is called to commit or roll back the distributed transaction;
 
-
 <a name="808e95dc"></a>
 
 ### Design of State Machine Engine:
@@ -449,12 +438,13 @@ For more detailed explanations of the state language, please refer to [Seata Sag
 The design of the state machine engine is mainly divided into three layers, with the upper layer depending on the lower layer. From bottom to top, they are:
 
 - Eventing Layer:
+
   - Implements an event-driven architecture that can push events and be consumed by a consumer. This layer does not care about what the event is or what the consumer executes; it is implemented by the upper layer.
 
 - ProcessController Layer:
-  - Driven by the above Eventing to execute a "empty" process. The behavior and routing of "states" are not implemented. It is implemented by the upper layer.
-> Based on the above two layers, theoretically, any "process" engine can be customly extended. The design of these two layers is based on the internal design of the financial network platform.
 
+  - Driven by the above Eventing to execute a "empty" process. The behavior and routing of "states" are not implemented. It is implemented by the upper layer.
+    > Based on the above two layers, theoretically, any "process" engine can be customly extended. The design of these two layers is based on the internal design of the financial network platform.
 
 - StateMachineEngine Layer:
   - Implements the behavior and routing logic of each type of state in the state machine engine;
@@ -465,8 +455,8 @@ The design of the state machine engine is mainly divided into three layers, with
 ### Practical Experience in Service Design under Saga Mode
 
 Below are some practical experiences summarized in the design of microservices under Saga mode. Of course, these are recommended practices, not necessarily to be followed 100%. There are "workaround" solutions even if not followed.
-> Good news: Seata Saga mode has no specific requirements for the interface parameters of microservices, making Saga mode suitable for integrating legacy systems or services from external institutions.
 
+> Good news: Seata Saga mode has no specific requirements for the interface parameters of microservices, making Saga mode suitable for integrating legacy systems or services from external institutions.
 
 <a name="d64c5051"></a>
 
