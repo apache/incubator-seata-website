@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # Version Upgrade Guide
 
+<a href="#9" target="_self">9. What compatibility matters need to be paid attention to when upgrading to seata 2.1? </a>
+<br/>
+
 <a href="#8" target="_self">8. What compatibility matters need to be paid attention to when upgrading to seata 2.0? </a>
 <br/>
 
@@ -29,6 +32,15 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. How to upgrade versions 0.8 and 0.9 to version 1.0? </a>
 <br/>
+
+------
+
+<h3 id='9'>9. What compatibility matters need to be paid attention to when upgrading to seata 2.1?</h3>
+<details>
+   <summary><mark>Notes</mark></summary>
+  
+  1. After using the Seata 2.0 Raft storage mode, upgrading to 2.1 requires logging in to obtain a token, carrying a token to request /metadata/v1/cluster?group= in the value of seata.server.raft.group in application.yml, and querying the cluster metadata Later. Upgrade the follower node first, and then upgrade the leader node. Note: After this upgrade is completed, the Raft storage mode is not allowed to be downgraded to 2.0. Please fully verify it in the offline environment before upgrading the production environment.
+</details>
 
 
 ------
