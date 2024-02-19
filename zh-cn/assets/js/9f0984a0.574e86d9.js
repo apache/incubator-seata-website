@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkseata_website=self.webpackChunkseata_website||[]).push([[12420],{16325:a=>{a.exports=JSON.parse('{"label":"Seata","permalink":"/zh-cn/blog/tags/seata","allTagsPath":"/zh-cn/blog/tags","count":2,"unlisted":false}')}}]);
