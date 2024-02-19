@@ -148,9 +148,9 @@ description: Seata parameter configuration.
 | service.vgroupMapping.my_test_tx_Group | transaction group (Appendix 1) | my_ test_ tx_ Group refers to grouping, and the configuration item value is TC cluster name|
 | service.default.grouplist | TC service list (Appendix 2) | Only used when the registry is file|
 | service.disableGlobalTransaction | global transaction switch | False by default. false is on, true is off|
-| client.tm.downgradeCheck | demote switch | False by default. The business side automatically downgrades the seata transaction based on the number of consecutive errors (see Appendix 6 for details)|
-| client.tm.gradeCheckAllowTimes | threshold value for reaching the standard of promotion and demotion | 10 by default|
-| client.tm.downgradeCheckPeriod | service self check cycle | 2000 by default, in ms Conduct a service self check every 2 seconds to decide|
+| client.tm.degradeCheck | demote switch | False by default. The business side automatically degradeCheck the seata transaction based on the number of consecutive errors (see Appendix 6 for details)|
+| client.tm.degradeCheckAllowTimes | threshold value for reaching the standard of promotion and demotion | 10 by default|
+| client.tm.degradeCheckPeriod | service self check cycle | 2000 by default, in ms Conduct a service self check every 2 seconds to detect|
 | client.rm.reportSuccessEnable | whether to report phase I success | True, false, starting from version 1.1.0. The default is false true is used to keep the life cycle records of branch transactions complete. false can improve performance|
 | client.rm.asyncCommitBufferLimit | asynchronous commit cache queue length | 10000 by default. Phase II commit succeeded. RM asynchronously cleans the undo queue|
 | client.rm.lock.retryInterval | retry interval for verifying or occupying the global lock | 10 by default, in milliseconds|
