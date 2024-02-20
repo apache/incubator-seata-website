@@ -13,7 +13,7 @@ The Seata team maintains several recent stable releases, with the current latest
 
 For more detailed information, please refer to: [Version Maintenance Plan](/docs/ops/version-maintain-plan)
 
-:::tip
+:::
 
 ## Seata 2.x
 
@@ -22,8 +22,8 @@ For more detailed information, please refer to: [Version Maintenance Plan](/docs
 ```
 
 | Release Date | Version | Binary Link                                                                                            | Docker Image                                                                                       | CheckSum                         | Release Notes                               | Reference Docs                              | Is ASF Release |
-| ------------ | ------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------- | ------------------------------------------- | ----------------|
-| 2023-11-24   | 2.0.0   | [2.0.0.zip](https://github.com/apache/incubator-seata/releases/download/v2.0.0/seata-server-2.0.0.zip) | [seataio/seata-server:2.0.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=2.0.0) | 5c5c6a98649f37ed7894743b21bc8777 | [2.0.x Release Notes](/docs/release-notes/) | [2.0.x Quick Start](/docs/user/quickstart/) | NO |
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------- | ------------------------------------------- | -------------- |
+| 2023-11-24   | 2.0.0   | [2.0.0.zip](https://github.com/apache/incubator-seata/releases/download/v2.0.0/seata-server-2.0.0.zip) | [seataio/seata-server:2.0.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=2.0.0) | 5c5c6a98649f37ed7894743b21bc8777 | [2.0.x Release Notes](/docs/release-notes/) | [2.0.x Quick Start](/docs/user/quickstart/) | NO             |
 
 ```mdx-code-block
 </section>
@@ -36,7 +36,7 @@ For more detailed information, please refer to: [Version Maintenance Plan](/docs
 ```
 
 | Release Date | Version | Binary Link                                                                                            | Docker Image                                                                                       | CheckSum                         | Release Notes                                    | Reference Docs                                   | Is ASF Release |
-| ------------ | ------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------ | ------------------------------------------------ |----------------|
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------ | ------------------------------------------------ | -------------- |
 | 2023-10-31   | 1.8.0   | [1.8.0.zip](https://github.com/apache/incubator-seata/releases/download/v1.8.0/seata-server-1.8.0.zip) | [seataio/seata-server:1.8.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.8.0) | f5de162a4577f5f96828cba75d912240 | [1.8.x Release Notes](/docs/v1.8/release-notes/) | [1.8.x Quick Start](/docs/v1.8/user/quickstart/) | NO             |
 | 2023-09-05   | 1.7.1   | [1.7.1.zip](https://github.com/apache/incubator-seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x Release Notes](/docs/v1.7/release-notes/) | [1.7.x Quick Start](/docs/v1.7/user/quickstart/) | NO             |
 | 2023-07-11   | 1.7.0   | [1.7.0.zip](https://github.com/apache/incubator-seata/releases/download/v1.7.0/seata-server-1.7.0.zip) | [seataio/seata-server:1.7.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.0) | ca1f7444f19db7245df1e460fd468d30 | [1.7.x Release Notes](/docs/v1.7/release-notes/) | [1.7.x Quick Start](/docs/v1.7/user/quickstart/) | NO             |

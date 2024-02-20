@@ -11,7 +11,7 @@ hide_table_of_contents: true
 
 Version 2.0.0 has been released, featuring support for Raft clusters; AT transaction mode newly supports Dameng, SQLServer, and PolarDB-X 2.0 databases; IPV6 is supported; a unified API is available; transaction two-phase commit processing is parallelized. You are welcome to download and try it out.
 
-:::tip
+:::
 
 ## System Requirements
 
@@ -19,7 +19,7 @@ Version 2.0.0 has been released, featuring support for Raft clusters; AT transac
 
 The following system requirements are the minimum required to deploy Seata-Server: if your device does not meet these requirements, you may not be able to deploy Seata-Server on your device.
 
-:::note
+:::
 
 ```mdx-code-block
 <section class="full_width_table_section">
@@ -44,7 +44,7 @@ The following system requirements are the minimum required to deploy Seata-Serve
 ```
 
 | Version | Binary Link                                                                                            | Docker Image                                                                                       | CheckSum                         | Release Notes                                    | Reference Docs                                   | Is ASF Release |
-| ------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------ | ------------------------------------------------ |----------------|
+| ------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------ | ------------------------------------------------ | -------------- |
 | 2.0.0   | [2.0.0.zip](https://github.com/apache/incubator-seata/releases/download/v2.0.0/seata-server-2.0.0.zip) | [seataio/seata-server:2.0.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=2.0.0) | 5c5c6a98649f37ed7894743b21bc8777 | [2.0.x Release Notes](/docs/release-notes/)      | [2.0.x Quick Start](/docs/user/quickstart/)      | NO             |
 | 1.8.0   | [1.8.0.zip](https://github.com/apache/incubator-seata/releases/download/v1.8.0/seata-server-1.8.0.zip) | [seataio/seata-server:1.8.0](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.8.0) | f5de162a4577f5f96828cba75d912240 | [1.8.x Release Notes](/docs/v1.8/release-notes/) | [1.8.x Quick Start](/docs/v1.8/user/quickstart/) | NO             |
 | 1.7.1   | [1.7.1.zip](https://github.com/apache/incubator-seata/releases/download/v1.7.1/seata-server-1.7.1.zip) | [seataio/seata-server:1.7.1](https://hub.docker.com/r/seataio/seata-server/tags?page=1&name=1.7.1) | 5e7f41965f8f26a46b727d204eef3054 | [1.7.x Release Notes](/docs/v1.7/release-notes/) | [1.7.x Quick Start](/docs/v1.7/user/quickstart/) | NO             |
@@ -62,7 +62,7 @@ The following system requirements are the minimum required to deploy Seata-Serve
 <section class="full_width_table_section">
 ```
 
-| Version | Binary Link | Docker Image | CheckSum | Release Notes | Reference Docs |Is ASF Release |
+| Version | Binary Link | Docker Image | CheckSum | Release Notes | Reference Docs | Is ASF Release |
 | ------- | ----------- | ------------ | -------- | ------------- | -------------- | -------------- |
 
 ```mdx-code-block

@@ -4,14 +4,13 @@ keywords: [Seata, Release Notes]
 description: Release Notes
 ---
 
-
 # Downloads
 
 # Seata
 
-> GitHub: <https://github.com/apache/incubator-seata>
+> GitHub: https://github.com/apache/incubator-seata
 >
-> Release Notes: <https://github.com/apache/incubator-seata/releases>
+> Release Notes: https://github.com/apache/incubator-seata/releases
 
 ### 2.0.0 (2023-11-24)
 
@@ -250,10 +249,10 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -313,6 +312,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [capthua](https://github.com/capthua)
 - [funky-eyes](https://github.com/funky-eyes)
@@ -327,10 +327,10 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -378,6 +378,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [capthua](https://github.com/capthua)
 - [robynron](https://github.com/robynron)
@@ -391,10 +392,10 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -422,7 +423,7 @@ The version is updated as follows:
 
 ### bugfix
 
-- [[#5682](https://github.com/apache/incubator-seata/pull/5682)]  fix saga mode replay context lost startParams
+- [[#5682](https://github.com/apache/incubator-seata/pull/5682)] fix saga mode replay context lost startParams
 - [[#5671](https://github.com/apache/incubator-seata/pull/5671)] fix saga mode serviceTask inputParams json autoType convert exception
 - [[#5194](https://github.com/apache/incubator-seata/pull/5194)] fix wrong keyword order for oracle when creating a table
 - [[#5021](https://github.com/apache/incubator-seata/pull/5201)] fix JDK Reflection for Spring origin proxy failed in JDK17
@@ -501,6 +502,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [xssdpgy](https://github.com/xssdpgy)
 - [albumenj](https://github.com/albumenj)
@@ -526,10 +528,10 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -567,6 +569,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [wangliang181230](https://github.com/wangliang181230)
 - [xingfudeshi](https://github.com/xingfudeshi)
@@ -577,10 +580,10 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -622,7 +625,7 @@ The version is updated as follows:
 - [[#4912](https://github.com/apache/incubator-seata/pull/4912)] fix mysql InsertOnDuplicateUpdate column case is different and cannot be matched
 - [[#4543](https://github.com/apache/incubator-seata/pull/4543)] fix support Oracle nclob types
 - [[#4915](https://github.com/apache/incubator-seata/pull/4915)] fix failed to get server recovery properties
-- [[#4919](https://github.com/apache/incubator-seata/pull/4919)] fix XID port  and  address null:0 before coordinator.init
+- [[#4919](https://github.com/apache/incubator-seata/pull/4919)] fix XID port and address null:0 before coordinator.init
 - [[#4928](https://github.com/apache/incubator-seata/pull/4928)] fix rpcContext.getClientRMHolderMap NPE
 - [[#4953](https://github.com/apache/incubator-seata/pull/4953)] fix InsertOnDuplicateUpdate bypass modify pk
 - [[#4978](https://github.com/apache/incubator-seata/pull/4978)] fix kryo support circular reference
@@ -631,7 +634,7 @@ The version is updated as follows:
 - [[#5004](https://github.com/apache/incubator-seata/pull/5004)] fix duplicate image row for update join
 - [[#5032](https://github.com/apache/incubator-seata/pull/5032)] fix mysql InsertOnDuplicateUpdate sql query error caused by placeholder index calculation error
 - [[#5033](https://github.com/apache/incubator-seata/pull/5033)] fix null exception when sql columns is empty for insert on duplicate
-- [[#5038](https://github.com/apache/incubator-seata/pull/5038)] remove @EnableConfigurationProperties({SagaAsyncThreadPoolProperties.class})
+- [[#5038](https://github.com/apache/incubator-seata/pull/5038)] remove @EnableConfigurationProperties(\{SagaAsyncThreadPoolProperties.class})
 - [[#5050](https://github.com/apache/incubator-seata/pull/5050)] fix global session is not change to Committed in saga mode
 - [[#5052](https://github.com/apache/incubator-seata/pull/5052)] fix update join condition placeholder param error
 - [[#5031](https://github.com/apache/incubator-seata/pull/5031)] fix mysql InsertOnDuplicateUpdate should not use null index value as image sql query condition
@@ -698,6 +701,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [renliangyu857](https://github.com/renliangyu857)
 - [wangliang181230](https://github.com/wangliang181230)
@@ -737,10 +741,10 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -803,6 +807,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [pengten](https://github.com/pengten)
 - [YSF-A](https://github.com/YSF-A)
@@ -825,10 +830,10 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
@@ -1071,7 +1076,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#4453](https://github.com/apache/incubator-seata/pull/4453) ] optimize upgrade eureka-clients and xstream dependencies
 - [[#4481](https://github.com/apache/incubator-seata/pull/4481) ] optimize nacos config and naming properties
 - [[#4477](https://github.com/apache/incubator-seata/pull/4477) ] optimize debug log and fix typo
-- [[#4484](https://github.com/apache/incubator-seata/pull/4484) ]optimize  the log of TM/RM register
+- [[#4484](https://github.com/apache/incubator-seata/pull/4484) ]optimize the log of TM/RM register
 - [[#3874](https://github.com/apache/incubator-seata/pull/4484) ] optimize Add logo of registered enterprise,and Change image source to Alicdn
 - [[#4458](https://github.com/apache/incubator-seata/pull/4458) ] optimize fix the README.md of metrices module
 - [[#4482](https://github.com/apache/incubator-seata/pull/4482) ] optimize remove duplicated word
@@ -1128,6 +1133,7 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [zhixing](https://github.com/chenlei3641)
 
 Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+
 </details>
 
 ### 1.4.2 (2021-04-26)
@@ -1229,7 +1235,7 @@ The version is updated as follows:
 - [[#3371](https://github.com/apache/incubator-seata/pull/3371)] add applicationId for metric
 - [[#3459](https://github.com/apache/incubator-seata/pull/3459)] remove duplicate validAddress code
 - [[#3215](https://github.com/apache/incubator-seata/pull/3215)] opt the reload during startup in file mode
-- [[#3631](https://github.com/apache/incubator-seata/pull/3631)] optimize  nacos-config.py  parameter
+- [[#3631](https://github.com/apache/incubator-seata/pull/3631)] optimize nacos-config.py parameter
 - [[#3638](https://github.com/apache/incubator-seata/pull/3638)] optimize the error when use update or delete with join in sql
 - [[#3523](https://github.com/apache/incubator-seata/pull/3523)] optimize release savepoint when use oracle
 - [[#3458](https://github.com/apache/incubator-seata/pull/3458)] reversion the deleted md
@@ -1237,7 +1243,7 @@ The version is updated as follows:
 - [[#3573](https://github.com/apache/incubator-seata/pull/3573)] fix designer directory path in README.md
 - [[#3662](https://github.com/apache/incubator-seata/pull/3662)] update gpg key
 - [[#3664](https://github.com/apache/incubator-seata/pull/3664)] optimize some javadocs
-- [[#3637](https://github.com/apache/incubator-seata/pull/3637)] register the participating companies and  pull request information
+- [[#3637](https://github.com/apache/incubator-seata/pull/3637)] register the participating companies and pull request information
 
 ### test
 
@@ -1264,7 +1270,7 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [github-ganyu](https://github.com/github-ganyu)
 - [dmego](https://github.com/dmego)
 - [spilledyear](https://github.com/spilledyear)
-- [hoverruan](https://github.com/hoverruan )
+- [hoverruan](https://github.com/hoverruan)
 - [anselleeyy](https://github.com/anselleeyy)
 - [Ifdevil](https://github.com/Ifdevil)
 - [lvxianzheng](https://github.com/lvxianzheng)
@@ -1292,6 +1298,7 @@ Thanks to these contributors for their code commits. Please report an unintended
 - [luoxn28](https://github.com/luoxn28)
 
 Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+
 </details>
 
 ### 1.4.1 (2021-02-08)
@@ -1361,28 +1368,28 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
 ### 1.4.0 (2020-10-30)
 
- [source](https://github.com/apache/incubator-seata/archive/v1.4.0.zip) |
- [binary](https://github.com/apache/incubator-seata/releases/download/v1.4.0/seata-server-1.4.0.zip)
+[source](https://github.com/apache/incubator-seata/archive/v1.4.0.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v1.4.0/seata-server-1.4.0.zip)
 
 <details>
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 1.4.0
 
-  Seata 1.4.0 Released.
+Seata 1.4.0 Released.
 
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
-  The version is updated as follows:
+The version is updated as follows:
 
 ### feature
 
@@ -1399,7 +1406,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#3076](https://github.com/apache/incubator-seata/pull/3076)] check lock in TC when use @GlobalLock
 - [[#2825](https://github.com/apache/incubator-seata/pull/2825)] support send authentication msg
 - [[#2962](https://github.com/apache/incubator-seata/pull/2962)] @GlobalTransactional and @GlobalLock can support customize lock retry config
-  
+
 ### bugfix
 
 - [[#3214](https://github.com/apache/incubator-seata/pull/3214)] fix the 'RootContext.DEFAULT_BRANCH_TYPE' is wrong in some cases
@@ -1441,7 +1448,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#3233](https://github.com/apache/incubator-seata/pull/3233)] fix Collections NPE
 - [[#3242](https://github.com/apache/incubator-seata/pull/3242)] fix batch sql getTableMeta error
 - [[#3246](https://github.com/apache/incubator-seata/pull/3246)] fix the exception when limit condition contains VariantRefExpr
-  
+
 ### optimize
 
 - [[#3062](https://github.com/apache/incubator-seata/pull/3062)] refactor the redis session store
@@ -1471,7 +1478,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#3222](https://github.com/apache/incubator-seata/pull/3222)] optimize fileListener to decrease cpu time usage
 - [[#2843](https://github.com/apache/incubator-seata/pull/2843)] removed Reloadable from the redis/db SessionManager
 - [[#3209](https://github.com/apache/incubator-seata/pull/3209)] add using company logos
-  
+
   Thanks to these contributors for their code commits. Please report an unintended omission.
 
 - [slievrly](https://github.com/slievrly)
@@ -1506,29 +1513,29 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
-  
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
+
 </details>
 
 ### 1.3.0 (2020-07-14)
 
- [source](https://github.com/apache/incubator-seata/archive/v1.3.0.zip) |
- [binary](https://github.com/apache/incubator-seata/releases/download/v1.3.0/seata-server-1.3.0.zip)
+[source](https://github.com/apache/incubator-seata/archive/v1.3.0.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v1.3.0/seata-server-1.3.0.zip)
 
 <details>
   <summary><mark>Release notes</mark></summary>
   
 ### Seata 1.3.0
 
-  Seata 1.3.0 Released.
+Seata 1.3.0 Released.
 
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
-  The version is updated as follows:
-  
+The version is updated as follows:
+
 ### feature
 
 - [[#2398](https://github.com/apache/incubator-seata/pull/2398)] support multi pk for MySQL
@@ -1551,7 +1558,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2708](https://github.com/apache/incubator-seata/pull/2708)] support jdbc type array, datalink etc
 - [[#2412](https://github.com/apache/incubator-seata/pull/2412)] xid generation strategy support snowflake
 - [[#2611](https://github.com/apache/incubator-seata/pull/2611)] support the cache of configuration values
-  
+
 ### bugfix
 
 - [[#2893](https://github.com/apache/incubator-seata/pull/2893)] fix get table meta failed in postgresql
@@ -1626,7 +1633,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2242](https://github.com/apache/incubator-seata/pull/2242)] optimize PreparedStatementProxy initialization logic
 - [[#2613](https://github.com/apache/incubator-seata/pull/2613)] fix typo and some coding guidelines
 
-  Thanks to these contributors for their code commits. Please report an unintended omission.  
+  Thanks to these contributors for their code commits. Please report an unintended omission.
 
 - [slievrly](https://github.com/slievrly)
 - [funky-eyes](https://github.com/funky-eyes)
@@ -1664,28 +1671,29 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
 ### 1.2.0 (2020-04-20)
 
- [source](https://github.com/apache/incubator-seata/archive/v1.2.0.zip) |
- [binary](https://github.com/apache/incubator-seata/releases/download/v1.2.0/seata-server-1.2.0.zip)
+[source](https://github.com/apache/incubator-seata/archive/v1.2.0.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v1.2.0/seata-server-1.2.0.zip)
+
 <details>
   <summary><mark>Release notes</mark></summary>
   
 ### Seata 1.2.0
 
-  Seata 1.2.0 Released.
+Seata 1.2.0 Released.
 
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
-  The version is updated as follows:
-  
+The version is updated as follows:
+
 ### feature
 
 - [[#2381](https://github.com/apache/incubator-seata/pull/2381)] support XA transaction mode
@@ -1703,7 +1711,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2379](https://github.com/apache/incubator-seata/pull/2379)] support custom service name when registering with Nacos
 - [[#2308](https://github.com/apache/incubator-seata/pull/2308)] add switch to control whether to register branch on Saga transaction mode
 - [[#2301](https://github.com/apache/incubator-seata/pull/2301)] support default expr and nextval for postgresql
-  
+
 ### bugfix
 
 - [[#2575](https://github.com/apache/incubator-seata/pull/2575)] fix executeBatch can not get targetSql in Statement mode
@@ -1734,7 +1742,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2524](https://github.com/apache/incubator-seata/pull/2524)] registration service configuration missing and inconsistent
 - [[#2473](https://github.com/apache/incubator-seata/pull/2473)] fix flush condition of disk in file mode
 - [[#2455](https://github.com/apache/incubator-seata/pull/2455)] fix child module can't execute copyright and checkstyle inspection
-  
+
 ### optimize
 
 - [[#2409](https://github.com/apache/incubator-seata/pull/2409)] reduce the db and network request when undoLog or lockKey is empty
@@ -1766,13 +1774,13 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2530](https://github.com/apache/incubator-seata/pull/2530)] remove use connPool
 - [[#2489](https://github.com/apache/incubator-seata/pull/2489)] optimize exceptionHandler's method signature
 - [[#2494](https://github.com/apache/incubator-seata/pull/2494)] reduce the redundant code
-- [[#2523](https://github.com/apache/incubator-seata/pull/2523)] optimize abnormal global transaction's output logs by  frequency
+- [[#2523](https://github.com/apache/incubator-seata/pull/2523)] optimize abnormal global transaction's output logs by frequency
 - [[#2549](https://github.com/apache/incubator-seata/pull/2549)] optimize the exception log for ZookeeperConfiguration
 - [[#2558](https://github.com/apache/incubator-seata/pull/2558)] optimize config and server module log
 - [[#2464](https://github.com/apache/incubator-seata/pull/2464)] enhance Saga transaction editor
 - [[#2553](https://github.com/apache/incubator-seata/pull/2553)] add some notes about using scripts
-  
-  Thanks to these contributors for their code commits. Please report an unintended omission.  
+
+  Thanks to these contributors for their code commits. Please report an unintended omission.
 
 - [slievrly](https://github.com/slievrly)
 - [funky-eyes](https://github.com/funky-eyes)
@@ -1784,7 +1792,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [CharmingRabbit](https://github.com/CharmingRabbit)
 - [xingfudeshi](https://github.com/xingfudeshi)
 - [lovepoem](https://github.com/lovepoem)
-- [SevenSecondsOfMemory](https://github.com/SevenSecondsOfMemory )
+- [SevenSecondsOfMemory](https://github.com/SevenSecondsOfMemory)
 - [zjinlei](https://github.com/zjinlei)
 - [ggndnn](https://github.com/ggndnn)
 - [tauntongo](https://github.com/tauntongo)
@@ -1801,34 +1809,35 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [wangwei-ying](https://github.com/wangwei-ying)
 - [mxszs](https://github.com/mxszs)
 - [q294881866](https://github.com/q294881866)
-- [HankDevelop](https://github.com/HankDevelop)  
-  
+- [HankDevelop](https://github.com/HankDevelop)
+
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
 ### 1.1.0 (2020-02-19)
 
- [source](https://github.com/apache/incubator-seata/archive/v1.1.0.zip) |
- [binary](https://github.com/apache/incubator-seata/releases/download/v1.1.0/seata-server-1.1.0.zip)
+[source](https://github.com/apache/incubator-seata/archive/v1.1.0.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v1.1.0/seata-server-1.1.0.zip)
+
 <details>
   <summary><mark>Release notes</mark></summary>
   
 ### Seata 1.1.0
 
-  Seata 1.1.0 Released.
+Seata 1.1.0 Released.
 
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
-  The version is updated as follows:
-  
+The version is updated as follows:
+
 ### feature
 
 - [[#2200](https://github.com/apache/incubator-seata/pull/2200)] support postgresql(client and server)
@@ -1842,7 +1851,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2106](https://github.com/apache/incubator-seata/pull/2106)] support FastThreadLocalContextCore
 - [[#1703](https://github.com/apache/incubator-seata/pull/1703)] create sql parser SPI and a druid type sql parser
 - [[#2151](https://github.com/apache/incubator-seata/pull/2151)] Saga provide a switch to skip branch report on branch success
-  
+
 ### bugfix
 
 - [[#2270](https://github.com/apache/incubator-seata/pull/2270)] fix worker size not support enum type and some minor problem
@@ -1868,7 +1877,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2185](https://github.com/apache/incubator-seata/pull/2185)] fix issue of judgement container in kubernetes
 - [[#2145](https://github.com/apache/incubator-seata/pull/2145)] fix Saga report branch status incorrect when service retried succeed
 - [[#2113](https://github.com/apache/incubator-seata/pull/2113)] fix when branchRollback failed, it will trigger retry of multi-tc
-  
+
 ### optimize
 
 - [[#2255](https://github.com/apache/incubator-seata/pull/2255)] optimize some default configuration value
@@ -1906,15 +1915,15 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#2078](https://github.com/apache/incubator-seata/pull/2078)] enhance oracle table meta cache code coverage
 - [[#2115](https://github.com/apache/incubator-seata/pull/2115)] fix typos
 - [[#2099](https://github.com/apache/incubator-seata/pull/2099)] optimize tm module code style
-  
-  Thanks to these contributors for their code commits. Please report an unintended omission.  
+
+  Thanks to these contributors for their code commits. Please report an unintended omission.
 
 - [slievrly](https://github.com/slievrly)
 - [xingfudeshi](https://github.com/xingfudeshi)
 - [objcoding](https://github.com/objcoding)
 - [long187](https://github.com/long187)
 - [zjinlei](https://github.com/zjinlei)
-- [ggndnn](https://github.com/ggndnn)  
+- [ggndnn](https://github.com/ggndnn)
 - [lzf971107](https://github.com/lzf971107)
 - [CvShrimp](https://github.com/CvShrimp)
 - [l81893521](https://github.com/l81893521)
@@ -1930,35 +1939,36 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [CharmingRabbit](https://github.com/CharmingRabbit)
 - [jaspercloud](https://github.com/jaspercloud)
 - [jsbxyyx](https://github.com/jsbxyyx)
-  
+
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>
 
 ### 1.0.0 (2019-12-21)
 
- [source](https://github.com/apache/incubator-seata/archive/v1.0.0.zip) |
- [binary](https://github.com/apache/incubator-seata/releases/download/v1.0.0/seata-server-1.0.0.zip)
+[source](https://github.com/apache/incubator-seata/archive/v1.0.0.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v1.0.0/seata-server-1.0.0.zip)
+
 <details>
   <summary><mark>Release notes</mark></summary>
   
 ### Seata 1.0.0
 
-  Seata 1.0.0 Released.
+Seata 1.0.0 Released.
 
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
-  The version is updated as follows:
+The version is updated as follows:
 
 #### feature
-  
+
 - [[#1966](https://github.com/apache/incubator-seata/pull/1966)] add single send request for client
 - [[#2004](https://github.com/apache/incubator-seata/pull/2004)] add config center synchronization script
 - [[#1997](https://github.com/apache/incubator-seata/pull/1997)] provides a tool for generating graphics that show the state machine execution path
@@ -2093,7 +2103,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1766](https://github.com/apache/incubator-seata/pull/1766)] remove unused method
 - [[#1770](https://github.com/apache/incubator-seata/pull/1770)] string splice and release lock
 
-   Thanks to these contributors for their code commits. Please report an unintended omission.
+  Thanks to these contributors for their code commits. Please report an unintended omission.
 
 - [slievrly](https://github.com/slievrly)
 - [long187](https://github.com/long187)
@@ -2128,30 +2138,31 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [zhongfuhua](https://github.com/zhongfuhua)
 - [lizwmaster](https://github.com/lizwmaster)
 
-   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+  Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
 ### 0.9.0 (2019-10-16)
 
- [source](https://github.com/apache/incubator-seata/archive/v0.9.0.zip) |
- [binary](https://github.com/apache/incubator-seata/releases/download/v0.9.0/seata-server-0.9.0.zip)
+[source](https://github.com/apache/incubator-seata/archive/v0.9.0.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v0.9.0/seata-server-0.9.0.zip)
+
 <details>
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.9.0
 
-  Seata 0.9.0 Released.
+Seata 0.9.0 Released.
 
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
-  The version is updated as follows:
+The version is updated as follows:
 
 #### feature
 
@@ -2197,7 +2208,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1657](https://github.com/apache/incubator-seata/pull/1657)] optimize the problem of large direct buffer when file rolling in file storage mode
 
 ​
-   Thanks to these contributors for their code commits. Please report an unintended omission.  
+Thanks to these contributors for their code commits. Please report an unintended omission.  
 ​
 
 - [slievrly](https://github.com/slievrly)
@@ -2217,20 +2228,21 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [worstenemy](https://github.com/worstenemy)
 - [caioguedes](https://github.com/caioguedes)
 
-   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+  Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
 ### 0.8.1 (2019-09-18)
 
-  [source](https://github.com/apache/incubator-seata/archive/v0.8.1.zip) |
-  [binary](https://github.com/apache/incubator-seata/releases/download/v0.8.1/seata-server-0.8.1.zip)
+[source](https://github.com/apache/incubator-seata/archive/v0.8.1.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v0.8.1/seata-server-0.8.1.zip)
+
 <details>
   <summary><mark>Release notes</mark></summary>
   
@@ -2252,7 +2264,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1478](https://github.com/apache/incubator-seata/pull/1478)] support db mock
 - [[#1512](https://github.com/apache/incubator-seata/pull/1512)] extended support for mysql and oracle multiple insert batch syntax
 - [[#1496](https://github.com/apache/incubator-seata/pull/1496)] support auto proxy of DataSource
-  
+
 #### bugfix
 
 - [[#1646](https://github.com/apache/incubator-seata/pull/1646)] fix selectForUpdate lockQuery exception in file mode
@@ -2278,18 +2290,18 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1514](https://github.com/apache/incubator-seata/pull/1514)] fix when lack serialization dependence can't generate undolog and report true
 - [[#1445](https://github.com/apache/incubator-seata/pull/1445)] fix DefaultCoordinatorMetricsTest UT failed
 - [[#1481](https://github.com/apache/incubator-seata/pull/1481)] fix TableMetaCache refresh problem in multiple datasource
-  
+
 #### optimize
 
 - [[#1629](https://github.com/apache/incubator-seata/pull/1629)] optimize the watcher efficiency of etcd3
 - [[#1661](https://github.com/apache/incubator-seata/pull/1661)] optimize global_table insert transaction_name size
 - [[#1633](https://github.com/apache/incubator-seata/pull/1633)] optimize branch transaction repeated reporting false
-- [[#1654](https://github.com/apache/incubator-seata/pull/1654)] optimize wrong usage of slf4j  
+- [[#1654](https://github.com/apache/incubator-seata/pull/1654)] optimize wrong usage of slf4j
 - [[#1593](https://github.com/apache/incubator-seata/pull/1593)] optimize and standardize server log
 - [[#1648](https://github.com/apache/incubator-seata/pull/1648)] optimize transaction_name length when building the table
 - [[#1576](https://github.com/apache/incubator-seata/pull/1576)] eliminate the impact of instructions reordering on session async committing task
 - [[#1618](https://github.com/apache/incubator-seata/pull/1618)] optimize undolog manager and fix delete undolog support oracle
-- [[#1469](https://github.com/apache/incubator-seata/pull/1469)] reduce the number of lock conflict exception  
+- [[#1469](https://github.com/apache/incubator-seata/pull/1469)] reduce the number of lock conflict exception
 - [[#1619](https://github.com/apache/incubator-seata/pull/1416)] replace StringBuffer with StringBuilder
 - [[#1580](https://github.com/apache/incubator-seata/pull/1580)] optimize LockKeyConflictException and change register method
 - [[#1574](https://github.com/apache/incubator-seata/pull/1574)] optimize once delete GlobalSession locks for db mode when commit success
@@ -2299,7 +2311,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1575](https://github.com/apache/incubator-seata/pull/1575)] add UT for RegisterTMRequest
 - [[#1559](https://github.com/apache/incubator-seata/pull/1559)] optimize delay to delete the expired undo log
 - [[#1547](https://github.com/apache/incubator-seata/pull/1547)] TableRecords delete jackson annotation
-- [[#1542](https://github.com/apache/incubator-seata/pull/1542)] optimize  AbstractSessionManager debug log
+- [[#1542](https://github.com/apache/incubator-seata/pull/1542)] optimize AbstractSessionManager debug log
 - [[#1535](https://github.com/apache/incubator-seata/pull/1535)] remove H2 and pgsql get primary index code and close resultSet
 - [[#1541](https://github.com/apache/incubator-seata/pull/1541)] code clean
 - [[#1544](https://github.com/apache/incubator-seata/pull/1544)] remove Chinese comment
@@ -2309,9 +2321,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1444](https://github.com/apache/incubator-seata/pull/1444)] simplify operation of map
 - [[#1497](https://github.com/apache/incubator-seata/pull/1497)] add seata-all dependencies
 - [[#1490](https://github.com/apache/incubator-seata/pull/1490)] remove unnecessary code
-  
-  Thanks to these contributors for their code commits. Please report an unintended omission.  
-  
+
+  Thanks to these contributors for their code commits. Please report an unintended omission.
+
 - [slievrly](https://github.com/slievrly)
 - [BeiKeJieDeLiuLangMao](https://github.com/BeiKeJieDeLiuLangMao)
 - [jsbxyyx](https://github.com/jsbxyyx)
@@ -2330,14 +2342,14 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [andyqian](https://github.com/andyqian)
 - [tswstarplanet](https://github.com/tswstarplanet)
 - [zhengyangyong](https://github.com/zhengyangyong)
-  
+
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
-  
+
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2350,13 +2362,13 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.8.0
-  
-  Seata 0.8.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
-  
+
+Seata 0.8.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
+
 #### feature
 
 - [[#902](https://github.com/apache/incubator-seata/pull/902)] support oracle database in AT mode
@@ -2370,7 +2382,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1235](https://github.com/apache/incubator-seata/pull/1453)] support delete expired undolog use protobuf codec
 - [[#1235](https://github.com/apache/incubator-seata/pull/1235)] support to delete undolog in back task use seata codec
 - [[#1323](https://github.com/apache/incubator-seata/pull/1323)] support database driver class configuration item
-  
+
 #### bugfix
 
 - [[#1456](https://github.com/apache/incubator-seata/pull/1456)] fix xid would be duplicate in cluster mode
@@ -2393,9 +2405,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1342](https://github.com/apache/incubator-seata/pull/1342)] fix ByteBuffer allocate len error
 - [[#1333](https://github.com/apache/incubator-seata/pull/1333)] fix netty memory leak
 - [[#1338](https://github.com/apache/incubator-seata/pull/1338)] fix lock is not acquired when multiple branches have cross locks
-- [[#1334](https://github.com/apache/incubator-seata/pull/1334)]  fix lock key npe bug, when tcc use protobuf
+- [[#1334](https://github.com/apache/incubator-seata/pull/1334)] fix lock key npe bug, when tcc use protobuf
 - [[#1313](https://github.com/apache/incubator-seata/pull/1313)] fix DefaultFailureHandler check status NPE
-  
+
 #### optimize
 
 - [[#1474](https://github.com/apache/incubator-seata/pull/1474)] optimize data image compare log
@@ -2421,9 +2433,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1357](https://github.com/apache/incubator-seata/pull/1357)] code clean of Consul&Etcd config center implementations
 - [[#1345](https://github.com/apache/incubator-seata/pull/1345)] code clean and modify log level
 - [[#1329](https://github.com/apache/incubator-seata/pull/1329)] add `STORE_FILE_DIR` default value
-  
-  Thanks to these contributors for their code commits. Please report an unintended omission.  
-  
+
+  Thanks to these contributors for their code commits. Please report an unintended omission.
+
 - [slievrly](https://github.com/slievrly)
 - [Justice-love](https://github.com/Justice-love)
 - [l81893521](https://github.com/l81893521)
@@ -2445,14 +2457,14 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [ujjboy](https://github.com/ujjboy)
 - [leizhiyuan](https://github.com/leizhiyuan)
 - [vikenlove](https://github.com/vikenlove)
-  
+
   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
-  
+
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2465,12 +2477,12 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.7.1
-  
-  Seata 0.7.1 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.7.1 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Bugfix & Optimize
 
@@ -2480,9 +2492,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2495,12 +2507,12 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.7.0
-  
-  Seata 0.7.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.7.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
 
@@ -2532,7 +2544,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#1245](https://github.com/apache/incubator-seata/pull/1245)] refactor metrics let it initialize by configuration
 - [[#1242](https://github.com/apache/incubator-seata/pull/1242)] perfect sql
 - [[#1239](https://github.com/apache/incubator-seata/pull/1239)] bugfix:fix CME in ZK discovery implementation. ([97](https://github.com/apache/incubator-seata/issues/97))
-- [[#1237](https://github.com/apache/incubator-seata/pull/1237)] bugfix:server start  and handle remain branch session may cause NPE ([97](https://github.com/apache/incubator-seata/issues/97))
+- [[#1237](https://github.com/apache/incubator-seata/pull/1237)] bugfix:server start and handle remain branch session may cause NPE ([97](https://github.com/apache/incubator-seata/issues/97))
 - [[#1232](https://github.com/apache/incubator-seata/pull/1232)] Add unit tests for io.seata.common.util CompressUtil, DurationUtil, ReflectionUtil
 - [[#1230](https://github.com/apache/incubator-seata/pull/1230)] prioritize global transaction scanner #1227 ([97](https://github.com/apache/incubator-seata/issues/97), [1227](https://github.com/apache/incubator-seata/issues/1227))
 - [[#1229](https://github.com/apache/incubator-seata/pull/1229)] fix a typo ([97](https://github.com/apache/incubator-seata/issues/97))
@@ -2564,9 +2576,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2579,12 +2591,12 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.6.1
-  
-  Seata 0.6.1 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.6.1 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
 
@@ -2605,9 +2617,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2620,19 +2632,19 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.6.0
-  
-  Seata 0.6.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.6.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
-  
+
 - [[#942](https://github.com/apache/incubator-seata/pull/942)] Store the transaction log into database
 - [[#1014](https://github.com/apache/incubator-seata/pull/1014)] Support etcd3 as configuration center
 - [[#1060](https://github.com/apache/incubator-seata/pull/1060)] Do data validation when undo
-  
+
 #### Bugfix & Optimize
 
 - [[#1064](https://github.com/apache/incubator-seata/pull/1064)] bugfix:size wrong between xid and branchId
@@ -2644,9 +2656,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2659,20 +2671,20 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.5.2
-  
-  Seata 0.5.2 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.5.2 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
-  
+
 - [[#988](https://github.com/apache/incubator-seata/pull/988)] support Consul configuration center
 - [[#1043](https://github.com/apache/incubator-seata/pull/1043)] support sofa-rpc
 
 #### Bugfix & Optimize
-  
+
 - [[#987](https://github.com/apache/incubator-seata/pull/987)] optimize the use of reentrantLock instead of spinlock in concurrent scenarios within the same transaction
 - [[#943](https://github.com/apache/incubator-seata/pull/943)] fix configuration wait timeout when there is no corresponding file configuration item
 - [[#965](https://github.com/apache/incubator-seata/pull/965)] fix PreparedStatement where in,between problem
@@ -2688,7 +2700,7 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#999](https://github.com/apache/incubator-seata/pull/999)] change the community's email subscription address
 - [[#861](https://github.com/apache/incubator-seata/pull/861)] optimize the FailureHandler to periodically get the retrieved transaction result and print the successful result
 - [[#802](https://github.com/apache/incubator-seata/pull/802)] optimize the lambda code style in GlobalTransactionalInterceptor
-- [[#1026](https://github.com/apache/incubator-seata/pull/1026)] fix troubleshooting for data* code files, add local transaction file exclusion path
+- [[#1026](https://github.com/apache/incubator-seata/pull/1026)] fix troubleshooting for data\* code files, add local transaction file exclusion path
 - [[#1024](https://github.com/apache/incubator-seata/pull/1024)] fix Consul module SPI configuration file path problem
 - [[#1023](https://github.com/apache/incubator-seata/pull/1023)] add the seata-all.jar for client full dependency
 - [[#1029](https://github.com/apache/incubator-seata/pull/1029)] fix the delay rollback caused by no channel when the client is restarting
@@ -2703,9 +2715,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2718,12 +2730,12 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.5.1
-  
-  Seata 0.5.1 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.5.1 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
 
@@ -2762,9 +2774,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2777,39 +2789,39 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.5.0
-  
-  Seata 0.5.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.5.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Compatibility
-  
+
 - [[#809](https://github.com/apache/incubator-seata/pull/809)] Change groupId,artifactId, and package
 - [[#815](https://github.com/apache/incubator-seata/pull/815)] Add maven plugin to release seata with groupId io.seata
 - [[#790](https://github.com/apache/incubator-seata/pull/790)] Change the startup parameters of seata-server to support database-storage
 - [[#769](https://github.com/apache/incubator-seata/pull/769)] Modify the RPC protocol, remove the client's resolution of xid to be stateless
-  
+
 #### Feature
-  
+
 - [[#774](https://github.com/apache/incubator-seata/pull/774)] optimizes the structure of config module and discovery module
 - [[#783](https://github.com/apache/incubator-seata/pull/783)] Allow users config the count for client report retry dynamicly
 - [[#791](https://github.com/apache/incubator-seata/pull/791)] replace magic judgement of timeout status with status enum
 - [[#836](https://github.com/apache/incubator-seata/pull/836)] Use maven-compiler-plugin to revision the version and add mvnw script to unify the maven version
 - [[#820](https://github.com/apache/incubator-seata/pull/820)] Add rollback on for GlobalTransaction
-  
+
 #### Bugfix
-  
+
 - [[#772](https://github.com/apache/incubator-seata/pull/772)] Fix FileConfiguration config listener logic
 - [[#807](https://github.com/apache/incubator-seata/pull/807)] Optimize the setting of full name of FileBasedSessionManager
 - [[#804](https://github.com/apache/incubator-seata/pull/804)] bugfix:branchCommit retry always failed
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2822,15 +2834,15 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.4.2
-  
-  Seata 0.4.2 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
-  
+
+Seata 0.4.2 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
+
 #### Feature
-  
+
 - [[#704](https://github.com/apache/incubator-seata/pull/704)] add local file write ByteBuffer pool
 - [[#679](https://github.com/apache/incubator-seata/issues/679)] The existing registry adds the implementation of the close interface, which optimizes the server's elegant offline
 - [[#713](https://github.com/apache/incubator-seata/pull/713)] add local file writes enable compression for messages that exceed the configured size
@@ -2839,9 +2851,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#726](https://github.com/apache/incubator-seata/pull/726)] support for DBCP, C3P0, BoneCP, HikariCP and Tomcat-JDBC connection pools
 - [[#744](https://github.com/apache/incubator-seata/pull/744)] add ZooKeeper disconnection re-registration and subscription when reconnected
 - [[#728](https://github.com/apache/incubator-seata/pull/728)] Supports service discovery with Consul
-  
+
 #### Bugfix
-  
+
 - [[#569](https://github.com/apache/incubator-seata/pull/695)] fix already jdk proxy and no target only traverses the first implementation interface problem
 - [[#721](https://github.com/apache/incubator-seata/pull/721)] fix ConfigFuture constructor timeout parameter does not work
 - [[#725](https://github.com/apache/incubator-seata/pull/725)] fix MergedSendRunnable channel is unexpectedly closed, and add fail-fast
@@ -2852,12 +2864,12 @@ Also, we receive many valuable issues, questions and advices from our community.
 - [[#747](https://github.com/apache/incubator-seata/pull/747)] Delete MT mode, then will be replaced by TCC mode
 - [[#757](https://github.com/apache/incubator-seata/pull/757)] fix rollback caused by RPC exception when performing BranchRollback retry
 - [[#776](https://github.com/apache/incubator-seata/pull/776)] fix connection creation failure caused by toString exception when connection pool creates channel
-  
+
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2870,20 +2882,20 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.4.1
-  
-  Seata 0.4.1 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.4.1 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 - TBD
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2896,12 +2908,12 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.4.0
-  
-  Seata 0.4.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.4.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
 
@@ -2911,9 +2923,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2926,30 +2938,30 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.3.1
-  
-  Seata 0.3.1 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.3.1 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
-  
+
 - [[#557](https://github.com/alibaba/fescar/issues/557)] add custom hook access point at each stage of the transaction process
 - [[#594](https://github.com/alibaba/fescar/pull/594)] support Zookeeper Registration Center
-  
+
 #### Bugfix
-  
+
 - [[#569](https://github.com/alibaba/fescar/issues/569)] fix eureka renew url encode
 - [[#551](https://github.com/alibaba/fescar/pull/551)] fix ConfigType NPE
 - [[#489](https://github.com/alibaba/fescar/issues/489)] fix GlobalRollback request but not receive report
 - [[#598](https://github.com/alibaba/fescar/pull/598)] fix blocker and critical level issues scanned by p3c
-  
+
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2962,30 +2974,30 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.3.0
-  
-  Seata 0.3.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.3.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
-  
+
 - [[#510](https://github.com/alibaba/fescar/pull/510)] Support eureka registry center
-- [[#498](https://github.com/alibaba/fescar/pull/498)] Implement local transaction mode with global locks and resolve local transaction isolation issues  
-  
+- [[#498](https://github.com/alibaba/fescar/pull/498)] Implement local transaction mode with global locks and resolve local transaction isolation issues
+
 #### Bugfix
-  
+
 - [[#459](https://github.com/alibaba/fescar/issues/459)] Fix mysql keyword generating sql problem as table name and column name
 - [[#312](https://github.com/alibaba/fescar/issues/312)] Fix the original business sql no where condition generation sql error problem
 - [[#522](https://github.com/alibaba/fescar/issues/522)] Fix file path security vulnerability
 - Remove useless, format, optimize import, javadoc, copyright for all module code
-  
+
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -2998,29 +3010,28 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.2.3
-  
-  Seata 0.2.3 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.2.3 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
-  
+
 - [[#478](https://github.com/alibaba/fescar/pull/478)] Support redis registry and apollo configuration
 - [[#478](https://github.com/alibaba/fescar/pull/478)] Support redis registry and apollo configuration
-  
+
 #### Bugfix
-  
+
 - [[#462](https://github.com/alibaba/fescar/issues/462)] Separation configuration and registration judgment
-  
 - [[#466](https://github.com/alibaba/fescar/issues/466)] Add run oldest task reject policy
-  
+
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3033,20 +3044,20 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.2.2
-  
-  Seata 0.2.2 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.2.2 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 - Fixed several bugs
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3059,29 +3070,29 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.2.1
-  
-  Seata 0.2.1 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.2.1 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
-  
+
 - Support BETWEEN in update statement
 - Add Random and RoundRobin LoadBalance
 - Add dubbo-alibaba module support Alibaba Dubbo
-  
+
 #### Bugfix
-  
+
 - Fix NettyClientConfig variable name isPoolFifo-> isPoolLifo
 - Fix fescar-dubbo filter SPI reference error
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3094,15 +3105,15 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.2.0
-  
-  Seata 0.2.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.2.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 #### Feature
-  
+
 - Support MySQL distributed transaction automatic mode (AT)
 - Supports Dubbo seamless integration
 - Support for distributed transaction API
@@ -3113,13 +3124,13 @@ Also, we receive many valuable issues, questions and advices from our community.
 - Support multiple IP environment, start server to specify IP parameters
 
 #### Bugfix
-  
+
 - Fix Fescar-Server restart may cause XID duplication
 - Fix Windows startup script $EXTRA_JVM_ARGUMENTS parameter error
 - Fix distributed transaction local nested inner transaction commit/rollback causes outer transaction exception problem
 - Fix local transaction commit exception, local transaction does not rollback problem
 - Fix MySQL table alias resolution
-  
+
 #### other
 
 - Upgrade depends on JDK version to 1.8
@@ -3128,9 +3139,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3143,21 +3154,21 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.1.4
-  
-  Seata 0.1.4 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.1.4 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 - Fixed several bugs
 - Upgrade jdk version to 1.8
-  
+
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3170,20 +3181,20 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.1.3
-  
-  Seata 0.1.3 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.1.3 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 - Fixed several bugs
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3196,20 +3207,20 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.1.2
-  
-  Seata 0.1.2 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.1.2 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 - Fixed several bugs
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3222,20 +3233,20 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.1.1
-  
-  Seata 0.1.1 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.1.1 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 - Fixed several bugs
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>
 
@@ -3248,12 +3259,12 @@ Also, we receive many valuable issues, questions and advices from our community.
   <summary><mark>Release notes</mark></summary>
 
 ### Seata 0.1.0
-  
-  Seata 0.1.0 Released.
-  
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
-  
-  The version is updated as follows:
+
+Seata 0.1.0 Released.
+
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+The version is updated as follows:
 
 - Support MySQL in AT Mode
 - Support Dubbo
@@ -3263,8 +3274,8 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-  
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+
 </details>

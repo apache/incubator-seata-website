@@ -43,7 +43,7 @@ seata:
       apollo-meta: http://192.168.1.204:8801
       app-id: seata-server
       namespace: application
-      apollo-accesskey-secret: ""
+      apollo-accesskey-secret: ''
 ```
 
 ### Server-side Configuration Center
@@ -68,7 +68,7 @@ config {
 
 Refer to [config.txt](https://github.com/apache/incubator-seata/tree/develop/script/config-center) in https://github.com/apache/incubator-seata/tree/develop/script/config-center and make modifications. Then run the provided Apollo script in the repository to submit the information to the Apollo console. If there is a need for changes, they can be directly made through the console.
 
-eg: sh ${SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
+eg: sh $\{SEATAPATH}/script/config-center/apollo/apollo-config.sh -h localhost -p 8070 -e DEV -a seata-server -c default -n application -d apollo -r apollo -t 3aa026fc8435d0fc4505b345b8fa4578fb646a2c
 
 For detailed analysis, refer to the [Readme document](https://github.com/apache/incubator-seata/blob/develop/script/config-center/README.md)
 
