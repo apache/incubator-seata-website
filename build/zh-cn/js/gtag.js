@@ -620,3 +620,7 @@ Ok){var mb=Wk(!0,!0);Mc(mb)}}});
 
 })()
 
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-X4LJGF90X2');
