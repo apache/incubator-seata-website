@@ -148,7 +148,7 @@ const config = {
             'Seata,Seata官网,Seata official site,分布式事务,distributed transactions',
         },
       ],
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/seata_logo.png',
       colorMode: {
         defaultMode: 'light',
         disableSwitch: true, // 禁止切换主题模式
