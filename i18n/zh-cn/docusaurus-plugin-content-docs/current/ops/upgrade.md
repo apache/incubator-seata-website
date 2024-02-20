@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # 版本升级指南
 
+<a href="#9" target="_self">9. 升级到 seata 2.1 有哪些兼容性事项是需要注意的？</a>
+<br/>
+
 <a href="#8" target="_self">8. 升级到 seata 2.0 有哪些兼容性事项是需要注意的？</a>
 <br/>
 
@@ -29,6 +32,15 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>     
 <br/>
+
+------
+
+<h3 id='9'>9. 升级到 seata 2.1 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+  
+  1. 使用seata2.0 raft 存储模式后，升级2.1需要登录后获取token，携带token请求/metadata/v1/cluster?group=在application.yml中的seata.server.raft.group的值，查询到集群元数据后。将follower节点先行升级，再升级leader节点。注：该升级完成后，raft存储模式下是不允许降级至2.0，请在线下环境得到充分验证后再进行生产环境升级。
+</details>
 
 ------
 
