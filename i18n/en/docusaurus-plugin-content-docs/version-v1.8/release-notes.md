@@ -4,14 +4,13 @@ keywords: [Seata, Release Notes, 1.8.x]
 description: 1.8.x Release Notes
 ---
 
-
 # Downloads
 
 # Seata
 
-> GitHub: <https://github.com/apache/incubator-seata>
+> GitHub: https://github.com/apache/incubator-seata
 >
-> Release Notes: <https://github.com/apache/incubator-seata/releases>
+> Release Notes: https://github.com/apache/incubator-seata/releases
 
 ### 1.8.0 (2023-11-05)
 
@@ -69,6 +68,7 @@ The version is updated as follows:
 Thanks to these contributors for their code commits. Please report an unintended omission.
 
 <!-- Please make sure your Github ID is in the list below -->
+
 - [slievrly](https://github.com/slievrly)
 - [capthua](https://github.com/capthua)
 - [funky-eyes](https://github.com/funky-eyes)
@@ -83,9 +83,9 @@ Also, we receive many valuable issues, questions and advices from our community.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
-- **WebSite:** <https://seata.apache.org>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
 
 </details>

@@ -4,32 +4,32 @@ keywords: [Seata, Release Notes]
 description: This article will introduce you how to understand the details of each version and upgrade matters needing attention.
 ---
 
-
 # Downloads
 
 # Seata
 
-> GitHub: <https://github.com/apache/incubator-seata>
+> GitHub: https://github.com/apache/incubator-seata
 >
-> Release Notes: <https://github.com/apache/incubator-seata/releases>
+> Release Notes: https://github.com/apache/incubator-seata/releases
 
 ### 1.0.0 (2019-12-21)
 
- [source](https://github.com/apache/incubator-seata/archive/v1.0.0.zip) |
- [binary](https://github.com/apache/incubator-seata/releases/download/v1.0.0/seata-server-1.0.0.zip)
+[source](https://github.com/apache/incubator-seata/archive/v1.0.0.zip) |
+[binary](https://github.com/apache/incubator-seata/releases/download/v1.0.0/seata-server-1.0.0.zip)
+
 <details>
   <summary><mark>Release notes</mark></summary>
   
 ### Seata 1.0.0
 
-  Seata 1.0.0 Released.
+Seata 1.0.0 Released.
 
-  Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+Seata is an easy-to-use, high-performance, open source distributed transaction solution.
 
-  The version is updated as follows:
+The version is updated as follows:
 
 #### feature
-  
+
 - [[#1966](https://github.com/apache/incubator-seata/pull/1966)] add single send request for client
 - [[#2004](https://github.com/apache/incubator-seata/pull/2004)] add config center synchronization script
 - [[#1997](https://github.com/apache/incubator-seata/pull/1997)] provides a tool for generating graphics that show the state machine execution path
@@ -164,7 +164,7 @@ description: This article will introduce you how to understand the details of ea
 - [[#1766](https://github.com/apache/incubator-seata/pull/1766)] remove unused method
 - [[#1770](https://github.com/apache/incubator-seata/pull/1770)] string splice and release lock
 
-   Thanks to these contributors for their code commits. Please report an unintended omission.
+  Thanks to these contributors for their code commits. Please report an unintended omission.
 
 - [slievrly](https://github.com/slievrly)
 - [long187](https://github.com/long187)
@@ -199,12 +199,12 @@ description: This article will introduce you how to understand the details of ea
 - [zhongfuhua](https://github.com/zhongfuhua)
 - [lizwmaster](https://github.com/lizwmaster)
 
-   Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
+  Also, we receive many valuable issues, questions and advices from our community. Thanks for you all.
 
 #### Link
 
-- **Seata:** <https://github.com/apache/incubator-seata>  
-- **Seata-Samples:** <https://github.com/apache/incubator-seata-samples>
-- **Release:** <https://github.com/apache/incubator-seata/releases>
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
 
 </details>

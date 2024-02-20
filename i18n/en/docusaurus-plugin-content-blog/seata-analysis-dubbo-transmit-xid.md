@@ -5,6 +5,7 @@ description: This article explores the propagation of XID in Seata-Dubbo through
 author: FUNKYE
 date: 2020/01/01
 ---
+
 # Seata-XID Transmission Source Code Analysis: Dubbo Edition
 
 Author: FUNKYE (Chen Jianbin), Principal Engineer at a certain Internet company in Hangzhou.
@@ -16,6 +17,7 @@ Author: FUNKYE (Chen Jianbin), Principal Engineer at a certain Internet company 
 ![20200101203229](/img/blog/20200101203229.png)
 
 ## Source Code Analysis
+
 ```java
 package io.seata.integration.dubbo;
 
@@ -102,7 +104,9 @@ public class TransactionPropagationFilter implements Filter {
 }
 ```
 
-​	1. Based on the source code, we can deduce the corresponding logic processing.
+
+1. Based on the source code, we can deduce the corresponding logic processing.
+
 
 ![20200101213336](/img/blog/20200101213336.png)
 
@@ -110,12 +114,12 @@ public class TransactionPropagationFilter implements Filter {
 
 1. Dubbo @Activate Annotation:
 
-
 ```java
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Activate {
+
    
     String[] group() default {};
 
@@ -143,5 +147,3 @@ Passing: RpcContext.getContext().setAttachment(RootContext.KEY_XID, xid);
 # Conclusion
 
 For further source code reading, please visit the [Seata official website](https://seata.apache.org/)
-
-

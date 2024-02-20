@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 const asfDict = [
   { target: 'https://www.apache.org', text: 'Foundation' },
   { target: 'https://www.apache.org/licenses', text: 'License' },
@@ -58,10 +59,37 @@ const config = {
       },
     },
   },
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'aes-config',
+        content: 'pid=xux-opensource&user_type=101&uid=&username=&dim10=seata',
+      },
+    },
+  ],
   scripts: [
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+      // src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+      src: '/js/gtag.js',
       async: true,
+    },
+    {
+      // src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
+      src: '/js/hm.js',
+      async: true,
+    },
+    {
+      // src: 'https://g.alicdn.com/alilog/mlog/aplus_v2.js',
+      src: '/js/aplus_v2.js',
+      id: 'beacon-aplus',
+      exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
+      defer: true,
+    },
+    {
+      // src: 'https://g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
+      src: '/js/tracker.js',
+      defer: true,
     },
   ],
   plugins: [
@@ -79,46 +107,6 @@ const config = {
         editCurrentVersion: true,
         editLocalizedFiles: true,
       }),
-    ],
-    [
-      'docusaurus-plugin-includes',
-      {
-        injectedHtmlTags: {
-          headTags: [
-            {
-              tagName: 'meta',
-              attributes: {
-                name: 'aes-config',
-                content:
-                  'pid=xux-opensource&user_type=101&uid=&username=&dim10=seata',
-              },
-            },
-          ],
-          preBodyTags: [
-            {
-              tagName: 'script',
-              attributes: {
-                type: 'text/javascript',
-                src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
-              },
-            },
-            {
-              tagName: 'script',
-              attributes: {
-                src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
-                id: 'beacon-aplus',
-                exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
-              },
-            },
-            {
-              tagName: 'script',
-              attributes: {
-                src: '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
-              },
-            },
-          ],
-        },
-      },
     ],
   ],
   presets: [
@@ -160,7 +148,7 @@ const config = {
             'Seata,Seata官网,Seata official site,分布式事务,distributed transactions',
         },
       ],
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/seata_logo.png',
       colorMode: {
         defaultMode: 'light',
         disableSwitch: true, // 禁止切换主题模式
@@ -282,6 +270,7 @@ const config = {
       },
       prism: {
         theme: lightCodeTheme,
+        additionalLanguages: ['java'],
       },
       algolia: {
         // The application ID provided by Algolia
@@ -295,4 +284,4 @@ const config = {
     }),
 };
 
-module.exports = config;
+export default config;

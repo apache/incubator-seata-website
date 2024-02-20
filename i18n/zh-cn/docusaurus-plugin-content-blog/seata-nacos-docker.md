@@ -1,34 +1,34 @@
 ---
 title: Docker部署Seata与Nacos整合
-keywords: [Seata,Nacos,分布式事务]
+keywords: [Seata, Nacos, 分布式事务]
 description: 本文讲述如何使用Seata整合Nacos配置的Docker部署
 author: FUNKYE
 date: 2019/12/03
 ---
 
-# Docker部署Seata与Nacos整合
+# Docker 部署 Seata 与 Nacos 整合
 
-运行所使用的demo[项目地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata )
+运行所使用的 demo[项目地址](https://gitee.com/itCjb/springboot-dubbo-mybatisplus-seata)
 
 本文作者：FUNKYE(陈健斌),杭州某互联网公司主程。
 
 # 前言
 
-直连方式的Seata配置[博客](/blog/springboot-dubbo-mybatisplus-seata/)
+直连方式的 Seata 配置[博客](/blog/springboot-dubbo-mybatisplus-seata/)
 
-Seata整合Nacos配置[博客](/blog/seata-nacos-analysis/)
+Seata 整合 Nacos 配置[博客](/blog/seata-nacos-analysis/)
 
-我们接着前几篇篇的基础上去配置nacos做配置中心跟dubbo注册中心.
+我们接着前几篇篇的基础上去配置 nacos 做配置中心跟 dubbo 注册中心.
 
 ## 准备工作
 
-​	1.安装docker
+​ 1.安装 docker
 
 ```shell
 yum -y install docker
 ```
 
-​	2.创建nacos与seata的数据库
+​ 2.创建 nacos 与 seata 的数据库
 
 ```mysql
 /******************************************/
@@ -287,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `lock_table`
 
 ```
 
-​	3.拉取nacos以及seata镜像并运行
+​ 3.拉取 nacos 以及 seata 镜像并运行
 
 ```shell
 docker run -d --name nacos -p 8848:8848 -e MODE=standalone -e MYSQL_MASTER_SERVICE_HOST=你的mysql所在ip -e MYSQL_MASTER_SERVICE_DB_NAME=nacos -e MYSQL_MASTER_SERVICE_USER=root -e MYSQL_MASTER_SERVICE_PASSWORD=mysql密码 -e MYSQL_SLAVE_SERVICE_HOST=你的mysql所在ip -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_DATABASE_NUM=1 nacos/nacos-server:latest
@@ -297,21 +297,21 @@ docker run -d --name nacos -p 8848:8848 -e MODE=standalone -e MYSQL_MASTER_SERVI
 docker run -d --name seata -p 8091:8091 -e SEATA_IP=你想指定的ip -e SEATA_PORT=8091 seataio/seata-server:1.4.2
 ```
 
-## Seata配置
+## Seata 配置
 
-​	1.由于seata容器内没有内置vim,我们可以直接将要文件夹cp到宿主机外来编辑好了,再cp回去
+​ 1.由于 seata 容器内没有内置 vim,我们可以直接将要文件夹 cp 到宿主机外来编辑好了,再 cp 回去
 
 ```
 docker cp 容器id:seata-server/resources 你想放置的目录
 ```
 
-​	2.使用如下代码获取两个容器的ip地址
+​ 2.使用如下代码获取两个容器的 ip 地址
 
 ```
 docker inspect --format='{{.NetworkSettings.IPAddress}}' ID/NAMES
 ```
 
-​	3.nacos-config.txt编辑为如下内容
+​ 3.nacos-config.txt 编辑为如下内容
 
 ```
 transport.type=TCP
@@ -396,7 +396,7 @@ metrics.exporterPrometheusPort=9898
 
 详细参数配置请点[此处](/docs/user/configurations/)
 
-​	4.registry.conf编辑为如下内容
+​ 4.registry.conf 编辑为如下内容
 
 ```
 registry {
@@ -421,7 +421,7 @@ config {
 }
 ```
 
-​	5.配置完成后使用如下命令,把修改完成的registry.conf复制到容器中,并重启查看日志运行
+​ 5.配置完成后使用如下命令,把修改完成的 registry.conf 复制到容器中,并重启查看日志运行
 
 ```shell
 docker cp /home/seata/resources/registry.conf seata:seata-server/resources/
@@ -429,22 +429,21 @@ docker restart seata
 docker logs -f seata
 ```
 
-​	6.运行nacos-config.sh导入Nacos配置
+​ 6.运行 nacos-config.sh 导入 Nacos 配置
 
-eg: sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
+eg: sh $\{SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
 
 具体参数释义参考：[配置导入说明](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/README.md)
 
-
-​	7.登录nacos控制中心查看
+​ 7.登录 nacos 控制中心查看
 
 ![20191202205912](/img/blog/20191202205912.png)
 
-​	如图所示便是成功了.
+​ 如图所示便是成功了.
 
 # 进行调试
 
-​	1.拉取博文中所示的项目,修改test-service的application.yml与registry.conf
+​ 1.拉取博文中所示的项目,修改 test-service 的 application.yml 与 registry.conf
 
 ```
 registry {
@@ -470,7 +469,7 @@ config {
 server:
   port: 38888
 spring:
-  application: 
+  application:
       name: test-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -504,7 +503,7 @@ mybatis-plus:
     auto-mapping-unknown-column-behavior: none
 ```
 
-​	2.把修改完成的registry.conf复制到test-client-resources中,并修改application
+​ 2.把修改完成的 registry.conf 复制到 test-client-resources 中,并修改 application
 
 ```
 spring:
@@ -540,7 +539,9 @@ server:
   tomcat:
     max-http-post-size: 104857600
 ```
-​	4. 在每个所涉及的 db 执行 undo_log 脚本.
+
+​ 4. 在每个所涉及的 db 执行 undo_log 脚本.
+
 ```sql
 CREATE TABLE IF NOT EXISTS `undo_log`
 (
@@ -557,20 +558,20 @@ CREATE TABLE IF NOT EXISTS `undo_log`
   DEFAULT CHARSET = utf8 COMMENT ='AT transaction mode undo table';
 ```
 
-​	5.依次运行test-service,test-client.
+​ 5.依次运行 test-service,test-client.
 
-​	6.查看nacos中服务列表是否如下图所示
+​ 6.查看 nacos 中服务列表是否如下图所示
 
 ![20191203132351](/img/blog/20191203132351.png)
 
 # 总结
 
-关于nacos与seata的docker部署已经完成了,更详细的内容希望希望大家访问以下地址阅读详细文档
+关于 nacos 与 seata 的 docker 部署已经完成了,更详细的内容希望希望大家访问以下地址阅读详细文档
 
-[nacos官网](https://nacos.io/zh-cn/index.html)
+[nacos 官网](https://nacos.io/zh-cn/index.html)
 
-[dubbo官网](http://dubbo.apache.org/en-us/)
+[dubbo 官网](http://dubbo.apache.org/en-us/)
 
-[seata官网](https://seata.apache.org/zh-cn/)
+[seata 官网](https://seata.apache.org/zh-cn/)
 
-[docker官网](https://www.docker.com/)
+[docker 官网](https://www.docker.com/)

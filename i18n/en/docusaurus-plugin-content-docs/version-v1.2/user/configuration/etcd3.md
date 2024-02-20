@@ -67,7 +67,7 @@ config {
 
 Refer to the [config.txt](https://github.com/apache/incubator-seata/tree/develop/script/config-center) in the repository and make modifications. Then run the provided etcd3 script in the repository to submit the information to the Etcd3 server. If necessary, you can directly modify it through the console.
 
-eg: sh ${SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
+eg: sh $\{SEATAPATH}/script/config-center/etcd3/etcd3-config.sh -h localhost -p 2379
 
 For detailed analysis, please refer to the [Readme document](https://github.com/apache/incubator-seata/blob/develop/script/config-center/README.md)
 
