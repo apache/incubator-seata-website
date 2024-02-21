@@ -136,7 +136,7 @@ public @interface Activate {
     int order() default 0;
 }
 ```
-It can be analyzed that the @Activate annotation on Seata's Dubbo filter, with parameters @Activate(group = {Constants.PROVIDER, Constants.CONSUMER}, order = 100), indicates that both the Dubbo service provider and consumer will trigger this filter. Therefore, our Seata initiator will initiate an XID transmission. The above flowchart and code have clearly represented this.
+It can be analyzed that the @Activate annotation on Seata's Dubbo filter, with parameters @Activate(group = \{Constants.PROVIDER, Constants.CONSUMER}, order = 100), indicates that both the Dubbo service provider and consumer will trigger this filter. Therefore, our Seata initiator will initiate an XID transmission. The above flowchart and code have clearly represented this.
 
 2. Dubbo implicit parameter passing can be achieved through setAttachment and getAttachment on RpcContext for implicit parameter transmission between service consumers and providers.
 
