@@ -192,8 +192,7 @@ One of the key factors in ensuring Seata's high performance is the use of Netty 
 
 ![Reactor](/img/seata-server/reactor.png)
 
-
-If the default basic configuration is adopted, there will be one Acceptor thread for handling client connections and a number of NIO-Threads equal to cpu*2. In these threads, heavy business operations are not performed. They only handle relatively fast tasks such as encoding and decoding, heartbeats, and TM registration. Time-consuming business operations are delegated to the business thread pool. By default, the business thread pool is configured with a minimum of 100 threads and a maximum of 500.
+If the default basic configuration is adopted, there will be one Acceptor thread for handling client connections and a number of NIO-Threads equal to cpu\*2. In these threads, heavy business operations are not performed. They only handle relatively fast tasks such as encoding and decoding, heartbeats, and TM registration. Time-consuming business operations are delegated to the business thread pool. By default, the business thread pool is configured with a minimum of 100 threads and a maximum of 500.
 
 Seata currently allows for configuration of transport layer settings, as shown in the following diagram. Users can optimize Netty transport layer settings according to their needs, and the configuration takes effect when loaded for the first time.
 
@@ -221,8 +220,7 @@ Seata's Netty Client consists of TMClient and RMClient, distinguished by their t
 The class diagram for RMClient is depicted below:
 ![RMClient Class Diagram](/img/seata-server/class.png)
 
-
-TMClient and RMClient interact with channel connections based on their respective poolConfig and NettyPoolableFactory, which implements KeyedPoolableObjectFactory<NettyPoolKey, Channel>. The channel connection pool locates each connection pool based on the role key+IP, and manages channels uniformly. During the sending process, TMClient and RMClient each use only one long-lived connection per IP. However, if a connection becomes unavailable, it is quickly retrieved from the connection pool, reducing service downtime.
+TMClient and RMClient interact with channel connections based on their respective poolConfig and NettyPoolableFactory, which implements KeyedPoolableObjectFactory\<NettyPoolKey, Channel>. The channel connection pool locates each connection pool based on the role key+IP, and manages channels uniformly. During the sending process, TMClient and RMClient each use only one long-lived connection per IP. However, if a connection becomes unavailable, it is quickly retrieved from the connection pool, reducing service downtime.
 
 ## 2.7 HA-Cluster
 
@@ -246,7 +244,6 @@ We have covered many foundational modules of the Seata server. I believe you now
 
 ## 3.1 Startup Process
 The startup method is defined in the Server class's main method, outlining our startup process:
-
 
 ![](/img/seata-server/main.png)
 
@@ -283,7 +280,6 @@ step2: Add a RootSessionManager to it for listening to some events. Currently, S
 - ASYNC_COMMITTING_SESSION_MANAGER: Manages sessions that need asynchronous commit.
 - RETRY_COMMITTING_SESSION_MANAGER: Manages sessions for retrying commit.
 - RETRY_ROLLBACKING_SESSION_MANAGER: Manages sessions for retrying rollback.
-
 Since this is the beginning of a transaction, other SessionManagers are not needed, so only add RootSessionManager.
 
 
