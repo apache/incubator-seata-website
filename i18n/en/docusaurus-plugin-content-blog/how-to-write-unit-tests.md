@@ -48,8 +48,6 @@ junit是Java中最常用的单元测试框架，用于编写和运行可重复�
 ### assertj
 assertj是一个断言库，提供了一组易于使用和可读性很强的断言方法，当junit的断言难以满足时，可以使用assertj进行断言；
 
-请注意：我们在seata-dependencies的pom.xml中统一管理了这三个库的版本。
-
 ```java
         <assertj-core.version>3.12.2</assertj-core.version>
         <dependency>
@@ -58,6 +56,9 @@ assertj是一个断言库，提供了一组易于使用和可读性很强的断�
             <version>${assertj-core.version}</version>
         </dependency>
 ```
+
+请注意：我们在seata-dependencies的pom.xml中统一管理了这三个库的版本。
+
 # 规范
 我们参考阿里巴巴JAVA开发手册，整理了一些建议及规范，分为不同的级别，其中【【强制】部分，开发者需要严格遵守，社区在合并代码时会按照强制规则进行review，【【推荐】【参考】部分，方便大家更好的了解我们对于测试用例的考量和原则。
 ##### 1.【强制】单元测试必须遵守 AIR 原则。
