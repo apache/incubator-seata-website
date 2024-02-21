@@ -80,7 +80,7 @@ The important attributes and methods are depicted in the class diagram. The meth
 clientBootstrap: This is a wrapper class for the netty startup class Bootstrap. It holds an instance of Bootstrap and customizes the properties as desired.
 
 
-clientChannelManager: Manages the correspondence between server addresses and channels using a ConcurrentHashMap<serverAddress,channel> container.
+clientChannelManager: Manages the correspondence between server addresses and channels using a ConcurrentHashMap\<serverAddress,channel> container.
 
 clientMessageListener: Handles messages. Depending on the message type, there are three specific processing methods.
 
