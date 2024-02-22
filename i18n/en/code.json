@@ -378,9 +378,6 @@
   "homepage.introDesc": {
     "message": "Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture. Before the open source of Seata, its internal version has been playing the role of middleware for data consistency of application architecture layer in Alibaba group, helping the economy to smoothly go through the Double 11 of the past year and providing strong technical support for the upper business. After years of development, its commercial products have been sold on Alibaba Cloud and Financial cloud. 2019.1 in order to create a more complete technological ecology and inclusive technological achievements, Seata officially announced open source to the outside world. In the future, Seata will organize as a community to help users quickly land distributed transaction solutions."
   },
-  "homepage.introImg": {
-    "message": "/img/index/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png"
-  },
   "homepage.featureListTitle1": {
     "message": "Microservices Framework Support"
   },
