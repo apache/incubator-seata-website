@@ -104,7 +104,9 @@ public class TransactionPropagationFilter implements Filter {
 }
 ```
 
-​ 1. Based on the source code, we can deduce the corresponding logic processing.
+
+1. Based on the source code, we can deduce the corresponding logic processing.
+
 
 ![20200101213336](/img/blog/20200101213336.png)
 
@@ -118,22 +120,22 @@ public class TransactionPropagationFilter implements Filter {
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Activate {
 
+   
     String[] group() default {};
 
-
+    
     String[] value() default {};
 
-
+    
     String[] before() default {};
 
-
+   
     String[] after() default {};
 
-
+   
     int order() default 0;
 }
 ```
-
 It can be analyzed that the @Activate annotation on Seata's Dubbo filter, with parameters @Activate(group = \{Constants.PROVIDER, Constants.CONSUMER}, order = 100), indicates that both the Dubbo service provider and consumer will trigger this filter. Therefore, our Seata initiator will initiate an XID transmission. The above flowchart and code have clearly represented this.
 
 2. Dubbo implicit parameter passing can be achieved through setAttachment and getAttachment on RpcContext for implicit parameter transmission between service consumers and providers.

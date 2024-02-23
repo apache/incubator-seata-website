@@ -38,6 +38,7 @@ Next, I will explain how Seata achieves the above four points.
 
 The overall module diagram of Seata-Server is shown above:
 
+
 - Coordinator Core: At the bottom is the core code of the transaction coordinator, mainly used to handle transaction coordination logic, such as whether to commit, rollback, etc.
 - Store: Storage module used to persist data to prevent data loss during restarts or crashes.
 - Discovery: Service registration/discovery module used to expose server addresses to clients.
@@ -151,6 +152,8 @@ Here, the flush condition is based on writing a certain number of data or exceed
 
 Our store's core process mainly consists of the above methods, but there are also some other processes such as session reconstruction, which are relatively simple and readers can read them on their own.
 
+
+
 ## 2.5 Lock
 
 As we know, the isolation level in databases is mainly implemented through locks. Similarly, in the distributed transaction framework Seata, achieving isolation levels also requires locks. Generally, there are four isolation levels in databases: Read Uncommitted, Read Committed, Repeatable Read, and Serializable. In Seata, it can ensure that the isolation level is Read Committed but provides means to achieve Read Committed isolation.
@@ -169,6 +172,7 @@ For locks, we can implement them locally or use Redis or MySQL to help us implem
 
 In the local lock implementation, there are two constants to pay attention to:
 
+
 - BUCKET_PER_TABLE: Defines how many buckets each table has, aiming to reduce competition when locking the same table later.
 - LOCK_MAP: This map seems very complex from its definition, with many layers of Maps nested inside and outside. Here's a table to explain it specifically:
 
@@ -178,6 +182,7 @@ In the local lock implementation, there are two constants to pay attention to:
 | 2- dbLockMap     | tableName (table name)                                        | tableLockMap  |
 | 3- tableLockMap  | PK.hashcode%Bucket (hashcode%bucket of the primary key value) | bucketLockMap |
 | 4- bucketLockMap | PK                                                            | transactionId |
+
 
 It can be seen that the actual locking occurs in the bucketLockMap. The specific locking method here is relatively simple and will not be detailed. The main process is to gradually find the bucketLockMap and then insert the current transactionId. If this primary key currently has a TransactionId, then it checks if it is itself; if not, the locking fails.
 
@@ -235,11 +240,9 @@ However, all of the above is speculation, and the actual design and implementati
 This module has not yet disclosed a specific implementation. However, it may provide a plugin interface for integrating with other third-party metrics. Recently, Apache SkyWalking has been discussing how to integrate with the Seata team.
 
 # 3. Coordinator Core
-
 We have covered many foundational modules of the Seata server. I believe you now have a general understanding of Seata's implementation. Next, I will explain how the transaction coordinator's specific logic is implemented, providing you with a deeper understanding of Seata's internal workings.
 
 ## 3.1 Startup Process
-
 The startup method is defined in the Server class's main method, outlining our startup process:
 
 ![](/img/seata-server/main.png)
@@ -277,7 +280,8 @@ step2: Add a RootSessionManager to it for listening to some events. Currently, S
 - ASYNC_COMMITTING_SESSION_MANAGER: Manages sessions that need asynchronous commit.
 - RETRY_COMMITTING_SESSION_MANAGER: Manages sessions for retrying commit.
 - RETRY_ROLLBACKING_SESSION_MANAGER: Manages sessions for retrying rollback.
-  Since this is the beginning of a transaction, other SessionManagers are not needed, so only add RootSessionManager.
+Since this is the beginning of a transaction, other SessionManagers are not needed, so only add RootSessionManager.
+
 
 step3: Start GloabSession, which changes the state to Begin, records the start time, and calls the onBegin method of RootSessionManager to save the session to the map and write it to the file.
 
