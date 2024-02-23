@@ -3,6 +3,7 @@ import { translate } from '@docusaurus/Translate';
 import { Button, ButtonType } from '../../../components';
 
 import './index.scss';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const topData = {
   brandName: 'Apache Seata(incubating)',
@@ -82,7 +83,11 @@ const Top = () => {
               rel='noopener noreferrer'
             >
               <div className='star'>
-                <img src='/img/index/TB1FlB1JwHqK1RjSZFPXXcwapXa-32-32.png' />
+                <img
+                  src={useBaseUrl(
+                    '/img/index/TB1FlB1JwHqK1RjSZFPXXcwapXa-32-32.png'
+                  )}
+                />
                 <span className='type'>Star</span>
                 <span className='line' />
                 <span className='count'>{repo.starCount}</span>
@@ -94,7 +99,11 @@ const Top = () => {
               rel='noopener noreferrer'
             >
               <div className='fork'>
-                <img src='/img/index/TB1zbxSJwDqK1RjSZSyXXaxEVXa-32-32.png' />
+                <img
+                  src={useBaseUrl(
+                    '/img/index/TB1zbxSJwDqK1RjSZSyXXaxEVXa-32-32.png'
+                  )}
+                />
                 <span className='type'>Fork</span>
                 <span className='line' />
                 <span className='count'>{repo.forkCount}</span>
@@ -111,11 +120,15 @@ const Top = () => {
         <div className='animation'>
           <img
             className='img1'
-            src='/img/index/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png'
+            src={useBaseUrl(
+              '/img/index/TB1evnpJhnaK1RjSZFBXXcW7VXa-702-312.png'
+            )}
           />
           <img
             className='img2'
-            src='/img/index/TB1iau9JcbpK1RjSZFyXXX_qFXa-914-1156.png'
+            src={useBaseUrl(
+              '/img/index/TB1iau9JcbpK1RjSZFyXXX_qFXa-914-1156.png'
+            )}
           />
           <div className='outer-circle' />
           <div className='rotate-circle'>
@@ -140,15 +153,21 @@ const Top = () => {
           </div>
           <img
             className='img3'
-            src='/img/index/TB1EBu.JgHqK1RjSZJnXXbNLpXa-914-1156.png'
+            src={useBaseUrl(
+              '/img/index/TB1EBu.JgHqK1RjSZJnXXbNLpXa-914-1156.png'
+            )}
           />
           <img
             className='img4'
-            src='/img/index/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
+            src={useBaseUrl(
+              '/img/index/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
+            )}
           />
           <img
             className='img5'
-            src='/img/index/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
+            src={useBaseUrl(
+              '/img/index/TB115i2JmzqK1RjSZPxXXc4tVXa-186-78.png'
+            )}
           />
         </div>
       </div>
