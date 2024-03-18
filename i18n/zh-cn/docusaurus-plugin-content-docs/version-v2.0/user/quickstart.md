@@ -214,11 +214,4 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 ### 步骤 5: 运行示例
 
-示例仓库: [seata-samples](https://github.com/apache/incubator-seata-samples)
-
-- 启动 DubboAccountServiceStarter
-- 启动 DubboStorageServiceStarter
-- 启动 DubboOrderServiceStarter
-- 运行 DubboBusinessTester for demo test
-
-TBD: 运行演示应用程序的脚本
+示例仓库: [seata-samples/at-samples](https://github.com/apache/incubator-seata-samples/tree/master/at-sample)。找到合适的依赖项设置，按顺序启动 `Account`, `Storage`, `Order`, `Business` 服务。
