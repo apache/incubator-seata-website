@@ -37,15 +37,24 @@ const Top = () => {
   });
 
   React.useEffect(() => {
-    fetch('//api.github.com/repos/apache/incubator-seata')
+    const controller = new AbortController();
+    const signal = controller.signal;
+    // set timeout
+    setTimeout(() => {
+      controller.abort();
+    }, 5000);
+
+    fetch('//api.github.com/repos/apache/incubator-seata', { signal })
       .then((res) => res.json())
       .then((data) => {
         setRepo({
           starCount: `${data.stargazers_count}`,
           forkCount: `${data.forks_count}`,
         });
-      });
-    fetch('https://api.github.com/repos/apache/incubator-seata/releases/latest')
+      }).catch((err => {
+        // do nothing
+      }));
+    fetch('https://api.github.com/repos/apache/incubator-seata/releases/latest', { signal })
       .then((res) => res.json())
       .then((data) => {
         setReleaseNote({
@@ -53,7 +62,9 @@ const Top = () => {
           url: data.html_url,
           date: new Date(data.published_at).toLocaleDateString(),
         });
-      });
+      }).catch((err => {
+        // do nothing
+      }));
   }, []);
 
   return (
