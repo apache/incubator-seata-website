@@ -217,11 +217,4 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 ### Step 5: Run example
 
-Go to samples repo: [seata-samples](https://github.com/apache/incubator-seata-samples)
-
-- Start DubboAccountServiceStarter
-- Start DubboStorageServiceStarter
-- Start DubboOrderServiceStarter
-- Run DubboBusinessTester for demo test
-
-TBD: scripts for run demo applications
+Go to samples repo: [seata-samples/at-samples](https://github.com/apache/incubator-seata-samples/tree/master/at-sample), and find a suitable dependency setup. Start `Account`, `Storage`, `Order`, `Business` services accordingly.
