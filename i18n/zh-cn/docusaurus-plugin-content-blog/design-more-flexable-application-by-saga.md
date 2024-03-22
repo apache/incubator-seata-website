@@ -10,7 +10,7 @@ date: 2019-11-04
 
 Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套一站式分布式事务解决方案，提供了 AT、TCC、Saga 和 XA 事务模式，本文详解其中的 Saga 模式。<br />项目地址：[https://github.com/apache/incubator-seata](https://github.com/apache/incubator-seata)
 
-本文作者：屹远（陈龙），蚂蚁金服分布式事务核心研发，Seata Committer。
+本文作者：屹远（陈龙），蚂蚁金服分布式事务核心研发。
 
 <a name="uTwja"></a>
 
