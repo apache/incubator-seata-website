@@ -185,9 +185,9 @@ public BranchStatus branchCommit(BranchType branchType,String xid,long branchId,
     //BusinessActionContext
     BusinessActionContext businessActionContext=getBusinessActionContext(xid,branchId,resourceId,
     applicationData);
-    // ... ... 
+    // ... ...
     ret=commitMethod.invoke(targetTCCBean,args);
-    // ... ... 
+    // ... ...
     return result?BranchStatus.PhaseTwo_Committed:BranchStatus.PhaseTwo_CommitFailed_Retryable;
     }catch(Throwable t){
     String msg=String.format("commit TCC resource error, resourceId: %s, xid: %s.",resourceId,xid);
@@ -218,13 +218,13 @@ As shown in the figure, when `GlobalTransactionalScanner` scans the TCC interfac
 In `TccActionInterceptor`, it will also call `ActionInterceptorHandler` to execute the interception logic, and the transaction-related processing is in the `ActionInterceptorHandler#proceed` method:
 
 ```java
-public Object proceed(Method method, Object[] arguments, String xid, TwoPhaseBusinessAction businessAction, 
+public Object proceed(Method method, Object[] arguments, String xid, TwoPhaseBusinessAction businessAction,
     Callback<Object> targetCallback) throws Throwable {
     //Get action context from arguments, or create a new one and then reset to arguments
     BusinessActionContext actionContext = getOrCreateActionContextAndResetToArguments(method.getParameterTypes(), arguments);
     //Creating Branch Record
     String branchId = doTccActionLogStore(method, arguments, businessAction, actionContext);
-    // ... ... 
+    // ... ...
     try {
     // ... ...
     return targetCallback.execute();
@@ -233,7 +233,7 @@ public Object proceed(Method method, Object[] arguments, String xid, TwoPhaseBus
     //to report business action context finally if the actionContext.getUpdated() is true
     BusinessActionContextUtil.reportContext(actionContext);
     } finally {
-    // ... ... 
+    // ... ...
     }
     }
 }
@@ -301,5 +301,5 @@ When the two-phase Cancel method is executed, if it is found that there is no re
 
 # Author Introduction
 
-Zhang Chenghui, currently working at Ant Group, loves to share technology. He is the author of the WeChat public account "Advanced Backend," the author of the technical blog (https://objcoding.com/), a Seata Committer, and his GitHub ID is: objcoding.
+Zhang Chenghui, currently working at Ant Group, loves to share technology. He is the author of the WeChat public account "Advanced Backend," the author of the technical blog (https://objcoding.com/), and his GitHub ID is: objcoding.
 

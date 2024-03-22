@@ -11,7 +11,7 @@ date: 2019-11-04
 
 Seata, short for Simple Extensible Autonomous Transaction Architecture, is an all-in-one distributed transaction solution. It provides AT, TCC, Saga, and XA transaction modes. This article provides a detailed explanation of the Saga mode within Seata, with the project hosted on [GitHub](https://github.com/apache/incubator-seata).
 
-Author: Yiyuan (Chen Long), Core Developer of Distributed Transactions at Ant Financial, Seata Committer.
+Author: Yiyuan (Chen Long), Core Developer of Distributed Transactions at Ant Financial.
 
 <a name="uTwja"></a>
 

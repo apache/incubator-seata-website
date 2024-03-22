@@ -195,9 +195,9 @@ public BranchStatus branchCommit(BranchType branchType,String xid,long branchId,
     //BusinessActionContext
     BusinessActionContext businessActionContext=getBusinessActionContext(xid,branchId,resourceId,
     applicationData);
-    // ... ... 
+    // ... ...
     ret=commitMethod.invoke(targetTCCBean,args);
-    // ... ... 
+    // ... ...
     return result?BranchStatus.PhaseTwo_Committed:BranchStatus.PhaseTwo_CommitFailed_Retryable;
     }catch(Throwable t){
     String msg=String.format("commit TCC resource error, resourceId: %s, xid: %s.",resourceId,xid);
@@ -236,7 +236,7 @@ public Object proceed(Method method,Object[]arguments,String xid,TwoPhaseBusines
     BusinessActionContext actionContext=getOrCreateActionContextAndResetToArguments(method.getParameterTypes(),arguments);
     //Creating Branch Record
     String branchId=doTccActionLogStore(method,arguments,businessAction,actionContext);
-    // ... ... 
+    // ... ...
     try{
     // ... ...
     return targetCallback.execute();
@@ -245,7 +245,7 @@ public Object proceed(Method method,Object[]arguments,String xid,TwoPhaseBusines
     //to report business action context finally if the actionContext.getUpdated() is true
     BusinessActionContextUtil.reportContext(actionContext);
     }finally{
-    // ... ... 
+    // ... ...
     }
     }
     }
@@ -316,5 +316,5 @@ Seata 是怎么处理悬挂的呢？
 
 # 作者简介
 
-张乘辉，目前就职于蚂蚁集团，热爱分享技术，微信公众号「后端进阶」作者，技术博客（[https://objcoding.com/](https://objcoding.com/)）博主，Seata Committer，GitHub
+张乘辉，目前就职于蚂蚁集团，热爱分享技术，微信公众号「后端进阶」作者，技术博客（[https://objcoding.com/](https://objcoding.com/)）博主，GitHub
 ID：objcoding。

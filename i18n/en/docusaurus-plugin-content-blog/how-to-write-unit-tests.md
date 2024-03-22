@@ -2,7 +2,7 @@
 title: How to Write Test Cases in Seata
 keywords: [Seata, unit test, junit, mockito, assertj]
 description: This article mainly introduces the testing frameworks already used in Seata and community suggestions on how developers can better write test cases.
-author: Wang Zhongxiang - Apache Seata committer, trustdecision Technical Expert
+author: Wang Zhongxiang - trustdecision Technical Expert
 date: 2024-02-20
 ---
 
