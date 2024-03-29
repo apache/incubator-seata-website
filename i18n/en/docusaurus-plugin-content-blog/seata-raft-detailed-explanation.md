@@ -66,14 +66,14 @@ However, the prerequisite is that computation and storage must be separated. Why
 
 The design philosophy of Seata-Raft mode is to encapsulate the File mode, which is unable to achieve high availability, and use the Raft algorithm to synchronize data between multiple TCs. This mode ensures data consistency among multiple TCs when using the File mode and replaces asynchronous flushing operations with Raft logs and snapshots for data recovery.
 
-![flow](https://blog.funkye.icu/img/blog/Dingtalk_20230105203431.jpg)
+![flow](/img/blog/Dingtalk_20230105203431.jpg)
 
 In the Seata-Raft mode, the client-side, upon startup, retrieves its transaction group (e.g., default) and the IP addresses of relevant Raft cluster nodes from the configuration center. By sending a request to the control port of Seata-Server, the client can obtain metadata for the Raft cluster corresponding to the default group, including leader, follower, and learner member nodes. Subsequently, the client monitors (watches) any member nodes of non-leader nodes.
 
 Assuming that TM initiates a transaction, and the leader node in the local metadata points to the address of TC1, TM will only interact with TC1. When TC1 adds global transaction information, through the Raft protocol, denoted as step 1 in the diagram, TC1 sends the log to other nodes. Step 2 represents the response of follower nodes to log reception. When more than half of the nodes (such as TC2) accept and respond successfully, the state machine (FSM) on TC1 will execute the action of adding a global transaction.
 
-![watch](https://blog.funkye.icu/img/blog/Dingtalk_20230105204423.jpg)
-![watch2](https://blog.funkye.icu/img/blog/Dingtalk_20230105211035.jpg)
+![watch](/img/blog/Dingtalk_20230105204423.jpg)
+![watch2](/img/blog/Dingtalk_20230105211035.jpg)
 
 If TC1 crashes or a reelection occurs, what happens? Since the metadata has been obtained during the initial startup, the client will execute the watch follower node's interface to update the local metadata information. Therefore, subsequent transaction requests will be sent to the new leader (e.g., TC2). Meanwhile, TC1's data has already been synchronized to TC2 and TC3, ensuring data consistency. Only at the moment of the election, if a transaction happens to be sent to the old leader, it will be actively rolled back to ensure data correctness.
 
@@ -83,7 +83,7 @@ It is important to note that in this mode, if a transaction is in the phase of s
 
 In Seata, when a TC experiences a failure, the data recovery process is as follows:
 
-![recover](https://blog.funkye.icu/img/blog/Dingtalk_20230106231817.jpg)
+![recover](/img/blog/Dingtalk_20230106231817.jpg)
 
 As shown in the above diagram:
 
@@ -97,7 +97,7 @@ Through these steps, Seata can achieve data recovery after a failure. It first a
 
 ### 2.3.3 Business Processing Synchronization Process
 
-![flow](https://blog.funkye.icu/img/blog/Dingtalk_20230106230931.jpg)
+![flow](/img/blog/Dingtalk_20230106230931.jpg)
 For the case where the client side is obtaining the latest metadata while a business thread is executing operations such as begin, commit, or registry, Seata adopts the following handling:
 
 - On the client side:
