@@ -26,7 +26,7 @@ Seata 目标打造**一站式**的分布事务的解决方案，最终会提供�
 
 目前使用的**流行度**情况是：AT > TCC > Saga。因此，我们在学习 Seata 的时候，可以花更多精力在 **AT 模式**上，最好搞懂背后的实现原理，毕竟分布式事务涉及到数据的正确性，出问题需要快速排查定位并解决。
 
-> 友情提示：具体的流行度，胖友可以选择看看 [Wanted: who's using Seata](https://github.com/apache/incubator-seata/issues/1246) 每个公司登记的使用方式。
+> 友情提示：具体的流行度，朋友可以选择看看 [Wanted: who's using Seata](https://github.com/apache/incubator-seata/issues/1246) 每个公司登记的使用方式。
 
 ## 1.2 三种角色
 
@@ -114,7 +114,7 @@ Seata 目前提供了对主流的**微服务框架**的支持：
 
 显然，我们将采用 file 模式，最终我们部署单机 TC Server 如下图所示：![单机 TC Server](http://www.iocoder.cn/images/Seata/2017-01-01/11.png)
 
-哔哔完这么多，我们开始正式部署单机 TC Server，这里艿艿使用 macOS 系统，和 Linux、Windows 是差不多的，胖友脑补翻译。
+哔哔完这么多，我们开始正式部署单机 TC Server，这里艿艿使用 macOS 系统，和 Linux、Windows 是差不多的，朋友脑补翻译。
 
 ## 2.1 下载 Seata 软件包
 
@@ -162,7 +162,7 @@ total 0
 0 -rw-r--r--  1 yunai  staff  0 Apr  2 08:36 root.data
 ```
 
-后续，胖友可以阅读[「4. 接入 Java 应用」](#)小节，开始使用 Seata 实现分布式事务。
+后续，朋友可以阅读[「4. 接入 Java 应用」](#)小节，开始使用 Seata 实现分布式事务。
 
 # 3. 部署集群 TC Server
 
@@ -172,9 +172,9 @@ total 0
 
 Seata TC Server 对主流的注册中心都提供了集成，具体可见 [discovery](https://github.com/apache/incubator-seata/tree/develop/discovery) 目录。考虑到国内使用 Nacos 作为注册中心越来越流行，这里我们就采用它。
 
-> 友情提示：如果对 Nacos 不了解的胖友，可以参考[《Nacos 安装部署》](http://www.iocoder.cn/Nacos/install/?self)文章。
+> 友情提示：如果对 Nacos 不了解的朋友，可以参考[《Nacos 安装部署》](http://www.iocoder.cn/Nacos/install/?self)文章。
 
-哔哔完这么多，我们开始正式部署单机 TC Server，这里艿艿使用 macOS 系统，和 Linux、Windows 是差不多的，胖友脑补翻译。
+哔哔完这么多，我们开始正式部署单机 TC Server，这里艿艿使用 macOS 系统，和 Linux、Windows 是差不多的，朋友脑补翻译。
 
 ## 3.1 下载 Seata 软件包
 
@@ -269,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `lock_table`
 
 ③ MySQL8 的支持
 
-> 如果胖友使用的 MySQL 是 8.X 版本，则需要看该步骤。否则，可以直接跳过。
+> 如果朋友使用的 MySQL 是 8.X 版本，则需要看该步骤。否则，可以直接跳过。
 
 首先，需要下载 MySQL 8.X JDBC 驱动，命令行操作如下：
 
