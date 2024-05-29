@@ -40,6 +40,7 @@ description: Seata upgrade.
    <summary><mark>Notes</mark></summary>
   
   1. After using the Seata 2.0 Raft storage mode, upgrading to 2.1 requires logging in to obtain a token, carrying a token to request /metadata/v1/cluster?group= in the value of seata.server.raft.group in application.yml, and querying the cluster metadata Later. Upgrade the follower node first, and then upgrade the leader node. Note: After this upgrade is completed, the Raft storage mode is not allowed to be downgraded to 2.0. Please fully verify it in the offline environment before upgrading the production environment.
+  2.When users upgrade to Seata 2.1, they need to configure the Seata Raft authentication information. First, on the Seata server side, add /metadata/v1/** to ignore.url to temporarily disable the authentication function. Then, on the Seata client side, configure username, password, and tokenValidityInMilliseconds in seata.registry.raft in application.yaml or registry.conf (note that the username and password on the client side should match those configured on the server side, and the tokenValidityInMilliseconds on the client side should be slightly smaller than what you configure on the server side). Finally, remove /metadata/v1/** from ignore.url on the server side to enable Raft metadata authentication capability.
 </details>
 
 
