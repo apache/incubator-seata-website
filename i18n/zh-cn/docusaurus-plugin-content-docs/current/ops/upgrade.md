@@ -40,6 +40,7 @@ description: Seata upgrade.
   <summary><mark>注意事项</mark></summary>
   
   1. 使用seata2.0 raft 存储模式后，升级2.1需要登录后获取token，携带token请求/metadata/v1/cluster?group=在application.yml中的seata.server.raft.group的值，查询到集群元数据后。将follower节点先行升级，再升级leader节点。注：该升级完成后，raft存储模式下是不允许降级至2.0，请在线下环境得到充分验证后再进行生产环境升级。
+  2. 用户在升级到seata2.1时需要配置seata raft的鉴权信息，首先在seata server端的`ignore.url`中增加`/metadata/v1/**`用以暂时关闭鉴权功能，然后在seata client端`application.yaml`或`registry.conf`中的`seata.registry.raft`中配置好`username`和`password`以及`tokenValidityInMilliseconds`（需要注意的是client端的username和password应当与server端所配置的保持一致，client端的tokenValidityInMilliseconds应当略小于你在server端配置的tokenValidityInMilliseconds），最后在server端移除`ignore.url`中的`/metadata/v1/**`用以开启raft元数据鉴权能力。
 </details>
 
 ------
