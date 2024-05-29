@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.1f151b5e.css">
-<script src="/zh-cn/assets/js/runtime~main.acb96e11.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.ca2dd6f7.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.ed972ecd.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -38,6 +38,7 @@
 <h3 id="9">9. 升级到 seata 2.1 有哪些兼容性事项是需要注意的？</h3>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><mark>注意事项</mark></summary><div><div class="collapsibleContent_i85q"><ol>
 <li>使用seata2.0 raft 存储模式后，升级2.1需要登录后获取token，携带token请求/metadata/v1/cluster?group=在application.yml中的seata.server.raft.group的值，查询到集群元数据后。将follower节点先行升级，再升级leader节点。注：该升级完成后，raft存储模式下是不允许降级至2.0，请在线下环境得到充分验证后再进行生产环境升级。</li>
+<li>用户在升级到seata2.1时需要配置seata raft的鉴权信息，首先在seata server端的<code>ignore.url</code>中增加<code>/metadata/v1/**</code>用以暂时关闭鉴权功能，然后在seata client端<code>application.yaml</code>或<code>registry.conf</code>中的<code>seata.registry.raft</code>中配置好<code>username</code>和<code>password</code>以及<code>tokenValidityInMilliseconds</code>（需要注意的是client端的username和password应当与server端所配置的保持一致，client端的tokenValidityInMilliseconds应当略小于你在server端配置的tokenValidityInMilliseconds），最后在server端移除<code>ignore.url</code>中的<code>/metadata/v1/**</code>用以开启raft元数据鉴权能力。</li>
 </ol></div></div></details>
 <hr>
 <h3 id="8">8. 升级到 seata 2.0 有哪些兼容性事项是需要注意的？</h3>
@@ -47,7 +48,7 @@
 <hr>
 <h3 id="7">7. 升级到 seata 1.6.x 有哪些兼容性事项是需要注意的？</h3>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p></p><summary><mark>注意事项</mark></summary>
-从1.5.x 版本升级1.6.x 版本，无论 client SDK 还是 seata-server 都是完全 平滑兼容的，无需除升级版本外的其他改动。<p></p></div></div></details>
+从1.5.x 版本升级1.6.x 版本，无论 client SDK 还是 seata-server 都是完全平滑兼容的，无需除升级版本外的其他改动。<p></p></div></div></details>
 <hr>
 <h3 id="6">6. 升级到 seata 1.5.0 有哪些兼容性事项是需要注意的？</h3>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><mark>注意事项</mark></summary><div><div class="collapsibleContent_i85q"><ol>
@@ -103,7 +104,7 @@
 <li>
 <p>seata-all 默认不开启数据源自动代理。原 seata-all中 conf 文件配置项
 client.support.spring.datasource.autoproxy 配置项失效，由注解 @EnableAutoDataSourceProxy
-注解代替，注解参数可选择使用jdk代理或者cglib代理，当使用HikariDataSource 时推荐使用 cglib 代理模式。
+注解代替，注解参数可选择使用jdk代理或者cglib代理，当使用HikariDataSource 时推荐使用 cglib   代理模式。
 seata-spring-boot-starter 默认开启数据源代理，对应数据源自动代理配置项与1.0.0 版本保持不变。</p>
 </li>
 <li>
