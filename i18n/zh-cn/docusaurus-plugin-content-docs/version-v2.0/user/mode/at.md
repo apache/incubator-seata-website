@@ -23,6 +23,9 @@ AT 模式是 Seata 创新的一种非侵入式的分布式事务解决方案，S
   - 提交异步化，非常快速地完成。
   - 回滚通过一阶段的回滚日志进行反向补偿。
 
+AT 模式示意图：
+![image](https://github.com/apache/incubator-seata-website/assets/97254796/33b12031-cb6d-4ac3-a1fd-2ab3c871cb7e)
+
 
 
 ## 基本使用
