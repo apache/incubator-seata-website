@@ -555,11 +555,11 @@ Logging这一块其实承担的是可观测这几个维度当中的兜底角色�
             <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="生产环境可用的-seata-go-120-来了">生产环境可用的 seata-go 1.2.0 来了<a href="https://seata.apache.org/zh-cn/blog/seata-go-1.2.0#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%8F%AF%E7%94%A8%E7%9A%84-seata-go-120-%E6%9D%A5%E4%BA%86" class="hash-link" aria-label="生产环境可用的 seata-go 1.2.0 来了的直接链接" title="生产环境可用的 seata-go 1.2.0 来了的直接链接">​</a></h2>
 <p>Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="发布概览">发布概览<a href="https://seata.apache.org/zh-cn/blog/seata-go-1.2.0#%E5%8F%91%E5%B8%83%E6%A6%82%E8%A7%88" class="hash-link" aria-label="发布概览的直接链接" title="发布概览的直接链接">​</a></h3>
-<p>Seata-go 1.2.0 版本支持 XA 模式。XA 协议是由 X/Open 组织提出的分布式事务处理规范，其优点是对业务代码无侵入。当前 Seata-go 的 XA 模式支持 MySQL 数据库。至此，seata-go 已经集齐 AT、TCC、Saga 和 XA 四种事务模式，完成了与 Seata Java 的功能对齐。 XA 模式的主要功能:</p>
+<p>Seata-go 1.2.0 版本支持 XA 模式。XA 协议是由 X/Open 组织提出的分布式事务处理规范，其优点是对业务代码无侵入。当前 Seata-go 的 XA 模式支持 MySQL 数据库。至此，seata-go 已经集齐 AT、TCC 和 XA 三种事务模式。 XA 模式的主要功能:</p>
 <ul>
 <li>支持了 XA 数据源代理 <a href="https://github.com/apache/incubator-seata-go-samples/tree/main/xa" target="_blank" rel="noopener noreferrer">https://github.com/apache/incubator-seata-go-samples/tree/main/xa</a></li>
-<li>支持了 XA 事务模式<br>
-<!-- -->XA 相关的 sampes 可以参考示例：<a href="https://github.com/apache/incubator-seata-go-samples/tree/main/xa" target="_blank" rel="noopener noreferrer">https://github.com/apache/incubator-seata-go-samples/tree/main/xa</a></li>
+<li>支持了 XA 事务模式
+XA 相关的 sampes 可以参考示例：<a href="https://github.com/apache/incubator-seata-go-samples/tree/main/xa" target="_blank" rel="noopener noreferrer">https://github.com/apache/incubator-seata-go-samples/tree/main/xa</a></li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="feature">feature<a href="https://seata.apache.org/zh-cn/blog/seata-go-1.2.0#feature" class="hash-link" aria-label="feature的直接链接" title="feature的直接链接">​</a></h3>
 <ul>
