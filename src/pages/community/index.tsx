@@ -66,9 +66,9 @@ const data = {
         }),
       },
       {
-        img: '//img.alicdn.com/imgextra/i4/O1CN01BQvTuX1O8KHxfi2Ye_!!6000000001660-0-tps-312-304.jpg',
+        img: '//img.alicdn.com/imgextra/i3/O1CN01JP7KIR1ju3dlIdipd_!!6000000004607-0-tps-454-460.jpg',
         imgHover:
-          '//img.alicdn.com/imgextra/i4/O1CN01BQvTuX1O8KHxfi2Ye_!!6000000001660-0-tps-312-304.jpg',
+          '//img.alicdn.com/imgextra/i3/O1CN01JP7KIR1ju3dlIdipd_!!6000000004607-0-tps-454-460.jpg',
         title: translate({
           id: 'community.contactsListTitle4',
           message: '钉钉③群(推荐)',
