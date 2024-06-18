@@ -1,8 +1,8 @@
 ---
 title: Detailed Explanation of Seata-Client Principles and Processes in Distributed Transactions
-Author: fangliangsheng
-Date: 2019/04/15
-Keywords: [fescar, seata, distributed transaction]
+author: fangliangsheng
+date: 2019/04/15
+keywords: [fescar, seata, distributed transaction]
 ---
 
 ## Preface
