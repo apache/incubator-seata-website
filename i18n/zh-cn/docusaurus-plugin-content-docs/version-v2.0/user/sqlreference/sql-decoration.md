@@ -10,13 +10,13 @@ Seata 的隔离级别默认为读未提交，该模式下本文表中的 select 
 
 ### DML 语句支持
 
-| 类型         | SQL 实例                                              | 是否支持                                                               |
-| :----------- | :---------------------------------------------------- | :--------------------------------------------------------------------- | --- |
-| AND & OR     | `UPDATE … WHERE col_name1=expr1 AND col_name2= expr2` | 是                                                                     |
-| LIKE         | `UPDATE ... WHERE col_name1 LIKE 'NE'`                | 是                                                                     |
-| 通配符       | `UPDATE ... WHERE col_name1 LIKE 'NE%'`               | 是                                                                     |
-| BETWEEN      | `UPDATE ... WHERE col_name1 BETWEEN expr1 AND expr2`  | 是                                                                     |
-| ON DUPLICATE | `INSERT INTO tb1_name [(col_name,...)]VALUES (\{expr  | DEFAULT},...),(...),...[ ON DUPLICATE KEY UPDATE col_name=expr, ... ]` | 是  |
+| 类型 | SQL 实例 | 是否支持 |
+| :----------- | :---------------------------------------------------- | :--------------------------------------------------------------------- |
+| AND & OR | `UPDATE … WHERE col_name1=expr1 AND col_name2= expr2` | 是 |
+| LIKE | `UPDATE ... WHERE col_name1 LIKE 'NE'` | 是 | 
+| 通配符 | `UPDATE ... WHERE col_name1 LIKE 'NE%'` | 是 |
+| BETWEEN | `UPDATE ... WHERE col_name1 BETWEEN expr1 AND expr2` | 是 |
+| ON DUPLICATE | `INSERT INTO tb1_name [(col_name,...)]VALUES (\{expr \| DEFAULT},...),(...),...[ ON DUPLICATE KEY UPDATE col_name=expr, ... ]` | 是 |
 
 ### Select 语句支持
 
