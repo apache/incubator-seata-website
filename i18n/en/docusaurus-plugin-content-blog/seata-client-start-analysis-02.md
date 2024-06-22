@@ -11,8 +11,8 @@ tags:
 
 > "Just getting started with Seata and don't know enough about its modules? <br />
 Want to dive into the Seata source code, but haven't done so yet? <br />
-Want to find out what your application is doing "on the sly" during startup after integrating Seata? <br
-Want to learn the design concepts and best practices of Seata as a great open source framework? <br
+Want to find out what your application is doing "on the sly" during startup after integrating Seata? <br />
+Want to learn the design concepts and best practices of Seata as a great open source framework? <br />
 If any of the above apply to you, then today's article is for you!
 
 ## Preface
