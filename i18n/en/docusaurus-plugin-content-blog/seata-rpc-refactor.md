@@ -34,7 +34,7 @@ In response to the problems identified above, I did the following during the ref
 
 The inheritance relationship in the latest RPC module is simple and clear, represented by the following class relationship diagram:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200711111637.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200711111637.png)
 
 1. AbstractNettyRemoting: the top level abstraction of Remoting class, contains common member variables and common methods for both client and server, has common request methods (we will talk about it later in the article), and Processor processor invocation logic (we will talk about it later in the article);
 2. RemotingClient: the client's top-level interface, defining the basic methods of client-server interaction;
@@ -46,7 +46,7 @@ The inheritance relationship in the latest RPC module is simple and clear, repre
 
 At the same time, the client-side and server-side bootstrap class logic is abstracted out, as shown in the following class relationship diagram:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200510225359.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200510225359.png)
 
 1. RemotingBootstrap: bootstrap class interface with two abstract methods: start and stop. 2;
 2. NettyClientBootstrap: client-side bootstrap implementation class. 3;
@@ -65,15 +65,15 @@ Before extracting the processing logic from the Netty Handler, let's take a look
 
 - RM client-server interaction logic:
 
-RM client request server interaction logic: ! [](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_21-41-45.png)
+RM client request server interaction logic: ![](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_21-41-45.png)
 
 - TM client-server interaction logic:
 
-RM Client Request Server Interaction Logic: ! [](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_21-44-04.png)
+RM Client Request Server Interaction Logic: ![](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_21-44-04.png)
 
 - Interaction logic for a server requesting an RM client:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200513000620.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200513000620.png)
 
 The interaction logic of Seata can be clearly seen in the above interaction diagram.
 
@@ -106,7 +106,7 @@ RegisterTMRequest, GlobalBeginRequest, GlobalCommitRequest, GlobalRollbackReques
 Based on the above analysis of the interaction logic, we can abstract the logic of processing messages into a number of Processor, a Processor can handle one or more message types of messages, only in Seata startup registration will be registered to the message type ProcessorTable
 A Processor can process messages of one or more message types, just register the message types into the ProcessorTable when Seata starts up, forming a mapping relationship, so that the corresponding Processor can be called to process the message according to the message type, as shown in the following diagram:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_22-09-17.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/Xnip2020-05-12_22-09-17.png)
 
 In the abstract Remoting class, there is a processMessage method, the logic of the method is to get the corresponding Processor from the ProcessorTable according to the message type.
 
@@ -117,7 +117,7 @@ The following is the invocation flow of Processor:
 
 1) Client
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200510234047.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200510234047.png)
 
 1. RmBranchCommitProcessor: process the server-side global commit request;
 2. RmBranchRollbackProcessor: process server-side global rollback request;
@@ -127,7 +127,7 @@ The following is the invocation flow of Processor:
 
 2) Server-side
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200510234016.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200510234016.png)
 
 1. RegRmProcessor: Handle RM client registration request. 2;
 2. RegTmProcessor: handle TM client registration request;
@@ -137,7 +137,7 @@ The following is the invocation flow of Processor:
 
 Below is an example of a TM initiating a global transaction commit request to give you a sense of where the Processor sits in the entire interaction:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200514191842.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200514191842.png)
 
 # Refactoring the request method
 
@@ -161,11 +161,11 @@ Finally, Seata RPC request methods look more elegant and hierarchical.
 
 Synchronous requests:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200513103838.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200513103838.png)
 
 Asynchronous request:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20200513103904.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200513103904.png)
 
 # Other
 
@@ -175,7 +175,7 @@ Asynchronous request:
 
 The final RPC module looks like this:
 
-[]() [](https://gitee.com/objcoding/md-picture/raw/master/img/20200711213204.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20200711213204.png)
 
 # Author Bio
 

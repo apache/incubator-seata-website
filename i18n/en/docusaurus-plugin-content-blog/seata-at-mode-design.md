@@ -39,7 +39,7 @@ Seata internally defines three modules to deal with the relationship and process
 - Transaction Manager (TM): Controls the boundaries of the global transaction and is responsible for opening a global transaction and ultimately initiating a global commit or global rollback resolution.
 - Resource Manager (RM): Controls branch transactions and is responsible for branch registration, status reporting, and receiving instructions from the Transaction Coordinator to drive the commit and rollback of branch (local) transactions.
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/seata.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata.png)
 
 Briefly describe the execution steps of the whole global transaction:
 
@@ -58,17 +58,18 @@ We all know that the XA protocol relies on the database level to ensure the cons
 
 Based on the above problems of the XA protocol, Seata another way, since the dependence on the database layer will lead to so many problems, then I'll do from the application layer to do the trick, which also has to start from Seata's RM module, the previous also said that the main role of RM, in fact, RM in the database operation of the internal agent layer, as follows:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/seata5.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata5.png)
 
 Seata in the data source to do a layer of proxy layer, so we use Seata, we use the data source is actually using Seata's own data source proxy DataSourceProxy, Seata in this layer of the proxy to add a lot of logic, mainly parsing SQL, business data before and after the update of the data mirror organised into a rollback log, and insert the undo log log into the undo_log table to ensure that every business sql that updates data has a corresponding rollback log.
 
 The advantage of doing this is that after the local transaction is executed, the resources locked by the local transaction can be released immediately, and then the branch status can be reported to the TC. When the TM decides to commit globally, there is no need for synchronous coordination, the TC will asynchronously schedule each RM branch transaction to delete the corresponding undo log, which is a very fast step; when the TM decides to roll back globally, the RM receives a rollback request from the TC, and then finds the corresponding undo log through the XID, and then executes the log to complete the rollback operation. operation.
 
-RM will find the corresponding undo log through XID and execute the rollback log to complete the rollback operation. [](https://gitee.com/objcoding/md-picture/raw/master/img/seata6.png)
+RM will find the corresponding undo log through XID and execute the rollback log to complete the rollback operation. ![](https://gitee.com/objcoding/md-picture/raw/master/img/seata6.png)
 
 As shown in the above figure, the RM of the XA scheme is placed in the database layer, and it relies on the XA driver of the database.
 
-The XA scenario RM is placed at the database level as shown in the figure above. [](https://gitee.com/objcoding/md-picture/raw/master/img/Seata7.png)
+The XA scenario RM is placed at the database level as shown in the figure above.
+![](https://gitee.com/objcoding/md-picture/raw/master/img/Seata7.png)
 
 As shown above, Seata's RM is actually placed in the application layer as middleware, and does not rely on the database for protocol support, completely stripping out the protocol support requirements of the database for distributed transaction scenarios.
 
@@ -82,7 +83,7 @@ Here is a detailed description of how branching transactions are committed and r
 
 Branching transactions make use of the JDBC data source proxy in the RM module to join several processes, interpret business SQL, organise the data mirroring of business data before and after updates into a rollback log, generate an undo log log, check global transaction locks, and register branching transactions, etc., and make use of the ACID feature of the local transaction to write the business SQL and the undo log into the same The local transaction ACID feature is used to write the business SQL and undo log into the same thing and submit them to the database together to ensure that the corresponding rollback log must exist for the business SQL, and finally the branch transaction status is reported to the TC.
 
-[]() [](https://gitee.com/objcoding/md-picture/raw/master/img/seata2.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/seata2.png)
 
 - Phase II:
 
@@ -93,7 +94,7 @@ When the TM resolution is committed, there is no need for synchronous orchestrat
 
 
 
-This step is very significant for performance improvement. [](https://gitee.com/objcoding/md-picture/raw/master/img/seata3.png)
+This step is very significant for performance improvement. ![](https://gitee.com/objcoding/md-picture/raw/master/img/seata3.png)
 
 
 
@@ -101,7 +102,7 @@ TM resolution global rollback:
 
 When TM resolves to rollback, RM receives the rollback request from TC, RM finds the corresponding undo log through XID, then uses the ACID feature of the local transaction to execute the rollback log to complete the rollback operation and delete the undo log, and finally reports the rollback result to TC.
 
-The last step is to report the rollback result to the TC. [](https://gitee.com/objcoding/md-picture/raw/master/img/seata4.png)
+The last step is to report the rollback result to the TC. ![](https://gitee.com/objcoding/md-picture/raw/master/img/seata4.png)
 
 The business is not aware of all the above processes, the business does not care about the specific global transaction commit and rollback, and the most important point is that Seata will be two-stage commit synchronisation coordination is decomposed into various branch transactions, branch transactions and ordinary local transactions are not any different, which means that after we use Seata, distributed transactions like the use of local transactions, the database layer of transaction coordination mechanism to the middleware layer. transaction coordination mechanism to the middleware layer Seata to do , so that although the transaction coordination moved to the application layer , but still can do zero intrusion into the business , thus stripping the distributed transaction scheme on the database in the protocol support requirements , and Seata in the branch transaction is completed directly after the release of resources , greatly reducing the branch transaction on the resources of the locking time , perfectly avoiding the XA protocol needs to be The problem of long resource locking time due to synchronous coordination of XA protocol is perfectly avoided.
 
@@ -111,7 +112,7 @@ The business is not aware of all the above processes, the business does not care
 
 The above is actually the default mode of Seata, also known as AT mode, which is similar to the XA scheme of the two-stage submission scheme, and is non-intrusive on the business, but this mechanism still needs to rely on the database local transaction ACID characteristics, have you noticed that I have stressed in the above chart must be to support the ACID characteristics of relational databases, then the problem is, non-relational or databases that do not support ACID can not use Seata, do not panic, Seata is now prepared for us another mode, called MT mode, which is a business invasive solution, commit rollback and other operations need to be defined by us, the business logic needs to be broken down into Prepare/Commit/Rollback 3 parts, forming a MT branch The purpose of the MT model is to reach more scenarios for Seata by adding global transactions.
 
-The point of this is to reach more scenarios for Seata. [](https://gitee.com/objcoding/md-picture/raw/master/img/seata8.png)
+The point of this is to reach more scenarios for Seata. ![](https://gitee.com/objcoding/md-picture/raw/master/img/seata8.png)
 
 Only, it is not Seata's "main" model, it exists only as a complementary solution, from the above official development vision can be seen, Seata's goal is to always be a non-invasive solution to the business.
 

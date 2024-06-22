@@ -13,7 +13,7 @@ Author: Yi Yuan (Chen Long), Ant Gold Services distributed transaction framework
 
 The video and PPT are at the end of this article.
 
-! [3 Distributed Transaction Seata Three Modes Explained-Eiyuan.jpg](/img/saga/sofameetup3_img/1.jpeg)
+![3 Distributed Transaction Seata Three Modes Explained-Eiyuan.jpg](/img/saga/sofameetup3_img/1.jpeg)
 
 <a name="Ad95d"></a>
 ## I. Background of the emergence of distributed transactions
@@ -25,7 +25,7 @@ AntGold's business database was initially a single database with a single table,
 
 As shown in the figure below, after splitting the database and table, the original write operation that can be completed on a database may be across multiple databases, which gives rise to cross-database transaction problems.
 
-! [image.png](/img/saga/sofameetup3_img/2.png)
+![image.png](/img/saga/sofameetup3_img/2.png)
 
 
 <a name="WBQbC"></a>
@@ -35,7 +35,7 @@ In the early stage of business development, the single business system architect
 
 As shown in the figure below, Ant Financial Services splits the single business system into multiple business systems in accordance with the design principles of Service Oriented Architecture (SOA), which reduces the coupling between the systems and enables different business systems to focus on their own business, which is more conducive to the development of the business and the scaling of the system capacity.
 
-! [image.png](/img/saga/sofameetup3_img/3.png)
+![image.png](/img/saga/sofameetup3_img/3.png)
 
 After the business system is split according to services, a complete business often needs to call multiple services, how to ensure data consistency between multiple services becomes a difficult problem.
 
@@ -46,21 +46,21 @@ After the business system is split according to services, a complete business of
 <a name="akRiW"></a>
 ### 2.1 Two-stage commit protocols
 
-! [16_16_18__08_13_2019.jpg](/img/saga/sofameetup3_img/4.jpeg)
+![16_16_18__08_13_2019.jpg](/img/saga/sofameetup3_img/4.jpeg)
 
 Two phase commit protocol: transaction manager coordinates resource manager in two phases, the first phase prepares resources, that is, reserve the resources needed for the transaction, if every resource manager resource reservation succeeds, the second phase resource commit is performed, otherwise the coordinated resource manager rolls back the resources.
 
 <a name="8tfKI"></a>
 ### 2.2 TCC
 
-! [16_16_51__08_13_2019.jpg](/img/saga/sofameetup3_img/5.jpeg)
+![16_16_51__08_13_2019.jpg](/img/saga/sofameetup3_img/5.jpeg)
 
 TCC (Try-Confirm-Cancel) is actually a two-phase commit protocol for servitisation, business developers need to implement these three service interfaces, the first phase of the service is choreographed by the business code to call the Try interface for resource reservation, the Try interface for all participants is successful, the transaction manager will commit the transaction and call the Confirm interface for each participant The transaction manager will commit the transaction and call the Confirm interface of each participant to actually commit the business operation, otherwise the Cancel interface of each participant will be called to rollback the transaction.
 
 <a name="IXxpF"></a>
 ### 2.3 Saga
 
-! [3 Distributed Transactions Seata Three Patterns Explained - Yi Yuan-9.jpg](/img/saga/sofameetup3_img/6.jpeg)
+![3 Distributed Transactions Seata Three Patterns Explained - Yi Yuan-9.jpg](/img/saga/sofameetup3_img/6.jpeg)
 
 Saga is a compensation protocol. In Saga mode, there are multiple participants within a distributed transaction, and each participant is an offsetting compensation service that requires the user to implement its forward and reverse rollback operations according to the business scenario.
 
@@ -78,7 +78,7 @@ Saga theory is from the paper Sagas published by Hector & Kenneth in 1987.<br
 Seata (Simple Extensible Autonomous Transaction Architecture) is a distributed transaction solution jointly open-sourced by Ant Financial Services and Alibaba in January 2019.Seata has been open-sourced for about half a year, and currently has more than 11,000 stars. Seata has been open source for about half a year, and now has more than 11,000 stars and a very active community. We warmly welcome you to participate in the Seata community construction, together will Seata become the open source distributed transaction benchmark product.
 
 Seata: [https://](https://github.com/apache/incubator-seata)[github.com/apache/incubator-seata](https://github.com/apache/incubator -seata)<br />
-<br />! [image.png](/img/saga/sofameetup3_img/7.png)
+<br />![image.png](/img/saga/sofameetup3_img/7.png)
 
 <a name="zyy0l"></a>
 ### 3.2 Distributed Transactions Seata Product Module
@@ -100,14 +100,14 @@ The execution flow of a distributed transaction in Seata:
 
 Seata has four distributed transaction solutions, AT mode, TCC mode, Saga mode and XA mode.
 
-! [15_49_23__08_13_2019.jpg](/img/saga/sofameetup3_img/9.jpeg)<br />
+![15_49_23__08_13_2019.jpg](/img/saga/sofameetup3_img/9.jpeg)<br />
 
 <a name="784n4"></a>
 #### 2.3.1 AT Mode
 
 In January, Seata open sourced AT Mode, a non-intrusive distributed transaction solution. In AT mode, users only need to focus on their own "business SQL", the user's "business SQL" as a phase, Seata framework will automatically generate the transaction of the two-phase commit and rollback operations.
 
-! [image.png](/img/saga/sofameetup3_img/10.png)<br />
+![image.png](/img/saga/sofameetup3_img/10.png)<br />
 
 <a name="Acfeo"></a>
 ##### How the AT model is non-intrusive to business :
@@ -122,13 +122,13 @@ This ensures the atomicity of a phase of operations. [image3.png](/img/saga/sofa
 
 If the second phase is a commit, since the "business SQL" has already been committed to the database in the first phase, the Seata framework only needs to delete the snapshot data and row locks saved in the first phase to complete the data cleanup.
 
-! [image 4.png](/img/saga/sofameetup3_img/12.png)
+![image 4.png](/img/saga/sofameetup3_img/12.png)
 
 - Phase 2 rollback:
 
 If the second phase is a rollback, Seata needs to rollback the "business SQL" that has been executed in the first phase to restore the business data. The way to rollback is to use "before image" to restore the business data; however, before restoring, we must first verify the dirty writing, compare the "current business data in the database" and the "after image", if the two data are not in the same state, then we will use the "after image" to restore the business data. However, before restoring, we should first check the dirty writing, compare the "current business data in database" and "after image", if the two data are completely consistent, it means there is no dirty writing, and we can restore the business data, if it is inconsistent, it means there is dirty writing, and we need to transfer the dirty writing to manual processing.
 
-! [image 5.png](/img/saga/sofameetup3_img/13.png)
+![image 5.png](/img/saga/sofameetup3_img/13.png)
 
 AT mode one phase, two phase commit and rollback are automatically generated by Seata framework, user only need to write "business SQL", then can easily access distributed transaction, AT mode is a kind of distributed transaction solution without any intrusion to business.
 
@@ -145,7 +145,7 @@ TCC Three method descriptions:
 - Confirm: the execution of the business operation submitted; require Try success Confirm must be successful;
 - Cancel: the release of the reserved resources;
 
-**Ant Gold's practical experience in TCC**<br />**<br />! [16_48_02__08_13_2019.jpg](/img/saga/sofameetup3_img/15.jpeg)
+**Ant Gold's practical experience in TCC**<br />**<br />![16_48_02__08_13_2019.jpg](/img/saga/sofameetup3_img/15.jpeg)
 
 **1 TCC Design - Business model is designed in 2 phases:**
 
@@ -153,7 +153,7 @@ The most important thing for users to consider when accessing TCC is how to spli
 
 Take the "debit" scenario as an example, before accessing TCC, the debit of account A can be completed with a single SQL for updating the account balance; however, after accessing TCC, the user needs to consider how to split the original one-step debit operation into two phases and implement it into three methods, and to ensure that the first-phase Try will be successful and the second-phase Confirm will be successful if Try is successful. If Try succeeds in the first stage, Confirm will definitely succeed in the second stage.
 
-! [image 7.png](/img/saga/sofameetup3_img/16.png)
+![image 7.png](/img/saga/sofameetup3_img/16.png)
 
 As shown above, the
 
@@ -165,15 +165,15 @@ If the second stage is a rollback, you need to release the $30 frozen in the fir
 
 The most important thing for users to access TCC mode is to consider how to split the business model into 2 phases, implement it into 3 methods of TCC, and ensure that Try succeeds and Confirm succeeds. Compared to AT mode, TCC mode is somewhat intrusive to the business code, but TCC mode does not have the global line locks of AT mode, and the performance of TCC will be much higher than AT mode.
 
-**2 TCC Design - Allow Null Rollback:**<br />**<br />! [16_51_44__08_13_2019.jpg](/img/saga/sofameetup3_img/17.jpeg)
+**2 TCC Design - Allow Null Rollback:**<br />**<br />![16_51_44__08_13_2019.jpg](/img/saga/sofameetup3_img/17.jpeg)
 
 The Cancel interface needs to be designed to allow null rollbacks. When the Try interface is not received due to packet loss, the transaction manager triggers a rollback, which triggers the Cancel interface, which needs to return to the success of the rollback when it finds that there is no corresponding transaction xid or primary key during the execution of Cancel. If the transaction service manager thinks it has been rolled back, otherwise it will keep retrying, and Cancel has no corresponding business data to roll back.
 
-**3 TCC Design - Anti-Suspension Control:**<br />**<br />! [16_51_56__08_13_2019.jpg](/img/saga/sofameetup3_img/18.jpeg)
+**3 TCC Design - Anti-Suspension Control:**<br />**<br />![16_51_56__08_13_2019.jpg](/img/saga/sofameetup3_img/18.jpeg)
 
 The implication of the suspension is that the Cancel is executed before the Try interface, which occurs because the Try times out due to network congestion, the transaction manager generates a rollback that triggers the Cancel interface, and the Try interface call is eventually received, but the Cancel arrives before the Try. According to the previous logic of allowing empty rollback, the rollback will return successfully, the transaction manager thinks the transaction has been rolled back successfully, then the Try interface should not be executed at this time, otherwise it will generate data inconsistency, so we record the transaction xid or business key before the Cancel empty rollback returns successfully, marking this record has been rolled back, the Try interface checks the transaction xid or business key first. The Try interface first checks the transaction xid or business key to identify that the record has been rolled back, and then does not perform the business operation of Try if it has already been marked as rolled back successfully.
 
-**4 TCC Design - Power Control:**<br />**<br />! [16_52_07__08_13_2019.jpg](/img/saga/sofameetup3_img/19.jpeg)
+**4 TCC Design - Power Control:**<br />**<br />![16_52_07__08_13_2019.jpg](/img/saga/sofameetup3_img/19.jpeg)
 
 Idempotence means that for the same system, using the same conditions, a single request and repeated multiple requests have the same impact on system resources. Because network jitter or congestion may timeout, transaction manager will retry operation on resources, so it is very likely that a business operation will be called repeatedly, in order not to occupy resources many times because of repeated calls, it is necessary to control idempotency when designing the service, usually we can use the transaction xid or the business primary key to judge the weight to control.
 
@@ -184,12 +184,12 @@ Saga mode is Seata's upcoming open source solution for long transactions, which 
 
 During the execution of a distributed transaction, the forward operations of each participant are executed sequentially, and if all forward operations are executed successfully, the distributed transaction commits. If any of the forward operations fails, the distributed transaction will go back and execute the reverse rollback operations of the previous participants to roll back the committed participants and bring the distributed transaction back to the initial state.
 
-! [image 8.png](/img/saga/sofameetup3_img/20.png)
+![image 8.png](/img/saga/sofameetup3_img/20.png)
 
 
 Saga Pattern Distributed transactions are usually event-driven and executed asynchronously between the various participants, Saga Pattern is a long transaction solution.
 
-**1 Saga pattern usage scenario**<br />**<br />! [16_44_58__08_13_2019.jpg](/img/saga/sofameetup3_img/21.jpeg)
+**1 Saga pattern usage scenario**<br />**<br />![16_44_58__08_13_2019.jpg](/img/saga/sofameetup3_img/21.jpeg)
 
 Saga pattern is suitable for business systems with long business processes and the need to ensure the final consistency of transactions. Saga pattern commits local transactions at one stage, and performance can be guaranteed in the case of lock-free and long processes.
 
@@ -203,19 +203,19 @@ The advantages of the Saga pattern are:
 
 Disadvantages: The Saga pattern does not guarantee isolation because the local database transaction has already been committed in the first phase and no "reservation" action has been performed. Later we will talk about the lack of isolation of the countermeasures. <br />**2 Saga implementation based on a state machine engine*** <br />**2 Saga implementation based on a state machine engine*** <br />**3
 
-! [17_13_19__08_13_2019.jpg](/img/saga/sofameetup3_img/22.png)
+![17_13_19__08_13_2019.jpg](/img/saga/sofameetup3_img/22.png)
 
 Currently there are generally two types of Saga implementations, one is achieved through event-driven architecture, and the other is based on annotations plus interceptors to intercept the business of the positive service implementation.Seata is currently implemented using an event-driven mechanism, Seata implements a state machine, which can orchestrate the call flow of the service and the compensation service of the positive service, generating a state diagram defined by a json file, and the state machine The state machine engine is driven to the operation of this map, when an exception occurs, the state machine triggers a rollback and executes the compensation services one by one. Of course, it is up to the user to decide when to trigger the rollback. The state machine can achieve the needs of service orchestration, it supports single selection, concurrency, asynchrony, sub-state machine call, parameter conversion, parameter mapping, service execution state judgement, exception catching and other functions.
 
 **3 State Machine Engine Principles**<br />
 
-! [16_45_32__08_13_2019.jpg](/img/saga/sofameetup3_img/23.png)
+![16_45_32__08_13_2019.jpg](/img/saga/sofameetup3_img/23.png)
 
 The basic principle of this state machine engine is that it is based on an event-driven architecture, where each step is executed asynchronously, and steps flow through an event queue between steps, <br />greatly improving system throughput. Transaction logs are recorded at the time of execution of each step for use when rolling back in the event of an exception. Transaction logs are recorded in the database where the business tables are located to improve performance.
 
 **4 State Machine Engine Design
 
-! [16_45_46__08_13_2019.jpg](/img/saga/sofameetup3_img/24.jpeg)
+![16_45_46__08_13_2019.jpg](/img/saga/sofameetup3_img/24.jpeg)
 
 The state machine engine is divided into a three-tier architecture design, the bottom layer is the "event-driven" layer, the implementation of the EventBus and the consumption of events in the thread pool, is a Pub-Sub architecture. The second layer is the "process controller" layer, which implements a minimalist process engine framework that drives an "empty" process execution. node does, it just executes the process method of each node and then executes the route method to flow to the next node. This is a generic framework, based on these two layers, developers can implement any process engine. The top layer is the "state machine engine" layer, which implements the "behaviour" and "route" logic code of each state node, provides APIs and statechart repositories, and has some other components, such as expression languages, logic languages, and so on. There are also a number of other components, such as expression languages, logic calculators, flow generators, interceptors, configuration management, transaction logging, and so on.
 
@@ -223,19 +223,19 @@ The state machine engine is divided into a three-tier architecture design, the b
 
 Similar to TCC, Saga's forward and reverse services need to follow the following design principles:
 
-**1) Saga Service Design - Allow Null Compensation**<br />**<br />! [16_52_22__08_13_2019.jpg](/img/saga/sofameetup3_img/25.jpeg)
+**1) Saga Service Design - Allow Null Compensation**<br />**<br />![16_52_22__08_13_2019.jpg](/img/saga/sofameetup3_img/25.jpeg)
 
-**2) Saga Service Design - Anti-Suspension Control**<br />**<br />! [16_52_52__08_13_2019.jpg](/img/saga/sofameetup3_img/26.jpeg)
+**2) Saga Service Design - Anti-Suspension Control**<br />**<br />![16_52_52__08_13_2019.jpg](/img/saga/sofameetup3_img/26.jpeg)
 
-**3) Saga Service Design - Power Control**<br />**<br />! [3 Distributed Transactions Seata Three Patterns Explained - Yi Yuan-31.jpg](/img/saga/sofameetup3_img/27.jpeg)
+**3) Saga Service Design - Power Control**<br />**<br />![3 Distributed Transactions Seata Three Patterns Explained - Yi Yuan-31.jpg](/img/saga/sofameetup3_img/27.jpeg)
 
-**4) Saga Design - Custom Transaction Recovery Strategies**<br />**<br />! [16_53_07__08_13_2019.jpg](/img/saga/sofameetup3_img/28.jpeg)
+**4) Saga Design - Custom Transaction Recovery Strategies**<br />**<br />![16_53_07__08_13_2019.jpg](/img/saga/sofameetup3_img/28.jpeg)
 
 As mentioned earlier, the Saga pattern does not guarantee transaction isolation, and dirty writes can occur in extreme cases. For example, in the case of a distributed transaction is not committed, the data of the previous service was modified, and the service behind the anomaly needs to be rolled back, may not be able to compensate for the operation due to the data of the previous service was modified. One way to deal with this situation is to "retry" and continue forward to complete the distributed transaction. Since the entire business process is arranged by the state machine, even after the recovery can continue to retry. So you can configure the transaction policy of the process according to the business characteristics, whether to give priority to "rollback" or "retry", when the transaction timeout, the Server side will continue to retry according to this policy.
 
 Since Saga does not guarantee isolation, we need to achieve the principle of "long money rather than short money" in business design. Long money refers to the situation when there is a mistake and the money is too much from our point of view, and the money is too little, because if the money is too long, we can refund the money to the customer, but if it is too short, the money may not be recovered, which means that in the business design, we must give priority to "rollback" or "retry". That is, when the business is designed, it must be deducted from the customer's account before crediting the account, and if the override update is caused by the isolation problem, there will not be a case of less money.
 
-**6 Annotation and Interceptor Based Saga Implementation**<br />**<br />! [17_13_37__08_13_2019.jpg](/img/saga/sofameetup3_img/29.jpeg)
+**6 Annotation and Interceptor Based Saga Implementation**<br />**<br />![17_13_37__08_13_2019.jpg](/img/saga/sofameetup3_img/29.jpeg)
 
 There is another implementation of Saga that is based on annotations + interceptors, which Seata does not currently implement. You can look at the pseudo-code above to understand it, the @SagaCompensable annotation is defined on the one method, and the compensation method used to define the one method is the compensateOne method. Then the @SagaTransactional annotation is defined on the processA method of the business process code, which starts a Saga distributed transaction, intercepts each forward method with an interceptor, and triggers a rollback operation when an exception occurs, calling the compensation method of the forward method.
 
@@ -243,7 +243,7 @@ There is another implementation of Saga that is based on annotations + intercept
 
 The following table compares the advantages and disadvantages of the two Saga implementations:
 
-! [17_13_49__08_13_2019.jpg](/img/saga/sofameetup3_img/30.jpeg)
+![17_13_49__08_13_2019.jpg](/img/saga/sofameetup3_img/30.jpeg)
 
 The biggest advantage of the state machine engine is that it can be executed asynchronously through an event-driven approach to improve system throughput, service scheduling requirements can be achieved, and in the absence of isolation in the Saga model, there can be an additional "retry forward" strategy to recover from things. The biggest advantage of annotations and interceptors is that they are easy to develop and low cost to learn.
 

@@ -19,7 +19,7 @@ The Seata Configuration Centre has a listener baseline interface, which has an a
 
 io.seata.config.ConfigurationChangeListener
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191216212442.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191216212442.png)
 
 This listener baseline interface has two main implementation types:
 
@@ -30,7 +30,7 @@ This listener baseline interface has two main implementation types:
 
 Nacos has its own internal implementation of the listener, so it directly inherits its internal abstract listener, AbstractSharedListener, which is implemented as follows:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191223212237.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191223212237.png)
 
 As above.
 
@@ -41,7 +41,7 @@ It's worth mentioning that nacos doesn't use ConfigurationChangeListener to impl
 
 Add the subscription:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191223213347.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191223213347.png)
 
 The logic of adding a subscription to a dataId in Nacos Configuration Centre is very simple, create a NacosListener with the dataId and a listener, call the configService#addListener method, and use the NacosListener as a listener for the dataId, and then the dataId can be dynamically configured for subscription. Dynamic Configuration Subscription.
 
@@ -49,7 +49,7 @@ The logic of adding a subscription to a dataId in Nacos Configuration Centre is 
 
 Take its implementation class FileListener as an example, its implementation logic is as follows:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215151642.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215151642.png)
 
 As above.
 
@@ -65,17 +65,17 @@ It loops indefinitely to get the current value of the subscribed configuration p
 
 ConfigurationChangeEvent The event class used to save configuration changes, it has the following member properties:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215175232.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215175232.png)
 
 
 
 How does the getConfig method sense changes to the file configuration? We click into it and find that it ends up with the following logic:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215162713.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215162713.png)
 
 We see that it creates a future class, wraps it in a Runnable and puts it into the thread pool to execute asynchronously, and then calls the get method to block the retrieval of the value, so let's move on:
 
-[]()() [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215170908.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215170908.png)
 
 allowDynamicRefresh: configure switch for dynamic refresh;
 
@@ -87,7 +87,7 @@ Get the tempLastModified value of the last update of the file, then compare it w
 
 The logic for adding a configuration property listener is as follows:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215161103.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215161103.png)
 
 configListenersMap is a configuration listener cache for FileConfiguration with the following data structure:
 
@@ -105,7 +105,7 @@ Eventually the onProcessEvent method is executed, which is the default method in
 
 With the above dynamic configuration subscription functionality, we only need to implement the ConfigurationChangeListener listener to do all kinds of functionality. Currently, Seata only has dynamic degradation functionality for dynamic configuration subscription.
 
-In the article "[Seata AT mode startup source code analysis](https://mp.weixin.qq.com/s/n9MHk47zSsFQmV-gBq_P1A)", it is said that in the project of Spring integration with Seata, when AT mode is started, it will use the GlobalTransactionalInterceptor replaces the methods annotated with GlobalTransactional and GlobalLock. GlobalTransactionalInterceptor implements MethodInterceptor, which will eventually execute the invoker method, so if you want to achieve dynamic demotion, you can do something here.
+In the article 「[Seata AT mode startup source code analysis](https://mp.weixin.qq.com/s/n9MHk47zSsFQmV-gBq_P1A)」, it is said that in the project of Spring integration with Seata, when AT mode is started, it will use the GlobalTransactionalInterceptor replaces the methods annotated with GlobalTransactional and GlobalLock. GlobalTransactionalInterceptor implements MethodInterceptor, which will eventually execute the invoker method, so if you want to achieve dynamic demotion, you can do something here.
 
 - Add a member variable to GlobalTransactionalInterceptor:
 
@@ -115,7 +115,7 @@ In the article "[Seata AT mode startup source code analysis](https://mp.weixin.q
 
 Initialise the assignment in the constructor:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215173221.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215173221.png)
 
 ConfigurationKeys.DISABLE_GLOBAL_TRANSACTION (service.disableGlobalTransaction) This parameter currently has two functions:
 
@@ -124,13 +124,13 @@ ConfigurationKeys.DISABLE_GLOBAL_TRANSACTION (service.disableGlobalTransaction) 
 
 - Implement ConfigurationChangeListener:
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215173358.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215173358.png)
 
 The logic here is simple, it is to determine whether the listening event belongs to the ConfigurationKeys.DISABLE_GLOBAL_TRANSACTION configuration attribute, if so, directly update the disable value.
 
 - Next, do something in GlobalTransactionalInterceptor#invoke
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215174155.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215174155.png)
 
 As above, when disable = true, no global transaction with global lock is performed.
 
@@ -138,7 +138,7 @@ As above, when disable = true, no global transaction with global lock is perform
 
 io.seata.spring.annotation.GlobalTransactionScanner#wrapIfNecessary
 
-! [](https://gitee.com/objcoding/md-picture/raw/master/img/20191215174409.png)
+![](https://gitee.com/objcoding/md-picture/raw/master/img/20191215174409.png)
 
 The current Configuration Centre will subscribe to the demotion event listener during wrap logic in Spring AOP.
 

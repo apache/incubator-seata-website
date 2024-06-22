@@ -73,7 +73,7 @@ tags:
 上述 RMClient 系列各类之间的关系以及调用构造器和 init()初始化方法的过程如下图示意：
 ![RMClient.init简化版流程与主要类之间的关系](http://booogu.top/img/in-post/rmclient_relation.jpg)
 
-那么为何要将 RMClient 设计成这样较为复杂的继承关系呢？其实是为了将各层的职责、边界划分清楚，使得各层可以专注于特定逻辑处理，实现更好的扩展性，这部分的详细设计思路，可参考 Seata RPC 模块重构 PR 的操刀者乘辉兄的文章[Seata-RPC 重构之路](https://mp.weixin.qq.com/s/PCSZ4a8cgmyZNhbUrO-BZQ)）
+那么为何要将 RMClient 设计成这样较为复杂的继承关系呢？其实是为了将各层的职责、边界划分清楚，使得各层可以专注于特定逻辑处理，实现更好的扩展性，这部分的详细设计思路，可参考 Seata RPC 模块重构 PR 的操刀者乘辉兄的文章![Seata-RPC 重构之路](https://mp.weixin.qq.com/s/PCSZ4a8cgmyZNhbUrO-BZQ)）
 
 ### 初始化的完整流程
 
