@@ -154,13 +154,13 @@ In this diagram, you can focus on these points:
 - NettyClientChannelManager executes the callback function (getPoolKeyFunction()) to get the NettyPoolKey in the concrete AbstractNettyRemotingClient: the different Clients (RMClient and TMClient) on the application side, when they create the NettyPoolKey, they create the NettyChannelManager. TMClient) on the application side, the Key used when creating the Channel is different, so that **they send different registration messages when reconnecting to the TC Server**, which is also determined by the different roles they play in Seata:
   - TMClient: plays the role of transaction manager, when creating a Channel, it only sends a TM registration request (RegisterTMRequest) to the TC.
   - RMClient: plays the role of resource manager, needs to manage all transaction resources on the application side, therefore, when creating a Channel, it needs to get all transaction resource information on the application side before sending RM registration request (RegisterRMRequest), and register it to TC Server.
-- 在 Channel 对象工厂 NettyPoolableFactory 的 makeObject（制造 Channel）方法中，使用 NettyPoolKey 中的两项信息，完成了两项任务：
-  - 使用 NettyPoolKey 的 address 创建新的 Channel
-  - 使用 NettyPoolKey 的 message 以及新的 Channel 向 TC Server 发送注册请求，这就是 Client 向 TC Server 的连接（首次执行）或重连（非首次，由定时任务驱动执行）请求
+- In the Channel object factory's `NettyPoolableFactory`'s `makeObject` (create Channel) method, two tasks are completed using the two pieces of information in `NettyPoolKey`:
+  - A new Channel is created using the address from `NettyPoolKey`.
+  - A registration request is sent to the TC Server using the message from `NettyPoolKey` and the new Channel. This is the Client's initial connection (first execution) or reconnection (subsequent executions driven by scheduled tasks) request to the TC Server.
 
-以上内容，就是关于 Seata 应用侧的初始化及其与 TC Server 协调器侧建立连接的全过程分析。
+The above content covers the entire process of the Seata application's initialization and its connection establishment with the TC Server coordinator side.
 
-更深层次的细节，建议大家再根据本文梳理的脉络和提到的几个重点，细致地阅读下源码，相信定会有更深层次的理解和全新的收获！
+For deeper details, it is recommended to thoroughly read the source code based on the outline and key points mentioned in this article. This will undoubtedly lead to a deeper understanding and new insights!
 
-> 后记：考虑到篇幅以及保持一篇源码分析文章较为合适的信息量，本文前言中所说的**配置、注册等模块协作配合**并没有在文章中展开和体现。 <br />
-> 在下篇源码剖析中，我会以**配置中心**和**注册中心**为重点，为大家分析，在 RMClient/TM Client 与 TC Server 建立连接之前，Seata 应用侧是**如何通过服务发现**找到 TC Server、如何**从配置模块获取各种信息**的。
+> Postscript: Considering the length and to maintain a suitable amount of information for a source code analysis article, the **collaboration of configuration and registration modules** mentioned in the introduction was not expanded upon in this article. <br />
+> In the next source code analysis, I will focus on the **configuration center** and **registration center**, analyzing how the Seata application side **discovers the TC Server through service discovery** and how it **obtains various information from the configuration module** before establishing connections between RMClient/TM Client and the TC Server.
