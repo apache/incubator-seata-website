@@ -66,7 +66,7 @@ Saga is a compensation protocol. In Saga mode, there are multiple participants w
 
 During the execution of a distributed transaction, the forward operations of each participant are executed sequentially, and if all forward operations are executed successfully, the distributed transaction commits. If any of the forward operations fails, the distributed transaction backs out and performs a reverse rollback on the previous participants, rolling back the committed participants and returning the distributed transaction to its initial state.
 
-Saga theory is from the paper Sagas published by Hector & Kenneth in 1987.<br
+Saga theory is from the paper Sagas published by Hector & Kenneth in 1987.<br />
 <br />Saga Positive Service and Compensation Service also need to be implemented by business developers.
 
 <a name="fZPaN"></a>

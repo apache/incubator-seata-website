@@ -1,256 +1,166 @@
 ---
-title: Distributed Transaction Seata and its Three Patterns Explained
-keywords: [Saga,Seata,AT,TCC,consistency,financial,distributed,transaction]
-description: Focuses on sharing the background of distributed transactions, the theoretical foundations, and the principles of Seata distributed transactions and three patterns (AT, TCC, Saga) of distributed transactions to achieve
-author: long187
-date: 2019-08-11
+layout: post
+comments: true
+title: Analysis of Seata Application-Side Startup Process - How RM & TM Establish Connections with TC
+date: 2021-02-28 21:08:00
+author: 'booogu'
+catalog: true
+tags:
+  - Seata
 ---
-# Distributed Transactions with Seata and its three patterns in detail | Meetup#3 Review
 
-Author: Yi Yuan (Chen Long), Ant Gold Services distributed transaction framework core development.
-<br />This article is based on the topic of "Distributed Transaction Seata and its Three Patterns" shared at SOFA Meetup#3 on 11 August in Guangzhou, focusing on the background and theoretical foundation of distributed transaction, as well as the principle of Seata distributed transaction and the implementation of distributed transaction in three patterns (AT, TCC, and Saga).
+> "Just started with Seata and don't have a deep understanding of its various modules? <br />
+> Want to delve into Seata's source code but haven't taken the plunge yet? <br />
+> Curious about what your application does 'secretly' during startup after integrating Seata? <br />
+> Want to learn about the design principles and best practices embodied in Seata as an excellent open-source framework? <br />
+> If you have any of the above thoughts, then this article is tailor-made for you~
 
-The video and PPT are at the end of this article.
+## Introduction
 
-! [3 Distributed Transaction Seata Three Modes Explained-Eiyuan.jpg](/img/saga/sofameetup3_img/1.jpeg)
+Those who have seen the first picture in the official README should know that Seata coordinates distributed transactions through its **coordinator side** TC, which communicates and interacts with the **application side** TM and RM to ensure data consistency among multiple transaction participants in distributed transactions. So, how does Seata establish connections and communicate between the coordinator side and the application side?
 
-<a name="Ad95d"></a>
-## I. Background of the emergence of distributed transactions
+That's right, the answer is Netty. Netty, as a high-performance RPC communication framework, ensures efficient communication between TC and RM. This article will not go into detail about Netty; instead, our focus today is on how the **application side, during startup, uses a series of Seata's key modules (such as RPC, Config/Registry Center, etc.) to establish communication with the coordinator side.
 
-<a name="Q2ayF"></a>
-### 1.1 Distributed Architecture Evolution - Horizontal Splitting of Database
+## Starting with GlobalTransactionScanner
 
-AntGold's business database was initially a single database with a single table, but with the rapid development of the business data scale, the data volume is getting bigger and bigger, and the single database with a single table is gradually becoming a bottleneck. So we split the database horizontally, splitting the original single database and single table into database slices.
+We know that Seata provides several development annotations, such as @GlobalTransactional for enabling distributed transactions, @TwoPhraseBusinessAction for declaring TCC two-phase services, and so on, which are based on the Spring AOP mechanism to enhance the annotations by assigning the corresponding bean methods to interceptors. Interceptors are enhanced to complete the corresponding processing logic. GlobalTransactionScanner, a Spring bean, carries the responsibility of assigning interceptors to annotations. From the name of its scanner, it is not difficult to deduce that it is designed for the startup of the Spring application, and the global transaction (GlobalTransactionScanner). GlobalTransactionScanner) during Spring application startup.
 
-As shown in the figure below, after splitting the database and table, the original write operation that can be completed on a database may be across multiple databases, which gives rise to cross-database transaction problems.
+In addition, the process of initialising the application-side RPC clients (TMClient, RMClient) and establishing a connection with the TC is also initiated in GlobalTransactionScanner#afterPropertiesSet():
 
-! [image.png](/img/saga/sofameetup3_img/2.png)
-
-
-<a name="WBQbC"></a>
-### 1.2 Distributed Architecture Evolution - Business Service Splitting
-
-In the early stage of business development, the single business system architecture of "one piece of cake" can meet the basic business needs. However, with the rapid development of the business, the system's access and business complexity are growing rapidly, single-system architecture has gradually become the bottleneck of business development, to solve the problem of high coupling and scalability of the business system demand is becoming stronger and stronger.
-
-As shown in the figure below, Ant Financial Services splits the single business system into multiple business systems in accordance with the design principles of Service Oriented Architecture (SOA), which reduces the coupling between the systems and enables different business systems to focus on their own business, which is more conducive to the development of the business and the scaling of the system capacity.
-
-! [image.png](/img/saga/sofameetup3_img/3.png)
-
-After the business system is split according to services, a complete business often needs to call multiple services, how to ensure data consistency between multiple services becomes a difficult problem.
-
-
-<a name="3oIxE"></a>
-## II. Theoretical foundation of distributed transaction
-
-<a name="akRiW"></a>
-### 2.1 Two-stage commit protocols
-
-! [16_16_18__08_13_2019.jpg](/img/saga/sofameetup3_img/4.jpeg)
-
-Two phase commit protocol: transaction manager coordinates resource manager in two phases, the first phase prepares resources, that is, reserve the resources needed for the transaction, if every resource manager resource reservation succeeds, the second phase resource commit is performed, otherwise the coordinated resource manager rolls back the resources.
-
-<a name="8tfKI"></a>
-### 2.2 TCC
-
-! [16_16_51__08_13_2019.jpg](/img/saga/sofameetup3_img/5.jpeg)
-
-TCC (Try-Confirm-Cancel) is actually a two-phase commit protocol for servitisation, business developers need to implement these three service interfaces, the first phase of the service is choreographed by the business code to call the Try interface for resource reservation, the Try interface for all participants is successful, the transaction manager will commit the transaction and call the Confirm interface for each participant The transaction manager will commit the transaction and call the Confirm interface of each participant to actually commit the business operation, otherwise the Cancel interface of each participant will be called to rollback the transaction.
-
-<a name="IXxpF"></a>
-### 2.3 Saga
-
-! [3 Distributed Transactions Seata Three Patterns Explained - Yi Yuan-9.jpg](/img/saga/sofameetup3_img/6.jpeg)
-
-Saga is a compensation protocol. In Saga mode, there are multiple participants within a distributed transaction, and each participant is an offsetting compensation service that requires the user to implement its forward and reverse rollback operations according to the business scenario.
-
-During the execution of a distributed transaction, the forward operations of each participant are executed sequentially, and if all forward operations are executed successfully, the distributed transaction commits. If any of the forward operations fails, the distributed transaction backs out and performs a reverse rollback on the previous participants, rolling back the committed participants and returning the distributed transaction to its initial state.
-
-Saga theory is from the paper Sagas published by Hector & Kenneth in 1987.<br
-<br />Saga Positive Service and Compensation Service also need to be implemented by business developers.
-
-<a name="fZPaN"></a>
-## III. Seata and its three patterns explained in detail
-
-<a name="IgVM7"></a>
-### 3.1 Distributed transaction Seata introduction
-
-Seata (Simple Extensible Autonomous Transaction Architecture) is a distributed transaction solution jointly open-sourced by Ant Financial Services and Alibaba in January 2019.Seata has been open-sourced for about half a year, and currently has more than 11,000 stars. Seata has been open source for about half a year, and now has more than 11,000 stars and a very active community. We warmly welcome you to participate in the Seata community construction, together will Seata become the open source distributed transaction benchmark product.
-
-Seata: [https://](https://github.com/apache/incubator-seata)[github.com/apache/incubator-seata](https://github.com/apache/incubator -seata)<br />
-<br />! [image.png](/img/saga/sofameetup3_img/7.png)
-
-<a name="zyy0l"></a>
-### 3.2 Distributed Transactions Seata Product Module
-
-As shown in the figure below, there are three major modules in Seata, namely TM, RM and TC. TM and RM are integrated with the business system as clients of Seata, and TC is deployed independently as the server of Seata.
-
-TC is deployed independently as a Seata server. [image.png](/img/saga/sofameetup3_img/8.png)
-
-The execution flow of a distributed transaction in Seata:
-
-- TM opens distributed transaction (TM registers global transaction record with TC);
-- According to the business scenario, arrange the resources in the transaction such as database and service (RM reports the resource readiness status to TC);
-- TM ends the distributed transaction, and the transaction phase ends (TM notifies TC to commit/rollback the distributed transaction);
-- TC aggregates the transaction information and decides whether the distributed transaction should be committed or rolled back;
-- TC notifies all RMs to commit/rollback resources, transaction phase 2 ends;
-
-<a name="1QKqI"></a>
-### 3.3 Distributed Transactions Seata Solution
-
-Seata has four distributed transaction solutions, AT mode, TCC mode, Saga mode and XA mode.
-
-! [15_49_23__08_13_2019.jpg](/img/saga/sofameetup3_img/9.jpeg)<br />
-
-<a name="784n4"></a>
-#### 2.3.1 AT Mode
-
-In January, Seata open sourced AT Mode, a non-intrusive distributed transaction solution. In AT mode, users only need to focus on their own "business SQL", the user's "business SQL" as a phase, Seata framework will automatically generate the transaction of the two-phase commit and rollback operations.
-
-! [image.png](/img/saga/sofameetup3_img/10.png)<br />
-
-<a name="Acfeo"></a>
-##### How the AT model is non-intrusive to business :
-
-- Phase I:
-
-In phase 1, Seata intercepts the "business SQL", first parses the semantics of the SQL, finds the business data to be updated by the "business SQL", and then saves it as a "before image" before updating the business data. Before the business data is updated, it will save it as "before image", then execute "business SQL" to update the business data, and after the business data is updated, it will save it as "after image", and finally generate row locks. The above operations are all done within a single database transaction, which ensures the atomicity of one phase of operation.
-
-This ensures the atomicity of a phase of operations. [image3.png](/img/saga/sofameetup3_img/11.png)
-
-- Second-phase commit:
-
-If the second phase is a commit, since the "business SQL" has already been committed to the database in the first phase, the Seata framework only needs to delete the snapshot data and row locks saved in the first phase to complete the data cleanup.
-
-! [image 4.png](/img/saga/sofameetup3_img/12.png)
-
-- Phase 2 rollback:
-
-If the second phase is a rollback, Seata needs to rollback the "business SQL" that has been executed in the first phase to restore the business data. The way to rollback is to use "before image" to restore the business data; however, before restoring, we must first verify the dirty writing, compare the "current business data in the database" and the "after image", if the two data are not in the same state, then we will use the "after image" to restore the business data. However, before restoring, we should first check the dirty writing, compare the "current business data in database" and "after image", if the two data are completely consistent, it means there is no dirty writing, and we can restore the business data, if it is inconsistent, it means there is dirty writing, and we need to transfer the dirty writing to manual processing.
-
-! [image 5.png](/img/saga/sofameetup3_img/13.png)
-
-AT mode one phase, two phase commit and rollback are automatically generated by Seata framework, user only need to write "business SQL", then can easily access distributed transaction, AT mode is a kind of distributed transaction solution without any intrusion to business.
-
-<a name="FnD1S"></a>
-#### 2.3.2 TCC Mode
-
-In March 2019, Seata open-sourced the TCC pattern, which is contributed by Ant Gold. the TCC pattern requires users to implement Try, Confirm and Cancel operations according to their business scenarios; the transaction initiator executes the Try method in the first stage, the Confirm method in the second-stage commit, and the Cancel method in the second-stage rollback.
-
-The transaction initiator performs Try in the first stage, Confirm in the second stage, and Cancel in the second stage. [image 6.png](/img/saga/sofameetup3_img/14.png)
-
-TCC Three method descriptions:
-
-- Try: detection and reservation of resources;
-- Confirm: the execution of the business operation submitted; require Try success Confirm must be successful;
-- Cancel: the release of the reserved resources;
-
-**Ant Gold's practical experience in TCC**<br />**<br />! [16_48_02__08_13_2019.jpg](/img/saga/sofameetup3_img/15.jpeg)
-
-**1 TCC Design - Business model is designed in 2 phases:**
-
-The most important thing for users to consider when accessing TCC is how to split their business model into two phases.
-
-Take the "debit" scenario as an example, before accessing TCC, the debit of account A can be completed with a single SQL for updating the account balance; however, after accessing TCC, the user needs to consider how to split the original one-step debit operation into two phases and implement it into three methods, and to ensure that the first-phase Try will be successful and the second-phase Confirm will be successful if Try is successful. If Try succeeds in the first stage, Confirm will definitely succeed in the second stage.
-
-! [image 7.png](/img/saga/sofameetup3_img/16.png)
-
-As shown above, the
-
-Try method as a one-stage preparation method needs to do resource checking and reservation. In the deduction scenario, what Try has to do is to check whether the account balance is sufficient and reserve funds for transfer, and the way to reserve is to freeze the transfer funds of account A. After the execution of the Try method, although the balance of account A is still 100, but $30 of it has been frozen and cannot be used by other transactions.
-
-The second stage, the Confirm method, performs the real debit operation; Confirm will use the funds frozen in the Try stage to perform the debit operation; after the Confirm method is executed, the $30 frozen in the first stage has been deducted from account A, and the balance of account A becomes $70.
-
-If the second stage is a rollback, you need to release the $30 frozen in the first stage of Try in the Cancel method, so that account A is back to the initial state, and all $100 is available.
-
-The most important thing for users to access TCC mode is to consider how to split the business model into 2 phases, implement it into 3 methods of TCC, and ensure that Try succeeds and Confirm succeeds. Compared to AT mode, TCC mode is somewhat intrusive to the business code, but TCC mode does not have the global line locks of AT mode, and the performance of TCC will be much higher than AT mode.
-
-**2 TCC Design - Allow Null Rollback:**<br />**<br />! [16_51_44__08_13_2019.jpg](/img/saga/sofameetup3_img/17.jpeg)
-
-The Cancel interface needs to be designed to allow null rollbacks. When the Try interface is not received due to packet loss, the transaction manager triggers a rollback, which triggers the Cancel interface, which needs to return to the success of the rollback when it finds that there is no corresponding transaction xid or primary key during the execution of Cancel. If the transaction service manager thinks it has been rolled back, otherwise it will keep retrying, and Cancel has no corresponding business data to roll back.
-
-**3 TCC Design - Anti-Suspension Control:**<br />**<br />! [16_51_56__08_13_2019.jpg](/img/saga/sofameetup3_img/18.jpeg)
-
-The implication of the suspension is that the Cancel is executed before the Try interface, which occurs because the Try times out due to network congestion, the transaction manager generates a rollback that triggers the Cancel interface, and the Try interface call is eventually received, but the Cancel arrives before the Try. According to the previous logic of allowing empty rollback, the rollback will return successfully, the transaction manager thinks the transaction has been rolled back successfully, then the Try interface should not be executed at this time, otherwise it will generate data inconsistency, so we record the transaction xid or business key before the Cancel empty rollback returns successfully, marking this record has been rolled back, the Try interface checks the transaction xid or business key first. The Try interface first checks the transaction xid or business key to identify that the record has been rolled back, and then does not perform the business operation of Try if it has already been marked as rolled back successfully.
-
-**4 TCC Design - Power Control:**<br />**<br />! [16_52_07__08_13_2019.jpg](/img/saga/sofameetup3_img/19.jpeg)
-
-Idempotence means that for the same system, using the same conditions, a single request and repeated multiple requests have the same impact on system resources. Because network jitter or congestion may timeout, transaction manager will retry operation on resources, so it is very likely that a business operation will be called repeatedly, in order not to occupy resources many times because of repeated calls, it is necessary to control idempotency when designing the service, usually we can use the transaction xid or the business primary key to judge the weight to control.
-
-<a name="dsMch"></a>
-#### 2.3.3 Saga Patterns
-
-Saga mode is Seata's upcoming open source solution for long transactions, which will be mainly contributed by Ant Gold. In Saga mode, there are multiple participants within a distributed transaction, and each participant is an offsetting compensation service that requires users to implement its forward and reverse rollback operations according to business scenarios.
-
-During the execution of a distributed transaction, the forward operations of each participant are executed sequentially, and if all forward operations are executed successfully, the distributed transaction commits. If any of the forward operations fails, the distributed transaction will go back and execute the reverse rollback operations of the previous participants to roll back the committed participants and bring the distributed transaction back to the initial state.
-
-! [image 8.png](/img/saga/sofameetup3_img/20.png)
-
-
-Saga Pattern Distributed transactions are usually event-driven and executed asynchronously between the various participants, Saga Pattern is a long transaction solution.
-
-**1 Saga pattern usage scenario**<br />**<br />! [16_44_58__08_13_2019.jpg](/img/saga/sofameetup3_img/21.jpeg)
-
-Saga pattern is suitable for business systems with long business processes and the need to ensure the final consistency of transactions. Saga pattern commits local transactions at one stage, and performance can be guaranteed in the case of lock-free and long processes.
-
-Transaction participants may be services from other companies or legacy systems that cannot be transformed and provide the interfaces required by TCC, and can use the Saga pattern.
-
-The advantages of the Saga pattern are:
-
-- One-stage commit of local database transactions, lock-free, high performance;
-- Participants can use transaction-driven asynchronous execution, high throughput;
-- The compensation service is the "reverse" of the forward service, which is easy to understand and implement;
-
-Disadvantages: The Saga pattern does not guarantee isolation because the local database transaction has already been committed in the first phase and no "reservation" action has been performed. Later we will talk about the lack of isolation of the countermeasures. <br />**2 Saga implementation based on a state machine engine*** <br />**2 Saga implementation based on a state machine engine*** <br />**3
-
-! [17_13_19__08_13_2019.jpg](/img/saga/sofameetup3_img/22.png)
-
-Currently there are generally two types of Saga implementations, one is achieved through event-driven architecture, and the other is based on annotations plus interceptors to intercept the business of the positive service implementation.Seata is currently implemented using an event-driven mechanism, Seata implements a state machine, which can orchestrate the call flow of the service and the compensation service of the positive service, generating a state diagram defined by a json file, and the state machine The state machine engine is driven to the operation of this map, when an exception occurs, the state machine triggers a rollback and executes the compensation services one by one. Of course, it is up to the user to decide when to trigger the rollback. The state machine can achieve the needs of service orchestration, it supports single selection, concurrency, asynchrony, sub-state machine call, parameter conversion, parameter mapping, service execution state judgement, exception catching and other functions.
-
-**3 State Machine Engine Principles**<br />
-
-! [16_45_32__08_13_2019.jpg](/img/saga/sofameetup3_img/23.png)
-
-The basic principle of this state machine engine is that it is based on an event-driven architecture, where each step is executed asynchronously, and steps flow through an event queue between steps, <br />greatly improving system throughput. Transaction logs are recorded at the time of execution of each step for use when rolling back in the event of an exception. Transaction logs are recorded in the database where the business tables are located to improve performance.
-
-**4 State Machine Engine Design
-
-! [16_45_46__08_13_2019.jpg](/img/saga/sofameetup3_img/24.jpeg)
-
-The state machine engine is divided into a three-tier architecture design, the bottom layer is the "event-driven" layer, the implementation of the EventBus and the consumption of events in the thread pool, is a Pub-Sub architecture. The second layer is the "process controller" layer, which implements a minimalist process engine framework that drives an "empty" process execution. node does, it just executes the process method of each node and then executes the route method to flow to the next node. This is a generic framework, based on these two layers, developers can implement any process engine. The top layer is the "state machine engine" layer, which implements the "behaviour" and "route" logic code of each state node, provides APIs and statechart repositories, and has some other components, such as expression languages, logic languages, and so on. There are also a number of other components, such as expression languages, logic calculators, flow generators, interceptors, configuration management, transaction logging, and so on.
-
-**5 The Saga Service Design Experience**
-
-Similar to TCC, Saga's forward and reverse services need to follow the following design principles:
-
-**1) Saga Service Design - Allow Null Compensation**<br />**<br />! [16_52_22__08_13_2019.jpg](/img/saga/sofameetup3_img/25.jpeg)
-
-**2) Saga Service Design - Anti-Suspension Control**<br />**<br />! [16_52_52__08_13_2019.jpg](/img/saga/sofameetup3_img/26.jpeg)
-
-**3) Saga Service Design - Power Control**<br />**<br />! [3 Distributed Transactions Seata Three Patterns Explained - Yi Yuan-31.jpg](/img/saga/sofameetup3_img/27.jpeg)
-
-**4) Saga Design - Custom Transaction Recovery Strategies**<br />**<br />! [16_53_07__08_13_2019.jpg](/img/saga/sofameetup3_img/28.jpeg)
-
-As mentioned earlier, the Saga pattern does not guarantee transaction isolation, and dirty writes can occur in extreme cases. For example, in the case of a distributed transaction is not committed, the data of the previous service was modified, and the service behind the anomaly needs to be rolled back, may not be able to compensate for the operation due to the data of the previous service was modified. One way to deal with this situation is to "retry" and continue forward to complete the distributed transaction. Since the entire business process is arranged by the state machine, even after the recovery can continue to retry. So you can configure the transaction policy of the process according to the business characteristics, whether to give priority to "rollback" or "retry", when the transaction timeout, the Server side will continue to retry according to this policy.
-
-Since Saga does not guarantee isolation, we need to achieve the principle of "long money rather than short money" in business design. Long money refers to the situation when there is a mistake and the money is too much from our point of view, and the money is too little, because if the money is too long, we can refund the money to the customer, but if it is too short, the money may not be recovered, which means that in the business design, we must give priority to "rollback" or "retry". That is, when the business is designed, it must be deducted from the customer's account before crediting the account, and if the override update is caused by the isolation problem, there will not be a case of less money.
-
-**6 Annotation and Interceptor Based Saga Implementation**<br />**<br />! [17_13_37__08_13_2019.jpg](/img/saga/sofameetup3_img/29.jpeg)
-
-There is another implementation of Saga that is based on annotations + interceptors, which Seata does not currently implement. You can look at the pseudo-code above to understand it, the @SagaCompensable annotation is defined on the one method, and the compensation method used to define the one method is the compensateOne method. Then the @SagaTransactional annotation is defined on the processA method of the business process code, which starts a Saga distributed transaction, intercepts each forward method with an interceptor, and triggers a rollback operation when an exception occurs, calling the compensation method of the forward method.
-
-**7 Comparison of Advantages and Disadvantages of the Two Saga Implementations
-
-The following table compares the advantages and disadvantages of the two Saga implementations:
-
-! [17_13_49__08_13_2019.jpg](/img/saga/sofameetup3_img/30.jpeg)
-
-The biggest advantage of the state machine engine is that it can be executed asynchronously through an event-driven approach to improve system throughput, service scheduling requirements can be achieved, and in the absence of isolation in the Saga model, there can be an additional "retry forward" strategy to recover from things. The biggest advantage of annotations and interceptors is that they are easy to develop and low cost to learn.
-
-<a name="Gpkrf"></a>
-## Summary
-
-This article first reviewed the background and theoretical basis of distributed transactions, and then focused on the principles of Seata distributed transactions and three patterns (AT, TCC, Saga) of distributed transaction implementation.
-
-Seata's positioning is a full-scenario solution for distributed transactions, and in the future there will also be XA mode of distributed transaction implementation, each mode has its own application scenarios, AT mode is a non-intrusive distributed transaction solution for scenes that do not want to transform the business, with almost zero learning cost. TCC mode is a high-performance distributed transaction solution for core systems and other scenes that have a high demand for performance. Saga mode is a long transaction solution for business systems that have long business processes and need to ensure the ultimate consistency of transactions. Saga mode submits local transactions at one stage, with no locks, and can ensure performance in the case of long processes, and is mostly used in the channel layer and integration layer of business systems. Transaction participants may be services from other companies or legacy systems that can't be transformed to provide the interfaces required by TCC, Saga mode can also be used.
-
-The video review and PPT of this sharing can be viewed at: [https://tech.antfin.com/community/activities/779/review](https://tech.antfin.com/community/activities/779/ review)
+```js
+/**
+* package: io.seata.spring.annotation
+* class: GlobalTransactionScanner
+*/
+@Override
+public void afterPropertiesSet() {
+if (disableGlobalTransaction) {
+if (LOGGER.isInfoEnabled()) {
+LOGGER.info("Global transaction is disabled.");
+}
+return.
+}
+// Perform TM, RM initialisation after the bean properties are initialised
+initClient();
+
+    }
+```
+
+## Initialisation and connection process of RM & TM
+
+Here, we take RMClient.init() as an example, and the initialisation process of TMClient is the same.
+
+### Design of class relationship
+
+Looking at the source code of RMClient#init(), we find that RMClient first **constructs** an RmNettyRemotingClient, and then executes its **initialisation** init() method. The **constructor** and **initialisation** methods of RmNettyRemotingClient call the constructor and initialisation methods of the parent class layer by layer
+
+```js
+    /**
+     * RMClient's initialisation logic
+     * package: io.seata.rm
+     * class: RMClient
+     */
+    public static void init(String applicationId, String transactionServiceGroup) {
+        //① Start with the RmNettyRemotingClient class and call the constructor of the parent class in turn
+
+        rmNettyRemotingClient.setResourceManager(DefaultResourceManager.get());
+        rmNettyRemotingClient.setTransactionMessageHandler(DefaultRMHandler.get()); rmNettyRemotingClient.setTransactionMessageHandler(DefaultRMHandler.get());
+        //② Then, starting with the RmNettyRemotingClient class, call init() of the parent class in turn
+        rmNettyRemotingClient.init();
+    }
+```
+
+The relationship between the above RMClient family classes and the process of calling the constructor and init() initialisation method is illustrated in the following diagram:
+![Relationship between the simplified version of the RMClient.init process and the main classes](http://booogu.top/img/in-post/rmclient_relation.jpg)
+
+So why did you design RMClient with such a more complex inheritance relationship? In fact, it is in order to divide the responsibilities and boundaries of each layer clearly, so that each layer can focus on specific logic processing, to achieve better scalability, this part of the detailed design ideas, you can refer to the Seata RPC module refactoring PR of the operator by Hui brother's article! [The Road to Seata-RPC Refactoring](https://mp.weixin.qq.com/s/PCSZ4a8cgmyZNhbUrO-BZQ))
+
+### The complete flow of initialisation
+
+The main logic in the constructor and initialisation methods of each class can be sorted out with the help of the following ideographic sequence diagram, which can also be skipped first, and then looked back to see when these classes debut and how they interact with each other after we have analysed a few key classes below.
+![Initialisation flow of RMClient](http://booogu.top/img/in-post/rmclient_initialization.png)
+
+### Grabbing the core - Channel creation
+
+First of all, we need to know that the communication between the application side and the coordinator side is done with the help of Netty's Channel, so the key to the communication process lies in the creation of the Channel**, which is created and managed in Seata by means of pooling (with the help of the object pool in common-pool).
+
+Here we need to briefly introduce the simple concept of object pool and its implementation in Seata:
+The main classes in common-pool are involved:
+
+- **GenericKeydObjectPool\<K, V>**: A KV generic object pool that provides access to all objects, while object creation is done by its internal factory class.
+- **KeyedPoolableObjectFactory\<K, V>**: KV generic object factory responsible for the creation of pooled objects, held by the object pool
+
+The main classes involved are related to the implementation of object pooling in Seata:
+
+- First, the pooled objects are **Channel**, which corresponds to the generic V in common-pool.
+- **NettyPoolKey**: Key for Channel, corresponding to generic K in common-pool, NettyPoolKey contains two main information:
+  - _address_:Address of TC Server when the Channel is created.
+  - _message_:The RPC message sent to TC Server when the Channel is created.
+- **GenericKeydObjectPool\<NettyPoolKey,Channel>**: Pool of Channel objects.
+- **NettyPoolableFactory**: the factory class for creating Channel.
+  Having recognised the main classes related to object pooling above, let's take a look at some of the main classes in Seata that are involved in channel management and are related to RPC:
+
+- NettyClientChannelManager:
+  - Holds the pool of Channel objects.
+  - Interacts with the channel object pool to manage application-side channels (acquisition, release, destruction, caching, etc.).
+- RpcClientBootstrap: core bootstrap class for RPC clients, holds the Netty framework bootstrap object with start/stop capability; has the ability to get a new Channel based on the connection address for the Channel factory class to call.
+- AbstractNettyRemotingClient:
+  - Initialises and holds the RpcClientBootstrap.
+  - Application-side Netty client top-level abstraction, abstracts the ability of application-side RM/TM to obtain the NettyPoolKey corresponding to their respective Channel, for NettyClientChannelManager to call.
+  - Initialising the NettyPoolableFactory
+
+Understanding the above concepts, we can simplify the process of creating a channel in Seata as follows:
+![Process of creating a Channel object](http://booogu.top/img/in-post/create_channel.jpg)
+
+When you see this, you can go back and take a look at the above **Initialisation Sequence Diagram for RMClient**, and you should have a clearer understanding of the responsibilities and relationships of the various categories in the diagram, as well as the intent of the entire initialisation process.
+
+### Timing and flow of establishing a connection
+
+So, when does RMClient establish a connection with Server?
+
+During the initialisation of RMClient, you will find that many init() methods set up some timed tasks, and the mechanism of reconnecting (connecting) the Seata application side to the coordinator is achieved through timed tasks:
+
+```js
+/**
+* package: io.seata.core.rpcn.netty
+* class: AbstractNettyRemotingClient
+*/
+public void init() {
+// Set the timer to reconnect to the TC Server at regular intervals.
+timerExecutor.scheduleAtFixedRate(new Runnable() {
+@Override
+public void run() {
+clientChannelManager.reconnect(getTransactionServiceGroup());
+}
+}, SCHEDULE_DELAY_MILLS, SCHEDULE_INTERVAL_MILLS, TimeUnit.MILLISECONDS);
+if (NettyClientConfig.isEnableClientBatchSendRequest()) {
+mergeSendExecutorService = new ThreadPoolExecutor(MAX_MERGE_SEND_THREAD,
+MAX_MERGE_SEND_THREAD,
+KEEP_ALIVE_TIME, TimeUnit.
+new LinkedBlockingQueue<>(),
+new NamedThreadFactory(getThreadPrefix(), MAX_MERGE_SEND_THREAD));
+mergeSendExecutorService.submit(new MergedSendRunnable());
+}
+super.init();
+clientBootstrap.start();
+}
+```
+
+Let's see how the classes we explored above work together to connect RMClient to TC by tracing the execution of a reconnect (the first connection may actually occur during registerResource, but the process is the same)
+![RMClient and TC Server connection process](http://booogu.top/img/in-post/rmclient_connect_tcserver.png)
+
+In this diagram, you can focus on these points:
+
+- NettyClientChannelManager executes the callback function (getPoolKeyFunction()) to get the NettyPoolKey in the concrete AbstractNettyRemotingClient: the different Clients (RMClient and TMClient) on the application side, when they create the NettyPoolKey, they create the NettyChannelManager. TMClient) on the application side, the Key used when creating the Channel is different, so that **they send different registration messages when reconnecting to the TC Server**, which is also determined by the different roles they play in Seata:
+  - TMClient: plays the role of transaction manager, when creating a Channel, it only sends a TM registration request (RegisterTMRequest) to the TC.
+  - RMClient: plays the role of resource manager, needs to manage all transaction resources on the application side, therefore, when creating a Channel, it needs to get all transaction resource information on the application side before sending RM registration request (RegisterRMRequest), and register it to TC Server.
+- 在 Channel 对象工厂 NettyPoolableFactory 的 makeObject（制造 Channel）方法中，使用 NettyPoolKey 中的两项信息，完成了两项任务：
+  - 使用 NettyPoolKey 的 address 创建新的 Channel
+  - 使用 NettyPoolKey 的 message 以及新的 Channel 向 TC Server 发送注册请求，这就是 Client 向 TC Server 的连接（首次执行）或重连（非首次，由定时任务驱动执行）请求
+
+以上内容，就是关于 Seata 应用侧的初始化及其与 TC Server 协调器侧建立连接的全过程分析。
+
+更深层次的细节，建议大家再根据本文梳理的脉络和提到的几个重点，细致地阅读下源码，相信定会有更深层次的理解和全新的收获！
+
+> 后记：考虑到篇幅以及保持一篇源码分析文章较为合适的信息量，本文前言中所说的**配置、注册等模块协作配合**并没有在文章中展开和体现。 <br />
+> 在下篇源码剖析中，我会以**配置中心**和**注册中心**为重点，为大家分析，在 RMClient/TM Client 与 TC Server 建立连接之前，Seata 应用侧是**如何通过服务发现**找到 TC Server、如何**从配置模块获取各种信息**的。

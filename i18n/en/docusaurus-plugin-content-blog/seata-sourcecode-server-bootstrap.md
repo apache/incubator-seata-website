@@ -135,7 +135,7 @@ private void init(String[] args) {
 }
 ```
 
-The first call to ConfigurationFactory.getInstance() in the ParameterParser's init method initialises a singleton Configuration object, which is responsible for initialising all other configuration parameter information. From the Seata Server side of the source code we can see two configuration files file.conf, registry.conf. So what is the difference between these two configuration files, both files are required? We continue to look at the code. Translated with www.DeepL.com/Translator (free version)
+The first call to ConfigurationFactory.getInstance() in the ParameterParser's init method initialises a singleton Configuration object, which is responsible for initialising all other configuration parameter information. From the Seata Server side of the source code we can see two configuration files file.conf, registry.conf. So what is the difference between these two configuration files, both files are required? We continue to look at the code.
 
 ConfigurationFactory.getInstance method is actually to get a singleton object, the core is in the buildConfiguration method, but before the buidlConfiguration method, there is a static code block of the ConfigurationFactory class will be executed first.
 ```Java
@@ -568,5 +568,5 @@ public void start() {
     } catch (Exception exx) {
         Throw a new runtime exception (exx); }
     }
-} Translated with www.DeepL.com/Translator (free version)
+}
 ```

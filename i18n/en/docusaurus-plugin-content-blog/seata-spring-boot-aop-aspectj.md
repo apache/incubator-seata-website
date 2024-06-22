@@ -159,4 +159,4 @@ For more details, we hope you will visit the following address to read the detai
 
 [seata official website](https://seata.apache.org/zh-cn/)
 
-[docker official website](https://www.docker.com/) Translated with www.DeepL.com/Translator (free version)
+[docker official website](https://www.docker.com/)
