@@ -11,13 +11,13 @@ Seata is the predecessor of Alibaba Group's massively used middleware for ensuri
 ### Business Scenarios
 Our business in the development process, basically from a simple application, and gradually transitioned to a huge scale, complex business applications. These complex scenarios inevitably encounter distributed transaction management problems, Seata's emergence is to solve these distributed scenarios of transaction management problems. Introduce a few of the classic scenarios:
 #### Scenario 1: distributed transactions in the scenario of split library and split table
-! [image.png](/img/blog/metrics-distributed-transactions-under-split-library-split-table-scenario.png)
+![image.png](/img/blog/metrics-分库分表场景下的分布式事务.png)
 Initially, our business was small and lightweight, and a single database was able to secure our data links. However, as the business scale continues to grow and the business continues to become more complex, usually a single database encounters bottlenecks in terms of capacity and performance. The usual solution is to evolve to a split-database, split-table architecture. At this point, that is, the introduction of **split library and split table scenario **distributed transaction scenarios.
 #### Scenario 2: Distributed Transactions in a Cross-Service Scenario
-! [image.png](/img/blog/metrics-distributed-transactions-in-cross-services-scenario.png)
+![image.png](/img/blog/metrics-跨服务场景下的分布式事务.png)
 A solution to reduce the complexity of a monolithic application: application microservice splitting. After splitting, our product consists of multiple microservice components with different functions, each of which uses independent database resources. When it comes to data consistency scenarios involving cross-service calls, distributed transactions are introduced **in cross-service scenarios**.
 ### Seata architecture
-! [image.png](/img/blog/metrics-Seata architecture.png)
+![image.png](/img/blog/metrics-Seata架构.png)
 Its core components are mainly as follows:
 
 - **Transaction Coordinator (TC)**.
@@ -67,14 +67,14 @@ ELK | Alibaba Cloud Service
 3. When configured, whether Metrics is activated and how the data is published depends on the corresponding configuration; if the configuration is turned on, Metrics is automatically activated and the metrics data will be published via prometheusexporter by default.
 4. do not use Spring, use SPI (Service Provider Interface) to load extensions
 #### module design
-! [image 1.png](/img/blog/metrics-module-design.png)
+![图片 1.png](/img/blog/metrics-模块设计.png)
 
 - seata-metrics-core: Metrics core module, organises (loads) 1 Registry and N Exporters according to configuration;
 - seata-metrics-api: defines the Meter metrics interface, the Registry metrics registry interface;
 - seata-metrics-exporter-prometheus: built-in implementation of prometheus-exporter;
 - seata-metrics-registry-compact: built-in Registry implementation and lightweight implementation of Gauge, Counter, Summay, Timer metrics;
 #### metrics module workflow
-! [image 1.png](/img/blog/metrics-module-workflow.png)
+![图片 1.png](/img/blog/metrics-模块工作流.png)
 The above figure shows the workflow of the metrics module, which works as follows:
 
 1. load Exporter and Registry implementation classes based on configuration using SPI mechanism;
@@ -82,13 +82,13 @@ The above figure shows the workflow of the metrics module, which works as follow
 3. event subscribers consume events and write the generated metrics to Registry;
 4. the monitoring system (e.g. prometheus) pulls data from the Exporter.
 #### TC Core Metrics
-! [image.png](/img/blog/metrics-TC Core Metrics.png)
+![image.png](/img/blog/metrics-TC核心指标.png)
 #### TM Core Metrics
-! [image.png](/img/blog/metrics-TM core metrics.png)
+![image.png](/img/blog/metrics-TM核心指标.png)
 #### RM Core Metrics
-! [image.png](/img/blog/metrics-RM Core Indicators.png)
+![image.png](/img/blog/metrics-RM核心指标.png)
 #### Large Cap Showcase
-! [lQLPJxZhZlqESU3NBpjNBp6w8zYK6VbMgzYCoKVrWEDWAA_1694_1688.png](/img/blog/metrics-broader-display.png)
+![lQLPJxZhZlqESU3NBpjNBp6w8zYK6VbMgzYCoKVrWEDWAA_1694_1688.png](/img/blog/metrics-大盘展示.png)
 ### Tracing dimensions
 #### Why does Seata need tracing?
 
@@ -110,20 +110,20 @@ Based on the above approach, Seata implements transaction-wide tracing, please r
 3. the transaction service creates a bill
 4. The billing service performs a debit
 
-! [image.png](/img/blog/metrics-tracing-effects-business-logic-map.png)
+![image.png](/img/blog/metrics-tracing效果-业务逻辑图.png)
 
 - Transaction link for GlobalCommit success (example)
 
-! [image.png](/img/blog/metrics-tracing-effects-tracing-chain1.png)
-! [image.png](/img/blog/metrics-tracing-effects-tracing-chain2.png)
-! [image.png](/img/blog/metrics-tracing-effects-tracing-chain3.png)
+![image.png](/img/blog/metrics-tracing效果-tracing链1.png)
+![image.png](/img/blog/metrics-tracing效果-tracing链2.png)
+![image.png](/img/blog/metrics-tracing效果-tracing链3.png)
 ### Logging dimension
 #### Design Ideas
-! [image.png](/img/blog/metrics-logging-design-ideas.png)
+![image.png](/img/blog/metrics-logging设计思路.png)
 Logging is the bottom of the observable dimensions. Placed at the bottom, in fact, is the design of our log format, only a good log format, we can make it a better collection, modular storage and display. On top of it, is the log collection, storage, monitoring, alarms, data visualisation, these modules are more ready-made tools, such as Ali's SLS logging service, and ELK's set of technology stack, we are more overhead costs, access complexity, ecological prosperity, etc. as a consideration.
 #### Log format design
 Here we take a log format of Seata-Server as a case study:
-! [image.png](/img/blog/metrics-logging logging effect.png)
+![image.png](/img/blog/metrics-logging日志效果.png)
 
 - Thread pool canonical naming: When there are more thread pools and threads, canonical thread naming can clearly show the execution order of the threads that are executed in an unordered way.
 - Traceability of method class names: Quickly locate specific code blocks.
