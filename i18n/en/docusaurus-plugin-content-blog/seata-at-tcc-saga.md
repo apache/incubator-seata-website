@@ -6,7 +6,7 @@ author: long187
 date: 2019-08-11
 ---
 
-# Distributed Transactions with Seata and its three patterns in detail | Meetup#3 Review
+# Distributed Transactions with Seata and its three patterns in detail
 
 Author: Yi Yuan (Chen Long), Ant Gold Services distributed transaction framework core development.
 <br />This article is based on the topic of "Distributed Transaction Seata and its Three Patterns" shared at SOFA Meetup#3 on 11 August in Guangzhou, focusing on the background and theoretical foundation of distributed transaction, as well as the principle of Seata distributed transaction and the implementation of distributed transaction in three patterns (AT, TCC, and Saga).
