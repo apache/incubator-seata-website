@@ -1,10 +1,11 @@
 ---
 title: Design Principles of Distributed Transaction Middleware Seata
 author: chenghui.zhang
-keywords: [Seata, distributed transaction, AT mode]
+keywords: [Seata、distributed transaction、AT mode]
 description: Design principles of AT mode
 date: 2019/07/11
 ---
+
 # Foreword
 
 Under the microservices architecture system, we can layered design according to business modules, deployed separately, reducing the pressure of service deployment, but also decoupled from the business coupling, to avoid the application gradually become a monster, so that it can be easily scaled up, and in the case of failure of some services will not affect the normal operation of other services. In short, microservices in the rapid development of business brings us more and more advantages, but microservices are not perfect, so we can not blindly over-abuse, it has a lot of shortcomings, and will bring a certain degree of complexity to the system, which is accompanied by distributed transactions, is a microservices architectural system is bound to need to deal with a pain point, but also the industry has always been concerned about a field, and therefore there is a Theories such as CAP and BASE have emerged.
