@@ -1,8 +1,8 @@
 ---
-title: Seata (Fescar) Distributed Transactions Integration with Spring Cloud
-author: Da Fei
+title: Integrating Seata (formerly Fescar) Distributed Transaction with Spring Cloud
+author: dafei.Fei
 date: 2019/04/15
-keywords: [fescar, seata, distributed transactions]
+keywords: [fescar, seata, distributed transaction]
 ---
 
 # 1. Introduction
