@@ -49,7 +49,7 @@ Another effect of TCC is that it splits the two phases into two separate phases 
 **The traditional model of concurrent transactions:**<br />
 ![3.png](/img/blog/TCC3.png)
 
-**Concurrent transactions for the TCC model:**<br /> !
+**Concurrent transactions for the TCC model:**<br />
 ![4.png](/img/blog/TCC4.png)
 
 How does this benefit the business? Taking the secured transaction scenario of Alipay, the simplified case involves only two services, the transaction service and the billing service. The transaction service is the main business service, and the accounting service is the slave business service, which provides the Try, Commit, and Cancel interfaces:
@@ -114,7 +114,7 @@ For this kind of business scenario, you can use the asynchronous ensured TCC dis
 
 ## Compensated TCC solution
 
-Compensated TCC solution is similar in structure to generic TCC solution, and its slave services also need to participate in the decision making of the main business service. However, the difference is that the former slave service only needs to provide Do and Compensate two interfaces, while the latter needs to provide three interfaces. <br
+Compensated TCC solution is similar in structure to generic TCC solution, and its slave services also need to participate in the decision making of the main business service. However, the difference is that the former slave service only needs to provide Do and Compensate two interfaces, while the latter needs to provide three interfaces. <br />
 ![12.png](/img/blog/TCC12.png)<br /> <br /> The Do interface directly executes the real complete business logic, completes the business processing, and the result of the business execution is visible externally; the Compensate operation is used for the business compensation, which offsets or partially offsets the business result of the positive business operation. Compensate operation needs to satisfy idempotency. <br />Compensate operation is used to offset or partially offset the business results of positive business operations, and the Compensate operation needs to satisfy idempotency. <br />Compared with the general-purpose solution, Compensate solution does not need to transform the original business logic from the business service, and only needs to add an additional Compensate rollback logic, which is a lesser business transformation. However, it is important to note that the business executes the entire business logic in one phase and cannot achieve effective transaction isolation. When rollback is required, there may be a compensation failure, and additional exception handling mechanisms, such as manual intervention, are also required.
 
 <a name="62b37e99-2"></a>
@@ -126,7 +126,7 @@ Due to the existence of rollback compensation failure, the compensated TCC distr
 
 When a user books a ticket, he/she would definitely want to book tickets for both flights at the same time, and booking only one flight does not make sense for the user. Therefore, such a business service also imposes the atomicity requirement that if the booking for one of the flights fails, the other flight needs to be able to be cancelled.
 
-However, it is extremely difficult to push the airlines to change as they are external to the ticket agents and only provide booking and cancellation interfaces. Therefore, for this type of business service, a compensated TCC distributed transaction solution can be used, as follows:<br
+However, it is extremely difficult to push the airlines to change as they are external to the ticket agents and only provide booking and cancellation interfaces. Therefore, for this type of business service, a compensated TCC distributed transaction solution can be used, as follows:<br />
 ![14.png](/img/blog/TCC14.png)
 
 The gateway service adds the Compensate interface on top of the original logic, which is responsible for calling the cancellation interface of the corresponding airline.
