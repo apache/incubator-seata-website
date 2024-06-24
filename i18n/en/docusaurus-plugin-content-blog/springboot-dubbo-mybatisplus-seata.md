@@ -234,7 +234,7 @@ Well, you can go to the bin directory./seata-server.bat run to see the
 
 first of all, we use eclipse, of course, you can also use idea and other tools, please run in detail according to the following steps
 
-1. create a new maven project, and delete the extra folder:![20191129133354](/img/blog/20191129133354.png)<img src="/img/blog/20191129133441.png" alt="20191129133441" style={{ zoom:'150%' }} /& gt;
+1. create a new maven project, and delete the extra folder:![20191129133354](/img/blog/20191129133354.png)<img src="/img/blog/20191129133441.png" alt="20191129133441" style={{ zoom:'150%' }}  />
 
 2. Open the project's pom.xml and add the following dependency.
 
@@ -1420,11 +1420,11 @@ The complete directory structure as above, this time you can start test-service,
 
 ![20191129143124](/img/blog/20191129143124.png)
 
-Here's the data I've saved a record, let's see if we'll successfully rollback: !
+Here's the data I've saved a record, let's see if we'll successfully rollback:
 
 ![20191129143252](/img/blog/20191129143252.png)
 
-Refresh the database, found that there is still only one data: !
+Refresh the database, found that there is still only one data:
 
 ![20191129143124](/img/blog/20191129143124.png)
 
@@ -1432,7 +1432,7 @@ And then check the log.
 
 ![20191129143407](/img/blog/20191129143407.png)
 
-It shows that it has been rolled back, let's look at the log from seata-server again: !
+It shows that it has been rolled back, let's look at the log from seata-server again:
 
 <img src="/img/blog/20191129143419.png" style={{ zoom:'200%' }} />
 
