@@ -107,7 +107,7 @@ Since consuming messages from a business service is an asynchronous process, the
 
 So again, this requires the membership service and the mail service to ensure atomicity, either both are executed or neither is executed. The difference is that the mail service is only a passive business, it does not affect whether the user can register successfully or not, it only needs to send an email to the user after the user has registered successfully, and the mail service does not need to be involved in the decision making of the activities of the membership service.
 
-For this kind of business scenario, you can use the asynchronous ensured TCC distributed transaction solution, as follows:<br
+For this kind of business scenario, you can use the asynchronous ensured TCC distributed transaction solution, as follows:<br />
 ![11.png](/img/blog/TCC11.png)<br /> <br /> <br /> The reliable messaging service decouples the member and mail services, and the member service and the messaging service comprise the TCC transaction model, which ensures the atomicity of transactions. Then through the reliable feature of the message service, it ensures that the message can definitely be consumed by the mail service, so that the member and the mail service are in the same distributed transaction. At the same time, the mail service will not affect the execution process of the member service, and will only passively receive the request to send mail after the member service is executed successfully.
 
 <a name="69910d05"></a>
