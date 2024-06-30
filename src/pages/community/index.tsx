@@ -19,7 +19,7 @@ const data = {
         content:
           'Seata Community Meetup·杭州站,于12月21号在杭州市梦想小镇浙江青年众创空间完美举办',
         dateStr: 'Dec 25nd，2019',
-        link: '/zh-cn/blog/seata-meetup-hangzhou.html',
+        link: '/zh-cn/blog/seata-meetup-hangzhou',
       },
       {
         img: require('@site/static/img/blog/20191218210552.png').default,
@@ -27,7 +27,7 @@ const data = {
         content:
           'Seata Community Meetup·杭州站,将于12月21号在杭州市梦想小镇浙江青年众创空间正式召开',
         dateStr: 'Dec 18nd，2019',
-        link: '/zh-cn/blog/seata-community-meetup-hangzhou-ready.html',
+        link: '/zh-cn/blog/seata-community-meetup-hangzhou-ready',
       },
     ],
   },
