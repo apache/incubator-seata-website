@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.1f151b5e.css">
-<script src="/zh-cn/assets/js/runtime~main.7f544586.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.aa33675a.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.ed972ecd.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -224,7 +224,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <hr>
 <h3 id="16">Q: 16.如何自己修改源码后打包seata-server?</h3>
 <p><strong>A:</strong></p>
-<div class="language-xml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-xml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">1. 删除 distribution 模块的bin、conf和lib目录。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2. ./mvnw clean install -DskipTests=true(Mac,Linux) 或 mvnw.cmd clean install -DskipTests=true(Win) -P release-seata。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">4. seata-1.5之后(最新develop分支)的打包命令：mvn -Prelease-seata -Dmaven.test.skip=true clean install -U</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-xml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-xml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">1. 删除 distribution 模块的bin、conf和lib目录。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2. ./mvnw clean install -DskipTests=true(Mac,Linux) 或 mvnw.cmd clean install -DskipTests=true(Win) -P release-seata。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">4. seata-1.5之后(最新develop分支)的打包命令：mvn -Prelease-seata -Dmaven.test.skip=true clean install -U</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">5. 如果你是mac os平台,并且是arm架构,请使用: mvn -Prelease-seata -Dmaven.test.skip=true clean install -U -P arrch64</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
 <h3 id="17">Q: 17.Seata 支持哪些 RPC 框架?</h3>
 <p><strong>A:</strong></p>
@@ -260,7 +260,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <li>每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。</li>
 <li>跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。</li>
 <li>目前 AT 模式支持的数据库有：MySQL、Oracle、PostgreSQL 和 TiDB。</li>
-<li>使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可  省略注解。</li>
+<li>使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。</li>
 <li>使用注解开启分布式事务时，若要求事务回滚，必须将异常抛出到事务的发起方，被事务发起方的 @GlobalTransactional 注解感知到。provide 直接抛出异常 或 定义错误码由 consumer 判断再抛出异常。</li>
 </ol>
 <hr>
@@ -287,7 +287,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <hr>
 <h3 id="25">Q: 25. 使用动态数据源后的常见问题 ？</h3>
 <p><strong>A:</strong> 使用 dynamic-datasource-spring-boot-starter 组件后 undolog 无法删除,或使用 AbstractRoutingDataSource 等动态数据源后无法正常回滚</p>
-<p>dynamic-datasource-spring-boot-starter 组件内部开启 seata 后会自 动使用 DataSourceProxy 来包装 DataSource,所以需要以下方式来保持兼容</p>
+<p>dynamic-datasource-spring-boot-starter 组件内部开启 seata 后会自动使用 DataSourceProxy 来包装 DataSource,所以需要以下方式来保持兼容</p>
 <p>1.如果你引入的是 seata-all,请不要使用@EnableAutoDataSourceProxy 注解.</p>
 <p>2.如果你引入的是 seata-spring-boot-starter 请关闭自动代理</p>
 <div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">seata</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">enable-auto-data-source-proxy</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">false</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
@@ -298,7 +298,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <p>举例说明：</p>
 <p>@GlobalTransactional(timeout=60000)
 public void A（）{</p>
-<p>​ call remoting B();//远程调用 B 服务
+<p>call remoting B();//远程调用 B 服务
 ​ local DB operation;</p>
 <p>}</p>
 <p>public void B() {</p>
@@ -424,8 +424,8 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <ul>
 <li>检查异常是否被捕获,没有抛至 tm 端,如 rm 存在全局异常捕获器,rm 将异常包装成了一个正常的 result 响应给了 tm,导致 seata 的事务拦截器无法发现事务出现了异常,此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常,或者使用<a href="/zh-cn/docs/user/api/">Seata api</a> 进行回滚,切记 api 回滚必须结束调用,假设 tm 调用了 rm1 就出现错误,进行了 api 回滚,那么不应该让这个调用链再走到 rm2 去,应该直接 return 结束方法调用</li>
 <li>检查是否 rm 服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理</li>
-<li>如确认无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
-<li>如决议结果是回滚,但是 rm 没注册,可在 rm 调用端通过 Rootcontext.getXid 来判断是 否有值,如果无值请参考 Q24</li>
+<li>如确认无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检 查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
+<li>如决议结果是回滚,但是 rm 没注册,可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值,如果无值请参考 Q24</li>
 <li>如何判断数据源是否代理,如果是 AT 模式请在 ConnectionProxy#registry 打上断点,看是否会进入,XA 模式 ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!</li>
 </ul>
 <hr>

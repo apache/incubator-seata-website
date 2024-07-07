@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/assets/css/styles.1f151b5e.css">
-<script src="/assets/js/runtime~main.291791ab.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.84f99ba6.js" defer="defer"></script>
 <script src="/assets/js/main.cb59ef0b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -168,7 +168,7 @@ The project USES jdk13 and starts with</p>
 </li>
 </ol>
 <div class="language-verilog codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-verilog codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">   Error: Could not create the Java Virtual Machine</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   Error: A fatal exception has occurred. Program will exit.</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>​ If the environment is sh, replace the last paragraph in the script：</p>
+<p>If the environment is sh, replace the last paragraph in the script：</p>
 <div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">        exec &quot;$JAVACMD&quot; $JAVA_OPTS -server -Xmx2048m -Xms2048m -Xmn1024m -Xss512k -XX:SurvivorRatio=10 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">MaxDirectMemorySize=1024m -XX:-OmitStackTraceInFastThrow -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=&quot;$BASEDIR&quot;/logs</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">/java_heapdump.hprof -XX:+DisableExplicitGC -XX:+CMSParallelRemarkEnabled -XX:+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc -Dio.netty.leakDetectionLevel=advanced \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -classpath &quot;$CLASSPATH&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.name=&quot;seata-server&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.pid=&quot;$$&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.repo=&quot;$REPO&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.home=&quot;$BASEDIR&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dbasedir=&quot;$BASEDIR&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          io.seata.server.Server \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          &quot;$@&quot;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
 <h3 id="8">Q: 8.When Eureka is the registry and TC is highly available, how to overwrite Eureka properties at the TC end?</h3>
@@ -222,6 +222,7 @@ You can execute this command: <code>./mvnw clean install -DskipTests=true</code>
 <li><code>./mvnw clean install -DskipTests=true(Mac,Linux)</code> OR <code>mvnw.cmd clean install -DskipTests=true(Win) -P release-seata</code>。</li>
 <li>Unzip the corresponding compressed package in the target directory of the <code>distribution</code> module.</li>
 <li>Packaging commands after seata-1.5 (the latest development branch), <code>mvn -Prelease-seata -Dmaven.test.skip=true clean install -U</code></li>
+<li>If you are on macOS platform with ARM architecture, please use: <code>mvn -Prelease-seata -Dmaven.test.skip=true clean install -U -P arrch64</code></li>
 </ol>
 <hr>
 <h3 id="17">Q: 17.What RPC frameworks does seata support now?</h3>
@@ -303,7 +304,7 @@ You can execute this command: <code>./mvnw clean install -DskipTests=true</code>
 <p>Examples：</p>
 <p>@GlobalTransactional(timeout=60000)
 public void A（）{</p>
-<p>​ call remoting B();//Remote call B service
+<p>call remoting B();//Remote call B service
 ​ local DB operation;</p>
 <p>}</p>
 <p>public void B() {</p>
