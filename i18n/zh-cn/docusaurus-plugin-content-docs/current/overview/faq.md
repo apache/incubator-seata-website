@@ -325,6 +325,7 @@ ps: oracle 同理;1.2.0 支持 mysql 驱动多版本隔离，无需再添加驱�
 2. ./mvnw clean install -DskipTests=true(Mac,Linux) 或 mvnw.cmd clean install -DskipTests=true(Win) -P release-seata。
 3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。
 4. seata-1.5之后(最新develop分支)的打包命令：mvn -Prelease-seata -Dmaven.test.skip=true clean install -U
+5. 如果你是mac os平台,并且是arm架构,请使用: mvn -Prelease-seata -Dmaven.test.skip=true clean install -U -P arrch64
 ```
 
 ---
@@ -456,7 +457,7 @@ seata:
 @GlobalTransactional(timeout=60000)
 public void A（）\{
 
-​ call remoting B();//远程调用 B 服务
+ call remoting B();//远程调用 B 服务
 ​ local DB operation;
 
 }

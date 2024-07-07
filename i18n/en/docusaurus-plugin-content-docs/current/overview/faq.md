@@ -204,7 +204,7 @@ abnormal：io.seata.common.exception.FrameworkException: can not register RM,err
    Error: A fatal exception has occurred. Program will exit.
 ```
 
-​ If the environment is sh, replace the last paragraph in the script：
+ If the environment is sh, replace the last paragraph in the script：
 
 ```shell
         exec "$JAVACMD" $JAVA_OPTS -server -Xmx2048m -Xms2048m -Xmn1024m -Xss512k -XX:SurvivorRatio=10 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:
@@ -309,6 +309,7 @@ At present, `seata-all` needs to use conf type `conf` files, and `properties` an
 2. `./mvnw clean install -DskipTests=true(Mac,Linux)` OR `mvnw.cmd clean install -DskipTests=true(Win) -P release-seata`。
 3. Unzip the corresponding compressed package in the target directory of the `distribution` module.
 4. Packaging commands after seata-1.5 (the latest development branch), `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U`
+5. If you are on macOS platform with ARM architecture, please use: `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U -P arrch64`
 
 ---
 
@@ -433,7 +434,7 @@ Examples：
 @GlobalTransactional(timeout=60000)
 public void A（）\{
 
-​ call remoting B();//Remote call B service
+ call remoting B();//Remote call B service
 ​ local DB operation;
 
 }
