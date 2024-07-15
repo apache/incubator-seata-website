@@ -38,7 +38,7 @@ description: Seata upgrade.
 <h3 id='9'>9. What compatibility matters need to be paid attention to when upgrading to seata 2.1?</h3>
 <details>
    <summary><mark>Notes</mark></summary>
-  
+
   1. After using the Seata 2.0 Raft storage mode, upgrading to 2.1 requires logging in to obtain a token, carrying a token to request /metadata/v1/cluster?group= in the value of seata.server.raft.group in application.yml, and querying the cluster metadata Later. Upgrade the follower node first, and then upgrade the leader node. Note: After this upgrade is completed, the Raft storage mode is not allowed to be downgraded to 2.0. Please fully verify it in the offline environment before upgrading the production environment.
   2.When users upgrade to Seata 2.1, they need to configure the Seata Raft authentication information. First, on the Seata server side, add /metadata/v1/** to ignore.url to temporarily disable the authentication function. Then, on the Seata client side, configure username, password, and tokenValidityInMilliseconds in seata.registry.raft in application.yaml or registry.conf (note that the username and password on the client side should match those configured on the server side, and the tokenValidityInMilliseconds on the client side should be slightly smaller than what you configure on the server side). Finally, remove /metadata/v1/** from ignore.url on the server side to enable Raft metadata authentication capability.
 </details>
@@ -51,6 +51,7 @@ description: Seata upgrade.
    <summary><mark>Notes</mark></summary>
    If you upgrade from 1.8.x to 2.0.x, if you configure the Undolog or communication codec to FST, you need to change the serialization mode to something other than FST on the client before you can upgrade it on the server.
    Note: In version 2.0.0 of the server, there is a resource reentry issue in AT mode. For example, in a global transaction, if multiple local transactions make repeated data modifications that are not the same, registering multiple branches can lead to abnormal ordering of the two-phase commit. Therefore, if you encounter such scenarios, please refrain from upgrading to version 2.0.0 and consider upgrading to the latest snapshot or a higher version.
+   The annotation @LocalTCC should be modified on the implementation class, and the annotation @TwoPhaseBusinessAction should be modified on the implementation class method prepare.
 </details>
 
 ------
@@ -74,9 +75,9 @@ description: Seata upgrade.
   - `lock_table` adds `status` field, and adds `idx_status`, `idx_xid_and_branch_id` index.
   - Add `distributed_lock` table for seata-server asynchronous task scheduling.
    Before upgrading to 1.5.0, please pay attention to the table structure changes. For details on the table structure, please [click here](https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db).
-   
-2. TCC transaction mode adds anti-hanging function in 1.5.0. If you need to enable anti-hanging by Seata framework, you need to add [this table](https://github.com/apache/incubator-seata/tree/1.5.0/script/client/tcc/db) to the client business library in advance. 
-   
+
+2. TCC transaction mode adds anti-hanging function in 1.5.0. If you need to enable anti-hanging by Seata framework, you need to add [this table](https://github.com/apache/incubator-seata/tree/1.5.0/script/client/tcc/db) to the client business library in advance.
+
 3. The first-stage method of TCC mode has been optimized. It is no longer necessary to define `BusinessActionContext` as an interface parameter in the first stage. If `BusinessActionContext` needs to be used in the first stage, it can be obtained through `BusinessActionContextUtil.getContext()`.
 
 4. The internal structure of the redis registration center has been adjusted and is no longer backward compatible. If you use redis as the registration center of seata, please also upgrade both seata-all (seata-spring-boot-starter) and seata-server that the client depends on.
@@ -93,7 +94,7 @@ description: Seata upgrade.
 
 
 1. The Redis data of version 1.3 and 1.4 are incompatible. Since the Redis mode reconstructs the data storage structure into hash, users who upgrade from 1.3 to 1.4 need to wait for all transactions to run completely before iterating.
-       
+
 
 </details>
 
@@ -115,7 +116,7 @@ description: Seata upgrade.
    <summary><mark>Notes</mark></summary>
 
 1. The nacos registration center adds a new service attribute configuration `registry.nacos.application` = "seata-server". The original default name is serverAddr, and now the default is seata-server. The Server and Client must be consistent.
-       
+
 
 </details>
 
@@ -159,9 +160,9 @@ The autoconfig function is supported by itself. Afterwards, the autoconfig about
    2. (Required) Add a common index to the branch_id field of the TC side table lock_table
    3. (Optional) Some parameter naming changes, <a href="/docs/user/configurations100" target="_blank">Click here to check the parameter configuration</a>.
    4. client.report.success.enable can be set as false to improve performance.
-      
 
-</details>   
+
+</details>
 
 ********
 
