@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.1f151b5e.css">
-<script src="/zh-cn/assets/js/runtime~main.aa33675a.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.3f852a0d.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.ed972ecd.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -44,7 +44,8 @@
 <h3 id="8">8. 升级到 seata 2.0 有哪些兼容性事项是需要注意的？</h3>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p></p><summary><mark>注意事项</mark></summary>
 从1.8.x 版本升级2.0.x 版本，如果undolog或通信编解码的配置为fst都需要先提前在client修改为fst以外的序列化方式,server侧才可进行升级。
-注: 2.0.0的server 存在at模式下资源重入,比如一个全局事务中,非同一个本地事务进行了多次相同的数据修改,注册了多个分支后会导致二阶段下发顺序异常,故如果有此类场景请勿升级到2.0.0版本,建议升级到最新snapshot或更高版本。<p></p></div></div></details>
+注: 2.0.0的server 存在at模式下资源重入,比如一个全局事务中,非同一个本地事务进行了多次相同的数据修改,注册了多个分支后会导致二阶段下发顺序异常,故如果有此类场景请勿升级到2.0.0版本,建议升级到最新snapshot或更高版本。
+注解@LocalTCC要修饰在实现类上，注解@TwoPhaseBusinessAction要修饰在实现类方法prepare上。<p></p></div></div></details>
 <hr>
 <h3 id="7">7. 升级到 seata 1.6.x 有哪些兼容性事项是需要注意的？</h3>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><p></p><summary><mark>注意事项</mark></summary>
@@ -85,7 +86,7 @@
 <li>mysql undolog表去除id字段,与branch_table一并加强时间戳精度,防止undolog回滚时顺序错误导致出现脏数据无法回滚.(注:需要mysql5.6版本以上)</li>
 </ol></div></div></details>
 <hr>
-<h3 id="3">3. 升级到 seata 1.2.0 有哪些兼容性事项是需要注意的？</h3>
+<h3 id="3">3. 升级到 seata 1.2.0 有哪些兼容性事项是需要注 意的？</h3>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><mark>注意事项</mark></summary><div><div class="collapsibleContent_i85q"><ol>
 <li>nacos注册中心新增服务名的属性配置registry.nacos.application = &quot;seata-server&quot;，原固定名为serverAddr，现默认为seata-server，Server和Client端需保持一致。</li>
 </ol></div></div></details>
@@ -104,14 +105,14 @@
 <li>
 <p>seata-all 默认不开启数据源自动代理。原 seata-all中 conf 文件配置项
 client.support.spring.datasource.autoproxy 配置项失效，由注解 @EnableAutoDataSourceProxy
-注解代替，注解参数可选择使用jdk代理或者cglib代理，当使用HikariDataSource 时推荐使用 cglib   代理模式。
+注解  代替，注解参数可选择使用jdk代理或者cglib代理，当使用HikariDataSource 时推荐使用 cglib 代理模式。
 seata-spring-boot-starter 默认开启数据源代理，对应数据源自动代理配置项与1.0.0 版本保持不变。</p>
 </li>
 <li>
 <p>使用spring cloud框架时需要使用<a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank" rel="noopener noreferrer">Spring Cloud Alibaba</a>来进行seata
-事务上下文的传递，与Spring Cloud Alibaba 版本集成依赖关系，参考 <a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener noreferrer">版本说明</a><br>
-<!-- -->spring-cloud-alibaba-seata 在 2.2.0.RELEASE 版本前 依赖的是seata-all 若继续使用低版本的 spring-cloud-alibaba-seata 可以使用高版本的 seata-all 取代内置的 seata-all 版本；<br>
-<!-- -->从spring-cloud-alibaba-seata 在 2.2.0.RELEASE 开始后（含）内部开始依赖seata-spring-boot-starter,2.2.0.RELEASE 内部集成 seata-spring-boot-starter 1.0.0 可以升级为 seata-spring-boot-starter 1.1.0，seata-spring-boot-starter 集成了seata-all，seata-spring-boot-starter 包装了对于properties或yml 配置的autoconfig 功能，在spring-cloud-alibaba-seata 2.2.0.RELEASE 前
+事务上下文的传递，与Spring Cloud Alibaba 版本集成依赖关系，参考 <a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener noreferrer">版本说明</a>
+spring-cloud-alibaba-seata 在 2.2.0.RELEASE 版本前 依赖的是seata-all 若继续使用低版本的 spring-cloud-alibaba-seata 可以使用高版本的 seata-all 取代内置的 seata-all 版本；
+从spring-cloud-alibaba-seata 在 2.2.0.RELEASE 开始后（含）内部开始依赖seata-spring-boot-starter,2.2.0.RELEASE 内部集成 seata-spring-boot-starter 1.0.0 可以升级为 seata-spring-boot-starter 1.1.0，seata-spring-boot-starter 集成了seata-all，seata-spring-boot-starter 包装了对于properties或yml 配置的autoconfig 功能，在spring-cloud-alibaba-seata 2.2.0.RELEASE 前
 autoconfig 功能由其本身支持，在其后去掉 spring-cloud-alibaba-seata 中关于 seata 本身的autoconfig 由seata-spring-boot-starter 支持，因此低版本spring-cloud-alibaba-seata 只能配合 seata-all使用，高版本spring-cloud-alibaba-seata 只能配合seata-spring-boot-starter 使用，以2.2.0.RELEASE为分界点。</p>
 </li>
 <li>
