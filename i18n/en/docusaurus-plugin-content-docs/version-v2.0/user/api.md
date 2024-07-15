@@ -9,7 +9,7 @@ description: Api Guide.
 Seata API is devided into 2 categories: High-Level API and Low-Level API
 
 - **High-Level API** : Used for defining and controlling transaction boundary, and querying transaction status.
-- **Low-Level API** : Used for controlling the propagation of transaction context. 
+- **Low-Level API** : Used for controlling the propagation of transaction context.
 
 # 2. High-Level API
 
@@ -257,3 +257,145 @@ Rebind the XID back after the execution of related business logic to achieve rec
 RootContext.bind(unbindXid);
 ```
 
+
+# 4. TCC API
+
+TCC interface definition
+```java
+public interface NormalTccAction {
+
+    /**
+     * Prepare boolean.
+     *
+     * @param a             the a
+     * @param b             the b
+     * @param tccParam      the tcc param
+     * @return the boolean
+     */
+    String prepare(int a, List b, TccParam tccParam);
+
+    /**
+     * Commit boolean.
+     *
+     * @param actionContext the action context
+     * @return the boolean
+     */
+    boolean commit(BusinessActionContext actionContext, TccParam param);
+
+    /**
+     * Rollback boolean.
+     *
+     * @param actionContext the action context
+     * @return the boolean
+     */
+    boolean rollback(BusinessActionContext actionContext, TccParam param);
+}
+```
+
+TCC interface definition implementation
+```java
+@LocalTCC
+public class NormalTccActionImpl implements NormalTccAction {
+
+    @TwoPhaseBusinessAction(name = "tccActionForTest", commitMethod = "commit", rollbackMethod = "rollback", commitArgsClasses = {BusinessActionContext.class, TccParam.class}, rollbackArgsClasses = {BusinessActionContext.class, TccParam.class})
+    @Override
+    public String prepare(@BusinessActionContextParameter("a") int a,
+                          @BusinessActionContextParameter(paramName = "b", index = 0) List b,
+                          @BusinessActionContextParameter(isParamInProperty = true) TccParam tccParam) {
+        return "a";
+    }
+
+    @Override
+    public boolean commit(BusinessActionContext actionContext,
+                          @BusinessActionContextParameter("tccParam") TccParam param) {
+        return false;
+    }
+
+    @Override
+    public boolean rollback(BusinessActionContext actionContext, @BusinessActionContextParameter("tccParam") TccParam param) {
+        return false;
+    }
+
+    public boolean otherMethod(){
+        return true;
+    }
+
+}
+```
+
+TCC API usage
+```java
+    @Test
+    public void testTcc() {
+
+        // Instantiate an un-proxied TCC interface implementation class
+        NormalTccAction tccAction = new NormalTccActionImpl();
+
+        // Create a proxy TCC interface class using the proxy tool ProxyUtil
+        NormalTccAction tccActionProxy = ProxyUtil.createProxy(tccAction);
+
+        // Obtain TCC interface parameters
+        TccParam tccParam = new TccParam(1, "abc@163.com");
+        List<String> listB = Arrays.asList("b");
+
+        // TCC Phase 1 submission
+        String result = tccActionProxy.prepare(0, listB, tccParam);
+
+        // verification
+        Assertions.assertEquals("a", result);
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals("tccActionForTest", branchReference.get());
+
+    }
+```
+Brief description
+- 1，First, define the TCC interface: prepare, confirm, and rollback.
+- 2，Implementation interface. Note: The annotation @LocalTCC should be modified on the implementation class, and the annotation @TwoPhaseBusinessAction should be modified on the implementation class method prepare. You can pass parameters through BusinessActionContext.
+- 3，Create a TCC proxy object using ProxyUtil.createProxy (T target).
+- 4，Commit in phase 1 with the proxy class.
+
+## 4.1 TCC Annotation Description
+
+TCC has two core annotations, TwoPhaseBusinessAction and LocalTCC.
+
+### 4.1.1 @TwoPhaseBusinessAction
+
+@TwoPhaseBusinessAction indicates that the current method uses the TCC mode to manage transaction submission.
+
+- The name attribute registers a globally unique TCC bean name for the current transaction.
+
+As in the code example, name = "TccActionOne"
+
+The three execution phases of the TCC mode are:
+
+- Try phase, reserve operation resources (Prepare)
+
+The methods executed in this phase are the methods modified by @TwoPhaseBusinessAction. For example, the prepare method in the sample code.
+
+- Confirm phase, execute the main business logic (Commit)
+
+This phase uses the method pointed to by the commitMethod attribute to perform the Confirm work.
+
+- Cancel phase, transaction rollback (Rollback)
+
+This phase uses the method pointed to by the rollbackMethod attribute to perform the Rollback work.
+
+### 4.1.2 @LocalTCC
+The @LocalTCC annotation is used to indicate the local TCC interface that implements the two-phase commit. If Dubbo is used as the RPC communication component, this annotation is not required.
+
+## 4.2 Important parameter description
+
+## 4.2.1 BusinessActionContext
+You can use this input parameter to pass query parameters in the transaction context in TCC mode. The following attributes:
+- xid global transaction id
+- branchId branch transaction id
+- actionName branch resource id, (resource id)
+- actionContext business transfer parameter Map, you can use @BusinessActionContextParameter to annotate the parameters that need to be passed.
+
+## 4.2.2 @BusinessActionContextParameter
+Use this annotation to annotate the parameters that need to be passed in the transaction context. The parameters modified by this annotation will be set in BusinessActionContext.
+You can use the getActionContext method of BusinessActionContext to obtain the passed business parameter values ​​in the commit and rollback phases.
+As follows:
+```java
+context.getActionContext("id").toString();
+```
