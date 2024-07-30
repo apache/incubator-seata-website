@@ -400,12 +400,13 @@ It is currently found that too low a version of Jackson that was originally intr
 
 ---
 
-<h3 id='24'>Q: 24.SpringCloud xid cannot transmit?</h3>
+<h3 id='24'>Q: 24.SpringCloud/HTTP xid cannot transmit?</h3>
 
 **A:**
 
-1. First make sure you introduce the `spring-cloud-alibaba-seata` dependency.
-2. If XID cannot be delivered, please confirm whether you have implemented `WebMvcConfigurer`. If yes, please refer to the method of `com.alibaba.cloud.seata.web.seatahandlerinterceptorconfiguration#addinterceptors`. Add `SeataHandlerInterceptor` to your interception link
+1. If it is the springcloud application, make sure you have introduced `spring-cloud-starter-alibaba-seata` as a dependency.
+2. If the xid hasn't been accepted yet, please confirm whether you have implemented the `WebMvcConfigurer`; if you have, please add `org.apache.seata.integration.http.TransactionPropagationInterceptor.SeataHandlerInterceptor` to your interception chain. You can refer to how `org.apache.seata.integration.http.SeataWebMvcConfigurer` is implemented.
+3. If it isn't a SpringCloud application, you can use `org.apache.seata.integration.http.DefaultHttpExecutor#getInstance `to invoke http when necessary, or refer to its implementation and encapsulate the httpclient to transfer xid by yourself.
 
 ---
 

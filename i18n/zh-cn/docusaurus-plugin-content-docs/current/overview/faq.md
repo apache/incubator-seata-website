@@ -419,13 +419,15 @@ Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.faster
 
 ---
 
-<h3 id='24'>Q: 24. SpringCloud xid无法传递 ？</h3>
+<h3 id='24'>Q: 24. SpringCloud/http调用 xid无法传递 ？</h3>
 
 **A:**
 
-1.首先确保你引入了`spring-cloud-starter-alibaba-seata`的依赖.
+1.如果是springcloud应用首先确保你引入了`spring-cloud-starter-alibaba-seata`的依赖.
 
-2.如果 xid 还无法传递,请确认你是否实现了 WebMvcConfigurer,如果是,请参考 com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors 的方法.把 SeataHandlerInterceptor 加入到你的拦截链路中.
+2.如果 xid 还无法被接受到,请确认你是否实现了 WebMvcConfigurer,如果是,请将org.apache.seata.integration.http.TransactionPropagationInterceptor.把 SeataHandlerInterceptor 加入到你的拦截链路中. 可以参考org.apache.seata.integration.http.SeataWebMvcConfigurer的实现方式进行.
+
+3.如果是非SpringCloud应用,需要http调用时可以使用org.apache.seata.integration.http.DefaultHttpExecutor#getInstance 进行http调用,或者参考其实现,自行封装httpclient进行传递xid.
 
 ---
 
