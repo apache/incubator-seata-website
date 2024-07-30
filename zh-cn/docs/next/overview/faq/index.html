@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.1f151b5e.css">
-<script src="/zh-cn/assets/js/runtime~main.3f852a0d.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.495dafad.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.ed972ecd.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -63,7 +63,7 @@
 <br>
 <a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a>
 <br>
-<a href="#24" target="_self">24. SpringCloud xid 无法传递 ？</a>
+<a href="#24" target="_self">24. SpringCloud/http调用 xid无法传递 ？</a>
 <br>
 <a href="#25" target="_self">25. 使用动态数据源后的常见问题 ？</a>
 <br>
@@ -130,7 +130,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <ol>
 <li>脏读 select 语句加 for update，代理方法增加@GlobalLock+@Transactional 或@GlobalTransactional</li>
 <li>脏写 必须使用@GlobalTransactional<br>
-<!-- -->注：如果你查询的业务的接口没有@GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock+@Transactional  注解，并且在查询语句上加 for update。
+<!-- -->注：如果你查询的业务的接口没有@GlobalTransactional 包裹，也就是这个方法上压根没有分布式事务的需求，这时你可以在方法上标注@GlobalLock+@Transactional 注解，并且在查询语句上加 for update。
 如果你查询的接口在事务链路上外层有@GlobalTransactional 注解，那么你查询的语句只要加 for update 就行。设计这个注解的原因是在没有这个注解之前，需要查询分布式事务读已提交的数据，但业务本身不需要分布式事务。
 若使用@GlobalTransactional 注解就会增加一些没用的额外的 rpc 开销比如 begin 返回 xid，提交事务等。GlobalLock 简化了 rpc 过程，使其做到更高的性能。</li>
 </ol>
@@ -280,10 +280,11 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <div class="language-xml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-xml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.fasterxml.jackson.databind.ObjectMapper</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>目前发现在 Spring Boot 1.5.x 版本中原始引入的 jackson 版本过低，会导致 Seata 依赖 jackson 的新特性找不到，Seata 要求 jackson 版本 2.9.9+，但是使用 jackson 2.9.9+ 版本会导致 Spring Boot 中使用的 jackson API 找不到，也就是 jackson 本身的向前兼容性存在问题。因此,建议大家将 Seata 的序列化方式切换到非 jackson 序列化方式，比如 kryo，配置项为 client.undo.logSerialization = &quot;kryo&quot;</p>
 <hr>
-<h3 id="24">Q: 24. SpringCloud xid无法传递 ？</h3>
+<h3 id="24">Q: 24. SpringCloud/http调用 xid无法传递 ？</h3>
 <p><strong>A:</strong></p>
-<p>1.首先确保你引入了<code>spring-cloud-starter-alibaba-seata</code>的依赖.</p>
-<p>2.如果 xid 还无法传递,请确认你是否实现了 WebMvcConfigurer,如果是,请参考 com.alibaba.cloud.seata.web.SeataHandlerInterceptorConfiguration#addInterceptors 的方法.把 SeataHandlerInterceptor 加入到你的拦截链路中.</p>
+<p>1.如果是springcloud应用首先确保你引入了<code>spring-cloud-starter-alibaba-seata</code>的依赖.</p>
+<p>2.如果 xid 还无法被接受到,请确认你是否实现了 WebMvcConfigurer,如果是,请将org.apache.seata.integration.http.TransactionPropagationInterceptor.把 SeataHandlerInterceptor 加入到你的拦截链路中. 可以参考org.apache.seata.integration.http.SeataWebMvcConfigurer的实现方式进行.</p>
+<p>3.如果是非SpringCloud应用,需要http调用时可以使用org.apache.seata.integration.http.DefaultHttpExecutor#getInstance 进行http调用,或者参考其实现,自行封装httpclient进行传递xid.</p>
 <hr>
 <h3 id="25">Q: 25. 使用动态数据源后的常见问题 ？</h3>
 <p><strong>A:</strong> 使用 dynamic-datasource-spring-boot-starter 组件后 undolog 无法删除,或使用 AbstractRoutingDataSource 等动态数据源后无法正常回滚</p>
@@ -373,7 +374,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <hr>
 <h3 id="37">Q：37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </h3>
 <p><strong>A:</strong></p>
-<p>这是因为编译了 seata 源码然后覆盖了本地的 seata 依赖包的原因，在编译 seata 源码时使用了 JDK 11，而在 JDK 11 中由于改写了 <code>flip()</code> 方法，所以导致不兼容。</p>
+<p>这是因为编译了 seata 源码然后覆盖了本地的 seata 依赖包  的原因，在编译 seata 源码时使用了 JDK 11，而在 JDK 11 中由于改写了 <code>flip()</code> 方法，所以导致不兼容。</p>
 <p>解决办法：</p>
 <ul>
 <li>编译 seata 源码时确认 JDK 版本为 1.8，以免导致兼容问题</li>
@@ -424,7 +425,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <ul>
 <li>检查异常是否被捕获,没有抛至 tm 端,如 rm 存在全局异常捕获器,rm 将异常包装成了一个正常的 result 响应给了 tm,导致 seata 的事务拦截器无法发现事务出现了异常,此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常,或者使用<a href="/zh-cn/docs/user/api/">Seata api</a> 进行回滚,切记 api 回滚必须结束调用,假设 tm 调用了 rm1 就出现错误,进行了 api 回滚,那么不应该让这个调用链再走到 rm2 去,应该直接 return 结束方法调用</li>
 <li>检查是否 rm 服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理</li>
-<li>如确认无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检 查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
+<li>如确认无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
 <li>如决议结果是回滚,但是 rm 没注册,可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值,如果无值请参考 Q24</li>
 <li>如何判断数据源是否代理,如果是 AT 模式请在 ConnectionProxy#registry 打上断点,看是否会进入,XA 模式 ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!</li>
 </ul>
