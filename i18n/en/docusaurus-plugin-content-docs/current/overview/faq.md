@@ -76,7 +76,7 @@ description: Seata FAQ.
 <a href="#23" target="_self">23.Spring boot 1.5.x appear the Jackson related NoClassDefFoundException?</a>
 <br/>
 
-<a href="#24" target="_self">24.SpringCloud xid cannot transmit?</a>
+<a href="#24" target="_self">24.SpringCloud/HTTP xid cannot transmit?</a>
 <br/>
 
 <a href="#25" target="_self">25.undo_log cannot be deleted after using the mybatis plus dynamic data source component?</a>

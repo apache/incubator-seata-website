@@ -76,7 +76,7 @@ description: Seata 常见问题。
 <a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a>
 <br/>
 
-<a href="#24" target="_self">24. SpringCloud xid 无法传递 ？</a>
+<a href="#24" target="_self">24. SpringCloud/http调用 xid无法传递 ？</a>
 <br/>
 
 <a href="#25" target="_self">25. 使用动态数据源后的常见问题 ？</a>
