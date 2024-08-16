@@ -10,7 +10,7 @@ Server支持多种方式部署：直接部署，使用 Docker, 使用 Docker-Com
 
 ## 直接部署 
 
-1. 在[RELEASE](https://github.com/seata/seata/releases)页面下载相应版本并解压 
+1. 在[RELEASE](https://github.com/apache/incubator-seata/releases)页面下载相应版本并解压 
 
 2. 直接启动
 

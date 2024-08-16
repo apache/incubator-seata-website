@@ -1,6 +1,6 @@
 {
   "version.label": {
-    "message": "User Documentation",
+    "message": "Next Version",
     "description": "The label for version current"
   },
   "sidebar.docs.category.Overview": {
@@ -71,8 +71,8 @@
     "message": "Committer Guide",
     "description": "The label for category Committer Guide in sidebar developers"
   },
-  "sidebar.download.category.Download": {
-    "message": "Download",
-    "description": "The label for category Download in sidebar download"
+  "sidebar.release-notes.category.release-notes": {
+    "message": "Release Notes",
+    "description": "The label for category Release Notes in sidebar Release Notes"
   }
 }

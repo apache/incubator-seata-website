@@ -5,11 +5,11 @@ description: Server-Raft mode 部署。
 ---
 
 # 部署 Server-Raft
-Seata-Raft模式为存算一体的高性能易扩展，入门门槛低，运维成本低等特定的事务存储模式。更加详细的了解架构和使用，[请点击此处](https://seata.io/zh-cn/blog/seata-raft-detailed-explanation)
+Seata-Raft模式为存算一体的高性能易扩展，入门门槛低，运维成本低等特定的事务存储模式。更加详细的了解架构和使用，[请点击此处](/blog/seata-raft-detailed-explanation/)
 注：由于此模式不支持与第三方注册中心搭配，故全链路只允许存在一个tc集群，也就是客户端的事务分组对应的tc集群要保持一致。后续Seata社区将会推出自闭环的NamingServer，将于Seata-Raft模式对接，支持multi-raft。
 
 ## Server
-1. 在[RELEASE](https://github.com/seata/seata/releases)页面下载相应版本并解压 
+1. 在[RELEASE](https://github.com/apache/incubator-seata/releases)页面下载相应版本并解压 
 
 2. 修改配置
 将conf中application.yml编辑，在`seata:`下增加以下参数
@@ -44,6 +44,7 @@ seata:
 ```
 如果`server-addr:`中的地址都为本机，那么需要根据本机上不同的server的netty端口增加1000的偏移量，如`server.port: 7092`那么netty端口为8092，raft选举和通信端口便为9092，需要增加启动参数`-Dserver.raftPort=9092`.
 Linux下可以通过`export JAVA_OPT="-Dserver.raftPort=9092"`等方式指定。
+
 3. 直接启动
 
 在 Linux/Mac 下
@@ -57,6 +58,11 @@ $ sh ./bin/seata-server.sh
 ```cmd
 bin\seata-server.bat
 ```
+
+4. 扩缩容方式
+
+假设原集群列表为`192.168.0.111:7091,192.168.0.112:7091,192.168.0.113:7091`，无论是扩容还是缩容，只需要对这个字符串进行修改，并提交到一个所在成员的扩缩容接口即可，比如扩容`curl -X POST -i http://192.168.0.111:7091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111:7091,192.168.0.112:7091,192.168.0.113:7091,192.168.0.114:7091"`，如果是缩容，只需要将集群连接串中需要下线的节点进行去除，并调用扩缩容接口即可.
+注：seata.server.raft.server-addr配置只要集群构建完成后，修改该配置就无效了，请统一通过api方式进行扩缩容，后续控制台中也会集成扩缩容和集群管理功能。
 
 ## Client
 

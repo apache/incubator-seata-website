@@ -32,9 +32,9 @@ The Client-side needs to add Maven dependencies and configure them.
 
 ### Server-side configuration of registry
 
-Download [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) and extract it.
+Download [Seata 1.4.2 release](https://github.com/apache/incubator-seata/releases/tag/v1.4.2) and extract it.
 
-Modify the corresponding configuration center in /conf/registry.conf, and refer to the rest of the [configuration](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf).
+Modify the corresponding configuration center in /conf/registry.conf, and refer to the rest of the [configuration](https://github.com/apache/incubator-seata/blob/develop/script/client/conf/registry.conf).
 
 ```
 registry {
@@ -71,7 +71,7 @@ Go to the Consul console to check if Seata is registered successfully.
 
 ### Client-side configuration
 
-Add the corresponding registry to application.yml, and refer to the rest of the [configuration](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml).
+Add the corresponding registry to application.yml, and refer to the rest of the [configuration](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml).
 
 ```yaml
 seata:
@@ -79,7 +79,7 @@ seata:
     consul:
       server-addr: 127.0.0.1:8500
   # Transaction group configuration, default name is my_test_tx_group in version 1.4.2, will be changed to default_tx_group in version 1.5
-  # For more information about transaction groups, please refer to http://seata.io/en/docs/user/txgroup/transaction-group.html
+  # For more information about transaction groups, please refer to https://seata.apache.org/docs/user/txgroup/transaction-group/
   tx-service-group: my_test_tx_group
   service:
     # Mapping between transaction group and cluster

@@ -52,14 +52,14 @@ RAFT 是一种新型易于理解的分布式一致性复制协议，由斯坦福
 ## 2.3 Seata-Raft是如何设计的呢？
 ### 2.3.1 设计原理
 Seata-Raft模式的设计思路是通过封装无法高可用的file模式，利用Raft算法实现多个TC之间数据的同步。该模式保证了使用file模式时多个TC的数据一致性，同时将异步刷盘操作改为使用Raft日志和快照进行数据恢复。
-![流程图](https://blog.funkye.icu/img/blog/Dingtalk_20230105203431.jpg)
+![流程图](/img/blog/Dingtalk_20230105203431.jpg)
 
 在Seata-Raft模式中，client端在启动时会从配置中心获取当前client的事务分组（例如default）以及相关Raft集群节点的IP地址。通过向Seata-Server的控制端口发送请求，client可以获取到default分组对应的Raft集群的元数据，包括leader、follower和learner成员节点。然后，client会监视（watch）非leader节点的任意成员节点。
 
 假设TM开始一个事务，并且本地的metadata中的leader节点指向了TC1的地址，那么TM只会与TC1进行交互。当TC1添加一个全局事务信息时，通过Raft协议，即图中标注为步骤1的日志发送，TC1会将日志发送给其他节点，步骤2是follower节点响应日志接收情况。当超过半数的节点（如TC2）接受并响应成功时，TC1上的状态机（FSM）将执行添加全局事务的动作。
 
-![watch](https://blog.funkye.icu/img/blog/Dingtalk_20230105204423.jpg)
-![watch2](https://blog.funkye.icu/img/blog/Dingtalk_20230105211035.jpg)
+![watch](/img/blog/Dingtalk_20230105204423.jpg)
+![watch2](/img/blog/Dingtalk_20230105211035.jpg)
 
 如果TC1宕机或发生重选举，会发生什么呢？由于首次启动时已经获取到了元数据，client会执行watch follower节点的接口来更新本地的metadata信息。因此，后续的事务请求将发送到新的leader（例如TC2）。同时，TC1的数据已经被同步到了TC2和TC3，因此数据一致性不会受到影响。只在选举发生的瞬间，如果某个事务正好发送给了旧的leader，该事务会被主动回滚，以确保数据的正确性。
 
@@ -67,18 +67,18 @@ Seata-Raft模式的设计思路是通过封装无法高可用的file模式，利
 ### 2.3.2 故障恢复
 在Seata中，当TC发生故障时，数据恢复的过程如下：
 
-![故障恢复](https://blog.funkye.icu/img/blog/Dingtalk_20230106231817.jpg)
+![故障恢复](/img/blog/Dingtalk_20230106231817.jpg)
 
 如上图所示
 - 检查是否存在最新的数据快照：首先，系统会检查是否存在最新的数据快照文件。数据快照是基于内存的数据状态的一次全量拷贝，如果有最新的数据快照，则系统将直接加载该快照到内存中。
 
 - 根据快照后的Raft日志进行回放：如果存在最新的快照或者没有快照文件，系统将根据之前记录的Raft日志进行数据回放。每个Seata-Server中的请求最终会经过ServerOnRequestProcessor进行处理，然后转移到具体的协调者类(DefaultCoordinator或RaftCoordinator)中，再转向具体的业务代码(DefaultCore)进行相应的事务处理（如begin、commit、rollback等）。
 
-- 当日志回放完成后，便会由leader发起日志的同步，并继续执行相关事务的增删改动作。
+- 当日志回放完成后，便会由leader发起日志的同步，并继续执行相关事务的增删改动作。f
 
 通过以上步骤，Seata能够实现在故障发生后的数据恢复。首先尝试加载最新的快照，如果有的话可以减少回放的时间；然后根据Raft日志进行回放，保证数据操作的一致性；最后通过日志同步机制，确保数据在多节点之间的一致性。
 ### 2.3.3 业务处理同步过程
-![流程](https://blog.funkye.icu/img/blog/Dingtalk_20230106230931.jpg)
+![流程](/img/blog/Dingtalk_20230106230931.jpg)
 对于client侧获取最新metadata时恰好有业务线程在执行begin、commit或registry等操作的情况，Seata采取了以下处理方式：
 
 - client侧：

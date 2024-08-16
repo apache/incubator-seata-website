@@ -274,7 +274,7 @@
     "message": "愿景"
   },
   "homepage.footerVersionContent": {
-    "message": "Seata 是一款阿里巴巴开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。"
+    "message": "Apache Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。"
   },
   "homepage.footerDocTitle": {
     "message": "文档"
@@ -361,7 +361,7 @@
     "message": "创建一个"
   },
   "homepage.briefIntroduction": {
-    "message": "Seata 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。"
+    "message": "Apache Seata(incubating) 是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。"
   },
   "homepage.quickstartButton": {
     "message": "快速入门"
@@ -420,19 +420,31 @@
   "homepage.featureTitle": {
     "message": "特色功能"
   },
-  "homepage.msemapTitle": {
+  "homepage.solutionTitle": {
     "message": "微服务全景图"
   },
-  "homepage.userDesc1": {
+  "users.userDesc1": {
     "message": "请在"
   },
-  "homepage.userDesc2": {
+  "users.userDesc2": {
     "message": "上提供信息来帮助 Seata 做的更好。"
   },
-  "homepage.userTitleBefore": {
+  "users.userTitleBefore": {
     "message": "谁在使用"
   },
-  "homepage.userTitleAfter": {
-    "message": " Seata"
+  "users.userTitleAfter": {
+    "message": " Apache Seata"
+  },
+  "users.wantToAppear": {
+    "message": "希望出现在此页？"
+  },
+  "users.appearDesc1": {
+    "message": "请在"
+  },
+  "users.appearDesc2": {
+    "message": "上提供信息或向"
+  },
+  "users.appearDesc3": {
+    "message": "发送有关贵组织和使用情况的简要说明，我们将添加您到此页。"
   }
 }

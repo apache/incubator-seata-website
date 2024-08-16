@@ -18,8 +18,7 @@ A business logic for user purchasing commodities. The whole business logic is po
 
 ### Architecture
 
-![Architecture](/img/architecture.png) 
-
+![Architecture](/img/architecture.png)
 
 ### StorageService
 
@@ -107,7 +106,7 @@ public class OrderServiceImpl implements OrderService {
 
 ![](/img/solution.png)
 
-We just need an annotation `@GlobalTransactional` on business method: 
+We just need an annotation `@GlobalTransactional` on business method:
 
 ```java
 
@@ -123,7 +122,7 @@ We just need an annotation `@GlobalTransactional` on business method:
 
 - Requirement: MySQL with InnoDB engine.
 
-**Note:** In fact, there should be 3 database for the 3 services in the example use case. However, we can just create one database and configure 3 data sources for simple. 
+**Note:** In fact, there should be 3 database for the 3 services in the example use case. However, we can just create one database and configure 3 data sources for simple.
 
 Modify Spring XML with the database URL/username/password you just created.
 
@@ -136,25 +135,27 @@ dubbo-storage-service.xml
         <property name="username" value="xxx" />
         <property name="password" value="xxx" />
 ```
+
 ### Step 2: Create UNDO_LOG table
 
-`UNDO_LOG` table is required by SEATA AT mode.
+
+`UNDO_LOG` table is required by SEATA AT mode. You can obtain the specified version of the undo log SQL script from [github](https://github.com/apache/incubator-seata/tree/2.x/script/client/at/db).
 
 ```sql
--- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
-CREATE TABLE `undo_log` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `branch_id` bigint(20) NOT NULL,
-  `xid` varchar(100) NOT NULL,
-  `context` varchar(128) NOT NULL,
-  `rollback_info` longblob NOT NULL,
-  `log_status` int(11) NOT NULL,
-  `log_created` datetime NOT NULL,
-  `log_modified` datetime NOT NULL,
-  `ext` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `undo_log`
+(
+    `branch_id`     BIGINT       NOT NULL COMMENT 'branch transaction id',
+    `xid`           VARCHAR(128) NOT NULL COMMENT 'global transaction id',
+    `context`       VARCHAR(128) NOT NULL COMMENT 'undo_log context,such as serialization',
+    `rollback_info` LONGBLOB     NOT NULL COMMENT 'rollback info',
+    `log_status`    INT(11)      NOT NULL COMMENT '0:normal status,1:defense status',
+    `log_created`   DATETIME(6)  NOT NULL COMMENT 'create datetime',
+    `log_modified`  DATETIME(6)  NOT NULL COMMENT 'modify datetime',
+    UNIQUE KEY `ux_undo_log` (`xid`, `branch_id`)
+    ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4 COMMENT ='AT transaction mode undo table';
+
+ALTER TABLE `undo_log` ADD INDEX `ix_log_created` (`log_created`);
+
 ```
 
 ### Step 3: Create tables for example business
@@ -190,9 +191,10 @@ CREATE TABLE `account_tbl` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+
 ### Step 4: Start Server
 
-- Download server package from <https://github.com/seata/seata/releases>, unzip it.
+- Download server package from https://github.com/apache/incubator-seata/releases, unzip it.
 
 ```shell
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]
@@ -215,7 +217,7 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 ### Step 5: Run example
 
-Go to samples repo: [seata-samples](https://github.com/seata/seata-samples)
+Go to samples repo: [seata-samples](https://github.com/apache/incubator-seata-samples)
 
 - Start DubboAccountServiceStarter
 - Start DubboStorageServiceStarter

@@ -18,7 +18,12 @@ const sidebars = {
       type: 'category',
       label: 'Overview',
       collapsible: false,
-      items: ['overview/what-is-seata', 'overview/terminology', 'overview/faq'],
+      items: [
+        'overview/what-is-seata',
+        'overview/history',
+        'overview/terminology',
+        'overview/faq',
+      ],
     },
     {
       type: 'category',
@@ -29,18 +34,45 @@ const sidebars = {
         'user/configurations',
         {
           type: 'category',
+          label: 'Transaction Mode',
+          items: [
+            'user/mode/at',
+            'user/mode/tcc',
+            'user/mode/saga',
+            'user/mode/xa',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Transactions Grouping',
-          items: ['user/txgroup/transaction-group', 'user/txgroup/transaction-group-and-ha'],
+          items: [
+            'user/txgroup/transaction-group',
+            'user/txgroup/transaction-group-and-ha',
+          ],
         },
         {
           type: 'category',
           label: 'Configuration Center',
-          items: ['user/configuration/index', 'user/configuration/nacos', 'user/configuration/apollo', 'user/configuration/etcd3', 'user/configuration/consul', 'user/configuration/zookeeper'],
+          items: [
+            'user/configuration/index',
+            'user/configuration/nacos',
+            'user/configuration/apollo',
+            'user/configuration/etcd3',
+            'user/configuration/consul',
+            'user/configuration/zookeeper',
+          ],
         },
         {
           type: 'category',
           label: 'Registration Authority',
-          items: ['user/registry/index', 'user/registry/nacos', 'user/registry/eureka', 'user/registry/etcd3', 'user/registry/consul', 'user/registry/zookeeper'],
+          items: [
+            'user/registry/index',
+            'user/registry/nacos',
+            'user/registry/eureka',
+            'user/registry/etcd3',
+            'user/registry/consul',
+            'user/registry/zookeeper',
+          ],
         },
         'user/api',
         'user/microservice',
@@ -49,7 +81,12 @@ const sidebars = {
         {
           type: 'category',
           label: 'SQL Reference',
-          items: ['user/sqlreference/sql-restrictions', 'user/sqlreference/dml', 'user/sqlreference/sql-decoration', 'user/sqlreference/function'],
+          items: [
+            'user/sqlreference/sql-restrictions',
+            'user/sqlreference/dml',
+            'user/sqlreference/sql-decoration',
+            'user/sqlreference/function',
+          ],
         },
         {
           type: 'category',
@@ -64,7 +101,10 @@ const sidebars = {
         {
           type: 'category',
           label: 'Appendix',
-          items: ['user/appendix/global-transaction-status', 'user/appendix/isolation'],
+          items: [
+            'user/appendix/global-transaction-status',
+            'user/appendix/isolation',
+          ],
         },
       ],
     },
@@ -76,12 +116,22 @@ const sidebars = {
         {
           type: 'category',
           label: 'Transaction Mode',
-          items: ['dev/mode/at-mode', 'dev/mode/tcc-mode', 'dev/mode/saga-mode', 'dev/mode/xa-mode'],
+          items: [
+            'dev/mode/at-mode',
+            'dev/mode/tcc-mode',
+            'dev/mode/saga-mode',
+            'dev/mode/xa-mode',
+          ],
         },
         {
           type: 'category',
           label: 'Domain Model',
-          items: ['dev/domain/overviewDomainModel', 'dev/domain/tm', 'dev/domain/rm', 'dev/domain/tc'],
+          items: [
+            'dev/domain/overviewDomainModel',
+            'dev/domain/tm',
+            'dev/domain/rm',
+            'dev/domain/tc',
+          ],
         },
         'dev/seata-mertics',
       ],
@@ -96,18 +146,21 @@ const sidebars = {
         {
           type: 'category',
           label: 'Deploy',
-          items: ['ops/deploy-guide-beginner', 'ops/deploy-server', 'ops/deploy-server-raft', 'ops/deploy-by-docker', 'ops/deploy-by-docker-compose', 'ops/deploy-by-kubernetes', 'ops/deploy-by-helm', 'ops/deploy-ha'],
+          items: [
+            'ops/deploy-guide-beginner',
+            'ops/deploy-server',
+            'ops/deploy-server-raft',
+            'ops/deploy-by-docker',
+            'ops/deploy-by-docker-compose',
+            'ops/deploy-by-kubernetes',
+            'ops/deploy-by-helm',
+            'ops/deploy-ha',
+          ],
         },
       ],
     },
   ],
   developers: [
-    {
-      type: 'category',
-      label: 'Developers List',
-      collapsible: false,
-      items: ['developers/developers_dev'],
-    },
     {
       type: 'category',
       label: 'Contribute Guide',
@@ -125,17 +178,16 @@ const sidebars = {
       collapsible: false,
       items: [
         'developers/committer-guide/label-an-issue-guide_dev',
-        'developers/committer-guide/website-guide_dev',
-        'developers/committer-guide/release-guide_dev',
+        'developers/committer-guide/website-guide_dev'
       ],
     },
   ],
-  download: [
+  'release-notes': [
     {
       type: 'category',
-      label: 'Download',
+      label: 'release-notes',
       collapsible: false,
-      items: ['download'],
+      items: ['release-notes'],
     },
   ],
   // By default, Docusaurus generates a sidebar from the docs folder structure

@@ -158,6 +158,6 @@ public class TestAspect {
 
 [dubbo官网](http://dubbo.apache.org/en-us/)
 
-[seata官网](http://seata.io/zh-cn/)
+[seata官网](https://seata.apache.org/zh-cn/)
 
 [docker官网](https://www.docker.com/)

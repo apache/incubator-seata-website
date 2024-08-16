@@ -274,7 +274,7 @@
     "message": "Vision"
   },
   "homepage.footerVersionContent": {
-    "message": "Seata is an Alibaba open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
+    "message": "Apache Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
   },
   "homepage.footerDocTitle": {
     "message": "Documentation"
@@ -364,7 +364,7 @@
     "message": "Create a brilliant "
   },
   "homepage.briefIntroduction": {
-    "message": "Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
+    "message": "Apache Seata(incubating) is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture."
   },
   "homepage.quickstartButton": {
     "message": "Get Started"
@@ -417,19 +417,31 @@
   "homepage.featureTitle": {
     "message": "Feature List"
   },
-  "homepage.msemapTitle": {
+  "homepage.solutionTitle": {
     "message": "microservice ecosystem landscape"
   },
-  "homepage.userDesc1": {
+  "users.userDesc1": {
     "message": "Please provide information on"
   },
-  "homepage.userDesc2": {
+  "users.userDesc2": {
     "message": "to help improving Seata better."
   },
-  "homepage.userTitleBefore": {
+  "users.userTitleBefore": {
     "message": "Who is using"
   },
-  "homepage.userTitleAfter": {
-    "message": " Seata"
+  "users.userTitleAfter": {
+    "message": " Apache Seata"
+  },
+  "users.wantToAppear": {
+    "message": "Want to appear on this page?"
+  },
+  "users.appearDesc1": {
+    "message": "Please provide information on"
+  },
+  "users.appearDesc2": {
+    "message": "or send a quick description of your organization and usage to the"
+  },
+  "users.appearDesc3": {
+    "message": "and we'll add you."
   }
 }

@@ -39,11 +39,11 @@ services:
 
 ### <a id="file-db">无注册中心，DB存储</a>
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）准备file.conf配置文件**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```properties
 # 存储模式
@@ -65,9 +65,9 @@ store.db.password=
 
 **（2）准备registry.conf文件**
 
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+更多注册中心支持可参考<a href="/docs/user/registry/">注册中心</a>
 
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
+更多配置中心支持可参考<a href="/docs/user/configuration/">配置中心</a>
 
 直连模式（无注册中心）
 ```
@@ -102,15 +102,15 @@ services:
 ```
 ### <a id="nacos-db">nacos注册中心，db存储</a>
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）准备registry.conf文件**
 
 nacos注册中心。
 
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+更多注册中心支持可参考<a href="/docs/user/registry/">注册中心</a>
 
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
+更多配置中心支持可参考<a href="/docs/user/configuration/">配置中心</a>
 
 ```
 registry {
@@ -148,7 +148,7 @@ config {
 
 **（2）准备nacos配置中心配置**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 > 你需要在nacos新建配置，此处dataId为seataServer.properties
 
@@ -196,11 +196,11 @@ services:
 
 > seata高可用依赖于注册中心、数据库，可不依赖配置中心。
 
-> db模式需要在数据库创建对应的表结构，<a href="https://github.com/seata/seata/tree/develop/script/server/db">[建表脚本]</a>。
+> db模式需要在数据库创建对应的表结构，<a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[建表脚本]</a>。
 
 **（1）准备file.conf配置文件**
 
-更多存储模式支持可参考<a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
+更多存储模式支持可参考<a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">更多存储模式</a>
 
 ```properties
 # 存储模式
@@ -224,9 +224,9 @@ store.db.password=
 
 nacos注册中心。
 
-更多注册中心支持可参考<a href="https://seata.io/zh-cn/docs/user/registry/index.html">注册中心</a>
+更多注册中心支持可参考<a href="/docs/user/registry/">注册中心</a>
 
-更多配置中心支持可参考<a href="https://seata.io/zh-cn/docs/user/configuration/index.html">配置中心</a>
+更多配置中心支持可参考<a href="/docs/user/configuration/">配置中心</a>
 
 ```
 registry {
@@ -257,7 +257,7 @@ config {
 **（3）准备docker-compose.yaml文件**
 
 > 只要保持配置一致，seata服务可在一台机器上部署多实例，也可同时部署在多台不同的主机下面实现服务高可用。
-> [高可用部署](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [高可用部署](/docs/ops/deploy-ha/)
 
 ```yaml
 version: "3.1"

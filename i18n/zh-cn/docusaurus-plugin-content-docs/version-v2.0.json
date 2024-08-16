@@ -1,7 +1,7 @@
 {
   "version.label": {
     "message": "v2.0",
-    "description": "The label for version 1.7"
+    "description": "The label for version 2.0"
   },
   "sidebar.docs.category.Overview": {
     "message": "概述",
@@ -71,8 +71,8 @@
     "message": "提交者向导",
     "description": "The label for category Committer Guide in sidebar developers"
   },
-  "sidebar.download.category.Download": {
-    "message": "下载",
-    "description": "The label for category Download in sidebar download"
+  "sidebar.release-notes.category.release-notes": {
+    "message": "发布说明",
+    "description": "The label for category Release Notes in sidebar Release Notes"
   }
 }

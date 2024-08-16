@@ -1,0 +1,13 @@
+{
+  "extends": ["plugin:@docusaurus/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "strict": 2,
+    "quotes": [2, "single"],
+    "semi": [2, "always"]
+  }
+}

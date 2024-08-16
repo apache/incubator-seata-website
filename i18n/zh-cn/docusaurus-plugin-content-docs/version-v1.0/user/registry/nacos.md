@@ -18,13 +18,12 @@ Seata 融合 Nacos 注册中心的操作步骤非常简单，大致步骤可分�
 
 ### 增加 Maven 依赖
 
-首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中，建议使用 Seata `1.4.0+`：
+首先，您需要将 `nacos-client` 的 Maven 依赖添加到您的项目 `pom.xml` 文件中：
 
 ```xml
 <dependency>
     <groupId>io.seata</groupId>
     <artifactId>seata-spring-boot-starter</artifactId>
-    <version>最新版</version>
 </dependency>
 <dependency>
     <groupId>com.alibaba.nacos</groupId>
@@ -35,37 +34,30 @@ Seata 融合 Nacos 注册中心的操作步骤非常简单，大致步骤可分�
 
 ### Client端配置注册中心
 
-在 [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/client)
+在 [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml) 中加入对应的配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/client)
 
 ```yaml
 seata:
   registry:
     type: nacos
     nacos:
-      application: seata-server
-      server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      cluster: default
+      server-addr: localhost
+      namespace:
 ```
 
 ### Server端配置注册中心
 
-在 [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/tree/develop/script/server)
+在 [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/server)
 
 ```
 registry {
   type = "nacos"
 
   nacos {
-    application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
+    serverAddr = "localhost"
     namespace = ""
     cluster = "default"
-    username = ""
-    password = ""
   }
 }
 

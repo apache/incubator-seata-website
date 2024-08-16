@@ -9,7 +9,7 @@ keywords: [fescar、seata、分布式事务]
 针对Fescar 相信很多开发者已经对他并不陌生，当然Fescar 已经成为了过去时，为什么说它是过去时，因为Fescar 已经华丽的变身为Seata。如果还不知道Seata 的朋友，请登录下面网址查看。
 
  
-  SEATA GITHUB:[https://github.com/seata/seata]
+  SEATA GITHUB:[https://github.com/apache/incubator-seata]
 
 对于阿里各位同学的前仆后继，给我们广大开发者带来很多开源软件，在这里对他们表示真挚的感谢与问候。
 

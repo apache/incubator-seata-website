@@ -37,13 +37,13 @@ docker run --name mysql -p 30060:3306-e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.
 
 - 创建seata-server需要的表
 
-具体的 SQL 参考 [script/server/db](https://github.com/seata/seata/tree/develop/script/server/db)，这里使用的是 MySQL 的脚本，数据库名称为 `seata`
+具体的 SQL 参考 [script/server/db](https://github.com/apache/incubator-seata/tree/develop/script/server/db)，这里使用的是 MySQL 的脚本，数据库名称为 `seata`
 
-同时，也需要创建 undo_log 表， 可以参考 [script/client/at/db/](https://github.com/seata/seata/blob/develop/script/client/at/db/)
+同时，也需要创建 undo_log 表， 可以参考 [script/client/at/db/](https://github.com/apache/incubator-seata/blob/develop/script/client/at/db/)
 
 - 修改seata-server配置
 
-将以下配置添加到 Nacos 配置中心，具体添加方法可以参考 [script/config-center](https://github.com/seata/seata/tree/develop/script/config-center)
+将以下配置添加到 Nacos 配置中心，具体添加方法可以参考 [script/config-center](https://github.com/apache/incubator-seata/tree/develop/script/config-center)
 
 ```
 service.vgroupMapping.my_test_tx_group=default

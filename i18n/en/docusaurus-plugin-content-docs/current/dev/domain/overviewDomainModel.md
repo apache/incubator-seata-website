@@ -46,14 +46,14 @@ This is an entity in Seata used for coordinating transactions in the two-phase c
 
   In Seata, when the transaction manager specifies a timeout for a created transaction and that timeout is reached without determination, TC will actively perform a timeout rollback for transactions that have exceeded the timeout. The behavior for timeouts is the same as the Rollback behavior described above.
 
-The three scenarios mentioned above are the transaction processing cases involving TC. These three states can expand into more transaction states. [For specific details, you can refer to this link](https://seata.io/en/docs/user/appendix/global-transaction-status).
+The three scenarios mentioned above are the transaction processing cases involving TC. These three states can expand into more transaction states. [For specific details, you can refer to this link](/docs/user/appendix/global-transaction-status).
 
 **High Availability**
 
-[Transaction Group](https://seata.io/en/docs/user/txgroup/transaction-group) (tx-service-group):
+[Transaction Group](/docs/user/txgroup/transaction-group) (tx-service-group):
 
 Seata's logical resource grouping allows applications (clients) to define transaction groups based on their microservices' needs, with each group having a unique name.
 
-[Service Discovery](https://seata.io/en/docs/user/registry/index.html):
+[Service Discovery](/docs/user/registry):
 
 Seata supports service discovery for Eureka, Nacos, Consul, Etcd, ZooKeeper, Sofa, Redis, and file-based (using a specific file) configurations.

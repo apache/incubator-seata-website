@@ -1,4 +1,4 @@
-name: seata.io deploy
+name: seata website deploy on github
 
 on:
   push:
@@ -12,20 +12,38 @@ jobs:
   Build-Deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18.x
-    - name: Build
-      run: |
-          npm install && npm run build && mkdir -p deploy-dist && cp -R build/* deploy-dist/ && mv build .htaccess deploy-dist/
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.8.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./deploy-dist
-      with:
-        keepFiles: true
+      - name: Use Node.js 19.5.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 19.5.x
+      - name: Build
+        run: |
+          npm install && npm run build && mkdir -p deploy-dist && cp -R build/* deploy-dist/ && mv build .htaccess .asf.yaml *.txt *.html deploy-dist/
+      - name:
+          generate sitemap.xml and site.txt
+          # The new generated sitemap for the index form,
+          # in order to ensure consistency with the old version,
+          # here directly to the details of the sitemap (sitemap.0.xml) renamed as a whole sitemap,
+          # if the number of articles increases in the future,
+          # the details of the sitemap will be split into multiple files (sitemap.0.xml,sitemap.1.xml),
+          # you may need to modify.
+        env:
+          ALGOLIA_APIKEY: ${{secrets.ALGOLIA_APIKEY}}
+        run: |
+          mkdir sitemaps && node sitemap.js
+          cp sitemaps/sitemap.0.xml deploy-dist/sitemap.xml
+          cp sitemaps/site.txt deploy-dist/site.txt
+      - name: baidu link submit
+        env:
+          BAIDU_LINK_SUBMIT_TOKEN: ${{secrets.BAIDU_LINK_SUBMIT_TOKEN}}
+        run: node baiduLinkSubmit.js
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2.8.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: asf-site
+          PUBLISH_DIR: ./deploy-dist
+        with:
+          keepFiles: true

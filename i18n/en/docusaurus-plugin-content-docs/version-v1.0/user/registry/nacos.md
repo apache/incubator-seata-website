@@ -18,7 +18,7 @@ The steps to integrate Nacos registry into Seata are very simple and can be roug
 
 ### Adding Maven Dependencies
 
-First, you need to add the Maven dependency for `nacos-client` to your project's `pom.xml` file. It is recommended to use Seata `1.4.0+`:
+First, you need to add the Maven dependency for `nacos-client` to your project's `pom.xml` file:
 
 ```xml
 <dependency>
@@ -35,37 +35,30 @@ First, you need to add the Maven dependency for `nacos-client` to your project's
 
 ### Configuring the Registry on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/client):
+Add the corresponding configuration to [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/apache/incubator-seata/tree/develop/script/client):
 
 ```yaml
 seata:
   registry:
     type: nacos
     nacos:
-      application: seata-server
-      server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      cluster: default
+      server-addr: localhost
+      namespace:
 ```
 
 ### Configuring the Registry on the Server Side
 
-Add the corresponding configuration to [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/server):
+Add the corresponding configuration to [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf), and refer to other [configuration options](https://github.com/apache/incubator-seata/tree/develop/script/server):
 
 ```
 registry {
   type = "nacos"
 
   nacos {
-    application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
+    serverAddr = "localhost"
     namespace = ""
     cluster = "default"
-    username = ""
-    password = ""
   }
 }
 

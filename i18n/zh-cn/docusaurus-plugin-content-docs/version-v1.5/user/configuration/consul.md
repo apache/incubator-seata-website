@@ -6,7 +6,7 @@ description: Consul 配置中心。
 
 # Consul 配置中心
 
-在 [以 Consul 作为注册中心](http://seata.io/zh-cn/docs/user/registry/consul.html) 的基础上，将 Seata 配置放到 Consul 中
+在 [以 Consul 作为注册中心](/docs/user/registry/consul/) 的基础上，将 Seata 配置放到 Consul 中
 
 本文基于 Seata 1.4.2，Consul 版本建议 1.8+，下文以 Consul 1.11.2 为例
 
@@ -27,7 +27,7 @@ description: Consul 配置中心。
 首先，请确保您的 Consul 服务已启动
 
 在 Seata 目录下 /conf/registry.conf
-中加入对应配置中心,其余[配置参考](https://github.com/seata/seata/blob/1.4.2/script/server/config/registry.conf)
+中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/blob/1.4.2/script/server/config/registry.conf)
 
 ```
 config {
@@ -62,7 +62,7 @@ config operation timeout,cost:5009 ms,op:GET,dataId:transport.threadFactory.work
 **tips**: 1.4.2 需要逐个创建 key-value，1.5.0 后支持 key 对应文件
 
 以 store.mode=file
-为例，提交报错信息对应的配置，在这里可以找到[默认配置](https://github.com/seata/seata/blob/1.4.2/script/config-center/config.txt)
+为例，提交报错信息对应的配置，在这里可以找到[默认配置](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/config.txt)
 
 ```properties
 store.mode=file
@@ -73,8 +73,8 @@ store.file.maxBranchSessionSize=16384
 ```
 
 **推荐使用官方脚本：** 以上方式 1~3 需要逐个添加配置，操作较为繁琐，为此官方提供了
-[脚本](https://github.com/seata/seata/blob/1.4.2/script/config-center/consul/consul-config.sh) 和
-[默认配置](https://github.com/seata/seata/blob/1.4.2/script/config-center/config.txt)
+[脚本](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/consul/consul-config.sh) 和
+[默认配置](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/config.txt)
 以快速添加配置
 
 将 config.txt 放在 consul-config.sh 的**上层目录**， 根据自己的需要微调 config.txt 的配置（主要是 seata.mode 及 seata.file | seata.db | seata.redis
@@ -86,7 +86,7 @@ store.file.maxBranchSessionSize=16384
 sh {PATH}/consul-config.sh -h localhost -p 8500
 ```
 
-具体操作可参考[README.md](https://github.com/seata/seata/blob/1.4.2/script/config-center/README.md)
+具体操作可参考[README.md](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/README.md)
 
 此时重启 Seata 服务，发现不再报错，即成功使用 Consul 作为配置中心了，后面如需调整配置，可前往控制台单独修改对应的配置，修改后需重启服务
 
@@ -109,7 +109,7 @@ sh {PATH}/consul-config.sh -h localhost -p 8500
 
 ### Client端配置
 
-在 application.yml 中加入对应的配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml)
+在 application.yml 中加入对应的配置中心，其余[配置参考](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml)
 
 ```yaml
 seata:

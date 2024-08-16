@@ -35,24 +35,27 @@ First, you need to add the Maven dependency for `nacos-client` to your project's
 
 ### Configuring the Registry on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/client):
+Add the corresponding configuration to [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/apache/incubator-seata/tree/develop/script/client):
 
 ```yaml
 seata:
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
   registry:
     type: nacos
     nacos:
       application: seata-server
-      server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      server-addr: localhost
+      namespace:
+      userName: ""
+      password: ""
 ```
 
 ### Configuring the Registry on the Server Side
 
-Add the corresponding configuration to [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/server):
+Add the corresponding configuration to [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf), and refer to other [configuration options](https://github.com/apache/incubator-seata/tree/develop/script/server):
 
 ```
 registry {
@@ -60,8 +63,7 @@ registry {
 
   nacos {
     application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
+    serverAddr = "localhost"
     namespace = ""
     cluster = "default"
     username = ""

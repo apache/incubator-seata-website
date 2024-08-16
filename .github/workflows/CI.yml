@@ -1,24 +1,25 @@
 name: CI
 
-on: [pull_request]
-
+on:
+  pull_request:
+    branches: [ docusaurus ]
 jobs:
   Build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [19.5.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Npm install and build
-      run: |
-        npm install
-        npm run build --if-present
-      env:
-        CI: true
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Npm install and build
+        run: |
+          npm install
+          npm run build --if-present
+        env:
+          CI: true

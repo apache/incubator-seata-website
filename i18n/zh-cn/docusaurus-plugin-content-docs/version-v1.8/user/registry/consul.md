@@ -33,9 +33,9 @@ Server 端只需要配置“注册中心”
 Client 端则需要增加 Maven 依赖以及配置
 
 ### Server端配置注册中心
-下载 [Seata 1.4.2 release](https://github.com/seata/seata/releases/tag/v1.4.2) 并解压
+下载 [Seata 1.4.2 release](https://github.com/apache/incubator-seata/releases/tag/v1.4.2) 并解压
 
-在 /conf/registry.conf 中修改对应配置中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/conf/registry.conf)
+在 /conf/registry.conf 中修改对应配置中心，其余[配置参考](https://github.com/apache/incubator-seata/blob/develop/script/client/conf/registry.conf)
 
 ```
 registry {
@@ -72,7 +72,7 @@ registry {
 
 ### Client端配置
 
-在 application.yml 中加入对应的注册中心，其余[配置参考](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml)
+在 application.yml 中加入对应的注册中心，其余[配置参考](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml)
 
 ```yaml
 seata:
@@ -80,7 +80,7 @@ seata:
     consul:
       server-addr: 127.0.0.1:8500
   # 事务分组配置，1.4.2 默认名称为 my_test_tx_group ，1.5版本将改为 default_tx_group
-  # 有关事务分组，请参考 http://seata.io/zh-cn/docs/user/txgroup/transaction-group.html
+  # 有关事务分组，请参考 https://seata.apache.org/zh-cn/docs/user/txgroup/transaction-group/
   tx-service-group: my_test_tx_group
   service:
     # 事务分组与集群映射关系

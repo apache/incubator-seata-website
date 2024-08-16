@@ -30,7 +30,7 @@ services:
 Next, copy the resource file in the `/seata-server/resources` location in the container to the specified location of the host through the `docker cp` command.
 In the specified location of the host, we can see the corresponding `application.yml` configuration file, and the relevant configuration only needs to modify this file.
 
-> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
 ## Quick Start
 
@@ -60,13 +60,13 @@ services:
 
 ### <a id="file-db">No Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **（1）application.yml**
 
-> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```yaml
 server:
@@ -146,11 +146,11 @@ services:
 
 ### <a id="nacos-db">Nacos Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **（1）application.yml**
 
-> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
 Nacos Registration Center.
 
@@ -213,7 +213,7 @@ seata:
 
 **（2）Prepare nacos configuration center configuration**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 > You need to create a new configuration in nacos, where the dataId is seataServer.properties
 
@@ -293,16 +293,16 @@ services:
 
 > Seata high availability usage deployment relies on the registration center and database, but does not depend on the configuration center. <br/>
 > Ensure that multiple Seata Servers use the same registry and the same storage center to form a highly available deployment.<br/>
-> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.<br/>
+> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.<br/>
 
 
 
 **（1）application.yml**
 
 
-> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/seata/seata/blob/develop/server/src/main/resources/application.example.yml)
+> The configuration of `application.yml` can refer to [application.example.yml](https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml)
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```yaml
 server:
@@ -366,7 +366,7 @@ seata:
 
 **（2）Prepare nacos configuration center configuration**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 > You need to create a new configuration in nacos, where the dataId is seataServer.properties
 
@@ -420,7 +420,7 @@ server.recovery.timeoutRetryPeriod=1000
 **（3）Prepare file: docker-compose.yaml**
 
 > As long as the configuration is consistent, the seata service can be deployed on multiple instances on one machine or on multiple different hosts at the same time to achieve high service availability. <br />
-> [High Availability Usage Deployment](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [High Availability Usage Deployment](/docs/ops/deploy-ha)
 
 ```yaml
 version: "3.1"

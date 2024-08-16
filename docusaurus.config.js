@@ -1,16 +1,34 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
+const { themes } = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
+const asfDict = [
+  { target: 'https://www.apache.org', text: 'Foundation' },
+  { target: 'https://www.apache.org/licenses', text: 'License' },
+  {
+    target: 'https://www.apache.org/events/current-event.html',
+    text: 'Events',
+  },
+  {
+    target: 'https://www.apache.org/foundation/sponsorship.html',
+    text: 'Sponsorship',
+  },
+  {
+    target: 'https://privacy.apache.org/policies/privacy-policy-public.html',
+    text: 'Privacy',
+  },
+  { target: 'https://www.apache.org/security', text: 'Security' },
+  { target: 'https://www.apache.org/foundation/thanks.html', text: 'Thanks' },
+];
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Seata',
+  title: 'Apache Seata',
   favicon: 'img/seata_logo_small.jpeg',
 
   // Set the production url of your site here
-  url: 'https://seata.io',
+  url: 'https://seata.apache.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -18,20 +36,20 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'seata', // Usually your GitHub org/user name.
-  projectName: 'seata.github.io', // Usually your repo name.
-  
+  projectName: 'incubator-seata-website', // Usually your repo name.
+
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  clientModules: [require.resolve('./src/myClientModule.ts')],
+  clientModules: [require.resolve('./src/analytics.ts')],
   i18n: {
-    defaultLocale: 'default',
-    locales: ['en', 'zh-cn', 'default'],
+    defaultLocale: 'en',
+    locales: ['en', 'zh-cn'],
     localeConfigs: {
-      'en': {
+      en: {
         label: 'En',
         htmlLang: 'en-US',
       },
@@ -39,59 +57,57 @@ const config = {
         label: '中',
         htmlLang: 'zh-CN',
       },
-    }
+    },
   },
-  scripts: [
-    { src: '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.js' },
+  headTags: [
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
-      async: true,
+      tagName: 'meta',
+      attributes: {
+        name: 'aes-config',
+        content: 'pid=xux-opensource&user_type=101&uid=&username=&dim10=seata',
+      },
     },
   ],
-  stylesheets: [
-    {
-      href: '//g.alicdn.com/mamba/assets/0.0.19/mse-arc-ui.min.css',
-    },
-  ],
-  plugins: ['docusaurus-plugin-sass',
-    ['docusaurus-plugin-includes',
-    {
-      injectedHtmlTags: {
-        headTags: [
-          {
-            tagName: 'meta',
-            attributes: {
-              name: 'aes-config',
-              content: 'pid=xux-opensource&user_type=101&uid=&username=&dim10=seata',
-            },
-          },
-        ],
-        preBodyTags: [
-          {
-            tagName: 'script',
-            attributes: {
-              type: 'text/javascript',
-              src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
-            },
-          },
-          {
-            tagName: 'script',
-            attributes: {
-              src: '//g.alicdn.com/alilog/mlog/aplus_v2.js',
-              id: 'beacon-aplus',
-              exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
-            },
-          },
-          {
-            tagName: 'script',
-            attributes: {
-              src: '//g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
-            },
-          },
-        ],
-      }
-    },
-    ]
+  // scripts: [
+  //   {
+  //     // src: 'https://www.googletagmanager.com/gtag/js?id=G-X4LJGF90X2',
+  //     src: '/js/gtag.js',
+  //     async: true,
+  //   },
+  //   {
+  //     // src: 'https://hm.baidu.com/hm.js?104e73ef0c18b416b27abb23757ed8ee',
+  //     src: '/js/hm.js',
+  //     async: true,
+  //   },
+  //   {
+  //     // src: 'https://g.alicdn.com/alilog/mlog/aplus_v2.js',
+  //     src: '/js/aplus_v2.js',
+  //     id: 'beacon-aplus',
+  //     exparams: 'clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx',
+  //     defer: true,
+  //   },
+  //   {
+  //     // src: 'https://g.alicdn.com/aes/??tracker/1.0.34/index.js,tracker-plugin-pv/2.4.5/index.js,tracker-plugin-event/1.2.5/index.js,tracker-plugin-jserror/1.0.13/index.js,tracker-plugin-api/1.1.14/index.js,tracker-plugin-perf/1.1.8/index.js,tracker-plugin-eventTiming/1.0.4/index.js',
+  //     src: '/js/tracker.js',
+  //     defer: true,
+  //   },
+  // ],
+  plugins: [
+    'docusaurus-plugin-sass',
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'unversioned',
+        path: 'unversioned',
+        routeBasePath: '/unversioned',
+        sidebarPath: require.resolve('./sidebarsUnversioned.js'),
+        editUrl:
+          'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+        editCurrentVersion: true,
+        editLocalizedFiles: true,
+      }),
+    ],
   ],
   presets: [
     [
@@ -100,15 +116,24 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          editUrl:
+            'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editCurrentVersion: false,
+          editLocalizedFiles: true,
         },
         blog: {
           showReadingTime: true,
           blogSidebarTitle: '全部博文',
           blogSidebarCount: 'ALL',
+          editUrl:
+            'https://github.com/apache/incubator-seata-website/blob/docusaurus/',
+          editLocalizedFiles: true,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
+        // disable default sitemap generation
+        sitemap: false,
       }),
     ],
   ],
@@ -116,8 +141,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      metadata: [{ name: 'keywords', content: 'Seata' }],
-      image: 'img/docusaurus-social-card.jpg',
+      metadata: [
+        {
+          name: 'keywords',
+          content:
+            'Seata,Seata官网,Seata official site,分布式事务,distributed transactions',
+        },
+      ],
+      image: 'img/seata_logo.png',
       colorMode: {
         defaultMode: 'light',
         disableSwitch: true, // 禁止切换主题模式
@@ -136,57 +167,27 @@ const config = {
             activeBaseRegex: '^/$',
             position: 'right',
           },
-          // {
-          //   label: 'Docs',
-          //   type: 'doc',
-          //   docId: 'overview/what-is-seata',
-          //   // type: 'docSidebar',
-          //   // sidebarId: 'tutorialSidebar',
-          //   position: 'right',
-          // },
           {
-            type: "docsVersionDropdown",
-            label: "Docs",
-            docid: "/overview/what-is-seata",
-            position: "right",
-          },
-          {
-            label: 'Solutions',
-            type: 'dropdown',
+            type: 'docsVersionDropdown',
+            label: 'Docs',
+            docid: '/overview/what-is-seata',
             position: 'right',
-            items: [
-              {
-                label: 'Seata in Cloud',
-                href: 'https://www.aliyun.com/product/aliware/mse?spm=seata-website.topbar.0.0.0',
-              },
-              {
-                label: 'SOFA distributed transaction',
-                href: 'https://help.aliyun.com/document_detail/132903.html?spm=seata-website.topbar.0.0.0',
-              },
-            ],
-          },
-          {
-            label: 'Free trial',
-            href: 'https://free.aliyun.com/?searchKey=nacos&spm=seata-website.topbar.0.0.0',
-            position: 'right',
-            target: '_blank',
           },
           {
             label: 'Developers',
             type: 'doc',
-            docId: 'developers/developers_dev',
+            docId: 'developers/contributor-guide/new-contributor-guide_dev',
             position: 'right',
           },
           {
-            label: 'Recruitment',
-            to: 'https://mp.weixin.qq.com/s/nvDmIJEuDaNEY3RfTA3UyA',
+            label: 'Blog',
+            to: '/blog',
             position: 'right',
-            target: '_blank',
           },
           {
-            label: 'Blog', 
-            to: '/blog', 
-            position: 'right'
+            label: 'Users',
+            to: '/users',
+            position: 'right',
           },
           {
             label: 'Community',
@@ -194,17 +195,46 @@ const config = {
             position: 'right',
           },
           {
-            label: 'Download', 
-            // to: '/blog/download',
-            type: 'doc',
-            docId: 'download',
-            position: 'right'
+            label: 'Download',
+            to: '/unversioned/download/seata-server',
+            position: 'right',
           },
           {
-            label: 'Console sample',
-            to: 'http://demo.seata.io/',
+            label: 'Solution',
+            to: '/solution',
             position: 'right',
-            target: '_blank',
+          },
+          // {
+          //   label: 'Console sample',
+          //   to: 'http://demo.seata.io/',
+          //   position: 'right',
+          //   target: '_blank',
+          // },
+          {
+            label: 'Designer',
+            type: 'dropdown',
+            position: 'right',
+            items: [
+              {
+                label: 'Saga Designer',
+                href: '/saga-designer',
+                target: '_blank',
+              },
+              {
+                label: 'Saga Designer (Legacy)',
+                href: '/saga-designer-legacy',
+                target: '_blank',
+              },
+            ],
+          },
+          {
+            label: 'ASF',
+            type: 'dropdown',
+            position: 'right',
+            items: asfDict.map((link) => ({
+              label: link.text,
+              to: link.target,
+            })),
           },
           {
             type: 'localeDropdown',
@@ -217,19 +247,41 @@ const config = {
           autoCollapseCategories: true,
         },
       },
+      footer: {
+        logo: {
+          alt: 'Apache Incubator Logo',
+          src: 'img/apache/incubator.svg',
+          href: 'https://incubator.apache.org/',
+          target: '_blank',
+        },
+        copyright: `
+                  <div class="fs-12">
+                    <div class="center-div">
+                      <span>Apache Seata (incubating) is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</span>
+                    </div>
+                    <br/>
+                    <div class="center-div">
+                      <span>Copyright © 2023-2024, The Apache Software Foundation Apache Seata, Seata, Apache, Apache Incubator, the Apache feather, the Apache Incubator logo and the Apache Seata project logo are either registered trademarks or trademarks of the Apache Software Foundation.</span>
+                      <br />
+                    </div>
+                    <br/>
+                  </div>
+                  `,
+      },
       prism: {
         theme: lightCodeTheme,
+        additionalLanguages: ['java'],
       },
       algolia: {
         // The application ID provided by Algolia
         appId: 'ICHFIJRDZF',
-  
+
         // Public API key: it is safe to commit it
         apiKey: '9dc9d497652065c6d77a6a384c1310fb',
-  
+
         indexName: 'seata',
       },
     }),
 };
 
-module.exports = config;
+export default config;

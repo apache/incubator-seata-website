@@ -23,13 +23,33 @@
     "message": "Blog",
     "description": "Navbar item with label Blog"
   },
+  "item.label.Users": {
+    "message": "Users",
+    "description": "Navbar item with label Users"
+  },
   "item.label.Download": {
     "message": "Download",
     "description": "Navbar item with label Download"
   },
+  "item.label.Solution": {
+    "message": "Solution",
+    "description": "Navbar item with label Solution"
+  },
   "item.label.Console sample": {
     "message": "Console sample",
     "description": "Navbar item with label Console sample"
+  },
+  "item.label.Designer": {
+    "message": "Designer",
+    "description": "Navbar item with label Demos"
+  },
+  "item.label.Saga Designer": {
+    "message": "Saga Designer",
+    "description": "Navbar item with label Saga Designer"
+  },
+  "item.label.Saga Designer (Legacy)": {
+    "message": "Saga Designer (Legacy)",
+    "description": "Navbar item with label Saga Designer (Legacy)"
   },
   "item.label.Community": {
     "message": "Community",

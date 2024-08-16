@@ -19,6 +19,16 @@
         "user/configurations",
         {
           "type": "category",
+          "label": "Transaction Mode",
+          "items": [
+            "user/mode/at",
+            "user/mode/tcc",
+            "user/mode/saga",
+            "user/mode/xa"
+          ]
+        },
+        {
+          "type": "category",
           "label": "Transactions Grouping",
           "items": [
             "user/txgroup/transaction-group",
@@ -66,17 +76,12 @@
         {
           "type": "category",
           "label": "APM",
-          "items": [
-            "user/apm/skywalking",
-            "user/apm/prometheus"
-          ]
+          "items": ["user/apm/skywalking", "user/apm/prometheus"]
         },
         {
           "type": "category",
           "label": "Testing Report",
-          "items": [
-            "user/performance"
-          ]
+          "items": ["user/performance"]
         },
         {
           "type": "category",
@@ -142,14 +147,6 @@
   "developers": [
     {
       "type": "category",
-      "label": "Developers List",
-      "collapsible": false,
-      "items": [
-        "developers/developers_dev"
-      ]
-    },
-    {
-      "type": "category",
       "label": "Contribute Guide",
       "collapsible": false,
       "items": [
@@ -165,19 +162,16 @@
       "collapsible": false,
       "items": [
         "developers/committer-guide/label-an-issue-guide_dev",
-        "developers/committer-guide/website-guide_dev",
-        "developers/committer-guide/release-guide_dev"
+        "developers/committer-guide/website-guide_dev"
       ]
     }
   ],
-  "download": [
+  "release-notes": [
     {
       "type": "category",
-      "label": "Download",
+      "label": "release-notes",
       "collapsible": false,
-      "items": [
-        "download"
-      ]
+      "items": ["release-notes"]
     }
   ]
 }

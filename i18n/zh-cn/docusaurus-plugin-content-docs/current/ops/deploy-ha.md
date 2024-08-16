@@ -68,7 +68,7 @@ store.redis.queryLimit=100
 
 - db模式需要在数据库创建 `global_table`, `branch_table`, `lock_table`表
 
-相应的脚本在GitHub 的 [/script/server/db/](https://github.com/seata/seata/tree/develop/script/server/db) 目录下
+相应的脚本在GitHub 的 [/script/server/db/](https://github.com/apache/incubator-seata/tree/develop/script/server/db) 目录下
 
 这样，启动多个seata-server，即可实现其高可用
 

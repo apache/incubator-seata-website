@@ -35,7 +35,33 @@ First, you need to add the Maven dependency for `nacos-client` to your project's
 
 ### Configuring the Registry on the Client Side
 
-Add the corresponding configuration to [**application.yml**](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/client):
+Add the corresponding configuration to [**application.yml**](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml), and refer to other [configuration options](https://github.com/apache/incubator-seata/tree/develop/script/client):
+
+```yaml
+seata:
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      namespace: ""
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: ""
+      password: ""
+      ##if use MSE Nacos with auth, mutex with username/password attribute
+      #access-key: ""
+      #secret-key: ""
+      data-id: seata.properties
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+
+```
+
+### Configuring the Registry on the Server Side
+
+Add the corresponding configuration to `conf/application.yaml`, and refer to other [configuration options](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml):
 
 ```yaml
 seata:
@@ -44,31 +70,11 @@ seata:
     nacos:
       application: seata-server
       server-addr: 127.0.0.1:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
-```
-
-### Configuring the Registry on the Server Side
-
-Add the corresponding configuration to [registry.conf](https://github.com/seata/seata/blob/develop/script/server/config/registry.conf), and refer to other [configuration options](https://github.com/seata/seata/tree/develop/script/server):
-
-```
-registry {
-  type = "nacos"
-
-  nacos {
-    application = "seata-server"
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
-    namespace = ""
-    cluster = "default"
-    username = ""
-    password = ""
-  }
-}
-
+      group: SEATA_GROUP
+      namespace:
+      cluster: default
+      username:
+      password:
 ```
 
 After that, when you start the Seata-Server, you will see the server's service appearing in the registry list on the Nacos console. Once the client is configured, you can start the application to experience the Seata service.

@@ -11,9 +11,9 @@ date: 2021-12-05
 
 ## Version Deployment History 
 
-[Version before 1.5.0](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose-142.html)
+[Version before 1.5.0](/docs/ops/deploy-by-docker-compose-142/)
 
-[Version 1.5.0 and above](https://seata.io/zh-cn/docs/ops/deploy-by-docker-compose.html)
+[Version 1.5.0 and above](/docs/ops/deploy-by-docker-compose/)
 
 ## Precautions 
 - Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/seataio/seata-server/tags) to determine the image version to be pulled.
@@ -45,11 +45,11 @@ services:
 
 ### <a id="file-db">No Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode
@@ -71,9 +71,9 @@ store.db.password=
 
 **(2) Prepare file: registry.conf**
 
-For more registration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/registry/index.html">Registration Center</a>
+For more registration center support, please refer to <a href="/docs/user/registry/">Registration Center</a>
 
-For more configuration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/configuration/index.html">Configuration Center</a>
+For more configuration center support, please refer to <a href="/docs/user/configuration/">Configuration Center</a>
 
 Direct connection mode (no registration center)
 
@@ -110,15 +110,15 @@ services:
 
 ### <a id="nacos-db">Nacos Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare file: registry.conf**
 
 Nacos Registration Center.
 
-For more registration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/registry/index.html">Registration Center</a>
+For more registration center support, please refer to <a href="/docs/user/registry/">Registration Center</a>
 
-For more configuration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/configuration/index.html">Configuration Center</a>
+For more configuration center support, please refer to <a href="/docs/user/configuration/">Configuration Center</a>
 
 ```
 registry {
@@ -156,7 +156,7 @@ config {
 
 **(2) Prepare nacos configuration center configuration**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More storage modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More storage modes</a>.
 
 > You need to create a new configuration in nacos, where the dataId is seataServer.properties
 
@@ -204,11 +204,11 @@ services:
 
 > Seata high availability usage deployment relies on the registration center and database, but does not depend on the configuration center.
 
-> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/seata/seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/seata/seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode
@@ -232,9 +232,9 @@ store.db.password=
 
 Nacos registration center.
 
-For more registration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/registry/index.html">Registration Center</a>
+For more registration center support, please refer to <a href="/docs/user/registry/">Registration Center</a>
 
-For more configuration center support, please refer to <a href="https://seata.io/zh-cn/docs/user/configuration/index.html">Configuration Center</a>
+For more configuration center support, please refer to <a href="/docs/user/configuration/">Configuration Center</a>
 
 ```
 registry {
@@ -265,7 +265,7 @@ config {
 **(3) Prepare file: docker-compose.yaml**
 
 > As long as the configuration is consistent, the seata service can be deployed on multiple instances on one machine or on multiple different hosts at the same time to achieve high service availability. <br />
-> [High Availability Usage Deployment](https://seata.io/zh-cn/docs/ops/deploy-ha.html)
+> [High Availability Usage Deployment](/docs/ops/deploy-ha/)
 
 ```yaml
 version: "3.1"

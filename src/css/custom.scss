@@ -334,3 +334,27 @@ div[class^="tableOfContents"] {
 button[class*="tocCollapsibleButton"] {
   color: var(--ifm-color-content-secondary);
 }
+
+.fs-12 {
+  font-size: 12px;
+}
+.center-div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.footer {
+  a {
+    opacity: 1;
+  }
+}
+
+.full_width_table_section {
+  table {
+    display: table;
+    width: 100%;
+    table-layout: auto;
+  }
+}

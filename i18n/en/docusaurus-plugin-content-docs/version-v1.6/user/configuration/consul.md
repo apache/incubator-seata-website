@@ -6,7 +6,7 @@ description: Consul Configuration Center.
 
 # Consul Configuration Center
 
-Based on [Using Consul as a Registry](http://seata.io/en-us/docs/user/registry/consul.html), put Seata configuration into Consul.
+Based on [Using Consul as a Registry](/docs/user/registry/consul), put Seata configuration into Consul.
 
 This article is based on Seata 1.4.2, and Consul version 1.8+ is recommended. Consul 1.11.2 is used as an example in the following text.
 
@@ -26,7 +26,7 @@ The steps to configure Consul as the Seata configuration center are very simple 
 
 First, make sure that your Consul service has been started.
 
-In the Seata directory /conf/registry.conf, add the corresponding configuration center. For other configuration references, please refer to [here](https://github.com/seata/seata/blob/1.4.2/script/server/config/registry.conf).
+In the Seata directory /conf/registry.conf, add the corresponding configuration center. For other configuration references, please refer to [here](https://github.com/apache/incubator-seata/blob/1.4.2/script/server/config/registry.conf).
 
 ```
 config {
@@ -60,7 +60,7 @@ The above error message appears because the corresponding configuration is missi
 
 **Tips**: For version 1.4.2, you need to create key-value one by one. Starting from version 1.5.0, it supports key corresponding to a file.
 
-Taking store.mode=file as an example, submit the configuration corresponding to the error message. You can find the [default configuration](https://github.com/seata/seata/blob/1.4.2/script/config-center/config.txt) here.
+Taking store.mode=file as an example, submit the configuration corresponding to the error message. You can find the [default configuration](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/config.txt) here.
 
 ```properties
 store.mode=file
@@ -70,7 +70,7 @@ store.file.maxBranchSessionSize=16384
 # The remaining configuration items are omitted~
 ```
 
-**Recommended to use official script:** The above methods 1~3 require adding configurations one by one, which is cumbersome. To address this, the official provides a [script](https://github.com/seata/seata/blob/1.4.2/script/config-center/consul/consul-config.sh) and [default configuration](https://github.com/seata/seata/blob/1.4.2/script/config-center/config.txt) for quickly adding configurations.
+**Recommended to use official script:** The above methods 1~3 require adding configurations one by one, which is cumbersome. To address this, the official provides a [script](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/consul/consul-config.sh) and [default configuration](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/config.txt) for quickly adding configurations.
 
 Place the config.txt file in the **parent directory** of consul-config.sh, and adjust the configuration in config.txt according to your needs (mainly seata.mode and configurations with prefixes seata.file, seata.db, and seata.redis).
 
@@ -80,7 +80,7 @@ Execute the following command:
 sh {PATH}/consul-config.sh -h localhost -p 8500
 ```
 
-For specific operations, refer to the [README.md](https://github.com/seata/seata/blob/1.4.2/script/config-center/README.md).
+For specific operations, refer to the [README.md](https://github.com/apache/incubator-seata/blob/1.4.2/script/config-center/README.md).
 
 Restart the Seata service at this point, and you will find that there are no more errors, indicating that Consul is successfully used as the configuration center. If you need to adjust the configuration later, you can go to the console to modify the corresponding configuration separately, and restart the service after modification.
 
@@ -103,7 +103,7 @@ Restart the Seata service at this point, and you will find that there are no mor
 
 ### Client-side Configuration
 
-Add the corresponding configuration center in application.yml, and refer to other [configurations](https://github.com/seata/seata/blob/develop/script/client/spring/application.yml).
+Add the corresponding configuration center in application.yml, and refer to other [configurations](https://github.com/apache/incubator-seata/blob/develop/script/client/spring/application.yml).
 
 ```yaml
 seata:

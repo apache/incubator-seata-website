@@ -10,7 +10,7 @@ description: Seata 快速开始。
 
 ## 用例
 
-用户购买商品的业务逻辑。整个业务逻辑由3个微服务提供支持：
+用户购买商品的业务逻辑。整个业务逻辑由 3 个微服务提供支持：
 
 - 仓储服务：对给定的商品扣除仓储数量。
 - 订单服务：根据采购需求创建订单。
@@ -18,8 +18,7 @@ description: Seata 快速开始。
 
 ### 架构图
 
-![Architecture](/img/architecture.png) 
-
+![Architecture](/img/architecture.png)
 
 ### 仓储服务
 
@@ -106,7 +105,7 @@ public class OrderServiceImpl implements OrderService {
 ## SEATA 的分布式交易解决方案
 
 ![](/img/solution.png)
-我们只需要使用一个 `@GlobalTransactional` 注解在业务方法上: 
+我们只需要使用一个 `@GlobalTransactional` 注解在业务方法上:
 
 ```java
 
@@ -116,15 +115,15 @@ public class OrderServiceImpl implements OrderService {
     }
 ```
 
-## 由Dubbo + SEATA提供支持的示例
+## 由 Dubbo + SEATA 提供支持的示例
 
 ### 步骤 1：建立数据库
 
-- 要求：具有InnoDB引擎的MySQL。
+- 要求：具有 InnoDB 引擎的 MySQL。
 
-**注意:** 实际上，在示例用例中，这3个服务应该有3个数据库。 但是，为了简单起见，我们只创建一个数据库并配置3个数据源。 
+**注意:** 实际上，在示例用例中，这 3 个服务应该有 3 个数据库。 但是，为了简单起见，我们只创建一个数据库并配置 3 个数据源。
 
-使用您刚创建的数据库 URL/username/password 修改Spring XML。
+使用您刚创建的数据库 URL/username/password 修改 Spring XML。
 
 dubbo-account-service.xml
 dubbo-order-service.xml
@@ -135,25 +134,25 @@ dubbo-storage-service.xml
         <property name="username" value="xxx" />
         <property name="password" value="xxx" />
 ```
+
 ### 步骤 2：创建 UNDO_LOG 表
 
-SEATA AT 模式需要 `UNDO_LOG` 表
+SEATA AT 模式需要 `UNDO_LOG` 表。你可以通过 github 获取到指定版本的undo log SQL [脚本](https://github.com/apache/incubator-seata/tree/2.x/script/client/at/db).
 
 ```sql
--- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
-CREATE TABLE `undo_log` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `branch_id` bigint(20) NOT NULL,
-  `xid` varchar(100) NOT NULL,
-  `context` varchar(128) NOT NULL,
-  `rollback_info` longblob NOT NULL,
-  `log_status` int(11) NOT NULL,
-  `log_created` datetime NOT NULL,
-  `log_modified` datetime NOT NULL,
-  `ext` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `undo_log`
+(
+    `branch_id`     BIGINT       NOT NULL COMMENT 'branch transaction id',
+    `xid`           VARCHAR(128) NOT NULL COMMENT 'global transaction id',
+    `context`       VARCHAR(128) NOT NULL COMMENT 'undo_log context,such as serialization',
+    `rollback_info` LONGBLOB     NOT NULL COMMENT 'rollback info',
+    `log_status`    INT(11)      NOT NULL COMMENT '0:normal status,1:defense status',
+    `log_created`   DATETIME(6)  NOT NULL COMMENT 'create datetime',
+    `log_modified`  DATETIME(6)  NOT NULL COMMENT 'modify datetime',
+    UNIQUE KEY `ux_undo_log` (`xid`, `branch_id`)
+    ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4 COMMENT ='AT transaction mode undo table';
+ALTER TABLE `undo_log` ADD INDEX `ix_log_created` (`log_created`);
+
 ```
 
 ### 步骤 3：为示例业务创建表
@@ -189,9 +188,10 @@ CREATE TABLE `account_tbl` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+
 ### 步骤 4: 启动服务
 
-- 从 <https://github.com/seata/seata/releases>,下载服务器软件包，将其解压缩。
+- 从 https://github.com/apache/incubator-seata/releases,下载服务器软件包，将其解压缩。
 
 ```shell
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]
@@ -214,7 +214,7 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 
 ### 步骤 5: 运行示例
 
-示例仓库: [seata-samples](https://github.com/seata/seata-samples)
+示例仓库: [seata-samples](https://github.com/apache/incubator-seata-samples)
 
 - 启动 DubboAccountServiceStarter
 - 启动 DubboStorageServiceStarter

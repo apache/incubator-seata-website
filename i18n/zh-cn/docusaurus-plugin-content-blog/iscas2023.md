@@ -136,7 +136,7 @@ https://summer-ospp.ac.cn/org/prodetail/230640424?list=org&navpage=org
 <br/>
 
 ####  参考资料：
-**Seata网站 :**  https://seata.io/
+**Seata网站 :**  https://seata.apache.org/
 
 **Seata GitHub :** https://github.com/seata
 

@@ -14,7 +14,7 @@ date: 2019/11/28
 
 因此我去掉了 InitializingBean，改成了是实现 ApplicationListener，在实例化 bean 的过程中检查是否有 GlobalTransactional 注解的存在，最后在 Spring 容器初始化完成之后再调用 RM 和 TM client 初始化方法，这时候就可以根据项目是否有用到全局事务注解来决定是否启动 TM client 了。
 
-这里附上 PR 地址：[https://github.com/seata/seata/pull/1936](https://github.com/seata/seata/pull/1936)
+这里附上 PR 地址：[https://github.com/apache/incubator-seata/pull/1936](https://github.com/apache/incubator-seata/pull/1936)
 
 随后在 pr 中讨论中得知，目前 Seata 的设计是只有在发起方的 TM 才可以发起 GlobalRollbackRequest，RM 只能发送 BranchReport(false) 上报分支状态个 TC 服务端，无法直接发送 GlobalRollbackRequest 进行全局回滚操作。具体的交互逻辑如下：
 

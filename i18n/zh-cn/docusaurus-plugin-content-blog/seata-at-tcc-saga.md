@@ -7,7 +7,7 @@ date: 2019-08-11
 ---
 # 分布式事务 Seata 及其三种模式详解 | Meetup#3 回顾
 
-作者：屹远（陈龙），蚂蚁金服分布式事务框架核心研发，Seata Committer。
+作者：屹远（陈龙），蚂蚁金服分布式事务框架核心研发。
 <br />本文根据 8 月 11 日 SOFA Meetup#3 广州站 《分布式事务 Seata 及其三种模式详解》主题分享整理，着重分享分布式事务产生的背景、理论基础，以及 Seata 分布式事务的原理以及三种模式（AT、TCC、Saga）的分布式事务实现。
 
 现场回顾视频以及 PPT 见文末链接。
@@ -76,7 +76,7 @@ Saga 理论出自 Hector & Kenneth 1987发表的论文 Sagas。<br />
 
 Seata（Simple Extensible Autonomous Transaction Architecture，简单可扩展自治事务框架）是 2019 年 1 月份蚂蚁金服和阿里巴巴共同开源的分布式事务解决方案。Seata 开源半年左右，目前已经有超过 1.1 万 star，社区非常活跃。我们热忱欢迎大家参与到 Seata 社区建设中，一同将 Seata 打造成开源分布式事务标杆产品。
 
-Seata：[https://](https://github.com/seata/seata)[github.com/seata/seata](https://github.com/seata/seata)<br />
+Seata：[https://](https://github.com/apache/incubator-seata)[github.com/apache/incubator-seata](https://github.com/apache/incubator-seata)<br />
 <br />![image.png](/img/saga/sofameetup3_img/7.png)
 
 <a name="zyy0l"></a>

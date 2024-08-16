@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import { getLink } from '../../utils';
 import './index.scss';
 
 export type ButtonType = 'primary' | 'normal';
@@ -25,7 +24,7 @@ const Button = (props = defaultProps) => {
         [`button-${props.type}`]: true,
       })}
       target={props.target || '_self'}
-      href={getLink(props.link, props.language)}
+      href={props.link}
     >
       {props.children || null}
     </a>
