@@ -1,3 +1,9 @@
+---
+title: Seata的RPC通信源码分析02：协议篇（多版本协议）
+author: 谢明华
+keywords: [Seata、RPC模块、协议 ]
+date: 2024/08/15
+---
 # Seata的RPC通信源码分析02：协议篇（多版本协议）
 
 ### 引言和概述
