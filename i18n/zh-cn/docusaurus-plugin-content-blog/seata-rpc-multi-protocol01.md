@@ -57,7 +57,7 @@ protected Object sendSync(Channel channel, RpcMessage rpcMessage, long timeoutMi
         }
     }
 ```
-而接收报文的方式，主要在processMessage方法里，这个方法被`AbstractNettyRemotingClient.ClientHandler`和`AbstractNettyRemotingServer.ServerHandler`这两个类的channelRead调用，这两个内部类都是`ChannelDuplexHandler`的子类，他们各自注册在client和server的Bootstrap里（为什么注册到bootstrap就能进行接收操作？这个要移步netty的原理 [Netty data model, threading, and gotchas](https://medium.com/@akhaku/netty-data-model-threading-and-gotchas-cab820e4815a#:~:text=A%20Netty%20Channel%20is%20a,datagrams%20on%20a%20local%20port.)）
+而接收报文的方式，主要在processMessage方法里，这个方法被`AbstractNettyRemotingClient.ClientHandler`和`AbstractNettyRemotingServer.ServerHandler`这两个类的channelRead调用，这两个内部类都是`ChannelDuplexHandler`的子类，他们各自注册在client和server的Bootstrap里（为什么注册到bootstrap就能进行接收操作？这个要移步netty的原理）
 
 <img src="/img/blog/rpc_multi-protocol/03-netty-handler.jpg" width="700px" />
 
