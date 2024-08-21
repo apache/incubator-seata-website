@@ -16,7 +16,7 @@ date: 2019/11/28
 
 这里附上 PR 地址：[https://github.com/apache/incubator-seata/pull/1936](https://github.com/apache/incubator-seata/pull/1936)
 
-随后在 pr 中讨论中得知，目前 Seata 的设计是只有在发起方的 TM 才可以发起 GlobalRollbackRequest，RM 只能发送 BranchReport(false) 上报分支状态个 TC 服务端，无法直接发送 GlobalRollbackRequest 进行全局回滚操作。具体的交互逻辑如下：
+随后在 pr 中讨论中得知，目前 Seata 的设计是只有在发起方的 TM 才可以发起 GlobalRollbackRequest，RM 只能发送 BranchReport(false) 上报分支状态到 TC 服务端，无法直接发送 GlobalRollbackRequest 进行全局回滚操作。具体的交互逻辑如下：
 
 ![](https://gitee.com/objcoding/md-picture/raw/master/img/20191128094250.png)
 
