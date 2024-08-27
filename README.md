@@ -1,6 +1,6 @@
 # Seata Official Website
 
-[![CI Status](https://github.com/apache/incubator-seata-website/workflows/CI/badge.svg)](https://github.com/apache/incubator-seata-website/actions)
+[![CI Status](https://github.com/apache/incubator-seata-website/workflows/build/badge.svg?branch=docusaurus)](https://github.com/apache/incubator-seata-website/actions)
 
 All website material of [https://seata.apache.org](https://seata.apache.org), which uses a open source framework: Docusaurus.
 
@@ -37,7 +37,7 @@ localhost:3000/
 
 ## Requirements
 
-Base docusaurus **2.4.1**  
+Base docusaurus **2.4.1**
 Node.js version **19.5.0**
 
 ## Note for i18n
@@ -51,28 +51,28 @@ We use the **Docusaurus internationalization (i18n)** to support both English(en
 Our website stucture with i18n and versioning looks like below:
 
 ```text
-website  
+website
 ├── sidebars.json        # sidebar for the current docs version
 ├── docs                 # docs directory for the current docs version
-│   ├── foo  
-│   │   └── bar.md       # https://mysite.com/docs/next/foo/bar  
-│   └── hello.md         # https://mysite.com/docs/next/hello  
+│   ├── foo
+│   │   └── bar.md       # https://mysite.com/docs/next/foo/bar
+│   └── hello.md         # https://mysite.com/docs/next/hello
 ├── versions.json        # file to indicate what versions are available
-├── versioned_docs  
-│   ├── version-1.1.0  
-│   │   ├── foo  
-│   │   │   └── bar.md   # https://mysite.com/docs/foo/bar  
-│   │   └── hello.md  
-│   └── version-1.0.0  
-│       ├── foo  
-│       │   └── bar.md   # https://mysite.com/docs/1.0.0/foo/bar  
-│       └── hello.md  
-├── versioned_sidebars  
-│   ├── version-1.1.0-sidebars.json  
-│   └── version-1.0.0-sidebars.json  
-├── blog 
-├── docusaurus.config.js  
-├── package.json  
+├── versioned_docs
+│   ├── version-1.1.0
+│   │   ├── foo
+│   │   │   └── bar.md   # https://mysite.com/docs/foo/bar
+│   │   └── hello.md
+│   └── version-1.0.0
+│       ├── foo
+│       │   └── bar.md   # https://mysite.com/docs/1.0.0/foo/bar
+│       └── hello.md
+├── versioned_sidebars
+│   ├── version-1.1.0-sidebars.json
+│   └── version-1.0.0-sidebars.json
+├── blog
+├── docusaurus.config.js
+├── package.json
 ├── i18n
 │   ├── en
 │   │   ├── docusaurus-plugin-content-docs
@@ -94,20 +94,20 @@ website
 
 ### Directories Related to Adding Documents
 
-docs - Contain the current (latest version) documents (placeholder for sidebar indexing purposes)  
+docs - Contain the current (latest version) documents (placeholder for sidebar indexing purposes)
     Document Content should be `Placeholder. DO NOT DELETE.`
 
 sidebars.json - Set the sidebar for the current (latest version) documents.
 
-versioned_docs - Contain the previous version documents (placeholder for sidebar indexing purposes)  
+versioned_docs - Contain the previous version documents (placeholder for sidebar indexing purposes)
     Document Content should be `Placeholder. DO NOT DELETE.`
 
 versioned_sidebars - Set the sidebar for the specific previous versions documents.
 
-i18n-`en`-docusaurus-plugin-content-docs-`current` - Contain the actual **latest version** English documents.  
+i18n-`en`-docusaurus-plugin-content-docs-`current` - Contain the actual **latest version** English documents.
 i18n-`en`-docusaurus-plugin-content-docs-`version-1.0.0` - Contain the actual **1.0.0 version** English documents.
 
-i18n-`zh-cn`-docusaurus-plugin-content-docs-`current` - Contains the actual **latest version** Simplified Chinese documents.  
+i18n-`zh-cn`-docusaurus-plugin-content-docs-`current` - Contains the actual **latest version** Simplified Chinese documents.
 i18n-`zh-cn`-docusaurus-plugin-content-docs-`version-1.0.0` - Contain the actual **1.0.0 version** Simplified Chinese documents.
 
 ### Summary of Adding Documents
@@ -134,12 +134,12 @@ We don't have a versioned blog, so it's easier to add a blog. When adding a new 
 
 ### Directories Related to Adding Blogs
 
-blog - Contain the blogs(placeholder for blog sidebar indexing purposes)  
+blog - Contain the blogs(placeholder for blog sidebar indexing purposes)
     Blog Content should be `Placeholder. DO NOT DELETE.`
 
-i18n-`en`-docusaurus-plugin-content-blog - Contain all the actual English blogs.  
+i18n-`en`-docusaurus-plugin-content-blog - Contain all the actual English blogs.
 
-i18n-`zh-cn`-docusaurus-plugin-content-blog - Contain all the actual Simplified Chinese blogs.  
+i18n-`zh-cn`-docusaurus-plugin-content-blog - Contain all the actual Simplified Chinese blogs.
 
 ### Summary of Adding Blogs
 
