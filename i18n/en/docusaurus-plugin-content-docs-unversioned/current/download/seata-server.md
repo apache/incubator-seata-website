@@ -1,11 +1,11 @@
 ---
-title: Seata-Server Download
+title: Seata Java Download
 keywords: [Seata, Seata-Server, Download]
 description: Seata-Server release version download
 hide_table_of_contents: true
 ---
 
-# Seata-Server Download
+# Download
 
 :::tip
 

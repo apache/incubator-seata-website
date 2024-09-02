@@ -1,11 +1,11 @@
 ---
-title: Seata-Server下载
+title: Seata Java Download
 keywords: [Seata, Seata-Server, 下载]
 description: Seata-Server发布版本下载
 hide_table_of_contents: true
 ---
 
-# Seata-Server 下载
+# 下载
 
 :::tip
 
