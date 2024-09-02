@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 :::tip
 
-2.0.0 版本已发布，支持 Raft 集群；AT 事务模式新增达梦、SQLServer 和 PolarDB-X 2.0 数据库支持；支持 IPV6；支持统一 API；支持事务二阶段并行处理。欢迎下载试用。
+2.1.0 版本已发布，支持 RocketMQ 事务消息；Saga 状态机设计器完全重构；支持 Raft 元数据同步；支持Mock Server；兼容 2.1.0 以下版本的 API 和数据。欢迎下载试用。
 
 :::
 
@@ -42,6 +42,10 @@ hide_table_of_contents: true
 ```mdx-code-block
 <section class="full_width_table_section">
 ```
+
+| 版本号   | 源码下载                                   | 二进制下载      | 发布说明   | 参考文档              | 是否 ASF 版本 |
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------|-----------|
+| 2.1.0 | [apache-seata-2.1.0-incubating-src.tar.gz](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz) <br/> [apache-seata-2.1.0-incubating-src.tar.gz.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.asc) <br/> [apache-seata-2.1.0-incubating-src.tar.gz.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.sha512) | [apache-seata-2.1.0-incubating-bin.tar.gz](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz) <br/> [apache-seata-2.1.0-incubating-bin.tar.gz.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.asc)<br/> [apache-seata-2.1.0-incubating-bin.tar.gz.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.sha512) | [2.1.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.1.0) | [2.1.0 Quick Start](/docs/user/quickstart/) | YES       |
 
 | 版本号 | 二进制下载                                                                                             | Docker 镜像                                                                                        | CheckSum                         | 发布说明                                    | 参考文档                                      | 是否 ASF 版本 |
 | ------ | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------- | --------------------------------------------- | ------------- |
