@@ -1,6 +1,6 @@
 # Seata Official Website
 
-[![CI Status](https://github.com/apache/incubator-seata-website/workflows/build/badge.svg?branch=docusaurus)](https://github.com/apache/incubator-seata-website/actions)
+[![seata website deploy on github](https://github.com/apache/incubator-seata-website/actions/workflows/deploy.yml/badge.svg?branch=docusaurus)](https://github.com/apache/incubator-seata-website/actions/workflows/deploy.yml)
 
 All website material of [https://seata.apache.org](https://seata.apache.org), which uses a open source framework: Docusaurus.
 
