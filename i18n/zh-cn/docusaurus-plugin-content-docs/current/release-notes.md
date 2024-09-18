@@ -22,7 +22,7 @@ description: 发布说明
 
 ### Seata 2.1.0
 
-Seata 2.0.0 发布
+Seata 2.1.0 发布
 
 Seata 是一款开源的分布式事务解决方案，提供高性能和简单易用的分布式事务服务。
 
@@ -244,6 +244,15 @@ Seata 是一款开源的分布式事务解决方案，提供高性能和简单�
 - [YeonCheolGit](https://github.com/YeonCheolGit)
 
 同时，我们收到了社区反馈的很多有价值的issue和建议，非常感谢大家。
+
+#### 常用链接
+
+- **Seata:** https://github.com/apache/incubator-seata
+- **Seata-Samples:** https://github.com/apache/incubator-seata-samples
+- **Release:** https://github.com/apache/incubator-seata/releases
+- **WebSite:** https://seata.apache.org
+
+</details>
 
 ### 2.0.0 (2023-11-24，推荐版本)
 
