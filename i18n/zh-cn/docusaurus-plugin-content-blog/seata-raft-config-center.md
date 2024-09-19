@@ -6,11 +6,11 @@ date: 2024/09/19
 keywords: [seata,分布式事务,配置中心,Raft,RocksDB]
 ---
 
-# 一、项目背景
+# 1. 项目背景
 目前seata支持丰富的第三方配置中心，但是考虑使用的便捷性同时为了降低使用seata的门槛，在seata-server利用现有的sofa-jraft+rocksdb构建一个配置中心功能，seata-client直接与seata-server通信,获取seata相关的配置，不需要再去第三方配置中心读取，实现配置中心自闭环。
 
 
-# 二、设计说明
+# 2. 设计说明
 ## 2.1 配置中心
 
 在现有的第三方配置中心实现中，Client端和Server端对于配置中心是解耦的，Client端和Server端直接通过`Configuration`实例获取配置项，且`Configuration`对于Client端和Server端的初始化行为是一致的，都是先连接到配置中心中间件然后获取配置，以及添加监听器等。
@@ -90,7 +90,7 @@ Server端和Client端配置中心需要监听配置项的变化。
 
 考虑到无法提前知道租户数量（无法在启动时创建指定数量的RocksDB)，因此使用单个RocksDB实例，多列族存储。不同租户使用`namespace`区分，在Rocksdb中通过列族（ColumnFamily）进行逻辑隔离，一个namespace对应一个列族。列族相当于关系型数据库中表的概念。在配置的增删改查时指定namespace操作具体的列族，实现多租户的隔离。此外名为`config_version`的列族是内置的，用于对现有的配置进行版本号跟踪。
 ![img](/img/blog/seata-raft-config-center5.png)
-# 三、使用方式
+# 3. 使用方式
 ## 3.0 准备配置文件
 
 首先准备好配置文件，具体可以参考：[配置文件示例](https://github.com/apache/incubator-seata/blob/2.x/script/config-center/config.txt)。
