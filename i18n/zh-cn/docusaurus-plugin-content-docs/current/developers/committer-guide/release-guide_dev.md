@@ -1,5 +1,5 @@
 ---
-title: release guide
+title: 发版手册
 keywords: [Seata]
 description: Release Guide.
 ---
