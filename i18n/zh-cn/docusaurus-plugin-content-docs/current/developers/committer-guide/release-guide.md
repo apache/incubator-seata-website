@@ -144,7 +144,7 @@ gpg: sending key 561507DBDD81E3D5 to hkp server keys.openpgp.org
             <properties>
                 <mavenExecutorId>forked-path</mavenExecutorId>
                 <gpg.keyname>yourKeyName</gpg.keyname>
-                <deploy.url>https://dist.apache.org/repos/dist/dev/rocketmq/</deploy.url>
+          <deploy.url>https://dist.apache.org/repos/dist/dev/incubator/seata/</deploy.url>
             </properties>
         </profile>
     </profiles>
@@ -482,3 +482,4 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 2. 将之前上传到SVN dev中的binary和source采用相同的方式，拉取https://dist.apache.org/repos/dist/release/incubator/seata/  然后将dev中的x.x.x移动到release ,并在dev中执行svn delete x.x.x 再svn commit 提交后删除dev下的x.x.x。再cd 至release中的seata通过svn add 将x.x.x版本提交至release路径下
 3. 将之前release note设置为Set as the latest release并提交
 4. 将x.x.x的文档更新至seata官网中，并补充对应binary和source的下载链接
+
