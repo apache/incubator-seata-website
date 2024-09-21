@@ -1,3 +1,9 @@
+---
+title: release guide
+keywords: [Seata]
+description: Release Guide.
+---
+
 # 发布手册
 
 ## 1. 前言
