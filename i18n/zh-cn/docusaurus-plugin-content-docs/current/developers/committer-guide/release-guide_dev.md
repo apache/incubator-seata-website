@@ -221,15 +221,11 @@ Source 建议直接通过github 对应版本分支如2.2.0 进行下载zip包，
 
 `gpg --print-md SHA512 apache-seata-x.x.x-incubating-src.zip > apache-seata-x.x.x-incubating-src.zip.sha512 `
 
-`gpg --clearsign apache-seata-2.2.0-incubating-src.zip`
-
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.zip.asc apache-seata-x.x.x-incubating-bin.zip`
 
 Binary进行签名
 
 `gpg --print-md SHA512 apache-seata-x.x.x-incubating-src.zip > apache-seata-x.x.x-incubating-src.zip.sha512`
-
-`gpg --clearsign apache-seata-x.x.x-incubating-bin.tar.gz`
 
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.tar.gz.asc apache-seata-x.x.x-incubating-bin.tar.gz`
 

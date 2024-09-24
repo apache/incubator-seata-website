@@ -1,5 +1,5 @@
 ---
-title: release guide
+title: 发版手册
 keywords: [Seata]
 description: Release Guide.
 ---
@@ -221,15 +221,11 @@ Source 建议直接通过github 对应版本分支如2.2.0 进行下载zip包，
 
 `gpg --print-md SHA512 apache-seata-x.x.x-incubating-src.zip > apache-seata-x.x.x-incubating-src.zip.sha512 `
 
-`gpg --clearsign apache-seata-2.2.0-incubating-src.zip`
-
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.zip.asc apache-seata-x.x.x-incubating-bin.zip`
 
 Binary进行签名
 
 `gpg --print-md SHA512 apache-seata-x.x.x-incubating-src.zip > apache-seata-x.x.x-incubating-src.zip.sha512`
-
-`gpg --clearsign apache-seata-x.x.x-incubating-bin.tar.gz`
 
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.tar.gz.asc apache-seata-x.x.x-incubating-bin.tar.gz`
 
@@ -488,4 +484,3 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 2. 将之前上传到SVN dev中的binary和source采用相同的方式，拉取https://dist.apache.org/repos/dist/release/incubator/seata/  然后将dev中的x.x.x移动到release ,并在dev中执行svn delete x.x.x 再svn commit 提交后删除dev下的x.x.x。再cd 至release中的seata通过svn add 将x.x.x版本提交至release路径下
 3. 将之前release note设置为Set as the latest release并提交
 4. 将x.x.x的文档更新至seata官网中，并补充对应binary和source的下载链接
-
