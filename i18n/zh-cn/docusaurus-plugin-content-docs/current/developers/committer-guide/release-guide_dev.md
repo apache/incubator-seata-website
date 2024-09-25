@@ -219,15 +219,23 @@ mvn clean deploy -Prelease -DskipTests -e -B -Dorg.slf4j.simpleLogger.log.org.ap
 
 Source 建议直接通过github 对应版本分支如2.2.0 进行下载zip包，避免本地环境污染Source包内容，然后重命名为apache-seata-x.x.x-incubating-src.zip
 
-`gpg --print-md SHA512 apache-seata-x.x.x-incubating-src.zip > apache-seata-x.x.x-incubating-src.zip.sha512 `
+`shasum -b -a 512 apache-seata-x.x.x-incubating-src.zip >> apache-seata-x.x.x-incubating-src.zip.sha512 `
 
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.zip.asc apache-seata-x.x.x-incubating-bin.zip`
 
 Binary进行签名
 
-`gpg --print-md SHA512 apache-seata-x.x.x-incubating-src.zip > apache-seata-x.x.x-incubating-src.zip.sha512`
+`shasum -b -a 512 apache-seata-x.x.x-incubating-bin.tar.gz >> apache-seata-x.x.x-incubating-bin.tar.gz.sha512`
 
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.tar.gz.asc apache-seata-x.x.x-incubating-bin.tar.gz`
+
+sha512验证
+
+`shasum -c apache-seata-x.x.x-incubating-bin.tar.gz.sha512`
+
+asc验证
+
+`gpg --verify  apache-seata-x.x.x-incubating-src.zip.asc apache-seata-x.x.x-incubating-src.zip`
 
 #### 2.2.4 拉取svn至本地，并构建发布版本路径，并将签名文件及Source和Binary移入其中
 
