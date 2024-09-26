@@ -47,7 +47,7 @@ description: Release Guide.
 
 - 通过 `gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5` 导出公钥到文本文件
 
-- 将生成的密钥追加到[DEV KEYS file]([dist.apache.org/repos/dist/release/incubator/seata/KEYS](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)) 和 [RELEASE KEYS file]([dist.apache.org/repos/dist/release/incubator/seata/KEYS](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS))
+- 将生成的密钥追加到(https://dist.apache.org/repos/dist/release/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS))
 
 注意：
 
