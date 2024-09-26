@@ -191,31 +191,31 @@ gpg: sending key 561507DBDD81E3D5 to hkp server keys.openpgp.org
 
 例：如 Java SDK 需要发布 `2.2.0` 版本，从 `2.x` 分支拉出新分支 `2.2.0`，并在此分支提交从 Snapshot版本号 替换为 `2.2.0` 版本号的 commit。
 
-## 2.预发布二进制包
+### 2.预发布二进制包
 
-### 2.1 SDK根据 [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] 的说明准备发布。
+#### 2.1 SDK根据 [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] 的说明准备发布。
 
 ```
 mvn clean deploy -Prelease -DskipTests -e -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 ```
 
-此时，seata sdk被发布到 [预发仓库](https://repository.apache.org/#stagingRepositories) （需要apache账号密码登录），找到发布的版本，即 ${STAGING.RELEASE}， 并点击 Close。
+此时，seata sdk被发布到 [预发仓库](https://repository.apache.org/#stagingRepositories) （需要apache账号密码登录），找到发布的版本，即 `${STAGING.RELEASE}`， 并点击 Close。
 
 注：如果close失败很可能是因为签名的秘钥对应的公钥在keys.openpgp.org中无法获取到，请自行通过[OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/) 检查
 
-### 2.2 Source&Binary提交至svn仓库
+#### 2.2 Source&Binary提交至svn仓库
 
-#### 2.2.1 安装svn
+##### 2.2.1 安装svn
 
 下载并安装[Download Apache Subversion Sources](https://subversion.apache.org/download.cgi#recommended-release)
 
 或通过 `brew install subversion` 一键安装
 
-#### 2.2.2 编译seata-server及seata-namingserver
+##### 2.2.2 编译seata-server及seata-namingserver
 
  `mvn -Prelease-seata -Dmaven.test.skip=true -Dskip.npm=true -T4C -Dpmd.skip=true clean install -U`
 
-#### 2.2.3 将Source及Binary进行签名
+##### 2.2.3 将Source及Binary进行签名
 
 Source 建议直接通过github 对应版本分支如2.2.0 进行下载zip包，避免本地环境污染Source包内容，然后重命名为apache-seata-x.x.x-incubating-src.zip
 
@@ -237,7 +237,7 @@ asc验证
 
 `gpg --verify  apache-seata-x.x.x-incubating-src.zip.asc apache-seata-x.x.x-incubating-src.zip`
 
-#### 2.2.4 拉取svn至本地，并构建发布版本路径，并将签名文件及Source和Binary移入其中
+##### 2.2.4 拉取svn至本地，并构建发布版本路径，并将签名文件及Source和Binary移入其中
 
 拉取svn目录
 
@@ -247,7 +247,7 @@ asc验证
 
 `cd seata`
 
-`mkdir x.x.x`
+`mkdir incubator-seata/x.x.x-RCN/`
 
 `mv ….. x.x.x`
 
@@ -486,7 +486,7 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 
 
 
-#### 4.完成发布
+### 4.完成发布
 
 1. 从Apache Nexus 仓库, 选择之前进行close过的的 **orgapacheseata-XXX** 点击 `Release` 图标发布
 2. 将之前上传到SVN dev中的binary和source采用相同的方式，拉取https://dist.apache.org/repos/dist/release/incubator/seata/  然后将dev中的x.x.x移动到release ,并在dev中执行svn delete x.x.x 再svn commit 提交后删除dev下的x.x.x。再cd 至release中的seata通过svn add 将x.x.x版本提交至release路径下
