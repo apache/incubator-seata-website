@@ -247,7 +247,7 @@ asc验证
 
 `cd seata`
 
-`mkdir incubator-seata/x.x.x-RCN/`
+`mkdir x.x.x`
 
 `mv ….. x.x.x`
 
@@ -288,9 +288,9 @@ asc验证
 提交后的版本为 71769。
 ```
 
-### 2.3 创建tag及releasenote
+#### 2.3 创建tag及releasenote
 
-#### 2.3.1 创建tag
+##### 2.3.1 创建tag
 
 在x.x.x分支下执行
 
@@ -298,15 +298,15 @@ asc验证
 
 git push upstream(seata仓库repo) vx.x.x
 
-#### 2.3.2 创建release note
+##### 2.3.2 创建release note
 
 通过该链接创建release note [New release · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/releases/new) 并将Choose a tag设置为对应的tag
 
 并设置为Set as a pre-release 整体投票通过后再设置为Set as the latest release
 
-# 3.投票阶段
+### 3.投票阶段
 
-## 3.1 社区内部投票
+#### 3.1 社区内部投票
 
 **投票持续至少 72 小时并获得 3 个+1 binding票**
 
@@ -486,7 +486,7 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 
 
 
-### 4.完成发布
+# 4.完成发布
 
 1. 从Apache Nexus 仓库, 选择之前进行close过的的 **orgapacheseata-XXX** 点击 `Release` 图标发布
 2. 将之前上传到SVN dev中的binary和source采用相同的方式，拉取https://dist.apache.org/repos/dist/release/incubator/seata/  然后将dev中的x.x.x移动到release ,并在dev中执行svn delete x.x.x 再svn commit 提交后删除dev下的x.x.x。再cd 至release中的seata通过svn add 将x.x.x版本提交至release路径下

@@ -71,6 +71,10 @@
     "message": "提交者向导",
     "description": "The label for category Committer Guide in sidebar developers"
   },
+  "sidebar.developers.category.PPMC Guide": {
+    "message": "PPMC向导",
+    "description": "The label for category PPMC Guide in sidebar developers"
+  },
   "sidebar.release-notes.category.release-notes": {
     "message": "发布说明",
     "description": "The label for category Release Notes in sidebar Release Notes"
