@@ -28,7 +28,7 @@ description: Release Guide.
 
 - 通过` gpg --full-gen-key` 生成一个新的 `gpg` 密钥, 设置密钥长度为 4096
 
-  注：可设置永不过期，也可根据自己需求设置一定的过期时间，但需要在过期后更新的公钥到[DEV KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)
+  注：可设置永不过期，也可根据自己需求设置一定的过期时间，但需要在过期后更新的公钥到[DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)
 
 - 通过 `gpg --keyserver keys.openpgp.org --send-key <your key id>` 上传密钥到公钥服务器
 
@@ -47,7 +47,7 @@ description: Release Guide.
 
 - 通过 `gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5` 导出公钥到文本文件
 
-- 将生成的密钥追加到(https://dist.apache.org/repos/dist/release/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS))
+- 将生成的密钥追加到[DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)
 
 注意：
 

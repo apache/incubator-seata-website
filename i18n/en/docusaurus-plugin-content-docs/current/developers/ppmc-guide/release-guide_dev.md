@@ -30,7 +30,7 @@ Here is a brief process for generating the key:
 
 - Generate a new `gpg` key using `gpg --full-gen-key`, setting the key length to 4096.
 
-  Note: You can set the key to never expire or choose a specific expiration time based on your needs. However, you will need to update the public key after it expires in the [DEV KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS) and the [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS).
+  Note: You can set the key to never expire or choose a specific expiration time based on your needs. However, you will need to update the public key after it expires in the [DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) and the [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS).
 
 - Upload the key to a public key server using `gpg --keyserver keys.openpgp.org --send-key <your key id>`.
 
@@ -48,8 +48,7 @@ The key ID is 561507DBDD81E3D5.
 ```
 
 - Export the public key to a text file using the command: `gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5`.
-- Append the generated key to the [DEV KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS) and the [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS).
-
+- Append the generated key to the [DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) and the [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS).
 Note:
 
 The DEV SVN repository can be added by the Release Manager, while the RELEASE SVN repository requires PMC permissions and can be assisted by the PMC to upload the KEY.
