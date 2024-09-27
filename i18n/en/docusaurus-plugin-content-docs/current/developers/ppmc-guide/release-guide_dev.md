@@ -365,8 +365,7 @@ In this context, "N" in RC N and Round N represents the number of times the voti
 ```
 Hi Seata Community,
 
-This is a call for vote to release Apache Seata(incubating)
-2.2.0 This is the first release of Apache Seata(incubating).
+This is a call for vote to release Apache Seata(incubating) v2.2.0-rc1.
 
 The release candidates:
 https://dist.apache.org/repos/dist/dev/incubator/seata/x.x.x/
@@ -461,7 +460,10 @@ Send an email to `general@incubator.apache.org`.
 Hello everyone,
 
 This is a call for vote to release Apache Seata(incubating)
-2.2.0 This is the first release of Apache Seata(incubating).
+
+The Apache Fury community has voted and approved the release of Apache
+Seata(incubating) v2.2.0. We now kindly request the IPMC members
+review and vote for this release.
 
 The vote thread:
 https://lists.apache.org/thread/rwco6lms9qo10whjj8gg1dr8j7drl2gf

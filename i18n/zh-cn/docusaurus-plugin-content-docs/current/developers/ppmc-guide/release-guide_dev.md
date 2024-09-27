@@ -327,8 +327,7 @@ RC N和Round N的N代表次数，该版本的第几次投票
 ```
 Hi Seata Community,
 
-This is a call for vote to release Apache Seata(incubating)
-2.2.0 This is the first release of Apache Seata(incubating).
+This is a call for vote to release Apache Seata(incubating) vx.x.x.
 
 The release candidates:
 https://dist.apache.org/repos/dist/dev/incubator/seata/x.x.x/
@@ -423,8 +422,12 @@ We will soon launch the second stage of voting.
 ```
 Hello everyone,
 
-This is a call for vote to release Apache Seata(incubating)
-2.2.0 This is the first release of Apache Seata(incubating).
+This is a call for vote to release Apache Seata(incubating) vx.x.x
+
+The Apache Fury community has voted and approved the release of Apache
+Seata(incubating) vx.x.x. We now kindly request the IPMC members
+review and vote for this release.
+
 
 The vote thread:
 社区中投票的thread链接, 如：
