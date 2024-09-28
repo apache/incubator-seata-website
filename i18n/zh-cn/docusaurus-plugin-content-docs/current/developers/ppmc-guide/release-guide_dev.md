@@ -424,7 +424,7 @@ Hello everyone,
 
 This is a call for vote to release Apache Seata(incubating) vx.x.x
 
-The Apache Fury community has voted and approved the release of Apache
+The Apache Seata community has voted and approved the release of Apache
 Seata(incubating) vx.x.x. We now kindly request the IPMC members
 review and vote for this release.
 

@@ -461,7 +461,7 @@ Hello everyone,
 
 This is a call for vote to release Apache Seata(incubating)
 
-The Apache Fury community has voted and approved the release of Apache
+The Apache Seata community has voted and approved the release of Apache
 Seata(incubating) v2.2.0. We now kindly request the IPMC members
 review and vote for this release.
 
