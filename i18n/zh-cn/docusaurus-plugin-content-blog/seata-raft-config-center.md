@@ -153,8 +153,7 @@ Raft配置中心提供了**namespace命名空间**的机制来实现多租户的
 - namespace=prop，dataId=seata-server.properties，dataId=seata-client.txt
 
 
-![](https://c05j6bovqhh.feishu.cn/space/api/box/stream/download/asynccode/?code=OGQ0ODg0MDY4NGY0MWUxMjA4NmFmZWJkMjI3ZGYzYjdfRm1GdGN0akwyR2lSOVRoV0cyTE5kREF1V29KRG91WUJfVG9rZW46WEQ0emJmZFpCb1FLWW94R0lzRGNHcDJsbkZjXzE3MjY3Mjc1NTE6MTcyNjczMTE1MV9WNA)
-
+![img](/img/blog/seata-raft-config-center配置隔离.png)
 
 
 ### 3.2.2 配置上传
@@ -162,7 +161,7 @@ Raft配置中心提供了**namespace命名空间**的机制来实现多租户的
 在Sever启动时，Server端配置的初始文件会自动上传到配置中心。此外用户还可以通过点击"上传（Upload）"按钮上传配置文件到指定的**namespace**和**dataId。**
 当配置上传到Server端配置中心后，Client端就可以通过**namespace**和**dataId**来获取具体的配置文件了。
 
-![](https://c05j6bovqhh.feishu.cn/space/api/box/stream/download/asynccode/?code=M2M3Nzg1NzQxZDcyMGY0NWI3YTVjOWFlMGUzNWQ4MzZfZ1o2czRxWDJ2b2ZOeXZxWmN2bUQxMUJJeGhicGlaMnNfVG9rZW46Qk5iZmJOWFBIb1NzWlR4QU5rZGNibUxUblNjXzE3MjY3Mjc1NTE6MTcyNjczMTE1MV9WNA)
+![img](/img/blog/seata-raft-config-center配置上传.png)
 
 目前支持上传的配置文件类型有：txt、text、yaml、properties类型。具体的配置文件可参考示例：[配置文件示例](https://github.com/apache/incubator-seata/blob/2.x/script/config-center/config.txt)
 
@@ -172,7 +171,7 @@ Raft配置中心提供了**namespace命名空间**的机制来实现多租户的
 
 配置以配置项列表的形式呈现，每一行都代表一个配置项，以**Key**和**Value**展示。
 
-![](https://c05j6bovqhh.feishu.cn/space/api/box/stream/download/asynccode/?code=MDY0NzQ0ODkyNjlmYTYzYTE2MmVkZmNkODRiOGUwMzdfVXdKbTBoY2FjN3hmUzRHRW11UWZMYnlRVXZ2VVAyd29fVG9rZW46T0FqSGJaaFBhb0p1ZDB4OVVYdGNZOUVLbk1mXzE3MjY3Mjc1NTE6MTcyNjczMTE1MV9WNA)
+![img](/img/blog/seata-raft-config-center配置查询.png)
 
 ### 3.2.4 配置删除
 
@@ -180,7 +179,7 @@ Raft配置中心提供了**namespace命名空间**的机制来实现多租户的
 
 注意该操作一旦完成，会清空该配置下的所有配置项信息，且无法恢复。请避免删除正在使用中的配置。
 
-![](https://c05j6bovqhh.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjM2ZGVhMjUyYWQ4MzRhNDI2NzI0ZjIzM2RiZmZhNjRfaTBpTHdOWFduMmlUb0pBZEJrRm91bU1vclRFVU9lY0dfVG9rZW46Q2RyY2JaY1hnb2l6eEF4RFlMcWNoRXdUbmhlXzE3MjY3Mjc1NTE6MTcyNjczMTE1MV9WNA)
+![img](/img/blog/seata-raft-config-center配置删除.png)
 
 ### 3.2.5 配置修改
 
@@ -189,17 +188,17 @@ Raft配置中心提供了**namespace命名空间**的机制来实现多租户的
 - **新增：在当前配置下添加配置项**。
 
 
-![](https://c05j6bovqhh.feishu.cn/space/api/box/stream/download/asynccode/?code=OThmMGNlNjBkZmE0YjE5NzdlYTVmNTczY2M1NjVkZThfSTA5UlpQSGFEbkRpdmRTeDZhejM0TFNzWGlmTERsUUFfVG9rZW46RmtwUGJoMThPb3VJNWp4SjR1TWNnUmUzbkx6XzE3MjY3Mjc1NTE6MTcyNjczMTE1MV9WNA)
+![img](/img/blog/seata-raft-config-center配置修改1.png)
 
 - **修改：修改指定配置项的值。**
 
 
-![](https://c05j6bovqhh.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDAzMDJkMGE5MmY1NWE4ZGI1ZDVmNjUwYjIwOWJhYjZfRHNIRkRLMEM0UXM1dm1qWHlYbjNEdEhBWVZlMGRYTVVfVG9rZW46TEdJZWJtTjY3b0c1NlV4a3IzSGM4U2pObjFlXzE3MjY3Mjc1NTE6MTcyNjczMTE1MV9WNA)
+![img](/img/blog/seata-raft-config-center配置修改2.png)
 
 - **删除：删除指定的配置项**。
 
 
-![](https://c05j6bovqhh.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2M2ZTkyMjAwNWZhYzYzYjFhZTBkYjQ4NThhYTBlMzhfdkxWUUpQWG9ha2VSdXp5OW5sNVV6cHRtRGduVHc3bHpfVG9rZW46TkpqYmJVeU9Fb0ptNkx4U2gzdGNRaThNbldmXzE3MjY3Mjc1NTE6MTcyNjczMTE1MV9WNA)
+![img](/img/blog/seata-raft-config-center配置修改3.png)
 
 
 
