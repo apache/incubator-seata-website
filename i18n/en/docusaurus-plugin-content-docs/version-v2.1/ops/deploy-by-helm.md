@@ -34,8 +34,8 @@ replicaCount: 1
 namespace: default
 
 image:
-  repository: seataio/seata-server
-  tag: latest
+  repository: apache/seata-server
+  tag: 2.1.0
   pullPolicy: IfNotPresent
 
 service:

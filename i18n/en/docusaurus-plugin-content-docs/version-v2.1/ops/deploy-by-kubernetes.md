@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
         - name: seata-server
-          image: docker.io/seataio/seata-server:latest
+          image: apache/seata-server:2.1.0
           imagePullPolicy: IfNotPresent
           env:
             - name: SEATA_PORT
@@ -114,7 +114,7 @@ spec:
     spec:
       containers:
         - name: seata-server
-          image: docker.io/seataio/seata-server:latest
+          image: apache/seata-server:2.1.0
           imagePullPolicy: IfNotPresent
           env:
             - name: SEATA_CONFIG_NAME
@@ -170,21 +170,21 @@ data:
   application.yml: |
     server:
       port: 7091
-    
+
     spring:
       application:
         name: seata-server
-    
+
     logging:
       config: classpath:logback-spring.xml
       file:
         path: ${user.home}/logs/seata
-    
+
     console:
       user:
         username: seata
         password: seata
-    
+
     seata:
       config:
         # support: nacos, consul, apollo, zk, etcd3
