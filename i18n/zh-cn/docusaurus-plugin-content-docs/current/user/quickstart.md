@@ -192,7 +192,7 @@ CREATE TABLE `account_tbl` (
 
 ### 步骤 4: 启动服务
 
-- 从 https://github.com/apache/incubator-seata/releases,下载服务器软件包，将其解压缩。
+- 从 [https://github.com/apache/incubator-seata/releases](https://github.com/apache/incubator-seata/releases),下载服务器软件包，将其解压缩。
 
 ```shell
 Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows) [options]

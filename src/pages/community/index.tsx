@@ -48,36 +48,32 @@ const data = {
         link: 'mailto:dev@seata.apache.org',
       },
       {
-        img: '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
-        imgHover:
-          '//img.alicdn.com/tfs/TB1OTCISET1gK0jSZFrXXcNCXXa-344-346.jpg',
+        img: require('@site/static/img/community/wechat-official.jpg').default,
+        imgHover: require('@site/static/img/community/wechat-official.jpg').default,
         title: translate({
           id: 'community.contactsListTitle2',
           message: 'Seata 微信官方公众号(强烈推荐)',
         }),
       },
       {
-        img: '//img.alicdn.com/tfs/TB1nccZi79l0K4jSZFKXXXFjpXa-614-614.jpg',
-        imgHover:
-          '//img.alicdn.com/tfs/TB1nccZi79l0K4jSZFKXXXFjpXa-614-614.jpg',
+        img: require('@site/static/img/community/wechat.jpg').default,
+        imgHover: require('@site/static/img/community/wechat.jpg').default,
         title: translate({
           id: 'community.contactsListTitle3',
           message: '微信群拉取小助手',
         }),
       },
       {
-        img: '//img.alicdn.com/imgextra/i3/O1CN01JP7KIR1ju3dlIdipd_!!6000000004607-0-tps-454-460.jpg',
-        imgHover:
-          '//img.alicdn.com/imgextra/i3/O1CN01JP7KIR1ju3dlIdipd_!!6000000004607-0-tps-454-460.jpg',
+        img: require('@site/static/img/community/dingtalk-group.jpg').default,
+        imgHover: require('@site/static/img/community/dingtalk-group.jpg').default,
         title: translate({
           id: 'community.contactsListTitle4',
           message: '钉钉③群(推荐)',
         }),
       },
       {
-        img: '//img.alicdn.com/imgextra/i2/O1CN014QxxzN1GH0sOVYTgf_!!6000000000596-0-tps-300-302.jpg',
-        imgHover:
-          '//img.alicdn.com/imgextra/i2/O1CN014QxxzN1GH0sOVYTgf_!!6000000000596-0-tps-300-302.jpg',
+        img: require('@site/static/img/community/qq-group.jpg').default,
+        imgHover: require('@site/static/img/community/qq-group.jpg').default,
         title: translate({
           id: 'community.contactsListTitle5',
           message: 'QQ③群',
