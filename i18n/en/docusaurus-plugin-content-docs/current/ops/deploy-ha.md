@@ -33,7 +33,7 @@ registry {
 
 config {
   type = "nacos"
-  
+
   nacos {
     serverAddr = "192.168.199.2"
     namespace = ""
@@ -105,7 +105,7 @@ spec:
     spec:
       containers:
         - name: seata-ha-server
-          image: docker.io/seataio/seata-server:latest
+          image: apache/seata-server:2.1.0
           imagePullPolicy: IfNotPresent
           env:
             - name: SEATA_CONFIG_NAME

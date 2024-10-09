@@ -9,8 +9,8 @@ date: 2022-09-06
 
 # Deploy Seata Server By Docker Compose
 
-## Precautions 
-- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/seataio/seata-server/tags) to determine the image version to be pulled.
+## Precautions
+- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/apache/seata-server/tags) to determine the image version to be pulled.
 - Starting from Seata Server version 1.5.0, the configuration file has been changed to application.yml. So when using custom configuration, you need to copy the native configuration first.
 
 ## Use custom configuration file
@@ -21,7 +21,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -48,7 +48,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "7091:7091"
@@ -112,7 +112,7 @@ seata:
       url: jdbc:mysql://127.0.0.1:3306/seata-server?useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
       user: "username"
       password: "password"
-      
+
   #  server:
   #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
   security:
@@ -127,7 +127,7 @@ seata:
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:1.5.2
+    image: apache/seata-server:2.1.0
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -272,7 +272,7 @@ server.recovery.timeoutRetryPeriod=1000
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:1.5.2
+    image: apache/seata-server:2.1.0
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -426,7 +426,7 @@ server.recovery.timeoutRetryPeriod=1000
 version: "3.1"
 services:
   seata-server-1:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -443,7 +443,7 @@ services:
       - "./seata-server/resources:/seata-server/resources"
 
   seata-server-2:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     ports:
       - "7092:7091"
       - "8092:8092"

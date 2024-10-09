@@ -48,32 +48,32 @@ const data = {
         link: 'mailto:dev@seata.apache.org',
       },
       {
-        img: require('@site/static/img/community/image.png').default,
-        imgHover: require('@site/static/img/community/image.png').default,
+        img: require('@site/static/img/community/wechat-official.jpg').default,
+        imgHover: require('@site/static/img/community/wechat-official.jpg').default,
         title: translate({
           id: 'community.contactsListTitle2',
           message: 'Seata 微信官方公众号(强烈推荐)',
         }),
       },
       {
-        img: require('@site/static/img/community/image.png').default,
-        imgHover: require('@site/static/img/community/image.png').default,
+        img: require('@site/static/img/community/wechat.jpg').default,
+        imgHover: require('@site/static/img/community/wechat.jpg').default,
         title: translate({
           id: 'community.contactsListTitle3',
           message: '微信群拉取小助手',
         }),
       },
       {
-        img: require('@site/static/img/community/image.png').default,
-        imgHover: require('@site/static/img/community/image.png').default,
+        img: require('@site/static/img/community/dingtalk-group.jpg').default,
+        imgHover: require('@site/static/img/community/dingtalk-group.jpg').default,
         title: translate({
           id: 'community.contactsListTitle4',
           message: '钉钉③群(推荐)',
         }),
       },
       {
-        img: require('@site/static/img/community/image.png').default,
-        imgHover: require('@site/static/img/community/image.png').default,
+        img: require('@site/static/img/community/qq-group.jpg').default,
+        imgHover: require('@site/static/img/community/qq-group.jpg').default,
         title: translate({
           id: 'community.contactsListTitle5',
           message: 'QQ③群',
