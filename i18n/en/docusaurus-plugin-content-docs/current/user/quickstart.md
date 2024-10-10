@@ -218,3 +218,37 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 ### Step 5: Run example
 
 Go to samples repo: [seata-samples/at-samples](https://github.com/apache/incubator-seata-samples/tree/master/at-sample), and find a suitable dependency setup. Start `Account`, `Storage`, `Order`, `Business` services accordingly.
+
+## RocketMQ Integration to Seata
+
+Using RocketMQ as a participant in TCC/AT is simple,  introducing rocketmq-client on its own and then introducing the seata-rocketmq dependency:
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>yourVersion</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.seata</groupId>
+            <artifactId>seata-rocketmq</artifactId>
+            <version>yourVersion</version>
+        </dependency>
+    </dependencies>
+```
+Create the producer by `SeataMQProducerFactory`, then send messages by  `SeataMQProducer`. Here is an example:
+```java
+public class BusinessServiceImpl implements BusinessService {
+    private static final String NAME_SERVER = "127.0.0.1:9876";
+    private static final String PRODUCER_GROUP = "test-group";
+    private static final String TOPIC = "test-topic";
+    private static SeataMQProducer producer= SeataMQProducerFactory.createSingle(NAME_SERVER, PRODUCER_GROUP);
+
+    public void purchase(String userId, String commodityCode, int orderCount) {
+      producer.send(new Message(TOPIC, "testMessage".getBytes(StandardCharsets.UTF_8)));
+      //do something
+    }
+}
+```
+The effect of this approach is that the production message acts as a participant RM in the AT/TCC transaction. When the phase 1st of the global transaction is completed, the MQ message will be committed or rollback based on the transaction 2nd phase’s request,
+the message will not be consumed until then.
