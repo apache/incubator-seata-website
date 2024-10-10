@@ -6,14 +6,14 @@ date: 2024/08/15
 ---
 # Seata's RPC Communication Source Code Analysis 02(Multi-Version Protocols)
 
-### 引言和概述
+### Overview
 
 In the previous article,[Seata's RPC Communication Source Code Analysis 01(Transport)](seata-rpc-multi-protocol01.md)we introduced the transmission mechanism of RPC communication. In this article, we will continue with the protocol part, completing the unaddressed encode/decode sections in the diagram.
 
 <img src="/img/blog/rpc_multi-protocol/00-netty-layer.png" width="700px" />
 
 Similarly, we will delve into the topic using a question-driven approach. In this article, we aim not only to understand how binary data is parsed into the rpcMsg type but also to explore how different protocol versions are supported. So, the first question is: What does the protocol look like?
-## 协议结构
+## Structure of Protocol
 <img src="/img/blog/rpc_multi-protocol/04-protocol.jpg" width="900px" />
 
 The diagram illustrates the changes in the protocol before and after version 0.7.1 (you can also refer to the comments in ProtocolDecoderV1, and for older versions, check ProtocolV1Decoder). In the new version, the protocol consists of the following components:
