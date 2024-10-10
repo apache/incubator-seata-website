@@ -250,5 +250,5 @@ public class BusinessServiceImpl implements BusinessService {
     }
 }
 ```
-The effect of this approach is that the production message acts as a participant RM in the AT/TCC transaction. When the phase 1st of the global transaction is completed, the MQ message will be committed or rollback based on the transaction 2nd phase’s request,
+The effect of this approach is that the production message acts as a participant RM in the AT/TCC transaction. When the 1st phase of the global transaction is completed, the MQ message will be committed or rollback based on the transaction 2nd phase’s request,
 the message will not be consumed until then.
