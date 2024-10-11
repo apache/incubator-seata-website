@@ -357,7 +357,7 @@ dev@seata.apache.org
 Title:
 
 ```
-[VOTE] Release Apache Seata (Incubating) x.x.x-RCN (RoundN) 
+[VOTE] Release Apache Seata (Incubating) x.x.x-RCN (RoundN)
 ```
 
 In this context, "N" in RC N and Round N represents the number of times the voting has occurred for that version.
@@ -549,7 +549,7 @@ Binding votes：
 
 Non-Binding votes:
 
-- Ji Min (PPMC)
+- XXX
 
 Vote thread:
 https://lists.apache.org/thread/o7vwdvtolclcv1y4j4ozshj923ppwlnl

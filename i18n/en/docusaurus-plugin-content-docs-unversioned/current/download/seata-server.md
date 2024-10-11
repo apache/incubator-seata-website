@@ -11,8 +11,6 @@ hide_table_of_contents: true
 
 Version 2.2.0 has been released, supporting the self-developed naming center Seata-Namingserver; it is compatible with protocol versions 0.6.1 and below. It also supports TCC two-phase operations with try, confirm, and cancel hooks. The Seata-Raft cluster ensures message and data compatibility with version 2.0. We welcome you to download and try it out.
 
-Version 2.1.0 has been released, support for support RocketMQ transaction message; full support for states in the refactored state machine designer; support raft node metadata sync; support mock server; compatible with io.seata package API and data below 2.1.0. Welcome to download and try it out.
-
 :::
 
 ## System Requirements
