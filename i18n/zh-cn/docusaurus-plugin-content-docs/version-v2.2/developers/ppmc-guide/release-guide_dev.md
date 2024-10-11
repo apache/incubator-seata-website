@@ -393,11 +393,11 @@ with 3 +1 binding votes, and no +0 or -1 votes.
 
 3 (+1 binding)
 
-- Jianbin Chen
+- XXX
 
-- Jiangke Wu
+- XXX
 
-- Jiawei Zhang
+- XXX
 
 no further 0 or -1 votes.
 

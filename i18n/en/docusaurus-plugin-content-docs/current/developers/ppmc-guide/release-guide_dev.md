@@ -431,11 +431,11 @@ with 3 +1 binding votes, and no +0 or -1 votes.
 
 3 (+1 binding)
 
-- Jianbin Chen
+- XXX
 
-- Jiangke Wu
+- XXX
 
-- Jiawei Zhang
+- XXX
 
 no further 0 or -1 votes.
 
@@ -543,13 +543,13 @@ The vote to release Apache Seata(incubating) X.X.X-RCN has passed with
 
 Binding votes：
 
-- Huxing Zhang
-- Xin Wang
-- Sheng Wu
+- XXX
+- XXX
+- XXX
 
 Non-Binding votes:
 
-- Ji Min (PPMC)
+- XXX
 
 Vote thread:
 https://lists.apache.org/thread/o7vwdvtolclcv1y4j4ozshj923ppwlnl
