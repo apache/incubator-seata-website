@@ -221,21 +221,9 @@ Go to samples repo: [seata-samples/at-samples](https://github.com/apache/incubat
 
 ## RocketMQ Integration to Seata
 
-Using RocketMQ as a participant in TCC/AT is simple,  introducing rocketmq-client on its own and then introducing the seata-rocketmq dependency:
-```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-client</artifactId>
-            <version>yourVersion</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.seata</groupId>
-            <artifactId>seata-rocketmq</artifactId>
-            <version>yourVersion</version>
-        </dependency>
-    </dependencies>
-```
+Using RocketMQ as a participant in seata global transaction is simple,
+First, make sure you have introduced seata-all or springboot-starter of seata dependency.
+
 Create the producer by `SeataMQProducerFactory`, then send messages by  `SeataMQProducer`. Here is an example:
 ```java
 public class BusinessServiceImpl implements BusinessService {
@@ -250,5 +238,6 @@ public class BusinessServiceImpl implements BusinessService {
     }
 }
 ```
-The effect of this approach is that the production message acts as a participant RM in the AT/TCC transaction. When the 1st phase of the global transaction is completed, the MQ message will be committed or rollback based on the transaction 2nd phase’s request,
+The effect of this approach is that the production message acts as a participant RM in the seata global transaction. When the 1st phase of the global transaction is completed, the MQ message will be committed or rollback based on the transaction 2nd phase’s request,
 the message will not be consumed until then.
+Note: If there is no xid in the current thread, the producer will degrade to a normal send instead of sending a half-message.
