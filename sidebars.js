@@ -189,7 +189,6 @@ const sidebars = {
       items: [
         'developers/ppmc-guide/release-guide_dev'
       ],
-      
     },
   ],
   'release-notes': [

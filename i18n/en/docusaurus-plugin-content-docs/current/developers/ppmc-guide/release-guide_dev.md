@@ -38,16 +38,16 @@ Here is a brief process for generating the key:
 
 ```
 You can find the key ID using the command: gpg --list-signatures --keyid-format LONG
-pub   rsa4096/561507DBDD81E3D5 2024-09-19 [SC] [expires: 2027-09-19]
-      F2D3A28A392129B927C7FB42561507DBDD81E3D5
-uid                   [ultimate] jianbin.chen <jianbin@apache.org>
-sig 3        561507DBDD81E3D5 2024-09-19  [self-signed]
-sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [expires: 2027-09-19]
-sig          561507DBDD81E3D5 2024-09-19  [self-signed]
-The key ID is 561507DBDD81E3D5.
+pub   rsa4096/XXXX 2024-09-19 [SC] [expires: 2027-09-19]
+      F2D3A28A392129B927C7FB42XXXX
+uid                   [ultimate] XXXX <XXXX@apache.org>
+sig 3        XXXX 2024-09-19  [self-signed]
+sub   rsa4096/XXXXXXX 2024-09-19 [E] [expires: 2027-09-19]
+sig          XXXX 2024-09-19  [self-signed]
+The key ID is XXXX.
 ```
 
-- Export the public key to a text file using the command: `gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5`.
+- Export the public key to a text file using the command: `gpg --armor --output ./public-key.txt --export XXXX`.
 - Append the generated key to the [DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) and the [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS).
 Note:
 
@@ -102,8 +102,8 @@ You need a Passphrase to protect your secret key. (Set password)
 Convert the generated public key and private key to ASCII format:
 
 ```
-gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5
-gpg --armor --output ./private-key.txt --export-secret-keys 561507DBDD81E3D5
+gpg --armor --output ./public-key.txt --export XXXX
+gpg --armor --output ./private-key.txt --export-secret-keys XXXX
 
 ```
 
@@ -113,20 +113,20 @@ View the key list:
 [root@localhost ~]# gpg --list-signatures --keyid-format LONG
 [keyboxd]
 ---------
-pub   rsa4096/561507DBDD81E3D5 2024-09-19 [SC] [有效至：2027-09-19]
-      F2D3A28A392129B927C7FB42561507DBDD81E3D5
-uid                   [ 绝对 ] jianbin.chen <jianbin@apache.org>
-sig 3        561507DBDD81E3D5 2024-09-19  [自签名]
-sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [有效至：2027-09-19]
-sig          561507DBDD81E3D5 2024-09-19  [自签名]
+pub   rsa4096/XXXX 2024-09-19 [SC] [有效至：2027-09-19]
+      F2D3A28A392129B927C7FB42XXXX
+uid                   [ 绝对 ] XXXX <XXXX@apache.org>
+sig 3        XXXX 2024-09-19  [自签名]
+sub   rsa4096/XXXXXXX 2024-09-19 [E] [有效至：2027-09-19]
+sig          XXXX 2024-09-19  [自签名]
 
 ```
 
 Upload the public key to the key server
 
 ```
-[root@localhost gpgtest]# gpg --keyserver keys.openpgp.org --send-key 561507DBDD81E3D5
-gpg: sending key 561507DBDD81E3D5 to hkp server keys.openpgp.org
+[root@localhost gpgtest]# gpg --keyserver keys.openpgp.org --send-key XXXX
+gpg: sending key XXXX to hkp server keys.openpgp.org
 
 ```
 
@@ -384,7 +384,7 @@ https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ jianbin@apache.org ]
+[ XXXX@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 
@@ -431,11 +431,11 @@ with 3 +1 binding votes, and no +0 or -1 votes.
 
 3 (+1 binding)
 
-- Jianbin Chen
+- XXX
 
-- Jiangke Wu
+- XXX
 
-- Jiawei Zhang
+- XXX
 
 no further 0 or -1 votes.
 
@@ -450,11 +450,17 @@ We will soon launch the second stage of voting.
 
 
 
-### 3.2 Voting in the Incubator
+#### 3.2.1 Voting in the Incubator
 
-This is similar to the community voting, but you need to include the thread link related to the community vote to demonstrate that consensus has been reached within the community.
+Similar to community voting, but it is necessary to include the relevant thread links from the community vote to demonstrate that consensus has been reached within the community.
 
-Send an email to `general@incubator.apache.org`.
+Send an email to `general@incubator.apache.org`
+
+Subject:
+
+`[VOTE] Release Apache Seata (Incubating) x.x.x-RCN`
+
+The vote will last for at least 72 hours and must receive 3 +1 binding votes.
 
 ```
 Hello everyone,
@@ -488,7 +494,7 @@ https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ jianbin@apache.org ]
+[ XXXX@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 
@@ -521,11 +527,78 @@ Checklist for reference:
 To learn more about Apache Seata , please see https://seata.apache.org/
 ```
 
+### 3.2.2 Announcement of Incubator Vote Results
+
+After 72 hours, if there are at least 3 votes in favor and no opposing votes, send the results following the email template below.
+
+Send an email to `general@incubator.apache.org`
+
+Subject: `[RESULT][VOTE] Release Apache Seata (Incubating) x.x.x-RCN`
+
+```
+Hi Incubator PMC,
+
+The vote to release Apache Seata(incubating) X.X.X-RCN has passed with
+3 +1 binding and 1 +1 non-binding votes, no +0 or -1 votes.
+
+Binding votes：
+
+- XXX
+- XXX
+- XXX
+
+Non-Binding votes:
+
+- XXX
+
+Vote thread:
+https://lists.apache.org/thread/o7vwdvtolclcv1y4j4ozshj923ppwlnl
+
+Thanks for reviewing and voting for our release candidate. We will
+proceed with publishing the approved artifacts and sending out the
+announcement soon.
+
+```
+
 
 
 # 4. Completing the Release
 
-1. From the Apache Nexus repository, select the previously closed **orgapacheseata-XXX** and click the `Release` icon to publish.
-2. Pull the binaries and sources that were previously uploaded to SVN dev in the same way from https://dist.apache.org/repos/dist/release/incubator/seata/. Move the x.x.x from dev to release, then execute `svn delete x.x.x` in dev followed by `svn commit`. After that, delete x.x.x from dev. Navigate to the release directory for seata and use `svn add` to submit the x.x.x version to the release path.
-3. Set the release note to "Set as the latest release" and submit it.
-4. Update the x.x.x documentation on the Seata official website and add the corresponding download links for the binaries and sources.
+### 4.1 Release Version
+
+1. From the Apache Nexus repository, select the previously closed orgapache-seata-XXX and click the Release icon to publish.
+
+2. Move the signature files, src, and bin from the dev directory to the release path using the following command:
+
+   ```
+   svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/incubator-seata/x.x.x-RCN https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"
+   ```
+
+3. Set the previous release note as "Set as the latest release" and submit it.
+
+4. Update the documentation for x.x.x on the Seata official website, including the download links for the corresponding binary and source.
+
+### 4.2 Version Announcement
+
+Send an email to` general@incubator.apache.org`
+
+Subject: `[ANNOUNCE] Apache Seata (Incubating) vx.x.x available`
+
+```
+Hi All,
+
+The Apache Seata(Incubating) vx.x.x has been released!
+
+Apache Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+Download Links: https://seata.apache.org/unversioned/download/seata-server/
+
+Release Notes:
+https://github.com/apache/incubator-seata/releases/tag/vx.x.x/
+
+Website: https://seata.apache.org/
+
+Resources:
+- Issue: https://github.com/apache/incubator-seata/issues
+- Mailing list: dev@seata.apache.org
+```
