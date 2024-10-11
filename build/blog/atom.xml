@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://seata.apache.org/blog</id>
     <title>Apache Seata Blog</title>
-    <updated>2024-10-11T06:27:16.000Z</updated>
+    <updated>2024-10-11T09:36:26.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://seata.apache.org/blog"/>
     <subtitle>Apache Seata Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[seata-rpc-multi-protocol01]]></title>
         <id>https://seata.apache.org/blog/seata-rpc-multi-protocol01</id>
         <link href="https://seata.apache.org/blog/seata-rpc-multi-protocol01"/>
-        <updated>2024-10-11T06:27:16.000Z</updated>
+        <updated>2024-10-11T09:36:26.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
@@ -19,7 +19,7 @@
         <title type="html"><![CDATA[seata-rpc-multi-protocol02]]></title>
         <id>https://seata.apache.org/blog/seata-rpc-multi-protocol02</id>
         <link href="https://seata.apache.org/blog/seata-rpc-multi-protocol02"/>
-        <updated>2024-10-11T06:27:16.000Z</updated>
+        <updated>2024-10-11T09:36:26.000Z</updated>
         <summary type="html"><![CDATA[Placeholder. DO NOT DELETE.]]></summary>
         <content type="html"><![CDATA[<p>Placeholder. DO NOT DELETE.</p>]]></content>
     </entry>
