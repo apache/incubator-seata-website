@@ -38,16 +38,16 @@ Here is a brief process for generating the key:
 
 ```
 You can find the key ID using the command: gpg --list-signatures --keyid-format LONG
-pub   rsa4096/561507DBDD81E3D5 2024-09-19 [SC] [expires: 2027-09-19]
-      F2D3A28A392129B927C7FB42561507DBDD81E3D5
-uid                   [ultimate] jianbin.chen <jianbin@apache.org>
-sig 3        561507DBDD81E3D5 2024-09-19  [self-signed]
-sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [expires: 2027-09-19]
-sig          561507DBDD81E3D5 2024-09-19  [self-signed]
-The key ID is 561507DBDD81E3D5.
+pub   rsa4096/XXXX 2024-09-19 [SC] [expires: 2027-09-19]
+      F2D3A28A392129B927C7FB42XXXX
+uid                   [ultimate] XXXX <XXXX@apache.org>
+sig 3        XXXX 2024-09-19  [self-signed]
+sub   rsa4096/XXXXXXX 2024-09-19 [E] [expires: 2027-09-19]
+sig          XXXX 2024-09-19  [self-signed]
+The key ID is XXXX.
 ```
 
-- Export the public key to a text file using the command: `gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5`.
+- Export the public key to a text file using the command: `gpg --armor --output ./public-key.txt --export XXXX`.
 - Append the generated key to the [DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) and the [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS).
 Note:
 
@@ -102,8 +102,8 @@ You need a Passphrase to protect your secret key. (Set password)
 Convert the generated public key and private key to ASCII format:
 
 ```
-gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5
-gpg --armor --output ./private-key.txt --export-secret-keys 561507DBDD81E3D5
+gpg --armor --output ./public-key.txt --export XXXX
+gpg --armor --output ./private-key.txt --export-secret-keys XXXX
 
 ```
 
@@ -113,20 +113,20 @@ View the key list:
 [root@localhost ~]# gpg --list-signatures --keyid-format LONG
 [keyboxd]
 ---------
-pub   rsa4096/561507DBDD81E3D5 2024-09-19 [SC] [有效至：2027-09-19]
-      F2D3A28A392129B927C7FB42561507DBDD81E3D5
-uid                   [ 绝对 ] jianbin.chen <jianbin@apache.org>
-sig 3        561507DBDD81E3D5 2024-09-19  [自签名]
-sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [有效至：2027-09-19]
-sig          561507DBDD81E3D5 2024-09-19  [自签名]
+pub   rsa4096/XXXX 2024-09-19 [SC] [有效至：2027-09-19]
+      F2D3A28A392129B927C7FB42XXXX
+uid                   [ 绝对 ] XXXX <XXXX@apache.org>
+sig 3        XXXX 2024-09-19  [自签名]
+sub   rsa4096/XXXXXXX 2024-09-19 [E] [有效至：2027-09-19]
+sig          XXXX 2024-09-19  [自签名]
 
 ```
 
 Upload the public key to the key server
 
 ```
-[root@localhost gpgtest]# gpg --keyserver keys.openpgp.org --send-key 561507DBDD81E3D5
-gpg: sending key 561507DBDD81E3D5 to hkp server keys.openpgp.org
+[root@localhost gpgtest]# gpg --keyserver keys.openpgp.org --send-key XXXX
+gpg: sending key XXXX to hkp server keys.openpgp.org
 
 ```
 
@@ -384,7 +384,7 @@ https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ jianbin@apache.org ]
+[ XXXX@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 
@@ -494,7 +494,7 @@ https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ jianbin@apache.org ]
+[ XXXX@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 

@@ -40,7 +40,7 @@ description: Release Guide.
         F2D3A28A392129B927C7FB42XXXXXXXX
   uid                   [ 绝对 ] xxxx <xxxx@apache.org>
   sig 3        XXXXXXXX 2024-09-19  [自签名]
-  sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [有效至：2027-09-19]
+  sub   rsa4096/XXXXX 2024-09-19 [E] [有效至：2027-09-19]
   sig          XXXXXXXX 2024-09-19  [自签名]
   那么keyid为XXXXXXXX
   ```
@@ -112,7 +112,7 @@ pub   rsa4096/XXXXXXXX 2024-09-19 [SC] [有效至：2027-09-19]
       F2D3A28A392129B927C7FB42XXXXXXXX
 uid                   [ 绝对 ] xxxx <xxxx@apache.org>
 sig 3        XXXXXXXX 2024-09-19  [自签名]
-sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [有效至：2027-09-19]
+sub   rsa4096/XXXXX 2024-09-19 [E] [有效至：2027-09-19]
 sig          XXXXXXXX 2024-09-19  [自签名]
 
 ```

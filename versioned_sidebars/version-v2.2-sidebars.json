@@ -169,13 +169,13 @@
       ]
     },
     {
-      type: 'category',
-      label: 'PPMC Guide',
-      collapsible: false,
-      items: [
-        'developers/ppmc-guide/release-guide_dev'
-      ],
-    },
+      "type": "category",
+      "label": "PPMC Guide",
+      "collapsible": false,
+      "items": [
+        "developers/ppmc-guide/release-guide_dev"
+      ]
+    }
   ],
   "release-notes": [
     {
