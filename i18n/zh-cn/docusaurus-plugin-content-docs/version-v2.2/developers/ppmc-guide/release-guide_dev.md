@@ -264,7 +264,7 @@ asc验证
 
 而其上级seata目录中的KEYS需要保证追加了第一步所说的，将构建的公钥放入其中
 
-执行 
+执行
 
 `svn add x.x.x`
 
@@ -509,13 +509,13 @@ The vote to release Apache Seata(incubating) X.X.X-RCN has passed with
 
 Binding votes：
 
-- Huxing Zhang
-- Xin Wang
-- Sheng Wu
+- XXX
+- XXX
+- XXX
 
 Non-Binding votes:
 
-- Ji Min (PPMC)
+- XXX
 
 Vote thread:
 https://lists.apache.org/thread/o7vwdvtolclcv1y4j4ozshj923ppwlnl

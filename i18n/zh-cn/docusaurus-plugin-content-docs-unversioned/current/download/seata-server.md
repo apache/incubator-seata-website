@@ -11,8 +11,6 @@ hide_table_of_contents: true
 
 2.2.0 版本已发布，支持Seata自研注册中心Seata-Namingserver；0.6.1及以下旧版本协议兼容；支持tcc二阶段try,confirm，cancel三方法钩子；Seata-Raft集群针对2.0版本消息和数据兼容。欢迎下载试用
 
-2.1.0 版本已发布，支持 RocketMQ 事务消息；Saga 状态机设计器完全重构；支持 Raft 元数据同步；支持Mock Server；兼容 2.1.0 以下版本的 API 和数据。欢迎下载试用。
-
 :::
 
 ## 系统要求
