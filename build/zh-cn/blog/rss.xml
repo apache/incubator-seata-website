@@ -157,7 +157,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="最后">最后<a href="https://seata.apache.org/zh-cn/blog/seata-rpc-multi-protocol01#%E6%9C%80%E5%90%8E" class="hash-link" aria-label="最后的直接链接" title="最后的直接链接">​</a></h2>
 <p>这一篇我们了解了seata是怎样借助netty来传输数据的，为了更好的看懂netty处理的全貌，我画了个层级图</p>
 <img src="https://seata.apache.org/img/blog/rpc_multi-protocol/00-netty-layer.png" width="700px">
-<p>上面已经讲了请求发送时，serverHandler/clientHandler和NettyRemoting(包括RM、TM、TC)的处理，知道了从外部到netty处理器再到内部的DefaultCoodinator的过程，但我们还缺Decoder/Encoder没讲，这里面会进行协议的解析/封装，也会进行序列化和反序列化，请看 <a href="https://seata.apache.org/zh-cn/blog/seata-rpc-multi-protocol02">Seata的RPC通信源码分析02：协议篇</a></p>]]></content:encoded>
+<p>上面已经讲了请求发送时，serverHandler/clientHandler和NettyRemoting(包括RM、TM、TC)的处理，知道了从外部到netty处理器再到内部的DefaultCoordinator的过程，但我们还缺Decoder/Encoder没讲，这里面会进行协议的解析/封装，也会进行序列化和反序列化，请看 <a href="https://seata.apache.org/zh-cn/blog/seata-rpc-multi-protocol02">Seata的RPC通信源码分析02：协议篇</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Seata的RPC通信源码分析02：协议篇（多版本协议）]]></title>
