@@ -57,7 +57,8 @@
             "user/registry/eureka",
             "user/registry/etcd3",
             "user/registry/consul",
-            "user/registry/zookeeper"
+            "user/registry/zookeeper",
+            "user/registry/namingserver"
           ]
         },
         "user/api",
