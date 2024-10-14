@@ -1,0 +1,82 @@
+{
+  "version.label": {
+    "message": "v2.2",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Overview": {
+    "message": "概述",
+    "description": "The label for category Overview in sidebar docs"
+  },
+  "sidebar.docs.category.User Doc": {
+    "message": "用户文档",
+    "description": "The label for category User Doc in sidebar docs"
+  },
+  "sidebar.docs.category.Transactions Grouping": {
+    "message": "事务分组",
+    "description": "The label for category Transactions Grouping in sidebar docs"
+  },
+  "sidebar.docs.category.Configuration Center": {
+    "message": "配置中心",
+    "description": "The label for category Configuration Center in sidebar docs"
+  },
+  "sidebar.docs.category.Registration Authority": {
+    "message": "注册中心",
+    "description": "The label for category Registration Authority in sidebar docs"
+  },
+  "sidebar.docs.category.SQL Reference": {
+    "message": "SQL参考",
+    "description": "The label for category SQL Reference in sidebar docs"
+  },
+  "sidebar.docs.category.APM": {
+    "message": "应用性能监控",
+    "description": "The label for category APM in sidebar docs"
+  },
+  "sidebar.docs.category.Testing Report": {
+    "message": "测试报告",
+    "description": "The label for category Testing Report in sidebar docs"
+  },
+  "sidebar.docs.category.Appendix": {
+    "message": "附录",
+    "description": "The label for category Appendix in sidebar docs"
+  },
+  "sidebar.docs.category.Developer Guide": {
+    "message": "开发者指南",
+    "description": "The label for category Developer Guide in sidebar docs"
+  },
+  "sidebar.docs.category.Transaction Mode": {
+    "message": "各事务模式",
+    "description": "The label for category Transaction Mode in sidebar docs"
+  },
+  "sidebar.docs.category.Domain Model": {
+    "message": "领域模型",
+    "description": "The label for category Domain Model in sidebar docs"
+  },
+  "sidebar.docs.category.Ops Guide": {
+    "message": "运维指南",
+    "description": "The label for category Ops Guide in sidebar docs"
+  },
+  "sidebar.docs.category.Deploy": {
+    "message": "部署",
+    "description": "The label for category Deploy in sidebar docs"
+  },
+  "sidebar.developers.category.Developers List": {
+    "message": "开发者列表",
+    "description": "The label for category Developers List in sidebar developers"
+  },
+  "sidebar.developers.category.Contribute Guide": {
+    "message": "贡献者向导",
+    "description": "The label for category Contribute Guide in sidebar developers"
+  },
+  "sidebar.developers.category.Committer Guide": {
+    "message": "提交者向导",
+    "description": "The label for category Committer Guide in sidebar developers"
+  },
+  "sidebar.developers.category.PPMC Guide": {
+    "message": "PPMC向导",
+    "description": "The label for category PPMC Guide in sidebar developers"
+  },
+  "sidebar.release-notes.category.release-notes": {
+    "message": "发布说明",
+    "description": "The label for category Release Notes in sidebar Release Notes"
+  }
+}

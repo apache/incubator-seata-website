@@ -36,16 +36,16 @@ description: Release Guide.
 
   ```
   使用该命令可查到keyid如：gpg --list-signatures --keyid-format LONG
-  pub   rsa4096/561507DBDD81E3D5 2024-09-19 [SC] [有效至：2027-09-19]
-        F2D3A28A392129B927C7FB42561507DBDD81E3D5
-  uid                   [ 绝对 ] jianbin.chen <jianbin@apache.org>
-  sig 3        561507DBDD81E3D5 2024-09-19  [自签名]
-  sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [有效至：2027-09-19]
-  sig          561507DBDD81E3D5 2024-09-19  [自签名]
-  那么keyid为561507DBDD81E3D5
+  pub   rsa4096/XXXXXXXX 2024-09-19 [SC] [有效至：2027-09-19]
+        F2D3A28A392129B927C7FB42XXXXXXXX
+  uid                   [ 绝对 ] xxxx <xxxx@apache.org>
+  sig 3        XXXXXXXX 2024-09-19  [自签名]
+  sub   rsa4096/XXXXX 2024-09-19 [E] [有效至：2027-09-19]
+  sig          XXXXXXXX 2024-09-19  [自签名]
+  那么keyid为XXXXXXXX
   ```
 
-- 通过 `gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5` 导出公钥到文本文件
+- 通过 `gpg --armor --output ./public-key.txt --export XXXXXXXX` 导出公钥到文本文件
 
 - 将生成的密钥追加到[DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)
 
@@ -97,8 +97,8 @@ You need a Passphrase to protect your secret key. （设置密码）
 将生成的公钥和私钥转化为 ASCII 形式：
 
 ```
-gpg --armor --output ./public-key.txt --export 561507DBDD81E3D5
-gpg --armor --output ./private-key.txt --export-secret-keys 561507DBDD81E3D5
+gpg --armor --output ./public-key.txt --export XXXXXXXX
+gpg --armor --output ./private-key.txt --export-secret-keys XXXXXXXX
 
 ```
 
@@ -108,20 +108,20 @@ gpg --armor --output ./private-key.txt --export-secret-keys 561507DBDD81E3D5
 [root@localhost ~]# gpg --list-signatures --keyid-format LONG
 [keyboxd]
 ---------
-pub   rsa4096/561507DBDD81E3D5 2024-09-19 [SC] [有效至：2027-09-19]
-      F2D3A28A392129B927C7FB42561507DBDD81E3D5
-uid                   [ 绝对 ] jianbin.chen <jianbin@apache.org>
-sig 3        561507DBDD81E3D5 2024-09-19  [自签名]
-sub   rsa4096/07B6250EB8C9B2A0 2024-09-19 [E] [有效至：2027-09-19]
-sig          561507DBDD81E3D5 2024-09-19  [自签名]
+pub   rsa4096/XXXXXXXX 2024-09-19 [SC] [有效至：2027-09-19]
+      F2D3A28A392129B927C7FB42XXXXXXXX
+uid                   [ 绝对 ] xxxx <xxxx@apache.org>
+sig 3        XXXXXXXX 2024-09-19  [自签名]
+sub   rsa4096/XXXXX 2024-09-19 [E] [有效至：2027-09-19]
+sig          XXXXXXXX 2024-09-19  [自签名]
 
 ```
 
 上传公钥到公钥服务器
 
 ```
-[root@localhost gpgtest]# gpg --keyserver keys.openpgp.org --send-key 561507DBDD81E3D5
-gpg: sending key 561507DBDD81E3D5 to hkp server keys.openpgp.org
+[root@localhost gpgtest]# gpg --keyserver keys.openpgp.org --send-key XXXXXXXX
+gpg: sending key XXXXXXXX to hkp server keys.openpgp.org
 
 ```
 
@@ -346,7 +346,7 @@ https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ 邮箱如jianbin@apache.org ]
+[ 邮箱如xxxx@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 
@@ -393,11 +393,11 @@ with 3 +1 binding votes, and no +0 or -1 votes.
 
 3 (+1 binding)
 
-- Jianbin Chen
+- XXX
 
-- Jiangke Wu
+- XXX
 
-- Jiawei Zhang
+- XXX
 
 no further 0 or -1 votes.
 
@@ -413,11 +413,17 @@ We will soon launch the second stage of voting.
 
 
 
-### 3.2 孵化器中投票
+#### 3.2.1 孵化器中投票
 
 与社区投票类似，但是需要增加社区投票相关的thread链接，以证明已在社区内达成一致
 
 发送邮件至 `general@incubator.apache.org`
+
+标题：
+
+`[VOTE]Release Apache Seata (Incubating) x.x.x-RCN  `
+
+**投票持续至少 72 小时并获得 3 个+1 binding票**
 
 ```
 Hello everyone,
@@ -454,7 +460,7 @@ https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ 邮箱如jianbin@apache.org ]
+[ 邮箱如xxxx@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 
@@ -487,11 +493,77 @@ Checklist for reference:
 To learn more about Apache Seata , please see https://seata.apache.org/
 ```
 
+#### 3.2.2 公示孵化器投票结果
+
+72 小时后，若至少有 3 票通过而没有反对票，则参考如下邮件进行发送结果
+
+发送邮件至 `general@incubator.apache.org`
+
+标题：`[RESULT][VOTE] Release Apache Seata (incubating) x.x.x-RCN`
+
+```
+Hi Incubator PMC,
+
+The vote to release Apache Seata(incubating) X.X.X-RCN has passed with
+3 +1 binding and 1 +1 non-binding votes, no +0 or -1 votes.
+
+Binding votes：
+
+- XXX
+- XXX
+- XXX
+
+Non-Binding votes:
+
+- XXX
+
+Vote thread:
+https://lists.apache.org/thread/o7vwdvtolclcv1y4j4ozshj923ppwlnl
+
+Thanks for reviewing and voting for our release candidate. We will
+proceed with publishing the approved artifacts and sending out the
+announcement soon.
+
+```
+
 
 
 # 4.完成发布
 
+### 4.1 release 版本
+
 1. 从Apache Nexus 仓库, 选择之前进行close过的的 **orgapacheseata-XXX** 点击 `Release` 图标发布
-2. 将之前上传到SVN dev中的binary和source采用相同的方式，拉取https://dist.apache.org/repos/dist/release/incubator/seata/  然后将dev中的x.x.x移动到release ,并在dev中执行svn delete x.x.x 再svn commit 提交后删除dev下的x.x.x。再cd 至release中的seata通过svn add 将x.x.x版本提交至release路径下
+
+2. 将dev下的签名文件、src、bin移动到release路径下，参考如下命令：
+
+   `svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/incubator-seata/x.x.x-RCN https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"`
+
 3. 将之前release note设置为Set as the latest release并提交
+
 4. 将x.x.x的文档更新至seata官网中，并补充对应binary和source的下载链接
+
+### 4.2 版本公示
+
+发送邮件至 `general@incubator.apache.org`
+
+标题 `[ANNOUNCE] Apache Seata(Incubating) vx.x.x available`
+
+```
+Hi All,
+
+The Apache Seata(Incubating) vx.x.x has been released!
+
+Apache Seata is an easy-to-use, high-performance, open source distributed transaction solution.
+
+Download Links: https://seata.apache.org/unversioned/download/seata-server/
+
+Release Notes:
+https://github.com/apache/incubator-seata/releases/tag/vx.x.x/
+
+Website: https://seata.apache.org/
+
+Resources:
+- Issue: https://github.com/apache/incubator-seata/issues
+- Mailing list: dev@seata.apache.org
+```
+

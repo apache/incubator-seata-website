@@ -9,12 +9,12 @@ date: 2019-11-25
 
 # Deploy Seata Server By Docker
 
-## Quick Start 
+## Quick Start
 
 #### Start a seata-server instance
 
 ```bash
-$ docker run --name seata-server -p 8091:8091 seataio/seata-server:1.4.2
+$ docker run --name seata-server -p 8091:8091 apache/seata-server:2.1.0
 ```
 
 #### Specify server IP and port
@@ -24,10 +24,10 @@ $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_IP=192.168.1.1 \
         -e SEATA_PORT=8091 \
-        seataio/seata-server
+        apache/seata-server
 ```
 
-#### Docker compose 
+#### Docker compose
 
 Example of `docker-compose.yaml`
 
@@ -35,7 +35,7 @@ Example of `docker-compose.yaml`
 version: "3"
 services:
   seata-server:
-    image: seataio/seata-server
+    image: apache/seata-server
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -58,7 +58,7 @@ $ docker logs -f seata-server
 
 Custom configuration implement by mount `registry.conf` and `file.conf` to container.
 
-- Specify registry.conf 
+- Specify registry.conf
 
 The environment variable`SEATA_CONFIG_NAME` is required when use a custom configuration , and the value must be started with `file:` like `file:/root/seata-config/registry`:
 
@@ -67,12 +67,12 @@ $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
         -v /User/seata/config:/root/seata-config  \
-        seataio/seata-server
+        apache/seata-server
 ```
 
 The param `-e` specify environment, and the param `-v` specify mount volume.
 
-- Specify file.conf 
+- Specify file.conf
 
 If you need specify `file.conf`, just modify `config` like below in `registry.conf` file:
 
@@ -86,17 +86,17 @@ config {
 }
 ```
 
-## Environment Variables 
+## Environment Variables
 
 You can modify configuration of seata-server  by the environment variables like this:
 
 - **SEATA_IP**
 
-> The variable is optional,  specifies registry IP instead of the container IP in registry center like eureka or others. 
+> The variable is optional,  specifies registry IP instead of the container IP in registry center like eureka or others.
 
 - **SEATA_PORT**
 
-> The variable is optional, specifies seata-server port, default is `8091` 
+> The variable is optional, specifies seata-server port, default is `8091`
 
 - **STORE_MODE**
 
