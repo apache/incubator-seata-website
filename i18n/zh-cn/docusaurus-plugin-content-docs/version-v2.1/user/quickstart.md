@@ -216,3 +216,26 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 ### 步骤 5: 运行示例
 
 示例仓库: [seata-samples/at-samples](https://github.com/apache/incubator-seata-samples/tree/master/at-sample)。找到合适的依赖项设置，按顺序启动 `Account`, `Storage`, `Order`, `Business` 服务。
+
+## RocketMQ 接入 Seata
+
+使用RocketMQ作为Seata分布式事务的参与者很简单，先确保已经引入了seata-all或者seata的springboot-starter依赖。
+
+然后通过`SeataMQProducerFactory`创建生产者，然后通过 `SeataMQProducer` 可以直接使用 RocketMQ 发送消息。以下是一个例子：
+
+
+```java
+public class BusinessServiceImpl implements BusinessService {
+    private static final String NAME_SERVER = "127.0.0.1:9876";
+    private static final String PRODUCER_GROUP = "test-group";
+    private static final String TOPIC = "test-topic";
+    private static SeataMQProducer producer= SeataMQProducerFactory.createSingle(NAME_SERVER, PRODUCER_GROUP);
+
+    public void purchase(String userId, String commodityCode, int orderCount) {
+      producer.send(new Message(TOPIC, "testMessage".getBytes(StandardCharsets.UTF_8)));
+      //do something
+    }
+}
+```
+这样达到的效果是：生产消息作为Seata分布式事务的参与者RM，当全局事务的一阶段完成，这个MQ消息会根据二阶段要求commit/rollback进行消息的提交或撤回，在此之前消息不会被消费。
+注: 当前线程中如果没有xid，该producer会退化为普通的send，而不是发送半消息
