@@ -218,3 +218,26 @@ sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
 ### Step 5: Run example
 
 Go to samples repo: [seata-samples/at-samples](https://github.com/apache/incubator-seata-samples/tree/master/at-sample), and find a suitable dependency setup. Start `Account`, `Storage`, `Order`, `Business` services accordingly.
+
+## RocketMQ Integration to Seata
+
+Using RocketMQ as a participant in seata global transaction is simple,
+First, make sure you have introduced seata-all or springboot-starter of seata dependency.
+
+Create the producer by `SeataMQProducerFactory`, then send messages by  `SeataMQProducer`. Here is an example:
+```java
+public class BusinessServiceImpl implements BusinessService {
+    private static final String NAME_SERVER = "127.0.0.1:9876";
+    private static final String PRODUCER_GROUP = "test-group";
+    private static final String TOPIC = "test-topic";
+    private static SeataMQProducer producer= SeataMQProducerFactory.createSingle(NAME_SERVER, PRODUCER_GROUP);
+
+    public void purchase(String userId, String commodityCode, int orderCount) {
+      producer.send(new Message(TOPIC, "testMessage".getBytes(StandardCharsets.UTF_8)));
+      //do something
+    }
+}
+```
+The effect of this approach is that the production message acts as a participant RM in the seata global transaction. When the 1st phase of the global transaction is completed, the MQ message will be committed or rollback based on the transaction 2nd phase’s request,
+the message will not be consumed until then.
+Note: If there is no xid in the current thread, the producer will degrade to a normal send instead of sending a half-message.
