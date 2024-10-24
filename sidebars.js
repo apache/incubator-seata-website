@@ -72,6 +72,7 @@ const sidebars = {
             'user/registry/etcd3',
             'user/registry/consul',
             'user/registry/zookeeper',
+            'user/registry/namingserver',
           ],
         },
         'user/api',
@@ -180,7 +181,7 @@ const sidebars = {
         'developers/committer-guide/label-an-issue-guide_dev',
         'developers/committer-guide/website-guide_dev'
       ],
-      
+
     },
     {
       type: 'category',
