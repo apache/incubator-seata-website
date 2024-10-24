@@ -14,21 +14,23 @@ You can choose to run the naming server in the compiler or after packaging it.
 ### Running the naming server in the compiler
 Go to the namingserver directory, set the port number for the naming server in resources/application.yml, and start the naming server.
 
-### Running the naming server after packaging
-Execute the packaging command:
-```shell
-mvn clean install -U -Prelease-seata-namingserver
-```
-Set the naming server port number in the `conf/application.yml` file located in the `\\distribution\\target\\apache-seata-2.2.0-SNAPSHOT-incubating-bin\\seata-namingserver` directory.
-For macOS or Linux, run:
+### Running the naming server in the compiler
+Go to the namingserver directory, set the port number for the naming server in resources/application.yml, and start the naming server.
+
+### Running Naming Server
+Download the Seata 2.2.0 binary package from the [link](https://seata.apache.org/unversioned/download/seata-server/) and unzip it. Then, enter the seata-namingserver directory.
+
+In the conf/application.yml file, configure the port number for starting the naming server.
+
+For Mac or Linux, run:
 
 ```shell
-bin\\seata-namingserver.sh
+bin/seata-namingserver.sh
 ```
 For Windows, run:
 
 ```shell
-bin\\seata-namingserver.bat
+bin/seata-namingserver.bat
 ```
 ## Getting Started Quickly
 The process to use the naming server as Seata's registration center is very simple and involves configuring both the client and server sides.
@@ -77,4 +79,6 @@ http://127.0.0.1:8081/naming/v1/changeGroup?clusterName=cluster2&namespace=publi
 
 Afterward, once Seata-Server is started and the client configuration is complete, you can begin to experience Seata services.
 
-Tips: Ensure that both the client and server are registered under the same namespace; otherwise, the service won't be found.
+Tips:
+- 1.Please ensure that the client and server are registered under the same namespace; otherwise, the service will not be found.
+- 2.Note that the naming server is only allowed to be used in a private network; do not expose it to the public environment.

@@ -14,22 +14,19 @@ Namingserver 是 Seata 原生的注册中心.
 
 进入`namingsever`目录，在`resources/application.yml`下设置namingserver启动的端口号，启动namingserver
 
-### 打包运行namingserver
+### 运行namingserver
 
-执行`mvn clean install -U -Prelease-seata-namingserver`打包命令
-```shell
-`mvn clean install -U -Prelease-seata-namingserver`
-```
-在`\distribution\target\apache-seata-2.2.0-SNAPSHOT-incubating-bin\seata-namingserver`目录下的`conf/application.yml`中配置namingserver启动的端口号，
+从[链接](https://seata.apache.org/unversioned/download/seata-server/）下载namingserver的发行包)下载seata2.2.0的二进制压缩包，解压后进入seata-namingserver目录
+
+目录下的conf/application.yml中配置namingserver启动的端口号，
 mac或linux运行
-``` shell
+```shell
 bin\seata-namingserver.sh
 ```
 windows环境运行
-``` shell
+```shell
 bin\seata-namingserver.bat
 ```
-
 ## 快速上手
 
 Seata 使用 namingserver 作为注册中心的操作步骤非常简单，分为在client端的配置以及在server端的配置
@@ -82,4 +79,6 @@ http://127.0.0.1:8081/naming/v1/changeGroup?clusterName=cluster2&namespace=publi
 
 随后,启动 Seata-Server 后，Client 配置完成后启动应用就可以正式体验 Seata 服务。
 
-Tips：请确保client与server的注册处于同一个namespace，不然会找不到服务。
+Tips：
+- 1.请确保client与server的注册处于同一个namespace，不然会找不到服务。
+- 2.注意namingserver只允许在内网使用,切勿暴露到公网环境
