@@ -11,12 +11,12 @@ Seata's isolation level defaults to read uncommitted. In this mode, the SQL deco
 ### DML Statement Support
 
 | Type         | SQL Example                                           | Supported or not                                                       |
-| :----------- | :---------------------------------------------------- | :--------------------------------------------------------------------- | --- |
+| :----------- | :---------------------------------------------------- | :--------------------------------------------------------------------- |
 | AND & OR     | `UPDATE … WHERE col_name1=expr1 AND col_name2= expr2` | Yes                                                                    |
 | LIKE         | `UPDATE ... WHERE col_name1 LIKE 'NE'`                | Yes                                                                    |
 | Wildcard     | `UPDATE ... WHERE col_name1 LIKE 'NE%'`               | Yes                                                                    |
 | BETWEEN      | `UPDATE ... WHERE col_name1 BETWEEN expr1 AND expr2`  | Yes                                                                    |
-| ON DUPLICATE | `INSERT INTO tb1_name [(col_name,...)]VALUES (\{expr  | DEFAULT},...),(...),...[ ON DUPLICATE KEY UPDATE col_name=expr, ... ]` | Yes |
+| ON DUPLICATE | `INSERT INTO tb1_name [(col_name,...)]VALUES (\{expr  \| DEFAULT},...),(...),...[ ON DUPLICATE KEY UPDATE col_name=expr, ... ]` | Yes |
 
 ### Select Statement Support
 
