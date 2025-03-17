@@ -15,8 +15,7 @@ description: SecretKey 安全公告.
 
 ## 生产环境实践方案
 - 在生产环境中，禁止非必要的公网访问，若要开启公网访问，请配置好防火墙或者ACL规则，限制IP访问。即使Seata-Console中并不存储和展示敏感数据，我们也强烈的要求您这么做。
-- 首次部署Seata-Console时，必须修改默认的用户名，密码和SecretKey后再进行部署，避免因默认凭据导致数据泄露或入侵风险。需要修改配置文件`application.yml`中的`seata.console.user.username`，`seata.user.password`和`seata.security.
-secretKey`。在Kubernetes部署模式下可以通过ConfigMap/Secret资源对相关信息进行独立分级管理。需要修改的配置项请参考如下配置。
+- 首次部署Seata-Console时，必须修改默认的用户名，密码和SecretKey后再进行部署，避免因默认凭据导致数据泄露或入侵风险。需要修改配置文件`application.yml`中的`seata.console.user.username`，`seata.user.password`和`seata.security.secretKey`。在Kubernetes部署模式下可以通过ConfigMap/Secret资源对相关信息进行独立分级管理。需要修改的配置项请参考如下配置。
 ```yml
 console:
   user:
