@@ -39,9 +39,11 @@ jobs:
         env:
           BAIDU_LINK_SUBMIT_TOKEN: ${{secrets.BAIDU_LINK_SUBMIT_TOKEN}}
         run: node baiduLinkSubmit.js
-      - name: Install serverless-devs
-        run: npm i @serverless-devs/s@2.2.2 -g  --registry=https://registry.npmmirror.com
-      - name: Config serverless-devs
-        run: s config add --AccountID ${{secrets.ACCOUNT_ID}}  --AccessKeyID ${{secrets.ACCESS_KEYID}} --AccessKeySecret ${{secrets.ACCESS_KEYSECRET}} -a seata -f
-      - name: Deploy on OSS
-        run: s deploy --use-local -y
+      - name: Install Aliyun CLI
+        run: |
+          curl -O https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz
+          tar -xzf aliyun-cli-linux-latest-amd64.tgz
+          chmod +x aliyun
+          ./aliyun version
+      - name: Sync to OSS
+        run: ./aliyun oss cp ./dist oss://seata-website-cn-hongkong/ --meta Cache-Control:"max-age=3600" -r -f -e oss-cn-hongkong.aliyuncs.com --access-key-id ${{ secrets.ACCESS_KEYID }} --access-key-secret ${{ secrets.ACCESS_KEYSECRET }} --region cn-hongkong
