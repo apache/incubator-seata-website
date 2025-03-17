@@ -160,6 +160,14 @@ const sidebars = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Security Guide',
+      collapsible: false,
+      items: [
+        'security/secret-key',
+      ],
+    },
   ],
   developers: [
     {
