@@ -14,9 +14,6 @@ You can choose to run the naming server in the compiler or after packaging it.
 ### Running the naming server in the compiler
 Go to the namingserver directory, set the port number for the naming server in resources/application.yml, and start the naming server.
 
-### Running the naming server in the compiler
-Go to the namingserver directory, set the port number for the naming server in resources/application.yml, and start the naming server.
-
 ### Running Naming Server
 Download the Seata 2.2.0 binary package from the [link](https://seata.apache.org/download/seata-server/) and unzip it. Then, enter the seata-namingserver directory.
 
@@ -32,6 +29,7 @@ For Windows, run:
 ```shell
 bin/seata-namingserver.bat
 ```
+
 ## Getting Started Quickly
 The process to use the naming server as Seata's registration center is very simple and involves configuring both the client and server sides.
 
