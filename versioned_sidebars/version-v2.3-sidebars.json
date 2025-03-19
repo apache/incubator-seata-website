@@ -78,12 +78,17 @@
         {
           "type": "category",
           "label": "APM",
-          "items": ["user/apm/skywalking", "user/apm/prometheus"]
+          "items": [
+            "user/apm/skywalking",
+            "user/apm/prometheus"
+          ]
         },
         {
           "type": "category",
           "label": "Testing Report",
-          "items": ["user/performance"]
+          "items": [
+            "user/performance"
+          ]
         },
         {
           "type": "category",
@@ -129,7 +134,6 @@
       "collapsible": false,
       "items": [
         "ops/upgrade",
-        "ops/version-maintain-plan",
         "ops/multi-configuration-isolation",
         {
           "type": "category",
@@ -145,6 +149,14 @@
             "ops/deploy-ha"
           ]
         }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Security Guide",
+      "collapsible": false,
+      "items": [
+        "security/secret-key"
       ]
     }
   ],
@@ -183,7 +195,9 @@
       "type": "category",
       "label": "release-notes",
       "collapsible": false,
-      "items": ["release-notes"]
+      "items": [
+        "release-notes"
+      ]
     }
   ]
 }
