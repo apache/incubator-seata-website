@@ -4,21 +4,21 @@ keywords: [ Seata, Namingserver ]
 description: namingserver 注册中心。
 ---
 
-# Namingserver 注册中心
+# Namingserver 注册中心（beta）
 
 Namingserver 是 Seata 原生的注册中心.
 
 ## 预备工作
-可以选择在编译器中运行namingserver或者打包后运行namingserver
+
+从[链接](https://seata.apache.org/download/seata-server/）下载namingserver的发行包)下载seata的二进制压缩包
+
 ### 编译器运行namingserver
 
-进入`namingsever`目录，在`resources/application.yml`下设置namingserver启动的端口号，启动namingserver
+如果您需要本地调试或开发namingserver，请导入Seata源码，并找到`namingserver`模块，在`resources/application.yml`下设置namingserver启动的端口号，启动namingserver
 
 ### 运行namingserver
 
-从[链接](https://seata.apache.org/download/seata-server/）下载namingserver的发行包)下载seata2.2.0的二进制压缩包，解压后进入seata-namingserver目录
-
-目录下的conf/application.yml中配置namingserver启动的端口号，
+解压后进入seata-namingserver目录，打开目录下的conf/application.yml中配置namingserver启动的端口号，
 mac或linux运行
 ```shell
 bin\seata-namingserver.sh
@@ -80,5 +80,8 @@ http://127.0.0.1:8081/naming/v1/changeGroup?clusterName=cluster2&namespace=publi
 随后,启动 Seata-Server 后，Client 配置完成后启动应用就可以正式体验 Seata 服务。
 
 Tips：
+Tips：
 - 1.请确保client与server的注册处于同一个namespace，不然会找不到服务。
 - 2.注意namingserver只允许在内网使用,切勿暴露到公网环境
+- 3.namingserver处于实验性feature，故后续可能有一定改动，请评估和测试到位后再投入使用
+- 4.针对事务分组的增删改必须通过namingserver的open-api，如果绕过可能会导致数据不一致，造成服务发现失败或者异常

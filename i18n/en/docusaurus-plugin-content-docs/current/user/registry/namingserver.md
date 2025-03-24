@@ -1,82 +1,158 @@
 ---
-Title: Seata Namingserver Registration Center
-Keywords: [ Seata, Namingserver ]
-Description: Namingserver registration center.
+title: Seata Namingserver Registry
+keywords: [ Seata, Namingserver ]
+description: Namingserver registry.
 ---
 
+# Namingserver Registry (beta)
 
-# Namingserver Registration Center
-Namingserver is the native registration center of Seata.
+Namingserver is Seata's native registry center.
 
-## Preparations
-You can choose to run the naming server in the compiler or after packaging it.
+## Prerequisites
 
-### Running the naming server in the compiler
-Go to the namingserver directory, set the port number for the naming server in resources/application.yml, and start the naming server.
+Download the Seata binary package from [this link](https://seata.apache.org/download/seata-server/)
 
-### Running Naming Server
-Download the Seata 2.2.0 binary package from the [link](https://seata.apache.org/download/seata-server/) and unzip it. Then, enter the seata-namingserver directory.
+### Running Namingserver in IDE
 
-In the conf/application.yml file, configure the port number for starting the naming server.
+If you need to debug or develop namingserver locally, import Seata source code, locate the `namingserver` module, set the port number for namingserver in `resources/application.yml`, then start namingserver.
+
+### Running Namingserver
+
+After extracting, navigate to the seata-namingserver directory. Open the conf/application.yml file and configure the port for namingserver.
 
 For Mac or Linux, run:
-
 ```shell
-bin/seata-namingserver.sh
+bin\seata-namingserver.sh
 ```
+
 For Windows, run:
-
 ```shell
-bin/seata-namingserver.bat
+bin\seata-namingserver.bat
 ```
 
-## Getting Started Quickly
-The process to use the naming server as Seata's registration center is very simple and involves configuring both the client and server sides.
+## Quick Start
 
-### Client-side Configuration for the Registration Center
-Add the corresponding registration center in the application.yml:
+Setting up Seata with namingserver as the registry is straightforward, involving configurations on both client and server sides.
+
+### Namingserver Configuration Description
+
+```yaml
+server:
+  port: 8081 ## namingserver port
+spring:
+  application:
+    name: seata-namingserver
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: ${log.home:${user.home}/logs/seata}
+console: ## As of version 2.4, the console has been moved from Seata-server to Namingserver
+  user:
+    username: seata ## Account for console interface and open-api authentication, strongly recommended to change from default
+    password: seata ## Password for console interface and open-api authentication, strongly recommended to change from default
+heartbeat:
+  threshold: 90000  ## Time to remove Seata-server nodes when they go down ungracefully
+  period: 60000 ## Check node heartbeats every 60 seconds, remove nodes if they exceed the threshold
+seata:
+  security:
+    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017 ## Token signing key, strongly recommended to change from default
+    tokenValidityInMilliseconds: 1800000 ## Token expiration time
+    csrf-ignore-urls: /naming/v1/**,/api/v1/naming/** ## URLs that don't require CSRF protection, use default values as these are for client open-api
+    ignore:
+      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.jpeg,/**/*.ico,/api/v1/auth/login,/version.json,/naming/v1/health,/error ## URLs that don't require authentication
+```
+
+### Client Registry Configuration
+
+Add the following registry configuration to [**application.yml**](https://github.com/apache/incubator-seata/blob/2.x/script/client/spring/application.yml):
 
 ```yaml
 seata:
   registry:
     type: seata
-  seata:
-    server-addr: 127.0.0.1:8081   ## IP + port of the naming server configured in the first step. Use commas to separate multiple naming server nodes.
-    namespace: public  ## Namespace
-    heartbeat-period: 5000  ## Heartbeat interval
+    seata:
+      server-addr: 127.0.0.1:8081   ## IP and port of configured namingserver, use commas to separate multiple nodes
+      namespace: public  ## Namespace
+      heartbeat-period: 5000  ## Heartbeat interval
+      username: seata
+      password: seata
 ```
-### Server-side Configuration for the Registration Center
-Add the following configuration to `conf/application.yaml`, with the rest of the configuration referring to configuration options:
+
+### Server Registry Configuration
+
+Add the following configuration to `conf/application.yaml`.
+For other configurations, refer to [configuration options](https://github.com/apache/incubator-seata/blob/2.x/server/src/main/resources/application.example.yml):
 
 ```yaml
 seata:
   registry:
     type: seata
-  seata:
-    server-addr: 127.0.0.1:8081   ## IP + port of the naming server configured in the first step. Use commas to separate multiple naming server nodes.
-    cluster: default  ## Cluster name
-    namespace: public  ## Namespace
-    heartbeat-period: 5000  ## Heartbeat interval
+    seata:
+      server-addr: 127.0.0.1:8081   ## IP and port of configured namingserver, use commas to separate multiple nodes
+      cluster: default  ## Cluster name
+      namespace: public  ## Namespace
+      heartbeat-period: 5000  ## Heartbeat interval
+      username: seata
+      password: seata
 ```
-### Create a Mapping Between the Client's Transaction Group and the Seata Cluster
-Send an HTTP request to one naming server node to create a transaction group-to-cluster mapping (the naming server node will automatically synchronize with other nodes):
+
+### Getting a Token
+
+If you're using IntelliJ IDEA's built-in HTTP client, you can get a token like this:
+
+```
+POST http://localhost:8081/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "username",
+  "password": "password"
+}
+```
+
+If you're using curl, you can do:
 
 ```shell
-http://127.0.0.1:8081/naming/v1/addGroup?clusterName=cluster2&namespace=public&unitName&vGroup=my_test_tx_group
+curl -X POST http://localhost:8081/api/v1/auth/login \
+     -H "Content-Type: application/json" \
+     -d '{"username": "username", "password": "password"}'
 ```
-(In this, namespace is the namespace configured on the client side, vGroup is the transaction group configured on the client side, and clusterName is the cluster name on the server side that needs to be mapped.)
 
+You'll receive a response like this. Copy the data field for use in the `authorization` header in subsequent requests:
 
-### Change the Mapping Between the Client's Transaction Group and the Seata Cluster
-Send an HTTP request to one naming server node to change the transaction group-to-cluster mapping (the naming server node will automatically synchronize with other nodes):
+```
+{
+  "code": "200",
+  "message": "success",
+  "data": "Bearer xxxxxxxxxx",
+  "success": true
+}
+```
+
+### Creating a Transaction Group to Seata Cluster Mapping
+
+Send an HTTP request to a namingserver node to create a transaction group mapping relationship (the namingserver node will automatically synchronize with other nodes):
 
 ```shell
-http://127.0.0.1:8081/naming/v1/changeGroup?clusterName=cluster2&namespace=public&unitName&vGroup=my_test_tx_group
+curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/addGroup?clusterName=cluster2&namespace=public&unitName&vGroup=my_test_tx_group
 ```
-(In this, namespace is the namespace configured on the client side, vGroup is the transaction group configured on the client side, and clusterName is the cluster name on the server side that needs to be mapped.)
 
-Afterward, once Seata-Server is started and the client configuration is complete, you can begin to experience Seata services.
+(Where namespace is the namespace configured on the client, vGroup is the transaction group configured on the client, and clusterName is the cluster name of the server to map to)
+
+### Switching Transaction Group to Seata Cluster Mapping (Traffic Switching)
+
+Send an HTTP request to a namingserver node to modify the transaction group mapping relationship:
+
+```shell
+curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/changeGroup?clusterName=cluster2&namespace=public&unitName&vGroup=my_test_tx_group
+```
+
+(Where namespace is the namespace configured on the client, vGroup is the transaction group configured on the client, and clusterName is the cluster name of the server to map to)
+
+After starting Seata-Server and configuring the client, you can start your application and begin using Seata services.
 
 Tips:
-- 1.Please ensure that the client and server are registered under the same namespace; otherwise, the service will not be found.
-- 2.Note that the naming server is only allowed to be used in a private network; do not expose it to the public environment.
+- 1. Ensure the client and server registries are in the same namespace, otherwise services won't be found.
+- 2. Namingserver should only be used on internal networks, never expose it to public networks.
+- 3. Namingserver is an experimental feature and may change in future versions. Please evaluate and test thoroughly before using in production.
+- 4. Adding, deleting, or modifying transaction groups must be done through namingserver's open-api. Bypassing this may cause data inconsistency, resulting in service discovery failures or exceptions.

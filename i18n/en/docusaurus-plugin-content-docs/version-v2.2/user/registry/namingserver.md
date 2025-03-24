@@ -80,5 +80,8 @@ http://127.0.0.1:8081/naming/v1/changeGroup?clusterName=cluster2&namespace=publi
 Afterward, once Seata-Server is started and the client configuration is complete, you can begin to experience Seata services.
 
 Tips:
-- 1.Please ensure that the client and server are registered under the same namespace; otherwise, the service will not be found.
-- 2.Note that the naming server is only allowed to be used in a private network; do not expose it to the public environment.
+- 1. Ensure the client and server registries are in the same namespace, otherwise services won't be found.
+- 2. Namingserver should only be used on internal networks, never expose it to public networks.
+- 3. Namingserver is an experimental feature and may change in future versions. Please evaluate and test thoroughly before using in production.
+- 4. Adding, deleting, or modifying transaction groups must be done through namingserver's open-api. Bypassing this may cause data inconsistency, resulting in service discovery failures or exceptions.
+
