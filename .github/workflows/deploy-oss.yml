@@ -46,4 +46,4 @@ jobs:
           chmod +x aliyun
           ./aliyun version
       - name: Sync to OSS
-        run: ./aliyun oss cp ./dist oss://seata-website-cn-hongkong/ --meta Cache-Control:"max-age=3600" -r -f -e oss-cn-hongkong.aliyuncs.com --access-key-id ${{ secrets.ACCESS_KEYID }} --access-key-secret ${{ secrets.ACCESS_KEYSECRET }} --region cn-hongkong
+        run: ./aliyun oss cp ./deploy-dist oss://seata-website-cn-hongkong/ --meta Cache-Control:"max-age=3600" -r -f -e oss-cn-hongkong.aliyuncs.com --access-key-id ${{ secrets.ACCESS_KEYID }} --access-key-secret ${{ secrets.ACCESS_KEYSECRET }} --region cn-hongkong
