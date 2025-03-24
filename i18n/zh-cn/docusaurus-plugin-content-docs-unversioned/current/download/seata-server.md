@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 :::tip
 
-2.2.0 版本已发布，支持Seata自研注册中心Seata-Namingserver；0.6.1及以下旧版本协议兼容；支持tcc二阶段try,confirm，cancel三方法钩子；Seata-Raft集群针对2.0版本消息和数据兼容。欢迎下载试用
+2.3.0 最新版本重磅升级！本次更新新增对Kingbase、ShenTong数据库的全面支持，集成gRPC通信协议及序列化器，大幅提升分布式事务处理能力。同时，此版本还做了大量的优化，核心优化包括：fastjson2序列化/解析提升JSON效率，Saga注解简化事务开发，Raft节点SSL通信加固安全。此版本，进一步提升了稳定性和安全性！
 
 :::
 

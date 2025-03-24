@@ -9,8 +9,7 @@ hide_table_of_contents: true
 
 :::tip
 
-Version 2.2.0 has been released, supporting the self-developed naming center Seata-Namingserver; it is compatible with protocol versions 0.6.1 and below. It also supports TCC two-phase operations with try, confirm, and cancel hooks. The Seata-Raft cluster ensures message and data compatibility with version 2.0. We welcome you to download and try it out.
-
+ V2.3.0 is now officially released with major upgrades! This update introduces full support for Kingbase and ShenTong databases, integrates gRPC communication protocol and serializers to significantly enhance distributed transaction capabilities. Core optimizations include: boosted JSON efficiency via fastjson2 serialization/parsing, simplified transaction development with Saga annotations, and hardened security through SSL-encrypted Raft node communication. This release delivers stronger stability and security for your system infrastructure!
 :::
 
 ## System Requirements
