@@ -27,4 +27,4 @@ description: Seata Community Meetup·Hangzhou Station, officially held on Decemb
 
 ### Agenda
 
-Agenda! [](https://img.alicdn.com/tfs/TB1K5nYwVP7gK0jSZFjXXc5aXXa-3175-14507.png)
+Agenda! [](/img/doc/TB1K5nYwVP7gK0jSZFjXXc5aXXa-3175-14507.png)

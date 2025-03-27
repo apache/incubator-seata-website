@@ -49,7 +49,7 @@ A global transaction is defined as the overall coordination of several branch tr
 4. The RM reports the execution result of the branch transaction to the TC. (optional)
 5. The TC sends a branch commit or branch rollback command to the RM.
 
-<img src="https://img.alicdn.com/tfs/TB19qmhOrY1gK0jSZTEXXXDQVXa-1330-924.png" alt="seata-mod" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB19qmhOrY1gK0jSZTEXXXDQVXa-1330-924.png" alt="seata-mod" style={{ zoom:'50%' }} />
 
 Seata's global transaction processing process is divided into two phases:
 
@@ -67,7 +67,7 @@ Taking our Seata AT mode and TCC mode as examples:
 
 AT mode
 
-<img src="https://img.alicdn.com/tfs/TB1NTuzOBr0gK0jSZFnXXbRRXXa-1330-924.png" alt="at-mod" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1NTuzOBr0gK0jSZFnXXbRRXXa-1330-924.png" alt="at-mod" style={{ zoom:'50%' }} />
 
 - Execution phase:
   - Rollbackable: Record rollback logs according to the SQL parsing result
@@ -79,7 +79,7 @@ AT mode
 
 TCC mode
 
-<img src="https://img.alicdn.com/tfs/TB1m59pOEY1gK0jSZFCXXcwqXXa-1330-924.png" alt="tcc-mod" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1m59pOEY1gK0jSZFCXXcwqXXa-1330-924.png" alt="tcc-mod" style={{ zoom:'50%' }} />
 
 - Execution Phase:
 
@@ -96,7 +96,7 @@ XA mode:
 
 Within the distributed transaction framework defined by Seata, it is a transaction mode that uses XA protocol mechanisms to manage branch transactions with the support of transaction resources (databases, message services, etc.) for the XA protocol.
 
-<img src="https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" alt="xa-mod" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" alt="xa-mod" style={{ zoom:'50%' }} />
 
 - Execution Phase:
 
@@ -118,7 +118,7 @@ Essentially, the 3 major transaction modes that Seata already supports: AT, TCC,
 
 Compensatory transaction processing mechanisms are built on top of transaction resources (either in the middleware layer or in the application layer), and the transaction resources themselves are unaware of distributed transactions.
 
-<img src="https://img.alicdn.com/tfs/TB1z.qyOET1gK0jSZFrXXcNCXXa-602-460.png" alt="img" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1z.qyOET1gK0jSZFrXXcNCXXa-602-460.png" alt="img" style={{ zoom:'50%' }} />
 
 The fundamental problem with transaction resources being unaware of distributed transactions is the inability to achieve true *global consistency*.
 
@@ -130,7 +130,7 @@ It can be seen that because compensatory distributed transaction mechanisms do n
 
 Unlike compensatory transaction modes, the XA protocol requires transaction resources to provide support for standards and protocols.
 
-<img src="https://img.alicdn.com/tfs/TB1vs9kOvb2gK0jSZK9XXaEgFXa-602-486.png" alt="nct" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1vs9kOvb2gK0jSZK9XXaEgFXa-602-486.png" alt="nct" style={{ zoom:'50%' }} />
 
 Because transaction resources are aware of and participate in the distributed transaction processing process, they (such as databases) can guarantee effective isolation of data from any perspective and satisfy global data consistency.
 
@@ -217,7 +217,7 @@ Overall idea:
 
 XA mode runs within the transaction framework defined by Seata:
 
-<img src="https://img.alicdn.com/tfs/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style={{ zoom:'50%' }} />
 
 - Execution phase (Execute):
 
@@ -321,7 +321,7 @@ The core value of the Seata project is to build a standardized platform that com
 
 Based on Seata, the upper application architecture can flexibly choose the appropriate distributed transaction solution according to the actual scenario's needs.
 
-<img src="https://img.alicdn.com/tfs/TB1lTSoOqL7gK0jSZFBXXXZZpXa-1028-528.png" alt="img" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1lTSoOqL7gK0jSZFBXXXZZpXa-1028-528.png" alt="img" style={{ zoom:'50%' }} />
 
 The addition of XA mode fills the gap in Seata in the global consistency scenario, forming a landscape of four major transaction modes: AT, TCC, Saga, and XA, which can basically meet all scenarios' demands for distributed transaction processing.
 

@@ -12,7 +12,7 @@ Seata is a distributed transaction product designed to address data consistency 
 
 ## Seata Domain Model
 
-![image](https://img.alicdn.com/tfs/TB19qmhOrY1gK0jSZTEXXXDQVXa-1330-924.png)
+![image](/img/doc/TB19qmhOrY1gK0jSZTEXXXDQVXa-1330-924.png)
 
 As shown in the diagram above, the lifecycle of a transaction in Seata mainly consists of three parts: Begin (TM), Registry (RM), and Commit/Rollback (TM & TC).
 

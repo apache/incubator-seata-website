@@ -33,11 +33,11 @@ At this point, two things need to be demonstrated:
 
 Testing the time spent on compressing network usage:
 
-![image](https://user-images.githubusercontent.com/22959373/95567752-f55ddf80-0a55-11eb-8092-1f1d99855bdd.png)
+![image](/img/doc/95567752-f55ddf80-0a55-11eb-8092-1f1d99855bdd.png)
 
 ## Compression Ratio Test:
 
-![image](https://user-images.githubusercontent.com/22959373/95567834-0ad30980-0a56-11eb-9d7e-48b74babbea4.png)
+![image](/img/doc/95567834-0ad30980-0a56-11eb-9d7e-48b74babbea4.png)
 
 The test results clearly indicate that using gzip or zip compression can significantly reduce the pressure on the database and network transmission. At the same time, it can substantially decrease the size of the stored data.
 
@@ -45,7 +45,7 @@ The test results clearly indicate that using gzip or zip compression can signifi
 
 #### Implementation Approach
 
-![Compression](https://user-images.githubusercontent.com/22959373/116281711-8f039900-a7bc-11eb-91f8-82afdbb9f932.png)
+![Compression](/img/doc/116281711-8f039900-a7bc-11eb-91f8-82afdbb9f932.png)
 
 #### Partial Code
 
@@ -67,7 +67,7 @@ protected boolean needCompress(byte[] undoLogContent) {
 // 1. Check whether undo_log compression is enabled (1.4.2 Enabled by Default).
 // 2. Check whether the compression threshold has been reached (64k by default).
 // If both return requirements are met, the corresponding undoLogContent is compressed
-    return ROLLBACK_INFO_COMPRESS_ENABLE 
+    return ROLLBACK_INFO_COMPRESS_ENABLE
         && undoLogContent.length > ROLLBACK_INFO_COMPRESS_THRESHOLD;
 }
 ```

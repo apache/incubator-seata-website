@@ -37,11 +37,11 @@ date: 2021/05/07
 
 压缩网络用时指标测试：
 
-![image](https://user-images.githubusercontent.com/22959373/95567752-f55ddf80-0a55-11eb-8092-1f1d99855bdd.png)
+![image](/img/doc/95567752-f55ddf80-0a55-11eb-8092-1f1d99855bdd.png)
 
 压缩比测试：
 
-![image](https://user-images.githubusercontent.com/22959373/95567834-0ad30980-0a56-11eb-9d7e-48b74babbea4.png)
+![image](/img/doc/95567834-0ad30980-0a56-11eb-9d7e-48b74babbea4.png)
 
 通过以上的测试结果，可以明显的看出，使用gzip或zip进行压缩的情况下，可以较大程度的减少数据库的压力和网络传输的压力，同时也可以较大幅度的减少保存的数据的大小。
 
@@ -51,7 +51,7 @@ date: 2021/05/07
 
 #### 实现思路
 
-![压缩](https://user-images.githubusercontent.com/22959373/116281711-8f039900-a7bc-11eb-91f8-82afdbb9f932.png)
+![压缩](/img/doc/116281711-8f039900-a7bc-11eb-91f8-82afdbb9f932.png)
 
 #### 部分代码
 
@@ -73,7 +73,7 @@ protected boolean needCompress(byte[] undoLogContent) {
     // 1. 判断是否开启了undo_log压缩功能(1.4.2默认开启)
     // 2. 判断是否达到了压缩的阈值(默认64k)
     // 如果都满足返回需要对对应的undoLogContent进行压缩
-    return ROLLBACK_INFO_COMPRESS_ENABLE 
+    return ROLLBACK_INFO_COMPRESS_ENABLE
         && undoLogContent.length > ROLLBACK_INFO_COMPRESS_THRESHOLD;
 }
 ```

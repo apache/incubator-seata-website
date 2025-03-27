@@ -10,7 +10,7 @@ description: Seata XA 模式用户文档
 
 XA 模式是从 1.2 版本支持的事务模式。XA 规范 是 X/Open 组织定义的分布式事务处理（DTP，Distributed Transaction Processing）标准。Seata XA 模式是利用事务资源（数据库、消息服务等）对 XA 协议的支持，以 XA 协议的机制来管理分支事务的一种事务模式。
 
-<img src="https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" style={{ zoom:'50%' }} />
 
 本文中，我们将重点介绍 Seata XA 模式的使用，如果您对于 XA 模式原理感兴趣，还请阅读对应于本篇文章的[开发者指南](../../dev/mode/xa-mode)。
 

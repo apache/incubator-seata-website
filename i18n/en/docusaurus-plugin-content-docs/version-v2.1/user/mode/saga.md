@@ -7,7 +7,7 @@ description: The Saga pattern is a long transaction solution provided by SEATA. 
 ## Overview
 The Saga pattern is a long transaction solution provided by SEATA. In the Saga pattern, each participant in the business process submits a local transaction. If any participant fails, the Saga pattern compensates the previously successful participants. Both the forward service in phase one and the compensation service in phase two are implemented by business development.
 
-![Saga Mode Overview](https://img.alicdn.com/tfs/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
+![Saga Mode Overview](/img/doc/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
 
 Theoretical Basis: Paper by Hector & Kenneth titled "Sagas" (1987)
 

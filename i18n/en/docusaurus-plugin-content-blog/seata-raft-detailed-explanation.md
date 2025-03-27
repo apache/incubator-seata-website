@@ -102,7 +102,7 @@ For the case where the client side is obtaining the latest metadata while a busi
 
 - On the client side:
 
-    - If the client is executing operations like begin, commit, or registry, and at this moment, it needs to obtain the latest metadata, the RPC request from the client might fail since the leader may no longer exist or is not the current leader. 
+    - If the client is executing operations like begin, commit, or registry, and at this moment, it needs to obtain the latest metadata, the RPC request from the client might fail since the leader may no longer exist or is not the current leader.
     - If the request fails, the client receives an exception response, and in this case, the client needs to roll back based on the request result.
 
 - TC side for detecting the old leader:
@@ -211,22 +211,22 @@ Performance testing is divided into two scenarios. To avoid data hotspots and th
 - Random 3 million data items are used for inventory deduction in a 32 concurrent scenario for 10 minutes.
 
 ### 4.1 1.7.1 db mode
-![raft pressure test model](https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg)
+![raft pressure test model](/img/doc/O1CN011dNh3H1UK8G5prQAg_6000000002498-0-tps-731-333.jpg)
 
 #### Empty submission 64C
-![db64-2](https://img.alicdn.com/imgextra/i2/O1CN01pE1Anf1nRtgcnlx9t_!!6000000005087-0-tps-622-852.jpg)
+![db64-2](/img/doc/O1CN01pE1Anf1nRtgcnlx9t_6000000005087-0-tps-622-852.jpg)
 
 #### Random inventory deduction 32C
-![db32-2](https://img.alicdn.com/imgextra/i2/O1CN016hZkJC20OJax9ce31_!!6000000006839-0-tps-624-852.jpg)
+![db32-2](/img/doc/O1CN016hZkJC20OJax9ce31_6000000006839-0-tps-624-852.jpg)
 
 ### 4.2 2.0 raft mode
-![raft pressure test model](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
+![raft pressure test model](/img/doc/O1CN01nNL6oe1X95YcQQEjs_6000000002880-0-tps-773-353.jpg)
 
 #### Empty submission 64C
-![raft64-2](https://img.alicdn.com/imgextra/i1/O1CN01rs1ykr1dhnH8qnXj3_!!6000000003768-0-tps-631-851.jpg)
+![raft64-2](/img/doc/O1CN01rs1ykr1dhnH8qnXj3_6000000003768-0-tps-631-851.jpg)
 
 #### Random inventory deduction 32C
-![raft32c-2](https://img.alicdn.com/imgextra/i4/O1CN015OwA2k20enquV7Yfu_!!6000000006875-0-tps-624-856.jpg)
+![raft32c-2](/img/doc/O1CN015OwA2k20enquV7Yfu_6000000006875-0-tps-624-856.jpg)
 
 ### 4.3 Test Result Comparison
 32 concurrent random inventory deduction scenario with 3 million items

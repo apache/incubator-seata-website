@@ -9,7 +9,7 @@ description: User guide for Seata XA mode
 
 XA Mode is a transaction mode supported from version 1.2. The XA specification is a Distributed Transaction Processing (DTP) standard defined by the X/Open organization. Seata XA Mode utilizes the support of the XA protocol by transaction resources (databases, message services, etc.) to manage branch transactions using the mechanisms of the XA protocol.
 
-![Overview of a global transaction](https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png)
+![Overview of a global transaction](/img/doc/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png)
 
 In this document, we will focus on the usage of Seata XA Mode. If you are interested in the principles behind XA Mode, please read the corresponding [Developer Guide](../../dev/mode/xa-mode).
 

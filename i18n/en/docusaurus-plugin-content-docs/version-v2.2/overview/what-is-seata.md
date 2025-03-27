@@ -26,23 +26,23 @@ Evolution from the two phases commit protocol:
 
 # Write isolation
 
-- The **global lock** must be acquired before committing the local transaction of phase 1. 
+- The **global lock** must be acquired before committing the local transaction of phase 1.
 - If the **global lock** is not acquired, the local transaction should not be committed.
-- One transaction will try to acquire the **global lock** many times if it fails to, but there is a timeout, if it's timeout, rollback local transaction and release local lock as well. 
+- One transaction will try to acquire the **global lock** many times if it fails to, but there is a timeout, if it's timeout, rollback local transaction and release local lock as well.
 
 For example:
 
 Two transactions tx1 and tx2 are trying to update field m of table a. The original value of m is 1000.
 
-tx1 starts first, begins a local transaction, acquires the local lock, do the update operation: m = 1000 - 100 = 900. tx1 must acquire the **global lock** before committing the local transaction, after that, commit local transaction and release local lock. 
+tx1 starts first, begins a local transaction, acquires the local lock, do the update operation: m = 1000 - 100 = 900. tx1 must acquire the **global lock** before committing the local transaction, after that, commit local transaction and release local lock.
 
 next, tx2 begins local transaction, acquires local lock, do the update operation: m = 900 - 100 = 800. Before tx2 can commit local transaction, it must acquire the **global lock**, but the **global lock** may be hold by tx1, so tx2 will do retry. After tx1 does the global commit and releases the **global lock**, tx2 can acquire the **global lock**, then it can commit local transaction and release local lock.
 
-![Write-Isolation: Commit](https://img.alicdn.com/tfs/TB1zaknwVY7gK0jSZKzXXaikpXa-702-521.png)
+![Write-Isolation: Commit](/img/doc/TB1zaknwVY7gK0jSZKzXXaikpXa-702-521.png)
 
 See the figure above, tx1 does the global commit in phase 2 and release the **global lock**, tx2 acquires the **global lock** and commits local transaction.
 
-![Write-Isolation: Rollback](https://img.alicdn.com/tfs/TB1xW0UwubviK0jSZFNXXaApXXa-718-521.png)
+![Write-Isolation: Rollback](/img/doc/TB1xW0UwubviK0jSZFNXXaApXXa-718-521.png)
 
 See the figure above, if tx1 wants to do the global rollback, it must acquire local lock to revert the update operation of phase 1.
 
@@ -56,7 +56,7 @@ The isolation level of local database is **read committed** or above, so the def
 
 If it needs the isolation level of the global transaction is **read committed**, currently, Seata implements it via SELECT FOR UPDATE statement.
 
-![Read Isolation: SELECT FOR UPDATE](https://img.alicdn.com/tfs/TB138wuwYj1gK0jSZFuXXcrHpXa-724-521.png)
+![Read Isolation: SELECT FOR UPDATE](/img/doc/TB138wuwYj1gK0jSZFuXXcrHpXa-724-521.png)
 
 The **global lock** is be applied during the execution of SELECT FOR UPDATE statement, if the **global lock** is held by other transactions, the transaction will release local lock retry execute the SELECT FOR UPDATE statement. During the whole process, the query is blocked until the **global lock** is acquired, if the lock is acquired, it means the other global transaction has committed, so the isolation level of global transaction is **read committed**.
 
@@ -96,7 +96,7 @@ Got the "before image"：
 | ---- | ---- | ----- |
 | 1    | TXC  | 2014  |
 
-3. Execute the update sql: update the record of name equals 'GTS'. 
+3. Execute the update sql: update the record of name equals 'GTS'.
 4. Query the data after update(Named after image): locate the record by the **primary key** of image data before update.
 
 ```sql
@@ -156,16 +156,16 @@ Got the after image:
 }
 ```
 
-6. Before local commit, the transaction submit an application to TC to acquire a **global lock** for the record whose primary key equals 1 in the table product. 
+6. Before local commit, the transaction submit an application to TC to acquire a **global lock** for the record whose primary key equals 1 in the table product.
 7. Commit local transaction: commit the update of PRODUCT table and the insert of UNDO_LOG table in the same local transaction.
 8. Report the result of step 7 to TC.
 
 ## Phase 2 - Rollback case
 
 1. After receive the rollback request from TC, begin a local transaction, execute operation as following.
-2. Retrieve the UNDO LOG by XID and Branch ID. 
+2. Retrieve the UNDO LOG by XID and Branch ID.
 3. Validate data: Compare the image data after update in UNDO LOG with current data, if there is difference, it means the data has been changed by operation out of current transaction, it should be handled in different policy, we will describe it detailedly in other document.
-4. Generate rollback SQL statement base on before image in UNDO LOG and related information of the business SQL. 
+4. Generate rollback SQL statement base on before image in UNDO LOG and related information of the business SQL.
 
 ```sql
 update product set name = 'TXC' where id = 1;
@@ -175,7 +175,7 @@ update product set name = 'TXC' where id = 1;
 
 ## Phase 2 - Commit case
 
-1. After receive the commit request from TC, put the request into a work queue, return success to TC immediately. 
+1. After receive the commit request from TC, put the request into a work queue, return success to TC immediately.
 2. During the phase of doing the asynchronous work in the queue, the UNDO LOGs are deleted in batch way.
 
 # Appendix
@@ -219,7 +219,7 @@ Review the description in the overview: A distributed global transaction, the wh
 - One-stage prepare behavior
 - Two-phase commit or rollback behavior
 
-![Overview of a global transaction](https://img.alicdn.com/tfs/TB14Kguw1H2gK0jSZJnXXaT1FXa-853-482.png)
+![Overview of a global transaction](/img/doc/TB14Kguw1H2gK0jSZJnXXaT1FXa-853-482.png)
 
 According to the two-phase behavior mode, we divide branch transactions into **Automatic (Branch) Transaction Mode** and **TCC (Branch) Transaction Mode**.
 
@@ -242,7 +242,7 @@ The so-called TCC mode refers to the support of **customized's** branch transact
 
 The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.
 
-![Saga mode diagram](https://img.alicdn.com/tfs/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
+![Saga mode diagram](/img/doc/TB1Y2kuw7T2gK0jSZFkXXcIQFXa-445-444.png)
 
 Theoretical basis: Hector & Kenneth Post a comment Sagas （1987）
 

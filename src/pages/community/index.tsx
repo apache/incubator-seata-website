@@ -14,7 +14,7 @@ const data = {
     title: translate({ id: 'community.eventsTitle', message: '事件 & 新闻' }),
     list: [
       {
-        img: 'https://img.alicdn.com/tfs/TB1qH2YwVP7gK0jSZFjXXc5aXXa-2002-901.jpg',
+        img: require('@site/static/img/community/TB1qH2YwVP7gK0jSZFjXXc5aXXa-2002-901.jpg').default,
         title: 'Seata Meetup·杭州站成功举办',
         content:
           'Seata Community Meetup·杭州站,于12月21号在杭州市梦想小镇浙江青年众创空间完美举办',
@@ -186,7 +186,7 @@ export default function Community(): JSX.Element {
     <Layout title={'Seata'} description='Seata Community'>
       <div className='community-page'>
         <Bar
-          img='https://img.alicdn.com/tfs/TB115XwJzTpK1RjSZKPXXa3UpXa-160-160.png'
+          img={require('@site/static/img/community/TB115XwJzTpK1RjSZKPXXa3UpXa-160-160.png').default}
           text={data.barText}
         />
         <section className='events-section'>

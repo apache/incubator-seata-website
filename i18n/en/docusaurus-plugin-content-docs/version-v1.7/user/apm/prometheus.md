@@ -70,10 +70,10 @@ static_configs:
 #### Step 3: View Seata TC Metrics in Prometheus UI or Grafana
 Open Prometheus UI `http://localhost:9090/graph` in a browser, select `seata_transaction`, and click on "Execute" to retrieve the latest data:
 
-![tc-prometheus](https://img.alicdn.com/imgextra/i2/O1CN01r6916n1DiXhwH07dj_!!6000000000250-2-tps-1698-959.png)
+![tc-prometheus](/img/doc/O1CN01r6916n1DiXhwH07dj_6000000000250-2-tps-1698-959.png)
 
 It is recommended to use Grafana in conjunction with Prometheus for better query results:
 
-![tc-grafana](https://img.alicdn.com/imgextra/i2/O1CN01IdJk5G25B62KpD5If_!!6000000007487-2-tps-1694-973.png)
+![tc-grafana](/img/doc/O1CN01IdJk5G25B62KpD5If_6000000007487-2-tps-1694-973.png)
 
 > Note: This configuration sets Prometheus as the data source for Grafana, so the data is the same, but Grafana provides a better display effect.

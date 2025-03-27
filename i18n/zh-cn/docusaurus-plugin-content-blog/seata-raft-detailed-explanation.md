@@ -172,7 +172,7 @@ peers: "10.58.16.231:9091"
 ```
 ### 3.3 faq
 - 当`seata.raft.server-addr`配置好后，必须通过server的openapi进行集群的扩缩容，直接改动该配置进行重启是不会生效的
-接口为`/metadata/v1/changeCluster?raftClusterStr=新的集群列表` 
+接口为`/metadata/v1/changeCluster?raftClusterStr=新的集群列表`
 - 如果`server-addr:`中的地址都为本机，那么需要根据本机上不同的server的netty端口增加1000的偏移量，如`server.port: 7092`那么netty端口为8092，raft选举和通信端口便为9092，需要增加启动参数`-Dserver.raftPort=9092`.
 Linux下可以通过`export JAVA_OPT="-Dserver.raftPort=9092"`等方式指定。
 
@@ -183,20 +183,20 @@ TC: 4c8g*3  Client: 4c*8G*1  数据库为阿里云rds 4c16g
 - 64并发压测只增加`@Globaltransactional`注解接口空提交的性能
 - 随机300W数据进行32并发10分钟的扣库存
 ### 4.1 1.7.1 db模式
-![raft压测模型](https://img.alicdn.com/imgextra/i3/O1CN011dNh3H1UK8G5prQAg_!!6000000002498-0-tps-731-333.jpg)
+![raft压测模型](/img/doc/O1CN011dNh3H1UK8G5prQAg_6000000002498-0-tps-731-333.jpg)
 #### 空提交 64C
-![db64-2](https://img.alicdn.com/imgextra/i2/O1CN01pE1Anf1nRtgcnlx9t_!!6000000005087-0-tps-622-852.jpg)
+![db64-2](/img/doc/O1CN01pE1Anf1nRtgcnlx9t_6000000005087-0-tps-622-852.jpg)
 #### 随机扣库存 32C
-![db32-2](https://img.alicdn.com/imgextra/i2/O1CN016hZkJC20OJax9ce31_!!6000000006839-0-tps-624-852.jpg)
+![db32-2](/img/doc/O1CN016hZkJC20OJax9ce31_6000000006839-0-tps-624-852.jpg)
 
 ### 4.2 2.0 raft模式
-![raft压测模型](https://img.alicdn.com/imgextra/i2/O1CN01nNL6oe1X95YcQQEjs_!!6000000002880-0-tps-773-353.jpg)
+![raft压测模型](/img/doc/O1CN01nNL6oe1X95YcQQEjs_6000000002880-0-tps-773-353.jpg)
 
 #### 空提交 64C
-![raft64-2](https://img.alicdn.com/imgextra/i1/O1CN01rs1ykr1dhnH8qnXj3_!!6000000003768-0-tps-631-851.jpg)
+![raft64-2](/img/doc/O1CN01rs1ykr1dhnH8qnXj3_6000000003768-0-tps-631-851.jpg)
 
 #### 随机扣库存 32C
-![raft32c-2](https://img.alicdn.com/imgextra/i4/O1CN015OwA2k20enquV7Yfu_!!6000000006875-0-tps-624-856.jpg)
+![raft32c-2](/img/doc/O1CN015OwA2k20enquV7Yfu_6000000006875-0-tps-624-856.jpg)
 
 ### 4.3 压测结果对比
 32并发对300W商品随机扣库存场景

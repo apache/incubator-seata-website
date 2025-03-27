@@ -30,7 +30,7 @@ To make a golang version of distributed transaction framework, one of the first 
 The overall model of the getty framework is as follows:
 
 
-! [image.png]( https://img.alicdn.com/imgextra/i1/O1CN011TIcL01jY4JaweOfV_! !6000000004559-2-tps-954-853.png)
+! [image.png]( /img/doc/O1CN011TIcL01jY4JaweOfV_6000000004559-2-tps-954-853.png)
 
 
 The following is a detailed description of the RPC communication process of seata-golang with related code.
@@ -688,13 +688,13 @@ At this point, we have analysed [seata-golang](https://github.com/opentrx/seata-
 
 ## III. The Future of seata-golang
 
-The development of [seata-golang](https://github.com/opentrx/seata-golang) started in April this year, and in August it basically realised the interoperability with the java version of [seata 1.2](https://github.com/apache/incubator-) protocol. seata) protocol, implemented AT mode for mysql database (automatically coordinating the commit rollback of distributed transactions), implemented TCC mode, and used mysql to store data on the TC side, which turned TC into a stateless application to support high-availability deployment. The following figure shows the principle of AT mode: ! [image20201205-232516.png]( https://img.alicdn.com/imgextra/i3/O1CN01alqsQS1G2oQecFYIs_! !6000000000565-2-tps-1025-573.png)
+The development of [seata-golang](https://github.com/opentrx/seata-golang) started in April this year, and in August it basically realised the interoperability with the java version of [seata 1.2](https://github.com/apache/incubator-) protocol. seata) protocol, implemented AT mode for mysql database (automatically coordinating the commit rollback of distributed transactions), implemented TCC mode, and used mysql to store data on the TC side, which turned TC into a stateless application to support high-availability deployment. The following figure shows the principle of AT mode: ! [image20201205-232516.png]( /img/doc/O1CN01alqsQS1G2oQecFYIs_6000000000565-2-tps-1025-573.png)
 
 
 There is still a lot of work to be done, such as support for the registry, support for the configuration centre, protocol interoperability with the java version of seata 1.4, support for other databases, implementation of the craft transaction coordinator, etc. We hope that developers interested in the distributed transaction problem can join in to build a perfect golang's distributed transaction framework.
 
 If you have any questions, please feel free to join the group [group number 33069364]:
-<img src="https://img.alicdn.com/imgextra/i2/O1CN01IjOVG425erjuzqcOi_! !6000000007552-2-tps-600-621.png" width="200px" />
+<img src="/img/doc/O1CN01IjOVG425erjuzqcOi_6000000007552-2-tps-600-621.png" width="200px" />
 
 ### **Author Bio**
 

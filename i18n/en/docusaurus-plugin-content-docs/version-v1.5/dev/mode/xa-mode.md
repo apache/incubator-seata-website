@@ -15,7 +15,7 @@ description: Seata XA Mode
 
 In the distributed transaction framework defined by Seata, XA mode is a transaction mode that manages branch transactions using the XA protocol mechanism, leveraging transaction resources such as databases and message services with XA protocol support.
 
-<img src="https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png" style={{ zoom:'50%' }} />
 
 - Execution Phase:
 
@@ -33,7 +33,7 @@ In the distributed transaction framework defined by Seata, XA mode is a transact
 
 XA mode runs within the transaction framework defined by Seata:
 
-<img src="https://img.alicdn.com/tfs/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1uM2OaSslXu8jSZFuXXXg7FXa-1330-958.png" alt="xa-fw" style={{ zoom:'50%' }} />
 
 - Execution Phase (E xecute):
 
@@ -60,7 +60,7 @@ We prioritize designing and implementing the second method: DataSource proxy cre
 
 Compared to the data source proxy mechanism in the AT mode, it looks like this:
 
-<img src="https://img.alicdn.com/tfs/TB11_LJcggP7K4jSZFqXXamhVXa-1564-894.png" alt="ds1" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB11_LJcggP7K4jSZFqXXamhVXa-1564-894.png" alt="ds1" style={{ zoom:'50%' }} />
 
 However, the second method also has its limitations: it cannot guarantee compatibility correctness.
 
@@ -72,7 +72,7 @@ Taking all factors into consideration, the data source proxy design for XA mode 
 
 Compared to the data source proxy mechanism in the AT mode, it looks like this:
 
-<img src="https://img.alicdn.com/tfs/TB1qJ57XZieb18jSZFvXXaI3FXa-1564-894.png" alt="ds2" style={{ zoom:'50%' }} />
+<img src="/img/doc/TB1qJ57XZieb18jSZFvXXaI3FXa-1564-894.png" alt="ds2" style={{ zoom:'50%' }} />
 
 #### 3. Branch Registration
 

@@ -68,10 +68,10 @@ scrape_configs:
 #### 步骤三：在Prometheus UI或Grafana中查看Seata TC的Metrics
 在浏览器中打开Prometheus UI`http://localhost:9090/graph`，选择`seata_transaction`，点击查询，即可获取到最新数据：
 
-![tc-prometheus](https://img.alicdn.com/imgextra/i2/O1CN01r6916n1DiXhwH07dj_!!6000000000250-2-tps-1698-959.png)
+![tc-prometheus](/img/doc/O1CN01r6916n1DiXhwH07dj_6000000000250-2-tps-1698-959.png)
 
 推荐在Prometheus中结合配置[Grafana](https://prometheus.io/docs/visualization/grafana/)获得更好的查询效果：
 
-![tc-grafana](https://img.alicdn.com/imgextra/i2/O1CN01IdJk5G25B62KpD5If_!!6000000007487-2-tps-1694-973.png)
+![tc-grafana](/img/doc/O1CN01IdJk5G25B62KpD5If_6000000007487-2-tps-1694-973.png)
 
 >提示：此配置是将Prometheus作为Grafana的数据源，因此数据完全相同，只是使用Grafana显示效果更佳。
