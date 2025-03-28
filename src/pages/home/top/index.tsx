@@ -31,9 +31,9 @@ const Top = () => {
     forkCount: '',
   });
   const [releaseNote, setReleaseNote] = React.useState({
-    version: 'v2.0.0',
-    url: 'https://github.com/apache/incubator-seata/releases/tag/v2.0.0',
-    date: '2023/11/24',
+    version: 'v2.3.0',
+    url: 'https://github.com/apache/incubator-seata/releases/tag/v2.3.0',
+    date: '2025/03/19',
   });
 
   React.useEffect(() => {
