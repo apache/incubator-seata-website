@@ -45,9 +45,9 @@ hide_table_of_contents: true
 ### ASF 发布版本
 | 版本号   | 源码下载                                   | 二进制下载      | 发布说明   | 参考文档              |
 |-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------|
-| 2.3.0   | [apache-seata-2.3.0-incubating-src.tar.gz](https://dist.apache.org/repos/dist/release/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-src.tar.gz)<br/>[apache-seata-2.3.0-incubating-src.tar.gz.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-src.tar.gz.asc)<br/>[apache-seata-2.3.0-incubating-src.tar.gz.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-src.tar.gz.sha512)<br/>    | [apache-seata-2.3.0-incubating-bin.tar.gz](https://dist.apache.org/repos/dist/release/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-bin.tar.gz)<br/>   [apache-seata-2.3.0-incubating-bin.tar.gz.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-bin.tar.gz.asc)<br/>   [apache-seata-2.3.0-incubating-bin.tar.gz.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-bin.tar.gz.sha512)<br/> | [2.3.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.3.0) | [2.3.0 Quick Start](/docs/user/quickstart/) |
-| 2.2.0 | [apache-seata-2.2.0-incubating-src.zip](https://dist.apache.org/repos/dist/release/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip)<br/>[apache-seata-2.2.0-incubating-src.zip.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip.asc)<br/>[apache-seata-2.2.0-incubating-src.zip.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip.sha512)<br/> | [apache-seata-2.2.0-incubating-bin.tar.gz](https://dist.apache.org/repos/dist/release/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz)<br/>   [apache-seata-2.2.0-incubating-bin.tar.gz.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.asc)<br/>   [apache-seata-2.2.0-incubating-bin.tar.gz.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.sha512)<br/> | [2.2.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.2.0) | [2.2.0 Quick Start](/docs/user/quickstart/) |
-| 2.1.0 | [apache-seata-2.1.0-incubating-src.tar.gz](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz) <br/> [apache-seata-2.1.0-incubating-src.tar.gz.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.asc) <br/> [apache-seata-2.1.0-incubating-src.tar.gz.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.sha512) | [apache-seata-2.1.0-incubating-bin.tar.gz](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz) <br/> [apache-seata-2.1.0-incubating-bin.tar.gz.asc](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.asc)<br/> [apache-seata-2.1.0-incubating-bin.tar.gz.sha512](https://dist.apache.org/repos/dist/release/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.sha512) | [2.1.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.1.0) | [2.1.0 Quick Start](/docs/user/quickstart/) |
+| 2.3.0   | [apache-seata-2.3.0-incubating-src.tar.gz](https://downloads.apache.org/incubator/seata/2.3.<br/><br/>0/apache-seata-2.3.0-incubating-src.tar.gz) [ASC](https://downloads.apache.org/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-src.tar.gz.sha512)<br/> | [apache-seata-2.3.0-incubating-bin.tar.gz](https://downloads.apache.org/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-bin.tar.gz)    [ASC](https://downloads.apache.org/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-bin.tar.gz.asc)  [SHA512](https://downloads.apache.org/incubator/seata/2.3.0/apache-seata-2.3.0-incubating-bin.tar.gz.sha512)<br/> | [2.3.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.3.0) | [2.3.0 Quick Start](/docs/user/quickstart/) |
+| 2.2.0   | [apache-seata-2.2.0-incubating-src.zip](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip) [ASC](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip.sha512)<br/>                       | [apache-seata-2.2.0-incubating-bin.tar.gz](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz)  [ASC](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.sha512)<br/>    | [2.2.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.2.0) | [2.2.0 Quick Start](/docs/user/quickstart/) |
+| 2.1.0   | [apache-seata-2.1.0-incubating-src.tar.gz](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz) [ASC](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.sha512)                | [apache-seata-2.1.0-incubating-bin.tar.gz](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz)  [ASC](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.sha512)         | [2.1.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.1.0) | [2.1.0 Quick Start](/docs/user/quickstart/) |
 
 1. Seata 版本维护策略，请参考[版本维护文档](/docs/ops/version-maintain-plan)，请您尽快升级低版本至当前维护版本。版本升级请参考[升级指南](/docs/ops/upgrade)
 2. 更多历史版本下载，请参考[版本历史](/release-history/seata-server)
@@ -56,15 +56,23 @@ hide_table_of_contents: true
 </section>
 ```
 
-## 快照版
+[//]: # (## 快照版)
 
-```mdx-code-block
-<section class="full_width_table_section">
-```
+[//]: # ()
+[//]: # (```mdx-code-block)
 
-| 版本号 | 二进制下载 | docker 镜像 | checksum | 发布说明 | 版本文档 | 是否 ASF 版本 |
-| ------ | ---------- | ----------- | -------- | -------- | -------- | ------------- |
+[//]: # (<section class="full_width_table_section">)
 
-```mdx-code-block
-</section>
-```
+[//]: # (```)
+
+[//]: # ()
+[//]: # (| 版本号 | 二进制下载 | docker 镜像 | checksum | 发布说明 | 版本文档 | 是否 ASF 版本 |)
+
+[//]: # (| ------ | ---------- | ----------- | -------- | -------- | -------- | ------------- |)
+
+[//]: # ()
+[//]: # (```mdx-code-block)
+
+[//]: # (</section>)
+
+[//]: # (```)
