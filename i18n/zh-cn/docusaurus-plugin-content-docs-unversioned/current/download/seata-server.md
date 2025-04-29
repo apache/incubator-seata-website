@@ -99,13 +99,13 @@ hide_table_of_contents: true
    gpg --verify apache-seata-***.asc apache-seata-***
    ```
 
-如果出现类似以下内容，说明签名是正确的:
+   如果出现类似以下内容，说明签名是正确的:
 
-```text
-gpg: Signature made Tue Apr 29 12:11:09 2025 CST
-gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
-gpg: Good signature from "xxx" [ultimate]
-```
+   ```bash
+    gpg: Signature made Tue Apr 29 12:11:09 2025 CST
+    gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
+    gpg: Good signature from "xxx" [ultimate]
+   ```
 
 ### 验证 Checksum
 
@@ -116,8 +116,8 @@ gpg: Good signature from "xxx" [ultimate]
    shasum -c apache-seata-***.sha512
    ```
 
-如果出现类似以下内容，说明 checksum 是正确的:
+   如果出现类似以下内容，说明 checksum 是正确的:
 
-```text
-apache-seata-***.tar.gz: OK
-```
+   ```bash
+    apache-seata-***.tar.gz: OK
+   ```

@@ -94,12 +94,12 @@ It is crucial to verify the integrity of downloaded files using GPG or SHA signa
    gpg --verify apache-seata-***.asc apache-seata-***
    ```
 
-If something like the following appears, it means the signature is correct:
-```text
-gpg: Signature made Tue Apr 29 12:11:09 2025 CST
-gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
-gpg: Good signature from "xxx" [ultimate]
-```
+   If something like the following appears, it means the signature is correct:
+   ```bash
+    gpg: Signature made Tue Apr 29 12:11:09 2025 CST
+    gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
+    gpg: Good signature from "xxx" [ultimate]
+   ```
 
 ### Verify Checksums
 
@@ -109,8 +109,8 @@ gpg: Good signature from "xxx" [ultimate]
    ```bash
    shasum -c apache-seata-***.sha512
    ```
-If something like the following appears, it means the checksum is correct:
+   If something like the following appears, it means the checksum is correct:
 
-```text
-apache-seata-***.tar.gz: OK
-```
+   ```bash
+    apache-seata-***.tar.gz: OK
+   ```
