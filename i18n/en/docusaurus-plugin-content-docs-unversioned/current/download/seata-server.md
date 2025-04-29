@@ -78,3 +78,39 @@ requirements, you may not be able to deploy Seata-Server on your device.
 [//]: # (</section>)
 
 [//]: # (```)
+
+## Verify the releases
+It is crucial to verify the integrity of downloaded files using GPG or SHA signatures. You should download the KEYS along with the .asc and .sha512 signature files for the appropriate distribution. It is recommended to obtain these files directly from the main distribution directory, rather than from mirror sites.
+
+### Verify Signatures
+1. Download the GPG signatures [KEYS](https://downloads.apache.org/incubator/seata/KEYS) and the release along with its .asc signature file.
+
+2. Import the public key:
+   ```bash
+   gpg --import KEYS
+   ```
+3. Verify the signature:
+   ```bash
+   gpg --verify apache-seata-***.asc apache-seata-***
+   ```
+
+If something like the following appears, it means the signature is correct:
+```text
+gpg: Signature made Tue Apr 29 12:11:09 2025 CST
+gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
+gpg: Good signature from "xxx" [ultimate]
+```
+
+### Verify Checksums
+
+1. Download the release along with its .sha512 signature file.
+
+2. Verify the checksum:
+   ```bash
+   shasum -c apache-seata-***.sha512
+   ```
+If something like the following appears, it means the checksum is correct:
+
+```text
+apache-seata-***.tar.gz: OK
+```
