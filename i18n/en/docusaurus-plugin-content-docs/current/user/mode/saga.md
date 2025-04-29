@@ -921,7 +921,7 @@ Unlike the AT mode which directly uses data source proxies to shield the details
 
 ```java
 @CompensationBusinessAction(name = "DubboSagaActionOne", compensationMethod = "compensation")
-    public boolean execute(BusinessActionContext actionContext, @BusinessActionContextParameter(paramName = "a") int a) {
+    public boolean execute(BusinessActionContext actionContext, @BusinessActionContextParameter(paramName = "param") int param) {
 }
 
 @Override
