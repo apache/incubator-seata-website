@@ -955,7 +955,7 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 
 ```java
 @CompensationBusinessAction(name = "DubboSagaActionOne", compensationMethod = "compensation")
-    public boolean execute(BusinessActionContext actionContext, @BusinessActionContextParameter(paramName = "param") int param) {
+    public boolean execute(BusinessActionContext actionContext, @BusinessActionContextParameter(paramName = "param") String param) {
 }
 
 @Override
