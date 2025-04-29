@@ -949,6 +949,41 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 
 ![Saga_Loop示例状态图](/img/saga/saga_loop_process.png?raw=true)
 
+## Saga注解化模式基本使用
+
+区别于在 AT 模式直接使用数据源代理来屏蔽分布式事务细节，业务方需要自行定义 saga 资源的“执行”和“补偿” 。比如在下方的例子中，
+
+```java
+@CompensationBusinessAction(name = "DubboSagaActionOne", compensationMethod = "compensation")
+    public boolean execute(BusinessActionContext actionContext, @BusinessActionContextParameter(paramName = "param") int param) {
+}
+
+@Override
+    public boolean compensation(BusinessActionContext actionContext) {
+}
+```
+
+Seata 会把一个 Saga注解化 接口当成一个 Resource，也叫 Saga annotation Resource。在业务接口中核心的注解是 `@CompensationBusinessAction`
+
+- action 阶段，执行一阶段的业务逻辑
+- compensation 阶段，当事务觉一回滚（Rollback） 这一阶段使用 `compensationMethod` 属性所指向的方法，来执行自定义 补偿 的工作。
+
+其次，可以在 Saga 模式下使用 `BusinessActionContext` 在事务上下文中传递查询参数。如下属性：
+
+- `xid` 全局事务id
+- `branchId` 分支事务id
+- `actionName` 分支资源id，（resource id）
+- `actionContext` 业务传递的参数，可以通过 `@BusinessActionContextParameter` 来标注需要传递的参数。
+
+在定义好 Saga注解化 接口之后，我们可以像 AT 模式一样，通过 `@GlobalTransactional` 开启一个分布式事务。
+
+```java
+@GlobalTransactional
+public String doTransactionCommit(){
+   sagabean.exectue(actionContext....)
+}
+```
+
 ## FAQ
 
 ---

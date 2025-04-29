@@ -915,6 +915,40 @@ Example State Diagram:
 
 ![Saga_Loop Example State Diagram](/img/saga/saga_loop_process.png?raw=true)
 
+## Basic Usage of Saga Annotation Mode
+
+Unlike the AT mode which directly uses data source proxies to shield the details of distributed transactions, business developers need to define their own "execution" and "compensation" for saga resources. For example, in the example below:
+
+```java
+@CompensationBusinessAction(name = "DubboSagaActionOne", compensationMethod = "compensation")
+    public boolean execute(BusinessActionContext actionContext, @BusinessActionContextParameter(paramName = "a") int a) {
+}
+
+@Override
+    public boolean compensation(BusinessActionContext actionContext) {
+}
+```
+
+Seata treats a Saga annotation interface as a Resource, also called a Saga annotation Resource. The core annotation in the business interface is `@CompensationBusinessAction`:
+
+- In the action phase, the business logic of the first phase is executed
+- In the compensation phase, when the transaction decides to roll back, the method pointed to by the `compensationMethod` attribute is used to perform custom compensation work.
+
+Additionally, you can use `BusinessActionContext` to pass query parameters in the transaction context in Saga mode. Properties include:
+
+- `xid` global transaction id
+- `branchId` branch transaction id
+- `actionName` branch resource id (resource id)
+- `actionContext` business parameters, which can be annotated with `@BusinessActionContextParameter` to indicate parameters that need to be passed.
+
+After defining the Saga annotation interface, we can start a distributed transaction like in AT mode using `@GlobalTransactional`.
+
+```java
+@GlobalTransactional
+public String doTransactionCommit(){
+   sagabean.exectue(actionContext....)
+}
+```
 
 ## FAQ
 
