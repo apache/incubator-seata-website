@@ -119,5 +119,5 @@ hide_table_of_contents: true
    如果出现类似以下内容，说明 checksum 是正确的:
 
    ```bash
-    apache-seata-***.tar.gz: OK
+   apache-seata-***.tar.gz: OK
    ```

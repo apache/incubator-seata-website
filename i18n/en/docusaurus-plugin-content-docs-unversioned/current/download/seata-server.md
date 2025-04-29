@@ -112,5 +112,5 @@ It is crucial to verify the integrity of downloaded files using GPG or SHA signa
    If something like the following appears, it means the checksum is correct:
 
    ```bash
-    apache-seata-***.tar.gz: OK
+   apache-seata-***.tar.gz: OK
    ```
