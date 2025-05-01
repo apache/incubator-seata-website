@@ -75,6 +75,15 @@ const sidebars = {
             'user/registry/namingserver',
           ],
         },
+        {
+          type: 'category',
+          label: 'Console',
+          items: [
+            'user/console/introduction',
+            'user/console/saga-designer',
+            'user/console/transaction-control',
+          ],
+        },
         'user/api',
         'user/microservice',
         'user/ormframework',
