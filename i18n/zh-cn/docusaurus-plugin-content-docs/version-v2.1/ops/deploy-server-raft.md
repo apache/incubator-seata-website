@@ -72,6 +72,10 @@ bin\seata-server.bat
       type: raft
       raft:
          server-addr: 192.168.0.111:7091, 192.168.0.112:7091, 192.168.0.113:7091
+         metadata-max-age-ms: 30000
+         username: seata
+         password: seata
+         tokenValidityInMilliseconds: 1740000
 ```
 2. 将事务分组对应的tc集群改为server的raft group
 ```
