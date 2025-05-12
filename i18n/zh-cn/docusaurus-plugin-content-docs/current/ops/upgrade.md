@@ -6,6 +6,10 @@ description: Seata upgrade.
 
 # 版本升级指南
 
+<a href="#10" target="_self">10. 升级到 seata 2.4 有哪些兼容性事项是需要注意的？</a>
+<br/>
+
+
 <a href="#9" target="_self">9. 升级到 seata 2.1 有哪些兼容性事项是需要注意的？</a>
 <br/>
 
@@ -32,6 +36,16 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>
 <br/>
+
+------
+
+<h3 id='10'>10. 升级到 seata 2.4 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+
+  1. server移除控制台，如果需要访问控制台请部署namingserver，并将seata-server注册至namingserver中（seata-server支持同时注册至多个注册中心）
+  2. 2.4.0版本临时移除raft注册中心的username及password，如果集群为raft模式，并且版本为2.4.0可不需要配置。
+</details>
 
 ------
 

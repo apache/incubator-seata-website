@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # Version Upgrade Guide
 
+<a href="#10" target="_self">10. What compatibility matters need to be paid attention to when upgrading to seata 2.4? </a>
+<br/>
+
 <a href="#9" target="_self">9. What compatibility matters need to be paid attention to when upgrading to seata 2.1? </a>
 <br/>
 
@@ -32,6 +35,17 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. How to upgrade versions 0.8 and 0.9 to version 1.0? </a>
 <br/>
+
+------
+
+<h3 id='10'>10. What compatibility matters need to be paid attention to when upgrading to seata 2.4?</h3>
+<details>
+   <summary><mark>Notes</mark></summary>
+
+   1. The server has removed the console. If you need to access the console, please deploy namingserver and register seata-server to the namingserver (seata-server supports registering to multiple registration centers simultaneously).
+   2. Version 2.4.0 temporarily removes username and password for the raft registration center. If the cluster is in raft mode and the version is 2.4.0, configuration is not needed.
+</details>
+
 
 ------
 
