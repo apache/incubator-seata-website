@@ -23,6 +23,10 @@
     "message": "注册中心",
     "description": "The label for category Registration Authority in sidebar docs"
   },
+  "sidebar.docs.category.Console": {
+    "message": "控制台",
+    "description": "The label for category Console in sidebar docs"
+  },
   "sidebar.docs.category.SQL Reference": {
     "message": "SQL参考",
     "description": "The label for category SQL Reference in sidebar docs"
