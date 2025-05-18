@@ -1,61 +1,61 @@
 ---
-title: 发版手册
+title: Release Guide
 keywords: [Seata]
 description: Release Guide.
 ---
 
-# 发布手册
+# Release Guide
 
-## 1. 前言
+## 1. Introduction
 
-#### 1.1 Apache 版本发布文档
+#### 1.1 Apache Release Documentation
 
-参考以下链接，了解 ASF 版本发布流程：
+Refer to the following links to understand the ASF release process:
 
 - [Apache Release Guide](http://www.apache.org/dev/release-publishing)
 - [Apache Release Policy](http://www.apache.org/dev/release.html)
 - [Maven Release Info](http://www.apache.org/dev/publishing-maven-artifacts.html)
 
-#### 1.2 PGP 签名
+#### 1.2 PGP Signatures
 
-遵循 Apache 版本发布指南，对发布版本签名，用户也可据此判断下载的版本是否被篡改。
+Following the Apache Release Guidelines, release versions must be signed, allowing users to verify if downloaded versions have been tampered with.
 
-创建 `pgp` 密钥用于版本签名，使用 **\<your Apache ID>@apache.org** 作为密钥 USER-ID
+Create a `pgp` key for signing releases, using **\<your Apache ID>@apache.org** as the key USER-ID.
 
-详情可参考 [Apache Releases Signing documentation](https://infra.apache.org/release-signing)，[Cryptography with OpenPGP](http://www.apache.org/dev/openpgp.html)
+For details, refer to [Apache Releases Signing documentation](https://infra.apache.org/release-signing) and [Cryptography with OpenPGP](http://www.apache.org/dev/openpgp.html).
 
-生成密钥的简要流程：
+Brief process for generating keys:
 
-- 通过` gpg --full-gen-key` 生成一个新的 `gpg` 密钥, 设置密钥长度为 4096
+- Generate a new `gpg` key using `gpg --full-gen-key`, setting the key length to 4096 bits
 
-  注：可设置永不过期，也可根据自己需求设置一定的过期时间，但需要在过期后更新的公钥到[DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)
+    Note: You can set the key to never expire or set a specific expiration time. If you set an expiration time, you'll need to update your public key in the [DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) and [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS) after renewal.
 
-- 通过 `gpg --keyserver keys.openpgp.org --send-key <your key id>` 上传密钥到公钥服务器
+- Upload the key to the public key server using `gpg --keyserver keys.openpgp.org --send-key <your key id>`
 
-  注：如若访问不通，可通过[OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/) 在线上传公钥
+    Note: If you can't access this server, you can upload your public key online via [OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/)
 
-  ```
-  使用该命令可查到keyid如：gpg --list-signatures --keyid-format LONG
-  pub   rsa4096/XXXXXXXX 2024-09-19 [SC] [有效至：2027-09-19]
-        F2D3A28A392129B927C7FB42XXXXXXXX
-  uid                   [ 绝对 ] xxxx <xxxx@apache.org>
-  sig 3        XXXXXXXX 2024-09-19  [自签名]
-  sub   rsa4096/XXXXX 2024-09-19 [E] [有效至：2027-09-19]
-  sig          XXXXXXXX 2024-09-19  [自签名]
-  那么keyid为XXXXXXXX
-  ```
+    ```
+    Use this command to find your keyid: gpg --list-signatures --keyid-format LONG
+    pub   rsa4096/XXXXXXXX 2024-09-19 [SC] [expires: 2027-09-19]
+                F2D3A28A392129B927C7FB42XXXXXXXX
+    uid                   [ultimate] xxxx <xxxx@apache.org>
+    sig 3        XXXXXXXX 2024-09-19  [self-signature]
+    sub   rsa4096/XXXXX 2024-09-19 [E] [expires: 2027-09-19]
+    sig          XXXXXXXX 2024-09-19  [self-signature]
+    The keyid is XXXXXXXX
+    ```
 
-- 通过 `gpg --armor --output ./public-key.txt --export XXXXXXXX` 导出公钥到文本文件
+- Export your public key to a text file using `gpg --armor --output ./public-key.txt --export XXXXXXXX`
 
-- 将生成的密钥追加到[DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) 和 [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)
+- Append your generated key to the [DEV KEYS file](https://dist.apache.org/repos/dist/dev/incubator/seata/KEYS) and [RELEASE KEYS file](https://dist.apache.org/repos/dist/release/incubator/seata/KEYS)
 
-注意：
+Note:
 
-DEV SVN 仓库可以由 Release Manager 自行添加，Release SVN 仓库需要 PMC 权限，可以由 PMC 协助将 KEY 进行上传。
+The Release Manager can add keys to the DEV SVN repository themselves, but adding to the Release SVN repository requires PMC permissions. PMC members can help upload the keys.
 
-**Tips:** 需要设置默认公钥, 若有多个公钥，请修改 `~/.gnupg/gpg.conf`
+**Tips:** You should set a default public key. If you have multiple keys, modify `~/.gnupg/gpg.conf`.
 
-参考示例：
+Reference example:
 
 ```
 gpg (GnuPG) 2.2.4; Copyright (C) 2017 Free Software Foundation, Inc.
@@ -63,38 +63,38 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
 Please select what kind of key you want:
-  (1) RSA and RSA (default)
-  (2) DSA and Elgamal
-  (3) DSA (sign only)
-  (4) RSA (sign only)
+    (1) RSA and RSA (default)
+    (2) DSA and Elgamal
+    (3) DSA (sign only)
+    (4) RSA (sign only)
 Your selection? 1
 RSA keys may be between 1024 and 4096 bits long.
 What keysize do you want? (2048) 4096
 Requested keysize is 4096 bits
 Please specify how long the key should be valid.
-        0 = key does not expire
-     <n>  = key expires in n days
-     <n>w = key expires in n weeks
-     <n>m = key expires in n months
-     <n>y = key expires in n years
+                0 = key does not expire
+         <n>  = key expires in n days
+         <n>w = key expires in n weeks
+         <n>m = key expires in n months
+         <n>y = key expires in n years
 Key is valid for? (0)
 Key does not expire at all
 Is this correct? (y/N) y
 
 GnuPG needs to construct a user ID to identify your key.
 
-Real name: （设置用户名）(使用apache id)
-Email address: （设置邮件地址）(使用apache邮箱)
-Comment: （填写注释）
+Real name: (Set user name) (Use Apache ID)
+Email address: (Set email address) (Use Apache email)
+Comment: (Add comments)
 You selected this USER-ID:
-   "用户名 (注释) <邮件地址>"
+     "User Name (Comment) <Email Address>"
 
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
-You need a Passphrase to protect your secret key. （设置密码）
+You need a Passphrase to protect your secret key. (Set password)
 
 ```
 
-将生成的公钥和私钥转化为 ASCII 形式：
+Convert the generated public and private keys to ASCII format:
 
 ```
 gpg --armor --output ./public-key.txt --export XXXXXXXX
@@ -102,22 +102,22 @@ gpg --armor --output ./private-key.txt --export-secret-keys XXXXXXXX
 
 ```
 
-查看密钥列表：
+View the key list:
 
 ```
 [root@localhost ~]# gpg --list-signatures --keyid-format LONG
 [keyboxd]
 ---------
-pub   rsa4096/XXXXXXXX 2024-09-19 [SC] [有效至：2027-09-19]
-      F2D3A28A392129B927C7FB42XXXXXXXX
-uid                   [ 绝对 ] xxxx <xxxx@apache.org>
-sig 3        XXXXXXXX 2024-09-19  [自签名]
-sub   rsa4096/XXXXX 2024-09-19 [E] [有效至：2027-09-19]
-sig          XXXXXXXX 2024-09-19  [自签名]
+pub   rsa4096/XXXXXXXX 2024-09-19 [SC] [expires: 2027-09-19]
+            F2D3A28A392129B927C7FB42XXXXXXXX
+uid                   [ultimate] xxxx <xxxx@apache.org>
+sig 3        XXXXXXXX 2024-09-19  [self-signature]
+sub   rsa4096/XXXXX 2024-09-19 [E] [expires: 2027-09-19]
+sig          XXXXXXXX 2024-09-19  [self-signature]
 
 ```
 
-上传公钥到公钥服务器
+Upload the public key to the key server:
 
 ```
 [root@localhost gpgtest]# gpg --keyserver keys.openpgp.org --send-key XXXXXXXX
@@ -125,125 +125,125 @@ gpg: sending key XXXXXXXX to hkp server keys.openpgp.org
 
 ```
 
-#### 1.3 POM 配置
+#### 1.3 POM Configuration
 
-配置 POM 文件，以便将版本部署到 ASF Nexus 仓库。
+Configure the POM file to deploy versions to the ASF Nexus repository.
 
-① 添加 Apache POM 继承默认设置
+① Add Apache POM inheritance for default settings:
 
 ```
 <parent>
-    <groupId>org.apache</groupId>
-    <artifactId>apache</artifactId>
-    <version>XX</version>
+        <groupId>org.apache</groupId>
+        <artifactId>apache</artifactId>
+        <version>XX</version>
 </parent>
 
 ```
 
-② Maven 配置文件 `settings.xml` 中添加密钥信息
+② Add key information in Maven configuration file `settings.xml`:
 
 ```
 <settings>
-    <profiles>
-        <profile>
-            <id>signed_release</id>
-            <properties>
-                <mavenExecutorId>forked-path</mavenExecutorId>
-                <gpg.keyname>yourKeyName</gpg.keyname>
-          <deploy.url>https://dist.apache.org/repos/dist/dev/incubator/seata/</deploy.url>
-            </properties>
-        </profile>
-    </profiles>
-    <servers>
-        <!-- To publish a snapshot of some part of Maven -->
-        <server>
-            <id>apache.snapshots.https</id>
-            <username>yourApacheID</username>
-            <!-- Use the password encryption by maven -->
-            <password>yourApachePassword</password>
-        </server>
-        <!-- To stage a release of some part of Maven -->
-        <server>
-            <id>apache.releases.https</id>
-            <username>yourApacheID</username>
-            <password>yourApachePassword</password>
-        </server>
-        <server>
-            <id>gpg.passphrase</id>
-            <passphrase>yourKeyPassword</passphrase>
-        </server>
-    </servers>
+        <profiles>
+                <profile>
+                        <id>signed_release</id>
+                        <properties>
+                                <mavenExecutorId>forked-path</mavenExecutorId>
+                                <gpg.keyname>yourKeyName</gpg.keyname>
+                    <deploy.url>https://dist.apache.org/repos/dist/dev/incubator/seata/</deploy.url>
+                        </properties>
+                </profile>
+        </profiles>
+        <servers>
+                <!-- To publish a snapshot of some part of Maven -->
+                <server>
+                        <id>apache.snapshots.https</id>
+                        <username>yourApacheID</username>
+                        <!-- Use the password encryption by maven -->
+                        <password>yourApachePassword</password>
+                </server>
+                <!-- To stage a release of some part of Maven -->
+                <server>
+                        <id>apache.releases.https</id>
+                        <username>yourApacheID</username>
+                        <password>yourApachePassword</password>
+                </server>
+                <server>
+                        <id>gpg.passphrase</id>
+                        <passphrase>yourKeyPassword</passphrase>
+                </server>
+        </servers>
 </settings>
 
 ```
 
-**Tips:** 推荐使用 [Maven's password encryption capabilities](http://maven.apache.org/guides/mini/guide-encryption.html) 加密 `gpg.passphrase`
+**Tips:** It's recommended to use [Maven's password encryption capabilities](http://maven.apache.org/guides/mini/guide-encryption.html) to encrypt `gpg.passphrase`
 
-#### 1.5 发布 Release Notes
+#### 1.5 Publishing Release Notes
 
-通过[changelog](https://github.com/apache/incubator-seata/blob/2.x/changes/zh-cn/2.x.md)构建出对应版本的Release Notes
+Build Release Notes for the respective version through the [changelog](https://github.com/apache/incubator-seata/blob/2.x/changes/zh-cn/2.x.md).
 
-## 2.发布流程
+## 2. Release Process
 
-### 1. 准备分支
+### 1. Preparing the Branch
 
-从主干分支拉取新分支作为发布分支，如现在要发布 `${release_version}` 版本，则从开发分支拉出新分支 `${release_version}`，此后`${release_version}` Release Candidates 涉及的修改及打标签等都在`${release_version}`分支进行，并保证该分支的github actions ci全部通过，最终发布完成后合入主干分支。
+Create a new branch from the main branch as the release branch. For instance, if you're releasing version `${release_version}`, create a new branch `${release_version}` from the development branch. All changes, tags, and fixes related to the `${release_version}` Release Candidates should be made on this branch. Ensure all GitHub Actions CI tests pass on this branch. After the release is completed, merge it back into the main branch.
 
-例：如 Java SDK 需要发布 `2.2.0` 版本，从 `2.x` 分支拉出新分支 `2.2.0`，并在此分支提交从 Snapshot版本号 替换为 `2.2.0` 版本号的 commit。
+Example: To release Java SDK version `2.2.0`, create a new branch `2.2.0` from the `2.x` branch, and commit changes to replace the Snapshot version number with the `2.2.0` version number on this branch.
 
-### 2.预发布二进制包
+### 2. Pre-Release Binary Packages
 
-#### 2.1 SDK根据 [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] 的说明准备发布。
+#### 2.1 Prepare the SDK release according to [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] guidelines.
 
 ```
 mvn clean deploy -Prelease -DskipTests -e -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 ```
 
-此时，seata sdk被发布到 [预发仓库](https://repository.apache.org/#stagingRepositories) （需要apache账号密码登录），找到发布的版本，即 `${STAGING.RELEASE}`， 并点击 Close。
+At this point, the Seata SDK is published to the [staging repository](https://repository.apache.org/#stagingRepositories) (requires Apache account login). Find the released version, `${STAGING.RELEASE}`, and click Close.
 
-注：如果close失败很可能是因为签名的秘钥对应的公钥在keys.openpgp.org中无法获取到，请自行通过[OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/) 检查
+Note: If closing fails, it's likely because the public key corresponding to your signing key is not available on keys.openpgp.org. Please verify through [OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/)
 
-#### 2.2 Source&Binary提交至svn仓库
+#### 2.2 Submit Source & Binary to SVN Repository
 
-##### 2.2.1 安装svn
+##### 2.2.1 Install SVN
 
-下载并安装[Download Apache Subversion Sources](https://subversion.apache.org/download.cgi#recommended-release)
+Download and install [Apache Subversion Sources](https://subversion.apache.org/download.cgi#recommended-release)
 
-或通过 `brew install subversion` 一键安装
+Or install via `brew install subversion`
 
-##### 2.2.2 编译seata-server及seata-namingserver
+##### 2.2.2 Compile seata-server and seata-namingserver
 
  `mvn -Prelease-seata -Dmaven.test.skip=true -Dskip.npm=true -T4C -Dpmd.skip=true clean install -U`
 
-##### 2.2.3 将Source及Binary进行签名
+##### 2.2.3 Sign Source and Binary packages
 
-Source 建议直接通过github 对应版本分支如2.2.0 进行下载zip包，避免本地环境污染Source包内容，然后重命名为apache-seata-x.x.x-incubating-src.zip
+For the Source package, it's recommended to download the zip directly from the corresponding version branch on GitHub (e.g., 2.2.0) to avoid local environment contamination, then rename it to apache-seata-x.x.x-incubating-src.zip
 
 `shasum -b -a 512 apache-seata-x.x.x-incubating-src.zip >> apache-seata-x.x.x-incubating-src.zip.sha512 `
 
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.zip.asc apache-seata-x.x.x-incubating-bin.zip`
 
-Binary进行签名
+For the Binary package:
 
 `shasum -b -a 512 apache-seata-x.x.x-incubating-bin.tar.gz >> apache-seata-x.x.x-incubating-bin.tar.gz.sha512`
 
 `gpg --armor --output apache-seata-x.x.x-incubating-bin.tar.gz.asc apache-seata-x.x.x-incubating-bin.tar.gz`
 
-sha512验证
+Verify SHA512:
 
 `shasum -c apache-seata-x.x.x-incubating-bin.tar.gz.sha512`
 
-asc验证
+Verify ASC:
 
 `gpg --verify  apache-seata-x.x.x-incubating-src.zip.asc apache-seata-x.x.x-incubating-src.zip`
 
-##### 2.2.4 拉取svn至本地，并构建发布版本路径，并将签名文件及Source和Binary移入其中
+##### 2.2.4 Pull SVN locally, create release version path, and move the signed files and Source/Binary packages into it
 
-拉取svn目录
+Pull SVN directory:
 
 `svn co --depth=empty https://dist.apache.org/repos/dist/dev/incubator/seata/`
 
-创建发布版本路径(dev路径中的文件夹必须携带RC代表其实一个预备状态)，并将文件移入其中
+Create release version path (in the dev path, folders must include "RC" to indicate they are in a preparatory state), and move files into it:
 
 `cd seata`
 
@@ -251,7 +251,7 @@ asc验证
 
 `mv ….. x.x.x`
 
-通过以上命令，移入其中后大概如下
+After moving files in, it should look like this:
 
 ```
 -rw-r--r--@ 1 fe-work  staff   180M  9 20 10:16 apache-seata-2.2.0-incubating-bin.tar.gz
@@ -262,68 +262,67 @@ asc验证
 -rw-r--r--  1 fe-work  staff   300B  9 20 10:16 apache-seata-2.2.0-incubating-src.zip.sha512
 ```
 
-而其上级seata目录中的KEYS需要保证追加了第一步所说的，将构建的公钥放入其中
+Ensure the KEYS file in the parent seata directory has been updated with your public key as mentioned in step 1.
 
-执行
+Execute:
 
 `svn add x.x.x`
 
 `svn commit -m "submit x.x.x version" `
 
-如果更新了KEYS 需要在commit之前执行 `svn update KEYS`
+If you've updated the KEYS file, execute `svn update KEYS` before committing.
 
-执行commit后会提示输入apache ldap账号密码，输入后即可提交成功
+After the commit command, you'll be prompted to enter your Apache LDAP username and password. Once entered, the submission will be successful:
 
 ```
 ➜  seata svn commit -m 'submit 2.2.0 version'
-正在增加       2.2.0
-正在增加 (二进制) 2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz
-正在增加 (二进制) 2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.asc
-正在增加       2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.sha512
-正在增加 (二进制) 2.2.0/apache-seata-2.2.0-incubating-src.zip
-正在增加 (二进制) 2.2.0/apache-seata-2.2.0-incubating-src.zip.asc
-正在增加       2.2.0/apache-seata-2.2.0-incubating-src.zip.sha512
-传输文件数据......done
-正在读取事务
-提交后的版本为 71769。
+Adding       2.2.0
+Adding (bin) 2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz
+Adding (bin) 2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.asc
+Adding       2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.sha512
+Adding (bin) 2.2.0/apache-seata-2.2.0-incubating-src.zip
+Adding (bin) 2.2.0/apache-seata-2.2.0-incubating-src.zip.asc
+Adding       2.2.0/apache-seata-2.2.0-incubating-src.zip.sha512
+Transmitting file data......done
+Reading transaction
+Committed revision 71769.
 ```
 
-#### 2.3 创建tag及releasenote
+#### 2.3 Create tag and release note
 
-##### 2.3.1 创建tag
+##### 2.3.1 Create tag
 
-在x.x.x分支下执行
+In the x.x.x branch, execute:
 
 `git tag vx.x.x -m 'release: release for x.x.x'`
 
-git push upstream(seata仓库repo) vx.x.x
+`git push upstream(seata repository repo) vx.x.x`
 
-##### 2.3.2 创建release note
+##### 2.3.2 Create release note
 
-通过该链接创建release note [New release · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/releases/new) 并将Choose a tag设置为对应的tag
+Create a release note through [New release · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/releases/new) and set "Choose a tag" to the corresponding tag.
 
-并设置为Set as a pre-release 整体投票通过后再设置为Set as the latest release
+Mark it as "Set as a pre-release". After the overall vote passes, set it as "Set as the latest release".
 
-### 3.投票阶段
+### 3. Voting Stage
 
-#### 3.1 社区内部投票
+#### 3.1 Community Internal Voting
 
-**投票持续至少 72 小时并获得 3 个+1 binding票**
+**The vote must last at least 72 hours and receive at least 3 +1 binding votes**
 
-发送至：
+Send to:
 
 ```
 dev@seata.apache.org
 ```
 
-标题：
+Subject:
 
-`[VOTE]Release Apache Seata (Incubating) x.x.x(RoundN) `
+`[VOTE]Release Apache Seata (Incubating) x.x.x(RoundN)`
 
-Round N的N代表次数，该版本的该阶段的第几次投票
-如: 投票不通过该版本经修改后重新投票时需要N+1,如Round1投票不通过,下次投票就为Round2.
+Where N in RoundN represents the number of attempts. If a vote doesn't pass and the version is modified for a new vote, N should be incremented (e.g., if Round1 doesn't pass, the next vote would be Round2).
 
-正文：
+Body:
 
 ```
 Hi Seata Community,
@@ -340,14 +339,14 @@ Git tag for the release:
 https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 Hash for the release tag:
-tag分支最后一条commit的id
+ID of the last commit on the tag branch
 
 Release Notes:
 https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ 邮箱如xxxx@apache.org ]
+[ email like xxxx@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 
@@ -355,7 +354,7 @@ Build Environment: JDK 8+, Apache Maven 3.6.0+.
 /mvnw clean package -DskipTests=true
 
 CI Test Workflow:
-涉及该版本最后一次commit的多个CI流水线链接，如
+CI pipeline links for the last commit of this version, such as:
 https://github.com/apache/incubator-seata/actions/runs/10938949607/job/30411922716
 https://github.com/apache/incubator-seata/actions/runs/10938949623/job/30410204492
 https://github.com/apache/incubator-seata/actions/runs/10938949605/job/30411747821
@@ -381,9 +380,9 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 
 ```
 
-#### 3.1.2 完成投票
+#### 3.1.2 Complete the vote
 
-发布投票通过邮件
+Send a vote passed email:
 
 ```
 Hi Community,
@@ -404,7 +403,7 @@ no further 0 or -1 votes.
 
 
 The vote thread:
-所对应投票邮件的thread链接，如:
+The link to the corresponding vote email thread, e.g.:
 https://lists.apache.org/thread/rwco6lms9qo10whjj8gg1dr8j7drl2gf
 
 Thank you for reviewing and voting for our release candidate.
@@ -412,19 +411,17 @@ Thank you for reviewing and voting for our release candidate.
 We will soon launch the second stage of voting.
 ```
 
+#### 3.2.1 Voting in the Incubator
 
+Similar to community voting, but you need to add links to the community vote thread to prove consensus was reached within the community.
 
-#### 3.2.1 孵化器中投票
+Send an email to `general@incubator.apache.org`
 
-与社区投票类似，但是需要增加社区投票相关的thread链接，以证明已在社区内达成一致
+Subject:
 
-发送邮件至 `general@incubator.apache.org`
+`[VOTE]Release Apache Seata (Incubating) x.x.x(RoundN)`
 
-标题：
-
-`[VOTE]Release Apache Seata (Incubating) x.x.x(RoundN)  `
-
-**投票持续至少 72 小时并获得 3 个+1 binding票**
+**The vote must last at least 72 hours and receive at least 3 +1 binding votes**
 
 ```
 Hello everyone,
@@ -437,11 +434,11 @@ review and vote for this release.
 
 
 The vote thread:
-社区中投票的thread链接, 如：
+Community vote thread link, e.g.:
 https://lists.apache.org/thread/rwco6lms9qo10whjj8gg1dr8j7drl2gf
 
 Vote Result:
-社区中投票通过的result thread链接，如：
+Community vote result thread link, e.g.:
 https://lists.apache.org/thread/ybo9c5hrx2h2glg2bdgs3t22xg734y7r
 
 The release candidates:
@@ -454,14 +451,14 @@ Git tag for the release:
 https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 Hash for the release tag:
-tag分支最后一条commit的id
+ID of the last commit on the tag branch
 
 Release Notes:
 https://github.com/apache/incubator-seata/releases/tag/vx.x.x
 
 The artifacts have been signed with Key [ key-id ], corresponding
 to
-[ 邮箱如xxxx@apache.org ]
+[ email like xxxx@apache.org ]
 which can be found in the keys file:
 https://downloads.apache.org/incubator/seata/KEYS
 
@@ -469,7 +466,7 @@ Build Environment: JDK 8+, Apache Maven 3.6.0+.
 /mvnw clean package -DskipTests=true
 
 CI Test Workflow:
-涉及该版本最后一次commit的多个CI流水线链接，如
+CI pipeline links for the last commit of this version, such as:
 https://github.com/apache/incubator-seata/actions/runs/10938949607/job/30411922716
 https://github.com/apache/incubator-seata/actions/runs/10938949623/job/30410204492
 https://github.com/apache/incubator-seata/actions/runs/10938949605/job/30411747821
@@ -494,13 +491,13 @@ Checklist for reference:
 To learn more about Apache Seata , please see https://seata.apache.org/
 ```
 
-#### 3.2.2 公示孵化器投票结果
+#### 3.2.2 Announce the Incubator vote result
 
-72 小时后，若至少有 3 票通过而没有反对票，则参考如下邮件进行发送结果
+After 72 hours, if there are at least 3 passing votes and no opposing votes, send an email as follows:
 
-发送邮件至 `general@incubator.apache.org`
+Send an email to `general@incubator.apache.org`
 
-标题：`[RESULT][VOTE] Release Apache Seata (incubating) x.x.x(RoundN)`
+Subject: `[RESULT][VOTE] Release Apache Seata (incubating) x.x.x(RoundN)`
 
 ```
 Hi Incubator PMC,
@@ -527,41 +524,42 @@ announcement soon.
 
 ```
 
-### 3.2.3 投票中断
+### 3.2.3 Vote Interruption
 
-如出现在投票过程中验证不通过,如license,或者版本存在bug等,经评估需要修复后才能发版,那么需要中断本次投票
-标题：`[CANCEL][VOTE] Release Apache Seata (incubating) x.x.x(RoundN)`
+If issues are found during the voting process, such as license problems or bugs that need to be fixed before release, the vote must be interrupted.
+
+Subject: `[CANCEL][VOTE] Release Apache Seata (incubating) x.x.x(RoundN)`
 
 ```
 Hi Incubator PMC,
 I'm cancelling this vote:
-之前投票的链接
+Link to the previous vote
 
-描述为何中断的原因: 如license缺漏,或者版本存在bug等
+Describe the reason for cancellation: such as missing licenses, or bugs in the version
 
 ```
 
-注: 孵化器中投票终止后,新的投票需要从社区内部重新开始
+Note: After cancelling a vote in the Incubator, a new vote must start again from within the community.
 
-# 4.完成发布
+# 4. Complete the Release
 
-### 4.1 release 版本
+### 4.1 Release the Version
 
-1. 从Apache Nexus 仓库, 选择之前进行close过的的 **orgapacheseata-XXX** 点击 `Release` 图标发布
+1. From Apache Nexus repository, select the previously closed **orgapacheseata-XXX** and click the `Release` icon to publish.
 
-2. 将dev下的签名文件、src、bin移动到release路径下，参考如下命令：
+2. Move the signature files, src, and bin from the dev path to the release path using the following command:
 
-   `svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/incubator-seata/x.x.x-RCN https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"`
+     `svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/incubator-seata/x.x.x-RCN https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"`
 
-3. 将之前release note设置为Set as the latest release并提交
+3. Set the previous release note to "Set as the latest release" and submit.
 
-4. 将x.x.x的文档更新至seata官网中，并补充对应binary和source的下载链接
+4. Update the documentation for version x.x.x on the Seata official website, and add download links for the binary and source packages.
 
-### 4.2 版本公示
+### 4.2 Announce the Release
 
-发送邮件至 `general@incubator.apache.org`
+Send an email to `general@incubator.apache.org`
 
-标题 `[ANNOUNCE] Apache Seata(Incubating) vx.x.x available`
+Subject: `[ANNOUNCE] Apache Seata(Incubating) vx.x.x available`
 
 ```
 Hi All,
@@ -581,4 +579,3 @@ Resources:
 - Issue: https://github.com/apache/incubator-seata/issues
 - Mailing list: dev@seata.apache.org
 ```
-
