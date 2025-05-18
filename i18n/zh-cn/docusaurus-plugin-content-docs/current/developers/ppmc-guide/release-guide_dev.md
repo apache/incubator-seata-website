@@ -243,11 +243,11 @@ asc验证
 
 `svn co --depth=empty https://dist.apache.org/repos/dist/dev/incubator/seata/`
 
-创建发布版本路径，并将文件移入其中
+创建发布版本路径(dev路径中的文件夹必须携带RC代表其实一个预备状态)，并将文件移入其中
 
 `cd seata`
 
-`mkdir x.x.x`
+`mkdir x.x.xRCN`
 
 `mv ….. x.x.x`
 
@@ -318,9 +318,10 @@ dev@seata.apache.org
 
 标题：
 
-`[VOTE]Release Apache Seata (Incubating) x.x.x-RCN (RoundN) `
+`[VOTE]Release Apache Seata (Incubating) x.x.x(RoundN) `
 
-RC N和Round N的N代表次数，该版本的第几次投票
+Round N的N代表次数，该版本的该阶段的第几次投票
+如: 投票不通过该版本经修改后重新投票时需要N+1,如Round1投票不通过,下次投票就为Round2.
 
 正文：
 
@@ -388,7 +389,7 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 Hi Community,
 
 
-The vote to release Apache Seata (Incubating) vx.x.x-RCN has passed
+The vote to release Apache Seata (Incubating) vx.x.x has passed
 with 3 +1 binding votes, and no +0 or -1 votes.
 
 3 (+1 binding)
@@ -421,7 +422,7 @@ We will soon launch the second stage of voting.
 
 标题：
 
-`[VOTE]Release Apache Seata (Incubating) x.x.x-RCN  `
+`[VOTE]Release Apache Seata (Incubating) x.x.x(RoundN)  `
 
 **投票持续至少 72 小时并获得 3 个+1 binding票**
 
@@ -499,12 +500,12 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 
 发送邮件至 `general@incubator.apache.org`
 
-标题：`[RESULT][VOTE] Release Apache Seata (incubating) x.x.x-RCN`
+标题：`[RESULT][VOTE] Release Apache Seata (incubating) x.x.x(RoundN)`
 
 ```
 Hi Incubator PMC,
 
-The vote to release Apache Seata(incubating) X.X.X-RCN has passed with
+The vote to release Apache Seata(incubating) X.X.X has passed with
 3 +1 binding and 1 +1 non-binding votes, no +0 or -1 votes.
 
 Binding votes：
@@ -526,7 +527,21 @@ announcement soon.
 
 ```
 
+### 3.2.3 投票中断
 
+如出现在投票过程中验证不通过,如license,或者版本存在bug等,经评估需要修复后才能发版,那么需要中断本次投票
+标题：`[CANCEL][VOTE] Release Apache Seata (incubating) x.x.x(RoundN)`
+
+```
+Hi Incubator PMC,
+I'm cancelling this vote:
+之前投票的链接
+
+描述为何中断的原因: 如license缺漏,或者版本存在bug等
+
+```
+
+注: 孵化器中投票终止后,新的投票需要从社区内部重新开始
 
 # 4.完成发布
 
