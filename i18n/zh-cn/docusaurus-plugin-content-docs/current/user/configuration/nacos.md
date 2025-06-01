@@ -51,20 +51,20 @@ seata:
 
 ### Server 端配置中心
 
-在 [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/server)
+在 `conf/application.yaml`加入以下配置, 其余配置参考 [configuration options](https://github.com/apache/incubator-seata/blob/2.x/server/src/main/resources/application.example.yml):
 
-```
-config {
-  type = "nacos"
-
-  nacos {
-    serverAddr = "127.0.0.1:8848"
-    group = "SEATA_GROUP"
-    namespace = ""
-    username = "nacos"
-    password = "nacos"
-  }
-}
+```yaml
+seata:
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace:
+      group: SEATA_GROUP
+      context-path:
+      username: nacos
+      password: nacos
+      data-id: seataServer.properties
 
 ```
 
