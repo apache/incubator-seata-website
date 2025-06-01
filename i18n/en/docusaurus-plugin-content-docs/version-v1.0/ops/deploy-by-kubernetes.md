@@ -211,18 +211,7 @@ data:
           ##if use MSE Nacos with auth, mutex with username/password attribute
           #access-key: ""
           #secret-key: ""
-      store:
-        # support: file 、 db 、 redis
-        mode: db
-        db:
-          datasource: druid
-          db-type: mysql
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://xxx:3306/seata
-          user: xxx
-          password: xxx
-          min-conn: 5
-          max-conn: 100
+
       security:
         secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
         tokenValidityInMilliseconds: 1800000

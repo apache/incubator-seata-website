@@ -52,7 +52,7 @@ spec:
     spec:
       containers:
         - name: seata-server
-          image: docker.io/seataio/seata-server:latest
+          image: docker.io/apache/seata-server:2.3.0
           imagePullPolicy: IfNotPresent
           env:
             - name: SEATA_PORT
@@ -83,7 +83,6 @@ $ kubectl apply -f seata-server.yaml
 
 ### 使用自定义配置文件
 
-指定配置文件可以通过挂载文件或使用 ConfigMap 的方式实现，挂载后需要通过指定 `SEATA_CONFIG_NAME` 指定配置文件位置，并且环境变量的值需要以`file:`开始, 如: `file:/root/seata-config/registry`
 
 - Deployment
 
@@ -109,45 +108,81 @@ spec:
         - name: seata-server
           image: docker.io/seataio/seata-server:latest
           imagePullPolicy: IfNotPresent
-          env:
-            - name: SEATA_CONFIG_NAME
-              value: file:/root/seata-config/registry
           ports:
-            - name: http
+            - name: service
               containerPort: 8091
               protocol: TCP
+            - name: console
+              containerPort: 7091
+              protocol: TCP
+          resources:
+            limits:
+              cpu: '2'
+              memory: 4Gi
+            requests:
+              cpu: '1'
+              memory: 2Gi
           volumeMounts:
             - name: seata-config
-              mountPath: /root/seata-config
+              mountPath: /seata-server/resources/application.yml
+              subPath: application.yml
       volumes:
         - name: seata-config
           configMap:
             name: seata-server-config
-
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: seata-server-config
 data:
-  registry.conf: |
-    registry {
-        type = "nacos"
-        nacos {
-          application = "seata-server"
-          serverAddr = "192.168.199.2"
-        }
-    }
-    config {
-      type = "nacos"
-      nacos {
-        serverAddr = "192.168.199.2"
-        group = "SEATA_GROUP"
-      }
-    }
+  application.yml: |
+    server:
+      port: 7091
+    
+    spring:
+      application:
+        name: seata-server
+    
+    logging:
+      config: classpath:logback-spring.xml
+      file:
+        path: ${log.home:${user.home}/logs/seata}
+    
+    console:
+      user:
+        username: seata
+        password: seata
+    
+    seata:
+      config:
+        # support: nacos, consul, apollo, zk, etcd3
+        type: nacos
+        nacos:
+          server-addr: 127.0.0.1:8848
+          group: SEATA_GROUP
+          username: xxx
+          password: xxx
+          ##if use MSE Nacos with auth, mutex with username/password attribute
+          #access-key: ""
+          #secret-key: ""
+          data-id: seataServer.properties
+      registry:
+        # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+        type: nacos
+        nacos:
+          application: seata-server
+          server-addr: 127.0.0.1:8848
+          group: SEATA_GROUP
+          cluster: default
+          username: xxx
+          password: xxx
+          ##if use MSE Nacos with auth, mutex with username/password attribute
+          #access-key: ""
+          #secret-key: ""
+
+      security:
+        secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
+        tokenValidityInMilliseconds: 1800000
+        ignore:
+          urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login
 ```
-
-
-
-
-

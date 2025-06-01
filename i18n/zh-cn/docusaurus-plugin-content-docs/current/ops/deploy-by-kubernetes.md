@@ -52,7 +52,7 @@ spec:
     spec:
       containers:
         - name: seata-server
-          image: docker.io/seataio/seata-server:latest
+          image: docker.io/apache/seata-server:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: SEATA_PORT
@@ -130,11 +130,6 @@ spec:
         - name: seata-config
           configMap:
             name: seata-server-config
-
----
-2.3.0 版本 ConfigMap
----
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -152,11 +147,6 @@ data:
       config: classpath:logback-spring.xml
       file:
         path: ${log.home:${user.home}/logs/seata}
-    
-    console:
-      user:
-        username: seata
-        password: seata
     
     seata:
       config:
@@ -184,26 +174,5 @@ data:
           ##if use MSE Nacos with auth, mutex with username/password attribute
           #access-key: ""
           #secret-key: ""
-      store:
-        # support: file 、 db 、 redis
-        mode: db
-        db:
-          datasource: druid
-          db-type: mysql
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://xxx:3306/seata
-          user: xxx
-          password: xxx
-          min-conn: 5
-          max-conn: 100
-      security:
-        secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
-        tokenValidityInMilliseconds: 1800000
-        ignore:
-          urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login
+
 ```
-
-
-
-
-
