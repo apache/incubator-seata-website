@@ -14,7 +14,8 @@ date: 2019-12-01
 
 
 ```bash
-$ cd ./script/server/helm/seata-server
+$ git clone https://github.com/apache/incubator-seata.git
+$ cd ./incubator-seata/script/server/helm/seata-server
 $ helm install seata-server ./seata-server
 ```
 
@@ -52,12 +53,12 @@ env:
   seataPort: "8091"
   storeMode: "file"
   seataIp: "127.0.0.1"
-  seataConfigName: "file:/root/seata-config/registry"
 
 volume:
   - name: seata-config
-    mountPath: /root/seata-config
-    hostPath: /root/workspace/seata/seata-config/file
+    mountPath: /seata-server/resources/application.yml
+    subPath: application.yml
+    hostPath: /root/workspace/seata/seata-config/application.yml
 ```
 
 
