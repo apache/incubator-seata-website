@@ -1,1 +1,18 @@
+<!--
+  - Licensed to the Apache Software Foundation (ASF) under one or more
+  - contributor license agreements.  See the NOTICE file distributed with
+  - this work for additional information regarding copyright ownership.
+  - The ASF licenses this file to You under the Apache License, Version 2.0
+  - (the "License"); you may not use this file except in compliance with
+  - the License.  You may obtain a copy of the License at
+  -
+  -     http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software
+  - distributed under the License is distributed on an "AS IS" BASIS,
+  - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  - See the License for the specific language governing permissions and
+  - limitations under the License.
+  -->
+
 <svg width="200" height="36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="19.328%" y1="50.037%" x2="193.874%" y2="50.037%" id="a"><stop stop-color="#4190FF" offset="0%"/><stop stop-color="#2EB9FA" offset="51%"/><stop stop-color="#1BE1F6" offset="100%"/></linearGradient><linearGradient x1="-61.639%" y1="50.001%" x2="82.406%" y2="50.001%" id="b"><stop stop-color="#4190FF" offset="0%"/><stop stop-color="#2EB9FA" offset="51%"/><stop stop-color="#1BE1F6" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><path d="M0 0h200v36H0z"/><g transform="translate(0 6)" fill-rule="nonzero"><path d="M109.965 23.94H99.169v-4.738h10.796a3.793 3.793 0 0 0 1.597-.356c.503-.26 1.007-.65 1.007-2.013 0-1.362-.504-1.735-.999-1.97a3.932 3.932 0 0 0-1.666-.347h-4.27a8.315 8.315 0 0 1-3.783-.989 6.69 6.69 0 0 1-3.472-6.178 6.75 6.75 0 0 1 3.472-6.195 8.124 8.124 0 0 1 3.783-1.032h9.955v4.737h-9.946a3.576 3.576 0 0 0-1.501.443 2.004 2.004 0 0 0-.99 2.047 1.97 1.97 0 0 0 .99 2.022c.463.248.976.387 1.501.408h4.27a8.45 8.45 0 0 1 3.775.868 6.516 6.516 0 0 1 3.636 6.212 6.594 6.594 0 0 1-3.575 6.221 8.446 8.446 0 0 1-3.784.86Zm-92.182-.235a2.378 2.378 0 0 1-1.918-.781L4.444 8.989l.06 14.837H.062L.001 2.49A2.17 2.17 0 0 1 1.527.373a2.43 2.43 0 0 1 2.699.703l11.395 14.056V.13h4.452l.052 21.328a2.16 2.16 0 0 1-1.528 2.117c-.262.09-.538.134-.815.13Z" fill="#2E3034"/><path d="M57.643 24a11.999 11.999 0 0 1-6.04-22.374A12.004 12.004 0 0 1 66.087 3.48l3.237 3.245-3.367 3.349-3.211-3.237a7.265 7.265 0 0 0-10.263.02 7.261 7.261 0 0 0 0 10.26 7.265 7.265 0 0 0 10.263.02l3.315-3.315 3.367 3.35-3.298 3.314A11.926 11.926 0 0 1 57.643 24Z" fill="url(#a)"/><path d="M84.867 24a11.917 11.917 0 0 1-8.427-3.47l-8.435-8.556 8.366-8.451a11.995 11.995 0 0 1 14.472-1.898A11.99 11.99 0 0 1 84.858 24h.009Zm-5.086-6.82a7.195 7.195 0 0 0 5.086 2.083 7.264 7.264 0 1 0-5.138-12.39l-5.094 5.11 5.146 5.197Z" fill="url(#b)"/><path d="m27.207 23.766 6.77-17.683c.094-.23.204-.454.33-.668.11.182.206.374.286.572l6.856 17.779h5.094L39 4.252a9.379 9.379 0 0 0-.937-1.736C36.754.53 35.296.122 34.306.122a4.721 4.721 0 0 0-3.792 2.43 10.047 10.047 0 0 0-.946 1.795l-7.446 19.419h5.085Z" fill="#2E3034"/><circle fill="#1BE1F6" cx="120.926" cy="21.926" r="2.074"/></g></g></svg>

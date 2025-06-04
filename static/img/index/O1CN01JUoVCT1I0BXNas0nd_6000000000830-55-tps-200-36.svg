@@ -1,1 +1,18 @@
+<!--
+  - Licensed to the Apache Software Foundation (ASF) under one or more
+  - contributor license agreements.  See the NOTICE file distributed with
+  - this work for additional information regarding copyright ownership.
+  - The ASF licenses this file to You under the Apache License, Version 2.0
+  - (the "License"); you may not use this file except in compliance with
+  - the License.  You may obtain a copy of the License at
+  -
+  -     http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software
+  - distributed under the License is distributed on an "AS IS" BASIS,
+  - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  - See the License for the specific language governing permissions and
+  - limitations under the License.
+  -->
+
 <svg width="200" height="36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="a"><stop stop-color="#9163EA" offset="0%"/><stop stop-color="#00DDE5" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><path d="M0 0h200v36H0z"/><path d="M8.028 4.432H0v23.136h8.028c6.254 0 11.323-5.179 11.323-11.568 0-6.389-5.07-11.568-11.323-11.568m14.655 14.417c0 5.054 4.01 9.151 8.957 9.151 4.947 0 8.957-4.097 8.957-9.151V4.432H22.683v14.417Zm38.25-3.66a6.351 6.351 0 0 0 1.804-4.455c0-3.48-2.761-6.302-6.168-6.302H45.16v23.136h11.408c3.78 0 6.844-3.13 6.844-6.992a7.038 7.038 0 0 0-2.48-5.388M99.14 4c-7.124 0-10.858 5.373-10.858 12s3.734 12 10.858 12c7.125 0 10.86-5.373 10.86-12S106.265 4 99.141 4M82.988 15.188a6.351 6.351 0 0 0 1.805-4.454c0-3.48-2.762-6.302-6.169-6.302H67.216v23.136h11.408c3.78 0 6.845-3.13 6.845-6.992a7.038 7.038 0 0 0-2.481-5.388" fill="url(#a)"/><path d="M10.647 9.655v-1.64H7.69c-1.307 0-2.366 1.082-2.366 2.417v11.05c0 1.335 1.059 2.417 2.366 2.417h2.957v-.518c0-.667-.53-1.208-1.183-1.208a1.196 1.196 0 0 1-1.183-1.209v-10.1c0-.668.53-1.21 1.183-1.21h1.183Zm86.065 0v-1.64h2.958c1.306 0 2.366 1.082 2.366 2.417v11.05c0 1.335-1.06 2.417-2.366 2.417h-2.958v-.518c0-.667.53-1.208 1.183-1.208s1.183-.542 1.183-1.209v-10.1c0-.668-.53-1.21-1.183-1.21h-1.183Zm-66.325 3.321h3.042V9.868h-3.042v3.108Zm0 7.976h3.042v-3.108h-3.042v3.108ZM57.9 7.972h-2.197l-6.592 15.97h2.198l6.59-15.97Zm22.055 0h-2.197l-6.591 15.97h2.197l6.591-15.97Z" fill="#FFF"/></g></svg>

@@ -1,3 +1,20 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /**
  * color definitions
  */
@@ -1109,7 +1126,7 @@ marker.djs-dragger tspan {
   --tooltip-link: var(--color-blue-218-100-74);
   --tooltip-code-background-color: var(--color-grey-225-10-97);
   --tooltip-code-border-color: var(--color-grey-225-10-85);
-  
+
   --text-size-base: 14px;
   --text-size-small: 13px;
   --text-size-smallest: 12px;
@@ -2180,8 +2197,8 @@ textarea.bio-properties-panel-input {
 }
 
 .bio-properties-panel-tooltip .bio-properties-panel-tooltip-arrow {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 5px solid var(--tooltip-background-color);
@@ -2239,9 +2256,9 @@ textarea.bio-properties-panel-input {
   font-size: 14px;
 }
 
-.bio-properties-panel-popup h1, 
-.bio-properties-panel-popup h2, 
-.bio-properties-panel-popup h3, 
+.bio-properties-panel-popup h1,
+.bio-properties-panel-popup h2,
+.bio-properties-panel-popup h3,
 .bio-properties-panel-popup h4 {
   font-weight: 500;
   font-size: inherit;
@@ -2587,22 +2604,6 @@ textarea.bio-properties-panel-input {
 .bpmn-icon-connection:before { content: '\e8dc'; } /* '' */
 .bpmn-icon-conditional-flow:before { content: '\e8e0'; } /* '' */
 .bpmn-icon-default-flow:before { content: '\e8e1'; } /* '' */
-
-/*
- *  Copyright 1999-2019 Seata.io Group.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
 
 body {
     margin: 0 auto;
