@@ -13,38 +13,40 @@ date: 2020-04-10
 
 ## Seata-Server
 
-Seata-Server 需要使用注册中心，并把事务数据保存到数据库中，以 Nacos 为例
+Seata-Server 需要使用配置中心、注册中心，并把事务数据保存到数据库中，以 Nacos 为例
 
-- 修改`registry.conf`的注册中心配置
+- 修改`application.yml`中配置中心、注册中心的配置
 
+```yaml
+seata:
+  config:
+    # support: nacos, consul, apolyamllo, zk, etcd3
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: xxx
+      password: xxx
+      ##if use MSE Nacos with auth, mutex with username/password attribute
+      #access-key: ""
+      #secret-key: ""
+      data-id: seataServer.properties
+  registry:
+    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      cluster: default
+      username: xxx
+      password: xxx
+      ##if use MSE Nacos with auth, mutex with username/password attribute
+      #access-key: ""
+      #secret-key: ""
 ```
-registry {
-  type = "nacos"
 
-  nacos {
-    application = "seata-server"
-    serverAddr = "192.168.199.2"
-    namespace = ""
-    cluster = "default"
-    username = ""
-    password = ""
-  }
-}
-
-config {
-  type = "nacos"
-  
-  nacos {
-    serverAddr = "192.168.199.2"
-    namespace = ""
-    group = "SEATA_GROUP"
-    username = ""
-    password = ""
-  }
-}
-```
-
--  需要修改配置中心的以下几个配置(含db与redis,二者选其一 注:redis需seata-server 1.3版本及以上)
+-  需要修改配置中心上远程配置文件中的以下几个配置(含db与redis,二者选其一 注:redis需seata-server 1.3版本及以上)
 
 ```
 service.vgroupMapping.my_test_tx_group=default
@@ -70,7 +72,7 @@ store.redis.queryLimit=100
 
 相应的脚本在GitHub 的 [/script/server/db/](https://github.com/apache/incubator-seata/tree/develop/script/server/db) 目录下
 
-这样，启动多个seata-server，即可实现其高可用
+再启动多个seata-server，即可实现其高可用
 
 ----
 
@@ -87,9 +89,12 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8091
+    - name: service
+      port: 8091
       protocol: TCP
-      name: http
+    - name: console
+      port: 7091
+      protocol: TCP
   selector:
     app.kubernetes.io/name: seata-ha-server
 
@@ -116,41 +121,73 @@ spec:
         - name: seata-ha-server
           image: docker.io/seataio/seata-server:latest
           imagePullPolicy: IfNotPresent
-          env:
-            - name: SEATA_CONFIG_NAME
-              value: file:/root/seata-config/registry
           ports:
-            - name: http
+            - name: service
               containerPort: 8091
               protocol: TCP
+            - name: console
+              containerPort: 7091
+              protocol: TCP
+          resources:
+            limits:
+              cpu: '2'
+              memory: 4Gi
+            requests:
+              cpu: '1'
+              memory: 2Gi
           volumeMounts:
             - name: seata-config
-              mountPath: /root/seata-config
+              mountPath: /seata-server/resources/application.yml
+              subPath: application.yml
       volumes:
         - name: seata-config
           configMap:
             name: seata-ha-server-config
 
-
 ---
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: seata-ha-server-config
 data:
-  registry.conf: |
-    registry {
-        type = "nacos"
-        nacos {
-          application = "seata-server"
-          serverAddr = "192.168.199.2"
-        }
-    }
-    config {
-      type = "nacos"
-      nacos {
-        serverAddr = "192.168.199.2"
-        group = "SEATA_GROUP"
-      }
-    }
+  application.yml: |
+    server:
+      port: 7091
+    
+    spring:
+      application:
+        name: seata-server
+    
+    logging:
+      config: classpath:logback-spring.xml
+      file:
+        path: ${log.home:${user.home}/logs/seata}
+    
+    seata:
+      config:
+        # support: nacos, consul, apollo, zk, etcd3
+        type: nacos
+        nacos:
+          server-addr: 127.0.0.1:8848
+          group: SEATA_GROUP
+          username: xxx
+          password: xxx
+          ##if use MSE Nacos with auth, mutex with username/password attribute
+          #access-key: ""
+          #secret-key: ""
+          data-id: seataServer.properties
+      registry:
+        # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+        type: nacos
+        nacos:
+          application: seata-server
+          server-addr: 127.0.0.1:8848
+          group: SEATA_GROUP
+          cluster: default
+          username: xxx
+          password: xxx
+          ##if use MSE Nacos with auth, mutex with username/password attribute
+          #access-key: ""
+          #secret-key: ""
 ```
