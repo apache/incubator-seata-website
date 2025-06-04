@@ -31,8 +31,7 @@ $ helm install seata-server ./seata-server
 
 ### 使用自定义配置文件
 
-指定配置文件可以通过挂载的方式实现，如将`/root/workspace/seata/seata-config/file`  下的配置文件挂载到 pod 中，挂载后需要通过指定 `SEATA_CONFIG_NAME` 指定配置文件位置，并且环境变量的值需要以`file:`开始, 如: `file:/root/seata-config/registry`
-
+指定配置文件可以通过挂载的方式实现，如将`/root/workspace/seata/seata-config/application.yml`下的配置文件挂载到 pod 中的`/seata-server/resources/application.yml`覆盖项目原有配置文件。
 - Values.yaml
 
 ```yaml
