@@ -69,3 +69,19 @@ header: # `header` section is configurations for source codes license header.
 dependency:
   files:
     - package.json
+  excludes:
+    # CC-BY-4.0
+    - name: caniuse-lite
+      recursive: false
+    # Python-2.0
+    - name: argparse
+      recursive: false
+    # Apache-2.0
+    - name: memfs
+      recursive: false
+    # Unlicense
+    - name: fs-monkey
+      recursive: false
+    # CC0-1.0
+    - name: mdn-data
+      recursive: false
