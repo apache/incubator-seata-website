@@ -75,13 +75,13 @@ dependency:
   excludes:
     # CC-BY-4.0
     - name: caniuse-lite
-      recursive: false
+      recursive: true
     # Python-2.0
     - name: argparse
-      recursive: false
+      recursive: true
     # Unlicense
     - name: fs-monkey
-      recursive: false
+      recursive: true
     # CC0-1.0
     - name: mdn-data
-      recursive: false
+      recursive: true
