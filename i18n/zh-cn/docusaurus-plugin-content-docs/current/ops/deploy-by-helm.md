@@ -14,7 +14,8 @@ date: 2019-12-01
 
 
 ```bash
-$ cd ./script/server/helm/seata-server
+$ git clone https://github.com/apache/incubator-seata.git
+$ cd ./incubator-seata/script/server/helm/seata-server
 $ helm install seata-server ./seata-server
 ```
 
@@ -30,8 +31,7 @@ $ helm install seata-server ./seata-server
 
 ### 使用自定义配置文件
 
-指定配置文件可以通过挂载的方式实现，如将`/root/workspace/seata/seata-config/file`  下的配置文件挂载到 pod 中，挂载后需要通过指定 `SEATA_CONFIG_NAME` 指定配置文件位置，并且环境变量的值需要以`file:`开始, 如: `file:/root/seata-config/registry`
-
+指定配置文件可以通过挂载的方式实现，如将`/root/workspace/seata/seata-config/application.yml`下的配置文件挂载到 pod 中的`/seata-server/resources/application.yml`覆盖项目原有配置文件。
 - Values.yaml
 
 ```yaml
@@ -52,12 +52,12 @@ env:
   seataPort: "8091"
   storeMode: "file"
   seataIp: "127.0.0.1"
-  seataConfigName: "file:/root/seata-config/registry"
 
 volume:
   - name: seata-config
-    mountPath: /root/seata-config
-    hostPath: /root/workspace/seata/seata-config/file
+    mountPath: /seata-server/resources/application.yml
+    subPath: application.yml
+    hostPath: /root/workspace/seata/seata-config/application.yml
 ```
 
 

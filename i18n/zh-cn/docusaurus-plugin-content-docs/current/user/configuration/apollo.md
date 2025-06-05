@@ -48,19 +48,20 @@ seata:
 
 ### Server 端配置中心
 
-在 [registry.conf](https://github.com/apache/incubator-seata/blob/develop/script/server/config/registry.conf) 中加入对应配置中心,其余[配置参考](https://github.com/apache/incubator-seata/tree/develop/script/server)
+在 `conf/application.yaml`加入以下配置, 其余配置参考 [configuration options](https://github.com/apache/incubator-seata/blob/2.x/server/src/main/resources/application.example.yml):
 
-```
-config {
-  type = "apollo"
-
-  apollo {
-    appId = "seata-server"
-    apolloMeta = "http://192.168.1.204:8801"
-    namespace = "application"
-    apolloAccesskeySecret = ""
-  }
-}
+```yaml
+seata:
+  config:
+    # support: nacos 、 consul 、 apollo 、 zk  、 etcd3
+    type: apollo
+    apollo:
+      appId: seata-server
+      apollo-meta: http://192.168.1.204:8801
+      apollo-config-service: http://192.168.1.204:8080
+      namespace: application
+      apollo-access-key-secret:
+      cluster: seata
 
 ```
 
