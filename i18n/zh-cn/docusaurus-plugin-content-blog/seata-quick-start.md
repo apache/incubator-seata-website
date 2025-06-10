@@ -339,12 +339,12 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 ## 4.2 TCC 模式
 
 - 文档：[《Seata 文档 —— TCC 模式》](/docs/dev/mode/tcc-mode/)
-- 示例：https://github.com/apache/incubator-seata-samples/blob/master/tcc
+- 示例：https://github.com/apache/incubator-seata-samples/blob/master/tcc-sample
 
 ## 4.3 Saga 模式
 
 - 文档：[《Seata 文档 —— Saga 模式》](/docs/dev/mode/saga-mode/)
-- 示例：https://github.com/apache/incubator-seata-samples/tree/master/saga
+- 示例：https://github.com/apache/incubator-seata-samples/tree/master/saga-sample
 
 ## 4.4 XA 模式
 
