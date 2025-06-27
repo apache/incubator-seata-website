@@ -9,9 +9,7 @@ hide_table_of_contents: true
 
 :::tip
 
-The Seata team maintains several recent stable releases, with the current latest version being 2.0.0.
-
-For more detailed information, please refer to: [Version Maintenance Plan](/docs/ops/version-maintain-plan)
+The Seata team maintains several recent stable releases, with the current latest version being 2.4.0.
 
 :::
 

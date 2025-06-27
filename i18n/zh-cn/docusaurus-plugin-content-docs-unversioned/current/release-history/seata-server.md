@@ -9,9 +9,7 @@ hide_table_of_contents: true
 
 :::tip
 
-Seata 团队维护着最近的几个稳定版本，当前最新版本是 2.0.0。
-
-更多详细信息，请参考：[版本维护计划](/docs/ops/version-maintain-plan)
+Seata 团队维护着最近的几个稳定版本，当前最新版本是 2.4.0。
 
 :::
 
