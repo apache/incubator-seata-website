@@ -9,7 +9,8 @@ hide_table_of_contents: true
 
 :::tip
 
- V2.3.0 is now officially released with major upgrades! This update introduces full support for Kingbase and ShenTong databases, integrates gRPC communication protocol and serializers to significantly enhance distributed transaction capabilities. Core optimizations include: boosted JSON efficiency via fastjson2 serialization/parsing, simplified transaction development with Saga annotations, and hardened security through SSL-encrypted Raft node communication. This release delivers stronger stability and security for your system infrastructure!
+V2.4.0 Major Upgrade in the Latest Version! This update introduces support for Kingbase XA mode, adds console transaction exception control operations, enables rate limiting for seata-server, supports registration to naming-server in Raft cluster mode, integrates fury serialization, and allows combined deployment of the console and naming-server. This version significantly enhances stability and security!
+
 :::
 
 ## System Requirements
@@ -54,9 +55,7 @@ requirements, you may not be able to deploy Seata-Server on your device.
 </section>
 ```
 
-1. Seata version maintenance policy, please refer to the [version maintenance document](/docs/ops/version-maintain-plan)
-   , please upgrade the lower version to the current maintenance version as soon as possible. For version upgrade,
-   please refer to the [upgrade guide](/docs/ops/upgrade)
+1.  For version upgrade, please refer to the [upgrade guide](/docs/ops/upgrade)
 2. For more release history downloads, please refer to [Release History](/release-history/seata-server)
 
 [//]: # (## Snapshot Version)

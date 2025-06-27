@@ -9,7 +9,8 @@ hide_table_of_contents: true
 
 :::tip
 
-2.3.0 最新版本重磅升级！本次更新新增对Kingbase、ShenTong数据库的全面支持，集成gRPC通信协议及序列化器，大幅提升分布式事务处理能力。同时，此版本还做了大量的优化，核心优化包括：fastjson2序列化/解析提升JSON效率，Saga注解简化事务开发，Raft节点SSL通信加固安全。此版本，进一步提升了稳定性和安全性！
+2.4.0 最新版本重磅升级！本次更新新增对 Kingbase XA 模式支持，增加控制台事务异常控制操作，支持 seata-server
+限流，支持 Raft 集群模式向 naming-server 注册，支持 fury 序列化，支持控制台和 naming-server 合并部署。此版本进一步提升了稳定性和安全性！
 
 :::
 
@@ -52,7 +53,7 @@ hide_table_of_contents: true
 | 2.2.0 | [apache-seata-2.2.0-incubating-src.zip](https://www.apache.org/dyn/closer.lua/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip?action=download) [ASC](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-src.zip.sha512)<br/>             | [apache-seata-2.2.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz?action=download)  [ASC](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.2.0/apache-seata-2.2.0-incubating-bin.tar.gz.sha512)<br/>    | [2.2.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.2.0) | [2.2.0 Quick Start](/docs/user/quickstart/) |
 | 2.1.0 | [apache-seata-2.1.0-incubating-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-src.tar.gz.sha512)      | [apache-seata-2.1.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz?action=download)  [ASC](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.1.0/apache-seata-2.1.0-incubating-bin.tar.gz.sha512)         | [2.1.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.1.0) | [2.1.0 Quick Start](/docs/user/quickstart/) |
 
-1. Seata 版本维护策略，请参考[版本维护文档](/docs/ops/version-maintain-plan)，请您尽快升级低版本至当前维护版本。版本升级请参考[升级指南](/docs/ops/upgrade)
+1. 版本升级请参考[升级指南](/docs/ops/upgrade)
 2. 更多历史版本下载，请参考[版本历史](/release-history/seata-server)
 
 ```mdx-code-block
