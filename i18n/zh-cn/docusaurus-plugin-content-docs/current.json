@@ -86,5 +86,13 @@
   "sidebar.release-notes.category.release-notes": {
     "message": "发布说明",
     "description": "The label for category Release Notes in sidebar Release Notes"
+  },
+  "sidebar.developers.category.Team": {
+    "message": "团队",
+    "description": "The label for category Team in sidebar"
+  },
+  "sidebar.release-notes.category.Release Guide": {
+    "message": "发布向导",
+    "description": "The label for category Release Guide in sidebar"
   }
 }
