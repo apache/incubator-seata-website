@@ -239,7 +239,8 @@ const sidebars = {
       label: 'PPMC Guide',
       collapsible: false,
       items: [
-        'developers/ppmc-guide/new-ppmc_dev'
+        'developers/ppmc-guide/new-ppmc_dev',
+        'developers/ppmc-guide/nominate-committer_dev'
       ],
     },
   ],

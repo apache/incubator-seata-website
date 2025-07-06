@@ -1,6 +1,6 @@
 ---
-title: Team
-keywords: [Seata]
+title: 团队
+keywords: [Team]
 description: Team.
 ---
 # 团队

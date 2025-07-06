@@ -1,6 +1,6 @@
 ---
 title: New PPMC Member Guide
-keywords: [Seata]
+keywords: [Seata, PPMC, guide]
 description: New PPMC Member Guide
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: New PPMC Member Guide
+title: 新PPMC成员指南
 keywords: [Seata]
 description: New PPMC Member Guide
 ---
