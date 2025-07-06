@@ -228,6 +228,7 @@ const sidebars = {
       label: 'Committer Guide',
       collapsible: false,
       items: [
+        'developers/committer-guide/new-committer_dev',
         'developers/committer-guide/label-an-issue-guide_dev',
         'developers/committer-guide/website-guide_dev'
       ],
