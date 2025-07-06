@@ -192,11 +192,11 @@ const config = {
             to: '/download/seata-server',
             position: 'right',
           },
-          {
-            label: 'Solution',
-            to: '/solution',
-            position: 'right',
-          },
+          // {
+          //   label: 'Solution',
+          //   to: '/solution',
+          //   position: 'right',
+          // },
           // {
           //   label: 'Console sample',
           //   to: 'http://demo.seata.io/',
