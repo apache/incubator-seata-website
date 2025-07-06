@@ -198,6 +198,22 @@ const sidebars = {
   developers: [
     {
       type: 'category',
+      label: 'Team',
+      collapsible: false,
+      items: [
+        'developers/team/team',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Release Guide',
+      collapsible: false,
+      items: [
+        'developers/release-guide/release-guide_dev',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Contribute Guide',
       collapsible: false,
       items: [

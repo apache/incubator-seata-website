@@ -82,6 +82,10 @@
     "message": "PPMC Guide",
     "description": "The label for category PPMC Guide in sidebar developers"
   },
+  "sidebar.developers.category.Release Guide": {
+    "message": "Release Guide",
+    "description": "The label for category Release Guide in sidebar developers"
+  },
   "sidebar.release-notes.category.release-notes": {
     "message": "Release Notes",
     "description": "The label for category Release Notes in sidebar Release Notes"
