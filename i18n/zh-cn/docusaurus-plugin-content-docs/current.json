@@ -91,7 +91,7 @@
     "message": "团队",
     "description": "The label for category Team in sidebar"
   },
-  "sidebar.release-notes.category.Release Guide": {
+  "sidebar.developers.category.Release Guide": {
     "message": "发布向导",
     "description": "The label for category Release Guide in sidebar"
   }
