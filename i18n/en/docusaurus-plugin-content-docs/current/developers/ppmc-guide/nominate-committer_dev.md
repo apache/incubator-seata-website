@@ -10,7 +10,7 @@ This document mainly introduces how a PPMC member nominates a new committer.
 
 ## Discuss the candidate
 
-Start a discuss the candidate via sending email to: <private@seata.apache.org>:
+Start a discuss the candidate via sending email to `private@seata.apache.org`:
 
 - candidate_name: The full name of the candidate.
 - candidate_github_id: The GitHub id of the candidate.
@@ -44,7 +44,7 @@ ${your_name}
 
 ## Start vote about the candidate
 
-Start a vote about the candidate via sending email to: <private@seata.apache.org>:
+Start a vote about the candidate via sending email to `private@seata.apache.org`:
 
 - candidate_name: The full name of the candidate.
 - candidate_github_id: The GitHub id of the candidate.
@@ -112,7 +112,7 @@ ${your_name}
 
 ## Send invitation to the candidate
 
-Send an invitation to the candidate and cc <private@seata.apache.org>:
+Send an invitation to the candidate and cc `private@seata.apache.org`:
 
 Title:
 
@@ -204,8 +204,7 @@ After the candidate accepts the invitation and the iCLA is recorded, add the can
 
 ## Announcement
 
-Once the nominee accepts the invitation and the commit bit is granted, it's encouraged to send an announcement email
-to dev@seata.apache.org to welcome the new committers. Here is an email template:
+Once the nominee accepts the invitation and the commit bit is granted, it's encouraged to send an announcement email to `dev@seata.apache.org` to welcome the new committers. Here is an email template:
 
 Title:
 

@@ -10,7 +10,7 @@ description: 提名 Committer 指南
 
 ## 讨论候选人
 
-发起一个讨论到邮件: <private@seata.apache.org>:
+发起一个讨论到邮件到 `private@seata.apache.org`:
 
 - candidate_name: 候选人全名。
 - candidate_github_id: 候选人 GitHub id。
@@ -44,7 +44,7 @@ ${your_name}
 
 ## 发起候选人投票
 
-发起一个投票到邮件: <private@seata.apache.org>:
+发起一个投票到邮件 `private@seata.apache.org`:
 
 - candidate_name: 候选人全名。
 - candidate_github_id: 候选人的 GitHub id。
@@ -112,7 +112,7 @@ ${your_name}
 
 ## 发送邀请邮件给候选人
 
-给候选人发送邮件邀请并抄送 <private@seata.apache.org>:
+给候选人发送邮件邀请并抄送`private@seata.apache.org`:
 
 标题:
 
@@ -204,7 +204,7 @@ ${your_name}
 
 ## 宣布
 
-一旦被提名人接受了邀请，发送一封通知邮件 到dev@seata.apache.org 欢迎新的 committer。下面是一个电子邮件模板：
+一旦被提名人接受了邀请，发送一封通知邮件 到`dev@seata.apache.org` 欢迎新的 committer。下面是一个电子邮件模板：
 
 标题:
 
