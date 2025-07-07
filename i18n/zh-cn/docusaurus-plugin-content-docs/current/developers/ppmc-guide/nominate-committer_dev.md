@@ -95,8 +95,7 @@ ${your_name}
 ```
 Hi All,
 
-The vote for Yongjun Hong to become a new committer has passed, with ${N}  +1
-binding votes, no +0 or -1 votes.
+The vote for ${candidate_name} to become a new committer has passed, with ${N}  +1 binding votes, no +0 or -1 votes.
 
 ${N} (+1 binding)
 
