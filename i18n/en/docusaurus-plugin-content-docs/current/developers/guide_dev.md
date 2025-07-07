@@ -59,6 +59,20 @@ Every action to make project Seata better is encouraged. On GitHub, every improv
 * If you find document incorrect, just do it and fix that!
 * ...
 
+How to compile code?
+
+```text
+./mvnw clean package -DskipTests=true
+```
+
+Whether to ignore unit tests can be determined based on the scenario requirements, but all unit tests must be passed before submitting the PR.
+
+How to package seata-server as a binary package?
+
+```text
+./mvnw clean install -Prelease-seata -DskipTests=true
+```
+
 Actually it is impossible to list them completely. Just remember one principle:
 
 > WE ARE LOOKING FORWARD TO ANY PR FROM YOU.
@@ -103,7 +117,7 @@ Right now we assume every contribution via pull request is for [branch develop](
 
 As a contributor, keep in mind again that every contribution via pull request is for branch develop. While in project Seata, there are several other branches, we generally call them release branches(such as 0.6.0,0.6.1), feature branches, hotfix branches and master branch.
 
-When officially releasing a version, there will be a release branch and named with the version number. 
+When officially releasing a version, there will be a release branch and named with the version number.
 
 After the release, we will merge the commit of the release branch into the master branch.
 
@@ -183,7 +197,7 @@ Seata code style Comply with Alibaba Java Coding Guidelines.
 
 
 ### Guidelines
-[Alibaba-Java-Coding-Guidelines](https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/) 
+[Alibaba-Java-Coding-Guidelines](https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/)
 
 
 ### IDE Plugin Install（not necessary）
@@ -192,7 +206,7 @@ Seata code style Comply with Alibaba Java Coding Guidelines.
 
 
 #### idea IDE
-[p3c-idea-plugin-install](https://github.com/alibaba/p3c/blob/master/idea-plugin/README.md) 
+[p3c-idea-plugin-install](https://github.com/alibaba/p3c/blob/master/idea-plugin/README.md)
 
 #### eclipse IDE
 [p3c-eclipse-plugin-install](https://github.com/alibaba/p3c/blob/master/eclipse-plugin/README.md)
