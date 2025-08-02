@@ -197,12 +197,14 @@ const sidebars = {
   ],
   developers: [
     {
-      type: 'category',
+      type: 'doc',
       label: 'Team',
-      collapsible: false,
-      items: [
-        'developers/team/team',
-      ],
+      id: 'developers/team/team',
+    },
+    {
+      type: 'doc',
+      label: 'Maturity',
+      id: 'developers/maturity',
     },
     {
       type: 'category',
