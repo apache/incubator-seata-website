@@ -7,8 +7,7 @@ description: Maturity model assessment.
 # Apache Seata™ (incubating) Maturity model assessment
 
 The following table is filled according to
-the [Apache Maturity Model](https://community.apache.org/apache-way/apache-project-maturity-model.html). Everyone is
-welcome to comment it.
+the [Apache Maturity Model](https://community.apache.org/apache-way/apache-project-maturity-model.html). Everyone is welcome to comment it.
 
 ## Code
 
