@@ -167,7 +167,7 @@ const config = {
             position: 'right',
           },
           {
-            label: 'Developers',
+            label: 'Community',
             type: 'doc',
             docId: 'developers/contributor-guide/new-contributor-guide_dev',
             position: 'right',
@@ -182,11 +182,11 @@ const config = {
             to: '/users',
             position: 'right',
           },
-          {
-            label: 'Community',
-            to: '/community',
-            position: 'right',
-          },
+          // {
+          //   label: 'Community',
+          //   to: '/community',
+          //   position: 'right',
+          // },
           {
             label: 'Download',
             to: '/download/seata-server',
