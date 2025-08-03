@@ -1,0 +1,178 @@
+---
+hidden: true
+title: Deploy with Kubernetes
+keywords: [kubernetes,ops]
+description: Deploy Seata Server using Kubernetes
+author: helloworlde
+date: 2019-12-01
+---
+
+# Deploy Seata Server with Kubernetes
+
+### Quick Start
+
+Create `seata-server.yaml`
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: seata-server
+  namespace: default
+  labels:
+    k8s-app: seata-server
+spec:
+  type: NodePort
+  ports:
+    - port: 8091
+      nodePort: 30091
+      protocol: TCP
+      name: http
+  selector:
+    k8s-app: seata-server
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seata-server
+  namespace: default
+  labels:
+    k8s-app: seata-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: seata-server
+  template:
+    metadata:
+      labels:
+        k8s-app: seata-server
+    spec:
+      containers:
+        - name: seata-server
+          image: docker.io/seataio/seata-server:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SEATA_PORT
+              value: "8091"
+            - name: STORE_MODE
+              value: file
+          ports:
+            - name: http
+              containerPort: 8091
+              protocol: TCP
+```
+
+
+
+```bash
+$ kubectl apply -f seata-server.yaml
+```
+
+
+
+## Custom Configuration
+
+### Environment Variables
+
+The supported environment variables are the same as Docker. You can refer to [Deploy Seata Server with Docker](./deploy-by-docker)
+
+
+
+### Using Custom Configuration Files
+
+
+- Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seata-server
+  namespace: default
+  labels:
+    k8s-app: seata-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: seata-server
+  template:
+    metadata:
+      labels:
+        k8s-app: seata-server
+    spec:
+      containers:
+        - name: seata-server
+          image: docker.io/apache/seata-server:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: service
+              containerPort: 8091
+              protocol: TCP
+            - name: console
+              containerPort: 7091
+              protocol: TCP
+          resources:
+            limits:
+              cpu: '2'
+              memory: 4Gi
+            requests:
+              cpu: '1'
+              memory: 2Gi
+          volumeMounts:
+            - name: seata-config
+              mountPath: /seata-server/resources/application.yml
+              subPath: application.yml
+      volumes:
+        - name: seata-config
+          configMap:
+            name: seata-server-config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: seata-server-config
+data:
+  application.yml: |
+    server:
+      port: 7091
+    
+    spring:
+      application:
+        name: seata-server
+    
+    logging:
+      config: classpath:logback-spring.xml
+      file:
+        path: ${log.home:${user.home}/logs/seata}
+    
+    seata:
+      config:
+        # support: nacos, consul, apollo, zk, etcd3
+        type: nacos
+        nacos:
+          server-addr: 127.0.0.1:8848
+          group: SEATA_GROUP
+          username: xxx
+          password: xxx
+          ##if use MSE Nacos with auth, mutex with username/password attribute
+          #access-key: ""
+          #secret-key: ""
+          data-id: seataServer.properties
+      registry:
+        # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+        type: nacos
+        nacos:
+          application: seata-server
+          server-addr: 127.0.0.1:8848
+          group: SEATA_GROUP
+          cluster: default
+          username: xxx
+          password: xxx
+          ##if use MSE Nacos with auth, mutex with username/password attribute
+          #access-key: ""
+          #secret-key: ""
+
+```
