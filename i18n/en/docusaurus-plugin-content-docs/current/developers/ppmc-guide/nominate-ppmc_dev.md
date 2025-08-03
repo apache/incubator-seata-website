@@ -6,7 +6,7 @@ description: Nominate PPMC member Guide
 
 # Nominate PPMC member Guide
 
-This document mainly introduces how a PPMC member nominates a new PPMC member.
+This document mainly introduces how the Apache Seata™ (incubating) PPMC member nominates a new PPMC member.
 
 ## Discuss the candidate
 

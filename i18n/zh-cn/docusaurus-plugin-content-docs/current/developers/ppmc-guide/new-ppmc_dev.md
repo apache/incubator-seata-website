@@ -5,7 +5,7 @@ description: New PPMC Member Guide
 ---
 
 # 新PPMC成员指南
-本文档主要为指导新晋PPMC成员加入Apache Seata社区。
+本文档主要为指导新晋PPMC成员加入Apache Seata™ (incubating)社区。
 
 当收到来自Seata PPMC的邀请邮件后，新成员应审慎考虑是否接受。若决定接受，请点击"回复全部"并明确表达同意意向。
 

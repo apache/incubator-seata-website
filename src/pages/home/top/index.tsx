@@ -23,7 +23,7 @@ import './index.scss';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const topData = {
-  brandName: 'Apache Seata(incubating)',
+  brandName: 'Apache Seata™ (incubating)',
   briefIntroduction: translate({
     id: 'homepage.briefIntroduction',
   }),

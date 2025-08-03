@@ -6,7 +6,7 @@ description: Nominate Committer Guide
 
 # Nominate Committer Guide
 
-This document mainly introduces how a PPMC member nominates a new committer.
+This document mainly introduces how the Apache Seata™ (incubating) PPMC member nominates a new committer.
 
 ## Discuss the candidate
 

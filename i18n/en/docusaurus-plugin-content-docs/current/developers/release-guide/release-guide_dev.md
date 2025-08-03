@@ -8,7 +8,7 @@ description: Release Guide.
 
 ## 1. Introduction
 
-#### 1.1 Apache Release Documentation
+#### 1.1 Apache Seata™ (incubating) Release Documentation
 
 Refer to the following links to understand the ASF release process:
 
