@@ -4,12 +4,12 @@ keywords: [ Maturity ]
 description: Maturity model assessment.
 ---
 
-# Maturity model assessment
+# Apache Seata™ (incubating) Maturity model assessment
 
 The following table is filled according to
 the [Apache Maturity Model](https://community.apache.org/apache-way/apache-project-maturity-model.html). Everyone is welcome to comment it.
 
-## TABLE
+## Code
 
 | **ID**   | **Description**                                                                                                                                                                                                                                                | **Status**                                                                                                                                                                                                          |
 |----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -19,7 +19,7 @@ the [Apache Maturity Model](https://community.apache.org/apache-way/apache-proje
 | **CD40** | The full history of the project's code is available via a source code control system, in a way that allows anyone to recreate any released version.                                                                                                            | **YES** The code is managed using Git, allowing you to view the complete change history based on Git.                                                                                                               |
 | **CD50** | The source code control system establishes the provenance of each line of code in a reliable way, based on strong authentication of the committer. When third parties contribute code, commit messages provide reliable information about the code provenance. | **YES** The project uses GitHub and is managed by Apache Infra, ensuring the provenance of each line of code to a committer. Third-party contributions are accepted in accordance with the contributing guidelines. |
 
-### LICENSE
+### Licenses and Copyright
 
 | **ID**   | **Description**                                                                                                                                                                   | **Status**                                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
