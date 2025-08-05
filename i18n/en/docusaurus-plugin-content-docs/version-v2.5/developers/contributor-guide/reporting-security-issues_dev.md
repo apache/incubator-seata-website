@@ -6,7 +6,7 @@ description: This is a guide for new contributors who wants to report security i
 
 # Reporting Security Issues
 
-The Seata Group takes a rigorous standpoint in annihilating the security issues in its software projects. Seata is highly sensitive and forthcoming to issues pertaining to its features and functionality.
+Apache Seata™ (incubating) takes a rigorous standpoint in annihilating the security issues in its software projects. Seata is highly sensitive and forthcoming to issues pertaining to its features and functionality.
 
 ## REPORTING VULNERABILITY
 

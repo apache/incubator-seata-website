@@ -5,7 +5,7 @@ description: New PPMC Member Guide
 ---
 
 # New PPMC Member Guide
-This document primarily serves as a guide for new PPMC members to Apache Seata.
+This document primarily serves as a guide for new PPMC members to Apache Seata™ (incubating).
 
 Upon receiving an invitation email from Seata PPMC, a new PPMC member should consider whether accepting. If they decide in favor, they should select "Reply All" and express their decision.
 

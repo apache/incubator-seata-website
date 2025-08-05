@@ -6,7 +6,7 @@ description: 提名PPMC member指南
 
 # 提名 PPMC member 指南
 
-本文档主要介绍PPMC成员如何提名新的PPMC成员。
+本文档主要介绍Apache Seata™ (incubating) PPMC成员如何提名新的PPMC成员。
 
 ## 讨论候选人
 
