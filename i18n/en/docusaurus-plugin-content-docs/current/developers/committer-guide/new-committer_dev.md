@@ -1,6 +1,6 @@
 # New Committer Guide
 
-This document primarily serves as a guide for new committers to Apache Seata.
+This document primarily serves as a guide for new committers to Apache Seata™ (incubating).
 
 Upon receiving an invitation email from Seata PMC, a new committer should consider whether accepting.
 If they decide in favor, they should select "Reply All" and express their decision.

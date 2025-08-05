@@ -6,7 +6,7 @@ description: 提名 Committer 指南
 
 # 提名 Committer 指南
 
-本文档主要介绍PPMC成员如何提名新的提交者。
+本文档主要介绍Apache Seata™ (incubating) PPMC成员如何提名新的提交者。
 
 ## 讨论候选人
 

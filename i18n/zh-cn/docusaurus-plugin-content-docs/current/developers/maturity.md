@@ -4,12 +4,12 @@ keywords: [ Maturity ]
 description: Maturity model assessment.
 ---
 
-# Maturity model assessment
+# Apache Seata™ (incubating) Maturity model assessment
 
 The following table is filled according to
 the [Apache Maturity Model](https://community.apache.org/apache-way/apache-project-maturity-model.html). Everyone is welcome to comment it.
 
-## TABLE
+## Code
 
 | **ID**   | **Description**                                                                                                                                                                                                                                                | **Status**                                                                                                                                                                                                          |
 |----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -19,7 +19,7 @@ the [Apache Maturity Model](https://community.apache.org/apache-way/apache-proje
 | **CD40** | The full history of the project's code is available via a source code control system, in a way that allows anyone to recreate any released version.                                                                                                            | **YES** The code is managed using Git, allowing you to view the complete change history based on Git.                                                                                                               |
 | **CD50** | The source code control system establishes the provenance of each line of code in a reliable way, based on strong authentication of the committer. When third parties contribute code, commit messages provide reliable information about the code provenance. | **YES** The project uses GitHub and is managed by Apache Infra, ensuring the provenance of each line of code to a committer. Third-party contributions are accepted in accordance with the contributing guidelines. |
 
-### LICENSE
+### Licenses and Copyright
 
 | **ID**   | **Description**                                                                                                                                                                   | **Status**                                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
@@ -77,3 +77,12 @@ the [Apache Maturity Model](https://community.apache.org/apache-way/apache-proje
 |----------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **IN10** | The project is independent from any corporate or organizational influence.               | **YES**  All PPMC members and committers nominated during the incubation period come from different companies, and more than 90% of their members are not from donation companies. |
 | **IN20** | Contributors act as themselves, not as representatives of a corporation or organization. | **YES** All contributions are made by individuals acting independently, not on behalf of companies or organizations.                                                               |
+
+### Trademark and Branding
+
+| **ID**   | **Description**                                                                                                                                                                   | **Status**                                                                                                                                  |
+|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| **TB10** | The project uses "Apache Foo™" as the project and software product name consistently, with appropriate <br/><br/><br/>trademark attributions.                                     | **YES**  We consistently use the name "Apache Seata™" across all official materials, including the logo, with proper trademark attribution. |
+| **TB20** | The project's primary homepage is at projectname.apache.org. When exceptions exist to use alternate domains for any purpose, any non-apache.org domain names are owned by the ASF | **YES**  The official homepage is located at https://seata.apache.org, fully complying with ASF domain usage policies.                      |
+| **TB30** | The ASF has trademark rights, including any registrations, to the project name, logo, and any other major branding elements.	                                                     | **YES**  The Apache Software Foundation owns the rights to the "Apache Seata™" name and branding under the standard ASF trademark policies. |
+| **TB40** | The project monitors for any major misuses of their project's brand by others, and reports any potential misuses to Brand Management.		                                           | **YES**  The PMC takes trademark issues very seriously, and we have reported cases of trademark misuse in our incubation reports.           |
