@@ -34,7 +34,7 @@ const Introduction = () => {
     <section className='introduction-section'>
       <div className='introduction-body'>
         <div className='introduction'>
-          <h4>{data.title}</h4>
+          <h3>{data.title}</h3>
           <p>{data.desc}</p>
         </div>
         <img
