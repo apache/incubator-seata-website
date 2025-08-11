@@ -171,6 +171,22 @@
   ],
   "developers": [
     {
+      "type": "doc",
+      "label": "Team",
+      "id": "developers/team/team"
+    },
+    {
+      "type": "doc",
+      "label": "Maturity",
+      "id": "developers/maturity"
+    },
+    {
+      "type": "category",
+      "label": "Release Guide",
+      "collapsible": false,
+      "items": ["developers/release-guide/release-guide_dev"]
+    },
+    {
       "type": "category",
       "label": "Contribute Guide",
       "collapsible": false,
@@ -186,6 +202,7 @@
       "label": "Committer Guide",
       "collapsible": false,
       "items": [
+        "developers/committer-guide/new-committer_dev",
         "developers/committer-guide/label-an-issue-guide_dev",
         "developers/committer-guide/website-guide_dev"
       ]
@@ -195,7 +212,9 @@
       "label": "PPMC Guide",
       "collapsible": false,
       "items": [
-        "developers/ppmc-guide/release-guide_dev"
+        "developers/ppmc-guide/new-ppmc_dev",
+        "developers/ppmc-guide/nominate-committer_dev",
+        "developers/ppmc-guide/nominate-ppmc_dev"
       ]
     }
   ],
@@ -204,9 +223,7 @@
       "type": "category",
       "label": "release-notes",
       "collapsible": false,
-      "items": [
-        "release-notes"
-      ]
+      "items": ["release-notes"]
     }
   ]
 }
