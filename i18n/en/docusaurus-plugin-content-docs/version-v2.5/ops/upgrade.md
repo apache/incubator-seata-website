@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # Version Upgrade Guide
 
+<a href="#11" target="_self">11. What compatibility matters need to be paid attention to when upgrading to seata 2.5? </a>
+<br/>
+
 <a href="#10" target="_self">10. What compatibility matters need to be paid attention to when upgrading to seata 2.4? </a>
 <br/>
 
@@ -35,6 +38,14 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. How to upgrade versions 0.8 and 0.9 to version 1.0? </a>
 <br/>
+
+------
+<h3 id='11'>11. What compatibility matters need to be paid attention to when upgrading to seata 2.5?</h3>
+<details>
+   <summary><mark>Notes</mark></summary>
+
+   1. The server has removed the spring-boot-web related components, so the HTTP port is merged into the Seata transaction port, both using 8091. Please change `server.port` to be consistent with the transaction port (default value: 8091).
+</details>
 
 ------
 

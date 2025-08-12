@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # 版本升级指南
 
+<a href="#11" target="_self">11. 升级到 seata 2.5 有哪些兼容性事项是需要注意的？</a>
+<br/>
+
 <a href="#10" target="_self">10. 升级到 seata 2.4 有哪些兼容性事项是需要注意的？</a>
 <br/>
 
@@ -36,6 +39,15 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>
 <br/>
+
+------
+
+<h3 id='11'>11. 升级到 seata 2.5 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+
+  1. server移除了spring-boot-web相关组件，故http端口合并至seata事务端口皆为8091，请将`server.port`改成与事务端口一致(默认值: 8091)
+</details>
 
 ------
 
