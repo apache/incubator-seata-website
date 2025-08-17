@@ -192,6 +192,7 @@ const sidebars = {
       collapsible: false,
       items: [
         'security/secret-key',
+        'security/serialization',
       ],
     },
   ],
