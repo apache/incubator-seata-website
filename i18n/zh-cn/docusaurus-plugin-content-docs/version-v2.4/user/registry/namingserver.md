@@ -129,6 +129,7 @@ curl -X POST http://localhost:8081/api/v1/auth/login \
 
 ### 创建client端的事务分组->seata集群的映射关系
 
+先启动namingserver,随后,启动 Seata-Server
 向一个namingserver节点发起创建事务分组映射关系的http请求（namingserver节点会自动同步给其它节点）
 
 ```shell
@@ -147,7 +148,7 @@ curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/
 
 （其中namespace是client端配置的命名空间，vGroup是client端配置的事务分组，clusterName是需要映射到的server端的集群名称）
 
-随后,启动 Seata-Server 后，Client 配置完成后启动应用就可以正式体验 Seata 服务。
+随后Client 配置完成后启动应用就可以正式体验 Seata 服务。
 
 Tips：
 - 1.请确保client与server的注册处于同一个namespace，不然会找不到服务。

@@ -129,27 +129,29 @@ You'll receive a response like this. Copy the data field for use in the `authori
 }
 ```
 
-### Creating a Transaction Group to Seata Cluster Mapping
+### Create the client transaction-group -> Seata cluster mapping
 
-Send an HTTP request to a namingserver node to create a transaction group mapping relationship (the namingserver node will automatically synchronize with other nodes):
+Start the namingserver, then start the Seata Server.
+
+Send an HTTP request to a namingserver node to create the transaction-group mapping (the namingserver node will automatically synchronize it to other nodes):
 
 ```shell
 curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/addGroup?clusterName=cluster2&namespace=public&unitName&vGroup=my_test_tx_group
 ```
 
-(Where namespace is the namespace configured on the client, vGroup is the transaction group configured on the client, and clusterName is the cluster name of the server to map to)
+(where namespace is the namespace configured on the client, vGroup is the transaction group configured on the client, and clusterName is the Seata Server cluster to map to)
 
-### Switching Transaction Group to Seata Cluster Mapping (Traffic Switching)
+### Switch the client transaction-group -> Seata cluster mapping (cutover)
 
-Send an HTTP request to a namingserver node to modify the transaction group mapping relationship:
+Send an HTTP request to a namingserver node to modify the transaction-group mapping (the namingserver node will automatically synchronize it to other nodes):
 
 ```shell
 curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/changeGroup?clusterName=cluster2&namespace=public&unitName&vGroup=my_test_tx_group
 ```
 
-(Where namespace is the namespace configured on the client, vGroup is the transaction group configured on the client, and clusterName is the cluster name of the server to map to)
+(where namespace is the namespace configured on the client, vGroup is the transaction group configured on the client, and clusterName is the Seata Server cluster to map to)
 
-After starting Seata-Server and configuring the client, you can start your application and begin using Seata services.
+If there is no Seata Server available under the specified namespace and clusterName when creating the transaction group, creation will fail. After configuring the client and starting your application, you can start using Seata services.
 
 Tips:
 - 1. Ensure the client and server registries are in the same namespace, otherwise services won't be found.
