@@ -18,6 +18,7 @@ The serialization protocols officially supported by Seata include:
 - Fury
 - Fastjson2
 - FST
+- Jackson
 
 For these serialization extensions, upon discovering or receiving vulnerability reports, the Seata team will follow up and upgrade dependencies to the latest secure versions. However, the final vulnerability resolution depends on the implementation of the serialization framework.
 
