@@ -21,7 +21,7 @@ Seata 作为一款分布式事务协调器，同样遵循这一规律。在 Seat
 
 ## 一、加载步骤
 ### 1.1 加载入口
-以 **TC 服务** 为例，在 `seata-server` 模块下，有一个核心类 `SeataPropertiesLoader`，它实现了 `ApplicationContextInitializer<ConfigurableApplicationContext>` 接口。
+在Seata中，无论是 `TC` 端还是`Client`端，都依赖了`autoconfigure-core`模块，该模块中定义了一个核心类 `SeataPropertiesLoader`，它实现了 `ApplicationContextInitializer<ConfigurableApplicationContext>` 接口。
 
 实现这个接口的类会在 **Spring 加载 Bean 定义之前**执行，非常适合在此阶段对 `Environment` 进行调整、注册额外的 `PropertySource` 或修改配置。
 Seata 正是利用这一特性，在项目启动早期完成了配置的初始加载。

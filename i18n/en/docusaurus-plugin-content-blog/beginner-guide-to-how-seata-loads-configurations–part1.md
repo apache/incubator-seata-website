@@ -24,11 +24,9 @@ This article focuses on the first stage—how Seata reads and initializes releva
 ## I. Loading Steps
 
 ### 1.1 Entry Point
-Taking the **TC service** as an example, under the `seata-server` module, there is a core class `SeataPropertiesLoader`, which implements the `ApplicationContextInitializer<ConfigurableApplicationContext>` interface.
-
-A class implementing this interface is executed **before Spring loads Bean definitions**, which makes it ideal for adjusting the `Environment`, registering additional `PropertySource`, or modifying configurations at this stage.
-Seata leverages this feature to complete the initial configuration loading early in project startup.
-
+In Seata, both the `TC` side and the `Client` side depend on the `autoconfigure-core` module, which defines a core class `SeataPropertiesLoader` implementing the `ApplicationContextInitializer<ConfigurableApplicationContext>` interface.
+Classes implementing this interface are executed **before Spring loads bean definitions**, making it ideal for adjusting the `Environment`, registering additional `PropertySources`, or modifying configurations at this stage.
+Seata leverages this feature to complete its initial configuration loading early in the project startup process.
 Here’s the core implementation of `SeataPropertiesLoader`:
 
 ```java
