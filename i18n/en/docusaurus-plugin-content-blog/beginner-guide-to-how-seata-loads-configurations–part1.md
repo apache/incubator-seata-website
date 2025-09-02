@@ -1,5 +1,5 @@
 ---
-title: Understanding How Seata Loads Configuration Information from 0 to 1 - 01
+title: Understanding How Seata Loads Configuration Information Part 1
 keywords: [Seata, Config]
 description: In distributed systems, configuration management is crucial. This article will guide you step by step from scratch to understand how Seata loads and manages configuration information. This is the first part of a series, focusing on the most basic configuration loading process to lay a foundation for further in-depth source code analysis.
 author: Yu Zhang
