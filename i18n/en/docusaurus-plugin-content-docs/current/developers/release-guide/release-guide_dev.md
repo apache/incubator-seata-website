@@ -580,12 +580,6 @@ Resources:
 - Mailing list: dev@seata.apache.org
 ```
 
-<think>
-
-
-</think>
-
-
 ### 4.3 Archiving Old Versions
 After releasing a new version, the previous version must be archived to ensure that only the latest version of the same maintenance branch is retained in the [download](https://downloads.apache.org/incubator/seata/) directory. Archived versions are automatically synchronized to the [archive](https://archive.apache.org/dist/incubator/seata/) when a new release is published. Therefore, it is sufficient to delete older versions from the [download](https://downloads.apache.org/incubator/seata/) directory. Example commands are provided below:
 
