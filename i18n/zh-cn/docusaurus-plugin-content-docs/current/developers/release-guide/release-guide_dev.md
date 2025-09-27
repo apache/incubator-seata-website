@@ -582,3 +582,10 @@ Resources:
 - Mailing list: dev@seata.apache.org
 ```
 
+### 4.3 归档老版本
+发布新版本后，需要将上一个版本归档，确保在[download](https://downloads.apache.org/incubator/seata/) 只保留同一维护分支的最新版本。Archive 版本在发布新版本时会自动同步到[归档](https://archive.apache.org/dist/incubator/seata/)。因此，只需要删除[download](https://downloads.apache.org/incubator/seata/) 中老的版本即可，参考命令如下：
+
+```yaml
+svn delete x.x.x
+svn commit -m "archive seata-x.x.x"
+```
