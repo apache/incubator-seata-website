@@ -72,7 +72,7 @@ $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
         -v /User/seata/config:/root/seata-config  \
-        seataioseataio/seata-server
+        seataio/seata-server
 ```
 
 其中 `-e` 用于配置环境变量， `-v` 用于挂载宿主机的目录
