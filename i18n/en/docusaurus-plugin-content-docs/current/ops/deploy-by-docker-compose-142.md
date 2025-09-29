@@ -45,7 +45,7 @@ services:
 
 ### <a id="file-db">No Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seataio/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare configuration file: file.conf**
 
@@ -110,7 +110,7 @@ services:
 
 ### <a id="nacos-db">Nacos Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seataio/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare file: registry.conf**
 
@@ -204,7 +204,7 @@ services:
 
 > Seata high availability usage deployment relies on the registration center and database, but does not depend on the configuration center.
 
-> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/seataio/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database,  please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare configuration file: file.conf**
 
