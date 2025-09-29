@@ -16,7 +16,7 @@ date: 2021-12-05
 [1.5.0以后版本(含1.5.0)](/docs/ops/deploy-by-docker-compose/)
 
 ## 注意事项 
-- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
+- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/apache/seata-server/tags)确定要拉取的镜像版本。
 
 ## 快速开始 
 
@@ -34,7 +34,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -95,7 +95,7 @@ config {
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -182,7 +182,7 @@ store.db.password=
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -270,7 +270,7 @@ version: "3.1"
 services:
   # seata服务1
   seata-server-1:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -286,7 +286,7 @@ services:
       - "./seata-server/config:/root/seata-config"
   # seata服务2
   seata-server-2:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8092:8092"

@@ -10,14 +10,14 @@ date: 2019-11-25
 # 使用 Docker 部署 Seata Server
 
 ## 注意事项 
-- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
+- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/apache/seata-server/tags)确定要拉取的镜像版本。
 
 ## 快速开始 
 
 #### 启动seata-server实例
 
 ```bash
-$ docker run --name seata-server -p 8091:8091 seataio/seata-server:1.4.2
+$ docker run --name seata-server -p 8091:8091 apache/seata-server:2.4.0
 ```
 
 #### 指定seata-server IP和端口 启动
@@ -27,7 +27,7 @@ $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_IP=192.168.1.1 \
         -e SEATA_PORT=8091 \
-        seataio/seata-server
+        apache/seata-server
 ```
 
 #### Docker compose 启动
@@ -38,7 +38,7 @@ $ docker run --name seata-server \
 version: "3"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -72,7 +72,7 @@ $ docker run --name seata-server \
         -p 8091:8091 \
         -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
         -v /User/seata/config:/root/seata-config  \
-        seataio/seata-server
+        apache/seata-server
 ```
 
 其中 `-e` 用于配置环境变量， `-v` 用于挂载宿主机的目录

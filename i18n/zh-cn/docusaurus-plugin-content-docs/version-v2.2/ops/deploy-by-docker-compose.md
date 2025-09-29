@@ -16,7 +16,7 @@ date: 2022-09-06
 [1.5.0以后版本(含1.5.0)](/docs/ops/deploy-by-docker-compose/)
 
 ## 注意事项 
-- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)确定要拉取的镜像版本。
+- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/apache/seata-server/tags)确定要拉取的镜像版本。
 - Seata Server 1.5.0版本开始，配置文件改为application.yml，所以在使用自定义配置的时候，需要先把原生配置拷贝出来。
 
 ## 使用自定义配置文件
@@ -27,7 +27,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -53,7 +53,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "7091:7091"
@@ -133,7 +133,7 @@ seata:
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:1.5.2
+    image: apache/seata-server:1.5.2
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -276,7 +276,7 @@ server.recovery.timeoutRetryPeriod=1000
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:1.5.2
+    image: apache/seata-server:1.5.2
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -433,7 +433,7 @@ server.recovery.timeoutRetryPeriod=1000
 version: "3.1"
 services:
   seata-server-1:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     ports:
       - "7091:7091"
       - "8091:8091"
@@ -450,7 +450,7 @@ services:
       - "./seata-server/resources:/seata-server/resources"
 
   seata-server-2:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     ports:
       - "7092:7091"
       - "8092:8092"

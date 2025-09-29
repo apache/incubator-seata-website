@@ -119,7 +119,7 @@ spec:
     spec:
       containers:
         - name: seata-ha-server
-          image: docker.io/seataio/seata-server:latest
+          image: docker.io/apache/seata-server:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: service

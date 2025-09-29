@@ -16,7 +16,7 @@ date: 2021-12-05
 [Version 1.5.0 and above](/docs/ops/deploy-by-docker-compose)
 
 ## Precautions 
-- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/seataio/seata-server/tags) to determine the image version to be pulled.
+- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/apache/seata-server/tags) to determine the image version to be pulled.
 
 ## Quick Start
 
@@ -34,7 +34,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -96,7 +96,7 @@ config {
 version: "3.1"
 services:
    seata-server:
-     image: seataio/seata-server:${latest-release-version}
+     image: apache/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8091:8091"
@@ -184,7 +184,7 @@ store.db.password= "password"
 version: "3.1"
 services:
    seata-server:
-     image: seataio/seata-server:${latest-release-version}
+     image: apache/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8091:8091"
@@ -272,7 +272,7 @@ version: "3.1"
 services:
    #seataservice1
    seata-server-1:
-     image: seataio/seata-server:${latest-release-version}
+     image: apache/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8091:8091"
@@ -288,7 +288,7 @@ services:
        - "./seata-server/config:/root/seata-config"
    # seataservice2
    seata-server-2:
-     image: seataio/seata-server:${latest-release-version}
+     image: apache/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8092:8092"
