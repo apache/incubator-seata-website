@@ -49,7 +49,7 @@ services:
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/seataio/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode
@@ -156,7 +156,7 @@ config {
 
 **(2) Prepare nacos configuration center configuration**
 
-For more storage mode support, please refer to <a href="https://github.com/seataio/incubator-seata/blob/develop/script/config-center/config.txt">More storage modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More storage modes</a>.
 
 > You need to create a new configuration in nacos, where the dataId is seataServer.properties
 
@@ -208,7 +208,7 @@ services:
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/seataio/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode

@@ -49,7 +49,7 @@ services:
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/seataio/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode
