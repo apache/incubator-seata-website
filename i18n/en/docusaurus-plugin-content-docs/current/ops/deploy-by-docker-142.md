@@ -10,7 +10,7 @@ date: 2019-11-25
 # Deploy Seata Server By Docker
 
 ## Precautions 
-- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/apache/seata-server/tags) to determine the image version to be pulled.
+- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/seataio/seata-server/tags) to determine the image version to be pulled.
 
 ## Quick Start
 
@@ -70,7 +70,7 @@ $ docker run --name seata-server \
          -p 8091:8091 \
          -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
          -v /User/seata/config:/root/seata-config \
-         seataioseataio/seata-server
+         seataio/seata-server
 ```
 
 Among them `-e` is used to configure environment variables, `-v` is used to mount the host directory.

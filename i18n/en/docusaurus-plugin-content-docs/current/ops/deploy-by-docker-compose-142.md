@@ -288,7 +288,7 @@ services:
        - "./seata-server/config:/root/seata-config"
    # seataservice2
    seata-server-2:
-     image: apache/seata-server:${latest-release-version}
+     image: seataio/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8092:8092"
