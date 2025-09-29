@@ -17,7 +17,7 @@ date: 2019-11-25
 #### Start seata-server instance
 
 ```bash
-$ docker run --name seata-server -p 8091:8091 apache/seata-server:1.4.2
+$ docker run --name seata-server -p 8091:8091 seataio/seata-server:1.4.2
 ```
 
 #### Specify seata-server IP and port to start
@@ -27,7 +27,7 @@ $ docker run --name seata-server \
          -p 8091:8091 \
          -e SEATA_IP=192.168.1.1 \
          -e SEATA_PORT=8091 \
-         apache/seata-server
+         seataio/seata-server
 ```
 
 #### Docker compose startup
@@ -38,7 +38,7 @@ Take `docker-compose.yaml` for example
 version: "3"
 services:
    seata-server:
-     image: apache/seata-server:${latest-release-version}
+     image: seataio/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8091:8091"
@@ -70,7 +70,7 @@ $ docker run --name seata-server \
          -p 8091:8091 \
          -e SEATA_CONFIG_NAME=file:/root/seata-config/registry \
          -v /User/seata/config:/root/seata-config \
-         apache/seata-server
+         seataioseataio/seata-server
 ```
 
 Among them `-e` is used to configure environment variables, `-v` is used to mount the host directory.

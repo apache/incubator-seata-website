@@ -16,7 +16,7 @@ date: 2021-12-05
 [Version 1.5.0 and above](/docs/ops/deploy-by-docker-compose)
 
 ## Precautions 
-- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/apache/seata-server/tags) to determine the image version to be pulled.
+- Please avoid directly pulling the latest version image. The latest version is not necessarily a stable version. To avoid unnecessary problems, please go to [docker image warehouse](https://hub.docker.com/r/seataio/seata-server/tags) to determine the image version to be pulled.
 
 ## Quick Start
 
@@ -34,7 +34,7 @@ docker-compose.yaml
 version: "3.1"
 services:
   seata-server:
-    image: apache/seata-server:${latest-release-version}
+    image: seataio/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -45,11 +45,11 @@ services:
 
 ### <a id="file-db">No Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seataio/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare configuration file: file.conf**
 
-For more storage mode support, please refer to <a href="https://github.com/apache/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
+For more storage mode support, please refer to <a href="https://github.com/seataio/incubator-seata/blob/develop/script/config-center/config.txt">More Storage Modes</a>.
 
 ```properties
 # Storage mode
@@ -96,7 +96,7 @@ config {
 version: "3.1"
 services:
    seata-server:
-     image: apache/seata-server:${latest-release-version}
+     image: seataio/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8091:8091"
@@ -110,7 +110,7 @@ services:
 
 ### <a id="nacos-db">Nacos Registration Center, db Storage</a>
 
-> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/apache/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
+> The db mode needs to create the corresponding table structure in the database, please refer to <a href="https://github.com/seataio/incubator-seata/tree/develop/script/server/db">[table creation script]</a>.
 
 **(1) Prepare file: registry.conf**
 
@@ -184,7 +184,7 @@ store.db.password= "password"
 version: "3.1"
 services:
    seata-server:
-     image: apache/seata-server:${latest-release-version}
+     image: seataio/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8091:8091"
@@ -272,7 +272,7 @@ version: "3.1"
 services:
    #seataservice1
    seata-server-1:
-     image: apache/seata-server:${latest-release-version}
+     image: seataio/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8091:8091"
@@ -288,7 +288,7 @@ services:
        - "./seata-server/config:/root/seata-config"
    # seataservice2
    seata-server-2:
-     image: apache/seata-server:${latest-release-version}
+     image: seataio/seata-server:${latest-release-version}
      hostname: seata-server
      ports:
        - "8092:8092"
