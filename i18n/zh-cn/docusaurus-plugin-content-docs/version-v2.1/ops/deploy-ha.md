@@ -114,7 +114,7 @@ spec:
     spec:
       containers:
         - name: seata-ha-server
-          image: docker.io/seataio/seata-server:latest
+          image: docker.io/apache/seata-server:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: SEATA_CONFIG_NAME
