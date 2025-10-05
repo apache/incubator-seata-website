@@ -27,14 +27,13 @@ description: Seata 参数配置。
 | server.raft.server-addr        |                                        |
 | server.raft.snapshot-interval  |                                        |
 
-## 全属性
+## 全部配置
 
-### 公共部分
+### 通用部分（服务端和客户端）
 
 | key                                      | desc                                      | remark                                                                                                                                                                                                                                                              | change record                                                                                             |
 | ---------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| transport.type                           | socket 通信方式                           | TCP、UNIX_DOMAIN_SOCKET，默认 TCP                                                                                                                                                                                                                                   |
-| transport.server                         | socket 通道类型                           | NIO、NATIVE(根据操作系统类型和 socket 通信方式选择 KQueue 或 Epoll，注意 Windows 只支持 NIO，选择这种方式会抛出异常）                                                                                                                                               |
+
 | transport.threadFactory.bossThreadSize   | Netty 通信模型 Boss group 线程数          | 默认 1                                                                                                                                                                                                                                                              |
 | transport.threadFactory.workerThreadSize | Netty 通信模型 Worker group 线程数        | 可配置线程数或选择特定线程工作模式下的线程数，线程的默认工作模式有 4 种:Auto(2\*CPU 核数 + 1)、Pin(CPU 核数，适用于计算密集型任务)、BusyPin(CPU 核数 + 1，适用于计算密集型且内存比较有限的场景）、Default(2\*CPU 核数，适用于 IO 密集型任务）,默认值为 Default 模式 |
 | transport.shutdown.wait                  | 服务端 Netty 线程池关闭前等待服务下线时间 | 默认 3 秒                                                                                                                                                                                                                                                           |
