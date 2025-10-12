@@ -93,6 +93,26 @@ const data = {
           '支持存算分离的集群模式，计算节点可水平扩展，存储支持数据库和 Redis。Raft集群模式进入beta验证阶段',
       }),
     },
+    {
+      icon: 'feature-7', // Use 'feature-7' or reuse an existing icon if needed (e.g., 'feature-1')
+      title: translate({
+        id: 'homepage.featureListTitle7', // New i18n key for the title
+        message: 'GoLang Implementation & Ecosystem', // Default/Fallback message (English)
+      }),
+      content: [
+        translate({
+          id: 'homepage.featureListContent7', // New i18n key for the content
+          message: (
+            <>
+              Seata has a native GoLang implementation for high-performance transactions. Discover the entire ecosystem, including the{' '}
+              <a href="https://github.com/apache/incubator-seata-go" target="_blank">Seata-Go</a> repository,{' '}
+              <a href="https://github.com/apache/incubator-seata-k8s" target="_blank">Kubernetes support</a>, and{' '}
+              <a href="https://github.com/apache/incubator-seata-ctl" target="_blank">CLI tool</a>.
+            </>
+          ),
+        }),
+      ],
+    },
   ],
   title: translate({ id: 'homepage.featureTitle', message: '特色功能' }),
 };
