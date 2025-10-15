@@ -10,7 +10,7 @@ Namingserver 是 Seata 原生的注册中心.
 
 ## 预备工作
 
-从[链接](https://seata.apache.org/download/seata-server/）下载namingserver的发行包)下载seata的二进制压缩包
+从[链接](https://seata.apache.org/download/seata-server/)下载seata的二进制压缩包
 
 ### 编译器运行namingserver
 
