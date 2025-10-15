@@ -30,6 +30,108 @@ For Windows, run:
 bin\seata-namingserver.bat
 ```
 
+### Running Namingserver with Docker
+
+#### Pull the Image
+```shell
+docker pull apache/seata-naming-server:latest
+```
+
+#### Quick Start
+```shell
+docker run -d --name seata-naming-server \
+  -p 8081:8081 \
+  apache/seata-naming-server:latest
+```
+
+**Important**: If you don't configure the console password, the system will automatically generate a random password at startup and display it in the logs. Use the following command to view it:
+```shell
+docker logs seata-naming-server | grep "auto-generated password"
+```
+
+#### Start with Environment Variables
+```shell
+docker run -d --name seata-naming-server \
+  -p 8081:8081 \
+  -p 10055:10055 \
+  -e SERVER_PORT=8081 \
+  -e SEATA_SECURITY_SECRETKEY=TXlDdXN0b21TZWNyZXRLZXlGb3JTZWF0YUpXVDIwMjQ= \
+  -e SEATA_SECURITY_TOKEN_VALIDITY=1800000 \
+  -v ./logs:/logs/seata \
+  apache/seata-naming-server:latest
+```
+
+#### Start with Custom Configuration File
+```shell
+docker run -d --name seata-naming-server \
+  -p 8081:8081 \
+  -v /path/to/application.yml:/seata-namingserver/conf/application.yml \
+  -v ./logs:/logs/seata \
+  apache/seata-naming-server:latest
+```
+
+#### Start with Docker Compose
+
+Create a `docker-compose.yml` file:
+```yaml
+version: "3"
+
+services:
+  seata-naming-server:
+    image: apache/seata-naming-server:latest
+    container_name: seata-naming-server
+    hostname: seata-naming-server
+    ports:
+      - "8081:8081"
+      - "10055:10055"
+    environment:
+      - SERVER_PORT=8081
+      - SEATA_SECURITY_SECRETKEY=TXlDdXN0b21TZWNyZXRLZXlGb3JTZWF0YUpXVDIwMjQ=
+      - SEATA_SECURITY_TOKEN_VALIDITY=1800000
+    volumes:
+      - ./logs:/logs/seata
+      # Optional: mount custom configuration file
+      # - ./conf/application.yml:/seata-namingserver/conf/application.yml
+    restart: unless-stopped
+```
+
+Start the service:
+```shell
+docker-compose up -d
+```
+
+View logs:
+```shell
+docker-compose logs -f seata-naming-server
+```
+
+Stop the service:
+```shell
+docker-compose down
+```
+
+#### Docker Environment Variables
+
+| Environment Variable | Description | Default Value |
+|---------------------|-------------|---------------|
+| SERVER_PORT | Namingserver HTTP port | 8081 |
+| SEATA_SECURITY_SECRETKEY | JWT Token signing key (Base64 encoded) | Built-in key |
+| SEATA_SECURITY_TOKEN_VALIDITY | Token validity period (milliseconds) | 1800000 (30 minutes) |
+| LOG_HOME | Log storage path | ${user.home}/logs/seata |
+
+**Note**: Console username and password configuration are not supported through environment variables and must be configured in the `application.yml` file.
+
+#### Generate Security Key
+
+The JWT key must be a Base64-encoded string. You can generate one using the following commands:
+```shell
+# Generate a random key
+openssl rand -base64 32
+
+# Or convert a custom string to Base64
+echo -n "MyCustomSecretKeyForSeataJWT2024" | base64
+```
+
 ## Quick Start
 
 Setting up Seata with namingserver as the registry is straightforward, involving configurations on both client and server sides.
