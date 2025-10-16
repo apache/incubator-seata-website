@@ -10,7 +10,7 @@ Namingserver 是 Seata 原生的注册中心.
 
 ## 预备工作
 
-从[链接](https://seata.apache.org/download/seata-server/）下载namingserver的发行包)下载seata的二进制压缩包
+从[链接](https://seata.apache.org/download/seata-server/)下载seata的二进制压缩包
 
 ### 编译器运行namingserver
 
@@ -26,6 +26,109 @@ bin\seata-namingserver.sh
 windows环境运行
 ```shell
 bin\seata-namingserver.bat
+```
+
+### Docker 运行 namingserver
+
+#### 拉取镜像
+```shell
+docker pull apache/seata-naming-server:latest
+```
+
+#### 快速启动
+```shell
+docker run -d --name seata-naming-server \
+  -p 8081:8081 \
+  apache/seata-naming-server:latest
+```
+
+**重要提示**：如果不配置控制台密码，系统会在启动时自动生成一个随机密码并在日志中显示。使用以下命令查看：
+```shell
+docker logs seata-naming-server | grep "auto-generated password"
+```
+
+#### 使用环境变量启动
+```shell
+docker run -d --name seata-naming-server \
+  -p 8081:8081 \
+  -p 10055:10055 \
+  -e SERVER_PORT=8081 \
+  -e SEATA_SECURITY_SECRETKEY=TXlDdXN0b21TZWNyZXRLZXlGb3JTZWF0YUpXVDIwMjQ= \
+  -e SEATA_SECURITY_TOKEN_VALIDITY=1800000 \
+  -v ./logs:/logs/seata \
+  apache/seata-naming-server:latest
+```
+
+#### 使用自定义配置文件启动
+```shell
+docker run -d --name seata-naming-server \
+  -p 8081:8081 \
+  -v /path/to/application.yml:/seata-namingserver/conf/application.yml \
+  -v ./logs:/logs/seata \
+  apache/seata-naming-server:latest
+```
+
+#### 使用 Docker Compose 启动
+
+创建 `docker-compose.yml` 文件：
+```yaml
+version: "3"
+
+services:
+  seata-naming-server:
+    image: apache/seata-naming-server:latest
+    container_name: seata-naming-server
+    hostname: seata-naming-server
+    ports:
+      - "8081:8081"
+      - "10055:10055"
+    environment:
+      - SERVER_PORT=8081
+      - SEATA_SECURITY_SECRETKEY=TXlDdXN0b21TZWNyZXRLZXlGb3JTZWF0YUpXVDIwMjQ=
+      - SEATA_SECURITY_TOKEN_VALIDITY=1800000
+    volumes:
+      - ./logs:/logs/seata
+      # 可选：挂载自定义配置文件
+      # - ./conf/application.yml:/seata-namingserver/conf/application.yml
+    restart: unless-stopped
+```
+
+启动服务：
+```shell
+docker-compose up -d
+```
+
+查看日志：
+```shell
+docker-compose logs -f seata-naming-server
+```
+
+停止服务：
+```shell
+docker-compose down
+```
+
+#### Docker 环境变量说明
+
+| 环境变量 | 说明 | 默认值 |
+|---------|------|--------|
+| SERVER_PORT | Namingserver HTTP 端口 | 8081 |
+| SEATA_SECURITY_SECRETKEY | JWT Token 签名密钥（Base64 编码） | 内置密钥 |
+| SEATA_SECURITY_TOKEN_VALIDITY | Token 有效期（毫秒） | 1800000（30分钟） |
+| LOG_HOME | 日志存储路径 | ${user.home}/logs/seata |
+
+
+**注意**：控制台账户和密码配置不支持通过环境变量设置，必须在 `application.yml` 配置文件中配置。
+
+#### 生成安全密钥
+
+JWT 密钥必须是 Base64 编码的字符串，可使用以下命令生成：
+```shell
+# 生成随机密钥
+openssl rand -base64 32
+
+# 或将自定义字符串转为 Base64
+echo -n "MyCustomSecretKeyForSeataJWT2024" | base64
 ```
 ## 快速上手
 
