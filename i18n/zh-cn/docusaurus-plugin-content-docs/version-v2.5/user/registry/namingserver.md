@@ -115,7 +115,7 @@ docker-compose down
 | SERVER_PORT | Namingserver HTTP 端口 | 8081 |
 | SEATA_SECURITY_SECRETKEY | JWT Token 签名密钥（Base64 编码） | 内置密钥 |
 | SEATA_SECURITY_TOKEN_VALIDITY | Token 有效期（毫秒） | 1800000（30分钟） |
-| LOG_HOME | 日志存储路径 | ${user.home}/logs/seata |
+| LOG_HOME | 日志存储路径 | `${user.home}/logs/seata` |
 
 
 **注意**：控制台账户和密码配置不支持通过环境变量设置，必须在 `application.yml` 配置文件中配置。

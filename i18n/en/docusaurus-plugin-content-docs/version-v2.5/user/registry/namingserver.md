@@ -117,7 +117,7 @@ docker-compose down
 | SERVER_PORT | Namingserver HTTP port | 8081 |
 | SEATA_SECURITY_SECRETKEY | JWT Token signing key (Base64 encoded) | Built-in key |
 | SEATA_SECURITY_TOKEN_VALIDITY | Token validity period (milliseconds) | 1800000 (30 minutes) |
-| LOG_HOME | Log storage path | ${user.home}/logs/seata |
+| LOG_HOME | Log storage path | `${user.home}/logs/seata` |
 
 **Note**: Console username and password configuration are not supported through environment variables and must be configured in the `application.yml` file.
 
