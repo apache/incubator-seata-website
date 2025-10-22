@@ -89,6 +89,9 @@ services:
     volumes:
       - ./logs:/logs/seata
       # 可选：挂载自定义配置文件
+      # 官方镜像(JIB构建)示例：
+      # - ./conf/application.yml:/seata-naming-server/resources/application.yml
+      # Dockerfile构建镜像示例(https://github.com/apache/incubator-seata/blob/2.x/distribution/docker/namingserver/Dockerfile)：
       # - ./conf/application.yml:/seata-namingserver/conf/application.yml
     restart: unless-stopped
 ```
