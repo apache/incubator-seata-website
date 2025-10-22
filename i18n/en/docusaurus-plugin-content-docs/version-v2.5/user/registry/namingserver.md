@@ -91,6 +91,9 @@ services:
     volumes:
       - ./logs:/logs/seata
       # Optional: mount custom configuration file
+      # Official image (JIB) example：
+      # - ./conf/application.yml:/seata-naming-server/resources/application.yml
+      # Dockerfile-built image example (https://github.com/apache/incubator-seata/blob/2.x/distribution/docker/namingserver/Dockerfile)：
       # - ./conf/application.yml:/seata-namingserver/conf/application.yml
     restart: unless-stopped
 ```
