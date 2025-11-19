@@ -1,3 +1,5 @@
+Options -Indexes
+ErrorDocument 403 "Access Forbidden"
 DirectoryIndex index.html
 FileETag MTime Size
 <IfModule mod_expires.c>
@@ -11,11 +13,11 @@ FileETag MTime Size
   ExpiresByType image/svg+xml "access plus 7 days"
   ExpiresByType image/x-icon "access plus 7 days"
 
- 
+
   # CSS, JavaScript
   ExpiresByType text/css "access plus 1 days"
   ExpiresByType text/javascript "access plus 1 days"
   ExpiresByType application/javascript "access plus 1 days"
 
- 
+
 </IfModule>
