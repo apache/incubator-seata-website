@@ -46,4 +46,9 @@
     opacity: 1;
     color: #FFF;
   }
+  &-primary:hover{
+    color:#FFF;
+    border:2px solid #FFF;
+    background-color: $brandColor;
+  }
 }
