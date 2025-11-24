@@ -8,14 +8,14 @@ description: Seata is an open source distributed transaction solution dedicated 
 
 Seata is an open source distributed transaction solution dedicated to providing high performance and easy to use distributed transaction services. Seata will provide users with AT, TCC, SAGA, and XA transaction models to create a one-stop distributed solution for users.
 
-# AT Mode
+## AT Mode
 
-## Prerequisite
+### Prerequisite
 
 - Relational databases that support local ACID transaction.
 - Java applications that access database via JDBC.
 
-## Overall mechanism
+### Overall mechanism
 
 Evolution from the two phases commit protocol:
 
@@ -24,7 +24,7 @@ Evolution from the two phases commit protocol:
   - for commit case, do the work asynchronously and quickly.
   - for rollback case, do compensation, base on the rollback log created in the phase 1.
 
-# Write isolation
+### Write isolation
 
 - The **global lock** must be acquired before committing the local transaction of phase 1.
 - If the **global lock** is not acquired, the local transaction should not be committed.
@@ -50,7 +50,7 @@ However, now the local lock is held by tx2 which hopes to acquire the **global l
 
 Because the **global lock** is held by tx1 during the whole process, there isn't no problem of **dirty write**.
 
-# Read isolation
+### Read isolation
 
 The isolation level of local database is **read committed** or above, so the default isolation level of the global transaction is **read uncommitted**.
 
@@ -62,7 +62,7 @@ The **global lock** is be applied during the execution of SELECT FOR UPDATE stat
 
 For the performance consideration, Seata only does proxy work for SELECT FOR UPDATE. For the general SELECT statement, do nothing.
 
-# Work process
+### Work process
 
 Take an example to illustrate it.
 
@@ -79,7 +79,7 @@ The sql of branch transaction in AT mode:
 ```sql
 update product set name = 'GTS' where name = 'TXC';
 ```
-## Phase 1
+#### Phase 1
 
 Process:
 
@@ -160,7 +160,7 @@ Got the after image:
 7. Commit local transaction: commit the update of PRODUCT table and the insert of UNDO_LOG table in the same local transaction.
 8. Report the result of step 7 to TC.
 
-## Phase 2 - Rollback case
+#### Phase 2 - Rollback case
 
 1. After receive the rollback request from TC, begin a local transaction, execute operation as following.
 2. Retrieve the UNDO LOG by XID and Branch ID.
@@ -173,14 +173,14 @@ update product set name = 'TXC' where id = 1;
 
 5. Commit local transaction, report the result of execution of local transaction(The rollback result of the Branch transaction) to TC.
 
-## Phase 2 - Commit case
+#### Phase 2 - Commit case
 
 1. After receive the commit request from TC, put the request into a work queue, return success to TC immediately.
 2. During the phase of doing the asynchronous work in the queue, the UNDO LOGs are deleted in batch way.
 
-# Appendix
+### Appendix
 
-## Undo log table
+#### Undo log table
 
 UNDO_LOG Table：there is a little bit difference on the data type for different databases.
 
@@ -212,7 +212,7 @@ CREATE TABLE `undo_log` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 ```
 
-# TCC Mode
+## TCC Mode
 
 Review the description in the overview: A distributed global transaction, the whole is a **two-phase commit** model. The global transaction is composed of several branch transactions. The branch transaction must meet the requirements of the **two-phase commit** model, that is, each branch transaction must have its own:
 
@@ -238,7 +238,7 @@ Correspondingly, the TCC mode does not rely on transaction support of the underl
 The so-called TCC mode refers to the support of **customized's** branch transactions into the management of global transactions.
 
 
-# Saga Mode
+## Saga Mode
 
 The Saga model is a long transaction solution provided by SEATA. In the Saga model, each participant in the business process submits a local transaction. When a participant fails, the previous successful participant is compensated. One stage is positive serving and The two-stage compensation services are implemented by business development.
 
@@ -246,14 +246,14 @@ The Saga model is a long transaction solution provided by SEATA. In the Saga mod
 
 Theoretical basis: Hector & Kenneth Post a comment Sagas （1987）
 
-## Applicable scene:
+### Applicable scene:
 * Long business processes, many business processes
 * Participants include other company or legacy system services and cannot provide the three interfaces required by the TCC model
 
-## Advantage:
+### Advantage:
 * Commit local transactions in one phase, lock-free, high performance
 * Event-driven architecture, participants can execute asynchronously, high throughput
 * Compensation services are easy to implement
 
-## Disadvantages:
+### Disadvantages:
 * Isolation is not guaranteed see [User Documentation](../user/mode/saga.md)

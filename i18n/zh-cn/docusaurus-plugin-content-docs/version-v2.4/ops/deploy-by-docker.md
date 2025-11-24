@@ -12,7 +12,7 @@ date: 2019-11-25
 <a href="./deploy-by-docker-142">查看1.4.2版本</a>
 
 ## 注意事项
-- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/seataio/seata-server/tags)
+- 避免直接拉取latest版本镜像，latest版本并不一定是稳定版本，为避免不必要的问题，请到[docker镜像仓库](https://hub.docker.com/r/apache/seata-server/tags)
   确定要拉取的镜像版本。
 - 若docker显示的`date`时间不正确，可通过以下方式之一设置。
     - 加入docker环境变量 TZ=Asia/Shanghai
@@ -22,7 +22,7 @@ date: 2019-11-25
 #### 启动seata-server实例
 
 ```bash
-$ docker run --name seata-server -p 8091:8091 -p 7091:7091 seataio/seata-server:1.5.0
+$ docker run --name seata-server -p 8091:8091 -p 7091:7091 apache/seata-server:2.4.0
 ```
 
 #### 指定seata-server IP和端口 启动
@@ -33,7 +33,7 @@ $ docker run --name seata-server \
         -p 7091:7091 \
         -e SEATA_IP=192.168.1.1 \
         -e SEATA_PORT=8091 \
-        seataio/seata-server
+        apache/seata-server
 ```
 
 #### Docker compose 启动
@@ -44,7 +44,7 @@ $ docker run --name seata-server \
 version: "3"
 services:
   seata-server:
-    image: seataio/seata-server:${latest-release-version}
+    image: apache/seata-server:${latest-release-version}
     hostname: seata-server
     ports:
       - "8091:8091"
@@ -73,7 +73,7 @@ $ docker logs -f seata-server
 首先启动一个用户将resources目录文件拷出的临时容器
 
 ```
-docker run -d -p 8091:8091 -p 7091:7091  --name seata-serve seataio/seata-server:latest
+docker run -d -p 8091:8091 -p 7091:7091  --name seata-serve apache/seata-server:latest
 docker cp seata-serve:/seata-server/resources /User/seata/config
 ```
 
@@ -86,7 +86,7 @@ $ docker run --name seata-server \
         -p 8091:8091 \
         -p 7091:7091 \
         -v /User/seata/config:/seata-server/resources  \
-        seataio/seata-server
+        apache/seata-server
 ```
 
 其中 `-e` 用于配置环境变量， `-v` 用于挂载宿主机的目录,如果是以file存储模式运行,请加上-v /User/seata/sessionStore :/seata-server/sessionStore 将file的数据文件映射到宿主机,以防数据丢失(注:/User/seata/config和/User/seata/sessionStore可自定义宿主机目录,无需照搬)

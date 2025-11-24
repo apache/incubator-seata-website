@@ -24,7 +24,7 @@ const sidebarsUnversioned = {
       type: 'category',
       label: 'download',
       collapsible: false,
-      items: ['download/seata-server'],
+      items: ['download/seata-server', 'download/seata-go'],
     },
   ],
   'release-history': [

@@ -106,7 +106,7 @@ spec:
     spec:
       containers:
         - name: seata-server
-          image: docker.io/seataio/seata-server:latest
+          image: docker.io/apache/seata-server:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: service
