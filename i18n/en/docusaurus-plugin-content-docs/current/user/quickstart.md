@@ -416,11 +416,11 @@ You should see logs showing:
 
 Congratulations! You've successfully set up and run a distributed transaction with Seata. Here's what you can explore next:
 
-- **[Configuration Guide](../dev/mode/at-mode)**: Learn about different transaction modes (AT, TCC, SAGA, XA)
-- **[Spring Boot Integration](../dev/integration/springboot)**: Integrate Seata with Spring Boot applications
-- **[Production Deployment](../ops/deploy-guide)**: Deploy Seata Server in production environment
-- **[Performance Tuning](../ops/performance)**: Optimize Seata for high-performance scenarios
-- **[Integration with Other Frameworks](../dev/integration/overview)**: Integrate Seata with Spring Cloud, gRPC, and more
+- **[Transaction Modes](../dev/mode/at-mode)**: Learn about different transaction modes (AT, TCC, SAGA, XA)
+- **[Microservices Integration](./microservice)**: Integrate Seata with various microservices frameworks
+- **[Production Deployment](../ops/deploy-guide-beginner)**: Deploy Seata Server in production environment
+- **[Performance Optimization](./performance)**: Optimize Seata for high-performance scenarios
+- **[Configuration Guide](./configuration/index)**: Configure Seata for different scenarios
 
 ## Troubleshooting
 
@@ -439,7 +439,7 @@ Congratulations! You've successfully set up and run a distributed transaction wi
 - Ensure MySQL is running and accessible
 - Check if the database and tables exist
 
-For more troubleshooting tips, visit the [FAQ section](../faq) or join our [community channels](../../community/contribution).
+For more troubleshooting tips, visit the [FAQ section](../overview/faq) or check out our [developer guide](../developers/intro).
 
 ## RocketMQ Integration to Seata
 

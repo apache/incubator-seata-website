@@ -101,7 +101,7 @@ public class BusinessServiceImpl implements BusinessService {
     public void purchase(String userId, String commodityCode, int orderCount) {
         // 步骤 1：扣减库存
         stockService.deduct(commodityCode, orderCount);
-        
+
         // 步骤 2：创建订单（同时会扣减账户余额）
         orderService.create(userId, commodityCode, orderCount);
     }
@@ -200,9 +200,9 @@ CREATE TABLE IF NOT EXISTS `undo_log`
     `log_created`   DATETIME(6)  NOT NULL COMMENT '创建时间',
     `log_modified`  DATETIME(6)  NOT NULL COMMENT '修改时间',
     UNIQUE KEY `ux_undo_log` (`xid`, `branch_id`)
-) ENGINE = InnoDB 
-  AUTO_INCREMENT = 1 
-  DEFAULT CHARSET = utf8mb4 
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8mb4
   COMMENT = 'AT 事务模式 undo 日志表';
 
 -- 添加索引以优化性能
@@ -414,11 +414,11 @@ tail -f seata-server-2.x.x/logs/seata-server.log
 
 恭喜！您已经成功使用 Seata 搭建并运行了分布式事务。接下来您可以探索：
 
-- **[配置指南](../dev/mode/at-mode)**：了解不同的事务模式（AT、TCC、SAGA、XA）
-- **[Spring Boot 集成](../dev/integration/springboot)**：将 Seata 集成到 Spring Boot 应用
-- **[生产部署](../ops/deploy-guide)**：在生产环境部署 Seata Server
-- **[性能调优](../ops/performance)**：针对高性能场景优化 Seata
-- **[与其他框架集成](../dev/integration/overview)**：将 Seata 与 Spring Cloud、gRPC 等集成
+- **[事务模式](../dev/mode/at-mode)**：了解不同的事务模式（AT、TCC、SAGA、XA）
+- **[微服务集成](./microservice)**：将 Seata 集成到各种微服务框架
+- **[生产部署](../ops/deploy-guide-beginner)**：在生产环境部署 Seata Server
+- **[性能优化](./performance)**：针对高性能场景优化 Seata
+- **[配置指南](./configuration/index)**：针对不同场景配置 Seata
 
 ## 故障排查
 
@@ -437,7 +437,7 @@ tail -f seata-server-2.x.x/logs/seata-server.log
 - 确保 MySQL 正在运行且可访问
 - 检查数据库和表是否存在
 
-更多故障排查技巧，请访问 [常见问题](../faq) 或加入我们的 [社区频道](../../community/contribution)。
+更多故障排查技巧，请访问 [常见问题](../overview/faq) 或查看我们的 [开发者指南](/docs/community/contribution)。
 
 ## RocketMQ 接入 Seata
 
