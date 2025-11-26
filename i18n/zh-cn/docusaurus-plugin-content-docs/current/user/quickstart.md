@@ -418,7 +418,7 @@ tail -f seata-server-2.x.x/logs/seata-server.log
 - **[微服务集成](./microservice)**：将 Seata 集成到各种微服务框架
 - **[生产部署](../ops/deploy-guide-beginner)**：在生产环境部署 Seata Server
 - **[性能优化](./performance)**：针对高性能场景优化 Seata
-- **[配置指南](./configuration/index)**：针对不同场景配置 Seata
+- **[配置指南](./configuration/)**：针对不同场景配置 Seata
 
 ## 故障排查
 
@@ -437,7 +437,7 @@ tail -f seata-server-2.x.x/logs/seata-server.log
 - 确保 MySQL 正在运行且可访问
 - 检查数据库和表是否存在
 
-更多故障排查技巧，请访问 [常见问题](../overview/faq) 或查看我们的 [开发者指南](/docs/community/contribution)。
+更多故障排查技巧，请访问 [常见问题](../overview/faq) 或查看我们的 [贡献指南](../developers/guide_dev)。
 
 ## RocketMQ 接入 Seata
 

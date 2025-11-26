@@ -420,7 +420,7 @@ Congratulations! You've successfully set up and run a distributed transaction wi
 - **[Microservices Integration](./microservice)**: Integrate Seata with various microservices frameworks
 - **[Production Deployment](../ops/deploy-guide-beginner)**: Deploy Seata Server in production environment
 - **[Performance Optimization](./performance)**: Optimize Seata for high-performance scenarios
-- **[Configuration Guide](./configuration/index)**: Configure Seata for different scenarios
+- **[Configuration Guide](./configuration/)**: Configure Seata for different scenarios
 
 ## Troubleshooting
 
@@ -439,7 +439,7 @@ Congratulations! You've successfully set up and run a distributed transaction wi
 - Ensure MySQL is running and accessible
 - Check if the database and tables exist
 
-For more troubleshooting tips, visit the [FAQ section](../overview/faq) or check out our [developer guide](../developers/intro).
+For more troubleshooting tips, visit the [FAQ section](../overview/faq) or check out our [contribution guide](../developers/guide_dev).
 
 ## RocketMQ Integration to Seata
 
