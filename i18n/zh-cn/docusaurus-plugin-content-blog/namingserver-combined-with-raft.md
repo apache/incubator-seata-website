@@ -279,7 +279,7 @@ curl -X POST http://localhost:8081/api/v1/auth/login \
 向一个namingserver节点发起创建事务分组映射关系的http请求（namingserver节点会自动同步给其它节点）
 
 ```shell
-curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/addGroup?clusterName=cluster2&namespace=public&unitName=default&vGroup=test
+curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/addGroup?clusterName=default&namespace=public&unitName=default&vGroup=test
 ```
 
 （其中namespace是client端配置的命名空间，vGroup是client端配置的事务分组，clusterName是需要映射到的server端的集群名称,unitName为raft group的名称非raft模式可不填）
@@ -294,7 +294,7 @@ curl -X POST -H "authorization: Bearer xxxxxxx" http://127.0.0.1:8081/naming/v1/
 
 将其中的service中增加刚才创建好的test事务分组
 
-```nginx
+```
 service {
   #transaction service group mapping
   vgroupMapping.test = "default"
@@ -307,11 +307,54 @@ service {
 
 如出现以下日志则代表整体链路已经搭建成功。
 
+Provider:
 
+```
+2025-12-01 09:52:39.788 [main] INFO  o.a.s.c.l.EnhancedServiceLoader$InnerEnhancedServiceLoader - Load compatible class io.seata.core.auth.AuthSigner
+2025-12-01 09:52:39.796 [main] INFO  o.a.s.c.r.netty.NettyClientBootstrap - NettyClientBootstrap has started
+2025-12-01 09:52:39.798 [main] INFO  o.a.s.d.registry.RegistryFactory - use registry center type: seata
+2025-12-01 09:52:39.802 [main] INFO  o.a.s.c.l.EnhancedServiceLoader$InnerEnhancedServiceLoader - Load compatible class io.seata.discovery.registry.RegistryProvider
+2025-12-01 09:52:40.436 [main] INFO  o.a.s.c.r.n.NettyClientChannelManager - will connect to 10.56.10.53:8091
+2025-12-01 09:52:40.439 [main] INFO  o.a.s.c.r.netty.NettyPoolableFactory - NettyPool create channel to transactionRole:TMROLE,address:10.56.10.53:8091,msg:< RegisterTMRequest{version='2.4.0-SNAPSHOT', applicationId='tcc-sample-provider', transactionServiceGroup='test', extraData='ak=null
+digest=test,10.37.129.2,1764553960438
+timestamp=1764553960438
+authVersion=V4
+vgroup=test
+ip=10.37.129.2
+'} >
+2025-12-01 09:52:45.608 [NettyClientSelector_TMROLE_1_1] INFO  o.a.s.c.l.EnhancedServiceLoader$InnerEnhancedServiceLoader - Load compatible class io.seata.core.serializer.Serializer
+2025-12-01 09:52:45.649 [main] INFO  o.a.s.c.r.n.TmNettyRemotingClient - register TM success. client version:2.4.0-SNAPSHOT, server version:2.6.0-SNAPSHOT,channel:[id: 0x870b93aa, L:/10.56.10.53:63269 - R:/10.56.10.53:8091]
+2025-12-01 09:52:45.654 [main] INFO  o.a.s.c.r.netty.NettyPoolableFactory - register success, cost 62 ms, version:2.6.0-SNAPSHOT,role:TMROLE,channel:[id: 0x870b93aa, L:/10.56.10.53:63269 - R:/10.56.10.53:8091]
+2025-12-01 09:52:45.655 [main] INFO  o.a.s.s.a.GlobalTransactionScanner - Transaction Manager Client is initialized. applicationId[tcc-sample-provider] txServiceGroup[test]
+2025-12-01 09:52:45.663 [main] INFO  o.a.s.c.l.EnhancedServiceLoader$InnerEnhancedServiceLoader - Load compatible class io.seata.core.model.ResourceManager
+2025-12-01 09:52:45.665 [main] INFO  o.a.seata.rm.datasource.AsyncWorker - Async Commit Buffer Limit: 10000
+2025-12-01 09:52:45.665 [main] INFO  o.a.s.r.d.xa.ResourceManagerXA - ResourceManagerXA init ...
+2025-12-01 09:52:45.670 [main] INFO  o.a.s.c.r.netty.NettyClientBootstrap - NettyClientBootstrap has started
+2025-12-01 09:52:45.670 [main] INFO  o.a.s.s.a.GlobalTransactionScanner - Resource Manager is initialized. applicationId[tcc-sample-provider] txServiceGroup[test]
+2025-12-01 09:52:45.671 [main] INFO  o.a.s.s.a.GlobalTransactionScanner - Global Transaction Clients are initialized. 
+2025-12-01 09:52:45.678 [main] INFO  o.a.s.s.a.GlobalTransactionScanner - The needed enhancement business beans are : [tccActionTwoImpl, tccActionOneImpl]
+```
 
+Consumer(启动后会立刻模拟事务的提交和回滚):
 
-
-##### 
+```
+2025-12-01 09:54:09.216 [main] INFO  o.a.s.tm.TransactionManagerHolder - TransactionManager Singleton org.apache.seata.tm.DefaultTransactionManager@756aadfc
+2025-12-01 09:54:09.296 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - Begin new global transaction [10.56.10.53:8091:5774336103997718529]
+2025-12-01 09:54:09.321 [main] INFO  o.a.d.r.p.d.LazyConnectExchangeClient -  [DUBBO] Lazy connect to dubbo://10.37.129.2:20880/org.apache.seata.action.TccActionOne?anyhost=true&application=tcc-sample-reference&background=false&category=providers,configurators,routers&check=false&codec=dubbo&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&heartbeat=60000&interface=org.apache.seata.action.TccActionOne&ipv6=fdb2:2c26:f4e4:1:0:0:0:1&lazy=true&loadbalance=roundrobin&methods=commit,prepare,rollback&pid=81561&qos.enable=false&release=3.1.11&service-name-mapping=true&side=consumer&sticky=false&threadpool=fixed&threads=10&timeout=10000&unloadClusterRelated=false, dubbo version: 3.1.11, current host: 10.37.129.2
+2025-12-01 09:54:09.329 [main] INFO  o.a.d.r.transport.AbstractClient -  [DUBBO] Successfully connect to server /fdb2:2c26:f4e4:1:0:0:0:1:20880 from NettyClient 10.37.129.2 using dubbo version 3.1.11, channel is NettyChannel [channel=[id: 0xb7e07852, L:/fdb2:2c26:f4e4:1:0:0:0:1:63981 - R:/fdb2:2c26:f4e4:1:0:0:0:1:20880]], dubbo version: 3.1.11, current host: 10.37.129.2
+2025-12-01 09:54:09.329 [main] INFO  o.a.d.r.transport.AbstractClient -  [DUBBO] Start NettyClient /10.37.129.2 connect to the server /fdb2:2c26:f4e4:1:0:0:0:1:20880, dubbo version: 3.1.11, current host: 10.37.129.2
+2025-12-01 09:54:09.330 [NettyClientWorker-4-1] INFO  o.a.d.r.t.netty4.NettyClientHandler -  [DUBBO] The connection of /fdb2:2c26:f4e4:1:0:0:0:1:63981 -> /fdb2:2c26:f4e4:1:0:0:0:1:20880 is established., dubbo version: 3.1.11, current host: 10.37.129.2
+2025-12-01 09:54:09.494 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - transaction 10.56.10.53:8091:5774336103997718529 will be commit
+2025-12-01 09:54:09.589 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - transaction end, xid = 10.56.10.53:8091:5774336103997718529
+2025-12-01 09:54:09.589 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - [10.56.10.53:8091:5774336103997718529] commit status: Committed
+10.56.10.53:8091:5774336103997718529
+transaction commit demo finish.
+2025-12-01 09:54:09.600 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - Begin new global transaction [10.56.10.53:8091:5774336103997718532]
+2025-12-01 09:54:09.626 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - transaction 10.56.10.53:8091:5774336103997718532 will be rollback
+2025-12-01 09:54:09.693 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - transaction end, xid = 10.56.10.53:8091:5774336103997718532
+2025-12-01 09:54:09.693 [main] INFO  o.a.s.t.api.DefaultGlobalTransaction - [10.56.10.53:8091:5774336103997718532] rollback status: Rollbacked
+transaction rollback demo finish.
+```
 
 
 
