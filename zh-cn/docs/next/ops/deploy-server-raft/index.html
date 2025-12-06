@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.246050ea.css">
-<script src="/zh-cn/assets/js/runtime~main.7155fc2c.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.611351d2.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.89073a1b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -41,13 +41,13 @@ Linux下可以通过<code>export JAVA_OPT=&quot;-Dserver.raftPort=9092&quot;</co
 <ol start="4">
 <li>扩缩容方式</li>
 </ol>
-<p>假设原集群列表为<code>192.168.0.111:7091,192.168.0.112:7091,192.168.0.113:7091</code>，无论是扩容还是缩容，只需要对这个字符串进行修改，并提交到一个所在成员的扩缩容接口即可，比如扩容<code>curl -X POST -i http://192.168.0.111:7091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111:7091,192.168.0.112:7091,192.168.0.113:7091,192.168.0.114:7091&quot;</code>，如果是缩容，只需要将集群连接串中需要下线的节点进行去除，并调用扩缩容接口即可.
+<p>假设原集群列表为<code>192.168.0.111:8091,192.168.0.112:8091,192.168.0.113:8091</code>，无论是扩容还是缩容，只需要对这个字符串进行修改，并提交到一个所在成员的扩缩容接口即可，比如扩容<code>curl -X POST -i http://192.168.0.111:8091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111:8091,192.168.0.112:8091,192.168.0.113:8091,192.168.0.114:8091&quot;</code>，如果是缩容，只需要将集群连接串中需要下线的节点进行去除，并调用扩缩容接口即可.
 注：seata.server.raft.server-addr配置只要集群构建完成后，修改该配置就无效了，请统  一通过api方式进行扩缩容，后续控制台中也会集成扩缩容和集群管理功能。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="client">Client<a href="#client" class="hash-link" aria-label="Client的直接链接" title="Client的直接链接">​</a></h2>
 <ol>
 <li>修改<code>registry.type</code></li>
 </ol>
-<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">   registry:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      type: raft</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      raft:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         server-addr: 192.168.0.111:7091, 192.168.0.112:7091, 192.168.0.113:7091</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">   registry:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      type: raft</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      raft:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         server-addr: 192.168.0.111:8091, 192.168.0.112:8091, 192.168.0.113:8091</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <ol start="2">
 <li>将事务分组对应的tc集群改为server的raft group</li>
 </ol>
