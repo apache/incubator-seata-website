@@ -101,6 +101,7 @@ const config = {
         editLocalizedFiles: true,
       }),
     ],
+    /*
     [
       'docusaurus-plugin-csp',
       {
@@ -118,6 +119,8 @@ const config = {
         }
       }
     ]
+
+     */
   ],
   presets: [
     [
