@@ -832,7 +832,7 @@ Seata 作为一款开源的分布式事务解决方案，提供了对 RocketMQ �
 <li>粗略阅读源代码把握主要逻辑
 在准备阶段，粗略地阅读源代码以把握项目的主要逻辑也很重要。了解如何高效地把握项目的主要内容是一个需要长期积累的技能。首先，通过前述的准备步骤，了解项目的概念、交互和流程模型是很有帮助的。
 以Seata为例，通过官方文档和实际操作，可以了解Seata事务领域的三个角色：TC（Transaction Coordinator）、TM（Transaction Manager）和 RM（Resource Manager）。TC 作为独立部署的 Server 用于维护全局和分支事务的状态，是 Seata 实现高可用的关键；TM 用于与 TC 交互，定义全局事务的开始、提交或回滚；RM 用于管理分支事务处理的资源，与 TC 交互以注册分支事务和报告分支事务的状态，并驱动分支事务提交或回滚。粗略地了解这些角色之间的交互后，可以更轻松地把握项目的主要逻辑。
-<img decoding="async" loading="lazy" alt="img" src="https://seata.apache.org/zh-cn/assets/images/solution-1bdadb80e54074aa3088372c17f0244b.png" width="868" height="473" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="img" src="https://seata.apache.org/zh-cn/assets/images/solution-fba283c52fc8fc000386bb13d2b58057.png" width="1458" height="858" class="img_ev3q">
 脑海里刻下了这些模型的印象，对源码的主干提取就相对得心应手了一些。比如 Seata TC 事务协调者，作为 Server 端，是一个独立于业务部署的单独应用。那为了分析源码，就可以直接在本地把 server 起起来，通过启动类开始追踪。可以分析到一些初始化的逻辑比如服务注册、全局锁的初始化等等。还有可以通过 RPC 的调用来追踪到交互逻辑的代码，比如 TC 是如何对全局事务和分支事务进行持久化，如何驱动全局事务提交或者回滚的。
 然而内嵌客户端的框架代码，没有一个启动类入口可以入手分析。那其实可以从一个 sample 入手，找到其对框架代码的引用从而进行阅读。比如 Seata 一个很重要的注解是 <code>GlobalTransaction</code>，用于标识一个全局事务。想要知道 TM 是如何对这个注解分析的，那我们通过 IDE 的搜索功能，找到 <code>GlobalTransaction</code> 的拦截器即可分析其中的逻辑。
 还有一个小 tips 分享给大家，往往来说单测注重于单一模块的职能，可以通过阅读单测可以了解一个模块的输入输出、逻辑边界，也可以顺着单测的调用链去阅读代码，也是理解源码一个很重要的手段。</li>
