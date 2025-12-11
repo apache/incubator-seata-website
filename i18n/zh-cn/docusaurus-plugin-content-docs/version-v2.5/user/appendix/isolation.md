@@ -142,6 +142,7 @@ class DbServiceA {
 ```
 - `updateAll()`先被调用（未完成），`updateA()`后被调用
   
+
 ![dirty-write](/img/seata-isolation/prevent-dirty-write-by-GlobalTransaction.png)
 
 
@@ -178,6 +179,42 @@ class DbServiceA {
 ### 场景：   某业务先调用`updateAll()`，`updateAll()`未执行完成，另一业务后调用`queryA()`
 
 ![dirty-write](/img/seata-isolation/prevent-dirty-read.png)
+
+#### 场景 1：`queryA()`需要精准读取 “全局事务最终提交的数据”
+
+如果`queryA()`是业务流程的一部分（比如查询后要基于数据做后续操作），需要让查询被全局事务管控，保证读的是 “全局事务提交后的数据”：
+
+- **方案**：给`queryA()`所在方法加 `@GlobalTransactional(readOnly = true)` 或 `@GlobalLock`，同时数据库隔离级别设置为「读已提交（Read Committed）」。
+
+- **执行逻辑（对应你的图）**：
+
+  1. `queryA()`执行时，`@GlobalLock`会先检查 A 表数据的**全局锁**；
+
+  2. 若业务一的`updateAll()`还没提交（全局锁未释放），`queryA()`会**等待全局锁释放**（或抛锁冲突异常，避免读到未提交数据）；
+
+  3. 等业务一的全局事务提交、全局锁释放后，`queryA()`才会读取到 “已提交的最终数据”，避免脏读。
+
+     ```java
+     // 给queryA()加@GlobalLock + 数据库读锁，避免脏读
+     @GlobalLock
+     @Transactional(readOnly = true)
+     public A queryA(DTO dto) {
+         // 用select ... for share（读锁）查询，既不阻塞写，又能保证读到已提交数据
+         return serviceA.selectForShare(dto.getA().getId());
+     }
+     ```
+
+     
+
+#### 场景 2：`queryA()`是普通查询（无需强一致性，允许最终一致）
+
+如果`queryA()`只是 “查看数据”（比如用户查看订单），不需要实时强一致，可通过修改**数据库隔离级别 **避免脏读：
+
+- **方案**：数据库隔离级别设置为「读已提交（Read Committed）」
+
+- **执行逻辑**：
+
+  数据库 “读已提交” 隔离级别会保证：查询只能读到 “已提交的事务数据”，业务一未提交的中间态数据不会被`queryA()`读到；
 
 ---
 
@@ -238,9 +275,9 @@ DataSourceProxy帮助我们获得几个重要的代理对象
 - 通过`DataSourceProxy.getConnection()`获得`ConnectionProxy`
   ```java
   package io.seata.rm.datasource;
-
+  
   import java.sql.Connection;
-
+  
   public class DataSourceProxy extends AbstractDataSourceProxy implements Resource {
       
       @Override
@@ -255,28 +292,28 @@ DataSourceProxy帮助我们获得几个重要的代理对象
     package io.seata.rm.datasource;
     
     import io.seata.rm.datasource.undo.SQLUndoLog;
-
+    
     public class ConnectionProxy extends AbstractConnectionProxy {
-
+    
         private ConnectionContext context = new ConnectionContext();
-
+    
         public void appendUndoLog(SQLUndoLog sqlUndoLog) {
             context.appendUndoItem(sqlUndoLog);
         }
-
+    
     }
     ```
     ```java
     package io.seata.rm.datasource;
-
+    
     public class ConnectionContext {
-
+    
         private static final Savepoint DEFAULT_SAVEPOINT = new Savepoint() {
             @Override
             public int getSavepointId() throws SQLException {
                 return 0;
             }
-
+    
             @Override
             public String getSavepointName() throws SQLException {
                 return "DEFAULT_SEATA_SAVEPOINT";
@@ -284,13 +321,13 @@ DataSourceProxy帮助我们获得几个重要的代理对象
         };
         
         private final Map<Savepoint, List<SQLUndoLog>> sqlUndoItemsBuffer = new LinkedHashMap<>();
-
+    
         private Savepoint currentSavepoint = DEFAULT_SAVEPOINT;
-
+    
         void appendUndoItem(SQLUndoLog sqlUndoLog) {
             sqlUndoItemsBuffer.computeIfAbsent(currentSavepoint, k -> new ArrayList<>()).add(sqlUndoLog);
         }
-
+    
     }
     
     ```
@@ -357,22 +394,22 @@ DataSourceProxy帮助我们获得几个重要的代理对象
   ```
   > 先在这打下个疑问，后边解释。  
   > **`RootContext.getBranchType()`的返回值怎么会是AT？**
-  
+
 
 ## **`StatementProxy.execute()`的处理逻辑**
 
 - 当调用`io.seata.rm.datasource.StatementProxy.execute()`会将sql交给`io.seata.rm.datasource.exec.ExecuteTemplate.execute(...)`处理。
     ```java
     package io.seata.rm.datasource;
-
+    
     public class PreparedStatementProxy extends AbstractPreparedStatementProxy
         implements PreparedStatement, ParametersHolder {
-
+    
         @Override
         public boolean execute() throws SQLException {
             return ExecuteTemplate.execute(this, (statement, args) -> statement.execute());
         }
-
+    
     }
     ```
 
@@ -382,13 +419,13 @@ DataSourceProxy帮助我们获得几个重要的代理对象
 
 
         public class ExecuteTemplate {
-
+    
             public static <T, S extends Statement> T execute(StatementProxy<S> statementProxy,
                                                      StatementCallback<T, S> statementCallback,
                                                      Object... args) throws SQLException {
                 return execute(null, statementProxy, statementCallback, args);
             }
-
+    
             public static <T, S extends Statement> T execute(List<SQLRecognizer> sqlRecognizers,
                                                  StatementProxy<S> statementProxy,
                                                  StatementCallback<T, S> statementCallback,
@@ -397,7 +434,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     // Just work as original statement
                     return statementCallback.execute(statementProxy.getTargetStatement(), args);
                 }
-
+    
                 String dbType = statementProxy.getConnectionProxy().getDbType();
                 if (CollectionUtils.isEmpty(sqlRecognizers)) {
                     sqlRecognizers = SQLVisitorFactory.get(
@@ -445,7 +482,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                 }
                 return rs;
             }
-
+    
         }
         ```
         >
@@ -454,37 +491,37 @@ DataSourceProxy帮助我们获得几个重要的代理对象
         >
         先以`io.seata.rm.datasource.exec.UpdateExecutor`举例，`UpdateExecutor` extends `AbstractDMLBaseExecutor` extends `BaseTransactionalExecutor`。
         观察`execute()`方法的做了什么
-
+    
         ```java
         package io.seata.rm.datasource.exec;
-
+    
         public abstract class BaseTransactionalExecutor<T, S extends Statement> implements Executor<T> {
-            
+
 
             protected StatementProxy<S> statementProxy;
-
+    
             protected StatementCallback<T, S> statementCallback;
-
+    
             protected SQLRecognizer sqlRecognizer;
-
+    
             public BaseTransactionalExecutor(StatementProxy<S> statementProxy, StatementCallback<T, S> statementCallback,
                 SQLRecognizer sqlRecognizer) {
                 this.statementProxy = statementProxy;
                 this.statementCallback = statementCallback;
                 this.sqlRecognizer = sqlRecognizer;
             }
-
+    
             @Override
             public T execute(Object... args) throws Throwable {
                 String xid = RootContext.getXID();
                 if (xid != null) {
                     statementProxy.getConnectionProxy().bind(xid);
                 }
-
+    
                 statementProxy.getConnectionProxy().setGlobalLockRequire(RootContext.requireGlobalLock());
                 return doExecute(args);
             }
-
+    
         }
         ```
         ```java
@@ -494,7 +531,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                                    SQLRecognizer sqlRecognizer) {
                 super(statementProxy, statementCallback, sqlRecognizer);
             }
-
+    
             @Override
             public T doExecute(Object... args) throws Throwable {
                 AbstractConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
@@ -504,7 +541,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     return executeAutoCommitFalse(args);
                 }
             }
-
+    
             protected T executeAutoCommitTrue(Object[] args) throws Throwable {
                 ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
                 try {
@@ -526,7 +563,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     connectionProxy.setAutoCommit(true);
                 }
             }
-
+    
             protected T executeAutoCommitFalse(Object[] args) throws Exception {
                 if (!JdbcConstants.MYSQL.equalsIgnoreCase(getDbType()) && isMultiPk()) {
                     throw new NotSupportYetException("multi pk only support mysql!");
@@ -541,27 +578,27 @@ DataSourceProxy帮助我们获得几个重要的代理对象
         ```
         ```java
         package io.seata.rm.datasource.exec;
-
+    
         public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
             
             public UpdateExecutor(StatementProxy<S> statementProxy, StatementCallback<T, S> statementCallback,
                                 SQLRecognizer sqlRecognizer) {
                 super(statementProxy, statementCallback, sqlRecognizer);
             }
-
+    
         }
-
+    
         ```
     - 如果选了DML类型Executer，可以在上面的executeAutoCommitFalse()中看到，主要做了以下事情：
         - 查询前镜像（select for update，因此此时获得本地锁）
             ```java
             package io.seata.rm.datasource.exec;
-
+    
             public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
                 
                 private static final boolean ONLY_CARE_UPDATE_COLUMNS = CONFIG.getBoolean(
                         ConfigurationKeys.TRANSACTION_UNDO_ONLY_CARE_UPDATE_COLUMNS, DefaultValues.DEFAULT_ONLY_CARE_UPDATE_COLUMNS); // 默认为true
-
+    
                 @Override
                 protected TableRecords beforeImage() throws SQLException {
                     ArrayList<List<Object>> paramAppenderList = new ArrayList<>();
@@ -570,7 +607,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     // SELECT id, count FROM storage_tbl WHERE id = ? FOR UPDATE
                     return buildTableRecords(tmeta, selectSQL, paramAppenderList);
                 }
-
+    
                 private String buildBeforeImageSQL(TableMeta tableMeta, ArrayList<List<Object>> paramAppenderList) {
                     SQLUpdateRecognizer recognizer = (SQLUpdateRecognizer) sqlRecognizer;
                     List<String> updateColumns = recognizer.getUpdateColumns();
@@ -625,14 +662,14 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                     }
                 }
             }
-
+    
             ```
-
+    
         - 执行业务sql
         - 查询后镜像
           ```java
             package io.seata.rm.datasource.exec;
-
+    
             public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
                 
                 @Override
@@ -668,19 +705,19 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                         }
                     }
                     ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
-
+    
                     TableRecords lockKeyRecords = sqlRecognizer.getSQLType() == SQLType.DELETE ? beforeImage : afterImage;
                     String lockKeys = buildLockKey(lockKeyRecords);
                     if (null != lockKeys) {
                         connectionProxy.appendLockKey(lockKeys);
-
+    
                         SQLUndoLog sqlUndoLog = buildUndoItem(beforeImage, afterImage);
                         connectionProxy.appendUndoLog(sqlUndoLog); // 把undoLog存到connectionProxy中，具体怎么回事上面有提过
                     }
                 }
             }
             ```
-      
+
 
 
     - 如果你的sql是select for update则会使用`SelectForUpdateExecutor`（Seata代理了select for update），代理后处理的逻辑是这样的：
@@ -689,7 +726,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
         -  如果有全局锁，则未开启本地事务下会rollback本地事务，再重新争抢本地锁和查询全局锁，直到全局锁释放
         ```java
            package io.seata.rm.datasource.exec;
-
+    
            public class SelectForUpdateExecutor<T, S extends Statement> extends BaseTransactionalExecutor<T, S> {
                    @Override
                     public T doExecute(Object... args) throws Throwable {
@@ -715,7 +752,7 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                             } else {
                                 throw new SQLException("not support savepoint. please check your db version");
                             }
-
+    
                             LockRetryController lockRetryController = new LockRetryController();
                             ArrayList<List<Object>> paramAppenderList = new ArrayList<>();
                             String selectPKSQL = buildSelectSQL(paramAppenderList);
@@ -725,14 +762,14 @@ DataSourceProxy帮助我们获得几个重要的代理对象
                                     // execute return Boolean
                                     // executeQuery return ResultSet
                                     rs = statementCallback.execute(statementProxy.getTargetStatement(), args); //执行 select for update（获取数据库本地锁）
-
+    
                                     // Try to get global lock of those rows selected
                                     TableRecords selectPKRows = buildTableRecords(getTableMeta(), selectPKSQL, paramAppenderList);
                                     String lockKeys = buildLockKey(selectPKRows);
                                     if (StringUtils.isNullOrEmpty(lockKeys)) {
                                         break;
                                     }
-
+    
                                     if (RootContext.inGlobalTransaction() || RootContext.requireGlobalLock()) {
                                         // Do the same thing under either @GlobalTransactional or @GlobalLock, 
                                         // that only check the global lock  here.
@@ -820,9 +857,9 @@ public class ConnectionProxy extends AbstractConnectionProxy {
     - 让数据库commit本次事务
     ```java
         public class ConnectionProxy extends AbstractConnectionProxy {
-
+    
             private final static LockRetryPolicy LOCK_RETRY_POLICY = new LockRetryPolicy();
-
+    
             private ConnectionContext context = new ConnectionContext();
             
             private void processGlobalTransactionCommit() throws SQLException {
@@ -844,7 +881,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                 }
                 context.reset();
             }
-
+    
             private void register() throws TransactionException {
                 if (!context.hasUndoLog() || !context.hasLockKey()) {
                     return;
@@ -863,9 +900,9 @@ public class ConnectionProxy extends AbstractConnectionProxy {
     -  让数据库commit本次事务
      ```java
         public class ConnectionProxy extends AbstractConnectionProxy {
-
+    
             private final static LockRetryPolicy LOCK_RETRY_POLICY = new LockRetryPolicy();
-
+    
             private ConnectionContext context = new ConnectionContext();
             
             private void processLocalCommitWithGlobalLocks() throws SQLException {
@@ -877,7 +914,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                 }
                 context.reset();
             }
-
+    
             public void checkLock(String lockKeys) throws SQLException {
                 if (StringUtils.isBlank(lockKeys)) {
                     return;
@@ -906,13 +943,13 @@ public class ConnectionProxy extends AbstractConnectionProxy {
    该方法的判断逻辑是：只要判断出**当前处于全局事务中**（即，只要有地方调用过`RootContext.bind(xid)`）, 就会返回默认`BranchType.AT`
    ```java
    public class RootContext {
-
+   
        public static final String KEY_XID = "TX_XID";
-
+   
        private static ContextCore CONTEXT_HOLDER = ContextCoreLoader.load();
-
+   
        private static BranchType DEFAULT_BRANCH_TYPE;
-
+   
        @Nullable
        public static BranchType getBranchType() {
            if (inGlobalTransaction()) {
@@ -925,11 +962,11 @@ public class ConnectionProxy extends AbstractConnectionProxy {
            }
            return null;
        }
-
+   
        public static boolean inGlobalTransaction() {
            return CONTEXT_HOLDER.get(KEY_XID) != null;
        }
-
+   
        public static void bind(@Nonnull String xid) {
            if (StringUtils.isBlank(xid)) {
                if (LOGGER.isDebugEnabled()) {
@@ -944,7 +981,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                CONTEXT_HOLDER.put(KEY_XID, xid);
            }
        }
-
+   
    }
    ```
 
@@ -952,33 +989,33 @@ public class ConnectionProxy extends AbstractConnectionProxy {
    需要有地方调用`RootContext.bindGlobalLockFlag()`
    ```java
    public class RootContext {
-
+   
        public static final String KEY_GLOBAL_LOCK_FLAG = "TX_LOCK";
        public static final Boolean VALUE_GLOBAL_LOCK_FLAG = true;
-
+   
        private static ContextCore CONTEXT_HOLDER = ContextCoreLoader.load();
-
+   
        public static boolean requireGlobalLock() {
            return CONTEXT_HOLDER.get(KEY_GLOBAL_LOCK_FLAG) != null;
        }
-
+   
        public static void bindGlobalLockFlag() {
            if (LOGGER.isDebugEnabled()) {
                LOGGER.debug("Local Transaction Global Lock support enabled");
            }
-
+   
            //just put something not null
            CONTEXT_HOLDER.put(KEY_GLOBAL_LOCK_FLAG, VALUE_GLOBAL_LOCK_FLAG);
        }
-
+   
    }
    ```
 3. **`ConnectionProxy.commit()`会根据context的不同状态区分处理，那`ConnectionContext`是如何判断`inGlobalTransaction()` or `isGlobalLockRequire()`的呢？**
    ```java
     public class ConnectionProxy extends AbstractConnectionProxy {
-
+   
        private ConnectionContext context = new ConnectionContext();
-
+   
        private void doCommit() throws SQLException {
            if (context.inGlobalTransaction()) {
                processGlobalTransactionCommit();
@@ -988,24 +1025,24 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                targetConnection.commit();
            }
        }
-
+   
    }
    ```
 
     - 如何判断`inGlobalTransaction()`？（注意下，这里和上面提到的`RootContext`不是一个东西）
       ```java
       public class ConnectionContext {
-
+      
           private String xid;
-
+      
           void setXid(String xid) {
               this.xid = xid;
           }
-
+      
           public boolean inGlobalTransaction() {
               return xid != null;
           }
-
+      
           void bind(String xid) {
               if (xid == null) {
                   throw new IllegalArgumentException("xid should not be null");
@@ -1018,15 +1055,15 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                   }
               }
           }
-
+      
       }
       ```
       哪里调用的`ConnectionContext.bind(xid)`?
       ```java
       package io.seata.rm.datasource.exec;
-
+      
       public abstract class BaseTransactionalExecutor<T, S extends Statement> implements Executor<T> {
-
+      
           @Override
           public T execute(Object... args) throws Throwable {
               // 那么，这里的XID哪来的呢？往后看就知道，是来自开启全局事务的时候获得的，和@GlobalTransactional有关
@@ -1034,43 +1071,43 @@ public class ConnectionProxy extends AbstractConnectionProxy {
               if (xid != null) {
                   statementProxy.getConnectionProxy().bind(xid);
               }
-
+      
               // 这里就是设置 isGlobalLockRequire的位置，和 @GlobalLock有关
               statementProxy.getConnectionProxy().setGlobalLockRequire(RootContext.requireGlobalLock());
               return doExecute(args);
           }
-
+      
       }
       ```
       ```java
       public class ConnectionProxy extends AbstractConnectionProxy {
-
+      
          private ConnectionContext context = new ConnectionContext();
-
+      
           public void bind(String xid) {
               context.bind(xid);
           }
-
+      
           public void setGlobalLockRequire(boolean isLock) {
               context.setGlobalLockRequire(isLock);
           }
-
+      
       }
       ```
     - 如何判断`isGlobalLockRequire()`？
       ```java
       public class ConnectionContext {
-
+      
           private boolean isGlobalLockRequire;
-
+      
           boolean isGlobalLockRequire() {
              return isGlobalLockRequire;
           }
-
+      
           void setGlobalLockRequire(boolean isGlobalLockRequire) {
               this.isGlobalLockRequire = isGlobalLockRequire;
           }
-
+      
       }
       ```
 
