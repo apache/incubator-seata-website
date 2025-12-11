@@ -26,7 +26,7 @@ import { Footer } from '../components';
 import './index.scss';
 import { translate } from '@docusaurus/Translate';
 
-export default function Home(): React.Element {
+export default function Home(): JSX.Element {
   const el = React.useRef<HTMLDivElement>(null);
 
   //   const setEleBg = (ele: HTMLDivElement, isTransparent: boolean) => {

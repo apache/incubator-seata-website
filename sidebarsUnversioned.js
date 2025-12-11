@@ -35,6 +35,31 @@ const sidebarsUnversioned = {
       items: ['release-history/seata-server'],
     },
   ],
+  ecosystem: [
+        {
+            type: 'category',
+            label: 'Ecosystem & Repositories',
+            collapsible: false,
+            items: [
+                {
+                    type: 'link',
+                    label: 'Seata GoLang Repository',
+                    href: 'https://github.com/apache/incubator-seata-go',
+                },
+                {
+                    type: 'link',
+                    label: 'Seata K8s (Kubernetes)',
+                    href: 'https://github.com/apache/incubator-seata-k8s',
+                },
+                {
+                    type: 'link',
+                    label: 'Seata Samples',
+                    href: 'https://github.com/apache/incubator-seata-samples',
+                },
+                // ... include all required links
+            ],
+        },
+    ],
 };
 
 module.exports = sidebarsUnversioned;

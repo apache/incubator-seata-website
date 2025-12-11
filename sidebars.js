@@ -195,6 +195,38 @@ const sidebars = {
         'security/serialization',
       ],
     },
+    {
+      type: 'category',
+      label: 'Ecosystem & Repositories', // New section title
+      collapsible: false,
+      items: [
+        {
+          type: 'link',
+          label: 'Seata GoLang Repository',
+          href: 'https://github.com/apache/incubator-seata-go',
+        },
+        {
+          type: 'link',
+          label: 'Seata Samples (Java)',
+          href: 'https://github.com/apache/incubator-seata-samples',
+        },
+        {
+          type: 'link',
+          label: 'Seata GoLang Samples',
+          href: 'https://github.com/apache/incubator-seata-go-samples',
+        },
+        {
+          type: 'link',
+          label: 'Seata K8s (Kubernetes)',
+          href: 'https://github.com/apache/incubator-seata-k8s',
+        },
+        {
+          type: 'link',
+          label: 'Seata CLI (CTL)',
+          href: 'https://github.com/apache/incubator-seata-ctl',
+        },
+      ],
+    },
   ],
   developers: [
     {
