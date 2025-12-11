@@ -101,6 +101,23 @@ const config = {
         editLocalizedFiles: true,
       }),
     ],
+    [
+      'docusaurus-plugin-csp',
+      {
+        useDefaults: true,
+        policy: {
+          "font-src": [
+            "'self'",
+            "https://at.alicdn.com/"
+          ],
+          "style-src": [
+            "'self'",
+            "'unsafe-inline'"
+          ],
+          "img-src": ["'self'", "data:", "blob:"]
+        }
+      }
+    ]
   ],
   presets: [
     [
