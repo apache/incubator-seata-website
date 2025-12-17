@@ -586,9 +586,6 @@ Solution:
    - If you use JDK25 or later versions, the namingserver and console modules will be excluded by default during compilation and packaging.
 2. Why use JDK25?
    - In order to support the Spring AI dependencies introduced in the subsequent versions of namingserver and console, the versions of Spring Boot and JDK must be upgraded. Choosing JDK 25 as the target version not only meets the technical requirements of Spring AI, but also lays the foundation for the development of new functions and the adaptation of brand-new functions in the future, ensuring the forward-looking and scalability of the technology stack.
-3. Is it okay not to use JDK25?
-   - At present, this version has not introduced any new features that require the use of JDK25. At the very least, it still supports JDK8. If you want to continue using JDK8, you can change the java.version attribute in the pom file of the namingserver to the JDK version you need to use, and manually add the -PJDK25Plus option during the mvn packaging and compilation. This can force the namingserver and console modules to be compiled and packaged in other JDK environments
-   - Subsequent versions may not support environments below JDK25. Please pay attention to the release of new seata versions
 
 ---
 
