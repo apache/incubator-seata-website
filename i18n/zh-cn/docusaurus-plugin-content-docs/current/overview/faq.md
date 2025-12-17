@@ -141,6 +141,9 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <a href="#44" target="_self">44. 为什么会出现"xxx contains illegal character!"的错误？ </a>
 <br/>
 
+<a href="#45" target="_self">45. 为什么namingserver和console打包编译需要JDK25版本？& 为什么namingserver和console没有参与编译打包？ </a>
+<br/>
+
 ---
 
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -325,7 +328,7 @@ ps: oracle 同理;1.2.0 支持 mysql 驱动多版本隔离，无需再添加驱�
 2. ./mvnw clean install -DskipTests=true(Mac,Linux) 或 mvnw.cmd clean install -DskipTests=true(Win) -P release-seata。
 3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。
 4. seata-1.5之后(最新develop分支)的打包命令：mvn -Prelease-seata -Dmaven.test.skip=true clean install -U
-5. 如果你是mac os平台,并且是arm架构,请使用: mvn -Prelease-seata -Dmaven.test.skip=true clean install -U -P arrch64
+5. 如果你是mac os平台,并且是arm架构,请使用: mvn -Prelease-seata -Dmaven.test.skip=true clean install -U
 ```
 
 ---
@@ -733,5 +736,28 @@ public class SetSeataInterceptor implements RequestInterceptor {
 <h3 id='44'>Q: 44. 为什么会出现"pk contains illegal character!"的错误？</h3>
 
 - 检查主键中是否包含逗号。
+
+---
+
+<h3 id='45'>Q: 45. 为什么namingserver和console打包编译需要JDK25版本？& 为什么namingserver和console没有参与编译打包？ </h3>
+
+1. 目前做了什么变更？
+   - 目前namingserver的目标JDK编译版本被设置为25，并且新增了profile来保证在JDK25环境下才会将namingserver和console加入进编译和打包
+   - ```
+     <!-- profile: onlyBuildOnJDK25+ -->
+             <profile>
+                 <id>JDK25Plus</id>
+                 <activation>
+                     <jdk>[25,)</jdk>
+                 </activation>
+                 <modules>
+                     <module>namingserver</module>
+                     <module>console</module>
+                 </modules>
+             </profile>
+     ```
+   - 若使用JDK25以下的版本，编译打包会默认将namingserver和console模块排除。
+2. 为什么要使用JDK25？
+   - 为了支持 namingserver 和 console 后续版本引入的 Spring AI 依赖，必须将 Spring Boot 和 JDK 版本升级。选择 JDK 25 作为目标版本，不仅满足 Spring AI 的技术要求，也为未来新功能的开发和全新功能的适配奠定基础，确保技术栈的前瞻性和扩展性。
 
 ---

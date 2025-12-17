@@ -111,6 +111,36 @@ Error: A fatal exception has occurred. Program will exit.?</a>
 <a href="#34" target="_self">34. Why does the error "pk contains illegal character!" occur? </a>
 <br/>
 
+<a href="#35" target="_self">35. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </a>
+<br/>
+
+<a href="#36" target="_self">36. What is the scope of SQL support for Seata? </a>
+<br/>
+
+<a href="#37" target="_self">37. When the length of Oracle's NUMBER exceeds 19, entities use Long mapping, which results in the inability to obtain row information, causing undo_log to be unable to be inserted and also unable to be rolled back? </a>
+<br/>
+
+<a href="#38" target="_self">38. How to deal with the io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </a>
+<br/>
+
+<a href="#39" target="_self">39. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </a>
+<br/>
+
+<a href="#40" target="_self">40. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </a>
+<br/>
+
+<a href="#41" target="_self">41. What are the precautions when Seata-Server uses DB as the storage mode? </a>
+<br/>
+
+<a href="#42" target="_self">42. Did Oracle fail to roll back using the timestamp field type? </a>
+<br/>
+
+<a href="#43" target="_self">43. Did the transaction not roll back after an exception was thrown? </a>
+<br/>
+
+<a href="#44" target="_self">44. How to deal with the @FeignClient annotation url not working and the error prompt "Load balancer does not have available server for client"? </a>
+<br/>
+
 ---
 
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
@@ -309,7 +339,7 @@ At present, `seata-all` needs to use conf type `conf` files, and `properties` an
 2. `./mvnw clean install -DskipTests=true(Mac,Linux)` OR `mvnw.cmd clean install -DskipTests=true(Win) -P release-seata`。
 3. Unzip the corresponding compressed package in the target directory of the `distribution` module.
 4. Packaging commands after seata-1.5 (the latest development branch), `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U`
-5. If you are on macOS platform with ARM architecture, please use: `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U -P arrch64`
+5. If you are on macOS platform with ARM architecture, please use: `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U`
 
 ---
 
@@ -530,3 +560,198 @@ Solution:
 <h3 id='34'>Q: 34. Why does the error "pk contains illegal character!" occur?</h3>
 
 - Check if the primary key contains a comma.
+
+---
+
+<h3 id='35'>Q: 35. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </h3>
+
+1. What changes have been made so far?
+   - Currently, the target JDK compilation version for namingserver is set to 25, and a new profile has been added to ensure that namingserver and console are included in the compilation and packaging only in the JDK 25 environment.
+   - ```
+     <!-- profile: onlyBuildOnJDK25+ -->
+             <profile>
+                 <id>JDK25Plus</id>
+                 <activation>
+                     <jdk>[25,)</jdk>
+                 </activation>
+                 <modules>
+                     <module>namingserver</module>
+                     <module>console</module>
+                 </modules>
+             </profile>
+     ```
+   - If you use JDK25 or later versions, the namingserver and console modules will be excluded by default during compilation and packaging.
+2. Why use JDK25?
+   - In order to support the Spring AI dependencies introduced in the subsequent versions of namingserver and console, the versions of Spring Boot and JDK must be upgraded. Choosing JDK 25 as the target version not only meets the technical requirements of Spring AI, but also lays the foundation for the development of new functions and the adaptation of brand-new functions in the future, ensuring the forward-looking and scalability of the technology stack.
+
+---
+
+<h3 id='36'>Q: 36. What is the scope of SQL support for Seata?</h3>
+
+**A:**
+
+Please refer to Appendix ->[SQL Reference](/docs/user/sqlreference/sql-restrictions/)
+
+---
+
+<h3 id='37'>Q: 37. When the length of Oracle's NUMBER exceeds 19, entities use Long mapping, which results in the inability to obtain row information, causing undo_log to be unable to be inserted and also unable to be rolled back? </h3>
+
+**A:**
+
+When the length of the NUMBER in Oracle exceeds 19, if Long is used, setObject will not be able to retrieve the data. Modifying the Long of the entity to BigInteger or BigDecimal can solve the problem.
+
+---
+
+<h3 id='38'>Q: 38. How to deal with the io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </h3>
+
+**A:**
+
+Failure to obtain a global lock is usually caused by distributed resource competition. Please ensure that the cycle of your resource competition is reasonable and that retries are properly implemented in your business. When a global transaction fails to acquire the lock, it should be restarted completely from the TM end of `@Globaltransational`.
+
+Seata provides a "Global Lock Retry" feature. In versions prior to 1.5, this feature was not enabled by default when combined with the @Transactional annotation or when manually starting local transactions. It can be enabled through the following configuration (there is a possibility of deadlock due to the global lock and local lock competing for each other when facing a rollback). It is recommended to upgrade directly to version 1.5 or above. Do not modify this configuration item directly.
+
+```properties
+# Whether to roll back when encountering a global lock conflict, the default is true
+client.rm.lock.retryPolicyBranchRollbackOnConflict=false
+```
+
+After enabling it, the default global lock retry logic is: the thread sleeps for 10ms and then compets for the global lock again, up to a maximum of 30 times
+
+```properties
+#You can modify the lock retry mechanism through these two configurations
+client.rm.lock.retryInterval=10
+client.rm.lock.retryTimes=30
+```
+In addition, you can also directly configure the retry logic separately on `@GlobalTransactional` or `@GlobalLock`, which has a higher priority than the global configuration of Seata
+
+```java
+@GlobalTransactional(lockRetryInternal = 100, lockRetryTimes = 30)  // v1.4.2
+@GlobalTransactional(lockRetryInterval = 100, lockRetryTimes = 30)  // v1.5
+```
+
+---
+
+<h3 id='39'>Q：39. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </h3>
+
+**A:**
+
+In the `serializer/seata-serializer-protobuf/pom.xml` file, the dependent versions are defined by identifying the operating system variables: `com. Google. Protobuf: protoc: 3.3.0: exe: ${OS. Detected. Classifier}`.
+In the remote repository, there is no dependent version corresponding to Apple's M1 chip architecture.
+
+Solution
+This dependence to fixed version: `com. Google. Protobuf: protoc: 3.3.0: exe: osx - x86_64`, version can be downloaded to the remote warehouse corresponding dependencies.
+
+---
+
+<h3 id='40'>Q：40. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </h3>
+
+**A:**
+
+Upgrade to version 1.5.0 or above
+
+**B:**
+
+Do not use mysql Driver 8.0.x version
+
+**C:**
+
+Introduce Kryo-related dependencies
+
+```java
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>de.javakaffee</groupId>
+                <artifactId>kryo-serializers</artifactId>
+                <version>0.42</version>
+            </dependency>
+```
+
+If the configuration center is file and the dependency is seata-all, please add the following configuration in the file.conf file of the application
+
+```java
+client {
+  undo {
+    logSerialization = "kryo"
+    }
+ }
+```
+
+If the configuration center is file and the dependency is seata-spring-boot-starter, you can convert it to yml format by yourself using yml
+
+```
+seata.client.undo.logSerialization=kryo
+```
+
+If it is a third-party configuration center such as nacos
+
+Please use the configuration of the related seata group, adding a dataid namespace: client. Undo. LogSerialization, value of kryo
+
+**D**:
+
+Modify the datetime type in the database table to timestamp
+
+**E:**
+
+Refer to this [pr](https://github.com/apache/incubator-seata/pull/3738), can cover or extension SPI way with class a new analytic way
+
+---
+
+<h3 id='41'>Q: 41. What are the precautions when Seata-Server uses DB as the storage mode? </h3>
+
+**A:**
+
+- When using the DB storage mode, it is necessary to pay attention to using the corresponding version of the table creation script of the seata-server. The address obtained by the table creation script is: https://github.com/apache/incubator-seata/tree/${version}/script/server/db，such as：Obtain the table creation script corresponding to seata-server 1.5.0，Can get upgrade seata https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db server before ever address need to change table structure first.
+- Do not enable read-write separation for the backend DB that seata-server relies on. After enabling read-write separation, the latency varies depending on the synchronization mode, seata-server As a stateless computing node, all states need to be verified in the DB storage. In the case of a large master-slave synchronization delay, it will lead to inaccurate read states, thereby causing transaction logic processing problems. For higher read and write performance, the DB can set the isolation level to read committed.
+
+---
+
+<h3 id='42'>Q: 42. Did Oracle fail to roll back using the timestamp field type? </h3>
+
+**A:**
+
+- [seata/seata-plugin at develop · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/tree/develop/seata-plugin) Pull this plugin code, package it locally and import it yourself, or you can directly copy the code for spi extension support.
+
+---
+
+<h3 id='43'>Q: 43. Did the transaction not roll back after an exception was thrown? </h3>
+
+- Check if the exception has been caught and not thrown to the tm end. If rm has a global exception catcher,rm wraps the exception as a normal result response and gives it to tm, causing seata's transaction interceptor to fail to detect that the transaction has an exception. At this point, it will automatically check the code in the result within the code Return content that can determine if the business has an exception and throw an exception, or use [Seata api](/docs/user/api/) for rollback. Remember that api rollback must end the call. For example, if tm calls rm1 and an error occurs, api is performed If you roll back, you should not let this call chain go back to rm2. Instead, you should directly return to end the method call.
+- Check whether the rm service throws an exception that causes the circuit breaker to be downgraded. If so, please refer to the above solution for handling.
+- If it is confirmed that there is no such possibility, the exception is explicitly thrown. Please retrieve the resolution result of xid and the registration status of rm from the tc end and tm and rm through the relevant xid. When the rm branch is registered, Register branch successfully can be retrieved through xid. Xid = 10.242.2.19:8094:3404997337200687005. For the log with branchId = xxxx, if it does not indicate that the branch is not registered, and it is in AT or XA mode, please check the data source proxy or xid transfer issue. If the branch is registered, then check the resolution result, such as transaction commit,tm End there will be a similar [10.242.2.19:8094-3404997337200687005] commit status: Committed log, if is to rollback the relevant keyword to rollback status: Rollbacked, etc., if the exception resolution thrown is a commit, then in 99% of cases, it is an exception swallowed. Please carefully check the situations in the first and second points. Remember not to consider the log print stack as an exception stack thrown!!!!
+- If the resolution result is rolled back but rm is not registered, you can determine whether there is a value at the rm calling end through Rootcontext.getXid. If there is no value, please refer to Q24.
+- How to determine if a data source is a proxy? If it is in AT mode, please set a breakpoint in ConnectionProxy#registry to see if it will enter. If it is in XA mode, set a breakpoint in ConnectionProxyXA#commit to see if it will enter. Remember, it is a branch that does not roll back!!
+
+---
+
+<h3 id='44'>Q: 44. How to deal with the @FeignClient annotation url not working and the error prompt "Load balancer does not have available server for client"? </h3>
+
+- This problem usually occurs when Zipkin is integrated with Seata.
+
+Solution
+
+- if you don't need to Feign link tracking, can through the Spring Cloud Sleuth provides the properties of the Spring. The Sleuth. Feign. Enabled = false to close it.
+- if need to use at the same time, in the start class to rule out @ SpringBootApplication(exclude = \{SeataFeignClientAutoConfiguration.class})
+
+Reconfigure the interceptor of Feign
+
+```java
+@Component
+@ConditionalOnClass({RequestInterceptor.class, GlobalTransactional.class})
+public class SetSeataInterceptor implements RequestInterceptor {
+
+    @Override
+    public void apply(RequestTemplate template) {
+
+        String currentXid = RootContext.getXID();
+        if (!StringUtils.isEmpty(currentXid)) {
+            template.header(RootContext.KEY_XID, currentXid);
+        }
+    }
+}
+```
+
+---
