@@ -141,9 +141,6 @@ Error: A fatal exception has occurred. Program will exit.?</a>
 <a href="#44" target="_self">44. How to deal with the @FeignClient annotation url not working and the error prompt "Load balancer does not have available server for client"? </a>
 <br/>
 
-<a href="#45" target="_self">45. Why does "xxx contains illegal character!" appear? A mistake? </a>
-<br/>
-
 ---
 
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
@@ -756,11 +753,5 @@ public class SetSeataInterceptor implements RequestInterceptor {
     }
 }
 ```
-
----
-
-<h3 id='45'>Q: 45. Why does "xxx contains illegal character!" appear? A mistake? </h3>
-
-- Check if there are commas in the primary key.
 
 ---
