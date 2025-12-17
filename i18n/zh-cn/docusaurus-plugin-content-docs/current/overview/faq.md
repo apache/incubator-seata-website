@@ -743,11 +743,24 @@ public class SetSeataInterceptor implements RequestInterceptor {
 
 1. 目前做了什么变更？
    - 目前namingserver的目标JDK编译版本被设置为25，并且新增了profile来保证在JDK25环境下才会将namingserver和console加入进编译和打包
-   - ![](https://gitee.com/Xb2555/picgo/raw/master/20251217131206.png)
-   - 若使用JDK25以下的版本，进行编译打包会默认排除namingserver和console模块。
+   - ```
+     <!-- profile: onlyBuildOnJDK25+ -->
+             <profile>
+                 <id>JDK25Plus</id>
+                 <activation>
+                     <jdk>[25,)</jdk>
+                 </activation>
+                 <modules>
+                     <module>namingserver</module>
+                     <module>console</module>
+                 </modules>
+             </profile>
+     ```
+   - 若使用JDK25以下的版本，编译打包会默认将namingserver和console模块排除。
 2. 为什么要使用JDK25？
    - 为了支持 namingserver 和 console 后续版本引入的 Spring AI 依赖，必须将 Spring Boot 和 JDK 版本升级。选择 JDK 25 作为目标版本，不仅满足 Spring AI 的技术要求，也为未来新功能的开发和全新功能的适配奠定基础，确保技术栈的前瞻性和扩展性。
 3. 不使用JDK25可以吗？
-   - 目前这个版本还没有引入必须使用JDK25的新功能，最低还是支持JDK8的。若想继续使用JDK8，可以将namingserver的pom文件中的java.version属性改为需要使用的JDK版本，并在mvn打包编译的时候手动带上 -PJDK25Plus 选项，这样可以强制在其他JDK环境下编译打包namingserver和console模块
+   - 目前这个版本还没有引入必须使用JDK25的新功能，最低还是支持JDK8的。若想继续使用JDK25以下的版本，可以在mvn打包编译的时候手动带上 -PJDK25Plus 选项，这样可以在其他JDK版本环境下编译打包namingserver和console模块
+   - 后续版本可能不支持JDK25以下的环境，请关注seata新版本发布内容
 
 ---
