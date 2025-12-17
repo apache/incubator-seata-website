@@ -111,6 +111,9 @@ Error: A fatal exception has occurred. Program will exit.?</a>
 <a href="#34" target="_self">34. Why does the error "pk contains illegal character!" occur? </a>
 <br/>
 
+<a href="#35" target="_self">35. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </a>
+<br/>
+
 ---
 
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
@@ -530,3 +533,18 @@ Solution:
 <h3 id='34'>Q: 34. Why does the error "pk contains illegal character!" occur?</h3>
 
 - Check if the primary key contains a comma.
+
+---
+
+<h3 id='35'>Q: 35. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </h3>
+
+1. What changes have been made so far?
+   - Currently, the target JDK compilation version for namingserver is set to 25, and a new profile has been added to ensure that namingserver and console are included in the compilation and packaging only in the JDK 25 environment.
+   - ![](https://gitee.com/Xb2555/picgo/raw/master/20251217131206.png)
+   - If you use JDK25 or later versions, the namingserver and console modules will be excluded by default during compilation and packaging.
+2. Why use JDK25?
+   - In order to support the Spring AI dependencies introduced in the subsequent versions of namingserver and console, the versions of Spring Boot and JDK must be upgraded. Choosing JDK 25 as the target version not only meets the technical requirements of Spring AI, but also lays the foundation for the development of new functions and the adaptation of brand-new functions in the future, ensuring the forward-looking and scalability of the technology stack.
+3. Is it okay not to use JDK25?
+   - At present, this version has not introduced any new features that require the use of JDK25. At the very least, it still supports JDK8. If you want to continue using JDK8, you can change the java.version attribute in the pom file of the namingserver to the JDK version you need to use, and manually add the -PJDK25Plus option during the mvn packaging and compilation. This can force the namingserver and console modules to be compiled and packaged in other JDK environments
+
+---

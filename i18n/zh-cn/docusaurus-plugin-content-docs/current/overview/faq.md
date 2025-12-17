@@ -141,6 +141,9 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <a href="#44" target="_self">44. 为什么会出现"xxx contains illegal character!"的错误？ </a>
 <br/>
 
+<a href="#45" target="_self">45. 为什么namingserver和console打包编译需要JDK25版本？& 为什么namingserver和console没有参与编译打包？ </a>
+<br/>
+
 ---
 
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -733,5 +736,18 @@ public class SetSeataInterceptor implements RequestInterceptor {
 <h3 id='44'>Q: 44. 为什么会出现"pk contains illegal character!"的错误？</h3>
 
 - 检查主键中是否包含逗号。
+
+---
+
+<h3 id='45'>Q: 45. 为什么namingserver和console打包编译需要JDK25版本？& 为什么namingserver和console没有参与编译打包？ </h3>
+
+1. 目前做了什么变更？
+   - 目前namingserver的目标JDK编译版本被设置为25，并且新增了profile来保证在JDK25环境下才会将namingserver和console加入进编译和打包
+   - ![](https://gitee.com/Xb2555/picgo/raw/master/20251217131206.png)
+   - 若使用JDK25以下的版本，进行编译打包会默认排除namingserver和console模块。
+2. 为什么要使用JDK25？
+   - 为了支持 namingserver 和 console 后续版本引入的 Spring AI 依赖，必须将 Spring Boot 和 JDK 版本升级。选择 JDK 25 作为目标版本，不仅满足 Spring AI 的技术要求，也为未来新功能的开发和全新功能的适配奠定基础，确保技术栈的前瞻性和扩展性。
+3. 不使用JDK25可以吗？
+   - 目前这个版本还没有引入必须使用JDK25的新功能，最低还是支持JDK8的。若想继续使用JDK8，可以将namingserver的pom文件中的java.version属性改为需要使用的JDK版本，并在mvn打包编译的时候手动带上 -PJDK25Plus 选项，这样可以强制在其他JDK环境下编译打包namingserver和console模块
 
 ---
