@@ -105,40 +105,43 @@ Error: Could not create the Java Virtual Machine.
 Error: A fatal exception has occurred. Program will exit.?</a>
 <br/>
 
-<a href="#33" target="_self">33. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running ? </a>
+<a href="#33" target="_self">33. What is the scope of SQL support for Seata? </a>
 <br/>
 
-<a href="#34" target="_self">34. Why does the error "pk contains illegal character!" occur? </a>
+<a href="#34" target="_self">34. What are the JDK version requirements for Seata? </a>
 <br/>
 
-<a href="#35" target="_self">35. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </a>
+<a href="#35" target="_self">35. When the length of Oracle's NUMBER exceeds 19, entities use Long mapping, which results in the inability to obtain row information, causing undo_log to be unable to be inserted and also unable to be rolled back? </a>
 <br/>
 
-<a href="#36" target="_self">36. What is the scope of SQL support for Seata? </a>
+<a href="#36" target="_self">36. How to deal with the io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </a>
 <br/>
 
-<a href="#37" target="_self">37. When the length of Oracle's NUMBER exceeds 19, entities use Long mapping, which results in the inability to obtain row information, causing undo_log to be unable to be inserted and also unable to be rolled back? </a>
+<a href="#37" target="_self">37. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running ? </a>
 <br/>
 
-<a href="#38" target="_self">38. How to deal with the io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </a>
+<a href="#38" target="_self">38. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </a>
 <br/>
 
-<a href="#39" target="_self">39. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </a>
+<a href="#39" target="_self">39. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </a>
 <br/>
 
-<a href="#40" target="_self">40. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </a>
+<a href="#40" target="_self">40. What are the precautions when Seata-Server uses DB as the storage mode? </a>
 <br/>
 
-<a href="#41" target="_self">41. What are the precautions when Seata-Server uses DB as the storage mode? </a>
+<a href="#41" target="_self">41. Did Oracle fail to roll back using the timestamp field type? </a>
 <br/>
 
-<a href="#42" target="_self">42. Did Oracle fail to roll back using the timestamp field type? </a>
+<a href="#42" target="_self">42. Did the transaction not roll back after an exception was thrown? </a>
 <br/>
 
-<a href="#43" target="_self">43. Did the transaction not roll back after an exception was thrown? </a>
+<a href="#43" target="_self">43. How to deal with the @FeignClient annotation url not working and the error prompt "Load balancer does not have available server for client"? </a>
 <br/>
 
-<a href="#44" target="_self">44. How to deal with the @FeignClient annotation url not working and the error prompt "Load balancer does not have available server for client"? </a>
+<a href="#44" target="_self">44. Why does the error "pk contains illegal character!" occur? </a>
+<br/>
+
+<a href="#45" target="_self">45. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </a>
 <br/>
 
 ---
@@ -544,49 +547,7 @@ There are two solutions. Choose one of them:
 
 ---
 
-<h3 id='33'>Q：33. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running？ </h3>
-
-**A:**
-
-This is because the seata source code was compiled and then the local seata dependency package was overwritten. JDK 11 was used when compiling the seata source code. In JDK 11, the `flip()` method was rewritten, resulting in incompatibility.
-
-Solution:
-
-- Make sure that the JDK version is 1.8 when compiling seata source code to avoid compatibility issues
-- If you have compiled the source code of seata with JDK 11, please delete all packages under the io.seata path in the local maven repository. Then recompile your project and let the project re-pull the seata dependency package of the central warehouse
-
----
-
-<h3 id='34'>Q: 34. Why does the error "pk contains illegal character!" occur?</h3>
-
-- Check if the primary key contains a comma.
-
----
-
-<h3 id='35'>Q: 35. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </h3>
-
-1. What changes have been made so far?
-   - Currently, the target JDK compilation version for namingserver is set to 25, and a new profile has been added to ensure that namingserver and console are included in the compilation and packaging only in the JDK 25 environment.
-   - ```
-     <!-- profile: onlyBuildOnJDK25+ -->
-             <profile>
-                 <id>JDK25Plus</id>
-                 <activation>
-                     <jdk>[25,)</jdk>
-                 </activation>
-                 <modules>
-                     <module>namingserver</module>
-                     <module>console</module>
-                 </modules>
-             </profile>
-     ```
-   - If you use JDK25 or later versions, the namingserver and console modules will be excluded by default during compilation and packaging.
-2. Why use JDK25?
-   - In order to support the Spring AI dependencies introduced in the subsequent versions of namingserver and console, the versions of Spring Boot and JDK must be upgraded. Choosing JDK 25 as the target version not only meets the technical requirements of Spring AI, but also lays the foundation for the development of new functions and the adaptation of brand-new functions in the future, ensuring the forward-looking and scalability of the technology stack.
-
----
-
-<h3 id='36'>Q: 36. What is the scope of SQL support for Seata?</h3>
+<h3 id='33'>Q: 33. What is the scope of SQL support for Seata?</h3>
 
 **A:**
 
@@ -594,7 +555,15 @@ Please refer to Appendix ->[SQL Reference](/docs/user/sqlreference/sql-restricti
 
 ---
 
-<h3 id='37'>Q: 37. When the length of Oracle's NUMBER exceeds 19, entities use Long mapping, which results in the inability to obtain row information, causing undo_log to be unable to be inserted and also unable to be rolled back? </h3>
+<h3 id='34'>Q: 34.What are the JDK version requirements for Seata? </h3>
+
+**A:**
+
+Currently, the JDK versions supported by Seata are JDK8 and 11. The remaining versions are not guaranteed to be 100% compatible
+
+---
+
+<h3 id='35'>Q: 35. When the length of Oracle's NUMBER exceeds 19, entities use Long mapping, which results in the inability to obtain row information, causing undo_log to be unable to be inserted and also unable to be rolled back? </h3>
 
 **A:**
 
@@ -602,7 +571,7 @@ When the length of the NUMBER in Oracle exceeds 19, if Long is used, setObject w
 
 ---
 
-<h3 id='38'>Q: 38. How to deal with the io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </h3>
+<h3 id='36'>Q: 36. How to deal with the io.seata.rm.datasource.exec.LockConflictException: get global lock fail ? </h3>
 
 **A:**
 
@@ -631,7 +600,20 @@ In addition, you can also directly configure the retry logic separately on `@Glo
 
 ---
 
-<h3 id='39'>Q：39. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </h3>
+<h3 id='37'>Q：37. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running？ </h3>
+
+**A:**
+
+This is because the seata source code was compiled and then the local seata dependency package was overwritten. JDK 11 was used when compiling the seata source code. In JDK 11, the `flip()` method was rewritten, resulting in incompatibility.
+
+Solution:
+
+- Make sure that the JDK version is 1.8 when compiling seata source code to avoid compatibility issues
+- If you have compiled the source code of seata with JDK 11, please delete all packages under the io.seata path in the local maven repository. Then recompile your project and let the project re-pull the seata dependency package of the central warehouse
+
+---
+
+<h3 id='38'>Q：38. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </h3>
 
 **A:**
 
@@ -643,7 +625,7 @@ This dependence to fixed version: `com. Google. Protobuf: protoc: 3.3.0: exe: os
 
 ---
 
-<h3 id='40'>Q：40. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </h3>
+<h3 id='39'>Q：39. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </h3>
 
 **A:**
 
@@ -700,7 +682,7 @@ Refer to this [pr](https://github.com/apache/incubator-seata/pull/3738), can cov
 
 ---
 
-<h3 id='41'>Q: 41. What are the precautions when Seata-Server uses DB as the storage mode? </h3>
+<h3 id='40'>Q: 40. What are the precautions when Seata-Server uses DB as the storage mode? </h3>
 
 **A:**
 
@@ -709,7 +691,7 @@ Refer to this [pr](https://github.com/apache/incubator-seata/pull/3738), can cov
 
 ---
 
-<h3 id='42'>Q: 42. Did Oracle fail to roll back using the timestamp field type? </h3>
+<h3 id='41'>Q: 41. Did Oracle fail to roll back using the timestamp field type? </h3>
 
 **A:**
 
@@ -717,7 +699,7 @@ Refer to this [pr](https://github.com/apache/incubator-seata/pull/3738), can cov
 
 ---
 
-<h3 id='43'>Q: 43. Did the transaction not roll back after an exception was thrown? </h3>
+<h3 id='42'>Q: 42. Did the transaction not roll back after an exception was thrown? </h3>
 
 - Check if the exception has been caught and not thrown to the tm end. If rm has a global exception catcher,rm wraps the exception as a normal result response and gives it to tm, causing seata's transaction interceptor to fail to detect that the transaction has an exception. At this point, it will automatically check the code in the result within the code Return content that can determine if the business has an exception and throw an exception, or use [Seata api](/docs/user/api/) for rollback. Remember that api rollback must end the call. For example, if tm calls rm1 and an error occurs, api is performed If you roll back, you should not let this call chain go back to rm2. Instead, you should directly return to end the method call.
 - Check whether the rm service throws an exception that causes the circuit breaker to be downgraded. If so, please refer to the above solution for handling.
@@ -727,7 +709,7 @@ Refer to this [pr](https://github.com/apache/incubator-seata/pull/3738), can cov
 
 ---
 
-<h3 id='44'>Q: 44. How to deal with the @FeignClient annotation url not working and the error prompt "Load balancer does not have available server for client"? </h3>
+<h3 id='43'>Q: 43. How to deal with the @FeignClient annotation url not working and the error prompt "Load balancer does not have available server for client"? </h3>
 
 - This problem usually occurs when Zipkin is integrated with Seata.
 
@@ -753,5 +735,34 @@ public class SetSeataInterceptor implements RequestInterceptor {
     }
 }
 ```
+
+---
+
+<h3 id='44'>Q: 44. Why does the error "pk contains illegal character!" occur? </h3>
+
+- Check if the primary key contains a comma.
+
+---
+
+<h3 id='45'>Q: 45. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </h3>
+
+1. What changes have been made so far?
+   - Currently, the target JDK compilation version for namingserver is set to 25, and a new profile has been added to ensure that namingserver and console are included in the compilation and packaging only in the JDK 25 environment.
+   - ```
+     <!-- profile: onlyBuildOnJDK25+ -->
+             <profile>
+                 <id>JDK25Plus</id>
+                 <activation>
+                     <jdk>[25,)</jdk>
+                 </activation>
+                 <modules>
+                     <module>namingserver</module>
+                     <module>console</module>
+                 </modules>
+             </profile>
+     ```
+   - If you use JDK25 or later versions, the namingserver and console modules will be excluded by default during compilation and packaging.
+2. Why use JDK25?
+   - In order to support the Spring AI dependencies introduced in the subsequent versions of namingserver and console, the versions of Spring Boot and JDK must be upgraded. Choosing JDK 25 as the target version not only meets the technical requirements of Spring AI, but also lays the foundation for the development of new functions and the adaptation of brand-new functions in the future, ensuring the forward-looking and scalability of the technology stack.
 
 ---
