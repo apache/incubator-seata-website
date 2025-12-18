@@ -343,6 +343,7 @@ At present, `seata-all` needs to use conf type `conf` files, and `properties` an
 3. Unzip the corresponding compressed package in the target directory of the `distribution` module.
 4. Packaging commands after seata-1.5 (the latest development branch), `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U`
 5. If you are on macOS platform with ARM architecture, please use: `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U`
+5. If you are on macOS platform with ARM architecture, please use: `mvn -Prelease-seata -Dmaven.test.skip=true clean install -U`
 
 ---
 
