@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/assets/css/styles.9380d878.css">
-<script src="/assets/js/runtime~main.f426b577.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.89114abc.js" defer="defer"></script>
 <script src="/assets/js/main.822807d3.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -80,7 +80,7 @@
 <p>Download and install <a href="https://subversion.apache.org/download.cgi#recommended-release" target="_blank" rel="noopener noreferrer">Apache Subversion Sources</a></p>
 <p>Or install via <code>brew install subversion</code></p>
 <h5 class="anchor anchorWithStickyNavbar_LWe7" id="222-compile-seata-server-and-seata-namingserver">2.2.2 Compile seata-server and seata-namingserver<a href="#222-compile-seata-server-and-seata-namingserver" class="hash-link" aria-label="Direct link to 2.2.2 Compile seata-server and seata-namingserver" title="Direct link to 2.2.2 Compile seata-server and seata-namingserver">​</a></h5>
-<p><code>mvn -Prelease-seata -Dmaven.test.skip=true -Dskip.npm=true -T4C -Dpmd.skip=true clean install -U</code></p>
+<p><code>mvn -Prelease-seata -Dmaven.test.skip=true -T4C -Dpmd.skip=true clean install -U</code></p>
 <h5 class="anchor anchorWithStickyNavbar_LWe7" id="223-sign-source-and-binary-packages">2.2.3 Sign Source and Binary packages<a href="#223-sign-source-and-binary-packages" class="hash-link" aria-label="Direct link to 2.2.3 Sign Source and Binary packages" title="Direct link to 2.2.3 Sign Source and Binary packages">​</a></h5>
 <p>For the Source package, it&#x27;s recommended to download the zip directly from the corresponding version branch on GitHub (e.g., 2.2.0) to avoid local environment contamination, then rename it to apache-seata-x.x.x-incubating-src.zip</p>
 <p><code>shasum -b -a 512 apache-seata-x.x.x-incubating-src.zip &gt;&gt; apache-seata-x.x.x-incubating-src.zip.sha512 </code></p>
