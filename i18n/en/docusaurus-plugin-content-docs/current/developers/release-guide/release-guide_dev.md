@@ -213,7 +213,7 @@ Or install via `brew install subversion`
 
 ##### 2.2.2 Compile seata-server and seata-namingserver
 
- `mvn -Prelease-seata -Dmaven.test.skip=true -Dskip.npm=true -T4C -Dpmd.skip=true clean install -U`
+ `mvn -Prelease-seata -Dmaven.test.skip=true -T4C -Dpmd.skip=true clean install -U`
 
 ##### 2.2.3 Sign Source and Binary packages
 
