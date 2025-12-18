@@ -213,7 +213,7 @@ mvn clean deploy -Prelease -DskipTests -e -B -Dorg.slf4j.simpleLogger.log.org.ap
 
 ##### 2.2.2 编译seata-server及seata-namingserver
 
- `mvn -Prelease-seata -Dmaven.test.skip=true -Dskip.npm=true -T4C -Dpmd.skip=true clean install -U`
+ `mvn -Prelease-seata -Dmaven.test.skip=true -T4C -Dpmd.skip=true clean install -U`
 
 ##### 2.2.3 将Source及Binary进行签名
 
