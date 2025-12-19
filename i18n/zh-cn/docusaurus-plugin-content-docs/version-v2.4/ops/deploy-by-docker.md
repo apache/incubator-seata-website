@@ -17,7 +17,7 @@ date: 2019-11-25
 - 若docker显示的`date`时间不正确，可通过以下方式之一设置。
     - 加入docker环境变量 TZ=Asia/Shanghai
     - 挂载宿主机的时区配置 -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone
-## 快速开始 
+## 快速开始
 
 #### 启动seata-server实例
 
@@ -73,8 +73,8 @@ $ docker logs -f seata-server
 首先启动一个用户将resources目录文件拷出的临时容器
 
 ```
-docker run -d -p 8091:8091 -p 7091:7091  --name seata-serve apache/seata-server:latest
-docker cp seata-serve:/seata-server/resources /User/seata/config
+docker run -d -p 8091:8091 -p 7091:7091  --name seata-server apache/seata-server:latest
+docker cp seata-server:/seata-server/resources /User/seata/config
 ```
 
 拷出后可以,可以选择修改application.yml再cp进容器,或者rm临时容器,如下重新创建,并做好映射路径设置
@@ -95,7 +95,7 @@ $ docker run --name seata-server \
 
 ## 环境变量
 
-seata-server 支持以下环境变量： 
+seata-server 支持以下环境变量：
 
 - **SEATA_IP**
 
