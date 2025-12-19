@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.246050ea.css">
-<script src="/zh-cn/assets/js/runtime~main.40c6bee5.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.c77f82df.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.29d5d09e.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -42,7 +42,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="使用自定义配置文件">使用自定义配置文件<a href="#使用自定义配置文件" class="hash-link" aria-label="使用自定义配置文件的直接链接" title="使用自定义配置文件的直接链接">​</a></h2>
 <p>自定义配置文件需要通过挂载文件的方式实现，将宿主机上的 <code>application.yml</code>  挂载到容器中相应的目录</p>
 <p>首先启动一个用户将resources目录文件拷出的临时容器</p>
-<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">docker run -d -p 8091:8091 -p 7091:7091  --name seata-serve apache/seata-server:latest</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">docker cp seata-serve:/seata-server/resources /User/seata/config</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">docker run -d -p 8091:8091 -p 7091:7091  --name seata-server apache/seata-server:latest</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">docker cp seata-server:/seata-server/resources /User/seata/config</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到 剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>拷出后可以,可以选择修改application.yml再cp进容器,或者rm临时容器,如下重新创建,并做好映射路径设置</p>
 <ul>
 <li>指定 application.yml</li>
