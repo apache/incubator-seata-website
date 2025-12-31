@@ -99,6 +99,7 @@ const sidebars = {
             'user/console/introduction',
             'user/console/saga-designer',
             'user/console/transaction-control',
+            'user/console/mcp-userGuide',
           ],
         },
         'user/api',
