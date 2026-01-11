@@ -120,9 +120,9 @@ const data = {
 
 const Feature = () => {
   return (
-    <section className='feature-section'>
+    <section className='feature-section' aria-labelledby='feature-title'>
       <div className='feature-container'>
-        <h3>{data.title}</h3>
+        <h3 id='feature-title'>{data.title}</h3>
         <ul>
           {data.list.map((feature, i) => (
             <Item feature={feature} key={i} />
