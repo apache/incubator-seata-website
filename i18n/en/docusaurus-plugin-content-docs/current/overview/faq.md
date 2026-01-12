@@ -39,7 +39,7 @@ description: Seata FAQ.
 <a href="#11" target="_self">11.I can't find this package:io.seata.codec.protobuf.generated,and cant't run seata server?</a>
 <br/>
 
-<a href="#12" target="_self">12.How TC uses mysql8?</a>
+<a href="#12" target="_self">12.How does TC use database drivers such as mysql/oracle?</a>
 <br/>
 
 <a href="#13" target="_self">13.Support multiple primary keys?</a>
@@ -293,15 +293,13 @@ You can execute this command: `./mvnw clean install -DskipTests=true` (Mac,Linux
 
 ---
 
-<h3 id='12'>Q: 12.How TC uses mysql8?</h3>
+<h3 id='12'>Q: 12.How does TC use database drivers such as mysql/oracle?</h3>
 
 **A:**
 
-1. Modify the driver configuration `store.db.driver-class-name` of `file.conf`;
+1. Modify the driver configuration `store.db.driver-class-name` in `application.yml`;
 
-2. Delete mysql5 driver and add mysql8 driver under lib directory
-
-   ps: The same is true for Oracle; `1.2.0` supports MySQL driver multi version isolation without adding drivers
+2. For seata-server versions below 2.5, add the corresponding mysql driver in `lib/jdbc`; for version 2.5 and above or other databases, directly add the corresponding database driver in the `lib` directory
 
 ---
 
