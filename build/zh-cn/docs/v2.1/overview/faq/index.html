@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.74a9afc5.css">
-<script src="/zh-cn/assets/js/runtime~main.b1b607b1.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.a30a741f.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.e44bb9ff.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -38,7 +38,7 @@
 <br>
 <a href="#11" target="_self">11.io.seata.codec.protobuf.generated 不存在，导致 seata server 启动不了? </a>
 <br>
-<a href="#12" target="_self">12.TC 如何使用 mysql8? </a>
+<a href="#12" target="_self">12.TC 如何使用 mysql/oracle等数据库driver? </a>
 <br>
 <a href="#13" target="_self">13.支持多主键? </a>
 <br>
@@ -93,7 +93,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <br>
 <a href="#37" target="_self">37. 为什么在客户端在编译和运行时 JDK 版本都是 1.8 的情况下还会出现 java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer 错误 ? </a>
 <br>
-<a href="#38" target="_self">38. 为什么在使用 Apple 的 M1 芯片下载 maven 依赖时，无法下载依赖<code>com.google.protobuf:protoc:exe:3.3.0</code>？ </a>
+<a href="#38" target="_self">38. 为什么在使用 Apple 的 M1 芯片下载 maven 依赖 时，无法下载依赖<code>com.google.protobuf:protoc:exe:3.3.0</code>？ </a>
 <br>
 <a href="#39" target="_self">39. 1.4.2 及以下版本回滚时抛出 Cannot construct instance of <code>java.time.LocalDateTime</code> </a>
 <br>
@@ -126,7 +126,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <hr>
 <h3 id="4">Q: 4.怎么使用Seata框架，来保证事务的隔离性？</h3>
 <p><strong>A:</strong>
-因 seata 一阶段本 地事务已提交，为防止其他事务脏读脏写需要加强隔离。</p>
+因 seata 一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。</p>
 <ol>
 <li>脏读 select 语句加 for update，代理方法增加@GlobalLock+@Transactional 或@GlobalTransactional</li>
 <li>脏写 必须使用@GlobalTransactional
@@ -164,7 +164,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <p>查看 nacos 配置列表，seata 配置是否已经导入成功</p>
 </li>
 <li>
-<p>查看 nacos 服务列表，serverAddr 是否已  经注册成功</p>
+<p>查看 nacos 服务列表 ，serverAddr 是否已经注册成功</p>
 </li>
 <li>
 <p>检查 client 端的 registry.conf 里面的 namespace，registry.nacos.namespace 和 config.nacos.namespace 填入 nacos 的命名空间 ID，默认&quot;&quot;，server 端和 client 端对应，namespace
@@ -205,11 +205,14 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <p><strong>A:</strong>
 本地执行下: <code>./mvnw clean install -DskipTests=true</code> (Mac,Linux) 或 <code>mvnw.cmd clean install -DskipTests=true</code> (Win), <a href="https://github.com/apache/incubator-seata/issues/2438" target="_blank" rel="noopener noreferrer">参考 issues/2438</a>,相关代码在 0.8.1 已经移除。</p>
 <hr>
-<h3 id="12">Q: 12.TC如何使用mysql8?</h3>
-<p><strong>A:</strong> 1.修改 file.conf 的驱动配置 store.db.driver-class-name; 2.lib 目录下删除 mysql5 驱动,添加 mysql8 驱动
-ps: oracle 同理;1.2.0 支持 mysql 驱动多版本隔离，无需再添加驱动</p>
+<h3 id="12">Q: 12.TC 如何使用 mysql/oracle等数据库driver?</h3>
+<p><strong>A:</strong></p>
+<ol>
+<li>修改 application.yml 的驱动配置 store.db.driver-class-name;</li>
+<li>seata-server低于2.5版本在lib/jdbc中增加对应mysql驱动，大于等于2.5版本或其它数据库则直接在lib路径中添加对应数据库的driver即可</li>
+</ol>
 <hr>
-<h3 id="13">Q: 13. 支持多主键?</h3>
+<h3 id="13">Q: 13.支持多主键?</h3>
 <p><strong>A:</strong>
 目前支持 mysql，oracle，pgsql，mariadb，其他类型数据库建议先建一列自增 id 主键，原复合主键改为唯一键来规避下</p>
 <hr>
@@ -257,7 +260,7 @@ ps: oracle 同理;1.2.0 支持 mysql 驱动多版本隔离，无需再添加驱�
 <ol start="2">
 <li>配置 GlobalTransactionScanner，使用 seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。</li>
 <li>业务表中必须包含单列主键，若存在复合主键，请参考问题 13 。</li>
-<li>每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。</li>
+<li>每个业务库中必须包  含 undo_log 表，若与分库分表组件联用，分库不分表。</li>
 <li>跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。</li>
 <li>目前 AT 模式支持的数据库有：MySQL、Oracle、PostgreSQL 和 TiDB。</li>
 <li>使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。</li>
@@ -273,7 +276,7 @@ ps: oracle 同理;1.2.0 支持 mysql 驱动多版本隔离，无需再添加驱�
 <hr>
 <h3 id="22">Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</h3>
 <p><strong>A:</strong></p>
-<p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和 XA 分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional 和@GlobalTransactional 连用，@Transactional 只能位于标注在@GlobalTransactional 的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提 交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的 xid 不存在。</p>
+<p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和 XA 分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional 和@GlobalTransactional 连用，@Transactional 只能位于标注在@GlobalTransactional 的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的 xid 不存在。</p>
 <hr>
 <h3 id="23">Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
 <p><strong>A:</strong></p>
@@ -335,7 +338,7 @@ local DB operation;</p>
 <hr>
 <h3 id="30">Q: 30. Seata现阶段支持的分库分表解决方案？</h3>
 <p><strong>A:</strong></p>
-<p>现阶段只支持 ShardingSphere。关于分库分表与 Seata 兼容的问 题，Seata 支持某一个分库分表方案是需要分库分表框架团队来提供集成兼容方案，而不是 Seata 提供。目前 Seata 正与各分库分表框架团队进行沟通来商讨集成兼容方案。</p>
+<p>现阶段只支持 ShardingSphere。关于分库分表与 Seata 兼容的问题，Seata 支持某一个分库分表方案是需要分库分表框架团队来提供集成兼容方案，而不是 Seata 提供。目前 Seata 正与各分库分表框架团队进行沟通来商讨集成兼容方案。</p>
 <hr>
 <h3 id="31">Q: 31.Seata 使用注册中心注册的地址有什么限制？</h3>
 <p><strong>A:</strong></p>
@@ -396,7 +399,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <p><strong>C:</strong></p>
 <p>引入 kryo 相关依赖</p>
 <div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">dependency</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">groupId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">com</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">esotericsoftware</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">groupId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">artifactId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">kryo</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">artifactId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">version</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token number" style="color:#36acaa">4.0</span><span class="token number" style="color:#36acaa">.2</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">version</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">dependency</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">dependency</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">groupId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">de</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">javakaffee</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">groupId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">artifactId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">kryo</span><span class="token operator" style="color:#393A34">-</span><span class="token plain">serializers</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">artifactId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">version</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token number" style="color:#36acaa">0.42</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">version</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">dependency</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>如果配置中心是 file,依赖是 seata-all,请在应用的 file.conf 文件中添加如下  配置</p>
+<p>如果配置中心是 file,依赖是 seata-all,请在应用的 file.conf 文件中添加如下配置</p>
 <div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">client </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  undo </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    logSerialization </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;kryo&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>如果配置中心是 file,依赖是 seata-spring-boot-starter,使用 yml 自行转成 yml 格式即可</p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">seata.client.undo.logSerialization=kryo</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
@@ -425,7 +428,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <ul>
 <li>检查异常是否被捕获,没有抛至 tm 端,如 rm 存在全局异常捕获器,rm 将异常包装成了一个正常的 result 响应给了 tm,导致 seata 的事务拦截器无法发现事务出现了异常,此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常,或者使用<a href="/zh-cn/docs/user/api/">Seata api</a> 进行回滚,切记 api 回滚必须结束调用,假设 tm 调用了 rm1 就出现错误,进行了 api 回滚,那么不应该让这个调用链再走到 rm2 去,应该直接 return 结束方法调用</li>
 <li>检查是否 rm 服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理</li>
-<li>如确  认无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
+<li>如确认无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
 <li>如决议结果是回滚,但是 rm 没注册,可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值,如果无值请参考 Q24</li>
 <li>如何判断数据源是否代理,如果是 AT 模式请在 ConnectionProxy#registry 打上断点,看是否会进入,XA 模式 ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!</li>
 </ul>
