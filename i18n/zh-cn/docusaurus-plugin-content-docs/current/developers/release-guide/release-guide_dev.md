@@ -8,7 +8,7 @@ description: Release Guide.
 
 ## 1. 前言
 
-#### 1.1 Apache 版本发布文档
+### 1.1 Apache 版本发布文档
 
 参考以下链接，了解 ASF 版本发布流程：
 
@@ -16,7 +16,7 @@ description: Release Guide.
 - [Apache Release Policy](http://www.apache.org/dev/release.html)
 - [Maven Release Info](http://www.apache.org/dev/publishing-maven-artifacts.html)
 
-#### 1.2 PGP 签名
+### 1.2 PGP 签名
 
 遵循 Apache 版本发布指南，对发布版本签名，用户也可据此判断下载的版本是否被篡改。
 
@@ -125,7 +125,7 @@ gpg: sending key XXXXXXXX to hkp server keys.openpgp.org
 
 ```
 
-#### 1.3 POM 配置
+### 1.3 POM 配置
 
 配置 POM 文件，以便将版本部署到 ASF Nexus 仓库。
 
@@ -179,21 +179,21 @@ gpg: sending key XXXXXXXX to hkp server keys.openpgp.org
 
 **Tips:** 推荐使用 [Maven's password encryption capabilities](http://maven.apache.org/guides/mini/guide-encryption.html) 加密 `gpg.passphrase`
 
-#### 1.5 发布 Release Notes
+### 1.4 发布 Release Notes
 
 通过[changelog](https://github.com/apache/incubator-seata/blob/2.x/changes/zh-cn/2.x.md)构建出对应版本的Release Notes
 
 ## 2.发布流程
 
-### 1. 准备分支
+### 2.1 准备分支
 
 从主干分支拉取新分支作为发布分支，如现在要发布 `${release_version}` 版本，则从开发分支拉出新分支 `${release_version}`，此后`${release_version}` Release Candidates 涉及的修改及打标签等都在`${release_version}`分支进行，并保证该分支的github actions ci全部通过，最终发布完成后合入主干分支。
 
 例：如 Java SDK 需要发布 `2.2.0` 版本，从 `2.x` 分支拉出新分支 `2.2.0`，并在此分支提交从 Snapshot版本号 替换为 `2.2.0` 版本号的 commit。
 
-### 2.预发布二进制包
+### 2.2 预发布二进制包
 
-#### 2.1 SDK根据 [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] 的说明准备发布。
+#### 1) SDK根据 [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] 的说明准备发布。
 
 ```
 mvn clean deploy -Prelease -DskipTests -e -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
@@ -203,19 +203,19 @@ mvn clean deploy -Prelease -DskipTests -e -B -Dorg.slf4j.simpleLogger.log.org.ap
 
 注：如果close失败很可能是因为签名的秘钥对应的公钥在keys.openpgp.org中无法获取到，请自行通过[OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/) 检查
 
-#### 2.2 Source&Binary提交至svn仓库
+#### 2) Source&Binary提交至svn仓库
 
-##### 2.2.1 安装svn
+##### a. 安装svn
 
 下载并安装[Download Apache Subversion Sources](https://subversion.apache.org/download.cgi#recommended-release)
 
 或通过 `brew install subversion` 一键安装
 
-##### 2.2.2 编译seata-server及seata-namingserver
+##### b. 编译seata-server及seata-namingserver
 
  `mvn -Prelease-seata -Dmaven.test.skip=true -T4C -Dpmd.skip=true clean install -U`
 
-##### 2.2.3 将Source及Binary进行签名
+##### c. 将Source及Binary进行签名
 
 Source 建议直接通过github 对应版本分支如2.2.0 进行下载zip包，避免本地环境污染Source包内容，然后重命名为apache-seata-x.x.x-incubating-src.zip
 
@@ -237,7 +237,7 @@ asc验证
 
 `gpg --verify  apache-seata-x.x.x-incubating-src.zip.asc apache-seata-x.x.x-incubating-src.zip`
 
-##### 2.2.4 拉取svn至本地，并构建发布版本路径，并将签名文件及Source和Binary移入其中
+##### d. 拉取svn至本地，并构建发布版本路径，并将签名文件及Source和Binary移入其中
 
 拉取svn目录
 
@@ -288,9 +288,9 @@ asc验证
 提交后的版本为 71769。
 ```
 
-#### 2.3 创建tag及releasenote
+#### 3) 创建tag及releasenote
 
-##### 2.3.1 创建tag
+##### a. 创建tag
 
 在x.x.x分支下执行
 
@@ -298,13 +298,13 @@ asc验证
 
 git push upstream(seata仓库repo) vx.x.x
 
-##### 2.3.2 创建release note
+##### b. 创建release note
 
 通过该链接创建release note [New release · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/releases/new) 并将Choose a tag设置为对应的tag
 
 并设置为Set as a pre-release 整体投票通过后再设置为Set as the latest release
 
-### 3.验证Release Candidates
+### 2.3 验证Release Candidates
 
 详细的检查列表请参考官方的[check list](https://cwiki.apache.org/confluence/display/INCUBATOR/Incubator+Release+Checklist)
 
@@ -372,9 +372,9 @@ gpg --verify apache-seata-${release_version}-incubating-bin.tar.gz.asc apache-se
 注意，如果二进制包里面引入了第三方依赖，则需要更新LICENSE，加入第三方依赖的LICENSE，如果第三方依赖的LICENSE是Apache 2.0，并且对应的项目中包含了NOTICE，还需要更新NOTICE文件。
 同时，如果一个依赖项是双重/多重许可的，只需选择最宽松的一个。 可以参考这篇文章：[ASF第三方许可政策](https://apache.org/legal/resolved.html)
 
-### 4.投票阶段
+### 2.4 投票阶段
 
-#### 4.1 社区内部投票
+#### 1) 社区内部投票
 
 **投票持续至少 72 小时并获得 3 个+1 binding票**
 
@@ -449,7 +449,7 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 
 ```
 
-#### 4.1.2 完成投票
+#### 2) 完成投票
 
 发布投票通过邮件
 
@@ -482,7 +482,7 @@ We will soon launch the second stage of voting.
 
 
 
-#### 4.2.1 孵化器中投票
+#### 3) 孵化器中投票
 
 与社区投票类似，但是需要增加社区投票相关的thread链接，以证明已在社区内达成一致
 
@@ -562,7 +562,7 @@ Checklist for reference:
 To learn more about Apache Seata , please see https://seata.apache.org/
 ```
 
-#### 4.2.2 公示孵化器投票结果
+#### 4) 公示孵化器投票结果
 
 72 小时后，若至少有 3 票通过而没有反对票，则参考如下邮件进行发送结果
 
@@ -595,7 +595,7 @@ announcement soon.
 
 ```
 
-### 4.2.3 投票中断
+#### 5) 投票中断
 
 如出现在投票过程中验证不通过,如license,或者版本存在bug等,经评估需要修复后才能发版,那么需要中断本次投票
 标题：`[CANCEL][VOTE] Release Apache Seata (incubating) x.x.x(RoundN)`
@@ -611,9 +611,9 @@ I'm cancelling this vote:
 
 注: 孵化器中投票终止后,新的投票需要从社区内部重新开始
 
-# 5.完成发布
+### 2.5.完成发布
 
-### 5.1 release 版本
+#### 1) release 版本
 
 1. 从Apache Nexus 仓库, 选择之前进行close过的的 **orgapacheseata-XXX** 点击 `Release` 图标发布
 
@@ -625,7 +625,7 @@ I'm cancelling this vote:
 
 4. 将x.x.x的文档更新至seata官网中，并补充对应binary和source的下载链接
 
-### 5.2 版本公示
+#### 2) 版本公示
 
 发送邮件至 `general@incubator.apache.org`
 
@@ -650,7 +650,7 @@ Resources:
 - Mailing list: dev@seata.apache.org
 ```
 
-### 5.3 归档老版本
+#### 3) 归档老版本
 发布新版本后，需要将上一个版本归档，确保在[download](https://downloads.apache.org/incubator/seata/) 只保留同一维护分支的最新版本。Archive 版本在发布新版本时会自动同步到[归档](https://archive.apache.org/dist/incubator/seata/)。因此，只需要删除[download](https://downloads.apache.org/incubator/seata/) 中老的版本即可，参考命令如下：
 
 ```yaml
