@@ -304,9 +304,78 @@ Create a release note through [New release · apache/incubator-seata (github.com
 
 Mark it as "Set as a pre-release". After the overall vote passes, set it as "Set as the latest release".
 
-### 3. Voting Stage
 
-#### 3.1 Community Internal Voting
+
+### 3. Verify Release Candidates
+
+A full check list can be found [here](https://cwiki.apache.org/confluence/display/INCUBATOR/Incubator+Release+Checklist)
+
+First, download the Release Candidate to your local environment from the following address:
+
+```
+https://dist.apache.org/repos/dist/dev/incubator/seata/${release_version}/
+```
+
+Then, proceed to the validation phase, which includes but is not limited to the following items and formats:
+
+#### Check information such as signatures and hashes
+
+##### Verify the SHA-512 hash
+
+```sh
+$ shasum -c apache-seata-${release_version}-incubating-bin.tar.gz.sha512
+$ shasum -c apache-seata-${release_version}-incubating-src.tar.gz.sha512
+```
+#### Check the GPG signature
+
+If this is your first time verifying, you will need to import the public key first.
+
+```sh
+ $ curl https://downloads.apache.org/incubator/seata/KEYS >> KEYS # Download the public key to your local machine
+ $ gpg --import KEYS # Import the public keys
+ $ gpg --edit-key xxx # Replace 'xxx' with your Apache ID
+   > trust # Type the 'trust' command to trust user xxx
+ ```
+Then, use the following command to verify the signature
+
+ ```sh
+gpg --verify apache-seata-${release_version}-incubating-src.tar.gz.asc apache-seata-${release_version}-incubating-src.tar.gz
+gpg --verify apache-seata-${release_version}-incubating-bin.tar.gz.asc apache-seata-${release_version}-incubating-bin.tar.gz
+ ```
+#### Verify the contents of the source package
+
+Extract the archive`apache-seata-${release_version}-incubating-src.tar.gz`, and perform the following checks:
+
+- Directory with 'incubating' in name
+  `apache-seata-${release_version}-incubating-src`
+- DISCLAIMER exists
+- LICENSE and NOTICE exists and contents are good
+- All files and no binary files exist
+- All files has standard ASF License header
+- Can compile from source
+- All unit tests can pass
+  ```sh
+  ./mvnw clean package -DskipTests=true
+  ```
+- Release candidates match with corresponding tags, you can find tag link and hash in vote email.
+  - check the version number in pom.xml are the same
+  - check there are no extra files or directories in the source package, for example, no empty directories or useless log files.Pay special attention to line break consistency, which can be checked using the command:`diff -r rc_dir tag_dir`
+  - check the top n tag commits, dive into the related files and check if the source package has the same changes
+
+#### Verify the contents of the binary package
+
+Extract the archive`apache-seata-${release_version}-incubating-bin.tar.gz`, and perform the following checks:
+
+* Check signatures are good
+* 'incubating' in name
+* LICENSE and NOTICE exists and contents are good
+
+Note: If the binary package includes third-party dependencies, it is necessary to update the LICENSE file by adding the licenses of those third-party dependencies. If a third-party dependency is licensed under Apache 2.0 and its project includes a NOTICE file, the NOTICE file must also be updated accordingly.
+Additionally, if a dependency is dual/multiple licensed, you only need to include the most permissive one. You may refer to this article: [ASF Third-Party License Policy](https://apache.org/legal/resolved.html)
+
+### 4. Voting Stage
+
+#### 4.1 Community Internal Voting
 
 **The vote must last at least 72 hours and receive at least 3 +1 binding votes**
 
@@ -380,7 +449,7 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 
 ```
 
-#### 3.1.2 Complete the vote
+#### 4.1.2 Complete the vote
 
 Send a vote passed email:
 
@@ -411,7 +480,7 @@ Thank you for reviewing and voting for our release candidate.
 We will soon launch the second stage of voting.
 ```
 
-#### 3.2.1 Voting in the Incubator
+#### 4.2.1 Voting in the Incubator
 
 Similar to community voting, but you need to add links to the community vote thread to prove consensus was reached within the community.
 
@@ -491,7 +560,7 @@ Checklist for reference:
 To learn more about Apache Seata , please see https://seata.apache.org/
 ```
 
-#### 3.2.2 Announce the Incubator vote result
+#### 4.2.2 Announce the Incubator vote result
 
 After 72 hours, if there are at least 3 passing votes and no opposing votes, send an email as follows:
 
@@ -524,7 +593,7 @@ announcement soon.
 
 ```
 
-### 3.2.3 Vote Interruption
+### 4.2.3 Vote Interruption
 
 If issues are found during the voting process, such as license problems or bugs that need to be fixed before release, the vote must be interrupted.
 
@@ -541,9 +610,9 @@ Describe the reason for cancellation: such as missing licenses, or bugs in the v
 
 Note: After cancelling a vote in the Incubator, a new vote must start again from within the community.
 
-# 4. Complete the Release
+# 5. Complete the Release
 
-### 4.1 Release the Version
+### 5.1 Release the Version
 
 1. From Apache Nexus repository, select the previously closed **orgapacheseata-XXX** and click the `Release` icon to publish.
 
@@ -555,7 +624,7 @@ Note: After cancelling a vote in the Incubator, a new vote must start again from
 
 4. Update the documentation for version x.x.x on the Seata official website, and add download links for the binary and source packages.
 
-### 4.2 Announce the Release
+### 5.2 Announce the Release
 
 Send an email to `general@incubator.apache.org`
 
@@ -580,7 +649,7 @@ Resources:
 - Mailing list: dev@seata.apache.org
 ```
 
-### 4.3 Archiving Old Versions
+### 5.3 Archiving Old Versions
 After releasing a new version, the previous version must be archived to ensure that only the latest version of the same maintenance branch is retained in the [download](https://downloads.apache.org/incubator/seata/) directory. Archived versions are automatically synchronized to the [archive](https://archive.apache.org/dist/incubator/seata/) when a new release is published. Therefore, it is sufficient to delete older versions from the [download](https://downloads.apache.org/incubator/seata/) directory. Example commands are provided below:
 
 ```yaml
