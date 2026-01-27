@@ -332,7 +332,7 @@ $ shasum -c apache-seata-${release_version}-incubating-src.tar.gz.sha512
 ```sh
  $ curl https://downloads.apache.org/incubator/seata/KEYS >> KEYS # 下载公钥到本地
  $ gpg --import KEYS # 导入公钥
- $ gpg --edit-key xxx # xxx为你的apache id,如xingfudeshi
+ $ gpg --edit-key xxx # xxx为你的apache id
    > trust # 输入 trust 命令,信任xxx用户
  ```
 然后使用如下命令检查签名
