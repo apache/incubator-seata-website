@@ -966,7 +966,7 @@ StateMachineInstance inst = stateMachineEngine.start(stateMachineName, null, par
 Seata 会把一个 Saga注解化 接口当成一个 Resource，也叫 Saga annotation Resource。在业务接口中核心的注解是 `@CompensationBusinessAction`
 
 - action 阶段，执行一阶段的业务逻辑
-- compensation 阶段，当事务觉一回滚（Rollback） 这一阶段使用 `compensationMethod` 属性所指向的方法，来执行自定义 补偿 的工作。
+- compensation 阶段，当事务决定回滚（Rollback） 这一阶段使用 `compensationMethod` 属性所指向的方法，来执行自定义 补偿 的工作。
 
 其次，可以在 Saga 模式下使用 `BusinessActionContext` 在事务上下文中传递查询参数。如下属性：
 
