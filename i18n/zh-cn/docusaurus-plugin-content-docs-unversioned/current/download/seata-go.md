@@ -48,9 +48,10 @@ Seata Go v2.0.0 是当前稳定版本，覆盖 AT、TCC、XA 等模式，并支�
 
 ## 通过 Go Modules 安装
 - （可选）设置代理以提升下载速度：`go env -w GOPROXY=https://goproxy.cn,direct`。
-- 引入 SDK：`go get seata.apache.org/seata-go@v2.0.0`，依赖会写入 `go.mod` / `go.sum`。
-- 在 `go.mod` 中保留 `require seata.apache.org/seata-go v2.0.0` 并执行 `go mod tidy`，锁定依赖版本。
-- 提交前使用 `go list seata.apache.org/seata-go/...` 确认依赖解析正常。
+- 引入 SDK：`go get seata.apache.org/seata-go/v2@v2.0.0`，依赖会写入 `go.mod` / `go.sum`。
+- 在 `go.mod` 中保留 `require seata.apache.org/seata-go/v2 v2.0.0` 并执行 `go mod tidy`，锁定依赖版本。
+- 提交前使用 `go list seata.apache.org/seata-go/v2/...` 确认依赖解析正常。
+
 
 ## 验证发布包
 下载的发行包应通过 GPG 签名或 SHA 校验和验证完整性。请直接从 Apache 分发目录获取 KEYS、`.asc` 和 `.sha512` 等文件，而非第三方镜像。
