@@ -48,9 +48,9 @@ Seata Go v2.0.0 is the current stable release, covering AT, TCC, and XA modes wi
 
 ## Install via Go Modules
 - (Optional) Pin a proxy for faster downloads: `go env -w GOPROXY=https://goproxy.cn,direct`.
-- Add the SDK to your module: `go get seata.apache.org/seata-go@v2.0.0` (records to `go.mod` / `go.sum`).
-- Lock the dependency explicitly by keeping `require seata.apache.org/seata-go v2.0.0` and running `go mod tidy`.
-- Verify dependency integrity before committing: `go list seata.apache.org/seata-go/...`.
+- Add the SDK to your module: `go get seata.apache.org/seata-go/v2@v2.0.0` (records to `go.mod` / `go.sum`).
+- Lock the dependency explicitly by keeping `require seata.apache.org/seata-go/v2 v2.0.0` and running `go mod tidy`.
+- Verify dependency integrity before committing: `go list seata.apache.org/seata-go/v2/...`.
 
 ## Verify the releases
 It is crucial to verify the integrity of downloaded artifacts using GPG signatures or SHA checksums. Download the KEYS, `.asc`, and `.sha512` files directly from the Apache distribution directory rather than mirrors.
