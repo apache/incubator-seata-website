@@ -54,23 +54,29 @@ const Top = () => {
   });
 
   React.useEffect(() => {
+    // Only run in browser, not during SSR
+    if (typeof window === 'undefined') {
+      return;
+    }
+    
     const controller = new AbortController();
     const signal = controller.signal;
     // set timeout
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       controller.abort();
     }, 5000);
 
-    fetch('//api.github.com/repos/apache/incubator-seata', { signal })
+    fetch('https://api.github.com/repos/apache/incubator-seata', { signal })
       .then((res) => res.json())
       .then((data) => {
         setRepo({
           starCount: `${data.stargazers_count}`,
           forkCount: `${data.forks_count}`,
         });
-      }).catch((err => {
+      }).catch((err) => {
         // do nothing
-      }));
+      });
+      
     fetch('https://api.github.com/repos/apache/incubator-seata/releases/latest', { signal })
       .then((res) => res.json())
       .then((data) => {
@@ -79,9 +85,15 @@ const Top = () => {
           url: data.html_url,
           date: new Date(data.published_at).toLocaleDateString(),
         });
-      }).catch((err => {
+      }).catch((err) => {
         // do nothing
-      }));
+      });
+      
+    // Cleanup function
+    return () => {
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
   }, []);
 
   return (

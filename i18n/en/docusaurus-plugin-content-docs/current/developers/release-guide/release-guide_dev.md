@@ -8,7 +8,7 @@ description: Release Guide.
 
 ## 1. Introduction
 
-#### 1.1 Apache Seata™ (incubating) Release Documentation
+### 1.1 Apache Seata™ (incubating) Release Documentation
 
 Refer to the following links to understand the ASF release process:
 
@@ -16,7 +16,7 @@ Refer to the following links to understand the ASF release process:
 - [Apache Release Policy](http://www.apache.org/dev/release.html)
 - [Maven Release Info](http://www.apache.org/dev/publishing-maven-artifacts.html)
 
-#### 1.2 PGP Signatures
+### 1.2 PGP Signatures
 
 Following the Apache Release Guidelines, release versions must be signed, allowing users to verify if downloaded versions have been tampered with.
 
@@ -125,7 +125,7 @@ gpg: sending key XXXXXXXX to hkp server keys.openpgp.org
 
 ```
 
-#### 1.3 POM Configuration
+### 1.3 POM Configuration
 
 Configure the POM file to deploy versions to the ASF Nexus repository.
 
@@ -179,21 +179,21 @@ Configure the POM file to deploy versions to the ASF Nexus repository.
 
 **Tips:** It's recommended to use [Maven's password encryption capabilities](http://maven.apache.org/guides/mini/guide-encryption.html) to encrypt `gpg.passphrase`
 
-#### 1.5 Publishing Release Notes
+#### 1.4 Publishing Release Notes
 
 Build Release Notes for the respective version through the [changelog](https://github.com/apache/incubator-seata/blob/2.x/changes/zh-cn/2.x.md).
 
 ## 2. Release Process
 
-### 1. Preparing the Branch
+### 2.1 Preparing the Branch
 
 Create a new branch from the main branch as the release branch. For instance, if you're releasing version `${release_version}`, create a new branch `${release_version}` from the development branch. All changes, tags, and fixes related to the `${release_version}` Release Candidates should be made on this branch. Ensure all GitHub Actions CI tests pass on this branch. After the release is completed, merge it back into the main branch.
 
 Example: To release Java SDK version `2.2.0`, create a new branch `2.2.0` from the `2.x` branch, and commit changes to replace the Snapshot version number with the `2.2.0` version number on this branch.
 
-### 2. Pre-Release Binary Packages
+### 2.2 Pre-Release Binary Packages
 
-#### 2.1 Prepare the SDK release according to [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] guidelines.
+#### 1) Prepare the SDK release according to [publishing maven artifacts](https://infra.apache.org/publishing-maven-artifacts.html) [4] guidelines.
 
 ```
 mvn clean deploy -Prelease -DskipTests -e -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
@@ -203,19 +203,19 @@ At this point, the Seata SDK is published to the [staging repository](https://re
 
 Note: If closing fails, it's likely because the public key corresponding to your signing key is not available on keys.openpgp.org. Please verify through [OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/)
 
-#### 2.2 Submit Source & Binary to SVN Repository
+#### 2) Submit Source & Binary to SVN Repository
 
-##### 2.2.1 Install SVN
+##### a. Install SVN
 
 Download and install [Apache Subversion Sources](https://subversion.apache.org/download.cgi#recommended-release)
 
 Or install via `brew install subversion`
 
-##### 2.2.2 Compile seata-server and seata-namingserver
+##### b. Compile seata-server and seata-namingserver
 
- `mvn -Prelease-seata -Dmaven.test.skip=true -Dskip.npm=true -T4C -Dpmd.skip=true clean install -U`
+ `mvn -Prelease-seata -Dmaven.test.skip=true -T4C -Dpmd.skip=true clean install -U`
 
-##### 2.2.3 Sign Source and Binary packages
+##### c. Sign Source and Binary packages
 
 For the Source package, it's recommended to download the zip directly from the corresponding version branch on GitHub (e.g., 2.2.0) to avoid local environment contamination, then rename it to apache-seata-x.x.x-incubating-src.zip
 
@@ -237,7 +237,7 @@ Verify ASC:
 
 `gpg --verify  apache-seata-x.x.x-incubating-src.zip.asc apache-seata-x.x.x-incubating-src.zip`
 
-##### 2.2.4 Pull SVN locally, create release version path, and move the signed files and Source/Binary packages into it
+##### d. Pull SVN locally, create release version path, and move the signed files and Source/Binary packages into it
 
 Pull SVN directory:
 
@@ -288,9 +288,9 @@ Reading transaction
 Committed revision 71769.
 ```
 
-#### 2.3 Create tag and release note
+#### 3) Create tag and release note
 
-##### 2.3.1 Create tag
+##### a. Create tag
 
 In the x.x.x branch, execute:
 
@@ -298,15 +298,84 @@ In the x.x.x branch, execute:
 
 `git push upstream(seata repository repo) vx.x.x`
 
-##### 2.3.2 Create release note
+##### b. Create release note
 
 Create a release note through [New release · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/releases/new) and set "Choose a tag" to the corresponding tag.
 
 Mark it as "Set as a pre-release". After the overall vote passes, set it as "Set as the latest release".
 
-### 3. Voting Stage
 
-#### 3.1 Community Internal Voting
+
+### 2.3 Verify Release Candidates
+
+A full check list can be found [here](https://cwiki.apache.org/confluence/display/INCUBATOR/Incubator+Release+Checklist)
+
+First, download the Release Candidate to your local environment from the following address:
+
+```
+https://dist.apache.org/repos/dist/dev/incubator/seata/${release_version}/
+```
+
+Then, proceed to the validation phase, which includes but is not limited to the following items and formats:
+
+#### Check information such as signatures and hashes
+
+##### Verify the SHA-512 hash
+
+```sh
+$ shasum -c apache-seata-${release_version}-incubating-bin.tar.gz.sha512
+$ shasum -c apache-seata-${release_version}-incubating-src.tar.gz.sha512
+```
+#### Check the GPG signature
+
+If this is your first time verifying, you will need to import the public key first.
+
+```sh
+ $ curl https://downloads.apache.org/incubator/seata/KEYS >> KEYS # Download the public key to your local machine
+ $ gpg --import KEYS # Import the public keys
+ $ gpg --edit-key xxx # Replace 'xxx' with your Apache ID
+   > trust # Type the 'trust' command to trust user xxx
+ ```
+Then, use the following command to verify the signature
+
+ ```sh
+gpg --verify apache-seata-${release_version}-incubating-src.tar.gz.asc apache-seata-${release_version}-incubating-src.tar.gz
+gpg --verify apache-seata-${release_version}-incubating-bin.tar.gz.asc apache-seata-${release_version}-incubating-bin.tar.gz
+ ```
+#### Verify the contents of the source package
+
+Extract the archive`apache-seata-${release_version}-incubating-src.tar.gz`, and perform the following checks:
+
+- Directory with 'incubating' in name
+  `apache-seata-${release_version}-incubating-src`
+- DISCLAIMER exists
+- LICENSE and NOTICE exists and contents are good
+- All files and no binary files exist
+- All files has standard ASF License header
+- Can compile from source
+- All unit tests can pass
+  ```sh
+  ./mvnw clean package -DskipTests=true
+  ```
+- Release candidates match with corresponding tags, you can find tag link and hash in vote email.
+  - check the version number in pom.xml are the same
+  - check there are no extra files or directories in the source package, for example, no empty directories or useless log files.Pay special attention to line break consistency, which can be checked using the command:`diff -r rc_dir tag_dir`
+  - check the top n tag commits, dive into the related files and check if the source package has the same changes
+
+#### Verify the contents of the binary package
+
+Extract the archive`apache-seata-${release_version}-incubating-bin.tar.gz`, and perform the following checks:
+
+* Check signatures are good
+* 'incubating' in name
+* LICENSE and NOTICE exists and contents are good
+
+Note: If the binary package includes third-party dependencies, it is necessary to update the LICENSE file by adding the licenses of those third-party dependencies. If a third-party dependency is licensed under Apache 2.0 and its project includes a NOTICE file, the NOTICE file must also be updated accordingly.
+Additionally, if a dependency is dual/multiple licensed, you only need to include the most permissive one. You may refer to this article: [ASF Third-Party License Policy](https://apache.org/legal/resolved.html)
+
+### 2.4 Voting Stage
+
+#### 1) Community Internal Voting
 
 **The vote must last at least 72 hours and receive at least 3 +1 binding votes**
 
@@ -380,7 +449,7 @@ To learn more about Apache Seata , please see https://seata.apache.org/
 
 ```
 
-#### 3.1.2 Complete the vote
+#### 2) Complete the vote
 
 Send a vote passed email:
 
@@ -411,7 +480,7 @@ Thank you for reviewing and voting for our release candidate.
 We will soon launch the second stage of voting.
 ```
 
-#### 3.2.1 Voting in the Incubator
+#### 3) Voting in the Incubator
 
 Similar to community voting, but you need to add links to the community vote thread to prove consensus was reached within the community.
 
@@ -491,7 +560,7 @@ Checklist for reference:
 To learn more about Apache Seata , please see https://seata.apache.org/
 ```
 
-#### 3.2.2 Announce the Incubator vote result
+#### 4) Announce the Incubator vote result
 
 After 72 hours, if there are at least 3 passing votes and no opposing votes, send an email as follows:
 
@@ -524,7 +593,7 @@ announcement soon.
 
 ```
 
-### 3.2.3 Vote Interruption
+#### 5) Vote Interruption
 
 If issues are found during the voting process, such as license problems or bugs that need to be fixed before release, the vote must be interrupted.
 
@@ -541,9 +610,9 @@ Describe the reason for cancellation: such as missing licenses, or bugs in the v
 
 Note: After cancelling a vote in the Incubator, a new vote must start again from within the community.
 
-# 4. Complete the Release
+### 2.5 Complete the Release
 
-### 4.1 Release the Version
+#### 1) Release the Version
 
 1. From Apache Nexus repository, select the previously closed **orgapacheseata-XXX** and click the `Release` icon to publish.
 
@@ -555,7 +624,7 @@ Note: After cancelling a vote in the Incubator, a new vote must start again from
 
 4. Update the documentation for version x.x.x on the Seata official website, and add download links for the binary and source packages.
 
-### 4.2 Announce the Release
+#### 2) Announce the Release
 
 Send an email to `general@incubator.apache.org`
 
@@ -580,7 +649,7 @@ Resources:
 - Mailing list: dev@seata.apache.org
 ```
 
-### 4.3 Archiving Old Versions
+#### 3) Archiving Old Versions
 After releasing a new version, the previous version must be archived to ensure that only the latest version of the same maintenance branch is retained in the [download](https://downloads.apache.org/incubator/seata/) directory. Archived versions are automatically synchronized to the [archive](https://archive.apache.org/dist/incubator/seata/) when a new release is published. Therefore, it is sufficient to delete older versions from the [download](https://downloads.apache.org/incubator/seata/) directory. Example commands are provided below:
 
 ```yaml

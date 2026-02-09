@@ -56,10 +56,12 @@ const data = {
         id: 'homepage.featureListTitle3',
         message: 'TCC 模式',
       }),
-      content: translate({
-        id: 'homepage.featureListContent3',
-        message: '支持 TCC 模式并可与 AT 混用，灵活度更高',
-      }),
+      content: [
+        translate({
+          id: 'homepage.featureListContent3',
+          message: '支持 TCC 模式并可与 AT 混用，灵活度更高',
+        }),
+      ],
     },
     {
       icon: 'feature-4',
@@ -67,10 +69,12 @@ const data = {
         id: 'homepage.featureListTitle4',
         message: 'SAGA 模式',
       }),
-      content: translate({
-        id: 'homepage.featureListContent4',
-        message: '为长事务提供有效的解决方案,提供编排式和注解式(开发中)',
-      }),
+      content: [
+        translate({
+          id: 'homepage.featureListContent4',
+          message: '为长事务提供有效的解决方案,提供编排式和注解式(开发中)',
+        }),
+      ],
     },
     {
       icon: 'feature-5',
@@ -78,20 +82,37 @@ const data = {
         id: 'homepage.featureListTitle5',
         message: 'XA 模式',
       }),
-      content: translate({
-        id: 'homepage.featureListContent5',
-        message:
-          '支持已实现 XA 接口的数据库的 XA 模式，目前已支持MySQL、Oracle和MariaDB',
-      }),
+      content: [
+        translate({
+          id: 'homepage.featureListContent5',
+          message:
+            '支持已实现 XA 接口的数据库的 XA 模式，目前已支持MySQL、Oracle和MariaDB',
+        }),
+      ],
     },
     {
       icon: 'feature-6',
       title: translate({ id: 'homepage.featureListTitle6', message: '高可用' }),
-      content: translate({
-        id: 'homepage.featureListContent6',
-        message:
-          '支持存算分离的集群模式，计算节点可水平扩展，存储支持数据库和 Redis。Raft集群模式进入beta验证阶段',
+      content: [
+        translate({
+          id: 'homepage.featureListContent6',
+          message:
+            '支持存算分离的集群模式，计算节点可水平扩展，存储支持数据库和 Redis。Raft集群模式进入beta验证阶段',
+        }),
+      ],
+    },
+    {
+      icon: 'feature-7',
+      title: translate({
+        id: 'homepage.featureListTitle7',
+        message: 'GoLang Implementation & Ecosystem',
       }),
+      content: [
+        translate({
+          id: 'homepage.featureListContent7',
+          message: 'Seata has a native GoLang implementation for high-performance transactions. Discover the entire ecosystem, including the Seata-Go repository, Kubernetes support, and CLI tool.',
+        }),
+      ],
     },
   ],
   title: translate({ id: 'homepage.featureTitle', message: '特色功能' }),
@@ -119,7 +140,11 @@ const Item = (props) => {
       <Icon type={feature.icon} />
       <div>
         <h4>{feature.title}</h4>
-        <p>{feature.content}</p>
+        {Array.isArray(feature.content) ? (
+          feature.content.map((item, index) => <p key={index}>{item}</p>)
+        ) : (
+          <p>{feature.content}</p>
+        )}
       </div>
     </li>
   );
