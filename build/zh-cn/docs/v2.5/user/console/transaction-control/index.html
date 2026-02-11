@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-v2.5 docs-doc-page docs-doc-id-user/console/transaction-control" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.1.1">
+<title data-rh="true">事务控制及全局锁 | Apache Seata</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://seata.apache.org/zh-cn/img/seata_logo.png"><meta data-rh="true" name="twitter:image" content="https://seata.apache.org/zh-cn/img/seata_logo.png"><meta data-rh="true" property="og:url" content="https://seata.apache.org/zh-cn/docs/v2.5/user/console/transaction-control"><meta data-rh="true" property="og:locale" content="zh_CN"><meta data-rh="true" property="og:locale:alternate" content="en_US"><meta data-rh="true" name="docusaurus_locale" content="zh-cn"><meta data-rh="true" name="docsearch:language" content="zh-cn"><meta data-rh="true" name="docusaurus_version" content="v2.5"><meta data-rh="true" name="docusaurus_tag" content="docs-default-v2.5"><meta data-rh="true" name="docsearch:version" content="v2.5"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-v2.5"><meta data-rh="true" property="og:title" content="事务控制及全局锁 | Apache Seata"><meta data-rh="true" name="description" content="Seata控制台提供对4种分布式事务的手工控制及AT模式下的全局锁的控制"><meta data-rh="true" property="og:description" content="Seata控制台提供对4种分布式事务的手工控制及AT模式下的全局锁的控制"><meta data-rh="true" name="keywords" content="console,transaction,lock"><link data-rh="true" rel="icon" href="/zh-cn/img/seata_logo_small.jpeg"><link data-rh="true" rel="canonical" href="https://seata.apache.org/zh-cn/docs/v2.5/user/console/transaction-control"><link data-rh="true" rel="alternate" href="https://seata.apache.org/docs/v2.5/user/console/transaction-control" hreflang="en-US"><link data-rh="true" rel="alternate" href="https://seata.apache.org/zh-cn/docs/v2.5/user/console/transaction-control" hreflang="zh-CN"><link data-rh="true" rel="alternate" href="https://seata.apache.org/docs/v2.5/user/console/transaction-control" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://ICHFIJRDZF-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/zh-cn/blog/rss.xml" title="Apache Seata RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/zh-cn/blog/atom.xml" title="Apache Seata Atom Feed">
+
+
+<link rel="search" type="application/opensearchdescription+xml" title="Apache Seata" href="/zh-cn/opensearch.xml">
+
+
+<meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.74a9afc5.css">
+<script src="/zh-cn/assets/js/runtime~main.00706a62.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/main.3efab9c6.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/zh-cn/"><div class="navbar__logo"><img src="/zh-cn/img/seata_logo.png" alt="Seata Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/zh-cn/img/seata_logo.png" alt="Seata Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/zh-cn/">首页</a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" docid="/overview/what-is-seata" href="/zh-cn/docs/v2.5/overview/what-is-seata">v2.5</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/zh-cn/docs/next/user/console/transaction-control">预览版</a></li><li><a class="dropdown__link" href="/zh-cn/docs/user/console/transaction-control">v2.6</a></li><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/zh-cn/docs/v2.5/user/console/transaction-control">v2.5</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v2.4/user/console/transaction-control">v2.4</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v2.3/overview/what-is-seata">v2.3</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v2.2/overview/what-is-seata">v2.2</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v2.1/overview/what-is-seata">v2.1</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v2.0/overview/what-is-seata">v2.0</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.8/overview/what-is-seata">v1.8</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.7/overview/what-is-seata">v1.7</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.6/overview/what-is-seata">v1.6</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.5/overview/what-is-seata">v1.5</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.4/overview/what-is-seata">v1.4</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.3/overview/what-is-seata">v1.3</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.2/overview/what-is-seata">v1.2</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.1/overview/what-is-seata">v1.1</a></li><li><a class="dropdown__link" href="/zh-cn/docs/v1.0/overview/what-is-seata">v1.0</a></li></ul></div><a class="navbar__item navbar__link" href="/zh-cn/docs/v2.5/developers/contributor-guide/new-contributor-guide_dev">社区</a><a class="navbar__item navbar__link" href="/zh-cn/blog">博客</a><a class="navbar__item navbar__link" href="/zh-cn/users">用户</a><a class="navbar__item navbar__link" href="/zh-cn/download/seata-server">下载</a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">设计器</a><ul class="dropdown__menu"><li><a href="/zh-cn/saga-designer" class="dropdown__link" target="_blank">Saga 设计器</a></li><li><a href="/zh-cn/saga-designer-legacy" class="dropdown__link" target="_blank">Saga 设计器（旧版）</a></li></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">ASF</a><ul class="dropdown__menu"><li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer" class="dropdown__link">Foundation</a></li><li><a href="https://www.apache.org/licenses" target="_blank" rel="noopener noreferrer" class="dropdown__link">License</a></li><li><a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Events</a></li><li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Sponsorship</a></li><li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Privacy</a></li><li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer" class="dropdown__link">Security</a></li><li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Thanks</a></li></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_DSK9"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>中</a><ul class="dropdown__menu"><li><a href="/docs/v2.5/user/console/transaction-control" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="en-US">En</a></li><li><a href="/zh-cn/docs/v2.5/user/console/transaction-control" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="zh-CN">中</a></li></ul></div><div class="navbarSearchContainer_Bca1"><button type="button" class="DocSearch DocSearch-Button" aria-label="搜索"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">搜索</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link">概述</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/overview/what-is-seata">Seata 是什么？</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/overview/history">发展历史</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/overview/terminology">Seata术语表</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/overview/faq">FAQ</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--active">用户文档</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/quickstart">快速启动</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/configurations">参数配置</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/mode/at">各事务模式</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/txgroup/transaction-group">事务分组</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/configuration/">配置中心</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/registry/">注册中心</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" tabindex="0" href="/zh-cn/docs/v2.5/user/console/introduction">控制台</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/console/introduction">控制台简介</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/console/saga-designer">Saga designer</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/zh-cn/docs/v2.5/user/console/transaction-control">事务控制及全局锁</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/api">API 支持</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/microservice">微服务框架支持</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/ormframework">ORM框架支持</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/user/datasource">数据库类型支持</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/sqlreference/sql-restrictions">SQL参考</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/apm/skywalking">应用性能监控</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/performance">测试报告</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/user/appendix/global-transaction-status">附录</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link">开发者指南</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/dev/mode/at-mode">各事务模式</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/dev/domain/overviewDomainModel">领域  模型</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/dev/seata-mertics">Metrics 设计</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link">运维指南</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/ops/upgrade">版本升级指南</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/ops/multi-configuration-isolation">多配置隔离</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/zh-cn/docs/v2.5/ops/deploy-guide-beginner">部署</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link">安全指南</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/zh-cn/docs/v2.5/security/secret-key">SecretKey 安全公告</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="theme-doc-version-banner alert alert--warning margin-bottom--md" role="alert"><div>此为 <!-- -->Apache Seata<!-- --> <b>v2.5</b> 版的文档，现已不  再积极维护。</div><div class="margin-top--md">最新的文档请参阅 <b><a href="/zh-cn/docs/user/console/transaction-control">最新版本</a></b> (<!-- -->v2.6<!-- -->)。</div></div><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/zh-cn/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">用户文档</span><meta itemprop="position" content="1"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">控制台</span><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">事务控制及全局锁</span><meta itemprop="position" content="3"></li></ul></nav><span class="theme-doc-version-badge badge badge--secondary">版本：v2.5</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><p>Seata控制台提供对4种分布式事务的手工控制及AT模式下的全局锁的控制。具体实现原理为根据分布式事务状态机来允许处于不同状态的事务手工事务变更操作，通过更改在存储中（支持Seata Server的所有存储模式file，db，redis及raft）的分布式事务状态来触发下一状态的流程运行。目前支持的功能有：</p>
+<p><strong>全局事务操作：</strong></p>
+<ul>
+<li>删除全局事务：允许已经到达终态的全局事务删除在Server端存储的数据</li>
+<li>强制删除全局事务：跳过事务状态检查，直接删除全局事务在在Server端存储的数据</li>
+<li>停止全局事务：将正在提交或者回滚中的全局事务停止运行</li>
+<li>开启全局事务重试：将停止的全局事务重新开启重试</li>
+<li>提交或回滚全局事务：将正在提交、回滚或停止的事务再次尝试提交或者回滚</li>
+<li>更新全局事务状态：将提交或者回滚失败的事务再次进行提交或者回滚</li>
+</ul>
+<p><strong>分支事务操作：</strong></p>
+<ul>
+<li>删除分支事务：允许已经达到终态的分支事务删除在Server端存储的数据</li>
+<li>强制删除分支事务：跳过事务状态检查，直接删除分支事务在在Server端存储的数据</li>
+<li>开启/停止分支事务：停止正在提交或回滚的分支事务，提交或者回滚停止的分支事务</li>
+</ul>
+<p><strong>全局锁操作：</strong></p>
+<ul>
+<li>删除全局锁：删除全局锁记录</li>
+</ul>
+<h1>背景知识</h1>
+<p>为了更好的使用事务及全局锁功能，下面对全局事务状态、分支事务状态、全局锁及Seata Server的存储模式进行简要说明。如只想快速开始，可直接查看后续的功能说明章节。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="全局事务">全局事务<a href="#全局事务" class="hash-link" aria-label="全局事务的直接链接" title="全局事务的直接链接">​</a></h2>
+<ul>
+<li>Unknown：全局事务状态不明确，一般在全局事务开始前处于该状态</li>
+<li>Begin：刚开启全局事务，分支事务可能正在执行或未执行</li>
+<li>Committing：二阶段正在提交（所有分支事务执行完后，TM向TC发起全局提交）</li>
+<li>CommitRetrying：提交分支事务返回的不是PhaseTwo_Committed跟PhaseTwo_CommitFailed_Unretryable，或者分支事务提交出现异常，设置为该状态，表示因为 可恢复的失败正在重试</li>
+<li>Rollbacking：二阶段正在回滚（TM发起全局回滚，TC接受后更改的状态）</li>
+<li>TimeoutRollbacking：定时任务检查出该全局事务超时后设置某个分支事务回滚时出现异常或返回的分支状态不是PhaseTwo_Rollbacked或PhaseTwo_RollbackFailed_Unretryable（比如返回的是XA分支重试状态或者PhaseTwo_RollbackFailed_Retryable）：会设置如下状态<!-- -->
+<ul>
+<li>TimeoutRollbackRetrying：回滚失败且全局事务超时（通常是被定时任务检查出的）</li>
+<li>RollbackRetrying：回滚失败但全局事务并没有超时</li>
+</ul>
+</li>
+<li>AsyncCommitting：TC在提交时，如果可以异步提交便异步提交，仅仅针对AT模式</li>
+<li>Committed：最终状态，已经成功提交</li>
+<li>CommitFailed：最终状态，提交分支事务返回PhaseTwo_CommitFailed_Unretryable时会设置</li>
+<li>Rollbacked：最终状态，已经成功回滚</li>
+<li>TimeoutRollbacked：最终状态，所有分支事务已经成功回滚，不过后续发现全局事务超时</li>
+<li>RollbackFailed：最终状态，回滚分支事务时返回PhaseTwo_RollbackFailed_Unretryable或者定时任务重试回滚时超时（超过 MAX_ROLLBACK_RETRY_TIMEOUT ）</li>
+<li>TimeoutRollbackFailed：最终状态，回滚分支事务返回PhaseTwo_RollbackFailed_Unretryable且全局事务超时</li>
+<li>Finished：最终状态，标注不存在的事务或者状态不明确的事务，在saga模式在分支事务返回PhaseOne_Failed会进行持久化</li>
+<li>CommitRetryTimeout：最终状态，定时任务重试提交超时</li>
+<li>RollbackRetryTimeout：最终状态，定时任务重试回滚超时</li>
+<li>Deleting：事务正在删除中</li>
+<li>StopCommitOrCommitRetry：停止事务提交或事务提交重试</li>
+<li>StopRollbackOrRollbackRetry：停止事务回滚或事务回滚重试</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="分支事务">分支事务<a href="#分支事务" class="hash-link" aria-label="分支事务的直接链接" title="分支事务的直接链接">​</a></h2>
+<ul>
+<li>Unknown：分支事务状态不明确</li>
+<li>Registered：向TC注册分支</li>
+<li>PhaseOne_Done：分支事务commit时设置</li>
+<li>PhaseOne_Failed：分支事务rollback时设置</li>
+<li>PhaseOne_Timeout：未使用</li>
+<li>PhaseTwo_Committed：TC向RM发送分支事务提交，提交成功后RM返回该状态（不会持久化，</li>
+<li>直接remove分支）</li>
+<li>PhaseTwo_CommitFailed_Retryable：TC向RM发送分支事务提交，提交失败后RM返回该状态</li>
+<li>PhaseTwo_CommitFailed_Unretryable：TC向RM发送分支事务提交，分支事务提交出现异常返回该状态</li>
+<li>PhaseTwo_Rollbacked：TC向RM发送分支事务回滚，回滚成功后RM返回该状态（不会持久化，直接remove分支）</li>
+<li>PhaseTwo_RollbackFailed_Retryable：TC向RM发送分支事务提交，提交失败后RM返回该状态</li>
+<li>PhaseTwo_RollbackFailed_Unretryable：TC向RM发送分支事务提交，分支事务提交出现异常返回该状态</li>
+<li>PhaseTwo_CommitFailed_XAER_NOTA_Retryable：针对XA提交失败重试</li>
+<li>PhaseTwo_RollbackFailed_XAER_NOTA_Retryable：针对XA回滚失败重试</li>
+<li>PhaseOne_RONLU：在Oracle数据库中执行分支准备后，只执行纯只读的查询语句</li>
+<li>STOP_RETRY：停止重试</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="全局锁">全局锁<a href="#全局锁" class="hash-link" aria-label="全局锁的直接链接" title="全局锁的直接链接">​</a></h2>
+<p>全局锁仅仅针对AT模式，非正常情况下释放锁后可能会出现脏写问题</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="存储模式">存储模式<a href="#存储模式" class="hash-link" aria-label="存储模式的直接链接" title="存储模式的直接链接">​</a></h2>
+<p>Seata Server的存储模式有以下四种：</p>
+<ul>
+<li><strong>File模式</strong>：适用于小型项目或测试环境，数据存储在  本地文件中，性能和可靠性相对较低。</li>
+<li><strong>DB模式</strong>：适用于生产环境，数据存储在数据库中（如MySQL、Oracle等），具有较高的性能和可靠性，但需要额外维护数据库。</li>
+<li><strong>Redis模式</strong>：适用于对性能要求较高且已使用Redis的场景，数据存储在Redis中，具有较高的读写速度，但可能会增加Redis的负载。</li>
+<li><strong>Raft模式</strong>：通过封装无法高可用的file模式，利用Raft算法实现多个TC之间数据的同步。</li>
+</ul>
+<p>当通过控制台及事务及全局事务进行操作后，可能会更改在数据库中的存储状态，可根据对应存储模式进行查看。</p>
+<h1>功能说明</h1>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="全局事务操作">全局事务操作<a href="#全局事务操作" class="hash-link" aria-label="全局事务操作的直接链接" title="全局事务操作的直接链接">​</a></h2>
+<p>为了避免人工对全局事务操作时对事务状态的改变发生错误，往往在操作前会进行事务的状态检查。基于背景知识中的全局事务，对其分为以下几类，事务状态的检查往往会涉及以下状态分类的校验：</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="事务状态分类">事务状态分类<a href="#事务状态分类" class="hash-link" aria-label="事务状态分类的直接链接" title="事务状态分类的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="重试操作状态">重试操作状态<a href="#重试操作状态" class="hash-link" aria-label="重试操作状态的直接链接" title="重试操作状态的直接链接">​</a></h4>
+<ol>
+<li><strong>提交重试集合</strong>
+<code>RETRY_COMMIT_STATUS</code>: CommitRetrying</li>
+<li><strong>回滚重试集合</strong>
+<code>RETRY_ROLLBACK_STATUS</code>: RollbackRetrying, TimeoutRollbackRetrying, TimeoutRollbacking</li>
+<li><strong>综合重试集合</strong>
+<code>RETRY_STATUS</code>: CommitRetrying, RollbackRetrying, TimeoutRollbackRetrying, TimeoutRollbacking</li>
+</ol>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="进行中操作状态">进行中操作状态<a href="#进行中操作状态" class="hash-link" aria-label="进行中操作状态的直接链接" title="进行中操作状态的直接链接">​</a></h4>
+<ol>
+<li><strong>提交中集合</strong>
+<code>COMMIT_ING_STATUS</code>: Committing, CommitRetrying</li>
+<li><strong>回滚中集合</strong>
+<code>ROLLBACK_ING_STATUS</code>: Rollbacking, RollbackRetrying, TimeoutRollbackRetrying, TimeoutRollbacking</li>
+</ol>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="失败终止状态">失败终止状态<a href="#失败终止状态" class="hash-link" aria-label="失败终止状态的直接链接" title="失败终止状态的直接链接">​</a></h4>
+<ol>
+<li><strong>提交失败集合</strong>
+<code>FAIL_COMMIT_STATUS</code>: CommitFailed, CommitRetryTimeout</li>
+<li><strong>回滚失败集合</strong>
+<code>FAIL_ROLLBACK_STATUS</code>: TimeoutRollbacked, RollbackFailed, RollbackRetryTimeout</li>
+<li><strong>综合失败集合</strong>
+<code>FAIL_STATUS</code>: CommitFailed, CommitRetryTimeout, TimeoutRollbacked, RollbackFailed, RollbackRetryTimeout</li>
+</ol>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="完成终止状态">完成终止状态<a href="#完成终止状态" class="hash-link" aria-label="完成终止状态的直接链接" title="完成终止状态的直接链接">​</a></h4>
+<p><code>FINISH_STATUS</code>: Committed, Finished, Rollbacked</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="删除全局事务">删除全局事务<a href="#删除全局事务" class="hash-link" aria-label="删除全局事务的直接链接" title="删除全局事务的直接链接">​</a></h3>
+<p>删除全局事务在删除前会对当前事务状态进行校验，只有处于 FAIL_COMMIT_STATUS，FAIL_ROLLBACK_STATUS，RETRY_COMMIT_STATUS，RETRY_ROLLBACK_STATUS，Committed，Finished ，Rollbacked，Deleting，StopCommitRetry，StopRollbackRetry 这些状态下才允许删除。删除开始时会将全局事务改为Deleting状态。在删除过程中会获取全局事务下的分支事务，如果在一阶段失败则直接删除，其余则根据事务模式进行不同的操作：</p>
+<ul>
+<li>AT模式：对分支事务发起commit操作去触发undo log的删除，释放全局锁</li>
+<li>TCC模式：对分支事务发起rollback操作</li>
+<li>SAGA模式：没有分支事务概念，直接完成操作</li>
+<li>XA模式：对分支事务发起rollback操作</li>
+</ul>
+<p>更多细节可参考源码中的<code>org.apache.seata.server.console.impl.AbstractGlobalService</code></p>
+<p><img decoding="async" loading="lazy" alt="del-global-trx" src="/zh-cn/assets/images/del-global-trx-bc8e947ae878cdef832cbc9ed212e4f6.png" width="2244" height="249" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="强制删除全局事务">强制删除全局事务<a href="#强制删除全局事务" class="hash-link" aria-label="强制删除全局事务的直接链接" title="强制删除全局事务的直接链接">​</a></h3>
+<p>强制删除全局事务可能会发生事务脏写的情况，仅仅只对Server端的存储的全局事务和全局事务下的分支事务Session进行删除</p>
+<p><img decoding="async" loading="lazy" alt="force-del-global-trx" src="/zh-cn/assets/images/force-del-global-trx-7335f155a0f894ea68b34a3c06251527.png" width="2254" height="227" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="停止全局事务重试">停止全局事务重试<a href="#停止全局事务重试" class="hash-link" aria-label="停止全局事务重试的直接链接" title="停止全局事务重试的直接链接">​</a></h3>
+<p>停止全局事务在停止前会对当前事务状态进行校验，只有处于处于<code>Committing</code>，<code>CommitRetrying</code>，<code>TimeoutRollbacking</code>，<code>TimeoutRollbackRetrying</code>，<code>RollbackRetrying</code>, <code>Rollbacking</code>这种状态才允许停止。 停止时会根据是处于提交或回滚的相关状态改为<code>StopCommitOrCommitRetry</code>或者<code>StopRollbackOrRollbackRetry</code>状态，以此阻止事务补偿线程池的相关操作（不会当场间接修改分支事务状态）。</p>
+<p><img decoding="async" loading="lazy" alt="stop-global-trx" src="/zh-cn/assets/images/stop-global-trx-965fe718e8312444c83b4d7e2262d115.png" width="2245" height="250" class="img_ev3q"></p>
+<p>停止后会出现相应提示</p>
+<p><img decoding="async" loading="lazy" alt="stop-global-trx-hint" src="/zh-cn/assets/images/stop-global-trx-hint-4555587507757dd452bda72fb616493f.png" width="2220" height="547" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="开启全局事务重试">开启全局事务重试<a href="#开启全局事务重试" class="hash-link" aria-label="开启全局事务重试的直接链接" title="开启全局事务重试的直接链接">​</a></h3>
+<p>开启全局事务重试在开启前会当前事务状态进行校验，只有处于<code>StopCommitOrCommitRetry</code>，<code>StopRollbackOrRollbackRetry</code>这种状态才允许开启。开启时会根据是处于停止提交或停止回滚的相关状态改为<code>CommitRetrying</code>或者<code>RollbackRetrying</code>状态，以此触发事务补偿线程的相关操作（不会当场间接修改分支事务状态）。</p>
+<p><img decoding="async" loading="lazy" alt="start-global-trx" src="/zh-cn/assets/images/start-global-trx-647eb8499e902bc5a32eda435a80879b.png" width="2241" height="244" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="提交或回滚全局事务">提交或回滚全局事务<a href="#提交或回滚全局事务" class="hash-link" aria-label="提交或回滚全局事务的直接链接" title="提交或回滚全局事务的直接链接">​</a></h3>
+<p>提交或回滚全局事务在开始前会对当前事务状态进行校验，只有处于<code>Committing</code>, <code>CommitRetrying</code>, <code>TimeoutRollbacking</code>, <code>TimeoutRollbackRetrying</code>, <code>RollbackRetrying</code>, <code>Rollbacking</code>, <code>StopCommitOrCommitRetry</code>, <code>StopRollbackOrRollbackRetry</code>这种状态才允许提交或回滚全局事务。</p>
+<p>如果是提交的相关状态，触发事务全局提交（AT模式是异步提交）。如果是回滚的相关状态，触发事务全局回滚。</p>
+<p><img decoding="async" loading="lazy" alt="commit-or-rollback" src="/zh-cn/assets/images/commit-or-rollback-8925d742889849f7e6410b9b9c55f3cd.png" width="2245" height="232" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="更新全局事务状态">更新全局事务状态<a href="#更新全局事务状态" class="hash-link" aria-label="更新全局事务状态的直接链接" title="更新全局事务状态的直接链接">​</a></h3>
+<p>更新全局事务状态在开始前会对当前事务状态进行校验，只有处于<code>FAIL_COMMIT_STATUS</code>和<code>FAIL_ROLLBACK_STATUS</code>这种状态才允许进行更新全局事务状态。如果是提交的相关状态，触发事务全局提交。如果是回滚相关的状态，触发事务全局回滚。</p>
+<p><img decoding="async" loading="lazy" alt="update-global-trx" src="/zh-cn/assets/images/update-global-trx-12ce46ee9c6da33eea904bed8ead8ba3.png" width="2272" height="245" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="分支事务操作">分支事务操作<a href="#分支事务操作" class="hash-link" aria-label="分支事务操作的直接链接" title="分支事务操作的直接链接">​</a></h2>
+<p>事务控制台默认显示的是全局事务操作，需要点击按钮切换能够操作分支事务的相关功能</p>
+<p><img decoding="async" loading="lazy" alt="branch-trx" src="/zh-cn/assets/images/branch-trx-c826c395824e2edabf04dfac6df2f8ca.png" width="2239" height="456" class="img_ev3q"></p>
+<p>切换后即可在操作页面查看分支事务信息，点击即可查看分支事务详情</p>
+<p><img decoding="async" loading="lazy" alt="branch-trx-detail" src="/zh-cn/assets/images/branch-trx-detail-65188f3e42fdba98a4d79c1710a5ce5f.png" width="2322" height="964" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="删除分支事务">删除分支事务<a href="#删除分支事务" class="hash-link" aria-label="删除分支事务的直接链接" title="删除分支事务的直接链接">​</a></h3>
+<p>删除分支事务在删除前会对当前事务状态进行校验，只有全局事务的状态允许进行删除时才能进行分支事务的删除。在删除过程中会获取分支事务状态，并根据全局事务删除时对分支事务的操作进行相同处理</p>
+<p><img decoding="async" loading="lazy" alt="del-branch-trx" src="/zh-cn/assets/images/del-branch-trx-1ba962c46b32ced259c413fd42d79779.png" width="2260" height="336" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="强制删除分支事务">强制删除分支事务<a href="#强制删除分支事务" class="hash-link" aria-label="强制删除分支事务的直接链接" title="强制删除分支事务的直接链接">​</a></h3>
+<p>强制删除分支事务可能会发生事务脏写的情况，仅仅只对Server端的存储的分支事务Session进行删除</p>
+<p><img decoding="async" loading="lazy" alt="force-del-branch-trx" src="/zh-cn/assets/images/force-del-branch-trx-f604fbbe61e82dea0ed7bde6f629fd16.png" width="2227" height="307" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="停止分支事务">停止分支事务<a href="#停止分支事务" class="hash-link" aria-label="停止分支事务的直接链接" title="停止分支事务的直接链接">​</a></h3>
+<p>在停止分支事务前会对当前事务状态进行校验，如果是 Saga 模式会直接报错（因为 Saga 模式没有分支事务），并进行如下状态检查：</p>
+<ul>
+<li>分支事务为 <code>Unknown</code>、<code>Registered</code> 或 <code>PhaseOne_Done</code>。</li>
+<li>全局事务处于 <code>RETRY_STATUS</code>、<code>Rollbacking</code>、<code>Committing</code>、<code>StopRollbackOrRollbackRetry</code>、<code>StopCommitOrCommitRetry</code>。</li>
+</ul>
+<p>通过检查后即可将事务状态更改为停止。</p>
+<p><img decoding="async" loading="lazy" alt="stop-branch-trx.png" src="/zh-cn/assets/images/stop-branch-trx-66a4e823d395ce6b804b7c62b931bf15.png" width="2235" height="311" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="开始分支事务">开始分支事务<a href="#开始分支事务" class="hash-link" aria-label="开始分支事务的直接链接" title="开始分支事务的直接链接">​</a></h3>
+<p>开始分支事务功能只有在分支事务是停止时才会出现。开启后分支事务状态变为Registered</p>
+<p><img decoding="async" loading="lazy" alt="start-branch-trx" src="/zh-cn/assets/images/start-branch-trx-4b6413b7780a5842db56d251c3f37bdb.png" width="2256" height="314" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="全局锁操作">全局锁操作<a href="#全局锁操作" class="hash-link" aria-label="全局锁操作的直接链接" title="全局锁操作的直接链接">​</a></h2>
+<p>全局事务下可查看其所拥有的全局锁，这里只有AT模式下的事务才会持有全局锁</p>
+<p><img decoding="async" loading="lazy" alt="global-lock" src="/zh-cn/assets/images/global-lock-d89bdf009ee517b5b2772cc94ac5b559.png" width="2259" height="259" class="img_ev3q"></p>
+<p>对于事务拥有的全局锁可以对其进行删除，需注意删除后全局锁所对应的数据可能会发生脏写</p>
+<p><img decoding="async" loading="lazy" alt="del-global-lock" src="/zh-cn/assets/images/del-global-lock-46d3be3c3cc93cd8fa79f9799726970f.png" width="2250" height="284" class="img_ev3q"></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/apache/incubator-seata-website/blob/docusaurus/i18n/zh-cn/docusaurus-plugin-content-docs/version-v2.5/user/console/transaction-control.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh-cn/docs/v2.5/user/console/saga-designer"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Saga designer</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/docs/v2.5/user/api"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">API 支持</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#全局事务" class="table-of-contents__link toc-highlight">全局事务</a></li><li><a href="#分支事务" class="table-of-contents__link toc-highlight">分支事务</a></li><li><a href="#全局锁" class="table-of-contents__link toc-highlight">全局锁</a></li><li><a href="#存储模式" class="table-of-contents__link toc-highlight">存储模式</a></li><li><a href="#全局事务操作" class="table-of-contents__link toc-highlight">全局事务操作</a><ul><li><a href="#事务状态分类" class="table-of-contents__link toc-highlight">事务状态分类</a></li><li><a href="#删除全局事务" class="table-of-contents__link toc-highlight">删除全局事务</a></li><li><a href="#强制删除全局事务" class="table-of-contents__link toc-highlight">强制删除全局事务</a></li><li><a href="#停止全局事务重试" class="table-of-contents__link toc-highlight">停止全局事务重试</a></li><li><a href="#开启全局事务重试" class="table-of-contents__link toc-highlight">开启全局事务重试</a></li><li><a href="#提交或回滚全局事务" class="table-of-contents__link toc-highlight">提交或回滚全局事务</a></li><li><a href="#更新全局事务状态" class="table-of-contents__link toc-highlight">更新全局事务状态</a></li></ul></li><li><a href="#分支事务操作" class="table-of-contents__link toc-highlight">分支事务操作</a><ul><li><a href="#删除分支事务" class="table-of-contents__link toc-highlight">删除分支事务</a></li><li><a href="#强制删除分支事务" class="table-of-contents__link toc-highlight">强制删除分支事务</a></li><li><a href="#停止分支事务" class="table-of-contents__link toc-highlight">停止分支事务</a></li><li><a href="#开始分支事务" class="table-of-contents__link toc-highlight">开始分支事务</a></li></ul></li><li><a href="#全局锁操作" class="table-of-contents__link toc-highlight">全局锁操作</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://incubator.apache.org/" target="_blank" rel="noopener noreferrer" class="footerLogoLink_BH7S"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="footer__logo themedComponent_mlkZ themedComponent--light_NVdE"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="footer__logo themedComponent_mlkZ themedComponent--dark_xIcU"></a></div><div class="footer__copyright">
+                  <div class="fs-12">
+                    <div class="center-div">
+                      <span>Apache Seata™ (incubating) is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</span>
+                    </div>
+                    <br>
+                    <div class="center-div">
+                      <span>Copyright © 2023-2024, The Apache Software Foundation Apache Seata, Seata, Apache, Apache Incubator, the Apache feather, the Apache Incubator logo and the Apache Seata project logo are either registered trademarks or trademarks of the Apache Software Foundation.</span>
+                      <br>
+                    </div>
+                    <br>
+                  </div>
+                  </div></div></div></footer></div>
+</body>
+</html>
