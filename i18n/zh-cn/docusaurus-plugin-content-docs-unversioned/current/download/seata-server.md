@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 :::tip
 
-2.5.0 最新版本重磅升级！本次更新强制账户初始化并禁用默认凭证，seata-server 支持 HTTP/2 协议，新增对 OceanBase Oracle 的支持。此版本进一步增强了系统安全性和兼容性！
+2.6.0 最新版本重磅升级！本次更新推出了Console端的MCP Server支持，优化了netty协议并简化配置，修复了yaml兼容性问题，实现了多数据源下同源分支事务的合并，并移除了Saga模式的@localTCC注解。
 
 :::
 
@@ -27,7 +27,7 @@ hide_table_of_contents: true
 
 | 项目  | 要求                           |
 |-----|------------------------------|
-| JDK | JDK 8 或更高版本                  |
+| JDK | JDK 25 或更高版本                 |
 | CPU | 1 核及以上，支持 64 位的 CPU          |
 | 内存  | 2G 及以上                       |
 | 硬盘  | 无最小要求，需要根据日志、存储模式等配置具体调整     |
@@ -47,7 +47,7 @@ hide_table_of_contents: true
 
 | 版本号   | 源码下载                                                                                                                                                                                                                                                                                                                                                                                      | 二进制下载                                                                                                                                                                                                                                                                                                                                                                                         | 发布说明                                                                                 | 参考文档                                        |
 |-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------|
-| 2.5.0 | [apache-seata-2.5.0-incubating-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-src.tar.gz.sha512)<br/> | [apache-seata-2.5.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-bin.tar.gz?action=download)    [ASC](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-bin.tar.gz.asc)  [SHA512](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-bin.tar.gz.sha512)<br/> | [2.5.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.5.0) | [2.5.0 Quick Start](/docs/user/quickstart/) |
+| 2.6.0 | [apache-seata-2.6.0-incubating-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-src.tar.gz.sha512)<br/> | [apache-seata-2.6.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-bin.tar.gz?action=download)    [ASC](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-bin.tar.gz.asc)  [SHA512](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-bin.tar.gz.sha512)<br/> | [2.6.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.6.0) | [2.6.0 Quick Start](/docs/user/quickstart/) |
 
 1. 版本升级请参考[升级指南](/docs/ops/upgrade)
 2. 更多历史版本下载，请参考[版本历史](/release-history/seata-server)
@@ -100,8 +100,8 @@ hide_table_of_contents: true
    如果出现类似以下内容，说明签名是正确的:
 
    ```bash
-    gpg: Signature made Tue Apr 29 12:11:09 2025 CST
-    gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
+    gpg: Signature made Wed Jan 28 11:45:10 2026 UTC
+    gpg:                using RSA key 75B1D3D23E3D0A2D9C41AA1F9F97432623F70638
     gpg: Good signature from "xxx" [ultimate]
    ```
 
