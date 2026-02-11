@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 :::tip
 
-2.5.0 latest version with a major upgrade! This update enforces account initialization and disables default credentials, enables seata-server to support the HTTP/2 protocol, and adds support for OceanBase Oracle. This version further enhances system security and compatibility!
+2.6.0 latest version with a major upgrade! This update enforces MCP Server support for the Console, optimizing the netty protocol with simplified configuration, fixing yaml compatibility, enabling branch transaction consolidation for multi-data sources, and removing the @localTCC annotation in Saga mode.
 
 :::
 
@@ -27,8 +27,8 @@ requirements, you may not be able to deploy Seata-Server on your device.
 ```
 
 | Items                      | Requirements                                                                                                   |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Java Development Kit (JDK) | JDK 8 or higher                                                                                                |
+| -------------------------- |----------------------------------------------------------------------------------------------------------------|
+| Java Development Kit (JDK) | JDK 25 or higher                                                                                               |
 | CPU                        | 1 core and above, supports 64-bit CPUs                                                                         |
 | Memory                     | 2G and above                                                                                                   |
 | Disk                       | No minimum requirement, requires specific adjustments based on logging, storage mode, and other configurations |
@@ -46,7 +46,7 @@ requirements, you may not be able to deploy Seata-Server on your device.
 ### ASF Release
 | Version | Source                                                                                                                                                                                                                                                                                                                                                                               | Binary                                                                                                                                                                                                                                                                                                                                                               | Release Notes                               | Reference Docs                              |
 |---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------------------------------------|
-| 2.5.0   | [apache-seata-2.5.0-incubating-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-src.tar.gz.sha512)<br/>                     | [apache-seata-2.5.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-bin.tar.gz?action=download)    [ASC](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-bin.tar.gz.asc)  [SHA512](https://downloads.apache.org/incubator/seata/2.5.0/apache-seata-2.5.0-incubating-bin.tar.gz.sha512)<br/> | [2.5.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.5.0) | [2.5.0 Quick Start](/docs/user/quickstart/) |
+| 2.6.0   | [apache-seata-2.6.0-incubating-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-src.tar.gz.sha512)<br/>                     | [apache-seata-2.6.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-bin.tar.gz?action=download)    [ASC](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-bin.tar.gz.asc)  [SHA512](https://downloads.apache.org/incubator/seata/2.6.0/apache-seata-2.6.0-incubating-bin.tar.gz.sha512)<br/> | [2.6.0 Release Notes](https://github.com/apache/incubator-seata/releases/tag/v2.6.0) | [2.6.0 Quick Start](/docs/user/quickstart/) |
 
 ```mdx-code-block
 </section>
@@ -93,8 +93,8 @@ It is crucial to verify the integrity of downloaded files using GPG or SHA signa
 
    If something like the following appears, it means the signature is correct:
    ```bash
-    gpg: Signature made Tue Apr 29 12:11:09 2025 CST
-    gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
+    gpg: Signature made Wed Jan 28 11:45:10 2026 UTC
+    gpg:                using RSA key 75B1D3D23E3D0A2D9C41AA1F9F97432623F70638
     gpg: Good signature from "xxx" [ultimate]
    ```
 
