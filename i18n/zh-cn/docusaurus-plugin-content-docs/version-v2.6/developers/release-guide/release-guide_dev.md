@@ -243,11 +243,11 @@ asc验证
 
 `svn co --depth=empty https://dist.apache.org/repos/dist/dev/incubator/seata/`
 
-创建发布版本路径(dev路径中的文件夹必须携带RC代表其实一个预备状态)，并将文件移入其中
+创建发布版本路径，并将文件移入其中
 
 `cd seata`
 
-`mkdir x.x.xRCN`
+`mkdir x.x.x`
 
 `mv ….. x.x.x`
 
@@ -619,7 +619,7 @@ I'm cancelling this vote:
 
 2. 将dev下的签名文件、src、bin移动到release路径下，参考如下命令：
 
-   `svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/incubator-seata/x.x.x-RCN https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"`
+   `svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/x.x.x https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"`
 
 3. 将之前release note设置为Set as the latest release并提交
 

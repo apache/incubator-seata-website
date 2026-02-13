@@ -243,11 +243,11 @@ Pull SVN directory:
 
 `svn co --depth=empty https://dist.apache.org/repos/dist/dev/incubator/seata/`
 
-Create release version path (in the dev path, folders must include "RC" to indicate they are in a preparatory state), and move files into it:
+Create release version path, and move files into it:
 
 `cd seata`
 
-`mkdir x.x.xRCN`
+`mkdir x.x.x`
 
 `mv ….. x.x.x`
 
@@ -618,7 +618,7 @@ Note: After cancelling a vote in the Incubator, a new vote must start again from
 
 2. Move the signature files, src, and bin from the dev path to the release path using the following command:
 
-     `svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/incubator-seata/x.x.x-RCN https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"`
+   `svn mv https://dist.apache.org/repos/dist/dev/incubator/seata/x.x.x https://dist.apache.org/repos/dist/release/incubator/seata/x.x.x -m "Release Seata X.X.X"`
 
 3. Set the previous release note to "Set as the latest release" and submit.
 
