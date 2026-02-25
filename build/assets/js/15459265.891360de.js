@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkseata_website=globalThis.webpackChunkseata_website||[]).push([[93178],{52238(e){e.exports=JSON.parse('{"permalink":"/blog/tags/seata","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
