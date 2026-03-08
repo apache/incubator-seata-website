@@ -327,7 +327,7 @@ description: Seata namingserver open-api, server admin-api, and server open-api 
 
 ---
 
-## 4. server open-api (detailed)
+## 4. server open-api
 
 ### <a id="srv-health-check"></a>4.1 Health Check
 - Request: `/health` (`@RequestMapping`, recommended to call with GET)
