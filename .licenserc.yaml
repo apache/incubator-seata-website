@@ -85,3 +85,10 @@ dependency:
     # CC0-1.0 build tool
     - name: mdn-data
       recursive: true
+    # BlueOak-1.0.0 (New dependencies from glob/rimraf)
+    - name: jackspeak
+      recursive: true
+    - name: package-json-from-dist
+      recursive: true
+    - name: path-scurry
+      recursive: true
