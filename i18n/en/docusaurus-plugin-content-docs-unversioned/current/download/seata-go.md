@@ -8,7 +8,7 @@ hide_table_of_contents: true
 # Download
 
 :::tip
-Seata Go v2.0.0 is the current stable release, covering AT, TCC, and XA modes with registry options for file, Nacos, and Etcd.
+Seata Go v2.1.0 is the current stable release, covering AT, TCC, SAGA, and XA modes with registry options for file, Nacos, and Etcd.
 :::
 
 ## System Requirements
@@ -35,9 +35,9 @@ Seata Go v2.0.0 is the current stable release, covering AT, TCC, and XA modes wi
 <section class="full_width_table_section">
 ```
 
-| Version | Source                                                                                                                                                                                                                                                                                                                                                                                                  | Binary                                                                                                                                                                                                                                                                                                                                                                                                    | Release Notes                                                                   | Reference Docs                                                                |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- | -------------------------------------------------------------------------------- |
-| 2.0.0   | [apache-seata-go-2.0.0-incubating-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-src.tar.gz.sha512) | [apache-seata-go-2.0.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-bin.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-bin.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-bin.tar.gz.sha512) | [v2.0.0 changelog](https://github.com/apache/incubator-seata-go/releases/tag/v2.0.0) | [Samples & docs](https://github.com/apache/incubator-seata-go-samples) |
+| Version | Source                                                                                                                                                                                                                                                                                                                                                                                                                         | Release Notes                                                                        | Reference Docs        |
+| ------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------| ----------------------|
+| 2.1.0 | [incubator-seata-go-v2.1.0-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/incubator-seata-go/v2.1.0/incubator-seata-go-v2.1.0-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/incubator-seata-go/v2.1.0/incubator-seata-go-v2.1.0-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/incubator-seata-go/v2.1.0/incubator-seata-go-v2.1.0-src.tar.gz.sha512) | [v2.1.0 changelog](https://github.com/apache/incubator-seata-go/releases/tag/v2.1.0) | [Samples & docs](https://github.com/apache/incubator-seata-go-samples) |
 
 ```mdx-code-block
 </section>
@@ -48,8 +48,8 @@ Seata Go v2.0.0 is the current stable release, covering AT, TCC, and XA modes wi
 
 ## Install via Go Modules
 - (Optional) Pin a proxy for faster downloads: `go env -w GOPROXY=https://goproxy.cn,direct`.
-- Add the SDK to your module: `go get seata.apache.org/seata-go/v2@v2.0.0` (records to `go.mod` / `go.sum`).
-- Lock the dependency explicitly by keeping `require seata.apache.org/seata-go/v2 v2.0.0` and running `go mod tidy`.
+- Add the SDK to your module: `go get seata.apache.org/seata-go/v2@v2.1.0` (records to `go.mod` / `go.sum`).
+- Lock the dependency explicitly by keeping `require seata.apache.org/seata-go/v2 v2.1.0` and running `go mod tidy`.
 - Verify dependency integrity before committing: `go list seata.apache.org/seata-go/v2/...`.
 
 ## Verify the releases
@@ -63,13 +63,12 @@ It is crucial to verify the integrity of downloaded artifacts using GPG signatur
    ```
 3. Validate each artifact, for example:
    ```bash
-   gpg --verify apache-seata-go-2.0.0-incubating-src.tar.gz.asc apache-seata-go-2.0.0-incubating-src.tar.gz
-   gpg --verify apache-seata-go-2.0.0-incubating-bin.tar.gz.asc apache-seata-go-2.0.0-incubating-bin.tar.gz
+   gpg --verify incubator-seata-go-v2.1.0-src.tar.gz.asc incubator-seata-go-v2.1.0-src.tar.gz
    ```
    A result similar to the following indicates a valid signature:
    ```bash
-   gpg: Signature made Tue Apr 29 12:11:09 2025 CST
-   gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
+   gpg: Signature made Thu Feb 12 11:51:50 2026 CST
+   gpg:                using RSA key 0EF4C22256EF22519F9FB280B29581E977CD3E1E
    gpg: Good signature from "xxx" [ultimate]
    ```
 
@@ -77,8 +76,7 @@ It is crucial to verify the integrity of downloaded artifacts using GPG signatur
 1. Download the `.sha512` file corresponding to the artifact.
 2. Run the checksum validation:
    ```bash
-   shasum -c apache-seata-go-2.0.0-incubating-src.tar.gz.sha512
-   shasum -c apache-seata-go-2.0.0-incubating-bin.tar.gz.sha512
+   shasum -c incubator-seata-go-v2.1.0-src.tar.gz.sha512
    ```
    Output ending with `OK` confirms the archive is intact.
 
