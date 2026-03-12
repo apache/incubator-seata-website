@@ -8,7 +8,7 @@ hide_table_of_contents: true
 # 下载
 
 :::tip
-Seata Go v2.0.0 是当前稳定版本，覆盖 AT、TCC、XA 等模式，并支持 File、Nacos、Etcd 等注册/配置中心。
+Seata Go v2.1.0 是当前稳定版本，覆盖 AT、TCC、XA、SAGA 等模式，并支持 File、Nacos、Etcd 等注册/配置中心。
 :::
 
 ## 系统要求
@@ -35,9 +35,9 @@ Seata Go v2.0.0 是当前稳定版本，覆盖 AT、TCC、XA 等模式，并支�
 <section class="full_width_table_section">
 ```
 
-| 版本  | 源码包                                                                                                                                                                                                                                                                                                                                                                                                   | 二进制包                                                                                                                                                                                                                                                                                                                                                                                                    | 发布说明                                                                         | 参考文档                                                                  |
-| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ | -------------------------------------------------------------------------------- |
-| 2.0.0 | [apache-seata-go-2.0.0-incubating-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-src.tar.gz.sha512) | [apache-seata-go-2.0.0-incubating-bin.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-bin.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-bin.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/incubator-seata-go/2.0.0/apache-seata-go-2.0.0-incubating-bin.tar.gz.sha512) | [v2.0.0 更新日志](https://github.com/apache/incubator-seata-go/releases/tag/v2.0.0) | [参考示例](https://github.com/apache/incubator-seata-go-samples) |
+| 版本    | 源码包                                                                                                                                                                                                                                                                                                                                                                                                                                             | 发布说明                                                                            | 参考文档                                                                  |
+|-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------| -------------------------------------------------------------------------------- |
+| 2.1.0 | [incubator-seata-go-v2.1.0-src.tar.gz](https://www.apache.org/dyn/closer.lua/incubator/seata/incubator-seata-go/v2.1.0/incubator-seata-go-v2.1.0-src.tar.gz?action=download) [ASC](https://downloads.apache.org/incubator/seata/incubator-seata-go/v2.1.0/incubator-seata-go-v2.1.0-src.tar.gz.asc) [SHA512](https://downloads.apache.org/incubator/seata/incubator-seata-go/v2.1.0/incubator-seata-go-v2.1.0-src.tar.gz.sha512) | [v2.1.0 更新日志](https://github.com/apache/incubator-seata-go/releases/tag/v2.1.0) | [参考示例](https://github.com/apache/incubator-seata-go-samples) |
 
 ```mdx-code-block
 </section>
@@ -48,8 +48,8 @@ Seata Go v2.0.0 是当前稳定版本，覆盖 AT、TCC、XA 等模式，并支�
 
 ## 通过 Go Modules 安装
 - （可选）设置代理以提升下载速度：`go env -w GOPROXY=https://goproxy.cn,direct`。
-- 引入 SDK：`go get seata.apache.org/seata-go/v2@v2.0.0`，依赖会写入 `go.mod` / `go.sum`。
-- 在 `go.mod` 中保留 `require seata.apache.org/seata-go/v2 v2.0.0` 并执行 `go mod tidy`，锁定依赖版本。
+- 引入 SDK：`go get seata.apache.org/seata-go/v2@v2.1.0`，依赖会写入 `go.mod` / `go.sum`。
+- 在 `go.mod` 中保留 `require seata.apache.org/seata-go/v2 v2.1.0` 并执行 `go mod tidy`，锁定依赖版本。
 - 提交前使用 `go list seata.apache.org/seata-go/v2/...` 确认依赖解析正常。
 
 
@@ -64,13 +64,12 @@ Seata Go v2.0.0 是当前稳定版本，覆盖 AT、TCC、XA 等模式，并支�
    ```
 3. 校验示例：
    ```bash
-   gpg --verify apache-seata-go-2.0.0-incubating-src.tar.gz.asc apache-seata-go-2.0.0-incubating-src.tar.gz
-   gpg --verify apache-seata-go-2.0.0-incubating-bin.tar.gz.asc apache-seata-go-2.0.0-incubating-bin.tar.gz
+   gpg --verify incubator-seata-go-v2.1.0-src.tar.gz.asc incubator-seata-go-v2.1.0-src.tar.gz
    ```
    如出现如下输出，说明签名有效：
    ```bash
-   gpg: Signature made Tue Apr 29 12:11:09 2025 CST
-   gpg:                using RSA key 775377BF271D659E591249CD63E269707E8BF0FB
+   gpg: Signature made Thu Feb 12 11:51:50 2026 CST
+   gpg:                using RSA key 0EF4C22256EF22519F9FB280B29581E977CD3E1E
    gpg: Good signature from "xxx" [ultimate]
    ```
 
@@ -78,8 +77,7 @@ Seata Go v2.0.0 是当前稳定版本，覆盖 AT、TCC、XA 等模式，并支�
 1. 下载对应的 `.sha512` 文件。
 2. 执行校验：
    ```bash
-   shasum -c apache-seata-go-2.0.0-incubating-src.tar.gz.sha512
-   shasum -c apache-seata-go-2.0.0-incubating-bin.tar.gz.sha512
+   shasum -c incubator-seata-go-v2.1.0-src.tar.gz.sha512
    ```
    输出 `OK` 表示文件完整无误。
 
