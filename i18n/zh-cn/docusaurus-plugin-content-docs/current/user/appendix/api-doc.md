@@ -167,8 +167,8 @@ description: Seata namingserver open-api、server admin-api、server open-api �
 
 | NamespaceVO Field | Type |
 |---|---|
-| clusters | List<String> |
-| vgroups | List<String> |
+| clusters | `List<String>` |
+| vgroups | `List<String>` |
 
 ### <a id="ns-watch"></a>2.11 Watch
 - 作用：订阅指定 vGroup 的变更（长轮询）。
@@ -201,12 +201,12 @@ description: Seata namingserver open-api、server admin-api、server open-api �
 
 | v2 NamespaceVO Field | Type |
 |---|---|
-| clusters | Map<String, ClusterVO> |
+| clusters | `Map<String, ClusterVO>` |
 
 | v2 ClusterVO Field | Type |
 |---|---|
-| vgroups | List<String> |
-| units | List<String> |
+| vgroups | `List<String>` |
+| units | `List<String>` |
 | type | String |
 
 ---
@@ -362,7 +362,7 @@ description: Seata namingserver open-api、server admin-api、server open-api �
 |---|---|
 | storeMode | string |
 | term | long |
-| nodes | List<Node> |
+| nodes | `List<Node>` |
 
 ### <a id="srv-watch"></a>4.4 Watch Metadata
 - 请求：`POST /metadata/v1/watch`

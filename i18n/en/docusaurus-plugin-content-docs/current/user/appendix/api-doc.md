@@ -167,8 +167,8 @@ description: Seata namingserver open-api, server admin-api, and server open-api 
 
 | NamespaceVO Field | Type |
 |---|---|
-| clusters | List<String> |
-| vgroups | List<String> |
+| clusters | `List<String>` |
+| vgroups | `List<String>` |
 
 ### <a id="ns-watch"></a>2.11 Watch
 - Purpose: subscribe to specified vGroup changes (long polling).
@@ -205,8 +205,8 @@ description: Seata namingserver open-api, server admin-api, and server open-api 
 
 | v2 ClusterVO Field | Type |
 |---|---|
-| vgroups | List<String> |
-| units | List<String> |
+| vgroups | `List<String>` |
+| units | `List<String>` |
 | type | String |
 
 ---
@@ -362,7 +362,7 @@ description: Seata namingserver open-api, server admin-api, and server open-api 
 |---|---|
 | storeMode | string |
 | term | long |
-| nodes | List<Node> |
+| nodes | `List<Node>` |
 
 ### <a id="srv-watch"></a>4.4 Watch Metadata
 - Request: `POST /metadata/v1/watch`
