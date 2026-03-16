@@ -132,6 +132,7 @@ const sidebars = {
           items: [
             'user/appendix/global-transaction-status',
             'user/appendix/isolation',
+            'user/appendix/api-doc',
           ],
         },
       ],
