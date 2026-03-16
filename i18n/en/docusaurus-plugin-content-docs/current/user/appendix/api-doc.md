@@ -201,7 +201,7 @@ description: Seata namingserver open-api, server admin-api, and server open-api 
 
 | v2 NamespaceVO Field | Type |
 |---|---|
-| clusters | Map<String, ClusterVO> |
+| clusters | `Map<String, ClusterVO>` |
 
 | v2 ClusterVO Field | Type |
 |---|---|
