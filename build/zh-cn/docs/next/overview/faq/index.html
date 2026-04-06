@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.fe9fa4d0.css">
-<script src="/zh-cn/assets/js/runtime~main.d0bf4b71.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.68f86075.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.cd37c681.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -24,23 +24,23 @@
 <br>
 <a href="#4" target="_self">4.怎么使用 Seata 框架，来保证事务的隔离性？</a>
 <br>
-<a href="#5" target="_self">5.脏数据回滚失败如何处理?</a>
+<a href="#5" target="_self">5.脏数据回滚失败如何处理？</a>
 <br>
-<a href="#6" target="_self">6.为什么分支事务注册时, 全局事务状态不是 begin？</a>
+<a href="#6" target="_self">6.为什么分支事务注册时，全局事务状态不是 begin？</a>
 <br>
-<a href="#7" target="_self">7.Nacos 作为 Seata 配置中心时，项目启动报错找  不到服务。如何排查，如何处理?</a>
+<a href="#7" target="_self">7.Nacos 作为 Seata 配置中心时，项目启动报错  找不到服务。如何排查，如何处理？</a>
 <br>
-<a href="#8" target="_self">8.Eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 Eureka 属性?</a>
+<a href="#8" target="_self">8.Eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 Eureka 属性？</a>
 <br>
 <a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a>
 <br>
 <a href="#10" target="_self">10.为什么 mybatis 没有返回自增 ID? </a>
 <br>
-<a href="#11" target="_self">11.io.seata.codec.protobuf.generated 不存在，导致 seata server 启动不了? </a>
+<a href="#11" target="_self">11.io.seata.codec.protobuf.generated 不存在，导致 seata server 启动不了？</a>
 <br>
 <a href="#12" target="_self">12.TC 如何使用 mysql/oracle等数据库driver? </a>
 <br>
-<a href="#13" target="_self">13.支持多主键? </a>
+<a href="#13" target="_self">13.支持多主键？</a>
 <br>
 <a href="#14" target="_self">14.使用 HikariDataSource 报错如何解决 ? </a>
 <br>
@@ -48,24 +48,24 @@
 <br>
 <a href="#16" target="_self">16.如何自己修改源码后打包 seata-server ? </a>
 <br>
-<a href="#17" target="_self">17. Seata 支持哪些 RPC 框架 ？</a>
+<a href="#17" target="_self">17. Seata 支持哪些 RPC 框架？</a>
 <br>
 <a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 <br>
-<a href="#19" target="_self">19. apache-dubbo 2.7.0 出现 NoSuchMethodError ？</a>
+<a href="#19" target="_self">19. apache-dubbo 2.7.0 出现 NoSuchMethodError？</a>
 <br>
-<a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
+<a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些？</a>
 <br>
 <a href="#21" target="_self">21. win 系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 <br>
-<a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a>
+<a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么？</a>
 <br>
-<a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a>
+<a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException？</a>
 <br>
-<a href="#24" target="_self">24. SpringCloud/http调用 xid无法传递 ？</a>
+<a href="#24" target="_self">24. SpringCloud/http调用 xid 无法传递？</a>
 <br>
-<a href="#25" target="_self">25. 使用动态数据源后的常见问题 ？</a>
+<a href="#25" target="_self">25. 使用动态数据源后的常见问题？</a>
 <br>
 <a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
 <br>
@@ -107,7 +107,9 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <br>
 <a href="#44" target="_self">44. 为什么会出现&quot;xxx contains illegal character!&quot;的错误？ </a>
 <br>
-<a href="#45" target="_self">45. 为什么namingserver和console打包编译需要JDK25版本？&amp; 为什么namingserver和console没有参与编译打包？ </a>
+<a href="#45" target="_self">45. 为什么 namingserver 和 console 打包编译需要 JDK25 版本？&amp; 为什么 namingserver 和 console 没有参与编译打包？ </a>
+<br>
+<a href="#46" target="_self">46. Seata 全局事务锁重入时，为什么会因表名大小写问题报 LockWaitTimeoutException？ </a>
 <br>
 <hr>
 <h3 id="1">Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -118,15 +120,15 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <p><strong>A:</strong>
 0.6 版本开始支持，tc 使用 db 模式共享全局事务会话信息，注册中心使用非 file 的 seata 支持的第三方注册中心</p>
 <hr>
-<h3 id="3">Q: 3.undo_log表log_status=1的记录是做什么用的？</h3>
+<h3 id="3">Q: 3.undo_log 表 log_status=1 的记录是做什么用的？</h3>
 <p><strong>A:</strong></p>
 <ul>
-<li>场景 ： 分支事务 a 注册 TC 后，a 的本地事务提交前发生了全局事务回滚</li>
-<li>后果 ： 全局事务回滚成功，a 资源被占用掉，产生了资源悬挂问题</li>
-<li>防悬挂措施： a 回滚时发现回滚 undo 还未插入，则插入一条 log_status=1 的 undo 记录，a 本地事务（业务写操作 sql 和对应 undo 为一个本地事务）提交时会因为 undo 表唯一索引冲突而提交失败。</li>
+<li>场景：分支事务 a 注册 TC 后，a 的本地事务提交前发生了全局事务回滚</li>
+<li>后果：全局事务回滚成功，a 资源被占用掉，产生了资源悬挂问题</li>
+<li>防悬挂措施：a 回滚时发现回滚 undo 还未插入，则插入一条 log_status=1 的 undo 记录，a 本地事务（业务写操作 sql 和对应 undo 为一个本地事务）提交时会因为 undo 表唯一索引冲突而提交失败。</li>
 </ul>
 <hr>
-<h3 id="4">Q: 4.怎么使用Seata框架，来保证事务的隔离性？</h3>
+<h3 id="4">Q: 4.怎么使用 Seata 框架，来保证事务的隔离性？</h3>
 <p><strong>A:</strong>
 因 seata 一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。</p>
 <ol>
@@ -137,7 +139,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 若使用@GlobalTransactional 注解就会增加一些没用的额外的 rpc 开销比如 begin 返回 xid，提交事务等。GlobalLock 简化了 rpc 过程，使其做到更高的性能。</li>
 </ol>
 <hr>
-<h3 id="5">Q: 5.脏数据回滚失败如何处理?</h3>
+<h3 id="5">Q: 5.脏数据回滚失败如何处理？</h3>
 <p><strong>A:</strong></p>
 <ol>
 <li>
@@ -152,13 +154,13 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <h3 id="6">Q: 6.为什么分支事务注册时, 全局事务状态不是begin?</h3>
 <p><strong>A:</strong></p>
 <ul>
-<li>异常：Could not register branch into global session xid = status = Rollbacked（还有 Rollbacking、AsyncCommitting 等等二阶段状态） while expecting Begin</li>
+<li>异常：Could not register branch into global session xid = status = Rollbacked（还有 Rollbacking、AsyncCommitting 等等二阶段状态）while expecting Begin</li>
 <li>描述：分支事务注册时，全局事务状态需是一阶段状态 begin，非 begin 不允许注册。属于 seata 框架层面正常的处理，用户可以从自身业务层面解决。</li>
 <li>出现场景（可继续补充）</li>
 </ul>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">  1. 分支事务是异步，全局事务无法感知它的执行进度，全局事务已进入二阶段，该异步分支才来注册</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  2. 服务a rpc 服务b超时（dubbo、feign等默认1秒超时），a上抛异常给tm，tm通知tc回滚，但是b还是收到了请求（网络延迟或rpc框架重试），然后去tc注册时发现全局事务已在回滚</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  3. tc感知全局事务超时(@GlobalTransactional(timeoutMills = 默认60秒))，主动变更状态并通知各分支事务回滚，此时有新的分支事务来注册</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
-<h3 id="7">Q: 7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</h3>
+<h3 id="7">Q: 7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理？</h3>
 <p><strong>A：</strong>
 异常：io.seata.common.exception.FrameworkException: can not register RM,err<!-- -->:can<!-- --> not connect to services-server.</p>
 <ol>
@@ -187,23 +189,23 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <p>如环境为sh，替换脚本中最后一段：</p>
 <div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">        exec &quot;$JAVACMD&quot; $JAVA_OPTS -server -Xmx2048m -Xms2048m -Xmn1024m -Xss512k -XX:SurvivorRatio=10 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:MaxDirectMemorySize=1024m -XX:-OmitStackTraceInFastThrow -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=&quot;$BASEDIR&quot;/logs/java_heapdump.hprof -XX:+DisableExplicitGC -XX:+CMSParallelRemarkEnabled -XX:+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc -Dio.netty.leakDetectionLevel=advanced \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      -classpath &quot;$CLASSPATH&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.name=&quot;seata-server&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.pid=&quot;$$&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.repo=&quot;$REPO&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dapp.home=&quot;$BASEDIR&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          -Dbasedir=&quot;$BASEDIR&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          io.seata.server.Server \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          &quot;$@&quot;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
-<h3 id="8">Q: 8.Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性?</h3>
+<h3 id="8">Q: 8.Eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 Eureka 属性？</h3>
 <p><strong>A：</strong>
 在 seata\conf 目录下新增 eureka-client.properties 文件，添加要覆盖的 Eureka 属性即可。
 例如，要覆盖 eureka.instance.lease-renewal-interval-in-seconds 和 eureka.instance.lease-expiration-duration-in-seconds，添加如下内容：</p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">eureka.lease.renewalInterval=1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">eureka.lease.duration=2</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>属性前缀为 eureka，其后的属性名可以参考类 com.netflix.appinfo.PropertyBasedInstanceConfigConstants，也可研究 seata 源码中的 discovery 模块的 seata-discovery-eureka 工程</p>
 <hr>
-<h3 id="9">Q: 9.发生下面异常是啥原因？ java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</h3>
+<h3 id="9">Q: 9.发生下面异常是啥原因？java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</h3>
 <p><strong>A:</strong>
 undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <hr>
-<h3 id="10">Q: 10.为什么mybatis没有返回自增ID?</h3>
+<h3 id="10">Q: 10.为什么 mybatis 没有返回自增 ID?</h3>
 <p><strong>A:</strong>
 方案 1.需要修改 mybatis 的配置: 在<code>@Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)</code>或者在 xml 中指定 useGeneratedKeys 和 keyProperty 属性
 方案 2.删除 undo_log 表的 id 字段</p>
 <hr>
-<h3 id="11">Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
+<h3 id="11">Q: 11.io.seata.codec.protobuf.generated 不存在，导致 seata server 启动不了？</h3>
 <p><strong>A:</strong>
 本地执行下: <code>./mvnw clean install -DskipTests=true</code> (Mac,Linux) 或 <code>mvnw.cmd clean install -DskipTests=true</code> (Win), <a href="https://github.com/apache/incubator-seata/issues/2438" target="_blank" rel="noopener noreferrer">参考 issues/2438</a>,相关代码在 0.8.1 已经移除。</p>
 <hr>
@@ -211,27 +213,27 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <p><strong>A:</strong></p>
 <ol>
 <li>修改 application.yml 的驱动配置 store.db.driver-class-name;</li>
-<li>seata-server低于2.5版本在lib/jdbc中增加对应mysql驱动，大于等于2.5版本或其它数据库则直接在lib路径中添加对应数据库的driver即可</li>
+<li>seata-server 低于 2.5 版本在 lib/jdbc 中增加对应 mysql 驱动，大于等于 2.5 版本或其它数据库则直接在 lib 路径中添加对应数据库的 driver 即可</li>
 </ol>
 <hr>
-<h3 id="13">Q: 13.支持多主键?</h3>
+<h3 id="13">Q: 13.支持多主键？</h3>
 <p><strong>A:</strong>
 目前支持 mysql，oracle，pgsql，mariadb，其他类型数据库建议先建一列自增 id 主键，原复合主键改为唯一键来规避下</p>
 <hr>
-<h3 id="14">Q: 14.使用HikariDataSource报错如何解决?</h3>
+<h3 id="14">Q: 14.使用 HikariDataSource 报错如何解决？</h3>
 <p><strong>A:</strong></p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">异常1:ClassCastException: com.sun.proxy.$Proxy153 cannot be cast to com.zaxxer.hikari.HikariDataSource</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">原因: 自动代理时，实例类型转换错误，注入的是$Proxy153实例，不是HikariDataSource的本身或子类实例。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
-<h3 id="15">Q: 15.是否可以不使用conf类型配置文件，直接将配置写入application.properties?</h3>
+<h3 id="15">Q: 15.是否可以不使用 conf 类型配置文件，直接将配置写入 application.properties?</h3>
 <p><strong>A:</strong>
 目前 seata-all 是需要使用 conf 类型配置文件，后续会支持 properties 和 yml 类型文件。当前可以在项目中依赖 seata-spring-boot-starter，然后将配置项写入到 application
 .properties 这样可以不使用 conf 类型文件。</p>
 <hr>
-<h3 id="16">Q: 16.如何自己修改源码后打包seata-server?</h3>
+<h3 id="16">Q: 16.如何自己修改源码后打包 seata-server?</h3>
 <p><strong>A:</strong></p>
 <div class="language-xml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-xml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">1. 删除 distribution 模块的bin、conf和lib目录。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2. ./mvnw clean install -DskipTests=true(Mac,Linux) 或 mvnw.cmd clean install -DskipTests=true(Win) -P release-seata。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">3. 在 distribution 模块的 target 目录下解压相应的压缩包即可。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">4. seata-1.5之后(最新develop分支)的打包命令：mvn -Prelease-seata -Dmaven.test.skip=true clean install -U</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">5. 如果你是mac os平台,并且是arm架构,请使用: mvn -Prelease-seata -Dmaven.test.skip=true clean install -U</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
-<h3 id="17">Q: 17.Seata 支持哪些 RPC 框架?</h3>
+<h3 id="17">Q: 17.Seata 支持哪些 RPC 框架？</h3>
 <p><strong>A:</strong></p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">目前支持 Dubbo、Spring Cloud、Motan、gRPC、sofa-RPC、EDAS-HSF 和 bRPC 框架。</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
@@ -240,16 +242,16 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <strong>A:</strong><p></p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">需要将druid的依赖版本升级至1.1.12+ 版本，Seata内部默认依赖的版本是1.1.12（provided）。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
-<h3 id="19">Q: 19. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
+<h3 id="19">Q: 19. apache-dubbo 2.7.0 出现 NoSuchMethodError ?</h3>
 <p><strong>A:</strong></p>
-<p>由于 apache-dubbo 在加载 Filter 时,会将 alibaba-dubbo 的 filter 一并加载且 2.7.0 版本 com.alibaba.dubbo.rpc.Invoker 中
+<p>由于 apache-dubbo 在加载 Filter 时，会将 alibaba-dubbo 的 filter 一并加载且 2.7.0 版本 com.alibaba.dubbo.rpc.Invoker 中
 <code>Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;</code>
-误使用了 org.apache.dubbo.rpc.Invocation 来入参(2.7.1 修复),导致出现</p>
+误使用了 org.apache.dubbo.rpc.Invocation 来入参 (2.7.1 修复),导致出现</p>
 <div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token class-name namespace" style="opacity:0.7">java</span><span class="token class-name namespace punctuation" style="opacity:0.7;color:#393A34">.</span><span class="token class-name namespace" style="opacity:0.7">lang</span><span class="token class-name namespace punctuation" style="opacity:0.7;color:#393A34">.</span><span class="token class-name">NoSuchMethodError</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token class-name namespace" style="opacity:0.7">com</span><span class="token class-name namespace punctuation" style="opacity:0.7;color:#393A34">.</span><span class="token class-name namespace" style="opacity:0.7">alibaba</span><span class="token class-name namespace punctuation" style="opacity:0.7;color:#393A34">.</span><span class="token class-name namespace" style="opacity:0.7">dubbo</span><span class="token class-name namespace punctuation" style="opacity:0.7;color:#393A34">.</span><span class="token class-name namespace" style="opacity:0.7">rpc</span><span class="token class-name namespace punctuation" style="opacity:0.7;color:#393A34">.</span><span class="token class-name">Invoker</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">invoke</span><span class="token punctuation" style="color:#393A34">(</span><span class="token class-name">Lcom</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">alibaba</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">dubbo</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">rpc</span><span class="token operator" style="color:#393A34">/</span><span class="token class-name">Invocation</span><span class="token punctuation" style="color:#393A34">;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token class-name">Lcom</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">alibaba</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">dubbo</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">rpc</span><span class="token operator" style="color:#393A34">/</span><span class="token class-name">Result</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>所以请升级 dubbo 到 2.7.1 及以上,保证兼容.本身是 alibaba-dubbo 可放心使用,alibaba-dubbo 并不包含 apache-dubbo 的包。
+<p>所以请升级 dubbo 到 2.7.1 及以上，保证兼容。本身是 alibaba-dubbo 可放心使用，alibaba-dubbo 并不包含 apache-dubbo 的包。
 参考链接:<a href="https://github.com/apache/dubbo/issues/3570" target="_blank" rel="noopener noreferrer">issue</a>,<a href="https://github.com/apache/dubbo/pull/3622/files" target="_blank" rel="noopener noreferrer">PR</a></p>
 <hr>
-<h3 id="20">Q: 20. 使用 AT 模式需要的注意事项有哪些 ？</h3>
+<h3 id="20">Q: 20. 使用 AT 模式需要的注意事项有哪些？</h3>
 <p><strong>A:</strong></p>
 <ol>
 <li>必须使用代理数据源，有 3 种形式可以代理数据源：</li>
@@ -261,49 +263,49 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 </ul>
 <ol start="2">
 <li>配置 GlobalTransactionScanner，使用 seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。</li>
-<li>业务表中必须包含单列主键，若存在复合主键，请参考问题 13 。</li>
+<li>业务表中必须包含 单列主键，若存在复合主键，请参考问题 13。</li>
 <li>每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。</li>
-<li>跨微服务链路的事务需要 对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。</li>
+<li>跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。</li>
 <li>目前 AT 模式支持的数据库有：MySQL、Oracle、PostgreSQL 和 TiDB。</li>
 <li>使用注解开启分布式事务时，若默认服务 provider 端加入 consumer 端的事务，provider 可不标注注解。但是，provider 同样需要相应的依赖和配置，仅可省略注解。</li>
 <li>使用注解开启分布式事务时，若要求事务回滚，必须将异常抛出到事务的发起方，被事务发起方的 @GlobalTransactional 注解感知到。provide 直接抛出异常 或 定义错误码由 consumer 判断再抛出异常。</li>
 </ol>
 <hr>
-<h3 id="21">Q: 21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</h3>
+<h3 id="21">Q: 21. win 系统使用同步脚本进行同步配置时为什么属性会多一个空行？</h3>
 <p><strong>A:</strong></p>
 <p>目前是知道为什么配置会有个\r，大概是因为这个文件你是在 win 编写的，所以有换行符为\r\n，然后你用 git bash 执行（这个可认为是 linux）只认\n 换行，所以就多了\r
 解决办法目前有两个：
 1、sed -i &quot;&quot;s/\r//&quot;&quot; config.txt
 2、vim 进入文本，再用命令 set fileformat=unix（亲测可用）</p>
 <hr>
-<h3 id="22">Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</h3>
+<h3 id="22">Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么？</h3>
 <p><strong>A:</strong></p>
-<p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和 XA 分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional 和@GlobalTransactional 连用，@Transactional 只能位于标注在@GlobalTransactional 的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交 ，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的 xid 不存在。</p>
+<p>@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用分别表示本地事务和 XA 分布式事务，大家常用的是与本地事务结合。当与本地事务结合时，@Transactional 和@GlobalTransactional 连用，@Transactional 只能位于标注在@GlobalTransactional 的同一方法层次或者位于@GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当@Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的 xid 不存在。</p>
 <hr>
-<h3 id="23">Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
+<h3 id="23">Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException？</h3>
 <p><strong>A:</strong></p>
 <div class="language-xml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-xml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.fasterxml.jackson.databind.ObjectMapper</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>目前发现在 Spring Boot 1.5.x 版本中原始引入的 jackson 版本过低，会导致 Seata 依赖 jackson 的新特性找不到，Seata 要求 jackson 版本 2.9.9+，但是使用 jackson 2.9.9+ 版本会导致 Spring Boot 中使用的 jackson API 找不到，也就是 jackson 本身的向前兼容性存在问题。因此,建议大家将 Seata 的序列化方式切换到非 jackson 序列化方式，比如 kryo，配置项为 client.undo.logSerialization = &quot;kryo&quot;</p>
+<p>目前发现在 Spring Boot 1.5.x 版本中原始引入的 jackson 版本过低，会导致 Seata 依赖 jackson 的新特性找不到，Seata 要求 jackson 版本 2.9.9+，但是使用 jackson 2.9.9+ 版本会导致 Spring Boot 中使用的 jackson API 找不到，也就是 jackson 本身的向前兼容性存在问题。因此，建议大家将 Seata 的序列化方式切换到非 jackson 序列化方式，比如 kryo，配置项为 client.undo.logSerialization = &quot;kryo&quot;</p>
 <hr>
-<h3 id="24">Q: 24. SpringCloud/http调用 xid无法传递 ？</h3>
+<h3 id="24">Q: 24. SpringCloud/http调用 xid 无法传递？</h3>
 <p><strong>A:</strong></p>
-<p>1.如果是springcloud应用首先确保你引入了<code>spring-cloud-starter-alibaba-seata</code>的依赖.</p>
-<p>2.如果 xid 还无法被接受到,请确认你是否实现了 WebMvcConfigurer,如果是,请将org.apache.seata.integration.http.TransactionPropagationInterceptor.把 SeataHandlerInterceptor 加入到你的拦截链路中. 可以参考org.apache.seata.integration.http.SeataWebMvcConfigurer的实现方式进行.</p>
-<p>3.如果是非SpringCloud应用,需要http调用时可以使用org.apache.seata.integration.http.DefaultHttpExecutor#getInstance 进行http调用,或者参考其实现,自行封装httpclient进行传递xid.</p>
+<p>1.如果是 springcloud 应用首先确保你引入了<code>spring-cloud-starter-alibaba-seata</code>的依赖。</p>
+<p>2.如果 xid 还无法被接受到，请确认你是否实现了 WebMvcConfigurer，如果是，请将 org.apache.seata.integration.http.TransactionPropagationInterceptor.把 SeataHandlerInterceptor 加入到你的拦截链路中。可以参考 org.apache.seata.integration.http.SeataWebMvcConfigurer 的实现方式进行。</p>
+<p>3.如果是非 SpringCloud 应用，需要 http 调用时可以使用 org.apache.seata.integration.http.DefaultHttpExecutor#getInstance 进行 http 调用，或者参考其实现，自行封装 httpclient 进行传递 xid.</p>
 <hr>
-<h3 id="25">Q: 25. 使用动态数据源后的常见问题 ？</h3>
+<h3 id="25">Q: 25. 使用动态数据源后的常见问题？</h3>
 <p><strong>A:</strong> 使用 dynamic-datasource-spring-boot-starter 组件后 undolog 无法删除,或使用 AbstractRoutingDataSource 等动态数据源后无法正常回滚</p>
-<p>dynamic-datasource-spring-boot-starter 组件内部开启 seata 后会自动使用 DataSourceProxy 来包装 DataSource,所以需要以下方式来保持兼容</p>
-<p>1.如果你引入的是 seata-all,请不要使用@EnableAutoDataSourceProxy 注解.</p>
+<p>dynamic-datasource-spring-boot-starter 组件内部开启 seata 后会自动使用 DataSourceProxy 来包装 DataSource，所以需要以下方式来保持兼容</p>
+<p>1.如果你引入的是 seata-all，请不要使用@EnableAutoDataSourceProxy 注解。</p>
 <p>2.如果你引入的是 seata-spring-boot-starter 请关闭自动代理</p>
 <div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">seata</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">enable-auto-data-source-proxy</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">false</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>如果是后者,保证以上两项处理后,请不要手动代码 AbstractRoutingDataSource 等动态数据源,而是将其实际使用的物理 datasource 进行代理,具体可参考如下例子<a href="https://github.com/apache/incubator-seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java" target="_blank" rel="noopener noreferrer">seata-samples/DataSourceProxyConfig.java at master · apache/incubator-seata-samples (github.com)</a></p>
+<p>如果是后者，保证以上两项处理后，请不要手动代码 AbstractRoutingDataSource 等动态数据源，而是将其实际使用的物理 datasource 进行代理，具体可参考如下例子<a href="https://github.com/apache/incubator-seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java" target="_blank" rel="noopener noreferrer">seata-samples/DataSourceProxyConfig.java at master · apache/incubator-seata-samples (github.com)</a></p>
 <hr>
 <h3 id="26">Q: 26. Could not found global transaction xid = %s, may be has finished.</h3>
 <p><strong>A:</strong></p>
 <p>举例说明：</p>
 <p>@GlobalTransactional(timeout=60000)
-public void A（）{</p>
+public void A (){</p>
 <p>call remoting B();//远程调用 B 服务
 local DB operation;</p>
 <p>}</p>
@@ -315,7 +317,7 @@ local DB operation;</p>
 <p>A 执行的总体时间超过了 60000ms，导致全局事务发起了全局回滚，此时 A 或 B 方法继续执行 DB 操作，校验全局事务状态，发现全局事务已经回滚。</p>
 </li>
 <li>
-<p>B 服务执行超出其设定的 readTimeout 返回异常给 A 并将异常抛出导致全局事务回滚，此时 B 服务执行 DB 操作时，校验全局事务状态，发现全局事务已经回滚。</p>
+<p>B 服务执行超出其设定的 readTimeout 返回异常给 A 并 将异常抛出导致全局事务回滚，此时 B 服务执行 DB 操作时，校验全局事务状态，发现全局事务已经回滚。</p>
 </li>
 <li>
 <p>tc 集群节点时间不一致。</p>
@@ -334,13 +336,13 @@ local DB operation;</p>
 <p>**解决方案 1:**关闭数据库的时间戳自动更新。数据的时间戳更新，如修改、创建时间由代码层面去维护，比如 MybatisPlus 就能做自动填充。</p>
 <p>**解决方案 2:**update 语句别把没更新的字段也放入更新语句。</p>
 <hr>
-<h3 id="29">Q: 29. 还没到全局事务超时时间就出现了timeoutrollcking?</h3>
+<h3 id="29">Q: 29. 还没到全局事务超时时间就出现了 timeoutrollcking?</h3>
 <p><strong>A:</strong></p>
 <p>有可能是多 tc 时区不一致导致的，建议将多个 tc 时区与 db 模式数据库时区保持一致统一。</p>
 <hr>
-<h3 id="30">Q: 30. Seata现阶段支持的分库分表解决方案？</h3>
+<h3 id="30">Q: 30. Seata 现阶段支持的分库分表解决方案？</h3>
 <p><strong>A:</strong></p>
-<p>现阶段只支持 ShardingSphere。关于分库分表与 Seata 兼容的问题 ，Seata 支持某一个分库分表方案是需要分库分表框架团队来提供集成兼容方案，而不是 Seata 提供。目前 Seata 正与各分库分表框架团队进行沟通来商讨集成兼容方案。</p>
+<p>现阶段只支持 ShardingSphere。关于分库分表与 Seata 兼容的问题，Seata 支持某一个分库分表方案是需要分库分表框架团队来提供集成兼容方案，而不是 Seata 提供。目前 Seata 正与各分库分表框架团队进行沟通来商讨集成兼容方案。</p>
 <hr>
 <h3 id="31">Q: 31.Seata 使用注册中心注册的地址有什么限制？</h3>
 <p><strong>A:</strong></p>
@@ -348,32 +350,32 @@ local DB operation;</p>
 <hr>
 <p></p><h3 id="32">Q: 32.Unrecognized VM option &#x27;CMSParallelRemarkEnabled&#x27;
 Error: Could not create the Java Virtual Machine.
-Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</h3>
+Error: A fatal exception has occurred. Program will exit.导致 seata-server 无法启动？</h3>
 <strong>A:</strong><p></p>
 <p>这个是因为使用了高版本的 jdk 导致。高版本的 jdk 取消了 cms 处理器，转而采用了 zgc 代替他。
 解决方案有两个，选其中之一便可：
 1、降级 jdk 版本
 2、在 seata 的启动脚本中删除 cms 的 jdk 命令</p>
 <hr>
-<h3 id="33">Q: 33.Seata的SQL支持范围？</h3>
+<h3 id="33">Q: 33.Seata 的 SQL 支持范围？</h3>
 <p><strong>A:</strong></p>
 <p>请参考附录-&gt;<a href="/zh-cn/docs/user/sqlreference/sql-restrictions/">SQL 参考</a></p>
 <hr>
-<h3 id="34">Q: 34.Seata的JDK版本要求？</h3>
+<h3 id="34">Q: 34.Seata 的 JDK 版本要求？</h3>
 <p><strong>A:</strong></p>
-<p>目前 Seata 支持的 JDK 版本为 JDK8、11。其余版本不确保 100%兼容</p>
+<p>目前 Seata 支持的 JDK 版本为 JDK8、11。其余版本不确保 100% 兼容</p>
 <hr>
-<h3 id="35">Q: 35.Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</h3>
+<h3 id="35">Q: 35.Oracle 的 NUMBER 长度超过 19 之后，实体使用 Long 映射，导致获取不到行信息，导致 undo_log 无法插入，也无法回滚？</h3>
 <p><strong>A:</strong></p>
 <p>Oracle 的 NUMBER 长度超过 19 之后，用 Long 的话，setObject 会查不出数据来，将实体的 Long 修改为 BigInteger 或 BigDecimal 即可解决问题。</p>
 <hr>
 <h3 id="36">Q: 36.怎么处理 io.seata.rm.datasource.exec.LockConflictException: get global lock fail </h3>
 <p><strong>A:</strong></p>
 <p>获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从<code>@Globaltransational</code>的 TM 端重新发起。</p>
-<p>Seata 提供了一个“全局锁重试”功能，1.5 之前的版本中默认在结合@Transactional 注解或手动开启本地事务下未开启该功能，可以通过下面这个配置来开启(面临回滚时可能全局锁和本地锁互相争抢导致死锁的可能)。建议直接升级 1.5 及以上版本,不要直接改动这个配置项.</p>
-<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">#遇到全局锁冲突时是否回滚，默认为true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">client.rm.lock.retryPolicyBranchRollbackOnConflict=false</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Seata 提供了一个“全局锁重试”功能，1.5 之前的版本中默认在结合@Transactional 注解或手动开启本地事务下未开启该功能，可以通过下面这个配置来开启 (面临回滚时可能全局锁和本地锁互相争抢导致死锁的可能)。建议直接升级 1.5 及以上版本，不要直接改动这个配置项。</p>
+<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">#遇到全局锁冲突时是否回滚，默认为 true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">client.rm.lock.retryPolicyBranchRollbackOnConflict=false</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>开启后，默认的全局锁重试逻辑是：线程 sleep 10ms，再次争全局锁，最多 30 次</p>
-<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">#你可通过这2个配置来修改锁重试机制</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">client.rm.lock.retryInterval=10</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">client.rm.lock.retryTimes=30</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">#你可通过这 2 个配置来修改锁重试机制</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">client.rm.lock.retryInterval=10</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">client.rm.lock.retryTimes=30</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>另外，你也可以直接在<code>@GlobalTransactional</code> 或者 <code>@GlobalLock</code>上单独配置重试逻辑，优先级比 Seata 全局配置更高</p>
 <div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token annotation punctuation" style="color:#393A34">@GlobalTransactional</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">lockRetryInternal </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">100</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> lockRetryTimes </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">30</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// v1.4.2</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token annotation punctuation" style="color:#393A34">@GlobalTransactional</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">lockRetryInterval </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">100</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> lockRetryTimes </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">30</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// v1.5</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
@@ -386,14 +388,14 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <li>如果已经用 JDK 11 编译了 seata 的源码，请删除本地 maven 仓库下 io.seata 路径下所有包。然后重新编译你的项目，让项目重新拉取中央仓库的 seata 的依赖包</li>
 </ul>
 <hr>
-<h3 id="38">Q：38. 为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖<code>com.google.protobuf:protoc:exe:3.3.0</code> ？</h3>
+<h3 id="38">Q：38. 为什么在使用 Apple 的 M1 芯片下载 maven 依赖时，无法下载依赖<code>com.google.protobuf:protoc:exe:3.3.0</code> ？</h3>
 <p><strong>A:</strong></p>
 <p>在<code>serializer/seata-serializer-protobuf/pom.xml</code>文件中，依赖版本是通过识别操作系统变量定义的：<code>com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}</code>。
 在远程仓库中，不存在 Apple 的 M1 芯片架构对应的依赖版本。</p>
 <p>解决方案：
 将上述依赖改写为固定版本：<code>com.google.protobuf:protoc:3.3.0:exe:osx-x86_64</code>，即可到远程仓库下载对应版本依赖。</p>
 <hr>
-<h3 id="39">Q：39. 1.4.2及以下版本回滚时抛出Cannot construct instance of <code>java.time.LocalDateTime</code> ？</h3>
+<h3 id="39">Q：39. 1.4.2 及以下版本回滚时抛出 Cannot construct instance of <code>java.time.LocalDateTime</code> ？</h3>
 <p><strong>A:</strong></p>
 <p>升级 1.5.0 及以上版本</p>
 <p><strong>B:</strong></p>
@@ -401,9 +403,9 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <p><strong>C:</strong></p>
 <p>引入 kryo 相关依赖</p>
 <div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">dependency</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">groupId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">com</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">esotericsoftware</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">groupId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">artifactId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">kryo</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">artifactId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">version</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token number" style="color:#36acaa">4.0</span><span class="token number" style="color:#36acaa">.2</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">version</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">dependency</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">dependency</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">groupId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">de</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">javakaffee</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">groupId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">artifactId</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token plain">kryo</span><span class="token operator" style="color:#393A34">-</span><span class="token plain">serializers</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">artifactId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token generics punctuation" style="color:#393A34">&lt;</span><span class="token generics">version</span><span class="token generics punctuation" style="color:#393A34">&gt;</span><span class="token number" style="color:#36acaa">0.42</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">version</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">dependency</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>如果配置中心是 file,依赖是 seata-all,请在应用的 file.conf 文件中添加如下配  置</p>
+<p>如果配置中心是 file，依赖是 seata-all，请在应用的 file.conf 文件中添加如下配置</p>
 <div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">client </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  undo </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    logSerialization </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;kryo&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>如果配置中心是 file,依赖是 seata-spring-boot-starter,使用 yml 自行转成 yml 格式即可</p>
+<p>如果配置中心是 file，依赖是 seata-spring-boot-starter，使用 yml 自行转成 yml 格式即可</p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">seata.client.undo.logSerialization=kryo</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>如果是第三方配置中心如 nacos</p>
 <p>请在 seata 使用的配置相关 group,namespace 上添加 dataid: client.undo.logSerialization,值为 kryo</p>
@@ -415,27 +417,27 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <h3 id="40">Q: 40. Seata-Server 使用 DB 作为存储模式时，有哪些注意事项？</h3>
 <p><strong>A:</strong></p>
 <ul>
-<li>使用 DB 存储模式时，需要注意使用相应 seata-server 对应版本的建表脚本，建表脚本获取地址：<a href="https://github.com/apache/incubator-seata/tree/$%7B%E7%89%88%E6%9C%AC%7D/script/server/db%EF%BC%8C%E4%BE%8B%E5%A6%82%EF%BC%9A%E8%8E%B7%E5%8F%96seata-server" target="_blank" rel="noopener noreferrer">https://github.com/apache/incubator-seata/tree/${版本}/script/server/db，例如：获取seata-server</a> 1.5.0 对应的建表脚本，可从此地址获取 <a href="https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db" target="_blank" rel="noopener noreferrer">https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db</a> 升级 seata-server 前需要先变更表结构。</li>
+<li>使用 DB 存储模式时，需要注意使用相应 seata-server 对应版本的建表脚本，建表脚本获取地址：<a href="https://github.com/apache/incubator-seata/tree/$%7B%E7%89%88%E6%9C%AC%7D/script/server/db%EF%BC%8C%E4%BE%8B%E5%A6%82%EF%BC%9A%E8%8E%B7%E5%8F%96" target="_blank" rel="noopener noreferrer">https://github.com/apache/incubator-seata/tree/${版本}/script/server/db，例如：获取</a> seata-server 1.5.0 对应的建表脚本，可从此地址获取 <a href="https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db" target="_blank" rel="noopener noreferrer">https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db</a> 升级 seata-server 前需要先变更表结构。</li>
 <li>seata-server 依赖的后端的 DB，不要开启读写分离。开启读写分离后根据同步模式的不同延迟也有所不同，seata-server
 为无状态计算节点，所有状态都需要到 DB 存储中校验，在主从同步延迟较大的情况下会导致读取的状态不准确从而导致事务逻辑处理问题。为了更高的读写性能，DB 可将隔离级别设置为读已提交。</li>
 </ul>
 <hr>
-<h3 id="41">Q: 41. Oracle使用timestamp字段类型回滚失败？</h3>
+<h3 id="41">Q: 41. Oracle 使用 timestamp 字段类型回滚失败？</h3>
 <p><strong>A:</strong></p>
 <ul>
-<li><a href="https://github.com/apache/incubator-seata/tree/develop/seata-plugin" target="_blank" rel="noopener noreferrer">seata/seata-plugin at develop · apache/incubator-seata (github.com)</a> 拉取此 plugin 代码,本地打包自行引入,也可直接拷贝代码进行 spi 扩展支持</li>
+<li><a href="https://github.com/apache/incubator-seata/tree/develop/seata-plugin" target="_blank" rel="noopener noreferrer">seata/seata-plugin at develop · apache/incubator-seata (github.com)</a> 拉取此 plugin 代码，本地打包自行引入，也可直接拷贝代码进行 spi 扩展支持</li>
 </ul>
 <hr>
 <h3 id="42">Q: 42. 抛出异常后事务未回滚？</h3>
 <ul>
-<li>检查异常是否被捕获,没有抛至 tm 端,如 rm 存在全局异常捕获器,rm 将异常包装成了一个正常的 result 响应给了 tm,导致 seata 的事务拦截器无法发现事务出现了异常,此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常,或者使用<a href="/zh-cn/docs/user/api/">Seata api</a> 进行回滚,切记 api 回滚必须结束调用,假设 tm 调用了 rm1 就出现错误,进行了 api 回滚,那么不应该让这个调用链再走到 rm2 去,应该直接 return 结束方法调用</li>
-<li>检查是否 rm 服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理</li>
-<li>如确认  无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
-<li>如决议结果是回滚,但是 rm 没注册,可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值,如果无值请参考 Q24</li>
-<li>如何判断数据源是否代理,如果是 AT 模式请在 ConnectionProxy#registry 打上断点,看是否会进入,XA 模式 ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!</li>
+<li>检查异常是否被捕获，没有抛至 tm 端，如 rm 存在全局异常捕获器，rm 将异常包装成了一个正常的 result 响应给了 tm，导致 seata 的事务拦截器无法发现事务出现了异常，此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常，或者使用<a href="/zh-cn/docs/user/api/">Seata api</a> 进行回滚，切记 api 回滚必须结束调用，假设 tm 调用了 rm1 就出现错误，进行了 api 回滚，那么不应该让这个调用链再走到 rm2 去，应该直接 return 结束方法调用</li>
+<li>检查是否 rm 服务抛出异常导致进行了熔断降级处理，如果是请参考方案上述方案进行处理</li>
+<li>如确认无上述可能，异常明确抛出，请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况，当 rm 分支注册时，通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志，如果没有说明分支没有注册，如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题，如分支已注册，那么检查决议结果，如事务提交，tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
+<li>如决议结果是回滚，但是 rm 没注册，可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值，如果无值请参考 Q24</li>
+<li>如何判断数据源是否代理，如果是 AT 模式请在 ConnectionProxy#registry 打上断点，看是否会进入，XA 模式 ConnectionProxyXA#commit 打断点看是否会进入，切记是不回滚的分支!!!</li>
 </ul>
 <hr>
-<h3 id="43">Q: 43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client的问题？</h3>
+<h3 id="43">Q: 43. 怎么处理@FeignClient 注解 url 不起效，提示 Load balancer does not have available server for client 的问题？</h3>
 <ul>
 <li>通常 Zipkin 与 Seata 整合的时候会出现该问题。</li>
 </ul>
@@ -452,23 +454,28 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 <li>检查主键中是否包含逗号。</li>
 </ul>
 <hr>
-<h3 id="45">Q: 45. 为什么namingserver和console打包编译需要JDK25版本？&amp; 为什么namingserver和console没有参与编译打包？ </h3>
+<h3 id="45">Q: 45. 为什么 namingserver 和 console 打包编译需要 JDK25 版本？&amp; 为什么 namingserver 和 console 没有参与编译打包？ </h3>
 <ol>
 <li>目前做了什么变更？<!-- -->
 <ul>
-<li>目前namingserver的目标JDK编译版本被设置为25，并且新增了profile来保证在JDK25环境下才会将namingserver和console加入进编译和打包</li>
+<li>目前 namingserver 的目标 JDK 编译版本被设置为 25，并且新增了 profile 来保证在 JDK25 环境下才会将 namingserver 和 console 加入进编译和打包</li>
 <li>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;!-- profile: onlyBuildOnJDK25+ --&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;profile&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            &lt;id&gt;JDK25Plus&lt;/id&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            &lt;activation&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                &lt;jdk&gt;[25,)&lt;/jdk&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            &lt;/activation&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            &lt;modules&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                &lt;module&gt;namingserver&lt;/module&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                &lt;module&gt;console&lt;/module&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            &lt;/modules&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;/profile&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 </li>
-<li>若使用JDK25以下的版本，编译打包会默认将namingserver和console模块排除。</li>
+<li>若使用 JDK25 以下的版本，编译打包会默认将 namingserver 和 console 模块排除。</li>
 </ul>
 </li>
-<li>为什么要使用JDK25？<!-- -->
+<li>为什么要使用 JDK25？<!-- -->
 <ul>
 <li>为了支持 namingserver 和 console 后续版本引入的 Spring AI 依赖，必须将 Spring Boot 和 JDK 版本升级。选择 JDK 25 作为目标版本，不仅满足 Spring AI 的技术要求，也为未来新功能的开发和全新功能的适配奠定基础，确保技术栈的前瞻性和扩展性。</li>
 </ul>
 </li>
 </ol>
+<hr>
+<h3 id="46">Q: 46. Seata 全局事务锁重入时，为什么会因表名大小写问题报 LockWaitTimeoutException？</h3>
+<ul>
+<li>从 MySQL JDBC 连接 URL 中移除<code>useOldAliasMetadataBehavior=true</code>参数，或将其设置为<code>false</code>。</li>
+</ul>
 <hr></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/apache/incubator-seata-website/blob/docusaurus/i18n/zh-cn/docusaurus-plugin-content-docs/current/overview/faq.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh-cn/docs/next/overview/terminology"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Seata术语表</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/docs/next/user/quickstart"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">快速启动</div></a></nav></div></div></div></div></main></div></div></div><footer class="footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://incubator.apache.org/" target="_blank" rel="noopener noreferrer" class="footerLogoLink_BH7S"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="footer__logo themedComponent_mlkZ themedComponent--light_NVdE"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="footer__logo themedComponent_mlkZ themedComponent--dark_xIcU"></a></div><div class="footer__copyright">
                   <div class="fs-12">
                     <div class="center-div">
