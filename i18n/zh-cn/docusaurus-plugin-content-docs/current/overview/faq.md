@@ -18,16 +18,16 @@ description: Seata 常见问题。
 <a href="#4" target="_self">4.怎么使用 Seata 框架，来保证事务的隔离性？</a>
 <br/>
 
-<a href="#5" target="_self">5.脏数据回滚失败如何处理?</a>
+<a href="#5" target="_self">5.脏数据回滚失败如何处理？</a>
 <br/>
 
-<a href="#6" target="_self">6.为什么分支事务注册时, 全局事务状态不是 begin？</a>
+<a href="#6" target="_self">6.为什么分支事务注册时，全局事务状态不是 begin？</a>
 <br/>
 
-<a href="#7" target="_self">7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</a>
+<a href="#7" target="_self">7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理？</a>
 <br/>
 
-<a href="#8" target="_self">8.Eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 Eureka 属性?</a>
+<a href="#8" target="_self">8.Eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 Eureka 属性？</a>
 <br/>
 
 <a href="#9" target="_self">9.java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</a>
@@ -36,13 +36,13 @@ description: Seata 常见问题。
 <a href="#10" target="_self">10.为什么 mybatis 没有返回自增 ID? </a>
 <br/>
 
-<a href="#11" target="_self">11.io.seata.codec.protobuf.generated 不存在，导致 seata server 启动不了? </a>
+<a href="#11" target="_self">11.io.seata.codec.protobuf.generated 不存在，导致 seata server 启动不了？</a>
 <br/>
 
 <a href="#12" target="_self">12.TC 如何使用 mysql/oracle等数据库driver? </a>
 <br/>
 
-<a href="#13" target="_self">13.支持多主键? </a>
+<a href="#13" target="_self">13.支持多主键？</a>
 <br/>
 
 <a href="#14" target="_self">14.使用 HikariDataSource 报错如何解决 ? </a>
@@ -54,32 +54,32 @@ description: Seata 常见问题。
 <a href="#16" target="_self">16.如何自己修改源码后打包 seata-server ? </a>
 <br/>
 
-<a href="#17" target="_self">17. Seata 支持哪些 RPC 框架 ？</a>
+<a href="#17" target="_self">17. Seata 支持哪些 RPC 框架？</a>
 <br/>
 
 <a href="#18" target="_self">18. java.lang.NoSuchMethodError: com.alibaba.druid.sql.ast.statement
 .SQLSelect.getFirstQueueBlockLcom/alibaba/druid/sql/ast/statement/SQLSelectQueryBlock;</a>
 <br/>
 
-<a href="#19" target="_self">19. apache-dubbo 2.7.0 出现 NoSuchMethodError ？</a>
+<a href="#19" target="_self">19. apache-dubbo 2.7.0 出现 NoSuchMethodError？</a>
 <br/>
 
-<a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些 ？</a>
+<a href="#20" target="_self">20. 使用 AT 模式需要的注意事项有哪些？</a>
 <br/>
 
 <a href="#21" target="_self">21. win 系统使用同步脚本进行同步配置时为什么属性会多一个空行？</a>
 <br/>
 
-<a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</a>
+<a href="#22" target="_self">22. AT 模式和 Spring @Transactional 注解连用时需要注意什么？</a>
 <br/>
 
-<a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</a>
+<a href="#23" target="_self">23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException？</a>
 <br/>
 
-<a href="#24" target="_self">24. SpringCloud/http调用 xid无法传递 ？</a>
+<a href="#24" target="_self">24. SpringCloud/http调用 xid 无法传递？</a>
 <br/>
 
-<a href="#25" target="_self">25. 使用动态数据源后的常见问题 ？</a>
+<a href="#25" target="_self">25. 使用动态数据源后的常见问题？</a>
 <br/>
 
 <a href="#26" target="_self">26. Could not found global transaction xid = %s, may be has finished.</a>
@@ -141,7 +141,10 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <a href="#44" target="_self">44. 为什么会出现"xxx contains illegal character!"的错误？ </a>
 <br/>
 
-<a href="#45" target="_self">45. 为什么namingserver和console打包编译需要JDK25版本？& 为什么namingserver和console没有参与编译打包？ </a>
+<a href="#45" target="_self">45. 为什么 namingserver 和 console 打包编译需要 JDK25 版本？& 为什么 namingserver 和 console 没有参与编译打包？ </a>
+<br/>
+
+<a href="#46" target="_self">46. Seata 全局事务锁重入时，为什么会因表名大小写问题报 LockWaitTimeoutException？ </a>
 <br/>
 
 ---
@@ -160,17 +163,17 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 
 ---
 
-<h3 id='3'>Q: 3.undo_log表log_status=1的记录是做什么用的？</h3>
+<h3 id='3'>Q: 3.undo_log 表 log_status=1 的记录是做什么用的？</h3>
 
 **A:**
 
-- 场景 ： 分支事务 a 注册 TC 后，a 的本地事务提交前发生了全局事务回滚
-- 后果 ： 全局事务回滚成功，a 资源被占用掉，产生了资源悬挂问题
-- 防悬挂措施： a 回滚时发现回滚 undo 还未插入，则插入一条 log_status=1 的 undo 记录，a 本地事务（业务写操作 sql 和对应 undo 为一个本地事务）提交时会因为 undo 表唯一索引冲突而提交失败。
+- 场景：分支事务 a 注册 TC 后，a 的本地事务提交前发生了全局事务回滚
+- 后果：全局事务回滚成功，a 资源被占用掉，产生了资源悬挂问题
+- 防悬挂措施：a 回滚时发现回滚 undo 还未插入，则插入一条 log_status=1 的 undo 记录，a 本地事务（业务写操作 sql 和对应 undo 为一个本地事务）提交时会因为 undo 表唯一索引冲突而提交失败。
 
 ---
 
-<h3 id='4'>Q: 4.怎么使用Seata框架，来保证事务的隔离性？</h3>
+<h3 id='4'>Q: 4.怎么使用 Seata 框架，来保证事务的隔离性？</h3>
 
 **A:**
 因 seata 一阶段本地事务已提交，为防止其他事务脏读脏写需要加强隔离。
@@ -183,7 +186,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 
 ---
 
-<h3 id='5'>Q: 5.脏数据回滚失败如何处理?</h3>
+<h3 id='5'>Q: 5.脏数据回滚失败如何处理？</h3>
 
 **A:**
 
@@ -198,7 +201,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 
 **A:**
 
-- 异常：Could not register branch into global session xid = status = Rollbacked（还有 Rollbacking、AsyncCommitting 等等二阶段状态） while expecting Begin
+- 异常：Could not register branch into global session xid = status = Rollbacked（还有 Rollbacking、AsyncCommitting 等等二阶段状态）while expecting Begin
 - 描述：分支事务注册时，全局事务状态需是一阶段状态 begin，非 begin 不允许注册。属于 seata 框架层面正常的处理，用户可以从自身业务层面解决。
 - 出现场景（可继续补充）
 
@@ -210,7 +213,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 
 ---
 
-<h3 id='7'>Q: 7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理?</h3>
+<h3 id='7'>Q: 7.Nacos 作为 Seata 配置中心时，项目启动报错找不到服务。如何排查，如何处理？</h3>
 
 **A：**
 异常：io.seata.common.exception.FrameworkException: can not register RM,err:can not connect to services-server.
@@ -247,7 +250,7 @@ UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75 -verbose:gc 
 
 ---
 
-<h3 id='8'>Q: 8.Eureka做注册中心，TC高可用时，如何在TC端覆盖Eureka属性?</h3>
+<h3 id='8'>Q: 8.Eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 Eureka 属性？</h3>
 
 **A：**
 在 seata\conf 目录下新增 eureka-client.properties 文件，添加要覆盖的 Eureka 属性即可。
@@ -262,14 +265,14 @@ eureka.lease.duration=2
 
 ---
 
-<h3 id='9'>Q: 9.发生下面异常是啥原因？ java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</h3>
+<h3 id='9'>Q: 9.发生下面异常是啥原因？java.lang.NoSuchMethodError: com.fasterxml.jackson.databind.jsontype.TypeSerializer.typeId(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonToken;)?</h3>
 
 **A:**
 undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+
 
 ---
 
-<h3 id='10'>Q: 10.为什么mybatis没有返回自增ID?</h3>
+<h3 id='10'>Q: 10.为什么 mybatis 没有返回自增 ID?</h3>
 
 **A:**
 方案 1.需要修改 mybatis 的配置: 在`@Options(useGeneratedKeys = true, keyProperty = "id")`或者在 xml 中指定 useGeneratedKeys 和 keyProperty 属性
@@ -277,7 +280,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+
 
 ---
 
-<h3 id='11'>Q: 11.io.seata.codec.protobuf.generated不存在，导致seata server启动不了?</h3>
+<h3 id='11'>Q: 11.io.seata.codec.protobuf.generated 不存在，导致 seata server 启动不了？</h3>
 
 **A:**
 本地执行下: `./mvnw clean install -DskipTests=true` (Mac,Linux) 或 `mvnw.cmd clean install -DskipTests=true` (Win), [参考 issues/2438](https://github.com/apache/incubator-seata/issues/2438),相关代码在 0.8.1 已经移除。
@@ -286,20 +289,20 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+
 
 <h3 id='12'>Q: 12.TC 如何使用 mysql/oracle等数据库driver??</h3>
 
-**A:** 
-1. 修改 application.yml 的驱动配置 store.db.driver-class-name; 
-2. seata-server低于2.5版本在lib/jdbc中增加对应mysql驱动，大于等于2.5版本或其它数据库则直接在lib路径中添加对应数据库的driver即可
+**A:**
+1. 修改 application.yml 的驱动配置 store.db.driver-class-name;
+2. seata-server 低于 2.5 版本在 lib/jdbc 中增加对应 mysql 驱动，大于等于 2.5 版本或其它数据库则直接在 lib 路径中添加对应数据库的 driver 即可
 
 ---
 
-<h3 id='13'>Q: 13.支持多主键?</h3>
+<h3 id='13'>Q: 13.支持多主键？</h3>
 
 **A:**
 目前支持 mysql，oracle，pgsql，mariadb，其他类型数据库建议先建一列自增 id 主键，原复合主键改为唯一键来规避下
 
 ---
 
-<h3 id='14'>Q: 14.使用HikariDataSource报错如何解决?</h3>
+<h3 id='14'>Q: 14.使用 HikariDataSource 报错如何解决？</h3>
 
 **A:**
 
@@ -312,7 +315,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+
 
 ---
 
-<h3 id='15'>Q: 15.是否可以不使用conf类型配置文件，直接将配置写入application.properties?</h3>
+<h3 id='15'>Q: 15.是否可以不使用 conf 类型配置文件，直接将配置写入 application.properties?</h3>
 
 **A:**
 目前 seata-all 是需要使用 conf 类型配置文件，后续会支持 properties 和 yml 类型文件。当前可以在项目中依赖 seata-spring-boot-starter，然后将配置项写入到 application
@@ -320,7 +323,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+
 
 ---
 
-<h3 id='16'>Q: 16.如何自己修改源码后打包seata-server?</h3>
+<h3 id='16'>Q: 16.如何自己修改源码后打包 seata-server?</h3>
 
 **A:**
 
@@ -334,7 +337,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+
 
 ---
 
-<h3 id='17'>Q: 17.Seata 支持哪些 RPC 框架?</h3>
+<h3 id='17'>Q: 17.Seata 支持哪些 RPC 框架？</h3>
 
 **A:**
 
@@ -355,24 +358,24 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+
 
 ---
 
-<h3 id='19'>Q: 19. apache-dubbo 2.7.0出现NoSuchMethodError ?</h3>
+<h3 id='19'>Q: 19. apache-dubbo 2.7.0 出现 NoSuchMethodError ?</h3>
 
 **A:**
 
-由于 apache-dubbo 在加载 Filter 时,会将 alibaba-dubbo 的 filter 一并加载且 2.7.0 版本 com.alibaba.dubbo.rpc.Invoker 中
+由于 apache-dubbo 在加载 Filter 时，会将 alibaba-dubbo 的 filter 一并加载且 2.7.0 版本 com.alibaba.dubbo.rpc.Invoker 中
 `Result invoke(org.apache.dubbo.rpc.Invocation invocation) throws RpcException;`
-误使用了 org.apache.dubbo.rpc.Invocation 来入参(2.7.1 修复),导致出现
+误使用了 org.apache.dubbo.rpc.Invocation 来入参 (2.7.1 修复),导致出现
 
 ```java
 java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/dubbo/rpc/Invocation;)Lcom/alibaba/dubbo/rpc/Result;
 ```
 
-所以请升级 dubbo 到 2.7.1 及以上,保证兼容.本身是 alibaba-dubbo 可放心使用,alibaba-dubbo 并不包含 apache-dubbo 的包。
+所以请升级 dubbo 到 2.7.1 及以上，保证兼容。本身是 alibaba-dubbo 可放心使用，alibaba-dubbo 并不包含 apache-dubbo 的包。
 参考链接:[issue](https://github.com/apache/dubbo/issues/3570),[PR](https://github.com/apache/dubbo/pull/3622/files)
 
 ---
 
-<h3 id='20'>Q: 20. 使用 AT 模式需要的注意事项有哪些 ？</h3>
+<h3 id='20'>Q: 20. 使用 AT 模式需要的注意事项有哪些？</h3>
 
 **A:**
 
@@ -383,7 +386,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 - 依赖 seata-all 时，也可以手动使用 DatasourceProxy 来包装 DataSource。
 
 2. 配置 GlobalTransactionScanner，使用 seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。
-3. 业务表中必须包含单列主键，若存在复合主键，请参考问题 13 。
+3. 业务表中必须包含单列主键，若存在复合主键，请参考问题 13。
 4. 每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。
 5. 跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。
 6. 目前 AT 模式支持的数据库有：MySQL、Oracle、PostgreSQL 和 TiDB。
@@ -392,7 +395,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 
 ---
 
-<h3 id='21'>Q: 21. win系统使用同步脚本进行同步配置时为什么属性会多一个空行？</h3>
+<h3 id='21'>Q: 21. win 系统使用同步脚本进行同步配置时为什么属性会多一个空行？</h3>
 
 **A:**
 
@@ -403,7 +406,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 
 ---
 
-<h3 id='22'>Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？</h3>
+<h3 id='22'>Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么？</h3>
 
 **A:**
 
@@ -411,7 +414,7 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 
 ---
 
-<h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException ？</h3>
+<h3 id='23'>Q: 23. Spring boot 1.5.x 出现 jackson 相关 NoClassDefFoundException？</h3>
 
 **A:**
 
@@ -419,29 +422,29 @@ java.lang.NoSuchMethodError: com.alibaba.dubbo.rpc.Invoker.invoke(Lcom/alibaba/d
 Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.fasterxml.jackson.databind.ObjectMapper
 ```
 
-目前发现在 Spring Boot 1.5.x 版本中原始引入的 jackson 版本过低，会导致 Seata 依赖 jackson 的新特性找不到，Seata 要求 jackson 版本 2.9.9+，但是使用 jackson 2.9.9+ 版本会导致 Spring Boot 中使用的 jackson API 找不到，也就是 jackson 本身的向前兼容性存在问题。因此,建议大家将 Seata 的序列化方式切换到非 jackson 序列化方式，比如 kryo，配置项为 client.undo.logSerialization = "kryo"
+目前发现在 Spring Boot 1.5.x 版本中原始引入的 jackson 版本过低，会导致 Seata 依赖 jackson 的新特性找不到，Seata 要求 jackson 版本 2.9.9+，但是使用 jackson 2.9.9+ 版本会导致 Spring Boot 中使用的 jackson API 找不到，也就是 jackson 本身的向前兼容性存在问题。因此，建议大家将 Seata 的序列化方式切换到非 jackson 序列化方式，比如 kryo，配置项为 client.undo.logSerialization = "kryo"
 
 ---
 
-<h3 id='24'>Q: 24. SpringCloud/http调用 xid无法传递 ？</h3>
+<h3 id='24'>Q: 24. SpringCloud/http调用 xid 无法传递？</h3>
 
 **A:**
 
-1.如果是springcloud应用首先确保你引入了`spring-cloud-starter-alibaba-seata`的依赖.
+1.如果是 springcloud 应用首先确保你引入了`spring-cloud-starter-alibaba-seata`的依赖。
 
-2.如果 xid 还无法被接受到,请确认你是否实现了 WebMvcConfigurer,如果是,请将org.apache.seata.integration.http.TransactionPropagationInterceptor.把 SeataHandlerInterceptor 加入到你的拦截链路中. 可以参考org.apache.seata.integration.http.SeataWebMvcConfigurer的实现方式进行.
+2.如果 xid 还无法被接受到，请确认你是否实现了 WebMvcConfigurer，如果是，请将 org.apache.seata.integration.http.TransactionPropagationInterceptor.把 SeataHandlerInterceptor 加入到你的拦截链路中。可以参考 org.apache.seata.integration.http.SeataWebMvcConfigurer 的实现方式进行。
 
-3.如果是非SpringCloud应用,需要http调用时可以使用org.apache.seata.integration.http.DefaultHttpExecutor#getInstance 进行http调用,或者参考其实现,自行封装httpclient进行传递xid.
+3.如果是非 SpringCloud 应用，需要 http 调用时可以使用 org.apache.seata.integration.http.DefaultHttpExecutor#getInstance 进行 http 调用，或者参考其实现，自行封装 httpclient 进行传递 xid.
 
 ---
 
-<h3 id='25'>Q: 25. 使用动态数据源后的常见问题 ？</h3>
+<h3 id='25'>Q: 25. 使用动态数据源后的常见问题？</h3>
 
 **A:** 使用 dynamic-datasource-spring-boot-starter 组件后 undolog 无法删除,或使用 AbstractRoutingDataSource 等动态数据源后无法正常回滚
 
-dynamic-datasource-spring-boot-starter 组件内部开启 seata 后会自动使用 DataSourceProxy 来包装 DataSource,所以需要以下方式来保持兼容
+dynamic-datasource-spring-boot-starter 组件内部开启 seata 后会自动使用 DataSourceProxy 来包装 DataSource，所以需要以下方式来保持兼容
 
-1.如果你引入的是 seata-all,请不要使用@EnableAutoDataSourceProxy 注解.
+1.如果你引入的是 seata-all，请不要使用@EnableAutoDataSourceProxy 注解。
 
 2.如果你引入的是 seata-spring-boot-starter 请关闭自动代理
 
@@ -450,7 +453,7 @@ seata:
   enable-auto-data-source-proxy: false
 ```
 
-如果是后者,保证以上两项处理后,请不要手动代码 AbstractRoutingDataSource 等动态数据源,而是将其实际使用的物理 datasource 进行代理,具体可参考如下例子[seata-samples/DataSourceProxyConfig.java at master · apache/incubator-seata-samples (github.com)](https://github.com/apache/incubator-seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java)
+如果是后者，保证以上两项处理后，请不要手动代码 AbstractRoutingDataSource 等动态数据源，而是将其实际使用的物理 datasource 进行代理，具体可参考如下例子[seata-samples/DataSourceProxyConfig.java at master · apache/incubator-seata-samples (github.com)](https://github.com/apache/incubator-seata-samples/blob/master/multiple-datasource-mybatis-plus/src/main/java/io/seata/samples/mutiple/mybatisplus/config/DataSourceProxyConfig.java)
 
 ---
 
@@ -461,7 +464,7 @@ seata:
 举例说明：
 
 @GlobalTransactional(timeout=60000)
-public void A（）\{
+public void A ()\{
 
  call remoting B();//远程调用 B 服务
  local DB operation;
@@ -505,7 +508,7 @@ public void B() \{
 
 ---
 
-<h3 id='29'>Q: 29. 还没到全局事务超时时间就出现了timeoutrollcking?</h3>
+<h3 id='29'>Q: 29. 还没到全局事务超时时间就出现了 timeoutrollcking?</h3>
 
 **A:**
 
@@ -513,7 +516,7 @@ public void B() \{
 
 ---
 
-<h3 id='30'>Q: 30. Seata现阶段支持的分库分表解决方案？</h3>
+<h3 id='30'>Q: 30. Seata 现阶段支持的分库分表解决方案？</h3>
 
 **A:**
 
@@ -531,7 +534,7 @@ Seata 注册中心不能注册 0.0.0.0 或 127.0.0.1 的地址，当自动注册
 
 <h3 id='32'>Q: 32.Unrecognized VM option 'CMSParallelRemarkEnabled'
 Error: Could not create the Java Virtual Machine.
-Error: A fatal exception has occurred. Program will exit.导致seata-server无法启动？</h3>
+Error: A fatal exception has occurred. Program will exit.导致 seata-server 无法启动？</h3>
 **A:**
 
 这个是因为使用了高版本的 jdk 导致。高版本的 jdk 取消了 cms 处理器，转而采用了 zgc 代替他。
@@ -541,7 +544,7 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 ---
 
-<h3 id='33'>Q: 33.Seata的SQL支持范围？</h3>
+<h3 id='33'>Q: 33.Seata 的 SQL 支持范围？</h3>
 
 **A:**
 
@@ -549,15 +552,15 @@ Error: A fatal exception has occurred. Program will exit.导致seata-server无�
 
 ---
 
-<h3 id='34'>Q: 34.Seata的JDK版本要求？</h3>
+<h3 id='34'>Q: 34.Seata 的 JDK 版本要求？</h3>
 
 **A:**
 
-目前 Seata 支持的 JDK 版本为 JDK8、11。其余版本不确保 100%兼容
+目前 Seata 支持的 JDK 版本为 JDK8、11。其余版本不确保 100% 兼容
 
 ---
 
-<h3 id='35'>Q: 35.Oracle的NUMBER长度超过19之后，实体使用Long映射，导致获取不到行信息，导致undo_log无法插入，也无法回滚？</h3>
+<h3 id='35'>Q: 35.Oracle 的 NUMBER 长度超过 19 之后，实体使用 Long 映射，导致获取不到行信息，导致 undo_log 无法插入，也无法回滚？</h3>
 
 **A:**
 
@@ -571,17 +574,17 @@ Oracle 的 NUMBER 长度超过 19 之后，用 Long 的话，setObject 会查不
 
 获取全局锁失败，一般是出现分布式资源竞争导致，请保证你竞争资源的周期是合理的，并且在业务上做好重试。当一个全局事务因为获取锁失败的时候，应该重新完整地从`@Globaltransational`的 TM 端重新发起。
 
-Seata 提供了一个“全局锁重试”功能，1.5 之前的版本中默认在结合@Transactional 注解或手动开启本地事务下未开启该功能，可以通过下面这个配置来开启(面临回滚时可能全局锁和本地锁互相争抢导致死锁的可能)。建议直接升级 1.5 及以上版本,不要直接改动这个配置项.
+Seata 提供了一个“全局锁重试”功能，1.5 之前的版本中默认在结合@Transactional 注解或手动开启本地事务下未开启该功能，可以通过下面这个配置来开启 (面临回滚时可能全局锁和本地锁互相争抢导致死锁的可能)。建议直接升级 1.5 及以上版本，不要直接改动这个配置项。
 
 ```properties
-#遇到全局锁冲突时是否回滚，默认为true
+#遇到全局锁冲突时是否回滚，默认为 true
 client.rm.lock.retryPolicyBranchRollbackOnConflict=false
 ```
 
 开启后，默认的全局锁重试逻辑是：线程 sleep 10ms，再次争全局锁，最多 30 次
 
 ```properties
-#你可通过这2个配置来修改锁重试机制
+#你可通过这 2 个配置来修改锁重试机制
 client.rm.lock.retryInterval=10
 client.rm.lock.retryTimes=30
 ```
@@ -608,7 +611,7 @@ client.rm.lock.retryTimes=30
 
 ---
 
-<h3 id='38'>Q：38. 为什么在使用Apple的M1芯片下载maven依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0` ？</h3>
+<h3 id='38'>Q：38. 为什么在使用 Apple 的 M1 芯片下载 maven 依赖时，无法下载依赖`com.google.protobuf:protoc:exe:3.3.0` ？</h3>
 
 **A:**
 
@@ -620,7 +623,7 @@ client.rm.lock.retryTimes=30
 
 ---
 
-<h3 id='39'>Q：39. 1.4.2及以下版本回滚时抛出Cannot construct instance of `java.time.LocalDateTime` ？</h3>
+<h3 id='39'>Q：39. 1.4.2 及以下版本回滚时抛出 Cannot construct instance of `java.time.LocalDateTime` ？</h3>
 
 **A:**
 
@@ -647,7 +650,7 @@ client.rm.lock.retryTimes=30
             </dependency>
 ```
 
-如果配置中心是 file,依赖是 seata-all,请在应用的 file.conf 文件中添加如下配置
+如果配置中心是 file，依赖是 seata-all，请在应用的 file.conf 文件中添加如下配置
 
 ```java
 client {
@@ -657,7 +660,7 @@ client {
  }
 ```
 
-如果配置中心是 file,依赖是 seata-spring-boot-starter,使用 yml 自行转成 yml 格式即可
+如果配置中心是 file，依赖是 seata-spring-boot-starter，使用 yml 自行转成 yml 格式即可
 
 ```
 seata.client.undo.logSerialization=kryo
@@ -681,31 +684,31 @@ seata.client.undo.logSerialization=kryo
 
 **A:**
 
-- 使用 DB 存储模式时，需要注意使用相应 seata-server 对应版本的建表脚本，建表脚本获取地址：https://github.com/apache/incubator-seata/tree/${版本}/script/server/db，例如：获取seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
+- 使用 DB 存储模式时，需要注意使用相应 seata-server 对应版本的建表脚本，建表脚本获取地址：https://github.com/apache/incubator-seata/tree/${版本}/script/server/db，例如：获取 seata-server 1.5.0 对应的建表脚本，可从此地址获取 https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db 升级 seata-server 前需要先变更表结构。
 - seata-server 依赖的后端的 DB，不要开启读写分离。开启读写分离后根据同步模式的不同延迟也有所不同，seata-server
   为无状态计算节点，所有状态都需要到 DB 存储中校验，在主从同步延迟较大的情况下会导致读取的状态不准确从而导致事务逻辑处理问题。为了更高的读写性能，DB 可将隔离级别设置为读已提交。
 
 ---
 
-<h3 id='41'>Q: 41. Oracle使用timestamp字段类型回滚失败？</h3>
+<h3 id='41'>Q: 41. Oracle 使用 timestamp 字段类型回滚失败？</h3>
 
 **A:**
 
-- [seata/seata-plugin at develop · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/tree/develop/seata-plugin) 拉取此 plugin 代码,本地打包自行引入,也可直接拷贝代码进行 spi 扩展支持
+- [seata/seata-plugin at develop · apache/incubator-seata (github.com)](https://github.com/apache/incubator-seata/tree/develop/seata-plugin) 拉取此 plugin 代码，本地打包自行引入，也可直接拷贝代码进行 spi 扩展支持
 
 ---
 
 <h3 id='42'>Q: 42. 抛出异常后事务未回滚？</h3>
 
-- 检查异常是否被捕获,没有抛至 tm 端,如 rm 存在全局异常捕获器,rm 将异常包装成了一个正常的 result 响应给了 tm,导致 seata 的事务拦截器无法发现事务出现了异常,此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常,或者使用[Seata api](/docs/user/api/) 进行回滚,切记 api 回滚必须结束调用,假设 tm 调用了 rm1 就出现错误,进行了 api 回滚,那么不应该让这个调用链再走到 rm2 去,应该直接 return 结束方法调用
-- 检查是否 rm 服务抛出异常导致进行了熔断降级处理,如果是请参考方案上述方案进行处理
-- 如确认无上述可能,异常明确抛出,请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况,当 rm 分支注册时,通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志,如果没有说明分支没有注册,如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题,如分支已注册,那么检查决议结果,如事务提交,tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!
-- 如决议结果是回滚,但是 rm 没注册,可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值,如果无值请参考 Q24
-- 如何判断数据源是否代理,如果是 AT 模式请在 ConnectionProxy#registry 打上断点,看是否会进入,XA 模式 ConnectionProxyXA#commit 打断点看是否会进入,切记是不回滚的分支!!!
+- 检查异常是否被捕获，没有抛至 tm 端，如 rm 存在全局异常捕获器，rm 将异常包装成了一个正常的 result 响应给了 tm，导致 seata 的事务拦截器无法发现事务出现了异常，此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常，或者使用[Seata api](/docs/user/api/) 进行回滚，切记 api 回滚必须结束调用，假设 tm 调用了 rm1 就出现错误，进行了 api 回滚，那么不应该让这个调用链再走到 rm2 去，应该直接 return 结束方法调用
+- 检查是否 rm 服务抛出异常导致进行了熔断降级处理，如果是请参考方案上述方案进行处理
+- 如确认无上述可能，异常明确抛出，请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况，当 rm 分支注册时，通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志，如果没有说明分支没有注册，如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题，如分支已注册，那么检查决议结果，如事务提交，tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!
+- 如决议结果是回滚，但是 rm 没注册，可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值，如果无值请参考 Q24
+- 如何判断数据源是否代理，如果是 AT 模式请在 ConnectionProxy#registry 打上断点，看是否会进入，XA 模式 ConnectionProxyXA#commit 打断点看是否会进入，切记是不回滚的分支!!!
 
 ---
 
-<h3 id='43'>Q: 43. 怎么处理@FeignClient注解url不起效，提示 Load balancer does not have available server for client的问题？</h3>
+<h3 id='43'>Q: 43. 怎么处理@FeignClient 注解 url 不起效，提示 Load balancer does not have available server for client 的问题？</h3>
 
 - 通常 Zipkin 与 Seata 整合的时候会出现该问题。
 
@@ -740,10 +743,10 @@ public class SetSeataInterceptor implements RequestInterceptor {
 
 ---
 
-<h3 id='45'>Q: 45. 为什么namingserver和console打包编译需要JDK25版本？& 为什么namingserver和console没有参与编译打包？ </h3>
+<h3 id='45'>Q: 45. 为什么 namingserver 和 console 打包编译需要 JDK25 版本？& 为什么 namingserver 和 console 没有参与编译打包？ </h3>
 
 1. 目前做了什么变更？
-   - 目前namingserver的目标JDK编译版本被设置为25，并且新增了profile来保证在JDK25环境下才会将namingserver和console加入进编译和打包
+   - 目前 namingserver 的目标 JDK 编译版本被设置为 25，并且新增了 profile 来保证在 JDK25 环境下才会将 namingserver 和 console 加入进编译和打包
    - ```
      <!-- profile: onlyBuildOnJDK25+ -->
              <profile>
@@ -757,8 +760,13 @@ public class SetSeataInterceptor implements RequestInterceptor {
                  </modules>
              </profile>
      ```
-   - 若使用JDK25以下的版本，编译打包会默认将namingserver和console模块排除。
-2. 为什么要使用JDK25？
+   - 若使用 JDK25 以下的版本，编译打包会默认将 namingserver 和 console 模块排除。
+2. 为什么要使用 JDK25？
    - 为了支持 namingserver 和 console 后续版本引入的 Spring AI 依赖，必须将 Spring Boot 和 JDK 版本升级。选择 JDK 25 作为目标版本，不仅满足 Spring AI 的技术要求，也为未来新功能的开发和全新功能的适配奠定基础，确保技术栈的前瞻性和扩展性。
+
+---
+
+<h3 id='46'>Q: 46. Seata 全局事务锁重入时，为什么会因表名大小写问题报 LockWaitTimeoutException？</h3>
+- 从 MySQL JDBC 连接 URL 中移除`useOldAliasMetadataBehavior=true`参数，或将其设置为`false`。
 
 ---
