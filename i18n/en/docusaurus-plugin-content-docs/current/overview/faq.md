@@ -144,6 +144,9 @@ Error: A fatal exception has occurred. Program will exit.?</a>
 <a href="#45" target="_self">45. Why do namingserver and console require JDK 25 for packaging and compiling? & Why are namingserver and console not involved in the compilation and packaging process? </a>
 <br/>
 
+<a href="#46" target="_self">46. Why does Seata report LockWaitTimeoutException due to table name case sensitivity in global transaction lock reentrancy? </a>
+<br/>
+
 ---
 
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
@@ -180,7 +183,7 @@ Since seata phase 1 local transactions have been committed, enhanced isolation i
 1. Dirty read Select statement with for update, proxy method with @GlobalLock+@Transactional or @GlobalTransaction
 2. Dirty write You must use @GlobalTransactional
 
-   note：If the interface of the business you are querying does not use the @GlobalTransactional annotation, which means there is no need for distributed transactions on the method, you can annotate the @globallock+@Transactional annotation on the method and add a for update statement to the query.
+   note: If the interface of the business you are querying does not use the @GlobalTransactional annotation, which means there is no need for distributed transactions on the method, you can annotate the @globallock+@Transactional annotation on the method and add a for update statement to the query.
    If your query interface has the @GlobalTransactional annotation on the outer edge of the transactional link, you can simply add a for update statement to your query. The reason for designing this annotation is that before it is available, distributed transactions need to query the committed data, but the business does not need distributed transactions.
    Using the @GlobalTransactional annotation adds some unnecessary additional RPC overhead such as begin returning xid, commit transaction, etc. GlobalLock simplifies the RPC process for higher performance.
 
@@ -193,7 +196,7 @@ Since seata phase 1 local transactions have been committed, enhanced isolation i
 1. The dirty data needs to be processed manually, and the data can be corrected according to the log prompt, or the corresponding undo can be deleted (the FailureHandler can be customized for email notification or other purposes).
 2. This option is not recommended when "undo" mirror validation is turned off during rollback.
 
-   node：It is recommended to isolate the dirty data in advance
+   node: It is recommended to isolate the dirty data in advance
 
 ---
 
@@ -237,7 +240,7 @@ abnormal：io.seata.common.exception.FrameworkException: can not register RM,err
    Error: A fatal exception has occurred. Program will exit.
 ```
 
- If the environment is sh, replace the last paragraph in the script：
+ If the environment is sh, replace the last paragraph in the script:
 
 ```shell
         exec "$JAVACMD" $JAVA_OPTS -server -Xmx2048m -Xms2048m -Xmn1024m -Xss512k -XX:SurvivorRatio=10 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:
@@ -363,7 +366,7 @@ The dependent version of `druid` needs to be upgraded to version `1.1.12 +`, and
 
 ---
 
-<h3 id='19'>Q: 19.NoSuchMethodError in apache-dubbo 2.7.0？</h3>
+<h3 id='19'>Q: 19.NoSuchMethodError in apache-dubbo 2.7.0?</h3>
 
 **A:**
 
@@ -464,7 +467,7 @@ seata:
 Examples：
 
 @GlobalTransactional(timeout=60000)
-public void A（）\{
+public void A ()\{
 
  call remoting B();//Remote call B service
  local DB operation;
@@ -598,7 +601,7 @@ In addition, you can also directly configure the retry logic separately on `@Glo
 
 ---
 
-<h3 id='37'>Q：37. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running？ </h3>
+<h3 id='37'>Q: 37. Why does the java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer error occur when the client's JDK version is 1.8 when compiling and running? </h3>
 
 **A:**
 
@@ -611,7 +614,7 @@ Solution:
 
 ---
 
-<h3 id='38'>Q：38. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </h3>
+<h3 id='38'>Q: 38. Why when using Apple M1 chip maven dependence, unable to download the dependence `com.google.protobuf:protoc:exe:3.3.0`? </h3>
 
 **A:**
 
@@ -623,7 +626,7 @@ This dependence to fixed version: `com. Google. Protobuf: protoc: 3.3.0: exe: os
 
 ---
 
-<h3 id='39'>Q：39. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </h3>
+<h3 id='39'>Q: 39. Versions 1.4.2 and below throw "Cannot construct instance of 'java.time.LocalDateTime'" when rolling back </h3>
 
 **A:**
 
@@ -684,7 +687,7 @@ Refer to this [pr](https://github.com/apache/incubator-seata/pull/3738), can cov
 
 **A:**
 
-- When using the DB storage mode, it is necessary to pay attention to using the corresponding version of the table creation script of the seata-server. The address obtained by the table creation script is: https://github.com/apache/incubator-seata/tree/${version}/script/server/db，such as：Obtain the table creation script corresponding to seata-server 1.5.0，Can get upgrade seata https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db server before ever address need to change table structure first.
+- When using the DB storage mode, it is necessary to pay attention to using the corresponding version of the table creation script of the seata-server. The address obtained by the table creation script is: https://github.com/apache/incubator-seata/tree/${version}/script/server/db, such as: Obtain the table creation script corresponding to seata-server 1.5.0, Can get upgrade seata https://github.com/apache/incubator-seata/tree/1.5.0/script/server/db server before ever address need to change table structure first.
 - Do not enable read-write separation for the backend DB that seata-server relies on. After enabling read-write separation, the latency varies depending on the synchronization mode, seata-server As a stateless computing node, all states need to be verified in the DB storage. In the case of a large master-slave synchronization delay, it will lead to inaccurate read states, thereby causing transaction logic processing problems. For higher read and write performance, the DB can set the isolation level to read committed.
 
 ---
@@ -762,5 +765,11 @@ public class SetSeataInterceptor implements RequestInterceptor {
    - If you use JDK25 or later versions, the namingserver and console modules will be excluded by default during compilation and packaging.
 2. Why use JDK25?
    - In order to support the Spring AI dependencies introduced in the subsequent versions of namingserver and console, the versions of Spring Boot and JDK must be upgraded. Choosing JDK 25 as the target version not only meets the technical requirements of Spring AI, but also lays the foundation for the development of new functions and the adaptation of brand-new functions in the future, ensuring the forward-looking and scalability of the technology stack.
+
+---
+
+<h3 id='46'>Q: 46. Why does Seata report LockWaitTimeoutException due to table name case sensitivity in global transaction lock reentrancy? </h3>
+
+- Remove useOldAliasMetadataBehavior=true from your MySQL JDBC URL or set it to false.
 
 ---
