@@ -290,7 +290,7 @@ const config = {
         appId: 'ICHFIJRDZF',
 
         // Public API key: it is safe to commit it
-        apiKey: '9dc9d497652065c6d77a6a384c1310fb',
+        apiKey: '914e15066e0647fb3f9a06e635cb50ae',
 
         indexName: 'seata',
       },
