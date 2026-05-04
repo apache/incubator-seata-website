@@ -21,3 +21,4 @@ FileETag MTime Size
 
 
 </IfModule>
+SetEnv CSP_PROJECT_DOMAINS "https://*.github.com/"
