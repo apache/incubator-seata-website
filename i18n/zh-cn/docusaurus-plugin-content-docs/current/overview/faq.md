@@ -147,6 +147,18 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <a href="#46" target="_self">46. Seata 全局事务锁重入时，为什么会因表名大小写问题报 LockWaitTimeoutException？ </a>
 <br/>
 
+<a href="#47" target="_self">47. `json-common` 是用来做什么的？</a>
+<br/>
+
+<a href="#48" target="_self">48. 升级到 2.7 后必须切换到 `fastjson2` 或 `jackson3` 吗？</a>
+<br/>
+
+<a href="#49" target="_self">49. 什么场景下需要关注 JSON 反序列化 allowlist？</a>
+<br/>
+
+<a href="#50" target="_self">50. 什么时候适合使用 `jackson3`？</a>
+<br/>
+
 ---
 
 <h3 id='1'>Q: 1.Seata 目前可以用于生产环境吗？</h3>
@@ -768,5 +780,65 @@ public class SetSeataInterceptor implements RequestInterceptor {
 
 <h3 id='46'>Q: 46. Seata 全局事务锁重入时，为什么会因表名大小写问题报 LockWaitTimeoutException？</h3>
 - 从 MySQL JDBC 连接 URL 中移除`useOldAliasMetadataBehavior=true`参数，或将其设置为`false`。
+
+---
+
+<h3 id='47'>Q: 47. `json-common` 是用来做什么的？</h3>
+
+**A:** `json-common` 是 Seata 的统一 JSON 抽象层，用来统一 Seata 内部的 JSON SPI、工具类和安全校验逻辑。当前最直接的使用场景是 TCC `BusinessActionContext` 的 JSON 序列化与反序列化。
+
+它主要有三个作用：
+
+1. 统一 JSON 实现选择，支持 `fastjson`、`fastjson2`、`jackson`、`jackson3`、`gson`
+2. 统一 Seata 内部 JSON 的序列化和反序列化入口
+3. 为带类型信息的反序列化增加 allowlist 安全控制
+
+---
+
+<h3 id='48'>Q: 48. 升级到 2.7 后必须切换到 `fastjson2` 或 `jackson3` 吗？</h3>
+
+**A:** 不需要。当前默认 JSON 序列化器为 `jackson`。`json-common` 的引入首先是为了统一能力和增强安全控制，不要求用户在升级时立刻切换到 `fastjson2` 或 `jackson3`。
+
+如果需要切换 JSON 序列化器，Spring Boot 应用推荐使用：
+
+```yaml
+seata:
+  json:
+    serializer-type: fastjson2
+```
+
+Seata 原生配置推荐使用：
+
+```properties
+json.serializerType=fastjson2
+```
+
+旧的 TCC 专用配置 `seata.tcc.context-json-parser-type` / `tcc.contextJsonParserType` 仍可作为兼容兜底读取，但从 2.7.0 起已废弃。
+
+---
+
+<h3 id='49'>Q: 49. 什么场景下需要关注 JSON 反序列化 allowlist？</h3>
+
+**A:** 下面这些场景需要重点关注：
+
+1. 业务自定义对象被放入 TCC 上下文
+2. 业务依赖 `@type` 等类型信息恢复具体子类
+3. 扩展模块直接调用 Seata JSON SPI 做带类型反序列化
+
+如果升级后出现 `Class not in JSON deserialization allowlist` 异常，需要把对应业务类加入 `seata.json.allowlist`，例如：
+
+```properties
+seata.json.allowlist=com.example.order.,com.example.tcc.,com.example.CustomContext
+```
+
+其中，以 `.` 结尾表示包前缀匹配，不以 `.` 结尾表示精确类名匹配。
+
+---
+
+<h3 id='50'>Q: 50. 什么时候适合使用 `jackson3`？</h3>
+
+**A:** 当运行环境已经是 JDK 17 及以上，并且希望使用 Jackson 3 生态时，可以考虑启用 `jackson3`。如果仍然存在 JDK 8 或 JDK 11 环境，建议先不要切换。
+
+如果配置了 `jackson3`，但当前环境中 `jackson3` 实现不可用，Seata 会自动降级到 `jackson`。
 
 ---
