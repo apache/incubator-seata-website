@@ -11,7 +11,7 @@
 
 
 <meta name="aes-config" content="pid=xux-opensource&amp;user_type=101&amp;uid=&amp;username=&amp;dim10=seata"><link rel="stylesheet" href="/zh-cn/assets/css/styles.fe9fa4d0.css">
-<script src="/zh-cn/assets/js/runtime~main.68f86075.js" defer="defer"></script>
+<script src="/zh-cn/assets/js/runtime~main.582e1d1b.js" defer="defer"></script>
 <script src="/zh-cn/assets/js/main.5de032af.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -111,6 +111,14 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <br>
 <a href="#46" target="_self">46. Seata 全局事务锁重入时，为什么会因表名大小写问题报 LockWaitTimeoutException？ </a>
 <br>
+<a href="#47" target="_self">47. <code>json-common</code> 是用来做什么的？</a>
+<br>
+<a href="#48" target="_self">48. 升级到 2.7 后必须切换到 <code>fastjson2</code> 或 <code>jackson3</code> 吗？</a>
+<br>
+<a href="#49" target="_self">49. 什么场景下需要关注 JSON 反序列化 allowlist？</a>
+<br>
+<a href="#50" target="_self">50. 什么时候适合使用 <code>jackson3</code>？</a>
+<br>
 <hr>
 <h3 id="1">Q: 1.Seata 目前可以用于生产环境吗？</h3>
 <p><strong>A:</strong>
@@ -123,7 +131,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <h3 id="3">Q: 3.undo_log 表 log_status=1 的记录是做什么用的？</h3>
 <p><strong>A:</strong></p>
 <ul>
-<li>场景：分支事务 a 注册 TC 后，a 的本地事务提交前发生了全局事务回滚</li>
+<li>场景：分支事务 a 注册 TC 后，a 的本地事务提交前发生了全局事务  回滚</li>
 <li>后果：全局事务回滚成功，a 资源被占用掉，产生了资源悬挂问题</li>
 <li>防悬挂措施：a 回滚时发现回滚 undo 还未插入，则插入一条 log_status=1 的 undo 记录，a 本地事务（业务写操作 sql 和对应 undo 为一个本地事务）提交时会因为 undo 表唯一索引冲突而提交失败。</li>
 </ul>
@@ -222,7 +230,7 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 <hr>
 <h3 id="14">Q: 14.使用 HikariDataSource 报错如何解决？</h3>
 <p><strong>A:</strong></p>
-<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">异常1:ClassCastException: com.sun.proxy.$Proxy153 cannot be cast to com.zaxxer.hikari.HikariDataSource</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">原因: 自动代理时，实例类型转换错误，注入的是$Proxy153实例，不是HikariDataSource的本身或子类实例。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">1.1.0将同时支持jdk proxy和cglib，届时该问题还可切换cglib解决。</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">异常1:ClassCastException: com.sun.proxy.$Proxy153 cannot be cast to com.zaxxer.hikari.HikariDataSource</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">原因: 自动代理时，实例类型转换错误，注入的是$Proxy153实例，不是HikariDataSource的本身或子类实例。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">解决: seata自动代理数据源功能使用jdk proxy, 对DataSource进行代理，生成的代理类 extends Proxy implements DataSource, 接收方可改成DataSource接收实现。</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">1.1.0将同时支持jdk proxy和cglib，届  时该问题还可切换cglib解决。</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <hr>
 <h3 id="15">Q: 15.是否可以不使用 conf 类型配置文件，直接将配置写入 application.properties?</h3>
 <p><strong>A:</strong>
@@ -258,12 +266,12 @@ undolog 序列化配置为 jackson 时，jackson 版本需要为 2.9.9+</p>
 </ol>
 <ul>
 <li>依赖 seata-spring-boot-starter 时，自动代理数据源，无需额外处理。</li>
-<li>依赖 seata-all 时，使用 @EnableAutoDataSourceProxy (since 1.1.0) 注解，注解参数可选择 jdk 代理或者 cglib 代理。</li>
+<li>  依赖 seata-all 时，使用 @EnableAutoDataSourceProxy (since 1.1.0) 注解，注解参数可选择 jdk 代理或者 cglib 代理。</li>
 <li>依赖 seata-all 时，也可以手动使用 DatasourceProxy 来包装 DataSource。</li>
 </ul>
 <ol start="2">
 <li>配置 GlobalTransactionScanner，使用 seata-all 时需要手动配置，使用 seata-spring-boot-starter 时无需额外处理。</li>
-<li>业务表中必须包含 单列主键，若存在复合主键，请参考问题 13。</li>
+<li>业务表中必须包含单列主键，若存在复合主键，请参考问题 13。</li>
 <li>每个业务库中必须包含 undo_log 表，若与分库分表组件联用，分库不分表。</li>
 <li>跨微服务链路的事务需要对相应 RPC 框架支持，目前 seata-all 中已经支持：Apache Dubbo、Alibaba Dubbo、sofa-RPC、Motan、gRpc、httpClient，对于 Spring Cloud 的支持，请大家引用 spring-cloud-alibaba-seata。其他自研框架、异步模型、消息消费事务模型请结合 API 自行支持。</li>
 <li>目前 AT 模式支持的数据库有：MySQL、Oracle、PostgreSQL 和 TiDB。</li>
@@ -317,7 +325,7 @@ local DB operation;</p>
 <p>A 执行的总体时间超过了 60000ms，导致全局事务发起了全局回滚，此时 A 或 B 方法继续执行 DB 操作，校验全局事务状态，发现全局事务已经回滚。</p>
 </li>
 <li>
-<p>B 服务执行超出其设定的 readTimeout 返回异常给 A 并 将异常抛出导致全局事务回滚，此时 B 服务执行 DB 操作时，校验全局事务状态，发现全局事务已经回滚。</p>
+<p>B 服务执行超出其设定的 readTimeout 返回异常给 A 并将异常抛出导致全局事务回滚，此时 B 服务执行 DB 操作时，校验全局事务状态，发现全局事务已经回滚。</p>
 </li>
 <li>
 <p>tc 集群节点时间不一致。</p>
@@ -393,7 +401,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <p>在<code>serializer/seata-serializer-protobuf/pom.xml</code>文件中，依赖版本是通过识别操作系统变量定义的：<code>com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}</code>。
 在远程仓库中，不存在 Apple 的 M1 芯片架构对应的依赖版本。</p>
 <p>解决方案：
-将上述依赖改写为固定版本：<code>com.google.protobuf:protoc:3.3.0:exe:osx-x86_64</code>，即可到远程仓库下载对应版本依赖。</p>
+  将上述依赖改写为固定版本：<code>com.google.protobuf:protoc:3.3.0:exe:osx-x86_64</code>，即可到远程仓库下载对应版本依赖。</p>
 <hr>
 <h3 id="39">Q：39. 1.4.2 及以下版本回滚时抛出 Cannot construct instance of <code>java.time.LocalDateTime</code> ？</h3>
 <p><strong>A:</strong></p>
@@ -410,7 +418,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <p>如果是第三方配置中心如 nacos</p>
 <p>请在 seata 使用的配置相关 group,namespace 上添加 dataid: client.undo.logSerialization,值为 kryo</p>
 <p><strong>D</strong>:</p>
-<p>修改数据库表中的 datetime 类型为 timestamp</p>
+<p>修改数据库表中的 datetime 类  型为 timestamp</p>
 <p><strong>E:</strong></p>
 <p>参考此<a href="https://github.com/apache/incubator-seata/pull/3738" target="_blank" rel="noopener noreferrer">pr</a>做法,可以用类覆盖或 SPI 方式扩展新的解析方式处理</p>
 <hr>
@@ -430,7 +438,7 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <hr>
 <h3 id="42">Q: 42. 抛出异常后事务未回滚？</h3>
 <ul>
-<li>检查异常是否被捕获，没有抛至 tm 端，如 rm 存在全局异常捕获器，rm 将异常包装成了一个正常的 result 响应给了 tm，导致 seata 的事务拦截器无法发现事务出现了异常，此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常，或者使用<a href="/zh-cn/docs/user/api/">Seata api</a> 进行回滚，切记 api 回滚必须结束调用，假设 tm 调用了 rm1 就出现错误，进行了 api 回滚，那么不应该让这个调用链再走到 rm2 去，应该直接 return 结束方法调用</li>
+<li>检查异常  是否被捕获，没有抛至 tm 端，如 rm 存在全局异常捕获器，rm 将异常包装成了一个正常的 result 响应给了 tm，导致 seata 的事务拦截器无法发现事务出现了异常，此时自行在代码中根据 result 中的 code 之类可判断业务出现异常的返回内容进行抛出异常，或者使用<a href="/zh-cn/docs/user/api/">Seata api</a> 进行回滚，切记 api 回滚必须结束调用，假设 tm 调用了 rm1 就出现错误，进行了 api 回滚，那么不应该让这个调用链再走到 rm2 去，应该直接 return 结束方法调用</li>
 <li>检查是否 rm 服务抛出异常导致进行了熔断降级处理，如果是请参考方案上述方案进行处理</li>
 <li>如确认无上述可能，异常明确抛出，请通过相关的 xid 到 tc 端和 tm 和 rm 检索 xid 的决议结果和 rm 注册情况，当 rm 分支注册时，通过 xid 可以检索到 Register branch successfully, xid = 10.242.2.19:8094:3404997337200687005 , branchId = xxxx 的日志，如果没有说明分支没有注册，如是 AT 或 XA 模式请检查数据源代理或 xid 传递问题，如分支已注册，那么检查决议结果，如事务提交，tm 端会有类似[10.242.2.19:8094:3404997337200687005] commit status: Committed 的日志,如果是回滚那么相关关键字为 rollback status: Rollbacked 等,如果抛出异常决议缺是 commit,那么 99%的情况为异常被吞,请仔细检查第一点和第二点的情况,切记不要把日志打印堆栈认为是抛出了异常堆栈!!!!</li>
 <li>如决议结果是回滚，但是 rm 没注册，可在 rm 调用端通过 Rootcontext.getXid 来判断是否有值，如果无值请参考 Q24</li>
@@ -476,6 +484,38 @@ Error: A fatal exception has occurred. Program will exit.导致 seata-server 无
 <ul>
 <li>从 MySQL JDBC 连接 URL 中移除<code>useOldAliasMetadataBehavior=true</code>参数，或将其设置为<code>false</code>。</li>
 </ul>
+<hr>
+<h3 id="47">Q: 47. <code>json-common</code> 是用来做什么的？</h3>
+<p><strong>A:</strong> <code>json-common</code> 是 Seata 的统一 JSON 抽象层，用来统一 Seata 内部的 JSON SPI、工具类和安全校验逻辑。当前最直接的使用场景是 TCC <code>BusinessActionContext</code> 的 JSON 序列化与反序列化。</p>
+<p>它主要有三个作用：</p>
+<ol>
+<li>统一 JSON 实现选择，支持 <code>fastjson</code>、<code>fastjson2</code>、<code>jackson</code>、<code>jackson3</code>、<code>gson</code></li>
+<li>统一 Seata 内部 JSON 的序列化和反序列化入口</li>
+<li>为带类型信息的反序列化增加 allowlist 安全控制</li>
+</ol>
+<hr>
+<h3 id="48">Q: 48. 升级到 2.7 后必须切换到 <code>fastjson2</code> 或 <code>jackson3</code> 吗？</h3>
+<p><strong>A:</strong> 不需要。当前默认 JSON 序列化器为 <code>jackson</code>。<code>json-common</code> 的引入首先是为了统一能力和增强安全控制，不要求用户在升级时立刻切换到 <code>fastjson2</code> 或 <code>jackson3</code>。</p>
+<p>如果需要切换 JSON 序列化器，Spring Boot 应用推荐使用：</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">seata</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">json</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">serializer-type</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> fastjson2</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Seata 原生配置推荐使用：</p>
+<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">json.serializerType=fastjson2</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>旧的 TCC 专用配置 <code>seata.tcc.context-json-parser-type</code> / <code>tcc.contextJsonParserType</code> 仍可作为兼容兜底读取，但从 2.7.0 起已废弃。</p>
+<hr>
+<h3 id="49">Q: 49. 什么场景下需要关注 JSON 反序列化 allowlist？</h3>
+<p><strong>A:</strong> 下面这些场景需要重点关注：</p>
+<ol>
+<li>业务自定义对象被放入 TCC 上下文</li>
+<li>业务依赖 <code>@type</code> 等类型信息恢复具体子类</li>
+<li>扩展模块直接调用 Seata JSON SPI 做带类型反序列化</li>
+</ol>
+<p>如果升级后出现 <code>Class not in JSON deserialization allowlist</code> 异常，需要把对应业务类加入 <code>seata.json.allowlist</code>，例如：</p>
+<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">seata.json.allowlist=com.example.order.,com.example.tcc.,com.example.CustomContext</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>其中，以 <code>.</code> 结尾表示包前缀匹配，不以 <code>.</code> 结尾表示精确类名匹配。</p>
+<hr>
+<h3 id="50">Q: 50. 什么时候适合使用 <code>jackson3</code>？</h3>
+<p><strong>A:</strong> 当运行环境已经是 JDK 17 及以上，并且希望使用 Jackson 3 生态时，可以考虑启用 <code>jackson3</code>。如果仍然存在 JDK 8 或 JDK 11 环境，建议先不要切换。</p>
+<p>如果配置了 <code>jackson3</code>，但当前环境中 <code>jackson3</code> 实现不可用，Seata 会自动降级到 <code>jackson</code>。</p>
 <hr></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/apache/incubator-seata-website/blob/docusaurus/i18n/zh-cn/docusaurus-plugin-content-docs/current/overview/faq.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh-cn/docs/next/overview/terminology"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Seata术语表</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh-cn/docs/next/user/quickstart"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">快速启动</div></a></nav></div></div></div></div></main></div></div></div><footer class="footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://incubator.apache.org/" target="_blank" rel="noopener noreferrer" class="footerLogoLink_BH7S"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="footer__logo themedComponent_mlkZ themedComponent--light_NVdE"><img src="/zh-cn/img/apache/incubator.svg" alt="Apache Incubator Logo" class="footer__logo themedComponent_mlkZ themedComponent--dark_xIcU"></a></div><div class="footer__copyright">
                   <div class="fs-12">
                     <div class="center-div">
