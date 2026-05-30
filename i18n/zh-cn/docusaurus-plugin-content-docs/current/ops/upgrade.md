@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # 版本升级指南
 
+<a href="#12" target="_self">12. 升级到 seata 2.7 有哪些兼容性事项是需要注意的？</a>
+<br/>
+
 <a href="#11" target="_self">11. 升级到 seata 2.5 有哪些兼容性事项是需要注意的？</a>
 <br/>
 
@@ -39,6 +42,23 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. 0.8、0.9版本如何升级到1.0版本？</a>
 <br/>
+
+------
+
+<h3 id='12'>12. 升级到 seata 2.7 有哪些兼容性事项是需要注意的？</h3>
+<details>
+  <summary><mark>注意事项</mark></summary>
+
+  1. Seata 2.7 新增统一 JSON 模块 `json-common`，用于统一 Seata 内部的 JSON 序列化、反序列化和安全控制能力。
+  2. 当前默认 JSON 序列化器为 `jackson`。未显式配置 JSON 序列化器时，`JsonUtil` 会解析为 `jackson`。
+  3. JSON 序列化器推荐通过 Spring Boot 配置 `seata.json.serializer-type` 或 Seata 原生配置 `json.serializerType` 切换，可选值为 `jackson`、`fastjson`、`fastjson2`、`gson`、`jackson3`。
+  4. Seata 2.7 新增 `fastjson2` 和 `jackson3` 支持；如果计划启用 `jackson3`，运行环境需要为 JDK 17 及以上。
+  5. 如果配置了 `jackson3`，但当前环境中 `jackson3` 实现不可用，Seata 会自动降级到 `jackson`。
+  6. Seata 2.7 新增 JSON 反序列化 allowlist 机制。若业务对象通过带类型信息的 JSON 参与反序列化，而目标类不在 allowlist 中，可能出现 `Class not in JSON deserialization allowlist` 异常。
+  7. 如需放行业务自定义类，可通过 `seata.json.allowlist=com.example.order.,com.example.dto.,com.example.CustomContext` 补充 allowlist；以 `.` 结尾表示包前缀匹配，不以 `.` 结尾表示精确类名匹配。
+  8. 默认 allowlist 已包含常见 JDK 基础类型、集合类型、时间类型，以及 `org.apache.seata.` 和 `io.seata.` 包前缀。
+  9. 旧的 TCC 专用配置 `seata.tcc.context-json-parser-type` / `tcc.contextJsonParserType` 仍可作为兼容兜底读取，但从 2.7.0 起已废弃；如果新旧配置同时存在，优先使用新的 `json.serializerType`。
+</details>
 
 ------
 

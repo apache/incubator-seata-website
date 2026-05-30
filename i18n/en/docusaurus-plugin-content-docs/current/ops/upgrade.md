@@ -6,6 +6,9 @@ description: Seata upgrade.
 
 # Version Upgrade Guide
 
+<a href="#12" target="_self">12. What compatibility matters need to be paid attention to when upgrading to seata 2.7? </a>
+<br/>
+
 <a href="#11" target="_self">11. What compatibility matters need to be paid attention to when upgrading to seata 2.5? </a>
 <br/>
 
@@ -38,6 +41,22 @@ description: Seata upgrade.
 
 <a href="#1" target="_self">1. How to upgrade versions 0.8 and 0.9 to version 1.0? </a>
 <br/>
+
+------
+<h3 id='12'>12. What compatibility matters need to be paid attention to when upgrading to seata 2.7?</h3>
+<details>
+   <summary><mark>Notes</mark></summary>
+
+   1. Seata 2.7 introduces a unified JSON module, `json-common`, to centralize internal JSON serialization, deserialization, and security control capabilities.
+   2. The default JSON serializer is now `jackson`. If no JSON serializer is explicitly configured, `JsonUtil` resolves to `jackson`.
+   3. The JSON serializer should be switched through the Spring Boot property `seata.json.serializer-type` or the native Seata property `json.serializerType`, with supported values `jackson`, `fastjson`, `fastjson2`, `gson`, and `jackson3`.
+   4. Seata 2.7 adds support for `fastjson2` and `jackson3`. If you plan to enable `jackson3`, the runtime environment must be JDK 17 or later.
+   5. If `jackson3` is configured but its implementation is not available in the current environment, Seata will automatically fall back to `jackson`.
+   6. Seata 2.7 introduces a JSON deserialization allowlist mechanism. If a business object is deserialized from JSON with type information and the target class is not in the allowlist, you may see a `Class not in JSON deserialization allowlist` exception.
+   7. To allow custom business classes, you can extend the allowlist with `seata.json.allowlist=com.example.order.,com.example.dto.,com.example.CustomContext`; a value ending with `.` means package prefix matching, while a value without `.` means exact class name matching.
+   8. The default allowlist already includes common JDK primitive types, collection types, time types, and the package prefixes `org.apache.seata.` and `io.seata.`.
+   9. The old TCC-specific properties `seata.tcc.context-json-parser-type` / `tcc.contextJsonParserType` are still read as a compatibility fallback, but they have been deprecated since 2.7.0. If both old and new properties exist, the new `json.serializerType` takes precedence.
+</details>
 
 ------
 <h3 id='11'>11. What compatibility matters need to be paid attention to when upgrading to seata 2.5?</h3>

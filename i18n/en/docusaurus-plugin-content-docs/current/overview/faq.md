@@ -147,6 +147,18 @@ Error: A fatal exception has occurred. Program will exit.?</a>
 <a href="#46" target="_self">46. Why does Seata report LockWaitTimeoutException due to table name case sensitivity in global transaction lock reentrancy? </a>
 <br/>
 
+<a href="#47" target="_self">47. What is `json-common` used for?</a>
+<br/>
+
+<a href="#48" target="_self">48. Do I have to switch to `fastjson2` or `jackson3` after upgrading to 2.7?</a>
+<br/>
+
+<a href="#49" target="_self">49. In what scenarios should I pay attention to the JSON deserialization allowlist?</a>
+<br/>
+
+<a href="#50" target="_self">50. When is it appropriate to use `jackson3`?</a>
+<br/>
+
 ---
 
 <h3 id='1'>Q: 1.Can Seata be used in a production environment?</h3>
@@ -771,5 +783,65 @@ public class SetSeataInterceptor implements RequestInterceptor {
 <h3 id='46'>Q: 46. Why does Seata report LockWaitTimeoutException due to table name case sensitivity in global transaction lock reentrancy? </h3>
 
 - Remove useOldAliasMetadataBehavior=true from your MySQL JDBC URL or set it to false.
+
+---
+
+<h3 id='47'>Q: 47. What is `json-common` used for?</h3>
+
+**A:** `json-common` is Seata's unified JSON abstraction layer. It centralizes Seata's internal JSON SPI, utility classes, and security checks. The most direct current use case is JSON serialization and deserialization for TCC `BusinessActionContext`.
+
+It mainly serves three purposes:
+
+1. Unify JSON implementation selection, supporting `fastjson`, `fastjson2`, `jackson`, `jackson3`, and `gson`
+2. Provide a unified entry for internal JSON serialization and deserialization in Seata
+3. Add allowlist-based security control for deserialization with type information
+
+---
+
+<h3 id='48'>Q: 48. Do I have to switch to `fastjson2` or `jackson3` after upgrading to 2.7?</h3>
+
+**A:** No. The default JSON serializer is now `jackson`. The introduction of `json-common` is primarily for capability unification and stronger security controls, not to force an immediate switch to `fastjson2` or `jackson3` during upgrade.
+
+If you want to switch the JSON serializer, Spring Boot applications should use:
+
+```yaml
+seata:
+  json:
+    serializer-type: fastjson2
+```
+
+Native Seata configuration should use:
+
+```properties
+json.serializerType=fastjson2
+```
+
+The old TCC-specific properties `seata.tcc.context-json-parser-type` / `tcc.contextJsonParserType` are still read as a compatibility fallback, but they have been deprecated since 2.7.0.
+
+---
+
+<h3 id='49'>Q: 49. In what scenarios should I pay attention to the JSON deserialization allowlist?</h3>
+
+**A:** Pay special attention in the following scenarios:
+
+1. Custom business objects are stored in the TCC context
+2. Your business relies on type metadata such as `@type` to restore concrete subclasses
+3. Extensions directly use Seata's JSON SPI for deserialization with type information
+
+If you see a `Class not in JSON deserialization allowlist` exception after upgrading, add the corresponding business classes to `seata.json.allowlist`, for example:
+
+```properties
+seata.json.allowlist=com.example.order.,com.example.tcc.,com.example.CustomContext
+```
+
+Here, a value ending with `.` means package prefix matching, while a value without `.` means exact class name matching.
+
+---
+
+<h3 id='50'>Q: 50. When is it appropriate to use `jackson3`?</h3>
+
+**A:** You can consider enabling `jackson3` when your runtime environment is already JDK 17 or later and you want to use the Jackson 3 ecosystem. If you still have JDK 8 or JDK 11 environments, it is better not to switch yet.
+
+If `jackson3` is configured but its implementation is not available in the current environment, Seata will automatically fall back to `jackson`.
 
 ---
