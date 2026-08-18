@@ -6,7 +6,7 @@ description: Api Guide.
 
 # 1. Overview
 
-Seata API is devided into 2 categories: High-Level API and Low-Level API
+Seata API is divided into 2 categories: High-Level API and Low-Level API
 
 - **High-Level API** : Used for defining and controlling transaction boundary, and querying transaction status.
 - **Low-Level API** : Used for controlling the propagation of transaction context.
