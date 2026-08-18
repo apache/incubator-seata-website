@@ -15,7 +15,7 @@ Some frequently used labels:
   * help wanted
   * good first issue
 
-* Prority
+* Priority
   * priority/blocker
   * priority/high
   * priority/low

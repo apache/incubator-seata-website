@@ -285,7 +285,7 @@ So, it is necessary to check whether the current business key already exists in 
 > When the status of a previous branch transaction has not yet been reported, and the next branch transaction has already been registered, it can be assumed that the previous one was actually successful.
 
 
-## API referance
+## API reference
 
 #### StateMachineEngine API
 ``` java
@@ -946,7 +946,7 @@ After defining the Saga annotation interface, we can start a distributed transac
 ```java
 @GlobalTransactional
 public String doTransactionCommit(){
-   sagabean.exectue(actionContext....)
+   sagabean.execute(actionContext....)
 }
 ```
 
