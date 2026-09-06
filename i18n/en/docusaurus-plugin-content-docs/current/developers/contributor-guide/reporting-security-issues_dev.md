@@ -22,4 +22,4 @@ An overview of the vulnerability handling process is:
 * The reporter reports the vulnerability privately to Apache.
 * The appropriate project's security team works privately with the reporter to resolve the vulnerability.
 * A new release of the Apache product concerned is made that includes the fix.
-* The vulnerability is publically announced.
+* The vulnerability is publicly announced.

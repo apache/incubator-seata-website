@@ -30,11 +30,11 @@ bin\seata-server.bat
 
 |Argument|Fullname|Effect|Comment|
 |:--|:--|:--|:--|
-|-h|--host|Specify IP in registry center|Suggest to specify Virtural machine or cloud server, or will use internal IP|
+|-h|--host|Specify IP in registry center|Suggest to specify Virtual machine or cloud server, or will use internal IP|
 |-p|--port|Specify startup port |default is 8091|
 |-m|--storeMode|The way to save transaction log | Support `file` and `db`default is  `file`|
 |-n|--serverNode|Specify the seata-server node ID |Like `1`,`2`,`3`..., default is `1`|
-|-e|--seataEnv|Specify the environment of  seata-server |Like `dev`, `test` etc. Then will use file like `registry-dev.conf` as configuraiton|
+|-e|--seataEnv|Specify the environment of  seata-server |Like `dev`, `test` etc. Then will use file like `registry-dev.conf` as configuration|
 
 For example：
 
