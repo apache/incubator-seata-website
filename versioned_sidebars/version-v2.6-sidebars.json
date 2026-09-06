@@ -81,7 +81,8 @@
             "user/sqlreference/sql-restrictions",
             "user/sqlreference/dml",
             "user/sqlreference/sql-decoration",
-            "user/sqlreference/function"
+            "user/sqlreference/function",
+            "user/sqlreference/sql-seata-go"
           ]
         },
         {
