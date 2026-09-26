@@ -66,29 +66,3 @@ header: # `header` section is configurations for source codes license header.
     - '*.map'
 
   comment: on-failure
-dependency:
-  files:
-    - package.json
-  licenses:
-    - name: memfs
-      license: Apache-2.0
-  excludes:
-    # CC-BY-4.0 build tool
-    - name: caniuse-lite
-      recursive: true
-    # Python-2.0 build tool
-    - name: argparse
-      recursive: true
-    # Unlicense Category A https://apache.org/legal/resolved.html
-    - name: fs-monkey
-      recursive: true
-    # CC0-1.0 build tool
-    - name: mdn-data
-      recursive: true
-    # BlueOak-1.0.0 (New dependencies from glob/rimraf)
-    - name: jackspeak
-      recursive: true
-    - name: package-json-from-dist
-      recursive: true
-    - name: path-scurry
-      recursive: true
