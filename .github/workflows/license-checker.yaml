@@ -27,10 +27,20 @@ jobs:
       # step 1
       - name: Checkout
         uses: actions/checkout@v3
-      # step 2
-      - name: Check Dependencies' License
-        uses: apache/skywalking-eyes/dependency@9f0a5c0571ed1a0c13a16808cd8f59bc22f03883
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          log: info
-          config: .licenserc.yaml
-          mode: check
+          node-version: '22'
+          registry-url: https://registry.npmjs.org
+      - name: Install dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check Dependencies' License
+        # Category A licenses: https://www.apache.org/legal/resolved.html#category-a
+        # caniuse-lite is build-time browser compatibility data (CC-BY-4.0).
+        # Pin that exception to the reviewed version; unknown licenses still fail.
+        run: >-
+          npm exec --yes --package=license-checker-rseidelsohn@4.4.2 --
+          license-checker-rseidelsohn --production --excludePrivatePackages
+          --onlyAllow 'Apache-2.0;MIT;ISC;BSD-2-Clause;BSD-3-Clause;0BSD;Unlicense;Python-2.0;BlueOak-1.0.0;CC0-1.0'
+          --excludePackages 'caniuse-lite@1.0.30001770'
+          --summary
