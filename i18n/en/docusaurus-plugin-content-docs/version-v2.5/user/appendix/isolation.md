@@ -141,6 +141,7 @@ class DbServiceA {
 ```
 - `updateAll()` is called first (not completed), `updateA()` is called afterwards
   
+
 ![dirty-write](/img/seata-isolation/prevent-dirty-write-by-GlobalTransaction.png)
 
 
@@ -178,6 +179,42 @@ class DbServiceA {
 ### Scenario:   One business calls `updateAll()` first, `updateAll()` is not completed, and then another business calls `queryA()`
 
 ![dirty-write](/img/seata-isolation/prevent-dirty-read.png)
+
+#### Scenario 1: `queryA()` needs to accurately read "the final committed data of global transactions"
+
+If `queryA()` is part of the business process (e.g., subsequent operations depend on the queried data), the query must be managed by a global transaction to ensure it only reads "data after the global transaction is committed":
+
+- **Solution**: Add `@GlobalTransactional(readOnly = true)` or `@GlobalLock` to the method where `queryA()` resides, and set the database isolation level to **Read Committed**.
+
+- **Execution Logic (corresponding to your diagram)**:
+
+  1. When `queryA()` is executed, `@GlobalLock` first checks the **global lock** of the data in Table A;
+
+  2. If `updateAll()` of Business 1 is not committed (global lock not released), `queryA()` will **wait for the global lock to be released** (or throw a lock conflict exception to avoid reading uncommitted data);
+
+  3. Only after the global transaction of Business 1 is committed and the global lock is released will `queryA()` read the "final committed data", preventing dirty reads.
+
+     ```java
+     // Add @GlobalLock + database read lock to queryA() to prevent dirty reads
+     @GlobalLock
+     @Transactional(readOnly = true)
+     public A queryA(DTO dto) {
+         // Query with select ... for share (read lock) to ensure reading committed data without blocking writes
+         return serviceA.selectForShare(dto.getA().getId());
+     }
+     ```
+
+     
+
+#### Scenario 2: `queryA()` is a regular query (no strong consistency required, eventual consistency allowed)
+
+If `queryA()` is only for "viewing data" (e.g., users checking orders) and does not require real-time strong consistency, dirty reads can be prevented by modifying the **database isolation level**:
+
+- **Solution**: Set the database isolation level to **Read Committed**.
+
+- **Execution Logic**:
+
+  The database's "Read Committed" isolation level ensures that queries only read "committed transaction data" — intermediate uncommitted data from Business 1 will not be read by `queryA()`.
 
 ---
 
@@ -259,28 +296,28 @@ DataSourceProxy helps us obtain several important proxy objects
     package io.seata.rm.datasource;
     
     import io.seata.rm.datasource.undo.SQLUndoLog;
-
+    
     public class ConnectionProxy extends AbstractConnectionProxy {
-
+    
         private ConnectionContext context = new ConnectionContext();
-
+    
         public void appendUndoLog(SQLUndoLog sqlUndoLog) {
             context.appendUndoItem(sqlUndoLog);
         }
-
+    
     }
     ```
     ```java
     package io.seata.rm.datasource;
-
+    
     public class ConnectionContext {
-
+    
         private static final Savepoint DEFAULT_SAVEPOINT = new Savepoint() {
             @Override
             public int getSavepointId() throws SQLException {
                 return 0;
             }
-
+    
             @Override
             public String getSavepointName() throws SQLException {
                 return "DEFAULT_SEATA_SAVEPOINT";
@@ -288,13 +325,13 @@ DataSourceProxy helps us obtain several important proxy objects
         };
         
         private final Map<Savepoint, List<SQLUndoLog>> sqlUndoItemsBuffer = new LinkedHashMap<>();
-
+    
         private Savepoint currentSavepoint = DEFAULT_SAVEPOINT;
-
+    
         void appendUndoItem(SQLUndoLog sqlUndoLog) {
             sqlUndoItemsBuffer.computeIfAbsent(currentSavepoint, k -> new ArrayList<>()).add(sqlUndoLog);
         }
-
+    
     }
     
     ```
@@ -369,15 +406,15 @@ DataSourceProxy helps us obtain several important proxy objects
 - When calling `io.seata.rm.datasource.StatementProxy.execute()`, the SQL will be handed over to `io.seata.rm.datasource.exec.ExecuteTemplate.execute(...)` for processing.
     ```java
     package io.seata.rm.datasource;
-
+    
     public class PreparedStatementProxy extends AbstractPreparedStatementProxy
         implements PreparedStatement, ParametersHolder {
-
+    
         @Override
         public boolean execute() throws SQLException {
             return ExecuteTemplate.execute(this, (statement, args) -> statement.execute());
         }
-
+    
     }
     ```
 
@@ -387,13 +424,13 @@ DataSourceProxy helps us obtain several important proxy objects
 
 
         public class ExecuteTemplate {
-
+    
             public static <T, S extends Statement> T execute(StatementProxy<S> statementProxy,
                                                      StatementCallback<T, S> statementCallback,
                                                      Object... args) throws SQLException {
                 return execute(null, statementProxy, statementCallback, args);
             }
-
+    
             public static <T, S extends Statement> T execute(List<SQLRecognizer> sqlRecognizers,
                                                  StatementProxy<S> statementProxy,
                                                  StatementCallback<T, S> statementCallback,
@@ -402,7 +439,7 @@ DataSourceProxy helps us obtain several important proxy objects
                     // Just work as original statement
                     return statementCallback.execute(statementProxy.getTargetStatement(), args);
                 }
-
+    
                 String dbType = statementProxy.getConnectionProxy().getDbType();
                 if (CollectionUtils.isEmpty(sqlRecognizers)) {
                     sqlRecognizers = SQLVisitorFactory.get(
@@ -450,7 +487,7 @@ DataSourceProxy helps us obtain several important proxy objects
                 }
                 return rs;
             }
-
+    
         }
         ```
         >
@@ -461,34 +498,34 @@ DataSourceProxy helps us obtain several important proxy objects
         Observing what the `execute()` method does
         ```java
         package io.seata.rm.datasource.exec;
-
+    
         public abstract class BaseTransactionalExecutor<T, S extends Statement> implements Executor<T> {
-            
+
 
             protected StatementProxy<S> statementProxy;
-
+    
             protected StatementCallback<T, S> statementCallback;
-
+    
             protected SQLRecognizer sqlRecognizer;
-
+    
             public BaseTransactionalExecutor(StatementProxy<S> statementProxy, StatementCallback<T, S> statementCallback,
                 SQLRecognizer sqlRecognizer) {
                 this.statementProxy = statementProxy;
                 this.statementCallback = statementCallback;
                 this.sqlRecognizer = sqlRecognizer;
             }
-
+    
             @Override
             public T execute(Object... args) throws Throwable {
                 String xid = RootContext.getXID();
                 if (xid != null) {
                     statementProxy.getConnectionProxy().bind(xid);
                 }
-
+    
                 statementProxy.getConnectionProxy().setGlobalLockRequire(RootContext.requireGlobalLock());
                 return doExecute(args);
             }
-
+    
         }
         ```
         ```java
@@ -498,7 +535,7 @@ DataSourceProxy helps us obtain several important proxy objects
                                    SQLRecognizer sqlRecognizer) {
                 super(statementProxy, statementCallback, sqlRecognizer);
             }
-
+    
             @Override
             public T doExecute(Object... args) throws Throwable {
                 AbstractConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
@@ -508,7 +545,7 @@ DataSourceProxy helps us obtain several important proxy objects
                     return executeAutoCommitFalse(args);
                 }
             }
-
+    
             protected T executeAutoCommitTrue(Object[] args) throws Throwable {
                 ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
                 try {
@@ -530,7 +567,7 @@ DataSourceProxy helps us obtain several important proxy objects
                     connectionProxy.setAutoCommit(true);
                 }
             }
-
+    
             protected T executeAutoCommitFalse(Object[] args) throws Exception {
                 if (!JdbcConstants.MYSQL.equalsIgnoreCase(getDbType()) && isMultiPk()) {
                     throw new NotSupportYetException("multi pk only support mysql!");
@@ -545,28 +582,28 @@ DataSourceProxy helps us obtain several important proxy objects
         ```
         ```java
         package io.seata.rm.datasource.exec;
-
+    
         public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
             
             public UpdateExecutor(StatementProxy<S> statementProxy, StatementCallback<T, S> statementCallback,
                                 SQLRecognizer sqlRecognizer) {
                 super(statementProxy, statementCallback, sqlRecognizer);
             }
-
+    
         }
-
+    
         ```
-
+    
     - If you have chosen a DML type Executer, you can see in the executeAutoCommitFalse() method above, it mainly does the following:
         - Query before image (select for update, so local lock is acquired at this time)
             ```java
             package io.seata.rm.datasource.exec;
-
+    
             public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
                 
                 private static final boolean ONLY_CARE_UPDATE_COLUMNS = CONFIG.getBoolean(
                         ConfigurationKeys.TRANSACTION_UNDO_ONLY_CARE_UPDATE_COLUMNS, DefaultValues.DEFAULT_ONLY_CARE_UPDATE_COLUMNS); // 默认为true
-
+    
                 @Override
                 protected TableRecords beforeImage() throws SQLException {
                     ArrayList<List<Object>> paramAppenderList = new ArrayList<>();
@@ -575,7 +612,7 @@ DataSourceProxy helps us obtain several important proxy objects
                     // SELECT id, count FROM storage_tbl WHERE id = ? FOR UPDATE
                     return buildTableRecords(tmeta, selectSQL, paramAppenderList);
                 }
-
+    
                 private String buildBeforeImageSQL(TableMeta tableMeta, ArrayList<List<Object>> paramAppenderList) {
                     SQLUpdateRecognizer recognizer = (SQLUpdateRecognizer) sqlRecognizer;
                     List<String> updateColumns = recognizer.getUpdateColumns();
@@ -630,14 +667,14 @@ DataSourceProxy helps us obtain several important proxy objects
                     }
                 }
             }
-
+    
             ```
-
+    
         - Execute business SQL
         - Query the mirrored image
           ```java
             package io.seata.rm.datasource.exec;
-
+    
             public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
                 
                 @Override
@@ -673,12 +710,12 @@ DataSourceProxy helps us obtain several important proxy objects
                         }
                     }
                     ConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
-
+    
                     TableRecords lockKeyRecords = sqlRecognizer.getSQLType() == SQLType.DELETE ? beforeImage : afterImage;
                     String lockKeys = buildLockKey(lockKeyRecords);
                     if (null != lockKeys) {
                         connectionProxy.appendLockKey(lockKeys);
-
+    
                         SQLUndoLog sqlUndoLog = buildUndoItem(beforeImage, afterImage);
                         connectionProxy.appendUndoLog(sqlUndoLog); // 把undoLog存到connectionProxy中，具体怎么回事上面有提过
                     }
@@ -691,7 +728,7 @@ DataSourceProxy helps us obtain several important proxy objects
         - If there is a global lock, and local transaction is not started, roll back the local transaction, then re-acquire the local lock and query the global lock until the global lock is released
         ```java
            package io.seata.rm.datasource.exec;
-
+    
            public class SelectForUpdateExecutor<T, S extends Statement> extends BaseTransactionalExecutor<T, S> {
                    @Override
                     public T doExecute(Object... args) throws Throwable {
@@ -717,7 +754,7 @@ DataSourceProxy helps us obtain several important proxy objects
                             } else {
                                 throw new SQLException("not support savepoint. please check your db version");
                             }
-
+    
                             LockRetryController lockRetryController = new LockRetryController();
                             ArrayList<List<Object>> paramAppenderList = new ArrayList<>();
                             String selectPKSQL = buildSelectSQL(paramAppenderList);
@@ -733,7 +770,7 @@ DataSourceProxy helps us obtain several important proxy objects
                                     if (StringUtils.isNullOrEmpty(lockKeys)) {
                                         break;
                                     }
-
+    
                                     if (RootContext.inGlobalTransaction() || RootContext.requireGlobalLock()) {
                                         // Do the same thing under either @GlobalTransactional or @GlobalLock, 
                                         // that only check the global lock  here.
@@ -821,9 +858,9 @@ public class ConnectionProxy extends AbstractConnectionProxy {
     - Commit the transaction in the database
     ```java
         public class ConnectionProxy extends AbstractConnectionProxy {
-
+    
             private final static LockRetryPolicy LOCK_RETRY_POLICY = new LockRetryPolicy();
-
+    
             private ConnectionContext context = new ConnectionContext();
             
             private void processGlobalTransactionCommit() throws SQLException {
@@ -845,7 +882,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                 }
                 context.reset();
             }
-
+    
             private void register() throws TransactionException {
                 if (!context.hasUndoLog() || !context.hasLockKey()) {
                     return;
@@ -864,9 +901,9 @@ public class ConnectionProxy extends AbstractConnectionProxy {
     - Commit the transaction to the database
      ```java
         public class ConnectionProxy extends AbstractConnectionProxy {
-
+    
             private final static LockRetryPolicy LOCK_RETRY_POLICY = new LockRetryPolicy();
-
+    
             private ConnectionContext context = new ConnectionContext();
             
             private void processLocalCommitWithGlobalLocks() throws SQLException {
@@ -878,7 +915,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
                 }
                 context.reset();
             }
-
+    
             public void checkLock(String lockKeys) throws SQLException {
                 if (StringUtils.isBlank(lockKeys)) {
                     return;
@@ -909,13 +946,13 @@ We left three "clues" above, now it's time to answer them in conjunction with th
    The logic in this method is: as long as it is determined that the **current transaction is in a global state** (i.e., as long as `RootContext.bind(xid)` has been called somewhere), it will return the default `BranchType.AT`.
    ```java
    public class RootContext {
-
+   
        public static final String KEY_XID = "TX_XID";
-
+   
        private static ContextCore CONTEXT_HOLDER = ContextCoreLoader.load();
-
+   
        private static BranchType DEFAULT_BRANCH_TYPE;
-
+   
        @Nullable
        public static BranchType getBranchType() {
            if (inGlobalTransaction()) {
@@ -928,11 +965,11 @@ We left three "clues" above, now it's time to answer them in conjunction with th
            }
            return null;
        }
-
+   
        public static boolean inGlobalTransaction() {
            return CONTEXT_HOLDER.get(KEY_XID) != null;
        }
-
+   
        public static void bind(@Nonnull String xid) {
            if (StringUtils.isBlank(xid)) {
                if (LOGGER.isDebugEnabled()) {
@@ -954,34 +991,34 @@ We left three "clues" above, now it's time to answer them in conjunction with th
    Somewhere needs to call `RootContext.bindGlobalLockFlag()`
    ```java
    public class RootContext {
-
+   
        public static final String KEY_GLOBAL_LOCK_FLAG = "TX_LOCK";
        public static final Boolean VALUE_GLOBAL_LOCK_FLAG = true;
-
+   
        private static ContextCore CONTEXT_HOLDER = ContextCoreLoader.load();
-
+   
        public static boolean requireGlobalLock() {
            return CONTEXT_HOLDER.get(KEY_GLOBAL_LOCK_FLAG) != null;
        }
-
+   
        public static void bindGlobalLockFlag() {
            if (LOGGER.isDebugEnabled()) {
                LOGGER.debug("Local Transaction Global Lock support enabled");
            }
-
+   
            //just put something not null
            CONTEXT_HOLDER.put(KEY_GLOBAL_LOCK_FLAG, VALUE_GLOBAL_LOCK_FLAG);
        }
-
+   
    }
    ```
 
 3. **How does `ConnectionProxy.commit()` distinguish between different states based on the context, and how does `ConnectionContext` determine `inGlobalTransaction()` or `isGlobalLockRequire()`?**
    ```java
     public class ConnectionProxy extends AbstractConnectionProxy {
-
+   
        private ConnectionContext context = new ConnectionContext();
-
+   
        private void doCommit() throws SQLException {
            if (context.inGlobalTransaction()) {
                processGlobalTransactionCommit();
@@ -997,17 +1034,17 @@ We left three "clues" above, now it's time to answer them in conjunction with th
     - How is `inGlobalTransaction()` determined? (Note that this is different from the mentioned `RootContext` above)
       ```java
       public class ConnectionContext {
-
+      
           private String xid;
-
+      
           void setXid(String xid) {
               this.xid = xid;
           }
-
+      
           public boolean inGlobalTransaction() {
               return xid != null;
           }
-
+      
           void bind(String xid) {
               if (xid == null) {
                   throw new IllegalArgumentException("xid should not be null");
@@ -1020,15 +1057,15 @@ We left three "clues" above, now it's time to answer them in conjunction with th
                   }
               }
           }
-
+      
       }
       ```
       Where is `ConnectionContext.bind(xid)` called?
       ```java
       package io.seata.rm.datasource.exec;
-
+      
       public abstract class BaseTransactionalExecutor<T, S extends Statement> implements Executor<T> {
-
+      
         @Override
         public T execute(Object... args) throws Throwable {
             // So, where does the XID come from here? Look ahead and you will know that it comes from when the global transaction is opened, and is related to @GlobalTransactional
@@ -1036,7 +1073,7 @@ We left three "clues" above, now it's time to answer them in conjunction with th
             if (xid != null) {
                 statementProxy.getConnectionProxy().bind(xid);
             }
-
+      
             // This is the position to set isGlobalLockRequire, related to @GlobalLock
             statementProxy.getConnectionProxy().setGlobalLockRequire(RootContext.requireGlobalLock());
             return doExecute(args);
@@ -1045,34 +1082,34 @@ We left three "clues" above, now it's time to answer them in conjunction with th
       ```
       ```java
       public class ConnectionProxy extends AbstractConnectionProxy {
-
+      
          private ConnectionContext context = new ConnectionContext();
-
+      
           public void bind(String xid) {
               context.bind(xid);
           }
-
+      
           public void setGlobalLockRequire(boolean isLock) {
               context.setGlobalLockRequire(isLock);
           }
-
+      
       }
       ```
 
     - How to determine `isGlobalLockRequire()`?
       ```java
       public class ConnectionContext {
-
+      
           private boolean isGlobalLockRequire;
-
+      
           boolean isGlobalLockRequire() {
              return isGlobalLockRequire;
           }
-
+      
           void setGlobalLockRequire(boolean isGlobalLockRequire) {
               this.isGlobalLockRequire = isGlobalLockRequire;
           }
-
+      
       }
       ```
 
