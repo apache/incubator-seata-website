@@ -1,185 +1,197 @@
 ---
 title: 新人文档
-keywords: [Seata]
-description: Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
+keywords: [Seata, 部署指南, 快速开始]
+description: Seata 分 TC、TM 和 RM 三个角色，TC（Server 端）与 NamingServer 为独立服务端组件，TM 和 RM（Client 端）由业务系统集成。
 ---
 
 # 部署指南
-## Seata新手部署指南
-Seata分TC、TM和RM三个角色，TC（Server端）为单独服务端部署，TM和RM（Client端）由业务系统集成。
+
+## Seata 新手部署指南
+
+Apache Seata 分 TC、TM 和 RM 三个角色：
+
+- **TC（Transaction Coordinator）**：即 `seata-server`，作为独立服务端部署，默认监听 `8091` 端口（同时承载业务 RPC 与控制面 HTTP API；自 2.4 起控制台已迁移至独立的 `seata-namingserver`，端口 `8081`）。
+- **TM & RM（Client 端）**：由业务微服务应用通过 SDK 集成。
+
+### 环境要求
+
+- **Seata Server**：`2.6.0` 发行版兼容 JDK 8 / 17 / 21 / 25（推荐 JDK 17 及以上）。
+- **Seata NamingServer（可选，原生注册中心与控制台）**：需要 **JDK 25 及以上**。
 
 ### 资源目录介绍
-#### <a href="https://github.com/apache/incubator-seata/tree/master/script" target="_blank">点击查看(或根据版本分支选择对应的资源目录)</a>
-- client
-> 存放client端sql脚本 (包含 undo_log表) ，参数配置
-- config-center
-> 各个配置中心参数导入脚本，config.txt(包含server和client，原名nacos-config.txt)为通用参数文件
-- server
-> server端数据库脚本 (包含 lock_table、branch_table 与 global_table) 及各个容器配置
 
+查看源码脚本目录：[incubator-seata script（2.x 分支）](https://github.com/apache/incubator-seata/tree/2.x/script)（也可根据 `v2.6.0` 标签切换查看对应版本资源）。
 
-### 注意事项
-- seata-spring-boot-starter
-```
-内置GlobalTransactionScanner自动初始化功能，若外部实现初始化，请参考SeataAutoConfiguration保证依赖加载顺序
-默认开启数据源自动代理，可配置seata.enable-auto-data-source-proxy: false关闭
-```
-- spring-cloud-starter-alibaba-seata
-> <a href="https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E" target="_blank">查看版本说明</a>
-> 2.1.0内嵌seata-all 0.7.1，2.1.1内嵌seata-all 0.9.0，2.2.0内嵌seata-spring-boot-starter 1.0.0, 2.2.1内嵌seata-spring-boot-starter 1.1.0
-```
-    2.1.0和2.1.1兼容starter解决方案:
-@SpringBootApplication注解内exclude掉spring-cloud-starter-alibaba-seata内的com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration
+- `client`：存放 Client 端 SQL 脚本（包含 `undo_log` 表）及参数配置示例。
+- `config-center`：各个配置中心（Nacos、Apollo、Consul、Etcd3、ZooKeeper）参数导入脚本，`config.txt` 为通用参数模板。
+- `server`：Server 端数据库建表脚本（位于 `script/server/db/`，包含 `global_table`、`branch_table`、`lock_table`、`distributed_lock`、`vgroup_table`）以及容器部署配置模板。
+
+### 客户端集成注意事项
+
+- **`seata-spring-boot-starter`**：
+  - 内置 `GlobalTransactionScanner` 自动初始化功能；若需自定义装配顺序，可参考 `SeataAutoConfiguration`。
+  - 默认开启数据源自动代理（AT 模式），可通过 `seata.enable-auto-data-source-proxy: false` 关闭。
+- **`spring-cloud-starter-alibaba-seata` 兼容提示**：
+  - 若使用 Spring Cloud Alibaba 并自行升级 Seata 版本，推荐排除其传递引入的旧版 Seata Starter，显式声明 `org.apache.seata:seata-spring-boot-starter`：
+
+```xml
+<dependency>
+    <groupId>org.apache.seata</groupId>
+    <artifactId>seata-spring-boot-starter</artifactId>
+    <version>2.6.0</version>
+</dependency>
+<dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+    <version>最新版本</version>
+    <exclusions>
+        <exclusion>
+            <groupId>org.apache.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
 ```
 
-- spring-cloud-starter-alibaba-seata推荐依赖配置方式
+### 启动 Server
+
+Server 端存储模式（`seata.store.mode`）支持 `file`、`db`、`redis`、`raft`：
+
+- **`file` 模式**：单机模式，全局事务会话信息在内存中读写并异步（默认）持久化到本地目录 `sessionStore`，性能较高，无需改动即可直接启动。
+- **`db` 模式**：高可用模式，通过数据库共享事务会话与全局锁信息。
+- **`redis` 模式**：性能较高，但存在持久化配置不当导致事务状态丢失的风险，请提前配置合理的 Redis 持久化策略。
+- **`raft` 模式**：存算一体的高可用集群模式，详细配置请查看 [部署 Raft 集群](./deploy-server-raft)。
+
+如需使用 Seata 原生注册中心与控制台（`8081` 端口），请先参考 [部署 NamingServer](./deploy-namingserver)。
+
+#### 步骤一：获取发行包
+
+- 前往 [Seata 下载页面](/download/seata-server) 或 [GitHub Releases](https://github.com/apache/incubator-seata/releases) 下载 `apache-seata-2.6.0-incubating-bin.tar.gz`（或 `.zip`）并解压。
+- 也可加入 [Seata 社区交流群](/community) 获取社区支持。
+
+解压后包含 `seata-server/` 与 `seata-namingserver/` 两个独立组件目录。
+
+#### 步骤二：建表（仅 `db` 模式）
+
+使用 `script/server/db/` 目录下对应数据库类型（如 `mysql.sql`、`postgresql.sql`、`oracle.sql` 等）的 SQL 脚本初始化表结构（包含 `global_table`、`branch_table`、`lock_table`、`distributed_lock`、`vgroup_table`）。
+
+#### 步骤三：修改 `store.mode`
+
+- 二进制包：`seata-server/conf/application.yml`，设置 `seata.store.mode` 为 `db` 或 `redis`（默认 `file`）。
+- 源码调试：`server/src/main/resources/application.yml`，设置 `seata.store.mode` 为 `db` 或 `redis`。
+
+#### 步骤四：修改数据库或 Redis 连接配置
+
+`seata-server/conf/application.example.yml`（源码中为 `server/src/main/resources/application.example.yml`）附带了完整配置示例，可将对应的 `seata.store.db` 或 `seata.store.redis` 段落复制到 `application.yml` 并修改连接地址与认证信息。
+
+#### 步骤五：启动 Server
+
+- 源码启动：在 IDE 中运行 `org.apache.seata.server.ServerApplication` 的 `main` 方法。
+- 命令启动：进入 `seata-server` 目录后执行：
+
+```bash
+sh ./bin/seata-server.sh -h 127.0.0.1 -p 8091 -m db
+```
+
+常用参数说明（更多参数见 [直接部署 Server](./deploy-server)）：
+
+```text
+-h, --host         指定向注册中心注册的 IP（必须为 IPv4/IPv6 字面量，不可填写主机名）
+-p, --port         指定 Server 监听端口（默认 8091，同时承载 RPC 与 HTTP API）
+-m, --storeMode    全局事务存储模式：file、db、redis
+-n, --serverNode   Server 节点 ID，不指定时默认按雪花算法自动生成
+-e, --seataEnv     多环境隔离标识，参见多配置隔离文档
+```
+
+- 容器化部署：参见 [使用 Docker 部署](./deploy-by-docker)。
+- 内存建议：未手动指定 `JVM_XMX`/`JVM_XMS` 时，启动脚本会自动根据容器或主机内存计算堆大小（默认回退为堆内存 `2048m`、堆外内存 `1024m`）。
+
+### 业务系统集成 Client
+
+#### 步骤一：添加 Seata 依赖（推荐二选一）
+
+- **`seata-spring-boot-starter`**：支持 Spring Boot `application.yml` / `application.properties` 配置，内部已包含 `seata-all`。
+- **`seata-all`**：适用于非 Spring Boot 应用。
+
+```xml
+<dependency>
+    <groupId>org.apache.seata</groupId>
+    <artifactId>seata-spring-boot-starter</artifactId>
+    <version>2.6.0</version>
+</dependency>
+```
+
+#### 步骤二：`undo_log` 建表与配置参数（仅 AT 模式）
+
+在业务数据库中创建 `undo_log` 表（脚本位于 `script/client/at/db/`），配置说明参见 [参数配置](../user/configurations)。
+
+#### 步骤三：数据源代理（不可与手动配置并存）
+
+##### 1. 如果使用 `seata-all`
+
+- 可通过注解 `@EnableAutoDataSourceProxy` 开启自动代理；若采用 XA 模式，配置 `@EnableAutoDataSourceProxy(dataSourceProxyMode = "XA")`。
+- 或手动包装数据源 Bean：
 
 ```java
-           <dependency>
-                <groupId>org.apache.seata</groupId>
-                <artifactId>seata-spring-boot-starter</artifactId>
-                <version>最新版</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-                <version>最新版本</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.seata</groupId>
-                        <artifactId>seata-spring-boot-starter</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
+@Primary
+@Bean("dataSource")
+public DataSource dataSource(DataSource druidDataSource) {
+    // AT 模式代理与 XA 模式代理二选一
+    return new DataSourceProxy(druidDataSource);
+    // return new DataSourceProxyXA(druidDataSource);
+}
 ```
 
+##### 2. 如果使用 `seata-spring-boot-starter`
 
+- 默认已开启 AT 自动代理；如需切换为 XA 模式，在 `application.yml` 中配置：
 
-### 启动Server
-
-Server端存储模式（store.mode）现有file、db、redis、raft，file模式无需改动，直接启动即可,raft部署方式请访问[专门部署文档](/docs/ops/deploy-server-raft/)，下面专门讲下db和redis启动步骤。
-注： file模式为单机模式，全局事务会话信息内存中读写并异步(默认)持久化本地文件root.data，性能较高;
-
-db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些;
-
-redis模式Seata-Server 1.3及以上版本支持,性能较高,存在事务信息丢失风险,请提前配置合适当前场景的redis持久化配置.
-
-#### 步骤一：启动包
-- <a href="https://github.com/apache/incubator-seata/releases" target="_blank">点击下载</a>
-- 官方钉钉群（群号：23171167，1群5000人已满，<a href="/community" target="_blank">2群</a>, 3群: 32033786，4群：60170003910），qq群（群号: 254657148,2群: 216012363）群文件共享下载
-
-#### 步骤二：建表(仅db)
-全局事务会话信息由3块内容构成，全局事务-->分支事务-->全局锁，对应表global_table、branch_table、lock_table
-
-#### 步骤三：修改store.mode
-
-启动包: seata-->conf-->application.yml，修改store.mode="db或者redis"
-源码:   根目录-->seata-server-->resources-->application.yml，修改store.mode="db或者redis"
-
-#### 步骤四：修改数据库连接|redis属性配置
-
-启动包: seata-->conf-->application.example.yml中附带额外配置，将其db|redis相关配置复制至application.yml,进行修改store.db或store.redis相关属性。
-源码:   根目录-->seata-server-->resources-->application.example.yml中附带额外配置，将其db/redis相关配置复制至application.yml,进行修改store.db或store.redis相关属性。
-
-
-#### 步骤五：启动
-
-- 源码启动: 执行ServerApplication.java的main方法
-- 命令启动: seata-server.sh -h 127.0.0.1 -p 8091 -m db
-
-注: 堆内存建议分配2G，堆外内存1G
-
-### 业务系统集成Client
-#### 步骤一：添加seata依赖（建议单选）
-- 依赖seata-all
-- 依赖seata-spring-boot-starter，支持yml、properties配置(.conf可删除)，内部已依赖seata-all
-- 依赖spring-cloud-starter-alibaba-seata，内部集成了seata，并实现了xid传递
-
-#### 步骤二：undo_log建表、配置参数(仅AT模式)
-- <a href="/docs/user/configurations/" target="_blank">查看参数配置介绍</a>
-
-#### 步骤三：数据源代理（不支持自动和手动配置并存）
-
-1. 如果使用seata-all
-    - 0.9.0版本开始seata支持自动代理数据源
-        ```
-        1.1.0: seata-all取消属性配置，改由注解@EnableAutoDataSourceProxy开启，并可选择jdk proxy或者cglib proxy
-        1.0.0: client.support.spring.datasource.autoproxy=true
-        0.9.0: support.spring.datasource.autoproxy=true
-        ```
-        如果采用XA模式，`@EnableAutoDataSourceProxy(dataSourceProxyMode = "XA")`
-
-    - 手动配置可参考下方的例子
-        ```
-        @Primary
-        @Bean("dataSource")
-        public DataSource dataSource(DataSource druidDataSource) {
-            //AT 代理 二选一
-            return new DataSourceProxy(druidDataSource);
-            //XA 代理
-            return new DataSourceProxyXA(druidDataSource)
-        }
-        ```
-
-2. 如果使用seata-starter
-    - 使用自动代理数据源时，如果使用XA模式还需要调整配置文件
-        application.properties
-        ```
-        seata.data-source-proxy-mode=XA
-        ```
-        application.yml
-        ```
-        seata:
-          data-source-proxy-mode: XA
-        ```
-
-    - 如何关闭seata-spring-boot-starter的数据源自动代理？
-        application.properties
-        ```
-        seata.enable-auto-data-source-proxy=false
-        ```
-        application.yml
-        ```
-        seata:
-          enable-auto-data-source-proxy: false
-        ```
-
-#### 步骤四：初始化GlobalTransactionScanner
-- 手动
-```  @Bean
-       @Bean
-       public GlobalTransactionScanner globalTransactionScanner() {
-           String applicationName = this.applicationContext.getEnvironment().getProperty("spring.application.name");
-           String txServiceGroup = this.seataProperties.getTxServiceGroup();
-           if (StringUtils.isEmpty(txServiceGroup)) {
-               txServiceGroup = applicationName + "-fescar-service-group";
-               this.seataProperties.setTxServiceGroup(txServiceGroup);
-           }
-
-           return new GlobalTransactionScanner(applicationName, txServiceGroup);
-       }
+```yaml
+seata:
+  data-source-proxy-mode: XA
 ```
-- 自动，引入seata-spring-boot-starter、spring-cloud-starter-alibaba-seata等jar
 
-#### 步骤五：实现xid跨服务传递
-- 手动
-参考源码integration文件夹下的各种rpc实现 module
-- 自动
-springCloud用户可以引入spring-cloud-starter-alibaba-seata，内部已经实现xid传递
+- 如需关闭自动代理：
 
-## 业务使用
+```yaml
+seata:
+  enable-auto-data-source-proxy: false
+```
 
-### 注解拦截
+#### 步骤四：初始化 `GlobalTransactionScanner`
 
-#### 全局事务
+- 使用 `seata-spring-boot-starter` 时会自动完成装配。
+- 非 Starter 场景可手动注册 Bean：
+
+```java
+@Bean
+public GlobalTransactionScanner globalTransactionScanner() {
+    String applicationName = this.applicationContext.getEnvironment().getProperty("spring.application.name");
+    String txServiceGroup = this.seataProperties.getTxServiceGroup();
+    if (StringUtils.isEmpty(txServiceGroup)) {
+        txServiceGroup = applicationName + "-seata-service-group";
+        this.seataProperties.setTxServiceGroup(txServiceGroup);
+    }
+    return new GlobalTransactionScanner(applicationName, txServiceGroup);
+}
+```
+
+#### 步骤五：实现 XID 跨服务传递
+
+- 使用 Spring Cloud / Dubbo / gRPC 等常见微服务框架时，确保引入对应支持或检查 `integration` 模块的透传拦截器已生效，以保证分布式调用链中 `XID` 正确传递。
+
+### 业务使用示例
+
+#### 全局事务注解 `@GlobalTransactional`
 
 ```java
 @GetMapping(value = "testCommit")
 @GlobalTransactional
-public Object testCommit(@RequestParam(name = "id",defaultValue = "1") Integer id,
-    @RequestParam(name = "sum", defaultValue = "1") Integer sum) {
+public Object testCommit(
+        @RequestParam(name = "id", defaultValue = "1") Integer id,
+        @RequestParam(name = "sum", defaultValue = "1") Integer sum) {
     Boolean ok = productService.reduceStock(id, sum);
-    if (ok) {
+    if (Boolean.TRUE.equals(ok)) {
         LocalDateTime now = LocalDateTime.now();
         Orders orders = new Orders();
         orders.setCreateTime(now);
@@ -188,64 +200,47 @@ public Object testCommit(@RequestParam(name = "id",defaultValue = "1") Integer i
         orders.setSum(sum);
         orderService.save(orders);
         return "ok";
-    } else {
-        return "fail";
     }
+    return "fail";
 }
 ```
 
-#### TCC
+#### TCC 模式 `@TwoPhaseBusinessAction`
 
 ```java
 /**
- * 定义两阶段提交 name = 该tcc的bean名称,全局唯一 commitMethod = commit 为二阶段确认方法 rollbackMethod = rollback 为二阶段取消方法
- * useTCCFence=true 为开启防悬挂
- * BusinessActionContextParameter注解 传递参数到二阶段中
- *
- * @param params  -入参
- * @return String
+ * 定义两阶段提交：name 为全局唯一的 TCC Bean 名称；
+ * commitMethod 为二阶段确认方法；rollbackMethod 为二阶段回滚方法；
+ * useTCCFence = true 开启防悬挂与幂等控制。
  */
 @TwoPhaseBusinessAction(name = "beanName", commitMethod = "commit", rollbackMethod = "rollback", useTCCFence = true)
 public void insert(@BusinessActionContextParameter(paramName = "params") Map<String, String> params) {
-    logger.info("此处可以预留资源,或者利用tcc的特点,与AT混用,二阶段时利用一阶段在此处存放的消息,通过二阶段发出,比如redis,mq等操作");
+    logger.info("Try phase: reserve resources or stage messages for phase 2");
 }
 
-/**
- * 确认方法、可以另命名，但要保证与commitMethod一致 context可以传递try方法的参数
- *
- * @param context 上下文
- * @return boolean
- */
-public void commit(BusinessActionContext context) {
-    logger.info("预留资源真正处理,或者发出mq消息和redis入库");
+public boolean commit(BusinessActionContext context) {
+    logger.info("Confirm phase: commit reserved resources");
+    return true;
 }
 
-/**
- * 二阶段取消方法
- *
- * @param context 上下文
- * @return boolean
- */
-public void rollback(BusinessActionContext context) {
-    logger.info("预留资源释放,或清除一阶段准备让二阶段提交时发出的消息缓存");
+public boolean rollback(BusinessActionContext context) {
+    logger.info("Cancel phase: release reserved resources");
+    return true;
 }
 ```
 
-### 切点表达式
-
-#### 全局事务
+#### 切点表达式拦截
 
 ```java
-    @Bean
-    public AspectTransactionalInterceptor aspectTransactionalInterceptor () {
-        return new AspectTransactionalInterceptor();
-    }
+@Bean
+public AspectTransactionalInterceptor aspectTransactionalInterceptor() {
+    return new AspectTransactionalInterceptor();
+}
 
-    @Bean
-    public Advisor txAdviceAdvisor(AspectTransactionalInterceptor aspectTransactionalInterceptor ) {
-        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression("配置切点表达式使全局事务拦截器生效");
-        return new DefaultPointcutAdvisor(pointcut, aspectTransactionalInterceptor);
-    }
+@Bean
+public Advisor txAdviceAdvisor(AspectTransactionalInterceptor aspectTransactionalInterceptor) {
+    AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+    pointcut.setExpression("execution(* com.example.service..*(..))");
+    return new DefaultPointcutAdvisor(pointcut, aspectTransactionalInterceptor);
+}
 ```
-

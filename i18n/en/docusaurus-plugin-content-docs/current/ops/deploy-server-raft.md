@@ -1,84 +1,147 @@
 ---
 title: Deploying Raft Cluster
-keywords: [Seata]
-description: Server-Raft mode deploy
+keywords: [Seata, Raft, HA, Cluster]
+description: Deploy a high-availability Seata cluster using Seata-Raft mode with either direct peer discovery or NamingServer.
 ---
 
 # Deploying Server-Raft
-Seata-Raft mode is a transaction storage mode that integrates storage and computing, with high performance, easy scalability, low entry barriers, and low operational costs. For more detailed information about the architecture and usage, please click here.
 
-Note: Since this mode does not support integration with third-party registry centers, only one TC cluster is allowed for the entire chain, which means that the TC cluster corresponding to the client's transaction group must remain consistent. In the future, the Seata community will launch a self-contained NamingServer that is compatible with the Seata-Raft mode and supports multi-raft.
+Seata-Raft integrates storage and computation into a self-contained high-availability transaction store mode with high performance, easy scaling, and no external database requirement. For architectural details, see [Seata-Raft Detailed Explanation](/blog/seata-raft-detailed-explanation).
 
-## Server
-1. Download the server application from [RELEASE](https://github.com/apache/incubator-seata/releases) and unzip.
+Seata-Raft supports two service discovery options:
 
-2. Change config
-Add the following parameters under seata: in the application.yml file in the conf.
-```
+- **`registry.type: file`**: Clients connect directly to any Server node via `registry.type: raft` to fetch cluster metadata (single Raft cluster, no external registry required).
+- **`registry.type: seata`**: Integrates with [Seata NamingServer](./deploy-namingserver) to support multi-raft clusters, dynamic transaction group cutover, and Web Console management (third-party registries such as Nacos, Eureka, and ZooKeeper are not supported in Raft mode).
+
+## Server Setup
+
+### 1. Download and Extract
+
+Download the binary distribution from the [Download Page](/download/seata-server) or [GitHub Releases](https://github.com/apache/incubator-seata/releases), extract it, and enter `seata-server/`.
+
+### 2. Edit Configuration
+
+Edit `conf/application.yml` (refer to `application.raft.example.yml` in the same directory for all options):
+
+```yaml
+server:
+  port: 8091
+
+spring:
+  application:
+    name: seata-server
+  main:
+    web-application-type: none
+
 seata:
   server:
     raft:
-      group: default #This value represents the group of the Raft cluster, and the value corresponding to the client's transaction branch must correspond to it
-      server-addr: 192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 # The IP address and port of the 3 nodes, the port is the netty port of the node + 1000, and the default netty port is 8091
-      snapshot-interval: 600 # Take a snapshot of the data every 600 seconds to ensure fast rolling of the Raft log. However, if there is too much transaction data in memory during each snapshot, it may cause fluctuations in business response time (rt) every 600 seconds. Adjusting the snapshot interval to 30 minutes or 1 hour is also acceptable, depending on the specific business requirements. It is recommended to conduct performance testing to determine if there are any rt fluctuations. Find a balance point between rt fluctuations and fault recovery that suits your business needs.
-      apply-batch: 32 # Commit the Raft log with a maximum batch of 32 actions at a time.
-      max-append-bufferSize: 262144 #The maximum size of the log storage buffer is 256 KB by default.
-      max-replicator-inflight-msgs: 256 #在When using pipeline requests, the maximum number of in-flight requests is 256 by default.
-      disruptor-buffer-size: 16384 #The size of the internal disruptor buffer is 16384 by default. If the write throughput is high, you may need to increase this value appropriately.
-      election-timeout-ms: 1000 #The duration after which a leader without heartbeat triggers a new election.
-      reporter-enabled: false # raft monitor enable
-      reporter-initial-delay: 60 # The interval between monitoring intervals.
-      serialization: jackson # Serialization method, do not modify.
-      compressor: none # The compression method used for the Raft log, such as gzip, zstd, lz4，etc
-      sync: true # The flushing method for Raft logs is synchronous flushing by default.
+      group: default # Raft cluster group name; must match the cluster name mapped to the client tx group
+      server-addr: 192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091 # IP and Raft port (RPC port + 1000, default 9091) of at least 3 nodes
+      snapshot-interval: 600 # Snapshot interval in seconds; balance between RT spikes and restart recovery speed
+      apply-batch: 32 # Maximum batch size when committing Raft logs
+      max-append-bufferSize: 262144 # Maximum log buffer size, default 256 KB
+      max-replicator-inflight-msgs: 256 # Maximum in-flight requests when pipeline is enabled
+      disruptor-buffer-size: 16384 # Internal Disruptor buffer size; increase for higher write throughput
+      election-timeout-ms: 1000 # Leader heartbeat timeout before triggering a re-election (ms)
+      reporter-enabled: false # Enable JRaft built-in metrics reporter
+      reporter-initial-delay: 60 # Reporter interval in seconds
+      serialization: jackson # Raft log serialization format; keep default
+      compressor: none # Raft log compression: none, gzip, zstd, lz4, etc.
+      sync: true # Synchronous disk flush for Raft logs
   config:
     # support: nacos, consul, apollo, zk, etcd3
-    type: file # This configuration can select different configuration centers.
+    type: file
   registry:
-    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
-    type: file # In Raft mode, it is not allowed to use non-file-based registry centers.
+    # Raft mode only supports file or seata (NamingServer)
+    type: file
+    # To register with NamingServer, switch to type: seata and uncomment below:
+    # seata:
+    #   server-addr: 127.0.0.1:8081
+    #   cluster: default
+    #   namespace: public
+    #   username: seata
+    #   password: seata
   store:
-    # support: file 、 db 、 redis 、 raft
-    mode: raft # use raft mode
+    mode: raft
     file:
-      dir: sessionStore # This path is the storage location for Raft logs and transaction-related logs. By default, it is a relative path, but it is recommended to set a fixed location.
+      dir: sessionStore # Directory for Raft logs and snapshots; use a fixed absolute path in production
 ```
-If the addresses in server-addr: are all on the local machine, then you need to add an offset of 1000 to the Netty port for different servers on this machine. For example, if `server.port: 7092`, the Netty port would be `8092`, and the Raft election and communication port would be `9092`. You need to add the startup parameter `-Dserver.raftPort=9092`.
-On Linux, you can specify the export `JAVA_OPT="-Dserver.raftPort=9092"` command to set the desired value.。
 
-3. Startup
+:::tip Local Multi-Node Debugging
+If all addresses in `seata.server.raft.server-addr` run on the same host (for example, RPC ports `8091`, `8092`, `8093` with Raft ports `9091`, `9092`, `9093`), specify each instance's Raft port with `-Dserver.raftPort=<port>` in addition to `-p` or `server.port`.
 
-On Linux/Mac
+On Linux / macOS:
 
 ```bash
-$ sh ./bin/seata-server.sh
+export JAVA_OPT="-Dserver.raftPort=9092"
+sh ./bin/seata-server.sh -p 8092
 ```
 
-On Windows
+:::
+
+### 3. Start Each Node
+
+- Linux / macOS:
+
+```bash
+sh ./bin/seata-server.sh start
+```
+
+- Windows:
 
 ```cmd
 bin\seata-server.bat
 ```
 
-4. Volume expansion and contraction
+### 4. Dynamic Scaling
 
-Assuming the original cluster list is "192.168.0.111:8091, 192.168.0.112:8091, 192.168.0.113:8091", whether it is scaling or shrinking, only need to modify this string and submit it to the volume expansion and contraction interface of a member, such as scaling "curl -X POST -i http://192.168.0.111:8091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111: 8091, 192.168.0.112:8091, 192.168.0.113:8091, 192.168.0.114:8091" ', if it is scaling, only need to remove the nodes in the cluster connection string that need to be offline, and call the volume expansion and contraction interface.
-Note: The seata.server.raft.server-addr configuration is invalid as long as the cluster is built. Please perform volume expansion and contraction through the API. The subsequent console will also integrate volume expansion and contraction and cluster management functions.
+Suppose the initial Raft cluster list is `192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091`. Once a Raft cluster is initialized, modifying `seata.server.raft.server-addr` in the configuration file has no effect. Always scale via `/metadata/v1/changeCluster` on an existing cluster member (note that `raftClusterStr` must use **Raft ports**, e.g. `9091`):
 
-## Client
+- **Scale out** (adding `192.168.0.114:9091`):
 
-1. Change `registry.type`
+```bash
+curl -X POST -i "http://192.168.0.111:8091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091,192.168.0.114:9091"
 ```
-   registry:
-      type: raft
-      raft:
-         server-addr: 192.168.0.111:8091, 192.168.0.112:8091, 192.168.0.113:8091
+
+- **Scale in** (omit the decommissioned node from `raftClusterStr`):
+
+```bash
+curl -X POST -i "http://192.168.0.111:8091/metadata/v1/changeCluster?raftClusterStr=192.168.0.111:9091,192.168.0.112:9091,192.168.0.113:9091"
 ```
-2. Change the TC cluster corresponding to the transaction group to the Raft group of the server.
-```
+
+## Client Configuration
+
+### Option 1: Direct Raft Discovery (`registry.type: file` on Server)
+
+Configure `seata.registry.type: raft` on the client with the Server RPC addresses (`8091` by default):
+
+```yaml
 seata:
-   tx-service-group: default_tx_group
-   service:
-      vgroup-mapping:
-         default_tx_group: If server.raft.group is set to "default", then this field should be set to "default" as well.
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default # Matches seata.server.raft.group on the server
+  registry:
+    type: raft
+    raft:
+      server-addr: 192.168.0.111:8091,192.168.0.112:8091,192.168.0.113:8091
 ```
+
+### Option 2: Discovery via NamingServer (`registry.type: seata` on Server)
+
+When Seata Server registers to NamingServer with `seata.registry.type: seata`, point clients to NamingServer:
+
+```yaml
+seata:
+  tx-service-group: default_tx_group
+  registry:
+    type: seata
+    seata:
+      server-addr: 127.0.0.1:8081
+      namespace: public
+      username: seata
+      password: seata
+```
+
+Create the mapping from `default_tx_group` to the target cluster via the NamingServer Console or `/naming/v1/addGroup`. See [Namingserver Registry](../user/registry/namingserver) for details.

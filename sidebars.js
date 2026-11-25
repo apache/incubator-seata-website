@@ -178,6 +178,7 @@ const sidebars = {
           items: [
             'ops/deploy-guide-beginner',
             'ops/deploy-server',
+            'ops/deploy-namingserver',
             'ops/deploy-server-raft',
             'ops/deploy-by-docker',
             'ops/deploy-by-docker-compose',
